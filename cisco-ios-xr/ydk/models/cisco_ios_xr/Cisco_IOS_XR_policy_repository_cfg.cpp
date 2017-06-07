@@ -18,13 +18,10 @@ RoutingPolicy::RoutingPolicy()
 	,sets(std::make_shared<RoutingPolicy::Sets>())
 {
     limits->parent = this;
-    children["limits"] = limits;
 
     route_policies->parent = this;
-    children["route-policies"] = route_policies;
 
     sets->parent = this;
-    children["sets"] = sets;
 
     yang_name = "routing-policy"; yang_parent_name = "Cisco-IOS-XR-policy-repository-cfg";
 }
@@ -59,12 +56,12 @@ std::string RoutingPolicy::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -80,87 +77,52 @@ EntityPath RoutingPolicy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "limits")
     {
-        if(limits != nullptr)
-        {
-            children["limits"] = limits;
-        }
-        else
+        if(limits == nullptr)
         {
             limits = std::make_shared<RoutingPolicy::Limits>();
-            limits->parent = this;
-            children["limits"] = limits;
         }
-        return children.at("limits");
+        return limits;
     }
 
     if(child_yang_name == "route-policies")
     {
-        if(route_policies != nullptr)
-        {
-            children["route-policies"] = route_policies;
-        }
-        else
+        if(route_policies == nullptr)
         {
             route_policies = std::make_shared<RoutingPolicy::RoutePolicies>();
-            route_policies->parent = this;
-            children["route-policies"] = route_policies;
         }
-        return children.at("route-policies");
+        return route_policies;
     }
 
     if(child_yang_name == "sets")
     {
-        if(sets != nullptr)
-        {
-            children["sets"] = sets;
-        }
-        else
+        if(sets == nullptr)
         {
             sets = std::make_shared<RoutingPolicy::Sets>();
-            sets->parent = this;
-            children["sets"] = sets;
         }
-        return children.at("sets");
+        return sets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::get_children() const
 {
-    if(children.find("limits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(limits != nullptr)
     {
-        if(limits != nullptr)
-        {
-            children["limits"] = limits;
-        }
+        children["limits"] = limits;
     }
 
-    if(children.find("route-policies") == children.end())
+    if(route_policies != nullptr)
     {
-        if(route_policies != nullptr)
-        {
-            children["route-policies"] = route_policies;
-        }
+        children["route-policies"] = route_policies;
     }
 
-    if(children.find("sets") == children.end())
+    if(sets != nullptr)
     {
-        if(sets != nullptr)
-        {
-            children["sets"] = sets;
-        }
+        children["sets"] = sets;
     }
 
     return children;
@@ -232,7 +194,7 @@ std::string RoutingPolicy::RoutePolicies::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::RoutePolicies::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::RoutePolicies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -255,15 +217,6 @@ EntityPath RoutingPolicy::RoutePolicies::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::RoutePolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-policy")
     {
         for(auto const & c : route_policy)
@@ -271,28 +224,24 @@ std::shared_ptr<Entity> RoutingPolicy::RoutePolicies::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::RoutePolicies::RoutePolicy>();
         c->parent = this;
-        route_policy.push_back(std::move(c));
-        children[segment_path] = route_policy.back();
-        return children.at(segment_path);
+        route_policy.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::RoutePolicies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::RoutePolicies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route_policy)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -336,7 +285,7 @@ std::string RoutingPolicy::RoutePolicies::RoutePolicy::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::RoutePolicies::RoutePolicy::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::RoutePolicies::RoutePolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -361,20 +310,12 @@ EntityPath RoutingPolicy::RoutePolicies::RoutePolicy::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> RoutingPolicy::RoutePolicies::RoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::RoutePolicies::RoutePolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::RoutePolicies::RoutePolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -419,79 +360,54 @@ RoutingPolicy::Sets::Sets()
 	,tag_sets(std::make_shared<RoutingPolicy::Sets::TagSets>())
 {
     append_esi_sets->parent = this;
-    children["append-esi-sets"] = append_esi_sets;
 
     append_etag_sets->parent = this;
-    children["append-etag-sets"] = append_etag_sets;
 
     append_mac_sets->parent = this;
-    children["append-mac-sets"] = append_mac_sets;
 
     as_path_sets->parent = this;
-    children["as-path-sets"] = as_path_sets;
 
     community_sets->parent = this;
-    children["community-sets"] = community_sets;
 
     esi_sets->parent = this;
-    children["esi-sets"] = esi_sets;
 
     etag_sets->parent = this;
-    children["etag-sets"] = etag_sets;
 
     extended_community_bandwidth_sets->parent = this;
-    children["extended-community-bandwidth-sets"] = extended_community_bandwidth_sets;
 
     extended_community_cost_sets->parent = this;
-    children["extended-community-cost-sets"] = extended_community_cost_sets;
 
     extended_community_opaque_sets->parent = this;
-    children["extended-community-opaque-sets"] = extended_community_opaque_sets;
 
     extended_community_rt_sets->parent = this;
-    children["extended-community-rt-sets"] = extended_community_rt_sets;
 
     extended_community_seg_nh_sets->parent = this;
-    children["extended-community-seg-nh-sets"] = extended_community_seg_nh_sets;
 
     extended_community_soo_sets->parent = this;
-    children["extended-community-soo-sets"] = extended_community_soo_sets;
 
     mac_sets->parent = this;
-    children["mac-sets"] = mac_sets;
 
     ospf_area_sets->parent = this;
-    children["ospf-area-sets"] = ospf_area_sets;
 
     policy_global_set_table->parent = this;
-    children["policy-global-set-table"] = policy_global_set_table;
 
     prefix_sets->parent = this;
-    children["prefix-sets"] = prefix_sets;
 
     prepend_esi_sets->parent = this;
-    children["prepend-esi-sets"] = prepend_esi_sets;
 
     prepend_etag_sets->parent = this;
-    children["prepend-etag-sets"] = prepend_etag_sets;
 
     prepend_mac_sets->parent = this;
-    children["prepend-mac-sets"] = prepend_mac_sets;
 
     rd_sets->parent = this;
-    children["rd-sets"] = rd_sets;
 
     remove_esi_sets->parent = this;
-    children["remove-esi-sets"] = remove_esi_sets;
 
     remove_etag_sets->parent = this;
-    children["remove-etag-sets"] = remove_etag_sets;
 
     remove_mac_sets->parent = this;
-    children["remove-mac-sets"] = remove_mac_sets;
 
     tag_sets->parent = this;
-    children["tag-sets"] = tag_sets;
 
     yang_name = "sets"; yang_parent_name = "routing-policy";
 }
@@ -568,7 +484,7 @@ std::string RoutingPolicy::Sets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -591,593 +507,360 @@ EntityPath RoutingPolicy::Sets::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "append-esi-sets")
     {
-        if(append_esi_sets != nullptr)
-        {
-            children["append-esi-sets"] = append_esi_sets;
-        }
-        else
+        if(append_esi_sets == nullptr)
         {
             append_esi_sets = std::make_shared<RoutingPolicy::Sets::AppendEsiSets>();
-            append_esi_sets->parent = this;
-            children["append-esi-sets"] = append_esi_sets;
         }
-        return children.at("append-esi-sets");
+        return append_esi_sets;
     }
 
     if(child_yang_name == "append-etag-sets")
     {
-        if(append_etag_sets != nullptr)
-        {
-            children["append-etag-sets"] = append_etag_sets;
-        }
-        else
+        if(append_etag_sets == nullptr)
         {
             append_etag_sets = std::make_shared<RoutingPolicy::Sets::AppendEtagSets>();
-            append_etag_sets->parent = this;
-            children["append-etag-sets"] = append_etag_sets;
         }
-        return children.at("append-etag-sets");
+        return append_etag_sets;
     }
 
     if(child_yang_name == "append-mac-sets")
     {
-        if(append_mac_sets != nullptr)
-        {
-            children["append-mac-sets"] = append_mac_sets;
-        }
-        else
+        if(append_mac_sets == nullptr)
         {
             append_mac_sets = std::make_shared<RoutingPolicy::Sets::AppendMacSets>();
-            append_mac_sets->parent = this;
-            children["append-mac-sets"] = append_mac_sets;
         }
-        return children.at("append-mac-sets");
+        return append_mac_sets;
     }
 
     if(child_yang_name == "as-path-sets")
     {
-        if(as_path_sets != nullptr)
-        {
-            children["as-path-sets"] = as_path_sets;
-        }
-        else
+        if(as_path_sets == nullptr)
         {
             as_path_sets = std::make_shared<RoutingPolicy::Sets::AsPathSets>();
-            as_path_sets->parent = this;
-            children["as-path-sets"] = as_path_sets;
         }
-        return children.at("as-path-sets");
+        return as_path_sets;
     }
 
     if(child_yang_name == "community-sets")
     {
-        if(community_sets != nullptr)
-        {
-            children["community-sets"] = community_sets;
-        }
-        else
+        if(community_sets == nullptr)
         {
             community_sets = std::make_shared<RoutingPolicy::Sets::CommunitySets>();
-            community_sets->parent = this;
-            children["community-sets"] = community_sets;
         }
-        return children.at("community-sets");
+        return community_sets;
     }
 
     if(child_yang_name == "esi-sets")
     {
-        if(esi_sets != nullptr)
-        {
-            children["esi-sets"] = esi_sets;
-        }
-        else
+        if(esi_sets == nullptr)
         {
             esi_sets = std::make_shared<RoutingPolicy::Sets::EsiSets>();
-            esi_sets->parent = this;
-            children["esi-sets"] = esi_sets;
         }
-        return children.at("esi-sets");
+        return esi_sets;
     }
 
     if(child_yang_name == "etag-sets")
     {
-        if(etag_sets != nullptr)
-        {
-            children["etag-sets"] = etag_sets;
-        }
-        else
+        if(etag_sets == nullptr)
         {
             etag_sets = std::make_shared<RoutingPolicy::Sets::EtagSets>();
-            etag_sets->parent = this;
-            children["etag-sets"] = etag_sets;
         }
-        return children.at("etag-sets");
+        return etag_sets;
     }
 
     if(child_yang_name == "extended-community-bandwidth-sets")
     {
-        if(extended_community_bandwidth_sets != nullptr)
-        {
-            children["extended-community-bandwidth-sets"] = extended_community_bandwidth_sets;
-        }
-        else
+        if(extended_community_bandwidth_sets == nullptr)
         {
             extended_community_bandwidth_sets = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidthSets>();
-            extended_community_bandwidth_sets->parent = this;
-            children["extended-community-bandwidth-sets"] = extended_community_bandwidth_sets;
         }
-        return children.at("extended-community-bandwidth-sets");
+        return extended_community_bandwidth_sets;
     }
 
     if(child_yang_name == "extended-community-cost-sets")
     {
-        if(extended_community_cost_sets != nullptr)
-        {
-            children["extended-community-cost-sets"] = extended_community_cost_sets;
-        }
-        else
+        if(extended_community_cost_sets == nullptr)
         {
             extended_community_cost_sets = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityCostSets>();
-            extended_community_cost_sets->parent = this;
-            children["extended-community-cost-sets"] = extended_community_cost_sets;
         }
-        return children.at("extended-community-cost-sets");
+        return extended_community_cost_sets;
     }
 
     if(child_yang_name == "extended-community-opaque-sets")
     {
-        if(extended_community_opaque_sets != nullptr)
-        {
-            children["extended-community-opaque-sets"] = extended_community_opaque_sets;
-        }
-        else
+        if(extended_community_opaque_sets == nullptr)
         {
             extended_community_opaque_sets = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaqueSets>();
-            extended_community_opaque_sets->parent = this;
-            children["extended-community-opaque-sets"] = extended_community_opaque_sets;
         }
-        return children.at("extended-community-opaque-sets");
+        return extended_community_opaque_sets;
     }
 
     if(child_yang_name == "extended-community-rt-sets")
     {
-        if(extended_community_rt_sets != nullptr)
-        {
-            children["extended-community-rt-sets"] = extended_community_rt_sets;
-        }
-        else
+        if(extended_community_rt_sets == nullptr)
         {
             extended_community_rt_sets = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRtSets>();
-            extended_community_rt_sets->parent = this;
-            children["extended-community-rt-sets"] = extended_community_rt_sets;
         }
-        return children.at("extended-community-rt-sets");
+        return extended_community_rt_sets;
     }
 
     if(child_yang_name == "extended-community-seg-nh-sets")
     {
-        if(extended_community_seg_nh_sets != nullptr)
-        {
-            children["extended-community-seg-nh-sets"] = extended_community_seg_nh_sets;
-        }
-        else
+        if(extended_community_seg_nh_sets == nullptr)
         {
             extended_community_seg_nh_sets = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNhSets>();
-            extended_community_seg_nh_sets->parent = this;
-            children["extended-community-seg-nh-sets"] = extended_community_seg_nh_sets;
         }
-        return children.at("extended-community-seg-nh-sets");
+        return extended_community_seg_nh_sets;
     }
 
     if(child_yang_name == "extended-community-soo-sets")
     {
-        if(extended_community_soo_sets != nullptr)
-        {
-            children["extended-community-soo-sets"] = extended_community_soo_sets;
-        }
-        else
+        if(extended_community_soo_sets == nullptr)
         {
             extended_community_soo_sets = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySooSets>();
-            extended_community_soo_sets->parent = this;
-            children["extended-community-soo-sets"] = extended_community_soo_sets;
         }
-        return children.at("extended-community-soo-sets");
+        return extended_community_soo_sets;
     }
 
     if(child_yang_name == "mac-sets")
     {
-        if(mac_sets != nullptr)
-        {
-            children["mac-sets"] = mac_sets;
-        }
-        else
+        if(mac_sets == nullptr)
         {
             mac_sets = std::make_shared<RoutingPolicy::Sets::MacSets>();
-            mac_sets->parent = this;
-            children["mac-sets"] = mac_sets;
         }
-        return children.at("mac-sets");
+        return mac_sets;
     }
 
     if(child_yang_name == "ospf-area-sets")
     {
-        if(ospf_area_sets != nullptr)
-        {
-            children["ospf-area-sets"] = ospf_area_sets;
-        }
-        else
+        if(ospf_area_sets == nullptr)
         {
             ospf_area_sets = std::make_shared<RoutingPolicy::Sets::OspfAreaSets>();
-            ospf_area_sets->parent = this;
-            children["ospf-area-sets"] = ospf_area_sets;
         }
-        return children.at("ospf-area-sets");
+        return ospf_area_sets;
     }
 
     if(child_yang_name == "policy-global-set-table")
     {
-        if(policy_global_set_table != nullptr)
-        {
-            children["policy-global-set-table"] = policy_global_set_table;
-        }
-        else
+        if(policy_global_set_table == nullptr)
         {
             policy_global_set_table = std::make_shared<RoutingPolicy::Sets::PolicyGlobalSetTable>();
-            policy_global_set_table->parent = this;
-            children["policy-global-set-table"] = policy_global_set_table;
         }
-        return children.at("policy-global-set-table");
+        return policy_global_set_table;
     }
 
     if(child_yang_name == "prefix-sets")
     {
-        if(prefix_sets != nullptr)
-        {
-            children["prefix-sets"] = prefix_sets;
-        }
-        else
+        if(prefix_sets == nullptr)
         {
             prefix_sets = std::make_shared<RoutingPolicy::Sets::PrefixSets>();
-            prefix_sets->parent = this;
-            children["prefix-sets"] = prefix_sets;
         }
-        return children.at("prefix-sets");
+        return prefix_sets;
     }
 
     if(child_yang_name == "prepend-esi-sets")
     {
-        if(prepend_esi_sets != nullptr)
-        {
-            children["prepend-esi-sets"] = prepend_esi_sets;
-        }
-        else
+        if(prepend_esi_sets == nullptr)
         {
             prepend_esi_sets = std::make_shared<RoutingPolicy::Sets::PrependEsiSets>();
-            prepend_esi_sets->parent = this;
-            children["prepend-esi-sets"] = prepend_esi_sets;
         }
-        return children.at("prepend-esi-sets");
+        return prepend_esi_sets;
     }
 
     if(child_yang_name == "prepend-etag-sets")
     {
-        if(prepend_etag_sets != nullptr)
-        {
-            children["prepend-etag-sets"] = prepend_etag_sets;
-        }
-        else
+        if(prepend_etag_sets == nullptr)
         {
             prepend_etag_sets = std::make_shared<RoutingPolicy::Sets::PrependEtagSets>();
-            prepend_etag_sets->parent = this;
-            children["prepend-etag-sets"] = prepend_etag_sets;
         }
-        return children.at("prepend-etag-sets");
+        return prepend_etag_sets;
     }
 
     if(child_yang_name == "prepend-mac-sets")
     {
-        if(prepend_mac_sets != nullptr)
-        {
-            children["prepend-mac-sets"] = prepend_mac_sets;
-        }
-        else
+        if(prepend_mac_sets == nullptr)
         {
             prepend_mac_sets = std::make_shared<RoutingPolicy::Sets::PrependMacSets>();
-            prepend_mac_sets->parent = this;
-            children["prepend-mac-sets"] = prepend_mac_sets;
         }
-        return children.at("prepend-mac-sets");
+        return prepend_mac_sets;
     }
 
     if(child_yang_name == "rd-sets")
     {
-        if(rd_sets != nullptr)
-        {
-            children["rd-sets"] = rd_sets;
-        }
-        else
+        if(rd_sets == nullptr)
         {
             rd_sets = std::make_shared<RoutingPolicy::Sets::RdSets>();
-            rd_sets->parent = this;
-            children["rd-sets"] = rd_sets;
         }
-        return children.at("rd-sets");
+        return rd_sets;
     }
 
     if(child_yang_name == "remove-esi-sets")
     {
-        if(remove_esi_sets != nullptr)
-        {
-            children["remove-esi-sets"] = remove_esi_sets;
-        }
-        else
+        if(remove_esi_sets == nullptr)
         {
             remove_esi_sets = std::make_shared<RoutingPolicy::Sets::RemoveEsiSets>();
-            remove_esi_sets->parent = this;
-            children["remove-esi-sets"] = remove_esi_sets;
         }
-        return children.at("remove-esi-sets");
+        return remove_esi_sets;
     }
 
     if(child_yang_name == "remove-etag-sets")
     {
-        if(remove_etag_sets != nullptr)
-        {
-            children["remove-etag-sets"] = remove_etag_sets;
-        }
-        else
+        if(remove_etag_sets == nullptr)
         {
             remove_etag_sets = std::make_shared<RoutingPolicy::Sets::RemoveEtagSets>();
-            remove_etag_sets->parent = this;
-            children["remove-etag-sets"] = remove_etag_sets;
         }
-        return children.at("remove-etag-sets");
+        return remove_etag_sets;
     }
 
     if(child_yang_name == "remove-mac-sets")
     {
-        if(remove_mac_sets != nullptr)
-        {
-            children["remove-mac-sets"] = remove_mac_sets;
-        }
-        else
+        if(remove_mac_sets == nullptr)
         {
             remove_mac_sets = std::make_shared<RoutingPolicy::Sets::RemoveMacSets>();
-            remove_mac_sets->parent = this;
-            children["remove-mac-sets"] = remove_mac_sets;
         }
-        return children.at("remove-mac-sets");
+        return remove_mac_sets;
     }
 
     if(child_yang_name == "tag-sets")
     {
-        if(tag_sets != nullptr)
-        {
-            children["tag-sets"] = tag_sets;
-        }
-        else
+        if(tag_sets == nullptr)
         {
             tag_sets = std::make_shared<RoutingPolicy::Sets::TagSets>();
-            tag_sets->parent = this;
-            children["tag-sets"] = tag_sets;
         }
-        return children.at("tag-sets");
+        return tag_sets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::get_children() const
 {
-    if(children.find("append-esi-sets") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(append_esi_sets != nullptr)
     {
-        if(append_esi_sets != nullptr)
-        {
-            children["append-esi-sets"] = append_esi_sets;
-        }
+        children["append-esi-sets"] = append_esi_sets;
     }
 
-    if(children.find("append-etag-sets") == children.end())
+    if(append_etag_sets != nullptr)
     {
-        if(append_etag_sets != nullptr)
-        {
-            children["append-etag-sets"] = append_etag_sets;
-        }
+        children["append-etag-sets"] = append_etag_sets;
     }
 
-    if(children.find("append-mac-sets") == children.end())
+    if(append_mac_sets != nullptr)
     {
-        if(append_mac_sets != nullptr)
-        {
-            children["append-mac-sets"] = append_mac_sets;
-        }
+        children["append-mac-sets"] = append_mac_sets;
     }
 
-    if(children.find("as-path-sets") == children.end())
+    if(as_path_sets != nullptr)
     {
-        if(as_path_sets != nullptr)
-        {
-            children["as-path-sets"] = as_path_sets;
-        }
+        children["as-path-sets"] = as_path_sets;
     }
 
-    if(children.find("community-sets") == children.end())
+    if(community_sets != nullptr)
     {
-        if(community_sets != nullptr)
-        {
-            children["community-sets"] = community_sets;
-        }
+        children["community-sets"] = community_sets;
     }
 
-    if(children.find("esi-sets") == children.end())
+    if(esi_sets != nullptr)
     {
-        if(esi_sets != nullptr)
-        {
-            children["esi-sets"] = esi_sets;
-        }
+        children["esi-sets"] = esi_sets;
     }
 
-    if(children.find("etag-sets") == children.end())
+    if(etag_sets != nullptr)
     {
-        if(etag_sets != nullptr)
-        {
-            children["etag-sets"] = etag_sets;
-        }
+        children["etag-sets"] = etag_sets;
     }
 
-    if(children.find("extended-community-bandwidth-sets") == children.end())
+    if(extended_community_bandwidth_sets != nullptr)
     {
-        if(extended_community_bandwidth_sets != nullptr)
-        {
-            children["extended-community-bandwidth-sets"] = extended_community_bandwidth_sets;
-        }
+        children["extended-community-bandwidth-sets"] = extended_community_bandwidth_sets;
     }
 
-    if(children.find("extended-community-cost-sets") == children.end())
+    if(extended_community_cost_sets != nullptr)
     {
-        if(extended_community_cost_sets != nullptr)
-        {
-            children["extended-community-cost-sets"] = extended_community_cost_sets;
-        }
+        children["extended-community-cost-sets"] = extended_community_cost_sets;
     }
 
-    if(children.find("extended-community-opaque-sets") == children.end())
+    if(extended_community_opaque_sets != nullptr)
     {
-        if(extended_community_opaque_sets != nullptr)
-        {
-            children["extended-community-opaque-sets"] = extended_community_opaque_sets;
-        }
+        children["extended-community-opaque-sets"] = extended_community_opaque_sets;
     }
 
-    if(children.find("extended-community-rt-sets") == children.end())
+    if(extended_community_rt_sets != nullptr)
     {
-        if(extended_community_rt_sets != nullptr)
-        {
-            children["extended-community-rt-sets"] = extended_community_rt_sets;
-        }
+        children["extended-community-rt-sets"] = extended_community_rt_sets;
     }
 
-    if(children.find("extended-community-seg-nh-sets") == children.end())
+    if(extended_community_seg_nh_sets != nullptr)
     {
-        if(extended_community_seg_nh_sets != nullptr)
-        {
-            children["extended-community-seg-nh-sets"] = extended_community_seg_nh_sets;
-        }
+        children["extended-community-seg-nh-sets"] = extended_community_seg_nh_sets;
     }
 
-    if(children.find("extended-community-soo-sets") == children.end())
+    if(extended_community_soo_sets != nullptr)
     {
-        if(extended_community_soo_sets != nullptr)
-        {
-            children["extended-community-soo-sets"] = extended_community_soo_sets;
-        }
+        children["extended-community-soo-sets"] = extended_community_soo_sets;
     }
 
-    if(children.find("mac-sets") == children.end())
+    if(mac_sets != nullptr)
     {
-        if(mac_sets != nullptr)
-        {
-            children["mac-sets"] = mac_sets;
-        }
+        children["mac-sets"] = mac_sets;
     }
 
-    if(children.find("ospf-area-sets") == children.end())
+    if(ospf_area_sets != nullptr)
     {
-        if(ospf_area_sets != nullptr)
-        {
-            children["ospf-area-sets"] = ospf_area_sets;
-        }
+        children["ospf-area-sets"] = ospf_area_sets;
     }
 
-    if(children.find("policy-global-set-table") == children.end())
+    if(policy_global_set_table != nullptr)
     {
-        if(policy_global_set_table != nullptr)
-        {
-            children["policy-global-set-table"] = policy_global_set_table;
-        }
+        children["policy-global-set-table"] = policy_global_set_table;
     }
 
-    if(children.find("prefix-sets") == children.end())
+    if(prefix_sets != nullptr)
     {
-        if(prefix_sets != nullptr)
-        {
-            children["prefix-sets"] = prefix_sets;
-        }
+        children["prefix-sets"] = prefix_sets;
     }
 
-    if(children.find("prepend-esi-sets") == children.end())
+    if(prepend_esi_sets != nullptr)
     {
-        if(prepend_esi_sets != nullptr)
-        {
-            children["prepend-esi-sets"] = prepend_esi_sets;
-        }
+        children["prepend-esi-sets"] = prepend_esi_sets;
     }
 
-    if(children.find("prepend-etag-sets") == children.end())
+    if(prepend_etag_sets != nullptr)
     {
-        if(prepend_etag_sets != nullptr)
-        {
-            children["prepend-etag-sets"] = prepend_etag_sets;
-        }
+        children["prepend-etag-sets"] = prepend_etag_sets;
     }
 
-    if(children.find("prepend-mac-sets") == children.end())
+    if(prepend_mac_sets != nullptr)
     {
-        if(prepend_mac_sets != nullptr)
-        {
-            children["prepend-mac-sets"] = prepend_mac_sets;
-        }
+        children["prepend-mac-sets"] = prepend_mac_sets;
     }
 
-    if(children.find("rd-sets") == children.end())
+    if(rd_sets != nullptr)
     {
-        if(rd_sets != nullptr)
-        {
-            children["rd-sets"] = rd_sets;
-        }
+        children["rd-sets"] = rd_sets;
     }
 
-    if(children.find("remove-esi-sets") == children.end())
+    if(remove_esi_sets != nullptr)
     {
-        if(remove_esi_sets != nullptr)
-        {
-            children["remove-esi-sets"] = remove_esi_sets;
-        }
+        children["remove-esi-sets"] = remove_esi_sets;
     }
 
-    if(children.find("remove-etag-sets") == children.end())
+    if(remove_etag_sets != nullptr)
     {
-        if(remove_etag_sets != nullptr)
-        {
-            children["remove-etag-sets"] = remove_etag_sets;
-        }
+        children["remove-etag-sets"] = remove_etag_sets;
     }
 
-    if(children.find("remove-mac-sets") == children.end())
+    if(remove_mac_sets != nullptr)
     {
-        if(remove_mac_sets != nullptr)
-        {
-            children["remove-mac-sets"] = remove_mac_sets;
-        }
+        children["remove-mac-sets"] = remove_mac_sets;
     }
 
-    if(children.find("tag-sets") == children.end())
+    if(tag_sets != nullptr)
     {
-        if(tag_sets != nullptr)
-        {
-            children["tag-sets"] = tag_sets;
-        }
+        children["tag-sets"] = tag_sets;
     }
 
     return children;
@@ -1225,7 +908,7 @@ std::string RoutingPolicy::Sets::PrependEtagSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::PrependEtagSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrependEtagSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1248,15 +931,6 @@ EntityPath RoutingPolicy::Sets::PrependEtagSets::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrependEtagSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prepend-etag-set")
     {
         for(auto const & c : prepend_etag_set)
@@ -1264,28 +938,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::PrependEtagSets::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet>();
         c->parent = this;
-        prepend_etag_set.push_back(std::move(c));
-        children[segment_path] = prepend_etag_set.back();
-        return children.at(segment_path);
+        prepend_etag_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrependEtagSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEtagSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prepend_etag_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1329,7 +999,7 @@ std::string RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_segment_pa
 
 }
 
-EntityPath RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1354,20 +1024,12 @@ EntityPath RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_entity_path
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1421,7 +1083,7 @@ std::string RoutingPolicy::Sets::PrefixSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::PrefixSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrefixSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1444,15 +1106,6 @@ EntityPath RoutingPolicy::Sets::PrefixSets::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrefixSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-set")
     {
         for(auto const & c : prefix_set)
@@ -1460,28 +1113,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::PrefixSets::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::PrefixSets::PrefixSet>();
         c->parent = this;
-        prefix_set.push_back(std::move(c));
-        children[segment_path] = prefix_set.back();
-        return children.at(segment_path);
+        prefix_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrefixSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrefixSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prefix_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1525,7 +1174,7 @@ std::string RoutingPolicy::Sets::PrefixSets::PrefixSet::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::PrefixSets::PrefixSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrefixSets::PrefixSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1550,20 +1199,12 @@ EntityPath RoutingPolicy::Sets::PrefixSets::PrefixSet::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrefixSets::PrefixSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrefixSets::PrefixSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrefixSets::PrefixSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1617,7 +1258,7 @@ std::string RoutingPolicy::Sets::AppendEtagSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::AppendEtagSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AppendEtagSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1640,15 +1281,6 @@ EntityPath RoutingPolicy::Sets::AppendEtagSets::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AppendEtagSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "append-etag-set")
     {
         for(auto const & c : append_etag_set)
@@ -1656,28 +1288,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::AppendEtagSets::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet>();
         c->parent = this;
-        append_etag_set.push_back(std::move(c));
-        children[segment_path] = append_etag_set.back();
-        return children.at(segment_path);
+        append_etag_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AppendEtagSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEtagSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : append_etag_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1721,7 +1349,7 @@ std::string RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_segment_path
 
 }
 
-EntityPath RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1746,20 +1374,12 @@ EntityPath RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_entity_path(E
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1813,7 +1433,7 @@ std::string RoutingPolicy::Sets::RemoveEtagSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::RemoveEtagSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RemoveEtagSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1836,15 +1456,6 @@ EntityPath RoutingPolicy::Sets::RemoveEtagSets::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveEtagSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remove-etag-set")
     {
         for(auto const & c : remove_etag_set)
@@ -1852,28 +1463,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveEtagSets::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet>();
         c->parent = this;
-        remove_etag_set.push_back(std::move(c));
-        children[segment_path] = remove_etag_set.back();
-        return children.at(segment_path);
+        remove_etag_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RemoveEtagSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEtagSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remove_etag_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1917,7 +1524,7 @@ std::string RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_segment_path
 
 }
 
-EntityPath RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1942,20 +1549,12 @@ EntityPath RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_entity_path(E
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2009,7 +1608,7 @@ std::string RoutingPolicy::Sets::MacSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::MacSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::MacSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2032,15 +1631,6 @@ EntityPath RoutingPolicy::Sets::MacSets::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::MacSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mac-set")
     {
         for(auto const & c : mac_set)
@@ -2048,28 +1638,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::MacSets::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::MacSets::MacSet>();
         c->parent = this;
-        mac_set.push_back(std::move(c));
-        children[segment_path] = mac_set.back();
-        return children.at(segment_path);
+        mac_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::MacSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::MacSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mac_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2113,7 +1699,7 @@ std::string RoutingPolicy::Sets::MacSets::MacSet::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::MacSets::MacSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::MacSets::MacSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2138,20 +1724,12 @@ EntityPath RoutingPolicy::Sets::MacSets::MacSet::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::MacSets::MacSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::MacSets::MacSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::MacSets::MacSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2205,7 +1783,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_segment_path()
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2228,15 +1806,6 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_entity_path(Ent
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-community-opaque-set")
     {
         for(auto const & c : extended_community_opaque_set)
@@ -2244,28 +1813,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet>();
         c->parent = this;
-        extended_community_opaque_set.push_back(std::move(c));
-        children[segment_path] = extended_community_opaque_set.back();
-        return children.at(segment_path);
+        extended_community_opaque_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : extended_community_opaque_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2309,7 +1874,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityO
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2334,20 +1899,12 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOp
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2401,7 +1958,7 @@ std::string RoutingPolicy::Sets::PrependMacSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::PrependMacSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrependMacSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2424,15 +1981,6 @@ EntityPath RoutingPolicy::Sets::PrependMacSets::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrependMacSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prepend-mac-set")
     {
         for(auto const & c : prepend_mac_set)
@@ -2440,28 +1988,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::PrependMacSets::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::PrependMacSets::PrependMacSet>();
         c->parent = this;
-        prepend_mac_set.push_back(std::move(c));
-        children[segment_path] = prepend_mac_set.back();
-        return children.at(segment_path);
+        prepend_mac_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrependMacSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependMacSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prepend_mac_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2505,7 +2049,7 @@ std::string RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_segment_path
 
 }
 
-EntityPath RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2530,20 +2074,12 @@ EntityPath RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_entity_path(E
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2597,7 +2133,7 @@ std::string RoutingPolicy::Sets::OspfAreaSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::OspfAreaSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::OspfAreaSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2620,15 +2156,6 @@ EntityPath RoutingPolicy::Sets::OspfAreaSets::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::OspfAreaSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospf-area-set")
     {
         for(auto const & c : ospf_area_set)
@@ -2636,28 +2163,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::OspfAreaSets::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet>();
         c->parent = this;
-        ospf_area_set.push_back(std::move(c));
-        children[segment_path] = ospf_area_set.back();
-        return children.at(segment_path);
+        ospf_area_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::OspfAreaSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfAreaSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ospf_area_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2701,7 +2224,7 @@ std::string RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_segment_path() c
 
 }
 
-EntityPath RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2726,20 +2249,12 @@ EntityPath RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_entity_path(Entit
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2793,7 +2308,7 @@ std::string RoutingPolicy::Sets::AppendMacSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::AppendMacSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AppendMacSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2816,15 +2331,6 @@ EntityPath RoutingPolicy::Sets::AppendMacSets::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AppendMacSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "append-mac-set")
     {
         for(auto const & c : append_mac_set)
@@ -2832,28 +2338,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::AppendMacSets::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::AppendMacSets::AppendMacSet>();
         c->parent = this;
-        append_mac_set.push_back(std::move(c));
-        children[segment_path] = append_mac_set.back();
-        return children.at(segment_path);
+        append_mac_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AppendMacSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendMacSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : append_mac_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2897,7 +2399,7 @@ std::string RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_segment_path()
 
 }
 
-EntityPath RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2922,20 +2424,12 @@ EntityPath RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_entity_path(Ent
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2989,7 +2483,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityCostSets::get_segment_path() c
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityCostSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityCostSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3012,15 +2506,6 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityCostSets::get_entity_path(Entit
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCostSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-community-cost-set")
     {
         for(auto const & c : extended_community_cost_set)
@@ -3028,28 +2513,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCostSets::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet>();
         c->parent = this;
-        extended_community_cost_set.push_back(std::move(c));
-        children[segment_path] = extended_community_cost_set.back();
-        return children.at(segment_path);
+        extended_community_cost_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityCostSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCostSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : extended_community_cost_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3093,7 +2574,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCos
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3118,20 +2599,12 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCost
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3185,7 +2658,7 @@ std::string RoutingPolicy::Sets::RemoveMacSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::RemoveMacSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RemoveMacSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3208,15 +2681,6 @@ EntityPath RoutingPolicy::Sets::RemoveMacSets::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveMacSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remove-mac-set")
     {
         for(auto const & c : remove_mac_set)
@@ -3224,28 +2688,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveMacSets::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet>();
         c->parent = this;
-        remove_mac_set.push_back(std::move(c));
-        children[segment_path] = remove_mac_set.back();
-        return children.at(segment_path);
+        remove_mac_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RemoveMacSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveMacSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remove_mac_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3289,7 +2749,7 @@ std::string RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_segment_path()
 
 }
 
-EntityPath RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3314,20 +2774,12 @@ EntityPath RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_entity_path(Ent
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3381,7 +2833,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunitySooSets::get_segment_path() co
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunitySooSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunitySooSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3404,15 +2856,6 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySooSets::get_entity_path(Entity
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySooSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-community-soo-set")
     {
         for(auto const & c : extended_community_soo_set)
@@ -3420,28 +2863,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySooSets::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet>();
         c->parent = this;
-        extended_community_soo_set.push_back(std::move(c));
-        children[segment_path] = extended_community_soo_set.back();
-        return children.at(segment_path);
+        extended_community_soo_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunitySooSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunitySooSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : extended_community_soo_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3485,7 +2924,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooS
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3510,20 +2949,12 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSe
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3577,7 +3008,7 @@ std::string RoutingPolicy::Sets::EsiSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::EsiSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::EsiSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3600,15 +3031,6 @@ EntityPath RoutingPolicy::Sets::EsiSets::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::EsiSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "esi-set")
     {
         for(auto const & c : esi_set)
@@ -3616,28 +3038,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::EsiSets::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::EsiSets::EsiSet>();
         c->parent = this;
-        esi_set.push_back(std::move(c));
-        children[segment_path] = esi_set.back();
-        return children.at(segment_path);
+        esi_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::EsiSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EsiSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : esi_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3681,7 +3099,7 @@ std::string RoutingPolicy::Sets::EsiSets::EsiSet::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::EsiSets::EsiSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::EsiSets::EsiSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3706,20 +3124,12 @@ EntityPath RoutingPolicy::Sets::EsiSets::EsiSet::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::EsiSets::EsiSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::EsiSets::EsiSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EsiSets::EsiSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3773,7 +3183,7 @@ std::string RoutingPolicy::Sets::PrependEsiSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::PrependEsiSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrependEsiSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3796,15 +3206,6 @@ EntityPath RoutingPolicy::Sets::PrependEsiSets::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrependEsiSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prepend-esi-set")
     {
         for(auto const & c : prepend_esi_set)
@@ -3812,28 +3213,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::PrependEsiSets::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet>();
         c->parent = this;
-        prepend_esi_set.push_back(std::move(c));
-        children[segment_path] = prepend_esi_set.back();
-        return children.at(segment_path);
+        prepend_esi_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrependEsiSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEsiSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prepend_esi_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3877,7 +3274,7 @@ std::string RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_segment_path
 
 }
 
-EntityPath RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3902,20 +3299,12 @@ EntityPath RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_entity_path(E
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3969,7 +3358,7 @@ std::string RoutingPolicy::Sets::AppendEsiSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::AppendEsiSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AppendEsiSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3992,15 +3381,6 @@ EntityPath RoutingPolicy::Sets::AppendEsiSets::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AppendEsiSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "append-esi-set")
     {
         for(auto const & c : append_esi_set)
@@ -4008,28 +3388,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::AppendEsiSets::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet>();
         c->parent = this;
-        append_esi_set.push_back(std::move(c));
-        children[segment_path] = append_esi_set.back();
-        return children.at(segment_path);
+        append_esi_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AppendEsiSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEsiSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : append_esi_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4073,7 +3449,7 @@ std::string RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_segment_path()
 
 }
 
-EntityPath RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4098,20 +3474,12 @@ EntityPath RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_entity_path(Ent
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4165,7 +3533,7 @@ std::string RoutingPolicy::Sets::RemoveEsiSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::RemoveEsiSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RemoveEsiSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4188,15 +3556,6 @@ EntityPath RoutingPolicy::Sets::RemoveEsiSets::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveEsiSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remove-esi-set")
     {
         for(auto const & c : remove_esi_set)
@@ -4204,28 +3563,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveEsiSets::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet>();
         c->parent = this;
-        remove_esi_set.push_back(std::move(c));
-        children[segment_path] = remove_esi_set.back();
-        return children.at(segment_path);
+        remove_esi_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RemoveEsiSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEsiSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remove_esi_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4269,7 +3624,7 @@ std::string RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_segment_path()
 
 }
 
-EntityPath RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4294,20 +3649,12 @@ EntityPath RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_entity_path(Ent
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4361,7 +3708,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_segment_path() 
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4384,15 +3731,6 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_entity_path(Enti
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-community-seg-nh-set")
     {
         for(auto const & c : extended_community_seg_nh_set)
@@ -4400,28 +3738,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet>();
         c->parent = this;
-        extended_community_seg_nh_set.push_back(std::move(c));
-        children[segment_path] = extended_community_seg_nh_set.back();
-        return children.at(segment_path);
+        extended_community_seg_nh_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : extended_community_seg_nh_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4465,7 +3799,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySe
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4490,20 +3824,12 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySeg
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4557,7 +3883,7 @@ std::string RoutingPolicy::Sets::RdSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::RdSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RdSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4580,15 +3906,6 @@ EntityPath RoutingPolicy::Sets::RdSets::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RdSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rd-set")
     {
         for(auto const & c : rd_set)
@@ -4596,28 +3913,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::RdSets::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::RdSets::RdSet>();
         c->parent = this;
-        rd_set.push_back(std::move(c));
-        children[segment_path] = rd_set.back();
-        return children.at(segment_path);
+        rd_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RdSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RdSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rd_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4661,7 +3974,7 @@ std::string RoutingPolicy::Sets::RdSets::RdSet::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::RdSets::RdSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::RdSets::RdSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4686,20 +3999,12 @@ EntityPath RoutingPolicy::Sets::RdSets::RdSet::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::RdSets::RdSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::RdSets::RdSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RdSets::RdSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4746,7 +4051,7 @@ std::string RoutingPolicy::Sets::PolicyGlobalSetTable::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::PolicyGlobalSetTable::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::PolicyGlobalSetTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4770,20 +4075,12 @@ EntityPath RoutingPolicy::Sets::PolicyGlobalSetTable::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::PolicyGlobalSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::PolicyGlobalSetTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PolicyGlobalSetTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4833,7 +4130,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_segment_pat
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4856,15 +4153,6 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_entity_path(
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-community-bandwidth-set")
     {
         for(auto const & c : extended_community_bandwidth_set)
@@ -4872,28 +4160,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet>();
         c->parent = this;
-        extended_community_bandwidth_set.push_back(std::move(c));
-        children[segment_path] = extended_community_bandwidth_set.back();
-        return children.at(segment_path);
+        extended_community_bandwidth_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : extended_community_bandwidth_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4937,7 +4221,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommuni
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4962,20 +4246,12 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunit
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5029,7 +4305,7 @@ std::string RoutingPolicy::Sets::CommunitySets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::CommunitySets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::CommunitySets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5052,15 +4328,6 @@ EntityPath RoutingPolicy::Sets::CommunitySets::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::CommunitySets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "community-set")
     {
         for(auto const & c : community_set)
@@ -5068,28 +4335,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::CommunitySets::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::CommunitySets::CommunitySet>();
         c->parent = this;
-        community_set.push_back(std::move(c));
-        children[segment_path] = community_set.back();
-        return children.at(segment_path);
+        community_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::CommunitySets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::CommunitySets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : community_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5133,7 +4396,7 @@ std::string RoutingPolicy::Sets::CommunitySets::CommunitySet::get_segment_path()
 
 }
 
-EntityPath RoutingPolicy::Sets::CommunitySets::CommunitySet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::CommunitySets::CommunitySet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5158,20 +4421,12 @@ EntityPath RoutingPolicy::Sets::CommunitySets::CommunitySet::get_entity_path(Ent
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::CommunitySets::CommunitySet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::CommunitySets::CommunitySet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::CommunitySets::CommunitySet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5225,7 +4480,7 @@ std::string RoutingPolicy::Sets::AsPathSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::AsPathSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AsPathSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5248,15 +4503,6 @@ EntityPath RoutingPolicy::Sets::AsPathSets::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AsPathSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "as-path-set")
     {
         for(auto const & c : as_path_set)
@@ -5264,28 +4510,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::AsPathSets::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::AsPathSets::AsPathSet>();
         c->parent = this;
-        as_path_set.push_back(std::move(c));
-        children[segment_path] = as_path_set.back();
-        return children.at(segment_path);
+        as_path_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AsPathSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPathSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : as_path_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5329,7 +4571,7 @@ std::string RoutingPolicy::Sets::AsPathSets::AsPathSet::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::AsPathSets::AsPathSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::AsPathSets::AsPathSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5354,20 +4596,12 @@ EntityPath RoutingPolicy::Sets::AsPathSets::AsPathSet::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::AsPathSets::AsPathSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::AsPathSets::AsPathSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPathSets::AsPathSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5421,7 +4655,7 @@ std::string RoutingPolicy::Sets::TagSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::TagSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::TagSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5444,15 +4678,6 @@ EntityPath RoutingPolicy::Sets::TagSets::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::TagSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tag-set")
     {
         for(auto const & c : tag_set)
@@ -5460,28 +4685,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::TagSets::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::TagSets::TagSet>();
         c->parent = this;
-        tag_set.push_back(std::move(c));
-        children[segment_path] = tag_set.back();
-        return children.at(segment_path);
+        tag_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::TagSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::TagSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tag_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5525,7 +4746,7 @@ std::string RoutingPolicy::Sets::TagSets::TagSet::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::TagSets::TagSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::TagSets::TagSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5550,20 +4771,12 @@ EntityPath RoutingPolicy::Sets::TagSets::TagSet::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::TagSets::TagSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::TagSets::TagSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::TagSets::TagSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5617,7 +4830,7 @@ std::string RoutingPolicy::Sets::EtagSets::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::EtagSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::EtagSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5640,15 +4853,6 @@ EntityPath RoutingPolicy::Sets::EtagSets::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::EtagSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "etag-set")
     {
         for(auto const & c : etag_set)
@@ -5656,28 +4860,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::EtagSets::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::EtagSets::EtagSet>();
         c->parent = this;
-        etag_set.push_back(std::move(c));
-        children[segment_path] = etag_set.back();
-        return children.at(segment_path);
+        etag_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::EtagSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EtagSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : etag_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5721,7 +4921,7 @@ std::string RoutingPolicy::Sets::EtagSets::EtagSet::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Sets::EtagSets::EtagSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::EtagSets::EtagSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5746,20 +4946,12 @@ EntityPath RoutingPolicy::Sets::EtagSets::EtagSet::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::EtagSets::EtagSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::EtagSets::EtagSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EtagSets::EtagSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5813,7 +5005,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityRtSets::get_segment_path() con
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityRtSets::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityRtSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5836,15 +5028,6 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityRtSets::get_entity_path(Entity*
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityRtSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-community-rt-set")
     {
         for(auto const & c : extended_community_rt_set)
@@ -5852,28 +5035,24 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityRtSets::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet>();
         c->parent = this;
-        extended_community_rt_set.push_back(std::move(c));
-        children[segment_path] = extended_community_rt_set.back();
-        return children.at(segment_path);
+        extended_community_rt_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityRtSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityRtSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : extended_community_rt_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5917,7 +5096,7 @@ std::string RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet
 
 }
 
-EntityPath RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5942,20 +5121,12 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet:
 
 std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6005,7 +5176,7 @@ std::string RoutingPolicy::Limits::get_segment_path() const
 
 }
 
-EntityPath RoutingPolicy::Limits::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingPolicy::Limits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6030,20 +5201,12 @@ EntityPath RoutingPolicy::Limits::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RoutingPolicy::Limits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RoutingPolicy::Limits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Limits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

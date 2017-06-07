@@ -14,7 +14,6 @@ Dwdm::Dwdm()
     ports(std::make_shared<Dwdm::Ports>())
 {
     ports->parent = this;
-    children["ports"] = ports;
 
     yang_name = "dwdm"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper";
 }
@@ -43,12 +42,12 @@ std::string Dwdm::get_segment_path() const
 
 }
 
-EntityPath Dwdm::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Dwdm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dwdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ports")
     {
-        if(ports != nullptr)
-        {
-            children["ports"] = ports;
-        }
-        else
+        if(ports == nullptr)
         {
             ports = std::make_shared<Dwdm::Ports>();
-            ports->parent = this;
-            children["ports"] = ports;
         }
-        return children.at("ports");
+        return ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::get_children() const
 {
-    if(children.find("ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ports != nullptr)
     {
-        if(ports != nullptr)
-        {
-            children["ports"] = ports;
-        }
+        children["ports"] = ports;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Dwdm::Ports::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Dwdm::Ports::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dwdm::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port")
     {
         for(auto const & c : port)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Dwdm::Ports::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dwdm::Ports::Port>();
         c->parent = this;
-        port.push_back(std::move(c));
-        children[segment_path] = port.back();
-        return children.at(segment_path);
+        port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -244,13 +213,10 @@ Dwdm::Ports::Port::Port()
 	,prbs(std::make_shared<Dwdm::Ports::Port::Prbs>())
 {
     info->parent = this;
-    children["info"] = info;
 
     optics->parent = this;
-    children["optics"] = optics;
 
     prbs->parent = this;
-    children["prbs"] = prbs;
 
     yang_name = "port"; yang_parent_name = "ports";
 }
@@ -285,7 +251,7 @@ std::string Dwdm::Ports::Port::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,87 +275,52 @@ EntityPath Dwdm::Ports::Port::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "info")
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
-        else
+        if(info == nullptr)
         {
             info = std::make_shared<Dwdm::Ports::Port::Info>();
-            info->parent = this;
-            children["info"] = info;
         }
-        return children.at("info");
+        return info;
     }
 
     if(child_yang_name == "optics")
     {
-        if(optics != nullptr)
-        {
-            children["optics"] = optics;
-        }
-        else
+        if(optics == nullptr)
         {
             optics = std::make_shared<Dwdm::Ports::Port::Optics>();
-            optics->parent = this;
-            children["optics"] = optics;
         }
-        return children.at("optics");
+        return optics;
     }
 
     if(child_yang_name == "prbs")
     {
-        if(prbs != nullptr)
-        {
-            children["prbs"] = prbs;
-        }
-        else
+        if(prbs == nullptr)
         {
             prbs = std::make_shared<Dwdm::Ports::Port::Prbs>();
-            prbs->parent = this;
-            children["prbs"] = prbs;
         }
-        return children.at("prbs");
+        return prbs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::get_children() const
 {
-    if(children.find("info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(info != nullptr)
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
+        children["info"] = info;
     }
 
-    if(children.find("optics") == children.end())
+    if(optics != nullptr)
     {
-        if(optics != nullptr)
-        {
-            children["optics"] = optics;
-        }
+        children["optics"] = optics;
     }
 
-    if(children.find("prbs") == children.end())
+    if(prbs != nullptr)
     {
-        if(prbs != nullptr)
-        {
-            children["prbs"] = prbs;
-        }
+        children["prbs"] = prbs;
     }
 
     return children;
@@ -409,10 +340,8 @@ Dwdm::Ports::Port::Prbs::Prbs()
 	,twenty_four_hours_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket>())
 {
     fifteen_minutes_bucket->parent = this;
-    children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
 
     twenty_four_hours_bucket->parent = this;
-    children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
 
     yang_name = "prbs"; yang_parent_name = "port";
 }
@@ -443,7 +372,7 @@ std::string Dwdm::Ports::Port::Prbs::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Prbs::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Prbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -466,64 +395,38 @@ EntityPath Dwdm::Ports::Port::Prbs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fifteen-minutes-bucket")
     {
-        if(fifteen_minutes_bucket != nullptr)
-        {
-            children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
-        }
-        else
+        if(fifteen_minutes_bucket == nullptr)
         {
             fifteen_minutes_bucket = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket>();
-            fifteen_minutes_bucket->parent = this;
-            children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
         }
-        return children.at("fifteen-minutes-bucket");
+        return fifteen_minutes_bucket;
     }
 
     if(child_yang_name == "twenty-four-hours-bucket")
     {
-        if(twenty_four_hours_bucket != nullptr)
-        {
-            children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
-        }
-        else
+        if(twenty_four_hours_bucket == nullptr)
         {
             twenty_four_hours_bucket = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket>();
-            twenty_four_hours_bucket->parent = this;
-            children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
         }
-        return children.at("twenty-four-hours-bucket");
+        return twenty_four_hours_bucket;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Prbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::get_children() const
 {
-    if(children.find("fifteen-minutes-bucket") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fifteen_minutes_bucket != nullptr)
     {
-        if(fifteen_minutes_bucket != nullptr)
-        {
-            children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
-        }
+        children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
     }
 
-    if(children.find("twenty-four-hours-bucket") == children.end())
+    if(twenty_four_hours_bucket != nullptr)
     {
-        if(twenty_four_hours_bucket != nullptr)
-        {
-            children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
-        }
+        children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
     }
 
     return children;
@@ -538,7 +441,6 @@ Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursBucket()
     twenty_four_hours_statistics(std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics>())
 {
     twenty_four_hours_statistics->parent = this;
-    children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
 
     yang_name = "twenty-four-hours-bucket"; yang_parent_name = "prbs";
 }
@@ -567,7 +469,7 @@ std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_segment_path() c
 
 }
 
-EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -590,41 +492,24 @@ EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_entity_path(Entit
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "twenty-four-hours-statistics")
     {
-        if(twenty_four_hours_statistics != nullptr)
-        {
-            children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
-        }
-        else
+        if(twenty_four_hours_statistics == nullptr)
         {
             twenty_four_hours_statistics = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics>();
-            twenty_four_hours_statistics->parent = this;
-            children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
         }
-        return children.at("twenty-four-hours-statistics");
+        return twenty_four_hours_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_children() const
 {
-    if(children.find("twenty-four-hours-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(twenty_four_hours_statistics != nullptr)
     {
-        if(twenty_four_hours_statistics != nullptr)
-        {
-            children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
-        }
+        children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
     }
 
     return children;
@@ -678,7 +563,7 @@ std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStati
 
 }
 
-EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -703,15 +588,6 @@ EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatis
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prbs-entry")
     {
         for(auto const & c : prbs_entry)
@@ -719,28 +595,24 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry>();
         c->parent = this;
-        prbs_entry.push_back(std::move(c));
-        children[segment_path] = prbs_entry.back();
-        return children.at(segment_path);
+        prbs_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prbs_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -816,7 +688,7 @@ std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStati
 
 }
 
-EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -849,20 +721,12 @@ EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatis
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -915,7 +779,6 @@ Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesBucket()
     fifteen_minutes_statistics(std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics>())
 {
     fifteen_minutes_statistics->parent = this;
-    children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
 
     yang_name = "fifteen-minutes-bucket"; yang_parent_name = "prbs";
 }
@@ -944,7 +807,7 @@ std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_segment_path() co
 
 }
 
-EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -967,41 +830,24 @@ EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_entity_path(Entity
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fifteen-minutes-statistics")
     {
-        if(fifteen_minutes_statistics != nullptr)
-        {
-            children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
-        }
-        else
+        if(fifteen_minutes_statistics == nullptr)
         {
             fifteen_minutes_statistics = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics>();
-            fifteen_minutes_statistics->parent = this;
-            children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
         }
-        return children.at("fifteen-minutes-statistics");
+        return fifteen_minutes_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_children() const
 {
-    if(children.find("fifteen-minutes-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fifteen_minutes_statistics != nullptr)
     {
-        if(fifteen_minutes_statistics != nullptr)
-        {
-            children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
-        }
+        children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
     }
 
     return children;
@@ -1055,7 +901,7 @@ std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatist
 
 }
 
-EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1080,15 +926,6 @@ EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatisti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prbs-entry")
     {
         for(auto const & c : prbs_entry)
@@ -1096,28 +933,24 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry>();
         c->parent = this;
-        prbs_entry.push_back(std::move(c));
-        children[segment_path] = prbs_entry.back();
-        return children.at(segment_path);
+        prbs_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prbs_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1193,7 +1026,7 @@ std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatist
 
 }
 
-EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1226,20 +1059,12 @@ EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatisti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1292,7 +1117,6 @@ Dwdm::Ports::Port::Optics::Optics()
     wave_info(std::make_shared<Dwdm::Ports::Port::Optics::WaveInfo>())
 {
     wave_info->parent = this;
-    children["wave-info"] = wave_info;
 
     yang_name = "optics"; yang_parent_name = "port";
 }
@@ -1321,7 +1145,7 @@ std::string Dwdm::Ports::Port::Optics::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Optics::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Optics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1344,41 +1168,24 @@ EntityPath Dwdm::Ports::Port::Optics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "wave-info")
     {
-        if(wave_info != nullptr)
-        {
-            children["wave-info"] = wave_info;
-        }
-        else
+        if(wave_info == nullptr)
         {
             wave_info = std::make_shared<Dwdm::Ports::Port::Optics::WaveInfo>();
-            wave_info->parent = this;
-            children["wave-info"] = wave_info;
         }
-        return children.at("wave-info");
+        return wave_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Optics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::get_children() const
 {
-    if(children.find("wave-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(wave_info != nullptr)
     {
-        if(wave_info != nullptr)
-        {
-            children["wave-info"] = wave_info;
-        }
+        children["wave-info"] = wave_info;
     }
 
     return children;
@@ -1425,7 +1232,7 @@ std::string Dwdm::Ports::Port::Optics::WaveInfo::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Optics::WaveInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Optics::WaveInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1451,20 +1258,12 @@ EntityPath Dwdm::Ports::Port::Optics::WaveInfo::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::WaveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Optics::WaveInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::WaveInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1498,22 +1297,16 @@ Dwdm::Ports::Port::Info::Info()
 	,tdc_info(std::make_shared<Dwdm::Ports::Port::Info::TdcInfo>())
 {
     g709_info->parent = this;
-    children["g709-info"] = g709_info;
 
     network_srlg_info->parent = this;
-    children["network-srlg-info"] = network_srlg_info;
 
     optics_info->parent = this;
-    children["optics-info"] = optics_info;
 
     proactive->parent = this;
-    children["proactive"] = proactive;
 
     signal_log->parent = this;
-    children["signal-log"] = signal_log;
 
     tdc_info->parent = this;
-    children["tdc-info"] = tdc_info;
 
     yang_name = "info"; yang_parent_name = "port";
 }
@@ -1558,7 +1351,7 @@ std::string Dwdm::Ports::Port::Info::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1584,156 +1377,94 @@ EntityPath Dwdm::Ports::Port::Info::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g709-info")
     {
-        if(g709_info != nullptr)
-        {
-            children["g709-info"] = g709_info;
-        }
-        else
+        if(g709_info == nullptr)
         {
             g709_info = std::make_shared<Dwdm::Ports::Port::Info::G709Info>();
-            g709_info->parent = this;
-            children["g709-info"] = g709_info;
         }
-        return children.at("g709-info");
+        return g709_info;
     }
 
     if(child_yang_name == "network-srlg-info")
     {
-        if(network_srlg_info != nullptr)
-        {
-            children["network-srlg-info"] = network_srlg_info;
-        }
-        else
+        if(network_srlg_info == nullptr)
         {
             network_srlg_info = std::make_shared<Dwdm::Ports::Port::Info::NetworkSrlgInfo>();
-            network_srlg_info->parent = this;
-            children["network-srlg-info"] = network_srlg_info;
         }
-        return children.at("network-srlg-info");
+        return network_srlg_info;
     }
 
     if(child_yang_name == "optics-info")
     {
-        if(optics_info != nullptr)
-        {
-            children["optics-info"] = optics_info;
-        }
-        else
+        if(optics_info == nullptr)
         {
             optics_info = std::make_shared<Dwdm::Ports::Port::Info::OpticsInfo>();
-            optics_info->parent = this;
-            children["optics-info"] = optics_info;
         }
-        return children.at("optics-info");
+        return optics_info;
     }
 
     if(child_yang_name == "proactive")
     {
-        if(proactive != nullptr)
-        {
-            children["proactive"] = proactive;
-        }
-        else
+        if(proactive == nullptr)
         {
             proactive = std::make_shared<Dwdm::Ports::Port::Info::Proactive>();
-            proactive->parent = this;
-            children["proactive"] = proactive;
         }
-        return children.at("proactive");
+        return proactive;
     }
 
     if(child_yang_name == "signal-log")
     {
-        if(signal_log != nullptr)
-        {
-            children["signal-log"] = signal_log;
-        }
-        else
+        if(signal_log == nullptr)
         {
             signal_log = std::make_shared<Dwdm::Ports::Port::Info::SignalLog>();
-            signal_log->parent = this;
-            children["signal-log"] = signal_log;
         }
-        return children.at("signal-log");
+        return signal_log;
     }
 
     if(child_yang_name == "tdc-info")
     {
-        if(tdc_info != nullptr)
-        {
-            children["tdc-info"] = tdc_info;
-        }
-        else
+        if(tdc_info == nullptr)
         {
             tdc_info = std::make_shared<Dwdm::Ports::Port::Info::TdcInfo>();
-            tdc_info->parent = this;
-            children["tdc-info"] = tdc_info;
         }
-        return children.at("tdc-info");
+        return tdc_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::get_children() const
 {
-    if(children.find("g709-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g709_info != nullptr)
     {
-        if(g709_info != nullptr)
-        {
-            children["g709-info"] = g709_info;
-        }
+        children["g709-info"] = g709_info;
     }
 
-    if(children.find("network-srlg-info") == children.end())
+    if(network_srlg_info != nullptr)
     {
-        if(network_srlg_info != nullptr)
-        {
-            children["network-srlg-info"] = network_srlg_info;
-        }
+        children["network-srlg-info"] = network_srlg_info;
     }
 
-    if(children.find("optics-info") == children.end())
+    if(optics_info != nullptr)
     {
-        if(optics_info != nullptr)
-        {
-            children["optics-info"] = optics_info;
-        }
+        children["optics-info"] = optics_info;
     }
 
-    if(children.find("proactive") == children.end())
+    if(proactive != nullptr)
     {
-        if(proactive != nullptr)
-        {
-            children["proactive"] = proactive;
-        }
+        children["proactive"] = proactive;
     }
 
-    if(children.find("signal-log") == children.end())
+    if(signal_log != nullptr)
     {
-        if(signal_log != nullptr)
-        {
-            children["signal-log"] = signal_log;
-        }
+        children["signal-log"] = signal_log;
     }
 
-    if(children.find("tdc-info") == children.end())
+    if(tdc_info != nullptr)
     {
-        if(tdc_info != nullptr)
-        {
-            children["tdc-info"] = tdc_info;
-        }
+        children["tdc-info"] = tdc_info;
     }
 
     return children;
@@ -1787,19 +1518,14 @@ Dwdm::Ports::Port::Info::G709Info::G709Info()
 	,uc_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::UcTca>())
 {
     ec_tca->parent = this;
-    children["ec-tca"] = ec_tca;
 
     fec_mismatch->parent = this;
-    children["fec-mismatch"] = fec_mismatch;
 
     odu_info->parent = this;
-    children["odu-info"] = odu_info;
 
     otu_info->parent = this;
-    children["otu-info"] = otu_info;
 
     uc_tca->parent = this;
-    children["uc-tca"] = uc_tca;
 
     yang_name = "g709-info"; yang_parent_name = "info";
 }
@@ -1880,7 +1606,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1925,133 +1651,80 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-tca")
     {
-        if(ec_tca != nullptr)
-        {
-            children["ec-tca"] = ec_tca;
-        }
-        else
+        if(ec_tca == nullptr)
         {
             ec_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::EcTca>();
-            ec_tca->parent = this;
-            children["ec-tca"] = ec_tca;
         }
-        return children.at("ec-tca");
+        return ec_tca;
     }
 
     if(child_yang_name == "fec-mismatch")
     {
-        if(fec_mismatch != nullptr)
-        {
-            children["fec-mismatch"] = fec_mismatch;
-        }
-        else
+        if(fec_mismatch == nullptr)
         {
             fec_mismatch = std::make_shared<Dwdm::Ports::Port::Info::G709Info::FecMismatch>();
-            fec_mismatch->parent = this;
-            children["fec-mismatch"] = fec_mismatch;
         }
-        return children.at("fec-mismatch");
+        return fec_mismatch;
     }
 
     if(child_yang_name == "odu-info")
     {
-        if(odu_info != nullptr)
-        {
-            children["odu-info"] = odu_info;
-        }
-        else
+        if(odu_info == nullptr)
         {
             odu_info = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo>();
-            odu_info->parent = this;
-            children["odu-info"] = odu_info;
         }
-        return children.at("odu-info");
+        return odu_info;
     }
 
     if(child_yang_name == "otu-info")
     {
-        if(otu_info != nullptr)
-        {
-            children["otu-info"] = otu_info;
-        }
-        else
+        if(otu_info == nullptr)
         {
             otu_info = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo>();
-            otu_info->parent = this;
-            children["otu-info"] = otu_info;
         }
-        return children.at("otu-info");
+        return otu_info;
     }
 
     if(child_yang_name == "uc-tca")
     {
-        if(uc_tca != nullptr)
-        {
-            children["uc-tca"] = uc_tca;
-        }
-        else
+        if(uc_tca == nullptr)
         {
             uc_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::UcTca>();
-            uc_tca->parent = this;
-            children["uc-tca"] = uc_tca;
         }
-        return children.at("uc-tca");
+        return uc_tca;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::get_children() const
 {
-    if(children.find("ec-tca") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_tca != nullptr)
     {
-        if(ec_tca != nullptr)
-        {
-            children["ec-tca"] = ec_tca;
-        }
+        children["ec-tca"] = ec_tca;
     }
 
-    if(children.find("fec-mismatch") == children.end())
+    if(fec_mismatch != nullptr)
     {
-        if(fec_mismatch != nullptr)
-        {
-            children["fec-mismatch"] = fec_mismatch;
-        }
+        children["fec-mismatch"] = fec_mismatch;
     }
 
-    if(children.find("odu-info") == children.end())
+    if(odu_info != nullptr)
     {
-        if(odu_info != nullptr)
-        {
-            children["odu-info"] = odu_info;
-        }
+        children["odu-info"] = odu_info;
     }
 
-    if(children.find("otu-info") == children.end())
+    if(otu_info != nullptr)
     {
-        if(otu_info != nullptr)
-        {
-            children["otu-info"] = otu_info;
-        }
+        children["otu-info"] = otu_info;
     }
 
-    if(children.find("uc-tca") == children.end())
+    if(uc_tca != nullptr)
     {
-        if(uc_tca != nullptr)
-        {
-            children["uc-tca"] = uc_tca;
-        }
+        children["uc-tca"] = uc_tca;
     }
 
     return children;
@@ -2189,7 +1862,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_segment_path() c
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2216,20 +1889,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_entity_path(Entit
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2296,7 +1961,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::EcTca::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::EcTca::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::EcTca::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2324,20 +1989,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::EcTca::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::EcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::EcTca::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::EcTca::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2408,7 +2065,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::UcTca::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::UcTca::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::UcTca::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2436,20 +2093,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::UcTca::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::UcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::UcTca::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::UcTca::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2509,79 +2158,54 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::OtuInfo()
 	,uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas>())
 {
     ais->parent = this;
-    children["ais"] = ais;
 
     bbe->parent = this;
-    children["bbe"] = bbe;
 
     bbe_tca->parent = this;
-    children["bbe-tca"] = bbe_tca;
 
     bber->parent = this;
-    children["bber"] = bber;
 
     bdi->parent = this;
-    children["bdi"] = bdi;
 
     eoc->parent = this;
-    children["eoc"] = eoc;
 
     es->parent = this;
-    children["es"] = es;
 
     es_tca->parent = this;
-    children["es-tca"] = es_tca;
 
     esr->parent = this;
-    children["esr"] = esr;
 
     fc->parent = this;
-    children["fc"] = fc;
 
     iae->parent = this;
-    children["iae"] = iae;
 
     lof->parent = this;
-    children["lof"] = lof;
 
     lom->parent = this;
-    children["lom"] = lom;
 
     los->parent = this;
-    children["los"] = los;
 
     oof->parent = this;
-    children["oof"] = oof;
 
     oom->parent = this;
-    children["oom"] = oom;
 
     prefec_sd_ber->parent = this;
-    children["prefec-sd-ber"] = prefec_sd_ber;
 
     prefec_sf_ber->parent = this;
-    children["prefec-sf-ber"] = prefec_sf_ber;
 
     sd_ber->parent = this;
-    children["sd-ber"] = sd_ber;
 
     ses->parent = this;
-    children["ses"] = ses;
 
     sesr->parent = this;
-    children["sesr"] = sesr;
 
     sf_ber->parent = this;
-    children["sf-ber"] = sf_ber;
 
     tim->parent = this;
-    children["tim"] = tim;
 
     tti->parent = this;
-    children["tti"] = tti;
 
     uas->parent = this;
-    children["uas"] = uas;
 
     yang_name = "otu-info"; yang_parent_name = "g709-info";
 }
@@ -2662,7 +2286,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2687,593 +2311,360 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ais")
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
-        else
+        if(ais == nullptr)
         {
             ais = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais>();
-            ais->parent = this;
-            children["ais"] = ais;
         }
-        return children.at("ais");
+        return ais;
     }
 
     if(child_yang_name == "bbe")
     {
-        if(bbe != nullptr)
-        {
-            children["bbe"] = bbe;
-        }
-        else
+        if(bbe == nullptr)
         {
             bbe = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe>();
-            bbe->parent = this;
-            children["bbe"] = bbe;
         }
-        return children.at("bbe");
+        return bbe;
     }
 
     if(child_yang_name == "bbe-tca")
     {
-        if(bbe_tca != nullptr)
-        {
-            children["bbe-tca"] = bbe_tca;
-        }
-        else
+        if(bbe_tca == nullptr)
         {
             bbe_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca>();
-            bbe_tca->parent = this;
-            children["bbe-tca"] = bbe_tca;
         }
-        return children.at("bbe-tca");
+        return bbe_tca;
     }
 
     if(child_yang_name == "bber")
     {
-        if(bber != nullptr)
-        {
-            children["bber"] = bber;
-        }
-        else
+        if(bber == nullptr)
         {
             bber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber>();
-            bber->parent = this;
-            children["bber"] = bber;
         }
-        return children.at("bber");
+        return bber;
     }
 
     if(child_yang_name == "bdi")
     {
-        if(bdi != nullptr)
-        {
-            children["bdi"] = bdi;
-        }
-        else
+        if(bdi == nullptr)
         {
             bdi = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi>();
-            bdi->parent = this;
-            children["bdi"] = bdi;
         }
-        return children.at("bdi");
+        return bdi;
     }
 
     if(child_yang_name == "eoc")
     {
-        if(eoc != nullptr)
-        {
-            children["eoc"] = eoc;
-        }
-        else
+        if(eoc == nullptr)
         {
             eoc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc>();
-            eoc->parent = this;
-            children["eoc"] = eoc;
         }
-        return children.at("eoc");
+        return eoc;
     }
 
     if(child_yang_name == "es")
     {
-        if(es != nullptr)
-        {
-            children["es"] = es;
-        }
-        else
+        if(es == nullptr)
         {
             es = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es>();
-            es->parent = this;
-            children["es"] = es;
         }
-        return children.at("es");
+        return es;
     }
 
     if(child_yang_name == "es-tca")
     {
-        if(es_tca != nullptr)
-        {
-            children["es-tca"] = es_tca;
-        }
-        else
+        if(es_tca == nullptr)
         {
             es_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca>();
-            es_tca->parent = this;
-            children["es-tca"] = es_tca;
         }
-        return children.at("es-tca");
+        return es_tca;
     }
 
     if(child_yang_name == "esr")
     {
-        if(esr != nullptr)
-        {
-            children["esr"] = esr;
-        }
-        else
+        if(esr == nullptr)
         {
             esr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr>();
-            esr->parent = this;
-            children["esr"] = esr;
         }
-        return children.at("esr");
+        return esr;
     }
 
     if(child_yang_name == "fc")
     {
-        if(fc != nullptr)
-        {
-            children["fc"] = fc;
-        }
-        else
+        if(fc == nullptr)
         {
             fc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc>();
-            fc->parent = this;
-            children["fc"] = fc;
         }
-        return children.at("fc");
+        return fc;
     }
 
     if(child_yang_name == "iae")
     {
-        if(iae != nullptr)
-        {
-            children["iae"] = iae;
-        }
-        else
+        if(iae == nullptr)
         {
             iae = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae>();
-            iae->parent = this;
-            children["iae"] = iae;
         }
-        return children.at("iae");
+        return iae;
     }
 
     if(child_yang_name == "lof")
     {
-        if(lof != nullptr)
-        {
-            children["lof"] = lof;
-        }
-        else
+        if(lof == nullptr)
         {
             lof = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof>();
-            lof->parent = this;
-            children["lof"] = lof;
         }
-        return children.at("lof");
+        return lof;
     }
 
     if(child_yang_name == "lom")
     {
-        if(lom != nullptr)
-        {
-            children["lom"] = lom;
-        }
-        else
+        if(lom == nullptr)
         {
             lom = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom>();
-            lom->parent = this;
-            children["lom"] = lom;
         }
-        return children.at("lom");
+        return lom;
     }
 
     if(child_yang_name == "los")
     {
-        if(los != nullptr)
-        {
-            children["los"] = los;
-        }
-        else
+        if(los == nullptr)
         {
             los = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los>();
-            los->parent = this;
-            children["los"] = los;
         }
-        return children.at("los");
+        return los;
     }
 
     if(child_yang_name == "oof")
     {
-        if(oof != nullptr)
-        {
-            children["oof"] = oof;
-        }
-        else
+        if(oof == nullptr)
         {
             oof = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof>();
-            oof->parent = this;
-            children["oof"] = oof;
         }
-        return children.at("oof");
+        return oof;
     }
 
     if(child_yang_name == "oom")
     {
-        if(oom != nullptr)
-        {
-            children["oom"] = oom;
-        }
-        else
+        if(oom == nullptr)
         {
             oom = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom>();
-            oom->parent = this;
-            children["oom"] = oom;
         }
-        return children.at("oom");
+        return oom;
     }
 
     if(child_yang_name == "prefec-sd-ber")
     {
-        if(prefec_sd_ber != nullptr)
-        {
-            children["prefec-sd-ber"] = prefec_sd_ber;
-        }
-        else
+        if(prefec_sd_ber == nullptr)
         {
             prefec_sd_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer>();
-            prefec_sd_ber->parent = this;
-            children["prefec-sd-ber"] = prefec_sd_ber;
         }
-        return children.at("prefec-sd-ber");
+        return prefec_sd_ber;
     }
 
     if(child_yang_name == "prefec-sf-ber")
     {
-        if(prefec_sf_ber != nullptr)
-        {
-            children["prefec-sf-ber"] = prefec_sf_ber;
-        }
-        else
+        if(prefec_sf_ber == nullptr)
         {
             prefec_sf_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer>();
-            prefec_sf_ber->parent = this;
-            children["prefec-sf-ber"] = prefec_sf_ber;
         }
-        return children.at("prefec-sf-ber");
+        return prefec_sf_ber;
     }
 
     if(child_yang_name == "sd-ber")
     {
-        if(sd_ber != nullptr)
-        {
-            children["sd-ber"] = sd_ber;
-        }
-        else
+        if(sd_ber == nullptr)
         {
             sd_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer>();
-            sd_ber->parent = this;
-            children["sd-ber"] = sd_ber;
         }
-        return children.at("sd-ber");
+        return sd_ber;
     }
 
     if(child_yang_name == "ses")
     {
-        if(ses != nullptr)
-        {
-            children["ses"] = ses;
-        }
-        else
+        if(ses == nullptr)
         {
             ses = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses>();
-            ses->parent = this;
-            children["ses"] = ses;
         }
-        return children.at("ses");
+        return ses;
     }
 
     if(child_yang_name == "sesr")
     {
-        if(sesr != nullptr)
-        {
-            children["sesr"] = sesr;
-        }
-        else
+        if(sesr == nullptr)
         {
             sesr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr>();
-            sesr->parent = this;
-            children["sesr"] = sesr;
         }
-        return children.at("sesr");
+        return sesr;
     }
 
     if(child_yang_name == "sf-ber")
     {
-        if(sf_ber != nullptr)
-        {
-            children["sf-ber"] = sf_ber;
-        }
-        else
+        if(sf_ber == nullptr)
         {
             sf_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer>();
-            sf_ber->parent = this;
-            children["sf-ber"] = sf_ber;
         }
-        return children.at("sf-ber");
+        return sf_ber;
     }
 
     if(child_yang_name == "tim")
     {
-        if(tim != nullptr)
-        {
-            children["tim"] = tim;
-        }
-        else
+        if(tim == nullptr)
         {
             tim = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim>();
-            tim->parent = this;
-            children["tim"] = tim;
         }
-        return children.at("tim");
+        return tim;
     }
 
     if(child_yang_name == "tti")
     {
-        if(tti != nullptr)
-        {
-            children["tti"] = tti;
-        }
-        else
+        if(tti == nullptr)
         {
             tti = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti>();
-            tti->parent = this;
-            children["tti"] = tti;
         }
-        return children.at("tti");
+        return tti;
     }
 
     if(child_yang_name == "uas")
     {
-        if(uas != nullptr)
-        {
-            children["uas"] = uas;
-        }
-        else
+        if(uas == nullptr)
         {
             uas = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas>();
-            uas->parent = this;
-            children["uas"] = uas;
         }
-        return children.at("uas");
+        return uas;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_children() const
 {
-    if(children.find("ais") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ais != nullptr)
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
+        children["ais"] = ais;
     }
 
-    if(children.find("bbe") == children.end())
+    if(bbe != nullptr)
     {
-        if(bbe != nullptr)
-        {
-            children["bbe"] = bbe;
-        }
+        children["bbe"] = bbe;
     }
 
-    if(children.find("bbe-tca") == children.end())
+    if(bbe_tca != nullptr)
     {
-        if(bbe_tca != nullptr)
-        {
-            children["bbe-tca"] = bbe_tca;
-        }
+        children["bbe-tca"] = bbe_tca;
     }
 
-    if(children.find("bber") == children.end())
+    if(bber != nullptr)
     {
-        if(bber != nullptr)
-        {
-            children["bber"] = bber;
-        }
+        children["bber"] = bber;
     }
 
-    if(children.find("bdi") == children.end())
+    if(bdi != nullptr)
     {
-        if(bdi != nullptr)
-        {
-            children["bdi"] = bdi;
-        }
+        children["bdi"] = bdi;
     }
 
-    if(children.find("eoc") == children.end())
+    if(eoc != nullptr)
     {
-        if(eoc != nullptr)
-        {
-            children["eoc"] = eoc;
-        }
+        children["eoc"] = eoc;
     }
 
-    if(children.find("es") == children.end())
+    if(es != nullptr)
     {
-        if(es != nullptr)
-        {
-            children["es"] = es;
-        }
+        children["es"] = es;
     }
 
-    if(children.find("es-tca") == children.end())
+    if(es_tca != nullptr)
     {
-        if(es_tca != nullptr)
-        {
-            children["es-tca"] = es_tca;
-        }
+        children["es-tca"] = es_tca;
     }
 
-    if(children.find("esr") == children.end())
+    if(esr != nullptr)
     {
-        if(esr != nullptr)
-        {
-            children["esr"] = esr;
-        }
+        children["esr"] = esr;
     }
 
-    if(children.find("fc") == children.end())
+    if(fc != nullptr)
     {
-        if(fc != nullptr)
-        {
-            children["fc"] = fc;
-        }
+        children["fc"] = fc;
     }
 
-    if(children.find("iae") == children.end())
+    if(iae != nullptr)
     {
-        if(iae != nullptr)
-        {
-            children["iae"] = iae;
-        }
+        children["iae"] = iae;
     }
 
-    if(children.find("lof") == children.end())
+    if(lof != nullptr)
     {
-        if(lof != nullptr)
-        {
-            children["lof"] = lof;
-        }
+        children["lof"] = lof;
     }
 
-    if(children.find("lom") == children.end())
+    if(lom != nullptr)
     {
-        if(lom != nullptr)
-        {
-            children["lom"] = lom;
-        }
+        children["lom"] = lom;
     }
 
-    if(children.find("los") == children.end())
+    if(los != nullptr)
     {
-        if(los != nullptr)
-        {
-            children["los"] = los;
-        }
+        children["los"] = los;
     }
 
-    if(children.find("oof") == children.end())
+    if(oof != nullptr)
     {
-        if(oof != nullptr)
-        {
-            children["oof"] = oof;
-        }
+        children["oof"] = oof;
     }
 
-    if(children.find("oom") == children.end())
+    if(oom != nullptr)
     {
-        if(oom != nullptr)
-        {
-            children["oom"] = oom;
-        }
+        children["oom"] = oom;
     }
 
-    if(children.find("prefec-sd-ber") == children.end())
+    if(prefec_sd_ber != nullptr)
     {
-        if(prefec_sd_ber != nullptr)
-        {
-            children["prefec-sd-ber"] = prefec_sd_ber;
-        }
+        children["prefec-sd-ber"] = prefec_sd_ber;
     }
 
-    if(children.find("prefec-sf-ber") == children.end())
+    if(prefec_sf_ber != nullptr)
     {
-        if(prefec_sf_ber != nullptr)
-        {
-            children["prefec-sf-ber"] = prefec_sf_ber;
-        }
+        children["prefec-sf-ber"] = prefec_sf_ber;
     }
 
-    if(children.find("sd-ber") == children.end())
+    if(sd_ber != nullptr)
     {
-        if(sd_ber != nullptr)
-        {
-            children["sd-ber"] = sd_ber;
-        }
+        children["sd-ber"] = sd_ber;
     }
 
-    if(children.find("ses") == children.end())
+    if(ses != nullptr)
     {
-        if(ses != nullptr)
-        {
-            children["ses"] = ses;
-        }
+        children["ses"] = ses;
     }
 
-    if(children.find("sesr") == children.end())
+    if(sesr != nullptr)
     {
-        if(sesr != nullptr)
-        {
-            children["sesr"] = sesr;
-        }
+        children["sesr"] = sesr;
     }
 
-    if(children.find("sf-ber") == children.end())
+    if(sf_ber != nullptr)
     {
-        if(sf_ber != nullptr)
-        {
-            children["sf-ber"] = sf_ber;
-        }
+        children["sf-ber"] = sf_ber;
     }
 
-    if(children.find("tim") == children.end())
+    if(tim != nullptr)
     {
-        if(tim != nullptr)
-        {
-            children["tim"] = tim;
-        }
+        children["tim"] = tim;
     }
 
-    if(children.find("tti") == children.end())
+    if(tti != nullptr)
     {
-        if(tti != nullptr)
-        {
-            children["tti"] = tti;
-        }
+        children["tti"] = tti;
     }
 
-    if(children.find("uas") == children.end())
+    if(uas != nullptr)
     {
-        if(uas != nullptr)
-        {
-            children["uas"] = uas;
-        }
+        children["uas"] = uas;
     }
 
     return children;
@@ -3331,7 +2722,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3358,20 +2749,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3435,7 +2818,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3462,20 +2845,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3539,7 +2914,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3566,20 +2941,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3643,7 +3010,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3670,20 +3037,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3747,7 +3106,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3774,20 +3133,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3851,7 +3202,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3878,20 +3229,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3955,7 +3298,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3982,20 +3325,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4059,7 +3394,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4086,20 +3421,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4163,7 +3490,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4190,20 +3517,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4267,7 +3586,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4294,20 +3613,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4374,7 +3685,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_segment_path(
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4402,20 +3713,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_entity_path(En
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4486,7 +3789,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_segment_path(
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4514,20 +3817,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_entity_path(En
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4598,7 +3893,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_segment
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4626,20 +3921,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_entity_p
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4710,7 +3997,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_segment
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4738,20 +4025,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_entity_p
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4822,7 +4101,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_segment_path
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4850,20 +4129,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_entity_path(E
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4934,7 +4205,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_segment_path(
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4962,20 +4233,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_entity_path(En
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5034,7 +4297,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5058,20 +4321,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5114,7 +4369,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_segment_path() c
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5138,20 +4393,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_entity_path(Entit
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5194,7 +4441,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5218,20 +4465,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5274,7 +4513,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5298,20 +4537,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5354,7 +4585,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_segment_path() c
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5378,20 +4609,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_entity_path(Entit
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5434,7 +4657,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_segment_path()
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5458,20 +4681,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_entity_path(Ent
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5514,7 +4729,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5538,20 +4753,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5594,7 +4801,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_segment_path()
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5618,20 +4825,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_entity_path(Ent
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5761,7 +4960,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5814,20 +5013,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5982,64 +5173,44 @@ Dwdm::Ports::Port::Info::G709Info::OduInfo::OduInfo()
 	,uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>())
 {
     ais->parent = this;
-    children["ais"] = ais;
 
     bbe->parent = this;
-    children["bbe"] = bbe;
 
     bbe_tca->parent = this;
-    children["bbe-tca"] = bbe_tca;
 
     bber->parent = this;
-    children["bber"] = bber;
 
     bdi->parent = this;
-    children["bdi"] = bdi;
 
     eoc->parent = this;
-    children["eoc"] = eoc;
 
     es->parent = this;
-    children["es"] = es;
 
     es_tca->parent = this;
-    children["es-tca"] = es_tca;
 
     esr->parent = this;
-    children["esr"] = esr;
 
     fc->parent = this;
-    children["fc"] = fc;
 
     lck->parent = this;
-    children["lck"] = lck;
 
     oci->parent = this;
-    children["oci"] = oci;
 
     ptim->parent = this;
-    children["ptim"] = ptim;
 
     sd_ber->parent = this;
-    children["sd-ber"] = sd_ber;
 
     ses->parent = this;
-    children["ses"] = ses;
 
     sesr->parent = this;
-    children["sesr"] = sesr;
 
     sf_ber->parent = this;
-    children["sf-ber"] = sf_ber;
 
     tim->parent = this;
-    children["tim"] = tim;
 
     tti->parent = this;
-    children["tti"] = tti;
 
     uas->parent = this;
-    children["uas"] = uas;
 
     yang_name = "odu-info"; yang_parent_name = "g709-info";
 }
@@ -6110,7 +5281,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6135,478 +5306,290 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ais")
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
-        else
+        if(ais == nullptr)
         {
             ais = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais>();
-            ais->parent = this;
-            children["ais"] = ais;
         }
-        return children.at("ais");
+        return ais;
     }
 
     if(child_yang_name == "bbe")
     {
-        if(bbe != nullptr)
-        {
-            children["bbe"] = bbe;
-        }
-        else
+        if(bbe == nullptr)
         {
             bbe = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe>();
-            bbe->parent = this;
-            children["bbe"] = bbe;
         }
-        return children.at("bbe");
+        return bbe;
     }
 
     if(child_yang_name == "bbe-tca")
     {
-        if(bbe_tca != nullptr)
-        {
-            children["bbe-tca"] = bbe_tca;
-        }
-        else
+        if(bbe_tca == nullptr)
         {
             bbe_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca>();
-            bbe_tca->parent = this;
-            children["bbe-tca"] = bbe_tca;
         }
-        return children.at("bbe-tca");
+        return bbe_tca;
     }
 
     if(child_yang_name == "bber")
     {
-        if(bber != nullptr)
-        {
-            children["bber"] = bber;
-        }
-        else
+        if(bber == nullptr)
         {
             bber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber>();
-            bber->parent = this;
-            children["bber"] = bber;
         }
-        return children.at("bber");
+        return bber;
     }
 
     if(child_yang_name == "bdi")
     {
-        if(bdi != nullptr)
-        {
-            children["bdi"] = bdi;
-        }
-        else
+        if(bdi == nullptr)
         {
             bdi = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi>();
-            bdi->parent = this;
-            children["bdi"] = bdi;
         }
-        return children.at("bdi");
+        return bdi;
     }
 
     if(child_yang_name == "eoc")
     {
-        if(eoc != nullptr)
-        {
-            children["eoc"] = eoc;
-        }
-        else
+        if(eoc == nullptr)
         {
             eoc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc>();
-            eoc->parent = this;
-            children["eoc"] = eoc;
         }
-        return children.at("eoc");
+        return eoc;
     }
 
     if(child_yang_name == "es")
     {
-        if(es != nullptr)
-        {
-            children["es"] = es;
-        }
-        else
+        if(es == nullptr)
         {
             es = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Es>();
-            es->parent = this;
-            children["es"] = es;
         }
-        return children.at("es");
+        return es;
     }
 
     if(child_yang_name == "es-tca")
     {
-        if(es_tca != nullptr)
-        {
-            children["es-tca"] = es_tca;
-        }
-        else
+        if(es_tca == nullptr)
         {
             es_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca>();
-            es_tca->parent = this;
-            children["es-tca"] = es_tca;
         }
-        return children.at("es-tca");
+        return es_tca;
     }
 
     if(child_yang_name == "esr")
     {
-        if(esr != nullptr)
-        {
-            children["esr"] = esr;
-        }
-        else
+        if(esr == nullptr)
         {
             esr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr>();
-            esr->parent = this;
-            children["esr"] = esr;
         }
-        return children.at("esr");
+        return esr;
     }
 
     if(child_yang_name == "fc")
     {
-        if(fc != nullptr)
-        {
-            children["fc"] = fc;
-        }
-        else
+        if(fc == nullptr)
         {
             fc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc>();
-            fc->parent = this;
-            children["fc"] = fc;
         }
-        return children.at("fc");
+        return fc;
     }
 
     if(child_yang_name == "lck")
     {
-        if(lck != nullptr)
-        {
-            children["lck"] = lck;
-        }
-        else
+        if(lck == nullptr)
         {
             lck = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck>();
-            lck->parent = this;
-            children["lck"] = lck;
         }
-        return children.at("lck");
+        return lck;
     }
 
     if(child_yang_name == "oci")
     {
-        if(oci != nullptr)
-        {
-            children["oci"] = oci;
-        }
-        else
+        if(oci == nullptr)
         {
             oci = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci>();
-            oci->parent = this;
-            children["oci"] = oci;
         }
-        return children.at("oci");
+        return oci;
     }
 
     if(child_yang_name == "ptim")
     {
-        if(ptim != nullptr)
-        {
-            children["ptim"] = ptim;
-        }
-        else
+        if(ptim == nullptr)
         {
             ptim = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim>();
-            ptim->parent = this;
-            children["ptim"] = ptim;
         }
-        return children.at("ptim");
+        return ptim;
     }
 
     if(child_yang_name == "sd-ber")
     {
-        if(sd_ber != nullptr)
-        {
-            children["sd-ber"] = sd_ber;
-        }
-        else
+        if(sd_ber == nullptr)
         {
             sd_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer>();
-            sd_ber->parent = this;
-            children["sd-ber"] = sd_ber;
         }
-        return children.at("sd-ber");
+        return sd_ber;
     }
 
     if(child_yang_name == "ses")
     {
-        if(ses != nullptr)
-        {
-            children["ses"] = ses;
-        }
-        else
+        if(ses == nullptr)
         {
             ses = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses>();
-            ses->parent = this;
-            children["ses"] = ses;
         }
-        return children.at("ses");
+        return ses;
     }
 
     if(child_yang_name == "sesr")
     {
-        if(sesr != nullptr)
-        {
-            children["sesr"] = sesr;
-        }
-        else
+        if(sesr == nullptr)
         {
             sesr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr>();
-            sesr->parent = this;
-            children["sesr"] = sesr;
         }
-        return children.at("sesr");
+        return sesr;
     }
 
     if(child_yang_name == "sf-ber")
     {
-        if(sf_ber != nullptr)
-        {
-            children["sf-ber"] = sf_ber;
-        }
-        else
+        if(sf_ber == nullptr)
         {
             sf_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer>();
-            sf_ber->parent = this;
-            children["sf-ber"] = sf_ber;
         }
-        return children.at("sf-ber");
+        return sf_ber;
     }
 
     if(child_yang_name == "tim")
     {
-        if(tim != nullptr)
-        {
-            children["tim"] = tim;
-        }
-        else
+        if(tim == nullptr)
         {
             tim = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim>();
-            tim->parent = this;
-            children["tim"] = tim;
         }
-        return children.at("tim");
+        return tim;
     }
 
     if(child_yang_name == "tti")
     {
-        if(tti != nullptr)
-        {
-            children["tti"] = tti;
-        }
-        else
+        if(tti == nullptr)
         {
             tti = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti>();
-            tti->parent = this;
-            children["tti"] = tti;
         }
-        return children.at("tti");
+        return tti;
     }
 
     if(child_yang_name == "uas")
     {
-        if(uas != nullptr)
-        {
-            children["uas"] = uas;
-        }
-        else
+        if(uas == nullptr)
         {
             uas = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>();
-            uas->parent = this;
-            children["uas"] = uas;
         }
-        return children.at("uas");
+        return uas;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_children() const
 {
-    if(children.find("ais") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ais != nullptr)
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
+        children["ais"] = ais;
     }
 
-    if(children.find("bbe") == children.end())
+    if(bbe != nullptr)
     {
-        if(bbe != nullptr)
-        {
-            children["bbe"] = bbe;
-        }
+        children["bbe"] = bbe;
     }
 
-    if(children.find("bbe-tca") == children.end())
+    if(bbe_tca != nullptr)
     {
-        if(bbe_tca != nullptr)
-        {
-            children["bbe-tca"] = bbe_tca;
-        }
+        children["bbe-tca"] = bbe_tca;
     }
 
-    if(children.find("bber") == children.end())
+    if(bber != nullptr)
     {
-        if(bber != nullptr)
-        {
-            children["bber"] = bber;
-        }
+        children["bber"] = bber;
     }
 
-    if(children.find("bdi") == children.end())
+    if(bdi != nullptr)
     {
-        if(bdi != nullptr)
-        {
-            children["bdi"] = bdi;
-        }
+        children["bdi"] = bdi;
     }
 
-    if(children.find("eoc") == children.end())
+    if(eoc != nullptr)
     {
-        if(eoc != nullptr)
-        {
-            children["eoc"] = eoc;
-        }
+        children["eoc"] = eoc;
     }
 
-    if(children.find("es") == children.end())
+    if(es != nullptr)
     {
-        if(es != nullptr)
-        {
-            children["es"] = es;
-        }
+        children["es"] = es;
     }
 
-    if(children.find("es-tca") == children.end())
+    if(es_tca != nullptr)
     {
-        if(es_tca != nullptr)
-        {
-            children["es-tca"] = es_tca;
-        }
+        children["es-tca"] = es_tca;
     }
 
-    if(children.find("esr") == children.end())
+    if(esr != nullptr)
     {
-        if(esr != nullptr)
-        {
-            children["esr"] = esr;
-        }
+        children["esr"] = esr;
     }
 
-    if(children.find("fc") == children.end())
+    if(fc != nullptr)
     {
-        if(fc != nullptr)
-        {
-            children["fc"] = fc;
-        }
+        children["fc"] = fc;
     }
 
-    if(children.find("lck") == children.end())
+    if(lck != nullptr)
     {
-        if(lck != nullptr)
-        {
-            children["lck"] = lck;
-        }
+        children["lck"] = lck;
     }
 
-    if(children.find("oci") == children.end())
+    if(oci != nullptr)
     {
-        if(oci != nullptr)
-        {
-            children["oci"] = oci;
-        }
+        children["oci"] = oci;
     }
 
-    if(children.find("ptim") == children.end())
+    if(ptim != nullptr)
     {
-        if(ptim != nullptr)
-        {
-            children["ptim"] = ptim;
-        }
+        children["ptim"] = ptim;
     }
 
-    if(children.find("sd-ber") == children.end())
+    if(sd_ber != nullptr)
     {
-        if(sd_ber != nullptr)
-        {
-            children["sd-ber"] = sd_ber;
-        }
+        children["sd-ber"] = sd_ber;
     }
 
-    if(children.find("ses") == children.end())
+    if(ses != nullptr)
     {
-        if(ses != nullptr)
-        {
-            children["ses"] = ses;
-        }
+        children["ses"] = ses;
     }
 
-    if(children.find("sesr") == children.end())
+    if(sesr != nullptr)
     {
-        if(sesr != nullptr)
-        {
-            children["sesr"] = sesr;
-        }
+        children["sesr"] = sesr;
     }
 
-    if(children.find("sf-ber") == children.end())
+    if(sf_ber != nullptr)
     {
-        if(sf_ber != nullptr)
-        {
-            children["sf-ber"] = sf_ber;
-        }
+        children["sf-ber"] = sf_ber;
     }
 
-    if(children.find("tim") == children.end())
+    if(tim != nullptr)
     {
-        if(tim != nullptr)
-        {
-            children["tim"] = tim;
-        }
+        children["tim"] = tim;
     }
 
-    if(children.find("tti") == children.end())
+    if(tti != nullptr)
     {
-        if(tti != nullptr)
-        {
-            children["tti"] = tti;
-        }
+        children["tti"] = tti;
     }
 
-    if(children.find("uas") == children.end())
+    if(uas != nullptr)
     {
-        if(uas != nullptr)
-        {
-            children["uas"] = uas;
-        }
+        children["uas"] = uas;
     }
 
     return children;
@@ -6664,7 +5647,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6691,20 +5674,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6768,7 +5743,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6795,20 +5770,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6872,7 +5839,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6899,20 +5866,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6976,7 +5935,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7003,20 +5962,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7080,7 +6031,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7107,20 +6058,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7184,7 +6127,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_segment_path()
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7211,20 +6154,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_entity_path(Ent
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7288,7 +6223,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7315,20 +6250,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7395,7 +6322,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_segment_path(
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7423,20 +6350,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_entity_path(En
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7507,7 +6426,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_segment_path(
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7535,20 +6454,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_entity_path(En
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7619,7 +6530,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_segment_path
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7647,20 +6558,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_entity_path(E
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7731,7 +6634,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_segment_path(
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7759,20 +6662,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_entity_path(En
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7831,7 +6726,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7855,20 +6750,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7911,7 +6798,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_segment_path() c
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7935,20 +6822,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_entity_path(Entit
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7991,7 +6870,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8015,20 +6894,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8071,7 +6942,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8095,20 +6966,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8151,7 +7014,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_segment_path() c
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8175,20 +7038,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_entity_path(Entit
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8231,7 +7086,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_segment_path()
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8255,20 +7110,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_entity_path(Ent
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8311,7 +7158,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8335,20 +7182,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8391,7 +7230,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_segment_path()
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8415,20 +7254,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_entity_path(Ent
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8558,7 +7389,7 @@ std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_segment_path() 
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8611,20 +7442,12 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_entity_path(Enti
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8897,7 +7720,7 @@ std::string Dwdm::Ports::Port::Info::OpticsInfo::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::OpticsInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::OpticsInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8959,20 +7782,12 @@ EntityPath Dwdm::Ports::Port::Info::OpticsInfo::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::OpticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::OpticsInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::OpticsInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9185,7 +8000,7 @@ std::string Dwdm::Ports::Port::Info::TdcInfo::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::TdcInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::TdcInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9215,20 +8030,12 @@ EntityPath Dwdm::Ports::Port::Info::TdcInfo::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::TdcInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::TdcInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::TdcInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9305,7 +8112,7 @@ std::string Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9330,20 +8137,12 @@ EntityPath Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9464,7 +8263,7 @@ std::string Dwdm::Ports::Port::Info::Proactive::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::Proactive::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::Proactive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9514,20 +8313,12 @@ EntityPath Dwdm::Ports::Port::Info::Proactive::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::Proactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::Proactive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::Proactive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9677,7 +8468,7 @@ std::string Dwdm::Ports::Port::Info::SignalLog::get_segment_path() const
 
 }
 
-EntityPath Dwdm::Ports::Port::Info::SignalLog::get_entity_path(Entity* ancestor) const
+const EntityPath Dwdm::Ports::Port::Info::SignalLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9702,20 +8493,12 @@ EntityPath Dwdm::Ports::Port::Info::SignalLog::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Dwdm::Ports::Port::Info::SignalLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dwdm::Ports::Port::Info::SignalLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::SignalLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9736,7 +8519,6 @@ Vtxp::Vtxp()
     dwdm_vtxp(std::make_shared<Vtxp::DwdmVtxp>())
 {
     dwdm_vtxp->parent = this;
-    children["dwdm-vtxp"] = dwdm_vtxp;
 
     yang_name = "vtxp"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper";
 }
@@ -9765,12 +8547,12 @@ std::string Vtxp::get_segment_path() const
 
 }
 
-EntityPath Vtxp::get_entity_path(Entity* ancestor) const
+const EntityPath Vtxp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -9785,41 +8567,24 @@ EntityPath Vtxp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dwdm-vtxp")
     {
-        if(dwdm_vtxp != nullptr)
-        {
-            children["dwdm-vtxp"] = dwdm_vtxp;
-        }
-        else
+        if(dwdm_vtxp == nullptr)
         {
             dwdm_vtxp = std::make_shared<Vtxp::DwdmVtxp>();
-            dwdm_vtxp->parent = this;
-            children["dwdm-vtxp"] = dwdm_vtxp;
         }
-        return children.at("dwdm-vtxp");
+        return dwdm_vtxp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vtxp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vtxp::get_children() const
 {
-    if(children.find("dwdm-vtxp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dwdm_vtxp != nullptr)
     {
-        if(dwdm_vtxp != nullptr)
-        {
-            children["dwdm-vtxp"] = dwdm_vtxp;
-        }
+        children["dwdm-vtxp"] = dwdm_vtxp;
     }
 
     return children;
@@ -9854,7 +8619,6 @@ Vtxp::DwdmVtxp::DwdmVtxp()
     port_vtxps(std::make_shared<Vtxp::DwdmVtxp::PortVtxps>())
 {
     port_vtxps->parent = this;
-    children["port-vtxps"] = port_vtxps;
 
     yang_name = "dwdm-vtxp"; yang_parent_name = "vtxp";
 }
@@ -9883,7 +8647,7 @@ std::string Vtxp::DwdmVtxp::get_segment_path() const
 
 }
 
-EntityPath Vtxp::DwdmVtxp::get_entity_path(Entity* ancestor) const
+const EntityPath Vtxp::DwdmVtxp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9906,41 +8670,24 @@ EntityPath Vtxp::DwdmVtxp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vtxp::DwdmVtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-vtxps")
     {
-        if(port_vtxps != nullptr)
-        {
-            children["port-vtxps"] = port_vtxps;
-        }
-        else
+        if(port_vtxps == nullptr)
         {
             port_vtxps = std::make_shared<Vtxp::DwdmVtxp::PortVtxps>();
-            port_vtxps->parent = this;
-            children["port-vtxps"] = port_vtxps;
         }
-        return children.at("port-vtxps");
+        return port_vtxps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vtxp::DwdmVtxp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::get_children() const
 {
-    if(children.find("port-vtxps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_vtxps != nullptr)
     {
-        if(port_vtxps != nullptr)
-        {
-            children["port-vtxps"] = port_vtxps;
-        }
+        children["port-vtxps"] = port_vtxps;
     }
 
     return children;
@@ -9988,7 +8735,7 @@ std::string Vtxp::DwdmVtxp::PortVtxps::get_segment_path() const
 
 }
 
-EntityPath Vtxp::DwdmVtxp::PortVtxps::get_entity_path(Entity* ancestor) const
+const EntityPath Vtxp::DwdmVtxp::PortVtxps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10011,15 +8758,6 @@ EntityPath Vtxp::DwdmVtxp::PortVtxps::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-vtxp")
     {
         for(auto const & c : port_vtxp)
@@ -10027,28 +8765,24 @@ std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vtxp::DwdmVtxp::PortVtxps::PortVtxp>();
         c->parent = this;
-        port_vtxp.push_back(std::move(c));
-        children[segment_path] = port_vtxp.back();
-        return children.at(segment_path);
+        port_vtxp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vtxp::DwdmVtxp::PortVtxps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::PortVtxps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : port_vtxp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10065,7 +8799,6 @@ Vtxp::DwdmVtxp::PortVtxps::PortVtxp::PortVtxp()
     info(std::make_shared<Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info>())
 {
     info->parent = this;
-    children["info"] = info;
 
     yang_name = "port-vtxp"; yang_parent_name = "port-vtxps";
 }
@@ -10096,7 +8829,7 @@ std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_segment_path() const
 
 }
 
-EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_entity_path(Entity* ancestor) const
+const EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10120,41 +8853,24 @@ EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "info")
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
-        else
+        if(info == nullptr)
         {
             info = std::make_shared<Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info>();
-            info->parent = this;
-            children["info"] = info;
         }
-        return children.at("info");
+        return info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_children() const
 {
-    if(children.find("info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(info != nullptr)
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
+        children["info"] = info;
     }
 
     return children;
@@ -10199,7 +8915,7 @@ std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_segment_path() const
 
 }
 
-EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_entity_path(Entity* ancestor) const
+const EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10223,20 +8939,12 @@ EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

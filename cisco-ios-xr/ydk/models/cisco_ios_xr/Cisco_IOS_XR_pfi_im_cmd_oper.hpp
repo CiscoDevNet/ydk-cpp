@@ -18,17 +18,15 @@ class Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class InterfaceXr; //type: Interfaces::InterfaceXr
         class NodeTypeSets; //type: Interfaces::NodeTypeSets
@@ -43,8 +41,7 @@ class Interfaces : public Entity
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::Interfaces_> interfaces;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InventorySummary> inventory_summary;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets> node_type_sets;
-
-
+        
 }; // Interfaces
 
 
@@ -56,19 +53,16 @@ class Interfaces::InterfaceXr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Interfaces::InterfaceXr::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface> > interface;
-
-
+        
 }; // Interfaces::InterfaceXr
 
 
@@ -80,12 +74,11 @@ class Interfaces::InterfaceXr::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_handle; //type: string
@@ -119,7 +112,6 @@ class Interfaces::InterfaceXr::Interface : public Entity
         YLeaf is_data_inverted; //type: boolean
         YLeaf transport_mode; //type: ImAttrTransportModeEnum
         YLeaf if_index; //type: uint32
-
         class DampeningInformation; //type: Interfaces::InterfaceXr::Interface::DampeningInformation
         class MacAddress; //type: Interfaces::InterfaceXr::Interface::MacAddress
         class BurnedInAddress; //type: Interfaces::InterfaceXr::Interface::BurnedInAddress
@@ -145,8 +137,7 @@ class Interfaces::InterfaceXr::Interface : public Entity
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics> l2_interface_statistics;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::MacAddress> mac_address;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::NvOptical> nv_optical;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface
 
 
@@ -158,12 +149,11 @@ class Interfaces::InterfaceXr::Interface::DampeningInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf penalty; //type: uint32
         YLeaf is_suppressed_enabled; //type: boolean
@@ -173,8 +163,6 @@ class Interfaces::InterfaceXr::Interface::DampeningInformation : public Entity
         YLeaf suppress_threshold; //type: uint32
         YLeaf maximum_suppress_time; //type: uint32
         YLeaf restart_penalty; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::DampeningInformation
 
@@ -187,16 +175,13 @@ class Interfaces::InterfaceXr::Interface::MacAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::MacAddress
 
@@ -209,16 +194,13 @@ class Interfaces::InterfaceXr::Interface::BurnedInAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::BurnedInAddress
 
@@ -231,17 +213,14 @@ class Interfaces::InterfaceXr::Interface::CarrierDelay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf carrier_delay_up; //type: uint32
         YLeaf carrier_delay_down; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::CarrierDelay
 
@@ -254,18 +233,15 @@ class Interfaces::InterfaceXr::Interface::ArpInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf arp_timeout; //type: uint32
         YLeaf arp_type_name; //type: string
         YLeaf arp_is_learning_disabled; //type: boolean
-
-
 
 }; // Interfaces::InterfaceXr::Interface::ArpInformation
 
@@ -278,17 +254,14 @@ class Interfaces::InterfaceXr::Interface::IpInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip_address; //type: string
         YLeaf subnet_mask_length; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::IpInformation
 
@@ -301,15 +274,13 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf encapsulation_type; //type: ImCmdEncapsEnumEnum
-
         class FrameRelayInformation; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation
         class Dot1QInformation; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation
         class PppInformation; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation
@@ -317,8 +288,7 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation : public Enti
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation> dot1q_information;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation> frame_relay_information;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation> ppp_information;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation
 
 
@@ -330,12 +300,11 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fr_encapsulation_type; //type: ImCmdFrTypeEnumEnum
         YLeaf lmi_type; //type: ImCmdLmiTypeEnumEnum
@@ -352,8 +321,6 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayIn
         YLeaf update_status_received; //type: uint32
         YLeaf update_status_sent; //type: uint32
 
-
-
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation
 
 
@@ -365,19 +332,16 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EncapsulationDetails; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails> encapsulation_details;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation
 
 
@@ -389,12 +353,11 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vlan_encapsulation; //type: VlanEncapsEnum
         YLeaf tag; //type: uint16
@@ -403,7 +366,6 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         YLeaf dot1ad_tag; //type: uint16
         YLeaf dot1ad_native_tag; //type: uint16
         YLeaf dot1ad_outer_tag; //type: uint16
-
         class Stack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack
         class ServiceInstanceDetails; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails
         class Dot1AdDot1QStack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack
@@ -411,8 +373,7 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack> dot1ad_dot1q_stack;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails> service_instance_details;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack> stack;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails
 
 
@@ -424,17 +385,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf outer_tag; //type: uint16
         YLeaf second_tag; //type: uint16
-
-
 
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack
 
@@ -447,12 +405,11 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf payload_ethertype; //type: EfpPayloadEtypeEnum
         YLeaf tags_popped; //type: uint16
@@ -461,7 +418,6 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         YLeaf is_native_preserving; //type: int32
         YLeaf source_mac_match; //type: string
         YLeaf destination_mac_match; //type: string
-
         class LocalTrafficStack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
         class TagsToMatch; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
         class Pushe; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe
@@ -469,8 +425,7 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack> local_traffic_stack;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe> > pushe;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch> > tags_to_match;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails
 
 
@@ -482,19 +437,16 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LocalTrafficTag; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag> > local_traffic_tag;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
 
 
@@ -506,17 +458,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ethertype; //type: EfpTagEtypeEnum
         YLeaf vlan_id; //type: uint16
-
-
 
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
 
@@ -529,21 +478,18 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ethertype; //type: EfpTagEtypeEnum
         YLeaf priority; //type: EfpTagPriorityEnum
-
         class VlanRange; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange> > vlan_range;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
 
 
@@ -555,17 +501,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vlan_id_low; //type: uint16
         YLeaf vlan_id_high; //type: uint16
-
-
 
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
 
@@ -578,17 +521,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ethertype; //type: EfpTagEtypeEnum
         YLeaf vlan_id; //type: uint16
-
-
 
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe
 
@@ -601,17 +541,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf outer_tag; //type: uint16
         YLeaf second_tag; //type: uint16
-
-
 
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack
 
@@ -624,24 +561,21 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lcp_state; //type: PppFsmStateEnum
         YLeaf is_loopback_detected; //type: int32
         YLeaf keepalive_period; //type: uint32
         YLeaf is_mp_bundle_member; //type: int32
         YLeaf is_multilink_open; //type: int32
-
         class NcpInfoArray; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray> > ncp_info_array;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation
 
 
@@ -653,17 +587,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ncp_state; //type: PppFsmStateEnum
         YLeaf ncp_identifier; //type: NcpIdentEnum
-
-
 
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray
 
@@ -676,15 +607,13 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_type_info; //type: ImCmdIntfTypeEnumEnum
-
         class SrpInformation; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation
         class TunnelInformation; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation
         class BundleInformation; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation
@@ -704,8 +633,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation : public Enti
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation> srp_information;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation> tunnel_gre_information;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation> tunnel_information;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation
 
 
@@ -717,21 +645,18 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SrpInformation_; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_
         class SrpStatistics; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_> srp_information;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics> srp_statistics;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation
 
 
@@ -743,13 +668,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IpsInfo; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo
         class TopologyInfo; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo
@@ -760,8 +683,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo> rate_limit_info;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo> srr_info;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo> topology_info;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_
 
 
@@ -773,20 +695,17 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_admin_down; //type: int32
-
         class LocalInformation; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation> > local_information;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo
 
 
@@ -798,24 +717,21 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf is_inter_card_bus_enabled; //type: int32
         YLeaf wtr_timer_period; //type: uint32
-
         class SideA; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA
         class SideB; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA> side_a;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB> side_b;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation
 
 
@@ -827,12 +743,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf wrap_state; //type: SrpMgmtIpsWrapStateEnum
@@ -852,12 +767,10 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf tx_ttl; //type: uint32
         YLeaf tx_packet_test; //type: int32
         YLeaf delay_keep_alive_trigger; //type: uint32
-
         class AssertedFailure; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure> > asserted_failure;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA
 
 
@@ -869,12 +782,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: SrpMgmtFailureEtEnum
         YLeaf reported_state; //type: SrpMgmtFailureStateEtEnum
@@ -882,8 +794,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf current_state; //type: SrpMgmtFailureStateEtEnum
         YLeaf stable_time; //type: uint64
         YLeaf debounced_delay; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure
 
@@ -896,12 +806,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf wrap_state; //type: SrpMgmtIpsWrapStateEnum
@@ -921,12 +830,10 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf tx_ttl; //type: uint32
         YLeaf tx_packet_test; //type: int32
         YLeaf delay_keep_alive_trigger; //type: uint32
-
         class AssertedFailure; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure> > asserted_failure;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB
 
 
@@ -938,12 +845,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: SrpMgmtFailureEtEnum
         YLeaf reported_state; //type: SrpMgmtFailureStateEtEnum
@@ -951,8 +857,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf current_state; //type: SrpMgmtFailureStateEtEnum
         YLeaf stable_time; //type: uint64
         YLeaf debounced_delay; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure
 
@@ -965,20 +869,17 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_admin_down; //type: int32
-
         class LocalInformation; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation> > local_information;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo
 
 
@@ -990,24 +891,21 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf topology_timer; //type: uint32
         YLeaf next_topology_packet_delay; //type: uint32
         YLeaf time_since_last_topology_packet_received; //type: uint32
         YLeaf time_since_last_topology_change; //type: uint32
         YLeaf number_of_nodes_on_ring; //type: uint16
-
         class RingNode; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode> > ring_node;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation
 
 
@@ -1019,12 +917,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf hop_count; //type: uint16
         YLeaf mac_address; //type: string
@@ -1032,8 +929,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf is_wrapped; //type: int32
         YLeaf is_srr_supported; //type: int32
         YLeaf node_name; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode
 
@@ -1046,21 +941,18 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_admin_down; //type: int32
         YLeaf is_srr_enabled; //type: int32
-
         class SrrDetailedInfo; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo> > srr_detailed_info;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo
 
 
@@ -1072,12 +964,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version_number; //type: uint32
         YLeaf is_wrong_version_received; //type: int32
@@ -1095,14 +986,12 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf wtr_time; //type: uint32
         YLeaf wtr_timer_remaining_outer_ring; //type: uint32
         YLeaf wtr_timer_remaining_inner_ring; //type: uint32
-
         class NodesOnRing; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing
         class NodesNotOnRing; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing> > nodes_not_on_ring;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing> > nodes_on_ring;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo
 
 
@@ -1114,12 +1003,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf srr_entry_exits; //type: int32
@@ -1128,8 +1016,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf inner_failure; //type: SrpMgmtSrrFailureEnum
         YLeaf is_last_announce_received; //type: int32
         YLeaf last_announce_received_time; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing
 
@@ -1142,12 +1028,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf srr_entry_exits; //type: int32
@@ -1156,8 +1041,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf inner_failure; //type: SrpMgmtSrrFailureEnum
         YLeaf is_last_announce_received; //type: int32
         YLeaf last_announce_received_time; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing
 
@@ -1170,20 +1053,17 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_admin_down; //type: int32
-
         class RateLimitDetailedInfo; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo> > rate_limit_detailed_info;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo
 
 
@@ -1195,16 +1075,13 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf min_priority_value; //type: uint16
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo
 
@@ -1217,15 +1094,13 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data_rate_interval; //type: uint32
-
         class SideADataRate; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate
         class SideBDataRate; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate
         class SideAErrors; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors
@@ -1235,8 +1110,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors> side_a_errors;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate> side_b_data_rate;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors> side_b_errors;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics
 
 
@@ -1248,19 +1122,16 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bit_rate_sent; //type: uint32
         YLeaf packet_rate_sent; //type: uint32
         YLeaf bit_rate_received; //type: uint32
         YLeaf packet_rate_received; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate
 
@@ -1273,19 +1144,16 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bit_rate_sent; //type: uint32
         YLeaf packet_rate_sent; //type: uint32
         YLeaf bit_rate_received; //type: uint32
         YLeaf packet_rate_received; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate
 
@@ -1298,12 +1166,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf error_packets_received; //type: uint32
         YLeaf crc_errors; //type: uint32
@@ -1314,8 +1181,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf framer_runt_packets_received; //type: uint32
         YLeaf framer_giant_packets_received; //type: uint32
         YLeaf framer_aborts_received; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors
 
@@ -1328,12 +1193,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf error_packets_received; //type: uint32
         YLeaf crc_errors; //type: uint32
@@ -1344,8 +1208,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         YLeaf framer_runt_packets_received; //type: uint32
         YLeaf framer_giant_packets_received; //type: uint32
         YLeaf framer_aborts_received; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors
 
@@ -1358,12 +1220,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_name; //type: string
         YLeaf source_ipv4_address; //type: string
@@ -1371,8 +1232,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInform
         YLeaf tunnel_type; //type: string
         YLeaf key; //type: uint32
         YLeaf ttl; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation
 
@@ -1385,19 +1244,16 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Member; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member> > member;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation
 
 
@@ -1409,12 +1265,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bandwidth; //type: uint32
         YLeaf port_priority; //type: uint16
@@ -1425,7 +1280,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
         YLeaf iccp_node; //type: uint32
         YLeaf member_type; //type: BmdMemberTypeEnumEnum
         YLeaf member_name; //type: string
-
         class Counters; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters
         class LinkData; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData
         class MemberMuxData; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData
@@ -1435,8 +1289,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData> link_data;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress> mac_address;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData> member_mux_data;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member
 
 
@@ -1448,12 +1301,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lacpd_us_received; //type: uint32
         YLeaf lacpd_us_transmitted; //type: uint32
@@ -1467,8 +1319,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
         YLeaf last_cleared_sec; //type: uint32
         YLeaf last_cleared_nsec; //type: uint32
 
-
-
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters
 
 
@@ -1480,12 +1330,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_handle; //type: string
         YLeaf actor_system_priority; //type: uint16
@@ -1503,8 +1352,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
         YLeaf actor_port_state; //type: uint8
         YLeaf partner_port_state; //type: uint8
 
-
-
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData
 
 
@@ -1516,24 +1363,21 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mux_state; //type: BmMuxstateEnum
         YLeaf error; //type: uint32
         YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
         YLeaf member_state; //type: BmdMemberStateEnum
         YLeaf mux_state_reason; //type: BmMuxreasonEnum
-
         class MemberMuxStateReasonData; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData
 
 
@@ -1545,17 +1389,14 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf reason_type; //type: BmStateReasonTargetEnum
         YLeaf severity; //type: BmSeverityEnum
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData
 
@@ -1568,16 +1409,13 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress
 
@@ -1590,16 +1428,13 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timeslots; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation
 
@@ -1612,16 +1447,13 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf aps_state; //type: SonetApsEtEnum
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation
 
@@ -1634,12 +1466,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_name; //type: string
         YLeaf destination_ip_address_length; //type: uint8
@@ -1653,14 +1484,12 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInf
         YLeaf keepalive_state; //type: TunnelKaDfStateEnum
         YLeaf df_bit_state; //type: TunnelKaDfStateEnum
         YLeaf key_bit_state; //type: TunnelKeyStateEnum
-
         class SourceIpAddress; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress
         class DestinationIpAddress; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress> destination_ip_address;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress> source_ip_address;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation
 
 
@@ -1672,18 +1501,15 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: TunlPfiAfIdEnum
         YLeaf ipv4; //type: string
         YLeaf ipv6; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress
 
@@ -1696,18 +1522,15 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: TunlPfiAfIdEnum
         YLeaf ipv4; //type: string
         YLeaf ipv6; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress
 
@@ -1720,18 +1543,15 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_list_name; //type: string
         YLeaf l2_overhead; //type: uint32
         YLeaf internal_label; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation
 
@@ -1744,19 +1564,16 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timeslots; //type: string
         YLeaf payload; //type: uint16
         YLeaf dejitter_buffer; //type: uint16
         YLeaf framing; //type: int32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation
 
@@ -1769,17 +1586,14 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf derived_mode; //type: GccDerStateEnum
         YLeaf sec_state; //type: GccSecStateEnum
-
-
 
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation
 
@@ -1792,12 +1606,11 @@ class Interfaces::InterfaceXr::Interface::DataRates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf input_data_rate; //type: uint64
         YLeaf input_packet_rate; //type: uint64
@@ -1813,8 +1626,6 @@ class Interfaces::InterfaceXr::Interface::DataRates : public Entity
         YLeaf input_load; //type: uint8
         YLeaf reliability; //type: uint8
 
-
-
 }; // Interfaces::InterfaceXr::Interface::DataRates
 
 
@@ -1826,22 +1637,19 @@ class Interfaces::InterfaceXr::Interface::InterfaceStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf stats_type; //type: ImCmdStatsEnumEnum
-
         class FullInterfaceStats; //type: Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats
         class BasicInterfaceStats; //type: Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats> basic_interface_stats;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats> full_interface_stats;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::InterfaceStatistics
 
 
@@ -1853,12 +1661,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -1897,8 +1704,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStat
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
 
-
-
 }; // Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats
 
 
@@ -1910,12 +1715,11 @@ class Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -1934,8 +1738,6 @@ class Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceSta
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
 
-
-
 }; // Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats
 
 
@@ -1947,16 +1749,14 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf stats_type; //type: uint32
         YLeaf contents; //type: StatsTypeContentsEnum
-
         class StatsId; //type: Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId
         class BlockArray; //type: Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray
         class ElementArray; //type: Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray
@@ -1964,8 +1764,7 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray> > block_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray> > element_array;
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId> stats_id;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics
 
 
@@ -1977,12 +1776,11 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf id_type; //type: StatsIdEnum
         YLeaf unused; //type: uint32
@@ -1990,8 +1788,6 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId : publi
         YLeaf node_id; //type: string
         YLeaf feature_id; //type: uint32
         YLeaf id; //type: uint32
-
-
 
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId
 
@@ -2004,18 +1800,15 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: StatsCounterEnum
         YLeaf count; //type: uint32
         YLeaf data; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray
 
@@ -2028,20 +1821,17 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf key; //type: string
-
         class BlockArray; //type: Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray> > block_array;
-
-
+        
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray
 
 
@@ -2053,18 +1843,15 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::B
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: StatsCounterEnum
         YLeaf count; //type: uint32
         YLeaf data; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray
 
@@ -2077,16 +1864,13 @@ class Interfaces::InterfaceXr::Interface::NvOptical : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf controller; //type: string
-
-
 
 }; // Interfaces::InterfaceXr::Interface::NvOptical
 
@@ -2099,19 +1883,16 @@ class Interfaces::NodeTypeSets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NodeTypeSet; //type: Interfaces::NodeTypeSets::NodeTypeSet
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet> > node_type_set;
-
-
+        
 }; // Interfaces::NodeTypeSets
 
 
@@ -2123,21 +1904,18 @@ class Interfaces::NodeTypeSets::NodeTypeSet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf type_set_name; //type: InterfaceTypeSetEnum
-
         class InterfaceSummary; //type: Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary> interface_summary;
-
-
+        
 }; // Interfaces::NodeTypeSets::NodeTypeSet
 
 
@@ -2149,21 +1927,18 @@ class Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceCounts; //type: Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts
         class InterfaceType; //type: Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts> interface_counts;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType> > interface_type;
-
-
+        
 }; // Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary
 
 
@@ -2175,19 +1950,16 @@ class Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_count; //type: uint32
         YLeaf up_interface_count; //type: uint32
         YLeaf down_interface_count; //type: uint32
         YLeaf admin_down_interface_count; //type: uint32
-
-
 
 }; // Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts
 
@@ -2200,21 +1972,18 @@ class Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_type_name; //type: string
         YLeaf interface_type_description; //type: string
-
         class InterfaceCounts; //type: Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts> interface_counts;
-
-
+        
 }; // Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType
 
 
@@ -2226,19 +1995,16 @@ class Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_count; //type: uint32
         YLeaf up_interface_count; //type: uint32
         YLeaf down_interface_count; //type: uint32
         YLeaf admin_down_interface_count; //type: uint32
-
-
 
 }; // Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts
 
@@ -2251,19 +2017,16 @@ class Interfaces::InterfaceBriefs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceBrief; //type: Interfaces::InterfaceBriefs::InterfaceBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceBriefs::InterfaceBrief> > interface_brief;
-
-
+        
 }; // Interfaces::InterfaceBriefs
 
 
@@ -2275,12 +2038,11 @@ class Interfaces::InterfaceBriefs::InterfaceBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface; //type: string
@@ -2297,8 +2059,6 @@ class Interfaces::InterfaceBriefs::InterfaceBrief : public Entity
         YLeaf l2_transport; //type: boolean
         YLeaf bandwidth; //type: uint32
 
-
-
 }; // Interfaces::InterfaceBriefs::InterfaceBrief
 
 
@@ -2310,21 +2070,18 @@ class Interfaces::InventorySummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceCounts; //type: Interfaces::InventorySummary::InterfaceCounts
         class InterfaceType; //type: Interfaces::InventorySummary::InterfaceType
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InventorySummary::InterfaceCounts> interface_counts;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InventorySummary::InterfaceType> > interface_type;
-
-
+        
 }; // Interfaces::InventorySummary
 
 
@@ -2336,19 +2093,16 @@ class Interfaces::InventorySummary::InterfaceCounts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_count; //type: uint32
         YLeaf up_interface_count; //type: uint32
         YLeaf down_interface_count; //type: uint32
         YLeaf admin_down_interface_count; //type: uint32
-
-
 
 }; // Interfaces::InventorySummary::InterfaceCounts
 
@@ -2361,21 +2115,18 @@ class Interfaces::InventorySummary::InterfaceType : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_type_name; //type: string
         YLeaf interface_type_description; //type: string
-
         class InterfaceCounts; //type: Interfaces::InventorySummary::InterfaceType::InterfaceCounts
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InventorySummary::InterfaceType::InterfaceCounts> interface_counts;
-
-
+        
 }; // Interfaces::InventorySummary::InterfaceType
 
 
@@ -2387,19 +2138,16 @@ class Interfaces::InventorySummary::InterfaceType::InterfaceCounts : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_count; //type: uint32
         YLeaf up_interface_count; //type: uint32
         YLeaf down_interface_count; //type: uint32
         YLeaf admin_down_interface_count; //type: uint32
-
-
 
 }; // Interfaces::InventorySummary::InterfaceType::InterfaceCounts
 
@@ -2412,19 +2160,16 @@ class Interfaces::Interfaces_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Interfaces::Interfaces_::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::Interfaces_::Interface> > interface;
-
-
+        
 }; // Interfaces::Interfaces_
 
 
@@ -2436,20 +2181,17 @@ class Interfaces::Interfaces_::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface; //type: string
         YLeaf state; //type: ImStateEnumEnum
         YLeaf line_state; //type: ImStateEnumEnum
         YLeaf description; //type: string
-
-
 
 }; // Interfaces::Interfaces_::Interface
 
@@ -2462,21 +2204,18 @@ class Interfaces::InterfaceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceCounts; //type: Interfaces::InterfaceSummary::InterfaceCounts
         class InterfaceType; //type: Interfaces::InterfaceSummary::InterfaceType
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceSummary::InterfaceCounts> interface_counts;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceSummary::InterfaceType> > interface_type;
-
-
+        
 }; // Interfaces::InterfaceSummary
 
 
@@ -2488,19 +2227,16 @@ class Interfaces::InterfaceSummary::InterfaceCounts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_count; //type: uint32
         YLeaf up_interface_count; //type: uint32
         YLeaf down_interface_count; //type: uint32
         YLeaf admin_down_interface_count; //type: uint32
-
-
 
 }; // Interfaces::InterfaceSummary::InterfaceCounts
 
@@ -2513,21 +2249,18 @@ class Interfaces::InterfaceSummary::InterfaceType : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_type_name; //type: string
         YLeaf interface_type_description; //type: string
-
         class InterfaceCounts; //type: Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts
 
         std::shared_ptr<Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts> interface_counts;
-
-
+        
 }; // Interfaces::InterfaceSummary::InterfaceType
 
 
@@ -2539,19 +2272,16 @@ class Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_count; //type: uint32
         YLeaf up_interface_count; //type: uint32
         YLeaf down_interface_count; //type: uint32
         YLeaf admin_down_interface_count; //type: uint32
-
-
 
 }; // Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts
 

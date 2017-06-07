@@ -19,10 +19,8 @@ Inventory::Inventory()
 	,racks(std::make_shared<Inventory::Racks>())
 {
     entities->parent = this;
-    children["entities"] = entities;
 
     racks->parent = this;
-    children["racks"] = racks;
 
     yang_name = "inventory"; yang_parent_name = "Cisco-IOS-XR-invmgr-oper";
 }
@@ -53,12 +51,12 @@ std::string Inventory::get_segment_path() const
 
 }
 
-EntityPath Inventory::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -73,64 +71,38 @@ EntityPath Inventory::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "entities")
     {
-        if(entities != nullptr)
-        {
-            children["entities"] = entities;
-        }
-        else
+        if(entities == nullptr)
         {
             entities = std::make_shared<Inventory::Entities>();
-            entities->parent = this;
-            children["entities"] = entities;
         }
-        return children.at("entities");
+        return entities;
     }
 
     if(child_yang_name == "racks")
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
-        else
+        if(racks == nullptr)
         {
             racks = std::make_shared<Inventory::Racks>();
-            racks->parent = this;
-            children["racks"] = racks;
         }
-        return children.at("racks");
+        return racks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::get_children() const
 {
-    if(children.find("entities") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(entities != nullptr)
     {
-        if(entities != nullptr)
-        {
-            children["entities"] = entities;
-        }
+        children["entities"] = entities;
     }
 
-    if(children.find("racks") == children.end())
+    if(racks != nullptr)
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
+        children["racks"] = racks;
     }
 
     return children;
@@ -198,7 +170,7 @@ std::string Inventory::Entities::get_segment_path() const
 
 }
 
-EntityPath Inventory::Entities::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Entities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -221,15 +193,6 @@ EntityPath Inventory::Entities::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Inventory::Entities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "entity")
     {
         for(auto const & c : entity_)
@@ -237,28 +200,24 @@ std::shared_ptr<Entity> Inventory::Entities::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Entities::Entity_>();
         c->parent = this;
-        entity_.push_back(std::move(c));
-        children[segment_path] = entity_.back();
-        return children.at(segment_path);
+        entity_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Entities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : entity_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -276,10 +235,8 @@ Inventory::Entities::Entity_::Entity_()
 	,subentities(std::make_shared<Inventory::Entities::Entity_::Subentities>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     subentities->parent = this;
-    children["subentities"] = subentities;
 
     yang_name = "entity"; yang_parent_name = "entities";
 }
@@ -312,7 +269,7 @@ std::string Inventory::Entities::Entity_::get_segment_path() const
 
 }
 
-EntityPath Inventory::Entities::Entity_::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Entities::Entity_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -336,64 +293,38 @@ EntityPath Inventory::Entities::Entity_::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Inventory::Entities::Entity_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Entities::Entity_::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "subentities")
     {
-        if(subentities != nullptr)
-        {
-            children["subentities"] = subentities;
-        }
-        else
+        if(subentities == nullptr)
         {
             subentities = std::make_shared<Inventory::Entities::Entity_::Subentities>();
-            subentities->parent = this;
-            children["subentities"] = subentities;
         }
-        return children.at("subentities");
+        return subentities;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Entities::Entity_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity_::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("subentities") == children.end())
+    if(subentities != nullptr)
     {
-        if(subentities != nullptr)
-        {
-            children["subentities"] = subentities;
-        }
+        children["subentities"] = subentities;
     }
 
     return children;
@@ -445,7 +376,7 @@ std::string Inventory::Entities::Entity_::Subentities::get_segment_path() const
 
 }
 
-EntityPath Inventory::Entities::Entity_::Subentities::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Entities::Entity_::Subentities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -468,15 +399,6 @@ EntityPath Inventory::Entities::Entity_::Subentities::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Inventory::Entities::Entity_::Subentities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "subentity")
     {
         for(auto const & c : subentity)
@@ -484,28 +406,24 @@ std::shared_ptr<Entity> Inventory::Entities::Entity_::Subentities::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Entities::Entity_::Subentities::Subentity>();
         c->parent = this;
-        subentity.push_back(std::move(c));
-        children[segment_path] = subentity.back();
-        return children.at(segment_path);
+        subentity.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Entities::Entity_::Subentities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity_::Subentities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : subentity)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -549,7 +467,7 @@ std::string Inventory::Entities::Entity_::Subentities::Subentity::get_segment_pa
 
 }
 
-EntityPath Inventory::Entities::Entity_::Subentities::Subentity::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Entities::Entity_::Subentities::Subentity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -574,20 +492,12 @@ EntityPath Inventory::Entities::Entity_::Subentities::Subentity::get_entity_path
 
 std::shared_ptr<Entity> Inventory::Entities::Entity_::Subentities::Subentity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Entities::Entity_::Subentities::Subentity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity_::Subentities::Subentity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -609,10 +519,8 @@ Inventory::Entities::Entity_::Attributes::Attributes()
 	,inv_basic_bag(std::make_shared<Inventory::Entities::Entity_::Attributes::InvBasicBag>())
 {
     inv_asset_bag->parent = this;
-    children["inv-asset-bag"] = inv_asset_bag;
 
     inv_basic_bag->parent = this;
-    children["inv-basic-bag"] = inv_basic_bag;
 
     yang_name = "attributes"; yang_parent_name = "entity";
 }
@@ -643,7 +551,7 @@ std::string Inventory::Entities::Entity_::Attributes::get_segment_path() const
 
 }
 
-EntityPath Inventory::Entities::Entity_::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Entities::Entity_::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -666,64 +574,38 @@ EntityPath Inventory::Entities::Entity_::Attributes::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Inventory::Entities::Entity_::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inv-asset-bag")
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
-        else
+        if(inv_asset_bag == nullptr)
         {
             inv_asset_bag = std::make_shared<Inventory::Entities::Entity_::Attributes::InvAssetBag>();
-            inv_asset_bag->parent = this;
-            children["inv-asset-bag"] = inv_asset_bag;
         }
-        return children.at("inv-asset-bag");
+        return inv_asset_bag;
     }
 
     if(child_yang_name == "inv-basic-bag")
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
-        else
+        if(inv_basic_bag == nullptr)
         {
             inv_basic_bag = std::make_shared<Inventory::Entities::Entity_::Attributes::InvBasicBag>();
-            inv_basic_bag->parent = this;
-            children["inv-basic-bag"] = inv_basic_bag;
         }
-        return children.at("inv-basic-bag");
+        return inv_basic_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Entities::Entity_::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity_::Attributes::get_children() const
 {
-    if(children.find("inv-asset-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(inv_asset_bag != nullptr)
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
+        children["inv-asset-bag"] = inv_asset_bag;
     }
 
-    if(children.find("inv-basic-bag") == children.end())
+    if(inv_basic_bag != nullptr)
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
+        children["inv-basic-bag"] = inv_basic_bag;
     }
 
     return children;
@@ -839,7 +721,7 @@ std::string Inventory::Entities::Entity_::Attributes::InvBasicBag::get_segment_p
 
 }
 
-EntityPath Inventory::Entities::Entity_::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Entities::Entity_::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -888,20 +770,12 @@ EntityPath Inventory::Entities::Entity_::Attributes::InvBasicBag::get_entity_pat
 
 std::shared_ptr<Entity> Inventory::Entities::Entity_::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Entities::Entity_::Attributes::InvBasicBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity_::Attributes::InvBasicBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1062,7 +936,7 @@ std::string Inventory::Entities::Entity_::Attributes::InvAssetBag::get_segment_p
 
 }
 
-EntityPath Inventory::Entities::Entity_::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Entities::Entity_::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1092,20 +966,12 @@ EntityPath Inventory::Entities::Entity_::Attributes::InvAssetBag::get_entity_pat
 
 std::shared_ptr<Entity> Inventory::Entities::Entity_::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Entities::Entity_::Attributes::InvAssetBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity_::Attributes::InvAssetBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1179,7 +1045,7 @@ std::string Inventory::Racks::get_segment_path() const
 
 }
 
-EntityPath Inventory::Racks::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1202,15 +1068,6 @@ EntityPath Inventory::Racks::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Inventory::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rack")
     {
         for(auto const & c : rack)
@@ -1218,28 +1075,24 @@ std::shared_ptr<Entity> Inventory::Racks::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack>();
         c->parent = this;
-        rack.push_back(std::move(c));
-        children[segment_path] = rack.back();
-        return children.at(segment_path);
+        rack.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rack)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1259,16 +1112,12 @@ Inventory::Racks::Rack::Rack()
 	,powershelf(std::make_shared<Inventory::Racks::Rack::Powershelf>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     entity_->parent = this;
-    children["entity"] = entity_;
 
     fantray->parent = this;
-    children["fantray"] = fantray;
 
     powershelf->parent = this;
-    children["powershelf"] = powershelf;
 
     yang_name = "rack"; yang_parent_name = "racks";
 }
@@ -1305,7 +1154,7 @@ std::string Inventory::Racks::Rack::get_segment_path() const
 
 }
 
-EntityPath Inventory::Racks::Rack::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1329,110 +1178,66 @@ EntityPath Inventory::Racks::Rack::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "entity")
     {
-        if(entity_ != nullptr)
-        {
-            children["entity"] = entity_;
-        }
-        else
+        if(entity_ == nullptr)
         {
             entity_ = std::make_shared<Inventory::Racks::Rack::Entity_>();
-            entity_->parent = this;
-            children["entity"] = entity_;
         }
-        return children.at("entity");
+        return entity_;
     }
 
     if(child_yang_name == "fantray")
     {
-        if(fantray != nullptr)
-        {
-            children["fantray"] = fantray;
-        }
-        else
+        if(fantray == nullptr)
         {
             fantray = std::make_shared<Inventory::Racks::Rack::Fantray>();
-            fantray->parent = this;
-            children["fantray"] = fantray;
         }
-        return children.at("fantray");
+        return fantray;
     }
 
     if(child_yang_name == "powershelf")
     {
-        if(powershelf != nullptr)
-        {
-            children["powershelf"] = powershelf;
-        }
-        else
+        if(powershelf == nullptr)
         {
             powershelf = std::make_shared<Inventory::Racks::Rack::Powershelf>();
-            powershelf->parent = this;
-            children["powershelf"] = powershelf;
         }
-        return children.at("powershelf");
+        return powershelf;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("entity") == children.end())
+    if(entity_ != nullptr)
     {
-        if(entity_ != nullptr)
-        {
-            children["entity"] = entity_;
-        }
+        children["entity"] = entity_;
     }
 
-    if(children.find("fantray") == children.end())
+    if(fantray != nullptr)
     {
-        if(fantray != nullptr)
-        {
-            children["fantray"] = fantray;
-        }
+        children["fantray"] = fantray;
     }
 
-    if(children.find("powershelf") == children.end())
+    if(powershelf != nullptr)
     {
-        if(powershelf != nullptr)
-        {
-            children["powershelf"] = powershelf;
-        }
+        children["powershelf"] = powershelf;
     }
 
     return children;
@@ -1484,7 +1289,7 @@ std::string Inventory::Racks::Rack::Entity_::get_segment_path() const
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1507,15 +1312,6 @@ EntityPath Inventory::Racks::Rack::Entity_::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slot")
     {
         for(auto const & c : slot)
@@ -1523,28 +1319,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot>();
         c->parent = this;
-        slot.push_back(std::move(c));
-        children[segment_path] = slot.back();
-        return children.at(segment_path);
+        slot.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slot)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1562,10 +1354,8 @@ Inventory::Racks::Rack::Entity_::Slot::Slot()
 	,tsi1s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi1s->parent = this;
-    children["tsi1s"] = tsi1s;
 
     yang_name = "slot"; yang_parent_name = "entity";
 }
@@ -1598,7 +1388,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::get_segment_path() const
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1622,64 +1412,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi1s")
     {
-        if(tsi1s != nullptr)
-        {
-            children["tsi1s"] = tsi1s;
-        }
-        else
+        if(tsi1s == nullptr)
         {
             tsi1s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S>();
-            tsi1s->parent = this;
-            children["tsi1s"] = tsi1s;
         }
-        return children.at("tsi1s");
+        return tsi1s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi1s") == children.end())
+    if(tsi1s != nullptr)
     {
-        if(tsi1s != nullptr)
-        {
-            children["tsi1s"] = tsi1s;
-        }
+        children["tsi1s"] = tsi1s;
     }
 
     return children;
@@ -1731,7 +1495,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_segment_path() con
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1754,15 +1518,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi1")
     {
         for(auto const & c : tsi1)
@@ -1770,28 +1525,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1>();
         c->parent = this;
-        tsi1.push_back(std::move(c));
-        children[segment_path] = tsi1.back();
-        return children.at(segment_path);
+        tsi1.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi1)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1809,10 +1560,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi1()
 	,tsi2s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi2s->parent = this;
-    children["tsi2s"] = tsi2s;
 
     yang_name = "tsi1"; yang_parent_name = "tsi1s";
 }
@@ -1845,7 +1594,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::get_segment_path
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1869,64 +1618,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::get_entity_path(E
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi2s")
     {
-        if(tsi2s != nullptr)
-        {
-            children["tsi2s"] = tsi2s;
-        }
-        else
+        if(tsi2s == nullptr)
         {
             tsi2s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S>();
-            tsi2s->parent = this;
-            children["tsi2s"] = tsi2s;
         }
-        return children.at("tsi2s");
+        return tsi2s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi2s") == children.end())
+    if(tsi2s != nullptr)
     {
-        if(tsi2s != nullptr)
-        {
-            children["tsi2s"] = tsi2s;
-        }
+        children["tsi2s"] = tsi2s;
     }
 
     return children;
@@ -1978,7 +1701,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::get_segme
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2001,15 +1724,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::get_entity
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi2")
     {
         for(auto const & c : tsi2)
@@ -2017,28 +1731,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2>();
         c->parent = this;
-        tsi2.push_back(std::move(c));
-        children[segment_path] = tsi2.back();
-        return children.at(segment_path);
+        tsi2.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2056,10 +1766,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi2()
 	,tsi3s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi3s->parent = this;
-    children["tsi3s"] = tsi3s;
 
     yang_name = "tsi2"; yang_parent_name = "tsi2s";
 }
@@ -2092,7 +1800,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2116,64 +1824,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get_
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi3s")
     {
-        if(tsi3s != nullptr)
-        {
-            children["tsi3s"] = tsi3s;
-        }
-        else
+        if(tsi3s == nullptr)
         {
             tsi3s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S>();
-            tsi3s->parent = this;
-            children["tsi3s"] = tsi3s;
         }
-        return children.at("tsi3s");
+        return tsi3s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi3s") == children.end())
+    if(tsi3s != nullptr)
     {
-        if(tsi3s != nullptr)
-        {
-            children["tsi3s"] = tsi3s;
-        }
+        children["tsi3s"] = tsi3s;
     }
 
     return children;
@@ -2225,7 +1907,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2248,15 +1930,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi3")
     {
         for(auto const & c : tsi3)
@@ -2264,28 +1937,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3>();
         c->parent = this;
-        tsi3.push_back(std::move(c));
-        children[segment_path] = tsi3.back();
-        return children.at(segment_path);
+        tsi3.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi3)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2303,10 +1972,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi4s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi4s->parent = this;
-    children["tsi4s"] = tsi4s;
 
     yang_name = "tsi3"; yang_parent_name = "tsi3s";
 }
@@ -2339,7 +2006,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2363,64 +2030,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi4s")
     {
-        if(tsi4s != nullptr)
-        {
-            children["tsi4s"] = tsi4s;
-        }
-        else
+        if(tsi4s == nullptr)
         {
             tsi4s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S>();
-            tsi4s->parent = this;
-            children["tsi4s"] = tsi4s;
         }
-        return children.at("tsi4s");
+        return tsi4s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi4s") == children.end())
+    if(tsi4s != nullptr)
     {
-        if(tsi4s != nullptr)
-        {
-            children["tsi4s"] = tsi4s;
-        }
+        children["tsi4s"] = tsi4s;
     }
 
     return children;
@@ -2472,7 +2113,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2495,15 +2136,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi4")
     {
         for(auto const & c : tsi4)
@@ -2511,28 +2143,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4>();
         c->parent = this;
-        tsi4.push_back(std::move(c));
-        children[segment_path] = tsi4.back();
-        return children.at(segment_path);
+        tsi4.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2550,10 +2178,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi5s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi5s->parent = this;
-    children["tsi5s"] = tsi5s;
 
     yang_name = "tsi4"; yang_parent_name = "tsi4s";
 }
@@ -2586,7 +2212,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2610,64 +2236,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi5s")
     {
-        if(tsi5s != nullptr)
-        {
-            children["tsi5s"] = tsi5s;
-        }
-        else
+        if(tsi5s == nullptr)
         {
             tsi5s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S>();
-            tsi5s->parent = this;
-            children["tsi5s"] = tsi5s;
         }
-        return children.at("tsi5s");
+        return tsi5s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi5s") == children.end())
+    if(tsi5s != nullptr)
     {
-        if(tsi5s != nullptr)
-        {
-            children["tsi5s"] = tsi5s;
-        }
+        children["tsi5s"] = tsi5s;
     }
 
     return children;
@@ -2719,7 +2319,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2742,15 +2342,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi5")
     {
         for(auto const & c : tsi5)
@@ -2758,28 +2349,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5>();
         c->parent = this;
-        tsi5.push_back(std::move(c));
-        children[segment_path] = tsi5.back();
-        return children.at(segment_path);
+        tsi5.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi5)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2797,10 +2384,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi6s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi6s->parent = this;
-    children["tsi6s"] = tsi6s;
 
     yang_name = "tsi5"; yang_parent_name = "tsi5s";
 }
@@ -2833,7 +2418,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2857,64 +2442,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi6s")
     {
-        if(tsi6s != nullptr)
-        {
-            children["tsi6s"] = tsi6s;
-        }
-        else
+        if(tsi6s == nullptr)
         {
             tsi6s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S>();
-            tsi6s->parent = this;
-            children["tsi6s"] = tsi6s;
         }
-        return children.at("tsi6s");
+        return tsi6s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi6s") == children.end())
+    if(tsi6s != nullptr)
     {
-        if(tsi6s != nullptr)
-        {
-            children["tsi6s"] = tsi6s;
-        }
+        children["tsi6s"] = tsi6s;
     }
 
     return children;
@@ -2966,7 +2525,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2989,15 +2548,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi6")
     {
         for(auto const & c : tsi6)
@@ -3005,28 +2555,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6>();
         c->parent = this;
-        tsi6.push_back(std::move(c));
-        children[segment_path] = tsi6.back();
-        return children.at(segment_path);
+        tsi6.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3044,10 +2590,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi7s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi7s->parent = this;
-    children["tsi7s"] = tsi7s;
 
     yang_name = "tsi6"; yang_parent_name = "tsi6s";
 }
@@ -3080,7 +2624,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3104,64 +2648,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi7s")
     {
-        if(tsi7s != nullptr)
-        {
-            children["tsi7s"] = tsi7s;
-        }
-        else
+        if(tsi7s == nullptr)
         {
             tsi7s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S>();
-            tsi7s->parent = this;
-            children["tsi7s"] = tsi7s;
         }
-        return children.at("tsi7s");
+        return tsi7s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi7s") == children.end())
+    if(tsi7s != nullptr)
     {
-        if(tsi7s != nullptr)
-        {
-            children["tsi7s"] = tsi7s;
-        }
+        children["tsi7s"] = tsi7s;
     }
 
     return children;
@@ -3213,7 +2731,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3236,15 +2754,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi7")
     {
         for(auto const & c : tsi7)
@@ -3252,28 +2761,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7>();
         c->parent = this;
-        tsi7.push_back(std::move(c));
-        children[segment_path] = tsi7.back();
-        return children.at(segment_path);
+        tsi7.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi7)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3291,10 +2796,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi8s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi8s->parent = this;
-    children["tsi8s"] = tsi8s;
 
     yang_name = "tsi7"; yang_parent_name = "tsi7s";
 }
@@ -3327,7 +2830,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3351,64 +2854,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi8s")
     {
-        if(tsi8s != nullptr)
-        {
-            children["tsi8s"] = tsi8s;
-        }
-        else
+        if(tsi8s == nullptr)
         {
             tsi8s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S>();
-            tsi8s->parent = this;
-            children["tsi8s"] = tsi8s;
         }
-        return children.at("tsi8s");
+        return tsi8s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi8s") == children.end())
+    if(tsi8s != nullptr)
     {
-        if(tsi8s != nullptr)
-        {
-            children["tsi8s"] = tsi8s;
-        }
+        children["tsi8s"] = tsi8s;
     }
 
     return children;
@@ -3460,7 +2937,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3483,15 +2960,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi8")
     {
         for(auto const & c : tsi8)
@@ -3499,28 +2967,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8>();
         c->parent = this;
-        tsi8.push_back(std::move(c));
-        children[segment_path] = tsi8.back();
-        return children.at(segment_path);
+        tsi8.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi8)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3538,10 +3002,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi9s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi9s->parent = this;
-    children["tsi9s"] = tsi9s;
 
     yang_name = "tsi8"; yang_parent_name = "tsi8s";
 }
@@ -3574,7 +3036,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3598,64 +3060,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi9s")
     {
-        if(tsi9s != nullptr)
-        {
-            children["tsi9s"] = tsi9s;
-        }
-        else
+        if(tsi9s == nullptr)
         {
             tsi9s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S>();
-            tsi9s->parent = this;
-            children["tsi9s"] = tsi9s;
         }
-        return children.at("tsi9s");
+        return tsi9s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi9s") == children.end())
+    if(tsi9s != nullptr)
     {
-        if(tsi9s != nullptr)
-        {
-            children["tsi9s"] = tsi9s;
-        }
+        children["tsi9s"] = tsi9s;
     }
 
     return children;
@@ -3707,7 +3143,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3730,15 +3166,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi9")
     {
         for(auto const & c : tsi9)
@@ -3746,28 +3173,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9>();
         c->parent = this;
-        tsi9.push_back(std::move(c));
-        children[segment_path] = tsi9.back();
-        return children.at(segment_path);
+        tsi9.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi9)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3785,10 +3208,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi10s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi10s->parent = this;
-    children["tsi10s"] = tsi10s;
 
     yang_name = "tsi9"; yang_parent_name = "tsi9s";
 }
@@ -3821,7 +3242,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3845,64 +3266,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi10s")
     {
-        if(tsi10s != nullptr)
-        {
-            children["tsi10s"] = tsi10s;
-        }
-        else
+        if(tsi10s == nullptr)
         {
             tsi10s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S>();
-            tsi10s->parent = this;
-            children["tsi10s"] = tsi10s;
         }
-        return children.at("tsi10s");
+        return tsi10s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi10s") == children.end())
+    if(tsi10s != nullptr)
     {
-        if(tsi10s != nullptr)
-        {
-            children["tsi10s"] = tsi10s;
-        }
+        children["tsi10s"] = tsi10s;
     }
 
     return children;
@@ -3954,7 +3349,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3977,15 +3372,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi10")
     {
         for(auto const & c : tsi10)
@@ -3993,28 +3379,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10>();
         c->parent = this;
-        tsi10.push_back(std::move(c));
-        children[segment_path] = tsi10.back();
-        return children.at(segment_path);
+        tsi10.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi10)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4032,10 +3414,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,tsi11s(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     tsi11s->parent = this;
-    children["tsi11s"] = tsi11s;
 
     yang_name = "tsi10"; yang_parent_name = "tsi10s";
 }
@@ -4068,7 +3448,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4092,64 +3472,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "tsi11s")
     {
-        if(tsi11s != nullptr)
-        {
-            children["tsi11s"] = tsi11s;
-        }
-        else
+        if(tsi11s == nullptr)
         {
             tsi11s = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S>();
-            tsi11s->parent = this;
-            children["tsi11s"] = tsi11s;
         }
-        return children.at("tsi11s");
+        return tsi11s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("tsi11s") == children.end())
+    if(tsi11s != nullptr)
     {
-        if(tsi11s != nullptr)
-        {
-            children["tsi11s"] = tsi11s;
-        }
+        children["tsi11s"] = tsi11s;
     }
 
     return children;
@@ -4201,7 +3555,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4224,15 +3578,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tsi11")
     {
         for(auto const & c : tsi11)
@@ -4240,28 +3585,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11>();
         c->parent = this;
-        tsi11.push_back(std::move(c));
-        children[segment_path] = tsi11.back();
-        return children.at(segment_path);
+        tsi11.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tsi11)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4278,7 +3619,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     attributes(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     yang_name = "tsi11"; yang_parent_name = "tsi11s";
 }
@@ -4309,7 +3649,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4333,41 +3673,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
     return children;
@@ -4398,28 +3721,20 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold>())
 {
     env_sensor_info->parent = this;
-    children["env-sensor-info"] = env_sensor_info;
 
     env_sensor_info_xml->parent = this;
-    children["env-sensor-info-xml"] = env_sensor_info_xml;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     inv_asset_bag->parent = this;
-    children["inv-asset-bag"] = inv_asset_bag;
 
     inv_basic_bag->parent = this;
-    children["inv-basic-bag"] = inv_basic_bag;
 
     inv_eeprom_info->parent = this;
-    children["inv-eeprom-info"] = inv_eeprom_info;
 
     pwg_info->parent = this;
-    children["pwg-info"] = pwg_info;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "attributes"; yang_parent_name = "tsi11";
 }
@@ -4470,7 +3785,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4497,202 +3812,122 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "env-sensor-info")
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
-        else
+        if(env_sensor_info == nullptr)
         {
             env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo>();
-            env_sensor_info->parent = this;
-            children["env-sensor-info"] = env_sensor_info;
         }
-        return children.at("env-sensor-info");
+        return env_sensor_info;
     }
 
     if(child_yang_name == "env-sensor-info-xml")
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
-        else
+        if(env_sensor_info_xml == nullptr)
         {
             env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml>();
-            env_sensor_info_xml->parent = this;
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
         }
-        return children.at("env-sensor-info-xml");
+        return env_sensor_info_xml;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     if(child_yang_name == "inv-asset-bag")
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
-        else
+        if(inv_asset_bag == nullptr)
         {
             inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag>();
-            inv_asset_bag->parent = this;
-            children["inv-asset-bag"] = inv_asset_bag;
         }
-        return children.at("inv-asset-bag");
+        return inv_asset_bag;
     }
 
     if(child_yang_name == "inv-basic-bag")
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
-        else
+        if(inv_basic_bag == nullptr)
         {
             inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag>();
-            inv_basic_bag->parent = this;
-            children["inv-basic-bag"] = inv_basic_bag;
         }
-        return children.at("inv-basic-bag");
+        return inv_basic_bag;
     }
 
     if(child_yang_name == "inv-eeprom-info")
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
-        else
+        if(inv_eeprom_info == nullptr)
         {
             inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo>();
-            inv_eeprom_info->parent = this;
-            children["inv-eeprom-info"] = inv_eeprom_info;
         }
-        return children.at("inv-eeprom-info");
+        return inv_eeprom_info;
     }
 
     if(child_yang_name == "pwg-info")
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
-        else
+        if(pwg_info == nullptr)
         {
             pwg_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo>();
-            pwg_info->parent = this;
-            children["pwg-info"] = pwg_info;
         }
-        return children.at("pwg-info");
+        return pwg_info;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::get_children() const
 {
-    if(children.find("env-sensor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(env_sensor_info != nullptr)
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
+        children["env-sensor-info"] = env_sensor_info;
     }
 
-    if(children.find("env-sensor-info-xml") == children.end())
+    if(env_sensor_info_xml != nullptr)
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
+        children["env-sensor-info-xml"] = env_sensor_info_xml;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
-    if(children.find("inv-asset-bag") == children.end())
+    if(inv_asset_bag != nullptr)
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
+        children["inv-asset-bag"] = inv_asset_bag;
     }
 
-    if(children.find("inv-basic-bag") == children.end())
+    if(inv_basic_bag != nullptr)
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
+        children["inv-basic-bag"] = inv_basic_bag;
     }
 
-    if(children.find("inv-eeprom-info") == children.end())
+    if(inv_eeprom_info != nullptr)
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
+        children["inv-eeprom-info"] = inv_eeprom_info;
     }
 
-    if(children.find("pwg-info") == children.end())
+    if(pwg_info != nullptr)
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
+        children["pwg-info"] = pwg_info;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -4782,7 +4017,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4817,20 +4052,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4926,7 +4153,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4953,20 +4180,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5002,7 +4221,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes";
 }
@@ -5043,7 +4261,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5072,41 +4290,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -5178,7 +4379,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5201,15 +4402,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-array")
     {
         for(auto const & c : threshold_array)
@@ -5217,28 +4409,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
-        threshold_array.push_back(std::move(c));
-        children[segment_path] = threshold_array.back();
-        return children.at(segment_path);
+        threshold_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5288,7 +4476,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5315,20 +4503,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5401,7 +4581,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5431,20 +4611,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5490,22 +4662,16 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo>())
 {
     critical_hi->parent = this;
-    children["critical-hi"] = critical_hi;
 
     critical_lo->parent = this;
-    children["critical-lo"] = critical_lo;
 
     major_hi->parent = this;
-    children["major-hi"] = major_hi;
 
     major_lo->parent = this;
-    children["major-lo"] = major_lo;
 
     minor_hi->parent = this;
-    children["minor-hi"] = minor_hi;
 
     minor_lo->parent = this;
-    children["minor-lo"] = minor_lo;
 
     yang_name = "threshold"; yang_parent_name = "attributes";
 }
@@ -5544,7 +4710,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5567,156 +4733,94 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical-hi")
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
-        else
+        if(critical_hi == nullptr)
         {
             critical_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi>();
-            critical_hi->parent = this;
-            children["critical-hi"] = critical_hi;
         }
-        return children.at("critical-hi");
+        return critical_hi;
     }
 
     if(child_yang_name == "critical-lo")
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
-        else
+        if(critical_lo == nullptr)
         {
             critical_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo>();
-            critical_lo->parent = this;
-            children["critical-lo"] = critical_lo;
         }
-        return children.at("critical-lo");
+        return critical_lo;
     }
 
     if(child_yang_name == "major-hi")
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
-        else
+        if(major_hi == nullptr)
         {
             major_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi>();
-            major_hi->parent = this;
-            children["major-hi"] = major_hi;
         }
-        return children.at("major-hi");
+        return major_hi;
     }
 
     if(child_yang_name == "major-lo")
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
-        else
+        if(major_lo == nullptr)
         {
             major_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo>();
-            major_lo->parent = this;
-            children["major-lo"] = major_lo;
         }
-        return children.at("major-lo");
+        return major_lo;
     }
 
     if(child_yang_name == "minor-hi")
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
-        else
+        if(minor_hi == nullptr)
         {
             minor_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi>();
-            minor_hi->parent = this;
-            children["minor-hi"] = minor_hi;
         }
-        return children.at("minor-hi");
+        return minor_hi;
     }
 
     if(child_yang_name == "minor-lo")
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
-        else
+        if(minor_lo == nullptr)
         {
             minor_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo>();
-            minor_lo->parent = this;
-            children["minor-lo"] = minor_lo;
         }
-        return children.at("minor-lo");
+        return minor_lo;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::get_children() const
 {
-    if(children.find("critical-hi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical_hi != nullptr)
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
+        children["critical-hi"] = critical_hi;
     }
 
-    if(children.find("critical-lo") == children.end())
+    if(critical_lo != nullptr)
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
+        children["critical-lo"] = critical_lo;
     }
 
-    if(children.find("major-hi") == children.end())
+    if(major_hi != nullptr)
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
+        children["major-hi"] = major_hi;
     }
 
-    if(children.find("major-lo") == children.end())
+    if(major_lo != nullptr)
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
+        children["major-lo"] = major_lo;
     }
 
-    if(children.find("minor-hi") == children.end())
+    if(minor_hi != nullptr)
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
+        children["minor-hi"] = minor_hi;
     }
 
-    if(children.find("minor-lo") == children.end())
+    if(minor_lo != nullptr)
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
+        children["minor-lo"] = minor_lo;
     }
 
     return children;
@@ -5731,7 +4835,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-lo"; yang_parent_name = "threshold";
 }
@@ -5760,7 +4863,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5783,41 +4886,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -5870,7 +4956,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5898,20 +4984,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5944,7 +5022,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-hi"; yang_parent_name = "threshold";
 }
@@ -5973,7 +5050,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5996,41 +5073,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -6083,7 +5143,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6111,20 +5171,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6157,7 +5209,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-hi"; yang_parent_name = "threshold";
 }
@@ -6186,7 +5237,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6209,41 +5260,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -6296,7 +5330,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6324,20 +5358,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6370,7 +5396,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-hi"; yang_parent_name = "threshold";
 }
@@ -6399,7 +5424,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6422,41 +5447,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -6509,7 +5517,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6537,20 +5545,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6583,7 +5583,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-lo"; yang_parent_name = "threshold";
 }
@@ -6612,7 +5611,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6635,41 +5634,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -6722,7 +5704,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6750,20 +5732,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6796,7 +5770,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-lo"; yang_parent_name = "threshold";
 }
@@ -6825,7 +5798,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6848,41 +5821,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -6935,7 +5891,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6963,20 +5919,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7018,10 +5966,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange>())
 {
     card_up_time->parent = this;
-    children["card-up-time"] = card_up_time;
 
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -7066,7 +6012,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7096,64 +6042,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "card-up-time")
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
-        else
+        if(card_up_time == nullptr)
         {
             card_up_time = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::CardUpTime>();
-            card_up_time->parent = this;
-            children["card-up-time"] = card_up_time;
         }
-        return children.at("card-up-time");
+        return card_up_time;
     }
 
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::get_children() const
 {
-    if(children.find("card-up-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(card_up_time != nullptr)
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
+        children["card-up-time"] = card_up_time;
     }
 
-    if(children.find("last-operational-state-change") == children.end())
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
     return children;
@@ -7225,7 +6145,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7250,20 +6170,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7313,7 +6225,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7338,20 +6250,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::CardUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::CardUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7473,7 +6377,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7522,20 +6426,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7658,7 +6554,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     eeprom(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
-    children["eeprom"] = eeprom;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes";
 }
@@ -7697,7 +6592,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7725,41 +6620,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "eeprom")
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
-        else
+        if(eeprom == nullptr)
         {
             eeprom = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom>();
-            eeprom->parent = this;
-            children["eeprom"] = eeprom;
         }
-        return children.at("eeprom");
+        return eeprom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::get_children() const
 {
-    if(children.find("eeprom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(eeprom != nullptr)
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
+        children["eeprom"] = eeprom;
     }
 
     return children;
@@ -7851,7 +6729,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     rma(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info";
 }
@@ -7992,7 +6869,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8071,41 +6948,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -8376,7 +7236,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8402,20 +7262,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8452,28 +7304,20 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold>())
 {
     env_sensor_info->parent = this;
-    children["env-sensor-info"] = env_sensor_info;
 
     env_sensor_info_xml->parent = this;
-    children["env-sensor-info-xml"] = env_sensor_info_xml;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     inv_asset_bag->parent = this;
-    children["inv-asset-bag"] = inv_asset_bag;
 
     inv_basic_bag->parent = this;
-    children["inv-basic-bag"] = inv_basic_bag;
 
     inv_eeprom_info->parent = this;
-    children["inv-eeprom-info"] = inv_eeprom_info;
 
     pwg_info->parent = this;
-    children["pwg-info"] = pwg_info;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "attributes"; yang_parent_name = "tsi10";
 }
@@ -8524,7 +7368,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8551,202 +7395,122 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "env-sensor-info")
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
-        else
+        if(env_sensor_info == nullptr)
         {
             env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo>();
-            env_sensor_info->parent = this;
-            children["env-sensor-info"] = env_sensor_info;
         }
-        return children.at("env-sensor-info");
+        return env_sensor_info;
     }
 
     if(child_yang_name == "env-sensor-info-xml")
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
-        else
+        if(env_sensor_info_xml == nullptr)
         {
             env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml>();
-            env_sensor_info_xml->parent = this;
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
         }
-        return children.at("env-sensor-info-xml");
+        return env_sensor_info_xml;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     if(child_yang_name == "inv-asset-bag")
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
-        else
+        if(inv_asset_bag == nullptr)
         {
             inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag>();
-            inv_asset_bag->parent = this;
-            children["inv-asset-bag"] = inv_asset_bag;
         }
-        return children.at("inv-asset-bag");
+        return inv_asset_bag;
     }
 
     if(child_yang_name == "inv-basic-bag")
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
-        else
+        if(inv_basic_bag == nullptr)
         {
             inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag>();
-            inv_basic_bag->parent = this;
-            children["inv-basic-bag"] = inv_basic_bag;
         }
-        return children.at("inv-basic-bag");
+        return inv_basic_bag;
     }
 
     if(child_yang_name == "inv-eeprom-info")
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
-        else
+        if(inv_eeprom_info == nullptr)
         {
             inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo>();
-            inv_eeprom_info->parent = this;
-            children["inv-eeprom-info"] = inv_eeprom_info;
         }
-        return children.at("inv-eeprom-info");
+        return inv_eeprom_info;
     }
 
     if(child_yang_name == "pwg-info")
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
-        else
+        if(pwg_info == nullptr)
         {
             pwg_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo>();
-            pwg_info->parent = this;
-            children["pwg-info"] = pwg_info;
         }
-        return children.at("pwg-info");
+        return pwg_info;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::get_children() const
 {
-    if(children.find("env-sensor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(env_sensor_info != nullptr)
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
+        children["env-sensor-info"] = env_sensor_info;
     }
 
-    if(children.find("env-sensor-info-xml") == children.end())
+    if(env_sensor_info_xml != nullptr)
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
+        children["env-sensor-info-xml"] = env_sensor_info_xml;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
-    if(children.find("inv-asset-bag") == children.end())
+    if(inv_asset_bag != nullptr)
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
+        children["inv-asset-bag"] = inv_asset_bag;
     }
 
-    if(children.find("inv-basic-bag") == children.end())
+    if(inv_basic_bag != nullptr)
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
+        children["inv-basic-bag"] = inv_basic_bag;
     }
 
-    if(children.find("inv-eeprom-info") == children.end())
+    if(inv_eeprom_info != nullptr)
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
+        children["inv-eeprom-info"] = inv_eeprom_info;
     }
 
-    if(children.find("pwg-info") == children.end())
+    if(pwg_info != nullptr)
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
+        children["pwg-info"] = pwg_info;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -8836,7 +7600,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8871,20 +7635,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8980,7 +7736,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9007,20 +7763,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9056,7 +7804,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes";
 }
@@ -9097,7 +7844,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9126,41 +7873,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -9232,7 +7962,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9255,15 +7985,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-array")
     {
         for(auto const & c : threshold_array)
@@ -9271,28 +7992,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
-        threshold_array.push_back(std::move(c));
-        children[segment_path] = threshold_array.back();
-        return children.at(segment_path);
+        threshold_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9342,7 +8059,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9369,20 +8086,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9455,7 +8164,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9485,20 +8194,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9544,22 +8245,16 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo>())
 {
     critical_hi->parent = this;
-    children["critical-hi"] = critical_hi;
 
     critical_lo->parent = this;
-    children["critical-lo"] = critical_lo;
 
     major_hi->parent = this;
-    children["major-hi"] = major_hi;
 
     major_lo->parent = this;
-    children["major-lo"] = major_lo;
 
     minor_hi->parent = this;
-    children["minor-hi"] = minor_hi;
 
     minor_lo->parent = this;
-    children["minor-lo"] = minor_lo;
 
     yang_name = "threshold"; yang_parent_name = "attributes";
 }
@@ -9598,7 +8293,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9621,156 +8316,94 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical-hi")
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
-        else
+        if(critical_hi == nullptr)
         {
             critical_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi>();
-            critical_hi->parent = this;
-            children["critical-hi"] = critical_hi;
         }
-        return children.at("critical-hi");
+        return critical_hi;
     }
 
     if(child_yang_name == "critical-lo")
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
-        else
+        if(critical_lo == nullptr)
         {
             critical_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo>();
-            critical_lo->parent = this;
-            children["critical-lo"] = critical_lo;
         }
-        return children.at("critical-lo");
+        return critical_lo;
     }
 
     if(child_yang_name == "major-hi")
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
-        else
+        if(major_hi == nullptr)
         {
             major_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi>();
-            major_hi->parent = this;
-            children["major-hi"] = major_hi;
         }
-        return children.at("major-hi");
+        return major_hi;
     }
 
     if(child_yang_name == "major-lo")
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
-        else
+        if(major_lo == nullptr)
         {
             major_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo>();
-            major_lo->parent = this;
-            children["major-lo"] = major_lo;
         }
-        return children.at("major-lo");
+        return major_lo;
     }
 
     if(child_yang_name == "minor-hi")
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
-        else
+        if(minor_hi == nullptr)
         {
             minor_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi>();
-            minor_hi->parent = this;
-            children["minor-hi"] = minor_hi;
         }
-        return children.at("minor-hi");
+        return minor_hi;
     }
 
     if(child_yang_name == "minor-lo")
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
-        else
+        if(minor_lo == nullptr)
         {
             minor_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo>();
-            minor_lo->parent = this;
-            children["minor-lo"] = minor_lo;
         }
-        return children.at("minor-lo");
+        return minor_lo;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::get_children() const
 {
-    if(children.find("critical-hi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical_hi != nullptr)
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
+        children["critical-hi"] = critical_hi;
     }
 
-    if(children.find("critical-lo") == children.end())
+    if(critical_lo != nullptr)
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
+        children["critical-lo"] = critical_lo;
     }
 
-    if(children.find("major-hi") == children.end())
+    if(major_hi != nullptr)
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
+        children["major-hi"] = major_hi;
     }
 
-    if(children.find("major-lo") == children.end())
+    if(major_lo != nullptr)
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
+        children["major-lo"] = major_lo;
     }
 
-    if(children.find("minor-hi") == children.end())
+    if(minor_hi != nullptr)
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
+        children["minor-hi"] = minor_hi;
     }
 
-    if(children.find("minor-lo") == children.end())
+    if(minor_lo != nullptr)
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
+        children["minor-lo"] = minor_lo;
     }
 
     return children;
@@ -9785,7 +8418,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-lo"; yang_parent_name = "threshold";
 }
@@ -9814,7 +8446,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9837,41 +8469,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -9924,7 +8539,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9952,20 +8567,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9998,7 +8605,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-hi"; yang_parent_name = "threshold";
 }
@@ -10027,7 +8633,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10050,41 +8656,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -10137,7 +8726,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10165,20 +8754,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10211,7 +8792,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-hi"; yang_parent_name = "threshold";
 }
@@ -10240,7 +8820,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10263,41 +8843,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -10350,7 +8913,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10378,20 +8941,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10424,7 +8979,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-hi"; yang_parent_name = "threshold";
 }
@@ -10453,7 +9007,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10476,41 +9030,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -10563,7 +9100,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10591,20 +9128,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10637,7 +9166,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-lo"; yang_parent_name = "threshold";
 }
@@ -10666,7 +9194,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10689,41 +9217,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -10776,7 +9287,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10804,20 +9315,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10850,7 +9353,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-lo"; yang_parent_name = "threshold";
 }
@@ -10879,7 +9381,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10902,41 +9404,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -10989,7 +9474,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11017,20 +9502,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11072,10 +9549,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange>())
 {
     card_up_time->parent = this;
-    children["card-up-time"] = card_up_time;
 
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -11120,7 +9595,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11150,64 +9625,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "card-up-time")
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
-        else
+        if(card_up_time == nullptr)
         {
             card_up_time = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::CardUpTime>();
-            card_up_time->parent = this;
-            children["card-up-time"] = card_up_time;
         }
-        return children.at("card-up-time");
+        return card_up_time;
     }
 
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::get_children() const
 {
-    if(children.find("card-up-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(card_up_time != nullptr)
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
+        children["card-up-time"] = card_up_time;
     }
 
-    if(children.find("last-operational-state-change") == children.end())
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
     return children;
@@ -11279,7 +9728,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11304,20 +9753,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11367,7 +9808,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11392,20 +9833,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::CardUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::CardUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11527,7 +9960,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11576,20 +10009,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11712,7 +10137,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     eeprom(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
-    children["eeprom"] = eeprom;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes";
 }
@@ -11751,7 +10175,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11779,41 +10203,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "eeprom")
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
-        else
+        if(eeprom == nullptr)
         {
             eeprom = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom>();
-            eeprom->parent = this;
-            children["eeprom"] = eeprom;
         }
-        return children.at("eeprom");
+        return eeprom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::get_children() const
 {
-    if(children.find("eeprom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(eeprom != nullptr)
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
+        children["eeprom"] = eeprom;
     }
 
     return children;
@@ -11905,7 +10312,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     rma(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info";
 }
@@ -12046,7 +10452,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12125,41 +10531,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -12430,7 +10819,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12456,20 +10845,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12506,28 +10887,20 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold>())
 {
     env_sensor_info->parent = this;
-    children["env-sensor-info"] = env_sensor_info;
 
     env_sensor_info_xml->parent = this;
-    children["env-sensor-info-xml"] = env_sensor_info_xml;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     inv_asset_bag->parent = this;
-    children["inv-asset-bag"] = inv_asset_bag;
 
     inv_basic_bag->parent = this;
-    children["inv-basic-bag"] = inv_basic_bag;
 
     inv_eeprom_info->parent = this;
-    children["inv-eeprom-info"] = inv_eeprom_info;
 
     pwg_info->parent = this;
-    children["pwg-info"] = pwg_info;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "attributes"; yang_parent_name = "tsi9";
 }
@@ -12578,7 +10951,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12605,202 +10978,122 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "env-sensor-info")
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
-        else
+        if(env_sensor_info == nullptr)
         {
             env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo>();
-            env_sensor_info->parent = this;
-            children["env-sensor-info"] = env_sensor_info;
         }
-        return children.at("env-sensor-info");
+        return env_sensor_info;
     }
 
     if(child_yang_name == "env-sensor-info-xml")
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
-        else
+        if(env_sensor_info_xml == nullptr)
         {
             env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml>();
-            env_sensor_info_xml->parent = this;
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
         }
-        return children.at("env-sensor-info-xml");
+        return env_sensor_info_xml;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     if(child_yang_name == "inv-asset-bag")
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
-        else
+        if(inv_asset_bag == nullptr)
         {
             inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag>();
-            inv_asset_bag->parent = this;
-            children["inv-asset-bag"] = inv_asset_bag;
         }
-        return children.at("inv-asset-bag");
+        return inv_asset_bag;
     }
 
     if(child_yang_name == "inv-basic-bag")
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
-        else
+        if(inv_basic_bag == nullptr)
         {
             inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag>();
-            inv_basic_bag->parent = this;
-            children["inv-basic-bag"] = inv_basic_bag;
         }
-        return children.at("inv-basic-bag");
+        return inv_basic_bag;
     }
 
     if(child_yang_name == "inv-eeprom-info")
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
-        else
+        if(inv_eeprom_info == nullptr)
         {
             inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo>();
-            inv_eeprom_info->parent = this;
-            children["inv-eeprom-info"] = inv_eeprom_info;
         }
-        return children.at("inv-eeprom-info");
+        return inv_eeprom_info;
     }
 
     if(child_yang_name == "pwg-info")
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
-        else
+        if(pwg_info == nullptr)
         {
             pwg_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo>();
-            pwg_info->parent = this;
-            children["pwg-info"] = pwg_info;
         }
-        return children.at("pwg-info");
+        return pwg_info;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::get_children() const
 {
-    if(children.find("env-sensor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(env_sensor_info != nullptr)
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
+        children["env-sensor-info"] = env_sensor_info;
     }
 
-    if(children.find("env-sensor-info-xml") == children.end())
+    if(env_sensor_info_xml != nullptr)
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
+        children["env-sensor-info-xml"] = env_sensor_info_xml;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
-    if(children.find("inv-asset-bag") == children.end())
+    if(inv_asset_bag != nullptr)
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
+        children["inv-asset-bag"] = inv_asset_bag;
     }
 
-    if(children.find("inv-basic-bag") == children.end())
+    if(inv_basic_bag != nullptr)
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
+        children["inv-basic-bag"] = inv_basic_bag;
     }
 
-    if(children.find("inv-eeprom-info") == children.end())
+    if(inv_eeprom_info != nullptr)
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
+        children["inv-eeprom-info"] = inv_eeprom_info;
     }
 
-    if(children.find("pwg-info") == children.end())
+    if(pwg_info != nullptr)
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
+        children["pwg-info"] = pwg_info;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -12890,7 +11183,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12925,20 +11218,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13034,7 +11319,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13061,20 +11346,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13110,7 +11387,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes";
 }
@@ -13151,7 +11427,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13180,41 +11456,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -13286,7 +11545,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13309,15 +11568,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-array")
     {
         for(auto const & c : threshold_array)
@@ -13325,28 +11575,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
-        threshold_array.push_back(std::move(c));
-        children[segment_path] = threshold_array.back();
-        return children.at(segment_path);
+        threshold_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13396,7 +11642,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13423,20 +11669,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13509,7 +11747,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13539,20 +11777,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13598,22 +11828,16 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo>())
 {
     critical_hi->parent = this;
-    children["critical-hi"] = critical_hi;
 
     critical_lo->parent = this;
-    children["critical-lo"] = critical_lo;
 
     major_hi->parent = this;
-    children["major-hi"] = major_hi;
 
     major_lo->parent = this;
-    children["major-lo"] = major_lo;
 
     minor_hi->parent = this;
-    children["minor-hi"] = minor_hi;
 
     minor_lo->parent = this;
-    children["minor-lo"] = minor_lo;
 
     yang_name = "threshold"; yang_parent_name = "attributes";
 }
@@ -13652,7 +11876,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13675,156 +11899,94 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical-hi")
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
-        else
+        if(critical_hi == nullptr)
         {
             critical_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi>();
-            critical_hi->parent = this;
-            children["critical-hi"] = critical_hi;
         }
-        return children.at("critical-hi");
+        return critical_hi;
     }
 
     if(child_yang_name == "critical-lo")
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
-        else
+        if(critical_lo == nullptr)
         {
             critical_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo>();
-            critical_lo->parent = this;
-            children["critical-lo"] = critical_lo;
         }
-        return children.at("critical-lo");
+        return critical_lo;
     }
 
     if(child_yang_name == "major-hi")
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
-        else
+        if(major_hi == nullptr)
         {
             major_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi>();
-            major_hi->parent = this;
-            children["major-hi"] = major_hi;
         }
-        return children.at("major-hi");
+        return major_hi;
     }
 
     if(child_yang_name == "major-lo")
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
-        else
+        if(major_lo == nullptr)
         {
             major_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo>();
-            major_lo->parent = this;
-            children["major-lo"] = major_lo;
         }
-        return children.at("major-lo");
+        return major_lo;
     }
 
     if(child_yang_name == "minor-hi")
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
-        else
+        if(minor_hi == nullptr)
         {
             minor_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi>();
-            minor_hi->parent = this;
-            children["minor-hi"] = minor_hi;
         }
-        return children.at("minor-hi");
+        return minor_hi;
     }
 
     if(child_yang_name == "minor-lo")
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
-        else
+        if(minor_lo == nullptr)
         {
             minor_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo>();
-            minor_lo->parent = this;
-            children["minor-lo"] = minor_lo;
         }
-        return children.at("minor-lo");
+        return minor_lo;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::get_children() const
 {
-    if(children.find("critical-hi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical_hi != nullptr)
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
+        children["critical-hi"] = critical_hi;
     }
 
-    if(children.find("critical-lo") == children.end())
+    if(critical_lo != nullptr)
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
+        children["critical-lo"] = critical_lo;
     }
 
-    if(children.find("major-hi") == children.end())
+    if(major_hi != nullptr)
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
+        children["major-hi"] = major_hi;
     }
 
-    if(children.find("major-lo") == children.end())
+    if(major_lo != nullptr)
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
+        children["major-lo"] = major_lo;
     }
 
-    if(children.find("minor-hi") == children.end())
+    if(minor_hi != nullptr)
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
+        children["minor-hi"] = minor_hi;
     }
 
-    if(children.find("minor-lo") == children.end())
+    if(minor_lo != nullptr)
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
+        children["minor-lo"] = minor_lo;
     }
 
     return children;
@@ -13839,7 +12001,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-lo"; yang_parent_name = "threshold";
 }
@@ -13868,7 +12029,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13891,41 +12052,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -13978,7 +12122,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14006,20 +12150,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14052,7 +12188,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-hi"; yang_parent_name = "threshold";
 }
@@ -14081,7 +12216,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14104,41 +12239,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -14191,7 +12309,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14219,20 +12337,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14265,7 +12375,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-hi"; yang_parent_name = "threshold";
 }
@@ -14294,7 +12403,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14317,41 +12426,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -14404,7 +12496,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14432,20 +12524,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14478,7 +12562,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-hi"; yang_parent_name = "threshold";
 }
@@ -14507,7 +12590,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14530,41 +12613,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -14617,7 +12683,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14645,20 +12711,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14691,7 +12749,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-lo"; yang_parent_name = "threshold";
 }
@@ -14720,7 +12777,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14743,41 +12800,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -14830,7 +12870,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14858,20 +12898,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14904,7 +12936,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-lo"; yang_parent_name = "threshold";
 }
@@ -14933,7 +12964,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14956,41 +12987,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -15043,7 +13057,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15071,20 +13085,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15126,10 +13132,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::LastOperationalStateChange>())
 {
     card_up_time->parent = this;
-    children["card-up-time"] = card_up_time;
 
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -15174,7 +13178,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15204,64 +13208,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "card-up-time")
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
-        else
+        if(card_up_time == nullptr)
         {
             card_up_time = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::CardUpTime>();
-            card_up_time->parent = this;
-            children["card-up-time"] = card_up_time;
         }
-        return children.at("card-up-time");
+        return card_up_time;
     }
 
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::get_children() const
 {
-    if(children.find("card-up-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(card_up_time != nullptr)
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
+        children["card-up-time"] = card_up_time;
     }
 
-    if(children.find("last-operational-state-change") == children.end())
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
     return children;
@@ -15333,7 +13311,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15358,20 +13336,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15421,7 +13391,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15446,20 +13416,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::CardUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo::CardUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15581,7 +13543,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15630,20 +13592,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15766,7 +13720,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     eeprom(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
-    children["eeprom"] = eeprom;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes";
 }
@@ -15805,7 +13758,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15833,41 +13786,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "eeprom")
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
-        else
+        if(eeprom == nullptr)
         {
             eeprom = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom>();
-            eeprom->parent = this;
-            children["eeprom"] = eeprom;
         }
-        return children.at("eeprom");
+        return eeprom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::get_children() const
 {
-    if(children.find("eeprom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(eeprom != nullptr)
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
+        children["eeprom"] = eeprom;
     }
 
     return children;
@@ -15959,7 +13895,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     rma(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info";
 }
@@ -16100,7 +14035,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16179,41 +14114,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -16484,7 +14402,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16510,20 +14428,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16560,28 +14470,20 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold>())
 {
     env_sensor_info->parent = this;
-    children["env-sensor-info"] = env_sensor_info;
 
     env_sensor_info_xml->parent = this;
-    children["env-sensor-info-xml"] = env_sensor_info_xml;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     inv_asset_bag->parent = this;
-    children["inv-asset-bag"] = inv_asset_bag;
 
     inv_basic_bag->parent = this;
-    children["inv-basic-bag"] = inv_basic_bag;
 
     inv_eeprom_info->parent = this;
-    children["inv-eeprom-info"] = inv_eeprom_info;
 
     pwg_info->parent = this;
-    children["pwg-info"] = pwg_info;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "attributes"; yang_parent_name = "tsi8";
 }
@@ -16632,7 +14534,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16659,202 +14561,122 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "env-sensor-info")
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
-        else
+        if(env_sensor_info == nullptr)
         {
             env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo>();
-            env_sensor_info->parent = this;
-            children["env-sensor-info"] = env_sensor_info;
         }
-        return children.at("env-sensor-info");
+        return env_sensor_info;
     }
 
     if(child_yang_name == "env-sensor-info-xml")
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
-        else
+        if(env_sensor_info_xml == nullptr)
         {
             env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml>();
-            env_sensor_info_xml->parent = this;
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
         }
-        return children.at("env-sensor-info-xml");
+        return env_sensor_info_xml;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     if(child_yang_name == "inv-asset-bag")
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
-        else
+        if(inv_asset_bag == nullptr)
         {
             inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvAssetBag>();
-            inv_asset_bag->parent = this;
-            children["inv-asset-bag"] = inv_asset_bag;
         }
-        return children.at("inv-asset-bag");
+        return inv_asset_bag;
     }
 
     if(child_yang_name == "inv-basic-bag")
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
-        else
+        if(inv_basic_bag == nullptr)
         {
             inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag>();
-            inv_basic_bag->parent = this;
-            children["inv-basic-bag"] = inv_basic_bag;
         }
-        return children.at("inv-basic-bag");
+        return inv_basic_bag;
     }
 
     if(child_yang_name == "inv-eeprom-info")
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
-        else
+        if(inv_eeprom_info == nullptr)
         {
             inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo>();
-            inv_eeprom_info->parent = this;
-            children["inv-eeprom-info"] = inv_eeprom_info;
         }
-        return children.at("inv-eeprom-info");
+        return inv_eeprom_info;
     }
 
     if(child_yang_name == "pwg-info")
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
-        else
+        if(pwg_info == nullptr)
         {
             pwg_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::PwgInfo>();
-            pwg_info->parent = this;
-            children["pwg-info"] = pwg_info;
         }
-        return children.at("pwg-info");
+        return pwg_info;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::get_children() const
 {
-    if(children.find("env-sensor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(env_sensor_info != nullptr)
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
+        children["env-sensor-info"] = env_sensor_info;
     }
 
-    if(children.find("env-sensor-info-xml") == children.end())
+    if(env_sensor_info_xml != nullptr)
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
+        children["env-sensor-info-xml"] = env_sensor_info_xml;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
-    if(children.find("inv-asset-bag") == children.end())
+    if(inv_asset_bag != nullptr)
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
+        children["inv-asset-bag"] = inv_asset_bag;
     }
 
-    if(children.find("inv-basic-bag") == children.end())
+    if(inv_basic_bag != nullptr)
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
+        children["inv-basic-bag"] = inv_basic_bag;
     }
 
-    if(children.find("inv-eeprom-info") == children.end())
+    if(inv_eeprom_info != nullptr)
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
+        children["inv-eeprom-info"] = inv_eeprom_info;
     }
 
-    if(children.find("pwg-info") == children.end())
+    if(pwg_info != nullptr)
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
+        children["pwg-info"] = pwg_info;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -16944,7 +14766,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16979,20 +14801,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17088,7 +14902,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17115,20 +14929,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::PwgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::PwgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17164,7 +14970,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes";
 }
@@ -17205,7 +15010,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17234,41 +15039,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -17340,7 +15128,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17363,15 +15151,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-array")
     {
         for(auto const & c : threshold_array)
@@ -17379,28 +15158,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
-        threshold_array.push_back(std::move(c));
-        children[segment_path] = threshold_array.back();
-        return children.at(segment_path);
+        threshold_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17450,7 +15225,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17477,20 +15252,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17563,7 +15330,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17593,20 +15360,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvAssetBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvAssetBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17652,22 +15411,16 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo>())
 {
     critical_hi->parent = this;
-    children["critical-hi"] = critical_hi;
 
     critical_lo->parent = this;
-    children["critical-lo"] = critical_lo;
 
     major_hi->parent = this;
-    children["major-hi"] = major_hi;
 
     major_lo->parent = this;
-    children["major-lo"] = major_lo;
 
     minor_hi->parent = this;
-    children["minor-hi"] = minor_hi;
 
     minor_lo->parent = this;
-    children["minor-lo"] = minor_lo;
 
     yang_name = "threshold"; yang_parent_name = "attributes";
 }
@@ -17706,7 +15459,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17729,156 +15482,94 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical-hi")
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
-        else
+        if(critical_hi == nullptr)
         {
             critical_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi>();
-            critical_hi->parent = this;
-            children["critical-hi"] = critical_hi;
         }
-        return children.at("critical-hi");
+        return critical_hi;
     }
 
     if(child_yang_name == "critical-lo")
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
-        else
+        if(critical_lo == nullptr)
         {
             critical_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo>();
-            critical_lo->parent = this;
-            children["critical-lo"] = critical_lo;
         }
-        return children.at("critical-lo");
+        return critical_lo;
     }
 
     if(child_yang_name == "major-hi")
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
-        else
+        if(major_hi == nullptr)
         {
             major_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi>();
-            major_hi->parent = this;
-            children["major-hi"] = major_hi;
         }
-        return children.at("major-hi");
+        return major_hi;
     }
 
     if(child_yang_name == "major-lo")
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
-        else
+        if(major_lo == nullptr)
         {
             major_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo>();
-            major_lo->parent = this;
-            children["major-lo"] = major_lo;
         }
-        return children.at("major-lo");
+        return major_lo;
     }
 
     if(child_yang_name == "minor-hi")
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
-        else
+        if(minor_hi == nullptr)
         {
             minor_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi>();
-            minor_hi->parent = this;
-            children["minor-hi"] = minor_hi;
         }
-        return children.at("minor-hi");
+        return minor_hi;
     }
 
     if(child_yang_name == "minor-lo")
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
-        else
+        if(minor_lo == nullptr)
         {
             minor_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo>();
-            minor_lo->parent = this;
-            children["minor-lo"] = minor_lo;
         }
-        return children.at("minor-lo");
+        return minor_lo;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::get_children() const
 {
-    if(children.find("critical-hi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical_hi != nullptr)
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
+        children["critical-hi"] = critical_hi;
     }
 
-    if(children.find("critical-lo") == children.end())
+    if(critical_lo != nullptr)
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
+        children["critical-lo"] = critical_lo;
     }
 
-    if(children.find("major-hi") == children.end())
+    if(major_hi != nullptr)
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
+        children["major-hi"] = major_hi;
     }
 
-    if(children.find("major-lo") == children.end())
+    if(major_lo != nullptr)
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
+        children["major-lo"] = major_lo;
     }
 
-    if(children.find("minor-hi") == children.end())
+    if(minor_hi != nullptr)
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
+        children["minor-hi"] = minor_hi;
     }
 
-    if(children.find("minor-lo") == children.end())
+    if(minor_lo != nullptr)
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
+        children["minor-lo"] = minor_lo;
     }
 
     return children;
@@ -17893,7 +15584,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-lo"; yang_parent_name = "threshold";
 }
@@ -17922,7 +15612,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17945,41 +15635,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -18032,7 +15705,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18060,20 +15733,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18106,7 +15771,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-hi"; yang_parent_name = "threshold";
 }
@@ -18135,7 +15799,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18158,41 +15822,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -18245,7 +15892,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18273,20 +15920,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18319,7 +15958,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-hi"; yang_parent_name = "threshold";
 }
@@ -18348,7 +15986,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18371,41 +16009,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -18458,7 +16079,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18486,20 +16107,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18532,7 +16145,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-hi"; yang_parent_name = "threshold";
 }
@@ -18561,7 +16173,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18584,41 +16196,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -18671,7 +16266,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18699,20 +16294,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18745,7 +16332,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-lo"; yang_parent_name = "threshold";
 }
@@ -18774,7 +16360,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18797,41 +16383,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -18884,7 +16453,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18912,20 +16481,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18958,7 +16519,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-lo"; yang_parent_name = "threshold";
 }
@@ -18987,7 +16547,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19010,41 +16570,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -19097,7 +16640,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19125,20 +16668,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19180,10 +16715,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::LastOperationalStateChange>())
 {
     card_up_time->parent = this;
-    children["card-up-time"] = card_up_time;
 
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -19228,7 +16761,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19258,64 +16791,38 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "card-up-time")
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
-        else
+        if(card_up_time == nullptr)
         {
             card_up_time = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::CardUpTime>();
-            card_up_time->parent = this;
-            children["card-up-time"] = card_up_time;
         }
-        return children.at("card-up-time");
+        return card_up_time;
     }
 
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::get_children() const
 {
-    if(children.find("card-up-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(card_up_time != nullptr)
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
+        children["card-up-time"] = card_up_time;
     }
 
-    if(children.find("last-operational-state-change") == children.end())
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
     return children;
@@ -19387,7 +16894,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19412,20 +16919,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19475,7 +16974,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19500,20 +16999,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::CardUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo::CardUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19635,7 +17126,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19684,20 +17175,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19820,7 +17303,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     eeprom(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
-    children["eeprom"] = eeprom;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes";
 }
@@ -19859,7 +17341,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19887,41 +17369,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "eeprom")
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
-        else
+        if(eeprom == nullptr)
         {
             eeprom = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom>();
-            eeprom->parent = this;
-            children["eeprom"] = eeprom;
         }
-        return children.at("eeprom");
+        return eeprom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::get_children() const
 {
-    if(children.find("eeprom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(eeprom != nullptr)
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
+        children["eeprom"] = eeprom;
     }
 
     return children;
@@ -20013,7 +17478,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     rma(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info";
 }
@@ -20154,7 +17618,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20233,41 +17697,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -20538,7 +17985,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20564,20 +18011,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20614,28 +18053,20 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold>())
 {
     env_sensor_info->parent = this;
-    children["env-sensor-info"] = env_sensor_info;
 
     env_sensor_info_xml->parent = this;
-    children["env-sensor-info-xml"] = env_sensor_info_xml;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     inv_asset_bag->parent = this;
-    children["inv-asset-bag"] = inv_asset_bag;
 
     inv_basic_bag->parent = this;
-    children["inv-basic-bag"] = inv_basic_bag;
 
     inv_eeprom_info->parent = this;
-    children["inv-eeprom-info"] = inv_eeprom_info;
 
     pwg_info->parent = this;
-    children["pwg-info"] = pwg_info;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "attributes"; yang_parent_name = "tsi7";
 }
@@ -20686,7 +18117,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20713,202 +18144,122 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "env-sensor-info")
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
-        else
+        if(env_sensor_info == nullptr)
         {
             env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo>();
-            env_sensor_info->parent = this;
-            children["env-sensor-info"] = env_sensor_info;
         }
-        return children.at("env-sensor-info");
+        return env_sensor_info;
     }
 
     if(child_yang_name == "env-sensor-info-xml")
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
-        else
+        if(env_sensor_info_xml == nullptr)
         {
             env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml>();
-            env_sensor_info_xml->parent = this;
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
         }
-        return children.at("env-sensor-info-xml");
+        return env_sensor_info_xml;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     if(child_yang_name == "inv-asset-bag")
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
-        else
+        if(inv_asset_bag == nullptr)
         {
             inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag>();
-            inv_asset_bag->parent = this;
-            children["inv-asset-bag"] = inv_asset_bag;
         }
-        return children.at("inv-asset-bag");
+        return inv_asset_bag;
     }
 
     if(child_yang_name == "inv-basic-bag")
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
-        else
+        if(inv_basic_bag == nullptr)
         {
             inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag>();
-            inv_basic_bag->parent = this;
-            children["inv-basic-bag"] = inv_basic_bag;
         }
-        return children.at("inv-basic-bag");
+        return inv_basic_bag;
     }
 
     if(child_yang_name == "inv-eeprom-info")
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
-        else
+        if(inv_eeprom_info == nullptr)
         {
             inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvEepromInfo>();
-            inv_eeprom_info->parent = this;
-            children["inv-eeprom-info"] = inv_eeprom_info;
         }
-        return children.at("inv-eeprom-info");
+        return inv_eeprom_info;
     }
 
     if(child_yang_name == "pwg-info")
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
-        else
+        if(pwg_info == nullptr)
         {
             pwg_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::PwgInfo>();
-            pwg_info->parent = this;
-            children["pwg-info"] = pwg_info;
         }
-        return children.at("pwg-info");
+        return pwg_info;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::get_children() const
 {
-    if(children.find("env-sensor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(env_sensor_info != nullptr)
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
+        children["env-sensor-info"] = env_sensor_info;
     }
 
-    if(children.find("env-sensor-info-xml") == children.end())
+    if(env_sensor_info_xml != nullptr)
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
+        children["env-sensor-info-xml"] = env_sensor_info_xml;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
-    if(children.find("inv-asset-bag") == children.end())
+    if(inv_asset_bag != nullptr)
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
+        children["inv-asset-bag"] = inv_asset_bag;
     }
 
-    if(children.find("inv-basic-bag") == children.end())
+    if(inv_basic_bag != nullptr)
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
+        children["inv-basic-bag"] = inv_basic_bag;
     }
 
-    if(children.find("inv-eeprom-info") == children.end())
+    if(inv_eeprom_info != nullptr)
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
+        children["inv-eeprom-info"] = inv_eeprom_info;
     }
 
-    if(children.find("pwg-info") == children.end())
+    if(pwg_info != nullptr)
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
+        children["pwg-info"] = pwg_info;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -20998,7 +18349,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21033,20 +18384,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21142,7 +18485,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21169,20 +18512,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::PwgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::PwgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21218,7 +18553,6 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
     threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes";
 }
@@ -21259,7 +18593,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21288,41 +18622,24 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -21394,7 +18711,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21417,15 +18734,6 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-array")
     {
         for(auto const & c : threshold_array)
@@ -21433,28 +18741,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
-        threshold_array.push_back(std::move(c));
-        children[segment_path] = threshold_array.back();
-        return children.at(segment_path);
+        threshold_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21504,7 +18808,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21531,20 +18835,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21617,7 +18913,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21647,20 +18943,12 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21706,22 +18994,16 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Ts
 	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MinorLo>())
 {
     critical_hi->parent = this;
-    children["critical-hi"] = critical_hi;
 
     critical_lo->parent = this;
-    children["critical-lo"] = critical_lo;
 
     major_hi->parent = this;
-    children["major-hi"] = major_hi;
 
     major_lo->parent = this;
-    children["major-lo"] = major_lo;
 
     minor_hi->parent = this;
-    children["minor-hi"] = minor_hi;
 
     minor_lo->parent = this;
-    children["minor-lo"] = minor_lo;
 
     yang_name = "threshold"; yang_parent_name = "attributes";
 }
@@ -21760,7 +19042,7 @@ std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi
 
 }
 
-EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21783,156 +19065,94 @@ EntityPath Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical-hi")
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
-        else
+        if(critical_hi == nullptr)
         {
             critical_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::CriticalHi>();
-            critical_hi->parent = this;
-            children["critical-hi"] = critical_hi;
         }
-        return children.at("critical-hi");
+        return critical_hi;
     }
 
     if(child_yang_name == "critical-lo")
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
-        else
+        if(critical_lo == nullptr)
         {
             critical_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::CriticalLo>();
-            critical_lo->parent = this;
-            children["critical-lo"] = critical_lo;
         }
-        return children.at("critical-lo");
+        return critical_lo;
     }
 
     if(child_yang_name == "major-hi")
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
-        else
+        if(major_hi == nullptr)
         {
             major_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MajorHi>();
-            major_hi->parent = this;
-            children["major-hi"] = major_hi;
         }
-        return children.at("major-hi");
+        return major_hi;
     }
 
     if(child_yang_name == "major-lo")
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
-        else
+        if(major_lo == nullptr)
         {
             major_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MajorLo>();
-            major_lo->parent = this;
-            children["major-lo"] = major_lo;
         }
-        return children.at("major-lo");
+        return major_lo;
     }
 
     if(child_yang_name == "minor-hi")
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
-        else
+        if(minor_hi == nullptr)
         {
             minor_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MinorHi>();
-            minor_hi->parent = this;
-            children["minor-hi"] = minor_hi;
         }
-        return children.at("minor-hi");
+        return minor_hi;
     }
 
     if(child_yang_name == "minor-lo")
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
-        else
+        if(minor_lo == nullptr)
         {
             minor_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MinorLo>();
-            minor_lo->parent = this;
-            children["minor-lo"] = minor_lo;
         }
-        return children.at("minor-lo");
+        return minor_lo;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_children() const
 {
-    if(children.find("critical-hi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical_hi != nullptr)
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
+        children["critical-hi"] = critical_hi;
     }
 
-    if(children.find("critical-lo") == children.end())
+    if(critical_lo != nullptr)
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
+        children["critical-lo"] = critical_lo;
     }
 
-    if(children.find("major-hi") == children.end())
+    if(major_hi != nullptr)
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
+        children["major-hi"] = major_hi;
     }
 
-    if(children.find("major-lo") == children.end())
+    if(major_lo != nullptr)
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
+        children["major-lo"] = major_lo;
     }
 
-    if(children.find("minor-hi") == children.end())
+    if(minor_hi != nullptr)
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
+        children["minor-hi"] = minor_hi;
     }
 
-    if(children.find("minor-lo") == children.end())
+    if(minor_lo != nullptr)
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
+        children["minor-lo"] = minor_lo;
     }
 
     return children;

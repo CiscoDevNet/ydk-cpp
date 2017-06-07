@@ -15,10 +15,8 @@ Grpc::Grpc()
 	,status(std::make_shared<Grpc::Status>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     status->parent = this;
-    children["status"] = status;
 
     yang_name = "grpc"; yang_parent_name = "Cisco-IOS-XR-man-ems-oper";
 }
@@ -49,12 +47,12 @@ std::string Grpc::get_segment_path() const
 
 }
 
-EntityPath Grpc::get_entity_path(Entity* ancestor) const
+const EntityPath Grpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath Grpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Grpc::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "status")
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
-        else
+        if(status == nullptr)
         {
             status = std::make_shared<Grpc::Status>();
-            status->parent = this;
-            children["status"] = status;
         }
-        return children.at("status");
+        return status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grpc::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("status") == children.end())
+    if(status != nullptr)
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
+        children["status"] = status;
     }
 
     return children;
@@ -256,7 +228,7 @@ std::string Grpc::Statistics::get_segment_path() const
 
 }
 
-EntityPath Grpc::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Grpc::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,20 +275,12 @@ EntityPath Grpc::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grpc::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grpc::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grpc::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -520,7 +484,7 @@ std::string Grpc::Status::get_segment_path() const
 
 }
 
-EntityPath Grpc::Status::get_entity_path(Entity* ancestor) const
+const EntityPath Grpc::Status::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -567,20 +531,12 @@ EntityPath Grpc::Status::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grpc::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grpc::Status::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grpc::Status::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

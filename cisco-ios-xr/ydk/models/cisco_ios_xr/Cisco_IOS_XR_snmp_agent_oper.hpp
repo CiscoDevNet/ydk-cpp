@@ -19,17 +19,15 @@ class Snmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class TrapServers; //type: Snmp::TrapServers
         class Information; //type: Snmp::Information
@@ -50,8 +48,7 @@ class Snmp : public Entity
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib> sensor_mib;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::TrapServers> trap_servers;
-
-
+        
 }; // Snmp
 
 
@@ -63,19 +60,16 @@ class Snmp::TrapServers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrapServer; //type: Snmp::TrapServers::TrapServer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::TrapServers::TrapServer> > trap_server;
-
-
+        
 }; // Snmp::TrapServers
 
 
@@ -87,12 +81,11 @@ class Snmp::TrapServers::TrapServer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_host; //type: string
         YLeaf port; //type: uint16
@@ -100,8 +93,6 @@ class Snmp::TrapServers::TrapServer : public Entity
         YLeaf max_q_length_of_trap_q; //type: uint32
         YLeaf number_of_pkts_sent; //type: uint32
         YLeaf number_of_pkts_dropped; //type: uint32
-
-
 
 }; // Snmp::TrapServers::TrapServer
 
@@ -114,13 +105,11 @@ class Snmp::Information : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Hosts; //type: Snmp::Information::Hosts
         class SystemUpTime; //type: Snmp::Information::SystemUpTime
@@ -173,8 +162,7 @@ class Snmp::Information : public Entity
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapOids> trap_oids;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapQueue> trap_queue;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Views> views;
-
-
+        
 }; // Snmp::Information
 
 
@@ -186,19 +174,16 @@ class Snmp::Information::Hosts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Host; //type: Snmp::Information::Hosts::Host
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Hosts::Host> > host;
-
-
+        
 }; // Snmp::Information::Hosts
 
 
@@ -210,20 +195,17 @@ class Snmp::Information::Hosts::Host : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class HostInformation; //type: Snmp::Information::Hosts::Host::HostInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Hosts::Host::HostInformation> > host_information;
-
-
+        
 }; // Snmp::Information::Hosts::Host
 
 
@@ -235,12 +217,11 @@ class Snmp::Information::Hosts::Host::HostInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf user; //type: string
         YLeaf snmp_target_address_t_host; //type: string
@@ -249,8 +230,6 @@ class Snmp::Information::Hosts::Host::HostInformation : public Entity
         YLeaf snmp_target_params_security_model; //type: string
         YLeaf snmp_target_params_security_name; //type: string
         YLeaf snmp_target_params_security_level; //type: string
-
-
 
 }; // Snmp::Information::Hosts::Host::HostInformation
 
@@ -263,16 +242,13 @@ class Snmp::Information::SystemUpTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf system_up_time_edm; //type: string
-
-
 
 }; // Snmp::Information::SystemUpTime
 
@@ -285,19 +261,16 @@ class Snmp::Information::NmsAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NmsAddress; //type: Snmp::Information::NmsAddresses::NmsAddress
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::NmsAddresses::NmsAddress> > nms_address;
-
-
+        
 }; // Snmp::Information::NmsAddresses
 
 
@@ -309,12 +282,11 @@ class Snmp::Information::NmsAddresses::NmsAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nms_addr; //type: string
         YLeaf nms_address; //type: string
@@ -323,8 +295,6 @@ class Snmp::Information::NmsAddresses::NmsAddress : public Entity
         YLeaf getbulk_request_count; //type: uint32
         YLeaf set_request_count; //type: uint32
         YLeaf test_request_count; //type: uint32
-
-
 
 }; // Snmp::Information::NmsAddresses::NmsAddress
 
@@ -337,16 +307,13 @@ class Snmp::Information::EngineId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf engine_id; //type: string
-
-
 
 }; // Snmp::Information::EngineId
 
@@ -359,12 +326,11 @@ class Snmp::Information::RxQueue : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf qlen; //type: uint32
         YLeaf in_min; //type: uint32
@@ -375,8 +341,6 @@ class Snmp::Information::RxQueue : public Entity
         YLeaf pend_max; //type: uint32
         YLeaf incoming_q; //type: string
         YLeaf pending_q; //type: string
-
-
 
 }; // Snmp::Information::RxQueue
 
@@ -389,16 +353,13 @@ class Snmp::Information::SystemName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf system_name; //type: string
-
-
 
 }; // Snmp::Information::SystemName
 
@@ -411,19 +372,16 @@ class Snmp::Information::RequestTypeDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NmsAddresses; //type: Snmp::Information::RequestTypeDetail::NmsAddresses
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::RequestTypeDetail::NmsAddresses> nms_addresses;
-
-
+        
 }; // Snmp::Information::RequestTypeDetail
 
 
@@ -435,19 +393,16 @@ class Snmp::Information::RequestTypeDetail::NmsAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NmsAddress; //type: Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress> > nms_address;
-
-
+        
 }; // Snmp::Information::RequestTypeDetail::NmsAddresses
 
 
@@ -459,12 +414,11 @@ class Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nms_addr; //type: string
         YLeaf total_count; //type: uint32
@@ -473,8 +427,6 @@ class Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress : public En
         YLeaf entity_request_count; //type: uint32
         YLeaf route_request_count; //type: uint32
         YLeaf infra_request_count; //type: uint32
-
-
 
 }; // Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress
 
@@ -487,12 +439,11 @@ class Snmp::Information::DuplicateDrop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf duplicate_request_status; //type: DupReqDropStatusEnum
         YLeaf last_status_change_time; //type: string
@@ -506,8 +457,6 @@ class Snmp::Information::DuplicateDrop : public Entity
         YLeaf duplicate_drop_enable_count; //type: uint32
         YLeaf duplicate_drop_disable_count; //type: uint32
 
-
-
 }; // Snmp::Information::DuplicateDrop
 
 
@@ -519,19 +468,16 @@ class Snmp::Information::BulkStatsTransfers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BulkStatsTransfer; //type: Snmp::Information::BulkStatsTransfers::BulkStatsTransfer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::BulkStatsTransfers::BulkStatsTransfer> > bulk_stats_transfer;
-
-
+        
 }; // Snmp::Information::BulkStatsTransfers
 
 
@@ -543,12 +489,11 @@ class Snmp::Information::BulkStatsTransfers::BulkStatsTransfer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transfer_name; //type: string
         YLeaf transfer_name_xr; //type: string
@@ -557,8 +502,6 @@ class Snmp::Information::BulkStatsTransfers::BulkStatsTransfer : public Entity
         YLeaf retained_file; //type: string
         YLeaf time_left; //type: uint32
         YLeaf retry_left; //type: uint32
-
-
 
 }; // Snmp::Information::BulkStatsTransfers::BulkStatsTransfer
 
@@ -571,19 +514,16 @@ class Snmp::Information::TrapInfos : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrapInfo; //type: Snmp::Information::TrapInfos::TrapInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapInfos::TrapInfo> > trap_info;
-
-
+        
 }; // Snmp::Information::TrapInfos
 
 
@@ -595,24 +535,21 @@ class Snmp::Information::TrapInfos::TrapInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_host; //type: string
         YLeaf port; //type: uint16
         YLeaf host; //type: string
         YLeaf port_xr; //type: uint16
         YLeaf trap_oid_count; //type: uint32
-
         class TrapOiDinfo; //type: Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo> > trap_oi_dinfo;
-
-
+        
 }; // Snmp::Information::TrapInfos::TrapInfo
 
 
@@ -624,12 +561,11 @@ class Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_oid; //type: string
         YLeaf count; //type: uint32
@@ -637,8 +573,6 @@ class Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo : public Entity
         YLeaf retry_count; //type: uint32
         YLeaf lastsent_time; //type: string
         YLeaf lasrdrop_time; //type: string
-
-
 
 }; // Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo
 
@@ -651,19 +585,16 @@ class Snmp::Information::PollOids : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PollOid; //type: Snmp::Information::PollOids::PollOid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::PollOids::PollOid> > poll_oid;
-
-
+        
 }; // Snmp::Information::PollOids
 
 
@@ -675,19 +606,16 @@ class Snmp::Information::PollOids::PollOid : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_id; //type: string
         YLeaf nms_count; //type: uint32
         YLeafList nms; //type: list of  string
         YLeafList request_count; //type: list of  uint32
-
-
 
 }; // Snmp::Information::PollOids::PollOid
 
@@ -700,19 +628,16 @@ class Snmp::Information::InfomDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InfomDetail; //type: Snmp::Information::InfomDetails::InfomDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::InfomDetails::InfomDetail> > infom_detail;
-
-
+        
 }; // Snmp::Information::InfomDetails
 
 
@@ -724,24 +649,21 @@ class Snmp::Information::InfomDetails::InfomDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_host; //type: string
         YLeaf port; //type: uint16
         YLeaf host; //type: string
         YLeaf port_xr; //type: uint16
         YLeaf trap_oid_count; //type: uint32
-
         class TrapOiDinfo; //type: Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo> > trap_oi_dinfo;
-
-
+        
 }; // Snmp::Information::InfomDetails::InfomDetail
 
 
@@ -753,12 +675,11 @@ class Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_oid; //type: string
         YLeaf count; //type: uint32
@@ -766,8 +687,6 @@ class Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo : public Entity
         YLeaf retry_count; //type: uint32
         YLeaf lastsent_time; //type: string
         YLeaf lasrdrop_time; //type: string
-
-
 
 }; // Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo
 
@@ -780,12 +699,11 @@ class Snmp::Information::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint32
         YLeaf bad_versions_received; //type: uint32
@@ -818,8 +736,6 @@ class Snmp::Information::Statistics : public Entity
         YLeaf get_responses_sent; //type: uint32
         YLeaf traps_sent; //type: uint32
 
-
-
 }; // Snmp::Information::Statistics
 
 
@@ -831,20 +747,17 @@ class Snmp::Information::IncomingQueue : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_count; //type: uint32
-
         class InqEntry; //type: Snmp::Information::IncomingQueue::InqEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::IncomingQueue::InqEntry> > inq_entry;
-
-
+        
 }; // Snmp::Information::IncomingQueue
 
 
@@ -856,20 +769,17 @@ class Snmp::Information::IncomingQueue::InqEntry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address_of_queue; //type: string
         YLeaf request_count; //type: uint32
         YLeaf processed_request_count; //type: uint32
         YLeaf last_access_time; //type: string
         YLeaf priority; //type: uint8
-
-
 
 }; // Snmp::Information::IncomingQueue::InqEntry
 
@@ -882,19 +792,16 @@ class Snmp::Information::ContextMapping : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ContexMapping; //type: Snmp::Information::ContextMapping::ContexMapping
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::ContextMapping::ContexMapping> > contex_mapping;
-
-
+        
 }; // Snmp::Information::ContextMapping
 
 
@@ -906,20 +813,17 @@ class Snmp::Information::ContextMapping::ContexMapping : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf context; //type: string
         YLeaf feature_name; //type: string
         YLeaf instance; //type: string
         YLeaf topology; //type: string
         YLeaf feature; //type: string
-
-
 
 }; // Snmp::Information::ContextMapping::ContexMapping
 
@@ -932,19 +836,16 @@ class Snmp::Information::TrapOids : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrapOid; //type: Snmp::Information::TrapOids::TrapOid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::TrapOids::TrapOid> > trap_oid;
-
-
+        
 }; // Snmp::Information::TrapOids
 
 
@@ -956,18 +857,15 @@ class Snmp::Information::TrapOids::TrapOid : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_oid; //type: string
         YLeaf trap_oid_count; //type: uint32
         YLeaf trap_oid_xr; //type: string
-
-
 
 }; // Snmp::Information::TrapOids::TrapOid
 
@@ -980,19 +878,16 @@ class Snmp::Information::NmSpackets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NmSpacket; //type: Snmp::Information::NmSpackets::NmSpacket
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::NmSpackets::NmSpacket> > nm_spacket;
-
-
+        
 }; // Snmp::Information::NmSpackets
 
 
@@ -1004,20 +899,17 @@ class Snmp::Information::NmSpackets::NmSpacket : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packetcount; //type: string
         YLeaf number_of_nmsq_pkts_dropped; //type: uint32
         YLeaf number_of_pkts_dropped; //type: uint32
         YLeaf overload_start_time; //type: string
         YLeaf overload_end_time; //type: string
-
-
 
 }; // Snmp::Information::NmSpackets::NmSpacket
 
@@ -1030,19 +922,16 @@ class Snmp::Information::Mibs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Mib; //type: Snmp::Information::Mibs::Mib
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Mibs::Mib> > mib;
-
-
+        
 }; // Snmp::Information::Mibs
 
 
@@ -1054,22 +943,19 @@ class Snmp::Information::Mibs::Mib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Oids; //type: Snmp::Information::Mibs::Mib::Oids
         class MibInformation; //type: Snmp::Information::Mibs::Mib::MibInformation
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Mibs::Mib::MibInformation> mib_information;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Mibs::Mib::Oids> oids;
-
-
+        
 }; // Snmp::Information::Mibs::Mib
 
 
@@ -1081,19 +967,16 @@ class Snmp::Information::Mibs::Mib::Oids : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Oid; //type: Snmp::Information::Mibs::Mib::Oids::Oid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Mibs::Mib::Oids::Oid> > oid;
-
-
+        
 }; // Snmp::Information::Mibs::Mib::Oids
 
 
@@ -1105,17 +988,14 @@ class Snmp::Information::Mibs::Mib::Oids::Oid : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oid; //type: string
         YLeaf oid_name; //type: string
-
-
 
 }; // Snmp::Information::Mibs::Mib::Oids::Oid
 
@@ -1128,12 +1008,11 @@ class Snmp::Information::Mibs::Mib::MibInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mib_name; //type: string
         YLeaf dll_name; //type: string
@@ -1143,8 +1022,6 @@ class Snmp::Information::Mibs::Mib::MibInformation : public Entity
         YLeaf trap_strings; //type: string
         YLeaf timeout; //type: boolean
         YLeaf load_time; //type: uint32
-
-
 
 }; // Snmp::Information::Mibs::Mib::MibInformation
 
@@ -1157,19 +1034,16 @@ class Snmp::Information::SerialNumbers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SerialNumber; //type: Snmp::Information::SerialNumbers::SerialNumber
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::SerialNumbers::SerialNumber> > serial_number;
-
-
+        
 }; // Snmp::Information::SerialNumbers
 
 
@@ -1181,12 +1055,11 @@ class Snmp::Information::SerialNumbers::SerialNumber : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: string
         YLeaf req_id; //type: int32
@@ -1202,8 +1075,6 @@ class Snmp::Information::SerialNumbers::SerialNumber : public Entity
         YLeaf pending_q; //type: uint32
         YLeaf response_out; //type: uint32
 
-
-
 }; // Snmp::Information::SerialNumbers::SerialNumber
 
 
@@ -1215,19 +1086,16 @@ class Snmp::Information::DropNmsAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DropNmsAddress; //type: Snmp::Information::DropNmsAddresses::DropNmsAddress
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::DropNmsAddresses::DropNmsAddress> > drop_nms_address;
-
-
+        
 }; // Snmp::Information::DropNmsAddresses
 
 
@@ -1239,12 +1107,11 @@ class Snmp::Information::DropNmsAddresses::DropNmsAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nms_addr; //type: string
         YLeaf nms_address; //type: string
@@ -1258,8 +1125,6 @@ class Snmp::Information::DropNmsAddresses::DropNmsAddress : public Entity
         YLeaf timeout_count; //type: uint32
         YLeaf internal_count; //type: uint32
 
-
-
 }; // Snmp::Information::DropNmsAddresses::DropNmsAddress
 
 
@@ -1271,19 +1136,16 @@ class Snmp::Information::Views : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class View; //type: Snmp::Information::Views::View
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Views::View> > view;
-
-
+        
 }; // Snmp::Information::Views
 
 
@@ -1295,20 +1157,17 @@ class Snmp::Information::Views::View : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class ViewInformation; //type: Snmp::Information::Views::View::ViewInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Views::View::ViewInformation> > view_information;
-
-
+        
 }; // Snmp::Information::Views::View
 
 
@@ -1320,19 +1179,16 @@ class Snmp::Information::Views::View::ViewInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_id; //type: string
         YLeaf snmp_view_family_type; //type: string
         YLeaf snmp_view_family_storage_type; //type: string
         YLeaf snmp_view_family_status; //type: string
-
-
 
 }; // Snmp::Information::Views::View::ViewInformation
 
@@ -1345,16 +1201,13 @@ class Snmp::Information::SystemDescr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sys_descr; //type: string
-
-
 
 }; // Snmp::Information::SystemDescr
 
@@ -1367,21 +1220,18 @@ class Snmp::Information::Tables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Groups; //type: Snmp::Information::Tables::Groups
         class UserEngineIds; //type: Snmp::Information::Tables::UserEngineIds
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::Groups> groups;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::UserEngineIds> user_engine_ids;
-
-
+        
 }; // Snmp::Information::Tables
 
 
@@ -1393,19 +1243,16 @@ class Snmp::Information::Tables::Groups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Group; //type: Snmp::Information::Tables::Groups::Group
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::Groups::Group> > group;
-
-
+        
 }; // Snmp::Information::Tables::Groups
 
 
@@ -1417,20 +1264,17 @@ class Snmp::Information::Tables::Groups::Group : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class GroupInformations; //type: Snmp::Information::Tables::Groups::Group::GroupInformations
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::Groups::Group::GroupInformations> group_informations;
-
-
+        
 }; // Snmp::Information::Tables::Groups::Group
 
 
@@ -1442,19 +1286,16 @@ class Snmp::Information::Tables::Groups::Group::GroupInformations : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GroupInformation; //type: Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation> > group_information;
-
-
+        
 }; // Snmp::Information::Tables::Groups::Group::GroupInformations
 
 
@@ -1466,12 +1307,11 @@ class Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf modelnumber; //type: string
         YLeaf level; //type: string
@@ -1479,8 +1319,6 @@ class Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformat
         YLeaf vacm_access_write_view_name; //type: string
         YLeaf vacm_access_notify_view_name; //type: string
         YLeaf vacm_access_status; //type: uint32
-
-
 
 }; // Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation
 
@@ -1493,19 +1331,16 @@ class Snmp::Information::Tables::UserEngineIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UserEngineId; //type: Snmp::Information::Tables::UserEngineIds::UserEngineId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::UserEngineIds::UserEngineId> > user_engine_id;
-
-
+        
 }; // Snmp::Information::Tables::UserEngineIds
 
 
@@ -1517,20 +1352,17 @@ class Snmp::Information::Tables::UserEngineIds::UserEngineId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf engine_id; //type: string
-
         class UserName; //type: Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName> > user_name;
-
-
+        
 }; // Snmp::Information::Tables::UserEngineIds::UserEngineId
 
 
@@ -1542,18 +1374,15 @@ class Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf user_name; //type: string
         YLeaf usm_user_storage_type; //type: uint32
         YLeaf usm_user_status; //type: uint32
-
-
 
 }; // Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName
 
@@ -1566,16 +1395,13 @@ class Snmp::Information::SystemOid : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sys_obj_id; //type: string
-
-
 
 }; // Snmp::Information::SystemOid
 
@@ -1588,19 +1414,16 @@ class Snmp::Information::TrapQueue : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_min; //type: uint32
         YLeaf trap_avg; //type: uint32
         YLeaf trap_max; //type: uint32
         YLeaf trap_q; //type: string
-
-
 
 }; // Snmp::Information::TrapQueue
 
@@ -1613,19 +1436,16 @@ class Snmp::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Snmp::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Interfaces::Interface> > interface;
-
-
+        
 }; // Snmp::Interfaces
 
 
@@ -1637,17 +1457,14 @@ class Snmp::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf interface_index; //type: int32
-
-
 
 }; // Snmp::Interfaces::Interface
 
@@ -1660,13 +1477,11 @@ class Snmp::Correlator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleDetails; //type: Snmp::Correlator::RuleDetails
         class BufferStatus; //type: Snmp::Correlator::BufferStatus
@@ -1677,8 +1492,7 @@ class Snmp::Correlator : public Entity
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails> rule_details;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleSetDetails> rule_set_details;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::Traps> traps;
-
-
+        
 }; // Snmp::Correlator
 
 
@@ -1690,19 +1504,16 @@ class Snmp::Correlator::RuleDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleDetail; //type: Snmp::Correlator::RuleDetails::RuleDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail> > rule_detail;
-
-
+        
 }; // Snmp::Correlator::RuleDetails
 
 
@@ -1714,16 +1525,14 @@ class Snmp::Correlator::RuleDetails::RuleDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf timeout; //type: uint32
-
         class RuleSummary; //type: Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary
         class RootCause; //type: Snmp::Correlator::RuleDetails::RuleDetail::RootCause
         class NonRootcaus; //type: Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus
@@ -1733,8 +1542,7 @@ class Snmp::Correlator::RuleDetails::RuleDetail : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus> > non_rootcaus;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RootCause> root_cause;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary> rule_summary;
-
-
+        
 }; // Snmp::Correlator::RuleDetails::RuleDetail
 
 
@@ -1746,18 +1554,15 @@ class Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf rule_state; //type: SnmpCorrRuleStateEnum
         YLeaf buffered_traps_count; //type: uint32
-
-
 
 }; // Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary
 
@@ -1770,20 +1575,17 @@ class Snmp::Correlator::RuleDetails::RuleDetail::RootCause : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oid; //type: string
-
         class VarBind; //type: Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind> > var_bind;
-
-
+        
 }; // Snmp::Correlator::RuleDetails::RuleDetail::RootCause
 
 
@@ -1795,18 +1597,15 @@ class Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oid; //type: string
         YLeaf match_type; //type: SnmpCorrVbindMatchEnum
         YLeaf reg_exp; //type: string
-
-
 
 }; // Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind
 
@@ -1819,20 +1618,17 @@ class Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oid; //type: string
-
         class VarBind; //type: Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind> > var_bind;
-
-
+        
 }; // Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus
 
 
@@ -1844,18 +1640,15 @@ class Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oid; //type: string
         YLeaf match_type; //type: SnmpCorrVbindMatchEnum
         YLeaf reg_exp; //type: string
-
-
 
 }; // Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind
 
@@ -1868,17 +1661,14 @@ class Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip_address; //type: string
         YLeaf port; //type: uint16
-
-
 
 }; // Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost
 
@@ -1891,17 +1681,14 @@ class Snmp::Correlator::BufferStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf current_size; //type: uint32
         YLeaf configured_size; //type: uint32
-
-
 
 }; // Snmp::Correlator::BufferStatus
 
@@ -1914,19 +1701,16 @@ class Snmp::Correlator::RuleSetDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleSetDetail; //type: Snmp::Correlator::RuleSetDetails::RuleSetDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleSetDetails::RuleSetDetail> > rule_set_detail;
-
-
+        
 }; // Snmp::Correlator::RuleSetDetails
 
 
@@ -1938,21 +1722,18 @@ class Snmp::Correlator::RuleSetDetails::RuleSetDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_set_name; //type: string
         YLeaf rule_set_name_xr; //type: string
-
         class Rules; //type: Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules> > rules;
-
-
+        
 }; // Snmp::Correlator::RuleSetDetails::RuleSetDetail
 
 
@@ -1964,18 +1745,15 @@ class Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf rule_state; //type: SnmpCorrRuleStateEnum
         YLeaf buffered_traps_count; //type: uint32
-
-
 
 }; // Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules
 
@@ -1988,19 +1766,16 @@ class Snmp::Correlator::Traps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Trap; //type: Snmp::Correlator::Traps::Trap
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::Traps::Trap> > trap;
-
-
+        
 }; // Snmp::Correlator::Traps
 
 
@@ -2012,23 +1787,20 @@ class Snmp::Correlator::Traps::Trap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry_id; //type: int32
         YLeaf correlation_id; //type: uint32
         YLeaf is_root_cause; //type: boolean
         YLeaf rule_name; //type: string
-
         class TrapInfo; //type: Snmp::Correlator::Traps::Trap::TrapInfo
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::Traps::Trap::TrapInfo> trap_info;
-
-
+        
 }; // Snmp::Correlator::Traps::Trap
 
 
@@ -2040,22 +1812,19 @@ class Snmp::Correlator::Traps::Trap::TrapInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oid; //type: string
         YLeaf relative_timestamp; //type: uint32
         YLeaf timestamp; //type: uint64
-
         class VarBind; //type: Snmp::Correlator::Traps::Trap::TrapInfo::VarBind
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::Correlator::Traps::Trap::TrapInfo::VarBind> > var_bind;
-
-
+        
 }; // Snmp::Correlator::Traps::Trap::TrapInfo
 
 
@@ -2067,17 +1836,14 @@ class Snmp::Correlator::Traps::Trap::TrapInfo::VarBind : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oid; //type: string
         YLeaf value_; //type: string
-
-
 
 }; // Snmp::Correlator::Traps::Trap::TrapInfo::VarBind
 
@@ -2090,19 +1856,16 @@ class Snmp::InterfaceIndexes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceIndex; //type: Snmp::InterfaceIndexes::InterfaceIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceIndexes::InterfaceIndex> > interface_index;
-
-
+        
 }; // Snmp::InterfaceIndexes
 
 
@@ -2114,17 +1877,14 @@ class Snmp::InterfaceIndexes::InterfaceIndex : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_index; //type: int32
         YLeaf interface_name; //type: string
-
-
 
 }; // Snmp::InterfaceIndexes::InterfaceIndex
 
@@ -2137,19 +1897,16 @@ class Snmp::IfIndexes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IfIndex; //type: Snmp::IfIndexes::IfIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::IfIndexes::IfIndex> > if_index;
-
-
+        
 }; // Snmp::IfIndexes
 
 
@@ -2161,17 +1918,14 @@ class Snmp::IfIndexes::IfIndex : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_index; //type: int32
         YLeaf interface_name; //type: string
-
-
 
 }; // Snmp::IfIndexes::IfIndex
 
@@ -2184,19 +1938,16 @@ class Snmp::EntityMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EntityPhysicalIndexes; //type: Snmp::EntityMib::EntityPhysicalIndexes
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::EntityMib::EntityPhysicalIndexes> entity_physical_indexes;
-
-
+        
 }; // Snmp::EntityMib
 
 
@@ -2208,19 +1959,16 @@ class Snmp::EntityMib::EntityPhysicalIndexes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EntityPhysicalIndex; //type: Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex> > entity_physical_index;
-
-
+        
 }; // Snmp::EntityMib::EntityPhysicalIndexes
 
 
@@ -2232,12 +1980,11 @@ class Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entity_phynum; //type: string
         YLeaf physical_index; //type: uint32
@@ -2251,8 +1998,6 @@ class Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex : public Entit
         YLeaf ent_physical_software_rev; //type: string
         YLeaf ent_physical_mfg_name; //type: string
 
-
-
 }; // Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex
 
 
@@ -2264,13 +2009,11 @@ class Snmp::InterfaceMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interfaces; //type: Snmp::InterfaceMib::Interfaces
         class InterfaceConnectors; //type: Snmp::InterfaceMib::InterfaceConnectors
@@ -2283,8 +2026,7 @@ class Snmp::InterfaceMib : public Entity
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::InterfaceStackStatuses> interface_stack_statuses;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::NotificationInterfaces> notification_interfaces;
-
-
+        
 }; // Snmp::InterfaceMib
 
 
@@ -2296,19 +2038,16 @@ class Snmp::InterfaceMib::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Snmp::InterfaceMib::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::Interfaces::Interface> > interface;
-
-
+        
 }; // Snmp::InterfaceMib::Interfaces
 
 
@@ -2320,17 +2059,14 @@ class Snmp::InterfaceMib::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf if_index; //type: uint32
-
-
 
 }; // Snmp::InterfaceMib::Interfaces::Interface
 
@@ -2343,19 +2079,16 @@ class Snmp::InterfaceMib::InterfaceConnectors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceConnector; //type: Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector> > interface_connector;
-
-
+        
 }; // Snmp::InterfaceMib::InterfaceConnectors
 
 
@@ -2367,17 +2100,14 @@ class Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf if_connector_present; //type: string
-
-
 
 }; // Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector
 
@@ -2390,19 +2120,16 @@ class Snmp::InterfaceMib::InterfaceAliases : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceAlias; //type: Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias> > interface_alias;
-
-
+        
 }; // Snmp::InterfaceMib::InterfaceAliases
 
 
@@ -2414,17 +2141,14 @@ class Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf if_alias; //type: string
-
-
 
 }; // Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias
 
@@ -2437,19 +2161,16 @@ class Snmp::InterfaceMib::NotificationInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NotificationInterface; //type: Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface> > notification_interface;
-
-
+        
 }; // Snmp::InterfaceMib::NotificationInterfaces
 
 
@@ -2461,17 +2182,14 @@ class Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf link_up_down_notif_status; //type: LinkUpDownStatusEnum
-
-
 
 }; // Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface
 
@@ -2484,19 +2202,16 @@ class Snmp::InterfaceMib::InterfaceStackStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceStackStatus; //type: Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus> > interface_stack_status;
-
-
+        
 }; // Snmp::InterfaceMib::InterfaceStackStatuses
 
 
@@ -2508,19 +2223,16 @@ class Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_stack_status; //type: string
         YLeaf if_stack_higher_layer; //type: string
         YLeaf if_stack_lower_layer; //type: string
         YLeaf if_stack_status; //type: string
-
-
 
 }; // Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus
 
@@ -2533,21 +2245,18 @@ class Snmp::SensorMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PhysicalIndexes; //type: Snmp::SensorMib::PhysicalIndexes
         class EntPhyIndexes; //type: Snmp::SensorMib::EntPhyIndexes
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::EntPhyIndexes> ent_phy_indexes;
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::PhysicalIndexes> physical_indexes;
-
-
+        
 }; // Snmp::SensorMib
 
 
@@ -2559,19 +2268,16 @@ class Snmp::SensorMib::PhysicalIndexes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PhysicalIndex; //type: Snmp::SensorMib::PhysicalIndexes::PhysicalIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::PhysicalIndexes::PhysicalIndex> > physical_index;
-
-
+        
 }; // Snmp::SensorMib::PhysicalIndexes
 
 
@@ -2583,20 +2289,17 @@ class Snmp::SensorMib::PhysicalIndexes::PhysicalIndex : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: string
-
         class ThresholdIndexes; //type: Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes> threshold_indexes;
-
-
+        
 }; // Snmp::SensorMib::PhysicalIndexes::PhysicalIndex
 
 
@@ -2608,19 +2311,16 @@ class Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThresholdIndex; //type: Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex> > threshold_index;
-
-
+        
 }; // Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes
 
 
@@ -2632,12 +2332,11 @@ class Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::Thresho
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf phy_index; //type: string
         YLeaf thre_index; //type: string
@@ -2646,8 +2345,6 @@ class Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::Thresho
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex
 
@@ -2660,19 +2357,16 @@ class Snmp::SensorMib::EntPhyIndexes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EntPhyIndex; //type: Snmp::SensorMib::EntPhyIndexes::EntPhyIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_oper::Snmp::SensorMib::EntPhyIndexes::EntPhyIndex> > ent_phy_index;
-
-
+        
 }; // Snmp::SensorMib::EntPhyIndexes
 
 
@@ -2684,12 +2378,11 @@ class Snmp::SensorMib::EntPhyIndexes::EntPhyIndex : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: string
         YLeaf field_validity_bitmap; //type: uint32
@@ -2705,8 +2398,6 @@ class Snmp::SensorMib::EntPhyIndexes::EntPhyIndex : public Entity
         YLeaf age_time_stamp; //type: uint32
         YLeaf update_rate; //type: uint32
         YLeaf measured_entity; //type: uint32
-
-
 
 }; // Snmp::SensorMib::EntPhyIndexes::EntPhyIndex
 

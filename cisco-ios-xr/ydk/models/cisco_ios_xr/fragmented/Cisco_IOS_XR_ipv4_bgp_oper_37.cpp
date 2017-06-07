@@ -41,7 +41,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -65,20 +65,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -122,16 +114,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr:
 	,rnh_addr(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RnhAddr>())
 {
     attr_set->parent = this;
-    children["attr-set"] = attr_set;
 
     common_attributes->parent = this;
-    children["common-attributes"] = common_attributes;
 
     ribrnh_ip->parent = this;
-    children["ribrnh-ip"] = ribrnh_ip;
 
     rnh_addr->parent = this;
-    children["rnh-addr"] = rnh_addr;
 
     yang_name = "attributes-after-policy-in"; yang_parent_name = "advertised-path";
 }
@@ -212,7 +200,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -258,110 +246,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attr-set")
     {
-        if(attr_set != nullptr)
-        {
-            children["attr-set"] = attr_set;
-        }
-        else
+        if(attr_set == nullptr)
         {
             attr_set = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet>();
-            attr_set->parent = this;
-            children["attr-set"] = attr_set;
         }
-        return children.at("attr-set");
+        return attr_set;
     }
 
     if(child_yang_name == "common-attributes")
     {
-        if(common_attributes != nullptr)
-        {
-            children["common-attributes"] = common_attributes;
-        }
-        else
+        if(common_attributes == nullptr)
         {
             common_attributes = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes>();
-            common_attributes->parent = this;
-            children["common-attributes"] = common_attributes;
         }
-        return children.at("common-attributes");
+        return common_attributes;
     }
 
     if(child_yang_name == "ribrnh-ip")
     {
-        if(ribrnh_ip != nullptr)
-        {
-            children["ribrnh-ip"] = ribrnh_ip;
-        }
-        else
+        if(ribrnh_ip == nullptr)
         {
             ribrnh_ip = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp>();
-            ribrnh_ip->parent = this;
-            children["ribrnh-ip"] = ribrnh_ip;
         }
-        return children.at("ribrnh-ip");
+        return ribrnh_ip;
     }
 
     if(child_yang_name == "rnh-addr")
     {
-        if(rnh_addr != nullptr)
-        {
-            children["rnh-addr"] = rnh_addr;
-        }
-        else
+        if(rnh_addr == nullptr)
         {
             rnh_addr = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RnhAddr>();
-            rnh_addr->parent = this;
-            children["rnh-addr"] = rnh_addr;
         }
-        return children.at("rnh-addr");
+        return rnh_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::get_children() const
 {
-    if(children.find("attr-set") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attr_set != nullptr)
     {
-        if(attr_set != nullptr)
-        {
-            children["attr-set"] = attr_set;
-        }
+        children["attr-set"] = attr_set;
     }
 
-    if(children.find("common-attributes") == children.end())
+    if(common_attributes != nullptr)
     {
-        if(common_attributes != nullptr)
-        {
-            children["common-attributes"] = common_attributes;
-        }
+        children["common-attributes"] = common_attributes;
     }
 
-    if(children.find("ribrnh-ip") == children.end())
+    if(ribrnh_ip != nullptr)
     {
-        if(ribrnh_ip != nullptr)
-        {
-            children["ribrnh-ip"] = ribrnh_ip;
-        }
+        children["ribrnh-ip"] = ribrnh_ip;
     }
 
-    if(children.find("rnh-addr") == children.end())
+    if(rnh_addr != nullptr)
     {
-        if(rnh_addr != nullptr)
-        {
-            children["rnh-addr"] = rnh_addr;
-        }
+        children["rnh-addr"] = rnh_addr;
     }
 
     return children;
@@ -507,10 +451,8 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr:
 	,sr_policy_binding_sid(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid>())
 {
     sr_policy_allocated_binding_sid->parent = this;
-    children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
 
     sr_policy_binding_sid->parent = this;
-    children["sr-policy-binding-sid"] = sr_policy_binding_sid;
 
     yang_name = "common-attributes"; yang_parent_name = "attributes-after-policy-in";
 }
@@ -725,7 +667,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -785,15 +727,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cluster")
     {
         for(auto const & c : cluster)
@@ -801,15 +734,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Cluster>();
         c->parent = this;
-        cluster.push_back(std::move(c));
-        children[segment_path] = cluster.back();
-        return children.at(segment_path);
+        cluster.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "community")
@@ -819,15 +750,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Community>();
         c->parent = this;
-        community.push_back(std::move(c));
-        children[segment_path] = community.back();
-        return children.at(segment_path);
+        community.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "connector-value")
@@ -837,15 +766,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue>();
         c->parent = this;
-        connector_value.push_back(std::move(c));
-        children[segment_path] = connector_value.back();
-        return children.at(segment_path);
+        connector_value.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "extended-community")
@@ -855,15 +782,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity>();
         c->parent = this;
-        extended_community.push_back(std::move(c));
-        children[segment_path] = extended_community.back();
-        return children.at(segment_path);
+        extended_community.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "l2tpv3-cookie")
@@ -873,15 +798,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::L2Tpv3Cookie>();
         c->parent = this;
-        l2tpv3_cookie.push_back(std::move(c));
-        children[segment_path] = l2tpv3_cookie.back();
-        return children.at(segment_path);
+        l2tpv3_cookie.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "label-index-attr")
@@ -891,15 +814,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LabelIndexAttr>();
         c->parent = this;
-        label_index_attr.push_back(std::move(c));
-        children[segment_path] = label_index_attr.back();
-        return children.at(segment_path);
+        label_index_attr.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ls-attr")
@@ -909,15 +830,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LsAttr>();
         c->parent = this;
-        ls_attr.push_back(std::move(c));
-        children[segment_path] = ls_attr.back();
-        return children.at(segment_path);
+        ls_attr.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pe-distinguisher-label")
@@ -927,15 +846,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel>();
         c->parent = this;
-        pe_distinguisher_label.push_back(std::move(c));
-        children[segment_path] = pe_distinguisher_label.back();
-        return children.at(segment_path);
+        pe_distinguisher_label.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pmsi-value")
@@ -945,45 +862,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue>();
         c->parent = this;
-        pmsi_value.push_back(std::move(c));
-        children[segment_path] = pmsi_value.back();
-        return children.at(segment_path);
+        pmsi_value.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sr-policy-allocated-binding-sid")
     {
-        if(sr_policy_allocated_binding_sid != nullptr)
-        {
-            children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
-        }
-        else
+        if(sr_policy_allocated_binding_sid == nullptr)
         {
             sr_policy_allocated_binding_sid = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid>();
-            sr_policy_allocated_binding_sid->parent = this;
-            children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
         }
-        return children.at("sr-policy-allocated-binding-sid");
+        return sr_policy_allocated_binding_sid;
     }
 
     if(child_yang_name == "sr-policy-binding-sid")
     {
-        if(sr_policy_binding_sid != nullptr)
-        {
-            children["sr-policy-binding-sid"] = sr_policy_binding_sid;
-        }
-        else
+        if(sr_policy_binding_sid == nullptr)
         {
             sr_policy_binding_sid = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid>();
-            sr_policy_binding_sid->parent = this;
-            children["sr-policy-binding-sid"] = sr_policy_binding_sid;
         }
-        return children.at("sr-policy-binding-sid");
+        return sr_policy_binding_sid;
     }
 
     if(child_yang_name == "sr-policy-explicit-path")
@@ -993,15 +896,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath>();
         c->parent = this;
-        sr_policy_explicit_path.push_back(std::move(c));
-        children[segment_path] = sr_policy_explicit_path.back();
-        return children.at(segment_path);
+        sr_policy_explicit_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "unknown-attribute")
@@ -1011,124 +912,84 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cluster)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : community)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : connector_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : extended_community)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : l2tpv3_cookie)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : label_index_attr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : ls_attr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pe_distinguisher_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pmsi_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("sr-policy-allocated-binding-sid") == children.end())
+    if(sr_policy_allocated_binding_sid != nullptr)
     {
-        if(sr_policy_allocated_binding_sid != nullptr)
-        {
-            children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
-        }
+        children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
     }
 
-    if(children.find("sr-policy-binding-sid") == children.end())
+    if(sr_policy_binding_sid != nullptr)
     {
-        if(sr_policy_binding_sid != nullptr)
-        {
-            children["sr-policy-binding-sid"] = sr_policy_binding_sid;
-        }
+        children["sr-policy-binding-sid"] = sr_policy_binding_sid;
     }
 
     for (auto const & c : sr_policy_explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1323,7 +1184,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1349,20 +1210,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1419,7 +1272,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1445,20 +1298,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1509,7 +1354,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Community::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Community::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1533,20 +1378,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Community::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Community::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1589,7 +1426,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1613,20 +1450,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1669,7 +1498,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1693,20 +1522,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1749,7 +1570,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1773,20 +1594,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1829,7 +1642,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::L2Tpv3Cookie::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::L2Tpv3Cookie::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1853,20 +1666,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::L2Tpv3Cookie::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::L2Tpv3Cookie::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::L2Tpv3Cookie::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1909,7 +1714,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1933,20 +1738,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1989,7 +1786,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2013,20 +1810,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2069,7 +1858,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2093,20 +1882,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2149,7 +1930,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LabelIndexAttr::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LabelIndexAttr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2173,20 +1954,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LabelIndexAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LabelIndexAttr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::LabelIndexAttr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2232,7 +2005,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2257,20 +2030,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2327,7 +2092,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2351,15 +2116,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sid")
     {
         for(auto const & c : sid)
@@ -2367,28 +2123,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid>();
         c->parent = this;
-        sid.push_back(std::move(c));
-        children[segment_path] = sid.back();
-        return children.at(segment_path);
+        sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2442,7 +2194,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2469,20 +2221,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2550,10 +2294,8 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr:
 	,sr_policy_binding_sid(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid>())
 {
     sr_policy_allocated_binding_sid->parent = this;
-    children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
 
     sr_policy_binding_sid->parent = this;
-    children["sr-policy-binding-sid"] = sr_policy_binding_sid;
 
     yang_name = "attr-set"; yang_parent_name = "attributes-after-policy-in";
 }
@@ -2768,7 +2510,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2828,15 +2570,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cluster")
     {
         for(auto const & c : cluster)
@@ -2844,15 +2577,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Cluster>();
         c->parent = this;
-        cluster.push_back(std::move(c));
-        children[segment_path] = cluster.back();
-        return children.at(segment_path);
+        cluster.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "community")
@@ -2862,15 +2593,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Community>();
         c->parent = this;
-        community.push_back(std::move(c));
-        children[segment_path] = community.back();
-        return children.at(segment_path);
+        community.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "connector-value")
@@ -2880,15 +2609,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ConnectorValue>();
         c->parent = this;
-        connector_value.push_back(std::move(c));
-        children[segment_path] = connector_value.back();
-        return children.at(segment_path);
+        connector_value.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "extended-community")
@@ -2898,15 +2625,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity>();
         c->parent = this;
-        extended_community.push_back(std::move(c));
-        children[segment_path] = extended_community.back();
-        return children.at(segment_path);
+        extended_community.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "l2tpv3-cookie")
@@ -2916,15 +2641,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::L2Tpv3Cookie>();
         c->parent = this;
-        l2tpv3_cookie.push_back(std::move(c));
-        children[segment_path] = l2tpv3_cookie.back();
-        return children.at(segment_path);
+        l2tpv3_cookie.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "label-index-attr")
@@ -2934,15 +2657,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LabelIndexAttr>();
         c->parent = this;
-        label_index_attr.push_back(std::move(c));
-        children[segment_path] = label_index_attr.back();
-        return children.at(segment_path);
+        label_index_attr.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ls-attr")
@@ -2952,15 +2673,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LsAttr>();
         c->parent = this;
-        ls_attr.push_back(std::move(c));
-        children[segment_path] = ls_attr.back();
-        return children.at(segment_path);
+        ls_attr.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pe-distinguisher-label")
@@ -2970,15 +2689,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel>();
         c->parent = this;
-        pe_distinguisher_label.push_back(std::move(c));
-        children[segment_path] = pe_distinguisher_label.back();
-        return children.at(segment_path);
+        pe_distinguisher_label.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pmsi-value")
@@ -2988,45 +2705,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PmsiValue>();
         c->parent = this;
-        pmsi_value.push_back(std::move(c));
-        children[segment_path] = pmsi_value.back();
-        return children.at(segment_path);
+        pmsi_value.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sr-policy-allocated-binding-sid")
     {
-        if(sr_policy_allocated_binding_sid != nullptr)
-        {
-            children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
-        }
-        else
+        if(sr_policy_allocated_binding_sid == nullptr)
         {
             sr_policy_allocated_binding_sid = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid>();
-            sr_policy_allocated_binding_sid->parent = this;
-            children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
         }
-        return children.at("sr-policy-allocated-binding-sid");
+        return sr_policy_allocated_binding_sid;
     }
 
     if(child_yang_name == "sr-policy-binding-sid")
     {
-        if(sr_policy_binding_sid != nullptr)
-        {
-            children["sr-policy-binding-sid"] = sr_policy_binding_sid;
-        }
-        else
+        if(sr_policy_binding_sid == nullptr)
         {
             sr_policy_binding_sid = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid>();
-            sr_policy_binding_sid->parent = this;
-            children["sr-policy-binding-sid"] = sr_policy_binding_sid;
         }
-        return children.at("sr-policy-binding-sid");
+        return sr_policy_binding_sid;
     }
 
     if(child_yang_name == "sr-policy-explicit-path")
@@ -3036,15 +2739,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath>();
         c->parent = this;
-        sr_policy_explicit_path.push_back(std::move(c));
-        children[segment_path] = sr_policy_explicit_path.back();
-        return children.at(segment_path);
+        sr_policy_explicit_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "unknown-attribute")
@@ -3054,124 +2755,84 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cluster)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : community)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : connector_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : extended_community)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : l2tpv3_cookie)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : label_index_attr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : ls_attr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pe_distinguisher_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pmsi_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("sr-policy-allocated-binding-sid") == children.end())
+    if(sr_policy_allocated_binding_sid != nullptr)
     {
-        if(sr_policy_allocated_binding_sid != nullptr)
-        {
-            children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
-        }
+        children["sr-policy-allocated-binding-sid"] = sr_policy_allocated_binding_sid;
     }
 
-    if(children.find("sr-policy-binding-sid") == children.end())
+    if(sr_policy_binding_sid != nullptr)
     {
-        if(sr_policy_binding_sid != nullptr)
-        {
-            children["sr-policy-binding-sid"] = sr_policy_binding_sid;
-        }
+        children["sr-policy-binding-sid"] = sr_policy_binding_sid;
     }
 
     for (auto const & c : sr_policy_explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3366,7 +3027,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3392,20 +3053,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3462,7 +3115,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3488,20 +3141,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3552,7 +3197,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Community::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Community::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3576,20 +3221,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Community::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Community::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3632,7 +3269,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3656,20 +3293,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3712,7 +3341,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3736,20 +3365,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3792,7 +3413,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Cluster::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Cluster::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3816,20 +3437,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Cluster::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Cluster::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::Cluster::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3872,7 +3485,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::L2Tpv3Cookie::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::L2Tpv3Cookie::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3896,20 +3509,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::L2Tpv3Cookie::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::L2Tpv3Cookie::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::L2Tpv3Cookie::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3952,7 +3557,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3976,20 +3581,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4032,7 +3629,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4056,20 +3653,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4112,7 +3701,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LsAttr::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LsAttr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4136,20 +3725,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LsAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LsAttr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LsAttr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4192,7 +3773,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LabelIndexAttr::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LabelIndexAttr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4216,20 +3797,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LabelIndexAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LabelIndexAttr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::LabelIndexAttr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4275,7 +3848,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4300,20 +3873,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4370,7 +3935,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4394,15 +3959,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sid")
     {
         for(auto const & c : sid)
@@ -4410,28 +3966,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid>();
         c->parent = this;
-        sid.push_back(std::move(c));
-        children[segment_path] = sid.back();
-        return children.at(segment_path);
+        sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4485,7 +4037,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4512,20 +4064,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4589,7 +4133,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RnhAddr::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RnhAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4616,20 +4160,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RnhAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RnhAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RnhAddr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4684,16 +4220,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr:
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "ribrnh-ip"; yang_parent_name = "attributes-after-policy-in";
 }
@@ -4772,7 +4304,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4817,110 +4349,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -5049,7 +4537,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5073,20 +4561,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5129,7 +4609,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5153,20 +4633,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5209,7 +4681,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5233,20 +4705,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5289,7 +4753,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Adver
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5313,20 +4777,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Advert
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5376,7 +4832,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5399,15 +4855,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sourced-network")
     {
         for(auto const & c : sourced_network)
@@ -5415,28 +4862,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork>();
         c->parent = this;
-        sourced_network.push_back(std::move(c));
-        children[segment_path] = sourced_network.back();
-        return children.at(segment_path);
+        sourced_network.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sourced_network)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5455,7 +4898,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::
     sourced_prefix(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix>())
 {
     sourced_prefix->parent = this;
-    children["sourced-prefix"] = sourced_prefix;
 
     yang_name = "sourced-network"; yang_parent_name = "sourced-networks";
 }
@@ -5490,7 +4932,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5516,41 +4958,24 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sourced-prefix")
     {
-        if(sourced_prefix != nullptr)
-        {
-            children["sourced-prefix"] = sourced_prefix;
-        }
-        else
+        if(sourced_prefix == nullptr)
         {
             sourced_prefix = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix>();
-            sourced_prefix->parent = this;
-            children["sourced-prefix"] = sourced_prefix;
         }
-        return children.at("sourced-prefix");
+        return sourced_prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::get_children() const
 {
-    if(children.find("sourced-prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sourced_prefix != nullptr)
     {
-        if(sourced_prefix != nullptr)
-        {
-            children["sourced-prefix"] = sourced_prefix;
-        }
+        children["sourced-prefix"] = sourced_prefix;
     }
 
     return children;
@@ -5579,7 +5004,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::
     prefix(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix>())
 {
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     yang_name = "sourced-prefix"; yang_parent_name = "sourced-network";
 }
@@ -5610,7 +5034,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5634,41 +5058,24 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::get_children() const
 {
-    if(children.find("prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
     return children;
@@ -5713,16 +5120,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "prefix"; yang_parent_name = "sourced-prefix";
 }
@@ -5801,7 +5204,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5846,110 +5249,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -6078,7 +5437,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6102,20 +5461,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6158,7 +5509,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6182,20 +5533,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6238,7 +5581,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6262,20 +5605,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6318,7 +5653,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Sourc
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6342,20 +5677,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Source
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::SourcedNetworks::SourcedNetwork::SourcedPrefix::Prefix::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6405,7 +5732,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6428,15 +5755,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "update-group")
     {
         for(auto const & c : update_group)
@@ -6444,28 +5762,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup>();
         c->parent = this;
-        update_group.push_back(std::move(c));
-        children[segment_path] = update_group.back();
-        return children.at(segment_path);
+        update_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : update_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6545,7 +5859,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::Upd
     performance_statistics(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::PerformanceStatistics>())
 {
     performance_statistics->parent = this;
-    children["performance-statistics"] = performance_statistics;
 
     yang_name = "update-group"; yang_parent_name = "update-groups";
 }
@@ -6722,7 +6035,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6809,15 +6122,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -6825,30 +6129,22 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "performance-statistics")
     {
-        if(performance_statistics != nullptr)
-        {
-            children["performance-statistics"] = performance_statistics;
-        }
-        else
+        if(performance_statistics == nullptr)
         {
             performance_statistics = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::PerformanceStatistics>();
-            performance_statistics->parent = this;
-            children["performance-statistics"] = performance_statistics;
         }
-        return children.at("performance-statistics");
+        return performance_statistics;
     }
 
     if(child_yang_name == "update-sub-group")
@@ -6858,44 +6154,34 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup>();
         c->parent = this;
-        update_sub_group.push_back(std::move(c));
-        children[segment_path] = update_sub_group.back();
-        return children.at(segment_path);
+        update_sub_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("performance-statistics") == children.end())
+    if(performance_statistics != nullptr)
     {
-        if(performance_statistics != nullptr)
-        {
-            children["performance-statistics"] = performance_statistics;
-        }
+        children["performance-statistics"] = performance_statistics;
     }
 
     for (auto const & c : update_sub_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7213,7 +6499,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::PerformanceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::PerformanceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7244,20 +6530,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::PerformanceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::PerformanceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::PerformanceStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7328,16 +6606,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::Upd
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "neighbor"; yang_parent_name = "update-group";
 }
@@ -7416,7 +6690,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7461,110 +6735,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -7693,7 +6923,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7717,20 +6947,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7773,7 +6995,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7797,20 +7019,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7853,7 +7067,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7877,20 +7091,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7933,7 +7139,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7957,20 +7163,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8039,7 +7237,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8065,15 +7263,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -8081,15 +7270,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "update-filter-group")
@@ -8099,36 +7286,29 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup>();
         c->parent = this;
-        update_filter_group.push_back(std::move(c));
-        children[segment_path] = update_filter_group.back();
-        return children.at(segment_path);
+        update_filter_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : update_filter_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8243,7 +7423,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8281,15 +7461,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-community")
     {
         for(auto const & c : extended_community)
@@ -8297,15 +7468,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity>();
         c->parent = this;
-        extended_community.push_back(std::move(c));
-        children[segment_path] = extended_community.back();
-        return children.at(segment_path);
+        extended_community.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "neighbor")
@@ -8315,36 +7484,29 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : extended_community)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8445,7 +7607,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8469,20 +7631,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8525,16 +7679,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::Upd
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "neighbor"; yang_parent_name = "update-filter-group";
 }
@@ -8613,7 +7763,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8658,110 +7808,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -8890,7 +7996,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8914,20 +8020,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8970,7 +8068,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8994,20 +8092,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9050,7 +8140,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9074,20 +8164,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9130,7 +8212,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9154,20 +8236,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9210,16 +8284,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::Upd
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "neighbor"; yang_parent_name = "update-sub-group";
 }
@@ -9298,7 +8368,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9343,110 +8413,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -9575,7 +8601,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9599,20 +8625,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9655,7 +8673,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9679,20 +8697,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9735,7 +8745,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9759,20 +8769,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9815,7 +8817,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9839,20 +8841,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9902,7 +8896,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9925,15 +8919,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "update-generation-sub-group")
     {
         for(auto const & c : update_generation_sub_group)
@@ -9941,28 +8926,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup>();
         c->parent = this;
-        update_generation_sub_group.push_back(std::move(c));
-        children[segment_path] = update_generation_sub_group.back();
-        return children.at(segment_path);
+        update_generation_sub_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : update_generation_sub_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10018,28 +8999,20 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationS
 	,update_statistics(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics>())
 {
     creation_timestamp->parent = this;
-    children["creation-timestamp"] = creation_timestamp;
 
     first_update_walk_end_timestamp->parent = this;
-    children["first-update-walk-end-timestamp"] = first_update_walk_end_timestamp;
 
     first_update_walk_start_timestamp->parent = this;
-    children["first-update-walk-start-timestamp"] = first_update_walk_start_timestamp;
 
     last_merge_timestamp->parent = this;
-    children["last-merge-timestamp"] = last_merge_timestamp;
 
     last_update_queued_timestamp->parent = this;
-    children["last-update-queued-timestamp"] = last_update_queued_timestamp;
 
     last_update_walk_end_timestamp->parent = this;
-    children["last-update-walk-end-timestamp"] = last_update_walk_end_timestamp;
 
     last_update_walk_start_timestamp->parent = this;
-    children["last-update-walk-start-timestamp"] = last_update_walk_start_timestamp;
 
     update_statistics->parent = this;
-    children["update-statistics"] = update_statistics;
 
     yang_name = "update-generation-sub-group"; yang_parent_name = "update-generation-sub-groups";
 }
@@ -10148,7 +9121,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10204,202 +9177,122 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "creation-timestamp")
     {
-        if(creation_timestamp != nullptr)
-        {
-            children["creation-timestamp"] = creation_timestamp;
-        }
-        else
+        if(creation_timestamp == nullptr)
         {
             creation_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp>();
-            creation_timestamp->parent = this;
-            children["creation-timestamp"] = creation_timestamp;
         }
-        return children.at("creation-timestamp");
+        return creation_timestamp;
     }
 
     if(child_yang_name == "first-update-walk-end-timestamp")
     {
-        if(first_update_walk_end_timestamp != nullptr)
-        {
-            children["first-update-walk-end-timestamp"] = first_update_walk_end_timestamp;
-        }
-        else
+        if(first_update_walk_end_timestamp == nullptr)
         {
             first_update_walk_end_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp>();
-            first_update_walk_end_timestamp->parent = this;
-            children["first-update-walk-end-timestamp"] = first_update_walk_end_timestamp;
         }
-        return children.at("first-update-walk-end-timestamp");
+        return first_update_walk_end_timestamp;
     }
 
     if(child_yang_name == "first-update-walk-start-timestamp")
     {
-        if(first_update_walk_start_timestamp != nullptr)
-        {
-            children["first-update-walk-start-timestamp"] = first_update_walk_start_timestamp;
-        }
-        else
+        if(first_update_walk_start_timestamp == nullptr)
         {
             first_update_walk_start_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp>();
-            first_update_walk_start_timestamp->parent = this;
-            children["first-update-walk-start-timestamp"] = first_update_walk_start_timestamp;
         }
-        return children.at("first-update-walk-start-timestamp");
+        return first_update_walk_start_timestamp;
     }
 
     if(child_yang_name == "last-merge-timestamp")
     {
-        if(last_merge_timestamp != nullptr)
-        {
-            children["last-merge-timestamp"] = last_merge_timestamp;
-        }
-        else
+        if(last_merge_timestamp == nullptr)
         {
             last_merge_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp>();
-            last_merge_timestamp->parent = this;
-            children["last-merge-timestamp"] = last_merge_timestamp;
         }
-        return children.at("last-merge-timestamp");
+        return last_merge_timestamp;
     }
 
     if(child_yang_name == "last-update-queued-timestamp")
     {
-        if(last_update_queued_timestamp != nullptr)
-        {
-            children["last-update-queued-timestamp"] = last_update_queued_timestamp;
-        }
-        else
+        if(last_update_queued_timestamp == nullptr)
         {
             last_update_queued_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp>();
-            last_update_queued_timestamp->parent = this;
-            children["last-update-queued-timestamp"] = last_update_queued_timestamp;
         }
-        return children.at("last-update-queued-timestamp");
+        return last_update_queued_timestamp;
     }
 
     if(child_yang_name == "last-update-walk-end-timestamp")
     {
-        if(last_update_walk_end_timestamp != nullptr)
-        {
-            children["last-update-walk-end-timestamp"] = last_update_walk_end_timestamp;
-        }
-        else
+        if(last_update_walk_end_timestamp == nullptr)
         {
             last_update_walk_end_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp>();
-            last_update_walk_end_timestamp->parent = this;
-            children["last-update-walk-end-timestamp"] = last_update_walk_end_timestamp;
         }
-        return children.at("last-update-walk-end-timestamp");
+        return last_update_walk_end_timestamp;
     }
 
     if(child_yang_name == "last-update-walk-start-timestamp")
     {
-        if(last_update_walk_start_timestamp != nullptr)
-        {
-            children["last-update-walk-start-timestamp"] = last_update_walk_start_timestamp;
-        }
-        else
+        if(last_update_walk_start_timestamp == nullptr)
         {
             last_update_walk_start_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp>();
-            last_update_walk_start_timestamp->parent = this;
-            children["last-update-walk-start-timestamp"] = last_update_walk_start_timestamp;
         }
-        return children.at("last-update-walk-start-timestamp");
+        return last_update_walk_start_timestamp;
     }
 
     if(child_yang_name == "update-statistics")
     {
-        if(update_statistics != nullptr)
-        {
-            children["update-statistics"] = update_statistics;
-        }
-        else
+        if(update_statistics == nullptr)
         {
             update_statistics = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics>();
-            update_statistics->parent = this;
-            children["update-statistics"] = update_statistics;
         }
-        return children.at("update-statistics");
+        return update_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_children() const
 {
-    if(children.find("creation-timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(creation_timestamp != nullptr)
     {
-        if(creation_timestamp != nullptr)
-        {
-            children["creation-timestamp"] = creation_timestamp;
-        }
+        children["creation-timestamp"] = creation_timestamp;
     }
 
-    if(children.find("first-update-walk-end-timestamp") == children.end())
+    if(first_update_walk_end_timestamp != nullptr)
     {
-        if(first_update_walk_end_timestamp != nullptr)
-        {
-            children["first-update-walk-end-timestamp"] = first_update_walk_end_timestamp;
-        }
+        children["first-update-walk-end-timestamp"] = first_update_walk_end_timestamp;
     }
 
-    if(children.find("first-update-walk-start-timestamp") == children.end())
+    if(first_update_walk_start_timestamp != nullptr)
     {
-        if(first_update_walk_start_timestamp != nullptr)
-        {
-            children["first-update-walk-start-timestamp"] = first_update_walk_start_timestamp;
-        }
+        children["first-update-walk-start-timestamp"] = first_update_walk_start_timestamp;
     }
 
-    if(children.find("last-merge-timestamp") == children.end())
+    if(last_merge_timestamp != nullptr)
     {
-        if(last_merge_timestamp != nullptr)
-        {
-            children["last-merge-timestamp"] = last_merge_timestamp;
-        }
+        children["last-merge-timestamp"] = last_merge_timestamp;
     }
 
-    if(children.find("last-update-queued-timestamp") == children.end())
+    if(last_update_queued_timestamp != nullptr)
     {
-        if(last_update_queued_timestamp != nullptr)
-        {
-            children["last-update-queued-timestamp"] = last_update_queued_timestamp;
-        }
+        children["last-update-queued-timestamp"] = last_update_queued_timestamp;
     }
 
-    if(children.find("last-update-walk-end-timestamp") == children.end())
+    if(last_update_walk_end_timestamp != nullptr)
     {
-        if(last_update_walk_end_timestamp != nullptr)
-        {
-            children["last-update-walk-end-timestamp"] = last_update_walk_end_timestamp;
-        }
+        children["last-update-walk-end-timestamp"] = last_update_walk_end_timestamp;
     }
 
-    if(children.find("last-update-walk-start-timestamp") == children.end())
+    if(last_update_walk_start_timestamp != nullptr)
     {
-        if(last_update_walk_start_timestamp != nullptr)
-        {
-            children["last-update-walk-start-timestamp"] = last_update_walk_start_timestamp;
-        }
+        children["last-update-walk-start-timestamp"] = last_update_walk_start_timestamp;
     }
 
-    if(children.find("update-statistics") == children.end())
+    if(update_statistics != nullptr)
     {
-        if(update_statistics != nullptr)
-        {
-            children["update-statistics"] = update_statistics;
-        }
+        children["update-statistics"] = update_statistics;
     }
 
     return children;
@@ -10575,7 +9468,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10600,20 +9493,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10663,7 +9548,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10688,20 +9573,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10751,7 +9628,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10776,20 +9653,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10839,7 +9708,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10864,20 +9733,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10927,7 +9788,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10952,20 +9813,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11015,7 +9868,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11040,20 +9893,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11103,7 +9948,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11128,20 +9973,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11183,19 +10020,14 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationS
 	,last_update_throttle_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateThrottleTimestamp>())
 {
     last_update_cleared_timestamp->parent = this;
-    children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
 
     last_update_discard_timestamp->parent = this;
-    children["last-update-discard-timestamp"] = last_update_discard_timestamp;
 
     last_update_memory_allocation_fail_timestamp->parent = this;
-    children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
 
     last_update_recovery_timestamp->parent = this;
-    children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
 
     last_update_throttle_timestamp->parent = this;
-    children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
 
     yang_name = "update-statistics"; yang_parent_name = "update-generation-sub-group";
 }
@@ -11264,7 +10096,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11303,133 +10135,80 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-update-cleared-timestamp")
     {
-        if(last_update_cleared_timestamp != nullptr)
-        {
-            children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
-        }
-        else
+        if(last_update_cleared_timestamp == nullptr)
         {
             last_update_cleared_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateClearedTimestamp>();
-            last_update_cleared_timestamp->parent = this;
-            children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
         }
-        return children.at("last-update-cleared-timestamp");
+        return last_update_cleared_timestamp;
     }
 
     if(child_yang_name == "last-update-discard-timestamp")
     {
-        if(last_update_discard_timestamp != nullptr)
-        {
-            children["last-update-discard-timestamp"] = last_update_discard_timestamp;
-        }
-        else
+        if(last_update_discard_timestamp == nullptr)
         {
             last_update_discard_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateDiscardTimestamp>();
-            last_update_discard_timestamp->parent = this;
-            children["last-update-discard-timestamp"] = last_update_discard_timestamp;
         }
-        return children.at("last-update-discard-timestamp");
+        return last_update_discard_timestamp;
     }
 
     if(child_yang_name == "last-update-memory-allocation-fail-timestamp")
     {
-        if(last_update_memory_allocation_fail_timestamp != nullptr)
-        {
-            children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
-        }
-        else
+        if(last_update_memory_allocation_fail_timestamp == nullptr)
         {
             last_update_memory_allocation_fail_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp>();
-            last_update_memory_allocation_fail_timestamp->parent = this;
-            children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
         }
-        return children.at("last-update-memory-allocation-fail-timestamp");
+        return last_update_memory_allocation_fail_timestamp;
     }
 
     if(child_yang_name == "last-update-recovery-timestamp")
     {
-        if(last_update_recovery_timestamp != nullptr)
-        {
-            children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
-        }
-        else
+        if(last_update_recovery_timestamp == nullptr)
         {
             last_update_recovery_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateRecoveryTimestamp>();
-            last_update_recovery_timestamp->parent = this;
-            children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
         }
-        return children.at("last-update-recovery-timestamp");
+        return last_update_recovery_timestamp;
     }
 
     if(child_yang_name == "last-update-throttle-timestamp")
     {
-        if(last_update_throttle_timestamp != nullptr)
-        {
-            children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
-        }
-        else
+        if(last_update_throttle_timestamp == nullptr)
         {
             last_update_throttle_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateThrottleTimestamp>();
-            last_update_throttle_timestamp->parent = this;
-            children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
         }
-        return children.at("last-update-throttle-timestamp");
+        return last_update_throttle_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::get_children() const
 {
-    if(children.find("last-update-cleared-timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_update_cleared_timestamp != nullptr)
     {
-        if(last_update_cleared_timestamp != nullptr)
-        {
-            children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
-        }
+        children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
     }
 
-    if(children.find("last-update-discard-timestamp") == children.end())
+    if(last_update_discard_timestamp != nullptr)
     {
-        if(last_update_discard_timestamp != nullptr)
-        {
-            children["last-update-discard-timestamp"] = last_update_discard_timestamp;
-        }
+        children["last-update-discard-timestamp"] = last_update_discard_timestamp;
     }
 
-    if(children.find("last-update-memory-allocation-fail-timestamp") == children.end())
+    if(last_update_memory_allocation_fail_timestamp != nullptr)
     {
-        if(last_update_memory_allocation_fail_timestamp != nullptr)
-        {
-            children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
-        }
+        children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
     }
 
-    if(children.find("last-update-recovery-timestamp") == children.end())
+    if(last_update_recovery_timestamp != nullptr)
     {
-        if(last_update_recovery_timestamp != nullptr)
-        {
-            children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
-        }
+        children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
     }
 
-    if(children.find("last-update-throttle-timestamp") == children.end())
+    if(last_update_throttle_timestamp != nullptr)
     {
-        if(last_update_throttle_timestamp != nullptr)
-        {
-            children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
-        }
+        children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
     }
 
     return children;
@@ -11537,7 +10316,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11562,20 +10341,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11625,7 +10396,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11650,20 +10421,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11713,7 +10476,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11738,20 +10501,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11801,7 +10556,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateRecoveryTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateRecoveryTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11826,20 +10581,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateRecoveryTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateRecoveryTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateRecoveryTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11889,7 +10636,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11914,20 +10661,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11981,7 +10720,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12004,15 +10743,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop-address-family")
     {
         for(auto const & c : next_hop_address_family)
@@ -12020,28 +10750,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily>();
         c->parent = this;
-        next_hop_address_family.push_back(std::move(c));
-        children[segment_path] = next_hop_address_family.back();
-        return children.at(segment_path);
+        next_hop_address_family.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : next_hop_address_family)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12059,10 +10785,8 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
 	,next_hop_afs(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs>())
 {
     next_hop_af_vrf_af->parent = this;
-    children["next-hop-af-vrf-af"] = next_hop_af_vrf_af;
 
     next_hop_afs->parent = this;
-    children["next-hop-afs"] = next_hop_afs;
 
     yang_name = "next-hop-address-family"; yang_parent_name = "next-hop-address-families";
 }
@@ -12095,7 +10819,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12119,64 +10843,38 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop-af-vrf-af")
     {
-        if(next_hop_af_vrf_af != nullptr)
-        {
-            children["next-hop-af-vrf-af"] = next_hop_af_vrf_af;
-        }
-        else
+        if(next_hop_af_vrf_af == nullptr)
         {
             next_hop_af_vrf_af = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf>();
-            next_hop_af_vrf_af->parent = this;
-            children["next-hop-af-vrf-af"] = next_hop_af_vrf_af;
         }
-        return children.at("next-hop-af-vrf-af");
+        return next_hop_af_vrf_af;
     }
 
     if(child_yang_name == "next-hop-afs")
     {
-        if(next_hop_afs != nullptr)
-        {
-            children["next-hop-afs"] = next_hop_afs;
-        }
-        else
+        if(next_hop_afs == nullptr)
         {
             next_hop_afs = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs>();
-            next_hop_afs->parent = this;
-            children["next-hop-afs"] = next_hop_afs;
         }
-        return children.at("next-hop-afs");
+        return next_hop_afs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::get_children() const
 {
-    if(children.find("next-hop-af-vrf-af") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(next_hop_af_vrf_af != nullptr)
     {
-        if(next_hop_af_vrf_af != nullptr)
-        {
-            children["next-hop-af-vrf-af"] = next_hop_af_vrf_af;
-        }
+        children["next-hop-af-vrf-af"] = next_hop_af_vrf_af;
     }
 
-    if(children.find("next-hop-afs") == children.end())
+    if(next_hop_afs != nullptr)
     {
-        if(next_hop_afs != nullptr)
-        {
-            children["next-hop-afs"] = next_hop_afs;
-        }
+        children["next-hop-afs"] = next_hop_afs;
     }
 
     return children;
@@ -12210,7 +10908,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
     performance_statistics(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::PerformanceStatistics>())
 {
     performance_statistics->parent = this;
-    children["performance-statistics"] = performance_statistics;
 
     yang_name = "next-hop-af-vrf-af"; yang_parent_name = "next-hop-address-family";
 }
@@ -12267,7 +10964,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12304,41 +11001,24 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "performance-statistics")
     {
-        if(performance_statistics != nullptr)
-        {
-            children["performance-statistics"] = performance_statistics;
-        }
-        else
+        if(performance_statistics == nullptr)
         {
             performance_statistics = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::PerformanceStatistics>();
-            performance_statistics->parent = this;
-            children["performance-statistics"] = performance_statistics;
         }
-        return children.at("performance-statistics");
+        return performance_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::get_children() const
 {
-    if(children.find("performance-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(performance_statistics != nullptr)
     {
-        if(performance_statistics != nullptr)
-        {
-            children["performance-statistics"] = performance_statistics;
-        }
+        children["performance-statistics"] = performance_statistics;
     }
 
     return children;
@@ -12516,7 +11196,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::PerformanceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::PerformanceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12567,20 +11247,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::PerformanceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::PerformanceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfVrfAf::PerformanceStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12738,7 +11410,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12761,15 +11433,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop-af")
     {
         for(auto const & c : next_hop_af)
@@ -12777,28 +11440,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf>();
         c->parent = this;
-        next_hop_af.push_back(std::move(c));
-        children[segment_path] = next_hop_af.back();
-        return children.at(segment_path);
+        next_hop_af.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : next_hop_af)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12828,13 +11487,10 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
 	,nhte_tunnel(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NhteTunnel>())
 {
     nexthop_address->parent = this;
-    children["nexthop-address"] = nexthop_address;
 
     nexthop_internal_info->parent = this;
-    children["nexthop-internal-info"] = nexthop_internal_info;
 
     nhte_tunnel->parent = this;
-    children["nhte-tunnel"] = nhte_tunnel;
 
     yang_name = "next-hop-af"; yang_parent_name = "next-hop-afs";
 }
@@ -12911,7 +11567,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12946,15 +11602,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-address")
     {
         for(auto const & c : neighbor_address)
@@ -12962,30 +11609,22 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress>();
         c->parent = this;
-        neighbor_address.push_back(std::move(c));
-        children[segment_path] = neighbor_address.back();
-        return children.at(segment_path);
+        neighbor_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "nexthop-address")
     {
-        if(nexthop_address != nullptr)
-        {
-            children["nexthop-address"] = nexthop_address;
-        }
-        else
+        if(nexthop_address == nullptr)
         {
             nexthop_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress>();
-            nexthop_address->parent = this;
-            children["nexthop-address"] = nexthop_address;
         }
-        return children.at("nexthop-address");
+        return nexthop_address;
     }
 
     if(child_yang_name == "nexthop-gateway-info")
@@ -12995,90 +11634,62 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo>();
         c->parent = this;
-        nexthop_gateway_info.push_back(std::move(c));
-        children[segment_path] = nexthop_gateway_info.back();
-        return children.at(segment_path);
+        nexthop_gateway_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "nexthop-internal-info")
     {
-        if(nexthop_internal_info != nullptr)
-        {
-            children["nexthop-internal-info"] = nexthop_internal_info;
-        }
-        else
+        if(nexthop_internal_info == nullptr)
         {
             nexthop_internal_info = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo>();
-            nexthop_internal_info->parent = this;
-            children["nexthop-internal-info"] = nexthop_internal_info;
         }
-        return children.at("nexthop-internal-info");
+        return nexthop_internal_info;
     }
 
     if(child_yang_name == "nhte-tunnel")
     {
-        if(nhte_tunnel != nullptr)
-        {
-            children["nhte-tunnel"] = nhte_tunnel;
-        }
-        else
+        if(nhte_tunnel == nullptr)
         {
             nhte_tunnel = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NhteTunnel>();
-            nhte_tunnel->parent = this;
-            children["nhte-tunnel"] = nhte_tunnel;
         }
-        return children.at("nhte-tunnel");
+        return nhte_tunnel;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("nexthop-address") == children.end())
+    if(nexthop_address != nullptr)
     {
-        if(nexthop_address != nullptr)
-        {
-            children["nexthop-address"] = nexthop_address;
-        }
+        children["nexthop-address"] = nexthop_address;
     }
 
     for (auto const & c : nexthop_gateway_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("nexthop-internal-info") == children.end())
+    if(nexthop_internal_info != nullptr)
     {
-        if(nexthop_internal_info != nullptr)
-        {
-            children["nexthop-internal-info"] = nexthop_internal_info;
-        }
+        children["nexthop-internal-info"] = nexthop_internal_info;
     }
 
-    if(children.find("nhte-tunnel") == children.end())
+    if(nhte_tunnel != nullptr)
     {
-        if(nhte_tunnel != nullptr)
-        {
-            children["nhte-tunnel"] = nhte_tunnel;
-        }
+        children["nhte-tunnel"] = nhte_tunnel;
     }
 
     return children;
@@ -13167,16 +11778,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "nexthop-address"; yang_parent_name = "next-hop-af";
 }
@@ -13255,7 +11862,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13300,110 +11907,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -13532,7 +12095,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13556,20 +12119,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13612,7 +12167,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13636,20 +12191,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13692,7 +12239,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13716,20 +12263,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13772,7 +12311,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13796,20 +12335,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopAddress::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13882,7 +12413,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NhteTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NhteTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13916,20 +12447,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NhteTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NhteTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NhteTunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13994,7 +12517,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
     nexthop_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress>())
 {
     nexthop_address->parent = this;
-    children["nexthop-address"] = nexthop_address;
 
     yang_name = "nexthop-internal-info"; yang_parent_name = "next-hop-af";
 }
@@ -14067,7 +12589,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14097,28 +12619,13 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nexthop-address")
     {
-        if(nexthop_address != nullptr)
-        {
-            children["nexthop-address"] = nexthop_address;
-        }
-        else
+        if(nexthop_address == nullptr)
         {
             nexthop_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress>();
-            nexthop_address->parent = this;
-            children["nexthop-address"] = nexthop_address;
         }
-        return children.at("nexthop-address");
+        return nexthop_address;
     }
 
     if(child_yang_name == "nexthop-gateway-internal-info")
@@ -14128,15 +12635,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopGatewayInternalInfo>();
         c->parent = this;
-        nexthop_gateway_internal_info.push_back(std::move(c));
-        children[segment_path] = nexthop_gateway_internal_info.back();
-        return children.at(segment_path);
+        nexthop_gateway_internal_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "nexthop-metrice")
@@ -14146,15 +12651,13 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopMetrice>();
         c->parent = this;
-        nexthop_metrice.push_back(std::move(c));
-        children[segment_path] = nexthop_metrice.back();
-        return children.at(segment_path);
+        nexthop_metrice.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "nexthop-refcount")
@@ -14164,52 +12667,39 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopRefcount>();
         c->parent = this;
-        nexthop_refcount.push_back(std::move(c));
-        children[segment_path] = nexthop_refcount.back();
-        return children.at(segment_path);
+        nexthop_refcount.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::get_children() const
 {
-    if(children.find("nexthop-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nexthop_address != nullptr)
     {
-        if(nexthop_address != nullptr)
-        {
-            children["nexthop-address"] = nexthop_address;
-        }
+        children["nexthop-address"] = nexthop_address;
     }
 
     for (auto const & c : nexthop_gateway_internal_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : nexthop_metrice)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : nexthop_refcount)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14278,16 +12768,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "nexthop-address"; yang_parent_name = "nexthop-internal-info";
 }
@@ -14366,7 +12852,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14411,110 +12897,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -14643,7 +13085,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14667,20 +13109,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14723,7 +13157,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14747,20 +13181,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14803,7 +13229,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14827,20 +13253,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14883,7 +13301,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14907,20 +13325,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopAddress::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14963,7 +13373,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopMetrice::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopMetrice::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14987,20 +13397,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopMetrice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopMetrice::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopMetrice::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15043,7 +13445,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopRefcount::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopRefcount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15067,20 +13469,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopRefcount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopRefcount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopRefcount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15129,7 +13523,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopGatewayInternalInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopGatewayInternalInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15155,20 +13549,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopGatewayInternalInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopGatewayInternalInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopInternalInfo::NexthopGatewayInternalInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15210,7 +13596,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
     nexthop_route(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute>())
 {
     nexthop_route->parent = this;
-    children["nexthop-route"] = nexthop_route;
 
     yang_name = "nexthop-gateway-info"; yang_parent_name = "next-hop-af";
 }
@@ -15281,7 +13666,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15320,28 +13705,13 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nexthop-route")
     {
-        if(nexthop_route != nullptr)
-        {
-            children["nexthop-route"] = nexthop_route;
-        }
-        else
+        if(nexthop_route == nullptr)
         {
             nexthop_route = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute>();
-            nexthop_route->parent = this;
-            children["nexthop-route"] = nexthop_route;
         }
-        return children.at("nexthop-route");
+        return nexthop_route;
     }
 
     if(child_yang_name == "nexthop-route-path")
@@ -15351,36 +13721,29 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath>();
         c->parent = this;
-        nexthop_route_path.push_back(std::move(c));
-        children[segment_path] = nexthop_route_path.back();
-        return children.at(segment_path);
+        nexthop_route_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::get_children() const
 {
-    if(children.find("nexthop-route") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nexthop_route != nullptr)
     {
-        if(nexthop_route != nullptr)
-        {
-            children["nexthop-route"] = nexthop_route;
-        }
+        children["nexthop-route"] = nexthop_route;
     }
 
     for (auto const & c : nexthop_route_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15485,16 +13848,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "nexthop-route"; yang_parent_name = "nexthop-gateway-info";
 }
@@ -15573,7 +13932,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15618,110 +13977,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -15850,7 +14165,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15874,20 +14189,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15930,7 +14237,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15954,20 +14261,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16010,7 +14309,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16034,20 +14333,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16090,7 +14381,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16114,20 +14405,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoute::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16170,16 +14453,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "nexthop-route-path"; yang_parent_name = "nexthop-gateway-info";
 }
@@ -16258,7 +14537,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16303,110 +14582,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -16535,7 +14770,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16559,20 +14794,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16615,7 +14842,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16639,20 +14866,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16695,7 +14914,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16719,20 +14938,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16775,7 +14986,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16799,20 +15010,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NexthopGatewayInfo::NexthopRoutePath::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16855,16 +15058,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFam
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "neighbor-address"; yang_parent_name = "next-hop-af";
 }
@@ -16943,7 +15142,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16988,110 +15187,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -17220,7 +15375,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17244,20 +15399,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17300,7 +15447,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17324,20 +15471,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17380,7 +15519,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17404,20 +15543,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17460,7 +15591,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17484,20 +15615,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHo
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextHopAddressFamilies::NextHopAddressFamily::NextHopAfs::NextHopAf::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17547,7 +15670,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSet
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17570,15 +15693,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetC
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rt-set-counter")
     {
         for(auto const & c : rt_set_counter)
@@ -17586,28 +15700,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter>();
         c->parent = this;
-        rt_set_counter.push_back(std::move(c));
-        children[segment_path] = rt_set_counter.back();
-        return children.at(segment_path);
+        rt_set_counter.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rt_set_counter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17624,7 +15734,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::Rt
     route_target_set(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet>())
 {
     route_target_set->parent = this;
-    children["route-target-set"] = route_target_set;
 
     yang_name = "rt-set-counter"; yang_parent_name = "rt-set-counters";
 }
@@ -17655,7 +15764,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSet
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17679,41 +15788,24 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetC
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target-set")
     {
-        if(route_target_set != nullptr)
-        {
-            children["route-target-set"] = route_target_set;
-        }
-        else
+        if(route_target_set == nullptr)
         {
             route_target_set = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet>();
-            route_target_set->parent = this;
-            children["route-target-set"] = route_target_set;
         }
-        return children.at("route-target-set");
+        return route_target_set;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::get_children() const
 {
-    if(children.find("route-target-set") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_target_set != nullptr)
     {
-        if(route_target_set != nullptr)
-        {
-            children["route-target-set"] = route_target_set;
-        }
+        children["route-target-set"] = route_target_set;
     }
 
     return children;
@@ -17774,7 +15866,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSet
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17800,15 +15892,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetC
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rt-set")
     {
         for(auto const & c : rt_set)
@@ -17816,28 +15899,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::RtSet>();
         c->parent = this;
-        rt_set.push_back(std::move(c));
-        children[segment_path] = rt_set.back();
-        return children.at(segment_path);
+        rt_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rt_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17890,7 +15969,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSet
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::RtSet::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::RtSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17914,20 +15993,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetC
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::RtSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::RtSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSetCounters::RtSetCounter::RouteTargetSet::RtSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17977,7 +16048,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18000,15 +16071,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bmp-path")
     {
         for(auto const & c : bmp_path)
@@ -18016,28 +16078,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath>();
         c->parent = this;
-        bmp_path.push_back(std::move(c));
-        children[segment_path] = bmp_path.back();
-        return children.at(segment_path);
+        bmp_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bmp_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18063,13 +16121,10 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath
 	,version_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionTimestamp>())
 {
     bgp_prefix->parent = this;
-    children["bgp-prefix"] = bgp_prefix;
 
     version_age->parent = this;
-    children["version-age"] = version_age;
 
     version_timestamp->parent = this;
-    children["version-timestamp"] = version_timestamp;
 
     yang_name = "bmp-path"; yang_parent_name = "bmp-paths";
 }
@@ -18128,7 +16183,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18159,28 +16214,13 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bgp-prefix")
     {
-        if(bgp_prefix != nullptr)
-        {
-            children["bgp-prefix"] = bgp_prefix;
-        }
-        else
+        if(bgp_prefix == nullptr)
         {
             bgp_prefix = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix>();
-            bgp_prefix->parent = this;
-            children["bgp-prefix"] = bgp_prefix;
         }
-        return children.at("bgp-prefix");
+        return bgp_prefix;
     }
 
     if(child_yang_name == "bmp-path")
@@ -18190,82 +16230,57 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_>();
         c->parent = this;
-        bmp_path.push_back(std::move(c));
-        children[segment_path] = bmp_path.back();
-        return children.at(segment_path);
+        bmp_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "version-age")
     {
-        if(version_age != nullptr)
-        {
-            children["version-age"] = version_age;
-        }
-        else
+        if(version_age == nullptr)
         {
             version_age = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionAge>();
-            version_age->parent = this;
-            children["version-age"] = version_age;
         }
-        return children.at("version-age");
+        return version_age;
     }
 
     if(child_yang_name == "version-timestamp")
     {
-        if(version_timestamp != nullptr)
-        {
-            children["version-timestamp"] = version_timestamp;
-        }
-        else
+        if(version_timestamp == nullptr)
         {
             version_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionTimestamp>();
-            version_timestamp->parent = this;
-            children["version-timestamp"] = version_timestamp;
         }
-        return children.at("version-timestamp");
+        return version_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::get_children() const
 {
-    if(children.find("bgp-prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_prefix != nullptr)
     {
-        if(bgp_prefix != nullptr)
-        {
-            children["bgp-prefix"] = bgp_prefix;
-        }
+        children["bgp-prefix"] = bgp_prefix;
     }
 
     for (auto const & c : bmp_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("version-age") == children.end())
+    if(version_age != nullptr)
     {
-        if(version_age != nullptr)
-        {
-            children["version-age"] = version_age;
-        }
+        children["version-age"] = version_age;
     }
 
-    if(children.find("version-timestamp") == children.end())
+    if(version_timestamp != nullptr)
     {
-        if(version_timestamp != nullptr)
-        {
-            children["version-timestamp"] = version_timestamp;
-        }
+        children["version-timestamp"] = version_timestamp;
     }
 
     return children;
@@ -18314,7 +16329,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath
     prefix(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix>())
 {
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     yang_name = "bgp-prefix"; yang_parent_name = "bmp-path";
 }
@@ -18345,7 +16359,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18369,41 +16383,24 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::get_children() const
 {
-    if(children.find("prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
     return children;
@@ -18448,16 +16445,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "prefix"; yang_parent_name = "bgp-prefix";
 }
@@ -18536,7 +16529,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18581,110 +16574,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -18813,7 +16762,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18837,20 +16786,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18893,7 +16834,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18917,20 +16858,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18973,7 +16906,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18997,20 +16930,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19053,7 +16978,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19077,20 +17002,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19136,7 +17053,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19161,20 +17078,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19224,7 +17133,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionAge::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionAge::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19249,20 +17158,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionAge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionAge::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::VersionAge::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19291,7 +17192,6 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath
     neighbor_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress>())
 {
     neighbor_address->parent = this;
-    children["neighbor-address"] = neighbor_address;
 
     yang_name = "bmp-path"; yang_parent_name = "bmp-path";
 }
@@ -19334,7 +17234,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19364,41 +17264,24 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-address")
     {
-        if(neighbor_address != nullptr)
-        {
-            children["neighbor-address"] = neighbor_address;
-        }
-        else
+        if(neighbor_address == nullptr)
         {
             neighbor_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress>();
-            neighbor_address->parent = this;
-            children["neighbor-address"] = neighbor_address;
         }
-        return children.at("neighbor-address");
+        return neighbor_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::get_children() const
 {
-    if(children.find("neighbor-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(neighbor_address != nullptr)
     {
-        if(neighbor_address != nullptr)
-        {
-            children["neighbor-address"] = neighbor_address;
-        }
+        children["neighbor-address"] = neighbor_address;
     }
 
     return children;
@@ -19467,16 +17350,12 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath
 	,l2vpnvpls_address(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnvplsAddress>())
 {
     ipv4sr_policy_address->parent = this;
-    children["ipv4sr-policy-address"] = ipv4sr_policy_address;
 
     ipv6sr_policy_address->parent = this;
-    children["ipv6sr-policy-address"] = ipv6sr_policy_address;
 
     l2vpn_mspw_address->parent = this;
-    children["l2vpn-mspw-address"] = l2vpn_mspw_address;
 
     l2vpnvpls_address->parent = this;
-    children["l2vpnvpls-address"] = l2vpnvpls_address;
 
     yang_name = "neighbor-address"; yang_parent_name = "bmp-path";
 }
@@ -19555,7 +17434,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19600,110 +17479,66 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4sr-policy-address")
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
-        else
+        if(ipv4sr_policy_address == nullptr)
         {
             ipv4sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv4SrPolicyAddress>();
-            ipv4sr_policy_address->parent = this;
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
         }
-        return children.at("ipv4sr-policy-address");
+        return ipv4sr_policy_address;
     }
 
     if(child_yang_name == "ipv6sr-policy-address")
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
-        else
+        if(ipv6sr_policy_address == nullptr)
         {
             ipv6sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv6SrPolicyAddress>();
-            ipv6sr_policy_address->parent = this;
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
         }
-        return children.at("ipv6sr-policy-address");
+        return ipv6sr_policy_address;
     }
 
     if(child_yang_name == "l2vpn-mspw-address")
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
-        else
+        if(l2vpn_mspw_address == nullptr)
         {
             l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnMspwAddress>();
-            l2vpn_mspw_address->parent = this;
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
         }
-        return children.at("l2vpn-mspw-address");
+        return l2vpn_mspw_address;
     }
 
     if(child_yang_name == "l2vpnvpls-address")
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
-        else
+        if(l2vpnvpls_address == nullptr)
         {
             l2vpnvpls_address = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnvplsAddress>();
-            l2vpnvpls_address->parent = this;
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
         }
-        return children.at("l2vpnvpls-address");
+        return l2vpnvpls_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::get_children() const
 {
-    if(children.find("ipv4sr-policy-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4sr_policy_address != nullptr)
     {
-        if(ipv4sr_policy_address != nullptr)
-        {
-            children["ipv4sr-policy-address"] = ipv4sr_policy_address;
-        }
+        children["ipv4sr-policy-address"] = ipv4sr_policy_address;
     }
 
-    if(children.find("ipv6sr-policy-address") == children.end())
+    if(ipv6sr_policy_address != nullptr)
     {
-        if(ipv6sr_policy_address != nullptr)
-        {
-            children["ipv6sr-policy-address"] = ipv6sr_policy_address;
-        }
+        children["ipv6sr-policy-address"] = ipv6sr_policy_address;
     }
 
-    if(children.find("l2vpn-mspw-address") == children.end())
+    if(l2vpn_mspw_address != nullptr)
     {
-        if(l2vpn_mspw_address != nullptr)
-        {
-            children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-        }
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
-    if(children.find("l2vpnvpls-address") == children.end())
+    if(l2vpnvpls_address != nullptr)
     {
-        if(l2vpnvpls_address != nullptr)
-        {
-            children["l2vpnvpls-address"] = l2vpnvpls_address;
-        }
+        children["l2vpnvpls-address"] = l2vpnvpls_address;
     }
 
     return children;
@@ -19832,7 +17667,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnvplsAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19856,20 +17691,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnvplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnvplsAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnvplsAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19912,7 +17739,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnMspwAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19936,20 +17763,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnMspwAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::L2VpnMspwAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19992,7 +17811,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv4SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20016,20 +17835,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv4SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20072,7 +17883,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv6SrPolicyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20096,20 +17907,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPat
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv6SrPolicyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPaths::BmpPath::BmpPath_::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20159,7 +17962,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20182,15 +17985,6 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "update-generation-update-group")
     {
         for(auto const & c : update_generation_update_group)
@@ -20198,28 +17992,24 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Af
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup>();
         c->parent = this;
-        update_generation_update_group.push_back(std::move(c));
-        children[segment_path] = update_generation_update_group.back();
-        return children.at(segment_path);
+        update_generation_update_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : update_generation_update_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20265,22 +18055,16 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationU
 	,update_statistics(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics>())
 {
     last_update_timer_delay_value->parent = this;
-    children["last-update-timer-delay-value"] = last_update_timer_delay_value;
 
     last_update_timer_expiry_timestamp->parent = this;
-    children["last-update-timer-expiry-timestamp"] = last_update_timer_expiry_timestamp;
 
     last_update_timer_remaining_value->parent = this;
-    children["last-update-timer-remaining-value"] = last_update_timer_remaining_value;
 
     last_update_timer_start_timestamp->parent = this;
-    children["last-update-timer-start-timestamp"] = last_update_timer_start_timestamp;
 
     last_update_timer_stop_timestamp->parent = this;
-    children["last-update-timer-stop-timestamp"] = last_update_timer_stop_timestamp;
 
     update_statistics->parent = this;
-    children["update-statistics"] = update_statistics;
 
     yang_name = "update-generation-update-group"; yang_parent_name = "update-generation-update-groups";
 }
@@ -20369,7 +18153,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20417,156 +18201,94 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-update-timer-delay-value")
     {
-        if(last_update_timer_delay_value != nullptr)
-        {
-            children["last-update-timer-delay-value"] = last_update_timer_delay_value;
-        }
-        else
+        if(last_update_timer_delay_value == nullptr)
         {
             last_update_timer_delay_value = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerDelayValue>();
-            last_update_timer_delay_value->parent = this;
-            children["last-update-timer-delay-value"] = last_update_timer_delay_value;
         }
-        return children.at("last-update-timer-delay-value");
+        return last_update_timer_delay_value;
     }
 
     if(child_yang_name == "last-update-timer-expiry-timestamp")
     {
-        if(last_update_timer_expiry_timestamp != nullptr)
-        {
-            children["last-update-timer-expiry-timestamp"] = last_update_timer_expiry_timestamp;
-        }
-        else
+        if(last_update_timer_expiry_timestamp == nullptr)
         {
             last_update_timer_expiry_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerExpiryTimestamp>();
-            last_update_timer_expiry_timestamp->parent = this;
-            children["last-update-timer-expiry-timestamp"] = last_update_timer_expiry_timestamp;
         }
-        return children.at("last-update-timer-expiry-timestamp");
+        return last_update_timer_expiry_timestamp;
     }
 
     if(child_yang_name == "last-update-timer-remaining-value")
     {
-        if(last_update_timer_remaining_value != nullptr)
-        {
-            children["last-update-timer-remaining-value"] = last_update_timer_remaining_value;
-        }
-        else
+        if(last_update_timer_remaining_value == nullptr)
         {
             last_update_timer_remaining_value = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerRemainingValue>();
-            last_update_timer_remaining_value->parent = this;
-            children["last-update-timer-remaining-value"] = last_update_timer_remaining_value;
         }
-        return children.at("last-update-timer-remaining-value");
+        return last_update_timer_remaining_value;
     }
 
     if(child_yang_name == "last-update-timer-start-timestamp")
     {
-        if(last_update_timer_start_timestamp != nullptr)
-        {
-            children["last-update-timer-start-timestamp"] = last_update_timer_start_timestamp;
-        }
-        else
+        if(last_update_timer_start_timestamp == nullptr)
         {
             last_update_timer_start_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStartTimestamp>();
-            last_update_timer_start_timestamp->parent = this;
-            children["last-update-timer-start-timestamp"] = last_update_timer_start_timestamp;
         }
-        return children.at("last-update-timer-start-timestamp");
+        return last_update_timer_start_timestamp;
     }
 
     if(child_yang_name == "last-update-timer-stop-timestamp")
     {
-        if(last_update_timer_stop_timestamp != nullptr)
-        {
-            children["last-update-timer-stop-timestamp"] = last_update_timer_stop_timestamp;
-        }
-        else
+        if(last_update_timer_stop_timestamp == nullptr)
         {
             last_update_timer_stop_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStopTimestamp>();
-            last_update_timer_stop_timestamp->parent = this;
-            children["last-update-timer-stop-timestamp"] = last_update_timer_stop_timestamp;
         }
-        return children.at("last-update-timer-stop-timestamp");
+        return last_update_timer_stop_timestamp;
     }
 
     if(child_yang_name == "update-statistics")
     {
-        if(update_statistics != nullptr)
-        {
-            children["update-statistics"] = update_statistics;
-        }
-        else
+        if(update_statistics == nullptr)
         {
             update_statistics = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics>();
-            update_statistics->parent = this;
-            children["update-statistics"] = update_statistics;
         }
-        return children.at("update-statistics");
+        return update_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::get_children() const
 {
-    if(children.find("last-update-timer-delay-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_update_timer_delay_value != nullptr)
     {
-        if(last_update_timer_delay_value != nullptr)
-        {
-            children["last-update-timer-delay-value"] = last_update_timer_delay_value;
-        }
+        children["last-update-timer-delay-value"] = last_update_timer_delay_value;
     }
 
-    if(children.find("last-update-timer-expiry-timestamp") == children.end())
+    if(last_update_timer_expiry_timestamp != nullptr)
     {
-        if(last_update_timer_expiry_timestamp != nullptr)
-        {
-            children["last-update-timer-expiry-timestamp"] = last_update_timer_expiry_timestamp;
-        }
+        children["last-update-timer-expiry-timestamp"] = last_update_timer_expiry_timestamp;
     }
 
-    if(children.find("last-update-timer-remaining-value") == children.end())
+    if(last_update_timer_remaining_value != nullptr)
     {
-        if(last_update_timer_remaining_value != nullptr)
-        {
-            children["last-update-timer-remaining-value"] = last_update_timer_remaining_value;
-        }
+        children["last-update-timer-remaining-value"] = last_update_timer_remaining_value;
     }
 
-    if(children.find("last-update-timer-start-timestamp") == children.end())
+    if(last_update_timer_start_timestamp != nullptr)
     {
-        if(last_update_timer_start_timestamp != nullptr)
-        {
-            children["last-update-timer-start-timestamp"] = last_update_timer_start_timestamp;
-        }
+        children["last-update-timer-start-timestamp"] = last_update_timer_start_timestamp;
     }
 
-    if(children.find("last-update-timer-stop-timestamp") == children.end())
+    if(last_update_timer_stop_timestamp != nullptr)
     {
-        if(last_update_timer_stop_timestamp != nullptr)
-        {
-            children["last-update-timer-stop-timestamp"] = last_update_timer_stop_timestamp;
-        }
+        children["last-update-timer-stop-timestamp"] = last_update_timer_stop_timestamp;
     }
 
-    if(children.find("update-statistics") == children.end())
+    if(update_statistics != nullptr)
     {
-        if(update_statistics != nullptr)
-        {
-            children["update-statistics"] = update_statistics;
-        }
+        children["update-statistics"] = update_statistics;
     }
 
     return children;
@@ -20710,7 +18432,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStartTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStartTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20735,20 +18457,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStartTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStartTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStartTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20798,7 +18512,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStopTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStopTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20823,20 +18537,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStopTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStopTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerStopTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20886,7 +18592,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerExpiryTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerExpiryTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20911,20 +18617,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerExpiryTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerExpiryTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerExpiryTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20974,7 +18672,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerRemainingValue::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerRemainingValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20999,20 +18697,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerRemainingValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerRemainingValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerRemainingValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21062,7 +18752,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerDelayValue::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerDelayValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21087,20 +18777,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerDelayValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerDelayValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::LastUpdateTimerDelayValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21142,19 +18824,14 @@ Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationU
 	,last_update_throttle_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateThrottleTimestamp>())
 {
     last_update_cleared_timestamp->parent = this;
-    children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
 
     last_update_discard_timestamp->parent = this;
-    children["last-update-discard-timestamp"] = last_update_discard_timestamp;
 
     last_update_memory_allocation_fail_timestamp->parent = this;
-    children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
 
     last_update_recovery_timestamp->parent = this;
-    children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
 
     last_update_throttle_timestamp->parent = this;
-    children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
 
     yang_name = "update-statistics"; yang_parent_name = "update-generation-update-group";
 }
@@ -21223,7 +18900,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21262,133 +18939,80 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-update-cleared-timestamp")
     {
-        if(last_update_cleared_timestamp != nullptr)
-        {
-            children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
-        }
-        else
+        if(last_update_cleared_timestamp == nullptr)
         {
             last_update_cleared_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateClearedTimestamp>();
-            last_update_cleared_timestamp->parent = this;
-            children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
         }
-        return children.at("last-update-cleared-timestamp");
+        return last_update_cleared_timestamp;
     }
 
     if(child_yang_name == "last-update-discard-timestamp")
     {
-        if(last_update_discard_timestamp != nullptr)
-        {
-            children["last-update-discard-timestamp"] = last_update_discard_timestamp;
-        }
-        else
+        if(last_update_discard_timestamp == nullptr)
         {
             last_update_discard_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateDiscardTimestamp>();
-            last_update_discard_timestamp->parent = this;
-            children["last-update-discard-timestamp"] = last_update_discard_timestamp;
         }
-        return children.at("last-update-discard-timestamp");
+        return last_update_discard_timestamp;
     }
 
     if(child_yang_name == "last-update-memory-allocation-fail-timestamp")
     {
-        if(last_update_memory_allocation_fail_timestamp != nullptr)
-        {
-            children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
-        }
-        else
+        if(last_update_memory_allocation_fail_timestamp == nullptr)
         {
             last_update_memory_allocation_fail_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp>();
-            last_update_memory_allocation_fail_timestamp->parent = this;
-            children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
         }
-        return children.at("last-update-memory-allocation-fail-timestamp");
+        return last_update_memory_allocation_fail_timestamp;
     }
 
     if(child_yang_name == "last-update-recovery-timestamp")
     {
-        if(last_update_recovery_timestamp != nullptr)
-        {
-            children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
-        }
-        else
+        if(last_update_recovery_timestamp == nullptr)
         {
             last_update_recovery_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateRecoveryTimestamp>();
-            last_update_recovery_timestamp->parent = this;
-            children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
         }
-        return children.at("last-update-recovery-timestamp");
+        return last_update_recovery_timestamp;
     }
 
     if(child_yang_name == "last-update-throttle-timestamp")
     {
-        if(last_update_throttle_timestamp != nullptr)
-        {
-            children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
-        }
-        else
+        if(last_update_throttle_timestamp == nullptr)
         {
             last_update_throttle_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateThrottleTimestamp>();
-            last_update_throttle_timestamp->parent = this;
-            children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
         }
-        return children.at("last-update-throttle-timestamp");
+        return last_update_throttle_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::get_children() const
 {
-    if(children.find("last-update-cleared-timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_update_cleared_timestamp != nullptr)
     {
-        if(last_update_cleared_timestamp != nullptr)
-        {
-            children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
-        }
+        children["last-update-cleared-timestamp"] = last_update_cleared_timestamp;
     }
 
-    if(children.find("last-update-discard-timestamp") == children.end())
+    if(last_update_discard_timestamp != nullptr)
     {
-        if(last_update_discard_timestamp != nullptr)
-        {
-            children["last-update-discard-timestamp"] = last_update_discard_timestamp;
-        }
+        children["last-update-discard-timestamp"] = last_update_discard_timestamp;
     }
 
-    if(children.find("last-update-memory-allocation-fail-timestamp") == children.end())
+    if(last_update_memory_allocation_fail_timestamp != nullptr)
     {
-        if(last_update_memory_allocation_fail_timestamp != nullptr)
-        {
-            children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
-        }
+        children["last-update-memory-allocation-fail-timestamp"] = last_update_memory_allocation_fail_timestamp;
     }
 
-    if(children.find("last-update-recovery-timestamp") == children.end())
+    if(last_update_recovery_timestamp != nullptr)
     {
-        if(last_update_recovery_timestamp != nullptr)
-        {
-            children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
-        }
+        children["last-update-recovery-timestamp"] = last_update_recovery_timestamp;
     }
 
-    if(children.find("last-update-throttle-timestamp") == children.end())
+    if(last_update_throttle_timestamp != nullptr)
     {
-        if(last_update_throttle_timestamp != nullptr)
-        {
-            children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
-        }
+        children["last-update-throttle-timestamp"] = last_update_throttle_timestamp;
     }
 
     return children;
@@ -21496,7 +19120,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21521,20 +19145,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateDiscardTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21584,7 +19200,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21609,20 +19225,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateClearedTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21672,7 +19280,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 
 }
 
-EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21697,20 +19305,12 @@ EntityPath Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Update
 
 std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationUpdateGroups::UpdateGenerationUpdateGroup::UpdateStatistics::LastUpdateThrottleTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

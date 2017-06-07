@@ -14,7 +14,6 @@ MemorySummary::MemorySummary()
     nodes(std::make_shared<MemorySummary::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "memory-summary"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shmem-oper";
 }
@@ -43,12 +42,12 @@ std::string MemorySummary::get_segment_path() const
 
 }
 
-EntityPath MemorySummary::get_entity_path(Entity* ancestor) const
+const EntityPath MemorySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath MemorySummary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MemorySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<MemorySummary::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MemorySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string MemorySummary::Nodes::get_segment_path() const
 
 }
 
-EntityPath MemorySummary::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath MemorySummary::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath MemorySummary::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MemorySummary::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> MemorySummary::Nodes::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MemorySummary::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MemorySummary::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,10 +212,8 @@ MemorySummary::Nodes::Node::Node()
 	,summary(std::make_shared<MemorySummary::Nodes::Node::Summary>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -279,7 +246,7 @@ std::string MemorySummary::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath MemorySummary::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath MemorySummary::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,64 +270,38 @@ EntityPath MemorySummary::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MemorySummary::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<MemorySummary::Nodes::Node::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<MemorySummary::Nodes::Node::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MemorySummary::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -432,7 +373,7 @@ std::string MemorySummary::Nodes::Node::Summary::get_segment_path() const
 
 }
 
-EntityPath MemorySummary::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath MemorySummary::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -465,20 +406,12 @@ EntityPath MemorySummary::Nodes::Node::Summary::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MemorySummary::Nodes::Node::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -612,7 +545,7 @@ std::string MemorySummary::Nodes::Node::Detail::get_segment_path() const
 
 }
 
-EntityPath MemorySummary::Nodes::Node::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath MemorySummary::Nodes::Node::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -651,15 +584,6 @@ EntityPath MemorySummary::Nodes::Node::Detail::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "shared-window")
     {
         for(auto const & c : shared_window)
@@ -667,28 +591,24 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MemorySummary::Nodes::Node::Detail::SharedWindow>();
         c->parent = this;
-        shared_window.push_back(std::move(c));
-        children[segment_path] = shared_window.back();
-        return children.at(segment_path);
+        shared_window.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MemorySummary::Nodes::Node::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : shared_window)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -796,7 +716,7 @@ std::string MemorySummary::Nodes::Node::Detail::SharedWindow::get_segment_path()
 
 }
 
-EntityPath MemorySummary::Nodes::Node::Detail::SharedWindow::get_entity_path(Entity* ancestor) const
+const EntityPath MemorySummary::Nodes::Node::Detail::SharedWindow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -821,20 +741,12 @@ EntityPath MemorySummary::Nodes::Node::Detail::SharedWindow::get_entity_path(Ent
 
 std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::SharedWindow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MemorySummary::Nodes::Node::Detail::SharedWindow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detail::SharedWindow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

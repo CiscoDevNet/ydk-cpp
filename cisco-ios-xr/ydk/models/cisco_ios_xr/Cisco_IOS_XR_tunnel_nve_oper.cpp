@@ -15,10 +15,8 @@ Nve::Nve()
 	,vnis(std::make_shared<Nve::Vnis>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     vnis->parent = this;
-    children["vnis"] = vnis;
 
     yang_name = "nve"; yang_parent_name = "Cisco-IOS-XR-tunnel-nve-oper";
 }
@@ -49,12 +47,12 @@ std::string Nve::get_segment_path() const
 
 }
 
-EntityPath Nve::get_entity_path(Entity* ancestor) const
+const EntityPath Nve::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath Nve::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nve::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Nve::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "vnis")
     {
-        if(vnis != nullptr)
-        {
-            children["vnis"] = vnis;
-        }
-        else
+        if(vnis == nullptr)
         {
             vnis = std::make_shared<Nve::Vnis>();
-            vnis->parent = this;
-            children["vnis"] = vnis;
         }
-        return children.at("vnis");
+        return vnis;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nve::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nve::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("vnis") == children.end())
+    if(vnis != nullptr)
     {
-        if(vnis != nullptr)
-        {
-            children["vnis"] = vnis;
-        }
+        children["vnis"] = vnis;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string Nve::Vnis::get_segment_path() const
 
 }
 
-EntityPath Nve::Vnis::get_entity_path(Entity* ancestor) const
+const EntityPath Nve::Vnis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath Nve::Vnis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nve::Vnis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vni")
     {
         for(auto const & c : vni)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> Nve::Vnis::get_child_by_name(const std::string & child_y
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Nve::Vnis::Vni>();
         c->parent = this;
-        vni.push_back(std::move(c));
-        children[segment_path] = vni.back();
-        return children.at(segment_path);
+        vni.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nve::Vnis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nve::Vnis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vni)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -355,7 +314,7 @@ std::string Nve::Vnis::Vni::get_segment_path() const
 
 }
 
-EntityPath Nve::Vnis::Vni::get_entity_path(Entity* ancestor) const
+const EntityPath Nve::Vnis::Vni::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -399,20 +358,12 @@ EntityPath Nve::Vnis::Vni::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nve::Vnis::Vni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nve::Vnis::Vni::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nve::Vnis::Vni::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -542,7 +493,7 @@ std::string Nve::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Nve::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Nve::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -565,15 +516,6 @@ EntityPath Nve::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nve::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -581,28 +523,24 @@ std::shared_ptr<Entity> Nve::Interfaces::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Nve::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nve::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nve::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -688,7 +626,7 @@ std::string Nve::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Nve::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Nve::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -727,20 +665,12 @@ EntityPath Nve::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nve::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nve::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nve::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

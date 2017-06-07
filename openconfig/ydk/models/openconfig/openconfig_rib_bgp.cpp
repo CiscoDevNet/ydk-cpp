@@ -14,7 +14,6 @@ BgpRib::BgpRib()
     afi_safis(std::make_shared<BgpRib::AfiSafis>())
 {
     afi_safis->parent = this;
-    children["afi-safis"] = afi_safis;
 
     yang_name = "bgp-rib"; yang_parent_name = "openconfig-rib-bgp";
 }
@@ -43,12 +42,12 @@ std::string BgpRib::get_segment_path() const
 
 }
 
-EntityPath BgpRib::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath BgpRib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> BgpRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afi-safis")
     {
-        if(afi_safis != nullptr)
-        {
-            children["afi-safis"] = afi_safis;
-        }
-        else
+        if(afi_safis == nullptr)
         {
             afi_safis = std::make_shared<BgpRib::AfiSafis>();
-            afi_safis->parent = this;
-            children["afi-safis"] = afi_safis;
         }
-        return children.at("afi-safis");
+        return afi_safis;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::get_children() const
 {
-    if(children.find("afi-safis") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(afi_safis != nullptr)
     {
-        if(afi_safis != nullptr)
-        {
-            children["afi-safis"] = afi_safis;
-        }
+        children["afi-safis"] = afi_safis;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string BgpRib::AfiSafis::get_segment_path() const
 
 }
 
-EntityPath BgpRib::AfiSafis::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath BgpRib::AfiSafis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afi-safi")
     {
         for(auto const & c : afi_safi)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi>();
         c->parent = this;
-        afi_safi.push_back(std::move(c));
-        children[segment_path] = afi_safi.back();
-        return children.at(segment_path);
+        afi_safi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : afi_safi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,10 +212,8 @@ BgpRib::AfiSafis::AfiSafi::AfiSafi()
 	,ipv6_unicast(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast>())
 {
     ipv4_unicast->parent = this;
-    children["ipv4-unicast"] = ipv4_unicast;
 
     ipv6_unicast->parent = this;
-    children["ipv6-unicast"] = ipv6_unicast;
 
     yang_name = "afi-safi"; yang_parent_name = "afi-safis";
 }
@@ -279,7 +246,7 @@ std::string BgpRib::AfiSafis::AfiSafi::get_segment_path() const
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,64 +270,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-unicast")
     {
-        if(ipv4_unicast != nullptr)
-        {
-            children["ipv4-unicast"] = ipv4_unicast;
-        }
-        else
+        if(ipv4_unicast == nullptr)
         {
             ipv4_unicast = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast>();
-            ipv4_unicast->parent = this;
-            children["ipv4-unicast"] = ipv4_unicast;
         }
-        return children.at("ipv4-unicast");
+        return ipv4_unicast;
     }
 
     if(child_yang_name == "ipv6-unicast")
     {
-        if(ipv6_unicast != nullptr)
-        {
-            children["ipv6-unicast"] = ipv6_unicast;
-        }
-        else
+        if(ipv6_unicast == nullptr)
         {
             ipv6_unicast = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast>();
-            ipv6_unicast->parent = this;
-            children["ipv6-unicast"] = ipv6_unicast;
         }
-        return children.at("ipv6-unicast");
+        return ipv6_unicast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::get_children() const
 {
-    if(children.find("ipv4-unicast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_unicast != nullptr)
     {
-        if(ipv4_unicast != nullptr)
-        {
-            children["ipv4-unicast"] = ipv4_unicast;
-        }
+        children["ipv4-unicast"] = ipv4_unicast;
     }
 
-    if(children.find("ipv6-unicast") == children.end())
+    if(ipv6_unicast != nullptr)
     {
-        if(ipv6_unicast != nullptr)
-        {
-            children["ipv6-unicast"] = ipv6_unicast;
-        }
+        children["ipv6-unicast"] = ipv6_unicast;
     }
 
     return children;
@@ -380,10 +321,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Ipv4Unicast()
 	,neighbors(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors>())
 {
     loc_rib->parent = this;
-    children["loc-rib"] = loc_rib;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     yang_name = "ipv4-unicast"; yang_parent_name = "afi-safi";
 }
@@ -414,7 +353,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::get_segment_path() const
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -437,64 +376,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "loc-rib")
     {
-        if(loc_rib != nullptr)
-        {
-            children["loc-rib"] = loc_rib;
-        }
-        else
+        if(loc_rib == nullptr)
         {
             loc_rib = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib>();
-            loc_rib->parent = this;
-            children["loc-rib"] = loc_rib;
         }
-        return children.at("loc-rib");
+        return loc_rib;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
 {
-    if(children.find("loc-rib") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(loc_rib != nullptr)
     {
-        if(loc_rib != nullptr)
-        {
-            children["loc-rib"] = loc_rib;
-        }
+        children["loc-rib"] = loc_rib;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
     return children;
@@ -511,7 +424,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::LocRib()
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "loc-rib"; yang_parent_name = "ipv4-unicast";
 }
@@ -542,7 +454,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_segment_path() c
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -566,41 +478,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_entity_path(Entit
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -652,7 +547,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_segment_
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -675,15 +570,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_entity_pa
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -691,28 +577,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -735,10 +617,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Route()
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -781,7 +661,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_s
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -810,64 +690,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_en
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -915,7 +769,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Attri
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -969,7 +822,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attri
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1001,41 +854,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attrib
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -1114,7 +950,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attri
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1140,20 +976,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attrib
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1244,7 +1072,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAt
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1274,15 +1102,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAtt
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -1290,28 +1109,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1378,7 +1193,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAt
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1404,20 +1219,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAtt
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1475,7 +1282,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_segment_path(
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1498,15 +1305,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_entity_path(En
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -1514,28 +1312,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1555,16 +1349,12 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Neighbor()
 	,adj_rib_out_pre(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre>())
 {
     adj_rib_in_post->parent = this;
-    children["adj-rib-in-post"] = adj_rib_in_post;
 
     adj_rib_in_pre->parent = this;
-    children["adj-rib-in-pre"] = adj_rib_in_pre;
 
     adj_rib_out_post->parent = this;
-    children["adj-rib-out-post"] = adj_rib_out_post;
 
     adj_rib_out_pre->parent = this;
-    children["adj-rib-out-pre"] = adj_rib_out_pre;
 
     yang_name = "neighbor"; yang_parent_name = "neighbors";
 }
@@ -1601,7 +1391,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::get_seg
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1625,110 +1415,66 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::get_enti
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adj-rib-in-post")
     {
-        if(adj_rib_in_post != nullptr)
-        {
-            children["adj-rib-in-post"] = adj_rib_in_post;
-        }
-        else
+        if(adj_rib_in_post == nullptr)
         {
             adj_rib_in_post = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost>();
-            adj_rib_in_post->parent = this;
-            children["adj-rib-in-post"] = adj_rib_in_post;
         }
-        return children.at("adj-rib-in-post");
+        return adj_rib_in_post;
     }
 
     if(child_yang_name == "adj-rib-in-pre")
     {
-        if(adj_rib_in_pre != nullptr)
-        {
-            children["adj-rib-in-pre"] = adj_rib_in_pre;
-        }
-        else
+        if(adj_rib_in_pre == nullptr)
         {
             adj_rib_in_pre = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre>();
-            adj_rib_in_pre->parent = this;
-            children["adj-rib-in-pre"] = adj_rib_in_pre;
         }
-        return children.at("adj-rib-in-pre");
+        return adj_rib_in_pre;
     }
 
     if(child_yang_name == "adj-rib-out-post")
     {
-        if(adj_rib_out_post != nullptr)
-        {
-            children["adj-rib-out-post"] = adj_rib_out_post;
-        }
-        else
+        if(adj_rib_out_post == nullptr)
         {
             adj_rib_out_post = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost>();
-            adj_rib_out_post->parent = this;
-            children["adj-rib-out-post"] = adj_rib_out_post;
         }
-        return children.at("adj-rib-out-post");
+        return adj_rib_out_post;
     }
 
     if(child_yang_name == "adj-rib-out-pre")
     {
-        if(adj_rib_out_pre != nullptr)
-        {
-            children["adj-rib-out-pre"] = adj_rib_out_pre;
-        }
-        else
+        if(adj_rib_out_pre == nullptr)
         {
             adj_rib_out_pre = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre>();
-            adj_rib_out_pre->parent = this;
-            children["adj-rib-out-pre"] = adj_rib_out_pre;
         }
-        return children.at("adj-rib-out-pre");
+        return adj_rib_out_pre;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::get_children() const
 {
-    if(children.find("adj-rib-in-post") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adj_rib_in_post != nullptr)
     {
-        if(adj_rib_in_post != nullptr)
-        {
-            children["adj-rib-in-post"] = adj_rib_in_post;
-        }
+        children["adj-rib-in-post"] = adj_rib_in_post;
     }
 
-    if(children.find("adj-rib-in-pre") == children.end())
+    if(adj_rib_in_pre != nullptr)
     {
-        if(adj_rib_in_pre != nullptr)
-        {
-            children["adj-rib-in-pre"] = adj_rib_in_pre;
-        }
+        children["adj-rib-in-pre"] = adj_rib_in_pre;
     }
 
-    if(children.find("adj-rib-out-post") == children.end())
+    if(adj_rib_out_post != nullptr)
     {
-        if(adj_rib_out_post != nullptr)
-        {
-            children["adj-rib-out-post"] = adj_rib_out_post;
-        }
+        children["adj-rib-out-post"] = adj_rib_out_post;
     }
 
-    if(children.find("adj-rib-out-pre") == children.end())
+    if(adj_rib_out_pre != nullptr)
     {
-        if(adj_rib_out_pre != nullptr)
-        {
-            children["adj-rib-out-pre"] = adj_rib_out_pre;
-        }
+        children["adj-rib-out-pre"] = adj_rib_out_pre;
     }
 
     return children;
@@ -1749,7 +1495,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::AdjRib
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-in-pre"; yang_parent_name = "neighbor";
 }
@@ -1780,7 +1525,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1804,41 +1549,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -1890,7 +1618,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1913,15 +1641,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -1929,28 +1648,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1973,10 +1688,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -2019,7 +1732,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2048,64 +1761,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -2153,7 +1840,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -2207,7 +1893,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2239,41 +1925,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -2352,7 +2021,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2378,20 +2047,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2482,7 +2143,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2512,15 +2173,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -2528,28 +2180,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2616,7 +2264,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2642,20 +2290,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2682,7 +2322,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::AdjRi
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-in-post"; yang_parent_name = "neighbor";
 }
@@ -2713,7 +2352,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2737,41 +2376,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -2823,7 +2445,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2846,15 +2468,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -2862,28 +2475,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2906,10 +2515,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Route
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -2952,7 +2559,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2981,64 +2588,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -3086,7 +2667,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Route
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -3140,7 +2720,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3172,41 +2752,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -3285,7 +2848,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3311,20 +2874,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3415,7 +2970,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3445,15 +3000,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -3461,28 +3007,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3549,7 +3091,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3575,20 +3117,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3615,7 +3149,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::AdjRi
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-out-pre"; yang_parent_name = "neighbor";
 }
@@ -3646,7 +3179,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3670,41 +3203,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -3756,7 +3272,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3779,15 +3295,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -3795,28 +3302,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3839,10 +3342,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Route
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -3885,7 +3386,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3914,64 +3415,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -4019,7 +3494,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Route
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -4073,7 +3547,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4105,41 +3579,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -4218,7 +3675,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4244,20 +3701,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4348,7 +3797,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4378,15 +3827,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -4394,28 +3834,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4482,7 +3918,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4508,20 +3944,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4548,7 +3976,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::AdjR
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-out-post"; yang_parent_name = "neighbor";
 }
@@ -4579,7 +4006,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4603,41 +4030,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -4689,7 +4099,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4712,15 +4122,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -4728,28 +4129,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4772,10 +4169,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Rout
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -4818,7 +4213,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4847,64 +4242,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -4952,7 +4321,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Rout
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -5006,7 +4374,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5038,41 +4406,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -5151,7 +4502,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5177,20 +4528,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5281,7 +4624,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5311,15 +4654,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -5327,28 +4661,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5415,7 +4745,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5441,20 +4771,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5480,10 +4802,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Ipv6Unicast()
 	,neighbors(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors>())
 {
     loc_rib->parent = this;
-    children["loc-rib"] = loc_rib;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi";
 }
@@ -5514,7 +4834,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() const
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5537,64 +4857,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "loc-rib")
     {
-        if(loc_rib != nullptr)
-        {
-            children["loc-rib"] = loc_rib;
-        }
-        else
+        if(loc_rib == nullptr)
         {
             loc_rib = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib>();
-            loc_rib->parent = this;
-            children["loc-rib"] = loc_rib;
         }
-        return children.at("loc-rib");
+        return loc_rib;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
 {
-    if(children.find("loc-rib") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(loc_rib != nullptr)
     {
-        if(loc_rib != nullptr)
-        {
-            children["loc-rib"] = loc_rib;
-        }
+        children["loc-rib"] = loc_rib;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
     return children;
@@ -5611,7 +4905,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::LocRib()
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "loc-rib"; yang_parent_name = "ipv6-unicast";
 }
@@ -5642,7 +4935,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_segment_path() c
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5666,41 +4959,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_entity_path(Entit
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -5752,7 +5028,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_segment_
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5775,15 +5051,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_entity_pa
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -5791,28 +5058,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5835,10 +5098,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Route()
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -5881,7 +5142,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_s
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5910,64 +5171,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_en
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -6015,7 +5250,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Attri
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -6069,7 +5303,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attri
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6101,41 +5335,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attrib
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -6214,7 +5431,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attri
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6240,20 +5457,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attrib
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6344,7 +5553,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAt
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6374,15 +5583,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAtt
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -6390,28 +5590,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6478,7 +5674,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAt
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6504,20 +5700,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAtt
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6575,7 +5763,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_segment_path(
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6598,15 +5786,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_entity_path(En
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -6614,28 +5793,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6655,16 +5830,12 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Neighbor()
 	,adj_rib_out_pre(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre>())
 {
     adj_rib_in_post->parent = this;
-    children["adj-rib-in-post"] = adj_rib_in_post;
 
     adj_rib_in_pre->parent = this;
-    children["adj-rib-in-pre"] = adj_rib_in_pre;
 
     adj_rib_out_post->parent = this;
-    children["adj-rib-out-post"] = adj_rib_out_post;
 
     adj_rib_out_pre->parent = this;
-    children["adj-rib-out-pre"] = adj_rib_out_pre;
 
     yang_name = "neighbor"; yang_parent_name = "neighbors";
 }
@@ -6701,7 +5872,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::get_seg
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6725,110 +5896,66 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::get_enti
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adj-rib-in-post")
     {
-        if(adj_rib_in_post != nullptr)
-        {
-            children["adj-rib-in-post"] = adj_rib_in_post;
-        }
-        else
+        if(adj_rib_in_post == nullptr)
         {
             adj_rib_in_post = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost>();
-            adj_rib_in_post->parent = this;
-            children["adj-rib-in-post"] = adj_rib_in_post;
         }
-        return children.at("adj-rib-in-post");
+        return adj_rib_in_post;
     }
 
     if(child_yang_name == "adj-rib-in-pre")
     {
-        if(adj_rib_in_pre != nullptr)
-        {
-            children["adj-rib-in-pre"] = adj_rib_in_pre;
-        }
-        else
+        if(adj_rib_in_pre == nullptr)
         {
             adj_rib_in_pre = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre>();
-            adj_rib_in_pre->parent = this;
-            children["adj-rib-in-pre"] = adj_rib_in_pre;
         }
-        return children.at("adj-rib-in-pre");
+        return adj_rib_in_pre;
     }
 
     if(child_yang_name == "adj-rib-out-post")
     {
-        if(adj_rib_out_post != nullptr)
-        {
-            children["adj-rib-out-post"] = adj_rib_out_post;
-        }
-        else
+        if(adj_rib_out_post == nullptr)
         {
             adj_rib_out_post = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost>();
-            adj_rib_out_post->parent = this;
-            children["adj-rib-out-post"] = adj_rib_out_post;
         }
-        return children.at("adj-rib-out-post");
+        return adj_rib_out_post;
     }
 
     if(child_yang_name == "adj-rib-out-pre")
     {
-        if(adj_rib_out_pre != nullptr)
-        {
-            children["adj-rib-out-pre"] = adj_rib_out_pre;
-        }
-        else
+        if(adj_rib_out_pre == nullptr)
         {
             adj_rib_out_pre = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre>();
-            adj_rib_out_pre->parent = this;
-            children["adj-rib-out-pre"] = adj_rib_out_pre;
         }
-        return children.at("adj-rib-out-pre");
+        return adj_rib_out_pre;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::get_children() const
 {
-    if(children.find("adj-rib-in-post") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adj_rib_in_post != nullptr)
     {
-        if(adj_rib_in_post != nullptr)
-        {
-            children["adj-rib-in-post"] = adj_rib_in_post;
-        }
+        children["adj-rib-in-post"] = adj_rib_in_post;
     }
 
-    if(children.find("adj-rib-in-pre") == children.end())
+    if(adj_rib_in_pre != nullptr)
     {
-        if(adj_rib_in_pre != nullptr)
-        {
-            children["adj-rib-in-pre"] = adj_rib_in_pre;
-        }
+        children["adj-rib-in-pre"] = adj_rib_in_pre;
     }
 
-    if(children.find("adj-rib-out-post") == children.end())
+    if(adj_rib_out_post != nullptr)
     {
-        if(adj_rib_out_post != nullptr)
-        {
-            children["adj-rib-out-post"] = adj_rib_out_post;
-        }
+        children["adj-rib-out-post"] = adj_rib_out_post;
     }
 
-    if(children.find("adj-rib-out-pre") == children.end())
+    if(adj_rib_out_pre != nullptr)
     {
-        if(adj_rib_out_pre != nullptr)
-        {
-            children["adj-rib-out-pre"] = adj_rib_out_pre;
-        }
+        children["adj-rib-out-pre"] = adj_rib_out_pre;
     }
 
     return children;
@@ -6849,7 +5976,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::AdjRib
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-in-pre"; yang_parent_name = "neighbor";
 }
@@ -6880,7 +6006,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6904,41 +6030,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -6990,7 +6099,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7013,15 +6122,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -7029,28 +6129,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7073,10 +6169,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -7119,7 +6213,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7148,64 +6242,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -7253,7 +6321,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -7307,7 +6374,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7339,41 +6406,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -7452,7 +6502,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7478,20 +6528,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7582,7 +6624,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7612,15 +6654,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -7628,28 +6661,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7716,7 +6745,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7742,20 +6771,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7782,7 +6803,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::AdjRi
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-in-post"; yang_parent_name = "neighbor";
 }
@@ -7813,7 +6833,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7837,41 +6857,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -7923,7 +6926,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7946,15 +6949,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -7962,28 +6956,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8006,10 +6996,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Route
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -8052,7 +7040,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8081,64 +7069,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -8186,7 +7148,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Route
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -8240,7 +7201,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8272,41 +7233,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -8385,7 +7329,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8411,20 +7355,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8515,7 +7451,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8545,15 +7481,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -8561,28 +7488,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8649,7 +7572,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8675,20 +7598,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibIn
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8715,7 +7630,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::AdjRi
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-out-pre"; yang_parent_name = "neighbor";
 }
@@ -8746,7 +7660,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8770,41 +7684,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -8856,7 +7753,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8879,15 +7776,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -8895,28 +7783,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8939,10 +7823,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Route
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -8985,7 +7867,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9014,64 +7896,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -9119,7 +7975,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Route
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -9173,7 +8028,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9205,41 +8060,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -9318,7 +8156,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9344,20 +8182,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9448,7 +8278,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9478,15 +8308,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -9494,28 +8315,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9582,7 +8399,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9608,20 +8425,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9648,7 +8457,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::AdjR
     routes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes>())
 {
     routes->parent = this;
-    children["routes"] = routes;
 
     yang_name = "adj-rib-out-post"; yang_parent_name = "neighbor";
 }
@@ -9679,7 +8487,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9703,41 +8511,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::get_children() const
 {
-    if(children.find("routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
     return children;
@@ -9789,7 +8580,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9812,15 +8603,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -9828,28 +8610,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9872,10 +8650,8 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Rout
 	,ext_attributes(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     ext_attributes->parent = this;
-    children["ext-attributes"] = ext_attributes;
 
     yang_name = "route"; yang_parent_name = "routes";
 }
@@ -9918,7 +8694,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9947,64 +8723,38 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     if(child_yang_name == "ext-attributes")
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
-        else
+        if(ext_attributes == nullptr)
         {
             ext_attributes = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes>();
-            ext_attributes->parent = this;
-            children["ext-attributes"] = ext_attributes;
         }
-        return children.at("ext-attributes");
+        return ext_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
-    if(children.find("ext-attributes") == children.end())
+    if(ext_attributes != nullptr)
     {
-        if(ext_attributes != nullptr)
-        {
-            children["ext-attributes"] = ext_attributes;
-        }
+        children["ext-attributes"] = ext_attributes;
     }
 
     return children;
@@ -10052,7 +8802,6 @@ BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Rout
     aggregator(std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator>())
 {
     aggregator->parent = this;
-    children["aggregator"] = aggregator;
 
     yang_name = "attributes"; yang_parent_name = "route";
 }
@@ -10106,7 +8855,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10138,41 +8887,24 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregator")
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
-        else
+        if(aggregator == nullptr)
         {
             aggregator = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator>();
-            aggregator->parent = this;
-            children["aggregator"] = aggregator;
         }
-        return children.at("aggregator");
+        return aggregator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::get_children() const
 {
-    if(children.find("aggregator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregator != nullptr)
     {
-        if(aggregator != nullptr)
-        {
-            children["aggregator"] = aggregator;
-        }
+        children["aggregator"] = aggregator;
     }
 
     return children;
@@ -10251,7 +8983,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10277,20 +9009,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10381,7 +9105,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10411,15 +9135,6 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unknown-attribute")
     {
         for(auto const & c : unknown_attribute)
@@ -10427,28 +9142,24 @@ std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neigh
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute>();
         c->parent = this;
-        unknown_attribute.push_back(std::move(c));
-        children[segment_path] = unknown_attribute.back();
-        return children.at(segment_path);
+        unknown_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unknown_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10515,7 +9226,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 
 }
 
-EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10541,20 +9252,12 @@ EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOu
 
 std::shared_ptr<Entity> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -18,26 +18,23 @@ class TrafficCollector : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
         YLeaf enable_traffic_collector; //type: empty
-
         class ExternalInterfaces; //type: TrafficCollector::ExternalInterfaces
         class Statistics; //type: TrafficCollector::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_cfg::TrafficCollector::ExternalInterfaces> external_interfaces;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_cfg::TrafficCollector::Statistics> statistics;
-
-
+        
 }; // TrafficCollector
 
 
@@ -49,19 +46,16 @@ class TrafficCollector::ExternalInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ExternalInterface; //type: TrafficCollector::ExternalInterfaces::ExternalInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_cfg::TrafficCollector::ExternalInterfaces::ExternalInterface> > external_interface;
-
-
+        
 }; // TrafficCollector::ExternalInterfaces
 
 
@@ -73,17 +67,14 @@ class TrafficCollector::ExternalInterfaces::ExternalInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf enable; //type: empty
-
-
 
 }; // TrafficCollector::ExternalInterfaces::ExternalInterface
 
@@ -96,19 +87,16 @@ class TrafficCollector::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf history_size; //type: one of uint32, enumeration
         YLeaf collection_interval; //type: CollectIonIntervalEnum
         YLeaf enable_traffic_collector_statistics; //type: empty
         YLeaf history_timeout; //type: one of uint32, enumeration
-
-
 
 }; // TrafficCollector::Statistics
 

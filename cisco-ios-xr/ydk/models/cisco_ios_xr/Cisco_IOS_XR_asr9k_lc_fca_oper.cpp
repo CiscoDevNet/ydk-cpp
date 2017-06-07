@@ -14,7 +14,6 @@ MpaInternal::MpaInternal()
     nodes(std::make_shared<MpaInternal::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "mpa-internal"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-fca-oper";
 }
@@ -43,12 +42,12 @@ std::string MpaInternal::get_segment_path() const
 
 }
 
-EntityPath MpaInternal::get_entity_path(Entity* ancestor) const
+const EntityPath MpaInternal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath MpaInternal::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MpaInternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<MpaInternal::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MpaInternal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MpaInternal::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string MpaInternal::Nodes::get_segment_path() const
 
 }
 
-EntityPath MpaInternal::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath MpaInternal::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath MpaInternal::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MpaInternal::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> MpaInternal::Nodes::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MpaInternal::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MpaInternal::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -276,7 +245,7 @@ std::string MpaInternal::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath MpaInternal::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath MpaInternal::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -300,15 +269,6 @@ EntityPath MpaInternal::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MpaInternal::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bay")
     {
         for(auto const & c : bay)
@@ -316,28 +276,24 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MpaInternal::Nodes::Node::Bay>();
         c->parent = this;
-        bay.push_back(std::move(c));
-        children[segment_path] = bay.back();
-        return children.at(segment_path);
+        bay.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MpaInternal::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bay)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -358,7 +314,6 @@ MpaInternal::Nodes::Node::Bay::Bay()
     ifsubsies(std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies>())
 {
     ifsubsies->parent = this;
-    children["ifsubsies"] = ifsubsies;
 
     yang_name = "bay"; yang_parent_name = "node";
 }
@@ -389,7 +344,7 @@ std::string MpaInternal::Nodes::Node::Bay::get_segment_path() const
 
 }
 
-EntityPath MpaInternal::Nodes::Node::Bay::get_entity_path(Entity* ancestor) const
+const EntityPath MpaInternal::Nodes::Node::Bay::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -413,41 +368,24 @@ EntityPath MpaInternal::Nodes::Node::Bay::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ifsubsies")
     {
-        if(ifsubsies != nullptr)
-        {
-            children["ifsubsies"] = ifsubsies;
-        }
-        else
+        if(ifsubsies == nullptr)
         {
             ifsubsies = std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies>();
-            ifsubsies->parent = this;
-            children["ifsubsies"] = ifsubsies;
         }
-        return children.at("ifsubsies");
+        return ifsubsies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MpaInternal::Nodes::Node::Bay::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::get_children() const
 {
-    if(children.find("ifsubsies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ifsubsies != nullptr)
     {
-        if(ifsubsies != nullptr)
-        {
-            children["ifsubsies"] = ifsubsies;
-        }
+        children["ifsubsies"] = ifsubsies;
     }
 
     return children;
@@ -499,7 +437,7 @@ std::string MpaInternal::Nodes::Node::Bay::Ifsubsies::get_segment_path() const
 
 }
 
-EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::get_entity_path(Entity* ancestor) const
+const EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -522,15 +460,6 @@ EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ifsubsy")
     {
         for(auto const & c : ifsubsy)
@@ -538,28 +467,24 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy>();
         c->parent = this;
-        ifsubsy.push_back(std::move(c));
-        children[segment_path] = ifsubsy.back();
-        return children.at(segment_path);
+        ifsubsy.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MpaInternal::Nodes::Node::Bay::Ifsubsies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::Ifsubsies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ifsubsy)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -576,7 +501,6 @@ MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::Ifsubsy()
     mpa_internal_info(std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo>())
 {
     mpa_internal_info->parent = this;
-    children["mpa-internal-info"] = mpa_internal_info;
 
     yang_name = "ifsubsy"; yang_parent_name = "ifsubsies";
 }
@@ -607,7 +531,7 @@ std::string MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_segment_path(
 
 }
 
-EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_entity_path(Entity* ancestor) const
+const EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -631,41 +555,24 @@ EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_entity_path(En
 
 std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpa-internal-info")
     {
-        if(mpa_internal_info != nullptr)
-        {
-            children["mpa-internal-info"] = mpa_internal_info;
-        }
-        else
+        if(mpa_internal_info == nullptr)
         {
             mpa_internal_info = std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo>();
-            mpa_internal_info->parent = this;
-            children["mpa-internal-info"] = mpa_internal_info;
         }
-        return children.at("mpa-internal-info");
+        return mpa_internal_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_children() const
 {
-    if(children.find("mpa-internal-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mpa_internal_info != nullptr)
     {
-        if(mpa_internal_info != nullptr)
-        {
-            children["mpa-internal-info"] = mpa_internal_info;
-        }
+        children["mpa-internal-info"] = mpa_internal_info;
     }
 
     return children;
@@ -737,7 +644,7 @@ std::string MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::
 
 }
 
-EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -770,20 +677,12 @@ EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::g
 
 std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -836,7 +735,6 @@ Mpa::Mpa()
     nodes(std::make_shared<Mpa::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "mpa"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-fca-oper";
 }
@@ -865,12 +763,12 @@ std::string Mpa::get_segment_path() const
 
 }
 
-EntityPath Mpa::get_entity_path(Entity* ancestor) const
+const EntityPath Mpa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -885,41 +783,24 @@ EntityPath Mpa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Mpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Mpa::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mpa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mpa::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -987,7 +868,7 @@ std::string Mpa::Nodes::get_segment_path() const
 
 }
 
-EntityPath Mpa::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Mpa::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1010,15 +891,6 @@ EntityPath Mpa::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Mpa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -1026,28 +898,24 @@ std::shared_ptr<Entity> Mpa::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Mpa::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mpa::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1098,7 +966,7 @@ std::string Mpa::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Mpa::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Mpa::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1122,15 +990,6 @@ EntityPath Mpa::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Mpa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bay")
     {
         for(auto const & c : bay)
@@ -1138,28 +997,24 @@ std::shared_ptr<Entity> Mpa::Nodes::Node::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Mpa::Nodes::Node::Bay>();
         c->parent = this;
-        bay.push_back(std::move(c));
-        children[segment_path] = bay.back();
-        return children.at(segment_path);
+        bay.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mpa::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bay)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1180,7 +1035,6 @@ Mpa::Nodes::Node::Bay::Bay()
     mpa_detail_table(std::make_shared<Mpa::Nodes::Node::Bay::MpaDetailTable>())
 {
     mpa_detail_table->parent = this;
-    children["mpa-detail-table"] = mpa_detail_table;
 
     yang_name = "bay"; yang_parent_name = "node";
 }
@@ -1211,7 +1065,7 @@ std::string Mpa::Nodes::Node::Bay::get_segment_path() const
 
 }
 
-EntityPath Mpa::Nodes::Node::Bay::get_entity_path(Entity* ancestor) const
+const EntityPath Mpa::Nodes::Node::Bay::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1235,41 +1089,24 @@ EntityPath Mpa::Nodes::Node::Bay::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Mpa::Nodes::Node::Bay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpa-detail-table")
     {
-        if(mpa_detail_table != nullptr)
-        {
-            children["mpa-detail-table"] = mpa_detail_table;
-        }
-        else
+        if(mpa_detail_table == nullptr)
         {
             mpa_detail_table = std::make_shared<Mpa::Nodes::Node::Bay::MpaDetailTable>();
-            mpa_detail_table->parent = this;
-            children["mpa-detail-table"] = mpa_detail_table;
         }
-        return children.at("mpa-detail-table");
+        return mpa_detail_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mpa::Nodes::Node::Bay::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::get_children() const
 {
-    if(children.find("mpa-detail-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mpa_detail_table != nullptr)
     {
-        if(mpa_detail_table != nullptr)
-        {
-            children["mpa-detail-table"] = mpa_detail_table;
-        }
+        children["mpa-detail-table"] = mpa_detail_table;
     }
 
     return children;
@@ -1288,7 +1125,6 @@ Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetailTable()
     mpa_detail(std::make_shared<Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail>())
 {
     mpa_detail->parent = this;
-    children["mpa-detail"] = mpa_detail;
 
     yang_name = "mpa-detail-table"; yang_parent_name = "bay";
 }
@@ -1317,7 +1153,7 @@ std::string Mpa::Nodes::Node::Bay::MpaDetailTable::get_segment_path() const
 
 }
 
-EntityPath Mpa::Nodes::Node::Bay::MpaDetailTable::get_entity_path(Entity* ancestor) const
+const EntityPath Mpa::Nodes::Node::Bay::MpaDetailTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1340,41 +1176,24 @@ EntityPath Mpa::Nodes::Node::Bay::MpaDetailTable::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Mpa::Nodes::Node::Bay::MpaDetailTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpa-detail")
     {
-        if(mpa_detail != nullptr)
-        {
-            children["mpa-detail"] = mpa_detail;
-        }
-        else
+        if(mpa_detail == nullptr)
         {
             mpa_detail = std::make_shared<Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail>();
-            mpa_detail->parent = this;
-            children["mpa-detail"] = mpa_detail;
         }
-        return children.at("mpa-detail");
+        return mpa_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mpa::Nodes::Node::Bay::MpaDetailTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::MpaDetailTable::get_children() const
 {
-    if(children.find("mpa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mpa_detail != nullptr)
     {
-        if(mpa_detail != nullptr)
-        {
-            children["mpa-detail"] = mpa_detail;
-        }
+        children["mpa-detail"] = mpa_detail;
     }
 
     return children;
@@ -1451,7 +1270,7 @@ std::string Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_segment_path()
 
 }
 
-EntityPath Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1487,20 +1306,12 @@ EntityPath Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_entity_path(Ent
 
 std::shared_ptr<Entity> Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

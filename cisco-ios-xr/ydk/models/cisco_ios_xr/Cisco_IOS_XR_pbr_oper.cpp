@@ -14,7 +14,6 @@ Pbr::Pbr()
     nodes(std::make_shared<Pbr::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "pbr"; yang_parent_name = "Cisco-IOS-XR-pbr-oper";
 }
@@ -43,12 +42,12 @@ std::string Pbr::get_segment_path() const
 
 }
 
-EntityPath Pbr::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Pbr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Pbr::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Pbr::Nodes::get_segment_path() const
 
 }
 
-EntityPath Pbr::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Pbr::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pbr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Pbr::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pbr::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ Pbr::Nodes::Node::Node()
     policy_map(std::make_shared<Pbr::Nodes::Node::PolicyMap>())
 {
     policy_map->parent = this;
-    children["policy-map"] = policy_map;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string Pbr::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Pbr::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath Pbr::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-map")
     {
-        if(policy_map != nullptr)
-        {
-            children["policy-map"] = policy_map;
-        }
-        else
+        if(policy_map == nullptr)
         {
             policy_map = std::make_shared<Pbr::Nodes::Node::PolicyMap>();
-            policy_map->parent = this;
-            children["policy-map"] = policy_map;
         }
-        return children.at("policy-map");
+        return policy_map;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::get_children() const
 {
-    if(children.find("policy-map") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy_map != nullptr)
     {
-        if(policy_map != nullptr)
-        {
-            children["policy-map"] = policy_map;
-        }
+        children["policy-map"] = policy_map;
     }
 
     return children;
@@ -350,7 +301,6 @@ Pbr::Nodes::Node::PolicyMap::PolicyMap()
     interfaces(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "policy-map"; yang_parent_name = "node";
 }
@@ -379,7 +329,7 @@ std::string Pbr::Nodes::Node::PolicyMap::get_segment_path() const
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -402,41 +352,24 @@ EntityPath Pbr::Nodes::Node::PolicyMap::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -484,7 +417,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -507,15 +440,6 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -523,28 +447,24 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -561,7 +481,6 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Interface()
     direction(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction>())
 {
     direction->parent = this;
-    children["direction"] = direction;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -592,7 +511,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_segment_path
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -616,41 +535,24 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_entity_path(E
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "direction")
     {
-        if(direction != nullptr)
-        {
-            children["direction"] = direction;
-        }
-        else
+        if(direction == nullptr)
         {
             direction = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction>();
-            direction->parent = this;
-            children["direction"] = direction;
         }
-        return children.at("direction");
+        return direction;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_children() const
 {
-    if(children.find("direction") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(direction != nullptr)
     {
-        if(direction != nullptr)
-        {
-            children["direction"] = direction;
-        }
+        children["direction"] = direction;
     }
 
     return children;
@@ -669,7 +571,6 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Direction()
     input(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input>())
 {
     input->parent = this;
-    children["input"] = input;
 
     yang_name = "direction"; yang_parent_name = "interface";
 }
@@ -698,7 +599,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_s
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -721,41 +622,24 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_en
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -815,7 +699,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -842,15 +726,6 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stat")
     {
         for(auto const & c : class_stat)
@@ -858,28 +733,24 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat>();
         c->parent = this;
-        class_stat.push_back(std::move(c));
-        children[segment_path] = class_stat.back();
-        return children.at(segment_path);
+        class_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -915,10 +786,8 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 	,httpr_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats>())
 {
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     httpr_stats->parent = this;
-    children["httpr-stats"] = httpr_stats;
 
     yang_name = "class-stat"; yang_parent_name = "input";
 }
@@ -955,7 +824,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -981,64 +850,38 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "httpr-stats")
     {
-        if(httpr_stats != nullptr)
-        {
-            children["httpr-stats"] = httpr_stats;
-        }
-        else
+        if(httpr_stats == nullptr)
         {
             httpr_stats = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats>();
-            httpr_stats->parent = this;
-            children["httpr-stats"] = httpr_stats;
         }
-        return children.at("httpr-stats");
+        return httpr_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_children() const
 {
-    if(children.find("general-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("httpr-stats") == children.end())
+    if(httpr_stats != nullptr)
     {
-        if(httpr_stats != nullptr)
-        {
-            children["httpr-stats"] = httpr_stats;
-        }
+        children["httpr-stats"] = httpr_stats;
     }
 
     return children;
@@ -1115,7 +958,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1147,20 +990,12 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1250,7 +1085,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
 }
 
-EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_entity_path(Entity* ancestor) const
+const EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1279,20 +1114,12 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
 
 std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

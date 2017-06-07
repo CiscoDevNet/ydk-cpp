@@ -15,10 +15,8 @@ Pppoe::Pppoe()
 	,nodes(std::make_shared<Pppoe::Nodes>())
 {
     access_interface_statistics->parent = this;
-    children["access-interface-statistics"] = access_interface_statistics;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "pppoe"; yang_parent_name = "Cisco-IOS-XR-subscriber-pppoe-ma-oper";
 }
@@ -49,12 +47,12 @@ std::string Pppoe::get_segment_path() const
 
 }
 
-EntityPath Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath Pppoe::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interface-statistics")
     {
-        if(access_interface_statistics != nullptr)
-        {
-            children["access-interface-statistics"] = access_interface_statistics;
-        }
-        else
+        if(access_interface_statistics == nullptr)
         {
             access_interface_statistics = std::make_shared<Pppoe::AccessInterfaceStatistics>();
-            access_interface_statistics->parent = this;
-            children["access-interface-statistics"] = access_interface_statistics;
         }
-        return children.at("access-interface-statistics");
+        return access_interface_statistics;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Pppoe::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::get_children() const
 {
-    if(children.find("access-interface-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interface_statistics != nullptr)
     {
-        if(access_interface_statistics != nullptr)
-        {
-            children["access-interface-statistics"] = access_interface_statistics;
-        }
+        children["access-interface-statistics"] = access_interface_statistics;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string Pppoe::AccessInterfaceStatistics::get_segment_path() const
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath Pppoe::AccessInterfaceStatistics::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interface-statistic")
     {
         for(auto const & c : access_interface_statistic)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic>();
         c->parent = this;
-        access_interface_statistic.push_back(std::move(c));
-        children[segment_path] = access_interface_statistic.back();
-        return children.at(segment_path);
+        access_interface_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access_interface_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -271,7 +230,6 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::AccessInterfaceStati
     packet_counts(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts>())
 {
     packet_counts->parent = this;
-    children["packet-counts"] = packet_counts;
 
     yang_name = "access-interface-statistic"; yang_parent_name = "access-interface-statistics";
 }
@@ -302,7 +260,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_segm
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -326,41 +284,24 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_entit
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "packet-counts")
     {
-        if(packet_counts != nullptr)
-        {
-            children["packet-counts"] = packet_counts;
-        }
-        else
+        if(packet_counts == nullptr)
         {
             packet_counts = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts>();
-            packet_counts->parent = this;
-            children["packet-counts"] = packet_counts;
         }
-        return children.at("packet-counts");
+        return packet_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::get_children() const
 {
-    if(children.find("packet-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(packet_counts != nullptr)
     {
-        if(packet_counts != nullptr)
-        {
-            children["packet-counts"] = packet_counts;
-        }
+        children["packet-counts"] = packet_counts;
     }
 
     return children;
@@ -386,28 +327,20 @@ Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Packet
 	,session_state(std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState>())
 {
     other->parent = this;
-    children["other"] = other;
 
     padi->parent = this;
-    children["padi"] = padi;
 
     pado->parent = this;
-    children["pado"] = pado;
 
     padr->parent = this;
-    children["padr"] = padr;
 
     pads_error->parent = this;
-    children["pads-error"] = pads_error;
 
     pads_success->parent = this;
-    children["pads-success"] = pads_success;
 
     padt->parent = this;
-    children["padt"] = padt;
 
     session_state->parent = this;
-    children["session-state"] = session_state;
 
     yang_name = "packet-counts"; yang_parent_name = "access-interface-statistic";
 }
@@ -450,7 +383,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -473,202 +406,122 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "other")
     {
-        if(other != nullptr)
-        {
-            children["other"] = other;
-        }
-        else
+        if(other == nullptr)
         {
             other = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other>();
-            other->parent = this;
-            children["other"] = other;
         }
-        return children.at("other");
+        return other;
     }
 
     if(child_yang_name == "padi")
     {
-        if(padi != nullptr)
-        {
-            children["padi"] = padi;
-        }
-        else
+        if(padi == nullptr)
         {
             padi = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi>();
-            padi->parent = this;
-            children["padi"] = padi;
         }
-        return children.at("padi");
+        return padi;
     }
 
     if(child_yang_name == "pado")
     {
-        if(pado != nullptr)
-        {
-            children["pado"] = pado;
-        }
-        else
+        if(pado == nullptr)
         {
             pado = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado>();
-            pado->parent = this;
-            children["pado"] = pado;
         }
-        return children.at("pado");
+        return pado;
     }
 
     if(child_yang_name == "padr")
     {
-        if(padr != nullptr)
-        {
-            children["padr"] = padr;
-        }
-        else
+        if(padr == nullptr)
         {
             padr = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr>();
-            padr->parent = this;
-            children["padr"] = padr;
         }
-        return children.at("padr");
+        return padr;
     }
 
     if(child_yang_name == "pads-error")
     {
-        if(pads_error != nullptr)
-        {
-            children["pads-error"] = pads_error;
-        }
-        else
+        if(pads_error == nullptr)
         {
             pads_error = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError>();
-            pads_error->parent = this;
-            children["pads-error"] = pads_error;
         }
-        return children.at("pads-error");
+        return pads_error;
     }
 
     if(child_yang_name == "pads-success")
     {
-        if(pads_success != nullptr)
-        {
-            children["pads-success"] = pads_success;
-        }
-        else
+        if(pads_success == nullptr)
         {
             pads_success = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess>();
-            pads_success->parent = this;
-            children["pads-success"] = pads_success;
         }
-        return children.at("pads-success");
+        return pads_success;
     }
 
     if(child_yang_name == "padt")
     {
-        if(padt != nullptr)
-        {
-            children["padt"] = padt;
-        }
-        else
+        if(padt == nullptr)
         {
             padt = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt>();
-            padt->parent = this;
-            children["padt"] = padt;
         }
-        return children.at("padt");
+        return padt;
     }
 
     if(child_yang_name == "session-state")
     {
-        if(session_state != nullptr)
-        {
-            children["session-state"] = session_state;
-        }
-        else
+        if(session_state == nullptr)
         {
             session_state = std::make_shared<Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState>();
-            session_state->parent = this;
-            children["session-state"] = session_state;
         }
-        return children.at("session-state");
+        return session_state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::get_children() const
 {
-    if(children.find("other") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(other != nullptr)
     {
-        if(other != nullptr)
-        {
-            children["other"] = other;
-        }
+        children["other"] = other;
     }
 
-    if(children.find("padi") == children.end())
+    if(padi != nullptr)
     {
-        if(padi != nullptr)
-        {
-            children["padi"] = padi;
-        }
+        children["padi"] = padi;
     }
 
-    if(children.find("pado") == children.end())
+    if(pado != nullptr)
     {
-        if(pado != nullptr)
-        {
-            children["pado"] = pado;
-        }
+        children["pado"] = pado;
     }
 
-    if(children.find("padr") == children.end())
+    if(padr != nullptr)
     {
-        if(padr != nullptr)
-        {
-            children["padr"] = padr;
-        }
+        children["padr"] = padr;
     }
 
-    if(children.find("pads-error") == children.end())
+    if(pads_error != nullptr)
     {
-        if(pads_error != nullptr)
-        {
-            children["pads-error"] = pads_error;
-        }
+        children["pads-error"] = pads_error;
     }
 
-    if(children.find("pads-success") == children.end())
+    if(pads_success != nullptr)
     {
-        if(pads_success != nullptr)
-        {
-            children["pads-success"] = pads_success;
-        }
+        children["pads-success"] = pads_success;
     }
 
-    if(children.find("padt") == children.end())
+    if(padt != nullptr)
     {
-        if(padt != nullptr)
-        {
-            children["padt"] = padt;
-        }
+        children["padt"] = padt;
     }
 
-    if(children.find("session-state") == children.end())
+    if(session_state != nullptr)
     {
-        if(session_state != nullptr)
-        {
-            children["session-state"] = session_state;
-        }
+        children["session-state"] = session_state;
     }
 
     return children;
@@ -715,7 +568,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -741,20 +594,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -811,7 +656,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -837,20 +682,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -907,7 +744,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -933,20 +770,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1003,7 +832,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1029,20 +858,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1099,7 +920,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1125,20 +946,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1195,7 +1008,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1221,20 +1034,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1291,7 +1096,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1317,20 +1122,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1387,7 +1184,7 @@ std::string Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCo
 
 }
 
-EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1413,20 +1210,12 @@ EntityPath Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCou
 
 std::shared_ptr<Entity> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1484,7 +1273,7 @@ std::string Pppoe::Nodes::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1507,15 +1296,6 @@ EntityPath Pppoe::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pppoe::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -1523,28 +1303,24 @@ std::shared_ptr<Entity> Pppoe::Nodes::get_child_by_name(const std::string & chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pppoe::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1565,19 +1341,14 @@ Pppoe::Nodes::Node::Node()
 	,summary_total(std::make_shared<Pppoe::Nodes::Node::SummaryTotal>())
 {
     access_interface->parent = this;
-    children["access-interface"] = access_interface;
 
     bba_groups->parent = this;
-    children["bba-groups"] = bba_groups;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     summary_total->parent = this;
-    children["summary-total"] = summary_total;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -1616,7 +1387,7 @@ std::string Pppoe::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1640,133 +1411,80 @@ EntityPath Pppoe::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interface")
     {
-        if(access_interface != nullptr)
-        {
-            children["access-interface"] = access_interface;
-        }
-        else
+        if(access_interface == nullptr)
         {
             access_interface = std::make_shared<Pppoe::Nodes::Node::AccessInterface>();
-            access_interface->parent = this;
-            children["access-interface"] = access_interface;
         }
-        return children.at("access-interface");
+        return access_interface;
     }
 
     if(child_yang_name == "bba-groups")
     {
-        if(bba_groups != nullptr)
-        {
-            children["bba-groups"] = bba_groups;
-        }
-        else
+        if(bba_groups == nullptr)
         {
             bba_groups = std::make_shared<Pppoe::Nodes::Node::BbaGroups>();
-            bba_groups->parent = this;
-            children["bba-groups"] = bba_groups;
         }
-        return children.at("bba-groups");
+        return bba_groups;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Pppoe::Nodes::Node::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Pppoe::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "summary-total")
     {
-        if(summary_total != nullptr)
-        {
-            children["summary-total"] = summary_total;
-        }
-        else
+        if(summary_total == nullptr)
         {
             summary_total = std::make_shared<Pppoe::Nodes::Node::SummaryTotal>();
-            summary_total->parent = this;
-            children["summary-total"] = summary_total;
         }
-        return children.at("summary-total");
+        return summary_total;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::get_children() const
 {
-    if(children.find("access-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interface != nullptr)
     {
-        if(access_interface != nullptr)
-        {
-            children["access-interface"] = access_interface;
-        }
+        children["access-interface"] = access_interface;
     }
 
-    if(children.find("bba-groups") == children.end())
+    if(bba_groups != nullptr)
     {
-        if(bba_groups != nullptr)
-        {
-            children["bba-groups"] = bba_groups;
-        }
+        children["bba-groups"] = bba_groups;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("summary-total") == children.end())
+    if(summary_total != nullptr)
     {
-        if(summary_total != nullptr)
-        {
-            children["summary-total"] = summary_total;
-        }
+        children["summary-total"] = summary_total;
     }
 
     return children;
@@ -1786,10 +1504,8 @@ Pppoe::Nodes::Node::Statistics::Statistics()
 	,packet_error_counts(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketErrorCounts>())
 {
     packet_counts->parent = this;
-    children["packet-counts"] = packet_counts;
 
     packet_error_counts->parent = this;
-    children["packet-error-counts"] = packet_error_counts;
 
     yang_name = "statistics"; yang_parent_name = "node";
 }
@@ -1820,7 +1536,7 @@ std::string Pppoe::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1843,64 +1559,38 @@ EntityPath Pppoe::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "packet-counts")
     {
-        if(packet_counts != nullptr)
-        {
-            children["packet-counts"] = packet_counts;
-        }
-        else
+        if(packet_counts == nullptr)
         {
             packet_counts = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts>();
-            packet_counts->parent = this;
-            children["packet-counts"] = packet_counts;
         }
-        return children.at("packet-counts");
+        return packet_counts;
     }
 
     if(child_yang_name == "packet-error-counts")
     {
-        if(packet_error_counts != nullptr)
-        {
-            children["packet-error-counts"] = packet_error_counts;
-        }
-        else
+        if(packet_error_counts == nullptr)
         {
             packet_error_counts = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketErrorCounts>();
-            packet_error_counts->parent = this;
-            children["packet-error-counts"] = packet_error_counts;
         }
-        return children.at("packet-error-counts");
+        return packet_error_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::get_children() const
 {
-    if(children.find("packet-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(packet_counts != nullptr)
     {
-        if(packet_counts != nullptr)
-        {
-            children["packet-counts"] = packet_counts;
-        }
+        children["packet-counts"] = packet_counts;
     }
 
-    if(children.find("packet-error-counts") == children.end())
+    if(packet_error_counts != nullptr)
     {
-        if(packet_error_counts != nullptr)
-        {
-            children["packet-error-counts"] = packet_error_counts;
-        }
+        children["packet-error-counts"] = packet_error_counts;
     }
 
     return children;
@@ -1922,28 +1612,20 @@ Pppoe::Nodes::Node::Statistics::PacketCounts::PacketCounts()
 	,session_state(std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState>())
 {
     other->parent = this;
-    children["other"] = other;
 
     padi->parent = this;
-    children["padi"] = padi;
 
     pado->parent = this;
-    children["pado"] = pado;
 
     padr->parent = this;
-    children["padr"] = padr;
 
     pads_error->parent = this;
-    children["pads-error"] = pads_error;
 
     pads_success->parent = this;
-    children["pads-success"] = pads_success;
 
     padt->parent = this;
-    children["padt"] = padt;
 
     session_state->parent = this;
-    children["session-state"] = session_state;
 
     yang_name = "packet-counts"; yang_parent_name = "statistics";
 }
@@ -1986,7 +1668,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::get_segment_path() con
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2009,202 +1691,122 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "other")
     {
-        if(other != nullptr)
-        {
-            children["other"] = other;
-        }
-        else
+        if(other == nullptr)
         {
             other = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Other>();
-            other->parent = this;
-            children["other"] = other;
         }
-        return children.at("other");
+        return other;
     }
 
     if(child_yang_name == "padi")
     {
-        if(padi != nullptr)
-        {
-            children["padi"] = padi;
-        }
-        else
+        if(padi == nullptr)
         {
             padi = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padi>();
-            padi->parent = this;
-            children["padi"] = padi;
         }
-        return children.at("padi");
+        return padi;
     }
 
     if(child_yang_name == "pado")
     {
-        if(pado != nullptr)
-        {
-            children["pado"] = pado;
-        }
-        else
+        if(pado == nullptr)
         {
             pado = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Pado>();
-            pado->parent = this;
-            children["pado"] = pado;
         }
-        return children.at("pado");
+        return pado;
     }
 
     if(child_yang_name == "padr")
     {
-        if(padr != nullptr)
-        {
-            children["padr"] = padr;
-        }
-        else
+        if(padr == nullptr)
         {
             padr = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padr>();
-            padr->parent = this;
-            children["padr"] = padr;
         }
-        return children.at("padr");
+        return padr;
     }
 
     if(child_yang_name == "pads-error")
     {
-        if(pads_error != nullptr)
-        {
-            children["pads-error"] = pads_error;
-        }
-        else
+        if(pads_error == nullptr)
         {
             pads_error = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError>();
-            pads_error->parent = this;
-            children["pads-error"] = pads_error;
         }
-        return children.at("pads-error");
+        return pads_error;
     }
 
     if(child_yang_name == "pads-success")
     {
-        if(pads_success != nullptr)
-        {
-            children["pads-success"] = pads_success;
-        }
-        else
+        if(pads_success == nullptr)
         {
             pads_success = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess>();
-            pads_success->parent = this;
-            children["pads-success"] = pads_success;
         }
-        return children.at("pads-success");
+        return pads_success;
     }
 
     if(child_yang_name == "padt")
     {
-        if(padt != nullptr)
-        {
-            children["padt"] = padt;
-        }
-        else
+        if(padt == nullptr)
         {
             padt = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::Padt>();
-            padt->parent = this;
-            children["padt"] = padt;
         }
-        return children.at("padt");
+        return padt;
     }
 
     if(child_yang_name == "session-state")
     {
-        if(session_state != nullptr)
-        {
-            children["session-state"] = session_state;
-        }
-        else
+        if(session_state == nullptr)
         {
             session_state = std::make_shared<Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState>();
-            session_state->parent = this;
-            children["session-state"] = session_state;
         }
-        return children.at("session-state");
+        return session_state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::get_children() const
 {
-    if(children.find("other") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(other != nullptr)
     {
-        if(other != nullptr)
-        {
-            children["other"] = other;
-        }
+        children["other"] = other;
     }
 
-    if(children.find("padi") == children.end())
+    if(padi != nullptr)
     {
-        if(padi != nullptr)
-        {
-            children["padi"] = padi;
-        }
+        children["padi"] = padi;
     }
 
-    if(children.find("pado") == children.end())
+    if(pado != nullptr)
     {
-        if(pado != nullptr)
-        {
-            children["pado"] = pado;
-        }
+        children["pado"] = pado;
     }
 
-    if(children.find("padr") == children.end())
+    if(padr != nullptr)
     {
-        if(padr != nullptr)
-        {
-            children["padr"] = padr;
-        }
+        children["padr"] = padr;
     }
 
-    if(children.find("pads-error") == children.end())
+    if(pads_error != nullptr)
     {
-        if(pads_error != nullptr)
-        {
-            children["pads-error"] = pads_error;
-        }
+        children["pads-error"] = pads_error;
     }
 
-    if(children.find("pads-success") == children.end())
+    if(pads_success != nullptr)
     {
-        if(pads_success != nullptr)
-        {
-            children["pads-success"] = pads_success;
-        }
+        children["pads-success"] = pads_success;
     }
 
-    if(children.find("padt") == children.end())
+    if(padt != nullptr)
     {
-        if(padt != nullptr)
-        {
-            children["padt"] = padt;
-        }
+        children["padt"] = padt;
     }
 
-    if(children.find("session-state") == children.end())
+    if(session_state != nullptr)
     {
-        if(session_state != nullptr)
-        {
-            children["session-state"] = session_state;
-        }
+        children["session-state"] = session_state;
     }
 
     return children;
@@ -2251,7 +1853,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::get_segment_path
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2277,20 +1879,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::get_entity_path(E
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::Padi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2347,7 +1941,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::get_segment_path
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2373,20 +1967,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::get_entity_path(E
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::Pado::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2443,7 +2029,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::get_segment_path
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2469,20 +2055,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::get_entity_path(E
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::Padr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2539,7 +2117,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::get_segme
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2565,20 +2143,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::get_entity
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2635,7 +2205,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::get_segment
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2661,20 +2231,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::get_entity_p
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2731,7 +2293,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::get_segment_path
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2757,20 +2319,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::get_entity_path(E
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::Padt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2827,7 +2381,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::get_segm
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2853,20 +2407,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::get_entit
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2923,7 +2469,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketCounts::Other::get_segment_pat
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Other::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Other::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2949,20 +2495,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketCounts::Other::get_entity_path(
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketCounts::Other::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketCounts::Other::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketCounts::Other::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3166,7 +2704,7 @@ std::string Pppoe::Nodes::Node::Statistics::PacketErrorCounts::get_segment_path(
 
 }
 
-EntityPath Pppoe::Nodes::Node::Statistics::PacketErrorCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Statistics::PacketErrorCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3241,20 +2779,12 @@ EntityPath Pppoe::Nodes::Node::Statistics::PacketErrorCounts::get_entity_path(En
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Statistics::PacketErrorCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Statistics::PacketErrorCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Statistics::PacketErrorCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3475,7 +3005,6 @@ Pppoe::Nodes::Node::AccessInterface::AccessInterface()
     summaries(std::make_shared<Pppoe::Nodes::Node::AccessInterface::Summaries>())
 {
     summaries->parent = this;
-    children["summaries"] = summaries;
 
     yang_name = "access-interface"; yang_parent_name = "node";
 }
@@ -3504,7 +3033,7 @@ std::string Pppoe::Nodes::Node::AccessInterface::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::AccessInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::AccessInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3527,41 +3056,24 @@ EntityPath Pppoe::Nodes::Node::AccessInterface::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summaries")
     {
-        if(summaries != nullptr)
-        {
-            children["summaries"] = summaries;
-        }
-        else
+        if(summaries == nullptr)
         {
             summaries = std::make_shared<Pppoe::Nodes::Node::AccessInterface::Summaries>();
-            summaries->parent = this;
-            children["summaries"] = summaries;
         }
-        return children.at("summaries");
+        return summaries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::AccessInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::AccessInterface::get_children() const
 {
-    if(children.find("summaries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(summaries != nullptr)
     {
-        if(summaries != nullptr)
-        {
-            children["summaries"] = summaries;
-        }
+        children["summaries"] = summaries;
     }
 
     return children;
@@ -3609,7 +3121,7 @@ std::string Pppoe::Nodes::Node::AccessInterface::Summaries::get_segment_path() c
 
 }
 
-EntityPath Pppoe::Nodes::Node::AccessInterface::Summaries::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::AccessInterface::Summaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3632,15 +3144,6 @@ EntityPath Pppoe::Nodes::Node::AccessInterface::Summaries::get_entity_path(Entit
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::AccessInterface::Summaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary")
     {
         for(auto const & c : summary)
@@ -3648,28 +3151,24 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::AccessInterface::Summaries::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pppoe::Nodes::Node::AccessInterface::Summaries::Summary>();
         c->parent = this;
-        summary.push_back(std::move(c));
-        children[segment_path] = summary.back();
-        return children.at(segment_path);
+        summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::AccessInterface::Summaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::AccessInterface::Summaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3731,7 +3230,7 @@ std::string Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_segment
 
 }
 
-EntityPath Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3762,20 +3261,12 @@ EntityPath Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_entity_p
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::AccessInterface::Summaries::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3853,7 +3344,7 @@ std::string Pppoe::Nodes::Node::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3876,15 +3367,6 @@ EntityPath Pppoe::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3892,28 +3374,24 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::Interfaces::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3940,7 +3418,6 @@ Pppoe::Nodes::Node::Interfaces::Interface::Interface()
     tags(std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface::Tags>())
 {
     tags->parent = this;
-    children["tags"] = tags;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -3991,7 +3468,7 @@ std::string Pppoe::Nodes::Node::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4025,41 +3502,24 @@ EntityPath Pppoe::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tags")
     {
-        if(tags != nullptr)
-        {
-            children["tags"] = tags;
-        }
-        else
+        if(tags == nullptr)
         {
             tags = std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface::Tags>();
-            tags->parent = this;
-            children["tags"] = tags;
         }
-        return children.at("tags");
+        return tags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    if(children.find("tags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tags != nullptr)
     {
-        if(tags != nullptr)
-        {
-            children["tags"] = tags;
-        }
+        children["tags"] = tags;
     }
 
     return children;
@@ -4140,7 +3600,6 @@ Pppoe::Nodes::Node::Interfaces::Interface::Tags::Tags()
     access_loop_encapsulation(std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation>())
 {
     access_loop_encapsulation->parent = this;
-    children["access-loop-encapsulation"] = access_loop_encapsulation;
 
     yang_name = "tags"; yang_parent_name = "interface";
 }
@@ -4211,7 +3670,7 @@ std::string Pppoe::Nodes::Node::Interfaces::Interface::Tags::get_segment_path() 
 
 }
 
-EntityPath Pppoe::Nodes::Node::Interfaces::Interface::Tags::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Interfaces::Interface::Tags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4255,41 +3714,24 @@ EntityPath Pppoe::Nodes::Node::Interfaces::Interface::Tags::get_entity_path(Enti
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Interfaces::Interface::Tags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-loop-encapsulation")
     {
-        if(access_loop_encapsulation != nullptr)
-        {
-            children["access-loop-encapsulation"] = access_loop_encapsulation;
-        }
-        else
+        if(access_loop_encapsulation == nullptr)
         {
             access_loop_encapsulation = std::make_shared<Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation>();
-            access_loop_encapsulation->parent = this;
-            children["access-loop-encapsulation"] = access_loop_encapsulation;
         }
-        return children.at("access-loop-encapsulation");
+        return access_loop_encapsulation;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Interfaces::Interface::Tags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Interfaces::Interface::Tags::get_children() const
 {
-    if(children.find("access-loop-encapsulation") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_loop_encapsulation != nullptr)
     {
-        if(access_loop_encapsulation != nullptr)
-        {
-            children["access-loop-encapsulation"] = access_loop_encapsulation;
-        }
+        children["access-loop-encapsulation"] = access_loop_encapsulation;
     }
 
     return children;
@@ -4420,7 +3862,7 @@ std::string Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsula
 
 }
 
-EntityPath Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4446,20 +3888,12 @@ EntityPath Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulat
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4517,7 +3951,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4540,15 +3974,6 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bba-group")
     {
         for(auto const & c : bba_group)
@@ -4556,28 +3981,24 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup>();
         c->parent = this;
-        bba_group.push_back(std::move(c));
-        children[segment_path] = bba_group.back();
-        return children.at(segment_path);
+        bba_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bba_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4597,16 +4018,12 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::BbaGroup()
 	,throttles(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles>())
 {
     limit_config->parent = this;
-    children["limit-config"] = limit_config;
 
     limits->parent = this;
-    children["limits"] = limits;
 
     throttle_config->parent = this;
-    children["throttle-config"] = throttle_config;
 
     throttles->parent = this;
-    children["throttles"] = throttles;
 
     yang_name = "bba-group"; yang_parent_name = "bba-groups";
 }
@@ -4643,7 +4060,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4667,110 +4084,66 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "limit-config")
     {
-        if(limit_config != nullptr)
-        {
-            children["limit-config"] = limit_config;
-        }
-        else
+        if(limit_config == nullptr)
         {
             limit_config = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig>();
-            limit_config->parent = this;
-            children["limit-config"] = limit_config;
         }
-        return children.at("limit-config");
+        return limit_config;
     }
 
     if(child_yang_name == "limits")
     {
-        if(limits != nullptr)
-        {
-            children["limits"] = limits;
-        }
-        else
+        if(limits == nullptr)
         {
             limits = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits>();
-            limits->parent = this;
-            children["limits"] = limits;
         }
-        return children.at("limits");
+        return limits;
     }
 
     if(child_yang_name == "throttle-config")
     {
-        if(throttle_config != nullptr)
-        {
-            children["throttle-config"] = throttle_config;
-        }
-        else
+        if(throttle_config == nullptr)
         {
             throttle_config = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig>();
-            throttle_config->parent = this;
-            children["throttle-config"] = throttle_config;
         }
-        return children.at("throttle-config");
+        return throttle_config;
     }
 
     if(child_yang_name == "throttles")
     {
-        if(throttles != nullptr)
-        {
-            children["throttles"] = throttles;
-        }
-        else
+        if(throttles == nullptr)
         {
             throttles = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles>();
-            throttles->parent = this;
-            children["throttles"] = throttles;
         }
-        return children.at("throttles");
+        return throttles;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::get_children() const
 {
-    if(children.find("limit-config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(limit_config != nullptr)
     {
-        if(limit_config != nullptr)
-        {
-            children["limit-config"] = limit_config;
-        }
+        children["limit-config"] = limit_config;
     }
 
-    if(children.find("limits") == children.end())
+    if(limits != nullptr)
     {
-        if(limits != nullptr)
-        {
-            children["limits"] = limits;
-        }
+        children["limits"] = limits;
     }
 
-    if(children.find("throttle-config") == children.end())
+    if(throttle_config != nullptr)
     {
-        if(throttle_config != nullptr)
-        {
-            children["throttle-config"] = throttle_config;
-        }
+        children["throttle-config"] = throttle_config;
     }
 
-    if(children.find("throttles") == children.end())
+    if(throttles != nullptr)
     {
-        if(throttles != nullptr)
-        {
-            children["throttles"] = throttles;
-        }
+        children["throttles"] = throttles;
     }
 
     return children;
@@ -4800,40 +4173,28 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::LimitConfig()
 	,vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId>())
 {
     access_intf->parent = this;
-    children["access-intf"] = access_intf;
 
     card->parent = this;
-    children["card"] = card;
 
     circuit_id->parent = this;
-    children["circuit-id"] = circuit_id;
 
     circuit_id_and_remote_id->parent = this;
-    children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
 
     inner_vlan_id->parent = this;
-    children["inner-vlan-id"] = inner_vlan_id;
 
     mac->parent = this;
-    children["mac"] = mac;
 
     mac_access_interface->parent = this;
-    children["mac-access-interface"] = mac_access_interface;
 
     mac_iwf->parent = this;
-    children["mac-iwf"] = mac_iwf;
 
     mac_iwf_access_interface->parent = this;
-    children["mac-iwf-access-interface"] = mac_iwf_access_interface;
 
     outer_vlan_id->parent = this;
-    children["outer-vlan-id"] = outer_vlan_id;
 
     remote_id->parent = this;
-    children["remote-id"] = remote_id;
 
     vlan_id->parent = this;
-    children["vlan-id"] = vlan_id;
 
     yang_name = "limit-config"; yang_parent_name = "bba-group";
 }
@@ -4884,7 +4245,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::get_segment_pa
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4907,294 +4268,178 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::get_entity_path
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-intf")
     {
-        if(access_intf != nullptr)
-        {
-            children["access-intf"] = access_intf;
-        }
-        else
+        if(access_intf == nullptr)
         {
             access_intf = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf>();
-            access_intf->parent = this;
-            children["access-intf"] = access_intf;
         }
-        return children.at("access-intf");
+        return access_intf;
     }
 
     if(child_yang_name == "card")
     {
-        if(card != nullptr)
-        {
-            children["card"] = card;
-        }
-        else
+        if(card == nullptr)
         {
             card = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card>();
-            card->parent = this;
-            children["card"] = card;
         }
-        return children.at("card");
+        return card;
     }
 
     if(child_yang_name == "circuit-id")
     {
-        if(circuit_id != nullptr)
-        {
-            children["circuit-id"] = circuit_id;
-        }
-        else
+        if(circuit_id == nullptr)
         {
             circuit_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId>();
-            circuit_id->parent = this;
-            children["circuit-id"] = circuit_id;
         }
-        return children.at("circuit-id");
+        return circuit_id;
     }
 
     if(child_yang_name == "circuit-id-and-remote-id")
     {
-        if(circuit_id_and_remote_id != nullptr)
-        {
-            children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
-        }
-        else
+        if(circuit_id_and_remote_id == nullptr)
         {
             circuit_id_and_remote_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId>();
-            circuit_id_and_remote_id->parent = this;
-            children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
         }
-        return children.at("circuit-id-and-remote-id");
+        return circuit_id_and_remote_id;
     }
 
     if(child_yang_name == "inner-vlan-id")
     {
-        if(inner_vlan_id != nullptr)
-        {
-            children["inner-vlan-id"] = inner_vlan_id;
-        }
-        else
+        if(inner_vlan_id == nullptr)
         {
             inner_vlan_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId>();
-            inner_vlan_id->parent = this;
-            children["inner-vlan-id"] = inner_vlan_id;
         }
-        return children.at("inner-vlan-id");
+        return inner_vlan_id;
     }
 
     if(child_yang_name == "mac")
     {
-        if(mac != nullptr)
-        {
-            children["mac"] = mac;
-        }
-        else
+        if(mac == nullptr)
         {
             mac = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac>();
-            mac->parent = this;
-            children["mac"] = mac;
         }
-        return children.at("mac");
+        return mac;
     }
 
     if(child_yang_name == "mac-access-interface")
     {
-        if(mac_access_interface != nullptr)
-        {
-            children["mac-access-interface"] = mac_access_interface;
-        }
-        else
+        if(mac_access_interface == nullptr)
         {
             mac_access_interface = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface>();
-            mac_access_interface->parent = this;
-            children["mac-access-interface"] = mac_access_interface;
         }
-        return children.at("mac-access-interface");
+        return mac_access_interface;
     }
 
     if(child_yang_name == "mac-iwf")
     {
-        if(mac_iwf != nullptr)
-        {
-            children["mac-iwf"] = mac_iwf;
-        }
-        else
+        if(mac_iwf == nullptr)
         {
             mac_iwf = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf>();
-            mac_iwf->parent = this;
-            children["mac-iwf"] = mac_iwf;
         }
-        return children.at("mac-iwf");
+        return mac_iwf;
     }
 
     if(child_yang_name == "mac-iwf-access-interface")
     {
-        if(mac_iwf_access_interface != nullptr)
-        {
-            children["mac-iwf-access-interface"] = mac_iwf_access_interface;
-        }
-        else
+        if(mac_iwf_access_interface == nullptr)
         {
             mac_iwf_access_interface = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface>();
-            mac_iwf_access_interface->parent = this;
-            children["mac-iwf-access-interface"] = mac_iwf_access_interface;
         }
-        return children.at("mac-iwf-access-interface");
+        return mac_iwf_access_interface;
     }
 
     if(child_yang_name == "outer-vlan-id")
     {
-        if(outer_vlan_id != nullptr)
-        {
-            children["outer-vlan-id"] = outer_vlan_id;
-        }
-        else
+        if(outer_vlan_id == nullptr)
         {
             outer_vlan_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId>();
-            outer_vlan_id->parent = this;
-            children["outer-vlan-id"] = outer_vlan_id;
         }
-        return children.at("outer-vlan-id");
+        return outer_vlan_id;
     }
 
     if(child_yang_name == "remote-id")
     {
-        if(remote_id != nullptr)
-        {
-            children["remote-id"] = remote_id;
-        }
-        else
+        if(remote_id == nullptr)
         {
             remote_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId>();
-            remote_id->parent = this;
-            children["remote-id"] = remote_id;
         }
-        return children.at("remote-id");
+        return remote_id;
     }
 
     if(child_yang_name == "vlan-id")
     {
-        if(vlan_id != nullptr)
-        {
-            children["vlan-id"] = vlan_id;
-        }
-        else
+        if(vlan_id == nullptr)
         {
             vlan_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId>();
-            vlan_id->parent = this;
-            children["vlan-id"] = vlan_id;
         }
-        return children.at("vlan-id");
+        return vlan_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::get_children() const
 {
-    if(children.find("access-intf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_intf != nullptr)
     {
-        if(access_intf != nullptr)
-        {
-            children["access-intf"] = access_intf;
-        }
+        children["access-intf"] = access_intf;
     }
 
-    if(children.find("card") == children.end())
+    if(card != nullptr)
     {
-        if(card != nullptr)
-        {
-            children["card"] = card;
-        }
+        children["card"] = card;
     }
 
-    if(children.find("circuit-id") == children.end())
+    if(circuit_id != nullptr)
     {
-        if(circuit_id != nullptr)
-        {
-            children["circuit-id"] = circuit_id;
-        }
+        children["circuit-id"] = circuit_id;
     }
 
-    if(children.find("circuit-id-and-remote-id") == children.end())
+    if(circuit_id_and_remote_id != nullptr)
     {
-        if(circuit_id_and_remote_id != nullptr)
-        {
-            children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
-        }
+        children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
     }
 
-    if(children.find("inner-vlan-id") == children.end())
+    if(inner_vlan_id != nullptr)
     {
-        if(inner_vlan_id != nullptr)
-        {
-            children["inner-vlan-id"] = inner_vlan_id;
-        }
+        children["inner-vlan-id"] = inner_vlan_id;
     }
 
-    if(children.find("mac") == children.end())
+    if(mac != nullptr)
     {
-        if(mac != nullptr)
-        {
-            children["mac"] = mac;
-        }
+        children["mac"] = mac;
     }
 
-    if(children.find("mac-access-interface") == children.end())
+    if(mac_access_interface != nullptr)
     {
-        if(mac_access_interface != nullptr)
-        {
-            children["mac-access-interface"] = mac_access_interface;
-        }
+        children["mac-access-interface"] = mac_access_interface;
     }
 
-    if(children.find("mac-iwf") == children.end())
+    if(mac_iwf != nullptr)
     {
-        if(mac_iwf != nullptr)
-        {
-            children["mac-iwf"] = mac_iwf;
-        }
+        children["mac-iwf"] = mac_iwf;
     }
 
-    if(children.find("mac-iwf-access-interface") == children.end())
+    if(mac_iwf_access_interface != nullptr)
     {
-        if(mac_iwf_access_interface != nullptr)
-        {
-            children["mac-iwf-access-interface"] = mac_iwf_access_interface;
-        }
+        children["mac-iwf-access-interface"] = mac_iwf_access_interface;
     }
 
-    if(children.find("outer-vlan-id") == children.end())
+    if(outer_vlan_id != nullptr)
     {
-        if(outer_vlan_id != nullptr)
-        {
-            children["outer-vlan-id"] = outer_vlan_id;
-        }
+        children["outer-vlan-id"] = outer_vlan_id;
     }
 
-    if(children.find("remote-id") == children.end())
+    if(remote_id != nullptr)
     {
-        if(remote_id != nullptr)
-        {
-            children["remote-id"] = remote_id;
-        }
+        children["remote-id"] = remote_id;
     }
 
-    if(children.find("vlan-id") == children.end())
+    if(vlan_id != nullptr)
     {
-        if(vlan_id != nullptr)
-        {
-            children["vlan-id"] = vlan_id;
-        }
+        children["vlan-id"] = vlan_id;
     }
 
     return children;
@@ -5241,7 +4486,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::get_segm
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5267,20 +4512,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::get_entit
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5337,7 +4574,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::ge
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5363,20 +4600,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::get
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5433,7 +4662,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::get_segme
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5459,20 +4688,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::get_entity
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5529,7 +4750,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::get_se
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5555,20 +4776,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::get_ent
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5625,7 +4838,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInter
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5651,20 +4864,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterf
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5721,7 +4926,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessIn
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5747,20 +4952,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInt
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5817,7 +5014,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::get
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5843,20 +5040,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::get_
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5913,7 +5102,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::get_
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5939,20 +5128,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::get_e
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6009,7 +5190,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRe
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6035,20 +5216,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRem
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6105,7 +5278,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::g
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6131,20 +5304,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::ge
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6201,7 +5366,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::g
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6227,20 +5392,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::ge
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6297,7 +5454,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::get_se
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6323,20 +5480,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::get_ent
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6394,7 +5543,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_segment_path() 
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6417,15 +5566,6 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_entity_path(Enti
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "limit")
     {
         for(auto const & c : limit)
@@ -6433,28 +5573,24 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit>();
         c->parent = this;
-        limit.push_back(std::move(c));
-        children[segment_path] = limit.back();
-        return children.at(segment_path);
+        limit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : limit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6525,7 +5661,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_segment_
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6559,20 +5695,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_entity_pa
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6662,7 +5790,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_segment_path
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6685,15 +5813,6 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_entity_path(E
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "throttle")
     {
         for(auto const & c : throttle)
@@ -6701,28 +5820,24 @@ std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle>();
         c->parent = this;
-        throttle.push_back(std::move(c));
-        children[segment_path] = throttle.back();
-        return children.at(segment_path);
+        throttle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : throttle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6796,7 +5911,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_se
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6831,20 +5946,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_ent
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6913,31 +6020,22 @@ Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::ThrottleConfig()
 	,vlan_id(std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId>())
 {
     circuit_id->parent = this;
-    children["circuit-id"] = circuit_id;
 
     circuit_id_and_remote_id->parent = this;
-    children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
 
     inner_vlan_id->parent = this;
-    children["inner-vlan-id"] = inner_vlan_id;
 
     mac->parent = this;
-    children["mac"] = mac;
 
     mac_access_interface->parent = this;
-    children["mac-access-interface"] = mac_access_interface;
 
     mac_iwf_access_interface->parent = this;
-    children["mac-iwf-access-interface"] = mac_iwf_access_interface;
 
     outer_vlan_id->parent = this;
-    children["outer-vlan-id"] = outer_vlan_id;
 
     remote_id->parent = this;
-    children["remote-id"] = remote_id;
 
     vlan_id->parent = this;
-    children["vlan-id"] = vlan_id;
 
     yang_name = "throttle-config"; yang_parent_name = "bba-group";
 }
@@ -6982,7 +6080,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::get_segment
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7005,225 +6103,136 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::get_entity_p
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "circuit-id")
     {
-        if(circuit_id != nullptr)
-        {
-            children["circuit-id"] = circuit_id;
-        }
-        else
+        if(circuit_id == nullptr)
         {
             circuit_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId>();
-            circuit_id->parent = this;
-            children["circuit-id"] = circuit_id;
         }
-        return children.at("circuit-id");
+        return circuit_id;
     }
 
     if(child_yang_name == "circuit-id-and-remote-id")
     {
-        if(circuit_id_and_remote_id != nullptr)
-        {
-            children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
-        }
-        else
+        if(circuit_id_and_remote_id == nullptr)
         {
             circuit_id_and_remote_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId>();
-            circuit_id_and_remote_id->parent = this;
-            children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
         }
-        return children.at("circuit-id-and-remote-id");
+        return circuit_id_and_remote_id;
     }
 
     if(child_yang_name == "inner-vlan-id")
     {
-        if(inner_vlan_id != nullptr)
-        {
-            children["inner-vlan-id"] = inner_vlan_id;
-        }
-        else
+        if(inner_vlan_id == nullptr)
         {
             inner_vlan_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId>();
-            inner_vlan_id->parent = this;
-            children["inner-vlan-id"] = inner_vlan_id;
         }
-        return children.at("inner-vlan-id");
+        return inner_vlan_id;
     }
 
     if(child_yang_name == "mac")
     {
-        if(mac != nullptr)
-        {
-            children["mac"] = mac;
-        }
-        else
+        if(mac == nullptr)
         {
             mac = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac>();
-            mac->parent = this;
-            children["mac"] = mac;
         }
-        return children.at("mac");
+        return mac;
     }
 
     if(child_yang_name == "mac-access-interface")
     {
-        if(mac_access_interface != nullptr)
-        {
-            children["mac-access-interface"] = mac_access_interface;
-        }
-        else
+        if(mac_access_interface == nullptr)
         {
             mac_access_interface = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface>();
-            mac_access_interface->parent = this;
-            children["mac-access-interface"] = mac_access_interface;
         }
-        return children.at("mac-access-interface");
+        return mac_access_interface;
     }
 
     if(child_yang_name == "mac-iwf-access-interface")
     {
-        if(mac_iwf_access_interface != nullptr)
-        {
-            children["mac-iwf-access-interface"] = mac_iwf_access_interface;
-        }
-        else
+        if(mac_iwf_access_interface == nullptr)
         {
             mac_iwf_access_interface = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface>();
-            mac_iwf_access_interface->parent = this;
-            children["mac-iwf-access-interface"] = mac_iwf_access_interface;
         }
-        return children.at("mac-iwf-access-interface");
+        return mac_iwf_access_interface;
     }
 
     if(child_yang_name == "outer-vlan-id")
     {
-        if(outer_vlan_id != nullptr)
-        {
-            children["outer-vlan-id"] = outer_vlan_id;
-        }
-        else
+        if(outer_vlan_id == nullptr)
         {
             outer_vlan_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId>();
-            outer_vlan_id->parent = this;
-            children["outer-vlan-id"] = outer_vlan_id;
         }
-        return children.at("outer-vlan-id");
+        return outer_vlan_id;
     }
 
     if(child_yang_name == "remote-id")
     {
-        if(remote_id != nullptr)
-        {
-            children["remote-id"] = remote_id;
-        }
-        else
+        if(remote_id == nullptr)
         {
             remote_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId>();
-            remote_id->parent = this;
-            children["remote-id"] = remote_id;
         }
-        return children.at("remote-id");
+        return remote_id;
     }
 
     if(child_yang_name == "vlan-id")
     {
-        if(vlan_id != nullptr)
-        {
-            children["vlan-id"] = vlan_id;
-        }
-        else
+        if(vlan_id == nullptr)
         {
             vlan_id = std::make_shared<Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId>();
-            vlan_id->parent = this;
-            children["vlan-id"] = vlan_id;
         }
-        return children.at("vlan-id");
+        return vlan_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::get_children() const
 {
-    if(children.find("circuit-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(circuit_id != nullptr)
     {
-        if(circuit_id != nullptr)
-        {
-            children["circuit-id"] = circuit_id;
-        }
+        children["circuit-id"] = circuit_id;
     }
 
-    if(children.find("circuit-id-and-remote-id") == children.end())
+    if(circuit_id_and_remote_id != nullptr)
     {
-        if(circuit_id_and_remote_id != nullptr)
-        {
-            children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
-        }
+        children["circuit-id-and-remote-id"] = circuit_id_and_remote_id;
     }
 
-    if(children.find("inner-vlan-id") == children.end())
+    if(inner_vlan_id != nullptr)
     {
-        if(inner_vlan_id != nullptr)
-        {
-            children["inner-vlan-id"] = inner_vlan_id;
-        }
+        children["inner-vlan-id"] = inner_vlan_id;
     }
 
-    if(children.find("mac") == children.end())
+    if(mac != nullptr)
     {
-        if(mac != nullptr)
-        {
-            children["mac"] = mac;
-        }
+        children["mac"] = mac;
     }
 
-    if(children.find("mac-access-interface") == children.end())
+    if(mac_access_interface != nullptr)
     {
-        if(mac_access_interface != nullptr)
-        {
-            children["mac-access-interface"] = mac_access_interface;
-        }
+        children["mac-access-interface"] = mac_access_interface;
     }
 
-    if(children.find("mac-iwf-access-interface") == children.end())
+    if(mac_iwf_access_interface != nullptr)
     {
-        if(mac_iwf_access_interface != nullptr)
-        {
-            children["mac-iwf-access-interface"] = mac_iwf_access_interface;
-        }
+        children["mac-iwf-access-interface"] = mac_iwf_access_interface;
     }
 
-    if(children.find("outer-vlan-id") == children.end())
+    if(outer_vlan_id != nullptr)
     {
-        if(outer_vlan_id != nullptr)
-        {
-            children["outer-vlan-id"] = outer_vlan_id;
-        }
+        children["outer-vlan-id"] = outer_vlan_id;
     }
 
-    if(children.find("remote-id") == children.end())
+    if(remote_id != nullptr)
     {
-        if(remote_id != nullptr)
-        {
-            children["remote-id"] = remote_id;
-        }
+        children["remote-id"] = remote_id;
     }
 
-    if(children.find("vlan-id") == children.end())
+    if(vlan_id != nullptr)
     {
-        if(vlan_id != nullptr)
-        {
-            children["vlan-id"] = vlan_id;
-        }
+        children["vlan-id"] = vlan_id;
     }
 
     return children;
@@ -7270,7 +6279,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::get_se
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7296,20 +6305,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::get_ent
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7366,7 +6367,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessIn
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7392,20 +6393,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInt
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7462,7 +6455,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAcces
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7488,20 +6481,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccess
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7558,7 +6543,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7584,20 +6569,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::g
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7654,7 +6631,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::g
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7680,20 +6657,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::ge
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7750,7 +6719,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAn
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7776,20 +6745,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAnd
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7846,7 +6807,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7872,20 +6833,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId:
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7942,7 +6895,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7968,20 +6921,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId:
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8038,7 +6983,7 @@ std::string Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::get
 
 }
 
-EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8064,20 +7009,12 @@ EntityPath Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::get_
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8155,7 +7092,7 @@ std::string Pppoe::Nodes::Node::SummaryTotal::get_segment_path() const
 
 }
 
-EntityPath Pppoe::Nodes::Node::SummaryTotal::get_entity_path(Entity* ancestor) const
+const EntityPath Pppoe::Nodes::Node::SummaryTotal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8188,20 +7125,12 @@ EntityPath Pppoe::Nodes::Node::SummaryTotal::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Pppoe::Nodes::Node::SummaryTotal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pppoe::Nodes::Node::SummaryTotal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pppoe::Nodes::Node::SummaryTotal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

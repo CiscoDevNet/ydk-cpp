@@ -40,16 +40,12 @@ System::System()
 	,radius(std::make_shared<System::Radius>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     clock->parent = this;
-    children["clock"] = clock;
 
     dns_resolver->parent = this;
-    children["dns-resolver"] = dns_resolver;
 
     radius->parent = this;
-    children["radius"] = radius;
 
     yang_name = "system"; yang_parent_name = "ietf-system";
 }
@@ -92,12 +88,12 @@ std::string System::get_segment_path() const
 
 }
 
-EntityPath System::get_entity_path(Entity* ancestor) const
+const EntityPath System::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -115,133 +111,80 @@ EntityPath System::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<System::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "clock")
     {
-        if(clock != nullptr)
-        {
-            children["clock"] = clock;
-        }
-        else
+        if(clock == nullptr)
         {
             clock = std::make_shared<System::Clock>();
-            clock->parent = this;
-            children["clock"] = clock;
         }
-        return children.at("clock");
+        return clock;
     }
 
     if(child_yang_name == "dns-resolver")
     {
-        if(dns_resolver != nullptr)
-        {
-            children["dns-resolver"] = dns_resolver;
-        }
-        else
+        if(dns_resolver == nullptr)
         {
             dns_resolver = std::make_shared<System::DnsResolver>();
-            dns_resolver->parent = this;
-            children["dns-resolver"] = dns_resolver;
         }
-        return children.at("dns-resolver");
+        return dns_resolver;
     }
 
     if(child_yang_name == "ntp")
     {
-        if(ntp != nullptr)
-        {
-            children["ntp"] = ntp;
-        }
-        else
+        if(ntp == nullptr)
         {
             ntp = std::make_shared<System::Ntp>();
-            ntp->parent = this;
-            children["ntp"] = ntp;
         }
-        return children.at("ntp");
+        return ntp;
     }
 
     if(child_yang_name == "radius")
     {
-        if(radius != nullptr)
-        {
-            children["radius"] = radius;
-        }
-        else
+        if(radius == nullptr)
         {
             radius = std::make_shared<System::Radius>();
-            radius->parent = this;
-            children["radius"] = radius;
         }
-        return children.at("radius");
+        return radius;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("clock") == children.end())
+    if(clock != nullptr)
     {
-        if(clock != nullptr)
-        {
-            children["clock"] = clock;
-        }
+        children["clock"] = clock;
     }
 
-    if(children.find("dns-resolver") == children.end())
+    if(dns_resolver != nullptr)
     {
-        if(dns_resolver != nullptr)
-        {
-            children["dns-resolver"] = dns_resolver;
-        }
+        children["dns-resolver"] = dns_resolver;
     }
 
-    if(children.find("ntp") == children.end())
+    if(ntp != nullptr)
     {
-        if(ntp != nullptr)
-        {
-            children["ntp"] = ntp;
-        }
+        children["ntp"] = ntp;
     }
 
-    if(children.find("radius") == children.end())
+    if(radius != nullptr)
     {
-        if(radius != nullptr)
-        {
-            children["radius"] = radius;
-        }
+        children["radius"] = radius;
     }
 
     return children;
@@ -317,7 +260,7 @@ std::string System::Clock::get_segment_path() const
 
 }
 
-EntityPath System::Clock::get_entity_path(Entity* ancestor) const
+const EntityPath System::Clock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -342,20 +285,12 @@ EntityPath System::Clock::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Clock::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Clock::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -412,7 +347,7 @@ std::string System::Ntp::get_segment_path() const
 
 }
 
-EntityPath System::Ntp::get_entity_path(Entity* ancestor) const
+const EntityPath System::Ntp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -436,15 +371,6 @@ EntityPath System::Ntp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "server")
     {
         for(auto const & c : server)
@@ -452,28 +378,24 @@ std::shared_ptr<Entity> System::Ntp::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<System::Ntp::Server>();
         c->parent = this;
-        server.push_back(std::move(c));
-        children[segment_path] = server.back();
-        return children.at(segment_path);
+        server.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Ntp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Ntp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : server)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -497,7 +419,6 @@ System::Ntp::Server::Server()
     udp(std::make_shared<System::Ntp::Server::Udp>())
 {
     udp->parent = this;
-    children["udp"] = udp;
 
     yang_name = "server"; yang_parent_name = "ntp";
 }
@@ -534,7 +455,7 @@ std::string System::Ntp::Server::get_segment_path() const
 
 }
 
-EntityPath System::Ntp::Server::get_entity_path(Entity* ancestor) const
+const EntityPath System::Ntp::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -561,41 +482,24 @@ EntityPath System::Ntp::Server::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Ntp::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "udp")
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
-        else
+        if(udp == nullptr)
         {
             udp = std::make_shared<System::Ntp::Server::Udp>();
-            udp->parent = this;
-            children["udp"] = udp;
         }
-        return children.at("udp");
+        return udp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Ntp::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Ntp::Server::get_children() const
 {
-    if(children.find("udp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(udp != nullptr)
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
+        children["udp"] = udp;
     }
 
     return children;
@@ -655,7 +559,7 @@ std::string System::Ntp::Server::Udp::get_segment_path() const
 
 }
 
-EntityPath System::Ntp::Server::Udp::get_entity_path(Entity* ancestor) const
+const EntityPath System::Ntp::Server::Udp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -680,20 +584,12 @@ EntityPath System::Ntp::Server::Udp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Ntp::Server::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Ntp::Server::Udp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Ntp::Server::Udp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -716,7 +612,6 @@ System::DnsResolver::DnsResolver()
     options(std::make_shared<System::DnsResolver::Options>())
 {
     options->parent = this;
-    children["options"] = options;
 
     yang_name = "dns-resolver"; yang_parent_name = "system";
 }
@@ -766,7 +661,7 @@ std::string System::DnsResolver::get_segment_path() const
 
 }
 
-EntityPath System::DnsResolver::get_entity_path(Entity* ancestor) const
+const EntityPath System::DnsResolver::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -791,28 +686,13 @@ EntityPath System::DnsResolver::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::DnsResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "options")
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
-        else
+        if(options == nullptr)
         {
             options = std::make_shared<System::DnsResolver::Options>();
-            options->parent = this;
-            children["options"] = options;
         }
-        return children.at("options");
+        return options;
     }
 
     if(child_yang_name == "server")
@@ -822,36 +702,29 @@ std::shared_ptr<Entity> System::DnsResolver::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<System::DnsResolver::Server>();
         c->parent = this;
-        server.push_back(std::move(c));
-        children[segment_path] = server.back();
-        return children.at(segment_path);
+        server.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::DnsResolver::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::DnsResolver::get_children() const
 {
-    if(children.find("options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(options != nullptr)
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
+        children["options"] = options;
     }
 
     for (auto const & c : server)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -872,7 +745,6 @@ System::DnsResolver::Server::Server()
     udp_and_tcp(std::make_shared<System::DnsResolver::Server::UdpAndTcp>())
 {
     udp_and_tcp->parent = this;
-    children["udp-and-tcp"] = udp_and_tcp;
 
     yang_name = "server"; yang_parent_name = "dns-resolver";
 }
@@ -903,7 +775,7 @@ std::string System::DnsResolver::Server::get_segment_path() const
 
 }
 
-EntityPath System::DnsResolver::Server::get_entity_path(Entity* ancestor) const
+const EntityPath System::DnsResolver::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -927,41 +799,24 @@ EntityPath System::DnsResolver::Server::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::DnsResolver::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "udp-and-tcp")
     {
-        if(udp_and_tcp != nullptr)
-        {
-            children["udp-and-tcp"] = udp_and_tcp;
-        }
-        else
+        if(udp_and_tcp == nullptr)
         {
             udp_and_tcp = std::make_shared<System::DnsResolver::Server::UdpAndTcp>();
-            udp_and_tcp->parent = this;
-            children["udp-and-tcp"] = udp_and_tcp;
         }
-        return children.at("udp-and-tcp");
+        return udp_and_tcp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::DnsResolver::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::DnsResolver::Server::get_children() const
 {
-    if(children.find("udp-and-tcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(udp_and_tcp != nullptr)
     {
-        if(udp_and_tcp != nullptr)
-        {
-            children["udp-and-tcp"] = udp_and_tcp;
-        }
+        children["udp-and-tcp"] = udp_and_tcp;
     }
 
     return children;
@@ -1009,7 +864,7 @@ std::string System::DnsResolver::Server::UdpAndTcp::get_segment_path() const
 
 }
 
-EntityPath System::DnsResolver::Server::UdpAndTcp::get_entity_path(Entity* ancestor) const
+const EntityPath System::DnsResolver::Server::UdpAndTcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1034,20 +889,12 @@ EntityPath System::DnsResolver::Server::UdpAndTcp::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> System::DnsResolver::Server::UdpAndTcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::DnsResolver::Server::UdpAndTcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::DnsResolver::Server::UdpAndTcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1097,7 +944,7 @@ std::string System::DnsResolver::Options::get_segment_path() const
 
 }
 
-EntityPath System::DnsResolver::Options::get_entity_path(Entity* ancestor) const
+const EntityPath System::DnsResolver::Options::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1122,20 +969,12 @@ EntityPath System::DnsResolver::Options::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::DnsResolver::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::DnsResolver::Options::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::DnsResolver::Options::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1156,7 +995,6 @@ System::Radius::Radius()
     options(std::make_shared<System::Radius::Options>())
 {
     options->parent = this;
-    children["options"] = options;
 
     yang_name = "radius"; yang_parent_name = "system";
 }
@@ -1195,7 +1033,7 @@ std::string System::Radius::get_segment_path() const
 
 }
 
-EntityPath System::Radius::get_entity_path(Entity* ancestor) const
+const EntityPath System::Radius::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1218,28 +1056,13 @@ EntityPath System::Radius::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "options")
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
-        else
+        if(options == nullptr)
         {
             options = std::make_shared<System::Radius::Options>();
-            options->parent = this;
-            children["options"] = options;
         }
-        return children.at("options");
+        return options;
     }
 
     if(child_yang_name == "server")
@@ -1249,36 +1072,29 @@ std::shared_ptr<Entity> System::Radius::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<System::Radius::Server>();
         c->parent = this;
-        server.push_back(std::move(c));
-        children[segment_path] = server.back();
-        return children.at(segment_path);
+        server.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Radius::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Radius::get_children() const
 {
-    if(children.find("options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(options != nullptr)
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
+        children["options"] = options;
     }
 
     for (auto const & c : server)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1296,7 +1112,6 @@ System::Radius::Server::Server()
     udp(std::make_shared<System::Radius::Server::Udp>())
 {
     udp->parent = this;
-    children["udp"] = udp;
 
     yang_name = "server"; yang_parent_name = "radius";
 }
@@ -1329,7 +1144,7 @@ std::string System::Radius::Server::get_segment_path() const
 
 }
 
-EntityPath System::Radius::Server::get_entity_path(Entity* ancestor) const
+const EntityPath System::Radius::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1354,41 +1169,24 @@ EntityPath System::Radius::Server::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Radius::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "udp")
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
-        else
+        if(udp == nullptr)
         {
             udp = std::make_shared<System::Radius::Server::Udp>();
-            udp->parent = this;
-            children["udp"] = udp;
         }
-        return children.at("udp");
+        return udp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Radius::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Radius::Server::get_children() const
 {
-    if(children.find("udp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(udp != nullptr)
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
+        children["udp"] = udp;
     }
 
     return children;
@@ -1443,7 +1241,7 @@ std::string System::Radius::Server::Udp::get_segment_path() const
 
 }
 
-EntityPath System::Radius::Server::Udp::get_entity_path(Entity* ancestor) const
+const EntityPath System::Radius::Server::Udp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1469,20 +1267,12 @@ EntityPath System::Radius::Server::Udp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Radius::Server::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Radius::Server::Udp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Radius::Server::Udp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1536,7 +1326,7 @@ std::string System::Radius::Options::get_segment_path() const
 
 }
 
-EntityPath System::Radius::Options::get_entity_path(Entity* ancestor) const
+const EntityPath System::Radius::Options::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1561,20 +1351,12 @@ EntityPath System::Radius::Options::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Radius::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Radius::Options::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Radius::Options::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1641,7 +1423,7 @@ std::string System::Authentication::get_segment_path() const
 
 }
 
-EntityPath System::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath System::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1666,15 +1448,6 @@ EntityPath System::Authentication::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "user")
     {
         for(auto const & c : user)
@@ -1682,28 +1455,24 @@ std::shared_ptr<Entity> System::Authentication::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<System::Authentication::User>();
         c->parent = this;
-        user.push_back(std::move(c));
-        children[segment_path] = user.back();
-        return children.at(segment_path);
+        user.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Authentication::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : user)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1761,7 +1530,7 @@ std::string System::Authentication::User::get_segment_path() const
 
 }
 
-EntityPath System::Authentication::User::get_entity_path(Entity* ancestor) const
+const EntityPath System::Authentication::User::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1786,15 +1555,6 @@ EntityPath System::Authentication::User::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> System::Authentication::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authorized-key")
     {
         for(auto const & c : authorized_key)
@@ -1802,28 +1562,24 @@ std::shared_ptr<Entity> System::Authentication::User::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<System::Authentication::User::AuthorizedKey>();
         c->parent = this;
-        authorized_key.push_back(std::move(c));
-        children[segment_path] = authorized_key.back();
-        return children.at(segment_path);
+        authorized_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Authentication::User::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Authentication::User::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : authorized_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1878,7 +1634,7 @@ std::string System::Authentication::User::AuthorizedKey::get_segment_path() cons
 
 }
 
-EntityPath System::Authentication::User::AuthorizedKey::get_entity_path(Entity* ancestor) const
+const EntityPath System::Authentication::User::AuthorizedKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1904,20 +1660,12 @@ EntityPath System::Authentication::User::AuthorizedKey::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> System::Authentication::User::AuthorizedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & System::Authentication::User::AuthorizedKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> System::Authentication::User::AuthorizedKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1943,10 +1691,8 @@ SystemState::SystemState()
 	,platform(std::make_shared<SystemState::Platform>())
 {
     clock->parent = this;
-    children["clock"] = clock;
 
     platform->parent = this;
-    children["platform"] = platform;
 
     yang_name = "system-state"; yang_parent_name = "ietf-system";
 }
@@ -1977,12 +1723,12 @@ std::string SystemState::get_segment_path() const
 
 }
 
-EntityPath SystemState::get_entity_path(Entity* ancestor) const
+const EntityPath SystemState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1997,64 +1743,38 @@ EntityPath SystemState::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clock")
     {
-        if(clock != nullptr)
-        {
-            children["clock"] = clock;
-        }
-        else
+        if(clock == nullptr)
         {
             clock = std::make_shared<SystemState::Clock>();
-            clock->parent = this;
-            children["clock"] = clock;
         }
-        return children.at("clock");
+        return clock;
     }
 
     if(child_yang_name == "platform")
     {
-        if(platform != nullptr)
-        {
-            children["platform"] = platform;
-        }
-        else
+        if(platform == nullptr)
         {
             platform = std::make_shared<SystemState::Platform>();
-            platform->parent = this;
-            children["platform"] = platform;
         }
-        return children.at("platform");
+        return platform;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemState::get_children() const
 {
-    if(children.find("clock") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clock != nullptr)
     {
-        if(clock != nullptr)
-        {
-            children["clock"] = clock;
-        }
+        children["clock"] = clock;
     }
 
-    if(children.find("platform") == children.end())
+    if(platform != nullptr)
     {
-        if(platform != nullptr)
-        {
-            children["platform"] = platform;
-        }
+        children["platform"] = platform;
     }
 
     return children;
@@ -2124,7 +1844,7 @@ std::string SystemState::Platform::get_segment_path() const
 
 }
 
-EntityPath SystemState::Platform::get_entity_path(Entity* ancestor) const
+const EntityPath SystemState::Platform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2151,20 +1871,12 @@ EntityPath SystemState::Platform::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemState::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemState::Platform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemState::Platform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2222,7 +1934,7 @@ std::string SystemState::Clock::get_segment_path() const
 
 }
 
-EntityPath SystemState::Clock::get_entity_path(Entity* ancestor) const
+const EntityPath SystemState::Clock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2247,20 +1959,12 @@ EntityPath SystemState::Clock::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemState::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemState::Clock::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemState::Clock::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2278,8 +1982,10 @@ void SystemState::Clock::set_value(const std::string & value_path, std::string v
 
 SetCurrentDatetimeRpc::SetCurrentDatetimeRpc()
     :
-    current_datetime{YType::str, "current-datetime"}
+    input(std::make_shared<SetCurrentDatetimeRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "set-current-datetime"; yang_parent_name = "ietf-system";
 }
 
@@ -2289,13 +1995,13 @@ SetCurrentDatetimeRpc::~SetCurrentDatetimeRpc()
 
 bool SetCurrentDatetimeRpc::has_data() const
 {
-    return current_datetime.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool SetCurrentDatetimeRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(current_datetime.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string SetCurrentDatetimeRpc::get_segment_path() const
@@ -2307,18 +2013,17 @@ std::string SetCurrentDatetimeRpc::get_segment_path() const
 
 }
 
-EntityPath SetCurrentDatetimeRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SetCurrentDatetimeRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (current_datetime.is_set || is_set(current_datetime.operation)) leaf_name_data.push_back(current_datetime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2328,29 +2033,31 @@ EntityPath SetCurrentDatetimeRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SetCurrentDatetimeRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<SetCurrentDatetimeRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SetCurrentDatetimeRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SetCurrentDatetimeRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void SetCurrentDatetimeRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "current-datetime")
-    {
-        current_datetime = value;
-    }
 }
 
 std::shared_ptr<Entity> SetCurrentDatetimeRpc::clone_ptr() const
@@ -2371,6 +2078,78 @@ std::string SetCurrentDatetimeRpc::get_bundle_name() const
 augment_capabilities_function SetCurrentDatetimeRpc::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
+}
+
+SetCurrentDatetimeRpc::Input::Input()
+    :
+    current_datetime{YType::str, "current-datetime"}
+{
+    yang_name = "input"; yang_parent_name = "set-current-datetime";
+}
+
+SetCurrentDatetimeRpc::Input::~Input()
+{
+}
+
+bool SetCurrentDatetimeRpc::Input::has_data() const
+{
+    return current_datetime.is_set;
+}
+
+bool SetCurrentDatetimeRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(current_datetime.operation);
+}
+
+std::string SetCurrentDatetimeRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath SetCurrentDatetimeRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-system:set-current-datetime/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (current_datetime.is_set || is_set(current_datetime.operation)) leaf_name_data.push_back(current_datetime.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> SetCurrentDatetimeRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SetCurrentDatetimeRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SetCurrentDatetimeRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "current-datetime")
+    {
+        current_datetime = value;
+    }
 }
 
 SystemRestartRpc::SystemRestartRpc()
@@ -2401,12 +2180,12 @@ std::string SystemRestartRpc::get_segment_path() const
 
 }
 
-EntityPath SystemRestartRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SystemRestartRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -2421,20 +2200,12 @@ EntityPath SystemRestartRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemRestartRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemRestartRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemRestartRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2490,12 +2261,12 @@ std::string SystemShutdownRpc::get_segment_path() const
 
 }
 
-EntityPath SystemShutdownRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SystemShutdownRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -2510,20 +2281,12 @@ EntityPath SystemShutdownRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemShutdownRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemShutdownRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemShutdownRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

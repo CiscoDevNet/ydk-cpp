@@ -19,23 +19,20 @@ class SyslogService : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Timestamps; //type: SyslogService::Timestamps
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::SyslogService::Timestamps> timestamps;
-
-
+        
 }; // SyslogService
 
 
@@ -47,22 +44,19 @@ class SyslogService::Timestamps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enable; //type: empty
-
         class Log; //type: SyslogService::Timestamps::Log
         class Debug; //type: SyslogService::Timestamps::Debug
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::SyslogService::Timestamps::Debug> debug;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::SyslogService::Timestamps::Log> log;
-
-
+        
 }; // SyslogService::Timestamps
 
 
@@ -74,21 +68,18 @@ class SyslogService::Timestamps::Log : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf log_uptime; //type: empty
         YLeaf log_timestamp_disable; //type: empty
-
         class LogDatetime; //type: SyslogService::Timestamps::Log::LogDatetime
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::SyslogService::Timestamps::Log::LogDatetime> log_datetime;
-
-
+        
 }; // SyslogService::Timestamps::Log
 
 
@@ -100,19 +91,16 @@ class SyslogService::Timestamps::Log::LogDatetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogDatetimeValue; //type: SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue> log_datetime_value;
-
-
+        
 }; // SyslogService::Timestamps::Log::LogDatetime
 
 
@@ -124,19 +112,16 @@ class SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_stamp_value; //type: TimeInfoEnum
         YLeaf msec; //type: TimeInfoEnum
         YLeaf time_zone; //type: TimeInfoEnum
         YLeaf year; //type: TimeInfoEnum
-
-
 
 }; // SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue
 
@@ -149,21 +134,18 @@ class SyslogService::Timestamps::Debug : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf debug_timestamp_disable; //type: empty
         YLeaf debug_uptime; //type: empty
-
         class DebugDatetime; //type: SyslogService::Timestamps::Debug::DebugDatetime
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::SyslogService::Timestamps::Debug::DebugDatetime> debug_datetime;
-
-
+        
 }; // SyslogService::Timestamps::Debug
 
 
@@ -175,19 +157,16 @@ class SyslogService::Timestamps::Debug::DebugDatetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DatetimeValue; //type: SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue> datetime_value;
-
-
+        
 }; // SyslogService::Timestamps::Debug::DebugDatetime
 
 
@@ -199,19 +178,16 @@ class SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_stamp_value; //type: TimeInfoEnum
         YLeaf msec; //type: TimeInfoEnum
         YLeaf time_zone; //type: TimeInfoEnum
         YLeaf year; //type: TimeInfoEnum
-
-
 
 }; // SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue
 
@@ -223,22 +199,20 @@ class Syslog : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
         YLeaf host_name_prefix; //type: string
         YLeaf local_log_file_size; //type: uint32
         YLeaf enable_console_logging; //type: boolean
         YLeaf suppress_duplicates; //type: empty
-
         class MonitorLogging; //type: Syslog::MonitorLogging
         class HistoryLogging; //type: Syslog::HistoryLogging
         class LoggingFacilities; //type: Syslog::LoggingFacilities
@@ -270,8 +244,7 @@ class Syslog : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable> source_interface_table;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression> suppression;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::TrapLogging> trap_logging;
-
-
+        
 }; // Syslog
 
 
@@ -283,20 +256,17 @@ class Syslog::MonitorLogging : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf logging_level; //type: LoggingLevelsEnum
-
         class MonitorDiscriminator; //type: Syslog::MonitorLogging::MonitorDiscriminator
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::MonitorLogging::MonitorDiscriminator> monitor_discriminator;
-
-
+        
 }; // Syslog::MonitorLogging
 
 
@@ -308,12 +278,11 @@ class Syslog::MonitorLogging::MonitorDiscriminator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf match2; //type: string
         YLeaf nomatch1; //type: string
@@ -321,8 +290,6 @@ class Syslog::MonitorLogging::MonitorDiscriminator : public Entity
         YLeaf nomatch3; //type: string
         YLeaf match3; //type: string
         YLeaf nomatch2; //type: string
-
-
 
 }; // Syslog::MonitorLogging::MonitorDiscriminator
 
@@ -335,17 +302,14 @@ class Syslog::HistoryLogging : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf history_size; //type: uint32
         YLeaf logging_level; //type: LoggingLevelsEnum
-
-
 
 }; // Syslog::HistoryLogging
 
@@ -358,16 +322,13 @@ class Syslog::LoggingFacilities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf facility_level; //type: FacilityEnum
-
-
 
 }; // Syslog::LoggingFacilities
 
@@ -380,16 +341,13 @@ class Syslog::TrapLogging : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf logging_level; //type: LoggingLevelsEnum
-
-
 
 }; // Syslog::TrapLogging
 
@@ -402,21 +360,18 @@ class Syslog::BufferedLogging : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf logging_level; //type: LoggingLevelsEnum
         YLeaf buffer_size; //type: uint32
-
         class BufferedDiscriminator; //type: Syslog::BufferedLogging::BufferedDiscriminator
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::BufferedLogging::BufferedDiscriminator> buffered_discriminator;
-
-
+        
 }; // Syslog::BufferedLogging
 
 
@@ -428,12 +383,11 @@ class Syslog::BufferedLogging::BufferedDiscriminator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf match2; //type: string
         YLeaf nomatch1; //type: string
@@ -441,8 +395,6 @@ class Syslog::BufferedLogging::BufferedDiscriminator : public Entity
         YLeaf nomatch3; //type: string
         YLeaf match3; //type: string
         YLeaf nomatch2; //type: string
-
-
 
 }; // Syslog::BufferedLogging::BufferedDiscriminator
 
@@ -455,19 +407,16 @@ class Syslog::HostServer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrfs; //type: Syslog::HostServer::Vrfs
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs> vrfs;
-
-
+        
 }; // Syslog::HostServer
 
 
@@ -479,19 +428,16 @@ class Syslog::HostServer::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: Syslog::HostServer::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf> > vrf;
-
-
+        
 }; // Syslog::HostServer::Vrfs
 
 
@@ -503,15 +449,13 @@ class Syslog::HostServer::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Ipv6S; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S
         class Hosts; //type: Syslog::HostServer::Vrfs::Vrf::Hosts
         class Ipv4S; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S
@@ -519,8 +463,7 @@ class Syslog::HostServer::Vrfs::Vrf : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts> hosts;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S> ipv4s;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S> ipv6s;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf
 
 
@@ -532,19 +475,16 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6> > ipv6;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv6S
 
 
@@ -556,15 +496,13 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
         class Ipv6SeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort
         class Ipv6Discriminator; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator
         class Ipv6SeverityLevels; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels
@@ -572,8 +510,7 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6 : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator> ipv6_discriminator;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels> ipv6_severity_levels;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort> ipv6_severity_port;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6
 
 
@@ -585,17 +522,14 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity; //type: int32
         YLeaf port; //type: int32
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort
 
@@ -608,12 +542,11 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nomatch2; //type: string
         YLeaf match3; //type: string
@@ -621,8 +554,6 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator : public Ent
         YLeaf match1; //type: string
         YLeaf nomatch1; //type: string
         YLeaf match2; //type: string
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator
 
@@ -635,19 +566,16 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6SeverityLevel; //type: Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel> > ipv6_severity_level;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels
 
 
@@ -659,16 +587,13 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6Severi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity; //type: LogSeverityEnum
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel
 
@@ -681,19 +606,16 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Host; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host> > host;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts
 
 
@@ -705,15 +627,13 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_name; //type: string
-
         class HostNameSeverities; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities
         class HostNameDiscriminator; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator
         class HostSeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort
@@ -721,8 +641,7 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator> host_name_discriminator;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities> host_name_severities;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort> host_severity_port;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host
 
 
@@ -734,19 +653,16 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HostNameSeverity; //type: Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity> > host_name_severity;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities
 
 
@@ -758,16 +674,13 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity; //type: LogSeverityEnum
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity
 
@@ -780,12 +693,11 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nomatch2; //type: string
         YLeaf match3; //type: string
@@ -793,8 +705,6 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator : public
         YLeaf match1; //type: string
         YLeaf nomatch1; //type: string
         YLeaf match2; //type: string
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator
 
@@ -807,17 +717,14 @@ class Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity; //type: int32
         YLeaf port; //type: int32
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort
 
@@ -830,19 +737,16 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4> > ipv4;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv4S
 
 
@@ -854,15 +758,13 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
         class Ipv4SeverityLevels; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels
         class Ipv4SeverityPort; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort
         class Ipv4Discriminator; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator
@@ -870,8 +772,7 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4 : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator> ipv4_discriminator;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels> ipv4_severity_levels;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort> ipv4_severity_port;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4
 
 
@@ -883,19 +784,16 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4SeverityLevel; //type: Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel> > ipv4_severity_level;
-
-
+        
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels
 
 
@@ -907,16 +805,13 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4Severi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity; //type: LogSeverityEnum
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel
 
@@ -929,17 +824,14 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity; //type: int32
         YLeaf port; //type: int32
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort
 
@@ -952,12 +844,11 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nomatch2; //type: string
         YLeaf match3; //type: string
@@ -965,8 +856,6 @@ class Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator : public Ent
         YLeaf match1; //type: string
         YLeaf nomatch1; //type: string
         YLeaf match2; //type: string
-
-
 
 }; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator
 
@@ -979,20 +868,17 @@ class Syslog::ConsoleLogging : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf logging_level; //type: LoggingLevelsEnum
-
         class ConsoleDiscriminator; //type: Syslog::ConsoleLogging::ConsoleDiscriminator
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::ConsoleLogging::ConsoleDiscriminator> console_discriminator;
-
-
+        
 }; // Syslog::ConsoleLogging
 
 
@@ -1004,12 +890,11 @@ class Syslog::ConsoleLogging::ConsoleDiscriminator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf match2; //type: string
         YLeaf nomatch1; //type: string
@@ -1017,8 +902,6 @@ class Syslog::ConsoleLogging::ConsoleDiscriminator : public Entity
         YLeaf nomatch3; //type: string
         YLeaf match3; //type: string
         YLeaf nomatch2; //type: string
-
-
 
 }; // Syslog::ConsoleLogging::ConsoleDiscriminator
 
@@ -1031,19 +914,16 @@ class Syslog::Files : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class File; //type: Syslog::Files::File
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File> > file;
-
-
+        
 }; // Syslog::Files
 
 
@@ -1055,15 +935,13 @@ class Syslog::Files::File : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf file_name; //type: string
-
         class FileSpecification; //type: Syslog::Files::File::FileSpecification
         class FileLogAttributes; //type: Syslog::Files::File::FileLogAttributes
         class FileLogDiscriminator; //type: Syslog::Files::File::FileLogDiscriminator
@@ -1071,8 +949,7 @@ class Syslog::Files::File : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File::FileLogAttributes> file_log_attributes;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File::FileLogDiscriminator> file_log_discriminator;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File::FileSpecification> file_specification;
-
-
+        
 }; // Syslog::Files::File
 
 
@@ -1084,18 +961,15 @@ class Syslog::Files::File::FileSpecification : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path; //type: string
         YLeaf max_file_size; //type: int32
         YLeaf severity; //type: int32
-
-
 
 }; // Syslog::Files::File::FileSpecification
 
@@ -1108,17 +982,14 @@ class Syslog::Files::File::FileLogAttributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_file_size; //type: int32
         YLeaf severity; //type: int32
-
-
 
 }; // Syslog::Files::File::FileLogAttributes
 
@@ -1131,12 +1002,11 @@ class Syslog::Files::File::FileLogDiscriminator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nomatch2; //type: string
         YLeaf match3; //type: string
@@ -1144,8 +1014,6 @@ class Syslog::Files::File::FileLogDiscriminator : public Entity
         YLeaf match1; //type: string
         YLeaf nomatch1; //type: string
         YLeaf match2; //type: string
-
-
 
 }; // Syslog::Files::File::FileLogDiscriminator
 
@@ -1158,13 +1026,11 @@ class Syslog::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dscp; //type: Syslog::Ipv4::Dscp
         class Tos; //type: Syslog::Ipv4::Tos
@@ -1173,8 +1039,7 @@ class Syslog::Ipv4 : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv4::Dscp> dscp; // presence node
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv4::Precedence> precedence; // presence node
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv4::Tos> tos;
-
-
+        
 }; // Syslog::Ipv4
 
 
@@ -1186,18 +1051,15 @@ class Syslog::Ipv4::Dscp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: LoggingDscpEnum
         YLeaf unused; //type: one of uint32, enumeration
         YLeaf value_; //type: one of uint32, enumeration
-
-
 
 }; // Syslog::Ipv4::Dscp
 
@@ -1210,18 +1072,15 @@ class Syslog::Ipv4::Tos : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: LoggingTosEnum
         YLeaf precedence; //type: one of uint32, enumeration
         YLeaf dscp; //type: one of uint32, enumeration
-
-
 
 }; // Syslog::Ipv4::Tos
 
@@ -1234,18 +1093,15 @@ class Syslog::Ipv4::Precedence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: LoggingPrecedenceEnum
         YLeaf value_; //type: one of uint32, enumeration
         YLeaf unused; //type: one of uint32, enumeration
-
-
 
 }; // Syslog::Ipv4::Precedence
 
@@ -1258,12 +1114,11 @@ class Syslog::Archive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf size; //type: uint32
         YLeaf file_size; //type: uint32
@@ -1272,8 +1127,6 @@ class Syslog::Archive : public Entity
         YLeaf frequency; //type: LogCollectFrequencyEnum
         YLeaf severity; //type: LogMessageSeverityEnum
         YLeaf length; //type: uint32
-
-
 
 }; // Syslog::Archive
 
@@ -1286,13 +1139,11 @@ class Syslog::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dscp; //type: Syslog::Ipv6::Dscp
         class TrafficClass; //type: Syslog::Ipv6::TrafficClass
@@ -1301,8 +1152,7 @@ class Syslog::Ipv6 : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv6::Dscp> dscp; // presence node
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv6::Precedence> precedence; // presence node
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Ipv6::TrafficClass> traffic_class;
-
-
+        
 }; // Syslog::Ipv6
 
 
@@ -1314,18 +1164,15 @@ class Syslog::Ipv6::Dscp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: LoggingDscpEnum
         YLeaf unused; //type: one of uint32, enumeration
         YLeaf value_; //type: one of uint32, enumeration
-
-
 
 }; // Syslog::Ipv6::Dscp
 
@@ -1338,18 +1185,15 @@ class Syslog::Ipv6::TrafficClass : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: LoggingTosEnum
         YLeaf precedence; //type: one of uint32, enumeration
         YLeaf dscp; //type: one of uint32, enumeration
-
-
 
 }; // Syslog::Ipv6::TrafficClass
 
@@ -1362,18 +1206,15 @@ class Syslog::Ipv6::Precedence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: LoggingPrecedenceEnum
         YLeaf value_; //type: one of uint32, enumeration
         YLeaf unused; //type: one of uint32, enumeration
-
-
 
 }; // Syslog::Ipv6::Precedence
 
@@ -1386,19 +1227,16 @@ class Syslog::SourceInterfaceTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SourceInterfaceValues; //type: Syslog::SourceInterfaceTable::SourceInterfaceValues
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable::SourceInterfaceValues> source_interface_values;
-
-
+        
 }; // Syslog::SourceInterfaceTable
 
 
@@ -1410,19 +1248,16 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SourceInterfaceValue; //type: Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue> > source_interface_value;
-
-
+        
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues
 
 
@@ -1434,20 +1269,17 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf src_interface_name_value; //type: string
-
         class SourceInterfaceVrfs; //type: Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs> source_interface_vrfs;
-
-
+        
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue
 
 
@@ -1459,19 +1291,16 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SourceInterfaceVrf; //type: Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf> > source_interface_vrf;
-
-
+        
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs
 
 
@@ -1483,16 +1312,13 @@ class Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
-
 
 }; // Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf
 
@@ -1505,23 +1331,20 @@ class Syslog::AlarmLogger : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity_level; //type: AlarmLoggerSeverityLevelEnum
         YLeaf buffer_size; //type: uint32
         YLeaf source_location; //type: empty
         YLeaf threshold; //type: uint32
-
         class AlarmFilterStrings; //type: Syslog::AlarmLogger::AlarmFilterStrings
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger::AlarmFilterStrings> alarm_filter_strings;
-
-
+        
 }; // Syslog::AlarmLogger
 
 
@@ -1533,19 +1356,16 @@ class Syslog::AlarmLogger::AlarmFilterStrings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmFilterString; //type: Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString> > alarm_filter_string;
-
-
+        
 }; // Syslog::AlarmLogger::AlarmFilterStrings
 
 
@@ -1557,16 +1377,13 @@ class Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf filter_string; //type: string
-
-
 
 }; // Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString
 
@@ -1579,22 +1396,19 @@ class Syslog::Correlator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf buffer_size; //type: uint32
-
         class Rules; //type: Syslog::Correlator::Rules
         class RuleSets; //type: Syslog::Correlator::RuleSets
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets> rule_sets;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules> rules;
-
-
+        
 }; // Syslog::Correlator
 
 
@@ -1606,19 +1420,16 @@ class Syslog::Correlator::Rules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rule; //type: Syslog::Correlator::Rules::Rule
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule> > rule;
-
-
+        
 }; // Syslog::Correlator::Rules
 
 
@@ -1630,15 +1441,13 @@ class Syslog::Correlator::Rules::Rule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Definition; //type: Syslog::Correlator::Rules::Rule::Definition
         class NonStateful; //type: Syslog::Correlator::Rules::Rule::NonStateful
         class Stateful; //type: Syslog::Correlator::Rules::Rule::Stateful
@@ -1650,8 +1459,7 @@ class Syslog::Correlator::Rules::Rule : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::Definition> definition;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::NonStateful> non_stateful;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::Stateful> stateful;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule
 
 
@@ -1663,12 +1471,11 @@ class Syslog::Correlator::Rules::Rule::Definition : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timeout; //type: uint32
         YLeaf category_name_entry1; //type: string
@@ -1702,8 +1509,6 @@ class Syslog::Correlator::Rules::Rule::Definition : public Entity
         YLeaf group_name_entry10; //type: string
         YLeaf message_code_entry10; //type: string
 
-
-
 }; // Syslog::Correlator::Rules::Rule::Definition
 
 
@@ -1715,24 +1520,21 @@ class Syslog::Correlator::Rules::Rule::NonStateful : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf context_correlation; //type: empty
         YLeaf timeout_root_cause; //type: uint32
         YLeaf timeout; //type: uint32
-
         class NonRootCauses; //type: Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses
         class RootCause; //type: Syslog::Correlator::Rules::Rule::NonStateful::RootCause
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses> non_root_causes;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::NonStateful::RootCause> root_cause;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::NonStateful
 
 
@@ -1744,19 +1546,16 @@ class Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NonRootCause; //type: Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause> > non_root_cause;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses
 
 
@@ -1768,18 +1567,15 @@ class Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf message_code; //type: string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause
 
@@ -1792,18 +1588,15 @@ class Syslog::Correlator::Rules::Rule::NonStateful::RootCause : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf message_code; //type: string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::NonStateful::RootCause
 
@@ -1816,26 +1609,23 @@ class Syslog::Correlator::Rules::Rule::Stateful : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf reparent; //type: empty
         YLeaf reissue; //type: empty
         YLeaf context_correlation; //type: empty
         YLeaf timeout_root_cause; //type: uint32
         YLeaf timeout; //type: uint32
-
         class NonRootCauses; //type: Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses
         class RootCause; //type: Syslog::Correlator::Rules::Rule::Stateful::RootCause
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses> non_root_causes;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::Stateful::RootCause> root_cause;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::Stateful
 
 
@@ -1847,19 +1637,16 @@ class Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NonRootCause; //type: Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause> > non_root_cause;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses
 
 
@@ -1871,18 +1658,15 @@ class Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf message_code; //type: string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause
 
@@ -1895,18 +1679,15 @@ class Syslog::Correlator::Rules::Rule::Stateful::RootCause : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf message_code; //type: string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::Stateful::RootCause
 
@@ -1919,22 +1700,19 @@ class Syslog::Correlator::Rules::Rule::ApplyTo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf all_of_router; //type: empty
-
         class Contexts; //type: Syslog::Correlator::Rules::Rule::ApplyTo::Contexts
         class Locations; //type: Syslog::Correlator::Rules::Rule::ApplyTo::Locations
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::ApplyTo::Contexts> contexts;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::ApplyTo::Locations> locations;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::ApplyTo
 
 
@@ -1946,16 +1724,13 @@ class Syslog::Correlator::Rules::Rule::ApplyTo::Contexts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList context; //type: list of  string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::ApplyTo::Contexts
 
@@ -1968,16 +1743,13 @@ class Syslog::Correlator::Rules::Rule::ApplyTo::Locations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList location; //type: list of  string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::ApplyTo::Locations
 
@@ -1990,22 +1762,19 @@ class Syslog::Correlator::Rules::Rule::AppliedTo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf all; //type: empty
-
         class Contexts; //type: Syslog::Correlator::Rules::Rule::AppliedTo::Contexts
         class Locations; //type: Syslog::Correlator::Rules::Rule::AppliedTo::Locations
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::AppliedTo::Contexts> contexts;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::AppliedTo::Locations> locations;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::AppliedTo
 
 
@@ -2017,19 +1786,16 @@ class Syslog::Correlator::Rules::Rule::AppliedTo::Contexts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Context; //type: Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context> > context;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::AppliedTo::Contexts
 
 
@@ -2041,16 +1807,13 @@ class Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf context; //type: string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context
 
@@ -2063,19 +1826,16 @@ class Syslog::Correlator::Rules::Rule::AppliedTo::Locations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Location; //type: Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location> > location;
-
-
+        
 }; // Syslog::Correlator::Rules::Rule::AppliedTo::Locations
 
 
@@ -2087,16 +1847,13 @@ class Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
-
-
 
 }; // Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location
 
@@ -2109,19 +1866,16 @@ class Syslog::Correlator::RuleSets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleSet; //type: Syslog::Correlator::RuleSets::RuleSet
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet> > rule_set;
-
-
+        
 }; // Syslog::Correlator::RuleSets
 
 
@@ -2133,22 +1887,19 @@ class Syslog::Correlator::RuleSets::RuleSet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Rulenames; //type: Syslog::Correlator::RuleSets::RuleSet::Rulenames
         class AppliedTo; //type: Syslog::Correlator::RuleSets::RuleSet::AppliedTo
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::AppliedTo> applied_to;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::Rulenames> rulenames;
-
-
+        
 }; // Syslog::Correlator::RuleSets::RuleSet
 
 
@@ -2160,19 +1911,16 @@ class Syslog::Correlator::RuleSets::RuleSet::Rulenames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rulename; //type: Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename> > rulename;
-
-
+        
 }; // Syslog::Correlator::RuleSets::RuleSet::Rulenames
 
 
@@ -2184,16 +1932,13 @@ class Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rulename; //type: string
-
-
 
 }; // Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename
 
@@ -2206,22 +1951,19 @@ class Syslog::Correlator::RuleSets::RuleSet::AppliedTo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf all; //type: empty
-
         class Contexts; //type: Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts
         class Locations; //type: Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts> contexts;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations> locations;
-
-
+        
 }; // Syslog::Correlator::RuleSets::RuleSet::AppliedTo
 
 
@@ -2233,19 +1975,16 @@ class Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Context; //type: Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context> > context;
-
-
+        
 }; // Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts
 
 
@@ -2257,16 +1996,13 @@ class Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf context; //type: string
-
-
 
 }; // Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context
 
@@ -2279,19 +2015,16 @@ class Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Location; //type: Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location> > location;
-
-
+        
 }; // Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations
 
 
@@ -2303,16 +2036,13 @@ class Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
-
-
 
 }; // Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location
 
@@ -2325,19 +2055,16 @@ class Syslog::Suppression : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rules; //type: Syslog::Suppression::Rules
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules> rules;
-
-
+        
 }; // Syslog::Suppression
 
 
@@ -2349,19 +2076,16 @@ class Syslog::Suppression::Rules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rule; //type: Syslog::Suppression::Rules::Rule
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule> > rule;
-
-
+        
 }; // Syslog::Suppression::Rules
 
 
@@ -2373,23 +2097,20 @@ class Syslog::Suppression::Rules::Rule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf all_alarms; //type: empty
-
         class AppliedTo; //type: Syslog::Suppression::Rules::Rule::AppliedTo
         class AlarmCauses; //type: Syslog::Suppression::Rules::Rule::AlarmCauses
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule::AlarmCauses> alarm_causes;
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule::AppliedTo> applied_to;
-
-
+        
 }; // Syslog::Suppression::Rules::Rule
 
 
@@ -2401,20 +2122,17 @@ class Syslog::Suppression::Rules::Rule::AppliedTo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf all; //type: empty
-
         class Sources; //type: Syslog::Suppression::Rules::Rule::AppliedTo::Sources
 
         std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule::AppliedTo::Sources> sources;
-
-
+        
 }; // Syslog::Suppression::Rules::Rule::AppliedTo
 
 
@@ -2426,19 +2144,16 @@ class Syslog::Suppression::Rules::Rule::AppliedTo::Sources : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Source; //type: Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source> > source;
-
-
+        
 }; // Syslog::Suppression::Rules::Rule::AppliedTo::Sources
 
 
@@ -2450,16 +2165,13 @@ class Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source; //type: string
-
-
 
 }; // Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source
 
@@ -2472,19 +2184,16 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmCause; //type: Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause> > alarm_cause;
-
-
+        
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses
 
 
@@ -2496,18 +2205,15 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf code; //type: string
-
-
 
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
 

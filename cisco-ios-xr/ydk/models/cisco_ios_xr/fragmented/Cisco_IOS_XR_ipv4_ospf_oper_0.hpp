@@ -18,23 +18,20 @@ class Ospf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Processes; //type: Ospf::Processes
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes> processes;
-
-
+        
 }; // Ospf
 
 
@@ -46,19 +43,16 @@ class Ospf::Processes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Process; //type: Ospf::Processes::Process
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process> > process;
-
-
+        
 }; // Ospf::Processes
 
 
@@ -70,15 +64,13 @@ class Ospf::Processes::Process : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf process_name; //type: string
-
         class Vrfs; //type: Ospf::Processes::Process::Vrfs
         class Srms; //type: Ospf::Processes::Process::Srms
         class DefaultVrf; //type: Ospf::Processes::Process::DefaultVrf
@@ -86,8 +78,7 @@ class Ospf::Processes::Process : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf> default_vrf;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Srms> srms;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs> vrfs;
-
-
+        
 }; // Ospf::Processes::Process
 
 
@@ -99,19 +90,16 @@ class Ospf::Processes::Process::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: Ospf::Processes::Process::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf> > vrf;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs
 
 
@@ -123,15 +111,13 @@ class Ospf::Processes::Process::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class InterfaceVrfInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation
         class FloodListTable; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable
         class MplsTe; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe
@@ -163,8 +149,7 @@ class Ospf::Processes::Process::Vrfs::Vrf : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::RouteInformation> route_information;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes> summary_prefixes;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf
 
 
@@ -176,19 +161,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ShamLinks; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks> sham_links;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation
 
 
@@ -200,19 +182,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ShamLink; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink> > sham_link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks
 
 
@@ -224,12 +203,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sham_link_name; //type: string
         YLeaf sham_link_name_xr; //type: string
@@ -260,12 +238,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
         YLeaf sham_link_nsf; //type: boolean
         YLeaf sham_link_last_nsf; //type: uint32
         YLeafList sham_link_md_key; //type: list of  uint16
-
         class ShamLinkNeighbor; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor> sham_link_neighbor;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink
 
 
@@ -277,21 +253,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sham_link_suppress_hello; //type: boolean
         YLeaf sham_link_state; //type: NeighborStateEnum
-
         class ShamLinkRetransmissoin; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::ShamLinkRetransmissoin
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::ShamLinkRetransmissoin> sham_link_retransmissoin;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor
 
 
@@ -303,12 +276,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dbd_retransmission_count; //type: uint32
         YLeaf dbd_retransmission_total_count; //type: uint32
@@ -330,8 +302,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
         YLeaf maximum_retransmission_time; //type: uint32
         YLeaf lsa_retransmission_timer; //type: uint32
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::ShamLinkRetransmissoin
 
 
@@ -343,19 +313,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Flood; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood> > flood;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::FloodListTable
 
 
@@ -367,25 +334,22 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf flood_interface_name; //type: string
         YLeaf flood_pacing_timer; //type: uint32
         YLeaf flood_lsa_count; //type: uint32
-
         class AreaFlood; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood
         class AsFlood; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood> > area_flood;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood> > as_flood;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood
 
 
@@ -397,12 +361,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf header_lsa_type; //type: LsaEnum
         YLeaf header_lsa_age; //type: uint16
@@ -410,8 +373,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood : pu
         YLeaf header_advertising_router; //type: string
         YLeaf header_sequence_number; //type: uint32
         YLeaf header_lsa_checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood
 
@@ -424,12 +385,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf header_lsa_type; //type: LsaEnum
         YLeaf header_lsa_age; //type: uint16
@@ -437,8 +397,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood : publ
         YLeaf header_advertising_router; //type: string
         YLeaf header_sequence_number; //type: uint32
         YLeaf header_lsa_checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood
 
@@ -451,21 +409,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MplsTeLinks; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
         class MplsTeFragments; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments> mpls_te_fragments;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks> mpls_te_links;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe
 
 
@@ -477,19 +432,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MplsTeLink; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink> > mpls_te_link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
 
@@ -501,12 +453,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf mpls_te_router_id; //type: string
@@ -517,14 +468,12 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink : pub
         YLeaf mpls_te_router_address; //type: string
         YLeaf mpls_te_next_fragment_id; //type: uint32
         YLeaf spacious_fragment; //type: boolean
-
         class MplsTeLink_; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_
         class MplsTeFragment; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment> > mpls_te_fragment;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_> > mpls_te_link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 
 
@@ -536,12 +485,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf new_link; //type: boolean
         YLeaf fragment_id; //type: uint32
@@ -562,7 +510,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         YLeaf dste_in_use; //type: boolean
         YLeaf dste_allocation_model_id; //type: IgpteLibBwModelEnum
         YLeaf number_of_optional_tl_vs; //type: uint8
-
         class GlobalUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority
         class SubPoolUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority
         class LinkProtocolPriorityCapability; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability
@@ -576,8 +523,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability> link_sw_capability;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv> > mplste_link_opt_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority> sub_pool_unreserve_bw_per_priority;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_
 
 
@@ -589,16 +535,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority
 
@@ -611,16 +554,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority
 
@@ -633,17 +573,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_protocol_capability; //type: uint8
         YLeaf link_protocol_priority; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability
 
@@ -656,20 +593,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_switching_capability; //type: uint8
         YLeaf link_encoding; //type: uint8
         YLeaf minimum_lsp_bw; //type: uint64
         YLeaf link_mtu; //type: uint16
         YLeafList maximum_lsp_bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability
 
@@ -682,17 +616,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf extended_admin_size; //type: uint32
         YLeafList ext_admin_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList
 
@@ -705,21 +636,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mplste_link_opt_tlv_type; //type: MplsTeOptTlvEnum
         YLeaf mplste_link_opt_tlv_len; //type: uint16
-
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv
 
 
@@ -731,15 +659,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_tlv_type; //type: MplsTeOptTlvEnum
-
         class BctlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
         class SrlgtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
         class IxcdtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
@@ -749,8 +675,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue> ixcdtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue> srlgtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue> unidtlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
 
@@ -762,18 +687,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf model_id; //type: uint8
         YLeaf num_b_cs; //type: uint32
         YLeafList mplste_link_bc_bandwidth; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -786,18 +708,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf srlg_len; //type: uint32
         YLeaf num_srl_gs; //type: uint32
         YLeafList mplste_link_srlg_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -810,24 +729,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap; //type: uint8
         YLeaf rile_len_code; //type: uint8
         YLeaf fixed_scsi_count; //type: uint32
         YLeaf flex_scsi_count; //type: uint32
         YLeafList max_lspbw; //type: list of  int64
-
         class IxcdSwitchingCapType; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
 
@@ -839,22 +755,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap_type; //type: uint8
-
         class IxcdpscInfo; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
         class IxcdbwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv> ixcdbw_sub_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo> ixcdpsc_info;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
 
@@ -866,17 +779,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf min_lsp_bandwidth; //type: uint64
         YLeaf psc_interface_mtu; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
 
@@ -889,19 +799,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
 
@@ -913,21 +820,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bw_sub_tlv_type; //type: uint16
         YLeaf bw_sub_tlv_length; //type: uint16
-
         class BwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue> bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
 
@@ -939,22 +843,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ixcdbw_sub_tlv_type; //type: uint16
-
         class FixedBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
         class FlexBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue> fixed_bw_sub_tlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue> flex_bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
 
@@ -966,20 +867,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_oduj_prio; //type: list of  uint32
-
         class FixedSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
 
@@ -991,12 +889,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -1013,8 +910,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         YLeaf priority_bit6; //type: uint8
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
@@ -1027,21 +922,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_lspbw; //type: list of  uint64
         YLeafList max_lspbw; //type: list of  uint64
-
         class FlexSubTlvValueCommon; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
 
@@ -1053,12 +945,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -1076,8 +967,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
 
@@ -1089,16 +978,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf uni_dir_delay; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue
 
@@ -1111,23 +997,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fragment_instance; //type: uint32
         YLeaf fragment_id; //type: uint32
         YLeaf dste_model_id; //type: uint8
         YLeaf same_fragment_count; //type: uint8
-
         class MplsTeLink_; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_> > mpls_te_link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment
 
 
@@ -1139,12 +1022,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf new_link; //type: boolean
         YLeaf fragment_id; //type: uint32
@@ -1165,7 +1047,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         YLeaf dste_in_use; //type: boolean
         YLeaf dste_allocation_model_id; //type: IgpteLibBwModelEnum
         YLeaf number_of_optional_tl_vs; //type: uint8
-
         class GlobalUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority
         class SubPoolUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority
         class LinkProtocolPriorityCapability; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability
@@ -1179,8 +1060,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability> link_sw_capability;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv> > mplste_link_opt_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority> sub_pool_unreserve_bw_per_priority;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_
 
 
@@ -1192,16 +1072,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority
 
@@ -1214,16 +1091,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority
 
@@ -1236,17 +1110,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_protocol_capability; //type: uint8
         YLeaf link_protocol_priority; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability
 
@@ -1259,20 +1130,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_switching_capability; //type: uint8
         YLeaf link_encoding; //type: uint8
         YLeaf minimum_lsp_bw; //type: uint64
         YLeaf link_mtu; //type: uint16
         YLeafList maximum_lsp_bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability
 
@@ -1285,17 +1153,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf extended_admin_size; //type: uint32
         YLeafList ext_admin_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList
 
@@ -1308,21 +1173,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mplste_link_opt_tlv_type; //type: MplsTeOptTlvEnum
         YLeaf mplste_link_opt_tlv_len; //type: uint16
-
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv
 
 
@@ -1334,15 +1196,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_tlv_type; //type: MplsTeOptTlvEnum
-
         class BctlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
         class SrlgtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
         class IxcdtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
@@ -1352,8 +1212,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue> ixcdtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue> srlgtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue> unidtlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
 
@@ -1365,18 +1224,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf model_id; //type: uint8
         YLeaf num_b_cs; //type: uint32
         YLeafList mplste_link_bc_bandwidth; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -1389,18 +1245,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf srlg_len; //type: uint32
         YLeaf num_srl_gs; //type: uint32
         YLeafList mplste_link_srlg_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -1413,24 +1266,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap; //type: uint8
         YLeaf rile_len_code; //type: uint8
         YLeaf fixed_scsi_count; //type: uint32
         YLeaf flex_scsi_count; //type: uint32
         YLeafList max_lspbw; //type: list of  int64
-
         class IxcdSwitchingCapType; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
 
@@ -1442,22 +1292,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap_type; //type: uint8
-
         class IxcdpscInfo; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
         class IxcdbwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv> ixcdbw_sub_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo> ixcdpsc_info;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
 
@@ -1469,17 +1316,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf min_lsp_bandwidth; //type: uint64
         YLeaf psc_interface_mtu; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
 
@@ -1492,19 +1336,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
 
@@ -1516,21 +1357,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bw_sub_tlv_type; //type: uint16
         YLeaf bw_sub_tlv_length; //type: uint16
-
         class BwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue> bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
 
@@ -1542,22 +1380,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ixcdbw_sub_tlv_type; //type: uint16
-
         class FixedBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
         class FlexBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue> fixed_bw_sub_tlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue> flex_bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
 
@@ -1569,20 +1404,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_oduj_prio; //type: list of  uint32
-
         class FixedSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
 
@@ -1594,12 +1426,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -1616,8 +1447,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         YLeaf priority_bit6; //type: uint8
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
@@ -1630,21 +1459,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_lspbw; //type: list of  uint64
         YLeafList max_lspbw; //type: list of  uint64
-
         class FlexSubTlvValueCommon; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
 
@@ -1656,12 +1482,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -1679,8 +1504,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
 
@@ -1692,16 +1515,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf uni_dir_delay; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue
 
@@ -1714,19 +1534,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MplsTeFragment; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment> > mpls_te_fragment;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments
 
 
@@ -1738,12 +1555,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf mpls_te_router_id; //type: string
@@ -1754,14 +1570,12 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         YLeaf mpls_te_router_address; //type: string
         YLeaf mpls_te_next_fragment_id; //type: uint32
         YLeaf spacious_fragment; //type: boolean
-
         class MplsTeLink; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink
         class MplsTeFragment_; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_> > mpls_te_fragment;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink> > mpls_te_link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment
 
 
@@ -1773,12 +1587,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf new_link; //type: boolean
         YLeaf fragment_id; //type: uint32
@@ -1799,7 +1612,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         YLeaf dste_in_use; //type: boolean
         YLeaf dste_allocation_model_id; //type: IgpteLibBwModelEnum
         YLeaf number_of_optional_tl_vs; //type: uint8
-
         class GlobalUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority
         class SubPoolUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority
         class LinkProtocolPriorityCapability; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability
@@ -1813,8 +1625,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability> link_sw_capability;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv> > mplste_link_opt_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority> sub_pool_unreserve_bw_per_priority;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink
 
 
@@ -1826,16 +1637,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority
 
@@ -1848,16 +1656,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority
 
@@ -1870,17 +1675,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_protocol_capability; //type: uint8
         YLeaf link_protocol_priority; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability
 
@@ -1893,20 +1695,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_switching_capability; //type: uint8
         YLeaf link_encoding; //type: uint8
         YLeaf minimum_lsp_bw; //type: uint64
         YLeaf link_mtu; //type: uint16
         YLeafList maximum_lsp_bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability
 
@@ -1919,17 +1718,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf extended_admin_size; //type: uint32
         YLeafList ext_admin_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList
 
@@ -1942,21 +1738,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mplste_link_opt_tlv_type; //type: MplsTeOptTlvEnum
         YLeaf mplste_link_opt_tlv_len; //type: uint16
-
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv
 
 
@@ -1968,15 +1761,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_tlv_type; //type: MplsTeOptTlvEnum
-
         class BctlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
         class SrlgtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
         class IxcdtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
@@ -1986,8 +1777,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue> ixcdtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue> srlgtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue> unidtlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
 
@@ -1999,18 +1789,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf model_id; //type: uint8
         YLeaf num_b_cs; //type: uint32
         YLeafList mplste_link_bc_bandwidth; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -2023,18 +1810,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf srlg_len; //type: uint32
         YLeaf num_srl_gs; //type: uint32
         YLeafList mplste_link_srlg_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -2047,24 +1831,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap; //type: uint8
         YLeaf rile_len_code; //type: uint8
         YLeaf fixed_scsi_count; //type: uint32
         YLeaf flex_scsi_count; //type: uint32
         YLeafList max_lspbw; //type: list of  int64
-
         class IxcdSwitchingCapType; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
 
@@ -2076,22 +1857,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap_type; //type: uint8
-
         class IxcdpscInfo; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
         class IxcdbwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv> ixcdbw_sub_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo> ixcdpsc_info;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
 
@@ -2103,17 +1881,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf min_lsp_bandwidth; //type: uint64
         YLeaf psc_interface_mtu; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
 
@@ -2126,19 +1901,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
 
@@ -2150,21 +1922,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bw_sub_tlv_type; //type: uint16
         YLeaf bw_sub_tlv_length; //type: uint16
-
         class BwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue> bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
 
@@ -2176,22 +1945,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ixcdbw_sub_tlv_type; //type: uint16
-
         class FixedBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
         class FlexBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue> fixed_bw_sub_tlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue> flex_bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
 
@@ -2203,20 +1969,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_oduj_prio; //type: list of  uint32
-
         class FixedSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
 
@@ -2228,12 +1991,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -2250,8 +2012,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         YLeaf priority_bit6; //type: uint8
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
@@ -2264,21 +2024,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_lspbw; //type: list of  uint64
         YLeafList max_lspbw; //type: list of  uint64
-
         class FlexSubTlvValueCommon; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
 
@@ -2290,12 +2047,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -2313,8 +2069,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
 
@@ -2326,16 +2080,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf uni_dir_delay; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue
 
@@ -2348,23 +2099,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fragment_instance; //type: uint32
         YLeaf fragment_id; //type: uint32
         YLeaf dste_model_id; //type: uint8
         YLeaf same_fragment_count; //type: uint8
-
         class MplsTeLink; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink> > mpls_te_link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_
 
 
@@ -2376,12 +2124,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf new_link; //type: boolean
         YLeaf fragment_id; //type: uint32
@@ -2402,7 +2149,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         YLeaf dste_in_use; //type: boolean
         YLeaf dste_allocation_model_id; //type: IgpteLibBwModelEnum
         YLeaf number_of_optional_tl_vs; //type: uint8
-
         class GlobalUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority
         class SubPoolUnreserveBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority
         class LinkProtocolPriorityCapability; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability
@@ -2416,8 +2162,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability> link_sw_capability;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv> > mplste_link_opt_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority> sub_pool_unreserve_bw_per_priority;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink
 
 
@@ -2429,16 +2174,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority
 
@@ -2451,16 +2193,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority
 
@@ -2473,17 +2212,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_protocol_capability; //type: uint8
         YLeaf link_protocol_priority; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability
 
@@ -2496,20 +2232,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_switching_capability; //type: uint8
         YLeaf link_encoding; //type: uint8
         YLeaf minimum_lsp_bw; //type: uint64
         YLeaf link_mtu; //type: uint16
         YLeafList maximum_lsp_bw_per_priority; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability
 
@@ -2522,17 +2255,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf extended_admin_size; //type: uint32
         YLeafList ext_admin_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList
 
@@ -2545,21 +2275,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mplste_link_opt_tlv_type; //type: MplsTeOptTlvEnum
         YLeaf mplste_link_opt_tlv_len; //type: uint16
-
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv
 
 
@@ -2571,15 +2298,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_tlv_type; //type: MplsTeOptTlvEnum
-
         class BctlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
         class SrlgtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
         class IxcdtlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
@@ -2589,8 +2314,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue> ixcdtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue> srlgtlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue> unidtlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
 
@@ -2602,18 +2326,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf model_id; //type: uint8
         YLeaf num_b_cs; //type: uint32
         YLeafList mplste_link_bc_bandwidth; //type: list of  uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -2626,18 +2347,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf srlg_len; //type: uint32
         YLeaf num_srl_gs; //type: uint32
         YLeafList mplste_link_srlg_data; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -2650,24 +2368,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap; //type: uint8
         YLeaf rile_len_code; //type: uint8
         YLeaf fixed_scsi_count; //type: uint32
         YLeaf flex_scsi_count; //type: uint32
         YLeafList max_lspbw; //type: list of  int64
-
         class IxcdSwitchingCapType; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
 
@@ -2679,22 +2394,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf switching_cap_type; //type: uint8
-
         class IxcdpscInfo; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
         class IxcdbwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv> ixcdbw_sub_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo> ixcdpsc_info;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType
 
 
@@ -2706,17 +2418,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf min_lsp_bandwidth; //type: uint64
         YLeaf psc_interface_mtu; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo
 
@@ -2729,19 +2438,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
 
@@ -2753,21 +2459,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bw_sub_tlv_type; //type: uint16
         YLeaf bw_sub_tlv_length; //type: uint16
-
         class BwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue> bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
 
@@ -2779,22 +2482,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ixcdbw_sub_tlv_type; //type: uint16
-
         class FixedBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
         class FlexBwSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue> fixed_bw_sub_tlv_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue> flex_bw_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue
 
 
@@ -2806,20 +2506,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_oduj_prio; //type: list of  uint32
-
         class FixedSubTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
 
@@ -2831,12 +2528,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -2853,8 +2549,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         YLeaf priority_bit6; //type: uint8
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue
 
@@ -2867,21 +2561,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unres_lspbw; //type: list of  uint64
         YLeafList max_lspbw; //type: list of  uint64
-
         class FlexSubTlvValueCommon; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
 
@@ -2893,12 +2584,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: uint8
         YLeaf num_stages; //type: uint8
@@ -2916,8 +2606,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         YLeaf priority_bit7; //type: uint8
         YLeaf stage; //type: string
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon
 
 
@@ -2929,16 +2617,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf uni_dir_delay; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue
 
@@ -2951,13 +2636,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpfStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats
         class RibBatchStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats
@@ -2982,8 +2665,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats> rib_thread_stats;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats> spf_stats;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats> te_stats;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics
 
 
@@ -2995,13 +2677,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpfHeader; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader
         class OsRuntime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime
@@ -3014,8 +2694,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime> > os_sum_runtime;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime> > runtime;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader> spf_header;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats
 
 
@@ -3027,21 +2706,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_id; //type: string
         YLeaf spf_count; //type: uint32
-
         class AreaSumm; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm> > area_summ;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader
 
 
@@ -3053,17 +2729,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::Area
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: uint32
         YLeaf spf_count; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm
 
@@ -3076,23 +2749,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf si_area_id_str; //type: string
         YLeaf si_change_flags; //type: uint16
-
         class SiStartTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiStartTime
         class SiDuration; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiDuration
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiDuration> si_duration;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiStartTime> si_start_time;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime
 
 
@@ -3104,17 +2774,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiStartTime
 
@@ -3127,17 +2794,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiDu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiDuration
 
@@ -3150,24 +2814,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sp_adv_rtr_id; //type: uint32
         YLeaf sp_dest_count; //type: uint32
         YLeaf sp_dest_addr; //type: uint32
-
         class SpStartTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpStartTime
         class SpDuration; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpDuration
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpDuration> sp_duration;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpStartTime> sp_start_time;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime
 
 
@@ -3179,17 +2840,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpStartTime
 
@@ -3202,17 +2860,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpDuration
 
@@ -3225,24 +2880,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sp_adv_rtr_id; //type: uint32
         YLeaf sp_dest_count; //type: uint32
         YLeaf sp_dest_addr; //type: uint32
-
         class SpStartTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpStartTime
         class SpDuration; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpDuration
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpDuration> sp_duration;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpStartTime> sp_start_time;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime
 
 
@@ -3254,17 +2906,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::Sp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpStartTime
 
@@ -3277,17 +2926,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::Sp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpDuration
 
@@ -3300,16 +2946,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf spf_start_time; //type: uint32
         YLeaf lsa_change_cnt; //type: int16
-
         class GblSpfTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::GblSpfTime
         class LsaInfo; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::LsaInfo
         class AreaStat; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat
@@ -3317,8 +2961,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime : publi
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat> > area_stat;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::GblSpfTime> gbl_spf_time;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::LsaInfo> > lsa_info;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime
 
 
@@ -3330,12 +2973,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::GblSpf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf spf_dijkstra; //type: uint32
         YLeaf spf_intra_prefix; //type: uint32
@@ -3344,8 +2986,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::GblSpf
         YLeaf spf_inter_prefix_del; //type: uint32
         YLeaf spf_ext_prefix; //type: uint32
         YLeaf spf_ext_prefix_del; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::GblSpfTime
 
@@ -3358,20 +2998,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::LsaInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: uint32
         YLeaf adv_rtr; //type: string
         YLeaf id; //type: string
         YLeaf type; //type: uint8
         YLeaf flush; //type: boolean
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::LsaInfo
 
@@ -3384,21 +3021,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: uint32
         YLeafList lsa_type_cnt; //type: list of  uint32
-
         class SpfTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime> spf_time;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat
 
 
@@ -3410,12 +3044,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf spf_dijkstra; //type: uint32
         YLeaf spf_intra_prefix; //type: uint32
@@ -3424,8 +3057,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaSt
         YLeaf spf_inter_prefix_del; //type: uint32
         YLeaf spf_ext_prefix; //type: uint32
         YLeaf spf_ext_prefix_del; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime
 
@@ -3438,19 +3069,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PriorityBatch; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::PriorityBatch
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::PriorityBatch> > priority_batch;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats
 
 
@@ -3462,12 +3090,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::PriorityBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf batches_sent; //type: uint32
         YLeaf routes_sent; //type: uint32
@@ -3485,8 +3112,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::PriorityBa
         YLeaf lfas_sent; //type: uint32
         YLeaf priority_level; //type: string
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::PriorityBatch
 
 
@@ -3498,12 +3123,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_rev; //type: int32
         YLeaf nsr_fsm_state; //type: int32
@@ -3526,14 +3150,12 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats : public Entity
         YLeaf nsr_conn_to_active_opens; //type: uint64
         YLeaf nsr_conn_to_active_closes; //type: uint64
         YLeaf nsr_conn_to_active_errors; //type: uint64
-
         class NsrThdSched; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched
         class NsrRtrThdSched; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched> nsr_rtr_thd_sched;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched> nsr_thd_sched;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats
 
 
@@ -3545,12 +3167,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_pulse_quant; //type: int32
         YLeaf nsr_events_in_q; //type: uint32
@@ -3560,12 +3181,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched : 
         YLeaf nsr_good_pulses_rx; //type: uint64
         YLeaf nsr_pulses_tx; //type: uint64
         YLeaf nsr_pulse_tx_fails; //type: uint64
-
         class NsrPri; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::NsrPri
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::NsrPri> > nsr_pri;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched
 
 
@@ -3577,12 +3196,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::N
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_sched_pri; //type: uint32
         YLeaf nsr_sched_quant; //type: uint8
@@ -3593,8 +3211,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::N
         YLeaf nsr_sched_evs_qd; //type: uint64
         YLeaf nsr_sched_enq_fails; //type: uint64
         YLeaf nsr_sched_evs_deqd; //type: uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::NsrPri
 
@@ -3607,12 +3223,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_pulse_quant; //type: int32
         YLeaf nsr_events_in_q; //type: uint32
@@ -3622,12 +3237,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched
         YLeaf nsr_good_pulses_rx; //type: uint64
         YLeaf nsr_pulses_tx; //type: uint64
         YLeaf nsr_pulse_tx_fails; //type: uint64
-
         class NsrPri; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri> > nsr_pri;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched
 
 
@@ -3639,12 +3252,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_sched_pri; //type: uint32
         YLeaf nsr_sched_quant; //type: uint8
@@ -3655,8 +3267,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched
         YLeaf nsr_sched_evs_qd; //type: uint64
         YLeaf nsr_sched_enq_fails; //type: uint64
         YLeaf nsr_sched_evs_deqd; //type: uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri
 
@@ -3669,21 +3279,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Internalwq; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq
         class Ribqueue; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq> internalwq;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue> > ribqueue;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats
 
 
@@ -3695,12 +3302,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalw
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wq_thread_active; //type: boolean
         YLeaf wq_dqtime; //type: uint64
@@ -3723,12 +3329,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalw
         YLeaf rib_table_not_created; //type: uint32
         YLeaf priority_level; //type: string
         YLeaf rib_base_clock; //type: uint64
-
         class RibBaseTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq::RibBaseTime
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq::RibBaseTime> rib_base_time;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq
 
 
@@ -3740,17 +3344,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalw
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq::RibBaseTime
 
@@ -3763,12 +3364,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wq_thread_active; //type: boolean
         YLeaf wq_dqtime; //type: uint64
@@ -3791,12 +3391,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue 
         YLeaf rib_table_not_created; //type: uint32
         YLeaf priority_level; //type: string
         YLeaf rib_base_clock; //type: uint64
-
         class RibBaseTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue::RibBaseTime
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue::RibBaseTime> rib_base_time;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue
 
 
@@ -3808,17 +3406,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue::RibBaseTime
 
@@ -3831,19 +3426,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NcdPri; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri> > ncd_pri;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats
 
 
@@ -3855,23 +3447,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList num_sent; //type: list of  uint64
         YLeafList num_recv; //type: list of  uint64
-
         class NumSentDrop; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSentDrop
         class NumRecvDrop; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecvDrop
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecvDrop> > num_recv_drop;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSentDrop> > num_sent_drop;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri
 
 
@@ -3883,16 +3472,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList nsr_pl_send_drop_array; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSentDrop
 
@@ -3905,16 +3491,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList nsr_pl_recv_drop_array; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecvDrop
 
@@ -3927,12 +3510,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_rev; //type: int32
         YLeaf nsr_fsm_state; //type: int32
@@ -3955,14 +3537,12 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats : public Entity
         YLeaf nsr_conn_to_active_opens; //type: uint64
         YLeaf nsr_conn_to_active_closes; //type: uint64
         YLeaf nsr_conn_to_active_errors; //type: uint64
-
         class NsrThdSched; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched
         class NsrRtrThdSched; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched> nsr_rtr_thd_sched;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched> nsr_thd_sched;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats
 
 
@@ -3974,12 +3554,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_pulse_quant; //type: int32
         YLeaf nsr_events_in_q; //type: uint32
@@ -3989,12 +3568,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched : p
         YLeaf nsr_good_pulses_rx; //type: uint64
         YLeaf nsr_pulses_tx; //type: uint64
         YLeaf nsr_pulse_tx_fails; //type: uint64
-
         class NsrPri; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::NsrPri
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::NsrPri> > nsr_pri;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched
 
 
@@ -4006,12 +3583,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::Ns
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_sched_pri; //type: uint32
         YLeaf nsr_sched_quant; //type: uint8
@@ -4022,8 +3598,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::Ns
         YLeaf nsr_sched_evs_qd; //type: uint64
         YLeaf nsr_sched_enq_fails; //type: uint64
         YLeaf nsr_sched_evs_deqd; //type: uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::NsrPri
 
@@ -4036,12 +3610,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_pulse_quant; //type: int32
         YLeaf nsr_events_in_q; //type: uint32
@@ -4051,12 +3624,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched 
         YLeaf nsr_good_pulses_rx; //type: uint64
         YLeaf nsr_pulses_tx; //type: uint64
         YLeaf nsr_pulse_tx_fails; //type: uint64
-
         class NsrPri; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched::NsrPri
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched::NsrPri> > nsr_pri;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched
 
 
@@ -4068,12 +3639,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nsr_sched_pri; //type: uint32
         YLeaf nsr_sched_quant; //type: uint8
@@ -4084,8 +3654,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched:
         YLeaf nsr_sched_evs_qd; //type: uint64
         YLeaf nsr_sched_enq_fails; //type: uint64
         YLeaf nsr_sched_evs_deqd; //type: uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched::NsrPri
 
@@ -4098,18 +3666,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fs_paths; //type: uint32
         YLeaf fs_paths_eligible; //type: uint32
         YLeaf fs_paths_protected; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStats
 
@@ -4122,12 +3687,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf te_connected; //type: boolean
         YLeaf control_disconnects; //type: uint32
@@ -4162,8 +3726,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats : public Entity
         YLeaf te_sr_idt_sent; //type: boolean
         YLeaf sr_num_area_enabled; //type: uint32
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats
 
 
@@ -4175,12 +3737,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf inputs; //type: uint32
         YLeaf input_hello; //type: uint32
@@ -4210,8 +3771,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats : public En
         YLeaf h_input_lsupd; //type: uint32
         YLeaf h_input_ack; //type: uint32
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats
 
 
@@ -4223,12 +3782,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf out_sent; //type: uint32
         YLeaf out_bytes_sent; //type: uint32
@@ -4248,8 +3806,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats : public Entit
         YLeaf raw_connected; //type: boolean
         YLeaf sl_raw_connected; //type: boolean
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats
 
 
@@ -4261,19 +3817,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceStatsEntry; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry> > interface_stats_entry;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries
 
 
@@ -4285,22 +3838,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf handle; //type: string
         YLeaf if_name_str; //type: string
-
         class IfEntry; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry> > if_entry;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry
 
 class NsfRtrEnum : public Enum

@@ -14,7 +14,6 @@ Ssh1::Ssh1()
     kex(std::make_shared<Ssh1::Kex>())
 {
     kex->parent = this;
-    children["kex"] = kex;
 
     yang_name = "ssh1"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-oper";
 }
@@ -43,12 +42,12 @@ std::string Ssh1::get_segment_path() const
 
 }
 
-EntityPath Ssh1::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Ssh1::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "kex")
     {
-        if(kex != nullptr)
-        {
-            children["kex"] = kex;
-        }
-        else
+        if(kex == nullptr)
         {
             kex = std::make_shared<Ssh1::Kex>();
-            kex->parent = this;
-            children["kex"] = kex;
         }
-        return children.at("kex");
+        return kex;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::get_children() const
 {
-    if(children.find("kex") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(kex != nullptr)
     {
-        if(kex != nullptr)
-        {
-            children["kex"] = kex;
-        }
+        children["kex"] = kex;
     }
 
     return children;
@@ -132,7 +114,6 @@ Ssh1::Kex::Kex()
     nodes(std::make_shared<Ssh1::Kex::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "kex"; yang_parent_name = "ssh1";
 }
@@ -161,7 +142,7 @@ std::string Ssh1::Kex::get_segment_path() const
 
 }
 
-EntityPath Ssh1::Kex::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::Kex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -184,41 +165,24 @@ EntityPath Ssh1::Kex::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh1::Kex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Ssh1::Kex::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::Kex::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -266,7 +230,7 @@ std::string Ssh1::Kex::Nodes::get_segment_path() const
 
 }
 
-EntityPath Ssh1::Kex::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::Kex::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -289,15 +253,6 @@ EntityPath Ssh1::Kex::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh1::Kex::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -305,28 +260,24 @@ std::shared_ptr<Entity> Ssh1::Kex::Nodes::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh1::Kex::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::Kex::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -344,10 +295,8 @@ Ssh1::Kex::Nodes::Node::Node()
 	,outgoing_connections(std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections>())
 {
     incoming_sessions->parent = this;
-    children["incoming-sessions"] = incoming_sessions;
 
     outgoing_connections->parent = this;
-    children["outgoing-connections"] = outgoing_connections;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -380,7 +329,7 @@ std::string Ssh1::Kex::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Ssh1::Kex::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::Kex::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -404,64 +353,38 @@ EntityPath Ssh1::Kex::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "incoming-sessions")
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
-        else
+        if(incoming_sessions == nullptr)
         {
             incoming_sessions = std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions>();
-            incoming_sessions->parent = this;
-            children["incoming-sessions"] = incoming_sessions;
         }
-        return children.at("incoming-sessions");
+        return incoming_sessions;
     }
 
     if(child_yang_name == "outgoing-connections")
     {
-        if(outgoing_connections != nullptr)
-        {
-            children["outgoing-connections"] = outgoing_connections;
-        }
-        else
+        if(outgoing_connections == nullptr)
         {
             outgoing_connections = std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections>();
-            outgoing_connections->parent = this;
-            children["outgoing-connections"] = outgoing_connections;
         }
-        return children.at("outgoing-connections");
+        return outgoing_connections;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::Kex::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::get_children() const
 {
-    if(children.find("incoming-sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(incoming_sessions != nullptr)
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
+        children["incoming-sessions"] = incoming_sessions;
     }
 
-    if(children.find("outgoing-connections") == children.end())
+    if(outgoing_connections != nullptr)
     {
-        if(outgoing_connections != nullptr)
-        {
-            children["outgoing-connections"] = outgoing_connections;
-        }
+        children["outgoing-connections"] = outgoing_connections;
     }
 
     return children;
@@ -513,7 +436,7 @@ std::string Ssh1::Kex::Nodes::Node::IncomingSessions::get_segment_path() const
 
 }
 
-EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -536,15 +459,6 @@ EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-detail-info")
     {
         for(auto const & c : session_detail_info)
@@ -552,28 +466,24 @@ std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(std::move(c));
-        children[segment_path] = session_detail_info.back();
-        return children.at(segment_path);
+        session_detail_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::Kex::Nodes::Node::IncomingSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::IncomingSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_detail_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -632,7 +542,7 @@ std::string Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_seg
 
 }
 
-EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -662,20 +572,12 @@ EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_enti
 
 std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -749,7 +651,7 @@ std::string Ssh1::Kex::Nodes::Node::OutgoingConnections::get_segment_path() cons
 
 }
 
-EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -772,15 +674,6 @@ EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-detail-info")
     {
         for(auto const & c : session_detail_info)
@@ -788,28 +681,24 @@ std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(std::move(c));
-        children[segment_path] = session_detail_info.back();
-        return children.at(segment_path);
+        session_detail_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::Kex::Nodes::Node::OutgoingConnections::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_detail_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -868,7 +757,7 @@ std::string Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_
 
 }
 
-EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -898,20 +787,12 @@ EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_e
 
 std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -952,7 +833,6 @@ Ssh::Ssh()
     session(std::make_shared<Ssh::Session>())
 {
     session->parent = this;
-    children["session"] = session;
 
     yang_name = "ssh"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-oper";
 }
@@ -981,12 +861,12 @@ std::string Ssh::get_segment_path() const
 
 }
 
-EntityPath Ssh::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1001,41 +881,24 @@ EntityPath Ssh::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<Ssh::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::get_children() const
 {
-    if(children.find("session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
     return children;
@@ -1072,13 +935,10 @@ Ssh::Session::Session()
 	,rekey(std::make_shared<Ssh::Session::Rekey>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     detail->parent = this;
-    children["detail"] = detail;
 
     rekey->parent = this;
-    children["rekey"] = rekey;
 
     yang_name = "session"; yang_parent_name = "ssh";
 }
@@ -1111,7 +971,7 @@ std::string Ssh::Session::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1134,87 +994,52 @@ EntityPath Ssh::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<Ssh::Session::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<Ssh::Session::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "rekey")
     {
-        if(rekey != nullptr)
-        {
-            children["rekey"] = rekey;
-        }
-        else
+        if(rekey == nullptr)
         {
             rekey = std::make_shared<Ssh::Session::Rekey>();
-            rekey->parent = this;
-            children["rekey"] = rekey;
         }
-        return children.at("rekey");
+        return rekey;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("detail") == children.end())
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("rekey") == children.end())
+    if(rekey != nullptr)
     {
-        if(rekey != nullptr)
-        {
-            children["rekey"] = rekey;
-        }
+        children["rekey"] = rekey;
     }
 
     return children;
@@ -1230,10 +1055,8 @@ Ssh::Session::Rekey::Rekey()
 	,outgoing_connections(std::make_shared<Ssh::Session::Rekey::OutgoingConnections>())
 {
     incoming_sessions->parent = this;
-    children["incoming-sessions"] = incoming_sessions;
 
     outgoing_connections->parent = this;
-    children["outgoing-connections"] = outgoing_connections;
 
     yang_name = "rekey"; yang_parent_name = "session";
 }
@@ -1264,7 +1087,7 @@ std::string Ssh::Session::Rekey::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Rekey::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Rekey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1287,64 +1110,38 @@ EntityPath Ssh::Session::Rekey::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh::Session::Rekey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "incoming-sessions")
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
-        else
+        if(incoming_sessions == nullptr)
         {
             incoming_sessions = std::make_shared<Ssh::Session::Rekey::IncomingSessions>();
-            incoming_sessions->parent = this;
-            children["incoming-sessions"] = incoming_sessions;
         }
-        return children.at("incoming-sessions");
+        return incoming_sessions;
     }
 
     if(child_yang_name == "outgoing-connections")
     {
-        if(outgoing_connections != nullptr)
-        {
-            children["outgoing-connections"] = outgoing_connections;
-        }
-        else
+        if(outgoing_connections == nullptr)
         {
             outgoing_connections = std::make_shared<Ssh::Session::Rekey::OutgoingConnections>();
-            outgoing_connections->parent = this;
-            children["outgoing-connections"] = outgoing_connections;
         }
-        return children.at("outgoing-connections");
+        return outgoing_connections;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Rekey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::get_children() const
 {
-    if(children.find("incoming-sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(incoming_sessions != nullptr)
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
+        children["incoming-sessions"] = incoming_sessions;
     }
 
-    if(children.find("outgoing-connections") == children.end())
+    if(outgoing_connections != nullptr)
     {
-        if(outgoing_connections != nullptr)
-        {
-            children["outgoing-connections"] = outgoing_connections;
-        }
+        children["outgoing-connections"] = outgoing_connections;
     }
 
     return children;
@@ -1392,7 +1189,7 @@ std::string Ssh::Session::Rekey::IncomingSessions::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Rekey::IncomingSessions::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Rekey::IncomingSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1415,15 +1212,6 @@ EntityPath Ssh::Session::Rekey::IncomingSessions::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Ssh::Session::Rekey::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-rekey-info")
     {
         for(auto const & c : session_rekey_info)
@@ -1431,28 +1219,24 @@ std::shared_ptr<Entity> Ssh::Session::Rekey::IncomingSessions::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo>();
         c->parent = this;
-        session_rekey_info.push_back(std::move(c));
-        children[segment_path] = session_rekey_info.back();
-        return children.at(segment_path);
+        session_rekey_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Rekey::IncomingSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::IncomingSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_rekey_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1502,7 +1286,7 @@ std::string Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_segment
 
 }
 
-EntityPath Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1529,20 +1313,12 @@ EntityPath Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_entity_p
 
 std::shared_ptr<Entity> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1604,7 +1380,7 @@ std::string Ssh::Session::Rekey::OutgoingConnections::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Rekey::OutgoingConnections::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Rekey::OutgoingConnections::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1627,15 +1403,6 @@ EntityPath Ssh::Session::Rekey::OutgoingConnections::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ssh::Session::Rekey::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-rekey-info")
     {
         for(auto const & c : session_rekey_info)
@@ -1643,28 +1410,24 @@ std::shared_ptr<Entity> Ssh::Session::Rekey::OutgoingConnections::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo>();
         c->parent = this;
-        session_rekey_info.push_back(std::move(c));
-        children[segment_path] = session_rekey_info.back();
-        return children.at(segment_path);
+        session_rekey_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Rekey::OutgoingConnections::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::OutgoingConnections::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_rekey_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1714,7 +1477,7 @@ std::string Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_segm
 
 }
 
-EntityPath Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1741,20 +1504,12 @@ EntityPath Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_entit
 
 std::shared_ptr<Entity> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1784,10 +1539,8 @@ Ssh::Session::Brief::Brief()
 	,outgoing_sessions(std::make_shared<Ssh::Session::Brief::OutgoingSessions>())
 {
     incoming_sessions->parent = this;
-    children["incoming-sessions"] = incoming_sessions;
 
     outgoing_sessions->parent = this;
-    children["outgoing-sessions"] = outgoing_sessions;
 
     yang_name = "brief"; yang_parent_name = "session";
 }
@@ -1818,7 +1571,7 @@ std::string Ssh::Session::Brief::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1841,64 +1594,38 @@ EntityPath Ssh::Session::Brief::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh::Session::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "incoming-sessions")
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
-        else
+        if(incoming_sessions == nullptr)
         {
             incoming_sessions = std::make_shared<Ssh::Session::Brief::IncomingSessions>();
-            incoming_sessions->parent = this;
-            children["incoming-sessions"] = incoming_sessions;
         }
-        return children.at("incoming-sessions");
+        return incoming_sessions;
     }
 
     if(child_yang_name == "outgoing-sessions")
     {
-        if(outgoing_sessions != nullptr)
-        {
-            children["outgoing-sessions"] = outgoing_sessions;
-        }
-        else
+        if(outgoing_sessions == nullptr)
         {
             outgoing_sessions = std::make_shared<Ssh::Session::Brief::OutgoingSessions>();
-            outgoing_sessions->parent = this;
-            children["outgoing-sessions"] = outgoing_sessions;
         }
-        return children.at("outgoing-sessions");
+        return outgoing_sessions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::get_children() const
 {
-    if(children.find("incoming-sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(incoming_sessions != nullptr)
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
+        children["incoming-sessions"] = incoming_sessions;
     }
 
-    if(children.find("outgoing-sessions") == children.end())
+    if(outgoing_sessions != nullptr)
     {
-        if(outgoing_sessions != nullptr)
-        {
-            children["outgoing-sessions"] = outgoing_sessions;
-        }
+        children["outgoing-sessions"] = outgoing_sessions;
     }
 
     return children;
@@ -1946,7 +1673,7 @@ std::string Ssh::Session::Brief::IncomingSessions::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Brief::IncomingSessions::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Brief::IncomingSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1969,15 +1696,6 @@ EntityPath Ssh::Session::Brief::IncomingSessions::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-brief-info")
     {
         for(auto const & c : session_brief_info)
@@ -1985,28 +1703,24 @@ std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo>();
         c->parent = this;
-        session_brief_info.push_back(std::move(c));
-        children[segment_path] = session_brief_info.back();
-        return children.at(segment_path);
+        session_brief_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Brief::IncomingSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_brief_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2077,7 +1791,7 @@ std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_segment
 
 }
 
-EntityPath Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2111,20 +1825,12 @@ EntityPath Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_entity_p
 
 std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2214,7 +1920,7 @@ std::string Ssh::Session::Brief::OutgoingSessions::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Brief::OutgoingSessions::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Brief::OutgoingSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2237,15 +1943,6 @@ EntityPath Ssh::Session::Brief::OutgoingSessions::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-brief-info")
     {
         for(auto const & c : session_brief_info)
@@ -2253,28 +1950,24 @@ std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo>();
         c->parent = this;
-        session_brief_info.push_back(std::move(c));
-        children[segment_path] = session_brief_info.back();
-        return children.at(segment_path);
+        session_brief_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Brief::OutgoingSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_brief_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2345,7 +2038,7 @@ std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_segment
 
 }
 
-EntityPath Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2379,20 +2072,12 @@ EntityPath Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_entity_p
 
 std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2450,10 +2135,8 @@ Ssh::Session::Detail::Detail()
 	,outgoing_connections(std::make_shared<Ssh::Session::Detail::OutgoingConnections>())
 {
     incoming_sessions->parent = this;
-    children["incoming-sessions"] = incoming_sessions;
 
     outgoing_connections->parent = this;
-    children["outgoing-connections"] = outgoing_connections;
 
     yang_name = "detail"; yang_parent_name = "session";
 }
@@ -2484,7 +2167,7 @@ std::string Ssh::Session::Detail::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2507,64 +2190,38 @@ EntityPath Ssh::Session::Detail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssh::Session::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "incoming-sessions")
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
-        else
+        if(incoming_sessions == nullptr)
         {
             incoming_sessions = std::make_shared<Ssh::Session::Detail::IncomingSessions>();
-            incoming_sessions->parent = this;
-            children["incoming-sessions"] = incoming_sessions;
         }
-        return children.at("incoming-sessions");
+        return incoming_sessions;
     }
 
     if(child_yang_name == "outgoing-connections")
     {
-        if(outgoing_connections != nullptr)
-        {
-            children["outgoing-connections"] = outgoing_connections;
-        }
-        else
+        if(outgoing_connections == nullptr)
         {
             outgoing_connections = std::make_shared<Ssh::Session::Detail::OutgoingConnections>();
-            outgoing_connections->parent = this;
-            children["outgoing-connections"] = outgoing_connections;
         }
-        return children.at("outgoing-connections");
+        return outgoing_connections;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::get_children() const
 {
-    if(children.find("incoming-sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(incoming_sessions != nullptr)
     {
-        if(incoming_sessions != nullptr)
-        {
-            children["incoming-sessions"] = incoming_sessions;
-        }
+        children["incoming-sessions"] = incoming_sessions;
     }
 
-    if(children.find("outgoing-connections") == children.end())
+    if(outgoing_connections != nullptr)
     {
-        if(outgoing_connections != nullptr)
-        {
-            children["outgoing-connections"] = outgoing_connections;
-        }
+        children["outgoing-connections"] = outgoing_connections;
     }
 
     return children;
@@ -2612,7 +2269,7 @@ std::string Ssh::Session::Detail::IncomingSessions::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Detail::IncomingSessions::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Detail::IncomingSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2635,15 +2292,6 @@ EntityPath Ssh::Session::Detail::IncomingSessions::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Ssh::Session::Detail::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-detail-info")
     {
         for(auto const & c : session_detail_info)
@@ -2651,28 +2299,24 @@ std::shared_ptr<Entity> Ssh::Session::Detail::IncomingSessions::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh::Session::Detail::IncomingSessions::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(std::move(c));
-        children[segment_path] = session_detail_info.back();
-        return children.at(segment_path);
+        session_detail_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Detail::IncomingSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::IncomingSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_detail_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2731,7 +2375,7 @@ std::string Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_segme
 
 }
 
-EntityPath Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2761,20 +2405,12 @@ EntityPath Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_entity
 
 std::shared_ptr<Entity> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2848,7 +2484,7 @@ std::string Ssh::Session::Detail::OutgoingConnections::get_segment_path() const
 
 }
 
-EntityPath Ssh::Session::Detail::OutgoingConnections::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Detail::OutgoingConnections::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2871,15 +2507,6 @@ EntityPath Ssh::Session::Detail::OutgoingConnections::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Ssh::Session::Detail::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-detail-info")
     {
         for(auto const & c : session_detail_info)
@@ -2887,28 +2514,24 @@ std::shared_ptr<Entity> Ssh::Session::Detail::OutgoingConnections::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(std::move(c));
-        children[segment_path] = session_detail_info.back();
-        return children.at(segment_path);
+        session_detail_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Detail::OutgoingConnections::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::OutgoingConnections::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_detail_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2967,7 +2590,7 @@ std::string Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_se
 
 }
 
-EntityPath Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2997,20 +2620,12 @@ EntityPath Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_ent
 
 std::shared_ptr<Entity> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

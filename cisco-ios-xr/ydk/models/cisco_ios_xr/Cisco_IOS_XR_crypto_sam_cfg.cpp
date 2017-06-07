@@ -15,10 +15,8 @@ Crypto::Crypto()
 	,ssh(std::make_shared<Crypto::Ssh>())
 {
     sam->parent = this;
-    children["sam"] = sam;
 
     ssh->parent = this;
-    children["ssh"] = ssh;
 
     yang_name = "crypto"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-cfg";
 }
@@ -49,12 +47,12 @@ std::string Crypto::get_segment_path() const
 
 }
 
-EntityPath Crypto::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath Crypto::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Crypto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sam")
     {
-        if(sam != nullptr)
-        {
-            children["sam"] = sam;
-        }
-        else
+        if(sam == nullptr)
         {
             sam = std::make_shared<Crypto::Sam>();
-            sam->parent = this;
-            children["sam"] = sam;
         }
-        return children.at("sam");
+        return sam;
     }
 
     if(child_yang_name == "ssh")
     {
-        if(ssh != nullptr)
-        {
-            children["ssh"] = ssh;
-        }
-        else
+        if(ssh == nullptr)
         {
             ssh = std::make_shared<Crypto::Ssh>();
-            ssh->parent = this;
-            children["ssh"] = ssh;
         }
-        return children.at("ssh");
+        return ssh;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::get_children() const
 {
-    if(children.find("sam") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sam != nullptr)
     {
-        if(sam != nullptr)
-        {
-            children["sam"] = sam;
-        }
+        children["sam"] = sam;
     }
 
-    if(children.find("ssh") == children.end())
+    if(ssh != nullptr)
     {
-        if(ssh != nullptr)
-        {
-            children["ssh"] = ssh;
-        }
+        children["ssh"] = ssh;
     }
 
     return children;
@@ -187,7 +159,7 @@ std::string Crypto::Sam::get_segment_path() const
 
 }
 
-EntityPath Crypto::Sam::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Sam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -210,41 +182,24 @@ EntityPath Crypto::Sam::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Crypto::Sam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prompt-interval")
     {
-        if(prompt_interval != nullptr)
-        {
-            children["prompt-interval"] = prompt_interval;
-        }
-        else
+        if(prompt_interval == nullptr)
         {
             prompt_interval = std::make_shared<Crypto::Sam::PromptInterval>();
-            prompt_interval->parent = this;
-            children["prompt-interval"] = prompt_interval;
         }
-        return children.at("prompt-interval");
+        return prompt_interval;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Sam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Sam::get_children() const
 {
-    if(children.find("prompt-interval") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prompt_interval != nullptr)
     {
-        if(prompt_interval != nullptr)
-        {
-            children["prompt-interval"] = prompt_interval;
-        }
+        children["prompt-interval"] = prompt_interval;
     }
 
     return children;
@@ -288,7 +243,7 @@ std::string Crypto::Sam::PromptInterval::get_segment_path() const
 
 }
 
-EntityPath Crypto::Sam::PromptInterval::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Sam::PromptInterval::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -313,20 +268,12 @@ EntityPath Crypto::Sam::PromptInterval::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Crypto::Sam::PromptInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Sam::PromptInterval::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Sam::PromptInterval::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -348,10 +295,8 @@ Crypto::Ssh::Ssh()
 	,server(std::make_shared<Crypto::Ssh::Server>())
 {
     client->parent = this;
-    children["client"] = client;
 
     server->parent = this;
-    children["server"] = server;
 
     yang_name = "ssh"; yang_parent_name = "crypto";
 }
@@ -382,7 +327,7 @@ std::string Crypto::Ssh::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -405,64 +350,38 @@ EntityPath Crypto::Ssh::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Crypto::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
-        else
+        if(client == nullptr)
         {
             client = std::make_shared<Crypto::Ssh::Client>();
-            client->parent = this;
-            children["client"] = client;
         }
-        return children.at("client");
+        return client;
     }
 
     if(child_yang_name == "server")
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
-        else
+        if(server == nullptr)
         {
             server = std::make_shared<Crypto::Ssh::Server>();
-            server->parent = this;
-            children["server"] = server;
         }
-        return children.at("server");
+        return server;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::get_children() const
 {
-    if(children.find("client") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client != nullptr)
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
+        children["client"] = client;
     }
 
-    if(children.find("server") == children.end())
+    if(server != nullptr)
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
+        children["server"] = server;
     }
 
     return children;
@@ -512,7 +431,7 @@ std::string Crypto::Ssh::Client::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -539,20 +458,12 @@ EntityPath Crypto::Ssh::Client::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Crypto::Ssh::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -593,13 +504,10 @@ Crypto::Ssh::Server::Server()
 	,vrf_table(std::make_shared<Crypto::Ssh::Server::VrfTable>())
 {
     disable->parent = this;
-    children["disable"] = disable;
 
     netconf_vrf_table->parent = this;
-    children["netconf-vrf-table"] = netconf_vrf_table;
 
     vrf_table->parent = this;
-    children["vrf-table"] = vrf_table;
 
     yang_name = "server"; yang_parent_name = "ssh";
 }
@@ -650,7 +558,7 @@ std::string Crypto::Ssh::Server::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Server::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -682,87 +590,52 @@ EntityPath Crypto::Ssh::Server::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Crypto::Ssh::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disable")
     {
-        if(disable != nullptr)
-        {
-            children["disable"] = disable;
-        }
-        else
+        if(disable == nullptr)
         {
             disable = std::make_shared<Crypto::Ssh::Server::Disable>();
-            disable->parent = this;
-            children["disable"] = disable;
         }
-        return children.at("disable");
+        return disable;
     }
 
     if(child_yang_name == "netconf-vrf-table")
     {
-        if(netconf_vrf_table != nullptr)
-        {
-            children["netconf-vrf-table"] = netconf_vrf_table;
-        }
-        else
+        if(netconf_vrf_table == nullptr)
         {
             netconf_vrf_table = std::make_shared<Crypto::Ssh::Server::NetconfVrfTable>();
-            netconf_vrf_table->parent = this;
-            children["netconf-vrf-table"] = netconf_vrf_table;
         }
-        return children.at("netconf-vrf-table");
+        return netconf_vrf_table;
     }
 
     if(child_yang_name == "vrf-table")
     {
-        if(vrf_table != nullptr)
-        {
-            children["vrf-table"] = vrf_table;
-        }
-        else
+        if(vrf_table == nullptr)
         {
             vrf_table = std::make_shared<Crypto::Ssh::Server::VrfTable>();
-            vrf_table->parent = this;
-            children["vrf-table"] = vrf_table;
         }
-        return children.at("vrf-table");
+        return vrf_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::get_children() const
 {
-    if(children.find("disable") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disable != nullptr)
     {
-        if(disable != nullptr)
-        {
-            children["disable"] = disable;
-        }
+        children["disable"] = disable;
     }
 
-    if(children.find("netconf-vrf-table") == children.end())
+    if(netconf_vrf_table != nullptr)
     {
-        if(netconf_vrf_table != nullptr)
-        {
-            children["netconf-vrf-table"] = netconf_vrf_table;
-        }
+        children["netconf-vrf-table"] = netconf_vrf_table;
     }
 
-    if(children.find("vrf-table") == children.end())
+    if(vrf_table != nullptr)
     {
-        if(vrf_table != nullptr)
-        {
-            children["vrf-table"] = vrf_table;
-        }
+        children["vrf-table"] = vrf_table;
     }
 
     return children;
@@ -813,7 +686,6 @@ Crypto::Ssh::Server::Disable::Disable()
     hmac(std::make_shared<Crypto::Ssh::Server::Disable::Hmac>())
 {
     hmac->parent = this;
-    children["hmac"] = hmac;
 
     yang_name = "disable"; yang_parent_name = "server";
 }
@@ -842,7 +714,7 @@ std::string Crypto::Ssh::Server::Disable::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Server::Disable::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Server::Disable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -865,41 +737,24 @@ EntityPath Crypto::Ssh::Server::Disable::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Crypto::Ssh::Server::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hmac")
     {
-        if(hmac != nullptr)
-        {
-            children["hmac"] = hmac;
-        }
-        else
+        if(hmac == nullptr)
         {
             hmac = std::make_shared<Crypto::Ssh::Server::Disable::Hmac>();
-            hmac->parent = this;
-            children["hmac"] = hmac;
         }
-        return children.at("hmac");
+        return hmac;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Server::Disable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::Disable::get_children() const
 {
-    if(children.find("hmac") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hmac != nullptr)
     {
-        if(hmac != nullptr)
-        {
-            children["hmac"] = hmac;
-        }
+        children["hmac"] = hmac;
     }
 
     return children;
@@ -940,7 +795,7 @@ std::string Crypto::Ssh::Server::Disable::Hmac::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Server::Disable::Hmac::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Server::Disable::Hmac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -964,20 +819,12 @@ EntityPath Crypto::Ssh::Server::Disable::Hmac::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Crypto::Ssh::Server::Disable::Hmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Server::Disable::Hmac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::Disable::Hmac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1027,7 +874,7 @@ std::string Crypto::Ssh::Server::VrfTable::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Server::VrfTable::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Server::VrfTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1050,15 +897,6 @@ EntityPath Crypto::Ssh::Server::VrfTable::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Crypto::Ssh::Server::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -1066,28 +904,24 @@ std::shared_ptr<Entity> Crypto::Ssh::Server::VrfTable::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Crypto::Ssh::Server::VrfTable::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Server::VrfTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::VrfTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1137,7 +971,7 @@ std::string Crypto::Ssh::Server::VrfTable::Vrf::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Server::VrfTable::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Server::VrfTable::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1164,20 +998,12 @@ EntityPath Crypto::Ssh::Server::VrfTable::Vrf::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Crypto::Ssh::Server::VrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Server::VrfTable::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::VrfTable::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1239,7 +1065,7 @@ std::string Crypto::Ssh::Server::NetconfVrfTable::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Server::NetconfVrfTable::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Server::NetconfVrfTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1262,15 +1088,6 @@ EntityPath Crypto::Ssh::Server::NetconfVrfTable::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Crypto::Ssh::Server::NetconfVrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -1278,28 +1095,24 @@ std::shared_ptr<Entity> Crypto::Ssh::Server::NetconfVrfTable::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Crypto::Ssh::Server::NetconfVrfTable::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Server::NetconfVrfTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::NetconfVrfTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1349,7 +1162,7 @@ std::string Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_segment_path() const
 
 }
 
-EntityPath Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1376,20 +1189,12 @@ EntityPath Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

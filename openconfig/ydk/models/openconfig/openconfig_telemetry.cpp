@@ -16,13 +16,10 @@ TelemetrySystem::TelemetrySystem()
 	,subscriptions(std::make_shared<TelemetrySystem::Subscriptions>())
 {
     destination_groups->parent = this;
-    children["destination-groups"] = destination_groups;
 
     sensor_groups->parent = this;
-    children["sensor-groups"] = sensor_groups;
 
     subscriptions->parent = this;
-    children["subscriptions"] = subscriptions;
 
     yang_name = "telemetry-system"; yang_parent_name = "openconfig-telemetry";
 }
@@ -55,12 +52,12 @@ std::string TelemetrySystem::get_segment_path() const
 
 }
 
-EntityPath TelemetrySystem::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -75,87 +72,52 @@ EntityPath TelemetrySystem::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TelemetrySystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-groups")
     {
-        if(destination_groups != nullptr)
-        {
-            children["destination-groups"] = destination_groups;
-        }
-        else
+        if(destination_groups == nullptr)
         {
             destination_groups = std::make_shared<TelemetrySystem::DestinationGroups>();
-            destination_groups->parent = this;
-            children["destination-groups"] = destination_groups;
         }
-        return children.at("destination-groups");
+        return destination_groups;
     }
 
     if(child_yang_name == "sensor-groups")
     {
-        if(sensor_groups != nullptr)
-        {
-            children["sensor-groups"] = sensor_groups;
-        }
-        else
+        if(sensor_groups == nullptr)
         {
             sensor_groups = std::make_shared<TelemetrySystem::SensorGroups>();
-            sensor_groups->parent = this;
-            children["sensor-groups"] = sensor_groups;
         }
-        return children.at("sensor-groups");
+        return sensor_groups;
     }
 
     if(child_yang_name == "subscriptions")
     {
-        if(subscriptions != nullptr)
-        {
-            children["subscriptions"] = subscriptions;
-        }
-        else
+        if(subscriptions == nullptr)
         {
             subscriptions = std::make_shared<TelemetrySystem::Subscriptions>();
-            subscriptions->parent = this;
-            children["subscriptions"] = subscriptions;
         }
-        return children.at("subscriptions");
+        return subscriptions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::get_children() const
 {
-    if(children.find("destination-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_groups != nullptr)
     {
-        if(destination_groups != nullptr)
-        {
-            children["destination-groups"] = destination_groups;
-        }
+        children["destination-groups"] = destination_groups;
     }
 
-    if(children.find("sensor-groups") == children.end())
+    if(sensor_groups != nullptr)
     {
-        if(sensor_groups != nullptr)
-        {
-            children["sensor-groups"] = sensor_groups;
-        }
+        children["sensor-groups"] = sensor_groups;
     }
 
-    if(children.find("subscriptions") == children.end())
+    if(subscriptions != nullptr)
     {
-        if(subscriptions != nullptr)
-        {
-            children["subscriptions"] = subscriptions;
-        }
+        children["subscriptions"] = subscriptions;
     }
 
     return children;
@@ -223,7 +185,7 @@ std::string TelemetrySystem::SensorGroups::get_segment_path() const
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -246,15 +208,6 @@ EntityPath TelemetrySystem::SensorGroups::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-group")
     {
         for(auto const & c : sensor_group)
@@ -262,28 +215,24 @@ std::shared_ptr<Entity> TelemetrySystem::SensorGroups::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup>();
         c->parent = this;
-        sensor_group.push_back(std::move(c));
-        children[segment_path] = sensor_group.back();
-        return children.at(segment_path);
+        sensor_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sensor_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -302,13 +251,10 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorGroup()
 	,state(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     sensor_paths->parent = this;
-    children["sensor-paths"] = sensor_paths;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "sensor-group"; yang_parent_name = "sensor-groups";
 }
@@ -343,7 +289,7 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::get_segment_path() const
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::SensorGroup::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::SensorGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -367,87 +313,52 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "sensor-paths")
     {
-        if(sensor_paths != nullptr)
-        {
-            children["sensor-paths"] = sensor_paths;
-        }
-        else
+        if(sensor_paths == nullptr)
         {
             sensor_paths = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths>();
-            sensor_paths->parent = this;
-            children["sensor-paths"] = sensor_paths;
         }
-        return children.at("sensor-paths");
+        return sensor_paths;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::SensorGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("sensor-paths") == children.end())
+    if(sensor_paths != nullptr)
     {
-        if(sensor_paths != nullptr)
-        {
-            children["sensor-paths"] = sensor_paths;
-        }
+        children["sensor-paths"] = sensor_paths;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -492,7 +403,7 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::Config::get_segment_path
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::SensorGroup::Config::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::SensorGroup::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -516,20 +427,12 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::Config::get_entity_path(E
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::SensorGroup::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -572,7 +475,7 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::State::get_segment_path(
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::SensorGroup::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::SensorGroup::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -596,20 +499,12 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::State::get_entity_path(En
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::SensorGroup::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -659,7 +554,7 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_segment
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -682,15 +577,6 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_entity_p
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-path")
     {
         for(auto const & c : sensor_path)
@@ -698,28 +584,24 @@ std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath>();
         c->parent = this;
-        sensor_path.push_back(std::move(c));
-        children[segment_path] = sensor_path.back();
-        return children.at(segment_path);
+        sensor_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sensor_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -737,10 +619,8 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::SensorPath(
 	,state(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "sensor-path"; yang_parent_name = "sensor-paths";
 }
@@ -773,7 +653,7 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath:
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -797,64 +677,38 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -902,7 +756,7 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath:
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -927,20 +781,12 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -990,7 +836,7 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath:
 
 }
 
-EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1015,20 +861,12 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::
 
 std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1082,7 +920,7 @@ std::string TelemetrySystem::DestinationGroups::get_segment_path() const
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1105,15 +943,6 @@ EntityPath TelemetrySystem::DestinationGroups::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-group")
     {
         for(auto const & c : destination_group)
@@ -1121,28 +950,24 @@ std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup>();
         c->parent = this;
-        destination_group.push_back(std::move(c));
-        children[segment_path] = destination_group.back();
-        return children.at(segment_path);
+        destination_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : destination_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1161,13 +986,10 @@ TelemetrySystem::DestinationGroups::DestinationGroup::DestinationGroup()
 	,state(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     destinations->parent = this;
-    children["destinations"] = destinations;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "destination-group"; yang_parent_name = "destination-groups";
 }
@@ -1202,7 +1024,7 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::get_segment_pa
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1226,87 +1048,52 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::get_entity_path
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "destinations")
     {
-        if(destinations != nullptr)
-        {
-            children["destinations"] = destinations;
-        }
-        else
+        if(destinations == nullptr)
         {
             destinations = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations>();
-            destinations->parent = this;
-            children["destinations"] = destinations;
         }
-        return children.at("destinations");
+        return destinations;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::DestinationGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("destinations") == children.end())
+    if(destinations != nullptr)
     {
-        if(destinations != nullptr)
-        {
-            children["destinations"] = destinations;
-        }
+        children["destinations"] = destinations;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1351,7 +1138,7 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_se
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1375,20 +1162,12 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_ent
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1431,7 +1210,7 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::State::get_seg
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1455,20 +1234,12 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::State::get_enti
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::DestinationGroup::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1518,7 +1289,7 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1541,15 +1312,6 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::g
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination")
     {
         for(auto const & c : destination)
@@ -1557,28 +1319,24 @@ std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::De
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination>();
         c->parent = this;
-        destination.push_back(std::move(c));
-        children[segment_path] = destination.back();
-        return children.at(segment_path);
+        destination.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : destination)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1597,10 +1355,8 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination:
 	,state(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "destination"; yang_parent_name = "destinations";
 }
@@ -1635,7 +1391,7 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1660,64 +1416,38 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::D
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1772,7 +1502,7 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1798,20 +1528,12 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::D
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1868,7 +1590,7 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::
 
 }
 
-EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1894,20 +1616,12 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::D
 
 std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1933,10 +1647,8 @@ TelemetrySystem::Subscriptions::Subscriptions()
 	,persistent(std::make_shared<TelemetrySystem::Subscriptions::Persistent>())
 {
     dynamic->parent = this;
-    children["dynamic"] = dynamic;
 
     persistent->parent = this;
-    children["persistent"] = persistent;
 
     yang_name = "subscriptions"; yang_parent_name = "telemetry-system";
 }
@@ -1967,7 +1679,7 @@ std::string TelemetrySystem::Subscriptions::get_segment_path() const
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1990,64 +1702,38 @@ EntityPath TelemetrySystem::Subscriptions::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dynamic")
     {
-        if(dynamic != nullptr)
-        {
-            children["dynamic"] = dynamic;
-        }
-        else
+        if(dynamic == nullptr)
         {
             dynamic = std::make_shared<TelemetrySystem::Subscriptions::Dynamic>();
-            dynamic->parent = this;
-            children["dynamic"] = dynamic;
         }
-        return children.at("dynamic");
+        return dynamic;
     }
 
     if(child_yang_name == "persistent")
     {
-        if(persistent != nullptr)
-        {
-            children["persistent"] = persistent;
-        }
-        else
+        if(persistent == nullptr)
         {
             persistent = std::make_shared<TelemetrySystem::Subscriptions::Persistent>();
-            persistent->parent = this;
-            children["persistent"] = persistent;
         }
-        return children.at("persistent");
+        return persistent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::get_children() const
 {
-    if(children.find("dynamic") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dynamic != nullptr)
     {
-        if(dynamic != nullptr)
-        {
-            children["dynamic"] = dynamic;
-        }
+        children["dynamic"] = dynamic;
     }
 
-    if(children.find("persistent") == children.end())
+    if(persistent != nullptr)
     {
-        if(persistent != nullptr)
-        {
-            children["persistent"] = persistent;
-        }
+        children["persistent"] = persistent;
     }
 
     return children;
@@ -2095,7 +1781,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::get_segment_path() const
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2118,15 +1804,6 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "subscription")
     {
         for(auto const & c : subscription)
@@ -2134,28 +1811,24 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription>();
         c->parent = this;
-        subscription.push_back(std::move(c));
-        children[segment_path] = subscription.back();
-        return children.at(segment_path);
+        subscription.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : subscription)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2175,16 +1848,12 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::Subscription()
 	,state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     destination_groups->parent = this;
-    children["destination-groups"] = destination_groups;
 
     sensor_profiles->parent = this;
-    children["sensor-profiles"] = sensor_profiles;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "subscription"; yang_parent_name = "persistent";
 }
@@ -2221,7 +1890,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::get_segmen
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2245,110 +1914,66 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::get_entity_
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "destination-groups")
     {
-        if(destination_groups != nullptr)
-        {
-            children["destination-groups"] = destination_groups;
-        }
-        else
+        if(destination_groups == nullptr)
         {
             destination_groups = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups>();
-            destination_groups->parent = this;
-            children["destination-groups"] = destination_groups;
         }
-        return children.at("destination-groups");
+        return destination_groups;
     }
 
     if(child_yang_name == "sensor-profiles")
     {
-        if(sensor_profiles != nullptr)
-        {
-            children["sensor-profiles"] = sensor_profiles;
-        }
-        else
+        if(sensor_profiles == nullptr)
         {
             sensor_profiles = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles>();
-            sensor_profiles->parent = this;
-            children["sensor-profiles"] = sensor_profiles;
         }
-        return children.at("sensor-profiles");
+        return sensor_profiles;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("destination-groups") == children.end())
+    if(destination_groups != nullptr)
     {
-        if(destination_groups != nullptr)
-        {
-            children["destination-groups"] = destination_groups;
-        }
+        children["destination-groups"] = destination_groups;
     }
 
-    if(children.find("sensor-profiles") == children.end())
+    if(sensor_profiles != nullptr)
     {
-        if(sensor_profiles != nullptr)
-        {
-            children["sensor-profiles"] = sensor_profiles;
-        }
+        children["sensor-profiles"] = sensor_profiles;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -2399,7 +2024,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::Config::ge
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2425,20 +2050,12 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2495,7 +2112,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::State::get
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2521,20 +2138,12 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2592,7 +2201,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProf
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2615,15 +2224,6 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-profile")
     {
         for(auto const & c : sensor_profile)
@@ -2631,28 +2231,24 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile>();
         c->parent = this;
-        sensor_profile.push_back(std::move(c));
-        children[segment_path] = sensor_profile.back();
-        return children.at(segment_path);
+        sensor_profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sensor_profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2670,10 +2266,8 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::Sensor
 	,state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "sensor-profile"; yang_parent_name = "sensor-profiles";
 }
@@ -2706,7 +2300,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProf
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2730,64 +2324,38 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -2841,7 +2409,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProf
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2868,20 +2436,12 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2945,7 +2505,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProf
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2972,20 +2532,12 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3047,7 +2599,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::Destinatio
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3070,15 +2622,6 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-group")
     {
         for(auto const & c : destination_group)
@@ -3086,28 +2629,24 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup>();
         c->parent = this;
-        destination_group.push_back(std::move(c));
-        children[segment_path] = destination_group.back();
-        return children.at(segment_path);
+        destination_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : destination_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3125,10 +2664,8 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::Des
 	,state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "destination-group"; yang_parent_name = "destination-groups";
 }
@@ -3161,7 +2698,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::Destinatio
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3185,64 +2722,38 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -3287,7 +2798,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::Destinatio
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3311,20 +2822,12 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3367,7 +2870,7 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::Destinatio
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3391,20 +2894,12 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3454,7 +2949,7 @@ std::string TelemetrySystem::Subscriptions::Dynamic::get_segment_path() const
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Dynamic::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Dynamic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3477,15 +2972,6 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "subscription")
     {
         for(auto const & c : subscription)
@@ -3493,28 +2979,24 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription>();
         c->parent = this;
-        subscription.push_back(std::move(c));
-        children[segment_path] = subscription.back();
-        return children.at(segment_path);
+        subscription.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Dynamic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : subscription)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3532,10 +3014,8 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::Subscription()
 	,state(std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::State>())
 {
     sensor_paths->parent = this;
-    children["sensor-paths"] = sensor_paths;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "subscription"; yang_parent_name = "dynamic";
 }
@@ -3568,7 +3048,7 @@ std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::get_segment_p
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3592,64 +3072,38 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::get_entity_pat
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-paths")
     {
-        if(sensor_paths != nullptr)
-        {
-            children["sensor-paths"] = sensor_paths;
-        }
-        else
+        if(sensor_paths == nullptr)
         {
             sensor_paths = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths>();
-            sensor_paths->parent = this;
-            children["sensor-paths"] = sensor_paths;
         }
-        return children.at("sensor-paths");
+        return sensor_paths;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Dynamic::Subscription::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::get_children() const
 {
-    if(children.find("sensor-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sensor_paths != nullptr)
     {
-        if(sensor_paths != nullptr)
-        {
-            children["sensor-paths"] = sensor_paths;
-        }
+        children["sensor-paths"] = sensor_paths;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -3715,7 +3169,7 @@ std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_se
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3746,20 +3200,12 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_ent
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3837,7 +3283,7 @@ std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3860,15 +3306,6 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::g
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-path")
     {
         for(auto const & c : sensor_path)
@@ -3876,28 +3313,24 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath>();
         c->parent = this;
-        sensor_path.push_back(std::move(c));
-        children[segment_path] = sensor_path.back();
-        return children.at(segment_path);
+        sensor_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sensor_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3914,7 +3347,6 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::
     state(std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State>())
 {
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "sensor-path"; yang_parent_name = "sensor-paths";
 }
@@ -3945,7 +3377,7 @@ std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3969,41 +3401,24 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::S
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_children() const
 {
-    if(children.find("state") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -4051,7 +3466,7 @@ std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::
 
 }
 
-EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_entity_path(Entity* ancestor) const
+const EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4076,20 +3491,12 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::S
 
 std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

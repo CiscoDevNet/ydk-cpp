@@ -40,7 +40,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -64,20 +64,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_e
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -120,7 +112,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_segme
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -144,20 +136,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_entity
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -177,16 +161,12 @@ Isis::Instances::Instance::NsrStatus::IsisNsrInfra::IsisNsrInfra()
 	,te(std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te>())
 {
     ds->parent = this;
-    children["ds"] = ds;
 
     gen->parent = this;
-    children["gen"] = gen;
 
     pm->parent = this;
-    children["pm"] = pm;
 
     te->parent = this;
-    children["te"] = te;
 
     yang_name = "isis-nsr-infra"; yang_parent_name = "nsr-status";
 }
@@ -241,7 +221,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_segment_path
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -264,43 +244,22 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_entity_path(E
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ds")
     {
-        if(ds != nullptr)
-        {
-            children["ds"] = ds;
-        }
-        else
+        if(ds == nullptr)
         {
             ds = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds>();
-            ds->parent = this;
-            children["ds"] = ds;
         }
-        return children.at("ds");
+        return ds;
     }
 
     if(child_yang_name == "gen")
     {
-        if(gen != nullptr)
-        {
-            children["gen"] = gen;
-        }
-        else
+        if(gen == nullptr)
         {
             gen = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen>();
-            gen->parent = this;
-            children["gen"] = gen;
         }
-        return children.at("gen");
+        return gen;
     }
 
     if(child_yang_name == "ncd")
@@ -310,15 +269,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd>();
         c->parent = this;
-        ncd.push_back(std::move(c));
-        children[segment_path] = ncd.back();
-        return children.at(segment_path);
+        ncd.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "nii-idb")
@@ -328,98 +285,67 @@ std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb>();
         c->parent = this;
-        nii_idb.push_back(std::move(c));
-        children[segment_path] = nii_idb.back();
-        return children.at(segment_path);
+        nii_idb.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pm")
     {
-        if(pm != nullptr)
-        {
-            children["pm"] = pm;
-        }
-        else
+        if(pm == nullptr)
         {
             pm = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm>();
-            pm->parent = this;
-            children["pm"] = pm;
         }
-        return children.at("pm");
+        return pm;
     }
 
     if(child_yang_name == "te")
     {
-        if(te != nullptr)
-        {
-            children["te"] = te;
-        }
-        else
+        if(te == nullptr)
         {
             te = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te>();
-            te->parent = this;
-            children["te"] = te;
         }
-        return children.at("te");
+        return te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::get_children() const
 {
-    if(children.find("ds") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ds != nullptr)
     {
-        if(ds != nullptr)
-        {
-            children["ds"] = ds;
-        }
+        children["ds"] = ds;
     }
 
-    if(children.find("gen") == children.end())
+    if(gen != nullptr)
     {
-        if(gen != nullptr)
-        {
-            children["gen"] = gen;
-        }
+        children["gen"] = gen;
     }
 
     for (auto const & c : ncd)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : nii_idb)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("pm") == children.end())
+    if(pm != nullptr)
     {
-        if(pm != nullptr)
-        {
-            children["pm"] = pm;
-        }
+        children["pm"] = pm;
     }
 
-    if(children.find("te") == children.end())
+    if(te != nullptr)
     {
-        if(te != nullptr)
-        {
-            children["te"] = te;
-        }
+        children["te"] = te;
     }
 
     return children;
@@ -502,7 +428,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen::get_segment
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -540,20 +466,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen::get_entity_p
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Gen::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -661,7 +579,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm::get_segment_
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -688,20 +606,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm::get_entity_pa
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Pm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -757,43 +667,30 @@ Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::Ds()
 	,unreg_ts(std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs>())
 {
     conn_cb_ts->parent = this;
-    children["conn-cb-ts"] = conn_cb_ts;
 
     conn_status_ts->parent = this;
-    children["conn-status-ts"] = conn_status_ts;
 
     conn_ts->parent = this;
-    children["conn-ts"] = conn_ts;
 
     del_cb_ts->parent = this;
-    children["del-cb-ts"] = del_cb_ts;
 
     disconn_cb_ts->parent = this;
-    children["disconn-cb-ts"] = disconn_cb_ts;
 
     notify_cb_ts->parent = this;
-    children["notify-cb-ts"] = notify_cb_ts;
 
     pub_cb_ts->parent = this;
-    children["pub-cb-ts"] = pub_cb_ts;
 
     pub_ts->parent = this;
-    children["pub-ts"] = pub_ts;
 
     reg_cb_ts->parent = this;
-    children["reg-cb-ts"] = reg_cb_ts;
 
     reg_ts->parent = this;
-    children["reg-ts"] = reg_ts;
 
     remove_srv_ts->parent = this;
-    children["remove-srv-ts"] = remove_srv_ts;
 
     unreg_cb_ts->parent = this;
-    children["unreg-cb-ts"] = unreg_cb_ts;
 
     unreg_ts->parent = this;
-    children["unreg-ts"] = unreg_ts;
 
     yang_name = "ds"; yang_parent_name = "isis-nsr-infra";
 }
@@ -884,7 +781,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::get_segment_
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -921,103 +818,58 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::get_entity_pa
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "conn-cb-ts")
     {
-        if(conn_cb_ts != nullptr)
-        {
-            children["conn-cb-ts"] = conn_cb_ts;
-        }
-        else
+        if(conn_cb_ts == nullptr)
         {
             conn_cb_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs>();
-            conn_cb_ts->parent = this;
-            children["conn-cb-ts"] = conn_cb_ts;
         }
-        return children.at("conn-cb-ts");
+        return conn_cb_ts;
     }
 
     if(child_yang_name == "conn-status-ts")
     {
-        if(conn_status_ts != nullptr)
-        {
-            children["conn-status-ts"] = conn_status_ts;
-        }
-        else
+        if(conn_status_ts == nullptr)
         {
             conn_status_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs>();
-            conn_status_ts->parent = this;
-            children["conn-status-ts"] = conn_status_ts;
         }
-        return children.at("conn-status-ts");
+        return conn_status_ts;
     }
 
     if(child_yang_name == "conn-ts")
     {
-        if(conn_ts != nullptr)
-        {
-            children["conn-ts"] = conn_ts;
-        }
-        else
+        if(conn_ts == nullptr)
         {
             conn_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs>();
-            conn_ts->parent = this;
-            children["conn-ts"] = conn_ts;
         }
-        return children.at("conn-ts");
+        return conn_ts;
     }
 
     if(child_yang_name == "del-cb-ts")
     {
-        if(del_cb_ts != nullptr)
-        {
-            children["del-cb-ts"] = del_cb_ts;
-        }
-        else
+        if(del_cb_ts == nullptr)
         {
             del_cb_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs>();
-            del_cb_ts->parent = this;
-            children["del-cb-ts"] = del_cb_ts;
         }
-        return children.at("del-cb-ts");
+        return del_cb_ts;
     }
 
     if(child_yang_name == "disconn-cb-ts")
     {
-        if(disconn_cb_ts != nullptr)
-        {
-            children["disconn-cb-ts"] = disconn_cb_ts;
-        }
-        else
+        if(disconn_cb_ts == nullptr)
         {
             disconn_cb_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs>();
-            disconn_cb_ts->parent = this;
-            children["disconn-cb-ts"] = disconn_cb_ts;
         }
-        return children.at("disconn-cb-ts");
+        return disconn_cb_ts;
     }
 
     if(child_yang_name == "notify-cb-ts")
     {
-        if(notify_cb_ts != nullptr)
-        {
-            children["notify-cb-ts"] = notify_cb_ts;
-        }
-        else
+        if(notify_cb_ts == nullptr)
         {
             notify_cb_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs>();
-            notify_cb_ts->parent = this;
-            children["notify-cb-ts"] = notify_cb_ts;
         }
-        return children.at("notify-cb-ts");
+        return notify_cb_ts;
     }
 
     if(child_yang_name == "notify-peer")
@@ -1027,237 +879,152 @@ std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer>();
         c->parent = this;
-        notify_peer.push_back(std::move(c));
-        children[segment_path] = notify_peer.back();
-        return children.at(segment_path);
+        notify_peer.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pub-cb-ts")
     {
-        if(pub_cb_ts != nullptr)
-        {
-            children["pub-cb-ts"] = pub_cb_ts;
-        }
-        else
+        if(pub_cb_ts == nullptr)
         {
             pub_cb_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs>();
-            pub_cb_ts->parent = this;
-            children["pub-cb-ts"] = pub_cb_ts;
         }
-        return children.at("pub-cb-ts");
+        return pub_cb_ts;
     }
 
     if(child_yang_name == "pub-ts")
     {
-        if(pub_ts != nullptr)
-        {
-            children["pub-ts"] = pub_ts;
-        }
-        else
+        if(pub_ts == nullptr)
         {
             pub_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs>();
-            pub_ts->parent = this;
-            children["pub-ts"] = pub_ts;
         }
-        return children.at("pub-ts");
+        return pub_ts;
     }
 
     if(child_yang_name == "reg-cb-ts")
     {
-        if(reg_cb_ts != nullptr)
-        {
-            children["reg-cb-ts"] = reg_cb_ts;
-        }
-        else
+        if(reg_cb_ts == nullptr)
         {
             reg_cb_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs>();
-            reg_cb_ts->parent = this;
-            children["reg-cb-ts"] = reg_cb_ts;
         }
-        return children.at("reg-cb-ts");
+        return reg_cb_ts;
     }
 
     if(child_yang_name == "reg-ts")
     {
-        if(reg_ts != nullptr)
-        {
-            children["reg-ts"] = reg_ts;
-        }
-        else
+        if(reg_ts == nullptr)
         {
             reg_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs>();
-            reg_ts->parent = this;
-            children["reg-ts"] = reg_ts;
         }
-        return children.at("reg-ts");
+        return reg_ts;
     }
 
     if(child_yang_name == "remove-srv-ts")
     {
-        if(remove_srv_ts != nullptr)
-        {
-            children["remove-srv-ts"] = remove_srv_ts;
-        }
-        else
+        if(remove_srv_ts == nullptr)
         {
             remove_srv_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs>();
-            remove_srv_ts->parent = this;
-            children["remove-srv-ts"] = remove_srv_ts;
         }
-        return children.at("remove-srv-ts");
+        return remove_srv_ts;
     }
 
     if(child_yang_name == "unreg-cb-ts")
     {
-        if(unreg_cb_ts != nullptr)
-        {
-            children["unreg-cb-ts"] = unreg_cb_ts;
-        }
-        else
+        if(unreg_cb_ts == nullptr)
         {
             unreg_cb_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs>();
-            unreg_cb_ts->parent = this;
-            children["unreg-cb-ts"] = unreg_cb_ts;
         }
-        return children.at("unreg-cb-ts");
+        return unreg_cb_ts;
     }
 
     if(child_yang_name == "unreg-ts")
     {
-        if(unreg_ts != nullptr)
-        {
-            children["unreg-ts"] = unreg_ts;
-        }
-        else
+        if(unreg_ts == nullptr)
         {
             unreg_ts = std::make_shared<Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs>();
-            unreg_ts->parent = this;
-            children["unreg-ts"] = unreg_ts;
         }
-        return children.at("unreg-ts");
+        return unreg_ts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::get_children() const
 {
-    if(children.find("conn-cb-ts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(conn_cb_ts != nullptr)
     {
-        if(conn_cb_ts != nullptr)
-        {
-            children["conn-cb-ts"] = conn_cb_ts;
-        }
+        children["conn-cb-ts"] = conn_cb_ts;
     }
 
-    if(children.find("conn-status-ts") == children.end())
+    if(conn_status_ts != nullptr)
     {
-        if(conn_status_ts != nullptr)
-        {
-            children["conn-status-ts"] = conn_status_ts;
-        }
+        children["conn-status-ts"] = conn_status_ts;
     }
 
-    if(children.find("conn-ts") == children.end())
+    if(conn_ts != nullptr)
     {
-        if(conn_ts != nullptr)
-        {
-            children["conn-ts"] = conn_ts;
-        }
+        children["conn-ts"] = conn_ts;
     }
 
-    if(children.find("del-cb-ts") == children.end())
+    if(del_cb_ts != nullptr)
     {
-        if(del_cb_ts != nullptr)
-        {
-            children["del-cb-ts"] = del_cb_ts;
-        }
+        children["del-cb-ts"] = del_cb_ts;
     }
 
-    if(children.find("disconn-cb-ts") == children.end())
+    if(disconn_cb_ts != nullptr)
     {
-        if(disconn_cb_ts != nullptr)
-        {
-            children["disconn-cb-ts"] = disconn_cb_ts;
-        }
+        children["disconn-cb-ts"] = disconn_cb_ts;
     }
 
-    if(children.find("notify-cb-ts") == children.end())
+    if(notify_cb_ts != nullptr)
     {
-        if(notify_cb_ts != nullptr)
-        {
-            children["notify-cb-ts"] = notify_cb_ts;
-        }
+        children["notify-cb-ts"] = notify_cb_ts;
     }
 
     for (auto const & c : notify_peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("pub-cb-ts") == children.end())
+    if(pub_cb_ts != nullptr)
     {
-        if(pub_cb_ts != nullptr)
-        {
-            children["pub-cb-ts"] = pub_cb_ts;
-        }
+        children["pub-cb-ts"] = pub_cb_ts;
     }
 
-    if(children.find("pub-ts") == children.end())
+    if(pub_ts != nullptr)
     {
-        if(pub_ts != nullptr)
-        {
-            children["pub-ts"] = pub_ts;
-        }
+        children["pub-ts"] = pub_ts;
     }
 
-    if(children.find("reg-cb-ts") == children.end())
+    if(reg_cb_ts != nullptr)
     {
-        if(reg_cb_ts != nullptr)
-        {
-            children["reg-cb-ts"] = reg_cb_ts;
-        }
+        children["reg-cb-ts"] = reg_cb_ts;
     }
 
-    if(children.find("reg-ts") == children.end())
+    if(reg_ts != nullptr)
     {
-        if(reg_ts != nullptr)
-        {
-            children["reg-ts"] = reg_ts;
-        }
+        children["reg-ts"] = reg_ts;
     }
 
-    if(children.find("remove-srv-ts") == children.end())
+    if(remove_srv_ts != nullptr)
     {
-        if(remove_srv_ts != nullptr)
-        {
-            children["remove-srv-ts"] = remove_srv_ts;
-        }
+        children["remove-srv-ts"] = remove_srv_ts;
     }
 
-    if(children.find("unreg-cb-ts") == children.end())
+    if(unreg_cb_ts != nullptr)
     {
-        if(unreg_cb_ts != nullptr)
-        {
-            children["unreg-cb-ts"] = unreg_cb_ts;
-        }
+        children["unreg-cb-ts"] = unreg_cb_ts;
     }
 
-    if(children.find("unreg-ts") == children.end())
+    if(unreg_ts != nullptr)
     {
-        if(unreg_ts != nullptr)
-        {
-            children["unreg-ts"] = unreg_ts;
-        }
+        children["unreg-ts"] = unreg_ts;
     }
 
     return children;
@@ -1357,7 +1124,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs::get_
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1382,20 +1149,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs::get_e
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1445,7 +1204,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs::ge
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1470,20 +1229,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs::get
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnCbTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1533,7 +1284,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs::get_s
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1558,20 +1309,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs::get_en
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1621,7 +1364,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs::get
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1646,20 +1389,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs::get_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::PubCbTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1709,7 +1444,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs::get_s
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1734,20 +1469,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs::get_en
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1797,7 +1524,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs::get
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1822,20 +1549,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs::get_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RegCbTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1885,7 +1604,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs::get
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1910,20 +1629,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs::get_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1973,7 +1684,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs::g
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1998,20 +1709,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs::ge
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::UnregCbTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2061,7 +1764,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs:
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2086,20 +1789,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs::
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DisconnCbTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2149,7 +1844,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs::
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2174,20 +1869,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs::g
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyCbTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2237,7 +1924,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs::get
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2262,20 +1949,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs::get_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::DelCbTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2325,7 +2004,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs:
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2350,20 +2029,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs::
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::RemoveSrvTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2413,7 +2084,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2438,20 +2109,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs:
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::ConnStatusTs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2501,7 +2164,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2526,20 +2189,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::g
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ds::NotifyPeer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2607,7 +2262,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te::get_segment_
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2638,20 +2293,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te::get_entity_pa
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Te::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2737,7 +2384,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_segment
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2766,20 +2413,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_entity_p
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::Ncd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2854,7 +2493,7 @@ std::string Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_segm
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2882,20 +2521,12 @@ EntityPath Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatus::IsisNsrInfra::NiiIdb::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2961,7 +2592,7 @@ std::string Isis::Instances::Instance::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2984,15 +2615,6 @@ EntityPath Isis::Instances::Instance::Interfaces::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3000,28 +2622,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3043,10 +2661,8 @@ Isis::Instances::Instance::Interfaces::Interface::Interface()
 	,interface_status_and_data(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData>())
 {
     configured_status->parent = this;
-    children["configured-status"] = configured_status;
 
     interface_status_and_data->parent = this;
-    children["interface-status-and-data"] = interface_status_and_data;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -3087,7 +2703,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::get_segment_path()
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3115,64 +2731,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::get_entity_path(Ent
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configured-status")
     {
-        if(configured_status != nullptr)
-        {
-            children["configured-status"] = configured_status;
-        }
-        else
+        if(configured_status == nullptr)
         {
             configured_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus>();
-            configured_status->parent = this;
-            children["configured-status"] = configured_status;
         }
-        return children.at("configured-status");
+        return configured_status;
     }
 
     if(child_yang_name == "interface-status-and-data")
     {
-        if(interface_status_and_data != nullptr)
-        {
-            children["interface-status-and-data"] = interface_status_and_data;
-        }
-        else
+        if(interface_status_and_data == nullptr)
         {
             interface_status_and_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData>();
-            interface_status_and_data->parent = this;
-            children["interface-status-and-data"] = interface_status_and_data;
         }
-        return children.at("interface-status-and-data");
+        return interface_status_and_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::get_children() const
 {
-    if(children.find("configured-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(configured_status != nullptr)
     {
-        if(configured_status != nullptr)
-        {
-            children["configured-status"] = configured_status;
-        }
+        children["configured-status"] = configured_status;
     }
 
-    if(children.find("interface-status-and-data") == children.end())
+    if(interface_status_and_data != nullptr)
     {
-        if(interface_status_and_data != nullptr)
-        {
-            children["interface-status-and-data"] = interface_status_and_data;
-        }
+        children["interface-status-and-data"] = interface_status_and_data;
     }
 
     return children;
@@ -3236,7 +2826,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus::
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3261,20 +2851,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus::g
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3298,10 +2880,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Interf
 	,enabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled>())
 {
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     enabled->parent = this;
-    children["enabled"] = enabled;
 
     yang_name = "interface-status-and-data"; yang_parent_name = "interface";
 }
@@ -3334,7 +2914,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3358,64 +2938,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     if(child_yang_name == "enabled")
     {
-        if(enabled != nullptr)
-        {
-            children["enabled"] = enabled;
-        }
-        else
+        if(enabled == nullptr)
         {
             enabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled>();
-            enabled->parent = this;
-            children["enabled"] = enabled;
         }
-        return children.at("enabled");
+        return enabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::get_children() const
 {
-    if(children.find("disabled") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
-    if(children.find("enabled") == children.end())
+    if(enabled != nullptr)
     {
-        if(enabled != nullptr)
-        {
-            children["enabled"] = enabled;
-        }
+        children["enabled"] = enabled;
     }
 
     return children;
@@ -3460,7 +3014,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3484,20 +3038,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3524,19 +3070,14 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,p2p_data(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::P2PData>())
 {
     adjacency_form_status->parent = this;
-    children["adjacency-form-status"] = adjacency_form_status;
 
     adv_prefix_status->parent = this;
-    children["adv-prefix-status"] = adv_prefix_status;
 
     bfd_data->parent = this;
-    children["bfd-data"] = bfd_data;
 
     clns_data->parent = this;
-    children["clns-data"] = clns_data;
 
     p2p_data->parent = this;
-    children["p2p-data"] = p2p_data;
 
     yang_name = "enabled"; yang_parent_name = "interface-status-and-data";
 }
@@ -3622,7 +3163,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3651,88 +3192,49 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-form-status")
     {
-        if(adjacency_form_status != nullptr)
-        {
-            children["adjacency-form-status"] = adjacency_form_status;
-        }
-        else
+        if(adjacency_form_status == nullptr)
         {
             adjacency_form_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus>();
-            adjacency_form_status->parent = this;
-            children["adjacency-form-status"] = adjacency_form_status;
         }
-        return children.at("adjacency-form-status");
+        return adjacency_form_status;
     }
 
     if(child_yang_name == "adv-prefix-status")
     {
-        if(adv_prefix_status != nullptr)
-        {
-            children["adv-prefix-status"] = adv_prefix_status;
-        }
-        else
+        if(adv_prefix_status == nullptr)
         {
             adv_prefix_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus>();
-            adv_prefix_status->parent = this;
-            children["adv-prefix-status"] = adv_prefix_status;
         }
-        return children.at("adv-prefix-status");
+        return adv_prefix_status;
     }
 
     if(child_yang_name == "bfd-data")
     {
-        if(bfd_data != nullptr)
-        {
-            children["bfd-data"] = bfd_data;
-        }
-        else
+        if(bfd_data == nullptr)
         {
             bfd_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::BfdData>();
-            bfd_data->parent = this;
-            children["bfd-data"] = bfd_data;
         }
-        return children.at("bfd-data");
+        return bfd_data;
     }
 
     if(child_yang_name == "clns-data")
     {
-        if(clns_data != nullptr)
-        {
-            children["clns-data"] = clns_data;
-        }
-        else
+        if(clns_data == nullptr)
         {
             clns_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData>();
-            clns_data->parent = this;
-            children["clns-data"] = clns_data;
         }
-        return children.at("clns-data");
+        return clns_data;
     }
 
     if(child_yang_name == "p2p-data")
     {
-        if(p2p_data != nullptr)
-        {
-            children["p2p-data"] = p2p_data;
-        }
-        else
+        if(p2p_data == nullptr)
         {
             p2p_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::P2PData>();
-            p2p_data->parent = this;
-            children["p2p-data"] = p2p_data;
         }
-        return children.at("p2p-data");
+        return p2p_data;
     }
 
     if(child_yang_name == "per-address-family-data")
@@ -3742,15 +3244,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData>();
         c->parent = this;
-        per_address_family_data.push_back(std::move(c));
-        children[segment_path] = per_address_family_data.back();
-        return children.at(segment_path);
+        per_address_family_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "per-area-data")
@@ -3760,15 +3260,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData>();
         c->parent = this;
-        per_area_data.push_back(std::move(c));
-        children[segment_path] = per_area_data.back();
-        return children.at(segment_path);
+        per_area_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "per-topology-data")
@@ -3778,84 +3276,59 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData>();
         c->parent = this;
-        per_topology_data.push_back(std::move(c));
-        children[segment_path] = per_topology_data.back();
-        return children.at(segment_path);
+        per_topology_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::get_children() const
 {
-    if(children.find("adjacency-form-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_form_status != nullptr)
     {
-        if(adjacency_form_status != nullptr)
-        {
-            children["adjacency-form-status"] = adjacency_form_status;
-        }
+        children["adjacency-form-status"] = adjacency_form_status;
     }
 
-    if(children.find("adv-prefix-status") == children.end())
+    if(adv_prefix_status != nullptr)
     {
-        if(adv_prefix_status != nullptr)
-        {
-            children["adv-prefix-status"] = adv_prefix_status;
-        }
+        children["adv-prefix-status"] = adv_prefix_status;
     }
 
-    if(children.find("bfd-data") == children.end())
+    if(bfd_data != nullptr)
     {
-        if(bfd_data != nullptr)
-        {
-            children["bfd-data"] = bfd_data;
-        }
+        children["bfd-data"] = bfd_data;
     }
 
-    if(children.find("clns-data") == children.end())
+    if(clns_data != nullptr)
     {
-        if(clns_data != nullptr)
-        {
-            children["clns-data"] = clns_data;
-        }
+        children["clns-data"] = clns_data;
     }
 
-    if(children.find("p2p-data") == children.end())
+    if(p2p_data != nullptr)
     {
-        if(p2p_data != nullptr)
-        {
-            children["p2p-data"] = p2p_data;
-        }
+        children["p2p-data"] = p2p_data;
     }
 
     for (auto const & c : per_address_family_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : per_area_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : per_topology_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3892,7 +3365,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     disabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled>())
 {
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     yang_name = "adjacency-form-status"; yang_parent_name = "enabled";
 }
@@ -3923,7 +3395,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3947,41 +3419,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::get_children() const
 {
-    if(children.find("disabled") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
     return children;
@@ -4026,7 +3481,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4050,20 +3505,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4082,7 +3529,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     disabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled>())
 {
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     yang_name = "adv-prefix-status"; yang_parent_name = "enabled";
 }
@@ -4113,7 +3559,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4137,41 +3583,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::get_children() const
 {
-    if(children.find("disabled") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
     return children;
@@ -4216,7 +3645,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4240,20 +3669,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4305,7 +3726,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::P2PData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::P2PData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4332,20 +3753,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::P2PData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::P2PData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::P2PData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4409,7 +3822,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::BfdData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::BfdData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4436,20 +3849,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::BfdData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::BfdData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::BfdData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4489,16 +3894,12 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,snpa_state(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState>())
 {
     clns_status->parent = this;
-    children["clns-status"] = clns_status;
 
     media_specific_state->parent = this;
-    children["media-specific-state"] = media_specific_state;
 
     mtu_info->parent = this;
-    children["mtu-info"] = mtu_info;
 
     snpa_state->parent = this;
-    children["snpa-state"] = snpa_state;
 
     yang_name = "clns-data"; yang_parent_name = "enabled";
 }
@@ -4547,7 +3948,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4577,110 +3978,66 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clns-status")
     {
-        if(clns_status != nullptr)
-        {
-            children["clns-status"] = clns_status;
-        }
-        else
+        if(clns_status == nullptr)
         {
             clns_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus>();
-            clns_status->parent = this;
-            children["clns-status"] = clns_status;
         }
-        return children.at("clns-status");
+        return clns_status;
     }
 
     if(child_yang_name == "media-specific-state")
     {
-        if(media_specific_state != nullptr)
-        {
-            children["media-specific-state"] = media_specific_state;
-        }
-        else
+        if(media_specific_state == nullptr)
         {
             media_specific_state = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState>();
-            media_specific_state->parent = this;
-            children["media-specific-state"] = media_specific_state;
         }
-        return children.at("media-specific-state");
+        return media_specific_state;
     }
 
     if(child_yang_name == "mtu-info")
     {
-        if(mtu_info != nullptr)
-        {
-            children["mtu-info"] = mtu_info;
-        }
-        else
+        if(mtu_info == nullptr)
         {
             mtu_info = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo>();
-            mtu_info->parent = this;
-            children["mtu-info"] = mtu_info;
         }
-        return children.at("mtu-info");
+        return mtu_info;
     }
 
     if(child_yang_name == "snpa-state")
     {
-        if(snpa_state != nullptr)
-        {
-            children["snpa-state"] = snpa_state;
-        }
-        else
+        if(snpa_state == nullptr)
         {
             snpa_state = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState>();
-            snpa_state->parent = this;
-            children["snpa-state"] = snpa_state;
         }
-        return children.at("snpa-state");
+        return snpa_state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::get_children() const
 {
-    if(children.find("clns-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clns_status != nullptr)
     {
-        if(clns_status != nullptr)
-        {
-            children["clns-status"] = clns_status;
-        }
+        children["clns-status"] = clns_status;
     }
 
-    if(children.find("media-specific-state") == children.end())
+    if(media_specific_state != nullptr)
     {
-        if(media_specific_state != nullptr)
-        {
-            children["media-specific-state"] = media_specific_state;
-        }
+        children["media-specific-state"] = media_specific_state;
     }
 
-    if(children.find("mtu-info") == children.end())
+    if(mtu_info != nullptr)
     {
-        if(mtu_info != nullptr)
-        {
-            children["mtu-info"] = mtu_info;
-        }
+        children["mtu-info"] = mtu_info;
     }
 
-    if(children.find("snpa-state") == children.end())
+    if(snpa_state != nullptr)
     {
-        if(snpa_state != nullptr)
-        {
-            children["snpa-state"] = snpa_state;
-        }
+        children["snpa-state"] = snpa_state;
     }
 
     return children;
@@ -4725,7 +4082,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     clns_down_info(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo>())
 {
     clns_down_info->parent = this;
-    children["clns-down-info"] = clns_down_info;
 
     yang_name = "clns-status"; yang_parent_name = "clns-data";
 }
@@ -4756,7 +4112,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4780,41 +4136,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clns-down-info")
     {
-        if(clns_down_info != nullptr)
-        {
-            children["clns-down-info"] = clns_down_info;
-        }
-        else
+        if(clns_down_info == nullptr)
         {
             clns_down_info = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo>();
-            clns_down_info->parent = this;
-            children["clns-down-info"] = clns_down_info;
         }
-        return children.at("clns-down-info");
+        return clns_down_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::get_children() const
 {
-    if(children.find("clns-down-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clns_down_info != nullptr)
     {
-        if(clns_down_info != nullptr)
-        {
-            children["clns-down-info"] = clns_down_info;
-        }
+        children["clns-down-info"] = clns_down_info;
     }
 
     return children;
@@ -4859,7 +4198,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4883,20 +4222,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4916,7 +4247,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     invalid(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid>())
 {
     invalid->parent = this;
-    children["invalid"] = invalid;
 
     yang_name = "mtu-info"; yang_parent_name = "clns-data";
 }
@@ -4949,7 +4279,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4974,41 +4304,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalid")
     {
-        if(invalid != nullptr)
-        {
-            children["invalid"] = invalid;
-        }
-        else
+        if(invalid == nullptr)
         {
             invalid = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid>();
-            invalid->parent = this;
-            children["invalid"] = invalid;
         }
-        return children.at("invalid");
+        return invalid;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::get_children() const
 {
-    if(children.find("invalid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalid != nullptr)
     {
-        if(invalid != nullptr)
-        {
-            children["invalid"] = invalid;
-        }
+        children["invalid"] = invalid;
     }
 
     return children;
@@ -5057,7 +4370,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5081,20 +4394,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5114,10 +4419,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,unknown(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown>())
 {
     known->parent = this;
-    children["known"] = known;
 
     unknown->parent = this;
-    children["unknown"] = unknown;
 
     yang_name = "snpa-state"; yang_parent_name = "clns-data";
 }
@@ -5150,7 +4453,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5174,64 +4477,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "known")
     {
-        if(known != nullptr)
-        {
-            children["known"] = known;
-        }
-        else
+        if(known == nullptr)
         {
             known = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Known>();
-            known->parent = this;
-            children["known"] = known;
         }
-        return children.at("known");
+        return known;
     }
 
     if(child_yang_name == "unknown")
     {
-        if(unknown != nullptr)
-        {
-            children["unknown"] = unknown;
-        }
-        else
+        if(unknown == nullptr)
         {
             unknown = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown>();
-            unknown->parent = this;
-            children["unknown"] = unknown;
         }
-        return children.at("unknown");
+        return unknown;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::get_children() const
 {
-    if(children.find("known") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(known != nullptr)
     {
-        if(known != nullptr)
-        {
-            children["known"] = known;
-        }
+        children["known"] = known;
     }
 
-    if(children.find("unknown") == children.end())
+    if(unknown != nullptr)
     {
-        if(unknown != nullptr)
-        {
-            children["unknown"] = unknown;
-        }
+        children["unknown"] = unknown;
     }
 
     return children;
@@ -5276,7 +4553,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5300,20 +4577,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5356,7 +4625,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Known::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Known::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5380,20 +4649,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Known::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Known::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Known::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5413,10 +4674,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,clns_p2p_data(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData>())
 {
     clns_lan_data->parent = this;
-    children["clns-lan-data"] = clns_lan_data;
 
     clns_p2p_data->parent = this;
-    children["clns-p2p-data"] = clns_p2p_data;
 
     yang_name = "media-specific-state"; yang_parent_name = "clns-data";
 }
@@ -5449,7 +4708,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5473,64 +4732,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clns-lan-data")
     {
-        if(clns_lan_data != nullptr)
-        {
-            children["clns-lan-data"] = clns_lan_data;
-        }
-        else
+        if(clns_lan_data == nullptr)
         {
             clns_lan_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData>();
-            clns_lan_data->parent = this;
-            children["clns-lan-data"] = clns_lan_data;
         }
-        return children.at("clns-lan-data");
+        return clns_lan_data;
     }
 
     if(child_yang_name == "clns-p2p-data")
     {
-        if(clns_p2p_data != nullptr)
-        {
-            children["clns-p2p-data"] = clns_p2p_data;
-        }
-        else
+        if(clns_p2p_data == nullptr)
         {
             clns_p2p_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData>();
-            clns_p2p_data->parent = this;
-            children["clns-p2p-data"] = clns_p2p_data;
         }
-        return children.at("clns-p2p-data");
+        return clns_p2p_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::get_children() const
 {
-    if(children.find("clns-lan-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clns_lan_data != nullptr)
     {
-        if(clns_lan_data != nullptr)
-        {
-            children["clns-lan-data"] = clns_lan_data;
-        }
+        children["clns-lan-data"] = clns_lan_data;
     }
 
-    if(children.find("clns-p2p-data") == children.end())
+    if(clns_p2p_data != nullptr)
     {
-        if(clns_p2p_data != nullptr)
-        {
-            children["clns-p2p-data"] = clns_p2p_data;
-        }
+        children["clns-p2p-data"] = clns_p2p_data;
     }
 
     return children;
@@ -5582,7 +4815,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5605,15 +4838,6 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-area-data")
     {
         for(auto const & c : per_area_data)
@@ -5621,28 +4845,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData>();
         c->parent = this;
-        per_area_data.push_back(std::move(c));
-        children[segment_path] = per_area_data.back();
-        return children.at(segment_path);
+        per_area_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : per_area_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5659,7 +4879,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     multicast_status(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus>())
 {
     multicast_status->parent = this;
-    children["multicast-status"] = multicast_status;
 
     yang_name = "per-area-data"; yang_parent_name = "clns-lan-data";
 }
@@ -5690,7 +4909,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5714,41 +4933,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multicast-status")
     {
-        if(multicast_status != nullptr)
-        {
-            children["multicast-status"] = multicast_status;
-        }
-        else
+        if(multicast_status == nullptr)
         {
             multicast_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus>();
-            multicast_status->parent = this;
-            children["multicast-status"] = multicast_status;
         }
-        return children.at("multicast-status");
+        return multicast_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::get_children() const
 {
-    if(children.find("multicast-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(multicast_status != nullptr)
     {
-        if(multicast_status != nullptr)
-        {
-            children["multicast-status"] = multicast_status;
-        }
+        children["multicast-status"] = multicast_status;
     }
 
     return children;
@@ -5769,7 +4971,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     invalid(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid>())
 {
     invalid->parent = this;
-    children["invalid"] = invalid;
 
     yang_name = "multicast-status"; yang_parent_name = "per-area-data";
 }
@@ -5800,7 +5001,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5824,41 +5025,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalid")
     {
-        if(invalid != nullptr)
-        {
-            children["invalid"] = invalid;
-        }
-        else
+        if(invalid == nullptr)
         {
             invalid = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid>();
-            invalid->parent = this;
-            children["invalid"] = invalid;
         }
-        return children.at("invalid");
+        return invalid;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::get_children() const
 {
-    if(children.find("invalid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalid != nullptr)
     {
-        if(invalid != nullptr)
-        {
-            children["invalid"] = invalid;
-        }
+        children["invalid"] = invalid;
     }
 
     return children;
@@ -5903,7 +5087,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5927,20 +5111,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5957,7 +5133,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     p2p_over_lan_data(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData>())
 {
     p2p_over_lan_data->parent = this;
-    children["p2p-over-lan-data"] = p2p_over_lan_data;
 
     yang_name = "clns-p2p-data"; yang_parent_name = "media-specific-state";
 }
@@ -5986,7 +5161,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6009,41 +5184,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2p-over-lan-data")
     {
-        if(p2p_over_lan_data != nullptr)
-        {
-            children["p2p-over-lan-data"] = p2p_over_lan_data;
-        }
-        else
+        if(p2p_over_lan_data == nullptr)
         {
             p2p_over_lan_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData>();
-            p2p_over_lan_data->parent = this;
-            children["p2p-over-lan-data"] = p2p_over_lan_data;
         }
-        return children.at("p2p-over-lan-data");
+        return p2p_over_lan_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::get_children() const
 {
-    if(children.find("p2p-over-lan-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2p_over_lan_data != nullptr)
     {
-        if(p2p_over_lan_data != nullptr)
-        {
-            children["p2p-over-lan-data"] = p2p_over_lan_data;
-        }
+        children["p2p-over-lan-data"] = p2p_over_lan_data;
     }
 
     return children;
@@ -6058,7 +5216,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     multicast_status(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus>())
 {
     multicast_status->parent = this;
-    children["multicast-status"] = multicast_status;
 
     yang_name = "p2p-over-lan-data"; yang_parent_name = "clns-p2p-data";
 }
@@ -6087,7 +5244,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6110,41 +5267,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multicast-status")
     {
-        if(multicast_status != nullptr)
-        {
-            children["multicast-status"] = multicast_status;
-        }
-        else
+        if(multicast_status == nullptr)
         {
             multicast_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus>();
-            multicast_status->parent = this;
-            children["multicast-status"] = multicast_status;
         }
-        return children.at("multicast-status");
+        return multicast_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::get_children() const
 {
-    if(children.find("multicast-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(multicast_status != nullptr)
     {
-        if(multicast_status != nullptr)
-        {
-            children["multicast-status"] = multicast_status;
-        }
+        children["multicast-status"] = multicast_status;
     }
 
     return children;
@@ -6161,7 +5301,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     invalid(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid>())
 {
     invalid->parent = this;
-    children["invalid"] = invalid;
 
     yang_name = "multicast-status"; yang_parent_name = "p2p-over-lan-data";
 }
@@ -6192,7 +5331,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6216,41 +5355,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalid")
     {
-        if(invalid != nullptr)
-        {
-            children["invalid"] = invalid;
-        }
-        else
+        if(invalid == nullptr)
         {
             invalid = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid>();
-            invalid->parent = this;
-            children["invalid"] = invalid;
         }
-        return children.at("invalid");
+        return invalid;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::get_children() const
 {
-    if(children.find("invalid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalid != nullptr)
     {
-        if(invalid != nullptr)
-        {
-            children["invalid"] = invalid;
-        }
+        children["invalid"] = invalid;
     }
 
     return children;
@@ -6295,7 +5417,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6319,20 +5441,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6354,7 +5468,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     lan_data(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData>())
 {
     lan_data->parent = this;
-    children["lan-data"] = lan_data;
 
     yang_name = "per-area-data"; yang_parent_name = "enabled";
 }
@@ -6391,7 +5504,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6418,41 +5531,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lan-data")
     {
-        if(lan_data != nullptr)
-        {
-            children["lan-data"] = lan_data;
-        }
-        else
+        if(lan_data == nullptr)
         {
             lan_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData>();
-            lan_data->parent = this;
-            children["lan-data"] = lan_data;
         }
-        return children.at("lan-data");
+        return lan_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::get_children() const
 {
-    if(children.find("lan-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lan_data != nullptr)
     {
-        if(lan_data != nullptr)
-        {
-            children["lan-data"] = lan_data;
-        }
+        children["lan-data"] = lan_data;
     }
 
     return children;
@@ -6521,7 +5617,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6549,20 +5645,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6596,10 +5684,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,topology_id(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId>())
 {
     status->parent = this;
-    children["status"] = status;
 
     topology_id->parent = this;
-    children["topology-id"] = topology_id;
 
     yang_name = "per-topology-data"; yang_parent_name = "enabled";
 }
@@ -6630,7 +5716,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6653,64 +5739,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "status")
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
-        else
+        if(status == nullptr)
         {
             status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status>();
-            status->parent = this;
-            children["status"] = status;
         }
-        return children.at("status");
+        return status;
     }
 
     if(child_yang_name == "topology-id")
     {
-        if(topology_id != nullptr)
-        {
-            children["topology-id"] = topology_id;
-        }
-        else
+        if(topology_id == nullptr)
         {
             topology_id = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId>();
-            topology_id->parent = this;
-            children["topology-id"] = topology_id;
         }
-        return children.at("topology-id");
+        return topology_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::get_children() const
 {
-    if(children.find("status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(status != nullptr)
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
+        children["status"] = status;
     }
 
-    if(children.find("topology-id") == children.end())
+    if(topology_id != nullptr)
     {
-        if(topology_id != nullptr)
-        {
-            children["topology-id"] = topology_id;
-        }
+        children["topology-id"] = topology_id;
     }
 
     return children;
@@ -6760,7 +5820,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6787,20 +5847,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6832,10 +5884,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,enabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_>())
 {
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     enabled->parent = this;
-    children["enabled"] = enabled;
 
     yang_name = "status"; yang_parent_name = "per-topology-data";
 }
@@ -6868,7 +5918,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6892,64 +5942,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     if(child_yang_name == "enabled")
     {
-        if(enabled != nullptr)
-        {
-            children["enabled"] = enabled;
-        }
-        else
+        if(enabled == nullptr)
         {
             enabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_>();
-            enabled->parent = this;
-            children["enabled"] = enabled;
         }
-        return children.at("enabled");
+        return enabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::get_children() const
 {
-    if(children.find("disabled") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
-    if(children.find("enabled") == children.end())
+    if(enabled != nullptr)
     {
-        if(enabled != nullptr)
-        {
-            children["enabled"] = enabled;
-        }
+        children["enabled"] = enabled;
     }
 
     return children;
@@ -6994,7 +6018,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7018,20 +6042,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7069,10 +6085,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,adv_prefix_status(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus>())
 {
     adjacency_form_status->parent = this;
-    children["adjacency-form-status"] = adjacency_form_status;
 
     adv_prefix_status->parent = this;
-    children["adv-prefix-status"] = adv_prefix_status;
 
     yang_name = "enabled"; yang_parent_name = "status";
 }
@@ -7141,7 +6155,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7183,64 +6197,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-form-status")
     {
-        if(adjacency_form_status != nullptr)
-        {
-            children["adjacency-form-status"] = adjacency_form_status;
-        }
-        else
+        if(adjacency_form_status == nullptr)
         {
             adjacency_form_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus>();
-            adjacency_form_status->parent = this;
-            children["adjacency-form-status"] = adjacency_form_status;
         }
-        return children.at("adjacency-form-status");
+        return adjacency_form_status;
     }
 
     if(child_yang_name == "adv-prefix-status")
     {
-        if(adv_prefix_status != nullptr)
-        {
-            children["adv-prefix-status"] = adv_prefix_status;
-        }
-        else
+        if(adv_prefix_status == nullptr)
         {
             adv_prefix_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus>();
-            adv_prefix_status->parent = this;
-            children["adv-prefix-status"] = adv_prefix_status;
         }
-        return children.at("adv-prefix-status");
+        return adv_prefix_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::get_children() const
 {
-    if(children.find("adjacency-form-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_form_status != nullptr)
     {
-        if(adjacency_form_status != nullptr)
-        {
-            children["adjacency-form-status"] = adjacency_form_status;
-        }
+        children["adjacency-form-status"] = adjacency_form_status;
     }
 
-    if(children.find("adv-prefix-status") == children.end())
+    if(adv_prefix_status != nullptr)
     {
-        if(adv_prefix_status != nullptr)
-        {
-            children["adv-prefix-status"] = adv_prefix_status;
-        }
+        children["adv-prefix-status"] = adv_prefix_status;
     }
 
     return children;
@@ -7333,7 +6321,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     disabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled>())
 {
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     yang_name = "adjacency-form-status"; yang_parent_name = "enabled";
 }
@@ -7364,7 +6351,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7388,41 +6375,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::get_children() const
 {
-    if(children.find("disabled") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
     return children;
@@ -7467,7 +6437,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7491,20 +6461,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7523,7 +6485,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     disabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled>())
 {
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     yang_name = "adv-prefix-status"; yang_parent_name = "enabled";
 }
@@ -7554,7 +6515,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7578,41 +6539,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::get_children() const
 {
-    if(children.find("disabled") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
     return children;
@@ -7657,7 +6601,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7681,20 +6625,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7713,7 +6649,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     af_status(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus>())
 {
     af_status->parent = this;
-    children["af-status"] = af_status;
 
     yang_name = "per-address-family-data"; yang_parent_name = "enabled";
 }
@@ -7744,7 +6679,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7768,41 +6703,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af-status")
     {
-        if(af_status != nullptr)
-        {
-            children["af-status"] = af_status;
-        }
-        else
+        if(af_status == nullptr)
         {
             af_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus>();
-            af_status->parent = this;
-            children["af-status"] = af_status;
         }
-        return children.at("af-status");
+        return af_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::get_children() const
 {
-    if(children.find("af-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(af_status != nullptr)
     {
-        if(af_status != nullptr)
-        {
-            children["af-status"] = af_status;
-        }
+        children["af-status"] = af_status;
     }
 
     return children;
@@ -7824,10 +6742,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,disabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled>())
 {
     af_data->parent = this;
-    children["af-data"] = af_data;
 
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     yang_name = "af-status"; yang_parent_name = "per-address-family-data";
 }
@@ -7860,7 +6776,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7884,64 +6800,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af-data")
     {
-        if(af_data != nullptr)
-        {
-            children["af-data"] = af_data;
-        }
-        else
+        if(af_data == nullptr)
         {
             af_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData>();
-            af_data->parent = this;
-            children["af-data"] = af_data;
         }
-        return children.at("af-data");
+        return af_data;
     }
 
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::get_children() const
 {
-    if(children.find("af-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(af_data != nullptr)
     {
-        if(af_data != nullptr)
-        {
-            children["af-data"] = af_data;
-        }
+        children["af-data"] = af_data;
     }
 
-    if(children.find("disabled") == children.end())
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
     return children;
@@ -7986,7 +6876,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8010,20 +6900,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8042,13 +6924,10 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,protocol_status(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus>())
 {
     forwarding_address_status->parent = this;
-    children["forwarding-address-status"] = forwarding_address_status;
 
     prefix_status->parent = this;
-    children["prefix-status"] = prefix_status;
 
     protocol_status->parent = this;
-    children["protocol-status"] = protocol_status;
 
     yang_name = "af-data"; yang_parent_name = "af-status";
 }
@@ -8081,7 +6960,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8104,87 +6983,52 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-address-status")
     {
-        if(forwarding_address_status != nullptr)
-        {
-            children["forwarding-address-status"] = forwarding_address_status;
-        }
-        else
+        if(forwarding_address_status == nullptr)
         {
             forwarding_address_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus>();
-            forwarding_address_status->parent = this;
-            children["forwarding-address-status"] = forwarding_address_status;
         }
-        return children.at("forwarding-address-status");
+        return forwarding_address_status;
     }
 
     if(child_yang_name == "prefix-status")
     {
-        if(prefix_status != nullptr)
-        {
-            children["prefix-status"] = prefix_status;
-        }
-        else
+        if(prefix_status == nullptr)
         {
             prefix_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus>();
-            prefix_status->parent = this;
-            children["prefix-status"] = prefix_status;
         }
-        return children.at("prefix-status");
+        return prefix_status;
     }
 
     if(child_yang_name == "protocol-status")
     {
-        if(protocol_status != nullptr)
-        {
-            children["protocol-status"] = protocol_status;
-        }
-        else
+        if(protocol_status == nullptr)
         {
             protocol_status = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus>();
-            protocol_status->parent = this;
-            children["protocol-status"] = protocol_status;
         }
-        return children.at("protocol-status");
+        return protocol_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::get_children() const
 {
-    if(children.find("forwarding-address-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(forwarding_address_status != nullptr)
     {
-        if(forwarding_address_status != nullptr)
-        {
-            children["forwarding-address-status"] = forwarding_address_status;
-        }
+        children["forwarding-address-status"] = forwarding_address_status;
     }
 
-    if(children.find("prefix-status") == children.end())
+    if(prefix_status != nullptr)
     {
-        if(prefix_status != nullptr)
-        {
-            children["prefix-status"] = prefix_status;
-        }
+        children["prefix-status"] = prefix_status;
     }
 
-    if(children.find("protocol-status") == children.end())
+    if(protocol_status != nullptr)
     {
-        if(protocol_status != nullptr)
-        {
-            children["protocol-status"] = protocol_status;
-        }
+        children["protocol-status"] = protocol_status;
     }
 
     return children;
@@ -8201,7 +7045,6 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
     disabled(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled>())
 {
     disabled->parent = this;
-    children["disabled"] = disabled;
 
     yang_name = "protocol-status"; yang_parent_name = "af-data";
 }
@@ -8232,7 +7075,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8256,41 +7099,24 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "disabled")
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
-        else
+        if(disabled == nullptr)
         {
             disabled = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled>();
-            disabled->parent = this;
-            children["disabled"] = disabled;
         }
-        return children.at("disabled");
+        return disabled;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::get_children() const
 {
-    if(children.find("disabled") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(disabled != nullptr)
     {
-        if(disabled != nullptr)
-        {
-            children["disabled"] = disabled;
-        }
+        children["disabled"] = disabled;
     }
 
     return children;
@@ -8335,7 +7161,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8359,20 +7185,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8392,10 +7210,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,unknown(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown>())
 {
     forwarding_address_data->parent = this;
-    children["forwarding-address-data"] = forwarding_address_data;
 
     unknown->parent = this;
-    children["unknown"] = unknown;
 
     yang_name = "forwarding-address-status"; yang_parent_name = "af-data";
 }
@@ -8428,7 +7244,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8452,64 +7268,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-address-data")
     {
-        if(forwarding_address_data != nullptr)
-        {
-            children["forwarding-address-data"] = forwarding_address_data;
-        }
-        else
+        if(forwarding_address_data == nullptr)
         {
             forwarding_address_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData>();
-            forwarding_address_data->parent = this;
-            children["forwarding-address-data"] = forwarding_address_data;
         }
-        return children.at("forwarding-address-data");
+        return forwarding_address_data;
     }
 
     if(child_yang_name == "unknown")
     {
-        if(unknown != nullptr)
-        {
-            children["unknown"] = unknown;
-        }
-        else
+        if(unknown == nullptr)
         {
             unknown = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown>();
-            unknown->parent = this;
-            children["unknown"] = unknown;
         }
-        return children.at("unknown");
+        return unknown;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::get_children() const
 {
-    if(children.find("forwarding-address-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(forwarding_address_data != nullptr)
     {
-        if(forwarding_address_data != nullptr)
-        {
-            children["forwarding-address-data"] = forwarding_address_data;
-        }
+        children["forwarding-address-data"] = forwarding_address_data;
     }
 
-    if(children.find("unknown") == children.end())
+    if(unknown != nullptr)
     {
-        if(unknown != nullptr)
-        {
-            children["unknown"] = unknown;
-        }
+        children["unknown"] = unknown;
     }
 
     return children;
@@ -8554,7 +7344,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8578,20 +7368,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8644,7 +7426,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8668,15 +7450,6 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-address")
     {
         for(auto const & c : forwarding_address)
@@ -8684,28 +7457,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::ForwardingAddress>();
         c->parent = this;
-        forwarding_address.push_back(std::move(c));
-        children[segment_path] = forwarding_address.back();
-        return children.at(segment_path);
+        forwarding_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : forwarding_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8756,7 +7525,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::ForwardingAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::ForwardingAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8782,20 +7551,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::ForwardingAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::ForwardingAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::ForwardingAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8823,10 +7584,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,unknown(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown>())
 {
     prefix_data->parent = this;
-    children["prefix-data"] = prefix_data;
 
     unknown->parent = this;
-    children["unknown"] = unknown;
 
     yang_name = "prefix-status"; yang_parent_name = "af-data";
 }
@@ -8859,7 +7618,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8883,64 +7642,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-data")
     {
-        if(prefix_data != nullptr)
-        {
-            children["prefix-data"] = prefix_data;
-        }
-        else
+        if(prefix_data == nullptr)
         {
             prefix_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData>();
-            prefix_data->parent = this;
-            children["prefix-data"] = prefix_data;
         }
-        return children.at("prefix-data");
+        return prefix_data;
     }
 
     if(child_yang_name == "unknown")
     {
-        if(unknown != nullptr)
-        {
-            children["unknown"] = unknown;
-        }
-        else
+        if(unknown == nullptr)
         {
             unknown = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown>();
-            unknown->parent = this;
-            children["unknown"] = unknown;
         }
-        return children.at("unknown");
+        return unknown;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::get_children() const
 {
-    if(children.find("prefix-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_data != nullptr)
     {
-        if(prefix_data != nullptr)
-        {
-            children["prefix-data"] = prefix_data;
-        }
+        children["prefix-data"] = prefix_data;
     }
 
-    if(children.find("unknown") == children.end())
+    if(unknown != nullptr)
     {
-        if(unknown != nullptr)
-        {
-            children["unknown"] = unknown;
-        }
+        children["unknown"] = unknown;
     }
 
     return children;
@@ -8985,7 +7718,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9009,20 +7742,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9075,7 +7800,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9099,15 +7824,6 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
         for(auto const & c : prefix)
@@ -9115,28 +7831,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix>();
         c->parent = this;
-        prefix.push_back(std::move(c));
-        children[segment_path] = prefix.back();
-        return children.at(segment_path);
+        prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9158,10 +7870,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enable
 	,ipv6(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "prefix"; yang_parent_name = "prefix-data";
 }
@@ -9194,7 +7904,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9218,64 +7928,38 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -9323,7 +8007,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9348,20 +8032,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9411,7 +8087,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 
 }
 
-EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9436,20 +8112,12 @@ EntityPath Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndD
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9503,7 +8171,7 @@ std::string Isis::Instances::Instance::CheckpointAdjacencies::get_segment_path()
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointAdjacencies::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointAdjacencies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9526,15 +8194,6 @@ EntityPath Isis::Instances::Instance::CheckpointAdjacencies::get_entity_path(Ent
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointAdjacencies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-adjacency")
     {
         for(auto const & c : checkpoint_adjacency)
@@ -9542,28 +8201,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointAdjacencies::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency>();
         c->parent = this;
-        checkpoint_adjacency.push_back(std::move(c));
-        children[segment_path] = checkpoint_adjacency.back();
-        return children.at(segment_path);
+        checkpoint_adjacency.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointAdjacencies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointAdjacencies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : checkpoint_adjacency)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9644,7 +8299,7 @@ std::string Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacenc
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9678,15 +8333,6 @@ EntityPath Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-adjacency-per-address-family-next-hop")
     {
         for(auto const & c : checkpoint_adjacency_per_address_family_next_hop)
@@ -9694,28 +8340,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointAdjacencies::Checkp
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop>();
         c->parent = this;
-        checkpoint_adjacency_per_address_family_next_hop.push_back(std::move(c));
-        children[segment_path] = checkpoint_adjacency_per_address_family_next_hop.back();
-        return children.at(segment_path);
+        checkpoint_adjacency_per_address_family_next_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : checkpoint_adjacency_per_address_family_next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9806,7 +8448,7 @@ std::string Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacenc
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9832,20 +8474,12 @@ EntityPath Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9870,7 +8504,6 @@ Isis::Instances::Instance::Srms::Srms()
     policy(std::make_shared<Isis::Instances::Instance::Srms::Policy>())
 {
     policy->parent = this;
-    children["policy"] = policy;
 
     yang_name = "srms"; yang_parent_name = "instance";
 }
@@ -9899,7 +8532,7 @@ std::string Isis::Instances::Instance::Srms::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9922,41 +8555,24 @@ EntityPath Isis::Instances::Instance::Srms::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy")
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
-        else
+        if(policy == nullptr)
         {
             policy = std::make_shared<Isis::Instances::Instance::Srms::Policy>();
-            policy->parent = this;
-            children["policy"] = policy;
         }
-        return children.at("policy");
+        return policy;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::get_children() const
 {
-    if(children.find("policy") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy != nullptr)
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
+        children["policy"] = policy;
     }
 
     return children;
@@ -9972,10 +8588,8 @@ Isis::Instances::Instance::Srms::Policy::Policy()
 	,policy_ipv6(std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6>())
 {
     policy_ipv4->parent = this;
-    children["policy-ipv4"] = policy_ipv4;
 
     policy_ipv6->parent = this;
-    children["policy-ipv6"] = policy_ipv6;
 
     yang_name = "policy"; yang_parent_name = "srms";
 }
@@ -10006,7 +8620,7 @@ std::string Isis::Instances::Instance::Srms::Policy::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10029,64 +8643,38 @@ EntityPath Isis::Instances::Instance::Srms::Policy::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-ipv4")
     {
-        if(policy_ipv4 != nullptr)
-        {
-            children["policy-ipv4"] = policy_ipv4;
-        }
-        else
+        if(policy_ipv4 == nullptr)
         {
             policy_ipv4 = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4>();
-            policy_ipv4->parent = this;
-            children["policy-ipv4"] = policy_ipv4;
         }
-        return children.at("policy-ipv4");
+        return policy_ipv4;
     }
 
     if(child_yang_name == "policy-ipv6")
     {
-        if(policy_ipv6 != nullptr)
-        {
-            children["policy-ipv6"] = policy_ipv6;
-        }
-        else
+        if(policy_ipv6 == nullptr)
         {
             policy_ipv6 = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6>();
-            policy_ipv6->parent = this;
-            children["policy-ipv6"] = policy_ipv6;
         }
-        return children.at("policy-ipv6");
+        return policy_ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::get_children() const
 {
-    if(children.find("policy-ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy_ipv4 != nullptr)
     {
-        if(policy_ipv4 != nullptr)
-        {
-            children["policy-ipv4"] = policy_ipv4;
-        }
+        children["policy-ipv4"] = policy_ipv4;
     }
 
-    if(children.find("policy-ipv6") == children.end())
+    if(policy_ipv6 != nullptr)
     {
-        if(policy_ipv6 != nullptr)
-        {
-            children["policy-ipv6"] = policy_ipv6;
-        }
+        children["policy-ipv6"] = policy_ipv6;
     }
 
     return children;
@@ -10102,10 +8690,8 @@ Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4()
 	,policy_ipv4_backup(std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup>())
 {
     policy_ipv4_active->parent = this;
-    children["policy-ipv4-active"] = policy_ipv4_active;
 
     policy_ipv4_backup->parent = this;
-    children["policy-ipv4-backup"] = policy_ipv4_backup;
 
     yang_name = "policy-ipv4"; yang_parent_name = "policy";
 }
@@ -10136,7 +8722,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv4::get_segment_pat
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10159,64 +8745,38 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::get_entity_path(
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-ipv4-active")
     {
-        if(policy_ipv4_active != nullptr)
-        {
-            children["policy-ipv4-active"] = policy_ipv4_active;
-        }
-        else
+        if(policy_ipv4_active == nullptr)
         {
             policy_ipv4_active = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active>();
-            policy_ipv4_active->parent = this;
-            children["policy-ipv4-active"] = policy_ipv4_active;
         }
-        return children.at("policy-ipv4-active");
+        return policy_ipv4_active;
     }
 
     if(child_yang_name == "policy-ipv4-backup")
     {
-        if(policy_ipv4_backup != nullptr)
-        {
-            children["policy-ipv4-backup"] = policy_ipv4_backup;
-        }
-        else
+        if(policy_ipv4_backup == nullptr)
         {
             policy_ipv4_backup = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup>();
-            policy_ipv4_backup->parent = this;
-            children["policy-ipv4-backup"] = policy_ipv4_backup;
         }
-        return children.at("policy-ipv4-backup");
+        return policy_ipv4_backup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::get_children() const
 {
-    if(children.find("policy-ipv4-active") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy_ipv4_active != nullptr)
     {
-        if(policy_ipv4_active != nullptr)
-        {
-            children["policy-ipv4-active"] = policy_ipv4_active;
-        }
+        children["policy-ipv4-active"] = policy_ipv4_active;
     }
 
-    if(children.find("policy-ipv4-backup") == children.end())
+    if(policy_ipv4_backup != nullptr)
     {
-        if(policy_ipv4_backup != nullptr)
-        {
-            children["policy-ipv4-backup"] = policy_ipv4_backup;
-        }
+        children["policy-ipv4-backup"] = policy_ipv4_backup;
     }
 
     return children;
@@ -10264,7 +8824,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Activ
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10287,15 +8847,6 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-mi")
     {
         for(auto const & c : policy_mi)
@@ -10303,28 +8854,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::Pol
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(std::move(c));
-        children[segment_path] = policy_mi.back();
-        return children.at(segment_path);
+        policy_mi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy_mi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10350,7 +8897,6 @@ Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi:
     addr(std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>())
 {
     addr->parent = this;
-    children["addr"] = addr;
 
     yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-active";
 }
@@ -10399,7 +8945,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Activ
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10432,41 +8978,24 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "addr")
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
-        else
+        if(addr == nullptr)
         {
             addr = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>();
-            addr->parent = this;
-            children["addr"] = addr;
         }
-        return children.at("addr");
+        return addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children() const
 {
-    if(children.find("addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
+        children["addr"] = addr;
     }
 
     return children;
@@ -10553,7 +9082,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Activ
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10579,20 +9108,12 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10650,7 +9171,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backu
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10673,15 +9194,6 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-mi")
     {
         for(auto const & c : policy_mi)
@@ -10689,28 +9201,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::Pol
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(std::move(c));
-        children[segment_path] = policy_mi.back();
-        return children.at(segment_path);
+        policy_mi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy_mi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10736,7 +9244,6 @@ Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi:
     addr(std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr>())
 {
     addr->parent = this;
-    children["addr"] = addr;
 
     yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-backup";
 }
@@ -10785,7 +9292,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backu
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10818,41 +9325,24 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "addr")
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
-        else
+        if(addr == nullptr)
         {
             addr = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr>();
-            addr->parent = this;
-            children["addr"] = addr;
         }
-        return children.at("addr");
+        return addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_children() const
 {
-    if(children.find("addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
+        children["addr"] = addr;
     }
 
     return children;
@@ -10939,7 +9429,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backu
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10965,20 +9455,12 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11004,10 +9486,8 @@ Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6()
 	,policy_ipv6_backup(std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup>())
 {
     policy_ipv6_active->parent = this;
-    children["policy-ipv6-active"] = policy_ipv6_active;
 
     policy_ipv6_backup->parent = this;
-    children["policy-ipv6-backup"] = policy_ipv6_backup;
 
     yang_name = "policy-ipv6"; yang_parent_name = "policy";
 }
@@ -11038,7 +9518,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv6::get_segment_pat
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11061,64 +9541,38 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::get_entity_path(
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-ipv6-active")
     {
-        if(policy_ipv6_active != nullptr)
-        {
-            children["policy-ipv6-active"] = policy_ipv6_active;
-        }
-        else
+        if(policy_ipv6_active == nullptr)
         {
             policy_ipv6_active = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active>();
-            policy_ipv6_active->parent = this;
-            children["policy-ipv6-active"] = policy_ipv6_active;
         }
-        return children.at("policy-ipv6-active");
+        return policy_ipv6_active;
     }
 
     if(child_yang_name == "policy-ipv6-backup")
     {
-        if(policy_ipv6_backup != nullptr)
-        {
-            children["policy-ipv6-backup"] = policy_ipv6_backup;
-        }
-        else
+        if(policy_ipv6_backup == nullptr)
         {
             policy_ipv6_backup = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup>();
-            policy_ipv6_backup->parent = this;
-            children["policy-ipv6-backup"] = policy_ipv6_backup;
         }
-        return children.at("policy-ipv6-backup");
+        return policy_ipv6_backup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::get_children() const
 {
-    if(children.find("policy-ipv6-active") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy_ipv6_active != nullptr)
     {
-        if(policy_ipv6_active != nullptr)
-        {
-            children["policy-ipv6-active"] = policy_ipv6_active;
-        }
+        children["policy-ipv6-active"] = policy_ipv6_active;
     }
 
-    if(children.find("policy-ipv6-backup") == children.end())
+    if(policy_ipv6_backup != nullptr)
     {
-        if(policy_ipv6_backup != nullptr)
-        {
-            children["policy-ipv6-backup"] = policy_ipv6_backup;
-        }
+        children["policy-ipv6-backup"] = policy_ipv6_backup;
     }
 
     return children;
@@ -11166,7 +9620,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backu
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11189,15 +9643,6 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-mi")
     {
         for(auto const & c : policy_mi)
@@ -11205,28 +9650,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::Pol
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(std::move(c));
-        children[segment_path] = policy_mi.back();
-        return children.at(segment_path);
+        policy_mi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy_mi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11252,7 +9693,6 @@ Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi:
     addr(std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr>())
 {
     addr->parent = this;
-    children["addr"] = addr;
 
     yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-backup";
 }
@@ -11301,7 +9741,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backu
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11334,41 +9774,24 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "addr")
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
-        else
+        if(addr == nullptr)
         {
             addr = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr>();
-            addr->parent = this;
-            children["addr"] = addr;
         }
-        return children.at("addr");
+        return addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_children() const
 {
-    if(children.find("addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
+        children["addr"] = addr;
     }
 
     return children;
@@ -11455,7 +9878,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backu
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11481,20 +9904,12 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11552,7 +9967,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Activ
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11575,15 +9990,6 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-mi")
     {
         for(auto const & c : policy_mi)
@@ -11591,28 +9997,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::Pol
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(std::move(c));
-        children[segment_path] = policy_mi.back();
-        return children.at(segment_path);
+        policy_mi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy_mi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11638,7 +10040,6 @@ Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi:
     addr(std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr>())
 {
     addr->parent = this;
-    children["addr"] = addr;
 
     yang_name = "policy-mi"; yang_parent_name = "policy-ipv6-active";
 }
@@ -11687,7 +10088,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Activ
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11720,41 +10121,24 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "addr")
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
-        else
+        if(addr == nullptr)
         {
             addr = std::make_shared<Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr>();
-            addr->parent = this;
-            children["addr"] = addr;
         }
-        return children.at("addr");
+        return addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_children() const
 {
-    if(children.find("addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
+        children["addr"] = addr;
     }
 
     return children;
@@ -11841,7 +10225,7 @@ std::string Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Activ
 
 }
 
-EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11867,20 +10251,12 @@ EntityPath Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11938,7 +10314,7 @@ std::string Isis::Instances::Instance::ErrorLog::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::ErrorLog::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::ErrorLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11961,15 +10337,6 @@ EntityPath Isis::Instances::Instance::ErrorLog::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Isis::Instances::Instance::ErrorLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-entry")
     {
         for(auto const & c : log_entry)
@@ -11977,28 +10344,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::ErrorLog::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::ErrorLog::LogEntry>();
         c->parent = this;
-        log_entry.push_back(std::move(c));
-        children[segment_path] = log_entry.back();
-        return children.at(segment_path);
+        log_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::ErrorLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::ErrorLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12017,7 +10380,6 @@ Isis::Instances::Instance::ErrorLog::LogEntry::LogEntry()
     generic_data(std::make_shared<Isis::Instances::Instance::ErrorLog::LogEntry::GenericData>())
 {
     generic_data->parent = this;
-    children["generic-data"] = generic_data;
 
     yang_name = "log-entry"; yang_parent_name = "error-log";
 }
@@ -12052,7 +10414,7 @@ std::string Isis::Instances::Instance::ErrorLog::LogEntry::get_segment_path() co
 
 }
 
-EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12078,41 +10440,24 @@ EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::get_entity_path(Entity
 
 std::shared_ptr<Entity> Isis::Instances::Instance::ErrorLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-data")
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
-        else
+        if(generic_data == nullptr)
         {
             generic_data = std::make_shared<Isis::Instances::Instance::ErrorLog::LogEntry::GenericData>();
-            generic_data->parent = this;
-            children["generic-data"] = generic_data;
         }
-        return children.at("generic-data");
+        return generic_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::ErrorLog::LogEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::ErrorLog::LogEntry::get_children() const
 {
-    if(children.find("generic-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generic_data != nullptr)
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
+        children["generic-data"] = generic_data;
     }
 
     return children;
@@ -12139,7 +10484,6 @@ Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::GenericData()
     timestamp(std::make_shared<Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp>())
 {
     timestamp->parent = this;
-    children["timestamp"] = timestamp;
 
     yang_name = "generic-data"; yang_parent_name = "log-entry";
 }
@@ -12168,7 +10512,7 @@ std::string Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::get_segm
 
 }
 
-EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12191,41 +10535,24 @@ EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::get_entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timestamp")
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
-        else
+        if(timestamp == nullptr)
         {
             timestamp = std::make_shared<Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp>();
-            timestamp->parent = this;
-            children["timestamp"] = timestamp;
         }
-        return children.at("timestamp");
+        return timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::get_children() const
 {
-    if(children.find("timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timestamp != nullptr)
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
+        children["timestamp"] = timestamp;
     }
 
     return children;
@@ -12269,7 +10596,7 @@ std::string Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestam
 
 }
 
-EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12294,20 +10621,12 @@ EntityPath Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp
 
 std::shared_ptr<Entity> Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::ErrorLog::LogEntry::GenericData::Timestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12361,7 +10680,7 @@ std::string Isis::Instances::Instance::CheckpointInterfaces::get_segment_path() 
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12384,15 +10703,6 @@ EntityPath Isis::Instances::Instance::CheckpointInterfaces::get_entity_path(Enti
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-interface")
     {
         for(auto const & c : checkpoint_interface)
@@ -12400,28 +10710,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointInterfaces::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface>();
         c->parent = this;
-        checkpoint_interface.push_back(std::move(c));
-        children[segment_path] = checkpoint_interface.back();
-        return children.at(segment_path);
+        checkpoint_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : checkpoint_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12492,7 +10798,7 @@ std::string Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12526,20 +10832,12 @@ EntityPath Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface:
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12629,7 +10927,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::get_segment_path() c
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12652,15 +10950,6 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::get_entity_path(Entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-statistic")
     {
         for(auto const & c : interface_statistic)
@@ -12668,28 +10957,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic>();
         c->parent = this;
-        interface_statistic.push_back(std::move(c));
-        children[segment_path] = interface_statistic.back();
-        return children.at(segment_path);
+        interface_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12708,7 +10993,6 @@ Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::InterfaceSta
     p2p_statistics(std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics>())
 {
     p2p_statistics->parent = this;
-    children["p2p-statistics"] = p2p_statistics;
 
     yang_name = "interface-statistic"; yang_parent_name = "interface-statistics";
 }
@@ -12753,7 +11037,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12779,28 +11063,13 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::g
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2p-statistics")
     {
-        if(p2p_statistics != nullptr)
-        {
-            children["p2p-statistics"] = p2p_statistics;
-        }
-        else
+        if(p2p_statistics == nullptr)
         {
             p2p_statistics = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics>();
-            p2p_statistics->parent = this;
-            children["p2p-statistics"] = p2p_statistics;
         }
-        return children.at("p2p-statistics");
+        return p2p_statistics;
     }
 
     if(child_yang_name == "per-area-data")
@@ -12810,36 +11079,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::Interfac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData>();
         c->parent = this;
-        per_area_data.push_back(std::move(c));
-        children[segment_path] = per_area_data.back();
-        return children.at(segment_path);
+        per_area_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
-    if(children.find("p2p-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2p_statistics != nullptr)
     {
-        if(p2p_statistics != nullptr)
-        {
-            children["p2p-statistics"] = p2p_statistics;
-        }
+        children["p2p-statistics"] = p2p_statistics;
     }
 
     for (auto const & c : per_area_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12869,7 +11131,6 @@ Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistic
     iih_count(std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::IihCount>())
 {
     iih_count->parent = this;
-    children["iih-count"] = iih_count;
 
     yang_name = "p2p-statistics"; yang_parent_name = "interface-statistic";
 }
@@ -12902,7 +11163,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12927,41 +11188,24 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "iih-count")
     {
-        if(iih_count != nullptr)
-        {
-            children["iih-count"] = iih_count;
-        }
-        else
+        if(iih_count == nullptr)
         {
             iih_count = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::IihCount>();
-            iih_count->parent = this;
-            children["iih-count"] = iih_count;
         }
-        return children.at("iih-count");
+        return iih_count;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::get_children() const
 {
-    if(children.find("iih-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(iih_count != nullptr)
     {
-        if(iih_count != nullptr)
-        {
-            children["iih-count"] = iih_count;
-        }
+        children["iih-count"] = iih_count;
     }
 
     return children;
@@ -13013,7 +11257,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::IihCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::IihCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13038,20 +11282,12 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::IihCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::IihCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics::IihCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13075,10 +11311,8 @@ Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData:
 	,statistics(std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics>())
 {
     lan_data->parent = this;
-    children["lan-data"] = lan_data;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "per-area-data"; yang_parent_name = "interface-statistic";
 }
@@ -13111,7 +11345,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13135,64 +11369,38 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lan-data")
     {
-        if(lan_data != nullptr)
-        {
-            children["lan-data"] = lan_data;
-        }
-        else
+        if(lan_data == nullptr)
         {
             lan_data = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData>();
-            lan_data->parent = this;
-            children["lan-data"] = lan_data;
         }
-        return children.at("lan-data");
+        return lan_data;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::get_children() const
 {
-    if(children.find("lan-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lan_data != nullptr)
     {
-        if(lan_data != nullptr)
-        {
-            children["lan-data"] = lan_data;
-        }
+        children["lan-data"] = lan_data;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -13216,13 +11424,10 @@ Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData:
 	,psnp_count(std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::PsnpCount>())
 {
     csnp_count->parent = this;
-    children["csnp-count"] = csnp_count;
 
     lsp_count->parent = this;
-    children["lsp-count"] = lsp_count;
 
     psnp_count->parent = this;
-    children["psnp-count"] = psnp_count;
 
     yang_name = "statistics"; yang_parent_name = "per-area-data";
 }
@@ -13259,7 +11464,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13284,87 +11489,52 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "csnp-count")
     {
-        if(csnp_count != nullptr)
-        {
-            children["csnp-count"] = csnp_count;
-        }
-        else
+        if(csnp_count == nullptr)
         {
             csnp_count = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::CsnpCount>();
-            csnp_count->parent = this;
-            children["csnp-count"] = csnp_count;
         }
-        return children.at("csnp-count");
+        return csnp_count;
     }
 
     if(child_yang_name == "lsp-count")
     {
-        if(lsp_count != nullptr)
-        {
-            children["lsp-count"] = lsp_count;
-        }
-        else
+        if(lsp_count == nullptr)
         {
             lsp_count = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::LspCount>();
-            lsp_count->parent = this;
-            children["lsp-count"] = lsp_count;
         }
-        return children.at("lsp-count");
+        return lsp_count;
     }
 
     if(child_yang_name == "psnp-count")
     {
-        if(psnp_count != nullptr)
-        {
-            children["psnp-count"] = psnp_count;
-        }
-        else
+        if(psnp_count == nullptr)
         {
             psnp_count = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::PsnpCount>();
-            psnp_count->parent = this;
-            children["psnp-count"] = psnp_count;
         }
-        return children.at("psnp-count");
+        return psnp_count;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::get_children() const
 {
-    if(children.find("csnp-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(csnp_count != nullptr)
     {
-        if(csnp_count != nullptr)
-        {
-            children["csnp-count"] = csnp_count;
-        }
+        children["csnp-count"] = csnp_count;
     }
 
-    if(children.find("lsp-count") == children.end())
+    if(lsp_count != nullptr)
     {
-        if(lsp_count != nullptr)
-        {
-            children["lsp-count"] = lsp_count;
-        }
+        children["lsp-count"] = lsp_count;
     }
 
-    if(children.find("psnp-count") == children.end())
+    if(psnp_count != nullptr)
     {
-        if(psnp_count != nullptr)
-        {
-            children["psnp-count"] = psnp_count;
-        }
+        children["psnp-count"] = psnp_count;
     }
 
     return children;
@@ -13416,7 +11586,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::LspCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::LspCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13441,20 +11611,12 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::LspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::LspCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::LspCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13504,7 +11666,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::CsnpCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::CsnpCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13529,20 +11691,12 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::CsnpCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::CsnpCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::CsnpCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13592,7 +11746,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::PsnpCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::PsnpCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13617,20 +11771,12 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::PsnpCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::PsnpCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics::PsnpCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13654,7 +11800,6 @@ Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData:
     iih_count(std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::IihCount>())
 {
     iih_count->parent = this;
-    children["iih-count"] = iih_count;
 
     yang_name = "lan-data"; yang_parent_name = "per-area-data";
 }
@@ -13687,7 +11832,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13712,41 +11857,24 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "iih-count")
     {
-        if(iih_count != nullptr)
-        {
-            children["iih-count"] = iih_count;
-        }
-        else
+        if(iih_count == nullptr)
         {
             iih_count = std::make_shared<Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::IihCount>();
-            iih_count->parent = this;
-            children["iih-count"] = iih_count;
         }
-        return children.at("iih-count");
+        return iih_count;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::get_children() const
 {
-    if(children.find("iih-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(iih_count != nullptr)
     {
-        if(iih_count != nullptr)
-        {
-            children["iih-count"] = iih_count;
-        }
+        children["iih-count"] = iih_count;
     }
 
     return children;
@@ -13798,7 +11926,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 
 }
 
-EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::IihCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::IihCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13823,20 +11951,12 @@ EntityPath Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P
 
 std::shared_ptr<Entity> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::IihCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::IihCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData::IihCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13953,7 +12073,7 @@ std::string Isis::Instances::Instance::Protocol::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13993,15 +12113,6 @@ EntityPath Isis::Instances::Instance::Protocol::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-topo-data")
     {
         for(auto const & c : per_topo_data)
@@ -14009,28 +12120,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData>();
         c->parent = this;
-        per_topo_data.push_back(std::move(c));
-        children[segment_path] = per_topo_data.back();
-        return children.at(segment_path);
+        per_topo_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protocol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : per_topo_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14110,10 +12217,8 @@ Isis::Instances::Instance::Protocol::PerTopoData::PerTopoData()
 	,redist_protocols_list(std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList>())
 {
     id->parent = this;
-    children["id"] = id;
 
     redist_protocols_list->parent = this;
-    children["redist-protocols-list"] = redist_protocols_list;
 
     yang_name = "per-topo-data"; yang_parent_name = "protocol";
 }
@@ -14160,7 +12265,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::get_segment_path()
 
 }
 
-EntityPath Isis::Instances::Instance::Protocol::PerTopoData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Protocol::PerTopoData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14186,28 +12291,13 @@ EntityPath Isis::Instances::Instance::Protocol::PerTopoData::get_entity_path(Ent
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "id")
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
-        else
+        if(id == nullptr)
         {
             id = std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData::Id>();
-            id->parent = this;
-            children["id"] = id;
         }
-        return children.at("id");
+        return id;
     }
 
     if(child_yang_name == "per-area-data")
@@ -14217,59 +12307,43 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData>();
         c->parent = this;
-        per_area_data.push_back(std::move(c));
-        children[segment_path] = per_area_data.back();
-        return children.at(segment_path);
+        per_area_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "redist-protocols-list")
     {
-        if(redist_protocols_list != nullptr)
-        {
-            children["redist-protocols-list"] = redist_protocols_list;
-        }
-        else
+        if(redist_protocols_list == nullptr)
         {
             redist_protocols_list = std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList>();
-            redist_protocols_list->parent = this;
-            children["redist-protocols-list"] = redist_protocols_list;
         }
-        return children.at("redist-protocols-list");
+        return redist_protocols_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Protocol::PerTopoData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protocol::PerTopoData::get_children() const
 {
-    if(children.find("id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(id != nullptr)
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
+        children["id"] = id;
     }
 
     for (auto const & c : per_area_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("redist-protocols-list") == children.end())
+    if(redist_protocols_list != nullptr)
     {
-        if(redist_protocols_list != nullptr)
-        {
-            children["redist-protocols-list"] = redist_protocols_list;
-        }
+        children["redist-protocols-list"] = redist_protocols_list;
     }
 
     return children;
@@ -14331,7 +12405,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::Id::get_segment_pa
 
 }
 
-EntityPath Isis::Instances::Instance::Protocol::PerTopoData::Id::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Protocol::PerTopoData::Id::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14358,20 +12432,12 @@ EntityPath Isis::Instances::Instance::Protocol::PerTopoData::Id::get_entity_path
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Protocol::PerTopoData::Id::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protocol::PerTopoData::Id::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14433,7 +12499,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsLis
 
 }
 
-EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14456,15 +12522,6 @@ EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "isis-sh-redist-entry")
     {
         for(auto const & c : isis_sh_redist_entry)
@@ -14472,28 +12529,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::Redist
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry>();
         c->parent = this;
-        isis_sh_redist_entry.push_back(std::move(c));
-        children[segment_path] = isis_sh_redist_entry.back();
-        return children.at(segment_path);
+        isis_sh_redist_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : isis_sh_redist_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14508,7 +12561,6 @@ Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRed
     protocol_details(std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails>())
 {
     protocol_details->parent = this;
-    children["protocol-details"] = protocol_details;
 
     yang_name = "isis-sh-redist-entry"; yang_parent_name = "redist-protocols-list";
 }
@@ -14537,7 +12589,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsLis
 
 }
 
-EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14560,41 +12612,24 @@ EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol-details")
     {
-        if(protocol_details != nullptr)
-        {
-            children["protocol-details"] = protocol_details;
-        }
-        else
+        if(protocol_details == nullptr)
         {
             protocol_details = std::make_shared<Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails>();
-            protocol_details->parent = this;
-            children["protocol-details"] = protocol_details;
         }
-        return children.at("protocol-details");
+        return protocol_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::get_children() const
 {
-    if(children.find("protocol-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protocol_details != nullptr)
     {
-        if(protocol_details != nullptr)
-        {
-            children["protocol-details"] = protocol_details;
-        }
+        children["protocol-details"] = protocol_details;
     }
 
     return children;
@@ -14653,7 +12688,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsLis
 
 }
 
-EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14683,20 +12718,12 @@ EntityPath Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14802,7 +12829,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_s
 
 }
 
-EntityPath Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14839,20 +12866,12 @@ EntityPath Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_en
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14954,7 +12973,7 @@ std::string Isis::Instances::Instance::NeighborSummaries::get_segment_path() con
 
 }
 
-EntityPath Isis::Instances::Instance::NeighborSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NeighborSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14977,15 +12996,6 @@ EntityPath Isis::Instances::Instance::NeighborSummaries::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NeighborSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-summary")
     {
         for(auto const & c : neighbor_summary)
@@ -14993,28 +13003,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::NeighborSummaries::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::NeighborSummaries::NeighborSummary>();
         c->parent = this;
-        neighbor_summary.push_back(std::move(c));
-        children[segment_path] = neighbor_summary.back();
-        return children.at(segment_path);
+        neighbor_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NeighborSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NeighborSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15033,13 +13039,10 @@ Isis::Instances::Instance::NeighborSummaries::NeighborSummary::NeighborSummary()
 	,level2_neighbors(std::make_shared<Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2Neighbors>())
 {
     level12_neigbors->parent = this;
-    children["level12-neigbors"] = level12_neigbors;
 
     level1_neighbors->parent = this;
-    children["level1-neighbors"] = level1_neighbors;
 
     level2_neighbors->parent = this;
-    children["level2-neighbors"] = level2_neighbors;
 
     yang_name = "neighbor-summary"; yang_parent_name = "neighbor-summaries";
 }
@@ -15074,7 +13077,7 @@ std::string Isis::Instances::Instance::NeighborSummaries::NeighborSummary::get_s
 
 }
 
-EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15098,87 +13101,52 @@ EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::get_en
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "level12-neigbors")
     {
-        if(level12_neigbors != nullptr)
-        {
-            children["level12-neigbors"] = level12_neigbors;
-        }
-        else
+        if(level12_neigbors == nullptr)
         {
             level12_neigbors = std::make_shared<Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level12Neigbors>();
-            level12_neigbors->parent = this;
-            children["level12-neigbors"] = level12_neigbors;
         }
-        return children.at("level12-neigbors");
+        return level12_neigbors;
     }
 
     if(child_yang_name == "level1-neighbors")
     {
-        if(level1_neighbors != nullptr)
-        {
-            children["level1-neighbors"] = level1_neighbors;
-        }
-        else
+        if(level1_neighbors == nullptr)
         {
             level1_neighbors = std::make_shared<Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1Neighbors>();
-            level1_neighbors->parent = this;
-            children["level1-neighbors"] = level1_neighbors;
         }
-        return children.at("level1-neighbors");
+        return level1_neighbors;
     }
 
     if(child_yang_name == "level2-neighbors")
     {
-        if(level2_neighbors != nullptr)
-        {
-            children["level2-neighbors"] = level2_neighbors;
-        }
-        else
+        if(level2_neighbors == nullptr)
         {
             level2_neighbors = std::make_shared<Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2Neighbors>();
-            level2_neighbors->parent = this;
-            children["level2-neighbors"] = level2_neighbors;
         }
-        return children.at("level2-neighbors");
+        return level2_neighbors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NeighborSummaries::NeighborSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::get_children() const
 {
-    if(children.find("level12-neigbors") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(level12_neigbors != nullptr)
     {
-        if(level12_neigbors != nullptr)
-        {
-            children["level12-neigbors"] = level12_neigbors;
-        }
+        children["level12-neigbors"] = level12_neigbors;
     }
 
-    if(children.find("level1-neighbors") == children.end())
+    if(level1_neighbors != nullptr)
     {
-        if(level1_neighbors != nullptr)
-        {
-            children["level1-neighbors"] = level1_neighbors;
-        }
+        children["level1-neighbors"] = level1_neighbors;
     }
 
-    if(children.find("level2-neighbors") == children.end())
+    if(level2_neighbors != nullptr)
     {
-        if(level2_neighbors != nullptr)
-        {
-            children["level2-neighbors"] = level2_neighbors;
-        }
+        children["level2-neighbors"] = level2_neighbors;
     }
 
     return children;
@@ -15229,7 +13197,7 @@ std::string Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level
 
 }
 
-EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15255,20 +13223,12 @@ EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15325,7 +13285,7 @@ std::string Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level
 
 }
 
-EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15351,20 +13311,12 @@ EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level2Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15421,7 +13373,7 @@ std::string Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level
 
 }
 
-EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level12Neigbors::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level12Neigbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15447,20 +13399,12 @@ EntityPath Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level1
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level12Neigbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level12Neigbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NeighborSummaries::NeighborSummary::Level12Neigbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15518,7 +13462,7 @@ std::string Isis::Instances::Instance::CheckpointLsps::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointLsps::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointLsps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15541,15 +13485,6 @@ EntityPath Isis::Instances::Instance::CheckpointLsps::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-lsp")
     {
         for(auto const & c : checkpoint_lsp)
@@ -15557,28 +13492,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointLsps::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::CheckpointLsps::CheckpointLsp>();
         c->parent = this;
-        checkpoint_lsp.push_back(std::move(c));
-        children[segment_path] = checkpoint_lsp.back();
-        return children.at(segment_path);
+        checkpoint_lsp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointLsps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointLsps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : checkpoint_lsp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15634,7 +13565,7 @@ std::string Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_segmen
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15663,20 +13594,12 @@ EntityPath Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_entity_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15713,7 +13636,6 @@ Isis::Instances::Instance::MeshGroups::MeshGroups()
     mesh_group_configured_interface_list(std::make_shared<Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList>())
 {
     mesh_group_configured_interface_list->parent = this;
-    children["mesh-group-configured-interface-list"] = mesh_group_configured_interface_list;
 
     yang_name = "mesh-groups"; yang_parent_name = "instance";
 }
@@ -15742,7 +13664,7 @@ std::string Isis::Instances::Instance::MeshGroups::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::MeshGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::MeshGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15765,41 +13687,24 @@ EntityPath Isis::Instances::Instance::MeshGroups::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Isis::Instances::Instance::MeshGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mesh-group-configured-interface-list")
     {
-        if(mesh_group_configured_interface_list != nullptr)
-        {
-            children["mesh-group-configured-interface-list"] = mesh_group_configured_interface_list;
-        }
-        else
+        if(mesh_group_configured_interface_list == nullptr)
         {
             mesh_group_configured_interface_list = std::make_shared<Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList>();
-            mesh_group_configured_interface_list->parent = this;
-            children["mesh-group-configured-interface-list"] = mesh_group_configured_interface_list;
         }
-        return children.at("mesh-group-configured-interface-list");
+        return mesh_group_configured_interface_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::MeshGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::MeshGroups::get_children() const
 {
-    if(children.find("mesh-group-configured-interface-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mesh_group_configured_interface_list != nullptr)
     {
-        if(mesh_group_configured_interface_list != nullptr)
-        {
-            children["mesh-group-configured-interface-list"] = mesh_group_configured_interface_list;
-        }
+        children["mesh-group-configured-interface-list"] = mesh_group_configured_interface_list;
     }
 
     return children;
@@ -15847,7 +13752,7 @@ std::string Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceL
 
 }
 
-EntityPath Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15870,15 +13775,6 @@ EntityPath Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceLi
 
 std::shared_ptr<Entity> Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "isis-sh-mesh-entry")
     {
         for(auto const & c : isis_sh_mesh_entry)
@@ -15886,28 +13782,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::MeshGroups::MeshGroupConfigur
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry>();
         c->parent = this;
-        isis_sh_mesh_entry.push_back(std::move(c));
-        children[segment_path] = isis_sh_mesh_entry.back();
-        return children.at(segment_path);
+        isis_sh_mesh_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : isis_sh_mesh_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15951,7 +13843,7 @@ std::string Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceL
 
 }
 
-EntityPath Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15976,20 +13868,12 @@ EntityPath Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceLi
 
 std::shared_ptr<Entity> Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceList::IsisShMeshEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16012,7 +13896,6 @@ Isis::Instances::Instance::NsrStatistics::NsrStatistics()
     isis_nsr_stats_data(std::make_shared<Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData>())
 {
     isis_nsr_stats_data->parent = this;
-    children["isis-nsr-stats-data"] = isis_nsr_stats_data;
 
     yang_name = "nsr-statistics"; yang_parent_name = "instance";
 }
@@ -16043,7 +13926,7 @@ std::string Isis::Instances::Instance::NsrStatistics::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16067,41 +13950,24 @@ EntityPath Isis::Instances::Instance::NsrStatistics::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "isis-nsr-stats-data")
     {
-        if(isis_nsr_stats_data != nullptr)
-        {
-            children["isis-nsr-stats-data"] = isis_nsr_stats_data;
-        }
-        else
+        if(isis_nsr_stats_data == nullptr)
         {
             isis_nsr_stats_data = std::make_shared<Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData>();
-            isis_nsr_stats_data->parent = this;
-            children["isis-nsr-stats-data"] = isis_nsr_stats_data;
         }
-        return children.at("isis-nsr-stats-data");
+        return isis_nsr_stats_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatistics::get_children() const
 {
-    if(children.find("isis-nsr-stats-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(isis_nsr_stats_data != nullptr)
     {
-        if(isis_nsr_stats_data != nullptr)
-        {
-            children["isis-nsr-stats-data"] = isis_nsr_stats_data;
-        }
+        children["isis-nsr-stats-data"] = isis_nsr_stats_data;
     }
 
     return children;
@@ -16120,7 +13986,6 @@ Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::IsisNsrStatsData()
     self(std::make_shared<Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self>())
 {
     self->parent = this;
-    children["self"] = self;
 
     yang_name = "isis-nsr-stats-data"; yang_parent_name = "nsr-statistics";
 }
@@ -16159,7 +14024,7 @@ std::string Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::get_segm
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16182,15 +14047,6 @@ EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::get_entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -16198,51 +14054,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatistics::IsisNsrStatsDa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "self")
     {
-        if(self != nullptr)
-        {
-            children["self"] = self;
-        }
-        else
+        if(self == nullptr)
         {
             self = std::make_shared<Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self>();
-            self->parent = this;
-            children["self"] = self;
         }
-        return children.at("self");
+        return self;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("self") == children.end())
+    if(self != nullptr)
     {
-        if(self != nullptr)
-        {
-            children["self"] = self;
-        }
+        children["self"] = self;
     }
 
     return children;
@@ -16319,7 +14162,7 @@ std::string Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self::ge
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16355,20 +14198,12 @@ EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self::get
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Self::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16495,7 +14330,7 @@ std::string Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::ge
 
 }
 
-EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16531,20 +14366,12 @@ EntityPath Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::get
 
 std::shared_ptr<Entity> Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16642,7 +14469,7 @@ std::string Isis::Instances::Instance::CheckpointTeTunnels::get_segment_path() c
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointTeTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointTeTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16665,15 +14492,6 @@ EntityPath Isis::Instances::Instance::CheckpointTeTunnels::get_entity_path(Entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointTeTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-te-tunnel")
     {
         for(auto const & c : checkpoint_te_tunnel)
@@ -16681,28 +14499,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointTeTunnels::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel>();
         c->parent = this;
-        checkpoint_te_tunnel.push_back(std::move(c));
-        children[segment_path] = checkpoint_te_tunnel.back();
-        return children.at(segment_path);
+        checkpoint_te_tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointTeTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointTeTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : checkpoint_te_tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16773,7 +14587,7 @@ std::string Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::
 
 }
 
-EntityPath Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16807,20 +14621,12 @@ EntityPath Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::g
 
 std::shared_ptr<Entity> Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

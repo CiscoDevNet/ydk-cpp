@@ -18,23 +18,20 @@ class Ipv6Io : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: Ipv6Io::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes> nodes;
-
-
+        
 }; // Ipv6Io
 
 
@@ -46,19 +43,16 @@ class Ipv6Io::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Ipv6Io::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node> > node;
-
-
+        
 }; // Ipv6Io::Nodes
 
 
@@ -70,20 +64,17 @@ class Ipv6Io::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Statistics; //type: Ipv6Io::Nodes::Node::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics> statistics;
-
-
+        
 }; // Ipv6Io::Nodes::Node
 
 
@@ -95,19 +86,16 @@ class Ipv6Io::Nodes::Node::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Traffic; //type: Ipv6Io::Nodes::Node::Statistics::Traffic
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic> traffic;
-
-
+        
 }; // Ipv6Io::Nodes::Node::Statistics
 
 
@@ -119,13 +107,11 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6; //type: Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6
         class Icmp; //type: Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp
@@ -134,8 +120,7 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp> icmp;
         std::shared_ptr<Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6> ipv6;
         std::shared_ptr<Cisco_IOS_XR_ipv6_io_oper::Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery> ipv6_node_discovery;
-
-
+        
 }; // Ipv6Io::Nodes::Node::Statistics::Traffic
 
 
@@ -147,12 +132,11 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_packets; //type: uint32
         YLeaf local_destination_packets; //type: uint32
@@ -186,8 +170,6 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6 : public Entity
         YLeaf lisp_encap_errors; //type: uint32
         YLeaf lisp_decap_errors; //type: uint32
 
-
-
 }; // Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6
 
 
@@ -199,12 +181,11 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_messages; //type: uint32
         YLeaf too_short_error_messages; //type: uint32
@@ -245,8 +226,6 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp : public Entity
         YLeaf sent_unreachable_unknown_type_messages; //type: uint32
         YLeaf received_unreachable_unknown_type_messages; //type: uint32
 
-
-
 }; // Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp
 
 
@@ -258,12 +237,11 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent_router_solicitation_messages; //type: uint32
         YLeaf sent_router_advertisement_messages; //type: uint32
@@ -275,8 +253,6 @@ class Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery : public Entit
         YLeaf received_neighbor_solicitation_messages; //type: uint32
         YLeaf received_neighbor_advertisement_messages; //type: uint32
         YLeaf received_redirect_messages; //type: uint32
-
-
 
 }; // Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery
 

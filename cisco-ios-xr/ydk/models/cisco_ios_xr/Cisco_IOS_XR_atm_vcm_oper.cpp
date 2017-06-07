@@ -14,7 +14,6 @@ AtmVcm::AtmVcm()
     nodes(std::make_shared<AtmVcm::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "atm-vcm"; yang_parent_name = "Cisco-IOS-XR-atm-vcm-oper";
 }
@@ -43,12 +42,12 @@ std::string AtmVcm::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath AtmVcm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AtmVcm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<AtmVcm::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string AtmVcm::Nodes::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath AtmVcm::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AtmVcm::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> AtmVcm::Nodes::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AtmVcm::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -247,22 +216,16 @@ AtmVcm::Nodes::Node::Node()
 	,vp_tunnels(std::make_shared<AtmVcm::Nodes::Node::VpTunnels>())
 {
     cell_packs->parent = this;
-    children["cell-packs"] = cell_packs;
 
     class_links->parent = this;
-    children["class-links"] = class_links;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     pvps->parent = this;
-    children["pvps"] = pvps;
 
     vcs->parent = this;
-    children["vcs"] = vcs;
 
     vp_tunnels->parent = this;
-    children["vp-tunnels"] = vp_tunnels;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -303,7 +266,7 @@ std::string AtmVcm::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -327,156 +290,94 @@ EntityPath AtmVcm::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cell-packs")
     {
-        if(cell_packs != nullptr)
-        {
-            children["cell-packs"] = cell_packs;
-        }
-        else
+        if(cell_packs == nullptr)
         {
             cell_packs = std::make_shared<AtmVcm::Nodes::Node::CellPacks>();
-            cell_packs->parent = this;
-            children["cell-packs"] = cell_packs;
         }
-        return children.at("cell-packs");
+        return cell_packs;
     }
 
     if(child_yang_name == "class-links")
     {
-        if(class_links != nullptr)
-        {
-            children["class-links"] = class_links;
-        }
-        else
+        if(class_links == nullptr)
         {
             class_links = std::make_shared<AtmVcm::Nodes::Node::ClassLinks>();
-            class_links->parent = this;
-            children["class-links"] = class_links;
         }
-        return children.at("class-links");
+        return class_links;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<AtmVcm::Nodes::Node::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "pvps")
     {
-        if(pvps != nullptr)
-        {
-            children["pvps"] = pvps;
-        }
-        else
+        if(pvps == nullptr)
         {
             pvps = std::make_shared<AtmVcm::Nodes::Node::Pvps>();
-            pvps->parent = this;
-            children["pvps"] = pvps;
         }
-        return children.at("pvps");
+        return pvps;
     }
 
     if(child_yang_name == "vcs")
     {
-        if(vcs != nullptr)
-        {
-            children["vcs"] = vcs;
-        }
-        else
+        if(vcs == nullptr)
         {
             vcs = std::make_shared<AtmVcm::Nodes::Node::Vcs>();
-            vcs->parent = this;
-            children["vcs"] = vcs;
         }
-        return children.at("vcs");
+        return vcs;
     }
 
     if(child_yang_name == "vp-tunnels")
     {
-        if(vp_tunnels != nullptr)
-        {
-            children["vp-tunnels"] = vp_tunnels;
-        }
-        else
+        if(vp_tunnels == nullptr)
         {
             vp_tunnels = std::make_shared<AtmVcm::Nodes::Node::VpTunnels>();
-            vp_tunnels->parent = this;
-            children["vp-tunnels"] = vp_tunnels;
         }
-        return children.at("vp-tunnels");
+        return vp_tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::get_children() const
 {
-    if(children.find("cell-packs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cell_packs != nullptr)
     {
-        if(cell_packs != nullptr)
-        {
-            children["cell-packs"] = cell_packs;
-        }
+        children["cell-packs"] = cell_packs;
     }
 
-    if(children.find("class-links") == children.end())
+    if(class_links != nullptr)
     {
-        if(class_links != nullptr)
-        {
-            children["class-links"] = class_links;
-        }
+        children["class-links"] = class_links;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("pvps") == children.end())
+    if(pvps != nullptr)
     {
-        if(pvps != nullptr)
-        {
-            children["pvps"] = pvps;
-        }
+        children["pvps"] = pvps;
     }
 
-    if(children.find("vcs") == children.end())
+    if(vcs != nullptr)
     {
-        if(vcs != nullptr)
-        {
-            children["vcs"] = vcs;
-        }
+        children["vcs"] = vcs;
     }
 
-    if(children.find("vp-tunnels") == children.end())
+    if(vp_tunnels != nullptr)
     {
-        if(vp_tunnels != nullptr)
-        {
-            children["vp-tunnels"] = vp_tunnels;
-        }
+        children["vp-tunnels"] = vp_tunnels;
     }
 
     return children;
@@ -528,7 +429,7 @@ std::string AtmVcm::Nodes::Node::Vcs::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Vcs::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Vcs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -551,15 +452,6 @@ EntityPath AtmVcm::Nodes::Node::Vcs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Vcs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vc")
     {
         for(auto const & c : vc)
@@ -567,28 +459,24 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::Vcs::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AtmVcm::Nodes::Node::Vcs::Vc>();
         c->parent = this;
-        vc.push_back(std::move(c));
-        children[segment_path] = vc.back();
-        return children.at(segment_path);
+        vc.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Vcs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Vcs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vc)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -629,7 +517,6 @@ AtmVcm::Nodes::Node::Vcs::Vc::Vc()
     cell_packing_data(std::make_shared<AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData>())
 {
     cell_packing_data->parent = this;
-    children["cell-packing-data"] = cell_packing_data;
 
     yang_name = "vc"; yang_parent_name = "vcs";
 }
@@ -708,7 +595,7 @@ std::string AtmVcm::Nodes::Node::Vcs::Vc::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Vcs::Vc::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Vcs::Vc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -756,41 +643,24 @@ EntityPath AtmVcm::Nodes::Node::Vcs::Vc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Vcs::Vc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cell-packing-data")
     {
-        if(cell_packing_data != nullptr)
-        {
-            children["cell-packing-data"] = cell_packing_data;
-        }
-        else
+        if(cell_packing_data == nullptr)
         {
             cell_packing_data = std::make_shared<AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData>();
-            cell_packing_data->parent = this;
-            children["cell-packing-data"] = cell_packing_data;
         }
-        return children.at("cell-packing-data");
+        return cell_packing_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Vcs::Vc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Vcs::Vc::get_children() const
 {
-    if(children.find("cell-packing-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cell_packing_data != nullptr)
     {
-        if(cell_packing_data != nullptr)
-        {
-            children["cell-packing-data"] = cell_packing_data;
-        }
+        children["cell-packing-data"] = cell_packing_data;
     }
 
     return children;
@@ -937,7 +807,7 @@ std::string AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_segment_path() co
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -963,20 +833,12 @@ EntityPath AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_entity_path(Entity
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1034,7 +896,7 @@ std::string AtmVcm::Nodes::Node::CellPacks::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::CellPacks::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::CellPacks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1057,15 +919,6 @@ EntityPath AtmVcm::Nodes::Node::CellPacks::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::CellPacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cell-pack")
     {
         for(auto const & c : cell_pack)
@@ -1073,28 +926,24 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::CellPacks::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AtmVcm::Nodes::Node::CellPacks::CellPack>();
         c->parent = this;
-        cell_pack.push_back(std::move(c));
-        children[segment_path] = cell_pack.back();
-        return children.at(segment_path);
+        cell_pack.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::CellPacks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::CellPacks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cell_pack)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1118,7 +967,6 @@ AtmVcm::Nodes::Node::CellPacks::CellPack::CellPack()
     cell_packing(std::make_shared<AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking>())
 {
     cell_packing->parent = this;
-    children["cell-packing"] = cell_packing;
 
     yang_name = "cell-pack"; yang_parent_name = "cell-packs";
 }
@@ -1163,7 +1011,7 @@ std::string AtmVcm::Nodes::Node::CellPacks::CellPack::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1194,41 +1042,24 @@ EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::CellPacks::CellPack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cell-packing")
     {
-        if(cell_packing != nullptr)
-        {
-            children["cell-packing"] = cell_packing;
-        }
-        else
+        if(cell_packing == nullptr)
         {
             cell_packing = std::make_shared<AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking>();
-            cell_packing->parent = this;
-            children["cell-packing"] = cell_packing;
         }
-        return children.at("cell-packing");
+        return cell_packing;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::CellPacks::CellPack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::CellPacks::CellPack::get_children() const
 {
-    if(children.find("cell-packing") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cell_packing != nullptr)
     {
-        if(cell_packing != nullptr)
-        {
-            children["cell-packing"] = cell_packing;
-        }
+        children["cell-packing"] = cell_packing;
     }
 
     return children;
@@ -1307,7 +1138,7 @@ std::string AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_segment_p
 
 }
 
-EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1333,20 +1164,12 @@ EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_entity_pat
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1404,7 +1227,7 @@ std::string AtmVcm::Nodes::Node::Pvps::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Pvps::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Pvps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1427,15 +1250,6 @@ EntityPath AtmVcm::Nodes::Node::Pvps::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Pvps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pvp")
     {
         for(auto const & c : pvp)
@@ -1443,28 +1257,24 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::Pvps::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AtmVcm::Nodes::Node::Pvps::Pvp>();
         c->parent = this;
-        pvp.push_back(std::move(c));
-        children[segment_path] = pvp.back();
-        return children.at(segment_path);
+        pvp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Pvps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Pvps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pvp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1504,7 +1314,6 @@ AtmVcm::Nodes::Node::Pvps::Pvp::Pvp()
     cell_packing_data(std::make_shared<AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData>())
 {
     cell_packing_data->parent = this;
-    children["cell-packing-data"] = cell_packing_data;
 
     yang_name = "pvp"; yang_parent_name = "pvps";
 }
@@ -1581,7 +1390,7 @@ std::string AtmVcm::Nodes::Node::Pvps::Pvp::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1628,41 +1437,24 @@ EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Pvps::Pvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cell-packing-data")
     {
-        if(cell_packing_data != nullptr)
-        {
-            children["cell-packing-data"] = cell_packing_data;
-        }
-        else
+        if(cell_packing_data == nullptr)
         {
             cell_packing_data = std::make_shared<AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData>();
-            cell_packing_data->parent = this;
-            children["cell-packing-data"] = cell_packing_data;
         }
-        return children.at("cell-packing-data");
+        return cell_packing_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Pvps::Pvp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Pvps::Pvp::get_children() const
 {
-    if(children.find("cell-packing-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cell_packing_data != nullptr)
     {
-        if(cell_packing_data != nullptr)
-        {
-            children["cell-packing-data"] = cell_packing_data;
-        }
+        children["cell-packing-data"] = cell_packing_data;
     }
 
     return children;
@@ -1805,7 +1597,7 @@ std::string AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_segment_path() 
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1831,20 +1623,12 @@ EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_entity_path(Enti
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1902,7 +1686,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1925,15 +1709,6 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-link")
     {
         for(auto const & c : class_link)
@@ -1941,28 +1716,24 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink>();
         c->parent = this;
-        class_link.push_back(std::move(c));
-        children[segment_path] = class_link.back();
-        return children.at(segment_path);
+        class_link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1982,10 +1753,8 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::ClassLink()
 	,vc_class_not_supported(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported>())
 {
     oam_config->parent = this;
-    children["oam-config"] = oam_config;
 
     vc_class_not_supported->parent = this;
-    children["vc-class-not-supported"] = vc_class_not_supported;
 
     yang_name = "class-link"; yang_parent_name = "class-links";
 }
@@ -2022,7 +1791,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2048,64 +1817,38 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oam-config")
     {
-        if(oam_config != nullptr)
-        {
-            children["oam-config"] = oam_config;
-        }
-        else
+        if(oam_config == nullptr)
         {
             oam_config = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig>();
-            oam_config->parent = this;
-            children["oam-config"] = oam_config;
         }
-        return children.at("oam-config");
+        return oam_config;
     }
 
     if(child_yang_name == "vc-class-not-supported")
     {
-        if(vc_class_not_supported != nullptr)
-        {
-            children["vc-class-not-supported"] = vc_class_not_supported;
-        }
-        else
+        if(vc_class_not_supported == nullptr)
         {
             vc_class_not_supported = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported>();
-            vc_class_not_supported->parent = this;
-            children["vc-class-not-supported"] = vc_class_not_supported;
         }
-        return children.at("vc-class-not-supported");
+        return vc_class_not_supported;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_children() const
 {
-    if(children.find("oam-config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oam_config != nullptr)
     {
-        if(oam_config != nullptr)
-        {
-            children["oam-config"] = oam_config;
-        }
+        children["oam-config"] = oam_config;
     }
 
-    if(children.find("vc-class-not-supported") == children.end())
+    if(vc_class_not_supported != nullptr)
     {
-        if(vc_class_not_supported != nullptr)
-        {
-            children["vc-class-not-supported"] = vc_class_not_supported;
-        }
+        children["vc-class-not-supported"] = vc_class_not_supported;
     }
 
     return children;
@@ -2161,7 +1904,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2186,20 +1929,12 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get_
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2224,19 +1959,14 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamConfig()
 	,oam_retry(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry>())
 {
     ais_rdi->parent = this;
-    children["ais-rdi"] = ais_rdi;
 
     class_link_encapsulation->parent = this;
-    children["class-link-encapsulation"] = class_link_encapsulation;
 
     class_link_shaping->parent = this;
-    children["class-link-shaping"] = class_link_shaping;
 
     oam_pvc->parent = this;
-    children["oam-pvc"] = oam_pvc;
 
     oam_retry->parent = this;
-    children["oam-retry"] = oam_retry;
 
     yang_name = "oam-config"; yang_parent_name = "class-link";
 }
@@ -2273,7 +2003,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_segment_p
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2296,133 +2026,80 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_entity_pat
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ais-rdi")
     {
-        if(ais_rdi != nullptr)
-        {
-            children["ais-rdi"] = ais_rdi;
-        }
-        else
+        if(ais_rdi == nullptr)
         {
             ais_rdi = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi>();
-            ais_rdi->parent = this;
-            children["ais-rdi"] = ais_rdi;
         }
-        return children.at("ais-rdi");
+        return ais_rdi;
     }
 
     if(child_yang_name == "class-link-encapsulation")
     {
-        if(class_link_encapsulation != nullptr)
-        {
-            children["class-link-encapsulation"] = class_link_encapsulation;
-        }
-        else
+        if(class_link_encapsulation == nullptr)
         {
             class_link_encapsulation = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation>();
-            class_link_encapsulation->parent = this;
-            children["class-link-encapsulation"] = class_link_encapsulation;
         }
-        return children.at("class-link-encapsulation");
+        return class_link_encapsulation;
     }
 
     if(child_yang_name == "class-link-shaping")
     {
-        if(class_link_shaping != nullptr)
-        {
-            children["class-link-shaping"] = class_link_shaping;
-        }
-        else
+        if(class_link_shaping == nullptr)
         {
             class_link_shaping = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping>();
-            class_link_shaping->parent = this;
-            children["class-link-shaping"] = class_link_shaping;
         }
-        return children.at("class-link-shaping");
+        return class_link_shaping;
     }
 
     if(child_yang_name == "oam-pvc")
     {
-        if(oam_pvc != nullptr)
-        {
-            children["oam-pvc"] = oam_pvc;
-        }
-        else
+        if(oam_pvc == nullptr)
         {
             oam_pvc = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc>();
-            oam_pvc->parent = this;
-            children["oam-pvc"] = oam_pvc;
         }
-        return children.at("oam-pvc");
+        return oam_pvc;
     }
 
     if(child_yang_name == "oam-retry")
     {
-        if(oam_retry != nullptr)
-        {
-            children["oam-retry"] = oam_retry;
-        }
-        else
+        if(oam_retry == nullptr)
         {
             oam_retry = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry>();
-            oam_retry->parent = this;
-            children["oam-retry"] = oam_retry;
         }
-        return children.at("oam-retry");
+        return oam_retry;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_children() const
 {
-    if(children.find("ais-rdi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ais_rdi != nullptr)
     {
-        if(ais_rdi != nullptr)
-        {
-            children["ais-rdi"] = ais_rdi;
-        }
+        children["ais-rdi"] = ais_rdi;
     }
 
-    if(children.find("class-link-encapsulation") == children.end())
+    if(class_link_encapsulation != nullptr)
     {
-        if(class_link_encapsulation != nullptr)
-        {
-            children["class-link-encapsulation"] = class_link_encapsulation;
-        }
+        children["class-link-encapsulation"] = class_link_encapsulation;
     }
 
-    if(children.find("class-link-shaping") == children.end())
+    if(class_link_shaping != nullptr)
     {
-        if(class_link_shaping != nullptr)
-        {
-            children["class-link-shaping"] = class_link_shaping;
-        }
+        children["class-link-shaping"] = class_link_shaping;
     }
 
-    if(children.find("oam-pvc") == children.end())
+    if(oam_pvc != nullptr)
     {
-        if(oam_pvc != nullptr)
-        {
-            children["oam-pvc"] = oam_pvc;
-        }
+        children["oam-pvc"] = oam_pvc;
     }
 
-    if(children.find("oam-retry") == children.end())
+    if(oam_retry != nullptr)
     {
-        if(oam_retry != nullptr)
-        {
-            children["oam-retry"] = oam_retry;
-        }
+        children["oam-retry"] = oam_retry;
     }
 
     return children;
@@ -2475,7 +2152,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShap
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2503,20 +2180,12 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShapi
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2578,7 +2247,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEnca
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2603,20 +2272,12 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncap
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2675,7 +2336,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_s
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2703,20 +2364,12 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_en
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2784,7 +2437,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2811,20 +2464,12 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get_
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2885,7 +2530,7 @@ std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_s
 
 }
 
-EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2911,20 +2556,12 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_en
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2982,7 +2619,7 @@ std::string AtmVcm::Nodes::Node::Interfaces::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3005,15 +2642,6 @@ EntityPath AtmVcm::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3021,28 +2649,24 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::Interfaces::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AtmVcm::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3075,7 +2699,6 @@ AtmVcm::Nodes::Node::Interfaces::Interface::Interface()
     cell_packing_data(std::make_shared<AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData>())
 {
     cell_packing_data->parent = this;
-    children["cell-packing-data"] = cell_packing_data;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -3138,7 +2761,7 @@ std::string AtmVcm::Nodes::Node::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3178,41 +2801,24 @@ EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cell-packing-data")
     {
-        if(cell_packing_data != nullptr)
-        {
-            children["cell-packing-data"] = cell_packing_data;
-        }
-        else
+        if(cell_packing_data == nullptr)
         {
             cell_packing_data = std::make_shared<AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData>();
-            cell_packing_data->parent = this;
-            children["cell-packing-data"] = cell_packing_data;
         }
-        return children.at("cell-packing-data");
+        return cell_packing_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    if(children.find("cell-packing-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cell_packing_data != nullptr)
     {
-        if(cell_packing_data != nullptr)
-        {
-            children["cell-packing-data"] = cell_packing_data;
-        }
+        children["cell-packing-data"] = cell_packing_data;
     }
 
     return children;
@@ -3327,7 +2933,7 @@ std::string AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_seg
 
 }
 
-EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3353,20 +2959,12 @@ EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_enti
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3424,7 +3022,7 @@ std::string AtmVcm::Nodes::Node::VpTunnels::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::VpTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::VpTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3447,15 +3045,6 @@ EntityPath AtmVcm::Nodes::Node::VpTunnels::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::VpTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vp-tunnel")
     {
         for(auto const & c : vp_tunnel)
@@ -3463,28 +3052,24 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::VpTunnels::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AtmVcm::Nodes::Node::VpTunnels::VpTunnel>();
         c->parent = this;
-        vp_tunnel.push_back(std::move(c));
-        children[segment_path] = vp_tunnel.back();
-        return children.at(segment_path);
+        vp_tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::VpTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::VpTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vp_tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3567,7 +3152,7 @@ std::string AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_segment_path() const
 
 }
 
-EntityPath AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3605,20 +3190,12 @@ EntityPath AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

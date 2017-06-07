@@ -19,22 +19,16 @@ EtherLinkOam::EtherLinkOam()
 	,stats_interfaces(std::make_shared<EtherLinkOam::StatsInterfaces>())
 {
     discovery_info_interfaces->parent = this;
-    children["discovery-info-interfaces"] = discovery_info_interfaces;
 
     event_log_entry_interfaces->parent = this;
-    children["event-log-entry-interfaces"] = event_log_entry_interfaces;
 
     interface_state_interfaces->parent = this;
-    children["interface-state-interfaces"] = interface_state_interfaces;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     running_config_interfaces->parent = this;
-    children["running-config-interfaces"] = running_config_interfaces;
 
     stats_interfaces->parent = this;
-    children["stats-interfaces"] = stats_interfaces;
 
     yang_name = "ether-link-oam"; yang_parent_name = "Cisco-IOS-XR-ethernet-link-oam-oper";
 }
@@ -73,12 +67,12 @@ std::string EtherLinkOam::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -93,156 +87,94 @@ EntityPath EtherLinkOam::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EtherLinkOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "discovery-info-interfaces")
     {
-        if(discovery_info_interfaces != nullptr)
-        {
-            children["discovery-info-interfaces"] = discovery_info_interfaces;
-        }
-        else
+        if(discovery_info_interfaces == nullptr)
         {
             discovery_info_interfaces = std::make_shared<EtherLinkOam::DiscoveryInfoInterfaces>();
-            discovery_info_interfaces->parent = this;
-            children["discovery-info-interfaces"] = discovery_info_interfaces;
         }
-        return children.at("discovery-info-interfaces");
+        return discovery_info_interfaces;
     }
 
     if(child_yang_name == "event-log-entry-interfaces")
     {
-        if(event_log_entry_interfaces != nullptr)
-        {
-            children["event-log-entry-interfaces"] = event_log_entry_interfaces;
-        }
-        else
+        if(event_log_entry_interfaces == nullptr)
         {
             event_log_entry_interfaces = std::make_shared<EtherLinkOam::EventLogEntryInterfaces>();
-            event_log_entry_interfaces->parent = this;
-            children["event-log-entry-interfaces"] = event_log_entry_interfaces;
         }
-        return children.at("event-log-entry-interfaces");
+        return event_log_entry_interfaces;
     }
 
     if(child_yang_name == "interface-state-interfaces")
     {
-        if(interface_state_interfaces != nullptr)
-        {
-            children["interface-state-interfaces"] = interface_state_interfaces;
-        }
-        else
+        if(interface_state_interfaces == nullptr)
         {
             interface_state_interfaces = std::make_shared<EtherLinkOam::InterfaceStateInterfaces>();
-            interface_state_interfaces->parent = this;
-            children["interface-state-interfaces"] = interface_state_interfaces;
         }
-        return children.at("interface-state-interfaces");
+        return interface_state_interfaces;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<EtherLinkOam::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     if(child_yang_name == "running-config-interfaces")
     {
-        if(running_config_interfaces != nullptr)
-        {
-            children["running-config-interfaces"] = running_config_interfaces;
-        }
-        else
+        if(running_config_interfaces == nullptr)
         {
             running_config_interfaces = std::make_shared<EtherLinkOam::RunningConfigInterfaces>();
-            running_config_interfaces->parent = this;
-            children["running-config-interfaces"] = running_config_interfaces;
         }
-        return children.at("running-config-interfaces");
+        return running_config_interfaces;
     }
 
     if(child_yang_name == "stats-interfaces")
     {
-        if(stats_interfaces != nullptr)
-        {
-            children["stats-interfaces"] = stats_interfaces;
-        }
-        else
+        if(stats_interfaces == nullptr)
         {
             stats_interfaces = std::make_shared<EtherLinkOam::StatsInterfaces>();
-            stats_interfaces->parent = this;
-            children["stats-interfaces"] = stats_interfaces;
         }
-        return children.at("stats-interfaces");
+        return stats_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::get_children() const
 {
-    if(children.find("discovery-info-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(discovery_info_interfaces != nullptr)
     {
-        if(discovery_info_interfaces != nullptr)
-        {
-            children["discovery-info-interfaces"] = discovery_info_interfaces;
-        }
+        children["discovery-info-interfaces"] = discovery_info_interfaces;
     }
 
-    if(children.find("event-log-entry-interfaces") == children.end())
+    if(event_log_entry_interfaces != nullptr)
     {
-        if(event_log_entry_interfaces != nullptr)
-        {
-            children["event-log-entry-interfaces"] = event_log_entry_interfaces;
-        }
+        children["event-log-entry-interfaces"] = event_log_entry_interfaces;
     }
 
-    if(children.find("interface-state-interfaces") == children.end())
+    if(interface_state_interfaces != nullptr)
     {
-        if(interface_state_interfaces != nullptr)
-        {
-            children["interface-state-interfaces"] = interface_state_interfaces;
-        }
+        children["interface-state-interfaces"] = interface_state_interfaces;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
-    if(children.find("running-config-interfaces") == children.end())
+    if(running_config_interfaces != nullptr)
     {
-        if(running_config_interfaces != nullptr)
-        {
-            children["running-config-interfaces"] = running_config_interfaces;
-        }
+        children["running-config-interfaces"] = running_config_interfaces;
     }
 
-    if(children.find("stats-interfaces") == children.end())
+    if(stats_interfaces != nullptr)
     {
-        if(stats_interfaces != nullptr)
-        {
-            children["stats-interfaces"] = stats_interfaces;
-        }
+        children["stats-interfaces"] = stats_interfaces;
     }
 
     return children;
@@ -310,7 +242,7 @@ std::string EtherLinkOam::DiscoveryInfoInterfaces::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::DiscoveryInfoInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::DiscoveryInfoInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -333,15 +265,6 @@ EntityPath EtherLinkOam::DiscoveryInfoInterfaces::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> EtherLinkOam::DiscoveryInfoInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "discovery-info-interface")
     {
         for(auto const & c : discovery_info_interface)
@@ -349,28 +272,24 @@ std::shared_ptr<Entity> EtherLinkOam::DiscoveryInfoInterfaces::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface>();
         c->parent = this;
-        discovery_info_interface.push_back(std::move(c));
-        children[segment_path] = discovery_info_interface.back();
-        return children.at(segment_path);
+        discovery_info_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::DiscoveryInfoInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::DiscoveryInfoInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : discovery_info_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -558,7 +477,7 @@ std::string EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_s
 
 }
 
-EntityPath EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -631,20 +550,12 @@ EntityPath EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_en
 
 std::shared_ptr<Entity> EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -890,7 +801,7 @@ std::string EtherLinkOam::InterfaceStateInterfaces::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::InterfaceStateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::InterfaceStateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -913,15 +824,6 @@ EntityPath EtherLinkOam::InterfaceStateInterfaces::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-state-interface")
     {
         for(auto const & c : interface_state_interface)
@@ -929,28 +831,24 @@ std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface>();
         c->parent = this;
-        interface_state_interface.push_back(std::move(c));
-        children[segment_path] = interface_state_interface.back();
-        return children.at(segment_path);
+        interface_state_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::InterfaceStateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_state_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -973,10 +871,8 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::InterfaceStateI
 	,errors(std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors>())
 {
     efd_triggers->parent = this;
-    children["efd-triggers"] = efd_triggers;
 
     errors->parent = this;
-    children["errors"] = errors;
 
     yang_name = "interface-state-interface"; yang_parent_name = "interface-state-interfaces";
 }
@@ -1019,7 +915,7 @@ std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get
 
 }
 
-EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1048,64 +944,38 @@ EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_
 
 std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "efd-triggers")
     {
-        if(efd_triggers != nullptr)
-        {
-            children["efd-triggers"] = efd_triggers;
-        }
-        else
+        if(efd_triggers == nullptr)
         {
             efd_triggers = std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers>();
-            efd_triggers->parent = this;
-            children["efd-triggers"] = efd_triggers;
         }
-        return children.at("efd-triggers");
+        return efd_triggers;
     }
 
     if(child_yang_name == "errors")
     {
-        if(errors != nullptr)
-        {
-            children["errors"] = errors;
-        }
-        else
+        if(errors == nullptr)
         {
             errors = std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors>();
-            errors->parent = this;
-            children["errors"] = errors;
         }
-        return children.at("errors");
+        return errors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_children() const
 {
-    if(children.find("efd-triggers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(efd_triggers != nullptr)
     {
-        if(efd_triggers != nullptr)
-        {
-            children["efd-triggers"] = efd_triggers;
-        }
+        children["efd-triggers"] = efd_triggers;
     }
 
-    if(children.find("errors") == children.end())
+    if(errors != nullptr)
     {
-        if(errors != nullptr)
-        {
-            children["errors"] = errors;
-        }
+        children["errors"] = errors;
     }
 
     return children;
@@ -1197,7 +1067,7 @@ std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Err
 
 }
 
-EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1230,20 +1100,12 @@ EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Erro
 
 std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1334,7 +1196,7 @@ std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Efd
 
 }
 
-EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1362,20 +1224,12 @@ EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdT
 
 std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1441,7 +1295,7 @@ std::string EtherLinkOam::RunningConfigInterfaces::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::RunningConfigInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::RunningConfigInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1464,15 +1318,6 @@ EntityPath EtherLinkOam::RunningConfigInterfaces::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> EtherLinkOam::RunningConfigInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "running-config-interface")
     {
         for(auto const & c : running_config_interface)
@@ -1480,28 +1325,24 @@ std::shared_ptr<Entity> EtherLinkOam::RunningConfigInterfaces::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface>();
         c->parent = this;
-        running_config_interface.push_back(std::move(c));
-        children[segment_path] = running_config_interface.back();
-        return children.at(segment_path);
+        running_config_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::RunningConfigInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::RunningConfigInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : running_config_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1776,7 +1617,7 @@ std::string EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_s
 
 }
 
-EntityPath EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1878,20 +1719,12 @@ EntityPath EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_en
 
 std::shared_ptr<Entity> EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2253,7 +2086,7 @@ std::string EtherLinkOam::Nodes::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2276,15 +2109,6 @@ EntityPath EtherLinkOam::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EtherLinkOam::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -2292,28 +2116,24 @@ std::shared_ptr<Entity> EtherLinkOam::Nodes::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EtherLinkOam::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2330,7 +2150,6 @@ EtherLinkOam::Nodes::Node::Node()
     summary(std::make_shared<EtherLinkOam::Nodes::Node::Summary>())
 {
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -2361,7 +2180,7 @@ std::string EtherLinkOam::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2385,41 +2204,24 @@ EntityPath EtherLinkOam::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<EtherLinkOam::Nodes::Node::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::get_children() const
 {
-    if(children.find("summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -2527,7 +2329,7 @@ std::string EtherLinkOam::Nodes::Node::Summary::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2572,20 +2374,12 @@ EntityPath EtherLinkOam::Nodes::Node::Summary::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::Nodes::Node::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2719,7 +2513,7 @@ std::string EtherLinkOam::EventLogEntryInterfaces::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::EventLogEntryInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::EventLogEntryInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2742,15 +2536,6 @@ EntityPath EtherLinkOam::EventLogEntryInterfaces::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "event-log-entry-interface")
     {
         for(auto const & c : event_log_entry_interface)
@@ -2758,28 +2543,24 @@ std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface>();
         c->parent = this;
-        event_log_entry_interface.push_back(std::move(c));
-        children[segment_path] = event_log_entry_interface.back();
-        return children.at(segment_path);
+        event_log_entry_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::EventLogEntryInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : event_log_entry_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2796,7 +2577,6 @@ EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInte
     event_log_entry_indexes(std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes>())
 {
     event_log_entry_indexes->parent = this;
-    children["event-log-entry-indexes"] = event_log_entry_indexes;
 
     yang_name = "event-log-entry-interface"; yang_parent_name = "event-log-entry-interfaces";
 }
@@ -2827,7 +2607,7 @@ std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_s
 
 }
 
-EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2851,41 +2631,24 @@ EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_en
 
 std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "event-log-entry-indexes")
     {
-        if(event_log_entry_indexes != nullptr)
-        {
-            children["event-log-entry-indexes"] = event_log_entry_indexes;
-        }
-        else
+        if(event_log_entry_indexes == nullptr)
         {
             event_log_entry_indexes = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes>();
-            event_log_entry_indexes->parent = this;
-            children["event-log-entry-indexes"] = event_log_entry_indexes;
         }
-        return children.at("event-log-entry-indexes");
+        return event_log_entry_indexes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_children() const
 {
-    if(children.find("event-log-entry-indexes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(event_log_entry_indexes != nullptr)
     {
-        if(event_log_entry_indexes != nullptr)
-        {
-            children["event-log-entry-indexes"] = event_log_entry_indexes;
-        }
+        children["event-log-entry-indexes"] = event_log_entry_indexes;
     }
 
     return children;
@@ -2937,7 +2700,7 @@ std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::Event
 
 }
 
-EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2960,15 +2723,6 @@ EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventL
 
 std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "event-log-entry-index")
     {
         for(auto const & c : event_log_entry_index)
@@ -2976,28 +2730,24 @@ std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInte
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex>();
         c->parent = this;
-        event_log_entry_index.push_back(std::move(c));
-        children[segment_path] = event_log_entry_index.back();
-        return children.at(segment_path);
+        event_log_entry_index.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : event_log_entry_index)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3095,7 +2845,7 @@ std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::Event
 
 }
 
-EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3138,20 +2888,12 @@ EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventL
 
 std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3277,7 +3019,7 @@ std::string EtherLinkOam::StatsInterfaces::get_segment_path() const
 
 }
 
-EntityPath EtherLinkOam::StatsInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::StatsInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3300,15 +3042,6 @@ EntityPath EtherLinkOam::StatsInterfaces::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> EtherLinkOam::StatsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stats-interface")
     {
         for(auto const & c : stats_interface)
@@ -3316,28 +3049,24 @@ std::shared_ptr<Entity> EtherLinkOam::StatsInterfaces::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EtherLinkOam::StatsInterfaces::StatsInterface>();
         c->parent = this;
-        stats_interface.push_back(std::move(c));
-        children[segment_path] = stats_interface.back();
-        return children.at(segment_path);
+        stats_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::StatsInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::StatsInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : stats_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3456,7 +3185,7 @@ std::string EtherLinkOam::StatsInterfaces::StatsInterface::get_segment_path() co
 
 }
 
-EntityPath EtherLinkOam::StatsInterfaces::StatsInterface::get_entity_path(Entity* ancestor) const
+const EntityPath EtherLinkOam::StatsInterfaces::StatsInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3506,20 +3235,12 @@ EntityPath EtherLinkOam::StatsInterfaces::StatsInterface::get_entity_path(Entity
 
 std::shared_ptr<Entity> EtherLinkOam::StatsInterfaces::StatsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EtherLinkOam::StatsInterfaces::StatsInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::StatsInterfaces::StatsInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

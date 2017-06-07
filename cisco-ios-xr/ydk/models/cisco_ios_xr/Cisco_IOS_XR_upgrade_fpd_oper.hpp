@@ -18,25 +18,22 @@ class Fpd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Nodes; //type: Fpd::Nodes
         class Packages; //type: Fpd::Packages
 
         std::shared_ptr<Cisco_IOS_XR_upgrade_fpd_oper::Fpd::Nodes> nodes;
         std::shared_ptr<Cisco_IOS_XR_upgrade_fpd_oper::Fpd::Packages> packages;
-
-
+        
 }; // Fpd
 
 
@@ -48,19 +45,16 @@ class Fpd::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Fpd::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_upgrade_fpd_oper::Fpd::Nodes::Node> > node;
-
-
+        
 }; // Fpd::Nodes
 
 
@@ -72,20 +66,17 @@ class Fpd::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Devices; //type: Fpd::Nodes::Node::Devices
 
         std::shared_ptr<Cisco_IOS_XR_upgrade_fpd_oper::Fpd::Nodes::Node::Devices> devices;
-
-
+        
 }; // Fpd::Nodes::Node
 
 
@@ -97,19 +88,16 @@ class Fpd::Nodes::Node::Devices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Device; //type: Fpd::Nodes::Node::Devices::Device
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_upgrade_fpd_oper::Fpd::Nodes::Node::Devices::Device> > device;
-
-
+        
 }; // Fpd::Nodes::Node::Devices
 
 
@@ -121,12 +109,11 @@ class Fpd::Nodes::Node::Devices::Device : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fpd_type; //type: FpdEnum
         YLeaf instance; //type: int32
@@ -135,8 +122,6 @@ class Fpd::Nodes::Node::Devices::Device : public Entity
         YLeaf hardware_version; //type: string
         YLeaf software_version; //type: string
         YLeaf is_upgrade_downgrade; //type: boolean
-
-
 
 }; // Fpd::Nodes::Node::Devices::Device
 
@@ -149,19 +134,16 @@ class Fpd::Packages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AllPackage; //type: Fpd::Packages::AllPackage
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_upgrade_fpd_oper::Fpd::Packages::AllPackage> > all_package;
-
-
+        
 }; // Fpd::Packages
 
 
@@ -173,12 +155,11 @@ class Fpd::Packages::AllPackage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_type; //type: string
         YLeaf card_description; //type: string
@@ -187,8 +168,6 @@ class Fpd::Packages::AllPackage : public Entity
         YLeaf software_version; //type: string
         YLeaf minimum_required_software_version; //type: string
         YLeaf minimum_required_hardware_version; //type: string
-
-
 
 }; // Fpd::Packages::AllPackage
 

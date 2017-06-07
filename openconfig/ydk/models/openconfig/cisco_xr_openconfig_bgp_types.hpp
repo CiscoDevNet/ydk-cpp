@@ -17,9 +17,6 @@ class Afi_Safi_TypeIdentity : public virtual Identity
         ~Afi_Safi_TypeIdentity();
 
 
-
-
-
 }; // Afi_Safi_TypeIdentity
 
 class Ipv6_UnicastIdentity : public cisco_xr_openconfig_bgp_types::Afi_Safi_TypeIdentity, virtual Identity
@@ -29,8 +26,6 @@ class Ipv6_UnicastIdentity : public cisco_xr_openconfig_bgp_types::Afi_Safi_Type
         ~Ipv6_UnicastIdentity();
 
 
-
-
 }; // Ipv6_UnicastIdentity
 
 class Ipv4_UnicastIdentity : public cisco_xr_openconfig_bgp_types::Afi_Safi_TypeIdentity, virtual Identity
@@ -38,8 +33,6 @@ class Ipv4_UnicastIdentity : public cisco_xr_openconfig_bgp_types::Afi_Safi_Type
     public:
         Ipv4_UnicastIdentity();
         ~Ipv4_UnicastIdentity();
-
-
 
 
 }; // Ipv4_UnicastIdentity

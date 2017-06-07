@@ -14,7 +14,6 @@ ShowUsers::ShowUsers()
     sessions(std::make_shared<ShowUsers::Sessions>())
 {
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     yang_name = "show-users"; yang_parent_name = "Cisco-IOS-XR-tty-management-cmd-oper";
 }
@@ -43,12 +42,12 @@ std::string ShowUsers::get_segment_path() const
 
 }
 
-EntityPath ShowUsers::get_entity_path(Entity* ancestor) const
+const EntityPath ShowUsers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath ShowUsers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ShowUsers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<ShowUsers::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ShowUsers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ShowUsers::get_children() const
 {
-    if(children.find("sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string ShowUsers::Sessions::get_segment_path() const
 
 }
 
-EntityPath ShowUsers::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath ShowUsers::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath ShowUsers::Sessions::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ShowUsers::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> ShowUsers::Sessions::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ShowUsers::Sessions::Session>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ShowUsers::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ShowUsers::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -284,7 +253,7 @@ std::string ShowUsers::Sessions::Session::get_segment_path() const
 
 }
 
-EntityPath ShowUsers::Sessions::Session::get_entity_path(Entity* ancestor) const
+const EntityPath ShowUsers::Sessions::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -314,20 +283,12 @@ EntityPath ShowUsers::Sessions::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ShowUsers::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ShowUsers::Sessions::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ShowUsers::Sessions::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

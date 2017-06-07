@@ -59,12 +59,12 @@ std::string Lldp::get_segment_path() const
 
 }
 
-EntityPath Lldp::get_entity_path(Entity* ancestor) const
+const EntityPath Lldp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -85,41 +85,24 @@ EntityPath Lldp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Lldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tlv-select")
     {
-        if(tlv_select != nullptr)
-        {
-            children["tlv-select"] = tlv_select;
-        }
-        else
+        if(tlv_select == nullptr)
         {
             tlv_select = std::make_shared<Lldp::TlvSelect>();
-            tlv_select->parent = this;
-            children["tlv-select"] = tlv_select;
         }
-        return children.at("tlv-select");
+        return tlv_select;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Lldp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Lldp::get_children() const
 {
-    if(children.find("tlv-select") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tlv_select != nullptr)
     {
-        if(tlv_select != nullptr)
-        {
-            children["tlv-select"] = tlv_select;
-        }
+        children["tlv-select"] = tlv_select;
     }
 
     return children;
@@ -184,19 +167,14 @@ Lldp::TlvSelect::TlvSelect()
 	,system_name(std::make_shared<Lldp::TlvSelect::SystemName>())
 {
     management_address->parent = this;
-    children["management-address"] = management_address;
 
     port_description->parent = this;
-    children["port-description"] = port_description;
 
     system_capabilities->parent = this;
-    children["system-capabilities"] = system_capabilities;
 
     system_description->parent = this;
-    children["system-description"] = system_description;
 
     system_name->parent = this;
-    children["system-name"] = system_name;
 
     yang_name = "tlv-select"; yang_parent_name = "lldp";
 }
@@ -235,7 +213,7 @@ std::string Lldp::TlvSelect::get_segment_path() const
 
 }
 
-EntityPath Lldp::TlvSelect::get_entity_path(Entity* ancestor) const
+const EntityPath Lldp::TlvSelect::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -259,133 +237,80 @@ EntityPath Lldp::TlvSelect::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Lldp::TlvSelect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "management-address")
     {
-        if(management_address != nullptr)
-        {
-            children["management-address"] = management_address;
-        }
-        else
+        if(management_address == nullptr)
         {
             management_address = std::make_shared<Lldp::TlvSelect::ManagementAddress>();
-            management_address->parent = this;
-            children["management-address"] = management_address;
         }
-        return children.at("management-address");
+        return management_address;
     }
 
     if(child_yang_name == "port-description")
     {
-        if(port_description != nullptr)
-        {
-            children["port-description"] = port_description;
-        }
-        else
+        if(port_description == nullptr)
         {
             port_description = std::make_shared<Lldp::TlvSelect::PortDescription>();
-            port_description->parent = this;
-            children["port-description"] = port_description;
         }
-        return children.at("port-description");
+        return port_description;
     }
 
     if(child_yang_name == "system-capabilities")
     {
-        if(system_capabilities != nullptr)
-        {
-            children["system-capabilities"] = system_capabilities;
-        }
-        else
+        if(system_capabilities == nullptr)
         {
             system_capabilities = std::make_shared<Lldp::TlvSelect::SystemCapabilities>();
-            system_capabilities->parent = this;
-            children["system-capabilities"] = system_capabilities;
         }
-        return children.at("system-capabilities");
+        return system_capabilities;
     }
 
     if(child_yang_name == "system-description")
     {
-        if(system_description != nullptr)
-        {
-            children["system-description"] = system_description;
-        }
-        else
+        if(system_description == nullptr)
         {
             system_description = std::make_shared<Lldp::TlvSelect::SystemDescription>();
-            system_description->parent = this;
-            children["system-description"] = system_description;
         }
-        return children.at("system-description");
+        return system_description;
     }
 
     if(child_yang_name == "system-name")
     {
-        if(system_name != nullptr)
-        {
-            children["system-name"] = system_name;
-        }
-        else
+        if(system_name == nullptr)
         {
             system_name = std::make_shared<Lldp::TlvSelect::SystemName>();
-            system_name->parent = this;
-            children["system-name"] = system_name;
         }
-        return children.at("system-name");
+        return system_name;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Lldp::TlvSelect::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::get_children() const
 {
-    if(children.find("management-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(management_address != nullptr)
     {
-        if(management_address != nullptr)
-        {
-            children["management-address"] = management_address;
-        }
+        children["management-address"] = management_address;
     }
 
-    if(children.find("port-description") == children.end())
+    if(port_description != nullptr)
     {
-        if(port_description != nullptr)
-        {
-            children["port-description"] = port_description;
-        }
+        children["port-description"] = port_description;
     }
 
-    if(children.find("system-capabilities") == children.end())
+    if(system_capabilities != nullptr)
     {
-        if(system_capabilities != nullptr)
-        {
-            children["system-capabilities"] = system_capabilities;
-        }
+        children["system-capabilities"] = system_capabilities;
     }
 
-    if(children.find("system-description") == children.end())
+    if(system_description != nullptr)
     {
-        if(system_description != nullptr)
-        {
-            children["system-description"] = system_description;
-        }
+        children["system-description"] = system_description;
     }
 
-    if(children.find("system-name") == children.end())
+    if(system_name != nullptr)
     {
-        if(system_name != nullptr)
-        {
-            children["system-name"] = system_name;
-        }
+        children["system-name"] = system_name;
     }
 
     return children;
@@ -430,7 +355,7 @@ std::string Lldp::TlvSelect::SystemName::get_segment_path() const
 
 }
 
-EntityPath Lldp::TlvSelect::SystemName::get_entity_path(Entity* ancestor) const
+const EntityPath Lldp::TlvSelect::SystemName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -454,20 +379,12 @@ EntityPath Lldp::TlvSelect::SystemName::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Lldp::TlvSelect::SystemName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Lldp::TlvSelect::SystemName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -510,7 +427,7 @@ std::string Lldp::TlvSelect::PortDescription::get_segment_path() const
 
 }
 
-EntityPath Lldp::TlvSelect::PortDescription::get_entity_path(Entity* ancestor) const
+const EntityPath Lldp::TlvSelect::PortDescription::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -534,20 +451,12 @@ EntityPath Lldp::TlvSelect::PortDescription::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Lldp::TlvSelect::PortDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Lldp::TlvSelect::PortDescription::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::PortDescription::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -590,7 +499,7 @@ std::string Lldp::TlvSelect::SystemDescription::get_segment_path() const
 
 }
 
-EntityPath Lldp::TlvSelect::SystemDescription::get_entity_path(Entity* ancestor) const
+const EntityPath Lldp::TlvSelect::SystemDescription::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -614,20 +523,12 @@ EntityPath Lldp::TlvSelect::SystemDescription::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Lldp::TlvSelect::SystemDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Lldp::TlvSelect::SystemDescription::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemDescription::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -670,7 +571,7 @@ std::string Lldp::TlvSelect::SystemCapabilities::get_segment_path() const
 
 }
 
-EntityPath Lldp::TlvSelect::SystemCapabilities::get_entity_path(Entity* ancestor) const
+const EntityPath Lldp::TlvSelect::SystemCapabilities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -694,20 +595,12 @@ EntityPath Lldp::TlvSelect::SystemCapabilities::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Lldp::TlvSelect::SystemCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Lldp::TlvSelect::SystemCapabilities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemCapabilities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -750,7 +643,7 @@ std::string Lldp::TlvSelect::ManagementAddress::get_segment_path() const
 
 }
 
-EntityPath Lldp::TlvSelect::ManagementAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Lldp::TlvSelect::ManagementAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -774,20 +667,12 @@ EntityPath Lldp::TlvSelect::ManagementAddress::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Lldp::TlvSelect::ManagementAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Lldp::TlvSelect::ManagementAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::ManagementAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ SyslogService::SyslogService()
     timestamps(std::make_shared<SyslogService::Timestamps>())
 {
     timestamps->parent = this;
-    children["timestamps"] = timestamps;
 
     yang_name = "syslog-service"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-cfg";
 }
@@ -43,12 +42,12 @@ std::string SyslogService::get_segment_path() const
 
 }
 
-EntityPath SyslogService::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath SyslogService::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SyslogService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timestamps")
     {
-        if(timestamps != nullptr)
-        {
-            children["timestamps"] = timestamps;
-        }
-        else
+        if(timestamps == nullptr)
         {
             timestamps = std::make_shared<SyslogService::Timestamps>();
-            timestamps->parent = this;
-            children["timestamps"] = timestamps;
         }
-        return children.at("timestamps");
+        return timestamps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::get_children() const
 {
-    if(children.find("timestamps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timestamps != nullptr)
     {
-        if(timestamps != nullptr)
-        {
-            children["timestamps"] = timestamps;
-        }
+        children["timestamps"] = timestamps;
     }
 
     return children;
@@ -135,10 +117,8 @@ SyslogService::Timestamps::Timestamps()
 	,log(std::make_shared<SyslogService::Timestamps::Log>())
 {
     debug->parent = this;
-    children["debug"] = debug;
 
     log->parent = this;
-    children["log"] = log;
 
     yang_name = "timestamps"; yang_parent_name = "syslog-service";
 }
@@ -171,7 +151,7 @@ std::string SyslogService::Timestamps::get_segment_path() const
 
 }
 
-EntityPath SyslogService::Timestamps::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::Timestamps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -195,64 +175,38 @@ EntityPath SyslogService::Timestamps::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SyslogService::Timestamps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "debug")
     {
-        if(debug != nullptr)
-        {
-            children["debug"] = debug;
-        }
-        else
+        if(debug == nullptr)
         {
             debug = std::make_shared<SyslogService::Timestamps::Debug>();
-            debug->parent = this;
-            children["debug"] = debug;
         }
-        return children.at("debug");
+        return debug;
     }
 
     if(child_yang_name == "log")
     {
-        if(log != nullptr)
-        {
-            children["log"] = log;
-        }
-        else
+        if(log == nullptr)
         {
             log = std::make_shared<SyslogService::Timestamps::Log>();
-            log->parent = this;
-            children["log"] = log;
         }
-        return children.at("log");
+        return log;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::Timestamps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::get_children() const
 {
-    if(children.find("debug") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(debug != nullptr)
     {
-        if(debug != nullptr)
-        {
-            children["debug"] = debug;
-        }
+        children["debug"] = debug;
     }
 
-    if(children.find("log") == children.end())
+    if(log != nullptr)
     {
-        if(log != nullptr)
-        {
-            children["log"] = log;
-        }
+        children["log"] = log;
     }
 
     return children;
@@ -274,7 +228,6 @@ SyslogService::Timestamps::Log::Log()
     log_datetime(std::make_shared<SyslogService::Timestamps::Log::LogDatetime>())
 {
     log_datetime->parent = this;
-    children["log-datetime"] = log_datetime;
 
     yang_name = "log"; yang_parent_name = "timestamps";
 }
@@ -307,7 +260,7 @@ std::string SyslogService::Timestamps::Log::get_segment_path() const
 
 }
 
-EntityPath SyslogService::Timestamps::Log::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::Timestamps::Log::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -332,41 +285,24 @@ EntityPath SyslogService::Timestamps::Log::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> SyslogService::Timestamps::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-datetime")
     {
-        if(log_datetime != nullptr)
-        {
-            children["log-datetime"] = log_datetime;
-        }
-        else
+        if(log_datetime == nullptr)
         {
             log_datetime = std::make_shared<SyslogService::Timestamps::Log::LogDatetime>();
-            log_datetime->parent = this;
-            children["log-datetime"] = log_datetime;
         }
-        return children.at("log-datetime");
+        return log_datetime;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::Timestamps::Log::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Log::get_children() const
 {
-    if(children.find("log-datetime") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(log_datetime != nullptr)
     {
-        if(log_datetime != nullptr)
-        {
-            children["log-datetime"] = log_datetime;
-        }
+        children["log-datetime"] = log_datetime;
     }
 
     return children;
@@ -389,7 +325,6 @@ SyslogService::Timestamps::Log::LogDatetime::LogDatetime()
     log_datetime_value(std::make_shared<SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue>())
 {
     log_datetime_value->parent = this;
-    children["log-datetime-value"] = log_datetime_value;
 
     yang_name = "log-datetime"; yang_parent_name = "log";
 }
@@ -418,7 +353,7 @@ std::string SyslogService::Timestamps::Log::LogDatetime::get_segment_path() cons
 
 }
 
-EntityPath SyslogService::Timestamps::Log::LogDatetime::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::Timestamps::Log::LogDatetime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -441,41 +376,24 @@ EntityPath SyslogService::Timestamps::Log::LogDatetime::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> SyslogService::Timestamps::Log::LogDatetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-datetime-value")
     {
-        if(log_datetime_value != nullptr)
-        {
-            children["log-datetime-value"] = log_datetime_value;
-        }
-        else
+        if(log_datetime_value == nullptr)
         {
             log_datetime_value = std::make_shared<SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue>();
-            log_datetime_value->parent = this;
-            children["log-datetime-value"] = log_datetime_value;
         }
-        return children.at("log-datetime-value");
+        return log_datetime_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::Timestamps::Log::LogDatetime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Log::LogDatetime::get_children() const
 {
-    if(children.find("log-datetime-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(log_datetime_value != nullptr)
     {
-        if(log_datetime_value != nullptr)
-        {
-            children["log-datetime-value"] = log_datetime_value;
-        }
+        children["log-datetime-value"] = log_datetime_value;
     }
 
     return children;
@@ -525,7 +443,7 @@ std::string SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_s
 
 }
 
-EntityPath SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -552,20 +470,12 @@ EntityPath SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_en
 
 std::shared_ptr<Entity> SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -597,7 +507,6 @@ SyslogService::Timestamps::Debug::Debug()
     debug_datetime(std::make_shared<SyslogService::Timestamps::Debug::DebugDatetime>())
 {
     debug_datetime->parent = this;
-    children["debug-datetime"] = debug_datetime;
 
     yang_name = "debug"; yang_parent_name = "timestamps";
 }
@@ -630,7 +539,7 @@ std::string SyslogService::Timestamps::Debug::get_segment_path() const
 
 }
 
-EntityPath SyslogService::Timestamps::Debug::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::Timestamps::Debug::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -655,41 +564,24 @@ EntityPath SyslogService::Timestamps::Debug::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> SyslogService::Timestamps::Debug::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "debug-datetime")
     {
-        if(debug_datetime != nullptr)
-        {
-            children["debug-datetime"] = debug_datetime;
-        }
-        else
+        if(debug_datetime == nullptr)
         {
             debug_datetime = std::make_shared<SyslogService::Timestamps::Debug::DebugDatetime>();
-            debug_datetime->parent = this;
-            children["debug-datetime"] = debug_datetime;
         }
-        return children.at("debug-datetime");
+        return debug_datetime;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::Timestamps::Debug::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Debug::get_children() const
 {
-    if(children.find("debug-datetime") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(debug_datetime != nullptr)
     {
-        if(debug_datetime != nullptr)
-        {
-            children["debug-datetime"] = debug_datetime;
-        }
+        children["debug-datetime"] = debug_datetime;
     }
 
     return children;
@@ -712,7 +604,6 @@ SyslogService::Timestamps::Debug::DebugDatetime::DebugDatetime()
     datetime_value(std::make_shared<SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue>())
 {
     datetime_value->parent = this;
-    children["datetime-value"] = datetime_value;
 
     yang_name = "debug-datetime"; yang_parent_name = "debug";
 }
@@ -741,7 +632,7 @@ std::string SyslogService::Timestamps::Debug::DebugDatetime::get_segment_path() 
 
 }
 
-EntityPath SyslogService::Timestamps::Debug::DebugDatetime::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::Timestamps::Debug::DebugDatetime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -764,41 +655,24 @@ EntityPath SyslogService::Timestamps::Debug::DebugDatetime::get_entity_path(Enti
 
 std::shared_ptr<Entity> SyslogService::Timestamps::Debug::DebugDatetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "datetime-value")
     {
-        if(datetime_value != nullptr)
-        {
-            children["datetime-value"] = datetime_value;
-        }
-        else
+        if(datetime_value == nullptr)
         {
             datetime_value = std::make_shared<SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue>();
-            datetime_value->parent = this;
-            children["datetime-value"] = datetime_value;
         }
-        return children.at("datetime-value");
+        return datetime_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::Timestamps::Debug::DebugDatetime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Debug::DebugDatetime::get_children() const
 {
-    if(children.find("datetime-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(datetime_value != nullptr)
     {
-        if(datetime_value != nullptr)
-        {
-            children["datetime-value"] = datetime_value;
-        }
+        children["datetime-value"] = datetime_value;
     }
 
     return children;
@@ -848,7 +722,7 @@ std::string SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_
 
 }
 
-EntityPath SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_entity_path(Entity* ancestor) const
+const EntityPath SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -875,20 +749,12 @@ EntityPath SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_e
 
 std::shared_ptr<Entity> SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -936,49 +802,34 @@ Syslog::Syslog()
 	,trap_logging(std::make_shared<Syslog::TrapLogging>())
 {
     alarm_logger->parent = this;
-    children["alarm-logger"] = alarm_logger;
 
     archive->parent = this;
-    children["archive"] = archive;
 
     buffered_logging->parent = this;
-    children["buffered-logging"] = buffered_logging;
 
     console_logging->parent = this;
-    children["console-logging"] = console_logging;
 
     correlator->parent = this;
-    children["correlator"] = correlator;
 
     files->parent = this;
-    children["files"] = files;
 
     history_logging->parent = this;
-    children["history-logging"] = history_logging;
 
     host_server->parent = this;
-    children["host-server"] = host_server;
 
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     logging_facilities->parent = this;
-    children["logging-facilities"] = logging_facilities;
 
     monitor_logging->parent = this;
-    children["monitor-logging"] = monitor_logging;
 
     source_interface_table->parent = this;
-    children["source-interface-table"] = source_interface_table;
 
     suppression->parent = this;
-    children["suppression"] = suppression;
 
     trap_logging->parent = this;
-    children["trap-logging"] = trap_logging;
 
     yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-cfg";
 }
@@ -1043,12 +894,12 @@ std::string Syslog::get_segment_path() const
 
 }
 
-EntityPath Syslog::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1067,363 +918,220 @@ EntityPath Syslog::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarm-logger")
     {
-        if(alarm_logger != nullptr)
-        {
-            children["alarm-logger"] = alarm_logger;
-        }
-        else
+        if(alarm_logger == nullptr)
         {
             alarm_logger = std::make_shared<Syslog::AlarmLogger>();
-            alarm_logger->parent = this;
-            children["alarm-logger"] = alarm_logger;
         }
-        return children.at("alarm-logger");
+        return alarm_logger;
     }
 
     if(child_yang_name == "archive")
     {
-        if(archive != nullptr)
-        {
-            children["archive"] = archive;
-        }
-        else
+        if(archive == nullptr)
         {
             archive = std::make_shared<Syslog::Archive>();
-            archive->parent = this;
-            children["archive"] = archive;
         }
-        return children.at("archive");
+        return archive;
     }
 
     if(child_yang_name == "buffered-logging")
     {
-        if(buffered_logging != nullptr)
-        {
-            children["buffered-logging"] = buffered_logging;
-        }
-        else
+        if(buffered_logging == nullptr)
         {
             buffered_logging = std::make_shared<Syslog::BufferedLogging>();
-            buffered_logging->parent = this;
-            children["buffered-logging"] = buffered_logging;
         }
-        return children.at("buffered-logging");
+        return buffered_logging;
     }
 
     if(child_yang_name == "console-logging")
     {
-        if(console_logging != nullptr)
-        {
-            children["console-logging"] = console_logging;
-        }
-        else
+        if(console_logging == nullptr)
         {
             console_logging = std::make_shared<Syslog::ConsoleLogging>();
-            console_logging->parent = this;
-            children["console-logging"] = console_logging;
         }
-        return children.at("console-logging");
+        return console_logging;
     }
 
     if(child_yang_name == "correlator")
     {
-        if(correlator != nullptr)
-        {
-            children["correlator"] = correlator;
-        }
-        else
+        if(correlator == nullptr)
         {
             correlator = std::make_shared<Syslog::Correlator>();
-            correlator->parent = this;
-            children["correlator"] = correlator;
         }
-        return children.at("correlator");
+        return correlator;
     }
 
     if(child_yang_name == "files")
     {
-        if(files != nullptr)
-        {
-            children["files"] = files;
-        }
-        else
+        if(files == nullptr)
         {
             files = std::make_shared<Syslog::Files>();
-            files->parent = this;
-            children["files"] = files;
         }
-        return children.at("files");
+        return files;
     }
 
     if(child_yang_name == "history-logging")
     {
-        if(history_logging != nullptr)
-        {
-            children["history-logging"] = history_logging;
-        }
-        else
+        if(history_logging == nullptr)
         {
             history_logging = std::make_shared<Syslog::HistoryLogging>();
-            history_logging->parent = this;
-            children["history-logging"] = history_logging;
         }
-        return children.at("history-logging");
+        return history_logging;
     }
 
     if(child_yang_name == "host-server")
     {
-        if(host_server != nullptr)
-        {
-            children["host-server"] = host_server;
-        }
-        else
+        if(host_server == nullptr)
         {
             host_server = std::make_shared<Syslog::HostServer>();
-            host_server->parent = this;
-            children["host-server"] = host_server;
         }
-        return children.at("host-server");
+        return host_server;
     }
 
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Syslog::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Syslog::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     if(child_yang_name == "logging-facilities")
     {
-        if(logging_facilities != nullptr)
-        {
-            children["logging-facilities"] = logging_facilities;
-        }
-        else
+        if(logging_facilities == nullptr)
         {
             logging_facilities = std::make_shared<Syslog::LoggingFacilities>();
-            logging_facilities->parent = this;
-            children["logging-facilities"] = logging_facilities;
         }
-        return children.at("logging-facilities");
+        return logging_facilities;
     }
 
     if(child_yang_name == "monitor-logging")
     {
-        if(monitor_logging != nullptr)
-        {
-            children["monitor-logging"] = monitor_logging;
-        }
-        else
+        if(monitor_logging == nullptr)
         {
             monitor_logging = std::make_shared<Syslog::MonitorLogging>();
-            monitor_logging->parent = this;
-            children["monitor-logging"] = monitor_logging;
         }
-        return children.at("monitor-logging");
+        return monitor_logging;
     }
 
     if(child_yang_name == "source-interface-table")
     {
-        if(source_interface_table != nullptr)
-        {
-            children["source-interface-table"] = source_interface_table;
-        }
-        else
+        if(source_interface_table == nullptr)
         {
             source_interface_table = std::make_shared<Syslog::SourceInterfaceTable>();
-            source_interface_table->parent = this;
-            children["source-interface-table"] = source_interface_table;
         }
-        return children.at("source-interface-table");
+        return source_interface_table;
     }
 
     if(child_yang_name == "suppression")
     {
-        if(suppression != nullptr)
-        {
-            children["suppression"] = suppression;
-        }
-        else
+        if(suppression == nullptr)
         {
             suppression = std::make_shared<Syslog::Suppression>();
-            suppression->parent = this;
-            children["suppression"] = suppression;
         }
-        return children.at("suppression");
+        return suppression;
     }
 
     if(child_yang_name == "trap-logging")
     {
-        if(trap_logging != nullptr)
-        {
-            children["trap-logging"] = trap_logging;
-        }
-        else
+        if(trap_logging == nullptr)
         {
             trap_logging = std::make_shared<Syslog::TrapLogging>();
-            trap_logging->parent = this;
-            children["trap-logging"] = trap_logging;
         }
-        return children.at("trap-logging");
+        return trap_logging;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
 {
-    if(children.find("alarm-logger") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(alarm_logger != nullptr)
     {
-        if(alarm_logger != nullptr)
-        {
-            children["alarm-logger"] = alarm_logger;
-        }
+        children["alarm-logger"] = alarm_logger;
     }
 
-    if(children.find("archive") == children.end())
+    if(archive != nullptr)
     {
-        if(archive != nullptr)
-        {
-            children["archive"] = archive;
-        }
+        children["archive"] = archive;
     }
 
-    if(children.find("buffered-logging") == children.end())
+    if(buffered_logging != nullptr)
     {
-        if(buffered_logging != nullptr)
-        {
-            children["buffered-logging"] = buffered_logging;
-        }
+        children["buffered-logging"] = buffered_logging;
     }
 
-    if(children.find("console-logging") == children.end())
+    if(console_logging != nullptr)
     {
-        if(console_logging != nullptr)
-        {
-            children["console-logging"] = console_logging;
-        }
+        children["console-logging"] = console_logging;
     }
 
-    if(children.find("correlator") == children.end())
+    if(correlator != nullptr)
     {
-        if(correlator != nullptr)
-        {
-            children["correlator"] = correlator;
-        }
+        children["correlator"] = correlator;
     }
 
-    if(children.find("files") == children.end())
+    if(files != nullptr)
     {
-        if(files != nullptr)
-        {
-            children["files"] = files;
-        }
+        children["files"] = files;
     }
 
-    if(children.find("history-logging") == children.end())
+    if(history_logging != nullptr)
     {
-        if(history_logging != nullptr)
-        {
-            children["history-logging"] = history_logging;
-        }
+        children["history-logging"] = history_logging;
     }
 
-    if(children.find("host-server") == children.end())
+    if(host_server != nullptr)
     {
-        if(host_server != nullptr)
-        {
-            children["host-server"] = host_server;
-        }
+        children["host-server"] = host_server;
     }
 
-    if(children.find("ipv4") == children.end())
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
-    if(children.find("logging-facilities") == children.end())
+    if(logging_facilities != nullptr)
     {
-        if(logging_facilities != nullptr)
-        {
-            children["logging-facilities"] = logging_facilities;
-        }
+        children["logging-facilities"] = logging_facilities;
     }
 
-    if(children.find("monitor-logging") == children.end())
+    if(monitor_logging != nullptr)
     {
-        if(monitor_logging != nullptr)
-        {
-            children["monitor-logging"] = monitor_logging;
-        }
+        children["monitor-logging"] = monitor_logging;
     }
 
-    if(children.find("source-interface-table") == children.end())
+    if(source_interface_table != nullptr)
     {
-        if(source_interface_table != nullptr)
-        {
-            children["source-interface-table"] = source_interface_table;
-        }
+        children["source-interface-table"] = source_interface_table;
     }
 
-    if(children.find("suppression") == children.end())
+    if(suppression != nullptr)
     {
-        if(suppression != nullptr)
-        {
-            children["suppression"] = suppression;
-        }
+        children["suppression"] = suppression;
     }
 
-    if(children.find("trap-logging") == children.end())
+    if(trap_logging != nullptr)
     {
-        if(trap_logging != nullptr)
-        {
-            children["trap-logging"] = trap_logging;
-        }
+        children["trap-logging"] = trap_logging;
     }
 
     return children;
@@ -1476,7 +1184,6 @@ Syslog::MonitorLogging::MonitorLogging()
     monitor_discriminator(std::make_shared<Syslog::MonitorLogging::MonitorDiscriminator>())
 {
     monitor_discriminator->parent = this;
-    children["monitor-discriminator"] = monitor_discriminator;
 
     yang_name = "monitor-logging"; yang_parent_name = "syslog";
 }
@@ -1507,7 +1214,7 @@ std::string Syslog::MonitorLogging::get_segment_path() const
 
 }
 
-EntityPath Syslog::MonitorLogging::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::MonitorLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1531,41 +1238,24 @@ EntityPath Syslog::MonitorLogging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::MonitorLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "monitor-discriminator")
     {
-        if(monitor_discriminator != nullptr)
-        {
-            children["monitor-discriminator"] = monitor_discriminator;
-        }
-        else
+        if(monitor_discriminator == nullptr)
         {
             monitor_discriminator = std::make_shared<Syslog::MonitorLogging::MonitorDiscriminator>();
-            monitor_discriminator->parent = this;
-            children["monitor-discriminator"] = monitor_discriminator;
         }
-        return children.at("monitor-discriminator");
+        return monitor_discriminator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::MonitorLogging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::MonitorLogging::get_children() const
 {
-    if(children.find("monitor-discriminator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(monitor_discriminator != nullptr)
     {
-        if(monitor_discriminator != nullptr)
-        {
-            children["monitor-discriminator"] = monitor_discriminator;
-        }
+        children["monitor-discriminator"] = monitor_discriminator;
     }
 
     return children;
@@ -1625,7 +1315,7 @@ std::string Syslog::MonitorLogging::MonitorDiscriminator::get_segment_path() con
 
 }
 
-EntityPath Syslog::MonitorLogging::MonitorDiscriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::MonitorLogging::MonitorDiscriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1654,20 +1344,12 @@ EntityPath Syslog::MonitorLogging::MonitorDiscriminator::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Syslog::MonitorLogging::MonitorDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::MonitorLogging::MonitorDiscriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::MonitorLogging::MonitorDiscriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1733,7 +1415,7 @@ std::string Syslog::HistoryLogging::get_segment_path() const
 
 }
 
-EntityPath Syslog::HistoryLogging::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HistoryLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1758,20 +1440,12 @@ EntityPath Syslog::HistoryLogging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::HistoryLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HistoryLogging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HistoryLogging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1818,7 +1492,7 @@ std::string Syslog::LoggingFacilities::get_segment_path() const
 
 }
 
-EntityPath Syslog::LoggingFacilities::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingFacilities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1842,20 +1516,12 @@ EntityPath Syslog::LoggingFacilities::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::LoggingFacilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingFacilities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFacilities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1898,7 +1564,7 @@ std::string Syslog::TrapLogging::get_segment_path() const
 
 }
 
-EntityPath Syslog::TrapLogging::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::TrapLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1922,20 +1588,12 @@ EntityPath Syslog::TrapLogging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::TrapLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::TrapLogging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::TrapLogging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1955,7 +1613,6 @@ Syslog::BufferedLogging::BufferedLogging()
     buffered_discriminator(std::make_shared<Syslog::BufferedLogging::BufferedDiscriminator>())
 {
     buffered_discriminator->parent = this;
-    children["buffered-discriminator"] = buffered_discriminator;
 
     yang_name = "buffered-logging"; yang_parent_name = "syslog";
 }
@@ -1988,7 +1645,7 @@ std::string Syslog::BufferedLogging::get_segment_path() const
 
 }
 
-EntityPath Syslog::BufferedLogging::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::BufferedLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2013,41 +1670,24 @@ EntityPath Syslog::BufferedLogging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::BufferedLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "buffered-discriminator")
     {
-        if(buffered_discriminator != nullptr)
-        {
-            children["buffered-discriminator"] = buffered_discriminator;
-        }
-        else
+        if(buffered_discriminator == nullptr)
         {
             buffered_discriminator = std::make_shared<Syslog::BufferedLogging::BufferedDiscriminator>();
-            buffered_discriminator->parent = this;
-            children["buffered-discriminator"] = buffered_discriminator;
         }
-        return children.at("buffered-discriminator");
+        return buffered_discriminator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::BufferedLogging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::BufferedLogging::get_children() const
 {
-    if(children.find("buffered-discriminator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(buffered_discriminator != nullptr)
     {
-        if(buffered_discriminator != nullptr)
-        {
-            children["buffered-discriminator"] = buffered_discriminator;
-        }
+        children["buffered-discriminator"] = buffered_discriminator;
     }
 
     return children;
@@ -2111,7 +1751,7 @@ std::string Syslog::BufferedLogging::BufferedDiscriminator::get_segment_path() c
 
 }
 
-EntityPath Syslog::BufferedLogging::BufferedDiscriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::BufferedLogging::BufferedDiscriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2140,20 +1780,12 @@ EntityPath Syslog::BufferedLogging::BufferedDiscriminator::get_entity_path(Entit
 
 std::shared_ptr<Entity> Syslog::BufferedLogging::BufferedDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::BufferedLogging::BufferedDiscriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::BufferedLogging::BufferedDiscriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2190,7 +1822,6 @@ Syslog::HostServer::HostServer()
     vrfs(std::make_shared<Syslog::HostServer::Vrfs>())
 {
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "host-server"; yang_parent_name = "syslog";
 }
@@ -2219,7 +1850,7 @@ std::string Syslog::HostServer::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2242,41 +1873,24 @@ EntityPath Syslog::HostServer::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::HostServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Syslog::HostServer::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::get_children() const
 {
-    if(children.find("vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -2324,7 +1938,7 @@ std::string Syslog::HostServer::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2347,15 +1961,6 @@ EntityPath Syslog::HostServer::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -2363,28 +1968,24 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2403,13 +2004,10 @@ Syslog::HostServer::Vrfs::Vrf::Vrf()
 	,ipv6s(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S>())
 {
     hosts->parent = this;
-    children["hosts"] = hosts;
 
     ipv4s->parent = this;
-    children["ipv4s"] = ipv4s;
 
     ipv6s->parent = this;
-    children["ipv6s"] = ipv6s;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -2444,7 +2042,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2468,87 +2066,52 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hosts")
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
-        else
+        if(hosts == nullptr)
         {
             hosts = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts>();
-            hosts->parent = this;
-            children["hosts"] = hosts;
         }
-        return children.at("hosts");
+        return hosts;
     }
 
     if(child_yang_name == "ipv4s")
     {
-        if(ipv4s != nullptr)
-        {
-            children["ipv4s"] = ipv4s;
-        }
-        else
+        if(ipv4s == nullptr)
         {
             ipv4s = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S>();
-            ipv4s->parent = this;
-            children["ipv4s"] = ipv4s;
         }
-        return children.at("ipv4s");
+        return ipv4s;
     }
 
     if(child_yang_name == "ipv6s")
     {
-        if(ipv6s != nullptr)
-        {
-            children["ipv6s"] = ipv6s;
-        }
-        else
+        if(ipv6s == nullptr)
         {
             ipv6s = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S>();
-            ipv6s->parent = this;
-            children["ipv6s"] = ipv6s;
         }
-        return children.at("ipv6s");
+        return ipv6s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::get_children() const
 {
-    if(children.find("hosts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hosts != nullptr)
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
+        children["hosts"] = hosts;
     }
 
-    if(children.find("ipv4s") == children.end())
+    if(ipv4s != nullptr)
     {
-        if(ipv4s != nullptr)
-        {
-            children["ipv4s"] = ipv4s;
-        }
+        children["ipv4s"] = ipv4s;
     }
 
-    if(children.find("ipv6s") == children.end())
+    if(ipv6s != nullptr)
     {
-        if(ipv6s != nullptr)
-        {
-            children["ipv6s"] = ipv6s;
-        }
+        children["ipv6s"] = ipv6s;
     }
 
     return children;
@@ -2600,7 +2163,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2623,15 +2186,6 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6")
     {
         for(auto const & c : ipv6)
@@ -2639,28 +2193,24 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6>();
         c->parent = this;
-        ipv6.push_back(std::move(c));
-        children[segment_path] = ipv6.back();
-        return children.at(segment_path);
+        ipv6.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2679,13 +2229,10 @@ Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6()
 	,ipv6_severity_port(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort>())
 {
     ipv6_discriminator->parent = this;
-    children["ipv6-discriminator"] = ipv6_discriminator;
 
     ipv6_severity_levels->parent = this;
-    children["ipv6-severity-levels"] = ipv6_severity_levels;
 
     ipv6_severity_port->parent = this;
-    children["ipv6-severity-port"] = ipv6_severity_port;
 
     yang_name = "ipv6"; yang_parent_name = "ipv6s";
 }
@@ -2720,7 +2267,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2744,87 +2291,52 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6-discriminator")
     {
-        if(ipv6_discriminator != nullptr)
-        {
-            children["ipv6-discriminator"] = ipv6_discriminator;
-        }
-        else
+        if(ipv6_discriminator == nullptr)
         {
             ipv6_discriminator = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator>();
-            ipv6_discriminator->parent = this;
-            children["ipv6-discriminator"] = ipv6_discriminator;
         }
-        return children.at("ipv6-discriminator");
+        return ipv6_discriminator;
     }
 
     if(child_yang_name == "ipv6-severity-levels")
     {
-        if(ipv6_severity_levels != nullptr)
-        {
-            children["ipv6-severity-levels"] = ipv6_severity_levels;
-        }
-        else
+        if(ipv6_severity_levels == nullptr)
         {
             ipv6_severity_levels = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels>();
-            ipv6_severity_levels->parent = this;
-            children["ipv6-severity-levels"] = ipv6_severity_levels;
         }
-        return children.at("ipv6-severity-levels");
+        return ipv6_severity_levels;
     }
 
     if(child_yang_name == "ipv6-severity-port")
     {
-        if(ipv6_severity_port != nullptr)
-        {
-            children["ipv6-severity-port"] = ipv6_severity_port;
-        }
-        else
+        if(ipv6_severity_port == nullptr)
         {
             ipv6_severity_port = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort>();
-            ipv6_severity_port->parent = this;
-            children["ipv6-severity-port"] = ipv6_severity_port;
         }
-        return children.at("ipv6-severity-port");
+        return ipv6_severity_port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_children() const
 {
-    if(children.find("ipv6-discriminator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv6_discriminator != nullptr)
     {
-        if(ipv6_discriminator != nullptr)
-        {
-            children["ipv6-discriminator"] = ipv6_discriminator;
-        }
+        children["ipv6-discriminator"] = ipv6_discriminator;
     }
 
-    if(children.find("ipv6-severity-levels") == children.end())
+    if(ipv6_severity_levels != nullptr)
     {
-        if(ipv6_severity_levels != nullptr)
-        {
-            children["ipv6-severity-levels"] = ipv6_severity_levels;
-        }
+        children["ipv6-severity-levels"] = ipv6_severity_levels;
     }
 
-    if(children.find("ipv6-severity-port") == children.end())
+    if(ipv6_severity_port != nullptr)
     {
-        if(ipv6_severity_port != nullptr)
-        {
-            children["ipv6-severity-port"] = ipv6_severity_port;
-        }
+        children["ipv6-severity-port"] = ipv6_severity_port;
     }
 
     return children;
@@ -2872,7 +2384,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_se
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2897,20 +2409,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_ent
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2972,7 +2476,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_s
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3001,20 +2505,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_en
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3084,7 +2580,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3107,15 +2603,6 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_e
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6-severity-level")
     {
         for(auto const & c : ipv6_severity_level)
@@ -3123,28 +2610,24 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Severity
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel>();
         c->parent = this;
-        ipv6_severity_level.push_back(std::move(c));
-        children[segment_path] = ipv6_severity_level.back();
-        return children.at(segment_path);
+        ipv6_severity_level.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv6_severity_level)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3185,7 +2668,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3209,20 +2692,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6S
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3272,7 +2747,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Hosts::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3295,15 +2770,6 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host")
     {
         for(auto const & c : host)
@@ -3311,28 +2777,24 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host>();
         c->parent = this;
-        host.push_back(std::move(c));
-        children[segment_path] = host.back();
-        return children.at(segment_path);
+        host.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Hosts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3351,13 +2813,10 @@ Syslog::HostServer::Vrfs::Vrf::Hosts::Host::Host()
 	,host_severity_port(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort>())
 {
     host_name_discriminator->parent = this;
-    children["host-name-discriminator"] = host_name_discriminator;
 
     host_name_severities->parent = this;
-    children["host-name-severities"] = host_name_severities;
 
     host_severity_port->parent = this;
-    children["host-severity-port"] = host_severity_port;
 
     yang_name = "host"; yang_parent_name = "hosts";
 }
@@ -3392,7 +2851,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3416,87 +2875,52 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host-name-discriminator")
     {
-        if(host_name_discriminator != nullptr)
-        {
-            children["host-name-discriminator"] = host_name_discriminator;
-        }
-        else
+        if(host_name_discriminator == nullptr)
         {
             host_name_discriminator = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator>();
-            host_name_discriminator->parent = this;
-            children["host-name-discriminator"] = host_name_discriminator;
         }
-        return children.at("host-name-discriminator");
+        return host_name_discriminator;
     }
 
     if(child_yang_name == "host-name-severities")
     {
-        if(host_name_severities != nullptr)
-        {
-            children["host-name-severities"] = host_name_severities;
-        }
-        else
+        if(host_name_severities == nullptr)
         {
             host_name_severities = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities>();
-            host_name_severities->parent = this;
-            children["host-name-severities"] = host_name_severities;
         }
-        return children.at("host-name-severities");
+        return host_name_severities;
     }
 
     if(child_yang_name == "host-severity-port")
     {
-        if(host_severity_port != nullptr)
-        {
-            children["host-severity-port"] = host_severity_port;
-        }
-        else
+        if(host_severity_port == nullptr)
         {
             host_severity_port = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort>();
-            host_severity_port->parent = this;
-            children["host-severity-port"] = host_severity_port;
         }
-        return children.at("host-severity-port");
+        return host_severity_port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_children() const
 {
-    if(children.find("host-name-discriminator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(host_name_discriminator != nullptr)
     {
-        if(host_name_discriminator != nullptr)
-        {
-            children["host-name-discriminator"] = host_name_discriminator;
-        }
+        children["host-name-discriminator"] = host_name_discriminator;
     }
 
-    if(children.find("host-name-severities") == children.end())
+    if(host_name_severities != nullptr)
     {
-        if(host_name_severities != nullptr)
-        {
-            children["host-name-severities"] = host_name_severities;
-        }
+        children["host-name-severities"] = host_name_severities;
     }
 
-    if(children.find("host-severity-port") == children.end())
+    if(host_severity_port != nullptr)
     {
-        if(host_severity_port != nullptr)
-        {
-            children["host-severity-port"] = host_severity_port;
-        }
+        children["host-severity-port"] = host_severity_port;
     }
 
     return children;
@@ -3548,7 +2972,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3571,15 +2995,6 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_e
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host-name-severity")
     {
         for(auto const & c : host_name_severity)
@@ -3587,28 +3002,24 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeve
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity>();
         c->parent = this;
-        host_name_severity.push_back(std::move(c));
-        children[segment_path] = host_name_severity.back();
-        return children.at(segment_path);
+        host_name_severity.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host_name_severity)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3649,7 +3060,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::Host
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3673,20 +3084,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostN
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3744,7 +3147,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::g
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3773,20 +3176,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::ge
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3852,7 +3247,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_se
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3877,20 +3272,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_ent
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3944,7 +3331,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3967,15 +3354,6 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
         for(auto const & c : ipv4)
@@ -3983,28 +3361,24 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4>();
         c->parent = this;
-        ipv4.push_back(std::move(c));
-        children[segment_path] = ipv4.back();
-        return children.at(segment_path);
+        ipv4.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4023,13 +3397,10 @@ Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4()
 	,ipv4_severity_port(std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort>())
 {
     ipv4_discriminator->parent = this;
-    children["ipv4-discriminator"] = ipv4_discriminator;
 
     ipv4_severity_levels->parent = this;
-    children["ipv4-severity-levels"] = ipv4_severity_levels;
 
     ipv4_severity_port->parent = this;
-    children["ipv4-severity-port"] = ipv4_severity_port;
 
     yang_name = "ipv4"; yang_parent_name = "ipv4s";
 }
@@ -4064,7 +3435,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_segment_path() const
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4088,87 +3459,52 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-discriminator")
     {
-        if(ipv4_discriminator != nullptr)
-        {
-            children["ipv4-discriminator"] = ipv4_discriminator;
-        }
-        else
+        if(ipv4_discriminator == nullptr)
         {
             ipv4_discriminator = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator>();
-            ipv4_discriminator->parent = this;
-            children["ipv4-discriminator"] = ipv4_discriminator;
         }
-        return children.at("ipv4-discriminator");
+        return ipv4_discriminator;
     }
 
     if(child_yang_name == "ipv4-severity-levels")
     {
-        if(ipv4_severity_levels != nullptr)
-        {
-            children["ipv4-severity-levels"] = ipv4_severity_levels;
-        }
-        else
+        if(ipv4_severity_levels == nullptr)
         {
             ipv4_severity_levels = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels>();
-            ipv4_severity_levels->parent = this;
-            children["ipv4-severity-levels"] = ipv4_severity_levels;
         }
-        return children.at("ipv4-severity-levels");
+        return ipv4_severity_levels;
     }
 
     if(child_yang_name == "ipv4-severity-port")
     {
-        if(ipv4_severity_port != nullptr)
-        {
-            children["ipv4-severity-port"] = ipv4_severity_port;
-        }
-        else
+        if(ipv4_severity_port == nullptr)
         {
             ipv4_severity_port = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort>();
-            ipv4_severity_port->parent = this;
-            children["ipv4-severity-port"] = ipv4_severity_port;
         }
-        return children.at("ipv4-severity-port");
+        return ipv4_severity_port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_children() const
 {
-    if(children.find("ipv4-discriminator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_discriminator != nullptr)
     {
-        if(ipv4_discriminator != nullptr)
-        {
-            children["ipv4-discriminator"] = ipv4_discriminator;
-        }
+        children["ipv4-discriminator"] = ipv4_discriminator;
     }
 
-    if(children.find("ipv4-severity-levels") == children.end())
+    if(ipv4_severity_levels != nullptr)
     {
-        if(ipv4_severity_levels != nullptr)
-        {
-            children["ipv4-severity-levels"] = ipv4_severity_levels;
-        }
+        children["ipv4-severity-levels"] = ipv4_severity_levels;
     }
 
-    if(children.find("ipv4-severity-port") == children.end())
+    if(ipv4_severity_port != nullptr)
     {
-        if(ipv4_severity_port != nullptr)
-        {
-            children["ipv4-severity-port"] = ipv4_severity_port;
-        }
+        children["ipv4-severity-port"] = ipv4_severity_port;
     }
 
     return children;
@@ -4220,7 +3556,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4243,15 +3579,6 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_e
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-severity-level")
     {
         for(auto const & c : ipv4_severity_level)
@@ -4259,28 +3586,24 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Severity
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel>();
         c->parent = this;
-        ipv4_severity_level.push_back(std::move(c));
-        children[segment_path] = ipv4_severity_level.back();
-        return children.at(segment_path);
+        ipv4_severity_level.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_severity_level)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4321,7 +3644,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4345,20 +3668,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4S
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4404,7 +3719,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_se
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4429,20 +3744,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_ent
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4504,7 +3811,7 @@ std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_s
 
 }
 
-EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4533,20 +3840,12 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_en
 
 std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4585,7 +3884,6 @@ Syslog::ConsoleLogging::ConsoleLogging()
     console_discriminator(std::make_shared<Syslog::ConsoleLogging::ConsoleDiscriminator>())
 {
     console_discriminator->parent = this;
-    children["console-discriminator"] = console_discriminator;
 
     yang_name = "console-logging"; yang_parent_name = "syslog";
 }
@@ -4616,7 +3914,7 @@ std::string Syslog::ConsoleLogging::get_segment_path() const
 
 }
 
-EntityPath Syslog::ConsoleLogging::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::ConsoleLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4640,41 +3938,24 @@ EntityPath Syslog::ConsoleLogging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::ConsoleLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "console-discriminator")
     {
-        if(console_discriminator != nullptr)
-        {
-            children["console-discriminator"] = console_discriminator;
-        }
-        else
+        if(console_discriminator == nullptr)
         {
             console_discriminator = std::make_shared<Syslog::ConsoleLogging::ConsoleDiscriminator>();
-            console_discriminator->parent = this;
-            children["console-discriminator"] = console_discriminator;
         }
-        return children.at("console-discriminator");
+        return console_discriminator;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::ConsoleLogging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::ConsoleLogging::get_children() const
 {
-    if(children.find("console-discriminator") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(console_discriminator != nullptr)
     {
-        if(console_discriminator != nullptr)
-        {
-            children["console-discriminator"] = console_discriminator;
-        }
+        children["console-discriminator"] = console_discriminator;
     }
 
     return children;
@@ -4734,7 +4015,7 @@ std::string Syslog::ConsoleLogging::ConsoleDiscriminator::get_segment_path() con
 
 }
 
-EntityPath Syslog::ConsoleLogging::ConsoleDiscriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::ConsoleLogging::ConsoleDiscriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4763,20 +4044,12 @@ EntityPath Syslog::ConsoleLogging::ConsoleDiscriminator::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Syslog::ConsoleLogging::ConsoleDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::ConsoleLogging::ConsoleDiscriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::ConsoleLogging::ConsoleDiscriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4846,7 +4119,7 @@ std::string Syslog::Files::get_segment_path() const
 
 }
 
-EntityPath Syslog::Files::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Files::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4869,15 +4142,6 @@ EntityPath Syslog::Files::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Files::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "file")
     {
         for(auto const & c : file)
@@ -4885,28 +4149,24 @@ std::shared_ptr<Entity> Syslog::Files::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Files::File>();
         c->parent = this;
-        file.push_back(std::move(c));
-        children[segment_path] = file.back();
-        return children.at(segment_path);
+        file.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Files::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : file)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4925,13 +4185,10 @@ Syslog::Files::File::File()
 	,file_specification(std::make_shared<Syslog::Files::File::FileSpecification>())
 {
     file_log_attributes->parent = this;
-    children["file-log-attributes"] = file_log_attributes;
 
     file_log_discriminator->parent = this;
-    children["file-log-discriminator"] = file_log_discriminator;
 
     file_specification->parent = this;
-    children["file-specification"] = file_specification;
 
     yang_name = "file"; yang_parent_name = "files";
 }
@@ -4966,7 +4223,7 @@ std::string Syslog::Files::File::get_segment_path() const
 
 }
 
-EntityPath Syslog::Files::File::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Files::File::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4990,87 +4247,52 @@ EntityPath Syslog::Files::File::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Files::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "file-log-attributes")
     {
-        if(file_log_attributes != nullptr)
-        {
-            children["file-log-attributes"] = file_log_attributes;
-        }
-        else
+        if(file_log_attributes == nullptr)
         {
             file_log_attributes = std::make_shared<Syslog::Files::File::FileLogAttributes>();
-            file_log_attributes->parent = this;
-            children["file-log-attributes"] = file_log_attributes;
         }
-        return children.at("file-log-attributes");
+        return file_log_attributes;
     }
 
     if(child_yang_name == "file-log-discriminator")
     {
-        if(file_log_discriminator != nullptr)
-        {
-            children["file-log-discriminator"] = file_log_discriminator;
-        }
-        else
+        if(file_log_discriminator == nullptr)
         {
             file_log_discriminator = std::make_shared<Syslog::Files::File::FileLogDiscriminator>();
-            file_log_discriminator->parent = this;
-            children["file-log-discriminator"] = file_log_discriminator;
         }
-        return children.at("file-log-discriminator");
+        return file_log_discriminator;
     }
 
     if(child_yang_name == "file-specification")
     {
-        if(file_specification != nullptr)
-        {
-            children["file-specification"] = file_specification;
-        }
-        else
+        if(file_specification == nullptr)
         {
             file_specification = std::make_shared<Syslog::Files::File::FileSpecification>();
-            file_specification->parent = this;
-            children["file-specification"] = file_specification;
         }
-        return children.at("file-specification");
+        return file_specification;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Files::File::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::get_children() const
 {
-    if(children.find("file-log-attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(file_log_attributes != nullptr)
     {
-        if(file_log_attributes != nullptr)
-        {
-            children["file-log-attributes"] = file_log_attributes;
-        }
+        children["file-log-attributes"] = file_log_attributes;
     }
 
-    if(children.find("file-log-discriminator") == children.end())
+    if(file_log_discriminator != nullptr)
     {
-        if(file_log_discriminator != nullptr)
-        {
-            children["file-log-discriminator"] = file_log_discriminator;
-        }
+        children["file-log-discriminator"] = file_log_discriminator;
     }
 
-    if(children.find("file-specification") == children.end())
+    if(file_specification != nullptr)
     {
-        if(file_specification != nullptr)
-        {
-            children["file-specification"] = file_specification;
-        }
+        children["file-specification"] = file_specification;
     }
 
     return children;
@@ -5121,7 +4343,7 @@ std::string Syslog::Files::File::FileSpecification::get_segment_path() const
 
 }
 
-EntityPath Syslog::Files::File::FileSpecification::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Files::File::FileSpecification::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5147,20 +4369,12 @@ EntityPath Syslog::Files::File::FileSpecification::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Syslog::Files::File::FileSpecification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Files::File::FileSpecification::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::FileSpecification::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5214,7 +4428,7 @@ std::string Syslog::Files::File::FileLogAttributes::get_segment_path() const
 
 }
 
-EntityPath Syslog::Files::File::FileLogAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Files::File::FileLogAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5239,20 +4453,12 @@ EntityPath Syslog::Files::File::FileLogAttributes::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Syslog::Files::File::FileLogAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Files::File::FileLogAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::FileLogAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5314,7 +4520,7 @@ std::string Syslog::Files::File::FileLogDiscriminator::get_segment_path() const
 
 }
 
-EntityPath Syslog::Files::File::FileLogDiscriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Files::File::FileLogDiscriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5343,20 +4549,12 @@ EntityPath Syslog::Files::File::FileLogDiscriminator::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Syslog::Files::File::FileLogDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Files::File::FileLogDiscriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::FileLogDiscriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5395,7 +4593,6 @@ Syslog::Ipv4::Ipv4()
 	,tos(std::make_shared<Syslog::Ipv4::Tos>())
 {
     tos->parent = this;
-    children["tos"] = tos;
 
     yang_name = "ipv4"; yang_parent_name = "syslog";
 }
@@ -5428,7 +4625,7 @@ std::string Syslog::Ipv4::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5451,87 +4648,52 @@ EntityPath Syslog::Ipv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dscp")
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
-        else
+        if(dscp == nullptr)
         {
             dscp = std::make_shared<Syslog::Ipv4::Dscp>();
-            dscp->parent = this;
-            children["dscp"] = dscp;
         }
-        return children.at("dscp");
+        return dscp;
     }
 
     if(child_yang_name == "precedence")
     {
-        if(precedence != nullptr)
-        {
-            children["precedence"] = precedence;
-        }
-        else
+        if(precedence == nullptr)
         {
             precedence = std::make_shared<Syslog::Ipv4::Precedence>();
-            precedence->parent = this;
-            children["precedence"] = precedence;
         }
-        return children.at("precedence");
+        return precedence;
     }
 
     if(child_yang_name == "tos")
     {
-        if(tos != nullptr)
-        {
-            children["tos"] = tos;
-        }
-        else
+        if(tos == nullptr)
         {
             tos = std::make_shared<Syslog::Ipv4::Tos>();
-            tos->parent = this;
-            children["tos"] = tos;
         }
-        return children.at("tos");
+        return tos;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::get_children() const
 {
-    if(children.find("dscp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dscp != nullptr)
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
+        children["dscp"] = dscp;
     }
 
-    if(children.find("precedence") == children.end())
+    if(precedence != nullptr)
     {
-        if(precedence != nullptr)
-        {
-            children["precedence"] = precedence;
-        }
+        children["precedence"] = precedence;
     }
 
-    if(children.find("tos") == children.end())
+    if(tos != nullptr)
     {
-        if(tos != nullptr)
-        {
-            children["tos"] = tos;
-        }
+        children["tos"] = tos;
     }
 
     return children;
@@ -5578,7 +4740,7 @@ std::string Syslog::Ipv4::Dscp::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv4::Dscp::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv4::Dscp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5604,20 +4766,12 @@ EntityPath Syslog::Ipv4::Dscp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv4::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv4::Dscp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::Dscp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5674,7 +4828,7 @@ std::string Syslog::Ipv4::Tos::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv4::Tos::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv4::Tos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5700,20 +4854,12 @@ EntityPath Syslog::Ipv4::Tos::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv4::Tos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv4::Tos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::Tos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5770,7 +4916,7 @@ std::string Syslog::Ipv4::Precedence::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv4::Precedence::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv4::Precedence::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5796,20 +4942,12 @@ EntityPath Syslog::Ipv4::Precedence::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv4::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv4::Precedence::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::Precedence::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5878,7 +5016,7 @@ std::string Syslog::Archive::get_segment_path() const
 
 }
 
-EntityPath Syslog::Archive::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Archive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5908,20 +5046,12 @@ EntityPath Syslog::Archive::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Archive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Archive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Archive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5964,7 +5094,6 @@ Syslog::Ipv6::Ipv6()
 	,traffic_class(std::make_shared<Syslog::Ipv6::TrafficClass>())
 {
     traffic_class->parent = this;
-    children["traffic-class"] = traffic_class;
 
     yang_name = "ipv6"; yang_parent_name = "syslog";
 }
@@ -5997,7 +5126,7 @@ std::string Syslog::Ipv6::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6020,87 +5149,52 @@ EntityPath Syslog::Ipv6::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dscp")
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
-        else
+        if(dscp == nullptr)
         {
             dscp = std::make_shared<Syslog::Ipv6::Dscp>();
-            dscp->parent = this;
-            children["dscp"] = dscp;
         }
-        return children.at("dscp");
+        return dscp;
     }
 
     if(child_yang_name == "precedence")
     {
-        if(precedence != nullptr)
-        {
-            children["precedence"] = precedence;
-        }
-        else
+        if(precedence == nullptr)
         {
             precedence = std::make_shared<Syslog::Ipv6::Precedence>();
-            precedence->parent = this;
-            children["precedence"] = precedence;
         }
-        return children.at("precedence");
+        return precedence;
     }
 
     if(child_yang_name == "traffic-class")
     {
-        if(traffic_class != nullptr)
-        {
-            children["traffic-class"] = traffic_class;
-        }
-        else
+        if(traffic_class == nullptr)
         {
             traffic_class = std::make_shared<Syslog::Ipv6::TrafficClass>();
-            traffic_class->parent = this;
-            children["traffic-class"] = traffic_class;
         }
-        return children.at("traffic-class");
+        return traffic_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::get_children() const
 {
-    if(children.find("dscp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dscp != nullptr)
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
+        children["dscp"] = dscp;
     }
 
-    if(children.find("precedence") == children.end())
+    if(precedence != nullptr)
     {
-        if(precedence != nullptr)
-        {
-            children["precedence"] = precedence;
-        }
+        children["precedence"] = precedence;
     }
 
-    if(children.find("traffic-class") == children.end())
+    if(traffic_class != nullptr)
     {
-        if(traffic_class != nullptr)
-        {
-            children["traffic-class"] = traffic_class;
-        }
+        children["traffic-class"] = traffic_class;
     }
 
     return children;
@@ -6147,7 +5241,7 @@ std::string Syslog::Ipv6::Dscp::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv6::Dscp::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv6::Dscp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6173,20 +5267,12 @@ EntityPath Syslog::Ipv6::Dscp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv6::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv6::Dscp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::Dscp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6243,7 +5329,7 @@ std::string Syslog::Ipv6::TrafficClass::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv6::TrafficClass::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv6::TrafficClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6269,20 +5355,12 @@ EntityPath Syslog::Ipv6::TrafficClass::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv6::TrafficClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv6::TrafficClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::TrafficClass::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6339,7 +5417,7 @@ std::string Syslog::Ipv6::Precedence::get_segment_path() const
 
 }
 
-EntityPath Syslog::Ipv6::Precedence::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Ipv6::Precedence::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6365,20 +5443,12 @@ EntityPath Syslog::Ipv6::Precedence::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Ipv6::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Ipv6::Precedence::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::Precedence::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6403,7 +5473,6 @@ Syslog::SourceInterfaceTable::SourceInterfaceTable()
     source_interface_values(std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues>())
 {
     source_interface_values->parent = this;
-    children["source-interface-values"] = source_interface_values;
 
     yang_name = "source-interface-table"; yang_parent_name = "syslog";
 }
@@ -6432,7 +5501,7 @@ std::string Syslog::SourceInterfaceTable::get_segment_path() const
 
 }
 
-EntityPath Syslog::SourceInterfaceTable::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::SourceInterfaceTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6455,41 +5524,24 @@ EntityPath Syslog::SourceInterfaceTable::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::SourceInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source-interface-values")
     {
-        if(source_interface_values != nullptr)
-        {
-            children["source-interface-values"] = source_interface_values;
-        }
-        else
+        if(source_interface_values == nullptr)
         {
             source_interface_values = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues>();
-            source_interface_values->parent = this;
-            children["source-interface-values"] = source_interface_values;
         }
-        return children.at("source-interface-values");
+        return source_interface_values;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::SourceInterfaceTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::get_children() const
 {
-    if(children.find("source-interface-values") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(source_interface_values != nullptr)
     {
-        if(source_interface_values != nullptr)
-        {
-            children["source-interface-values"] = source_interface_values;
-        }
+        children["source-interface-values"] = source_interface_values;
     }
 
     return children;
@@ -6537,7 +5589,7 @@ std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::get_segment_pat
 
 }
 
-EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6560,15 +5612,6 @@ EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::get_entity_path(
 
 std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source-interface-value")
     {
         for(auto const & c : source_interface_value)
@@ -6576,28 +5619,24 @@ std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue>();
         c->parent = this;
-        source_interface_value.push_back(std::move(c));
-        children[segment_path] = source_interface_value.back();
-        return children.at(segment_path);
+        source_interface_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::SourceInterfaceTable::SourceInterfaceValues::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : source_interface_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6614,7 +5653,6 @@ Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::Sourc
     source_interface_vrfs(std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs>())
 {
     source_interface_vrfs->parent = this;
-    children["source-interface-vrfs"] = source_interface_vrfs;
 
     yang_name = "source-interface-value"; yang_parent_name = "source-interface-values";
 }
@@ -6645,7 +5683,7 @@ std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterface
 
 }
 
-EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6669,41 +5707,24 @@ EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceV
 
 std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source-interface-vrfs")
     {
-        if(source_interface_vrfs != nullptr)
-        {
-            children["source-interface-vrfs"] = source_interface_vrfs;
-        }
-        else
+        if(source_interface_vrfs == nullptr)
         {
             source_interface_vrfs = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs>();
-            source_interface_vrfs->parent = this;
-            children["source-interface-vrfs"] = source_interface_vrfs;
         }
-        return children.at("source-interface-vrfs");
+        return source_interface_vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_children() const
 {
-    if(children.find("source-interface-vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(source_interface_vrfs != nullptr)
     {
-        if(source_interface_vrfs != nullptr)
-        {
-            children["source-interface-vrfs"] = source_interface_vrfs;
-        }
+        children["source-interface-vrfs"] = source_interface_vrfs;
     }
 
     return children;
@@ -6755,7 +5776,7 @@ std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterface
 
 }
 
-EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6778,15 +5799,6 @@ EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceV
 
 std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source-interface-vrf")
     {
         for(auto const & c : source_interface_vrf)
@@ -6794,28 +5806,24 @@ std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::Sou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf>();
         c->parent = this;
-        source_interface_vrf.push_back(std::move(c));
-        children[segment_path] = source_interface_vrf.back();
-        return children.at(segment_path);
+        source_interface_vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : source_interface_vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6856,7 +5864,7 @@ std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterface
 
 }
 
-EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6880,20 +5888,12 @@ EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceV
 
 std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6915,7 +5915,6 @@ Syslog::AlarmLogger::AlarmLogger()
     alarm_filter_strings(std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings>())
 {
     alarm_filter_strings->parent = this;
-    children["alarm-filter-strings"] = alarm_filter_strings;
 
     yang_name = "alarm-logger"; yang_parent_name = "syslog";
 }
@@ -6952,7 +5951,7 @@ std::string Syslog::AlarmLogger::get_segment_path() const
 
 }
 
-EntityPath Syslog::AlarmLogger::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::AlarmLogger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6979,41 +5978,24 @@ EntityPath Syslog::AlarmLogger::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::AlarmLogger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarm-filter-strings")
     {
-        if(alarm_filter_strings != nullptr)
-        {
-            children["alarm-filter-strings"] = alarm_filter_strings;
-        }
-        else
+        if(alarm_filter_strings == nullptr)
         {
             alarm_filter_strings = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings>();
-            alarm_filter_strings->parent = this;
-            children["alarm-filter-strings"] = alarm_filter_strings;
         }
-        return children.at("alarm-filter-strings");
+        return alarm_filter_strings;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::AlarmLogger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::get_children() const
 {
-    if(children.find("alarm-filter-strings") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(alarm_filter_strings != nullptr)
     {
-        if(alarm_filter_strings != nullptr)
-        {
-            children["alarm-filter-strings"] = alarm_filter_strings;
-        }
+        children["alarm-filter-strings"] = alarm_filter_strings;
     }
 
     return children;
@@ -7077,7 +6059,7 @@ std::string Syslog::AlarmLogger::AlarmFilterStrings::get_segment_path() const
 
 }
 
-EntityPath Syslog::AlarmLogger::AlarmFilterStrings::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::AlarmLogger::AlarmFilterStrings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7100,15 +6082,6 @@ EntityPath Syslog::AlarmLogger::AlarmFilterStrings::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarm-filter-string")
     {
         for(auto const & c : alarm_filter_string)
@@ -7116,28 +6089,24 @@ std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString>();
         c->parent = this;
-        alarm_filter_string.push_back(std::move(c));
-        children[segment_path] = alarm_filter_string.back();
-        return children.at(segment_path);
+        alarm_filter_string.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::AlarmLogger::AlarmFilterStrings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : alarm_filter_string)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7178,7 +6147,7 @@ std::string Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_segm
 
 }
 
-EntityPath Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7202,20 +6171,12 @@ EntityPath Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_entit
 
 std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7235,10 +6196,8 @@ Syslog::Correlator::Correlator()
 	,rules(std::make_shared<Syslog::Correlator::Rules>())
 {
     rule_sets->parent = this;
-    children["rule-sets"] = rule_sets;
 
     rules->parent = this;
-    children["rules"] = rules;
 
     yang_name = "correlator"; yang_parent_name = "syslog";
 }
@@ -7271,7 +6230,7 @@ std::string Syslog::Correlator::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7295,64 +6254,38 @@ EntityPath Syslog::Correlator::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Correlator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rule-sets")
     {
-        if(rule_sets != nullptr)
-        {
-            children["rule-sets"] = rule_sets;
-        }
-        else
+        if(rule_sets == nullptr)
         {
             rule_sets = std::make_shared<Syslog::Correlator::RuleSets>();
-            rule_sets->parent = this;
-            children["rule-sets"] = rule_sets;
         }
-        return children.at("rule-sets");
+        return rule_sets;
     }
 
     if(child_yang_name == "rules")
     {
-        if(rules != nullptr)
-        {
-            children["rules"] = rules;
-        }
-        else
+        if(rules == nullptr)
         {
             rules = std::make_shared<Syslog::Correlator::Rules>();
-            rules->parent = this;
-            children["rules"] = rules;
         }
-        return children.at("rules");
+        return rules;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::get_children() const
 {
-    if(children.find("rule-sets") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rule_sets != nullptr)
     {
-        if(rule_sets != nullptr)
-        {
-            children["rule-sets"] = rule_sets;
-        }
+        children["rule-sets"] = rule_sets;
     }
 
-    if(children.find("rules") == children.end())
+    if(rules != nullptr)
     {
-        if(rules != nullptr)
-        {
-            children["rules"] = rules;
-        }
+        children["rules"] = rules;
     }
 
     return children;
@@ -7404,7 +6337,7 @@ std::string Syslog::Correlator::Rules::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::Rules::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7427,15 +6360,6 @@ EntityPath Syslog::Correlator::Rules::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rule")
     {
         for(auto const & c : rule)
@@ -7443,28 +6367,24 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule>();
         c->parent = this;
-        rule.push_back(std::move(c));
-        children[segment_path] = rule.back();
-        return children.at(segment_path);
+        rule.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rule)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7485,19 +6405,14 @@ Syslog::Correlator::Rules::Rule::Rule()
 	,stateful(std::make_shared<Syslog::Correlator::Rules::Rule::Stateful>())
 {
     applied_to->parent = this;
-    children["applied-to"] = applied_to;
 
     apply_to->parent = this;
-    children["apply-to"] = apply_to;
 
     definition->parent = this;
-    children["definition"] = definition;
 
     non_stateful->parent = this;
-    children["non-stateful"] = non_stateful;
 
     stateful->parent = this;
-    children["stateful"] = stateful;
 
     yang_name = "rule"; yang_parent_name = "rules";
 }
@@ -7536,7 +6451,7 @@ std::string Syslog::Correlator::Rules::Rule::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7560,133 +6475,80 @@ EntityPath Syslog::Correlator::Rules::Rule::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "applied-to")
     {
-        if(applied_to != nullptr)
-        {
-            children["applied-to"] = applied_to;
-        }
-        else
+        if(applied_to == nullptr)
         {
             applied_to = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo>();
-            applied_to->parent = this;
-            children["applied-to"] = applied_to;
         }
-        return children.at("applied-to");
+        return applied_to;
     }
 
     if(child_yang_name == "apply-to")
     {
-        if(apply_to != nullptr)
-        {
-            children["apply-to"] = apply_to;
-        }
-        else
+        if(apply_to == nullptr)
         {
             apply_to = std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo>();
-            apply_to->parent = this;
-            children["apply-to"] = apply_to;
         }
-        return children.at("apply-to");
+        return apply_to;
     }
 
     if(child_yang_name == "definition")
     {
-        if(definition != nullptr)
-        {
-            children["definition"] = definition;
-        }
-        else
+        if(definition == nullptr)
         {
             definition = std::make_shared<Syslog::Correlator::Rules::Rule::Definition>();
-            definition->parent = this;
-            children["definition"] = definition;
         }
-        return children.at("definition");
+        return definition;
     }
 
     if(child_yang_name == "non-stateful")
     {
-        if(non_stateful != nullptr)
-        {
-            children["non-stateful"] = non_stateful;
-        }
-        else
+        if(non_stateful == nullptr)
         {
             non_stateful = std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful>();
-            non_stateful->parent = this;
-            children["non-stateful"] = non_stateful;
         }
-        return children.at("non-stateful");
+        return non_stateful;
     }
 
     if(child_yang_name == "stateful")
     {
-        if(stateful != nullptr)
-        {
-            children["stateful"] = stateful;
-        }
-        else
+        if(stateful == nullptr)
         {
             stateful = std::make_shared<Syslog::Correlator::Rules::Rule::Stateful>();
-            stateful->parent = this;
-            children["stateful"] = stateful;
         }
-        return children.at("stateful");
+        return stateful;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::get_children() const
 {
-    if(children.find("applied-to") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(applied_to != nullptr)
     {
-        if(applied_to != nullptr)
-        {
-            children["applied-to"] = applied_to;
-        }
+        children["applied-to"] = applied_to;
     }
 
-    if(children.find("apply-to") == children.end())
+    if(apply_to != nullptr)
     {
-        if(apply_to != nullptr)
-        {
-            children["apply-to"] = apply_to;
-        }
+        children["apply-to"] = apply_to;
     }
 
-    if(children.find("definition") == children.end())
+    if(definition != nullptr)
     {
-        if(definition != nullptr)
-        {
-            children["definition"] = definition;
-        }
+        children["definition"] = definition;
     }
 
-    if(children.find("non-stateful") == children.end())
+    if(non_stateful != nullptr)
     {
-        if(non_stateful != nullptr)
-        {
-            children["non-stateful"] = non_stateful;
-        }
+        children["non-stateful"] = non_stateful;
     }
 
-    if(children.find("stateful") == children.end())
+    if(stateful != nullptr)
     {
-        if(stateful != nullptr)
-        {
-            children["stateful"] = stateful;
-        }
+        children["stateful"] = stateful;
     }
 
     return children;
@@ -7821,7 +6683,7 @@ std::string Syslog::Correlator::Rules::Rule::Definition::get_segment_path() cons
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::Definition::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::Definition::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7875,20 +6737,12 @@ EntityPath Syslog::Correlator::Rules::Rule::Definition::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Definition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::Definition::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Definition::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8030,10 +6884,8 @@ Syslog::Correlator::Rules::Rule::NonStateful::NonStateful()
 	,root_cause(std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::RootCause>())
 {
     non_root_causes->parent = this;
-    children["non-root-causes"] = non_root_causes;
 
     root_cause->parent = this;
-    children["root-cause"] = root_cause;
 
     yang_name = "non-stateful"; yang_parent_name = "rule";
 }
@@ -8070,7 +6922,7 @@ std::string Syslog::Correlator::Rules::Rule::NonStateful::get_segment_path() con
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::NonStateful::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::NonStateful::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8096,64 +6948,38 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "non-root-causes")
     {
-        if(non_root_causes != nullptr)
-        {
-            children["non-root-causes"] = non_root_causes;
-        }
-        else
+        if(non_root_causes == nullptr)
         {
             non_root_causes = std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses>();
-            non_root_causes->parent = this;
-            children["non-root-causes"] = non_root_causes;
         }
-        return children.at("non-root-causes");
+        return non_root_causes;
     }
 
     if(child_yang_name == "root-cause")
     {
-        if(root_cause != nullptr)
-        {
-            children["root-cause"] = root_cause;
-        }
-        else
+        if(root_cause == nullptr)
         {
             root_cause = std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::RootCause>();
-            root_cause->parent = this;
-            children["root-cause"] = root_cause;
         }
-        return children.at("root-cause");
+        return root_cause;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::NonStateful::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::get_children() const
 {
-    if(children.find("non-root-causes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(non_root_causes != nullptr)
     {
-        if(non_root_causes != nullptr)
-        {
-            children["non-root-causes"] = non_root_causes;
-        }
+        children["non-root-causes"] = non_root_causes;
     }
 
-    if(children.find("root-cause") == children.end())
+    if(root_cause != nullptr)
     {
-        if(root_cause != nullptr)
-        {
-            children["root-cause"] = root_cause;
-        }
+        children["root-cause"] = root_cause;
     }
 
     return children;
@@ -8213,7 +7039,7 @@ std::string Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_seg
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8236,15 +7062,6 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_enti
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "non-root-cause")
     {
         for(auto const & c : non_root_cause)
@@ -8252,28 +7069,24 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCau
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause>();
         c->parent = this;
-        non_root_cause.push_back(std::move(c));
-        children[segment_path] = non_root_cause.back();
-        return children.at(segment_path);
+        non_root_cause.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : non_root_cause)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8320,7 +7133,7 @@ std::string Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRoot
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8346,20 +7159,12 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootC
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8416,7 +7221,7 @@ std::string Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_segment
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8442,20 +7247,12 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_entity_p
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8487,10 +7284,8 @@ Syslog::Correlator::Rules::Rule::Stateful::Stateful()
 	,root_cause(std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::RootCause>())
 {
     non_root_causes->parent = this;
-    children["non-root-causes"] = non_root_causes;
 
     root_cause->parent = this;
-    children["root-cause"] = root_cause;
 
     yang_name = "stateful"; yang_parent_name = "rule";
 }
@@ -8531,7 +7326,7 @@ std::string Syslog::Correlator::Rules::Rule::Stateful::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::Stateful::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::Stateful::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8559,64 +7354,38 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "non-root-causes")
     {
-        if(non_root_causes != nullptr)
-        {
-            children["non-root-causes"] = non_root_causes;
-        }
-        else
+        if(non_root_causes == nullptr)
         {
             non_root_causes = std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses>();
-            non_root_causes->parent = this;
-            children["non-root-causes"] = non_root_causes;
         }
-        return children.at("non-root-causes");
+        return non_root_causes;
     }
 
     if(child_yang_name == "root-cause")
     {
-        if(root_cause != nullptr)
-        {
-            children["root-cause"] = root_cause;
-        }
-        else
+        if(root_cause == nullptr)
         {
             root_cause = std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::RootCause>();
-            root_cause->parent = this;
-            children["root-cause"] = root_cause;
         }
-        return children.at("root-cause");
+        return root_cause;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::Stateful::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::get_children() const
 {
-    if(children.find("non-root-causes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(non_root_causes != nullptr)
     {
-        if(non_root_causes != nullptr)
-        {
-            children["non-root-causes"] = non_root_causes;
-        }
+        children["non-root-causes"] = non_root_causes;
     }
 
-    if(children.find("root-cause") == children.end())
+    if(root_cause != nullptr)
     {
-        if(root_cause != nullptr)
-        {
-            children["root-cause"] = root_cause;
-        }
+        children["root-cause"] = root_cause;
     }
 
     return children;
@@ -8684,7 +7453,7 @@ std::string Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_segmen
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8707,15 +7476,6 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_entity_
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "non-root-cause")
     {
         for(auto const & c : non_root_cause)
@@ -8723,28 +7483,24 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause>();
         c->parent = this;
-        non_root_cause.push_back(std::move(c));
-        children[segment_path] = non_root_cause.back();
-        return children.at(segment_path);
+        non_root_cause.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : non_root_cause)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8791,7 +7547,7 @@ std::string Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCau
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8817,20 +7573,12 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCaus
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8887,7 +7635,7 @@ std::string Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_segment_pa
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8913,20 +7661,12 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_entity_path
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8954,10 +7694,8 @@ Syslog::Correlator::Rules::Rule::ApplyTo::ApplyTo()
 	,locations(std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo::Locations>())
 {
     contexts->parent = this;
-    children["contexts"] = contexts;
 
     locations->parent = this;
-    children["locations"] = locations;
 
     yang_name = "apply-to"; yang_parent_name = "rule";
 }
@@ -8990,7 +7728,7 @@ std::string Syslog::Correlator::Rules::Rule::ApplyTo::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9014,64 +7752,38 @@ EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::ApplyTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "contexts")
     {
-        if(contexts != nullptr)
-        {
-            children["contexts"] = contexts;
-        }
-        else
+        if(contexts == nullptr)
         {
             contexts = std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo::Contexts>();
-            contexts->parent = this;
-            children["contexts"] = contexts;
         }
-        return children.at("contexts");
+        return contexts;
     }
 
     if(child_yang_name == "locations")
     {
-        if(locations != nullptr)
-        {
-            children["locations"] = locations;
-        }
-        else
+        if(locations == nullptr)
         {
             locations = std::make_shared<Syslog::Correlator::Rules::Rule::ApplyTo::Locations>();
-            locations->parent = this;
-            children["locations"] = locations;
         }
-        return children.at("locations");
+        return locations;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::ApplyTo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::get_children() const
 {
-    if(children.find("contexts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(contexts != nullptr)
     {
-        if(contexts != nullptr)
-        {
-            children["contexts"] = contexts;
-        }
+        children["contexts"] = contexts;
     }
 
-    if(children.find("locations") == children.end())
+    if(locations != nullptr)
     {
-        if(locations != nullptr)
-        {
-            children["locations"] = locations;
-        }
+        children["locations"] = locations;
     }
 
     return children;
@@ -9126,7 +7838,7 @@ std::string Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_segment_path
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9151,20 +7863,12 @@ EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_entity_path(E
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9217,7 +7921,7 @@ std::string Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_segment_pat
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9242,20 +7946,12 @@ EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_entity_path(
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9275,10 +7971,8 @@ Syslog::Correlator::Rules::Rule::AppliedTo::AppliedTo()
 	,locations(std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations>())
 {
     contexts->parent = this;
-    children["contexts"] = contexts;
 
     locations->parent = this;
-    children["locations"] = locations;
 
     yang_name = "applied-to"; yang_parent_name = "rule";
 }
@@ -9311,7 +8005,7 @@ std::string Syslog::Correlator::Rules::Rule::AppliedTo::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9335,64 +8029,38 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "contexts")
     {
-        if(contexts != nullptr)
-        {
-            children["contexts"] = contexts;
-        }
-        else
+        if(contexts == nullptr)
         {
             contexts = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Contexts>();
-            contexts->parent = this;
-            children["contexts"] = contexts;
         }
-        return children.at("contexts");
+        return contexts;
     }
 
     if(child_yang_name == "locations")
     {
-        if(locations != nullptr)
-        {
-            children["locations"] = locations;
-        }
-        else
+        if(locations == nullptr)
         {
             locations = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations>();
-            locations->parent = this;
-            children["locations"] = locations;
         }
-        return children.at("locations");
+        return locations;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::AppliedTo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::get_children() const
 {
-    if(children.find("contexts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(contexts != nullptr)
     {
-        if(contexts != nullptr)
-        {
-            children["contexts"] = contexts;
-        }
+        children["contexts"] = contexts;
     }
 
-    if(children.find("locations") == children.end())
+    if(locations != nullptr)
     {
-        if(locations != nullptr)
-        {
-            children["locations"] = locations;
-        }
+        children["locations"] = locations;
     }
 
     return children;
@@ -9444,7 +8112,7 @@ std::string Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_segment_pa
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9467,15 +8135,6 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_entity_path
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "context")
     {
         for(auto const & c : context)
@@ -9483,28 +8142,24 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context>();
         c->parent = this;
-        context.push_back(std::move(c));
-        children[segment_path] = context.back();
-        return children.at(segment_path);
+        context.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : context)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9545,7 +8200,7 @@ std::string Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_s
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9569,20 +8224,12 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_en
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9632,7 +8279,7 @@ std::string Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_segment_p
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9655,15 +8302,6 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_entity_pat
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "location")
     {
         for(auto const & c : location)
@@ -9671,28 +8309,24 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location>();
         c->parent = this;
-        location.push_back(std::move(c));
-        children[segment_path] = location.back();
-        return children.at(segment_path);
+        location.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : location)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9733,7 +8367,7 @@ std::string Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get
 
 }
 
-EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9757,20 +8391,12 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_
 
 std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9820,7 +8446,7 @@ std::string Syslog::Correlator::RuleSets::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9843,15 +8469,6 @@ EntityPath Syslog::Correlator::RuleSets::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rule-set")
     {
         for(auto const & c : rule_set)
@@ -9859,28 +8476,24 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet>();
         c->parent = this;
-        rule_set.push_back(std::move(c));
-        children[segment_path] = rule_set.back();
-        return children.at(segment_path);
+        rule_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rule_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9898,10 +8511,8 @@ Syslog::Correlator::RuleSets::RuleSet::RuleSet()
 	,rulenames(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::Rulenames>())
 {
     applied_to->parent = this;
-    children["applied-to"] = applied_to;
 
     rulenames->parent = this;
-    children["rulenames"] = rulenames;
 
     yang_name = "rule-set"; yang_parent_name = "rule-sets";
 }
@@ -9934,7 +8545,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::get_segment_path() const
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9958,64 +8569,38 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "applied-to")
     {
-        if(applied_to != nullptr)
-        {
-            children["applied-to"] = applied_to;
-        }
-        else
+        if(applied_to == nullptr)
         {
             applied_to = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo>();
-            applied_to->parent = this;
-            children["applied-to"] = applied_to;
         }
-        return children.at("applied-to");
+        return applied_to;
     }
 
     if(child_yang_name == "rulenames")
     {
-        if(rulenames != nullptr)
-        {
-            children["rulenames"] = rulenames;
-        }
-        else
+        if(rulenames == nullptr)
         {
             rulenames = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::Rulenames>();
-            rulenames->parent = this;
-            children["rulenames"] = rulenames;
         }
-        return children.at("rulenames");
+        return rulenames;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::get_children() const
 {
-    if(children.find("applied-to") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(applied_to != nullptr)
     {
-        if(applied_to != nullptr)
-        {
-            children["applied-to"] = applied_to;
-        }
+        children["applied-to"] = applied_to;
     }
 
-    if(children.find("rulenames") == children.end())
+    if(rulenames != nullptr)
     {
-        if(rulenames != nullptr)
-        {
-            children["rulenames"] = rulenames;
-        }
+        children["rulenames"] = rulenames;
     }
 
     return children;
@@ -10067,7 +8652,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_segment_path()
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10090,15 +8675,6 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_entity_path(Ent
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rulename")
     {
         for(auto const & c : rulename)
@@ -10106,28 +8682,24 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename>();
         c->parent = this;
-        rulename.push_back(std::move(c));
-        children[segment_path] = rulename.back();
-        return children.at(segment_path);
+        rulename.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rulename)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10168,7 +8740,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_segm
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10192,20 +8764,12 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_entit
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10225,10 +8789,8 @@ Syslog::Correlator::RuleSets::RuleSet::AppliedTo::AppliedTo()
 	,locations(std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations>())
 {
     contexts->parent = this;
-    children["contexts"] = contexts;
 
     locations->parent = this;
-    children["locations"] = locations;
 
     yang_name = "applied-to"; yang_parent_name = "rule-set";
 }
@@ -10261,7 +8823,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_segment_path()
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10285,64 +8847,38 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_entity_path(Ent
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "contexts")
     {
-        if(contexts != nullptr)
-        {
-            children["contexts"] = contexts;
-        }
-        else
+        if(contexts == nullptr)
         {
             contexts = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts>();
-            contexts->parent = this;
-            children["contexts"] = contexts;
         }
-        return children.at("contexts");
+        return contexts;
     }
 
     if(child_yang_name == "locations")
     {
-        if(locations != nullptr)
-        {
-            children["locations"] = locations;
-        }
-        else
+        if(locations == nullptr)
         {
             locations = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations>();
-            locations->parent = this;
-            children["locations"] = locations;
         }
-        return children.at("locations");
+        return locations;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_children() const
 {
-    if(children.find("contexts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(contexts != nullptr)
     {
-        if(contexts != nullptr)
-        {
-            children["contexts"] = contexts;
-        }
+        children["contexts"] = contexts;
     }
 
-    if(children.find("locations") == children.end())
+    if(locations != nullptr)
     {
-        if(locations != nullptr)
-        {
-            children["locations"] = locations;
-        }
+        children["locations"] = locations;
     }
 
     return children;
@@ -10394,7 +8930,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_segm
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10417,15 +8953,6 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_entit
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "context")
     {
         for(auto const & c : context)
@@ -10433,28 +8960,24 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contex
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context>();
         c->parent = this;
-        context.push_back(std::move(c));
-        children[segment_path] = context.back();
-        return children.at(segment_path);
+        context.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : context)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10495,7 +9018,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context:
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10519,20 +9042,12 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10582,7 +9097,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_seg
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10605,15 +9120,6 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_enti
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "location")
     {
         for(auto const & c : location)
@@ -10621,28 +9127,24 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locati
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location>();
         c->parent = this;
-        location.push_back(std::move(c));
-        children[segment_path] = location.back();
-        return children.at(segment_path);
+        location.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : location)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10683,7 +9185,7 @@ std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Locatio
 
 }
 
-EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10707,20 +9209,12 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location
 
 std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10737,7 +9231,6 @@ Syslog::Suppression::Suppression()
     rules(std::make_shared<Syslog::Suppression::Rules>())
 {
     rules->parent = this;
-    children["rules"] = rules;
 
     yang_name = "suppression"; yang_parent_name = "syslog";
 }
@@ -10766,7 +9259,7 @@ std::string Syslog::Suppression::get_segment_path() const
 
 }
 
-EntityPath Syslog::Suppression::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10789,41 +9282,24 @@ EntityPath Syslog::Suppression::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Suppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rules")
     {
-        if(rules != nullptr)
-        {
-            children["rules"] = rules;
-        }
-        else
+        if(rules == nullptr)
         {
             rules = std::make_shared<Syslog::Suppression::Rules>();
-            rules->parent = this;
-            children["rules"] = rules;
         }
-        return children.at("rules");
+        return rules;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::get_children() const
 {
-    if(children.find("rules") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rules != nullptr)
     {
-        if(rules != nullptr)
-        {
-            children["rules"] = rules;
-        }
+        children["rules"] = rules;
     }
 
     return children;
@@ -10871,7 +9347,7 @@ std::string Syslog::Suppression::Rules::get_segment_path() const
 
 }
 
-EntityPath Syslog::Suppression::Rules::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::Rules::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10894,15 +9370,6 @@ EntityPath Syslog::Suppression::Rules::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Suppression::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rule")
     {
         for(auto const & c : rule)
@@ -10910,28 +9377,24 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Suppression::Rules::Rule>();
         c->parent = this;
-        rule.push_back(std::move(c));
-        children[segment_path] = rule.back();
-        return children.at(segment_path);
+        rule.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::Rules::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rule)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10950,10 +9413,8 @@ Syslog::Suppression::Rules::Rule::Rule()
 	,applied_to(std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo>())
 {
     alarm_causes->parent = this;
-    children["alarm-causes"] = alarm_causes;
 
     applied_to->parent = this;
-    children["applied-to"] = applied_to;
 
     yang_name = "rule"; yang_parent_name = "rules";
 }
@@ -10988,7 +9449,7 @@ std::string Syslog::Suppression::Rules::Rule::get_segment_path() const
 
 }
 
-EntityPath Syslog::Suppression::Rules::Rule::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::Rules::Rule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11013,64 +9474,38 @@ EntityPath Syslog::Suppression::Rules::Rule::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarm-causes")
     {
-        if(alarm_causes != nullptr)
-        {
-            children["alarm-causes"] = alarm_causes;
-        }
-        else
+        if(alarm_causes == nullptr)
         {
             alarm_causes = std::make_shared<Syslog::Suppression::Rules::Rule::AlarmCauses>();
-            alarm_causes->parent = this;
-            children["alarm-causes"] = alarm_causes;
         }
-        return children.at("alarm-causes");
+        return alarm_causes;
     }
 
     if(child_yang_name == "applied-to")
     {
-        if(applied_to != nullptr)
-        {
-            children["applied-to"] = applied_to;
-        }
-        else
+        if(applied_to == nullptr)
         {
             applied_to = std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo>();
-            applied_to->parent = this;
-            children["applied-to"] = applied_to;
         }
-        return children.at("applied-to");
+        return applied_to;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::Rules::Rule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::get_children() const
 {
-    if(children.find("alarm-causes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(alarm_causes != nullptr)
     {
-        if(alarm_causes != nullptr)
-        {
-            children["alarm-causes"] = alarm_causes;
-        }
+        children["alarm-causes"] = alarm_causes;
     }
 
-    if(children.find("applied-to") == children.end())
+    if(applied_to != nullptr)
     {
-        if(applied_to != nullptr)
-        {
-            children["applied-to"] = applied_to;
-        }
+        children["applied-to"] = applied_to;
     }
 
     return children;
@@ -11095,7 +9530,6 @@ Syslog::Suppression::Rules::Rule::AppliedTo::AppliedTo()
     sources(std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo::Sources>())
 {
     sources->parent = this;
-    children["sources"] = sources;
 
     yang_name = "applied-to"; yang_parent_name = "rule";
 }
@@ -11126,7 +9560,7 @@ std::string Syslog::Suppression::Rules::Rule::AppliedTo::get_segment_path() cons
 
 }
 
-EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11150,41 +9584,24 @@ EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sources")
     {
-        if(sources != nullptr)
-        {
-            children["sources"] = sources;
-        }
-        else
+        if(sources == nullptr)
         {
             sources = std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo::Sources>();
-            sources->parent = this;
-            children["sources"] = sources;
         }
-        return children.at("sources");
+        return sources;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::Rules::Rule::AppliedTo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::get_children() const
 {
-    if(children.find("sources") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sources != nullptr)
     {
-        if(sources != nullptr)
-        {
-            children["sources"] = sources;
-        }
+        children["sources"] = sources;
     }
 
     return children;
@@ -11236,7 +9653,7 @@ std::string Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_segment_pa
 
 }
 
-EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11259,15 +9676,6 @@ EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_entity_path
 
 std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source")
     {
         for(auto const & c : source)
@@ -11275,28 +9683,24 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11337,7 +9741,7 @@ std::string Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_se
 
 }
 
-EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11361,20 +9765,12 @@ EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_ent
 
 std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11424,7 +9820,7 @@ std::string Syslog::Suppression::Rules::Rule::AlarmCauses::get_segment_path() co
 
 }
 
-EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11447,15 +9843,6 @@ EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::get_entity_path(Entity
 
 std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarm-cause")
     {
         for(auto const & c : alarm_cause)
@@ -11463,28 +9850,24 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause>();
         c->parent = this;
-        alarm_cause.push_back(std::move(c));
-        children[segment_path] = alarm_cause.back();
-        return children.at(segment_path);
+        alarm_cause.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::Rules::Rule::AlarmCauses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AlarmCauses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : alarm_cause)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11497,8 +9880,8 @@ void Syslog::Suppression::Rules::Rule::AlarmCauses::set_value(const std::string 
 Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::AlarmCause()
     :
     category{YType::str, "category"},
-    code{YType::str, "code"},
-    group{YType::str, "group"}
+    group{YType::str, "group"},
+    code{YType::str, "code"}
 {
     yang_name = "alarm-cause"; yang_parent_name = "alarm-causes";
 }
@@ -11510,28 +9893,28 @@ Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::~AlarmCause()
 bool Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::has_data() const
 {
     return category.is_set
-	|| code.is_set
-	|| group.is_set;
+	|| group.is_set
+	|| code.is_set;
 }
 
 bool Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::has_operation() const
 {
     return is_set(operation)
 	|| is_set(category.operation)
-	|| is_set(code.operation)
-	|| is_set(group.operation);
+	|| is_set(group.operation)
+	|| is_set(code.operation);
 }
 
 std::string Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alarm-cause" <<"[category='" <<category <<"']" <<"[code='" <<code <<"']" <<"[group='" <<group <<"']";
+    path_buffer << "alarm-cause" <<"[category='" <<category <<"']" <<"[group='" <<group <<"']" <<"[code='" <<code <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11546,8 +9929,8 @@ EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_entity
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (category.is_set || is_set(category.operation)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (code.is_set || is_set(code.operation)) leaf_name_data.push_back(code.get_name_leafdata());
     if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (code.is_set || is_set(code.operation)) leaf_name_data.push_back(code.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11557,20 +9940,12 @@ EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_entity
 
 std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11580,13 +9955,13 @@ void Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::set_value(const 
     {
         category = value;
     }
-    if(value_path == "code")
-    {
-        code = value;
-    }
     if(value_path == "group")
     {
         group = value;
+    }
+    if(value_path == "code")
+    {
+        code = value;
     }
 }
 

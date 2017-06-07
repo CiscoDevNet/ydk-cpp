@@ -18,17 +18,15 @@ class Parser : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Indentation; //type: Parser::Indentation
         class Alias; //type: Parser::Alias
@@ -45,8 +43,7 @@ class Parser : public Entity
         std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::InterfaceDisplay> interface_display;
         std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::NetmaskFormat> netmask_format;
         std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::SubmodeExit> submode_exit;
-
-
+        
 }; // Parser
 
 
@@ -58,16 +55,13 @@ class Parser::Indentation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf indentation_disable; //type: boolean
-
-
 
 }; // Parser::Indentation
 
@@ -80,13 +74,11 @@ class Parser::Alias : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Execs; //type: Parser::Alias::Execs
         class Configurations; //type: Parser::Alias::Configurations
@@ -95,8 +87,7 @@ class Parser::Alias : public Entity
         std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::Alias::Alls> alls;
         std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::Alias::Configurations> configurations;
         std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::Alias::Execs> execs;
-
-
+        
 }; // Parser::Alias
 
 
@@ -108,19 +99,16 @@ class Parser::Alias::Execs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Exec; //type: Parser::Alias::Execs::Exec
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::Alias::Execs::Exec> > exec;
-
-
+        
 }; // Parser::Alias::Execs
 
 
@@ -132,17 +120,14 @@ class Parser::Alias::Execs::Exec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf identifier; //type: string
         YLeaf identifier_xr; //type: string
-
-
 
 }; // Parser::Alias::Execs::Exec
 
@@ -155,19 +140,16 @@ class Parser::Alias::Configurations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Configuration; //type: Parser::Alias::Configurations::Configuration
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::Alias::Configurations::Configuration> > configuration;
-
-
+        
 }; // Parser::Alias::Configurations
 
 
@@ -179,17 +161,14 @@ class Parser::Alias::Configurations::Configuration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf identifier; //type: string
         YLeaf identifier_xr; //type: string
-
-
 
 }; // Parser::Alias::Configurations::Configuration
 
@@ -202,19 +181,16 @@ class Parser::Alias::Alls : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class All; //type: Parser::Alias::Alls::All
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::Alias::Alls::All> > all;
-
-
+        
 }; // Parser::Alias::Alls
 
 
@@ -226,17 +202,14 @@ class Parser::Alias::Alls::All : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf identifier; //type: string
         YLeaf identifier_xr; //type: string
-
-
 
 }; // Parser::Alias::Alls::All
 
@@ -249,16 +222,13 @@ class Parser::History : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf size; //type: uint32
-
-
 
 }; // Parser::History
 
@@ -271,16 +241,13 @@ class Parser::InterfaceDisplay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slot_order; //type: boolean
-
-
 
 }; // Parser::InterfaceDisplay
 
@@ -293,16 +260,13 @@ class Parser::NetmaskFormat : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bit_count; //type: boolean
-
-
 
 }; // Parser::NetmaskFormat
 
@@ -315,19 +279,16 @@ class Parser::Configuration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Disable; //type: Parser::Configuration::Disable
 
         std::shared_ptr<Cisco_IOS_XR_parser_cfg::Parser::Configuration::Disable> disable;
-
-
+        
 }; // Parser::Configuration
 
 
@@ -339,16 +300,13 @@ class Parser::Configuration::Disable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf usergroup; //type: string
-
-
 
 }; // Parser::Configuration::Disable
 
@@ -361,16 +319,13 @@ class Parser::SubmodeExit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enable; //type: boolean
-
-
 
 }; // Parser::SubmodeExit
 

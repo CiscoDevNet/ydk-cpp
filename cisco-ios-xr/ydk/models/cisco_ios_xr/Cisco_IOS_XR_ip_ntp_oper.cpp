@@ -14,7 +14,6 @@ Ntp::Ntp()
     nodes(std::make_shared<Ntp::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-oper";
 }
@@ -43,12 +42,12 @@ std::string Ntp::get_segment_path() const
 
 }
 
-EntityPath Ntp::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Ntp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Ntp::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Ntp::Nodes::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Ntp::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Ntp::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -244,13 +213,10 @@ Ntp::Nodes::Node::Node()
 	,status(std::make_shared<Ntp::Nodes::Node::Status>())
 {
     associations->parent = this;
-    children["associations"] = associations;
 
     associations_detail->parent = this;
-    children["associations-detail"] = associations_detail;
 
     status->parent = this;
-    children["status"] = status;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -285,7 +251,7 @@ std::string Ntp::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,87 +275,52 @@ EntityPath Ntp::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "associations")
     {
-        if(associations != nullptr)
-        {
-            children["associations"] = associations;
-        }
-        else
+        if(associations == nullptr)
         {
             associations = std::make_shared<Ntp::Nodes::Node::Associations>();
-            associations->parent = this;
-            children["associations"] = associations;
         }
-        return children.at("associations");
+        return associations;
     }
 
     if(child_yang_name == "associations-detail")
     {
-        if(associations_detail != nullptr)
-        {
-            children["associations-detail"] = associations_detail;
-        }
-        else
+        if(associations_detail == nullptr)
         {
             associations_detail = std::make_shared<Ntp::Nodes::Node::AssociationsDetail>();
-            associations_detail->parent = this;
-            children["associations-detail"] = associations_detail;
         }
-        return children.at("associations-detail");
+        return associations_detail;
     }
 
     if(child_yang_name == "status")
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
-        else
+        if(status == nullptr)
         {
             status = std::make_shared<Ntp::Nodes::Node::Status>();
-            status->parent = this;
-            children["status"] = status;
         }
-        return children.at("status");
+        return status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::get_children() const
 {
-    if(children.find("associations") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(associations != nullptr)
     {
-        if(associations != nullptr)
-        {
-            children["associations"] = associations;
-        }
+        children["associations"] = associations;
     }
 
-    if(children.find("associations-detail") == children.end())
+    if(associations_detail != nullptr)
     {
-        if(associations_detail != nullptr)
-        {
-            children["associations-detail"] = associations_detail;
-        }
+        children["associations-detail"] = associations_detail;
     }
 
-    if(children.find("status") == children.end())
+    if(status != nullptr)
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
+        children["status"] = status;
     }
 
     return children;
@@ -447,7 +378,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -472,15 +403,6 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-detail-info")
     {
         for(auto const & c : peer_detail_info)
@@ -488,28 +410,24 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo>();
         c->parent = this;
-        peer_detail_info.push_back(std::move(c));
-        children[segment_path] = peer_detail_info.back();
-        return children.at(segment_path);
+        peer_detail_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_detail_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -548,19 +466,14 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerDetailInfo()
 	,transmit_time(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime>())
 {
     originate_time->parent = this;
-    children["originate-time"] = originate_time;
 
     peer_info_common->parent = this;
-    children["peer-info-common"] = peer_info_common;
 
     receive_time->parent = this;
-    children["receive-time"] = receive_time;
 
     ref_time->parent = this;
-    children["ref-time"] = ref_time;
 
     transmit_time->parent = this;
-    children["transmit-time"] = transmit_time;
 
     yang_name = "peer-detail-info"; yang_parent_name = "associations-detail";
 }
@@ -629,7 +542,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_segment_pa
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -663,15 +576,6 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_entity_path
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "filter-detail")
     {
         for(auto const & c : filter_detail)
@@ -679,143 +583,94 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail>();
         c->parent = this;
-        filter_detail.push_back(std::move(c));
-        children[segment_path] = filter_detail.back();
-        return children.at(segment_path);
+        filter_detail.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "originate-time")
     {
-        if(originate_time != nullptr)
-        {
-            children["originate-time"] = originate_time;
-        }
-        else
+        if(originate_time == nullptr)
         {
             originate_time = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime>();
-            originate_time->parent = this;
-            children["originate-time"] = originate_time;
         }
-        return children.at("originate-time");
+        return originate_time;
     }
 
     if(child_yang_name == "peer-info-common")
     {
-        if(peer_info_common != nullptr)
-        {
-            children["peer-info-common"] = peer_info_common;
-        }
-        else
+        if(peer_info_common == nullptr)
         {
             peer_info_common = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon>();
-            peer_info_common->parent = this;
-            children["peer-info-common"] = peer_info_common;
         }
-        return children.at("peer-info-common");
+        return peer_info_common;
     }
 
     if(child_yang_name == "receive-time")
     {
-        if(receive_time != nullptr)
-        {
-            children["receive-time"] = receive_time;
-        }
-        else
+        if(receive_time == nullptr)
         {
             receive_time = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime>();
-            receive_time->parent = this;
-            children["receive-time"] = receive_time;
         }
-        return children.at("receive-time");
+        return receive_time;
     }
 
     if(child_yang_name == "ref-time")
     {
-        if(ref_time != nullptr)
-        {
-            children["ref-time"] = ref_time;
-        }
-        else
+        if(ref_time == nullptr)
         {
             ref_time = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime>();
-            ref_time->parent = this;
-            children["ref-time"] = ref_time;
         }
-        return children.at("ref-time");
+        return ref_time;
     }
 
     if(child_yang_name == "transmit-time")
     {
-        if(transmit_time != nullptr)
-        {
-            children["transmit-time"] = transmit_time;
-        }
-        else
+        if(transmit_time == nullptr)
         {
             transmit_time = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime>();
-            transmit_time->parent = this;
-            children["transmit-time"] = transmit_time;
         }
-        return children.at("transmit-time");
+        return transmit_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : filter_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("originate-time") == children.end())
+    if(originate_time != nullptr)
     {
-        if(originate_time != nullptr)
-        {
-            children["originate-time"] = originate_time;
-        }
+        children["originate-time"] = originate_time;
     }
 
-    if(children.find("peer-info-common") == children.end())
+    if(peer_info_common != nullptr)
     {
-        if(peer_info_common != nullptr)
-        {
-            children["peer-info-common"] = peer_info_common;
-        }
+        children["peer-info-common"] = peer_info_common;
     }
 
-    if(children.find("receive-time") == children.end())
+    if(receive_time != nullptr)
     {
-        if(receive_time != nullptr)
-        {
-            children["receive-time"] = receive_time;
-        }
+        children["receive-time"] = receive_time;
     }
 
-    if(children.find("ref-time") == children.end())
+    if(ref_time != nullptr)
     {
-        if(ref_time != nullptr)
-        {
-            children["ref-time"] = ref_time;
-        }
+        children["ref-time"] = ref_time;
     }
 
-    if(children.find("transmit-time") == children.end())
+    if(transmit_time != nullptr)
     {
-        if(transmit_time != nullptr)
-        {
-            children["transmit-time"] = transmit_time;
-        }
+        children["transmit-time"] = transmit_time;
     }
 
     return children;
@@ -933,7 +788,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -968,20 +823,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon:
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1043,10 +890,8 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::RefTime()
 	,sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec>())
 {
     frac_secs->parent = this;
-    children["frac-secs"] = frac_secs;
 
     sec->parent = this;
-    children["sec"] = sec;
 
     yang_name = "ref-time"; yang_parent_name = "peer-detail-info";
 }
@@ -1077,7 +922,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_s
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1100,64 +945,38 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_en
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frac-secs")
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
-        else
+        if(frac_secs == nullptr)
         {
             frac_secs = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs>();
-            frac_secs->parent = this;
-            children["frac-secs"] = frac_secs;
         }
-        return children.at("frac-secs");
+        return frac_secs;
     }
 
     if(child_yang_name == "sec")
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
-        else
+        if(sec == nullptr)
         {
             sec = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec>();
-            sec->parent = this;
-            children["sec"] = sec;
         }
-        return children.at("sec");
+        return sec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_children() const
 {
-    if(children.find("frac-secs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frac_secs != nullptr)
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
+        children["frac-secs"] = frac_secs;
     }
 
-    if(children.find("sec") == children.end())
+    if(sec != nullptr)
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
+        children["sec"] = sec;
     }
 
     return children;
@@ -1198,7 +1017,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1222,20 +1041,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::g
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1278,7 +1089,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracS
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1302,20 +1113,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSe
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1333,10 +1136,8 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::OriginateTi
 	,sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec>())
 {
     frac_secs->parent = this;
-    children["frac-secs"] = frac_secs;
 
     sec->parent = this;
-    children["sec"] = sec;
 
     yang_name = "originate-time"; yang_parent_name = "peer-detail-info";
 }
@@ -1367,7 +1168,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime:
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1390,64 +1191,38 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frac-secs")
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
-        else
+        if(frac_secs == nullptr)
         {
             frac_secs = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs>();
-            frac_secs->parent = this;
-            children["frac-secs"] = frac_secs;
         }
-        return children.at("frac-secs");
+        return frac_secs;
     }
 
     if(child_yang_name == "sec")
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
-        else
+        if(sec == nullptr)
         {
             sec = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec>();
-            sec->parent = this;
-            children["sec"] = sec;
         }
-        return children.at("sec");
+        return sec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::get_children() const
 {
-    if(children.find("frac-secs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frac_secs != nullptr)
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
+        children["frac-secs"] = frac_secs;
     }
 
-    if(children.find("sec") == children.end())
+    if(sec != nullptr)
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
+        children["sec"] = sec;
     }
 
     return children;
@@ -1488,7 +1263,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime:
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1512,20 +1287,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1568,7 +1335,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime:
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1592,20 +1359,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1623,10 +1382,8 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::ReceiveTime()
 	,sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec>())
 {
     frac_secs->parent = this;
-    children["frac-secs"] = frac_secs;
 
     sec->parent = this;
-    children["sec"] = sec;
 
     yang_name = "receive-time"; yang_parent_name = "peer-detail-info";
 }
@@ -1657,7 +1414,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::g
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1680,64 +1437,38 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::ge
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frac-secs")
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
-        else
+        if(frac_secs == nullptr)
         {
             frac_secs = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs>();
-            frac_secs->parent = this;
-            children["frac-secs"] = frac_secs;
         }
-        return children.at("frac-secs");
+        return frac_secs;
     }
 
     if(child_yang_name == "sec")
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
-        else
+        if(sec == nullptr)
         {
             sec = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec>();
-            sec->parent = this;
-            children["sec"] = sec;
         }
-        return children.at("sec");
+        return sec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_children() const
 {
-    if(children.find("frac-secs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frac_secs != nullptr)
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
+        children["frac-secs"] = frac_secs;
     }
 
-    if(children.find("sec") == children.end())
+    if(sec != nullptr)
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
+        children["sec"] = sec;
     }
 
     return children;
@@ -1778,7 +1509,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::S
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1802,20 +1533,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Se
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1858,7 +1581,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::F
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1882,20 +1605,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Fr
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1913,10 +1628,8 @@ Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::TransmitTime
 	,sec(std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec>())
 {
     frac_secs->parent = this;
-    children["frac-secs"] = frac_secs;
 
     sec->parent = this;
-    children["sec"] = sec;
 
     yang_name = "transmit-time"; yang_parent_name = "peer-detail-info";
 }
@@ -1947,7 +1660,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1970,64 +1683,38 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::g
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frac-secs")
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
-        else
+        if(frac_secs == nullptr)
         {
             frac_secs = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs>();
-            frac_secs->parent = this;
-            children["frac-secs"] = frac_secs;
         }
-        return children.at("frac-secs");
+        return frac_secs;
     }
 
     if(child_yang_name == "sec")
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
-        else
+        if(sec == nullptr)
         {
             sec = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec>();
-            sec->parent = this;
-            children["sec"] = sec;
         }
-        return children.at("sec");
+        return sec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::get_children() const
 {
-    if(children.find("frac-secs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frac_secs != nullptr)
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
+        children["frac-secs"] = frac_secs;
     }
 
-    if(children.find("sec") == children.end())
+    if(sec != nullptr)
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
+        children["sec"] = sec;
     }
 
     return children;
@@ -2068,7 +1755,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2092,20 +1779,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::S
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2148,7 +1827,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2172,20 +1851,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::F
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2234,7 +1905,7 @@ std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::
 
 }
 
-EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2260,20 +1931,12 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::g
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2314,10 +1977,8 @@ Ntp::Nodes::Node::Status::Status()
 	,sys_ref_time(std::make_shared<Ntp::Nodes::Node::Status::SysRefTime>())
 {
     sys_drift->parent = this;
-    children["sys-drift"] = sys_drift;
 
     sys_ref_time->parent = this;
-    children["sys-ref-time"] = sys_ref_time;
 
     yang_name = "status"; yang_parent_name = "node";
 }
@@ -2376,7 +2037,7 @@ std::string Ntp::Nodes::Node::Status::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::Status::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Status::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2413,64 +2074,38 @@ EntityPath Ntp::Nodes::Node::Status::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sys-drift")
     {
-        if(sys_drift != nullptr)
-        {
-            children["sys-drift"] = sys_drift;
-        }
-        else
+        if(sys_drift == nullptr)
         {
             sys_drift = std::make_shared<Ntp::Nodes::Node::Status::SysDrift>();
-            sys_drift->parent = this;
-            children["sys-drift"] = sys_drift;
         }
-        return children.at("sys-drift");
+        return sys_drift;
     }
 
     if(child_yang_name == "sys-ref-time")
     {
-        if(sys_ref_time != nullptr)
-        {
-            children["sys-ref-time"] = sys_ref_time;
-        }
-        else
+        if(sys_ref_time == nullptr)
         {
             sys_ref_time = std::make_shared<Ntp::Nodes::Node::Status::SysRefTime>();
-            sys_ref_time->parent = this;
-            children["sys-ref-time"] = sys_ref_time;
         }
-        return children.at("sys-ref-time");
+        return sys_ref_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Status::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::get_children() const
 {
-    if(children.find("sys-drift") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sys_drift != nullptr)
     {
-        if(sys_drift != nullptr)
-        {
-            children["sys-drift"] = sys_drift;
-        }
+        children["sys-drift"] = sys_drift;
     }
 
-    if(children.find("sys-ref-time") == children.end())
+    if(sys_ref_time != nullptr)
     {
-        if(sys_ref_time != nullptr)
-        {
-            children["sys-ref-time"] = sys_ref_time;
-        }
+        children["sys-ref-time"] = sys_ref_time;
     }
 
     return children;
@@ -2542,10 +2177,8 @@ Ntp::Nodes::Node::Status::SysRefTime::SysRefTime()
 	,sec(std::make_shared<Ntp::Nodes::Node::Status::SysRefTime::Sec>())
 {
     frac_secs->parent = this;
-    children["frac-secs"] = frac_secs;
 
     sec->parent = this;
-    children["sec"] = sec;
 
     yang_name = "sys-ref-time"; yang_parent_name = "status";
 }
@@ -2576,7 +2209,7 @@ std::string Ntp::Nodes::Node::Status::SysRefTime::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::Status::SysRefTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Status::SysRefTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2599,64 +2232,38 @@ EntityPath Ntp::Nodes::Node::Status::SysRefTime::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysRefTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frac-secs")
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
-        else
+        if(frac_secs == nullptr)
         {
             frac_secs = std::make_shared<Ntp::Nodes::Node::Status::SysRefTime::FracSecs>();
-            frac_secs->parent = this;
-            children["frac-secs"] = frac_secs;
         }
-        return children.at("frac-secs");
+        return frac_secs;
     }
 
     if(child_yang_name == "sec")
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
-        else
+        if(sec == nullptr)
         {
             sec = std::make_shared<Ntp::Nodes::Node::Status::SysRefTime::Sec>();
-            sec->parent = this;
-            children["sec"] = sec;
         }
-        return children.at("sec");
+        return sec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Status::SysRefTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysRefTime::get_children() const
 {
-    if(children.find("frac-secs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frac_secs != nullptr)
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
+        children["frac-secs"] = frac_secs;
     }
 
-    if(children.find("sec") == children.end())
+    if(sec != nullptr)
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
+        children["sec"] = sec;
     }
 
     return children;
@@ -2697,7 +2304,7 @@ std::string Ntp::Nodes::Node::Status::SysRefTime::Sec::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::Status::SysRefTime::Sec::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Status::SysRefTime::Sec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2721,20 +2328,12 @@ EntityPath Ntp::Nodes::Node::Status::SysRefTime::Sec::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysRefTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Status::SysRefTime::Sec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysRefTime::Sec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2777,7 +2376,7 @@ std::string Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_segment_path() c
 
 }
 
-EntityPath Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2801,20 +2400,12 @@ EntityPath Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_entity_path(Entit
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2832,10 +2423,8 @@ Ntp::Nodes::Node::Status::SysDrift::SysDrift()
 	,sec(std::make_shared<Ntp::Nodes::Node::Status::SysDrift::Sec>())
 {
     frac_secs->parent = this;
-    children["frac-secs"] = frac_secs;
 
     sec->parent = this;
-    children["sec"] = sec;
 
     yang_name = "sys-drift"; yang_parent_name = "status";
 }
@@ -2866,7 +2455,7 @@ std::string Ntp::Nodes::Node::Status::SysDrift::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::Status::SysDrift::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Status::SysDrift::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2889,64 +2478,38 @@ EntityPath Ntp::Nodes::Node::Status::SysDrift::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysDrift::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frac-secs")
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
-        else
+        if(frac_secs == nullptr)
         {
             frac_secs = std::make_shared<Ntp::Nodes::Node::Status::SysDrift::FracSecs>();
-            frac_secs->parent = this;
-            children["frac-secs"] = frac_secs;
         }
-        return children.at("frac-secs");
+        return frac_secs;
     }
 
     if(child_yang_name == "sec")
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
-        else
+        if(sec == nullptr)
         {
             sec = std::make_shared<Ntp::Nodes::Node::Status::SysDrift::Sec>();
-            sec->parent = this;
-            children["sec"] = sec;
         }
-        return children.at("sec");
+        return sec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Status::SysDrift::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysDrift::get_children() const
 {
-    if(children.find("frac-secs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frac_secs != nullptr)
     {
-        if(frac_secs != nullptr)
-        {
-            children["frac-secs"] = frac_secs;
-        }
+        children["frac-secs"] = frac_secs;
     }
 
-    if(children.find("sec") == children.end())
+    if(sec != nullptr)
     {
-        if(sec != nullptr)
-        {
-            children["sec"] = sec;
-        }
+        children["sec"] = sec;
     }
 
     return children;
@@ -2987,7 +2550,7 @@ std::string Ntp::Nodes::Node::Status::SysDrift::Sec::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::Status::SysDrift::Sec::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Status::SysDrift::Sec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3011,20 +2574,12 @@ EntityPath Ntp::Nodes::Node::Status::SysDrift::Sec::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysDrift::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Status::SysDrift::Sec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysDrift::Sec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3067,7 +2622,7 @@ std::string Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_segment_path() con
 
 }
 
-EntityPath Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3091,20 +2646,12 @@ EntityPath Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3160,7 +2707,7 @@ std::string Ntp::Nodes::Node::Associations::get_segment_path() const
 
 }
 
-EntityPath Ntp::Nodes::Node::Associations::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Associations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3185,15 +2732,6 @@ EntityPath Ntp::Nodes::Node::Associations::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-summary-info")
     {
         for(auto const & c : peer_summary_info)
@@ -3201,28 +2739,24 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::Nodes::Node::Associations::PeerSummaryInfo>();
         c->parent = this;
-        peer_summary_info.push_back(std::move(c));
-        children[segment_path] = peer_summary_info.back();
-        return children.at(segment_path);
+        peer_summary_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Associations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Associations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_summary_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3247,7 +2781,6 @@ Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerSummaryInfo()
     peer_info_common(std::make_shared<Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon>())
 {
     peer_info_common->parent = this;
-    children["peer-info-common"] = peer_info_common;
 
     yang_name = "peer-summary-info"; yang_parent_name = "associations";
 }
@@ -3278,7 +2811,7 @@ std::string Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_segment_path() 
 
 }
 
-EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3302,41 +2835,24 @@ EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_entity_path(Enti
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-info-common")
     {
-        if(peer_info_common != nullptr)
-        {
-            children["peer-info-common"] = peer_info_common;
-        }
-        else
+        if(peer_info_common == nullptr)
         {
             peer_info_common = std::make_shared<Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon>();
-            peer_info_common->parent = this;
-            children["peer-info-common"] = peer_info_common;
         }
-        return children.at("peer-info-common");
+        return peer_info_common;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_children() const
 {
-    if(children.find("peer-info-common") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_info_common != nullptr)
     {
-        if(peer_info_common != nullptr)
-        {
-            children["peer-info-common"] = peer_info_common;
-        }
+        children["peer-info-common"] = peer_info_common;
     }
 
     return children;
@@ -3414,7 +2930,7 @@ std::string Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get
 
 }
 
-EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3449,20 +2965,12 @@ EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_
 
 std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

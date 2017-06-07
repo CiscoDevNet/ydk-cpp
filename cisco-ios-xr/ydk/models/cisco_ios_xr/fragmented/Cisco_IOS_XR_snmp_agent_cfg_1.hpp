@@ -13,169 +13,6 @@ namespace ydk {
 namespace Cisco_IOS_XR_snmp_agent_cfg {
 
 
-class Mib::InterfaceMib::Interfaces::Interface : public Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf interface_name; //type: string
-        YLeaf link_up_down; //type: boolean
-        YLeaf index_persistence; //type: boolean
-
-
-
-}; // Mib::InterfaceMib::Interfaces::Interface
-
-
-class Mib::InterfaceMib::Notification : public Entity
-{
-    public:
-        Notification();
-        ~Notification();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf link_ietf; //type: empty
-
-
-
-}; // Mib::InterfaceMib::Notification
-
-
-class Mib::InterfaceMib::Subsets : public Entity
-{
-    public:
-        Subsets();
-        ~Subsets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class Subset; //type: Mib::InterfaceMib::Subsets::Subset
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Subsets::Subset> > subset;
-
-
-}; // Mib::InterfaceMib::Subsets
-
-
-class Mib::InterfaceMib::Subsets::Subset : public Entity
-{
-    public:
-        Subset();
-        ~Subset();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf subset_id; //type: uint32
-
-        class LinkUpDown; //type: Mib::InterfaceMib::Subsets::Subset::LinkUpDown
-
-        std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Subsets::Subset::LinkUpDown> link_up_down;
-
-
-}; // Mib::InterfaceMib::Subsets::Subset
-
-
-class Mib::InterfaceMib::Subsets::Subset::LinkUpDown : public Entity
-{
-    public:
-        LinkUpDown();
-        ~LinkUpDown();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf enable; //type: boolean
-        YLeaf regular_expression; //type: string
-
-
-
-}; // Mib::InterfaceMib::Subsets::Subset::LinkUpDown
-
-
-class Mib::MplsTeMib : public Entity
-{
-    public:
-        MplsTeMib();
-        ~MplsTeMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf cache_garbage_collect_timer; //type: uint32
-        YLeaf cache_timer; //type: uint32
-
-
-
-}; // Mib::MplsTeMib
-
-
-class Mib::MplsP2MpMib : public Entity
-{
-    public:
-        MplsP2MpMib();
-        ~MplsP2MpMib();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf cache_timer; //type: uint32
-
-
-
-}; // Mib::MplsP2MpMib
-
-
 class Mib::MplsTeExtStdMib : public Entity
 {
     public:
@@ -184,16 +21,13 @@ class Mib::MplsTeExtStdMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf cache_timer; //type: uint32
-
-
 
 }; // Mib::MplsTeExtStdMib
 
@@ -206,16 +40,13 @@ class Mib::MplsTeExtMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf cache_timer; //type: uint32
-
-
 
 }; // Mib::MplsTeExtMib
 
@@ -228,16 +59,13 @@ class Mib::MplsFrrMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf cache_timer; //type: uint32
-
-
 
 }; // Mib::MplsFrrMib
 
@@ -250,21 +78,18 @@ class Mib::CbQosmib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf member_interface_stats; //type: empty
         YLeaf persist; //type: empty
-
         class Cache; //type: Mib::CbQosmib::Cache
 
         std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::CbQosmib::Cache> cache;
-
-
+        
 }; // Mib::CbQosmib
 
 
@@ -276,18 +101,15 @@ class Mib::CbQosmib::Cache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enable; //type: empty
         YLeaf refresh_time; //type: uint32
         YLeaf service_policy_count; //type: uint32
-
-
 
 }; // Mib::CbQosmib::Cache
 
@@ -300,18 +122,169 @@ class Mib::EntityMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entity_index_persistence; //type: empty
 
-
-
 }; // Mib::EntityMib
+
+
+class Mib::InterfaceMib : public Entity
+{
+    public:
+        InterfaceMib();
+        ~InterfaceMib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf internal_cache; //type: uint32
+        YLeaf interface_alias_long; //type: empty
+        YLeaf ip_subscriber; //type: empty
+        YLeaf interface_index_persistence; //type: empty
+        YLeaf statistics_cache; //type: empty
+        class Interfaces; //type: Mib::InterfaceMib::Interfaces
+        class Notification; //type: Mib::InterfaceMib::Notification
+        class Subsets; //type: Mib::InterfaceMib::Subsets
+
+        std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Interfaces> interfaces;
+        std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Notification> notification;
+        std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Subsets> subsets;
+        
+}; // Mib::InterfaceMib
+
+
+class Mib::InterfaceMib::Interfaces : public Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Interface; //type: Mib::InterfaceMib::Interfaces::Interface
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Interfaces::Interface> > interface;
+        
+}; // Mib::InterfaceMib::Interfaces
+
+
+class Mib::InterfaceMib::Interfaces::Interface : public Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf interface_name; //type: string
+        YLeaf link_up_down; //type: boolean
+        YLeaf index_persistence; //type: boolean
+
+}; // Mib::InterfaceMib::Interfaces::Interface
+
+
+class Mib::InterfaceMib::Notification : public Entity
+{
+    public:
+        Notification();
+        ~Notification();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf link_ietf; //type: empty
+
+}; // Mib::InterfaceMib::Notification
+
+
+class Mib::InterfaceMib::Subsets : public Entity
+{
+    public:
+        Subsets();
+        ~Subsets();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Subset; //type: Mib::InterfaceMib::Subsets::Subset
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Subsets::Subset> > subset;
+        
+}; // Mib::InterfaceMib::Subsets
+
+
+class Mib::InterfaceMib::Subsets::Subset : public Entity
+{
+    public:
+        Subset();
+        ~Subset();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf subset_id; //type: uint32
+        class LinkUpDown; //type: Mib::InterfaceMib::Subsets::Subset::LinkUpDown
+
+        std::shared_ptr<Cisco_IOS_XR_snmp_agent_cfg::Mib::InterfaceMib::Subsets::Subset::LinkUpDown> link_up_down;
+        
+}; // Mib::InterfaceMib::Subsets::Subset
+
+
+class Mib::InterfaceMib::Subsets::Subset::LinkUpDown : public Entity
+{
+    public:
+        LinkUpDown();
+        ~LinkUpDown();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf enable; //type: boolean
+        YLeaf regular_expression; //type: string
+
+}; // Mib::InterfaceMib::Subsets::Subset::LinkUpDown
 
 
 }

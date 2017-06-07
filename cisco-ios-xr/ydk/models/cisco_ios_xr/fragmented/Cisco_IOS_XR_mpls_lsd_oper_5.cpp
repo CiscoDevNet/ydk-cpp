@@ -49,7 +49,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -76,20 +76,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::I
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::IpSubData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -174,7 +166,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -208,20 +200,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PseudowireHeadEndData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -316,7 +300,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -344,20 +328,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::PwListData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -393,10 +369,8 @@ MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data:
 	,nexthop(std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop>())
 {
     inner_stack->parent = this;
-    children["inner-stack"] = inner_stack;
 
     nexthop->parent = this;
-    children["nexthop"] = nexthop;
 
     yang_name = "stackv4-data"; yang_parent_name = "moi";
 }
@@ -429,7 +403,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -453,64 +427,38 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inner-stack")
     {
-        if(inner_stack != nullptr)
-        {
-            children["inner-stack"] = inner_stack;
-        }
-        else
+        if(inner_stack == nullptr)
         {
             inner_stack = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack>();
-            inner_stack->parent = this;
-            children["inner-stack"] = inner_stack;
         }
-        return children.at("inner-stack");
+        return inner_stack;
     }
 
     if(child_yang_name == "nexthop")
     {
-        if(nexthop != nullptr)
-        {
-            children["nexthop"] = nexthop;
-        }
-        else
+        if(nexthop == nullptr)
         {
             nexthop = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop>();
-            nexthop->parent = this;
-            children["nexthop"] = nexthop;
         }
-        return children.at("nexthop");
+        return nexthop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::get_children() const
 {
-    if(children.find("inner-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(inner_stack != nullptr)
     {
-        if(inner_stack != nullptr)
-        {
-            children["inner-stack"] = inner_stack;
-        }
+        children["inner-stack"] = inner_stack;
     }
 
-    if(children.find("nexthop") == children.end())
+    if(nexthop != nullptr)
     {
-        if(nexthop != nullptr)
-        {
-            children["nexthop"] = nexthop;
-        }
+        children["nexthop"] = nexthop;
     }
 
     return children;
@@ -594,7 +542,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -631,20 +579,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -764,7 +704,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -791,15 +731,6 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label")
     {
         for(auto const & c : label)
@@ -807,28 +738,24 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label>();
         c->parent = this;
-        label.push_back(std::move(c));
-        children[segment_path] = label.back();
-        return children.at(segment_path);
+        label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -884,7 +811,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -909,20 +836,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -944,10 +863,8 @@ MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data:
 	,nexthop(std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop>())
 {
     inner_stack->parent = this;
-    children["inner-stack"] = inner_stack;
 
     nexthop->parent = this;
-    children["nexthop"] = nexthop;
 
     yang_name = "stackv6-data"; yang_parent_name = "moi";
 }
@@ -978,7 +895,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1001,64 +918,38 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inner-stack")
     {
-        if(inner_stack != nullptr)
-        {
-            children["inner-stack"] = inner_stack;
-        }
-        else
+        if(inner_stack == nullptr)
         {
             inner_stack = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack>();
-            inner_stack->parent = this;
-            children["inner-stack"] = inner_stack;
         }
-        return children.at("inner-stack");
+        return inner_stack;
     }
 
     if(child_yang_name == "nexthop")
     {
-        if(nexthop != nullptr)
-        {
-            children["nexthop"] = nexthop;
-        }
-        else
+        if(nexthop == nullptr)
         {
             nexthop = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop>();
-            nexthop->parent = this;
-            children["nexthop"] = nexthop;
         }
-        return children.at("nexthop");
+        return nexthop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::get_children() const
 {
-    if(children.find("inner-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(inner_stack != nullptr)
     {
-        if(inner_stack != nullptr)
-        {
-            children["inner-stack"] = inner_stack;
-        }
+        children["inner-stack"] = inner_stack;
     }
 
-    if(children.find("nexthop") == children.end())
+    if(nexthop != nullptr)
     {
-        if(nexthop != nullptr)
-        {
-            children["nexthop"] = nexthop;
-        }
+        children["nexthop"] = nexthop;
     }
 
     return children;
@@ -1126,7 +1017,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1159,20 +1050,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::Nexthop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1276,7 +1159,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1303,15 +1186,6 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label")
     {
         for(auto const & c : label)
@@ -1319,28 +1193,24 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::Moi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label>();
         c->parent = this;
-        label.push_back(std::move(c));
-        children[segment_path] = label.back();
-        return children.at(segment_path);
+        label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1396,7 +1266,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1421,20 +1291,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1499,7 +1361,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1529,20 +1391,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::T
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1609,7 +1463,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::
 
 }
 
-EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1633,20 +1487,12 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::D
 
 std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::DmtcData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1684,10 +1530,8 @@ MplsLsd::RewriteSummary::RewriteSummary()
 	,ipv6_paths(std::make_shared<MplsLsd::RewriteSummary::Ipv6Paths>())
 {
     ipv4_paths->parent = this;
-    children["ipv4-paths"] = ipv4_paths;
 
     ipv6_paths->parent = this;
-    children["ipv6-paths"] = ipv6_paths;
 
     yang_name = "rewrite-summary"; yang_parent_name = "mpls-lsd";
 }
@@ -1756,7 +1600,7 @@ std::string MplsLsd::RewriteSummary::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::RewriteSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::RewriteSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1798,64 +1642,38 @@ EntityPath MplsLsd::RewriteSummary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::RewriteSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-paths")
     {
-        if(ipv4_paths != nullptr)
-        {
-            children["ipv4-paths"] = ipv4_paths;
-        }
-        else
+        if(ipv4_paths == nullptr)
         {
             ipv4_paths = std::make_shared<MplsLsd::RewriteSummary::Ipv4Paths>();
-            ipv4_paths->parent = this;
-            children["ipv4-paths"] = ipv4_paths;
         }
-        return children.at("ipv4-paths");
+        return ipv4_paths;
     }
 
     if(child_yang_name == "ipv6-paths")
     {
-        if(ipv6_paths != nullptr)
-        {
-            children["ipv6-paths"] = ipv6_paths;
-        }
-        else
+        if(ipv6_paths == nullptr)
         {
             ipv6_paths = std::make_shared<MplsLsd::RewriteSummary::Ipv6Paths>();
-            ipv6_paths->parent = this;
-            children["ipv6-paths"] = ipv6_paths;
         }
-        return children.at("ipv6-paths");
+        return ipv6_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::RewriteSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::RewriteSummary::get_children() const
 {
-    if(children.find("ipv4-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_paths != nullptr)
     {
-        if(ipv4_paths != nullptr)
-        {
-            children["ipv4-paths"] = ipv4_paths;
-        }
+        children["ipv4-paths"] = ipv4_paths;
     }
 
-    if(children.find("ipv6-paths") == children.end())
+    if(ipv6_paths != nullptr)
     {
-        if(ipv6_paths != nullptr)
-        {
-            children["ipv6-paths"] = ipv6_paths;
-        }
+        children["ipv6-paths"] = ipv6_paths;
     }
 
     return children;
@@ -1984,7 +1802,7 @@ std::string MplsLsd::RewriteSummary::Ipv4Paths::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::RewriteSummary::Ipv4Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::RewriteSummary::Ipv4Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2012,20 +1830,12 @@ EntityPath MplsLsd::RewriteSummary::Ipv4Paths::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsLsd::RewriteSummary::Ipv4Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::RewriteSummary::Ipv4Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::RewriteSummary::Ipv4Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2096,7 +1906,7 @@ std::string MplsLsd::RewriteSummary::Ipv6Paths::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::RewriteSummary::Ipv6Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::RewriteSummary::Ipv6Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2124,20 +1934,12 @@ EntityPath MplsLsd::RewriteSummary::Ipv6Paths::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsLsd::RewriteSummary::Ipv6Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::RewriteSummary::Ipv6Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::RewriteSummary::Ipv6Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2203,7 +2005,7 @@ std::string MplsLsd::Applications::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::Applications::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Applications::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2226,15 +2028,6 @@ EntityPath MplsLsd::Applications::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::Applications::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "application")
     {
         for(auto const & c : application)
@@ -2242,28 +2035,24 @@ std::shared_ptr<Entity> MplsLsd::Applications::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::Applications::Application>();
         c->parent = this;
-        application.push_back(std::move(c));
-        children[segment_path] = application.back();
-        return children.at(segment_path);
+        application.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Applications::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Applications::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : application)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2295,7 +2084,6 @@ MplsLsd::Applications::Application::Application()
     application_statistics(std::make_shared<MplsLsd::Applications::Application::ApplicationStatistics>())
 {
     application_statistics->parent = this;
-    children["application-statistics"] = application_statistics;
 
     yang_name = "application"; yang_parent_name = "applications";
 }
@@ -2356,7 +2144,7 @@ std::string MplsLsd::Applications::Application::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::Applications::Application::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Applications::Application::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2395,41 +2183,24 @@ EntityPath MplsLsd::Applications::Application::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsLsd::Applications::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "application-statistics")
     {
-        if(application_statistics != nullptr)
-        {
-            children["application-statistics"] = application_statistics;
-        }
-        else
+        if(application_statistics == nullptr)
         {
             application_statistics = std::make_shared<MplsLsd::Applications::Application::ApplicationStatistics>();
-            application_statistics->parent = this;
-            children["application-statistics"] = application_statistics;
         }
-        return children.at("application-statistics");
+        return application_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Applications::Application::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Applications::Application::get_children() const
 {
-    if(children.find("application-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(application_statistics != nullptr)
     {
-        if(application_statistics != nullptr)
-        {
-            children["application-statistics"] = application_statistics;
-        }
+        children["application-statistics"] = application_statistics;
     }
 
     return children;
@@ -2514,7 +2285,6 @@ MplsLsd::Applications::Application::ApplicationStatistics::ApplicationStatistics
     connected(std::make_shared<MplsLsd::Applications::Application::ApplicationStatistics::Connected>())
 {
     connected->parent = this;
-    children["connected"] = connected;
 
     yang_name = "application-statistics"; yang_parent_name = "application";
 }
@@ -2571,7 +2341,7 @@ std::string MplsLsd::Applications::Application::ApplicationStatistics::get_segme
 
 }
 
-EntityPath MplsLsd::Applications::Application::ApplicationStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Applications::Application::ApplicationStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2601,41 +2371,24 @@ EntityPath MplsLsd::Applications::Application::ApplicationStatistics::get_entity
 
 std::shared_ptr<Entity> MplsLsd::Applications::Application::ApplicationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "connected")
     {
-        if(connected != nullptr)
-        {
-            children["connected"] = connected;
-        }
-        else
+        if(connected == nullptr)
         {
             connected = std::make_shared<MplsLsd::Applications::Application::ApplicationStatistics::Connected>();
-            connected->parent = this;
-            children["connected"] = connected;
         }
-        return children.at("connected");
+        return connected;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Applications::Application::ApplicationStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Applications::Application::ApplicationStatistics::get_children() const
 {
-    if(children.find("connected") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(connected != nullptr)
     {
-        if(connected != nullptr)
-        {
-            children["connected"] = connected;
-        }
+        children["connected"] = connected;
     }
 
     return children;
@@ -2705,7 +2458,7 @@ std::string MplsLsd::Applications::Application::ApplicationStatistics::Connected
 
 }
 
-EntityPath MplsLsd::Applications::Application::ApplicationStatistics::Connected::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Applications::Application::ApplicationStatistics::Connected::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2732,20 +2485,12 @@ EntityPath MplsLsd::Applications::Application::ApplicationStatistics::Connected:
 
 std::shared_ptr<Entity> MplsLsd::Applications::Application::ApplicationStatistics::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Applications::Application::ApplicationStatistics::Connected::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Applications::Application::ApplicationStatistics::Connected::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2807,7 +2552,7 @@ std::string MplsLsd::LabelSummaryVrfs::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::LabelSummaryVrfs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::LabelSummaryVrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2830,15 +2575,6 @@ EntityPath MplsLsd::LabelSummaryVrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::LabelSummaryVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-summary-vrf")
     {
         for(auto const & c : label_summary_vrf)
@@ -2846,28 +2582,24 @@ std::shared_ptr<Entity> MplsLsd::LabelSummaryVrfs::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::LabelSummaryVrfs::LabelSummaryVrf>();
         c->parent = this;
-        label_summary_vrf.push_back(std::move(c));
-        children[segment_path] = label_summary_vrf.back();
-        return children.at(segment_path);
+        label_summary_vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::LabelSummaryVrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelSummaryVrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label_summary_vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2927,7 +2659,7 @@ std::string MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2954,15 +2686,6 @@ EntityPath MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "owner-count")
     {
         for(auto const & c : owner_count)
@@ -2970,28 +2693,24 @@ std::shared_ptr<Entity> MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount>();
         c->parent = this;
-        owner_count.push_back(std::move(c));
-        children[segment_path] = owner_count.back();
-        return children.at(segment_path);
+        owner_count.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : owner_count)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3060,7 +2779,7 @@ std::string MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_segment_
 
 }
 
-EntityPath MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3088,20 +2807,12 @@ EntityPath MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_entity_pa
 
 std::shared_ptr<Entity> MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3169,7 +2880,7 @@ std::string MplsLsd::LabelRange::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::LabelRange::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::LabelRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3196,20 +2907,12 @@ EntityPath MplsLsd::LabelRange::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::LabelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::LabelRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3271,7 +2974,7 @@ std::string MplsLsd::RewriteSummaryVrfs::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::RewriteSummaryVrfs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::RewriteSummaryVrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3294,15 +2997,6 @@ EntityPath MplsLsd::RewriteSummaryVrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::RewriteSummaryVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rewrite-summary-vrf")
     {
         for(auto const & c : rewrite_summary_vrf)
@@ -3310,28 +3004,24 @@ std::shared_ptr<Entity> MplsLsd::RewriteSummaryVrfs::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf>();
         c->parent = this;
-        rewrite_summary_vrf.push_back(std::move(c));
-        children[segment_path] = rewrite_summary_vrf.back();
-        return children.at(segment_path);
+        rewrite_summary_vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::RewriteSummaryVrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::RewriteSummaryVrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rewrite_summary_vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3368,10 +3058,8 @@ MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::RewriteSummaryVrf()
 	,ipv6_paths(std::make_shared<MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths>())
 {
     ipv4_paths->parent = this;
-    children["ipv4-paths"] = ipv4_paths;
 
     ipv6_paths->parent = this;
-    children["ipv6-paths"] = ipv6_paths;
 
     yang_name = "rewrite-summary-vrf"; yang_parent_name = "rewrite-summary-vrfs";
 }
@@ -3442,7 +3130,7 @@ std::string MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_segment_path() c
 
 }
 
-EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3485,64 +3173,38 @@ EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_entity_path(Entit
 
 std::shared_ptr<Entity> MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-paths")
     {
-        if(ipv4_paths != nullptr)
-        {
-            children["ipv4-paths"] = ipv4_paths;
-        }
-        else
+        if(ipv4_paths == nullptr)
         {
             ipv4_paths = std::make_shared<MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths>();
-            ipv4_paths->parent = this;
-            children["ipv4-paths"] = ipv4_paths;
         }
-        return children.at("ipv4-paths");
+        return ipv4_paths;
     }
 
     if(child_yang_name == "ipv6-paths")
     {
-        if(ipv6_paths != nullptr)
-        {
-            children["ipv6-paths"] = ipv6_paths;
-        }
-        else
+        if(ipv6_paths == nullptr)
         {
             ipv6_paths = std::make_shared<MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths>();
-            ipv6_paths->parent = this;
-            children["ipv6-paths"] = ipv6_paths;
         }
-        return children.at("ipv6-paths");
+        return ipv6_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_children() const
 {
-    if(children.find("ipv4-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_paths != nullptr)
     {
-        if(ipv4_paths != nullptr)
-        {
-            children["ipv4-paths"] = ipv4_paths;
-        }
+        children["ipv4-paths"] = ipv4_paths;
     }
 
-    if(children.find("ipv6-paths") == children.end())
+    if(ipv6_paths != nullptr)
     {
-        if(ipv6_paths != nullptr)
-        {
-            children["ipv6-paths"] = ipv6_paths;
-        }
+        children["ipv6-paths"] = ipv6_paths;
     }
 
     return children;
@@ -3675,7 +3337,7 @@ std::string MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_segme
 
 }
 
-EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3703,20 +3365,12 @@ EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_entity
 
 std::shared_ptr<Entity> MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3787,7 +3441,7 @@ std::string MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_segme
 
 }
 
-EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3815,20 +3469,12 @@ EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_entity
 
 std::shared_ptr<Entity> MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3894,7 +3540,7 @@ std::string MplsLsd::Interfaces::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3917,15 +3563,6 @@ EntityPath MplsLsd::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3933,28 +3570,24 @@ std::shared_ptr<Entity> MplsLsd::Interfaces::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4011,7 +3644,7 @@ std::string MplsLsd::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4037,15 +3670,6 @@ EntityPath MplsLsd::Interfaces::Interface::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> MplsLsd::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "application-owner")
     {
         for(auto const & c : application_owner)
@@ -4053,28 +3677,24 @@ std::shared_ptr<Entity> MplsLsd::Interfaces::Interface::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::Interfaces::Interface::ApplicationOwner>();
         c->parent = this;
-        application_owner.push_back(std::move(c));
-        children[segment_path] = application_owner.back();
-        return children.at(segment_path);
+        application_owner.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : application_owner)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4139,7 +3759,7 @@ std::string MplsLsd::Interfaces::Interface::ApplicationOwner::get_segment_path()
 
 }
 
-EntityPath MplsLsd::Interfaces::Interface::ApplicationOwner::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Interfaces::Interface::ApplicationOwner::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4167,20 +3787,12 @@ EntityPath MplsLsd::Interfaces::Interface::ApplicationOwner::get_entity_path(Ent
 
 std::shared_ptr<Entity> MplsLsd::Interfaces::Interface::ApplicationOwner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Interfaces::Interface::ApplicationOwner::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Interfaces::Interface::ApplicationOwner::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

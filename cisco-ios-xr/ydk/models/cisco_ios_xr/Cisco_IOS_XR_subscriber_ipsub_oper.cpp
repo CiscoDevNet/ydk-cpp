@@ -14,7 +14,6 @@ IpSubscriber::IpSubscriber()
     nodes(std::make_shared<IpSubscriber::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "ip-subscriber"; yang_parent_name = "Cisco-IOS-XR-subscriber-ipsub-oper";
 }
@@ -43,12 +42,12 @@ std::string IpSubscriber::get_segment_path() const
 
 }
 
-EntityPath IpSubscriber::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath IpSubscriber::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpSubscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<IpSubscriber::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string IpSubscriber::Nodes::get_segment_path() const
 
 }
 
-EntityPath IpSubscriber::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath IpSubscriber::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpSubscriber::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -244,13 +213,10 @@ IpSubscriber::Nodes::Node::Node()
 	,summary(std::make_shared<IpSubscriber::Nodes::Node::Summary>())
 {
     access_interfaces->parent = this;
-    children["access-interfaces"] = access_interfaces;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -285,7 +251,7 @@ std::string IpSubscriber::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,87 +275,52 @@ EntityPath IpSubscriber::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interfaces")
     {
-        if(access_interfaces != nullptr)
-        {
-            children["access-interfaces"] = access_interfaces;
-        }
-        else
+        if(access_interfaces == nullptr)
         {
             access_interfaces = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces>();
-            access_interfaces->parent = this;
-            children["access-interfaces"] = access_interfaces;
         }
-        return children.at("access-interfaces");
+        return access_interfaces;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<IpSubscriber::Nodes::Node::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<IpSubscriber::Nodes::Node::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::get_children() const
 {
-    if(children.find("access-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interfaces != nullptr)
     {
-        if(access_interfaces != nullptr)
-        {
-            children["access-interfaces"] = access_interfaces;
-        }
+        children["access-interfaces"] = access_interfaces;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -409,10 +340,8 @@ IpSubscriber::Nodes::Node::Summary::Summary()
 	,interface_counts(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>())
 {
     access_interface_summary->parent = this;
-    children["access-interface-summary"] = access_interface_summary;
 
     interface_counts->parent = this;
-    children["interface-counts"] = interface_counts;
 
     yang_name = "summary"; yang_parent_name = "node";
 }
@@ -453,7 +382,7 @@ std::string IpSubscriber::Nodes::Node::Summary::get_segment_path() const
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -476,43 +405,22 @@ EntityPath IpSubscriber::Nodes::Node::Summary::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interface-summary")
     {
-        if(access_interface_summary != nullptr)
-        {
-            children["access-interface-summary"] = access_interface_summary;
-        }
-        else
+        if(access_interface_summary == nullptr)
         {
             access_interface_summary = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary>();
-            access_interface_summary->parent = this;
-            children["access-interface-summary"] = access_interface_summary;
         }
-        return children.at("access-interface-summary");
+        return access_interface_summary;
     }
 
     if(child_yang_name == "interface-counts")
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
-        else
+        if(interface_counts == nullptr)
         {
             interface_counts = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts>();
-            interface_counts->parent = this;
-            children["interface-counts"] = interface_counts;
         }
-        return children.at("interface-counts");
+        return interface_counts;
     }
 
     if(child_yang_name == "vrf")
@@ -522,44 +430,34 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpSubscriber::Nodes::Node::Summary::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::get_children() const
 {
-    if(children.find("access-interface-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interface_summary != nullptr)
     {
-        if(access_interface_summary != nullptr)
-        {
-            children["access-interface-summary"] = access_interface_summary;
-        }
+        children["access-interface-summary"] = access_interface_summary;
     }
 
-    if(children.find("interface-counts") == children.end())
+    if(interface_counts != nullptr)
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
+        children["interface-counts"] = interface_counts;
     }
 
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -577,10 +475,8 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::AccessInterfaceSumma
 	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>())
 {
     initiators->parent = this;
-    children["initiators"] = initiators;
 
     ipv6_initiators->parent = this;
-    children["ipv6-initiators"] = ipv6_initiators;
 
     yang_name = "access-interface-summary"; yang_parent_name = "summary";
 }
@@ -613,7 +509,7 @@ std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_segm
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -637,64 +533,38 @@ EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_entit
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "initiators")
     {
-        if(initiators != nullptr)
-        {
-            children["initiators"] = initiators;
-        }
-        else
+        if(initiators == nullptr)
         {
             initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators>();
-            initiators->parent = this;
-            children["initiators"] = initiators;
         }
-        return children.at("initiators");
+        return initiators;
     }
 
     if(child_yang_name == "ipv6-initiators")
     {
-        if(ipv6_initiators != nullptr)
-        {
-            children["ipv6-initiators"] = ipv6_initiators;
-        }
-        else
+        if(ipv6_initiators == nullptr)
         {
             ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators>();
-            ipv6_initiators->parent = this;
-            children["ipv6-initiators"] = ipv6_initiators;
         }
-        return children.at("ipv6-initiators");
+        return ipv6_initiators;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_children() const
 {
-    if(children.find("initiators") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(initiators != nullptr)
     {
-        if(initiators != nullptr)
-        {
-            children["initiators"] = initiators;
-        }
+        children["initiators"] = initiators;
     }
 
-    if(children.find("ipv6-initiators") == children.end())
+    if(ipv6_initiators != nullptr)
     {
-        if(ipv6_initiators != nullptr)
-        {
-            children["ipv6-initiators"] = ipv6_initiators;
-        }
+        children["ipv6-initiators"] = ipv6_initiators;
     }
 
     return children;
@@ -714,10 +584,8 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Initiato
 	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     packet_trigger->parent = this;
-    children["packet-trigger"] = packet_trigger;
 
     yang_name = "initiators"; yang_parent_name = "access-interface-summary";
 }
@@ -748,7 +616,7 @@ std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiato
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -771,64 +639,38 @@ EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiator
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "packet-trigger")
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
-        else
+        if(packet_trigger == nullptr)
         {
             packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger>();
-            packet_trigger->parent = this;
-            children["packet-trigger"] = packet_trigger;
         }
-        return children.at("packet-trigger");
+        return packet_trigger;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("packet-trigger") == children.end())
+    if(packet_trigger != nullptr)
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
+        children["packet-trigger"] = packet_trigger;
     }
 
     return children;
@@ -872,7 +714,7 @@ std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiato
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -897,20 +739,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiator
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -960,7 +794,7 @@ std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiato
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -985,20 +819,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiator
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1020,10 +846,8 @@ IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Ipv6
 	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     packet_trigger->parent = this;
-    children["packet-trigger"] = packet_trigger;
 
     yang_name = "ipv6-initiators"; yang_parent_name = "access-interface-summary";
 }
@@ -1054,7 +878,7 @@ std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Init
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1077,64 +901,38 @@ EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initi
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "packet-trigger")
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
-        else
+        if(packet_trigger == nullptr)
         {
             packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger>();
-            packet_trigger->parent = this;
-            children["packet-trigger"] = packet_trigger;
         }
-        return children.at("packet-trigger");
+        return packet_trigger;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("packet-trigger") == children.end())
+    if(packet_trigger != nullptr)
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
+        children["packet-trigger"] = packet_trigger;
     }
 
     return children;
@@ -1178,7 +976,7 @@ std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Init
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1203,20 +1001,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initi
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1266,7 +1056,7 @@ std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Init
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1291,20 +1081,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initi
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1326,10 +1108,8 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::InterfaceCounts()
 	,ipv6_initiators(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>())
 {
     initiators->parent = this;
-    children["initiators"] = initiators;
 
     ipv6_initiators->parent = this;
-    children["ipv6-initiators"] = ipv6_initiators;
 
     yang_name = "interface-counts"; yang_parent_name = "summary";
 }
@@ -1360,7 +1140,7 @@ std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_segment_pat
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1383,64 +1163,38 @@ EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_entity_path(
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "initiators")
     {
-        if(initiators != nullptr)
-        {
-            children["initiators"] = initiators;
-        }
-        else
+        if(initiators == nullptr)
         {
             initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators>();
-            initiators->parent = this;
-            children["initiators"] = initiators;
         }
-        return children.at("initiators");
+        return initiators;
     }
 
     if(child_yang_name == "ipv6-initiators")
     {
-        if(ipv6_initiators != nullptr)
-        {
-            children["ipv6-initiators"] = ipv6_initiators;
-        }
-        else
+        if(ipv6_initiators == nullptr)
         {
             ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators>();
-            ipv6_initiators->parent = this;
-            children["ipv6-initiators"] = ipv6_initiators;
         }
-        return children.at("ipv6-initiators");
+        return ipv6_initiators;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_children() const
 {
-    if(children.find("initiators") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(initiators != nullptr)
     {
-        if(initiators != nullptr)
-        {
-            children["initiators"] = initiators;
-        }
+        children["initiators"] = initiators;
     }
 
-    if(children.find("ipv6-initiators") == children.end())
+    if(ipv6_initiators != nullptr)
     {
-        if(ipv6_initiators != nullptr)
-        {
-            children["ipv6-initiators"] = ipv6_initiators;
-        }
+        children["ipv6-initiators"] = ipv6_initiators;
     }
 
     return children;
@@ -1456,10 +1210,8 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Initiators()
 	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     packet_trigger->parent = this;
-    children["packet-trigger"] = packet_trigger;
 
     yang_name = "initiators"; yang_parent_name = "interface-counts";
 }
@@ -1490,7 +1242,7 @@ std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1513,64 +1265,38 @@ EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "packet-trigger")
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
-        else
+        if(packet_trigger == nullptr)
         {
             packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger>();
-            packet_trigger->parent = this;
-            children["packet-trigger"] = packet_trigger;
         }
-        return children.at("packet-trigger");
+        return packet_trigger;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("packet-trigger") == children.end())
+    if(packet_trigger != nullptr)
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
+        children["packet-trigger"] = packet_trigger;
     }
 
     return children;
@@ -1653,7 +1379,7 @@ std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhc
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1691,20 +1417,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1845,7 +1563,7 @@ std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Pac
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1883,20 +1601,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Pack
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1970,10 +1680,8 @@ IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Ipv6Initiat
 	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     packet_trigger->parent = this;
-    children["packet-trigger"] = packet_trigger;
 
     yang_name = "ipv6-initiators"; yang_parent_name = "interface-counts";
 }
@@ -2004,7 +1712,7 @@ std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators:
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2027,64 +1735,38 @@ EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "packet-trigger")
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
-        else
+        if(packet_trigger == nullptr)
         {
             packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger>();
-            packet_trigger->parent = this;
-            children["packet-trigger"] = packet_trigger;
         }
-        return children.at("packet-trigger");
+        return packet_trigger;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("packet-trigger") == children.end())
+    if(packet_trigger != nullptr)
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
+        children["packet-trigger"] = packet_trigger;
     }
 
     return children;
@@ -2167,7 +1849,7 @@ std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators:
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2205,20 +1887,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2359,7 +2033,7 @@ std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators:
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2397,20 +2071,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2518,7 +2184,7 @@ std::string IpSubscriber::Nodes::Node::Summary::Vrf::get_segment_path() const
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Summary::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Summary::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2545,20 +2211,12 @@ EntityPath IpSubscriber::Nodes::Node::Summary::Vrf::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Summary::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2620,7 +2278,7 @@ std::string IpSubscriber::Nodes::Node::Interfaces::get_segment_path() const
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2643,15 +2301,6 @@ EntityPath IpSubscriber::Nodes::Node::Interfaces::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -2659,28 +2308,24 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2717,10 +2362,8 @@ IpSubscriber::Nodes::Node::Interfaces::Interface::Interface()
 	,vrf(std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf>())
 {
     ipv6vrf->parent = this;
-    children["ipv6vrf"] = ipv6vrf;
 
     vrf->parent = this;
-    children["vrf"] = vrf;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -2791,7 +2434,7 @@ std::string IpSubscriber::Nodes::Node::Interfaces::Interface::get_segment_path()
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2834,64 +2477,38 @@ EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::get_entity_path(Ent
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6vrf")
     {
-        if(ipv6vrf != nullptr)
-        {
-            children["ipv6vrf"] = ipv6vrf;
-        }
-        else
+        if(ipv6vrf == nullptr)
         {
             ipv6vrf = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf>();
-            ipv6vrf->parent = this;
-            children["ipv6vrf"] = ipv6vrf;
         }
-        return children.at("ipv6vrf");
+        return ipv6vrf;
     }
 
     if(child_yang_name == "vrf")
     {
-        if(vrf != nullptr)
-        {
-            children["vrf"] = vrf;
-        }
-        else
+        if(vrf == nullptr)
         {
             vrf = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf>();
-            vrf->parent = this;
-            children["vrf"] = vrf;
         }
-        return children.at("vrf");
+        return vrf;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    if(children.find("ipv6vrf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv6vrf != nullptr)
     {
-        if(ipv6vrf != nullptr)
-        {
-            children["ipv6vrf"] = ipv6vrf;
-        }
+        children["ipv6vrf"] = ipv6vrf;
     }
 
-    if(children.find("vrf") == children.end())
+    if(vrf != nullptr)
     {
-        if(vrf != nullptr)
-        {
-            children["vrf"] = vrf;
-        }
+        children["vrf"] = vrf;
     }
 
     return children;
@@ -3015,7 +2632,7 @@ std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_segment_p
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3040,20 +2657,12 @@ EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_entity_pat
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3103,7 +2712,7 @@ std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_segme
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3128,20 +2737,12 @@ EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_entity
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3195,7 +2796,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::get_segment_path() cons
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3218,15 +2819,6 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interface")
     {
         for(auto const & c : access_interface)
@@ -3234,28 +2826,24 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface>();
         c->parent = this;
-        access_interface.push_back(std::move(c));
-        children[segment_path] = access_interface.back();
-        return children.at(segment_path);
+        access_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3280,13 +2868,10 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::AccessInterface()
 	,session_limit(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>())
 {
     initiators->parent = this;
-    children["initiators"] = initiators;
 
     ipv6_initiators->parent = this;
-    children["ipv6-initiators"] = ipv6_initiators;
 
     session_limit->parent = this;
-    children["session-limit"] = session_limit;
 
     yang_name = "access-interface"; yang_parent_name = "access-interfaces";
 }
@@ -3333,7 +2918,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_se
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3363,87 +2948,52 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_ent
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "initiators")
     {
-        if(initiators != nullptr)
-        {
-            children["initiators"] = initiators;
-        }
-        else
+        if(initiators == nullptr)
         {
             initiators = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators>();
-            initiators->parent = this;
-            children["initiators"] = initiators;
         }
-        return children.at("initiators");
+        return initiators;
     }
 
     if(child_yang_name == "ipv6-initiators")
     {
-        if(ipv6_initiators != nullptr)
-        {
-            children["ipv6-initiators"] = ipv6_initiators;
-        }
-        else
+        if(ipv6_initiators == nullptr)
         {
             ipv6_initiators = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators>();
-            ipv6_initiators->parent = this;
-            children["ipv6-initiators"] = ipv6_initiators;
         }
-        return children.at("ipv6-initiators");
+        return ipv6_initiators;
     }
 
     if(child_yang_name == "session-limit")
     {
-        if(session_limit != nullptr)
-        {
-            children["session-limit"] = session_limit;
-        }
-        else
+        if(session_limit == nullptr)
         {
             session_limit = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit>();
-            session_limit->parent = this;
-            children["session-limit"] = session_limit;
         }
-        return children.at("session-limit");
+        return session_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_children() const
 {
-    if(children.find("initiators") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(initiators != nullptr)
     {
-        if(initiators != nullptr)
-        {
-            children["initiators"] = initiators;
-        }
+        children["initiators"] = initiators;
     }
 
-    if(children.find("ipv6-initiators") == children.end())
+    if(ipv6_initiators != nullptr)
     {
-        if(ipv6_initiators != nullptr)
-        {
-            children["ipv6-initiators"] = ipv6_initiators;
-        }
+        children["ipv6-initiators"] = ipv6_initiators;
     }
 
-    if(children.find("session-limit") == children.end())
+    if(session_limit != nullptr)
     {
-        if(session_limit != nullptr)
-        {
-            children["session-limit"] = session_limit;
-        }
+        children["session-limit"] = session_limit;
     }
 
     return children;
@@ -3487,10 +3037,8 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Initia
 	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     packet_trigger->parent = this;
-    children["packet-trigger"] = packet_trigger;
 
     yang_name = "initiators"; yang_parent_name = "access-interface";
 }
@@ -3521,7 +3069,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initia
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3544,64 +3092,38 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiat
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "packet-trigger")
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
-        else
+        if(packet_trigger == nullptr)
         {
             packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger>();
-            packet_trigger->parent = this;
-            children["packet-trigger"] = packet_trigger;
         }
-        return children.at("packet-trigger");
+        return packet_trigger;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("packet-trigger") == children.end())
+    if(packet_trigger != nullptr)
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
+        children["packet-trigger"] = packet_trigger;
     }
 
     return children;
@@ -3669,7 +3191,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initia
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3702,20 +3224,12 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiat
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3821,7 +3335,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initia
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3854,20 +3368,12 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiat
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3921,10 +3427,8 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Ip
 	,packet_trigger(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     packet_trigger->parent = this;
-    children["packet-trigger"] = packet_trigger;
 
     yang_name = "ipv6-initiators"; yang_parent_name = "access-interface";
 }
@@ -3955,7 +3459,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6In
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3978,64 +3482,38 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Ini
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "packet-trigger")
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
-        else
+        if(packet_trigger == nullptr)
         {
             packet_trigger = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger>();
-            packet_trigger->parent = this;
-            children["packet-trigger"] = packet_trigger;
         }
-        return children.at("packet-trigger");
+        return packet_trigger;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("packet-trigger") == children.end())
+    if(packet_trigger != nullptr)
     {
-        if(packet_trigger != nullptr)
-        {
-            children["packet-trigger"] = packet_trigger;
-        }
+        children["packet-trigger"] = packet_trigger;
     }
 
     return children;
@@ -4103,7 +3581,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6In
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4136,20 +3614,12 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Ini
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4255,7 +3725,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6In
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4288,20 +3758,12 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Ini
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4355,10 +3817,8 @@ IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Sess
 	,unclassified_source(std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource>())
 {
     total->parent = this;
-    children["total"] = total;
 
     unclassified_source->parent = this;
-    children["unclassified-source"] = unclassified_source;
 
     yang_name = "session-limit"; yang_parent_name = "access-interface";
 }
@@ -4389,7 +3849,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Sessio
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4412,64 +3872,38 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Session
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "total")
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
-        else
+        if(total == nullptr)
         {
             total = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total>();
-            total->parent = this;
-            children["total"] = total;
         }
-        return children.at("total");
+        return total;
     }
 
     if(child_yang_name == "unclassified-source")
     {
-        if(unclassified_source != nullptr)
-        {
-            children["unclassified-source"] = unclassified_source;
-        }
-        else
+        if(unclassified_source == nullptr)
         {
             unclassified_source = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource>();
-            unclassified_source->parent = this;
-            children["unclassified-source"] = unclassified_source;
         }
-        return children.at("unclassified-source");
+        return unclassified_source;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_children() const
 {
-    if(children.find("total") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(total != nullptr)
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
+        children["total"] = total;
     }
 
-    if(children.find("unclassified-source") == children.end())
+    if(unclassified_source != nullptr)
     {
-        if(unclassified_source != nullptr)
-        {
-            children["unclassified-source"] = unclassified_source;
-        }
+        children["unclassified-source"] = unclassified_source;
     }
 
     return children;
@@ -4510,7 +3944,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Sessio
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4534,20 +3968,12 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Session
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4590,7 +4016,7 @@ std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Sessio
 
 }
 
-EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_entity_path(Entity* ancestor) const
+const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4614,20 +4040,12 @@ EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Session
 
 std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

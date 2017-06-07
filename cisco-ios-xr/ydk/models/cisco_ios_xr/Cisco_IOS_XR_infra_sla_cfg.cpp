@@ -14,7 +14,6 @@ Sla::Sla()
     protocols(std::make_shared<Sla::Protocols>())
 {
     protocols->parent = this;
-    children["protocols"] = protocols;
 
     yang_name = "sla"; yang_parent_name = "Cisco-IOS-XR-infra-sla-cfg";
 }
@@ -43,12 +42,12 @@ std::string Sla::get_segment_path() const
 
 }
 
-EntityPath Sla::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Sla::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sla::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocols")
     {
-        if(protocols != nullptr)
-        {
-            children["protocols"] = protocols;
-        }
-        else
+        if(protocols == nullptr)
         {
             protocols = std::make_shared<Sla::Protocols>();
-            protocols->parent = this;
-            children["protocols"] = protocols;
         }
-        return children.at("protocols");
+        return protocols;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::get_children() const
 {
-    if(children.find("protocols") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protocols != nullptr)
     {
-        if(protocols != nullptr)
-        {
-            children["protocols"] = protocols;
-        }
+        children["protocols"] = protocols;
     }
 
     return children;
@@ -132,7 +114,6 @@ Sla::Protocols::Protocols()
     ethernet(std::make_shared<Sla::Protocols::Ethernet>())
 {
     ethernet->parent = this;
-    children["ethernet"] = ethernet;
 
     yang_name = "protocols"; yang_parent_name = "sla";
 }
@@ -161,7 +142,7 @@ std::string Sla::Protocols::get_segment_path() const
 
 }
 
-EntityPath Sla::Protocols::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -184,41 +165,24 @@ EntityPath Sla::Protocols::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sla::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet")
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
-        else
+        if(ethernet == nullptr)
         {
             ethernet = std::make_shared<Sla::Protocols::Ethernet>();
-            ethernet->parent = this;
-            children["ethernet"] = ethernet;
         }
-        return children.at("ethernet");
+        return ethernet;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::get_children() const
 {
-    if(children.find("ethernet") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet != nullptr)
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
+        children["ethernet"] = ethernet;
     }
 
     return children;
@@ -233,7 +197,6 @@ Sla::Protocols::Ethernet::Ethernet()
     profiles(std::make_shared<Sla::Protocols::Ethernet::Profiles>())
 {
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     yang_name = "ethernet"; yang_parent_name = "protocols";
 }
@@ -262,7 +225,7 @@ std::string Sla::Protocols::Ethernet::get_segment_path() const
 
 }
 
-EntityPath Sla::Protocols::Ethernet::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -285,41 +248,24 @@ EntityPath Sla::Protocols::Ethernet::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<Sla::Protocols::Ethernet::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::get_children() const
 {
-    if(children.find("profiles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
     return children;
@@ -367,7 +313,7 @@ std::string Sla::Protocols::Ethernet::Profiles::get_segment_path() const
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -390,15 +336,6 @@ EntityPath Sla::Protocols::Ethernet::Profiles::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -406,28 +343,24 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -447,10 +380,8 @@ Sla::Protocols::Ethernet::Profiles::Profile::Profile()
 	,statistics(std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics>())
 {
     probe->parent = this;
-    children["probe"] = probe;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "profile"; yang_parent_name = "profiles";
 }
@@ -487,7 +418,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::get_segment_path() cons
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -512,87 +443,52 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "probe")
     {
-        if(probe != nullptr)
-        {
-            children["probe"] = probe;
-        }
-        else
+        if(probe == nullptr)
         {
             probe = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Probe>();
-            probe->parent = this;
-            children["probe"] = probe;
         }
-        return children.at("probe");
+        return probe;
     }
 
     if(child_yang_name == "schedule")
     {
-        if(schedule != nullptr)
-        {
-            children["schedule"] = schedule;
-        }
-        else
+        if(schedule == nullptr)
         {
             schedule = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Schedule>();
-            schedule->parent = this;
-            children["schedule"] = schedule;
         }
-        return children.at("schedule");
+        return schedule;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::get_children() const
 {
-    if(children.find("probe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(probe != nullptr)
     {
-        if(probe != nullptr)
-        {
-            children["probe"] = probe;
-        }
+        children["probe"] = probe;
     }
 
-    if(children.find("schedule") == children.end())
+    if(schedule != nullptr)
     {
-        if(schedule != nullptr)
-        {
-            children["schedule"] = schedule;
-        }
+        children["schedule"] = schedule;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -648,7 +544,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_segment
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -671,15 +567,6 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_entity_p
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistic")
     {
         for(auto const & c : statistic)
@@ -687,28 +574,24 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(std::move(c));
-        children[segment_path] = statistic.back();
-        return children.at(segment_path);
+        statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -762,7 +645,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -788,64 +671,38 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::g
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregation")
     {
-        if(aggregation != nullptr)
-        {
-            children["aggregation"] = aggregation;
-        }
-        else
+        if(aggregation == nullptr)
         {
             aggregation = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation>();
-            aggregation->parent = this;
-            children["aggregation"] = aggregation;
         }
-        return children.at("aggregation");
+        return aggregation;
     }
 
     if(child_yang_name == "buckets-size")
     {
-        if(buckets_size != nullptr)
-        {
-            children["buckets-size"] = buckets_size;
-        }
-        else
+        if(buckets_size == nullptr)
         {
             buckets_size = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize>();
-            buckets_size->parent = this;
-            children["buckets-size"] = buckets_size;
         }
-        return children.at("buckets-size");
+        return buckets_size;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_children() const
 {
-    if(children.find("aggregation") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggregation != nullptr)
     {
-        if(aggregation != nullptr)
-        {
-            children["aggregation"] = aggregation;
-        }
+        children["aggregation"] = aggregation;
     }
 
-    if(children.find("buckets-size") == children.end())
+    if(buckets_size != nullptr)
     {
-        if(buckets_size != nullptr)
-        {
-            children["buckets-size"] = buckets_size;
-        }
+        children["buckets-size"] = buckets_size;
     }
 
     return children;
@@ -901,7 +758,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -926,20 +783,12 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::B
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -992,7 +841,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1018,20 +867,12 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::A
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1103,7 +944,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_segment_p
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1134,20 +975,12 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_entity_pat
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1228,7 +1061,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_segment_path
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1253,64 +1086,38 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_entity_path(E
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "packet-size-and-padding")
     {
-        if(packet_size_and_padding != nullptr)
-        {
-            children["packet-size-and-padding"] = packet_size_and_padding;
-        }
-        else
+        if(packet_size_and_padding == nullptr)
         {
             packet_size_and_padding = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding>();
-            packet_size_and_padding->parent = this;
-            children["packet-size-and-padding"] = packet_size_and_padding;
         }
-        return children.at("packet-size-and-padding");
+        return packet_size_and_padding;
     }
 
     if(child_yang_name == "send")
     {
-        if(send != nullptr)
-        {
-            children["send"] = send;
-        }
-        else
+        if(send == nullptr)
         {
             send = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send>();
-            send->parent = this;
-            children["send"] = send;
         }
-        return children.at("send");
+        return send;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_children() const
 {
-    if(children.find("packet-size-and-padding") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(packet_size_and_padding != nullptr)
     {
-        if(packet_size_and_padding != nullptr)
-        {
-            children["packet-size-and-padding"] = packet_size_and_padding;
-        }
+        children["packet-size-and-padding"] = packet_size_and_padding;
     }
 
-    if(children.find("send") == children.end())
+    if(send != nullptr)
     {
-        if(send != nullptr)
-        {
-            children["send"] = send;
-        }
+        children["send"] = send;
     }
 
     return children;
@@ -1374,7 +1181,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_segmen
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1403,20 +1210,12 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_entity_
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1485,7 +1284,7 @@ std::string Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPad
 
 }
 
-EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_entity_path(Entity* ancestor) const
+const EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1511,20 +1310,12 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadd
 
 std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

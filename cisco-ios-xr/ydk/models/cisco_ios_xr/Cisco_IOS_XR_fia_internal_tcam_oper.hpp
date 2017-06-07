@@ -18,23 +18,20 @@ class Controller : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Dpa; //type: Controller::Dpa
 
         std::shared_ptr<Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa> dpa;
-
-
+        
 }; // Controller
 
 
@@ -46,19 +43,16 @@ class Controller::Dpa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Nodes; //type: Controller::Dpa::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes> nodes;
-
-
+        
 }; // Controller::Dpa
 
 
@@ -70,19 +64,16 @@ class Controller::Dpa::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Controller::Dpa::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node> > node;
-
-
+        
 }; // Controller::Dpa::Nodes
 
 
@@ -94,20 +85,17 @@ class Controller::Dpa::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class InternalTcamResources; //type: Controller::Dpa::Nodes::Node::InternalTcamResources
 
         std::shared_ptr<Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::InternalTcamResources> internal_tcam_resources;
-
-
+        
 }; // Controller::Dpa::Nodes::Node
 
 
@@ -119,19 +107,16 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpuTcam; //type: Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam> > npu_tcam;
-
-
+        
 }; // Controller::Dpa::Nodes::Node::InternalTcamResources
 
 
@@ -143,20 +128,17 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_id; //type: uint32
-
         class TcamBank; //type: Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank> > tcam_bank;
-
-
+        
 }; // Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam
 
 
@@ -168,12 +150,11 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bank_id; //type: string
         YLeaf bank_key_size; //type: string
@@ -181,12 +162,10 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank : p
         YLeaf bank_inuse_entries; //type: uint32
         YLeaf owner; //type: string
         YLeaf nof_dbs; //type: uint32
-
         class BankDb; //type: Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fia_internal_tcam_oper::Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb> > bank_db;
-
-
+        
 }; // Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank
 
 
@@ -198,18 +177,15 @@ class Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::Ba
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf db_id; //type: uint32
         YLeaf db_inuse_entries; //type: uint32
         YLeaf db_prefix; //type: string
-
-
 
 }; // Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb
 

@@ -16,13 +16,10 @@ EthernetFeatures::EthernetFeatures()
 	,ether_link_oam(std::make_shared<EthernetFeatures::EtherLinkOam>())
 {
     cfm->parent = this;
-    children["cfm"] = cfm;
 
     egress_filtering->parent = this;
-    children["egress-filtering"] = egress_filtering;
 
     ether_link_oam->parent = this;
-    children["ether-link-oam"] = ether_link_oam;
 
     yang_name = "ethernet-features"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-cfg";
 }
@@ -55,12 +52,12 @@ std::string EthernetFeatures::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -75,87 +72,52 @@ EntityPath EthernetFeatures::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EthernetFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cfm")
     {
-        if(cfm != nullptr)
-        {
-            children["cfm"] = cfm;
-        }
-        else
+        if(cfm == nullptr)
         {
             cfm = std::make_shared<EthernetFeatures::Cfm>();
-            cfm->parent = this;
-            children["cfm"] = cfm;
         }
-        return children.at("cfm");
+        return cfm;
     }
 
     if(child_yang_name == "egress-filtering")
     {
-        if(egress_filtering != nullptr)
-        {
-            children["egress-filtering"] = egress_filtering;
-        }
-        else
+        if(egress_filtering == nullptr)
         {
             egress_filtering = std::make_shared<EthernetFeatures::EgressFiltering>();
-            egress_filtering->parent = this;
-            children["egress-filtering"] = egress_filtering;
         }
-        return children.at("egress-filtering");
+        return egress_filtering;
     }
 
     if(child_yang_name == "ether-link-oam")
     {
-        if(ether_link_oam != nullptr)
-        {
-            children["ether-link-oam"] = ether_link_oam;
-        }
-        else
+        if(ether_link_oam == nullptr)
         {
             ether_link_oam = std::make_shared<EthernetFeatures::EtherLinkOam>();
-            ether_link_oam->parent = this;
-            children["ether-link-oam"] = ether_link_oam;
         }
-        return children.at("ether-link-oam");
+        return ether_link_oam;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::get_children() const
 {
-    if(children.find("cfm") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cfm != nullptr)
     {
-        if(cfm != nullptr)
-        {
-            children["cfm"] = cfm;
-        }
+        children["cfm"] = cfm;
     }
 
-    if(children.find("egress-filtering") == children.end())
+    if(egress_filtering != nullptr)
     {
-        if(egress_filtering != nullptr)
-        {
-            children["egress-filtering"] = egress_filtering;
-        }
+        children["egress-filtering"] = egress_filtering;
     }
 
-    if(children.find("ether-link-oam") == children.end())
+    if(ether_link_oam != nullptr)
     {
-        if(ether_link_oam != nullptr)
-        {
-            children["ether-link-oam"] = ether_link_oam;
-        }
+        children["ether-link-oam"] = ether_link_oam;
     }
 
     return children;
@@ -216,7 +178,7 @@ std::string EthernetFeatures::EgressFiltering::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::EgressFiltering::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EgressFiltering::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -240,20 +202,12 @@ EntityPath EthernetFeatures::EgressFiltering::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> EthernetFeatures::EgressFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EgressFiltering::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EgressFiltering::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -273,10 +227,8 @@ EthernetFeatures::Cfm::Cfm()
 	,traceroute_cache(std::make_shared<EthernetFeatures::Cfm::TracerouteCache>())
 {
     domains->parent = this;
-    children["domains"] = domains;
 
     traceroute_cache->parent = this;
-    children["traceroute-cache"] = traceroute_cache;
 
     yang_name = "cfm"; yang_parent_name = "ethernet-features";
 }
@@ -309,7 +261,7 @@ std::string EthernetFeatures::Cfm::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::Cfm::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -333,64 +285,38 @@ EntityPath EthernetFeatures::Cfm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "domains")
     {
-        if(domains != nullptr)
-        {
-            children["domains"] = domains;
-        }
-        else
+        if(domains == nullptr)
         {
             domains = std::make_shared<EthernetFeatures::Cfm::Domains>();
-            domains->parent = this;
-            children["domains"] = domains;
         }
-        return children.at("domains");
+        return domains;
     }
 
     if(child_yang_name == "traceroute-cache")
     {
-        if(traceroute_cache != nullptr)
-        {
-            children["traceroute-cache"] = traceroute_cache;
-        }
-        else
+        if(traceroute_cache == nullptr)
         {
             traceroute_cache = std::make_shared<EthernetFeatures::Cfm::TracerouteCache>();
-            traceroute_cache->parent = this;
-            children["traceroute-cache"] = traceroute_cache;
         }
-        return children.at("traceroute-cache");
+        return traceroute_cache;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::get_children() const
 {
-    if(children.find("domains") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(domains != nullptr)
     {
-        if(domains != nullptr)
-        {
-            children["domains"] = domains;
-        }
+        children["domains"] = domains;
     }
 
-    if(children.find("traceroute-cache") == children.end())
+    if(traceroute_cache != nullptr)
     {
-        if(traceroute_cache != nullptr)
-        {
-            children["traceroute-cache"] = traceroute_cache;
-        }
+        children["traceroute-cache"] = traceroute_cache;
     }
 
     return children;
@@ -438,7 +364,7 @@ std::string EthernetFeatures::Cfm::TracerouteCache::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::Cfm::TracerouteCache::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::TracerouteCache::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -463,20 +389,12 @@ EntityPath EthernetFeatures::Cfm::TracerouteCache::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::TracerouteCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::TracerouteCache::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::TracerouteCache::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -530,7 +448,7 @@ std::string EthernetFeatures::Cfm::Domains::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -553,15 +471,6 @@ EntityPath EthernetFeatures::Cfm::Domains::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "domain")
     {
         for(auto const & c : domain)
@@ -569,28 +478,24 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain>();
         c->parent = this;
-        domain.push_back(std::move(c));
-        children[segment_path] = domain.back();
-        return children.at(segment_path);
+        domain.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : domain)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -608,10 +513,8 @@ EthernetFeatures::Cfm::Domains::Domain::Domain()
 	,services(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services>())
 {
     domain_properties->parent = this;
-    children["domain-properties"] = domain_properties;
 
     services->parent = this;
-    children["services"] = services;
 
     yang_name = "domain"; yang_parent_name = "domains";
 }
@@ -644,7 +547,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -668,64 +571,38 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "domain-properties")
     {
-        if(domain_properties != nullptr)
-        {
-            children["domain-properties"] = domain_properties;
-        }
-        else
+        if(domain_properties == nullptr)
         {
             domain_properties = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::DomainProperties>();
-            domain_properties->parent = this;
-            children["domain-properties"] = domain_properties;
         }
-        return children.at("domain-properties");
+        return domain_properties;
     }
 
     if(child_yang_name == "services")
     {
-        if(services != nullptr)
-        {
-            children["services"] = services;
-        }
-        else
+        if(services == nullptr)
         {
             services = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services>();
-            services->parent = this;
-            children["services"] = services;
         }
-        return children.at("services");
+        return services;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::get_children() const
 {
-    if(children.find("domain-properties") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(domain_properties != nullptr)
     {
-        if(domain_properties != nullptr)
-        {
-            children["domain-properties"] = domain_properties;
-        }
+        children["domain-properties"] = domain_properties;
     }
 
-    if(children.find("services") == children.end())
+    if(services != nullptr)
     {
-        if(services != nullptr)
-        {
-            children["services"] = services;
-        }
+        children["services"] = services;
     }
 
     return children;
@@ -777,7 +654,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::get_segment_path()
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -800,15 +677,6 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::get_entity_path(Ent
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service")
     {
         for(auto const & c : service)
@@ -816,28 +684,24 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service>();
         c->parent = this;
-        service.push_back(std::move(c));
-        children[segment_path] = service.back();
-        return children.at(segment_path);
+        service.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -868,10 +732,8 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Service()
 	,service_properties(nullptr) // presence node
 {
     ais->parent = this;
-    children["ais"] = ais;
 
     cross_check->parent = this;
-    children["cross-check"] = cross_check;
 
     yang_name = "service"; yang_parent_name = "services";
 }
@@ -930,7 +792,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_segme
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -963,156 +825,94 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_entity
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ais")
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
-        else
+        if(ais == nullptr)
         {
             ais = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais>();
-            ais->parent = this;
-            children["ais"] = ais;
         }
-        return children.at("ais");
+        return ais;
     }
 
     if(child_yang_name == "continuity-check-interval")
     {
-        if(continuity_check_interval != nullptr)
-        {
-            children["continuity-check-interval"] = continuity_check_interval;
-        }
-        else
+        if(continuity_check_interval == nullptr)
         {
             continuity_check_interval = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval>();
-            continuity_check_interval->parent = this;
-            children["continuity-check-interval"] = continuity_check_interval;
         }
-        return children.at("continuity-check-interval");
+        return continuity_check_interval;
     }
 
     if(child_yang_name == "cross-check")
     {
-        if(cross_check != nullptr)
-        {
-            children["cross-check"] = cross_check;
-        }
-        else
+        if(cross_check == nullptr)
         {
             cross_check = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck>();
-            cross_check->parent = this;
-            children["cross-check"] = cross_check;
         }
-        return children.at("cross-check");
+        return cross_check;
     }
 
     if(child_yang_name == "efd2")
     {
-        if(efd2 != nullptr)
-        {
-            children["efd2"] = efd2;
-        }
-        else
+        if(efd2 == nullptr)
         {
             efd2 = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2>();
-            efd2->parent = this;
-            children["efd2"] = efd2;
         }
-        return children.at("efd2");
+        return efd2;
     }
 
     if(child_yang_name == "mip-auto-creation")
     {
-        if(mip_auto_creation != nullptr)
-        {
-            children["mip-auto-creation"] = mip_auto_creation;
-        }
-        else
+        if(mip_auto_creation == nullptr)
         {
             mip_auto_creation = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation>();
-            mip_auto_creation->parent = this;
-            children["mip-auto-creation"] = mip_auto_creation;
         }
-        return children.at("mip-auto-creation");
+        return mip_auto_creation;
     }
 
     if(child_yang_name == "service-properties")
     {
-        if(service_properties != nullptr)
-        {
-            children["service-properties"] = service_properties;
-        }
-        else
+        if(service_properties == nullptr)
         {
             service_properties = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties>();
-            service_properties->parent = this;
-            children["service-properties"] = service_properties;
         }
-        return children.at("service-properties");
+        return service_properties;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_children() const
 {
-    if(children.find("ais") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ais != nullptr)
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
+        children["ais"] = ais;
     }
 
-    if(children.find("continuity-check-interval") == children.end())
+    if(continuity_check_interval != nullptr)
     {
-        if(continuity_check_interval != nullptr)
-        {
-            children["continuity-check-interval"] = continuity_check_interval;
-        }
+        children["continuity-check-interval"] = continuity_check_interval;
     }
 
-    if(children.find("cross-check") == children.end())
+    if(cross_check != nullptr)
     {
-        if(cross_check != nullptr)
-        {
-            children["cross-check"] = cross_check;
-        }
+        children["cross-check"] = cross_check;
     }
 
-    if(children.find("efd2") == children.end())
+    if(efd2 != nullptr)
     {
-        if(efd2 != nullptr)
-        {
-            children["efd2"] = efd2;
-        }
+        children["efd2"] = efd2;
     }
 
-    if(children.find("mip-auto-creation") == children.end())
+    if(mip_auto_creation != nullptr)
     {
-        if(mip_auto_creation != nullptr)
-        {
-            children["mip-auto-creation"] = mip_auto_creation;
-        }
+        children["mip-auto-creation"] = mip_auto_creation;
     }
 
-    if(children.find("service-properties") == children.end())
+    if(service_properties != nullptr)
     {
-        if(service_properties != nullptr)
-        {
-            children["service-properties"] = service_properties;
-        }
+        children["service-properties"] = service_properties;
     }
 
     return children;
@@ -1196,7 +996,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1221,20 +1021,12 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1284,7 +1076,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::Continuit
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1309,20 +1101,12 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Continuity
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1372,7 +1156,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCr
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1397,20 +1181,12 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCre
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1457,7 +1233,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1480,41 +1256,24 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_e
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "transmission")
     {
-        if(transmission != nullptr)
-        {
-            children["transmission"] = transmission;
-        }
-        else
+        if(transmission == nullptr)
         {
             transmission = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission>();
-            transmission->parent = this;
-            children["transmission"] = transmission;
         }
-        return children.at("transmission");
+        return transmission;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_children() const
 {
-    if(children.find("transmission") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(transmission != nullptr)
     {
-        if(transmission != nullptr)
-        {
-            children["transmission"] = transmission;
-        }
+        children["transmission"] = transmission;
     }
 
     return children;
@@ -1558,7 +1317,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Tran
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1583,20 +1342,12 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Trans
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1619,7 +1370,6 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossChec
     cross_check_meps(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps>())
 {
     cross_check_meps->parent = this;
-    children["cross-check-meps"] = cross_check_meps;
 
     yang_name = "cross-check"; yang_parent_name = "service";
 }
@@ -1650,7 +1400,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossChec
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1674,41 +1424,24 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cross-check-meps")
     {
-        if(cross_check_meps != nullptr)
-        {
-            children["cross-check-meps"] = cross_check_meps;
-        }
-        else
+        if(cross_check_meps == nullptr)
         {
             cross_check_meps = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps>();
-            cross_check_meps->parent = this;
-            children["cross-check-meps"] = cross_check_meps;
         }
-        return children.at("cross-check-meps");
+        return cross_check_meps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_children() const
 {
-    if(children.find("cross-check-meps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cross_check_meps != nullptr)
     {
-        if(cross_check_meps != nullptr)
-        {
-            children["cross-check-meps"] = cross_check_meps;
-        }
+        children["cross-check-meps"] = cross_check_meps;
     }
 
     return children;
@@ -1760,7 +1493,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossChec
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1783,15 +1516,6 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cross-check-mep")
     {
         for(auto const & c : cross_check_mep)
@@ -1799,28 +1523,24 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep>();
         c->parent = this;
-        cross_check_mep.push_back(std::move(c));
-        children[segment_path] = cross_check_mep.back();
-        return children.at(segment_path);
+        cross_check_mep.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cross_check_mep)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1867,7 +1587,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossChec
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1893,20 +1613,12 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1990,7 +1702,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServicePr
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2025,20 +1737,12 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServicePro
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2137,7 +1841,7 @@ std::string EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_segmen
 
 }
 
-EntityPath EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2165,20 +1869,12 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_entity_
 
 std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2211,7 +1907,6 @@ EthernetFeatures::EtherLinkOam::EtherLinkOam()
     profiles(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles>())
 {
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     yang_name = "ether-link-oam"; yang_parent_name = "ethernet-features";
 }
@@ -2240,7 +1935,7 @@ std::string EthernetFeatures::EtherLinkOam::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2263,41 +1958,24 @@ EntityPath EthernetFeatures::EtherLinkOam::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::get_children() const
 {
-    if(children.find("profiles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
     return children;
@@ -2345,7 +2023,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::get_segment_path() const
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2368,15 +2046,6 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -2384,28 +2053,24 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2430,13 +2095,10 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::Profile()
 	,require_remote(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote>())
 {
     action->parent = this;
-    children["action"] = action;
 
     link_monitoring->parent = this;
-    children["link-monitoring"] = link_monitoring;
 
     require_remote->parent = this;
-    children["require-remote"] = require_remote;
 
     yang_name = "profile"; yang_parent_name = "profiles";
 }
@@ -2483,7 +2145,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::get_segment_path(
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2513,87 +2175,52 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::get_entity_path(En
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "action")
     {
-        if(action != nullptr)
-        {
-            children["action"] = action;
-        }
-        else
+        if(action == nullptr)
         {
             action = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::Action>();
-            action->parent = this;
-            children["action"] = action;
         }
-        return children.at("action");
+        return action;
     }
 
     if(child_yang_name == "link-monitoring")
     {
-        if(link_monitoring != nullptr)
-        {
-            children["link-monitoring"] = link_monitoring;
-        }
-        else
+        if(link_monitoring == nullptr)
         {
             link_monitoring = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring>();
-            link_monitoring->parent = this;
-            children["link-monitoring"] = link_monitoring;
         }
-        return children.at("link-monitoring");
+        return link_monitoring;
     }
 
     if(child_yang_name == "require-remote")
     {
-        if(require_remote != nullptr)
-        {
-            children["require-remote"] = require_remote;
-        }
-        else
+        if(require_remote == nullptr)
         {
             require_remote = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote>();
-            require_remote->parent = this;
-            children["require-remote"] = require_remote;
         }
-        return children.at("require-remote");
+        return require_remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_children() const
 {
-    if(children.find("action") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(action != nullptr)
     {
-        if(action != nullptr)
-        {
-            children["action"] = action;
-        }
+        children["action"] = action;
     }
 
-    if(children.find("link-monitoring") == children.end())
+    if(link_monitoring != nullptr)
     {
-        if(link_monitoring != nullptr)
-        {
-            children["link-monitoring"] = link_monitoring;
-        }
+        children["link-monitoring"] = link_monitoring;
     }
 
-    if(children.find("require-remote") == children.end())
+    if(require_remote != nullptr)
     {
-        if(require_remote != nullptr)
-        {
-            children["require-remote"] = require_remote;
-        }
+        children["require-remote"] = require_remote;
     }
 
     return children;
@@ -2689,7 +2316,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_segme
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2722,20 +2349,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_entity
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2823,7 +2442,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::ge
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2850,20 +2469,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2897,16 +2508,12 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::LinkMonitorin
 	,symbol_period(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod>())
 {
     frame->parent = this;
-    children["frame"] = frame;
 
     frame_period->parent = this;
-    children["frame-period"] = frame_period;
 
     frame_seconds->parent = this;
-    children["frame-seconds"] = frame_seconds;
 
     symbol_period->parent = this;
-    children["symbol-period"] = symbol_period;
 
     yang_name = "link-monitoring"; yang_parent_name = "profile";
 }
@@ -2943,7 +2550,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::g
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2967,110 +2574,66 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::ge
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frame")
     {
-        if(frame != nullptr)
-        {
-            children["frame"] = frame;
-        }
-        else
+        if(frame == nullptr)
         {
             frame = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame>();
-            frame->parent = this;
-            children["frame"] = frame;
         }
-        return children.at("frame");
+        return frame;
     }
 
     if(child_yang_name == "frame-period")
     {
-        if(frame_period != nullptr)
-        {
-            children["frame-period"] = frame_period;
-        }
-        else
+        if(frame_period == nullptr)
         {
             frame_period = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod>();
-            frame_period->parent = this;
-            children["frame-period"] = frame_period;
         }
-        return children.at("frame-period");
+        return frame_period;
     }
 
     if(child_yang_name == "frame-seconds")
     {
-        if(frame_seconds != nullptr)
-        {
-            children["frame-seconds"] = frame_seconds;
-        }
-        else
+        if(frame_seconds == nullptr)
         {
             frame_seconds = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds>();
-            frame_seconds->parent = this;
-            children["frame-seconds"] = frame_seconds;
         }
-        return children.at("frame-seconds");
+        return frame_seconds;
     }
 
     if(child_yang_name == "symbol-period")
     {
-        if(symbol_period != nullptr)
-        {
-            children["symbol-period"] = symbol_period;
-        }
-        else
+        if(symbol_period == nullptr)
         {
             symbol_period = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod>();
-            symbol_period->parent = this;
-            children["symbol-period"] = symbol_period;
         }
-        return children.at("symbol-period");
+        return symbol_period;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_children() const
 {
-    if(children.find("frame") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frame != nullptr)
     {
-        if(frame != nullptr)
-        {
-            children["frame"] = frame;
-        }
+        children["frame"] = frame;
     }
 
-    if(children.find("frame-period") == children.end())
+    if(frame_period != nullptr)
     {
-        if(frame_period != nullptr)
-        {
-            children["frame-period"] = frame_period;
-        }
+        children["frame-period"] = frame_period;
     }
 
-    if(children.find("frame-seconds") == children.end())
+    if(frame_seconds != nullptr)
     {
-        if(frame_seconds != nullptr)
-        {
-            children["frame-seconds"] = frame_seconds;
-        }
+        children["frame-seconds"] = frame_seconds;
     }
 
-    if(children.find("symbol-period") == children.end())
+    if(symbol_period != nullptr)
     {
-        if(symbol_period != nullptr)
-        {
-            children["symbol-period"] = symbol_period;
-        }
+        children["symbol-period"] = symbol_period;
     }
 
     return children;
@@ -3090,7 +2653,6 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod:
 	,window(nullptr) // presence node
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "symbol-period"; yang_parent_name = "link-monitoring";
 }
@@ -3121,7 +2683,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::S
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3144,64 +2706,38 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Sy
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     if(child_yang_name == "window")
     {
-        if(window != nullptr)
-        {
-            children["window"] = window;
-        }
-        else
+        if(window == nullptr)
         {
             window = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window>();
-            window->parent = this;
-            children["window"] = window;
         }
-        return children.at("window");
+        return window;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
-    if(children.find("window") == children.end())
+    if(window != nullptr)
     {
-        if(window != nullptr)
-        {
-            children["window"] = window;
-        }
+        children["window"] = window;
     }
 
     return children;
@@ -3248,7 +2784,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::S
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3274,20 +2810,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Sy
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3350,7 +2878,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::S
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3378,20 +2906,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Sy
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3425,7 +2945,6 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::
 	,window(nullptr) // presence node
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "frame-period"; yang_parent_name = "link-monitoring";
 }
@@ -3456,7 +2975,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::F
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3479,64 +2998,38 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Fr
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     if(child_yang_name == "window")
     {
-        if(window != nullptr)
-        {
-            children["window"] = window;
-        }
-        else
+        if(window == nullptr)
         {
             window = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window>();
-            window->parent = this;
-            children["window"] = window;
         }
-        return children.at("window");
+        return window;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
-    if(children.find("window") == children.end())
+    if(window != nullptr)
     {
-        if(window != nullptr)
-        {
-            children["window"] = window;
-        }
+        children["window"] = window;
     }
 
     return children;
@@ -3583,7 +3076,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::F
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3609,20 +3102,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Fr
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3685,7 +3170,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::F
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3713,20 +3198,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Fr
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3761,7 +3238,6 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds:
     threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "frame-seconds"; yang_parent_name = "link-monitoring";
 }
@@ -3792,7 +3268,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::F
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3816,41 +3292,24 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Fr
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -3898,7 +3357,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::F
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3923,20 +3382,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Fr
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3959,7 +3410,6 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Frame(
     threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "frame"; yang_parent_name = "link-monitoring";
 }
@@ -3990,7 +3440,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::F
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4014,41 +3464,24 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Fr
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -4102,7 +3535,7 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::F
 
 }
 
-EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4129,20 +3562,12 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Fr
 
 std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

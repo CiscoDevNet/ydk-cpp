@@ -14,7 +14,6 @@ MacAccounting::MacAccounting()
     interfaces(std::make_shared<MacAccounting::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "mac-accounting"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper";
 }
@@ -43,12 +42,12 @@ std::string MacAccounting::get_segment_path() const
 
 }
 
-EntityPath MacAccounting::get_entity_path(Entity* ancestor) const
+const EntityPath MacAccounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath MacAccounting::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MacAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<MacAccounting::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacAccounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacAccounting::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string MacAccounting::Interfaces::get_segment_path() const
 
 }
 
-EntityPath MacAccounting::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath MacAccounting::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath MacAccounting::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MacAccounting::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> MacAccounting::Interfaces::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MacAccounting::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacAccounting::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ MacAccounting::Interfaces::Interface::Interface()
     state(std::make_shared<MacAccounting::Interfaces::Interface::State>())
 {
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -293,7 +261,7 @@ std::string MacAccounting::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath MacAccounting::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath MacAccounting::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -317,15 +285,6 @@ EntityPath MacAccounting::Interfaces::Interface::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "egress-statistic")
     {
         for(auto const & c : egress_statistic)
@@ -333,15 +292,13 @@ std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MacAccounting::Interfaces::Interface::EgressStatistic>();
         c->parent = this;
-        egress_statistic.push_back(std::move(c));
-        children[segment_path] = egress_statistic.back();
-        return children.at(segment_path);
+        egress_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ingress-statistic")
@@ -351,59 +308,43 @@ std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MacAccounting::Interfaces::Interface::IngressStatistic>();
         c->parent = this;
-        ingress_statistic.push_back(std::move(c));
-        children[segment_path] = ingress_statistic.back();
-        return children.at(segment_path);
+        ingress_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<MacAccounting::Interfaces::Interface::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacAccounting::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : egress_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : ingress_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -460,7 +401,7 @@ std::string MacAccounting::Interfaces::Interface::State::get_segment_path() cons
 
 }
 
-EntityPath MacAccounting::Interfaces::Interface::State::get_entity_path(Entity* ancestor) const
+const EntityPath MacAccounting::Interfaces::Interface::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -488,20 +429,12 @@ EntityPath MacAccounting::Interfaces::Interface::State::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacAccounting::Interfaces::Interface::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interface::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -566,7 +499,7 @@ std::string MacAccounting::Interfaces::Interface::IngressStatistic::get_segment_
 
 }
 
-EntityPath MacAccounting::Interfaces::Interface::IngressStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath MacAccounting::Interfaces::Interface::IngressStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -592,20 +525,12 @@ EntityPath MacAccounting::Interfaces::Interface::IngressStatistic::get_entity_pa
 
 std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::IngressStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacAccounting::Interfaces::Interface::IngressStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interface::IngressStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -662,7 +587,7 @@ std::string MacAccounting::Interfaces::Interface::EgressStatistic::get_segment_p
 
 }
 
-EntityPath MacAccounting::Interfaces::Interface::EgressStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath MacAccounting::Interfaces::Interface::EgressStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -688,20 +613,12 @@ EntityPath MacAccounting::Interfaces::Interface::EgressStatistic::get_entity_pat
 
 std::shared_ptr<Entity> MacAccounting::Interfaces::Interface::EgressStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacAccounting::Interfaces::Interface::EgressStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interface::EgressStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -726,7 +643,6 @@ Vlan::Vlan()
     nodes(std::make_shared<Vlan::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "vlan"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper";
 }
@@ -755,12 +671,12 @@ std::string Vlan::get_segment_path() const
 
 }
 
-EntityPath Vlan::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -775,41 +691,24 @@ EntityPath Vlan::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Vlan::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -877,7 +776,7 @@ std::string Vlan::Nodes::get_segment_path() const
 
 }
 
-EntityPath Vlan::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -900,15 +799,6 @@ EntityPath Vlan::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlan::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -916,28 +806,24 @@ std::shared_ptr<Entity> Vlan::Nodes::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -956,13 +842,10 @@ Vlan::Nodes::Node::Node()
 	,trunks(std::make_shared<Vlan::Nodes::Node::Trunks>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     tag_allocations->parent = this;
-    children["tag-allocations"] = tag_allocations;
 
     trunks->parent = this;
-    children["trunks"] = trunks;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -997,7 +880,7 @@ std::string Vlan::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Vlan::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1021,87 +904,52 @@ EntityPath Vlan::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Vlan::Nodes::Node::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "tag-allocations")
     {
-        if(tag_allocations != nullptr)
-        {
-            children["tag-allocations"] = tag_allocations;
-        }
-        else
+        if(tag_allocations == nullptr)
         {
             tag_allocations = std::make_shared<Vlan::Nodes::Node::TagAllocations>();
-            tag_allocations->parent = this;
-            children["tag-allocations"] = tag_allocations;
         }
-        return children.at("tag-allocations");
+        return tag_allocations;
     }
 
     if(child_yang_name == "trunks")
     {
-        if(trunks != nullptr)
-        {
-            children["trunks"] = trunks;
-        }
-        else
+        if(trunks == nullptr)
         {
             trunks = std::make_shared<Vlan::Nodes::Node::Trunks>();
-            trunks->parent = this;
-            children["trunks"] = trunks;
         }
-        return children.at("trunks");
+        return trunks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("tag-allocations") == children.end())
+    if(tag_allocations != nullptr)
     {
-        if(tag_allocations != nullptr)
-        {
-            children["tag-allocations"] = tag_allocations;
-        }
+        children["tag-allocations"] = tag_allocations;
     }
 
-    if(children.find("trunks") == children.end())
+    if(trunks != nullptr)
     {
-        if(trunks != nullptr)
-        {
-            children["trunks"] = trunks;
-        }
+        children["trunks"] = trunks;
     }
 
     return children;
@@ -1153,7 +1001,7 @@ std::string Vlan::Nodes::Node::Trunks::get_segment_path() const
 
 }
 
-EntityPath Vlan::Nodes::Node::Trunks::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Trunks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1176,15 +1024,6 @@ EntityPath Vlan::Nodes::Node::Trunks::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trunk")
     {
         for(auto const & c : trunk)
@@ -1192,28 +1031,24 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk>();
         c->parent = this;
-        trunk.push_back(std::move(c));
-        children[segment_path] = trunk.back();
-        return children.at(segment_path);
+        trunk.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Trunks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : trunk)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1238,10 +1073,8 @@ Vlan::Nodes::Node::Trunks::Trunk::Trunk()
 	,layer3_sub_interfaces(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces>())
 {
     layer2_sub_interfaces->parent = this;
-    children["layer2-sub-interfaces"] = layer2_sub_interfaces;
 
     layer3_sub_interfaces->parent = this;
-    children["layer3-sub-interfaces"] = layer3_sub_interfaces;
 
     yang_name = "trunk"; yang_parent_name = "trunks";
 }
@@ -1288,7 +1121,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::get_segment_path() const
 
 }
 
-EntityPath Vlan::Nodes::Node::Trunks::Trunk::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Trunks::Trunk::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1319,64 +1152,38 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "layer2-sub-interfaces")
     {
-        if(layer2_sub_interfaces != nullptr)
-        {
-            children["layer2-sub-interfaces"] = layer2_sub_interfaces;
-        }
-        else
+        if(layer2_sub_interfaces == nullptr)
         {
             layer2_sub_interfaces = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces>();
-            layer2_sub_interfaces->parent = this;
-            children["layer2-sub-interfaces"] = layer2_sub_interfaces;
         }
-        return children.at("layer2-sub-interfaces");
+        return layer2_sub_interfaces;
     }
 
     if(child_yang_name == "layer3-sub-interfaces")
     {
-        if(layer3_sub_interfaces != nullptr)
-        {
-            children["layer3-sub-interfaces"] = layer3_sub_interfaces;
-        }
-        else
+        if(layer3_sub_interfaces == nullptr)
         {
             layer3_sub_interfaces = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces>();
-            layer3_sub_interfaces->parent = this;
-            children["layer3-sub-interfaces"] = layer3_sub_interfaces;
         }
-        return children.at("layer3-sub-interfaces");
+        return layer3_sub_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Trunks::Trunk::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::get_children() const
 {
-    if(children.find("layer2-sub-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(layer2_sub_interfaces != nullptr)
     {
-        if(layer2_sub_interfaces != nullptr)
-        {
-            children["layer2-sub-interfaces"] = layer2_sub_interfaces;
-        }
+        children["layer2-sub-interfaces"] = layer2_sub_interfaces;
     }
 
-    if(children.find("layer3-sub-interfaces") == children.end())
+    if(layer3_sub_interfaces != nullptr)
     {
-        if(layer3_sub_interfaces != nullptr)
-        {
-            children["layer3-sub-interfaces"] = layer3_sub_interfaces;
-        }
+        children["layer3-sub-interfaces"] = layer3_sub_interfaces;
     }
 
     return children;
@@ -1429,7 +1236,6 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::Layer2SubInterfaces()
     state_counters(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters>())
 {
     state_counters->parent = this;
-    children["state-counters"] = state_counters;
 
     yang_name = "layer2-sub-interfaces"; yang_parent_name = "trunk";
 }
@@ -1468,7 +1274,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_segment_p
 
 }
 
-EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1496,41 +1302,24 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_entity_pat
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "state-counters")
     {
-        if(state_counters != nullptr)
-        {
-            children["state-counters"] = state_counters;
-        }
-        else
+        if(state_counters == nullptr)
         {
             state_counters = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters>();
-            state_counters->parent = this;
-            children["state-counters"] = state_counters;
         }
-        return children.at("state-counters");
+        return state_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_children() const
 {
-    if(children.find("state-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(state_counters != nullptr)
     {
-        if(state_counters != nullptr)
-        {
-            children["state-counters"] = state_counters;
-        }
+        children["state-counters"] = state_counters;
     }
 
     return children;
@@ -1597,7 +1386,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters
 
 }
 
-EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1623,20 +1412,12 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters:
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1667,7 +1448,6 @@ Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::Layer3SubInterfaces()
     state_counters(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters>())
 {
     state_counters->parent = this;
-    children["state-counters"] = state_counters;
 
     yang_name = "layer3-sub-interfaces"; yang_parent_name = "trunk";
 }
@@ -1706,7 +1486,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_segment_p
 
 }
 
-EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1734,41 +1514,24 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_entity_pat
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "state-counters")
     {
-        if(state_counters != nullptr)
-        {
-            children["state-counters"] = state_counters;
-        }
-        else
+        if(state_counters == nullptr)
         {
             state_counters = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters>();
-            state_counters->parent = this;
-            children["state-counters"] = state_counters;
         }
-        return children.at("state-counters");
+        return state_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_children() const
 {
-    if(children.find("state-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(state_counters != nullptr)
     {
-        if(state_counters != nullptr)
-        {
-            children["state-counters"] = state_counters;
-        }
+        children["state-counters"] = state_counters;
     }
 
     return children;
@@ -1835,7 +1598,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters
 
 }
 
-EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1861,20 +1624,12 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters:
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1932,7 +1687,7 @@ std::string Vlan::Nodes::Node::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1955,15 +1710,6 @@ EntityPath Vlan::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -1971,28 +1717,24 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2015,7 +1757,6 @@ Vlan::Nodes::Node::Interfaces::Interface::Interface()
     encapsulation_details(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails>())
 {
     encapsulation_details->parent = this;
-    children["encapsulation-details"] = encapsulation_details;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -2058,7 +1799,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2088,41 +1829,24 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "encapsulation-details")
     {
-        if(encapsulation_details != nullptr)
-        {
-            children["encapsulation-details"] = encapsulation_details;
-        }
-        else
+        if(encapsulation_details == nullptr)
         {
             encapsulation_details = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails>();
-            encapsulation_details->parent = this;
-            children["encapsulation-details"] = encapsulation_details;
         }
-        return children.at("encapsulation-details");
+        return encapsulation_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    if(children.find("encapsulation-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(encapsulation_details != nullptr)
     {
-        if(encapsulation_details != nullptr)
-        {
-            children["encapsulation-details"] = encapsulation_details;
-        }
+        children["encapsulation-details"] = encapsulation_details;
     }
 
     return children;
@@ -2175,13 +1899,10 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::EncapsulationDet
 	,stack(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack>())
 {
     dot1ad_dot1q_stack->parent = this;
-    children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
 
     service_instance_details->parent = this;
-    children["service-instance-details"] = service_instance_details;
 
     stack->parent = this;
-    children["stack"] = stack;
 
     yang_name = "encapsulation-details"; yang_parent_name = "interface";
 }
@@ -2228,7 +1949,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2258,87 +1979,52 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_e
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dot1ad-dot1q-stack")
     {
-        if(dot1ad_dot1q_stack != nullptr)
-        {
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
-        }
-        else
+        if(dot1ad_dot1q_stack == nullptr)
         {
             dot1ad_dot1q_stack = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack>();
-            dot1ad_dot1q_stack->parent = this;
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
         }
-        return children.at("dot1ad-dot1q-stack");
+        return dot1ad_dot1q_stack;
     }
 
     if(child_yang_name == "service-instance-details")
     {
-        if(service_instance_details != nullptr)
-        {
-            children["service-instance-details"] = service_instance_details;
-        }
-        else
+        if(service_instance_details == nullptr)
         {
             service_instance_details = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails>();
-            service_instance_details->parent = this;
-            children["service-instance-details"] = service_instance_details;
         }
-        return children.at("service-instance-details");
+        return service_instance_details;
     }
 
     if(child_yang_name == "stack")
     {
-        if(stack != nullptr)
-        {
-            children["stack"] = stack;
-        }
-        else
+        if(stack == nullptr)
         {
             stack = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack>();
-            stack->parent = this;
-            children["stack"] = stack;
         }
-        return children.at("stack");
+        return stack;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_children() const
 {
-    if(children.find("dot1ad-dot1q-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dot1ad_dot1q_stack != nullptr)
     {
-        if(dot1ad_dot1q_stack != nullptr)
-        {
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
-        }
+        children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
     }
 
-    if(children.find("service-instance-details") == children.end())
+    if(service_instance_details != nullptr)
     {
-        if(service_instance_details != nullptr)
-        {
-            children["service-instance-details"] = service_instance_details;
-        }
+        children["service-instance-details"] = service_instance_details;
     }
 
-    if(children.find("stack") == children.end())
+    if(stack != nullptr)
     {
-        if(stack != nullptr)
-        {
-            children["stack"] = stack;
-        }
+        children["stack"] = stack;
     }
 
     return children;
@@ -2410,7 +2096,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stac
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2435,20 +2121,12 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2477,7 +2155,6 @@ Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceD
     local_traffic_stack(std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>())
 {
     local_traffic_stack->parent = this;
-    children["local-traffic-stack"] = local_traffic_stack;
 
     yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details";
 }
@@ -2540,7 +2217,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2570,28 +2247,13 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-traffic-stack")
     {
-        if(local_traffic_stack != nullptr)
-        {
-            children["local-traffic-stack"] = local_traffic_stack;
-        }
-        else
+        if(local_traffic_stack == nullptr)
         {
             local_traffic_stack = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>();
-            local_traffic_stack->parent = this;
-            children["local-traffic-stack"] = local_traffic_stack;
         }
-        return children.at("local-traffic-stack");
+        return local_traffic_stack;
     }
 
     if(child_yang_name == "pushe")
@@ -2601,15 +2263,13 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
         c->parent = this;
-        pushe.push_back(std::move(c));
-        children[segment_path] = pushe.back();
-        return children.at(segment_path);
+        pushe.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tags-to-match")
@@ -2619,44 +2279,34 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
         c->parent = this;
-        tags_to_match.push_back(std::move(c));
-        children[segment_path] = tags_to_match.back();
-        return children.at(segment_path);
+        tags_to_match.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::get_children() const
 {
-    if(children.find("local-traffic-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_traffic_stack != nullptr)
     {
-        if(local_traffic_stack != nullptr)
-        {
-            children["local-traffic-stack"] = local_traffic_stack;
-        }
+        children["local-traffic-stack"] = local_traffic_stack;
     }
 
     for (auto const & c : pushe)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : tags_to_match)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2732,7 +2382,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2755,15 +2405,6 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-traffic-tag")
     {
         for(auto const & c : local_traffic_tag)
@@ -2771,28 +2412,24 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
         c->parent = this;
-        local_traffic_tag.push_back(std::move(c));
-        children[segment_path] = local_traffic_tag.back();
-        return children.at(segment_path);
+        local_traffic_tag.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_traffic_tag)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2836,7 +2473,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2861,20 +2498,12 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2934,7 +2563,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2959,15 +2588,6 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan-range")
     {
         for(auto const & c : vlan_range)
@@ -2975,28 +2595,24 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationD
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(std::move(c));
-        children[segment_path] = vlan_range.back();
-        return children.at(segment_path);
+        vlan_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3048,7 +2664,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3073,20 +2689,12 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3136,7 +2744,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3161,20 +2769,12 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3224,7 +2824,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1
 
 }
 
-EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3249,20 +2849,12 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1A
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3316,7 +2908,7 @@ std::string Vlan::Nodes::Node::TagAllocations::get_segment_path() const
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3339,15 +2931,6 @@ EntityPath Vlan::Nodes::Node::TagAllocations::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tag-allocation")
     {
         for(auto const & c : tag_allocation)
@@ -3355,28 +2938,24 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation>();
         c->parent = this;
-        tag_allocation.push_back(std::move(c));
-        children[segment_path] = tag_allocation.back();
-        return children.at(segment_path);
+        tag_allocation.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tag_allocation)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3401,7 +2980,6 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::TagAllocation()
     encapsulation_details(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails>())
 {
     encapsulation_details->parent = this;
-    children["encapsulation-details"] = encapsulation_details;
 
     yang_name = "tag-allocation"; yang_parent_name = "tag-allocations";
 }
@@ -3448,7 +3026,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::get_segment_path()
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3480,41 +3058,24 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::get_entity_path(Ent
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "encapsulation-details")
     {
-        if(encapsulation_details != nullptr)
-        {
-            children["encapsulation-details"] = encapsulation_details;
-        }
-        else
+        if(encapsulation_details == nullptr)
         {
             encapsulation_details = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails>();
-            encapsulation_details->parent = this;
-            children["encapsulation-details"] = encapsulation_details;
         }
-        return children.at("encapsulation-details");
+        return encapsulation_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::get_children() const
 {
-    if(children.find("encapsulation-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(encapsulation_details != nullptr)
     {
-        if(encapsulation_details != nullptr)
-        {
-            children["encapsulation-details"] = encapsulation_details;
-        }
+        children["encapsulation-details"] = encapsulation_details;
     }
 
     return children;
@@ -3575,13 +3136,10 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Encapsul
 	,stack(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack>())
 {
     dot1ad_dot1q_stack->parent = this;
-    children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
 
     service_instance_details->parent = this;
-    children["service-instance-details"] = service_instance_details;
 
     stack->parent = this;
-    children["stack"] = stack;
 
     yang_name = "encapsulation-details"; yang_parent_name = "tag-allocation";
 }
@@ -3628,7 +3186,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3658,87 +3216,52 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dot1ad-dot1q-stack")
     {
-        if(dot1ad_dot1q_stack != nullptr)
-        {
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
-        }
-        else
+        if(dot1ad_dot1q_stack == nullptr)
         {
             dot1ad_dot1q_stack = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack>();
-            dot1ad_dot1q_stack->parent = this;
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
         }
-        return children.at("dot1ad-dot1q-stack");
+        return dot1ad_dot1q_stack;
     }
 
     if(child_yang_name == "service-instance-details")
     {
-        if(service_instance_details != nullptr)
-        {
-            children["service-instance-details"] = service_instance_details;
-        }
-        else
+        if(service_instance_details == nullptr)
         {
             service_instance_details = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails>();
-            service_instance_details->parent = this;
-            children["service-instance-details"] = service_instance_details;
         }
-        return children.at("service-instance-details");
+        return service_instance_details;
     }
 
     if(child_yang_name == "stack")
     {
-        if(stack != nullptr)
-        {
-            children["stack"] = stack;
-        }
-        else
+        if(stack == nullptr)
         {
             stack = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack>();
-            stack->parent = this;
-            children["stack"] = stack;
         }
-        return children.at("stack");
+        return stack;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::get_children() const
 {
-    if(children.find("dot1ad-dot1q-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dot1ad_dot1q_stack != nullptr)
     {
-        if(dot1ad_dot1q_stack != nullptr)
-        {
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
-        }
+        children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
     }
 
-    if(children.find("service-instance-details") == children.end())
+    if(service_instance_details != nullptr)
     {
-        if(service_instance_details != nullptr)
-        {
-            children["service-instance-details"] = service_instance_details;
-        }
+        children["service-instance-details"] = service_instance_details;
     }
 
-    if(children.find("stack") == children.end())
+    if(stack != nullptr)
     {
-        if(stack != nullptr)
-        {
-            children["stack"] = stack;
-        }
+        children["stack"] = stack;
     }
 
     return children;
@@ -3810,7 +3333,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3835,20 +3358,12 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3877,7 +3392,6 @@ Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceI
     local_traffic_stack(std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>())
 {
     local_traffic_stack->parent = this;
-    children["local-traffic-stack"] = local_traffic_stack;
 
     yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details";
 }
@@ -3940,7 +3454,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3970,28 +3484,13 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-traffic-stack")
     {
-        if(local_traffic_stack != nullptr)
-        {
-            children["local-traffic-stack"] = local_traffic_stack;
-        }
-        else
+        if(local_traffic_stack == nullptr)
         {
             local_traffic_stack = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>();
-            local_traffic_stack->parent = this;
-            children["local-traffic-stack"] = local_traffic_stack;
         }
-        return children.at("local-traffic-stack");
+        return local_traffic_stack;
     }
 
     if(child_yang_name == "pushe")
@@ -4001,15 +3500,13 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
         c->parent = this;
-        pushe.push_back(std::move(c));
-        children[segment_path] = pushe.back();
-        return children.at(segment_path);
+        pushe.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tags-to-match")
@@ -4019,44 +3516,34 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
         c->parent = this;
-        tags_to_match.push_back(std::move(c));
-        children[segment_path] = tags_to_match.back();
-        return children.at(segment_path);
+        tags_to_match.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::get_children() const
 {
-    if(children.find("local-traffic-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_traffic_stack != nullptr)
     {
-        if(local_traffic_stack != nullptr)
-        {
-            children["local-traffic-stack"] = local_traffic_stack;
-        }
+        children["local-traffic-stack"] = local_traffic_stack;
     }
 
     for (auto const & c : pushe)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : tags_to_match)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4132,7 +3619,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4155,15 +3642,6 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-traffic-tag")
     {
         for(auto const & c : local_traffic_tag)
@@ -4171,28 +3649,24 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
         c->parent = this;
-        local_traffic_tag.push_back(std::move(c));
-        children[segment_path] = local_traffic_tag.back();
-        return children.at(segment_path);
+        local_traffic_tag.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_traffic_tag)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4236,7 +3710,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4261,20 +3735,12 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4334,7 +3800,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4359,15 +3825,6 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan-range")
     {
         for(auto const & c : vlan_range)
@@ -4375,28 +3832,24 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::Encaps
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(std::move(c));
-        children[segment_path] = vlan_range.back();
-        return children.at(segment_path);
+        vlan_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4448,7 +3901,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4473,20 +3926,12 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4536,7 +3981,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4561,20 +4006,12 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4624,7 +4061,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 
 }
 
-EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_entity_path(Entity* ancestor) const
+const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4649,20 +4086,12 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
 
 std::shared_ptr<Entity> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4683,7 +4112,6 @@ EthernetEncapsulation::EthernetEncapsulation()
     nodes(std::make_shared<EthernetEncapsulation::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "ethernet-encapsulation"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-oper";
 }
@@ -4712,12 +4140,12 @@ std::string EthernetEncapsulation::get_segment_path() const
 
 }
 
-EntityPath EthernetEncapsulation::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetEncapsulation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -4732,41 +4160,24 @@ EntityPath EthernetEncapsulation::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EthernetEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<EthernetEncapsulation::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetEncapsulation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -4834,7 +4245,7 @@ std::string EthernetEncapsulation::Nodes::get_segment_path() const
 
 }
 
-EntityPath EthernetEncapsulation::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetEncapsulation::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4857,15 +4268,6 @@ EntityPath EthernetEncapsulation::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EthernetEncapsulation::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -4873,28 +4275,24 @@ std::shared_ptr<Entity> EthernetEncapsulation::Nodes::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EthernetEncapsulation::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetEncapsulation::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4911,7 +4309,6 @@ EthernetEncapsulation::Nodes::Node::Node()
     unicast_mac_filters(std::make_shared<EthernetEncapsulation::Nodes::Node::UnicastMacFilters>())
 {
     unicast_mac_filters->parent = this;
-    children["unicast-mac-filters"] = unicast_mac_filters;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -4942,7 +4339,7 @@ std::string EthernetEncapsulation::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath EthernetEncapsulation::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetEncapsulation::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4966,41 +4363,24 @@ EntityPath EthernetEncapsulation::Nodes::Node::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unicast-mac-filters")
     {
-        if(unicast_mac_filters != nullptr)
-        {
-            children["unicast-mac-filters"] = unicast_mac_filters;
-        }
-        else
+        if(unicast_mac_filters == nullptr)
         {
             unicast_mac_filters = std::make_shared<EthernetEncapsulation::Nodes::Node::UnicastMacFilters>();
-            unicast_mac_filters->parent = this;
-            children["unicast-mac-filters"] = unicast_mac_filters;
         }
-        return children.at("unicast-mac-filters");
+        return unicast_mac_filters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetEncapsulation::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Node::get_children() const
 {
-    if(children.find("unicast-mac-filters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(unicast_mac_filters != nullptr)
     {
-        if(unicast_mac_filters != nullptr)
-        {
-            children["unicast-mac-filters"] = unicast_mac_filters;
-        }
+        children["unicast-mac-filters"] = unicast_mac_filters;
     }
 
     return children;
@@ -5052,7 +4432,7 @@ std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_segment_p
 
 }
 
-EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5075,15 +4455,6 @@ EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_entity_pat
 
 std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unicast-mac-filter")
     {
         for(auto const & c : unicast_mac_filter)
@@ -5091,28 +4462,24 @@ std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter>();
         c->parent = this;
-        unicast_mac_filter.push_back(std::move(c));
-        children[segment_path] = unicast_mac_filter.back();
-        return children.at(segment_path);
+        unicast_mac_filter.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unicast_mac_filter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5163,7 +4530,7 @@ std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFil
 
 }
 
-EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5187,15 +4554,6 @@ EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilt
 
 std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unicast-filter")
     {
         for(auto const & c : unicast_filter)
@@ -5203,28 +4561,24 @@ std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::U
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter>();
         c->parent = this;
-        unicast_filter.push_back(std::move(c));
-        children[segment_path] = unicast_filter.back();
-        return children.at(segment_path);
+        unicast_filter.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : unicast_filter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5272,7 +4626,7 @@ std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFil
 
 }
 
-EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::get_entity_path(Entity* ancestor) const
+const EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5297,20 +4651,12 @@ EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilt
 
 std::shared_ptr<Entity> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -15,10 +15,8 @@ Cfm::Cfm()
 	,nodes(std::make_shared<Cfm::Nodes>())
 {
     global->parent = this;
-    children["global"] = global;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "cfm"; yang_parent_name = "Cisco-IOS-XR-ethernet-cfm-oper";
 }
@@ -49,12 +47,12 @@ std::string Cfm::get_segment_path() const
 
 }
 
-EntityPath Cfm::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath Cfm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<Cfm::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Cfm::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::get_children() const
 {
-    if(children.find("global") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string Cfm::Nodes::get_segment_path() const
 
 }
 
-EntityPath Cfm::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath Cfm::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cfm::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> Cfm::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -274,16 +233,12 @@ Cfm::Nodes::Node::Node()
 	,summary(std::make_shared<Cfm::Nodes::Node::Summary>())
 {
     ccm_learning_databases->parent = this;
-    children["ccm-learning-databases"] = ccm_learning_databases;
 
     interface_aises->parent = this;
-    children["interface-aises"] = interface_aises;
 
     interface_statistics->parent = this;
-    children["interface-statistics"] = interface_statistics;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -320,7 +275,7 @@ std::string Cfm::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Cfm::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -344,110 +299,66 @@ EntityPath Cfm::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ccm-learning-databases")
     {
-        if(ccm_learning_databases != nullptr)
-        {
-            children["ccm-learning-databases"] = ccm_learning_databases;
-        }
-        else
+        if(ccm_learning_databases == nullptr)
         {
             ccm_learning_databases = std::make_shared<Cfm::Nodes::Node::CcmLearningDatabases>();
-            ccm_learning_databases->parent = this;
-            children["ccm-learning-databases"] = ccm_learning_databases;
         }
-        return children.at("ccm-learning-databases");
+        return ccm_learning_databases;
     }
 
     if(child_yang_name == "interface-aises")
     {
-        if(interface_aises != nullptr)
-        {
-            children["interface-aises"] = interface_aises;
-        }
-        else
+        if(interface_aises == nullptr)
         {
             interface_aises = std::make_shared<Cfm::Nodes::Node::InterfaceAises>();
-            interface_aises->parent = this;
-            children["interface-aises"] = interface_aises;
         }
-        return children.at("interface-aises");
+        return interface_aises;
     }
 
     if(child_yang_name == "interface-statistics")
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
-        else
+        if(interface_statistics == nullptr)
         {
             interface_statistics = std::make_shared<Cfm::Nodes::Node::InterfaceStatistics>();
-            interface_statistics->parent = this;
-            children["interface-statistics"] = interface_statistics;
         }
-        return children.at("interface-statistics");
+        return interface_statistics;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Cfm::Nodes::Node::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::get_children() const
 {
-    if(children.find("ccm-learning-databases") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ccm_learning_databases != nullptr)
     {
-        if(ccm_learning_databases != nullptr)
-        {
-            children["ccm-learning-databases"] = ccm_learning_databases;
-        }
+        children["ccm-learning-databases"] = ccm_learning_databases;
     }
 
-    if(children.find("interface-aises") == children.end())
+    if(interface_aises != nullptr)
     {
-        if(interface_aises != nullptr)
-        {
-            children["interface-aises"] = interface_aises;
-        }
+        children["interface-aises"] = interface_aises;
     }
 
-    if(children.find("interface-statistics") == children.end())
+    if(interface_statistics != nullptr)
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
+        children["interface-statistics"] = interface_statistics;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -499,7 +410,7 @@ std::string Cfm::Nodes::Node::InterfaceAises::get_segment_path() const
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceAises::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceAises::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -522,15 +433,6 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-ais")
     {
         for(auto const & c : interface_ais)
@@ -538,28 +440,24 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis>();
         c->parent = this;
-        interface_ais.push_back(std::move(c));
-        children[segment_path] = interface_ais.back();
-        return children.at(segment_path);
+        interface_ais.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceAises::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_ais)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -571,8 +469,8 @@ void Cfm::Nodes::Node::InterfaceAises::set_value(const std::string & value_path,
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAis::InterfaceAis()
     :
-    direction{YType::enumeration, "direction"},
     interface_name{YType::str, "interface-name"},
+    direction{YType::enumeration, "direction"},
     interface{YType::str, "interface"},
     interface_state{YType::str, "interface-state"},
     interworking_state{YType::enumeration, "interworking-state"},
@@ -581,7 +479,6 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::InterfaceAis()
     statistics(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "interface-ais"; yang_parent_name = "interface-aises";
 }
@@ -592,8 +489,8 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::~InterfaceAis()
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_data() const
 {
-    return direction.is_set
-	|| interface_name.is_set
+    return interface_name.is_set
+	|| direction.is_set
 	|| interface.is_set
 	|| interface_state.is_set
 	|| interworking_state.is_set
@@ -604,8 +501,8 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_data() const
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_operation() const
 {
     return is_set(operation)
-	|| is_set(direction.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(direction.operation)
 	|| is_set(interface.operation)
 	|| is_set(interface_state.operation)
 	|| is_set(interworking_state.operation)
@@ -616,13 +513,13 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_operation() const
 std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-ais" <<"[direction='" <<direction <<"']" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-ais" <<"[interface-name='" <<interface_name <<"']" <<"[direction='" <<direction <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -636,8 +533,8 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
     if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (interface_state.is_set || is_set(interface_state.operation)) leaf_name_data.push_back(interface_state.get_name_leafdata());
     if (interworking_state.is_set || is_set(interworking_state.operation)) leaf_name_data.push_back(interworking_state.get_name_leafdata());
@@ -651,41 +548,24 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_entity_path(Entit
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -693,13 +573,13 @@ std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceAise
 
 void Cfm::Nodes::Node::InterfaceAises::InterfaceAis::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "direction")
-    {
-        direction = value;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
+    }
+    if(value_path == "direction")
+    {
+        direction = value;
     }
     if(value_path == "interface")
     {
@@ -732,10 +612,8 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Statistics()
 	,last_started(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted>())
 {
     defects->parent = this;
-    children["defects"] = defects;
 
     last_started->parent = this;
-    children["last-started"] = last_started;
 
     yang_name = "statistics"; yang_parent_name = "interface-ais";
 }
@@ -787,7 +665,7 @@ std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_segm
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -817,64 +695,38 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_entit
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "defects")
     {
-        if(defects != nullptr)
-        {
-            children["defects"] = defects;
-        }
-        else
+        if(defects == nullptr)
         {
             defects = std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects>();
-            defects->parent = this;
-            children["defects"] = defects;
         }
-        return children.at("defects");
+        return defects;
     }
 
     if(child_yang_name == "last-started")
     {
-        if(last_started != nullptr)
-        {
-            children["last-started"] = last_started;
-        }
-        else
+        if(last_started == nullptr)
         {
             last_started = std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted>();
-            last_started->parent = this;
-            children["last-started"] = last_started;
         }
-        return children.at("last-started");
+        return last_started;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_children() const
 {
-    if(children.find("defects") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(defects != nullptr)
     {
-        if(defects != nullptr)
-        {
-            children["defects"] = defects;
-        }
+        children["defects"] = defects;
     }
 
-    if(children.find("last-started") == children.end())
+    if(last_started != nullptr)
     {
-        if(last_started != nullptr)
-        {
-            children["last-started"] = last_started;
-        }
+        children["last-started"] = last_started;
     }
 
     return children;
@@ -921,7 +773,6 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::Defects()
     remote_meps_defects(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects>())
 {
     remote_meps_defects->parent = this;
-    children["remote-meps-defects"] = remote_meps_defects;
 
     yang_name = "defects"; yang_parent_name = "statistics";
 }
@@ -964,7 +815,7 @@ std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects:
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -994,41 +845,24 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-meps-defects")
     {
-        if(remote_meps_defects != nullptr)
-        {
-            children["remote-meps-defects"] = remote_meps_defects;
-        }
-        else
+        if(remote_meps_defects == nullptr)
         {
             remote_meps_defects = std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects>();
-            remote_meps_defects->parent = this;
-            children["remote-meps-defects"] = remote_meps_defects;
         }
-        return children.at("remote-meps-defects");
+        return remote_meps_defects;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::get_children() const
 {
-    if(children.find("remote-meps-defects") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_meps_defects != nullptr)
     {
-        if(remote_meps_defects != nullptr)
-        {
-            children["remote-meps-defects"] = remote_meps_defects;
-        }
+        children["remote-meps-defects"] = remote_meps_defects;
     }
 
     return children;
@@ -1115,7 +949,7 @@ std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects:
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1145,20 +979,12 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1228,7 +1054,7 @@ std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStar
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1253,20 +1079,12 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStart
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1320,7 +1138,7 @@ std::string Cfm::Nodes::Node::InterfaceStatistics::get_segment_path() const
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1343,15 +1161,6 @@ EntityPath Cfm::Nodes::Node::InterfaceStatistics::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-statistic")
     {
         for(auto const & c : interface_statistic)
@@ -1359,28 +1168,24 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic>();
         c->parent = this;
-        interface_statistic.push_back(std::move(c));
-        children[segment_path] = interface_statistic.back();
-        return children.at(segment_path);
+        interface_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1398,7 +1203,6 @@ Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::InterfaceStatistic()
     statistics(std::make_shared<Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "interface-statistic"; yang_parent_name = "interface-statistics";
 }
@@ -1431,7 +1235,7 @@ std::string Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_segme
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1456,41 +1260,24 @@ EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_entity
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -1548,7 +1335,7 @@ std::string Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistic
 
 }
 
-EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1575,20 +1362,12 @@ EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1718,7 +1497,7 @@ std::string Cfm::Nodes::Node::Summary::get_segment_path() const
 
 }
 
-EntityPath Cfm::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1767,20 +1546,12 @@ EntityPath Cfm::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1930,7 +1701,7 @@ std::string Cfm::Nodes::Node::CcmLearningDatabases::get_segment_path() const
 
 }
 
-EntityPath Cfm::Nodes::Node::CcmLearningDatabases::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::CcmLearningDatabases::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1953,15 +1724,6 @@ EntityPath Cfm::Nodes::Node::CcmLearningDatabases::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::CcmLearningDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ccm-learning-database")
     {
         for(auto const & c : ccm_learning_database)
@@ -1969,28 +1731,24 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::CcmLearningDatabases::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase>();
         c->parent = this;
-        ccm_learning_database.push_back(std::move(c));
-        children[segment_path] = ccm_learning_database.back();
-        return children.at(segment_path);
+        ccm_learning_database.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::CcmLearningDatabases::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::CcmLearningDatabases::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ccm_learning_database)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2003,8 +1761,8 @@ void Cfm::Nodes::Node::CcmLearningDatabases::set_value(const std::string & value
 Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::CcmLearningDatabase()
     :
     domain{YType::str, "domain"},
-    mac_address{YType::str, "mac-address"},
     service{YType::str, "service"},
+    mac_address{YType::str, "mac-address"},
     domain_xr{YType::str, "domain-xr"},
     ingress_interface{YType::uint32, "ingress-interface"},
     ingress_interface_string{YType::str, "ingress-interface-string"},
@@ -2023,8 +1781,8 @@ Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::~CcmLearningDatabas
 bool Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::has_data() const
 {
     return domain.is_set
-	|| mac_address.is_set
 	|| service.is_set
+	|| mac_address.is_set
 	|| domain_xr.is_set
 	|| ingress_interface.is_set
 	|| ingress_interface_string.is_set
@@ -2038,8 +1796,8 @@ bool Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::has_operation(
 {
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| is_set(mac_address.operation)
 	|| is_set(service.operation)
+	|| is_set(mac_address.operation)
 	|| is_set(domain_xr.operation)
 	|| is_set(ingress_interface.operation)
 	|| is_set(ingress_interface_string.operation)
@@ -2052,13 +1810,13 @@ bool Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::has_operation(
 std::string Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccm-learning-database" <<"[domain='" <<domain <<"']" <<"[mac-address='" <<mac_address <<"']" <<"[service='" <<service <<"']";
+    path_buffer << "ccm-learning-database" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mac-address='" <<mac_address <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2073,8 +1831,8 @@ EntityPath Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_enti
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
     if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
     if (domain_xr.is_set || is_set(domain_xr.operation)) leaf_name_data.push_back(domain_xr.get_name_leafdata());
     if (ingress_interface.is_set || is_set(ingress_interface.operation)) leaf_name_data.push_back(ingress_interface.get_name_leafdata());
     if (ingress_interface_string.is_set || is_set(ingress_interface_string.operation)) leaf_name_data.push_back(ingress_interface_string.get_name_leafdata());
@@ -2091,20 +1849,12 @@ EntityPath Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_enti
 
 std::shared_ptr<Entity> Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2114,13 +1864,13 @@ void Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::set_value(cons
     {
         domain = value;
     }
-    if(value_path == "mac-address")
-    {
-        mac_address = value;
-    }
     if(value_path == "service")
     {
         service = value;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address = value;
     }
     if(value_path == "domain-xr")
     {
@@ -2163,25 +1913,18 @@ Cfm::Global::Global()
 	,traceroute_caches(std::make_shared<Cfm::Global::TracerouteCaches>())
 {
     global_configuration_errors->parent = this;
-    children["global-configuration-errors"] = global_configuration_errors;
 
     incomplete_traceroutes->parent = this;
-    children["incomplete-traceroutes"] = incomplete_traceroutes;
 
     local_meps->parent = this;
-    children["local-meps"] = local_meps;
 
     maintenance_points->parent = this;
-    children["maintenance-points"] = maintenance_points;
 
     mep_configuration_errors->parent = this;
-    children["mep-configuration-errors"] = mep_configuration_errors;
 
     peer_me_pv2s->parent = this;
-    children["peer-me-pv2s"] = peer_me_pv2s;
 
     traceroute_caches->parent = this;
-    children["traceroute-caches"] = traceroute_caches;
 
     yang_name = "global"; yang_parent_name = "cfm";
 }
@@ -2222,7 +1965,7 @@ std::string Cfm::Global::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2245,179 +1988,108 @@ EntityPath Cfm::Global::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cfm::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-configuration-errors")
     {
-        if(global_configuration_errors != nullptr)
-        {
-            children["global-configuration-errors"] = global_configuration_errors;
-        }
-        else
+        if(global_configuration_errors == nullptr)
         {
             global_configuration_errors = std::make_shared<Cfm::Global::GlobalConfigurationErrors>();
-            global_configuration_errors->parent = this;
-            children["global-configuration-errors"] = global_configuration_errors;
         }
-        return children.at("global-configuration-errors");
+        return global_configuration_errors;
     }
 
     if(child_yang_name == "incomplete-traceroutes")
     {
-        if(incomplete_traceroutes != nullptr)
-        {
-            children["incomplete-traceroutes"] = incomplete_traceroutes;
-        }
-        else
+        if(incomplete_traceroutes == nullptr)
         {
             incomplete_traceroutes = std::make_shared<Cfm::Global::IncompleteTraceroutes>();
-            incomplete_traceroutes->parent = this;
-            children["incomplete-traceroutes"] = incomplete_traceroutes;
         }
-        return children.at("incomplete-traceroutes");
+        return incomplete_traceroutes;
     }
 
     if(child_yang_name == "local-meps")
     {
-        if(local_meps != nullptr)
-        {
-            children["local-meps"] = local_meps;
-        }
-        else
+        if(local_meps == nullptr)
         {
             local_meps = std::make_shared<Cfm::Global::LocalMeps>();
-            local_meps->parent = this;
-            children["local-meps"] = local_meps;
         }
-        return children.at("local-meps");
+        return local_meps;
     }
 
     if(child_yang_name == "maintenance-points")
     {
-        if(maintenance_points != nullptr)
-        {
-            children["maintenance-points"] = maintenance_points;
-        }
-        else
+        if(maintenance_points == nullptr)
         {
             maintenance_points = std::make_shared<Cfm::Global::MaintenancePoints>();
-            maintenance_points->parent = this;
-            children["maintenance-points"] = maintenance_points;
         }
-        return children.at("maintenance-points");
+        return maintenance_points;
     }
 
     if(child_yang_name == "mep-configuration-errors")
     {
-        if(mep_configuration_errors != nullptr)
-        {
-            children["mep-configuration-errors"] = mep_configuration_errors;
-        }
-        else
+        if(mep_configuration_errors == nullptr)
         {
             mep_configuration_errors = std::make_shared<Cfm::Global::MepConfigurationErrors>();
-            mep_configuration_errors->parent = this;
-            children["mep-configuration-errors"] = mep_configuration_errors;
         }
-        return children.at("mep-configuration-errors");
+        return mep_configuration_errors;
     }
 
     if(child_yang_name == "peer-me-pv2s")
     {
-        if(peer_me_pv2s != nullptr)
-        {
-            children["peer-me-pv2s"] = peer_me_pv2s;
-        }
-        else
+        if(peer_me_pv2s == nullptr)
         {
             peer_me_pv2s = std::make_shared<Cfm::Global::PeerMePv2S>();
-            peer_me_pv2s->parent = this;
-            children["peer-me-pv2s"] = peer_me_pv2s;
         }
-        return children.at("peer-me-pv2s");
+        return peer_me_pv2s;
     }
 
     if(child_yang_name == "traceroute-caches")
     {
-        if(traceroute_caches != nullptr)
-        {
-            children["traceroute-caches"] = traceroute_caches;
-        }
-        else
+        if(traceroute_caches == nullptr)
         {
             traceroute_caches = std::make_shared<Cfm::Global::TracerouteCaches>();
-            traceroute_caches->parent = this;
-            children["traceroute-caches"] = traceroute_caches;
         }
-        return children.at("traceroute-caches");
+        return traceroute_caches;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::get_children() const
 {
-    if(children.find("global-configuration-errors") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global_configuration_errors != nullptr)
     {
-        if(global_configuration_errors != nullptr)
-        {
-            children["global-configuration-errors"] = global_configuration_errors;
-        }
+        children["global-configuration-errors"] = global_configuration_errors;
     }
 
-    if(children.find("incomplete-traceroutes") == children.end())
+    if(incomplete_traceroutes != nullptr)
     {
-        if(incomplete_traceroutes != nullptr)
-        {
-            children["incomplete-traceroutes"] = incomplete_traceroutes;
-        }
+        children["incomplete-traceroutes"] = incomplete_traceroutes;
     }
 
-    if(children.find("local-meps") == children.end())
+    if(local_meps != nullptr)
     {
-        if(local_meps != nullptr)
-        {
-            children["local-meps"] = local_meps;
-        }
+        children["local-meps"] = local_meps;
     }
 
-    if(children.find("maintenance-points") == children.end())
+    if(maintenance_points != nullptr)
     {
-        if(maintenance_points != nullptr)
-        {
-            children["maintenance-points"] = maintenance_points;
-        }
+        children["maintenance-points"] = maintenance_points;
     }
 
-    if(children.find("mep-configuration-errors") == children.end())
+    if(mep_configuration_errors != nullptr)
     {
-        if(mep_configuration_errors != nullptr)
-        {
-            children["mep-configuration-errors"] = mep_configuration_errors;
-        }
+        children["mep-configuration-errors"] = mep_configuration_errors;
     }
 
-    if(children.find("peer-me-pv2s") == children.end())
+    if(peer_me_pv2s != nullptr)
     {
-        if(peer_me_pv2s != nullptr)
-        {
-            children["peer-me-pv2s"] = peer_me_pv2s;
-        }
+        children["peer-me-pv2s"] = peer_me_pv2s;
     }
 
-    if(children.find("traceroute-caches") == children.end())
+    if(traceroute_caches != nullptr)
     {
-        if(traceroute_caches != nullptr)
-        {
-            children["traceroute-caches"] = traceroute_caches;
-        }
+        children["traceroute-caches"] = traceroute_caches;
     }
 
     return children;
@@ -2465,7 +2137,7 @@ std::string Cfm::Global::IncompleteTraceroutes::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::IncompleteTraceroutes::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::IncompleteTraceroutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2488,15 +2160,6 @@ EntityPath Cfm::Global::IncompleteTraceroutes::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "incomplete-traceroute")
     {
         for(auto const & c : incomplete_traceroute)
@@ -2504,28 +2167,24 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute>();
         c->parent = this;
-        incomplete_traceroute.push_back(std::move(c));
-        children[segment_path] = incomplete_traceroute.back();
-        return children.at(segment_path);
+        incomplete_traceroute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::IncompleteTraceroutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : incomplete_traceroute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2538,16 +2197,15 @@ void Cfm::Global::IncompleteTraceroutes::set_value(const std::string & value_pat
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::IncompleteTraceroute()
     :
     domain{YType::str, "domain"},
-    interface{YType::str, "interface"},
-    mep_id{YType::uint32, "mep-id"},
     service{YType::str, "service"},
+    mep_id{YType::uint32, "mep-id"},
+    interface{YType::str, "interface"},
     transaction_id{YType::int32, "transaction-id"},
     time_left{YType::uint64, "time-left"}
     	,
     traceroute_information(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation>())
 {
     traceroute_information->parent = this;
-    children["traceroute-information"] = traceroute_information;
 
     yang_name = "incomplete-traceroute"; yang_parent_name = "incomplete-traceroutes";
 }
@@ -2559,9 +2217,9 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::~IncompleteTraceroute(
 bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::has_data() const
 {
     return domain.is_set
-	|| interface.is_set
-	|| mep_id.is_set
 	|| service.is_set
+	|| mep_id.is_set
+	|| interface.is_set
 	|| transaction_id.is_set
 	|| time_left.is_set
 	|| (traceroute_information !=  nullptr && traceroute_information->has_data());
@@ -2571,9 +2229,9 @@ bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::has_operation() c
 {
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| is_set(interface.operation)
-	|| is_set(mep_id.operation)
 	|| is_set(service.operation)
+	|| is_set(mep_id.operation)
+	|| is_set(interface.operation)
 	|| is_set(transaction_id.operation)
 	|| is_set(time_left.operation)
 	|| (traceroute_information !=  nullptr && traceroute_information->has_operation());
@@ -2582,13 +2240,13 @@ bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::has_operation() c
 std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "incomplete-traceroute" <<"[domain='" <<domain <<"']" <<"[interface='" <<interface <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[service='" <<service <<"']" <<"[transaction-id='" <<transaction_id <<"']";
+    path_buffer << "incomplete-traceroute" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[interface='" <<interface <<"']" <<"[transaction-id='" <<transaction_id <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2603,9 +2261,9 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_entity_
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
     if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (transaction_id.is_set || is_set(transaction_id.operation)) leaf_name_data.push_back(transaction_id.get_name_leafdata());
     if (time_left.is_set || is_set(time_left.operation)) leaf_name_data.push_back(time_left.get_name_leafdata());
 
@@ -2617,41 +2275,24 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_entity_
 
 std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "traceroute-information")
     {
-        if(traceroute_information != nullptr)
-        {
-            children["traceroute-information"] = traceroute_information;
-        }
-        else
+        if(traceroute_information == nullptr)
         {
             traceroute_information = std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation>();
-            traceroute_information->parent = this;
-            children["traceroute-information"] = traceroute_information;
         }
-        return children.at("traceroute-information");
+        return traceroute_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_children() const
 {
-    if(children.find("traceroute-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(traceroute_information != nullptr)
     {
-        if(traceroute_information != nullptr)
-        {
-            children["traceroute-information"] = traceroute_information;
-        }
+        children["traceroute-information"] = traceroute_information;
     }
 
     return children;
@@ -2663,17 +2304,17 @@ void Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::set_value(const s
     {
         domain = value;
     }
-    if(value_path == "interface")
+    if(value_path == "service")
     {
-        interface = value;
+        service = value;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
     }
-    if(value_path == "service")
+    if(value_path == "interface")
     {
-        service = value;
+        interface = value;
     }
     if(value_path == "transaction-id")
     {
@@ -2703,7 +2344,6 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
     options(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options>())
 {
     options->parent = this;
-    children["options"] = options;
 
     yang_name = "traceroute-information"; yang_parent_name = "incomplete-traceroute";
 }
@@ -2756,7 +2396,7 @@ std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::Traceroute
 
 }
 
-EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2791,41 +2431,24 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
 
 std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "options")
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
-        else
+        if(options == nullptr)
         {
             options = std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options>();
-            options->parent = this;
-            children["options"] = options;
         }
-        return children.at("options");
+        return options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::get_children() const
 {
-    if(children.find("options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(options != nullptr)
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
+        children["options"] = options;
     }
 
     return children;
@@ -2891,10 +2514,8 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
 	,exploratory_options(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions>())
 {
     basic_options->parent = this;
-    children["basic-options"] = basic_options;
 
     exploratory_options->parent = this;
-    children["exploratory-options"] = exploratory_options;
 
     yang_name = "options"; yang_parent_name = "traceroute-information";
 }
@@ -2927,7 +2548,7 @@ std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::Traceroute
 
 }
 
-EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2951,64 +2572,38 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
 
 std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-options")
     {
-        if(basic_options != nullptr)
-        {
-            children["basic-options"] = basic_options;
-        }
-        else
+        if(basic_options == nullptr)
         {
             basic_options = std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions>();
-            basic_options->parent = this;
-            children["basic-options"] = basic_options;
         }
-        return children.at("basic-options");
+        return basic_options;
     }
 
     if(child_yang_name == "exploratory-options")
     {
-        if(exploratory_options != nullptr)
-        {
-            children["exploratory-options"] = exploratory_options;
-        }
-        else
+        if(exploratory_options == nullptr)
         {
             exploratory_options = std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions>();
-            exploratory_options->parent = this;
-            children["exploratory-options"] = exploratory_options;
         }
-        return children.at("exploratory-options");
+        return exploratory_options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::get_children() const
 {
-    if(children.find("basic-options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_options != nullptr)
     {
-        if(basic_options != nullptr)
-        {
-            children["basic-options"] = basic_options;
-        }
+        children["basic-options"] = basic_options;
     }
 
-    if(children.find("exploratory-options") == children.end())
+    if(exploratory_options != nullptr)
     {
-        if(exploratory_options != nullptr)
-        {
-            children["exploratory-options"] = exploratory_options;
-        }
+        children["exploratory-options"] = exploratory_options;
     }
 
     return children;
@@ -3056,7 +2651,7 @@ std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::Traceroute
 
 }
 
-EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3081,20 +2676,12 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
 
 std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3147,7 +2734,7 @@ std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::Traceroute
 
 }
 
-EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3173,20 +2760,12 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
 
 std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3244,7 +2823,7 @@ std::string Cfm::Global::MaintenancePoints::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::MaintenancePoints::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MaintenancePoints::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3267,15 +2846,6 @@ EntityPath Cfm::Global::MaintenancePoints::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "maintenance-point")
     {
         for(auto const & c : maintenance_point)
@@ -3283,28 +2853,24 @@ std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::MaintenancePoints::MaintenancePoint>();
         c->parent = this;
-        maintenance_point.push_back(std::move(c));
-        children[segment_path] = maintenance_point.back();
-        return children.at(segment_path);
+        maintenance_point.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MaintenancePoints::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MaintenancePoints::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : maintenance_point)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3317,15 +2883,14 @@ void Cfm::Global::MaintenancePoints::set_value(const std::string & value_path, s
 Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint()
     :
     domain{YType::str, "domain"},
-    interface{YType::str, "interface"},
     service{YType::str, "service"},
+    interface{YType::str, "interface"},
     mac_address{YType::str, "mac-address"},
     mep_has_error{YType::boolean, "mep-has-error"}
     	,
     maintenance_point(std::make_shared<Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_>())
 {
     maintenance_point->parent = this;
-    children["maintenance-point"] = maintenance_point;
 
     yang_name = "maintenance-point"; yang_parent_name = "maintenance-points";
 }
@@ -3337,8 +2902,8 @@ Cfm::Global::MaintenancePoints::MaintenancePoint::~MaintenancePoint()
 bool Cfm::Global::MaintenancePoints::MaintenancePoint::has_data() const
 {
     return domain.is_set
-	|| interface.is_set
 	|| service.is_set
+	|| interface.is_set
 	|| mac_address.is_set
 	|| mep_has_error.is_set
 	|| (maintenance_point !=  nullptr && maintenance_point->has_data());
@@ -3348,8 +2913,8 @@ bool Cfm::Global::MaintenancePoints::MaintenancePoint::has_operation() const
 {
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| is_set(interface.operation)
 	|| is_set(service.operation)
+	|| is_set(interface.operation)
 	|| is_set(mac_address.operation)
 	|| is_set(mep_has_error.operation)
 	|| (maintenance_point !=  nullptr && maintenance_point->has_operation());
@@ -3358,13 +2923,13 @@ bool Cfm::Global::MaintenancePoints::MaintenancePoint::has_operation() const
 std::string Cfm::Global::MaintenancePoints::MaintenancePoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "maintenance-point" <<"[domain='" <<domain <<"']" <<"[interface='" <<interface <<"']" <<"[service='" <<service <<"']";
+    path_buffer << "maintenance-point" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[interface='" <<interface <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3379,8 +2944,8 @@ EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::get_entity_path(Ent
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
     if (mep_has_error.is_set || is_set(mep_has_error.operation)) leaf_name_data.push_back(mep_has_error.get_name_leafdata());
 
@@ -3392,41 +2957,24 @@ EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::get_entity_path(Ent
 
 std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::MaintenancePoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "maintenance-point")
     {
-        if(maintenance_point != nullptr)
-        {
-            children["maintenance-point"] = maintenance_point;
-        }
-        else
+        if(maintenance_point == nullptr)
         {
             maintenance_point = std::make_shared<Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_>();
-            maintenance_point->parent = this;
-            children["maintenance-point"] = maintenance_point;
         }
-        return children.at("maintenance-point");
+        return maintenance_point;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MaintenancePoints::MaintenancePoint::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MaintenancePoints::MaintenancePoint::get_children() const
 {
-    if(children.find("maintenance-point") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(maintenance_point != nullptr)
     {
-        if(maintenance_point != nullptr)
-        {
-            children["maintenance-point"] = maintenance_point;
-        }
+        children["maintenance-point"] = maintenance_point;
     }
 
     return children;
@@ -3438,13 +2986,13 @@ void Cfm::Global::MaintenancePoints::MaintenancePoint::set_value(const std::stri
     {
         domain = value;
     }
-    if(value_path == "interface")
-    {
-        interface = value;
-    }
     if(value_path == "service")
     {
         service = value;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
     }
     if(value_path == "mac-address")
     {
@@ -3502,7 +3050,7 @@ std::string Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_:
 
 }
 
-EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3531,20 +3079,12 @@ EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::
 
 std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3614,7 +3154,7 @@ std::string Cfm::Global::GlobalConfigurationErrors::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::GlobalConfigurationErrors::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::GlobalConfigurationErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3637,15 +3177,6 @@ EntityPath Cfm::Global::GlobalConfigurationErrors::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-configuration-error")
     {
         for(auto const & c : global_configuration_error)
@@ -3653,28 +3184,24 @@ std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError>();
         c->parent = this;
-        global_configuration_error.push_back(std::move(c));
-        children[segment_path] = global_configuration_error.back();
-        return children.at(segment_path);
+        global_configuration_error.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::GlobalConfigurationErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::GlobalConfigurationErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : global_configuration_error)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3697,7 +3224,6 @@ Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::GlobalConfigur
     bridge_domain_id(std::make_shared<Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId>())
 {
     bridge_domain_id->parent = this;
-    children["bridge-domain-id"] = bridge_domain_id;
 
     yang_name = "global-configuration-error"; yang_parent_name = "global-configuration-errors";
 }
@@ -3740,7 +3266,7 @@ std::string Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::ge
 
 }
 
-EntityPath Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3770,41 +3296,24 @@ EntityPath Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get
 
 std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bridge-domain-id")
     {
-        if(bridge_domain_id != nullptr)
-        {
-            children["bridge-domain-id"] = bridge_domain_id;
-        }
-        else
+        if(bridge_domain_id == nullptr)
         {
             bridge_domain_id = std::make_shared<Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId>();
-            bridge_domain_id->parent = this;
-            children["bridge-domain-id"] = bridge_domain_id;
         }
-        return children.at("bridge-domain-id");
+        return bridge_domain_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_children() const
 {
-    if(children.find("bridge-domain-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bridge_domain_id != nullptr)
     {
-        if(bridge_domain_id != nullptr)
-        {
-            children["bridge-domain-id"] = bridge_domain_id;
-        }
+        children["bridge-domain-id"] = bridge_domain_id;
     }
 
     return children;
@@ -3885,7 +3394,7 @@ std::string Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::Br
 
 }
 
-EntityPath Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3913,20 +3422,12 @@ EntityPath Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::Bri
 
 std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3992,7 +3493,7 @@ std::string Cfm::Global::MepConfigurationErrors::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4015,15 +3516,6 @@ EntityPath Cfm::Global::MepConfigurationErrors::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mep-configuration-error")
     {
         for(auto const & c : mep_configuration_error)
@@ -4031,28 +3523,24 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError>();
         c->parent = this;
-        mep_configuration_error.push_back(std::move(c));
-        children[segment_path] = mep_configuration_error.back();
-        return children.at(segment_path);
+        mep_configuration_error.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mep_configuration_error)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4065,8 +3553,8 @@ void Cfm::Global::MepConfigurationErrors::set_value(const std::string & value_pa
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::MepConfigurationError()
     :
     domain{YType::str, "domain"},
-    interface{YType::str, "interface"},
     service{YType::str, "service"},
+    interface{YType::str, "interface"},
     ais_configured{YType::boolean, "ais-configured"},
     bridge_domain_mismatch{YType::boolean, "bridge-domain-mismatch"},
     bridge_domain_not_in_bd_infra{YType::boolean, "bridge-domain-not-in-bd-infra"},
@@ -4100,16 +3588,12 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::MepConfigurationErro
 	,service_bridge_domain(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain>())
 {
     interface_bridge_domain->parent = this;
-    children["interface-bridge-domain"] = interface_bridge_domain;
 
     mep->parent = this;
-    children["mep"] = mep;
 
     satellite_capabilities->parent = this;
-    children["satellite-capabilities"] = satellite_capabilities;
 
     service_bridge_domain->parent = this;
-    children["service-bridge-domain"] = service_bridge_domain;
 
     yang_name = "mep-configuration-error"; yang_parent_name = "mep-configuration-errors";
 }
@@ -4121,8 +3605,8 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::~MepConfigurationErr
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_data() const
 {
     return domain.is_set
-	|| interface.is_set
 	|| service.is_set
+	|| interface.is_set
 	|| ais_configured.is_set
 	|| bridge_domain_mismatch.is_set
 	|| bridge_domain_not_in_bd_infra.is_set
@@ -4159,8 +3643,8 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_operation()
 {
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| is_set(interface.operation)
 	|| is_set(service.operation)
+	|| is_set(interface.operation)
 	|| is_set(ais_configured.operation)
 	|| is_set(bridge_domain_mismatch.operation)
 	|| is_set(bridge_domain_not_in_bd_infra.operation)
@@ -4196,13 +3680,13 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_operation()
 std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mep-configuration-error" <<"[domain='" <<domain <<"']" <<"[interface='" <<interface <<"']" <<"[service='" <<service <<"']";
+    path_buffer << "mep-configuration-error" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[interface='" <<interface <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4217,8 +3701,8 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_entit
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (ais_configured.is_set || is_set(ais_configured.operation)) leaf_name_data.push_back(ais_configured.get_name_leafdata());
     if (bridge_domain_mismatch.is_set || is_set(bridge_domain_mismatch.operation)) leaf_name_data.push_back(bridge_domain_mismatch.get_name_leafdata());
     if (bridge_domain_not_in_bd_infra.is_set || is_set(bridge_domain_not_in_bd_infra.operation)) leaf_name_data.push_back(bridge_domain_not_in_bd_infra.get_name_leafdata());
@@ -4254,110 +3738,66 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_entit
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-bridge-domain")
     {
-        if(interface_bridge_domain != nullptr)
-        {
-            children["interface-bridge-domain"] = interface_bridge_domain;
-        }
-        else
+        if(interface_bridge_domain == nullptr)
         {
             interface_bridge_domain = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain>();
-            interface_bridge_domain->parent = this;
-            children["interface-bridge-domain"] = interface_bridge_domain;
         }
-        return children.at("interface-bridge-domain");
+        return interface_bridge_domain;
     }
 
     if(child_yang_name == "mep")
     {
-        if(mep != nullptr)
-        {
-            children["mep"] = mep;
-        }
-        else
+        if(mep == nullptr)
         {
             mep = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep>();
-            mep->parent = this;
-            children["mep"] = mep;
         }
-        return children.at("mep");
+        return mep;
     }
 
     if(child_yang_name == "satellite-capabilities")
     {
-        if(satellite_capabilities != nullptr)
-        {
-            children["satellite-capabilities"] = satellite_capabilities;
-        }
-        else
+        if(satellite_capabilities == nullptr)
         {
             satellite_capabilities = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities>();
-            satellite_capabilities->parent = this;
-            children["satellite-capabilities"] = satellite_capabilities;
         }
-        return children.at("satellite-capabilities");
+        return satellite_capabilities;
     }
 
     if(child_yang_name == "service-bridge-domain")
     {
-        if(service_bridge_domain != nullptr)
-        {
-            children["service-bridge-domain"] = service_bridge_domain;
-        }
-        else
+        if(service_bridge_domain == nullptr)
         {
             service_bridge_domain = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain>();
-            service_bridge_domain->parent = this;
-            children["service-bridge-domain"] = service_bridge_domain;
         }
-        return children.at("service-bridge-domain");
+        return service_bridge_domain;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_children() const
 {
-    if(children.find("interface-bridge-domain") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_bridge_domain != nullptr)
     {
-        if(interface_bridge_domain != nullptr)
-        {
-            children["interface-bridge-domain"] = interface_bridge_domain;
-        }
+        children["interface-bridge-domain"] = interface_bridge_domain;
     }
 
-    if(children.find("mep") == children.end())
+    if(mep != nullptr)
     {
-        if(mep != nullptr)
-        {
-            children["mep"] = mep;
-        }
+        children["mep"] = mep;
     }
 
-    if(children.find("satellite-capabilities") == children.end())
+    if(satellite_capabilities != nullptr)
     {
-        if(satellite_capabilities != nullptr)
-        {
-            children["satellite-capabilities"] = satellite_capabilities;
-        }
+        children["satellite-capabilities"] = satellite_capabilities;
     }
 
-    if(children.find("service-bridge-domain") == children.end())
+    if(service_bridge_domain != nullptr)
     {
-        if(service_bridge_domain != nullptr)
-        {
-            children["service-bridge-domain"] = service_bridge_domain;
-        }
+        children["service-bridge-domain"] = service_bridge_domain;
     }
 
     return children;
@@ -4369,13 +3809,13 @@ void Cfm::Global::MepConfigurationErrors::MepConfigurationError::set_value(const
     {
         domain = value;
     }
-    if(value_path == "interface")
-    {
-        interface = value;
-    }
     if(value_path == "service")
     {
         service = value;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
     }
     if(value_path == "ais-configured")
     {
@@ -4529,7 +3969,7 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4558,20 +3998,12 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4646,7 +4078,7 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceB
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4674,20 +4106,12 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBr
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4758,7 +4182,7 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::Interfac
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4786,20 +4210,12 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Interface
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4834,13 +4250,10 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
 	,synthetic_loss_measurement(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement>())
 {
     delay_measurement->parent = this;
-    children["delay-measurement"] = delay_measurement;
 
     loopback->parent = this;
-    children["loopback"] = loopback;
 
     synthetic_loss_measurement->parent = this;
-    children["synthetic-loss-measurement"] = synthetic_loss_measurement;
 
     yang_name = "satellite-capabilities"; yang_parent_name = "mep-configuration-error";
 }
@@ -4873,7 +4286,7 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellit
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4896,87 +4309,52 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "delay-measurement")
     {
-        if(delay_measurement != nullptr)
-        {
-            children["delay-measurement"] = delay_measurement;
-        }
-        else
+        if(delay_measurement == nullptr)
         {
             delay_measurement = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement>();
-            delay_measurement->parent = this;
-            children["delay-measurement"] = delay_measurement;
         }
-        return children.at("delay-measurement");
+        return delay_measurement;
     }
 
     if(child_yang_name == "loopback")
     {
-        if(loopback != nullptr)
-        {
-            children["loopback"] = loopback;
-        }
-        else
+        if(loopback == nullptr)
         {
             loopback = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback>();
-            loopback->parent = this;
-            children["loopback"] = loopback;
         }
-        return children.at("loopback");
+        return loopback;
     }
 
     if(child_yang_name == "synthetic-loss-measurement")
     {
-        if(synthetic_loss_measurement != nullptr)
-        {
-            children["synthetic-loss-measurement"] = synthetic_loss_measurement;
-        }
-        else
+        if(synthetic_loss_measurement == nullptr)
         {
             synthetic_loss_measurement = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement>();
-            synthetic_loss_measurement->parent = this;
-            children["synthetic-loss-measurement"] = synthetic_loss_measurement;
         }
-        return children.at("synthetic-loss-measurement");
+        return synthetic_loss_measurement;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::get_children() const
 {
-    if(children.find("delay-measurement") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(delay_measurement != nullptr)
     {
-        if(delay_measurement != nullptr)
-        {
-            children["delay-measurement"] = delay_measurement;
-        }
+        children["delay-measurement"] = delay_measurement;
     }
 
-    if(children.find("loopback") == children.end())
+    if(loopback != nullptr)
     {
-        if(loopback != nullptr)
-        {
-            children["loopback"] = loopback;
-        }
+        children["loopback"] = loopback;
     }
 
-    if(children.find("synthetic-loss-measurement") == children.end())
+    if(synthetic_loss_measurement != nullptr)
     {
-        if(synthetic_loss_measurement != nullptr)
-        {
-            children["synthetic-loss-measurement"] = synthetic_loss_measurement;
-        }
+        children["synthetic-loss-measurement"] = synthetic_loss_measurement;
     }
 
     return children;
@@ -5020,7 +4398,7 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellit
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5045,20 +4423,12 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5108,7 +4478,7 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellit
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5133,20 +4503,12 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5196,7 +4558,7 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellit
 
 }
 
-EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5221,20 +4583,12 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
 
 std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5288,7 +4642,7 @@ std::string Cfm::Global::TracerouteCaches::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5311,15 +4665,6 @@ EntityPath Cfm::Global::TracerouteCaches::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "traceroute-cache")
     {
         for(auto const & c : traceroute_cache)
@@ -5327,28 +4672,24 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache>();
         c->parent = this;
-        traceroute_cache.push_back(std::move(c));
-        children[segment_path] = traceroute_cache.back();
-        return children.at(segment_path);
+        traceroute_cache.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : traceroute_cache)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5361,16 +4702,15 @@ void Cfm::Global::TracerouteCaches::set_value(const std::string & value_path, st
 Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteCache()
     :
     domain{YType::str, "domain"},
-    interface{YType::str, "interface"},
-    mep_id{YType::uint32, "mep-id"},
     service{YType::str, "service"},
+    mep_id{YType::uint32, "mep-id"},
+    interface{YType::str, "interface"},
     transaction_id{YType::int32, "transaction-id"},
     replies_dropped{YType::uint32, "replies-dropped"}
     	,
     traceroute_information(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation>())
 {
     traceroute_information->parent = this;
-    children["traceroute-information"] = traceroute_information;
 
     yang_name = "traceroute-cache"; yang_parent_name = "traceroute-caches";
 }
@@ -5392,9 +4732,9 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::has_data() const
             return true;
     }
     return domain.is_set
-	|| interface.is_set
-	|| mep_id.is_set
 	|| service.is_set
+	|| mep_id.is_set
+	|| interface.is_set
 	|| transaction_id.is_set
 	|| replies_dropped.is_set
 	|| (traceroute_information !=  nullptr && traceroute_information->has_data());
@@ -5414,9 +4754,9 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::has_operation() const
     }
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| is_set(interface.operation)
-	|| is_set(mep_id.operation)
 	|| is_set(service.operation)
+	|| is_set(mep_id.operation)
+	|| is_set(interface.operation)
 	|| is_set(transaction_id.operation)
 	|| is_set(replies_dropped.operation)
 	|| (traceroute_information !=  nullptr && traceroute_information->has_operation());
@@ -5425,13 +4765,13 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::has_operation() const
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traceroute-cache" <<"[domain='" <<domain <<"']" <<"[interface='" <<interface <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[service='" <<service <<"']" <<"[transaction-id='" <<transaction_id <<"']";
+    path_buffer << "traceroute-cache" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[interface='" <<interface <<"']" <<"[transaction-id='" <<transaction_id <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5446,9 +4786,9 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::get_entity_path(Entit
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
     if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (transaction_id.is_set || is_set(transaction_id.operation)) leaf_name_data.push_back(transaction_id.get_name_leafdata());
     if (replies_dropped.is_set || is_set(replies_dropped.operation)) leaf_name_data.push_back(replies_dropped.get_name_leafdata());
 
@@ -5460,15 +4800,6 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::get_entity_path(Entit
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exploratory-linktrace-reply")
     {
         for(auto const & c : exploratory_linktrace_reply)
@@ -5476,15 +4807,13 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply>();
         c->parent = this;
-        exploratory_linktrace_reply.push_back(std::move(c));
-        children[segment_path] = exploratory_linktrace_reply.back();
-        return children.at(segment_path);
+        exploratory_linktrace_reply.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "linktrace-reply")
@@ -5494,59 +4823,43 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply>();
         c->parent = this;
-        linktrace_reply.push_back(std::move(c));
-        children[segment_path] = linktrace_reply.back();
-        return children.at(segment_path);
+        linktrace_reply.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "traceroute-information")
     {
-        if(traceroute_information != nullptr)
-        {
-            children["traceroute-information"] = traceroute_information;
-        }
-        else
+        if(traceroute_information == nullptr)
         {
             traceroute_information = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation>();
-            traceroute_information->parent = this;
-            children["traceroute-information"] = traceroute_information;
         }
-        return children.at("traceroute-information");
+        return traceroute_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exploratory_linktrace_reply)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : linktrace_reply)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("traceroute-information") == children.end())
+    if(traceroute_information != nullptr)
     {
-        if(traceroute_information != nullptr)
-        {
-            children["traceroute-information"] = traceroute_information;
-        }
+        children["traceroute-information"] = traceroute_information;
     }
 
     return children;
@@ -5558,17 +4871,17 @@ void Cfm::Global::TracerouteCaches::TracerouteCache::set_value(const std::string
     {
         domain = value;
     }
-    if(value_path == "interface")
+    if(value_path == "service")
     {
-        interface = value;
+        service = value;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
     }
-    if(value_path == "service")
+    if(value_path == "interface")
     {
-        service = value;
+        interface = value;
     }
     if(value_path == "transaction-id")
     {
@@ -5598,7 +4911,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Tracerout
     options(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options>())
 {
     options->parent = this;
-    children["options"] = options;
 
     yang_name = "traceroute-information"; yang_parent_name = "traceroute-cache";
 }
@@ -5651,7 +4963,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformatio
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5686,41 +4998,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "options")
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
-        else
+        if(options == nullptr)
         {
             options = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options>();
-            options->parent = this;
-            children["options"] = options;
         }
-        return children.at("options");
+        return options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::get_children() const
 {
-    if(children.find("options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(options != nullptr)
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
+        children["options"] = options;
     }
 
     return children;
@@ -5786,10 +5081,8 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::
 	,exploratory_options(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions>())
 {
     basic_options->parent = this;
-    children["basic-options"] = basic_options;
 
     exploratory_options->parent = this;
-    children["exploratory-options"] = exploratory_options;
 
     yang_name = "options"; yang_parent_name = "traceroute-information";
 }
@@ -5822,7 +5115,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformatio
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5846,64 +5139,38 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-options")
     {
-        if(basic_options != nullptr)
-        {
-            children["basic-options"] = basic_options;
-        }
-        else
+        if(basic_options == nullptr)
         {
             basic_options = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions>();
-            basic_options->parent = this;
-            children["basic-options"] = basic_options;
         }
-        return children.at("basic-options");
+        return basic_options;
     }
 
     if(child_yang_name == "exploratory-options")
     {
-        if(exploratory_options != nullptr)
-        {
-            children["exploratory-options"] = exploratory_options;
-        }
-        else
+        if(exploratory_options == nullptr)
         {
             exploratory_options = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions>();
-            exploratory_options->parent = this;
-            children["exploratory-options"] = exploratory_options;
         }
-        return children.at("exploratory-options");
+        return exploratory_options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::get_children() const
 {
-    if(children.find("basic-options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_options != nullptr)
     {
-        if(basic_options != nullptr)
-        {
-            children["basic-options"] = basic_options;
-        }
+        children["basic-options"] = basic_options;
     }
 
-    if(children.find("exploratory-options") == children.end())
+    if(exploratory_options != nullptr)
     {
-        if(exploratory_options != nullptr)
-        {
-            children["exploratory-options"] = exploratory_options;
-        }
+        children["exploratory-options"] = exploratory_options;
     }
 
     return children;
@@ -5951,7 +5218,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformatio
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5976,20 +5243,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6042,7 +5301,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformatio
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6068,20 +5327,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6113,22 +5364,16 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LinktraceReply()
 	,sender_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId>())
 {
     egress_id->parent = this;
-    children["egress-id"] = egress_id;
 
     header->parent = this;
-    children["header"] = header;
 
     last_hop->parent = this;
-    children["last-hop"] = last_hop;
 
     reply_egress->parent = this;
-    children["reply-egress"] = reply_egress;
 
     reply_ingress->parent = this;
-    children["reply-ingress"] = reply_ingress;
 
     sender_id->parent = this;
-    children["sender-id"] = sender_id;
 
     yang_name = "linktrace-reply"; yang_parent_name = "traceroute-cache";
 }
@@ -6189,7 +5434,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6213,58 +5458,31 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_e
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "egress-id")
     {
-        if(egress_id != nullptr)
-        {
-            children["egress-id"] = egress_id;
-        }
-        else
+        if(egress_id == nullptr)
         {
             egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId>();
-            egress_id->parent = this;
-            children["egress-id"] = egress_id;
         }
-        return children.at("egress-id");
+        return egress_id;
     }
 
     if(child_yang_name == "header")
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
-        else
+        if(header == nullptr)
         {
             header = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header>();
-            header->parent = this;
-            children["header"] = header;
         }
-        return children.at("header");
+        return header;
     }
 
     if(child_yang_name == "last-hop")
     {
-        if(last_hop != nullptr)
-        {
-            children["last-hop"] = last_hop;
-        }
-        else
+        if(last_hop == nullptr)
         {
             last_hop = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop>();
-            last_hop->parent = this;
-            children["last-hop"] = last_hop;
         }
-        return children.at("last-hop");
+        return last_hop;
     }
 
     if(child_yang_name == "organization-specific-tlv")
@@ -6274,60 +5492,40 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv>();
         c->parent = this;
-        organization_specific_tlv.push_back(std::move(c));
-        children[segment_path] = organization_specific_tlv.back();
-        return children.at(segment_path);
+        organization_specific_tlv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "reply-egress")
     {
-        if(reply_egress != nullptr)
-        {
-            children["reply-egress"] = reply_egress;
-        }
-        else
+        if(reply_egress == nullptr)
         {
             reply_egress = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress>();
-            reply_egress->parent = this;
-            children["reply-egress"] = reply_egress;
         }
-        return children.at("reply-egress");
+        return reply_egress;
     }
 
     if(child_yang_name == "reply-ingress")
     {
-        if(reply_ingress != nullptr)
-        {
-            children["reply-ingress"] = reply_ingress;
-        }
-        else
+        if(reply_ingress == nullptr)
         {
             reply_ingress = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress>();
-            reply_ingress->parent = this;
-            children["reply-ingress"] = reply_ingress;
         }
-        return children.at("reply-ingress");
+        return reply_ingress;
     }
 
     if(child_yang_name == "sender-id")
     {
-        if(sender_id != nullptr)
-        {
-            children["sender-id"] = sender_id;
-        }
-        else
+        if(sender_id == nullptr)
         {
             sender_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId>();
-            sender_id->parent = this;
-            children["sender-id"] = sender_id;
         }
-        return children.at("sender-id");
+        return sender_id;
     }
 
     if(child_yang_name == "unknown-tlv")
@@ -6337,84 +5535,59 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(std::move(c));
-        children[segment_path] = unknown_tlv.back();
-        return children.at(segment_path);
+        unknown_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_children() const
 {
-    if(children.find("egress-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(egress_id != nullptr)
     {
-        if(egress_id != nullptr)
-        {
-            children["egress-id"] = egress_id;
-        }
+        children["egress-id"] = egress_id;
     }
 
-    if(children.find("header") == children.end())
+    if(header != nullptr)
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
+        children["header"] = header;
     }
 
-    if(children.find("last-hop") == children.end())
+    if(last_hop != nullptr)
     {
-        if(last_hop != nullptr)
-        {
-            children["last-hop"] = last_hop;
-        }
+        children["last-hop"] = last_hop;
     }
 
     for (auto const & c : organization_specific_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("reply-egress") == children.end())
+    if(reply_egress != nullptr)
     {
-        if(reply_egress != nullptr)
-        {
-            children["reply-egress"] = reply_egress;
-        }
+        children["reply-egress"] = reply_egress;
     }
 
-    if(children.find("reply-ingress") == children.end())
+    if(reply_ingress != nullptr)
     {
-        if(reply_ingress != nullptr)
-        {
-            children["reply-ingress"] = reply_ingress;
-        }
+        children["reply-ingress"] = reply_ingress;
     }
 
-    if(children.find("sender-id") == children.end())
+    if(sender_id != nullptr)
     {
-        if(sender_id != nullptr)
-        {
-            children["sender-id"] = sender_id;
-        }
+        children["sender-id"] = sender_id;
     }
 
     for (auto const & c : unknown_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6480,7 +5653,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Head
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6511,20 +5684,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Heade
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6572,7 +5737,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::Sender
     chassis_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId>())
 {
     chassis_id->parent = this;
-    children["chassis-id"] = chassis_id;
 
     yang_name = "sender-id"; yang_parent_name = "linktrace-reply";
 }
@@ -6605,7 +5769,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Send
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6630,41 +5794,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Sende
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chassis-id")
     {
-        if(chassis_id != nullptr)
-        {
-            children["chassis-id"] = chassis_id;
-        }
-        else
+        if(chassis_id == nullptr)
         {
             chassis_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId>();
-            chassis_id->parent = this;
-            children["chassis-id"] = chassis_id;
         }
-        return children.at("chassis-id");
+        return chassis_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::get_children() const
 {
-    if(children.find("chassis-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chassis_id != nullptr)
     {
-        if(chassis_id != nullptr)
-        {
-            children["chassis-id"] = chassis_id;
-        }
+        children["chassis-id"] = chassis_id;
     }
 
     return children;
@@ -6691,7 +5838,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::Chassi
     chassis_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue>())
 {
     chassis_id_value->parent = this;
-    children["chassis-id-value"] = chassis_id_value;
 
     yang_name = "chassis-id"; yang_parent_name = "sender-id";
 }
@@ -6726,7 +5872,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Send
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6752,41 +5898,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Sende
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chassis-id-value")
     {
-        if(chassis_id_value != nullptr)
-        {
-            children["chassis-id-value"] = chassis_id_value;
-        }
-        else
+        if(chassis_id_value == nullptr)
         {
             chassis_id_value = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue>();
-            chassis_id_value->parent = this;
-            children["chassis-id-value"] = chassis_id_value;
         }
-        return children.at("chassis-id-value");
+        return chassis_id_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::get_children() const
 {
-    if(children.find("chassis-id-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chassis_id_value != nullptr)
     {
-        if(chassis_id_value != nullptr)
-        {
-            children["chassis-id-value"] = chassis_id_value;
-        }
+        children["chassis-id-value"] = chassis_id_value;
     }
 
     return children;
@@ -6848,7 +5977,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Send
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6875,20 +6004,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Sende
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6918,10 +6039,8 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::Egress
 	,next_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId>())
 {
     last_egress_id->parent = this;
-    children["last-egress-id"] = last_egress_id;
 
     next_egress_id->parent = this;
-    children["next-egress-id"] = next_egress_id;
 
     yang_name = "egress-id"; yang_parent_name = "linktrace-reply";
 }
@@ -6952,7 +6071,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egre
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6975,64 +6094,38 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egres
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-egress-id")
     {
-        if(last_egress_id != nullptr)
-        {
-            children["last-egress-id"] = last_egress_id;
-        }
-        else
+        if(last_egress_id == nullptr)
         {
             last_egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId>();
-            last_egress_id->parent = this;
-            children["last-egress-id"] = last_egress_id;
         }
-        return children.at("last-egress-id");
+        return last_egress_id;
     }
 
     if(child_yang_name == "next-egress-id")
     {
-        if(next_egress_id != nullptr)
-        {
-            children["next-egress-id"] = next_egress_id;
-        }
-        else
+        if(next_egress_id == nullptr)
         {
             next_egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId>();
-            next_egress_id->parent = this;
-            children["next-egress-id"] = next_egress_id;
         }
-        return children.at("next-egress-id");
+        return next_egress_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::get_children() const
 {
-    if(children.find("last-egress-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_egress_id != nullptr)
     {
-        if(last_egress_id != nullptr)
-        {
-            children["last-egress-id"] = last_egress_id;
-        }
+        children["last-egress-id"] = last_egress_id;
     }
 
-    if(children.find("next-egress-id") == children.end())
+    if(next_egress_id != nullptr)
     {
-        if(next_egress_id != nullptr)
-        {
-            children["next-egress-id"] = next_egress_id;
-        }
+        children["next-egress-id"] = next_egress_id;
     }
 
     return children;
@@ -7076,7 +6169,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egre
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7101,20 +6194,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egres
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7164,7 +6249,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egre
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7189,20 +6274,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egres
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7226,7 +6303,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::Re
     port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId>())
 {
     port_id->parent = this;
-    children["port-id"] = port_id;
 
     yang_name = "reply-ingress"; yang_parent_name = "linktrace-reply";
 }
@@ -7259,7 +6335,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Repl
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7284,41 +6360,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-id")
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
-        else
+        if(port_id == nullptr)
         {
             port_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId>();
-            port_id->parent = this;
-            children["port-id"] = port_id;
         }
-        return children.at("port-id");
+        return port_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::get_children() const
 {
-    if(children.find("port-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_id != nullptr)
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
+        children["port-id"] = port_id;
     }
 
     return children;
@@ -7345,7 +6404,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::Po
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
-    children["port-id-value"] = port_id_value;
 
     yang_name = "port-id"; yang_parent_name = "reply-ingress";
 }
@@ -7380,7 +6438,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Repl
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7406,41 +6464,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-id-value")
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
-        else
+        if(port_id_value == nullptr)
         {
             port_id_value = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue>();
-            port_id_value->parent = this;
-            children["port-id-value"] = port_id_value;
         }
-        return children.at("port-id-value");
+        return port_id_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::get_children() const
 {
-    if(children.find("port-id-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_id_value != nullptr)
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
+        children["port-id-value"] = port_id_value;
     }
 
     return children;
@@ -7502,7 +6543,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Repl
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7529,20 +6570,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7574,7 +6607,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::Rep
     port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId>())
 {
     port_id->parent = this;
-    children["port-id"] = port_id;
 
     yang_name = "reply-egress"; yang_parent_name = "linktrace-reply";
 }
@@ -7607,7 +6639,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Repl
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7632,41 +6664,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-id")
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
-        else
+        if(port_id == nullptr)
         {
             port_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId>();
-            port_id->parent = this;
-            children["port-id"] = port_id;
         }
-        return children.at("port-id");
+        return port_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::get_children() const
 {
-    if(children.find("port-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_id != nullptr)
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
+        children["port-id"] = port_id;
     }
 
     return children;
@@ -7693,7 +6708,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::Por
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
-    children["port-id-value"] = port_id_value;
 
     yang_name = "port-id"; yang_parent_name = "reply-egress";
 }
@@ -7728,7 +6742,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Repl
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7754,41 +6768,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-id-value")
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
-        else
+        if(port_id_value == nullptr)
         {
             port_id_value = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue>();
-            port_id_value->parent = this;
-            children["port-id-value"] = port_id_value;
         }
-        return children.at("port-id-value");
+        return port_id_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::get_children() const
 {
-    if(children.find("port-id-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_id_value != nullptr)
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
+        children["port-id-value"] = port_id_value;
     }
 
     return children;
@@ -7850,7 +6847,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Repl
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7877,20 +6874,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7922,7 +6911,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::LastHop
     egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId>())
 {
     egress_id->parent = this;
-    children["egress-id"] = egress_id;
 
     yang_name = "last-hop"; yang_parent_name = "linktrace-reply";
 }
@@ -7955,7 +6943,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Last
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7980,41 +6968,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastH
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "egress-id")
     {
-        if(egress_id != nullptr)
-        {
-            children["egress-id"] = egress_id;
-        }
-        else
+        if(egress_id == nullptr)
         {
             egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId>();
-            egress_id->parent = this;
-            children["egress-id"] = egress_id;
         }
-        return children.at("egress-id");
+        return egress_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::get_children() const
 {
-    if(children.find("egress-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(egress_id != nullptr)
     {
-        if(egress_id != nullptr)
-        {
-            children["egress-id"] = egress_id;
-        }
+        children["egress-id"] = egress_id;
     }
 
     return children;
@@ -8066,7 +7037,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Last
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8091,20 +7062,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastH
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8157,7 +7120,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Orga
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8183,20 +7146,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Organ
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8250,7 +7205,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Unkn
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8275,20 +7230,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Unkno
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8315,19 +7262,14 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Explo
 	,sender_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId>())
 {
     header->parent = this;
-    children["header"] = header;
 
     last_hop->parent = this;
-    children["last-hop"] = last_hop;
 
     reply_egress->parent = this;
-    children["reply-egress"] = reply_egress;
 
     reply_ingress->parent = this;
-    children["reply-ingress"] = reply_ingress;
 
     sender_id->parent = this;
-    children["sender-id"] = sender_id;
 
     yang_name = "exploratory-linktrace-reply"; yang_parent_name = "traceroute-cache";
 }
@@ -8386,7 +7328,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8410,43 +7352,22 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "header")
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
-        else
+        if(header == nullptr)
         {
             header = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header>();
-            header->parent = this;
-            children["header"] = header;
         }
-        return children.at("header");
+        return header;
     }
 
     if(child_yang_name == "last-hop")
     {
-        if(last_hop != nullptr)
-        {
-            children["last-hop"] = last_hop;
-        }
-        else
+        if(last_hop == nullptr)
         {
             last_hop = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop>();
-            last_hop->parent = this;
-            children["last-hop"] = last_hop;
         }
-        return children.at("last-hop");
+        return last_hop;
     }
 
     if(child_yang_name == "organization-specific-tlv")
@@ -8456,60 +7377,40 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv>();
         c->parent = this;
-        organization_specific_tlv.push_back(std::move(c));
-        children[segment_path] = organization_specific_tlv.back();
-        return children.at(segment_path);
+        organization_specific_tlv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "reply-egress")
     {
-        if(reply_egress != nullptr)
-        {
-            children["reply-egress"] = reply_egress;
-        }
-        else
+        if(reply_egress == nullptr)
         {
             reply_egress = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress>();
-            reply_egress->parent = this;
-            children["reply-egress"] = reply_egress;
         }
-        return children.at("reply-egress");
+        return reply_egress;
     }
 
     if(child_yang_name == "reply-ingress")
     {
-        if(reply_ingress != nullptr)
-        {
-            children["reply-ingress"] = reply_ingress;
-        }
-        else
+        if(reply_ingress == nullptr)
         {
             reply_ingress = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress>();
-            reply_ingress->parent = this;
-            children["reply-ingress"] = reply_ingress;
         }
-        return children.at("reply-ingress");
+        return reply_ingress;
     }
 
     if(child_yang_name == "sender-id")
     {
-        if(sender_id != nullptr)
-        {
-            children["sender-id"] = sender_id;
-        }
-        else
+        if(sender_id == nullptr)
         {
             sender_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId>();
-            sender_id->parent = this;
-            children["sender-id"] = sender_id;
         }
-        return children.at("sender-id");
+        return sender_id;
     }
 
     if(child_yang_name == "unknown-tlv")
@@ -8519,76 +7420,54 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(std::move(c));
-        children[segment_path] = unknown_tlv.back();
-        return children.at(segment_path);
+        unknown_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::get_children() const
 {
-    if(children.find("header") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(header != nullptr)
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
+        children["header"] = header;
     }
 
-    if(children.find("last-hop") == children.end())
+    if(last_hop != nullptr)
     {
-        if(last_hop != nullptr)
-        {
-            children["last-hop"] = last_hop;
-        }
+        children["last-hop"] = last_hop;
     }
 
     for (auto const & c : organization_specific_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("reply-egress") == children.end())
+    if(reply_egress != nullptr)
     {
-        if(reply_egress != nullptr)
-        {
-            children["reply-egress"] = reply_egress;
-        }
+        children["reply-egress"] = reply_egress;
     }
 
-    if(children.find("reply-ingress") == children.end())
+    if(reply_ingress != nullptr)
     {
-        if(reply_ingress != nullptr)
-        {
-            children["reply-ingress"] = reply_ingress;
-        }
+        children["reply-ingress"] = reply_ingress;
     }
 
-    if(children.find("sender-id") == children.end())
+    if(sender_id != nullptr)
     {
-        if(sender_id != nullptr)
-        {
-            children["sender-id"] = sender_id;
-        }
+        children["sender-id"] = sender_id;
     }
 
     for (auto const & c : unknown_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8660,7 +7539,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8693,20 +7572,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8762,7 +7633,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
     chassis_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId>())
 {
     chassis_id->parent = this;
-    children["chassis-id"] = chassis_id;
 
     yang_name = "sender-id"; yang_parent_name = "exploratory-linktrace-reply";
 }
@@ -8795,7 +7665,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8820,41 +7690,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chassis-id")
     {
-        if(chassis_id != nullptr)
-        {
-            children["chassis-id"] = chassis_id;
-        }
-        else
+        if(chassis_id == nullptr)
         {
             chassis_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId>();
-            chassis_id->parent = this;
-            children["chassis-id"] = chassis_id;
         }
-        return children.at("chassis-id");
+        return chassis_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::get_children() const
 {
-    if(children.find("chassis-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chassis_id != nullptr)
     {
-        if(chassis_id != nullptr)
-        {
-            children["chassis-id"] = chassis_id;
-        }
+        children["chassis-id"] = chassis_id;
     }
 
     return children;
@@ -8881,7 +7734,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
     chassis_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue>())
 {
     chassis_id_value->parent = this;
-    children["chassis-id-value"] = chassis_id_value;
 
     yang_name = "chassis-id"; yang_parent_name = "sender-id";
 }
@@ -8916,7 +7768,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8942,41 +7794,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chassis-id-value")
     {
-        if(chassis_id_value != nullptr)
-        {
-            children["chassis-id-value"] = chassis_id_value;
-        }
-        else
+        if(chassis_id_value == nullptr)
         {
             chassis_id_value = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue>();
-            chassis_id_value->parent = this;
-            children["chassis-id-value"] = chassis_id_value;
         }
-        return children.at("chassis-id-value");
+        return chassis_id_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::get_children() const
 {
-    if(children.find("chassis-id-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chassis_id_value != nullptr)
     {
-        if(chassis_id_value != nullptr)
-        {
-            children["chassis-id-value"] = chassis_id_value;
-        }
+        children["chassis-id-value"] = chassis_id_value;
     }
 
     return children;
@@ -9038,7 +7873,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9065,20 +7900,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9112,13 +7939,10 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 	,port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId>())
 {
     last_egress_id->parent = this;
-    children["last-egress-id"] = last_egress_id;
 
     next_egress_id->parent = this;
-    children["next-egress-id"] = next_egress_id;
 
     port_id->parent = this;
-    children["port-id"] = port_id;
 
     yang_name = "reply-ingress"; yang_parent_name = "exploratory-linktrace-reply";
 }
@@ -9155,7 +7979,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9180,87 +8004,52 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-egress-id")
     {
-        if(last_egress_id != nullptr)
-        {
-            children["last-egress-id"] = last_egress_id;
-        }
-        else
+        if(last_egress_id == nullptr)
         {
             last_egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId>();
-            last_egress_id->parent = this;
-            children["last-egress-id"] = last_egress_id;
         }
-        return children.at("last-egress-id");
+        return last_egress_id;
     }
 
     if(child_yang_name == "next-egress-id")
     {
-        if(next_egress_id != nullptr)
-        {
-            children["next-egress-id"] = next_egress_id;
-        }
-        else
+        if(next_egress_id == nullptr)
         {
             next_egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId>();
-            next_egress_id->parent = this;
-            children["next-egress-id"] = next_egress_id;
         }
-        return children.at("next-egress-id");
+        return next_egress_id;
     }
 
     if(child_yang_name == "port-id")
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
-        else
+        if(port_id == nullptr)
         {
             port_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId>();
-            port_id->parent = this;
-            children["port-id"] = port_id;
         }
-        return children.at("port-id");
+        return port_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::get_children() const
 {
-    if(children.find("last-egress-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_egress_id != nullptr)
     {
-        if(last_egress_id != nullptr)
-        {
-            children["last-egress-id"] = last_egress_id;
-        }
+        children["last-egress-id"] = last_egress_id;
     }
 
-    if(children.find("next-egress-id") == children.end())
+    if(next_egress_id != nullptr)
     {
-        if(next_egress_id != nullptr)
-        {
-            children["next-egress-id"] = next_egress_id;
-        }
+        children["next-egress-id"] = next_egress_id;
     }
 
-    if(children.find("port-id") == children.end())
+    if(port_id != nullptr)
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
+        children["port-id"] = port_id;
     }
 
     return children;
@@ -9312,7 +8101,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9337,20 +8126,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9400,7 +8181,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9425,20 +8206,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9463,7 +8236,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
-    children["port-id-value"] = port_id_value;
 
     yang_name = "port-id"; yang_parent_name = "reply-ingress";
 }
@@ -9498,7 +8270,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9524,41 +8296,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-id-value")
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
-        else
+        if(port_id_value == nullptr)
         {
             port_id_value = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue>();
-            port_id_value->parent = this;
-            children["port-id-value"] = port_id_value;
         }
-        return children.at("port-id-value");
+        return port_id_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::get_children() const
 {
-    if(children.find("port-id-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_id_value != nullptr)
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
+        children["port-id-value"] = port_id_value;
     }
 
     return children;
@@ -9620,7 +8375,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9647,20 +8402,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9694,13 +8441,10 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 	,port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId>())
 {
     last_egress_id->parent = this;
-    children["last-egress-id"] = last_egress_id;
 
     next_egress_id->parent = this;
-    children["next-egress-id"] = next_egress_id;
 
     port_id->parent = this;
-    children["port-id"] = port_id;
 
     yang_name = "reply-egress"; yang_parent_name = "exploratory-linktrace-reply";
 }
@@ -9737,7 +8481,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9762,87 +8506,52 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-egress-id")
     {
-        if(last_egress_id != nullptr)
-        {
-            children["last-egress-id"] = last_egress_id;
-        }
-        else
+        if(last_egress_id == nullptr)
         {
             last_egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId>();
-            last_egress_id->parent = this;
-            children["last-egress-id"] = last_egress_id;
         }
-        return children.at("last-egress-id");
+        return last_egress_id;
     }
 
     if(child_yang_name == "next-egress-id")
     {
-        if(next_egress_id != nullptr)
-        {
-            children["next-egress-id"] = next_egress_id;
-        }
-        else
+        if(next_egress_id == nullptr)
         {
             next_egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId>();
-            next_egress_id->parent = this;
-            children["next-egress-id"] = next_egress_id;
         }
-        return children.at("next-egress-id");
+        return next_egress_id;
     }
 
     if(child_yang_name == "port-id")
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
-        else
+        if(port_id == nullptr)
         {
             port_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId>();
-            port_id->parent = this;
-            children["port-id"] = port_id;
         }
-        return children.at("port-id");
+        return port_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::get_children() const
 {
-    if(children.find("last-egress-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_egress_id != nullptr)
     {
-        if(last_egress_id != nullptr)
-        {
-            children["last-egress-id"] = last_egress_id;
-        }
+        children["last-egress-id"] = last_egress_id;
     }
 
-    if(children.find("next-egress-id") == children.end())
+    if(next_egress_id != nullptr)
     {
-        if(next_egress_id != nullptr)
-        {
-            children["next-egress-id"] = next_egress_id;
-        }
+        children["next-egress-id"] = next_egress_id;
     }
 
-    if(children.find("port-id") == children.end())
+    if(port_id != nullptr)
     {
-        if(port_id != nullptr)
-        {
-            children["port-id"] = port_id;
-        }
+        children["port-id"] = port_id;
     }
 
     return children;
@@ -9894,7 +8603,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9919,20 +8628,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9982,7 +8683,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10007,20 +8708,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10045,7 +8738,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
-    children["port-id-value"] = port_id_value;
 
     yang_name = "port-id"; yang_parent_name = "reply-egress";
 }
@@ -10080,7 +8772,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10106,41 +8798,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-id-value")
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
-        else
+        if(port_id_value == nullptr)
         {
             port_id_value = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue>();
-            port_id_value->parent = this;
-            children["port-id-value"] = port_id_value;
         }
-        return children.at("port-id-value");
+        return port_id_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::get_children() const
 {
-    if(children.find("port-id-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_id_value != nullptr)
     {
-        if(port_id_value != nullptr)
-        {
-            children["port-id-value"] = port_id_value;
-        }
+        children["port-id-value"] = port_id_value;
     }
 
     return children;
@@ -10202,7 +8877,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10229,20 +8904,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10274,7 +8941,6 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastH
     egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId>())
 {
     egress_id->parent = this;
-    children["egress-id"] = egress_id;
 
     yang_name = "last-hop"; yang_parent_name = "exploratory-linktrace-reply";
 }
@@ -10307,7 +8973,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10332,41 +8998,24 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "egress-id")
     {
-        if(egress_id != nullptr)
-        {
-            children["egress-id"] = egress_id;
-        }
-        else
+        if(egress_id == nullptr)
         {
             egress_id = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId>();
-            egress_id->parent = this;
-            children["egress-id"] = egress_id;
         }
-        return children.at("egress-id");
+        return egress_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::get_children() const
 {
-    if(children.find("egress-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(egress_id != nullptr)
     {
-        if(egress_id != nullptr)
-        {
-            children["egress-id"] = egress_id;
-        }
+        children["egress-id"] = egress_id;
     }
 
     return children;
@@ -10418,7 +9067,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10443,20 +9092,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10509,7 +9150,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10535,20 +9176,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10602,7 +9235,7 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktrace
 
 }
 
-EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10627,20 +9260,12 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
 
 std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10694,7 +9319,7 @@ std::string Cfm::Global::LocalMeps::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::LocalMeps::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10717,15 +9342,6 @@ EntityPath Cfm::Global::LocalMeps::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-mep")
     {
         for(auto const & c : local_mep)
@@ -10733,28 +9349,24 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::LocalMeps::LocalMep>();
         c->parent = this;
-        local_mep.push_back(std::move(c));
-        children[segment_path] = local_mep.back();
-        return children.at(segment_path);
+        local_mep.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_mep)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10767,9 +9379,9 @@ void Cfm::Global::LocalMeps::set_value(const std::string & value_path, std::stri
 Cfm::Global::LocalMeps::LocalMep::LocalMep()
     :
     domain{YType::str, "domain"},
-    interface{YType::str, "interface"},
-    mep_id{YType::uint32, "mep-id"},
     service{YType::str, "service"},
+    mep_id{YType::uint32, "mep-id"},
+    interface{YType::str, "interface"},
     ccm_generation_enabled{YType::boolean, "ccm-generation-enabled"},
     ccm_interval{YType::enumeration, "ccm-interval"},
     ccm_offload{YType::enumeration, "ccm-offload"},
@@ -10806,13 +9418,10 @@ Cfm::Global::LocalMeps::LocalMep::LocalMep()
 	,statistics(std::make_shared<Cfm::Global::LocalMeps::LocalMep::Statistics>())
 {
     ais_statistics->parent = this;
-    children["ais-statistics"] = ais_statistics;
 
     defects->parent = this;
-    children["defects"] = defects;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "local-mep"; yang_parent_name = "local-meps";
 }
@@ -10824,9 +9433,9 @@ Cfm::Global::LocalMeps::LocalMep::~LocalMep()
 bool Cfm::Global::LocalMeps::LocalMep::has_data() const
 {
     return domain.is_set
-	|| interface.is_set
-	|| mep_id.is_set
 	|| service.is_set
+	|| mep_id.is_set
+	|| interface.is_set
 	|| ccm_generation_enabled.is_set
 	|| ccm_interval.is_set
 	|| ccm_offload.is_set
@@ -10866,9 +9475,9 @@ bool Cfm::Global::LocalMeps::LocalMep::has_operation() const
 {
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| is_set(interface.operation)
-	|| is_set(mep_id.operation)
 	|| is_set(service.operation)
+	|| is_set(mep_id.operation)
+	|| is_set(interface.operation)
 	|| is_set(ccm_generation_enabled.operation)
 	|| is_set(ccm_interval.operation)
 	|| is_set(ccm_offload.operation)
@@ -10907,13 +9516,13 @@ bool Cfm::Global::LocalMeps::LocalMep::has_operation() const
 std::string Cfm::Global::LocalMeps::LocalMep::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-mep" <<"[domain='" <<domain <<"']" <<"[interface='" <<interface <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[service='" <<service <<"']";
+    path_buffer << "local-mep" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[interface='" <<interface <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Global::LocalMeps::LocalMep::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::LocalMep::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10928,9 +9537,9 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::get_entity_path(Entity* ancestor) c
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
     if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (ccm_generation_enabled.is_set || is_set(ccm_generation_enabled.operation)) leaf_name_data.push_back(ccm_generation_enabled.get_name_leafdata());
     if (ccm_interval.is_set || is_set(ccm_interval.operation)) leaf_name_data.push_back(ccm_interval.get_name_leafdata());
     if (ccm_offload.is_set || is_set(ccm_offload.operation)) leaf_name_data.push_back(ccm_offload.get_name_leafdata());
@@ -10970,87 +9579,52 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ais-statistics")
     {
-        if(ais_statistics != nullptr)
-        {
-            children["ais-statistics"] = ais_statistics;
-        }
-        else
+        if(ais_statistics == nullptr)
         {
             ais_statistics = std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics>();
-            ais_statistics->parent = this;
-            children["ais-statistics"] = ais_statistics;
         }
-        return children.at("ais-statistics");
+        return ais_statistics;
     }
 
     if(child_yang_name == "defects")
     {
-        if(defects != nullptr)
-        {
-            children["defects"] = defects;
-        }
-        else
+        if(defects == nullptr)
         {
             defects = std::make_shared<Cfm::Global::LocalMeps::LocalMep::Defects>();
-            defects->parent = this;
-            children["defects"] = defects;
         }
-        return children.at("defects");
+        return defects;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Cfm::Global::LocalMeps::LocalMep::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::LocalMep::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::get_children() const
 {
-    if(children.find("ais-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ais_statistics != nullptr)
     {
-        if(ais_statistics != nullptr)
-        {
-            children["ais-statistics"] = ais_statistics;
-        }
+        children["ais-statistics"] = ais_statistics;
     }
 
-    if(children.find("defects") == children.end())
+    if(defects != nullptr)
     {
-        if(defects != nullptr)
-        {
-            children["defects"] = defects;
-        }
+        children["defects"] = defects;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -11062,17 +9636,17 @@ void Cfm::Global::LocalMeps::LocalMep::set_value(const std::string & value_path,
     {
         domain = value;
     }
-    if(value_path == "interface")
+    if(value_path == "service")
     {
-        interface = value;
+        service = value;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
     }
-    if(value_path == "service")
+    if(value_path == "interface")
     {
-        service = value;
+        interface = value;
     }
     if(value_path == "ccm-generation-enabled")
     {
@@ -11308,7 +9882,7 @@ std::string Cfm::Global::LocalMeps::LocalMep::Statistics::get_segment_path() con
 
 }
 
-EntityPath Cfm::Global::LocalMeps::LocalMep::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::LocalMep::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11359,20 +9933,12 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::Statistics::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::LocalMep::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11505,10 +10071,8 @@ Cfm::Global::LocalMeps::LocalMep::AisStatistics::AisStatistics()
 	,sending_start(std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart>())
 {
     receiving_start->parent = this;
-    children["receiving-start"] = receiving_start;
 
     sending_start->parent = this;
-    children["sending-start"] = sending_start;
 
     yang_name = "ais-statistics"; yang_parent_name = "local-mep";
 }
@@ -11551,7 +10115,7 @@ std::string Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_segment_path() 
 
 }
 
-EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11580,64 +10144,38 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_entity_path(Enti
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "receiving-start")
     {
-        if(receiving_start != nullptr)
-        {
-            children["receiving-start"] = receiving_start;
-        }
-        else
+        if(receiving_start == nullptr)
         {
             receiving_start = std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart>();
-            receiving_start->parent = this;
-            children["receiving-start"] = receiving_start;
         }
-        return children.at("receiving-start");
+        return receiving_start;
     }
 
     if(child_yang_name == "sending-start")
     {
-        if(sending_start != nullptr)
-        {
-            children["sending-start"] = sending_start;
-        }
-        else
+        if(sending_start == nullptr)
         {
             sending_start = std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart>();
-            sending_start->parent = this;
-            children["sending-start"] = sending_start;
         }
-        return children.at("sending-start");
+        return sending_start;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_children() const
 {
-    if(children.find("receiving-start") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(receiving_start != nullptr)
     {
-        if(receiving_start != nullptr)
-        {
-            children["receiving-start"] = receiving_start;
-        }
+        children["receiving-start"] = receiving_start;
     }
 
-    if(children.find("sending-start") == children.end())
+    if(sending_start != nullptr)
     {
-        if(sending_start != nullptr)
-        {
-            children["sending-start"] = sending_start;
-        }
+        children["sending-start"] = sending_start;
     }
 
     return children;
@@ -11705,7 +10243,7 @@ std::string Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_s
 
 }
 
-EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11730,20 +10268,12 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_en
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11793,7 +10323,7 @@ std::string Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get
 
 }
 
-EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11818,20 +10348,12 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11860,7 +10382,6 @@ Cfm::Global::LocalMeps::LocalMep::Defects::Defects()
     remote_meps_defects(std::make_shared<Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects>())
 {
     remote_meps_defects->parent = this;
-    children["remote-meps-defects"] = remote_meps_defects;
 
     yang_name = "defects"; yang_parent_name = "local-mep";
 }
@@ -11903,7 +10424,7 @@ std::string Cfm::Global::LocalMeps::LocalMep::Defects::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11933,41 +10454,24 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::Defects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-meps-defects")
     {
-        if(remote_meps_defects != nullptr)
-        {
-            children["remote-meps-defects"] = remote_meps_defects;
-        }
-        else
+        if(remote_meps_defects == nullptr)
         {
             remote_meps_defects = std::make_shared<Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects>();
-            remote_meps_defects->parent = this;
-            children["remote-meps-defects"] = remote_meps_defects;
         }
-        return children.at("remote-meps-defects");
+        return remote_meps_defects;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::LocalMep::Defects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::Defects::get_children() const
 {
-    if(children.find("remote-meps-defects") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_meps_defects != nullptr)
     {
-        if(remote_meps_defects != nullptr)
-        {
-            children["remote-meps-defects"] = remote_meps_defects;
-        }
+        children["remote-meps-defects"] = remote_meps_defects;
     }
 
     return children;
@@ -12054,7 +10558,7 @@ std::string Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_se
 
 }
 
-EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12084,20 +10588,12 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_ent
 
 std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12171,7 +10667,7 @@ std::string Cfm::Global::PeerMePv2S::get_segment_path() const
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12194,15 +10690,6 @@ EntityPath Cfm::Global::PeerMePv2S::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-me-pv2")
     {
         for(auto const & c : peer_me_pv2)
@@ -12210,28 +10697,24 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2>();
         c->parent = this;
-        peer_me_pv2.push_back(std::move(c));
-        children[segment_path] = peer_me_pv2.back();
-        return children.at(segment_path);
+        peer_me_pv2.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_me_pv2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12244,11 +10727,11 @@ void Cfm::Global::PeerMePv2S::set_value(const std::string & value_path, std::str
 Cfm::Global::PeerMePv2S::PeerMePv2::PeerMePv2()
     :
     domain{YType::str, "domain"},
-    interface{YType::str, "interface"},
-    local_mep_id{YType::uint32, "local-mep-id"},
-    peer_mac_address{YType::str, "peer-mac-address"},
-    peer_mep_id{YType::uint32, "peer-mep-id"},
     service{YType::str, "service"},
+    local_mep_id{YType::uint32, "local-mep-id"},
+    interface{YType::str, "interface"},
+    peer_mep_id{YType::uint32, "peer-mep-id"},
+    peer_mac_address{YType::str, "peer-mac-address"},
     domain_xr{YType::str, "domain-xr"},
     interface_xr{YType::str, "interface-xr"},
     level{YType::enumeration, "level"},
@@ -12260,7 +10743,6 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMePv2()
     peer_mep(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep>())
 {
     peer_mep->parent = this;
-    children["peer-mep"] = peer_mep;
 
     yang_name = "peer-me-pv2"; yang_parent_name = "peer-me-pv2s";
 }
@@ -12272,11 +10754,11 @@ Cfm::Global::PeerMePv2S::PeerMePv2::~PeerMePv2()
 bool Cfm::Global::PeerMePv2S::PeerMePv2::has_data() const
 {
     return domain.is_set
-	|| interface.is_set
-	|| local_mep_id.is_set
-	|| peer_mac_address.is_set
-	|| peer_mep_id.is_set
 	|| service.is_set
+	|| local_mep_id.is_set
+	|| interface.is_set
+	|| peer_mep_id.is_set
+	|| peer_mac_address.is_set
 	|| domain_xr.is_set
 	|| interface_xr.is_set
 	|| level.is_set
@@ -12291,11 +10773,11 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::has_operation() const
 {
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| is_set(interface.operation)
-	|| is_set(local_mep_id.operation)
-	|| is_set(peer_mac_address.operation)
-	|| is_set(peer_mep_id.operation)
 	|| is_set(service.operation)
+	|| is_set(local_mep_id.operation)
+	|| is_set(interface.operation)
+	|| is_set(peer_mep_id.operation)
+	|| is_set(peer_mac_address.operation)
 	|| is_set(domain_xr.operation)
 	|| is_set(interface_xr.operation)
 	|| is_set(level.operation)
@@ -12309,13 +10791,13 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::has_operation() const
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-me-pv2" <<"[domain='" <<domain <<"']" <<"[interface='" <<interface <<"']" <<"[local-mep-id='" <<local_mep_id <<"']" <<"[peer-mac-address='" <<peer_mac_address <<"']" <<"[peer-mep-id='" <<peer_mep_id <<"']" <<"[service='" <<service <<"']";
+    path_buffer << "peer-me-pv2" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[local-mep-id='" <<local_mep_id <<"']" <<"[interface='" <<interface <<"']" <<"[peer-mep-id='" <<peer_mep_id <<"']" <<"[peer-mac-address='" <<peer_mac_address <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12330,11 +10812,11 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::get_entity_path(Entity* ancestor)
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (local_mep_id.is_set || is_set(local_mep_id.operation)) leaf_name_data.push_back(local_mep_id.get_name_leafdata());
-    if (peer_mac_address.is_set || is_set(peer_mac_address.operation)) leaf_name_data.push_back(peer_mac_address.get_name_leafdata());
-    if (peer_mep_id.is_set || is_set(peer_mep_id.operation)) leaf_name_data.push_back(peer_mep_id.get_name_leafdata());
     if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (local_mep_id.is_set || is_set(local_mep_id.operation)) leaf_name_data.push_back(local_mep_id.get_name_leafdata());
+    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (peer_mep_id.is_set || is_set(peer_mep_id.operation)) leaf_name_data.push_back(peer_mep_id.get_name_leafdata());
+    if (peer_mac_address.is_set || is_set(peer_mac_address.operation)) leaf_name_data.push_back(peer_mac_address.get_name_leafdata());
     if (domain_xr.is_set || is_set(domain_xr.operation)) leaf_name_data.push_back(domain_xr.get_name_leafdata());
     if (interface_xr.is_set || is_set(interface_xr.operation)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
     if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
@@ -12351,41 +10833,24 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-mep")
     {
-        if(peer_mep != nullptr)
-        {
-            children["peer-mep"] = peer_mep;
-        }
-        else
+        if(peer_mep == nullptr)
         {
             peer_mep = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep>();
-            peer_mep->parent = this;
-            children["peer-mep"] = peer_mep;
         }
-        return children.at("peer-mep");
+        return peer_mep;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::get_children() const
 {
-    if(children.find("peer-mep") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_mep != nullptr)
     {
-        if(peer_mep != nullptr)
-        {
-            children["peer-mep"] = peer_mep;
-        }
+        children["peer-mep"] = peer_mep;
     }
 
     return children;
@@ -12397,25 +10862,25 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::set_value(const std::string & value_pat
     {
         domain = value;
     }
-    if(value_path == "interface")
+    if(value_path == "service")
     {
-        interface = value;
+        service = value;
     }
     if(value_path == "local-mep-id")
     {
         local_mep_id = value;
     }
-    if(value_path == "peer-mac-address")
+    if(value_path == "interface")
     {
-        peer_mac_address = value;
+        interface = value;
     }
     if(value_path == "peer-mep-id")
     {
         peer_mep_id = value;
     }
-    if(value_path == "service")
+    if(value_path == "peer-mac-address")
     {
-        service = value;
+        peer_mac_address = value;
     }
     if(value_path == "domain-xr")
     {
@@ -12461,16 +10926,12 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::PeerMep()
 	,statistics(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics>())
 {
     error_state->parent = this;
-    children["error-state"] = error_state;
 
     last_ccm_received->parent = this;
-    children["last-ccm-received"] = last_ccm_received;
 
     last_up_down_time->parent = this;
-    children["last-up-down-time"] = last_up_down_time;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "peer-mep"; yang_parent_name = "peer-me-pv2";
 }
@@ -12515,7 +10976,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_segment_path() cons
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12543,110 +11004,66 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "error-state")
     {
-        if(error_state != nullptr)
-        {
-            children["error-state"] = error_state;
-        }
-        else
+        if(error_state == nullptr)
         {
             error_state = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState>();
-            error_state->parent = this;
-            children["error-state"] = error_state;
         }
-        return children.at("error-state");
+        return error_state;
     }
 
     if(child_yang_name == "last-ccm-received")
     {
-        if(last_ccm_received != nullptr)
-        {
-            children["last-ccm-received"] = last_ccm_received;
-        }
-        else
+        if(last_ccm_received == nullptr)
         {
             last_ccm_received = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived>();
-            last_ccm_received->parent = this;
-            children["last-ccm-received"] = last_ccm_received;
         }
-        return children.at("last-ccm-received");
+        return last_ccm_received;
     }
 
     if(child_yang_name == "last-up-down-time")
     {
-        if(last_up_down_time != nullptr)
-        {
-            children["last-up-down-time"] = last_up_down_time;
-        }
-        else
+        if(last_up_down_time == nullptr)
         {
             last_up_down_time = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime>();
-            last_up_down_time->parent = this;
-            children["last-up-down-time"] = last_up_down_time;
         }
-        return children.at("last-up-down-time");
+        return last_up_down_time;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_children() const
 {
-    if(children.find("error-state") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(error_state != nullptr)
     {
-        if(error_state != nullptr)
-        {
-            children["error-state"] = error_state;
-        }
+        children["error-state"] = error_state;
     }
 
-    if(children.find("last-ccm-received") == children.end())
+    if(last_ccm_received != nullptr)
     {
-        if(last_ccm_received != nullptr)
-        {
-            children["last-ccm-received"] = last_ccm_received;
-        }
+        children["last-ccm-received"] = last_ccm_received;
     }
 
-    if(children.find("last-up-down-time") == children.end())
+    if(last_up_down_time != nullptr)
     {
-        if(last_up_down_time != nullptr)
-        {
-            children["last-up-down-time"] = last_up_down_time;
-        }
+        children["last-up-down-time"] = last_up_down_time;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -12725,7 +11142,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_segment
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12755,20 +11172,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_entity_p
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12838,7 +11247,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_seg
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12863,20 +11272,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_enti
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12904,13 +11305,10 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::LastCcmReceived()
 	,sender_id(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId>())
 {
     header->parent = this;
-    children["header"] = header;
 
     mep_name->parent = this;
-    children["mep-name"] = mep_name;
 
     sender_id->parent = this;
-    children["sender-id"] = sender_id;
 
     yang_name = "last-ccm-received"; yang_parent_name = "peer-mep";
 }
@@ -12971,7 +11369,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_se
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12998,43 +11396,22 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_ent
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "header")
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
-        else
+        if(header == nullptr)
         {
             header = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header>();
-            header->parent = this;
-            children["header"] = header;
         }
-        return children.at("header");
+        return header;
     }
 
     if(child_yang_name == "mep-name")
     {
-        if(mep_name != nullptr)
-        {
-            children["mep-name"] = mep_name;
-        }
-        else
+        if(mep_name == nullptr)
         {
             mep_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName>();
-            mep_name->parent = this;
-            children["mep-name"] = mep_name;
         }
-        return children.at("mep-name");
+        return mep_name;
     }
 
     if(child_yang_name == "organization-specific-tlv")
@@ -13044,30 +11421,22 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv>();
         c->parent = this;
-        organization_specific_tlv.push_back(std::move(c));
-        children[segment_path] = organization_specific_tlv.back();
-        return children.at(segment_path);
+        organization_specific_tlv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sender-id")
     {
-        if(sender_id != nullptr)
-        {
-            children["sender-id"] = sender_id;
-        }
-        else
+        if(sender_id == nullptr)
         {
             sender_id = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId>();
-            sender_id->parent = this;
-            children["sender-id"] = sender_id;
         }
-        return children.at("sender-id");
+        return sender_id;
     }
 
     if(child_yang_name == "unknown-tlv")
@@ -13077,60 +11446,44 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(std::move(c));
-        children[segment_path] = unknown_tlv.back();
-        return children.at(segment_path);
+        unknown_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_children() const
 {
-    if(children.find("header") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(header != nullptr)
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
+        children["header"] = header;
     }
 
-    if(children.find("mep-name") == children.end())
+    if(mep_name != nullptr)
     {
-        if(mep_name != nullptr)
-        {
-            children["mep-name"] = mep_name;
-        }
+        children["mep-name"] = mep_name;
     }
 
     for (auto const & c : organization_specific_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("sender-id") == children.end())
+    if(sender_id != nullptr)
     {
-        if(sender_id != nullptr)
-        {
-            children["sender-id"] = sender_id;
-        }
+        children["sender-id"] = sender_id;
     }
 
     for (auto const & c : unknown_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13171,10 +11524,8 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Header()
 	,short_ma_name(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName>())
 {
     mdid->parent = this;
-    children["mdid"] = mdid;
 
     short_ma_name->parent = this;
-    children["short-ma-name"] = short_ma_name;
 
     yang_name = "header"; yang_parent_name = "last-ccm-received";
 }
@@ -13221,7 +11572,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13252,64 +11603,38 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mdid")
     {
-        if(mdid != nullptr)
-        {
-            children["mdid"] = mdid;
-        }
-        else
+        if(mdid == nullptr)
         {
             mdid = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid>();
-            mdid->parent = this;
-            children["mdid"] = mdid;
         }
-        return children.at("mdid");
+        return mdid;
     }
 
     if(child_yang_name == "short-ma-name")
     {
-        if(short_ma_name != nullptr)
-        {
-            children["short-ma-name"] = short_ma_name;
-        }
-        else
+        if(short_ma_name == nullptr)
         {
             short_ma_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName>();
-            short_ma_name->parent = this;
-            children["short-ma-name"] = short_ma_name;
         }
-        return children.at("short-ma-name");
+        return short_ma_name;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_children() const
 {
-    if(children.find("mdid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mdid != nullptr)
     {
-        if(mdid != nullptr)
-        {
-            children["mdid"] = mdid;
-        }
+        children["mdid"] = mdid;
     }
 
-    if(children.find("short-ma-name") == children.end())
+    if(short_ma_name != nullptr)
     {
-        if(short_ma_name != nullptr)
-        {
-            children["short-ma-name"] = short_ma_name;
-        }
+        children["short-ma-name"] = short_ma_name;
     }
 
     return children;
@@ -13361,7 +11686,6 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::Mdid
     mac_name(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName>())
 {
     mac_name->parent = this;
-    children["mac-name"] = mac_name;
 
     yang_name = "mdid"; yang_parent_name = "header";
 }
@@ -13398,7 +11722,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13425,41 +11749,24 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mac-name")
     {
-        if(mac_name != nullptr)
-        {
-            children["mac-name"] = mac_name;
-        }
-        else
+        if(mac_name == nullptr)
         {
             mac_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName>();
-            mac_name->parent = this;
-            children["mac-name"] = mac_name;
         }
-        return children.at("mac-name");
+        return mac_name;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_children() const
 {
-    if(children.find("mac-name") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mac_name != nullptr)
     {
-        if(mac_name != nullptr)
-        {
-            children["mac-name"] = mac_name;
-        }
+        children["mac-name"] = mac_name;
     }
 
     return children;
@@ -13519,7 +11826,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13544,20 +11851,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13585,7 +11884,6 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaNam
     vpn_id_name(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName>())
 {
     vpn_id_name->parent = this;
-    children["vpn-id-name"] = vpn_id_name;
 
     yang_name = "short-ma-name"; yang_parent_name = "header";
 }
@@ -13626,7 +11924,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13655,41 +11953,24 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vpn-id-name")
     {
-        if(vpn_id_name != nullptr)
-        {
-            children["vpn-id-name"] = vpn_id_name;
-        }
-        else
+        if(vpn_id_name == nullptr)
         {
             vpn_id_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName>();
-            vpn_id_name->parent = this;
-            children["vpn-id-name"] = vpn_id_name;
         }
-        return children.at("vpn-id-name");
+        return vpn_id_name;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_children() const
 {
-    if(children.find("vpn-id-name") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vpn_id_name != nullptr)
     {
-        if(vpn_id_name != nullptr)
-        {
-            children["vpn-id-name"] = vpn_id_name;
-        }
+        children["vpn-id-name"] = vpn_id_name;
     }
 
     return children;
@@ -13757,7 +12038,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13782,20 +12063,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13819,7 +12092,6 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::SenderId
     chassis_id(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId>())
 {
     chassis_id->parent = this;
-    children["chassis-id"] = chassis_id;
 
     yang_name = "sender-id"; yang_parent_name = "last-ccm-received";
 }
@@ -13852,7 +12124,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Sender
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13877,41 +12149,24 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderI
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chassis-id")
     {
-        if(chassis_id != nullptr)
-        {
-            children["chassis-id"] = chassis_id;
-        }
-        else
+        if(chassis_id == nullptr)
         {
             chassis_id = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId>();
-            chassis_id->parent = this;
-            children["chassis-id"] = chassis_id;
         }
-        return children.at("chassis-id");
+        return chassis_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_children() const
 {
-    if(children.find("chassis-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chassis_id != nullptr)
     {
-        if(chassis_id != nullptr)
-        {
-            children["chassis-id"] = chassis_id;
-        }
+        children["chassis-id"] = chassis_id;
     }
 
     return children;
@@ -13938,7 +12193,6 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisI
     chassis_id_value(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue>())
 {
     chassis_id_value->parent = this;
-    children["chassis-id-value"] = chassis_id_value;
 
     yang_name = "chassis-id"; yang_parent_name = "sender-id";
 }
@@ -13973,7 +12227,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Sender
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13999,41 +12253,24 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderI
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chassis-id-value")
     {
-        if(chassis_id_value != nullptr)
-        {
-            children["chassis-id-value"] = chassis_id_value;
-        }
-        else
+        if(chassis_id_value == nullptr)
         {
             chassis_id_value = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue>();
-            chassis_id_value->parent = this;
-            children["chassis-id-value"] = chassis_id_value;
         }
-        return children.at("chassis-id-value");
+        return chassis_id_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_children() const
 {
-    if(children.find("chassis-id-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chassis_id_value != nullptr)
     {
-        if(chassis_id_value != nullptr)
-        {
-            children["chassis-id-value"] = chassis_id_value;
-        }
+        children["chassis-id-value"] = chassis_id_value;
     }
 
     return children;
@@ -14095,7 +12332,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Sender
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14122,20 +12359,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderI
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14190,7 +12419,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepNam
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14214,20 +12443,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14276,7 +12497,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Organi
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14302,20 +12523,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Organiz
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14369,7 +12582,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Unknow
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14394,20 +12607,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Unknown
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14438,7 +12643,6 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::Statistics()
     last_ccm_received_time(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime>())
 {
     last_ccm_received_time->parent = this;
-    children["last-ccm-received-time"] = last_ccm_received_time;
 
     yang_name = "statistics"; yang_parent_name = "peer-mep";
 }
@@ -14485,7 +12689,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_segment
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14517,41 +12721,24 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_entity_p
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-ccm-received-time")
     {
-        if(last_ccm_received_time != nullptr)
-        {
-            children["last-ccm-received-time"] = last_ccm_received_time;
-        }
-        else
+        if(last_ccm_received_time == nullptr)
         {
             last_ccm_received_time = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime>();
-            last_ccm_received_time->parent = this;
-            children["last-ccm-received-time"] = last_ccm_received_time;
         }
-        return children.at("last-ccm-received-time");
+        return last_ccm_received_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_children() const
 {
-    if(children.find("last-ccm-received-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_ccm_received_time != nullptr)
     {
-        if(last_ccm_received_time != nullptr)
-        {
-            children["last-ccm-received-time"] = last_ccm_received_time;
-        }
+        children["last-ccm-received-time"] = last_ccm_received_time;
     }
 
     return children;
@@ -14631,7 +12818,7 @@ std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmRece
 
 }
 
-EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_entity_path(Entity* ancestor) const
+const EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14656,20 +12843,12 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmRecei
 
 std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

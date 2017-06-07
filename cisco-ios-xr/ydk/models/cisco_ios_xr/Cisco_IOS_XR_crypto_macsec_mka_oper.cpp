@@ -14,7 +14,6 @@ Macsec::Macsec()
     mka(std::make_shared<Macsec::Mka>())
 {
     mka->parent = this;
-    children["mka"] = mka;
 
     yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-oper";
 }
@@ -43,12 +42,12 @@ std::string Macsec::get_segment_path() const
 
 }
 
-EntityPath Macsec::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Macsec::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mka")
     {
-        if(mka != nullptr)
-        {
-            children["mka"] = mka;
-        }
-        else
+        if(mka == nullptr)
         {
             mka = std::make_shared<Macsec::Mka>();
-            mka->parent = this;
-            children["mka"] = mka;
         }
-        return children.at("mka");
+        return mka;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
 {
-    if(children.find("mka") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mka != nullptr)
     {
-        if(mka != nullptr)
-        {
-            children["mka"] = mka;
-        }
+        children["mka"] = mka;
     }
 
     return children;
@@ -132,7 +114,6 @@ Macsec::Mka::Mka()
     interfaces(std::make_shared<Macsec::Mka::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "mka"; yang_parent_name = "macsec";
 }
@@ -161,7 +142,7 @@ std::string Macsec::Mka::get_segment_path() const
 
 }
 
-EntityPath Macsec::Mka::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -184,41 +165,24 @@ EntityPath Macsec::Mka::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::Mka::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Macsec::Mka::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -266,7 +230,7 @@ std::string Macsec::Mka::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Macsec::Mka::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -289,15 +253,6 @@ EntityPath Macsec::Mka::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -305,28 +260,24 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -343,7 +294,6 @@ Macsec::Mka::Interfaces::Interface::Interface()
     session(std::make_shared<Macsec::Mka::Interfaces::Interface::Session>())
 {
     session->parent = this;
-    children["session"] = session;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -374,7 +324,7 @@ std::string Macsec::Mka::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -398,41 +348,24 @@ EntityPath Macsec::Mka::Interfaces::Interface::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<Macsec::Mka::Interfaces::Interface::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::get_children() const
 {
-    if(children.find("session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
     return children;
@@ -452,10 +385,8 @@ Macsec::Mka::Interfaces::Interface::Session::Session()
 	,vp(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp>())
 {
     session_summary->parent = this;
-    children["session-summary"] = session_summary;
 
     vp->parent = this;
-    children["vp"] = vp;
 
     yang_name = "session"; yang_parent_name = "interface";
 }
@@ -496,7 +427,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::get_segment_path() cons
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -519,15 +450,6 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ca")
     {
         for(auto const & c : ca)
@@ -535,74 +457,52 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca>();
         c->parent = this;
-        ca.push_back(std::move(c));
-        children[segment_path] = ca.back();
-        return children.at(segment_path);
+        ca.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "session-summary")
     {
-        if(session_summary != nullptr)
-        {
-            children["session-summary"] = session_summary;
-        }
-        else
+        if(session_summary == nullptr)
         {
             session_summary = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary>();
-            session_summary->parent = this;
-            children["session-summary"] = session_summary;
         }
-        return children.at("session-summary");
+        return session_summary;
     }
 
     if(child_yang_name == "vp")
     {
-        if(vp != nullptr)
-        {
-            children["vp"] = vp;
-        }
-        else
+        if(vp == nullptr)
         {
             vp = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp>();
-            vp->parent = this;
-            children["vp"] = vp;
         }
-        return children.at("vp");
+        return vp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ca)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("session-summary") == children.end())
+    if(session_summary != nullptr)
     {
-        if(session_summary != nullptr)
-        {
-            children["session-summary"] = session_summary;
-        }
+        children["session-summary"] = session_summary;
     }
 
-    if(children.find("vp") == children.end())
+    if(vp != nullptr)
     {
-        if(vp != nullptr)
-        {
-            children["vp"] = vp;
-        }
+        children["vp"] = vp;
     }
 
     return children;
@@ -633,10 +533,8 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::SessionSummary()
 	,outer_tag(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag>())
 {
     inner_tag->parent = this;
-    children["inner-tag"] = inner_tag;
 
     outer_tag->parent = this;
-    children["outer-tag"] = outer_tag;
 
     yang_name = "session-summary"; yang_parent_name = "session";
 }
@@ -695,7 +593,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_seg
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -732,64 +630,38 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_enti
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inner-tag")
     {
-        if(inner_tag != nullptr)
-        {
-            children["inner-tag"] = inner_tag;
-        }
-        else
+        if(inner_tag == nullptr)
         {
             inner_tag = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag>();
-            inner_tag->parent = this;
-            children["inner-tag"] = inner_tag;
         }
-        return children.at("inner-tag");
+        return inner_tag;
     }
 
     if(child_yang_name == "outer-tag")
     {
-        if(outer_tag != nullptr)
-        {
-            children["outer-tag"] = outer_tag;
-        }
-        else
+        if(outer_tag == nullptr)
         {
             outer_tag = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag>();
-            outer_tag->parent = this;
-            children["outer-tag"] = outer_tag;
         }
-        return children.at("outer-tag");
+        return outer_tag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_children() const
 {
-    if(children.find("inner-tag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(inner_tag != nullptr)
     {
-        if(inner_tag != nullptr)
-        {
-            children["inner-tag"] = inner_tag;
-        }
+        children["inner-tag"] = inner_tag;
     }
 
-    if(children.find("outer-tag") == children.end())
+    if(outer_tag != nullptr)
     {
-        if(outer_tag != nullptr)
-        {
-            children["outer-tag"] = outer_tag;
-        }
+        children["outer-tag"] = outer_tag;
     }
 
     return children;
@@ -895,7 +767,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTa
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -922,20 +794,12 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -999,7 +863,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTa
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1026,20 +890,12 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1142,7 +998,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Vp::get_segment_path() 
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::Vp::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::Vp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1182,20 +1038,12 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Vp::get_entity_path(Enti
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::Vp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1368,7 +1216,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::get_segment_path() 
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1404,15 +1252,6 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::get_entity_path(Enti
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dormant-peer")
     {
         for(auto const & c : dormant_peer)
@@ -1420,15 +1259,13 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer>();
         c->parent = this;
-        dormant_peer.push_back(std::move(c));
-        children[segment_path] = dormant_peer.back();
-        return children.at(segment_path);
+        dormant_peer.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "live-peer")
@@ -1438,15 +1275,13 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer>();
         c->parent = this;
-        live_peer.push_back(std::move(c));
-        children[segment_path] = live_peer.back();
-        return children.at(segment_path);
+        live_peer.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "potential-peer")
@@ -1456,44 +1291,34 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer>();
         c->parent = this;
-        potential_peer.push_back(std::move(c));
-        children[segment_path] = potential_peer.back();
-        return children.at(segment_path);
+        potential_peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::Ca::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dormant_peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : live_peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : potential_peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1598,7 +1423,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_segme
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1626,20 +1451,12 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_entity
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1710,7 +1527,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1738,20 +1555,12 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_e
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1822,7 +1631,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_se
 
 }
 
-EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1850,20 +1659,12 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_ent
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

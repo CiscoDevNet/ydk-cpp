@@ -18,23 +18,20 @@ class SdrInventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Racks; //type: SdrInventory::Racks
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks> racks;
-
-
+        
 }; // SdrInventory
 
 
@@ -46,19 +43,16 @@ class SdrInventory::Racks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rack; //type: SdrInventory::Racks::Rack
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack> > rack;
-
-
+        
 }; // SdrInventory::Racks
 
 
@@ -70,20 +64,17 @@ class SdrInventory::Racks::Rack : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Slot; //type: SdrInventory::Racks::Rack::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot> > slot;
-
-
+        
 }; // SdrInventory::Racks::Rack
 
 
@@ -95,20 +86,17 @@ class SdrInventory::Racks::Rack::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Card; //type: SdrInventory::Racks::Rack::Slot::Card
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot::Card> > card;
-
-
+        
 }; // SdrInventory::Racks::Rack::Slot
 
 
@@ -120,20 +108,17 @@ class SdrInventory::Racks::Rack::Slot::Card : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Attributes; //type: SdrInventory::Racks::Rack::Slot::Card::Attributes
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot::Card::Attributes> attributes;
-
-
+        
 }; // SdrInventory::Racks::Rack::Slot::Card
 
 
@@ -145,12 +130,11 @@ class SdrInventory::Racks::Rack::Slot::Card::Attributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf config_state_string; //type: string
         YLeaf power; //type: int32
@@ -166,8 +150,6 @@ class SdrInventory::Racks::Rack::Slot::Card::Attributes : public Entity
         YLeaf ctype; //type: int32
         YLeaf card_state_string; //type: string
         YLeaf monitor; //type: int32
-
-
 
 }; // SdrInventory::Racks::Rack::Slot::Card::Attributes
 

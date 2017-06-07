@@ -18,23 +18,20 @@ class Fia : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: Fia::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes> nodes;
-
-
+        
 }; // Fia
 
 
@@ -46,19 +43,16 @@ class Fia::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Fia::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node> > node;
-
-
+        
 }; // Fia::Nodes
 
 
@@ -70,15 +64,13 @@ class Fia::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class RxLinkInformation; //type: Fia::Nodes::Node::RxLinkInformation
         class DriverInformation; //type: Fia::Nodes::Node::DriverInformation
         class ClearStatistics; //type: Fia::Nodes::Node::ClearStatistics
@@ -96,8 +88,7 @@ class Fia::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RegisterDump> register_dump;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation> rx_link_information;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation> tx_link_information;
-
-
+        
 }; // Fia::Nodes::Node
 
 
@@ -109,19 +100,16 @@ class Fia::Nodes::Node::RxLinkInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LinkOptions; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions> link_options;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation
 
 
@@ -133,19 +121,16 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LinkOption; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption> > link_option;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions
 
 
@@ -157,20 +142,17 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf option; //type: string
-
         class RxAsicInstances; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances> rx_asic_instances;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption
 
 
@@ -182,19 +164,16 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RxAsicInstance; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance> > rx_asic_instance;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances
 
 
@@ -206,20 +185,17 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance; //type: uint32
-
         class RxLinks; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks> rx_links;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance
 
 
@@ -231,19 +207,16 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RxLink; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink> > rx_link;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks
 
 
@@ -255,22 +228,19 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_number; //type: uint32
         YLeaf end_number; //type: uint32
         YLeaf status_option; //type: string
-
         class RxLink_; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_> > rx_link;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink
 
 
@@ -282,12 +252,11 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link; //type: int32
         YLeaf speed; //type: uint32
@@ -302,7 +271,6 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
         YLeaf num_admin_shuts; //type: uint32
         YLeaf correctable_errors; //type: uint64
         YLeaf uncorrectable_errors; //type: uint64
-
         class ThisLink; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink
         class FarEndLink; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink
         class FarEndLinkInHw; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw
@@ -312,8 +280,7 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw> far_end_link_in_hw;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History> history;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink> this_link;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_
 
 
@@ -325,23 +292,20 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_type; //type: LinkEnum
         YLeaf link_stage; //type: LinkStageEnum
         YLeaf link_num; //type: uint32
         YLeaf phy_link_num; //type: uint32
-
         class AsicId; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId> asic_id;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink
 
 
@@ -353,20 +317,17 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_type; //type: RackEnum
         YLeaf asic_type; //type: AsicEnum
         YLeaf rack_num; //type: uint32
         YLeaf slot_num; //type: uint32
         YLeaf asic_instance; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId
 
@@ -379,23 +340,20 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_type; //type: LinkEnum
         YLeaf link_stage; //type: LinkStageEnum
         YLeaf link_num; //type: uint32
         YLeaf phy_link_num; //type: uint32
-
         class AsicId; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId> asic_id;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink
 
 
@@ -407,20 +365,17 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_type; //type: RackEnum
         YLeaf asic_type; //type: AsicEnum
         YLeaf rack_num; //type: uint32
         YLeaf slot_num; //type: uint32
         YLeaf asic_instance; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId
 
@@ -433,23 +388,20 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_type; //type: LinkEnum
         YLeaf link_stage; //type: LinkStageEnum
         YLeaf link_num; //type: uint32
         YLeaf phy_link_num; //type: uint32
-
         class AsicId; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId> asic_id;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw
 
 
@@ -461,20 +413,17 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_type; //type: RackEnum
         YLeaf asic_type; //type: AsicEnum
         YLeaf rack_num; //type: uint32
         YLeaf slot_num; //type: uint32
         YLeaf asic_instance; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId
 
@@ -487,21 +436,18 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf histnum; //type: uint8
         YLeaf start_index; //type: uint8
-
         class Hist; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist> > hist;
-
-
+        
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History
 
 
@@ -513,20 +459,17 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_state; //type: AdminStateEnum
         YLeaf oper_state; //type: OperStateEnum
         YLeaf error_state; //type: LinkErrorStateEnum
         YLeaf timestamp; //type: uint64
         YLeaf reasons; //type: string
-
-
 
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist
 
@@ -539,12 +482,11 @@ class Fia::Nodes::Node::DriverInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drv_version; //type: uint32
         YLeaf coeff_major_rev; //type: uint32
@@ -590,14 +532,12 @@ class Fia::Nodes::Node::DriverInformation : public Entity
         YLeaf fabric_mode; //type: uint8
         YLeaf fc_mode; //type: FcModeEnum
         YLeaf board_rev_id; //type: uint32
-
         class DeviceInfo; //type: Fia::Nodes::Node::DriverInformation::DeviceInfo
         class CardInfo; //type: Fia::Nodes::Node::DriverInformation::CardInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::CardInfo> > card_info;
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::DeviceInfo> > device_info;
-
-
+        
 }; // Fia::Nodes::Node::DriverInformation
 
 
@@ -609,12 +549,11 @@ class Fia::Nodes::Node::DriverInformation::DeviceInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: boolean
         YLeaf fapid; //type: uint32
@@ -627,12 +566,10 @@ class Fia::Nodes::Node::DriverInformation::DeviceInfo : public Entity
         YLeaf num_pon_resets; //type: uint32
         YLeaf num_hard_resets; //type: uint32
         YLeaf local_switch_state; //type: boolean
-
         class AsicId; //type: Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId> asic_id;
-
-
+        
 }; // Fia::Nodes::Node::DriverInformation::DeviceInfo
 
 
@@ -644,20 +581,17 @@ class Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_type; //type: RackEnum
         YLeaf asic_type; //type: AsicEnum
         YLeaf rack_num; //type: uint32
         YLeaf slot_num; //type: uint32
         YLeaf asic_instance; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId
 
@@ -670,12 +604,11 @@ class Fia::Nodes::Node::DriverInformation::CardInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_type; //type: int32
         YLeaf card_name; //type: string
@@ -692,12 +625,10 @@ class Fia::Nodes::Node::DriverInformation::CardInfo : public Entity
         YLeaf num_ilkns_per_asic; //type: uint32
         YLeaf num_local_ports_per_ilkn; //type: uint32
         YLeaf num_cos_per_port; //type: uint8
-
         class OirCircularBuffer; //type: Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer> oir_circular_buffer;
-
-
+        
 }; // Fia::Nodes::Node::DriverInformation::CardInfo
 
 
@@ -709,22 +640,19 @@ class Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf count; //type: int32
         YLeaf start; //type: int32
         YLeaf end; //type: int32
-
         class FiaOirInfo; //type: Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo> > fia_oir_info;
-
-
+        
 }; // Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer
 
 
@@ -736,12 +664,11 @@ class Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_flag; //type: int32
         YLeaf card_type; //type: int32
@@ -750,8 +677,6 @@ class Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirIn
         YLeaf rack_num; //type: int32
         YLeaf instance; //type: int32
         YLeaf cur_card_state; //type: int32
-
-
 
 }; // Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo
 
@@ -764,19 +689,16 @@ class Fia::Nodes::Node::ClearStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AsicInstances; //type: Fia::Nodes::Node::ClearStatistics::AsicInstances
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::ClearStatistics::AsicInstances> asic_instances;
-
-
+        
 }; // Fia::Nodes::Node::ClearStatistics
 
 
@@ -788,19 +710,16 @@ class Fia::Nodes::Node::ClearStatistics::AsicInstances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AsicInstance; //type: Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance> > asic_instance;
-
-
+        
 }; // Fia::Nodes::Node::ClearStatistics::AsicInstances
 
 
@@ -812,17 +731,14 @@ class Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf asic_instance; //type: uint32
         YLeaf instance; //type: int32
-
-
 
 }; // Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance
 
@@ -835,19 +751,16 @@ class Fia::Nodes::Node::TxLinkInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TxStatusOptionTable; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable> tx_status_option_table;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation
 
 
@@ -859,19 +772,16 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TxStatusOption; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption> tx_status_option;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 
 
@@ -883,19 +793,16 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TxAsicInstances; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances> tx_asic_instances;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption
 
 
@@ -907,19 +814,16 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TxAsicInstance; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance> > tx_asic_instance;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances
 
 
@@ -931,20 +835,17 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance; //type: uint32
-
         class TxLinks; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks> tx_links;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance
 
 
@@ -956,19 +857,16 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TxLink; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink> > tx_link;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks
 
 
@@ -980,21 +878,18 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_number; //type: uint32
         YLeaf end_number; //type: uint32
-
         class TxLink_; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_> > tx_link;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink
 
 
@@ -1006,12 +901,11 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link; //type: int32
         YLeaf speed; //type: uint32
@@ -1025,7 +919,6 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
         YLeaf oper_state; //type: OperStateEnum
         YLeaf error_state; //type: LinkErrorStateEnum
         YLeaf num_admin_shuts; //type: uint32
-
         class ThisLink; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink
         class FarEndLink; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink
         class Stats; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats
@@ -1035,8 +928,7 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History> history;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats> stats;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink> this_link;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_
 
 
@@ -1048,23 +940,20 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_type; //type: LinkEnum
         YLeaf link_stage; //type: LinkStageEnum
         YLeaf link_num; //type: uint32
         YLeaf phy_link_num; //type: uint32
-
         class AsicId; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId> asic_id;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink
 
 
@@ -1076,20 +965,17 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_type; //type: RackEnum
         YLeaf asic_type; //type: AsicEnum
         YLeaf rack_num; //type: uint32
         YLeaf slot_num; //type: uint32
         YLeaf asic_instance; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId
 
@@ -1102,23 +988,20 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_type; //type: LinkEnum
         YLeaf link_stage; //type: LinkStageEnum
         YLeaf link_num; //type: uint32
         YLeaf phy_link_num; //type: uint32
-
         class AsicId; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId> asic_id;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink
 
 
@@ -1130,20 +1013,17 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_type; //type: RackEnum
         YLeaf asic_type; //type: AsicEnum
         YLeaf rack_num; //type: uint32
         YLeaf slot_num; //type: uint32
         YLeaf asic_instance; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId
 
@@ -1156,16 +1036,13 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dummy; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats
 
@@ -1178,21 +1055,18 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf histnum; //type: uint8
         YLeaf start_index; //type: uint8
-
         class Hist; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist> > hist;
-
-
+        
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History
 
 
@@ -1204,20 +1078,17 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_state; //type: AdminStateEnum
         YLeaf oper_state; //type: OperStateEnum
         YLeaf error_state; //type: LinkErrorStateEnum
         YLeaf timestamp; //type: uint64
         YLeaf reasons; //type: string
-
-
 
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist
 
@@ -1230,19 +1101,16 @@ class Fia::Nodes::Node::RegisterDump : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RegisterDumpUnits; //type: Fia::Nodes::Node::RegisterDump::RegisterDumpUnits
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RegisterDump::RegisterDumpUnits> register_dump_units;
-
-
+        
 }; // Fia::Nodes::Node::RegisterDump
 
 
@@ -1254,19 +1122,16 @@ class Fia::Nodes::Node::RegisterDump::RegisterDumpUnits : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RegisterDumpUnit; //type: Fia::Nodes::Node::RegisterDump::RegisterDumpUnits::RegisterDumpUnit
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RegisterDump::RegisterDumpUnits::RegisterDumpUnit> > register_dump_unit;
-
-
+        
 }; // Fia::Nodes::Node::RegisterDump::RegisterDumpUnits
 
 
@@ -1278,17 +1143,14 @@ class Fia::Nodes::Node::RegisterDump::RegisterDumpUnits::RegisterDumpUnit : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unit; //type: int32
         YLeaf output; //type: string
-
-
 
 }; // Fia::Nodes::Node::RegisterDump::RegisterDumpUnits::RegisterDumpUnit
 
@@ -1301,19 +1163,16 @@ class Fia::Nodes::Node::DiagShell : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DiagShellUnits; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits> diag_shell_units;
-
-
+        
 }; // Fia::Nodes::Node::DiagShell
 
 
@@ -1325,19 +1184,16 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DiagShellUnit; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit> > diag_shell_unit;
-
-
+        
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits
 
 
@@ -1349,20 +1205,17 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unit; //type: uint32
-
         class Commands; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands> commands;
-
-
+        
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit
 
 
@@ -1374,19 +1227,16 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Command; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command> > command;
-
-
+        
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands
 
 
@@ -1398,20 +1248,17 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Comm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf cmd; //type: string
-
         class Output; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output> > output;
-
-
+        
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command
 
 
@@ -1423,17 +1270,14 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Comm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf output; //type: string
         YLeaf output_xr; //type: string
-
-
 
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output
 
@@ -1446,19 +1290,16 @@ class Fia::Nodes::Node::OirHistory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Flags; //type: Fia::Nodes::Node::OirHistory::Flags
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags> flags;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory
 
 
@@ -1470,19 +1311,16 @@ class Fia::Nodes::Node::OirHistory::Flags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Flag; //type: Fia::Nodes::Node::OirHistory::Flags::Flag
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag> > flag;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory::Flags
 
 
@@ -1494,20 +1332,17 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf flag; //type: int32
-
         class Slots; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots> slots;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag
 
 
@@ -1519,19 +1354,16 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Slot; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot> > slot;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots
 
 
@@ -1543,12 +1375,11 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slot; //type: int32
         YLeaf drv_version; //type: uint32
@@ -1595,14 +1426,12 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot : public Entity
         YLeaf fabric_mode; //type: uint8
         YLeaf fc_mode; //type: FcModeEnum
         YLeaf board_rev_id; //type: uint32
-
         class DeviceInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo
         class CardInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo> > card_info;
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo> > device_info;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot
 
 
@@ -1614,12 +1443,11 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: boolean
         YLeaf fapid; //type: uint32
@@ -1632,12 +1460,10 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo : publi
         YLeaf num_pon_resets; //type: uint32
         YLeaf num_hard_resets; //type: uint32
         YLeaf local_switch_state; //type: boolean
-
         class AsicId; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId> asic_id;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo
 
 
@@ -1649,20 +1475,17 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_type; //type: RackEnum
         YLeaf asic_type; //type: AsicEnum
         YLeaf rack_num; //type: uint32
         YLeaf slot_num; //type: uint32
         YLeaf asic_instance; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId
 
@@ -1675,12 +1498,11 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_type; //type: int32
         YLeaf card_name; //type: string
@@ -1697,12 +1519,10 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo : public 
         YLeaf num_ilkns_per_asic; //type: uint32
         YLeaf num_local_ports_per_ilkn; //type: uint32
         YLeaf num_cos_per_port; //type: uint8
-
         class OirCircularBuffer; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer> oir_circular_buffer;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo
 
 
@@ -1714,22 +1534,19 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf count; //type: int32
         YLeaf start; //type: int32
         YLeaf end; //type: int32
-
         class FiaOirInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo> > fia_oir_info;
-
-
+        
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer
 
 
@@ -1741,12 +1558,11 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_flag; //type: int32
         YLeaf card_type; //type: int32
@@ -1755,8 +1571,6 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircu
         YLeaf rack_num; //type: int32
         YLeaf instance; //type: int32
         YLeaf cur_card_state; //type: int32
-
-
 
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo
 
@@ -1769,19 +1583,16 @@ class Fia::Nodes::Node::AsicStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StatisticsAsicInstances; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances> statistics_asic_instances;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics
 
 
@@ -1793,19 +1604,16 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StatisticsAsicInstance; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance> > statistics_asic_instance;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances
 
 
@@ -1817,22 +1625,19 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance; //type: uint32
-
         class PbcStatistics; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics
         class FmacStatistics; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics> fmac_statistics;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics> pbc_statistics;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance
 
 
@@ -1844,19 +1649,16 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PbcStats; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats> pbc_stats;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics
 
 
@@ -1868,24 +1670,21 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf valid; //type: boolean
         YLeaf rack_no; //type: uint32
         YLeaf slot_no; //type: uint32
         YLeaf asic_instance; //type: uint32
         YLeaf chip_ver; //type: uint16
-
         class StatsInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo> stats_info;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats
 
 
@@ -1897,20 +1696,17 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_blocks; //type: uint8
-
         class BlockInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo> > block_info;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo
 
 
@@ -1922,21 +1718,18 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf block_name; //type: string
         YLeaf num_fields; //type: uint8
-
         class FieldInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo> > field_info;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo
 
 
@@ -1948,18 +1741,15 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf field_name; //type: string
         YLeaf field_value; //type: uint64
         YLeaf is_ovf; //type: boolean
-
-
 
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo
 
@@ -1972,19 +1762,16 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class FmacLinks; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks> fmac_links;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics
 
 
@@ -1996,19 +1783,16 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class FmacLink; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink> > fmac_link;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks
 
 
@@ -2020,20 +1804,17 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link; //type: int32
-
         class FmacAsic; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic> > fmac_asic;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink
 
 
@@ -2045,12 +1826,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf asic; //type: int32
         YLeaf valid; //type: boolean
@@ -2059,14 +1839,12 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         YLeaf asic_instance; //type: uint32
         YLeaf link_no; //type: uint32
         YLeaf link_valid; //type: boolean
-
         class AggrStats; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats
         class IncrStats; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats
 
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats> aggr_stats;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats> incr_stats;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic
 
 
@@ -2078,13 +1856,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LinkErrorStatus; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus
         class LinkCounters; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters
@@ -2093,8 +1869,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters> link_counters;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus> link_error_status;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus> ovf_status;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats
 
 
@@ -2106,12 +1881,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_crc_error; //type: uint32
         YLeaf link_size_error; //type: uint32
@@ -2121,8 +1895,6 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         YLeaf link_no_sig_accept_error; //type: uint32
         YLeaf link_tokens_error; //type: uint32
         YLeaf error_token_count; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus
 
@@ -2135,12 +1907,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_control_cells_counter; //type: uint64
         YLeaf tx_data_cell_counter; //type: uint64
@@ -2156,8 +1927,6 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         YLeaf rx_asyn_fifo_rate; //type: uint64
         YLeaf rx_lfec_fec_uncorrectable_errors; //type: uint64
         YLeaf rx_8b_10b_code_errors; //type: uint64
-
-
 
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters
 
@@ -2170,12 +1939,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_control_cells_counter; //type: string
         YLeaf tx_data_cell_counter; //type: string
@@ -2192,8 +1960,6 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         YLeaf rx_lfec_fec_uncorrectable_errors; //type: string
         YLeaf rx_8b_10b_code_errors; //type: string
 
-
-
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus
 
 
@@ -2205,13 +1971,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LinkErrorStatus; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus
         class LinkCounters; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters
@@ -2220,8 +1984,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters> link_counters;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus> link_error_status;
         std::shared_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus> ovf_status;
-
-
+        
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats
 
 
@@ -2233,12 +1996,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_crc_error; //type: uint32
         YLeaf link_size_error; //type: uint32
@@ -2248,8 +2010,6 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         YLeaf link_no_sig_accept_error; //type: uint32
         YLeaf link_tokens_error; //type: uint32
         YLeaf error_token_count; //type: uint32
-
-
 
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus
 
@@ -2262,12 +2022,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_control_cells_counter; //type: uint64
         YLeaf tx_data_cell_counter; //type: uint64
@@ -2284,8 +2043,6 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         YLeaf rx_lfec_fec_uncorrectable_errors; //type: uint64
         YLeaf rx_8b_10b_code_errors; //type: uint64
 
-
-
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters
 
 
@@ -2297,12 +2054,11 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_control_cells_counter; //type: string
         YLeaf tx_data_cell_counter; //type: string
@@ -2318,8 +2074,6 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         YLeaf rx_asyn_fifo_rate; //type: string
         YLeaf rx_lfec_fec_uncorrectable_errors; //type: string
         YLeaf rx_8b_10b_code_errors; //type: string
-
-
 
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus
 

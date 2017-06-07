@@ -19,23 +19,20 @@ class Sla : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Protocols; //type: Sla::Protocols
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols> protocols;
-
-
+        
 }; // Sla
 
 
@@ -47,19 +44,16 @@ class Sla::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ethernet; //type: Sla::Protocols::Ethernet
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet> ethernet;
-
-
+        
 }; // Sla::Protocols
 
 
@@ -71,13 +65,11 @@ class Sla::Protocols::Ethernet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StatisticsOnDemandCurrents; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents
         class Operations; //type: Sla::Protocols::Ethernet::Operations
@@ -94,8 +86,7 @@ class Sla::Protocols::Ethernet : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals> statistics_historicals;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents> statistics_on_demand_currents;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals> statistics_on_demand_historicals;
-
-
+        
 }; // Sla::Protocols::Ethernet
 
 
@@ -107,19 +98,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StatisticsOnDemandCurrent; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent> > statistics_on_demand_current;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents
 
 
@@ -131,12 +119,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operation_id; //type: uint32
         YLeaf domain_name; //type: string
@@ -147,7 +134,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
         YLeaf display_short; //type: string
         YLeaf display_long; //type: string
         YLeaf flr_calculation_interval; //type: uint32
-
         class SpecificOptions; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions
         class OperationSchedule; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule
         class OperationMetric; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric
@@ -155,8 +141,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric> > operation_metric;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule> operation_schedule;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions> specific_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent
 
 
@@ -168,22 +153,19 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oper_type; //type: SlaOperOperationEnum
-
         class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions
         class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions
 
 
@@ -195,16 +177,13 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions
 
@@ -217,17 +196,14 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ondemand_operation_id; //type: uint32
         YLeaf probe_count; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions
 
@@ -240,19 +216,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: uint32
         YLeaf start_time_configured; //type: boolean
         YLeaf schedule_duration; //type: uint32
         YLeaf schedule_interval; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule
 
@@ -265,21 +238,18 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket> > bucket;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config> config;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric
 
 
@@ -291,12 +261,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf metric_type; //type: SlaRecordableMetricEnum
         YLeaf bins_count; //type: uint16
@@ -304,8 +273,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
         YLeaf bucket_size; //type: uint8
         YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
         YLeaf buckets_archive; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config
 
@@ -318,12 +285,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_at; //type: uint32
         YLeaf duration; //type: uint32
@@ -356,12 +322,10 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
         YLeaf suspect_flr_low_packet_count; //type: boolean
         YLeaf premature_reason; //type: uint32
         YLeaf premature_reason_string; //type: string
-
         class Contents; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents> contents;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket
 
 
@@ -373,22 +337,19 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bucket_type; //type: SlaOperBucketEnum
-
         class Aggregated; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated
         class Unaggregated; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated> aggregated;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents
 
 
@@ -400,19 +361,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated
 
 
@@ -424,12 +382,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lower_bound; //type: int32
         YLeaf upper_bound; //type: int32
@@ -437,8 +394,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
         YLeaf upper_bound_tenths; //type: int32
         YLeaf sum; //type: int64
         YLeaf count; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins
 
@@ -451,19 +406,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated
 
 
@@ -475,12 +427,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent_at; //type: uint32
         YLeaf sent; //type: boolean
@@ -491,8 +442,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCu
         YLeaf result; //type: int32
         YLeaf frames_sent; //type: uint32
         YLeaf frames_lost; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
@@ -505,19 +454,16 @@ class Sla::Protocols::Ethernet::Operations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Operation_; //type: Sla::Protocols::Ethernet::Operations::Operation_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_> > operation_;
-
-
+        
 }; // Sla::Protocols::Ethernet::Operations
 
 
@@ -529,12 +475,11 @@ class Sla::Protocols::Ethernet::Operations::Operation_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
         YLeaf domain_name; //type: string
@@ -544,14 +489,12 @@ class Sla::Protocols::Ethernet::Operations::Operation_ : public Entity
         YLeaf display_short; //type: string
         YLeaf display_long; //type: string
         YLeaf last_run; //type: uint32
-
         class ProfileOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions
         class SpecificOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions> profile_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions> specific_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::Operations::Operation_
 
 
@@ -563,12 +506,11 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf probe_type; //type: string
         YLeaf packets_per_burst; //type: uint16
@@ -576,7 +518,6 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions : public 
         YLeaf bursts_per_probe; //type: uint32
         YLeaf inter_burst_interval; //type: uint32
         YLeaf flr_calculation_interval; //type: uint32
-
         class PacketPadding; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding
         class Priority; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority
         class OperationSchedule; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule
@@ -586,8 +527,7 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions : public 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule> operation_schedule;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding> packet_padding;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority> priority;
-
-
+        
 }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions
 
 
@@ -599,18 +539,15 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_pad_size; //type: uint16
         YLeaf test_pattern_pad_scheme; //type: SlaOperTestPatternSchemeEnum
         YLeaf test_pattern_pad_hex_string; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding
 
@@ -623,17 +560,14 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority_type; //type: SlaOperPacketPriorityEnum
         YLeaf cos; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority
 
@@ -646,19 +580,16 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: uint32
         YLeaf start_time_configured; //type: boolean
         YLeaf schedule_duration; //type: uint32
         YLeaf schedule_interval; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule
 
@@ -671,20 +602,17 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf current_buckets_archive; //type: uint32
-
         class MetricConfig; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig> metric_config;
-
-
+        
 }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric
 
 
@@ -696,12 +624,11 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf metric_type; //type: SlaRecordableMetricEnum
         YLeaf bins_count; //type: uint16
@@ -709,8 +636,6 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operatio
         YLeaf bucket_size; //type: uint8
         YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
         YLeaf buckets_archive; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig
 
@@ -723,22 +648,19 @@ class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oper_type; //type: SlaOperOperationEnum
-
         class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions
         class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions
 
 
@@ -750,16 +672,13 @@ class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::Configu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
-
 
 }; // Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions
 
@@ -772,17 +691,14 @@ class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::Ondeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ondemand_operation_id; //type: uint32
         YLeaf probe_count; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions
 
@@ -795,19 +711,16 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StatisticsHistorical; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical> > statistics_historical;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals
 
 
@@ -819,12 +732,11 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
         YLeaf domain_name; //type: string
@@ -835,7 +747,6 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical : pu
         YLeaf display_short; //type: string
         YLeaf display_long; //type: string
         YLeaf flr_calculation_interval; //type: uint32
-
         class SpecificOptions; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions
         class OperationSchedule; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule
         class OperationMetric; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric
@@ -843,8 +754,7 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical : pu
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric> > operation_metric;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule> operation_schedule;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions> specific_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical
 
 
@@ -856,22 +766,19 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Spe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oper_type; //type: SlaOperOperationEnum
-
         class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions
         class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions
 
 
@@ -883,16 +790,13 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Spe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions
 
@@ -905,17 +809,14 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Spe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ondemand_operation_id; //type: uint32
         YLeaf probe_count; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions
 
@@ -928,19 +829,16 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: uint32
         YLeaf start_time_configured; //type: boolean
         YLeaf schedule_duration; //type: uint32
         YLeaf schedule_interval; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule
 
@@ -953,21 +851,18 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket> > bucket;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config> config;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric
 
 
@@ -979,12 +874,11 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf metric_type; //type: SlaRecordableMetricEnum
         YLeaf bins_count; //type: uint16
@@ -992,8 +886,6 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
         YLeaf bucket_size; //type: uint8
         YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
         YLeaf buckets_archive; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config
 
@@ -1006,12 +898,11 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_at; //type: uint32
         YLeaf duration; //type: uint32
@@ -1044,12 +935,10 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
         YLeaf suspect_flr_low_packet_count; //type: boolean
         YLeaf premature_reason; //type: uint32
         YLeaf premature_reason_string; //type: string
-
         class Contents; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents> contents;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket
 
 
@@ -1061,22 +950,19 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bucket_type; //type: SlaOperBucketEnum
-
         class Aggregated; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated
         class Unaggregated; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated> aggregated;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents
 
 
@@ -1088,19 +974,16 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated
 
 
@@ -1112,12 +995,11 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lower_bound; //type: int32
         YLeaf upper_bound; //type: int32
@@ -1125,8 +1007,6 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
         YLeaf upper_bound_tenths; //type: int32
         YLeaf sum; //type: int64
         YLeaf count; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins
 
@@ -1139,19 +1019,16 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated
 
 
@@ -1163,12 +1040,11 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent_at; //type: uint32
         YLeaf sent; //type: boolean
@@ -1179,8 +1055,6 @@ class Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Ope
         YLeaf result; //type: int32
         YLeaf frames_sent; //type: uint32
         YLeaf frames_lost; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
@@ -1193,19 +1067,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StatisticsOnDemandHistorical; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical> > statistics_on_demand_historical;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals
 
 
@@ -1217,12 +1088,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operation_id; //type: uint32
         YLeaf domain_name; //type: string
@@ -1233,7 +1103,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
         YLeaf display_short; //type: string
         YLeaf display_long; //type: string
         YLeaf flr_calculation_interval; //type: uint32
-
         class SpecificOptions; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions
         class OperationSchedule; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule
         class OperationMetric; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric
@@ -1241,8 +1110,7 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric> > operation_metric;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule> operation_schedule;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions> specific_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical
 
 
@@ -1254,22 +1122,19 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oper_type; //type: SlaOperOperationEnum
-
         class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions
         class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions
 
 
@@ -1281,16 +1146,13 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions
 
@@ -1303,17 +1165,14 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ondemand_operation_id; //type: uint32
         YLeaf probe_count; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions
 
@@ -1326,19 +1185,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: uint32
         YLeaf start_time_configured; //type: boolean
         YLeaf schedule_duration; //type: uint32
         YLeaf schedule_interval; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule
 
@@ -1351,21 +1207,18 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket> > bucket;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config> config;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric
 
 
@@ -1377,12 +1230,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf metric_type; //type: SlaRecordableMetricEnum
         YLeaf bins_count; //type: uint16
@@ -1390,8 +1242,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
         YLeaf bucket_size; //type: uint8
         YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
         YLeaf buckets_archive; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config
 
@@ -1404,12 +1254,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_at; //type: uint32
         YLeaf duration; //type: uint32
@@ -1442,12 +1291,10 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
         YLeaf suspect_flr_low_packet_count; //type: boolean
         YLeaf premature_reason; //type: uint32
         YLeaf premature_reason_string; //type: string
-
         class Contents; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents> contents;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket
 
 
@@ -1459,22 +1306,19 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bucket_type; //type: SlaOperBucketEnum
-
         class Aggregated; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated
         class Unaggregated; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated> aggregated;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents
 
 
@@ -1486,19 +1330,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated
 
 
@@ -1510,12 +1351,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lower_bound; //type: int32
         YLeaf upper_bound; //type: int32
@@ -1523,8 +1363,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
         YLeaf upper_bound_tenths; //type: int32
         YLeaf sum; //type: int64
         YLeaf count; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins
 
@@ -1537,19 +1375,16 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated
 
 
@@ -1561,12 +1396,11 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent_at; //type: uint32
         YLeaf sent; //type: boolean
@@ -1577,8 +1411,6 @@ class Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDeman
         YLeaf result; //type: int32
         YLeaf frames_sent; //type: uint32
         YLeaf frames_lost; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
@@ -1591,19 +1423,16 @@ class Sla::Protocols::Ethernet::ConfigErrors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ConfigError; //type: Sla::Protocols::Ethernet::ConfigErrors::ConfigError
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::ConfigErrors::ConfigError> > config_error;
-
-
+        
 }; // Sla::Protocols::Ethernet::ConfigErrors
 
 
@@ -1615,12 +1444,11 @@ class Sla::Protocols::Ethernet::ConfigErrors::ConfigError : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
         YLeaf domain_name; //type: string
@@ -1647,8 +1475,6 @@ class Sla::Protocols::Ethernet::ConfigErrors::ConfigError : public Entity
         YLeaf probe_too_big; //type: boolean
         YLeafList error_string; //type: list of  string
 
-
-
 }; // Sla::Protocols::Ethernet::ConfigErrors::ConfigError
 
 
@@ -1660,19 +1486,16 @@ class Sla::Protocols::Ethernet::OnDemandOperations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OnDemandOperation; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation> > on_demand_operation;
-
-
+        
 }; // Sla::Protocols::Ethernet::OnDemandOperations
 
 
@@ -1684,12 +1507,11 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operation_id; //type: uint32
         YLeaf domain_name; //type: string
@@ -1699,14 +1521,12 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation : public E
         YLeaf display_short; //type: string
         YLeaf display_long; //type: string
         YLeaf last_run; //type: uint32
-
         class ProfileOptions; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions
         class SpecificOptions; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions> profile_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions> specific_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
 
@@ -1718,12 +1538,11 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf probe_type; //type: string
         YLeaf packets_per_burst; //type: uint16
@@ -1731,7 +1550,6 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
         YLeaf bursts_per_probe; //type: uint32
         YLeaf inter_burst_interval; //type: uint32
         YLeaf flr_calculation_interval; //type: uint32
-
         class PacketPadding; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding
         class Priority; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority
         class OperationSchedule; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule
@@ -1741,8 +1559,7 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule> operation_schedule;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding> packet_padding;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority> priority;
-
-
+        
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions
 
 
@@ -1754,18 +1571,15 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_pad_size; //type: uint16
         YLeaf test_pattern_pad_scheme; //type: SlaOperTestPatternSchemeEnum
         YLeaf test_pattern_pad_hex_string; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding
 
@@ -1778,17 +1592,14 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority_type; //type: SlaOperPacketPriorityEnum
         YLeaf cos; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority
 
@@ -1801,19 +1612,16 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: uint32
         YLeaf start_time_configured; //type: boolean
         YLeaf schedule_duration; //type: uint32
         YLeaf schedule_interval; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule
 
@@ -1826,20 +1634,17 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf current_buckets_archive; //type: uint32
-
         class MetricConfig; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig> metric_config;
-
-
+        
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric
 
 
@@ -1851,12 +1656,11 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf metric_type; //type: SlaRecordableMetricEnum
         YLeaf bins_count; //type: uint16
@@ -1864,8 +1668,6 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOp
         YLeaf bucket_size; //type: uint8
         YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
         YLeaf buckets_archive; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig
 
@@ -1878,22 +1680,19 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificO
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oper_type; //type: SlaOperOperationEnum
-
         class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions
         class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
 
 
@@ -1905,16 +1704,13 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificO
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
-
 
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions
 
@@ -1927,17 +1723,14 @@ class Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificO
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ondemand_operation_id; //type: uint32
         YLeaf probe_count; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions
 
@@ -1950,19 +1743,16 @@ class Sla::Protocols::Ethernet::StatisticsCurrents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StatisticsCurrent; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent> > statistics_current;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents
 
 
@@ -1974,12 +1764,11 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
         YLeaf domain_name; //type: string
@@ -1990,7 +1779,6 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent : public E
         YLeaf display_short; //type: string
         YLeaf display_long; //type: string
         YLeaf flr_calculation_interval; //type: uint32
-
         class SpecificOptions; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
         class OperationSchedule; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule
         class OperationMetric; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
@@ -1998,8 +1786,7 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent : public E
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric> > operation_metric;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule> operation_schedule;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions> specific_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
 
@@ -2011,22 +1798,19 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificO
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oper_type; //type: SlaOperOperationEnum
-
         class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions
         class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
 
 
@@ -2038,16 +1822,13 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificO
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions
 
@@ -2060,17 +1841,14 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificO
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ondemand_operation_id; //type: uint32
         YLeaf probe_count; //type: uint8
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions
 
@@ -2083,19 +1861,16 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: uint32
         YLeaf start_time_configured; //type: boolean
         YLeaf schedule_duration; //type: uint32
         YLeaf schedule_interval; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule
 
@@ -2108,21 +1883,18 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config
         class Bucket; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket> > bucket;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config> config;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 
@@ -2134,12 +1906,11 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf metric_type; //type: SlaRecordableMetricEnum
         YLeaf bins_count; //type: uint16
@@ -2147,8 +1918,6 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
         YLeaf bucket_size; //type: uint8
         YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
         YLeaf buckets_archive; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config
 
@@ -2161,12 +1930,11 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_at; //type: uint32
         YLeaf duration; //type: uint32
@@ -2199,12 +1967,10 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
         YLeaf suspect_flr_low_packet_count; //type: boolean
         YLeaf premature_reason; //type: uint32
         YLeaf premature_reason_string; //type: string
-
         class Contents; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents> contents;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket
 
 
@@ -2216,22 +1982,19 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bucket_type; //type: SlaOperBucketEnum
-
         class Aggregated; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated
         class Unaggregated; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated
 
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated> aggregated;
         std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents
 
 
@@ -2243,19 +2006,16 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Bins; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins> > bins;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated
 
 
@@ -2267,12 +2027,11 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lower_bound; //type: int32
         YLeaf upper_bound; //type: int32
@@ -2280,8 +2039,6 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
         YLeaf upper_bound_tenths; //type: int32
         YLeaf sum; //type: int64
         YLeaf count; //type: uint32
-
-
 
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins
 
@@ -2294,19 +2051,16 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sample; //type: Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample> > sample;
-
-
+        
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated
 
 
@@ -2318,12 +2072,11 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent_at; //type: uint32
         YLeaf sent; //type: boolean
@@ -2335,8 +2088,6 @@ class Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::Operation
         YLeaf frames_sent; //type: uint32
         YLeaf frames_lost; //type: uint32
 
-
-
 }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample
 
 class SlaNodes : public Entity
@@ -2347,18 +2098,15 @@ class SlaNodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
-
 
 
 }; // SlaNodes

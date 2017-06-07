@@ -22,12 +22,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -35,8 +34,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -49,12 +46,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -64,14 +60,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath
 
 
@@ -83,12 +77,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -115,12 +108,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
 
 
@@ -132,12 +123,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -145,8 +135,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -159,12 +147,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -172,8 +159,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -186,12 +171,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -201,14 +185,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath
 
 
@@ -220,12 +202,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -252,12 +233,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
 
 
@@ -269,12 +248,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -282,8 +260,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -296,12 +272,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -309,8 +284,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -323,12 +296,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -338,14 +310,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath
 
 
@@ -357,12 +327,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -389,12 +358,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
 
 
@@ -406,12 +373,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -419,8 +385,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -433,12 +397,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -446,8 +409,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -460,22 +421,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Source
 
 
@@ -487,12 +445,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -502,8 +459,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
 
@@ -516,22 +471,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource
 
 
@@ -543,12 +495,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -558,8 +509,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
 
@@ -572,12 +521,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: IsisLevelEnum
         YLeaf advertising_origin; //type: IsisShRouteAdvOriginEnum
@@ -587,14 +535,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf is_external_reachability; //type: boolean
         YLeaf is_interarea; //type: boolean
         YLeafList tags; //type: list of  uint32
-
         class SummarizationStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::NodalSid> > nodal_sid;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail
 
 
@@ -606,20 +552,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class SummaryPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus
 
 
@@ -631,17 +574,14 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
 
@@ -654,12 +594,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -669,8 +608,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::NodalSid
 
@@ -683,19 +620,16 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup> > ipv4frr_backup;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups
 
 
@@ -707,16 +641,14 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class ConnectedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::ConnectedStatus
         class RedistributedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus
         class NativeStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus
@@ -726,8 +658,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus> native_status;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail> > per_level_advertising_detail;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus> redistributed_status;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup
 
 
@@ -739,20 +670,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class ConnectedDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::ConnectedStatus::ConnectedDetails
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::ConnectedStatus::ConnectedDetails> connected_details;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::ConnectedStatus
 
 
@@ -764,16 +692,13 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList interface; //type: list of  string
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::ConnectedStatus::ConnectedDetails
 
@@ -786,20 +711,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class RedistributionDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails> redistribution_details;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus
 
 
@@ -811,19 +733,16 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IsisShRouteRedistDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail> > isis_sh_route_redist_detail;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails
 
 
@@ -835,20 +754,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: IsisLevelEnum
-
         class Owner; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
 
 
@@ -860,12 +776,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol; //type: IsisRedistProtoEnum
         YLeaf isis_instance_id; //type: string
@@ -874,8 +789,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf bgp_as_number; //type: string
         YLeaf eigrp_as_number; //type: string
         YLeaf application_name; //type: string
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
@@ -888,20 +801,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class NativeDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails> native_details;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus
 
 
@@ -913,22 +823,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority; //type: IsisPrefixPriorityEnum
-
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup> > backup;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary> primary;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails
 
 
@@ -940,19 +847,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf origin; //type: IsisPrefixOriginEnum
         YLeaf metric; //type: uint32
         YLeaf multicast_metric; //type: uint32
         YLeaf is_external_metric; //type: boolean
         YLeaf administrative_distance; //type: uint16
-
         class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths
         class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop
         class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath
@@ -968,8 +873,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Source> > source;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath> > srte_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop> > ucmp_next_hop;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary
 
 
@@ -981,12 +885,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -996,14 +899,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths
 
 
@@ -1015,12 +916,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1047,12 +947,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
 
 
@@ -1064,12 +962,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1077,8 +974,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -1091,12 +986,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1104,8 +998,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -1118,12 +1010,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1133,12 +1024,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf total_ucmp_distance; //type: uint32
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop
 
 
@@ -1150,12 +1039,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1182,12 +1070,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
 
@@ -1199,12 +1085,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1212,8 +1097,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -1226,12 +1109,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1241,14 +1123,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath
 
 
@@ -1260,12 +1140,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1292,12 +1171,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
 
 
@@ -1309,12 +1186,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1322,8 +1198,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -1336,12 +1210,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1349,8 +1222,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -1363,12 +1234,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1378,14 +1248,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath
 
 
@@ -1397,12 +1265,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1429,12 +1296,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
 
 
@@ -1446,12 +1311,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1459,8 +1323,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -1473,12 +1335,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1486,8 +1347,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -1500,12 +1359,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1515,14 +1373,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath
 
 
@@ -1534,12 +1390,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1566,12 +1421,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
 
 
@@ -1583,12 +1436,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1596,8 +1448,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -1610,12 +1460,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1623,8 +1472,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -1637,22 +1484,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Source
 
 
@@ -1664,12 +1508,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -1679,8 +1522,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid
 
@@ -1693,22 +1534,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource
 
 
@@ -1720,12 +1558,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -1735,8 +1572,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
 
@@ -1749,19 +1584,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf origin; //type: IsisPrefixOriginEnum
         YLeaf metric; //type: uint32
         YLeaf multicast_metric; //type: uint32
         YLeaf is_external_metric; //type: boolean
         YLeaf administrative_distance; //type: uint16
-
         class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths
         class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop
         class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath
@@ -1777,8 +1610,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Source> > source;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath> > srte_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop> > ucmp_next_hop;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup
 
 
@@ -1790,12 +1622,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1805,14 +1636,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths
 
 
@@ -1824,12 +1653,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1856,12 +1684,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
 
 
@@ -1873,12 +1699,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1886,8 +1711,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -1900,12 +1723,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -1913,8 +1735,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -1927,12 +1747,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1942,12 +1761,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf total_ucmp_distance; //type: uint32
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop
 
 
@@ -1959,12 +1776,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -1991,12 +1807,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
 
@@ -2008,12 +1822,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -2021,8 +1834,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -2035,12 +1846,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -2050,14 +1860,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath
 
 
@@ -2069,12 +1877,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -2101,12 +1908,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
 
 
@@ -2118,12 +1923,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -2131,8 +1935,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -2145,12 +1947,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -2158,8 +1959,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -2172,12 +1971,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -2187,14 +1985,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath
 
 
@@ -2206,12 +2002,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -2238,12 +2033,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
 
 
@@ -2255,12 +2048,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -2268,8 +2060,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -2282,12 +2072,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -2295,8 +2084,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -2309,12 +2096,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -2324,14 +2110,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath
 
 
@@ -2343,12 +2127,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -2375,12 +2158,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
 
 
@@ -2392,12 +2173,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -2405,8 +2185,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -2419,12 +2197,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -2432,8 +2209,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -2446,22 +2221,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Source
 
 
@@ -2473,12 +2245,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -2488,8 +2259,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Source::NodalSid
 
@@ -2502,22 +2271,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource
 
 
@@ -2529,12 +2295,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -2544,8 +2309,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
 
@@ -2558,12 +2321,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: IsisLevelEnum
         YLeaf advertising_origin; //type: IsisShRouteAdvOriginEnum
@@ -2573,14 +2335,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf is_external_reachability; //type: boolean
         YLeaf is_interarea; //type: boolean
         YLeafList tags; //type: list of  uint32
-
         class SummarizationStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::NodalSid> > nodal_sid;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail
 
 
@@ -2592,20 +2352,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class SummaryPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus
 
 
@@ -2617,17 +2374,14 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
 
@@ -2640,12 +2394,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -2655,8 +2408,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBa
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::NodalSid
 
@@ -2669,19 +2420,16 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4Route; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route> > ipv4_route;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes
 
 
@@ -2693,16 +2441,14 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class ConnectedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::ConnectedStatus
         class RedistributedStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus
         class NativeStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus
@@ -2712,8 +2458,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route : p
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus> native_status;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail> > per_level_advertising_detail;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus> redistributed_status;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route
 
 
@@ -2725,20 +2470,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Co
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class ConnectedDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::ConnectedStatus::ConnectedDetails
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::ConnectedStatus::ConnectedDetails> connected_details;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::ConnectedStatus
 
 
@@ -2750,16 +2492,13 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Co
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList interface; //type: list of  string
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::ConnectedStatus::ConnectedDetails
 
@@ -2772,20 +2511,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class RedistributionDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails> redistribution_details;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus
 
 
@@ -2797,19 +2533,16 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IsisShRouteRedistDetail; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail> > isis_sh_route_redist_detail;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails
 
 
@@ -2821,20 +2554,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: IsisLevelEnum
-
         class Owner; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
 
 
@@ -2846,12 +2576,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol; //type: IsisRedistProtoEnum
         YLeaf isis_instance_id; //type: string
@@ -2860,8 +2589,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Re
         YLeaf bgp_as_number; //type: string
         YLeaf eigrp_as_number; //type: string
         YLeaf application_name; //type: string
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
@@ -2874,20 +2601,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class NativeDetails; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails> native_details;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus
 
 
@@ -2899,22 +2623,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority; //type: IsisPrefixPriorityEnum
-
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup> > backup;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary> primary;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails
 
 
@@ -2926,19 +2647,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf origin; //type: IsisPrefixOriginEnum
         YLeaf metric; //type: uint32
         YLeaf multicast_metric; //type: uint32
         YLeaf is_external_metric; //type: boolean
         YLeaf administrative_distance; //type: uint16
-
         class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths
         class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop
         class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath
@@ -2954,8 +2673,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Source> > source;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath> > srte_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop> > ucmp_next_hop;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary
 
 
@@ -2967,12 +2685,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -2982,14 +2699,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths
 
 
@@ -3001,12 +2716,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3033,12 +2747,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
 
 
@@ -3050,12 +2762,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3063,8 +2774,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -3077,12 +2786,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3090,8 +2798,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
 
@@ -3104,12 +2810,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3119,12 +2824,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf total_ucmp_distance; //type: uint32
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop
 
 
@@ -3136,12 +2839,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3168,12 +2870,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
 
@@ -3185,12 +2885,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3198,8 +2897,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -3212,12 +2909,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3227,14 +2923,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath
 
 
@@ -3246,12 +2940,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3278,12 +2971,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
 
 
@@ -3295,12 +2986,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3308,8 +2998,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -3322,12 +3010,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3335,8 +3022,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
 
@@ -3349,12 +3034,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3364,14 +3048,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath
 
 
@@ -3383,12 +3065,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3415,12 +3096,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
 
 
@@ -3432,12 +3111,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3445,8 +3123,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -3459,12 +3135,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3472,8 +3147,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
 
@@ -3486,12 +3159,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3501,14 +3173,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath
 
 
@@ -3520,12 +3190,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3552,12 +3221,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
 
 
@@ -3569,12 +3236,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3582,8 +3248,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -3596,12 +3260,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3609,8 +3272,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
 
@@ -3623,22 +3284,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Source::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Source::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Source
 
 
@@ -3650,12 +3308,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -3665,8 +3322,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Source::NodalSid
 
@@ -3679,22 +3334,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastSource
 
 
@@ -3706,12 +3358,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -3721,8 +3372,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid
 
@@ -3735,19 +3384,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf origin; //type: IsisPrefixOriginEnum
         YLeaf metric; //type: uint32
         YLeaf multicast_metric; //type: uint32
         YLeaf is_external_metric; //type: boolean
         YLeaf administrative_distance; //type: uint16
-
         class Paths; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths
         class UcmpNextHop; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop
         class MulticastPath; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath
@@ -3763,8 +3410,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Source> > source;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath> > srte_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop> > ucmp_next_hop;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup
 
 
@@ -3776,12 +3422,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3791,14 +3436,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths
 
 
@@ -3810,12 +3453,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3842,12 +3484,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
 
 
@@ -3859,12 +3499,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3872,8 +3511,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -3886,12 +3523,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -3899,8 +3535,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
 
@@ -3913,12 +3547,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3928,12 +3561,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf total_ucmp_distance; //type: uint32
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop
 
 
@@ -3945,12 +3576,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -3977,12 +3607,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
 
@@ -3994,12 +3622,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -4007,8 +3634,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -4021,12 +3646,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -4036,14 +3660,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath
 
 
@@ -4055,12 +3677,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -4087,12 +3708,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
 
 
@@ -4104,12 +3723,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -4117,8 +3735,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -4131,12 +3747,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -4144,8 +3759,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
 
@@ -4158,12 +3771,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -4173,14 +3785,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath
 
 
@@ -4192,12 +3802,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -4224,12 +3833,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
 
 
@@ -4241,12 +3848,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -4254,8 +3860,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -4268,12 +3872,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -4281,8 +3884,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
 
@@ -4295,12 +3896,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -4310,14 +3910,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf tunnel_interface; //type: string
         YLeaf segment_routing_sid_value; //type: uint32
         YLeaf weight; //type: uint32
-
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup> frr_backup;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit> > uloop_explicit;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath
 
 
@@ -4329,12 +3927,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf egress_interface; //type: string
@@ -4361,12 +3958,10 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf is_tunnel_requested; //type: boolean
         YLeaf weight; //type: uint32
         YLeafList segment_routing_sid_value_entry; //type: list of  uint32
-
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair> > backup_repair;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
 
 
@@ -4378,12 +3973,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -4391,8 +3985,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -4405,12 +3997,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf repair_element_node_id; //type: string
         YLeaf repair_ipv4_addr; //type: string
@@ -4418,8 +4009,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf repair_label; //type: uint32
         YLeaf repair_element_type; //type: uint32
         YLeaf repair_strict_spf_label; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
 
@@ -4432,22 +4021,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Source::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Source::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Source
 
 
@@ -4459,12 +4045,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -4474,8 +4059,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Source::NodalSid
 
@@ -4488,22 +4071,19 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_lsp_id; //type: string
         YLeaf source_address; //type: string
         YLeafList tags; //type: list of  uint32
-
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid> > nodal_sid;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastSource
 
 
@@ -4515,12 +4095,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -4530,8 +4109,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid
 
@@ -4544,12 +4121,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: IsisLevelEnum
         YLeaf advertising_origin; //type: IsisShRouteAdvOriginEnum
@@ -4559,14 +4135,12 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Pe
         YLeaf is_external_reachability; //type: boolean
         YLeaf is_interarea; //type: boolean
         YLeafList tags; //type: list of  uint32
-
         class SummarizationStatus; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus
         class NodalSid; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::NodalSid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::NodalSid> > nodal_sid;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail
 
 
@@ -4578,20 +4152,17 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: IsisValidEnum
-
         class SummaryPrefix; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-
-
+        
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus
 
 
@@ -4603,17 +4174,14 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix
 
@@ -4626,12 +4194,11 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_value; //type: uint32
         YLeaf rflag; //type: uint8
@@ -4641,8 +4208,6 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Pe
         YLeaf vflag; //type: uint8
         YLeaf lflag; //type: uint8
         YLeaf algorithm; //type: uint8
-
-
 
 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::NodalSid
 
@@ -4655,22 +4220,19 @@ class Isis::Instances::Instance::NsrStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf isis_vm_state; //type: uint16
-
         class IsisNsrPeer; //type: Isis::Instances::Instance::NsrStatus::IsisNsrPeer
         class IsisNsrInfra; //type: Isis::Instances::Instance::NsrStatus::IsisNsrInfra
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NsrStatus::IsisNsrInfra> isis_nsr_infra;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NsrStatus::IsisNsrPeer> isis_nsr_peer;
-
-
+        
 }; // Isis::Instances::Instance::NsrStatus
 
 
@@ -4682,13 +4244,11 @@ class Isis::Instances::Instance::NsrStatus::IsisNsrPeer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class FullSyncAchieved; //type: Isis::Instances::Instance::NsrStatus::IsisNsrPeer::FullSyncAchieved
         class ManSyncCount; //type: Isis::Instances::Instance::NsrStatus::IsisNsrPeer::ManSyncCount
@@ -4701,8 +4261,7 @@ class Isis::Instances::Instance::NsrStatus::IsisNsrPeer : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NsrStatus::IsisNsrPeer::NsrChgCount> > nsr_chg_count;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NsrStatus::IsisNsrPeer::Uptime> > uptime;
         std::vector<std::shared_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NsrStatus::IsisNsrPeer::UptimeValid> > uptime_valid;
-
-
+        
 }; // Isis::Instances::Instance::NsrStatus::IsisNsrPeer
 
 
@@ -4714,16 +4273,13 @@ class Isis::Instances::Instance::NsrStatus::IsisNsrPeer::FullSyncAchieved : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::NsrStatus::IsisNsrPeer::FullSyncAchieved
 
@@ -4736,16 +4292,13 @@ class Isis::Instances::Instance::NsrStatus::IsisNsrPeer::ManSyncCount : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::NsrStatus::IsisNsrPeer::ManSyncCount
 
@@ -4758,16 +4311,13 @@ class Isis::Instances::Instance::NsrStatus::IsisNsrPeer::NsrChgCount : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Isis::Instances::Instance::NsrStatus::IsisNsrPeer::NsrChgCount
 

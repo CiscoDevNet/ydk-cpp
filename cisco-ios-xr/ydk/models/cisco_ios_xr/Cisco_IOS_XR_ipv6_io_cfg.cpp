@@ -20,7 +20,6 @@ Ipv6Configuration::Ipv6Configuration()
 	,ipv6icmp(nullptr) // presence node
 {
     ipv6_assembler->parent = this;
-    children["ipv6-assembler"] = ipv6_assembler;
 
     yang_name = "ipv6-configuration"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-cfg";
 }
@@ -59,12 +58,12 @@ std::string Ipv6Configuration::get_segment_path() const
 
 }
 
-EntityPath Ipv6Configuration::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Configuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -83,64 +82,38 @@ EntityPath Ipv6Configuration::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6-assembler")
     {
-        if(ipv6_assembler != nullptr)
-        {
-            children["ipv6-assembler"] = ipv6_assembler;
-        }
-        else
+        if(ipv6_assembler == nullptr)
         {
             ipv6_assembler = std::make_shared<Ipv6Configuration::Ipv6Assembler>();
-            ipv6_assembler->parent = this;
-            children["ipv6-assembler"] = ipv6_assembler;
         }
-        return children.at("ipv6-assembler");
+        return ipv6_assembler;
     }
 
     if(child_yang_name == "ipv6icmp")
     {
-        if(ipv6icmp != nullptr)
-        {
-            children["ipv6icmp"] = ipv6icmp;
-        }
-        else
+        if(ipv6icmp == nullptr)
         {
             ipv6icmp = std::make_shared<Ipv6Configuration::Ipv6Icmp>();
-            ipv6icmp->parent = this;
-            children["ipv6icmp"] = ipv6icmp;
         }
-        return children.at("ipv6icmp");
+        return ipv6icmp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Configuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::get_children() const
 {
-    if(children.find("ipv6-assembler") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv6_assembler != nullptr)
     {
-        if(ipv6_assembler != nullptr)
-        {
-            children["ipv6-assembler"] = ipv6_assembler;
-        }
+        children["ipv6-assembler"] = ipv6_assembler;
     }
 
-    if(children.find("ipv6icmp") == children.end())
+    if(ipv6icmp != nullptr)
     {
-        if(ipv6icmp != nullptr)
-        {
-            children["ipv6icmp"] = ipv6icmp;
-        }
+        children["ipv6icmp"] = ipv6icmp;
     }
 
     return children;
@@ -220,7 +193,7 @@ std::string Ipv6Configuration::Ipv6Assembler::get_segment_path() const
 
 }
 
-EntityPath Ipv6Configuration::Ipv6Assembler::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Configuration::Ipv6Assembler::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -245,20 +218,12 @@ EntityPath Ipv6Configuration::Ipv6Assembler::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Ipv6Configuration::Ipv6Assembler::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Configuration::Ipv6Assembler::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6Assembler::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -308,7 +273,7 @@ std::string Ipv6Configuration::Ipv6Icmp::get_segment_path() const
 
 }
 
-EntityPath Ipv6Configuration::Ipv6Icmp::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Configuration::Ipv6Icmp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -333,20 +298,12 @@ EntityPath Ipv6Configuration::Ipv6Icmp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Configuration::Ipv6Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Configuration::Ipv6Icmp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6Icmp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ Macsec::Macsec()
     secy(std::make_shared<Macsec::Secy>())
 {
     secy->parent = this;
-    children["secy"] = secy;
 
     yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-secy-oper";
 }
@@ -43,12 +42,12 @@ std::string Macsec::get_segment_path() const
 
 }
 
-EntityPath Macsec::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Macsec::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "secy")
     {
-        if(secy != nullptr)
-        {
-            children["secy"] = secy;
-        }
-        else
+        if(secy == nullptr)
         {
             secy = std::make_shared<Macsec::Secy>();
-            secy->parent = this;
-            children["secy"] = secy;
         }
-        return children.at("secy");
+        return secy;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
 {
-    if(children.find("secy") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(secy != nullptr)
     {
-        if(secy != nullptr)
-        {
-            children["secy"] = secy;
-        }
+        children["secy"] = secy;
     }
 
     return children;
@@ -132,7 +114,6 @@ Macsec::Secy::Secy()
     interfaces(std::make_shared<Macsec::Secy::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "secy"; yang_parent_name = "macsec";
 }
@@ -161,7 +142,7 @@ std::string Macsec::Secy::get_segment_path() const
 
 }
 
-EntityPath Macsec::Secy::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Secy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -184,41 +165,24 @@ EntityPath Macsec::Secy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::Secy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Macsec::Secy::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Secy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -266,7 +230,7 @@ std::string Macsec::Secy::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Macsec::Secy::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Secy::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -289,15 +253,6 @@ EntityPath Macsec::Secy::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -305,28 +260,24 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Secy::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -343,7 +294,6 @@ Macsec::Secy::Interfaces::Interface::Interface()
     stats(std::make_shared<Macsec::Secy::Interfaces::Interface::Stats>())
 {
     stats->parent = this;
-    children["stats"] = stats;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -374,7 +324,7 @@ std::string Macsec::Secy::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Macsec::Secy::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Secy::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -398,41 +348,24 @@ EntityPath Macsec::Secy::Interfaces::Interface::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stats")
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
-        else
+        if(stats == nullptr)
         {
             stats = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats>();
-            stats->parent = this;
-            children["stats"] = stats;
         }
-        return children.at("stats");
+        return stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Secy::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::get_children() const
 {
-    if(children.find("stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stats != nullptr)
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
+        children["stats"] = stats;
     }
 
     return children;
@@ -452,10 +385,8 @@ Macsec::Secy::Interfaces::Interface::Stats::Stats()
 	,tx_sc_stats(std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats>())
 {
     intf_stats->parent = this;
-    children["intf-stats"] = intf_stats;
 
     tx_sc_stats->parent = this;
-    children["tx-sc-stats"] = tx_sc_stats;
 
     yang_name = "stats"; yang_parent_name = "interface";
 }
@@ -496,7 +427,7 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::get_segment_path() const
 
 }
 
-EntityPath Macsec::Secy::Interfaces::Interface::Stats::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Secy::Interfaces::Interface::Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -519,28 +450,13 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "intf-stats")
     {
-        if(intf_stats != nullptr)
-        {
-            children["intf-stats"] = intf_stats;
-        }
-        else
+        if(intf_stats == nullptr)
         {
             intf_stats = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::IntfStats>();
-            intf_stats->parent = this;
-            children["intf-stats"] = intf_stats;
         }
-        return children.at("intf-stats");
+        return intf_stats;
     }
 
     if(child_yang_name == "rx-sc-stats")
@@ -550,59 +466,43 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats>();
         c->parent = this;
-        rx_sc_stats.push_back(std::move(c));
-        children[segment_path] = rx_sc_stats.back();
-        return children.at(segment_path);
+        rx_sc_stats.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tx-sc-stats")
     {
-        if(tx_sc_stats != nullptr)
-        {
-            children["tx-sc-stats"] = tx_sc_stats;
-        }
-        else
+        if(tx_sc_stats == nullptr)
         {
             tx_sc_stats = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats>();
-            tx_sc_stats->parent = this;
-            children["tx-sc-stats"] = tx_sc_stats;
         }
-        return children.at("tx-sc-stats");
+        return tx_sc_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Secy::Interfaces::Interface::Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::get_children() const
 {
-    if(children.find("intf-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(intf_stats != nullptr)
     {
-        if(intf_stats != nullptr)
-        {
-            children["intf-stats"] = intf_stats;
-        }
+        children["intf-stats"] = intf_stats;
     }
 
     for (auto const & c : rx_sc_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("tx-sc-stats") == children.end())
+    if(tx_sc_stats != nullptr)
     {
-        if(tx_sc_stats != nullptr)
-        {
-            children["tx-sc-stats"] = tx_sc_stats;
-        }
+        children["tx-sc-stats"] = tx_sc_stats;
     }
 
     return children;
@@ -676,7 +576,7 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_segment_p
 
 }
 
-EntityPath Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -711,20 +611,12 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_entity_pat
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -826,7 +718,7 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_segment_p
 
 }
 
-EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -855,20 +747,12 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_entity_pat
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -964,7 +848,7 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_segment_p
 
 }
 
-EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -999,20 +883,12 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_entity_pat
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

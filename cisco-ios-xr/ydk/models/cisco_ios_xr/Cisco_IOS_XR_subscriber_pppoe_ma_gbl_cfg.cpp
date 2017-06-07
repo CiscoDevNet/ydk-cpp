@@ -17,7 +17,6 @@ PppoeCfg::PppoeCfg()
     pppoe_bba_groups(std::make_shared<PppoeCfg::PppoeBbaGroups>())
 {
     pppoe_bba_groups->parent = this;
-    children["pppoe-bba-groups"] = pppoe_bba_groups;
 
     yang_name = "pppoe-cfg"; yang_parent_name = "Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg";
 }
@@ -50,12 +49,12 @@ std::string PppoeCfg::get_segment_path() const
 
 }
 
-EntityPath PppoeCfg::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -72,41 +71,24 @@ EntityPath PppoeCfg::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PppoeCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pppoe-bba-groups")
     {
-        if(pppoe_bba_groups != nullptr)
-        {
-            children["pppoe-bba-groups"] = pppoe_bba_groups;
-        }
-        else
+        if(pppoe_bba_groups == nullptr)
         {
             pppoe_bba_groups = std::make_shared<PppoeCfg::PppoeBbaGroups>();
-            pppoe_bba_groups->parent = this;
-            children["pppoe-bba-groups"] = pppoe_bba_groups;
         }
-        return children.at("pppoe-bba-groups");
+        return pppoe_bba_groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::get_children() const
 {
-    if(children.find("pppoe-bba-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pppoe_bba_groups != nullptr)
     {
-        if(pppoe_bba_groups != nullptr)
-        {
-            children["pppoe-bba-groups"] = pppoe_bba_groups;
-        }
+        children["pppoe-bba-groups"] = pppoe_bba_groups;
     }
 
     return children;
@@ -182,7 +164,7 @@ std::string PppoeCfg::PppoeBbaGroups::get_segment_path() const
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -205,15 +187,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pppoe-bba-group")
     {
         for(auto const & c : pppoe_bba_group)
@@ -221,28 +194,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup>();
         c->parent = this;
-        pppoe_bba_group.push_back(std::move(c));
-        children[segment_path] = pppoe_bba_group.back();
-        return children.at(segment_path);
+        pppoe_bba_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pppoe_bba_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -266,16 +235,12 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PppoeBbaGroup()
 	,tag(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag>())
 {
     control_packets->parent = this;
-    children["control-packets"] = control_packets;
 
     pa_do_delay->parent = this;
-    children["pa-do-delay"] = pa_do_delay;
 
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     tag->parent = this;
-    children["tag"] = tag;
 
     yang_name = "pppoe-bba-group"; yang_parent_name = "pppoe-bba-groups";
 }
@@ -320,7 +285,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_segment_path() const
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -348,110 +313,66 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "control-packets")
     {
-        if(control_packets != nullptr)
-        {
-            children["control-packets"] = control_packets;
-        }
-        else
+        if(control_packets == nullptr)
         {
             control_packets = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets>();
-            control_packets->parent = this;
-            children["control-packets"] = control_packets;
         }
-        return children.at("control-packets");
+        return control_packets;
     }
 
     if(child_yang_name == "pa-do-delay")
     {
-        if(pa_do_delay != nullptr)
-        {
-            children["pa-do-delay"] = pa_do_delay;
-        }
-        else
+        if(pa_do_delay == nullptr)
         {
             pa_do_delay = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay>();
-            pa_do_delay->parent = this;
-            children["pa-do-delay"] = pa_do_delay;
         }
-        return children.at("pa-do-delay");
+        return pa_do_delay;
     }
 
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     if(child_yang_name == "tag")
     {
-        if(tag != nullptr)
-        {
-            children["tag"] = tag;
-        }
-        else
+        if(tag == nullptr)
         {
             tag = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag>();
-            tag->parent = this;
-            children["tag"] = tag;
         }
-        return children.at("tag");
+        return tag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_children() const
 {
-    if(children.find("control-packets") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(control_packets != nullptr)
     {
-        if(control_packets != nullptr)
-        {
-            children["control-packets"] = control_packets;
-        }
+        children["control-packets"] = control_packets;
     }
 
-    if(children.find("pa-do-delay") == children.end())
+    if(pa_do_delay != nullptr)
     {
-        if(pa_do_delay != nullptr)
-        {
-            children["pa-do-delay"] = pa_do_delay;
-        }
+        children["pa-do-delay"] = pa_do_delay;
     }
 
-    if(children.find("sessions") == children.end())
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
-    if(children.find("tag") == children.end())
+    if(tag != nullptr)
     {
-        if(tag != nullptr)
-        {
-            children["tag"] = tag;
-        }
+        children["tag"] = tag;
     }
 
     return children;
@@ -492,13 +413,10 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Tag()
 	,service_name_configureds(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds>())
 {
     padr->parent = this;
-    children["padr"] = padr;
 
     ppp_max_payload->parent = this;
-    children["ppp-max-payload"] = ppp_max_payload;
 
     service_name_configureds->parent = this;
-    children["service-name-configureds"] = service_name_configureds;
 
     yang_name = "tag"; yang_parent_name = "pppoe-bba-group";
 }
@@ -537,7 +455,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_segment_path() con
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -563,87 +481,52 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "padr")
     {
-        if(padr != nullptr)
-        {
-            children["padr"] = padr;
-        }
-        else
+        if(padr == nullptr)
         {
             padr = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr>();
-            padr->parent = this;
-            children["padr"] = padr;
         }
-        return children.at("padr");
+        return padr;
     }
 
     if(child_yang_name == "ppp-max-payload")
     {
-        if(ppp_max_payload != nullptr)
-        {
-            children["ppp-max-payload"] = ppp_max_payload;
-        }
-        else
+        if(ppp_max_payload == nullptr)
         {
             ppp_max_payload = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload>();
-            ppp_max_payload->parent = this;
-            children["ppp-max-payload"] = ppp_max_payload;
         }
-        return children.at("ppp-max-payload");
+        return ppp_max_payload;
     }
 
     if(child_yang_name == "service-name-configureds")
     {
-        if(service_name_configureds != nullptr)
-        {
-            children["service-name-configureds"] = service_name_configureds;
-        }
-        else
+        if(service_name_configureds == nullptr)
         {
             service_name_configureds = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds>();
-            service_name_configureds->parent = this;
-            children["service-name-configureds"] = service_name_configureds;
         }
-        return children.at("service-name-configureds");
+        return service_name_configureds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_children() const
 {
-    if(children.find("padr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(padr != nullptr)
     {
-        if(padr != nullptr)
-        {
-            children["padr"] = padr;
-        }
+        children["padr"] = padr;
     }
 
-    if(children.find("ppp-max-payload") == children.end())
+    if(ppp_max_payload != nullptr)
     {
-        if(ppp_max_payload != nullptr)
-        {
-            children["ppp-max-payload"] = ppp_max_payload;
-        }
+        children["ppp-max-payload"] = ppp_max_payload;
     }
 
-    if(children.find("service-name-configureds") == children.end())
+    if(service_name_configureds != nullptr)
     {
-        if(service_name_configureds != nullptr)
-        {
-            children["service-name-configureds"] = service_name_configureds;
-        }
+        children["service-name-configureds"] = service_name_configureds;
     }
 
     return children;
@@ -699,7 +582,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_segment_path
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -724,20 +607,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_entity_path(E
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -791,7 +666,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -814,15 +689,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds:
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-name-configured")
     {
         for(auto const & c : service_name_configured)
@@ -830,28 +696,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured>();
         c->parent = this;
-        service_name_configured.push_back(std::move(c));
-        children[segment_path] = service_name_configured.back();
-        return children.at(segment_path);
+        service_name_configured.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_name_configured)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -892,7 +754,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -916,20 +778,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds:
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -975,7 +829,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_seg
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1000,20 +854,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_enti
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1120,7 +966,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_segment_path(
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1143,501 +989,304 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_entity_path(En
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interface-limit")
     {
-        if(access_interface_limit != nullptr)
-        {
-            children["access-interface-limit"] = access_interface_limit;
-        }
-        else
+        if(access_interface_limit == nullptr)
         {
             access_interface_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit>();
-            access_interface_limit->parent = this;
-            children["access-interface-limit"] = access_interface_limit;
         }
-        return children.at("access-interface-limit");
+        return access_interface_limit;
     }
 
     if(child_yang_name == "circuit-id-and-remote-id-limit")
     {
-        if(circuit_id_and_remote_id_limit != nullptr)
-        {
-            children["circuit-id-and-remote-id-limit"] = circuit_id_and_remote_id_limit;
-        }
-        else
+        if(circuit_id_and_remote_id_limit == nullptr)
         {
             circuit_id_and_remote_id_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit>();
-            circuit_id_and_remote_id_limit->parent = this;
-            children["circuit-id-and-remote-id-limit"] = circuit_id_and_remote_id_limit;
         }
-        return children.at("circuit-id-and-remote-id-limit");
+        return circuit_id_and_remote_id_limit;
     }
 
     if(child_yang_name == "circuit-id-and-remote-id-throttle")
     {
-        if(circuit_id_and_remote_id_throttle != nullptr)
-        {
-            children["circuit-id-and-remote-id-throttle"] = circuit_id_and_remote_id_throttle;
-        }
-        else
+        if(circuit_id_and_remote_id_throttle == nullptr)
         {
             circuit_id_and_remote_id_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle>();
-            circuit_id_and_remote_id_throttle->parent = this;
-            children["circuit-id-and-remote-id-throttle"] = circuit_id_and_remote_id_throttle;
         }
-        return children.at("circuit-id-and-remote-id-throttle");
+        return circuit_id_and_remote_id_throttle;
     }
 
     if(child_yang_name == "circuit-id-limit")
     {
-        if(circuit_id_limit != nullptr)
-        {
-            children["circuit-id-limit"] = circuit_id_limit;
-        }
-        else
+        if(circuit_id_limit == nullptr)
         {
             circuit_id_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit>();
-            circuit_id_limit->parent = this;
-            children["circuit-id-limit"] = circuit_id_limit;
         }
-        return children.at("circuit-id-limit");
+        return circuit_id_limit;
     }
 
     if(child_yang_name == "circuit-id-throttle")
     {
-        if(circuit_id_throttle != nullptr)
-        {
-            children["circuit-id-throttle"] = circuit_id_throttle;
-        }
-        else
+        if(circuit_id_throttle == nullptr)
         {
             circuit_id_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle>();
-            circuit_id_throttle->parent = this;
-            children["circuit-id-throttle"] = circuit_id_throttle;
         }
-        return children.at("circuit-id-throttle");
+        return circuit_id_throttle;
     }
 
     if(child_yang_name == "inner-vlan-limit")
     {
-        if(inner_vlan_limit != nullptr)
-        {
-            children["inner-vlan-limit"] = inner_vlan_limit;
-        }
-        else
+        if(inner_vlan_limit == nullptr)
         {
             inner_vlan_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit>();
-            inner_vlan_limit->parent = this;
-            children["inner-vlan-limit"] = inner_vlan_limit;
         }
-        return children.at("inner-vlan-limit");
+        return inner_vlan_limit;
     }
 
     if(child_yang_name == "inner-vlan-throttle")
     {
-        if(inner_vlan_throttle != nullptr)
-        {
-            children["inner-vlan-throttle"] = inner_vlan_throttle;
-        }
-        else
+        if(inner_vlan_throttle == nullptr)
         {
             inner_vlan_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle>();
-            inner_vlan_throttle->parent = this;
-            children["inner-vlan-throttle"] = inner_vlan_throttle;
         }
-        return children.at("inner-vlan-throttle");
+        return inner_vlan_throttle;
     }
 
     if(child_yang_name == "mac-access-interface-limit")
     {
-        if(mac_access_interface_limit != nullptr)
-        {
-            children["mac-access-interface-limit"] = mac_access_interface_limit;
-        }
-        else
+        if(mac_access_interface_limit == nullptr)
         {
             mac_access_interface_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit>();
-            mac_access_interface_limit->parent = this;
-            children["mac-access-interface-limit"] = mac_access_interface_limit;
         }
-        return children.at("mac-access-interface-limit");
+        return mac_access_interface_limit;
     }
 
     if(child_yang_name == "mac-access-interface-throttle")
     {
-        if(mac_access_interface_throttle != nullptr)
-        {
-            children["mac-access-interface-throttle"] = mac_access_interface_throttle;
-        }
-        else
+        if(mac_access_interface_throttle == nullptr)
         {
             mac_access_interface_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle>();
-            mac_access_interface_throttle->parent = this;
-            children["mac-access-interface-throttle"] = mac_access_interface_throttle;
         }
-        return children.at("mac-access-interface-throttle");
+        return mac_access_interface_throttle;
     }
 
     if(child_yang_name == "mac-iwf-access-interface-limit")
     {
-        if(mac_iwf_access_interface_limit != nullptr)
-        {
-            children["mac-iwf-access-interface-limit"] = mac_iwf_access_interface_limit;
-        }
-        else
+        if(mac_iwf_access_interface_limit == nullptr)
         {
             mac_iwf_access_interface_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit>();
-            mac_iwf_access_interface_limit->parent = this;
-            children["mac-iwf-access-interface-limit"] = mac_iwf_access_interface_limit;
         }
-        return children.at("mac-iwf-access-interface-limit");
+        return mac_iwf_access_interface_limit;
     }
 
     if(child_yang_name == "mac-iwf-access-interface-throttle")
     {
-        if(mac_iwf_access_interface_throttle != nullptr)
-        {
-            children["mac-iwf-access-interface-throttle"] = mac_iwf_access_interface_throttle;
-        }
-        else
+        if(mac_iwf_access_interface_throttle == nullptr)
         {
             mac_iwf_access_interface_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle>();
-            mac_iwf_access_interface_throttle->parent = this;
-            children["mac-iwf-access-interface-throttle"] = mac_iwf_access_interface_throttle;
         }
-        return children.at("mac-iwf-access-interface-throttle");
+        return mac_iwf_access_interface_throttle;
     }
 
     if(child_yang_name == "mac-iwf-limit")
     {
-        if(mac_iwf_limit != nullptr)
-        {
-            children["mac-iwf-limit"] = mac_iwf_limit;
-        }
-        else
+        if(mac_iwf_limit == nullptr)
         {
             mac_iwf_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit>();
-            mac_iwf_limit->parent = this;
-            children["mac-iwf-limit"] = mac_iwf_limit;
         }
-        return children.at("mac-iwf-limit");
+        return mac_iwf_limit;
     }
 
     if(child_yang_name == "mac-limit")
     {
-        if(mac_limit != nullptr)
-        {
-            children["mac-limit"] = mac_limit;
-        }
-        else
+        if(mac_limit == nullptr)
         {
             mac_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit>();
-            mac_limit->parent = this;
-            children["mac-limit"] = mac_limit;
         }
-        return children.at("mac-limit");
+        return mac_limit;
     }
 
     if(child_yang_name == "mac-throttle")
     {
-        if(mac_throttle != nullptr)
-        {
-            children["mac-throttle"] = mac_throttle;
-        }
-        else
+        if(mac_throttle == nullptr)
         {
             mac_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle>();
-            mac_throttle->parent = this;
-            children["mac-throttle"] = mac_throttle;
         }
-        return children.at("mac-throttle");
+        return mac_throttle;
     }
 
     if(child_yang_name == "max-limit")
     {
-        if(max_limit != nullptr)
-        {
-            children["max-limit"] = max_limit;
-        }
-        else
+        if(max_limit == nullptr)
         {
             max_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit>();
-            max_limit->parent = this;
-            children["max-limit"] = max_limit;
         }
-        return children.at("max-limit");
+        return max_limit;
     }
 
     if(child_yang_name == "outer-vlan-limit")
     {
-        if(outer_vlan_limit != nullptr)
-        {
-            children["outer-vlan-limit"] = outer_vlan_limit;
-        }
-        else
+        if(outer_vlan_limit == nullptr)
         {
             outer_vlan_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit>();
-            outer_vlan_limit->parent = this;
-            children["outer-vlan-limit"] = outer_vlan_limit;
         }
-        return children.at("outer-vlan-limit");
+        return outer_vlan_limit;
     }
 
     if(child_yang_name == "outer-vlan-throttle")
     {
-        if(outer_vlan_throttle != nullptr)
-        {
-            children["outer-vlan-throttle"] = outer_vlan_throttle;
-        }
-        else
+        if(outer_vlan_throttle == nullptr)
         {
             outer_vlan_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle>();
-            outer_vlan_throttle->parent = this;
-            children["outer-vlan-throttle"] = outer_vlan_throttle;
         }
-        return children.at("outer-vlan-throttle");
+        return outer_vlan_throttle;
     }
 
     if(child_yang_name == "remote-id-limit")
     {
-        if(remote_id_limit != nullptr)
-        {
-            children["remote-id-limit"] = remote_id_limit;
-        }
-        else
+        if(remote_id_limit == nullptr)
         {
             remote_id_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit>();
-            remote_id_limit->parent = this;
-            children["remote-id-limit"] = remote_id_limit;
         }
-        return children.at("remote-id-limit");
+        return remote_id_limit;
     }
 
     if(child_yang_name == "remote-id-throttle")
     {
-        if(remote_id_throttle != nullptr)
-        {
-            children["remote-id-throttle"] = remote_id_throttle;
-        }
-        else
+        if(remote_id_throttle == nullptr)
         {
             remote_id_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle>();
-            remote_id_throttle->parent = this;
-            children["remote-id-throttle"] = remote_id_throttle;
         }
-        return children.at("remote-id-throttle");
+        return remote_id_throttle;
     }
 
     if(child_yang_name == "vlan-limit")
     {
-        if(vlan_limit != nullptr)
-        {
-            children["vlan-limit"] = vlan_limit;
-        }
-        else
+        if(vlan_limit == nullptr)
         {
             vlan_limit = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit>();
-            vlan_limit->parent = this;
-            children["vlan-limit"] = vlan_limit;
         }
-        return children.at("vlan-limit");
+        return vlan_limit;
     }
 
     if(child_yang_name == "vlan-throttle")
     {
-        if(vlan_throttle != nullptr)
-        {
-            children["vlan-throttle"] = vlan_throttle;
-        }
-        else
+        if(vlan_throttle == nullptr)
         {
             vlan_throttle = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle>();
-            vlan_throttle->parent = this;
-            children["vlan-throttle"] = vlan_throttle;
         }
-        return children.at("vlan-throttle");
+        return vlan_throttle;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_children() const
 {
-    if(children.find("access-interface-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_interface_limit != nullptr)
     {
-        if(access_interface_limit != nullptr)
-        {
-            children["access-interface-limit"] = access_interface_limit;
-        }
+        children["access-interface-limit"] = access_interface_limit;
     }
 
-    if(children.find("circuit-id-and-remote-id-limit") == children.end())
+    if(circuit_id_and_remote_id_limit != nullptr)
     {
-        if(circuit_id_and_remote_id_limit != nullptr)
-        {
-            children["circuit-id-and-remote-id-limit"] = circuit_id_and_remote_id_limit;
-        }
+        children["circuit-id-and-remote-id-limit"] = circuit_id_and_remote_id_limit;
     }
 
-    if(children.find("circuit-id-and-remote-id-throttle") == children.end())
+    if(circuit_id_and_remote_id_throttle != nullptr)
     {
-        if(circuit_id_and_remote_id_throttle != nullptr)
-        {
-            children["circuit-id-and-remote-id-throttle"] = circuit_id_and_remote_id_throttle;
-        }
+        children["circuit-id-and-remote-id-throttle"] = circuit_id_and_remote_id_throttle;
     }
 
-    if(children.find("circuit-id-limit") == children.end())
+    if(circuit_id_limit != nullptr)
     {
-        if(circuit_id_limit != nullptr)
-        {
-            children["circuit-id-limit"] = circuit_id_limit;
-        }
+        children["circuit-id-limit"] = circuit_id_limit;
     }
 
-    if(children.find("circuit-id-throttle") == children.end())
+    if(circuit_id_throttle != nullptr)
     {
-        if(circuit_id_throttle != nullptr)
-        {
-            children["circuit-id-throttle"] = circuit_id_throttle;
-        }
+        children["circuit-id-throttle"] = circuit_id_throttle;
     }
 
-    if(children.find("inner-vlan-limit") == children.end())
+    if(inner_vlan_limit != nullptr)
     {
-        if(inner_vlan_limit != nullptr)
-        {
-            children["inner-vlan-limit"] = inner_vlan_limit;
-        }
+        children["inner-vlan-limit"] = inner_vlan_limit;
     }
 
-    if(children.find("inner-vlan-throttle") == children.end())
+    if(inner_vlan_throttle != nullptr)
     {
-        if(inner_vlan_throttle != nullptr)
-        {
-            children["inner-vlan-throttle"] = inner_vlan_throttle;
-        }
+        children["inner-vlan-throttle"] = inner_vlan_throttle;
     }
 
-    if(children.find("mac-access-interface-limit") == children.end())
+    if(mac_access_interface_limit != nullptr)
     {
-        if(mac_access_interface_limit != nullptr)
-        {
-            children["mac-access-interface-limit"] = mac_access_interface_limit;
-        }
+        children["mac-access-interface-limit"] = mac_access_interface_limit;
     }
 
-    if(children.find("mac-access-interface-throttle") == children.end())
+    if(mac_access_interface_throttle != nullptr)
     {
-        if(mac_access_interface_throttle != nullptr)
-        {
-            children["mac-access-interface-throttle"] = mac_access_interface_throttle;
-        }
+        children["mac-access-interface-throttle"] = mac_access_interface_throttle;
     }
 
-    if(children.find("mac-iwf-access-interface-limit") == children.end())
+    if(mac_iwf_access_interface_limit != nullptr)
     {
-        if(mac_iwf_access_interface_limit != nullptr)
-        {
-            children["mac-iwf-access-interface-limit"] = mac_iwf_access_interface_limit;
-        }
+        children["mac-iwf-access-interface-limit"] = mac_iwf_access_interface_limit;
     }
 
-    if(children.find("mac-iwf-access-interface-throttle") == children.end())
+    if(mac_iwf_access_interface_throttle != nullptr)
     {
-        if(mac_iwf_access_interface_throttle != nullptr)
-        {
-            children["mac-iwf-access-interface-throttle"] = mac_iwf_access_interface_throttle;
-        }
+        children["mac-iwf-access-interface-throttle"] = mac_iwf_access_interface_throttle;
     }
 
-    if(children.find("mac-iwf-limit") == children.end())
+    if(mac_iwf_limit != nullptr)
     {
-        if(mac_iwf_limit != nullptr)
-        {
-            children["mac-iwf-limit"] = mac_iwf_limit;
-        }
+        children["mac-iwf-limit"] = mac_iwf_limit;
     }
 
-    if(children.find("mac-limit") == children.end())
+    if(mac_limit != nullptr)
     {
-        if(mac_limit != nullptr)
-        {
-            children["mac-limit"] = mac_limit;
-        }
+        children["mac-limit"] = mac_limit;
     }
 
-    if(children.find("mac-throttle") == children.end())
+    if(mac_throttle != nullptr)
     {
-        if(mac_throttle != nullptr)
-        {
-            children["mac-throttle"] = mac_throttle;
-        }
+        children["mac-throttle"] = mac_throttle;
     }
 
-    if(children.find("max-limit") == children.end())
+    if(max_limit != nullptr)
     {
-        if(max_limit != nullptr)
-        {
-            children["max-limit"] = max_limit;
-        }
+        children["max-limit"] = max_limit;
     }
 
-    if(children.find("outer-vlan-limit") == children.end())
+    if(outer_vlan_limit != nullptr)
     {
-        if(outer_vlan_limit != nullptr)
-        {
-            children["outer-vlan-limit"] = outer_vlan_limit;
-        }
+        children["outer-vlan-limit"] = outer_vlan_limit;
     }
 
-    if(children.find("outer-vlan-throttle") == children.end())
+    if(outer_vlan_throttle != nullptr)
     {
-        if(outer_vlan_throttle != nullptr)
-        {
-            children["outer-vlan-throttle"] = outer_vlan_throttle;
-        }
+        children["outer-vlan-throttle"] = outer_vlan_throttle;
     }
 
-    if(children.find("remote-id-limit") == children.end())
+    if(remote_id_limit != nullptr)
     {
-        if(remote_id_limit != nullptr)
-        {
-            children["remote-id-limit"] = remote_id_limit;
-        }
+        children["remote-id-limit"] = remote_id_limit;
     }
 
-    if(children.find("remote-id-throttle") == children.end())
+    if(remote_id_throttle != nullptr)
     {
-        if(remote_id_throttle != nullptr)
-        {
-            children["remote-id-throttle"] = remote_id_throttle;
-        }
+        children["remote-id-throttle"] = remote_id_throttle;
     }
 
-    if(children.find("vlan-limit") == children.end())
+    if(vlan_limit != nullptr)
     {
-        if(vlan_limit != nullptr)
-        {
-            children["vlan-limit"] = vlan_limit;
-        }
+        children["vlan-limit"] = vlan_limit;
     }
 
-    if(children.find("vlan-throttle") == children.end())
+    if(vlan_throttle != nullptr)
     {
-        if(vlan_throttle != nullptr)
-        {
-            children["vlan-throttle"] = vlan_throttle;
-        }
+        children["vlan-throttle"] = vlan_throttle;
     }
 
     return children;
@@ -1684,7 +1333,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1710,20 +1359,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1780,7 +1421,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1806,20 +1447,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle:
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1873,7 +1506,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::ge
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1898,20 +1531,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1964,7 +1589,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInter
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1990,20 +1615,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterf
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2057,7 +1674,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLi
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2082,20 +1699,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLim
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2148,7 +1757,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfac
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2174,20 +1783,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterface
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2241,7 +1842,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::g
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2266,20 +1867,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::ge
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2332,7 +1925,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2358,20 +1951,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle:
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2425,7 +2010,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_seg
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2450,20 +2035,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_enti
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2513,7 +2090,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::g
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2538,20 +2115,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::ge
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2601,7 +2170,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2626,20 +2195,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_e
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2689,7 +2250,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInter
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2714,20 +2275,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterf
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2777,7 +2330,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::g
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2802,20 +2355,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::ge
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2868,7 +2413,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2894,20 +2439,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle:
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2964,7 +2501,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2990,20 +2527,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_e
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3057,7 +2586,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemot
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3082,20 +2611,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemote
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3145,7 +2666,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_se
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3170,20 +2691,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_ent
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3233,7 +2746,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfac
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3258,20 +2771,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterface
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3324,7 +2829,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle:
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3350,20 +2855,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3417,7 +2914,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_seg
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3442,20 +2939,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_enti
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3508,7 +2997,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemot
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3534,20 +3023,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemote
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3598,7 +3079,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_segment
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3622,20 +3103,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_entity_p
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3661,22 +3134,16 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::PaDoDelay()
 	,service_name_substrings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings>())
 {
     circuit_id_strings->parent = this;
-    children["circuit-id-strings"] = circuit_id_strings;
 
     circuit_id_substrings->parent = this;
-    children["circuit-id-substrings"] = circuit_id_substrings;
 
     remote_id_strings->parent = this;
-    children["remote-id-strings"] = remote_id_strings;
 
     remote_id_substrings->parent = this;
-    children["remote-id-substrings"] = remote_id_substrings;
 
     service_name_strings->parent = this;
-    children["service-name-strings"] = service_name_strings;
 
     service_name_substrings->parent = this;
-    children["service-name-substrings"] = service_name_substrings;
 
     yang_name = "pa-do-delay"; yang_parent_name = "pppoe-bba-group";
 }
@@ -3721,7 +3188,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_segment_path
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3747,156 +3214,94 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_entity_path(E
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "circuit-id-strings")
     {
-        if(circuit_id_strings != nullptr)
-        {
-            children["circuit-id-strings"] = circuit_id_strings;
-        }
-        else
+        if(circuit_id_strings == nullptr)
         {
             circuit_id_strings = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings>();
-            circuit_id_strings->parent = this;
-            children["circuit-id-strings"] = circuit_id_strings;
         }
-        return children.at("circuit-id-strings");
+        return circuit_id_strings;
     }
 
     if(child_yang_name == "circuit-id-substrings")
     {
-        if(circuit_id_substrings != nullptr)
-        {
-            children["circuit-id-substrings"] = circuit_id_substrings;
-        }
-        else
+        if(circuit_id_substrings == nullptr)
         {
             circuit_id_substrings = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings>();
-            circuit_id_substrings->parent = this;
-            children["circuit-id-substrings"] = circuit_id_substrings;
         }
-        return children.at("circuit-id-substrings");
+        return circuit_id_substrings;
     }
 
     if(child_yang_name == "remote-id-strings")
     {
-        if(remote_id_strings != nullptr)
-        {
-            children["remote-id-strings"] = remote_id_strings;
-        }
-        else
+        if(remote_id_strings == nullptr)
         {
             remote_id_strings = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings>();
-            remote_id_strings->parent = this;
-            children["remote-id-strings"] = remote_id_strings;
         }
-        return children.at("remote-id-strings");
+        return remote_id_strings;
     }
 
     if(child_yang_name == "remote-id-substrings")
     {
-        if(remote_id_substrings != nullptr)
-        {
-            children["remote-id-substrings"] = remote_id_substrings;
-        }
-        else
+        if(remote_id_substrings == nullptr)
         {
             remote_id_substrings = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings>();
-            remote_id_substrings->parent = this;
-            children["remote-id-substrings"] = remote_id_substrings;
         }
-        return children.at("remote-id-substrings");
+        return remote_id_substrings;
     }
 
     if(child_yang_name == "service-name-strings")
     {
-        if(service_name_strings != nullptr)
-        {
-            children["service-name-strings"] = service_name_strings;
-        }
-        else
+        if(service_name_strings == nullptr)
         {
             service_name_strings = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings>();
-            service_name_strings->parent = this;
-            children["service-name-strings"] = service_name_strings;
         }
-        return children.at("service-name-strings");
+        return service_name_strings;
     }
 
     if(child_yang_name == "service-name-substrings")
     {
-        if(service_name_substrings != nullptr)
-        {
-            children["service-name-substrings"] = service_name_substrings;
-        }
-        else
+        if(service_name_substrings == nullptr)
         {
             service_name_substrings = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings>();
-            service_name_substrings->parent = this;
-            children["service-name-substrings"] = service_name_substrings;
         }
-        return children.at("service-name-substrings");
+        return service_name_substrings;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_children() const
 {
-    if(children.find("circuit-id-strings") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(circuit_id_strings != nullptr)
     {
-        if(circuit_id_strings != nullptr)
-        {
-            children["circuit-id-strings"] = circuit_id_strings;
-        }
+        children["circuit-id-strings"] = circuit_id_strings;
     }
 
-    if(children.find("circuit-id-substrings") == children.end())
+    if(circuit_id_substrings != nullptr)
     {
-        if(circuit_id_substrings != nullptr)
-        {
-            children["circuit-id-substrings"] = circuit_id_substrings;
-        }
+        children["circuit-id-substrings"] = circuit_id_substrings;
     }
 
-    if(children.find("remote-id-strings") == children.end())
+    if(remote_id_strings != nullptr)
     {
-        if(remote_id_strings != nullptr)
-        {
-            children["remote-id-strings"] = remote_id_strings;
-        }
+        children["remote-id-strings"] = remote_id_strings;
     }
 
-    if(children.find("remote-id-substrings") == children.end())
+    if(remote_id_substrings != nullptr)
     {
-        if(remote_id_substrings != nullptr)
-        {
-            children["remote-id-substrings"] = remote_id_substrings;
-        }
+        children["remote-id-substrings"] = remote_id_substrings;
     }
 
-    if(children.find("service-name-strings") == children.end())
+    if(service_name_strings != nullptr)
     {
-        if(service_name_strings != nullptr)
-        {
-            children["service-name-strings"] = service_name_strings;
-        }
+        children["service-name-strings"] = service_name_strings;
     }
 
-    if(children.find("service-name-substrings") == children.end())
+    if(service_name_substrings != nullptr)
     {
-        if(service_name_substrings != nullptr)
-        {
-            children["service-name-substrings"] = service_name_substrings;
-        }
+        children["service-name-substrings"] = service_name_substrings;
     }
 
     return children;
@@ -3956,7 +3361,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrin
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3979,15 +3384,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstring
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-id-substring")
     {
         for(auto const & c : remote_id_substring)
@@ -3995,28 +3391,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Remo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring>();
         c->parent = this;
-        remote_id_substring.push_back(std::move(c));
-        children[segment_path] = remote_id_substring.back();
-        return children.at(segment_path);
+        remote_id_substring.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remote_id_substring)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4060,7 +3452,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrin
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4085,20 +3477,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstring
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4152,7 +3536,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings:
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4175,15 +3559,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-id-string")
     {
         for(auto const & c : remote_id_string)
@@ -4191,28 +3566,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Remo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString>();
         c->parent = this;
-        remote_id_string.push_back(std::move(c));
-        children[segment_path] = remote_id_string.back();
-        return children.at(segment_path);
+        remote_id_string.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remote_id_string)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4256,7 +3627,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings:
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4281,20 +3652,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4348,7 +3711,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrin
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4371,15 +3734,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameString
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-name-string")
     {
         for(auto const & c : service_name_string)
@@ -4387,28 +3741,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Serv
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString>();
         c->parent = this;
-        service_name_string.push_back(std::move(c));
-        children[segment_path] = service_name_string.back();
-        return children.at(segment_path);
+        service_name_string.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_name_string)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4452,7 +3802,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrin
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4477,20 +3827,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameString
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4544,7 +3886,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstri
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4567,15 +3909,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrin
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "circuit-id-substring")
     {
         for(auto const & c : circuit_id_substring)
@@ -4583,28 +3916,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Circ
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring>();
         c->parent = this;
-        circuit_id_substring.push_back(std::move(c));
-        children[segment_path] = circuit_id_substring.back();
-        return children.at(segment_path);
+        circuit_id_substring.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : circuit_id_substring)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4648,7 +3977,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstri
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4673,20 +4002,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrin
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4740,7 +4061,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubst
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4763,15 +4084,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstr
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-name-substring")
     {
         for(auto const & c : service_name_substring)
@@ -4779,28 +4091,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Serv
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring>();
         c->parent = this;
-        service_name_substring.push_back(std::move(c));
-        children[segment_path] = service_name_substring.back();
-        return children.at(segment_path);
+        service_name_substring.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_name_substring)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4844,7 +4152,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubst
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4869,20 +4177,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstr
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4936,7 +4236,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4959,15 +4259,6 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings:
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "circuit-id-string")
     {
         for(auto const & c : circuit_id_string)
@@ -4975,28 +4266,24 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Circ
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString>();
         c->parent = this;
-        circuit_id_string.push_back(std::move(c));
-        children[segment_path] = circuit_id_string.back();
-        return children.at(segment_path);
+        circuit_id_string.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : circuit_id_string)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5040,7 +4327,7 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings
 
 }
 
-EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5065,20 +4352,12 @@ EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings:
 
 std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

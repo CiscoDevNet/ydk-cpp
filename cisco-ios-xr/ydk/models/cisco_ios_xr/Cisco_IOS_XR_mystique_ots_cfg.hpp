@@ -18,23 +18,20 @@ class HardwareModule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Node; //type: HardwareModule::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mystique_ots_cfg::HardwareModule::Node> > node;
-
-
+        
 }; // HardwareModule
 
 
@@ -46,20 +43,17 @@ class HardwareModule::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
-
         class Slot; //type: HardwareModule::Node::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mystique_ots_cfg::HardwareModule::Node::Slot> > slot;
-
-
+        
 }; // HardwareModule::Node
 
 
@@ -71,22 +65,19 @@ class HardwareModule::Node::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slot_id; //type: string
-
         class Amplifier; //type: HardwareModule::Node::Slot::Amplifier
         class Psm; //type: HardwareModule::Node::Slot::Psm
 
         std::shared_ptr<Cisco_IOS_XR_mystique_ots_cfg::HardwareModule::Node::Slot::Amplifier> amplifier;
         std::shared_ptr<Cisco_IOS_XR_mystique_ots_cfg::HardwareModule::Node::Slot::Psm> psm;
-
-
+        
 }; // HardwareModule::Node::Slot
 
 
@@ -98,18 +89,15 @@ class HardwareModule::Node::Slot::Amplifier : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_type; //type: OtsAmplifierNodeEnum
         YLeaf grid_mode; //type: OtsAmplifierGridModeEnum
         YLeaf udc_vlan; //type: uint32
-
-
 
 }; // HardwareModule::Node::Slot::Amplifier
 
@@ -122,17 +110,14 @@ class HardwareModule::Node::Slot::Psm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lockout_from; //type: OtsPsmLockoutFromEnum
         YLeaf manual_switch_to; //type: OtsPsmManualSwitchEnum
-
-
 
 }; // HardwareModule::Node::Slot::Psm
 

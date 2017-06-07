@@ -18,17 +18,15 @@ class Vpdn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Sessions; //type: Vpdn::Sessions
         class TunnelDestinations; //type: Vpdn::TunnelDestinations
@@ -41,8 +39,7 @@ class Vpdn : public Entity
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::TunnelDestinations> tunnel_destinations;
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring> vpdn_mirroring;
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnRedundancy> vpdn_redundancy;
-
-
+        
 }; // Vpdn
 
 
@@ -54,19 +51,16 @@ class Vpdn::Sessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Session; //type: Vpdn::Sessions::Session
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session> > session;
-
-
+        
 }; // Vpdn::Sessions
 
 
@@ -78,17 +72,15 @@ class Vpdn::Sessions::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_label; //type: string
         YLeaf setup_time; //type: uint32
         YLeaf parent_interface_name; //type: string
-
         class Session_; //type: Vpdn::Sessions::Session::Session_
         class L2Tp; //type: Vpdn::Sessions::Session::L2Tp
         class Subscriber; //type: Vpdn::Sessions::Session::Subscriber
@@ -98,8 +90,7 @@ class Vpdn::Sessions::Session : public Entity
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::L2Tp> l2tp;
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Session_> session;
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Subscriber> subscriber;
-
-
+        
 }; // Vpdn::Sessions::Session
 
 
@@ -111,12 +102,11 @@ class Vpdn::Sessions::Session::Session_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf last_change; //type: string
         YLeaf interface_name; //type: string
@@ -126,8 +116,6 @@ class Vpdn::Sessions::Session::Session_ : public Entity
         YLeaf l2tp_session_id; //type: uint16
         YLeaf l2tp_tunnel_id; //type: uint16
         YLeaf srg_slave; //type: boolean
-
-
 
 }; // Vpdn::Sessions::Session::Session_
 
@@ -140,12 +128,11 @@ class Vpdn::Sessions::Session::L2Tp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf local_endpoint; //type: string
         YLeaf remote_endpoint; //type: string
@@ -161,8 +148,6 @@ class Vpdn::Sessions::Session::L2Tp : public Entity
         YLeaf tunnel_assignment_id; //type: string
         YLeaf is_tunnel_authentication_enabled; //type: boolean
 
-
-
 }; // Vpdn::Sessions::Session::L2Tp
 
 
@@ -174,20 +159,17 @@ class Vpdn::Sessions::Session::Subscriber : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nas_port_type; //type: VpdnNasPortEnum
         YLeaf physical_channel_id; //type: uint32
         YLeaf receive_connect_speed; //type: uint64
         YLeaf transmit_connect_speed; //type: uint64
         YLeafList nas_port; //type: list of  uint8
-
-
 
 }; // Vpdn::Sessions::Session::Subscriber
 
@@ -200,12 +182,11 @@ class Vpdn::Sessions::Session::Configuration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf vrf_name; //type: string
@@ -213,12 +194,10 @@ class Vpdn::Sessions::Session::Configuration : public Entity
         YLeaf tos_mode; //type: TosModeEnum
         YLeaf tos; //type: uint8
         YLeaf dsl_line_forwarding; //type: boolean
-
         class VpnId; //type: Vpdn::Sessions::Session::Configuration::VpnId
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Configuration::VpnId> vpn_id;
-
-
+        
 }; // Vpdn::Sessions::Session::Configuration
 
 
@@ -230,17 +209,14 @@ class Vpdn::Sessions::Session::Configuration::VpnId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oui; //type: uint32
         YLeaf index_; //type: uint32
-
-
 
 }; // Vpdn::Sessions::Session::Configuration::VpnId
 
@@ -253,19 +229,16 @@ class Vpdn::TunnelDestinations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TunnelDestination; //type: Vpdn::TunnelDestinations::TunnelDestination
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::TunnelDestinations::TunnelDestination> > tunnel_destination;
-
-
+        
 }; // Vpdn::TunnelDestinations
 
 
@@ -277,12 +250,11 @@ class Vpdn::TunnelDestinations::TunnelDestination : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf address; //type: string
@@ -293,8 +265,6 @@ class Vpdn::TunnelDestinations::TunnelDestination : public Entity
         YLeaf disconnects; //type: uint32
         YLeaf retry; //type: uint32
         YLeaf status_change_time; //type: uint32
-
-
 
 }; // Vpdn::TunnelDestinations::TunnelDestination
 
@@ -307,19 +277,17 @@ class Vpdn::VpdnMirroring : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_not_conn_cnt; //type: uint32
         YLeaf sso_err_cnt; //type: uint32
         YLeaf sso_batch_err_cnt; //type: uint32
         YLeaf alloc_err_cnt; //type: uint32
         YLeaf alloc_cnt; //type: uint32
-
         class QadSendStats; //type: Vpdn::VpdnMirroring::QadSendStats
         class QadRecvStats; //type: Vpdn::VpdnMirroring::QadRecvStats
         class QadSendStatsLastClear; //type: Vpdn::VpdnMirroring::QadSendStatsLastClear
@@ -329,8 +297,7 @@ class Vpdn::VpdnMirroring : public Entity
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring::QadRecvStatsLastClear> qad_recv_stats_last_clear;
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring::QadSendStats> qad_send_stats;
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::VpdnMirroring::QadSendStatsLastClear> qad_send_stats_last_clear;
-
-
+        
 }; // Vpdn::VpdnMirroring
 
 
@@ -342,12 +309,11 @@ class Vpdn::VpdnMirroring::QadSendStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf msgs_sent; //type: uint32
         YLeaf acks_sent; //type: uint32
@@ -368,8 +334,6 @@ class Vpdn::VpdnMirroring::QadSendStats : public Entity
         YLeaf qad_rx_list_count; //type: uint32
         YLeaf qad_rx_list_q_size; //type: uint32
         YLeaf qad_rx_first_seq_number; //type: uint32
-
-
 
 }; // Vpdn::VpdnMirroring::QadSendStats
 
@@ -382,12 +346,11 @@ class Vpdn::VpdnMirroring::QadRecvStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf msgs_recvd; //type: uint32
         YLeaf acks_recvd; //type: uint32
@@ -396,8 +359,6 @@ class Vpdn::VpdnMirroring::QadRecvStats : public Entity
         YLeaf msg_drops; //type: uint32
         YLeaf ooo_drops; //type: uint32
         YLeaf stale_msgs; //type: uint32
-
-
 
 }; // Vpdn::VpdnMirroring::QadRecvStats
 
@@ -410,12 +371,11 @@ class Vpdn::VpdnMirroring::QadSendStatsLastClear : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf msgs_sent; //type: uint32
         YLeaf acks_sent; //type: uint32
@@ -437,8 +397,6 @@ class Vpdn::VpdnMirroring::QadSendStatsLastClear : public Entity
         YLeaf qad_rx_list_q_size; //type: uint32
         YLeaf qad_rx_first_seq_number; //type: uint32
 
-
-
 }; // Vpdn::VpdnMirroring::QadSendStatsLastClear
 
 
@@ -450,12 +408,11 @@ class Vpdn::VpdnMirroring::QadRecvStatsLastClear : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf msgs_recvd; //type: uint32
         YLeaf acks_recvd; //type: uint32
@@ -464,8 +421,6 @@ class Vpdn::VpdnMirroring::QadRecvStatsLastClear : public Entity
         YLeaf msg_drops; //type: uint32
         YLeaf ooo_drops; //type: uint32
         YLeaf stale_msgs; //type: uint32
-
-
 
 }; // Vpdn::VpdnMirroring::QadRecvStatsLastClear
 
@@ -478,12 +433,11 @@ class Vpdn::VpdnRedundancy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_total; //type: uint32
         YLeaf session_synced; //type: uint32
@@ -491,8 +445,6 @@ class Vpdn::VpdnRedundancy : public Entity
         YLeaf start_time; //type: uint64
         YLeaf finish_time; //type: uint64
         YLeaf abort_time; //type: uint64
-
-
 
 }; // Vpdn::VpdnRedundancy
 
@@ -505,19 +457,16 @@ class Vpdn::HistoryFailures : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HistoryFailure; //type: Vpdn::HistoryFailures::HistoryFailure
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::HistoryFailures::HistoryFailure> > history_failure;
-
-
+        
 }; // Vpdn::HistoryFailures
 
 
@@ -529,12 +478,11 @@ class Vpdn::HistoryFailures::HistoryFailure : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf username; //type: string
         YLeaf remote_name; //type: string
@@ -550,8 +498,6 @@ class Vpdn::HistoryFailures::HistoryFailure : public Entity
         YLeaf event_time; //type: string
         YLeaf error_repeat_count; //type: uint16
         YLeaf failure_type; //type: VpdnFailcodeEnum
-
-
 
 }; // Vpdn::HistoryFailures::HistoryFailure
 

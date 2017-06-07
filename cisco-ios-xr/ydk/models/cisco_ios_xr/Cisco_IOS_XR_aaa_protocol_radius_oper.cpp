@@ -14,7 +14,6 @@ Radius::Radius()
     nodes(std::make_shared<Radius::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "radius"; yang_parent_name = "Cisco-IOS-XR-aaa-protocol-radius-oper";
 }
@@ -43,12 +42,12 @@ std::string Radius::get_segment_path() const
 
 }
 
-EntityPath Radius::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Radius::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Radius::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Radius::Nodes::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Radius::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Radius::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Radius::Nodes::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Radius::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -247,22 +216,16 @@ Radius::Nodes::Node::Node()
 	,server_groups(std::make_shared<Radius::Nodes::Node::ServerGroups>())
 {
     accounting->parent = this;
-    children["accounting"] = accounting;
 
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     client->parent = this;
-    children["client"] = client;
 
     dead_criteria->parent = this;
-    children["dead-criteria"] = dead_criteria;
 
     dynamic_authorization->parent = this;
-    children["dynamic-authorization"] = dynamic_authorization;
 
     server_groups->parent = this;
-    children["server-groups"] = server_groups;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -303,7 +266,7 @@ std::string Radius::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -327,156 +290,94 @@ EntityPath Radius::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Radius::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting")
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
-        else
+        if(accounting == nullptr)
         {
             accounting = std::make_shared<Radius::Nodes::Node::Accounting>();
-            accounting->parent = this;
-            children["accounting"] = accounting;
         }
-        return children.at("accounting");
+        return accounting;
     }
 
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Radius::Nodes::Node::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "client")
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
-        else
+        if(client == nullptr)
         {
             client = std::make_shared<Radius::Nodes::Node::Client>();
-            client->parent = this;
-            children["client"] = client;
         }
-        return children.at("client");
+        return client;
     }
 
     if(child_yang_name == "dead-criteria")
     {
-        if(dead_criteria != nullptr)
-        {
-            children["dead-criteria"] = dead_criteria;
-        }
-        else
+        if(dead_criteria == nullptr)
         {
             dead_criteria = std::make_shared<Radius::Nodes::Node::DeadCriteria>();
-            dead_criteria->parent = this;
-            children["dead-criteria"] = dead_criteria;
         }
-        return children.at("dead-criteria");
+        return dead_criteria;
     }
 
     if(child_yang_name == "dynamic-authorization")
     {
-        if(dynamic_authorization != nullptr)
-        {
-            children["dynamic-authorization"] = dynamic_authorization;
-        }
-        else
+        if(dynamic_authorization == nullptr)
         {
             dynamic_authorization = std::make_shared<Radius::Nodes::Node::DynamicAuthorization>();
-            dynamic_authorization->parent = this;
-            children["dynamic-authorization"] = dynamic_authorization;
         }
-        return children.at("dynamic-authorization");
+        return dynamic_authorization;
     }
 
     if(child_yang_name == "server-groups")
     {
-        if(server_groups != nullptr)
-        {
-            children["server-groups"] = server_groups;
-        }
-        else
+        if(server_groups == nullptr)
         {
             server_groups = std::make_shared<Radius::Nodes::Node::ServerGroups>();
-            server_groups->parent = this;
-            children["server-groups"] = server_groups;
         }
-        return children.at("server-groups");
+        return server_groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::get_children() const
 {
-    if(children.find("accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accounting != nullptr)
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
+        children["accounting"] = accounting;
     }
 
-    if(children.find("authentication") == children.end())
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("client") == children.end())
+    if(client != nullptr)
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
+        children["client"] = client;
     }
 
-    if(children.find("dead-criteria") == children.end())
+    if(dead_criteria != nullptr)
     {
-        if(dead_criteria != nullptr)
-        {
-            children["dead-criteria"] = dead_criteria;
-        }
+        children["dead-criteria"] = dead_criteria;
     }
 
-    if(children.find("dynamic-authorization") == children.end())
+    if(dynamic_authorization != nullptr)
     {
-        if(dynamic_authorization != nullptr)
-        {
-            children["dynamic-authorization"] = dynamic_authorization;
-        }
+        children["dynamic-authorization"] = dynamic_authorization;
     }
 
-    if(children.find("server-groups") == children.end())
+    if(server_groups != nullptr)
     {
-        if(server_groups != nullptr)
-        {
-            children["server-groups"] = server_groups;
-        }
+        children["server-groups"] = server_groups;
     }
 
     return children;
@@ -527,7 +428,7 @@ std::string Radius::Nodes::Node::Client::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -553,20 +454,12 @@ EntityPath Radius::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Radius::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -591,7 +484,6 @@ Radius::Nodes::Node::DeadCriteria::DeadCriteria()
     hosts(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts>())
 {
     hosts->parent = this;
-    children["hosts"] = hosts;
 
     yang_name = "dead-criteria"; yang_parent_name = "node";
 }
@@ -620,7 +512,7 @@ std::string Radius::Nodes::Node::DeadCriteria::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::DeadCriteria::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::DeadCriteria::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -643,41 +535,24 @@ EntityPath Radius::Nodes::Node::DeadCriteria::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hosts")
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
-        else
+        if(hosts == nullptr)
         {
             hosts = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts>();
-            hosts->parent = this;
-            children["hosts"] = hosts;
         }
-        return children.at("hosts");
+        return hosts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::DeadCriteria::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::get_children() const
 {
-    if(children.find("hosts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hosts != nullptr)
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
+        children["hosts"] = hosts;
     }
 
     return children;
@@ -725,7 +600,7 @@ std::string Radius::Nodes::Node::DeadCriteria::Hosts::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -748,15 +623,6 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host")
     {
         for(auto const & c : host)
@@ -764,28 +630,24 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host>();
         c->parent = this;
-        host.push_back(std::move(c));
-        children[segment_path] = host.back();
-        return children.at(segment_path);
+        host.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::DeadCriteria::Hosts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -805,10 +667,8 @@ Radius::Nodes::Node::DeadCriteria::Hosts::Host::Host()
 	,tries(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>())
 {
     time->parent = this;
-    children["time"] = time;
 
     tries->parent = this;
-    children["tries"] = tries;
 
     yang_name = "host"; yang_parent_name = "hosts";
 }
@@ -845,7 +705,7 @@ std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_segment_path() c
 
 }
 
-EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -871,64 +731,38 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_entity_path(Entit
 
 std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "time")
     {
-        if(time != nullptr)
-        {
-            children["time"] = time;
-        }
-        else
+        if(time == nullptr)
         {
             time = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time>();
-            time->parent = this;
-            children["time"] = time;
         }
-        return children.at("time");
+        return time;
     }
 
     if(child_yang_name == "tries")
     {
-        if(tries != nullptr)
-        {
-            children["tries"] = tries;
-        }
-        else
+        if(tries == nullptr)
         {
             tries = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>();
-            tries->parent = this;
-            children["tries"] = tries;
         }
-        return children.at("tries");
+        return tries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_children() const
 {
-    if(children.find("time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(time != nullptr)
     {
-        if(time != nullptr)
-        {
-            children["time"] = time;
-        }
+        children["time"] = time;
     }
 
-    if(children.find("tries") == children.end())
+    if(tries != nullptr)
     {
-        if(tries != nullptr)
-        {
-            children["tries"] = tries;
-        }
+        children["tries"] = tries;
     }
 
     return children;
@@ -984,7 +818,7 @@ std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_segment_pa
 
 }
 
-EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1009,20 +843,12 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_entity_path
 
 std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1072,7 +898,7 @@ std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_segment_p
 
 }
 
-EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1097,20 +923,12 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_entity_pat
 
 std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1164,7 +982,7 @@ std::string Radius::Nodes::Node::Authentication::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1187,15 +1005,6 @@ EntityPath Radius::Nodes::Node::Authentication::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication-group")
     {
         for(auto const & c : authentication_group)
@@ -1203,28 +1012,24 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup>();
         c->parent = this;
-        authentication_group.push_back(std::move(c));
-        children[segment_path] = authentication_group.back();
-        return children.at(segment_path);
+        authentication_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : authentication_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1244,7 +1049,6 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::AuthenticationGroup()
     authentication(std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     yang_name = "authentication-group"; yang_parent_name = "authentication";
 }
@@ -1281,7 +1085,7 @@ std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::get_segmen
 
 }
 
-EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1308,41 +1112,24 @@ EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::get_entity_
 
 std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::Authentication::AuthenticationGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
     return children;
@@ -1450,7 +1237,7 @@ std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentica
 
 }
 
-EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1491,20 +1278,12 @@ EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::Authenticat
 
 std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1622,7 +1401,7 @@ std::string Radius::Nodes::Node::Accounting::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::Accounting::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::Accounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1645,15 +1424,6 @@ EntityPath Radius::Nodes::Node::Accounting::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting-group")
     {
         for(auto const & c : accounting_group)
@@ -1661,28 +1431,24 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup>();
         c->parent = this;
-        accounting_group.push_back(std::move(c));
-        children[segment_path] = accounting_group.back();
-        return children.at(segment_path);
+        accounting_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::Accounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : accounting_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1702,7 +1468,6 @@ Radius::Nodes::Node::Accounting::AccountingGroup::AccountingGroup()
     accounting(std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_>())
 {
     accounting->parent = this;
-    children["accounting"] = accounting;
 
     yang_name = "accounting-group"; yang_parent_name = "accounting";
 }
@@ -1739,7 +1504,7 @@ std::string Radius::Nodes::Node::Accounting::AccountingGroup::get_segment_path()
 
 }
 
-EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1766,41 +1531,24 @@ EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::get_entity_path(Ent
 
 std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting")
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
-        else
+        if(accounting == nullptr)
         {
             accounting = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_>();
-            accounting->parent = this;
-            children["accounting"] = accounting;
         }
-        return children.at("accounting");
+        return accounting;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::Accounting::AccountingGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::get_children() const
 {
-    if(children.find("accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accounting != nullptr)
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
+        children["accounting"] = accounting;
     }
 
     return children;
@@ -1902,7 +1650,7 @@ std::string Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_s
 
 }
 
-EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1941,20 +1689,12 @@ EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_en
 
 std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2064,7 +1804,7 @@ std::string Radius::Nodes::Node::ServerGroups::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::ServerGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::ServerGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2087,15 +1827,6 @@ EntityPath Radius::Nodes::Node::ServerGroups::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "server-group")
     {
         for(auto const & c : server_group)
@@ -2103,28 +1834,24 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup>();
         c->parent = this;
-        server_group.push_back(std::move(c));
-        children[segment_path] = server_group.back();
-        return children.at(segment_path);
+        server_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::ServerGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : server_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2187,7 +1914,7 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::get_segment_path() c
 
 }
 
-EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2215,15 +1942,6 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::get_entity_path(Entit
 
 std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "server-group")
     {
         for(auto const & c : server_group)
@@ -2231,28 +1949,24 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_>();
         c->parent = this;
-        server_group.push_back(std::move(c));
-        children[segment_path] = server_group.back();
-        return children.at(segment_path);
+        server_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::ServerGroups::ServerGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : server_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2296,13 +2010,10 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::ServerGroup_()
 	,authorization(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization>())
 {
     accounting->parent = this;
-    children["accounting"] = accounting;
 
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     authorization->parent = this;
-    children["authorization"] = authorization;
 
     yang_name = "server-group"; yang_parent_name = "server-group";
 }
@@ -2347,7 +2058,7 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_se
 
 }
 
-EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2376,87 +2087,52 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_ent
 
 std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting")
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
-        else
+        if(accounting == nullptr)
         {
             accounting = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting>();
-            accounting->parent = this;
-            children["accounting"] = accounting;
         }
-        return children.at("accounting");
+        return accounting;
     }
 
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "authorization")
     {
-        if(authorization != nullptr)
-        {
-            children["authorization"] = authorization;
-        }
-        else
+        if(authorization == nullptr)
         {
             authorization = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization>();
-            authorization->parent = this;
-            children["authorization"] = authorization;
         }
-        return children.at("authorization");
+        return authorization;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_children() const
 {
-    if(children.find("accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accounting != nullptr)
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
+        children["accounting"] = accounting;
     }
 
-    if(children.find("authentication") == children.end())
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("authorization") == children.end())
+    if(authorization != nullptr)
     {
-        if(authorization != nullptr)
-        {
-            children["authorization"] = authorization;
-        }
+        children["authorization"] = authorization;
     }
 
     return children;
@@ -2566,7 +2242,7 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accoun
 
 }
 
-EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2605,20 +2281,12 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Account
 
 std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2772,7 +2440,7 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authen
 
 }
 
-EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2813,20 +2481,12 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authent
 
 std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2958,7 +2618,7 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Author
 
 }
 
-EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2989,20 +2649,12 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authori
 
 std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3076,7 +2728,7 @@ std::string Radius::Nodes::Node::DynamicAuthorization::get_segment_path() const
 
 }
 
-EntityPath Radius::Nodes::Node::DynamicAuthorization::get_entity_path(Entity* ancestor) const
+const EntityPath Radius::Nodes::Node::DynamicAuthorization::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3101,20 +2753,12 @@ EntityPath Radius::Nodes::Node::DynamicAuthorization::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Radius::Nodes::Node::DynamicAuthorization::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorization::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

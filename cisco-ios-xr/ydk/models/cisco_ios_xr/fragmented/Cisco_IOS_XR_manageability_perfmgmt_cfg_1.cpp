@@ -55,7 +55,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Ini
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -84,20 +84,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Init
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -175,7 +167,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Lab
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -204,20 +196,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -295,7 +279,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Ini
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -324,20 +308,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Init
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -415,7 +391,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Lab
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -444,20 +420,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -535,7 +503,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Kee
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -564,20 +532,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keep
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -655,7 +615,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Lab
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -684,20 +644,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -775,7 +727,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Kee
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -804,20 +756,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keep
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -895,7 +839,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Add
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -924,20 +868,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1015,7 +951,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Add
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1044,20 +980,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1094,7 +1022,6 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterface()
     basic_counter_interface_templates(std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates>())
 {
     basic_counter_interface_templates->parent = this;
-    children["basic-counter-interface-templates"] = basic_counter_interface_templates;
 
     yang_name = "basic-counter-interface"; yang_parent_name = "threshold";
 }
@@ -1123,7 +1050,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1146,41 +1073,24 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-counter-interface-templates")
     {
-        if(basic_counter_interface_templates != nullptr)
-        {
-            children["basic-counter-interface-templates"] = basic_counter_interface_templates;
-        }
-        else
+        if(basic_counter_interface_templates == nullptr)
         {
             basic_counter_interface_templates = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates>();
-            basic_counter_interface_templates->parent = this;
-            children["basic-counter-interface-templates"] = basic_counter_interface_templates;
         }
-        return children.at("basic-counter-interface-templates");
+        return basic_counter_interface_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::get_children() const
 {
-    if(children.find("basic-counter-interface-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_counter_interface_templates != nullptr)
     {
-        if(basic_counter_interface_templates != nullptr)
-        {
-            children["basic-counter-interface-templates"] = basic_counter_interface_templates;
-        }
+        children["basic-counter-interface-templates"] = basic_counter_interface_templates;
     }
 
     return children;
@@ -1228,7 +1138,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1251,15 +1161,6 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-counter-interface-template")
     {
         for(auto const & c : basic_counter_interface_template)
@@ -1267,28 +1168,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounter
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate>();
         c->parent = this;
-        basic_counter_interface_template.push_back(std::move(c));
-        children[segment_path] = basic_counter_interface_template.back();
-        return children.at(segment_path);
+        basic_counter_interface_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : basic_counter_interface_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1369,7 +1266,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1396,248 +1293,150 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "in-octets")
     {
-        if(in_octets != nullptr)
-        {
-            children["in-octets"] = in_octets;
-        }
-        else
+        if(in_octets == nullptr)
         {
             in_octets = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets>();
-            in_octets->parent = this;
-            children["in-octets"] = in_octets;
         }
-        return children.at("in-octets");
+        return in_octets;
     }
 
     if(child_yang_name == "in-packets")
     {
-        if(in_packets != nullptr)
-        {
-            children["in-packets"] = in_packets;
-        }
-        else
+        if(in_packets == nullptr)
         {
             in_packets = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets>();
-            in_packets->parent = this;
-            children["in-packets"] = in_packets;
         }
-        return children.at("in-packets");
+        return in_packets;
     }
 
     if(child_yang_name == "input-queue-drops")
     {
-        if(input_queue_drops != nullptr)
-        {
-            children["input-queue-drops"] = input_queue_drops;
-        }
-        else
+        if(input_queue_drops == nullptr)
         {
             input_queue_drops = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops>();
-            input_queue_drops->parent = this;
-            children["input-queue-drops"] = input_queue_drops;
         }
-        return children.at("input-queue-drops");
+        return input_queue_drops;
     }
 
     if(child_yang_name == "input-total-drops")
     {
-        if(input_total_drops != nullptr)
-        {
-            children["input-total-drops"] = input_total_drops;
-        }
-        else
+        if(input_total_drops == nullptr)
         {
             input_total_drops = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops>();
-            input_total_drops->parent = this;
-            children["input-total-drops"] = input_total_drops;
         }
-        return children.at("input-total-drops");
+        return input_total_drops;
     }
 
     if(child_yang_name == "input-total-errors")
     {
-        if(input_total_errors != nullptr)
-        {
-            children["input-total-errors"] = input_total_errors;
-        }
-        else
+        if(input_total_errors == nullptr)
         {
             input_total_errors = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors>();
-            input_total_errors->parent = this;
-            children["input-total-errors"] = input_total_errors;
         }
-        return children.at("input-total-errors");
+        return input_total_errors;
     }
 
     if(child_yang_name == "out-octets")
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
-        else
+        if(out_octets == nullptr)
         {
             out_octets = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets>();
-            out_octets->parent = this;
-            children["out-octets"] = out_octets;
         }
-        return children.at("out-octets");
+        return out_octets;
     }
 
     if(child_yang_name == "out-packets")
     {
-        if(out_packets != nullptr)
-        {
-            children["out-packets"] = out_packets;
-        }
-        else
+        if(out_packets == nullptr)
         {
             out_packets = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets>();
-            out_packets->parent = this;
-            children["out-packets"] = out_packets;
         }
-        return children.at("out-packets");
+        return out_packets;
     }
 
     if(child_yang_name == "output-queue-drops")
     {
-        if(output_queue_drops != nullptr)
-        {
-            children["output-queue-drops"] = output_queue_drops;
-        }
-        else
+        if(output_queue_drops == nullptr)
         {
             output_queue_drops = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops>();
-            output_queue_drops->parent = this;
-            children["output-queue-drops"] = output_queue_drops;
         }
-        return children.at("output-queue-drops");
+        return output_queue_drops;
     }
 
     if(child_yang_name == "output-total-drops")
     {
-        if(output_total_drops != nullptr)
-        {
-            children["output-total-drops"] = output_total_drops;
-        }
-        else
+        if(output_total_drops == nullptr)
         {
             output_total_drops = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops>();
-            output_total_drops->parent = this;
-            children["output-total-drops"] = output_total_drops;
         }
-        return children.at("output-total-drops");
+        return output_total_drops;
     }
 
     if(child_yang_name == "output-total-errors")
     {
-        if(output_total_errors != nullptr)
-        {
-            children["output-total-errors"] = output_total_errors;
-        }
-        else
+        if(output_total_errors == nullptr)
         {
             output_total_errors = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors>();
-            output_total_errors->parent = this;
-            children["output-total-errors"] = output_total_errors;
         }
-        return children.at("output-total-errors");
+        return output_total_errors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::get_children() const
 {
-    if(children.find("in-octets") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(in_octets != nullptr)
     {
-        if(in_octets != nullptr)
-        {
-            children["in-octets"] = in_octets;
-        }
+        children["in-octets"] = in_octets;
     }
 
-    if(children.find("in-packets") == children.end())
+    if(in_packets != nullptr)
     {
-        if(in_packets != nullptr)
-        {
-            children["in-packets"] = in_packets;
-        }
+        children["in-packets"] = in_packets;
     }
 
-    if(children.find("input-queue-drops") == children.end())
+    if(input_queue_drops != nullptr)
     {
-        if(input_queue_drops != nullptr)
-        {
-            children["input-queue-drops"] = input_queue_drops;
-        }
+        children["input-queue-drops"] = input_queue_drops;
     }
 
-    if(children.find("input-total-drops") == children.end())
+    if(input_total_drops != nullptr)
     {
-        if(input_total_drops != nullptr)
-        {
-            children["input-total-drops"] = input_total_drops;
-        }
+        children["input-total-drops"] = input_total_drops;
     }
 
-    if(children.find("input-total-errors") == children.end())
+    if(input_total_errors != nullptr)
     {
-        if(input_total_errors != nullptr)
-        {
-            children["input-total-errors"] = input_total_errors;
-        }
+        children["input-total-errors"] = input_total_errors;
     }
 
-    if(children.find("out-octets") == children.end())
+    if(out_octets != nullptr)
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
+        children["out-octets"] = out_octets;
     }
 
-    if(children.find("out-packets") == children.end())
+    if(out_packets != nullptr)
     {
-        if(out_packets != nullptr)
-        {
-            children["out-packets"] = out_packets;
-        }
+        children["out-packets"] = out_packets;
     }
 
-    if(children.find("output-queue-drops") == children.end())
+    if(output_queue_drops != nullptr)
     {
-        if(output_queue_drops != nullptr)
-        {
-            children["output-queue-drops"] = output_queue_drops;
-        }
+        children["output-queue-drops"] = output_queue_drops;
     }
 
-    if(children.find("output-total-drops") == children.end())
+    if(output_total_drops != nullptr)
     {
-        if(output_total_drops != nullptr)
-        {
-            children["output-total-drops"] = output_total_drops;
-        }
+        children["output-total-drops"] = output_total_drops;
     }
 
-    if(children.find("output-total-errors") == children.end())
+    if(output_total_errors != nullptr)
     {
-        if(output_total_errors != nullptr)
-        {
-            children["output-total-errors"] = output_total_errors;
-        }
+        children["output-total-errors"] = output_total_errors;
     }
 
     return children;
@@ -1709,7 +1508,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1738,20 +1537,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1829,7 +1620,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1858,20 +1649,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1949,7 +1732,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1978,20 +1761,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2069,7 +1844,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2098,20 +1873,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2189,7 +1956,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2218,20 +1985,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2309,7 +2068,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2338,20 +2097,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2429,7 +2180,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2458,20 +2209,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2549,7 +2292,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2578,20 +2321,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2669,7 +2404,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2698,20 +2433,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2789,7 +2516,7 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 
 }
 
-EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2818,20 +2545,12 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2868,7 +2587,6 @@ PerfMgmt::Threshold::Bgp::Bgp()
     bgp_templates(std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates>())
 {
     bgp_templates->parent = this;
-    children["bgp-templates"] = bgp_templates;
 
     yang_name = "bgp"; yang_parent_name = "threshold";
 }
@@ -2897,7 +2615,7 @@ std::string PerfMgmt::Threshold::Bgp::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2920,41 +2638,24 @@ EntityPath PerfMgmt::Threshold::Bgp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bgp-templates")
     {
-        if(bgp_templates != nullptr)
-        {
-            children["bgp-templates"] = bgp_templates;
-        }
-        else
+        if(bgp_templates == nullptr)
         {
             bgp_templates = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates>();
-            bgp_templates->parent = this;
-            children["bgp-templates"] = bgp_templates;
         }
-        return children.at("bgp-templates");
+        return bgp_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::get_children() const
 {
-    if(children.find("bgp-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bgp_templates != nullptr)
     {
-        if(bgp_templates != nullptr)
-        {
-            children["bgp-templates"] = bgp_templates;
-        }
+        children["bgp-templates"] = bgp_templates;
     }
 
     return children;
@@ -3002,7 +2703,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3025,15 +2726,6 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bgp-template")
     {
         for(auto const & c : bgp_template)
@@ -3041,28 +2733,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate>();
         c->parent = this;
-        bgp_template.push_back(std::move(c));
-        children[segment_path] = bgp_template.back();
-        return children.at(segment_path);
+        bgp_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bgp_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3131,7 +2819,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_segment_pat
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3156,202 +2844,122 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_entity_path(
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "conn-dropped")
     {
-        if(conn_dropped != nullptr)
-        {
-            children["conn-dropped"] = conn_dropped;
-        }
-        else
+        if(conn_dropped == nullptr)
         {
             conn_dropped = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped>();
-            conn_dropped->parent = this;
-            children["conn-dropped"] = conn_dropped;
         }
-        return children.at("conn-dropped");
+        return conn_dropped;
     }
 
     if(child_yang_name == "conn-established")
     {
-        if(conn_established != nullptr)
-        {
-            children["conn-established"] = conn_established;
-        }
-        else
+        if(conn_established == nullptr)
         {
             conn_established = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished>();
-            conn_established->parent = this;
-            children["conn-established"] = conn_established;
         }
-        return children.at("conn-established");
+        return conn_established;
     }
 
     if(child_yang_name == "errors-received")
     {
-        if(errors_received != nullptr)
-        {
-            children["errors-received"] = errors_received;
-        }
-        else
+        if(errors_received == nullptr)
         {
             errors_received = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived>();
-            errors_received->parent = this;
-            children["errors-received"] = errors_received;
         }
-        return children.at("errors-received");
+        return errors_received;
     }
 
     if(child_yang_name == "errors-sent")
     {
-        if(errors_sent != nullptr)
-        {
-            children["errors-sent"] = errors_sent;
-        }
-        else
+        if(errors_sent == nullptr)
         {
             errors_sent = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent>();
-            errors_sent->parent = this;
-            children["errors-sent"] = errors_sent;
         }
-        return children.at("errors-sent");
+        return errors_sent;
     }
 
     if(child_yang_name == "input-messages")
     {
-        if(input_messages != nullptr)
-        {
-            children["input-messages"] = input_messages;
-        }
-        else
+        if(input_messages == nullptr)
         {
             input_messages = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages>();
-            input_messages->parent = this;
-            children["input-messages"] = input_messages;
         }
-        return children.at("input-messages");
+        return input_messages;
     }
 
     if(child_yang_name == "input-update-messages")
     {
-        if(input_update_messages != nullptr)
-        {
-            children["input-update-messages"] = input_update_messages;
-        }
-        else
+        if(input_update_messages == nullptr)
         {
             input_update_messages = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages>();
-            input_update_messages->parent = this;
-            children["input-update-messages"] = input_update_messages;
         }
-        return children.at("input-update-messages");
+        return input_update_messages;
     }
 
     if(child_yang_name == "output-messages")
     {
-        if(output_messages != nullptr)
-        {
-            children["output-messages"] = output_messages;
-        }
-        else
+        if(output_messages == nullptr)
         {
             output_messages = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages>();
-            output_messages->parent = this;
-            children["output-messages"] = output_messages;
         }
-        return children.at("output-messages");
+        return output_messages;
     }
 
     if(child_yang_name == "output-update-messages")
     {
-        if(output_update_messages != nullptr)
-        {
-            children["output-update-messages"] = output_update_messages;
-        }
-        else
+        if(output_update_messages == nullptr)
         {
             output_update_messages = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages>();
-            output_update_messages->parent = this;
-            children["output-update-messages"] = output_update_messages;
         }
-        return children.at("output-update-messages");
+        return output_update_messages;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_children() const
 {
-    if(children.find("conn-dropped") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(conn_dropped != nullptr)
     {
-        if(conn_dropped != nullptr)
-        {
-            children["conn-dropped"] = conn_dropped;
-        }
+        children["conn-dropped"] = conn_dropped;
     }
 
-    if(children.find("conn-established") == children.end())
+    if(conn_established != nullptr)
     {
-        if(conn_established != nullptr)
-        {
-            children["conn-established"] = conn_established;
-        }
+        children["conn-established"] = conn_established;
     }
 
-    if(children.find("errors-received") == children.end())
+    if(errors_received != nullptr)
     {
-        if(errors_received != nullptr)
-        {
-            children["errors-received"] = errors_received;
-        }
+        children["errors-received"] = errors_received;
     }
 
-    if(children.find("errors-sent") == children.end())
+    if(errors_sent != nullptr)
     {
-        if(errors_sent != nullptr)
-        {
-            children["errors-sent"] = errors_sent;
-        }
+        children["errors-sent"] = errors_sent;
     }
 
-    if(children.find("input-messages") == children.end())
+    if(input_messages != nullptr)
     {
-        if(input_messages != nullptr)
-        {
-            children["input-messages"] = input_messages;
-        }
+        children["input-messages"] = input_messages;
     }
 
-    if(children.find("input-update-messages") == children.end())
+    if(input_update_messages != nullptr)
     {
-        if(input_update_messages != nullptr)
-        {
-            children["input-update-messages"] = input_update_messages;
-        }
+        children["input-update-messages"] = input_update_messages;
     }
 
-    if(children.find("output-messages") == children.end())
+    if(output_messages != nullptr)
     {
-        if(output_messages != nullptr)
-        {
-            children["output-messages"] = output_messages;
-        }
+        children["output-messages"] = output_messages;
     }
 
-    if(children.find("output-update-messages") == children.end())
+    if(output_update_messages != nullptr)
     {
-        if(output_update_messages != nullptr)
-        {
-            children["output-update-messages"] = output_update_messages;
-        }
+        children["output-update-messages"] = output_update_messages;
     }
 
     return children;
@@ -3415,7 +3023,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMes
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3444,20 +3052,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMess
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3535,7 +3135,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived:
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3564,20 +3164,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3655,7 +3247,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3684,20 +3276,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished:
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3775,7 +3359,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages:
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3804,20 +3388,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3895,7 +3471,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::ge
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3924,20 +3500,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4015,7 +3583,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMess
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4044,20 +3612,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessa
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4135,7 +3695,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4164,20 +3724,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4255,7 +3807,7 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::
 
 }
 
-EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4284,20 +3836,12 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::g
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4334,7 +3878,6 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2Protocol()
     ospfv2_protocol_templates(std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates>())
 {
     ospfv2_protocol_templates->parent = this;
-    children["ospfv2-protocol-templates"] = ospfv2_protocol_templates;
 
     yang_name = "ospfv2-protocol"; yang_parent_name = "threshold";
 }
@@ -4363,7 +3906,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4386,41 +3929,24 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospfv2-protocol-templates")
     {
-        if(ospfv2_protocol_templates != nullptr)
-        {
-            children["ospfv2-protocol-templates"] = ospfv2_protocol_templates;
-        }
-        else
+        if(ospfv2_protocol_templates == nullptr)
         {
             ospfv2_protocol_templates = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates>();
-            ospfv2_protocol_templates->parent = this;
-            children["ospfv2-protocol-templates"] = ospfv2_protocol_templates;
         }
-        return children.at("ospfv2-protocol-templates");
+        return ospfv2_protocol_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::get_children() const
 {
-    if(children.find("ospfv2-protocol-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ospfv2_protocol_templates != nullptr)
     {
-        if(ospfv2_protocol_templates != nullptr)
-        {
-            children["ospfv2-protocol-templates"] = ospfv2_protocol_templates;
-        }
+        children["ospfv2-protocol-templates"] = ospfv2_protocol_templates;
     }
 
     return children;
@@ -4468,7 +3994,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_se
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4491,15 +4017,6 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_ent
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospfv2-protocol-template")
     {
         for(auto const & c : ospfv2_protocol_template)
@@ -4507,28 +4024,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTempl
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate>();
         c->parent = this;
-        ospfv2_protocol_template.push_back(std::move(c));
-        children[segment_path] = ospfv2_protocol_template.back();
-        return children.at(segment_path);
+        ospfv2_protocol_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ospfv2_protocol_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4636,7 +4149,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4661,501 +4174,304 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checksum-errors")
     {
-        if(checksum_errors != nullptr)
-        {
-            children["checksum-errors"] = checksum_errors;
-        }
-        else
+        if(checksum_errors == nullptr)
         {
             checksum_errors = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors>();
-            checksum_errors->parent = this;
-            children["checksum-errors"] = checksum_errors;
         }
-        return children.at("checksum-errors");
+        return checksum_errors;
     }
 
     if(child_yang_name == "input-db-ds")
     {
-        if(input_db_ds != nullptr)
-        {
-            children["input-db-ds"] = input_db_ds;
-        }
-        else
+        if(input_db_ds == nullptr)
         {
             input_db_ds = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs>();
-            input_db_ds->parent = this;
-            children["input-db-ds"] = input_db_ds;
         }
-        return children.at("input-db-ds");
+        return input_db_ds;
     }
 
     if(child_yang_name == "input-db-ds-lsa")
     {
-        if(input_db_ds_lsa != nullptr)
-        {
-            children["input-db-ds-lsa"] = input_db_ds_lsa;
-        }
-        else
+        if(input_db_ds_lsa == nullptr)
         {
             input_db_ds_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa>();
-            input_db_ds_lsa->parent = this;
-            children["input-db-ds-lsa"] = input_db_ds_lsa;
         }
-        return children.at("input-db-ds-lsa");
+        return input_db_ds_lsa;
     }
 
     if(child_yang_name == "input-hello-packets")
     {
-        if(input_hello_packets != nullptr)
-        {
-            children["input-hello-packets"] = input_hello_packets;
-        }
-        else
+        if(input_hello_packets == nullptr)
         {
             input_hello_packets = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets>();
-            input_hello_packets->parent = this;
-            children["input-hello-packets"] = input_hello_packets;
         }
-        return children.at("input-hello-packets");
+        return input_hello_packets;
     }
 
     if(child_yang_name == "input-ls-requests")
     {
-        if(input_ls_requests != nullptr)
-        {
-            children["input-ls-requests"] = input_ls_requests;
-        }
-        else
+        if(input_ls_requests == nullptr)
         {
             input_ls_requests = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests>();
-            input_ls_requests->parent = this;
-            children["input-ls-requests"] = input_ls_requests;
         }
-        return children.at("input-ls-requests");
+        return input_ls_requests;
     }
 
     if(child_yang_name == "input-ls-requests-lsa")
     {
-        if(input_ls_requests_lsa != nullptr)
-        {
-            children["input-ls-requests-lsa"] = input_ls_requests_lsa;
-        }
-        else
+        if(input_ls_requests_lsa == nullptr)
         {
             input_ls_requests_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa>();
-            input_ls_requests_lsa->parent = this;
-            children["input-ls-requests-lsa"] = input_ls_requests_lsa;
         }
-        return children.at("input-ls-requests-lsa");
+        return input_ls_requests_lsa;
     }
 
     if(child_yang_name == "input-lsa-acks")
     {
-        if(input_lsa_acks != nullptr)
-        {
-            children["input-lsa-acks"] = input_lsa_acks;
-        }
-        else
+        if(input_lsa_acks == nullptr)
         {
             input_lsa_acks = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks>();
-            input_lsa_acks->parent = this;
-            children["input-lsa-acks"] = input_lsa_acks;
         }
-        return children.at("input-lsa-acks");
+        return input_lsa_acks;
     }
 
     if(child_yang_name == "input-lsa-acks-lsa")
     {
-        if(input_lsa_acks_lsa != nullptr)
-        {
-            children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
-        }
-        else
+        if(input_lsa_acks_lsa == nullptr)
         {
             input_lsa_acks_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa>();
-            input_lsa_acks_lsa->parent = this;
-            children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
         }
-        return children.at("input-lsa-acks-lsa");
+        return input_lsa_acks_lsa;
     }
 
     if(child_yang_name == "input-lsa-updates")
     {
-        if(input_lsa_updates != nullptr)
-        {
-            children["input-lsa-updates"] = input_lsa_updates;
-        }
-        else
+        if(input_lsa_updates == nullptr)
         {
             input_lsa_updates = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates>();
-            input_lsa_updates->parent = this;
-            children["input-lsa-updates"] = input_lsa_updates;
         }
-        return children.at("input-lsa-updates");
+        return input_lsa_updates;
     }
 
     if(child_yang_name == "input-lsa-updates-lsa")
     {
-        if(input_lsa_updates_lsa != nullptr)
-        {
-            children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
-        }
-        else
+        if(input_lsa_updates_lsa == nullptr)
         {
             input_lsa_updates_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa>();
-            input_lsa_updates_lsa->parent = this;
-            children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
         }
-        return children.at("input-lsa-updates-lsa");
+        return input_lsa_updates_lsa;
     }
 
     if(child_yang_name == "input-packets")
     {
-        if(input_packets != nullptr)
-        {
-            children["input-packets"] = input_packets;
-        }
-        else
+        if(input_packets == nullptr)
         {
             input_packets = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets>();
-            input_packets->parent = this;
-            children["input-packets"] = input_packets;
         }
-        return children.at("input-packets");
+        return input_packets;
     }
 
     if(child_yang_name == "output-db-ds")
     {
-        if(output_db_ds != nullptr)
-        {
-            children["output-db-ds"] = output_db_ds;
-        }
-        else
+        if(output_db_ds == nullptr)
         {
             output_db_ds = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs>();
-            output_db_ds->parent = this;
-            children["output-db-ds"] = output_db_ds;
         }
-        return children.at("output-db-ds");
+        return output_db_ds;
     }
 
     if(child_yang_name == "output-db-ds-lsa")
     {
-        if(output_db_ds_lsa != nullptr)
-        {
-            children["output-db-ds-lsa"] = output_db_ds_lsa;
-        }
-        else
+        if(output_db_ds_lsa == nullptr)
         {
             output_db_ds_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa>();
-            output_db_ds_lsa->parent = this;
-            children["output-db-ds-lsa"] = output_db_ds_lsa;
         }
-        return children.at("output-db-ds-lsa");
+        return output_db_ds_lsa;
     }
 
     if(child_yang_name == "output-hello-packets")
     {
-        if(output_hello_packets != nullptr)
-        {
-            children["output-hello-packets"] = output_hello_packets;
-        }
-        else
+        if(output_hello_packets == nullptr)
         {
             output_hello_packets = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets>();
-            output_hello_packets->parent = this;
-            children["output-hello-packets"] = output_hello_packets;
         }
-        return children.at("output-hello-packets");
+        return output_hello_packets;
     }
 
     if(child_yang_name == "output-ls-requests")
     {
-        if(output_ls_requests != nullptr)
-        {
-            children["output-ls-requests"] = output_ls_requests;
-        }
-        else
+        if(output_ls_requests == nullptr)
         {
             output_ls_requests = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests>();
-            output_ls_requests->parent = this;
-            children["output-ls-requests"] = output_ls_requests;
         }
-        return children.at("output-ls-requests");
+        return output_ls_requests;
     }
 
     if(child_yang_name == "output-ls-requests-lsa")
     {
-        if(output_ls_requests_lsa != nullptr)
-        {
-            children["output-ls-requests-lsa"] = output_ls_requests_lsa;
-        }
-        else
+        if(output_ls_requests_lsa == nullptr)
         {
             output_ls_requests_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa>();
-            output_ls_requests_lsa->parent = this;
-            children["output-ls-requests-lsa"] = output_ls_requests_lsa;
         }
-        return children.at("output-ls-requests-lsa");
+        return output_ls_requests_lsa;
     }
 
     if(child_yang_name == "output-lsa-acks")
     {
-        if(output_lsa_acks != nullptr)
-        {
-            children["output-lsa-acks"] = output_lsa_acks;
-        }
-        else
+        if(output_lsa_acks == nullptr)
         {
             output_lsa_acks = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks>();
-            output_lsa_acks->parent = this;
-            children["output-lsa-acks"] = output_lsa_acks;
         }
-        return children.at("output-lsa-acks");
+        return output_lsa_acks;
     }
 
     if(child_yang_name == "output-lsa-acks-lsa")
     {
-        if(output_lsa_acks_lsa != nullptr)
-        {
-            children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
-        }
-        else
+        if(output_lsa_acks_lsa == nullptr)
         {
             output_lsa_acks_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa>();
-            output_lsa_acks_lsa->parent = this;
-            children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
         }
-        return children.at("output-lsa-acks-lsa");
+        return output_lsa_acks_lsa;
     }
 
     if(child_yang_name == "output-lsa-updates")
     {
-        if(output_lsa_updates != nullptr)
-        {
-            children["output-lsa-updates"] = output_lsa_updates;
-        }
-        else
+        if(output_lsa_updates == nullptr)
         {
             output_lsa_updates = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates>();
-            output_lsa_updates->parent = this;
-            children["output-lsa-updates"] = output_lsa_updates;
         }
-        return children.at("output-lsa-updates");
+        return output_lsa_updates;
     }
 
     if(child_yang_name == "output-lsa-updates-lsa")
     {
-        if(output_lsa_updates_lsa != nullptr)
-        {
-            children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
-        }
-        else
+        if(output_lsa_updates_lsa == nullptr)
         {
             output_lsa_updates_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa>();
-            output_lsa_updates_lsa->parent = this;
-            children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
         }
-        return children.at("output-lsa-updates-lsa");
+        return output_lsa_updates_lsa;
     }
 
     if(child_yang_name == "output-packets")
     {
-        if(output_packets != nullptr)
-        {
-            children["output-packets"] = output_packets;
-        }
-        else
+        if(output_packets == nullptr)
         {
             output_packets = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets>();
-            output_packets->parent = this;
-            children["output-packets"] = output_packets;
         }
-        return children.at("output-packets");
+        return output_packets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::get_children() const
 {
-    if(children.find("checksum-errors") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(checksum_errors != nullptr)
     {
-        if(checksum_errors != nullptr)
-        {
-            children["checksum-errors"] = checksum_errors;
-        }
+        children["checksum-errors"] = checksum_errors;
     }
 
-    if(children.find("input-db-ds") == children.end())
+    if(input_db_ds != nullptr)
     {
-        if(input_db_ds != nullptr)
-        {
-            children["input-db-ds"] = input_db_ds;
-        }
+        children["input-db-ds"] = input_db_ds;
     }
 
-    if(children.find("input-db-ds-lsa") == children.end())
+    if(input_db_ds_lsa != nullptr)
     {
-        if(input_db_ds_lsa != nullptr)
-        {
-            children["input-db-ds-lsa"] = input_db_ds_lsa;
-        }
+        children["input-db-ds-lsa"] = input_db_ds_lsa;
     }
 
-    if(children.find("input-hello-packets") == children.end())
+    if(input_hello_packets != nullptr)
     {
-        if(input_hello_packets != nullptr)
-        {
-            children["input-hello-packets"] = input_hello_packets;
-        }
+        children["input-hello-packets"] = input_hello_packets;
     }
 
-    if(children.find("input-ls-requests") == children.end())
+    if(input_ls_requests != nullptr)
     {
-        if(input_ls_requests != nullptr)
-        {
-            children["input-ls-requests"] = input_ls_requests;
-        }
+        children["input-ls-requests"] = input_ls_requests;
     }
 
-    if(children.find("input-ls-requests-lsa") == children.end())
+    if(input_ls_requests_lsa != nullptr)
     {
-        if(input_ls_requests_lsa != nullptr)
-        {
-            children["input-ls-requests-lsa"] = input_ls_requests_lsa;
-        }
+        children["input-ls-requests-lsa"] = input_ls_requests_lsa;
     }
 
-    if(children.find("input-lsa-acks") == children.end())
+    if(input_lsa_acks != nullptr)
     {
-        if(input_lsa_acks != nullptr)
-        {
-            children["input-lsa-acks"] = input_lsa_acks;
-        }
+        children["input-lsa-acks"] = input_lsa_acks;
     }
 
-    if(children.find("input-lsa-acks-lsa") == children.end())
+    if(input_lsa_acks_lsa != nullptr)
     {
-        if(input_lsa_acks_lsa != nullptr)
-        {
-            children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
-        }
+        children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
     }
 
-    if(children.find("input-lsa-updates") == children.end())
+    if(input_lsa_updates != nullptr)
     {
-        if(input_lsa_updates != nullptr)
-        {
-            children["input-lsa-updates"] = input_lsa_updates;
-        }
+        children["input-lsa-updates"] = input_lsa_updates;
     }
 
-    if(children.find("input-lsa-updates-lsa") == children.end())
+    if(input_lsa_updates_lsa != nullptr)
     {
-        if(input_lsa_updates_lsa != nullptr)
-        {
-            children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
-        }
+        children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
     }
 
-    if(children.find("input-packets") == children.end())
+    if(input_packets != nullptr)
     {
-        if(input_packets != nullptr)
-        {
-            children["input-packets"] = input_packets;
-        }
+        children["input-packets"] = input_packets;
     }
 
-    if(children.find("output-db-ds") == children.end())
+    if(output_db_ds != nullptr)
     {
-        if(output_db_ds != nullptr)
-        {
-            children["output-db-ds"] = output_db_ds;
-        }
+        children["output-db-ds"] = output_db_ds;
     }
 
-    if(children.find("output-db-ds-lsa") == children.end())
+    if(output_db_ds_lsa != nullptr)
     {
-        if(output_db_ds_lsa != nullptr)
-        {
-            children["output-db-ds-lsa"] = output_db_ds_lsa;
-        }
+        children["output-db-ds-lsa"] = output_db_ds_lsa;
     }
 
-    if(children.find("output-hello-packets") == children.end())
+    if(output_hello_packets != nullptr)
     {
-        if(output_hello_packets != nullptr)
-        {
-            children["output-hello-packets"] = output_hello_packets;
-        }
+        children["output-hello-packets"] = output_hello_packets;
     }
 
-    if(children.find("output-ls-requests") == children.end())
+    if(output_ls_requests != nullptr)
     {
-        if(output_ls_requests != nullptr)
-        {
-            children["output-ls-requests"] = output_ls_requests;
-        }
+        children["output-ls-requests"] = output_ls_requests;
     }
 
-    if(children.find("output-ls-requests-lsa") == children.end())
+    if(output_ls_requests_lsa != nullptr)
     {
-        if(output_ls_requests_lsa != nullptr)
-        {
-            children["output-ls-requests-lsa"] = output_ls_requests_lsa;
-        }
+        children["output-ls-requests-lsa"] = output_ls_requests_lsa;
     }
 
-    if(children.find("output-lsa-acks") == children.end())
+    if(output_lsa_acks != nullptr)
     {
-        if(output_lsa_acks != nullptr)
-        {
-            children["output-lsa-acks"] = output_lsa_acks;
-        }
+        children["output-lsa-acks"] = output_lsa_acks;
     }
 
-    if(children.find("output-lsa-acks-lsa") == children.end())
+    if(output_lsa_acks_lsa != nullptr)
     {
-        if(output_lsa_acks_lsa != nullptr)
-        {
-            children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
-        }
+        children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
     }
 
-    if(children.find("output-lsa-updates") == children.end())
+    if(output_lsa_updates != nullptr)
     {
-        if(output_lsa_updates != nullptr)
-        {
-            children["output-lsa-updates"] = output_lsa_updates;
-        }
+        children["output-lsa-updates"] = output_lsa_updates;
     }
 
-    if(children.find("output-lsa-updates-lsa") == children.end())
+    if(output_lsa_updates_lsa != nullptr)
     {
-        if(output_lsa_updates_lsa != nullptr)
-        {
-            children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
-        }
+        children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
     }
 
-    if(children.find("output-packets") == children.end())
+    if(output_packets != nullptr)
     {
-        if(output_packets != nullptr)
-        {
-            children["output-packets"] = output_packets;
-        }
+        children["output-packets"] = output_packets;
     }
 
     return children;
@@ -5219,7 +4535,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5248,20 +4564,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5339,7 +4647,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5368,20 +4676,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5459,7 +4759,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5488,20 +4788,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5579,7 +4871,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5608,20 +4900,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5699,7 +4983,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5728,20 +5012,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5819,7 +5095,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5848,20 +5124,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5939,7 +5207,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5968,20 +5236,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6059,7 +5319,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6088,20 +5348,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6179,7 +5431,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6208,20 +5460,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6299,7 +5543,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6328,20 +5572,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6419,7 +5655,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6448,20 +5684,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6539,7 +5767,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6568,20 +5796,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6659,7 +5879,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6688,20 +5908,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6779,7 +5991,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6808,20 +6020,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6899,7 +6103,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6928,20 +6132,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7019,7 +6215,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7048,20 +6244,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7139,7 +6327,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7168,20 +6356,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7259,7 +6439,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7288,20 +6468,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7379,7 +6551,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7408,20 +6580,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7499,7 +6663,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7528,20 +6692,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7619,7 +6775,7 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7648,20 +6804,12 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7698,7 +6846,6 @@ PerfMgmt::Threshold::CpuNode::CpuNode()
     cpu_node_templates(std::make_shared<PerfMgmt::Threshold::CpuNode::CpuNodeTemplates>())
 {
     cpu_node_templates->parent = this;
-    children["cpu-node-templates"] = cpu_node_templates;
 
     yang_name = "cpu-node"; yang_parent_name = "threshold";
 }
@@ -7727,7 +6874,7 @@ std::string PerfMgmt::Threshold::CpuNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::CpuNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::CpuNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7750,41 +6897,24 @@ EntityPath PerfMgmt::Threshold::CpuNode::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::CpuNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cpu-node-templates")
     {
-        if(cpu_node_templates != nullptr)
-        {
-            children["cpu-node-templates"] = cpu_node_templates;
-        }
-        else
+        if(cpu_node_templates == nullptr)
         {
             cpu_node_templates = std::make_shared<PerfMgmt::Threshold::CpuNode::CpuNodeTemplates>();
-            cpu_node_templates->parent = this;
-            children["cpu-node-templates"] = cpu_node_templates;
         }
-        return children.at("cpu-node-templates");
+        return cpu_node_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::CpuNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::get_children() const
 {
-    if(children.find("cpu-node-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cpu_node_templates != nullptr)
     {
-        if(cpu_node_templates != nullptr)
-        {
-            children["cpu-node-templates"] = cpu_node_templates;
-        }
+        children["cpu-node-templates"] = cpu_node_templates;
     }
 
     return children;
@@ -7832,7 +6962,7 @@ std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_segment_path() c
 
 }
 
-EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7855,15 +6985,6 @@ EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_entity_path(Entit
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cpu-node-template")
     {
         for(auto const & c : cpu_node_template)
@@ -7871,28 +6992,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate>();
         c->parent = this;
-        cpu_node_template.push_back(std::move(c));
-        children[segment_path] = cpu_node_template.back();
-        return children.at(segment_path);
+        cpu_node_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cpu_node_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7943,7 +7060,7 @@ std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get
 
 }
 
-EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7968,64 +7085,38 @@ EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "average-cpu-used")
     {
-        if(average_cpu_used != nullptr)
-        {
-            children["average-cpu-used"] = average_cpu_used;
-        }
-        else
+        if(average_cpu_used == nullptr)
         {
             average_cpu_used = std::make_shared<PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed>();
-            average_cpu_used->parent = this;
-            children["average-cpu-used"] = average_cpu_used;
         }
-        return children.at("average-cpu-used");
+        return average_cpu_used;
     }
 
     if(child_yang_name == "no-processes")
     {
-        if(no_processes != nullptr)
-        {
-            children["no-processes"] = no_processes;
-        }
-        else
+        if(no_processes == nullptr)
         {
             no_processes = std::make_shared<PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses>();
-            no_processes->parent = this;
-            children["no-processes"] = no_processes;
         }
-        return children.at("no-processes");
+        return no_processes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_children() const
 {
-    if(children.find("average-cpu-used") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(average_cpu_used != nullptr)
     {
-        if(average_cpu_used != nullptr)
-        {
-            children["average-cpu-used"] = average_cpu_used;
-        }
+        children["average-cpu-used"] = average_cpu_used;
     }
 
-    if(children.find("no-processes") == children.end())
+    if(no_processes != nullptr)
     {
-        if(no_processes != nullptr)
-        {
-            children["no-processes"] = no_processes;
-        }
+        children["no-processes"] = no_processes;
     }
 
     return children;
@@ -8089,7 +7180,7 @@ std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::Ave
 
 }
 
-EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8118,20 +7209,12 @@ EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::Aver
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8209,7 +7292,7 @@ std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoP
 
 }
 
-EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8238,20 +7321,12 @@ EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoPr
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8288,7 +7363,6 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterface()
     data_rate_interface_templates(std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates>())
 {
     data_rate_interface_templates->parent = this;
-    children["data-rate-interface-templates"] = data_rate_interface_templates;
 
     yang_name = "data-rate-interface"; yang_parent_name = "threshold";
 }
@@ -8317,7 +7391,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8340,41 +7414,24 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data-rate-interface-templates")
     {
-        if(data_rate_interface_templates != nullptr)
-        {
-            children["data-rate-interface-templates"] = data_rate_interface_templates;
-        }
-        else
+        if(data_rate_interface_templates == nullptr)
         {
             data_rate_interface_templates = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates>();
-            data_rate_interface_templates->parent = this;
-            children["data-rate-interface-templates"] = data_rate_interface_templates;
         }
-        return children.at("data-rate-interface-templates");
+        return data_rate_interface_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::get_children() const
 {
-    if(children.find("data-rate-interface-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data_rate_interface_templates != nullptr)
     {
-        if(data_rate_interface_templates != nullptr)
-        {
-            children["data-rate-interface-templates"] = data_rate_interface_templates;
-        }
+        children["data-rate-interface-templates"] = data_rate_interface_templates;
     }
 
     return children;
@@ -8422,7 +7479,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8445,15 +7502,6 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::g
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data-rate-interface-template")
     {
         for(auto const & c : data_rate_interface_template)
@@ -8461,28 +7509,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate>();
         c->parent = this;
-        data_rate_interface_template.push_back(std::move(c));
-        children[segment_path] = data_rate_interface_template.back();
-        return children.at(segment_path);
+        data_rate_interface_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : data_rate_interface_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8560,7 +7604,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8587,225 +7631,136 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "input-data-rate")
     {
-        if(input_data_rate != nullptr)
-        {
-            children["input-data-rate"] = input_data_rate;
-        }
-        else
+        if(input_data_rate == nullptr)
         {
             input_data_rate = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate>();
-            input_data_rate->parent = this;
-            children["input-data-rate"] = input_data_rate;
         }
-        return children.at("input-data-rate");
+        return input_data_rate;
     }
 
     if(child_yang_name == "input-packet-rate")
     {
-        if(input_packet_rate != nullptr)
-        {
-            children["input-packet-rate"] = input_packet_rate;
-        }
-        else
+        if(input_packet_rate == nullptr)
         {
             input_packet_rate = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate>();
-            input_packet_rate->parent = this;
-            children["input-packet-rate"] = input_packet_rate;
         }
-        return children.at("input-packet-rate");
+        return input_packet_rate;
     }
 
     if(child_yang_name == "input-peak-pkts")
     {
-        if(input_peak_pkts != nullptr)
-        {
-            children["input-peak-pkts"] = input_peak_pkts;
-        }
-        else
+        if(input_peak_pkts == nullptr)
         {
             input_peak_pkts = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts>();
-            input_peak_pkts->parent = this;
-            children["input-peak-pkts"] = input_peak_pkts;
         }
-        return children.at("input-peak-pkts");
+        return input_peak_pkts;
     }
 
     if(child_yang_name == "input-peak-rate")
     {
-        if(input_peak_rate != nullptr)
-        {
-            children["input-peak-rate"] = input_peak_rate;
-        }
-        else
+        if(input_peak_rate == nullptr)
         {
             input_peak_rate = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate>();
-            input_peak_rate->parent = this;
-            children["input-peak-rate"] = input_peak_rate;
         }
-        return children.at("input-peak-rate");
+        return input_peak_rate;
     }
 
     if(child_yang_name == "output-data-rate")
     {
-        if(output_data_rate != nullptr)
-        {
-            children["output-data-rate"] = output_data_rate;
-        }
-        else
+        if(output_data_rate == nullptr)
         {
             output_data_rate = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate>();
-            output_data_rate->parent = this;
-            children["output-data-rate"] = output_data_rate;
         }
-        return children.at("output-data-rate");
+        return output_data_rate;
     }
 
     if(child_yang_name == "output-packet-rate")
     {
-        if(output_packet_rate != nullptr)
-        {
-            children["output-packet-rate"] = output_packet_rate;
-        }
-        else
+        if(output_packet_rate == nullptr)
         {
             output_packet_rate = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate>();
-            output_packet_rate->parent = this;
-            children["output-packet-rate"] = output_packet_rate;
         }
-        return children.at("output-packet-rate");
+        return output_packet_rate;
     }
 
     if(child_yang_name == "output-peak-pkts")
     {
-        if(output_peak_pkts != nullptr)
-        {
-            children["output-peak-pkts"] = output_peak_pkts;
-        }
-        else
+        if(output_peak_pkts == nullptr)
         {
             output_peak_pkts = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts>();
-            output_peak_pkts->parent = this;
-            children["output-peak-pkts"] = output_peak_pkts;
         }
-        return children.at("output-peak-pkts");
+        return output_peak_pkts;
     }
 
     if(child_yang_name == "output-peak-rate")
     {
-        if(output_peak_rate != nullptr)
-        {
-            children["output-peak-rate"] = output_peak_rate;
-        }
-        else
+        if(output_peak_rate == nullptr)
         {
             output_peak_rate = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate>();
-            output_peak_rate->parent = this;
-            children["output-peak-rate"] = output_peak_rate;
         }
-        return children.at("output-peak-rate");
+        return output_peak_rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::get_children() const
 {
-    if(children.find("bandwidth") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("input-data-rate") == children.end())
+    if(input_data_rate != nullptr)
     {
-        if(input_data_rate != nullptr)
-        {
-            children["input-data-rate"] = input_data_rate;
-        }
+        children["input-data-rate"] = input_data_rate;
     }
 
-    if(children.find("input-packet-rate") == children.end())
+    if(input_packet_rate != nullptr)
     {
-        if(input_packet_rate != nullptr)
-        {
-            children["input-packet-rate"] = input_packet_rate;
-        }
+        children["input-packet-rate"] = input_packet_rate;
     }
 
-    if(children.find("input-peak-pkts") == children.end())
+    if(input_peak_pkts != nullptr)
     {
-        if(input_peak_pkts != nullptr)
-        {
-            children["input-peak-pkts"] = input_peak_pkts;
-        }
+        children["input-peak-pkts"] = input_peak_pkts;
     }
 
-    if(children.find("input-peak-rate") == children.end())
+    if(input_peak_rate != nullptr)
     {
-        if(input_peak_rate != nullptr)
-        {
-            children["input-peak-rate"] = input_peak_rate;
-        }
+        children["input-peak-rate"] = input_peak_rate;
     }
 
-    if(children.find("output-data-rate") == children.end())
+    if(output_data_rate != nullptr)
     {
-        if(output_data_rate != nullptr)
-        {
-            children["output-data-rate"] = output_data_rate;
-        }
+        children["output-data-rate"] = output_data_rate;
     }
 
-    if(children.find("output-packet-rate") == children.end())
+    if(output_packet_rate != nullptr)
     {
-        if(output_packet_rate != nullptr)
-        {
-            children["output-packet-rate"] = output_packet_rate;
-        }
+        children["output-packet-rate"] = output_packet_rate;
     }
 
-    if(children.find("output-peak-pkts") == children.end())
+    if(output_peak_pkts != nullptr)
     {
-        if(output_peak_pkts != nullptr)
-        {
-            children["output-peak-pkts"] = output_peak_pkts;
-        }
+        children["output-peak-pkts"] = output_peak_pkts;
     }
 
-    if(children.find("output-peak-rate") == children.end())
+    if(output_peak_rate != nullptr)
     {
-        if(output_peak_rate != nullptr)
-        {
-            children["output-peak-rate"] = output_peak_rate;
-        }
+        children["output-peak-rate"] = output_peak_rate;
     }
 
     return children;
@@ -8877,7 +7832,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8906,20 +7861,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8997,7 +7944,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9026,20 +7973,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9117,7 +8056,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9146,20 +8085,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9237,7 +8168,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9266,20 +8197,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9357,7 +8280,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9386,20 +8309,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9477,7 +8392,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9506,20 +8421,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9597,7 +8504,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9626,20 +8533,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9717,7 +8616,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9746,20 +8645,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9837,7 +8728,7 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 
 }
 
-EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9866,20 +8757,12 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9916,7 +8799,6 @@ PerfMgmt::Threshold::ProcessNode::ProcessNode()
     process_node_templates(std::make_shared<PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates>())
 {
     process_node_templates->parent = this;
-    children["process-node-templates"] = process_node_templates;
 
     yang_name = "process-node"; yang_parent_name = "threshold";
 }
@@ -9945,7 +8827,7 @@ std::string PerfMgmt::Threshold::ProcessNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::ProcessNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::ProcessNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9968,41 +8850,24 @@ EntityPath PerfMgmt::Threshold::ProcessNode::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process-node-templates")
     {
-        if(process_node_templates != nullptr)
-        {
-            children["process-node-templates"] = process_node_templates;
-        }
-        else
+        if(process_node_templates == nullptr)
         {
             process_node_templates = std::make_shared<PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates>();
-            process_node_templates->parent = this;
-            children["process-node-templates"] = process_node_templates;
         }
-        return children.at("process-node-templates");
+        return process_node_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::ProcessNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode::get_children() const
 {
-    if(children.find("process-node-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(process_node_templates != nullptr)
     {
-        if(process_node_templates != nullptr)
-        {
-            children["process-node-templates"] = process_node_templates;
-        }
+        children["process-node-templates"] = process_node_templates;
     }
 
     return children;
@@ -10050,7 +8915,7 @@ std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_segment_
 
 }
 
-EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10073,15 +8938,6 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_entity_pa
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process-node-template")
     {
         for(auto const & c : process_node_template)
@@ -10089,28 +8945,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate>();
         c->parent = this;
-        process_node_template.push_back(std::move(c));
-        children[segment_path] = process_node_template.back();
-        return children.at(segment_path);
+        process_node_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : process_node_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10164,7 +9016,7 @@ std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeT
 
 }
 
-EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10189,87 +9041,52 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "average-cpu-used")
     {
-        if(average_cpu_used != nullptr)
-        {
-            children["average-cpu-used"] = average_cpu_used;
-        }
-        else
+        if(average_cpu_used == nullptr)
         {
             average_cpu_used = std::make_shared<PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed>();
-            average_cpu_used->parent = this;
-            children["average-cpu-used"] = average_cpu_used;
         }
-        return children.at("average-cpu-used");
+        return average_cpu_used;
     }
 
     if(child_yang_name == "no-threads")
     {
-        if(no_threads != nullptr)
-        {
-            children["no-threads"] = no_threads;
-        }
-        else
+        if(no_threads == nullptr)
         {
             no_threads = std::make_shared<PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads>();
-            no_threads->parent = this;
-            children["no-threads"] = no_threads;
         }
-        return children.at("no-threads");
+        return no_threads;
     }
 
     if(child_yang_name == "peak-memory")
     {
-        if(peak_memory != nullptr)
-        {
-            children["peak-memory"] = peak_memory;
-        }
-        else
+        if(peak_memory == nullptr)
         {
             peak_memory = std::make_shared<PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory>();
-            peak_memory->parent = this;
-            children["peak-memory"] = peak_memory;
         }
-        return children.at("peak-memory");
+        return peak_memory;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::get_children() const
 {
-    if(children.find("average-cpu-used") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(average_cpu_used != nullptr)
     {
-        if(average_cpu_used != nullptr)
-        {
-            children["average-cpu-used"] = average_cpu_used;
-        }
+        children["average-cpu-used"] = average_cpu_used;
     }
 
-    if(children.find("no-threads") == children.end())
+    if(no_threads != nullptr)
     {
-        if(no_threads != nullptr)
-        {
-            children["no-threads"] = no_threads;
-        }
+        children["no-threads"] = no_threads;
     }
 
-    if(children.find("peak-memory") == children.end())
+    if(peak_memory != nullptr)
     {
-        if(peak_memory != nullptr)
-        {
-            children["peak-memory"] = peak_memory;
-        }
+        children["peak-memory"] = peak_memory;
     }
 
     return children;
@@ -10333,7 +9150,7 @@ std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeT
 
 }
 
-EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10362,20 +9179,12 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10453,7 +9262,7 @@ std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeT
 
 }
 
-EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10482,20 +9291,12 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10573,7 +9374,7 @@ std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeT
 
 }
 
-EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10602,20 +9403,12 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10652,7 +9445,6 @@ PerfMgmt::Threshold::MemoryNode::MemoryNode()
     memory_node_templates(std::make_shared<PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates>())
 {
     memory_node_templates->parent = this;
-    children["memory-node-templates"] = memory_node_templates;
 
     yang_name = "memory-node"; yang_parent_name = "threshold";
 }
@@ -10681,7 +9473,7 @@ std::string PerfMgmt::Threshold::MemoryNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::MemoryNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::MemoryNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10704,41 +9496,24 @@ EntityPath PerfMgmt::Threshold::MemoryNode::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::MemoryNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "memory-node-templates")
     {
-        if(memory_node_templates != nullptr)
-        {
-            children["memory-node-templates"] = memory_node_templates;
-        }
-        else
+        if(memory_node_templates == nullptr)
         {
             memory_node_templates = std::make_shared<PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates>();
-            memory_node_templates->parent = this;
-            children["memory-node-templates"] = memory_node_templates;
         }
-        return children.at("memory-node-templates");
+        return memory_node_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::MemoryNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::get_children() const
 {
-    if(children.find("memory-node-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(memory_node_templates != nullptr)
     {
-        if(memory_node_templates != nullptr)
-        {
-            children["memory-node-templates"] = memory_node_templates;
-        }
+        children["memory-node-templates"] = memory_node_templates;
     }
 
     return children;
@@ -10786,7 +9561,7 @@ std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_segment_pa
 
 }
 
-EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10809,15 +9584,6 @@ EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_entity_path
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "memory-node-template")
     {
         for(auto const & c : memory_node_template)
@@ -10825,28 +9591,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate>();
         c->parent = this;
-        memory_node_template.push_back(std::move(c));
-        children[segment_path] = memory_node_template.back();
-        return children.at(segment_path);
+        memory_node_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : memory_node_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10897,7 +9659,7 @@ std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemp
 
 }
 
-EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10922,64 +9684,38 @@ EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTempl
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "curr-memory")
     {
-        if(curr_memory != nullptr)
-        {
-            children["curr-memory"] = curr_memory;
-        }
-        else
+        if(curr_memory == nullptr)
         {
             curr_memory = std::make_shared<PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory>();
-            curr_memory->parent = this;
-            children["curr-memory"] = curr_memory;
         }
-        return children.at("curr-memory");
+        return curr_memory;
     }
 
     if(child_yang_name == "peak-memory")
     {
-        if(peak_memory != nullptr)
-        {
-            children["peak-memory"] = peak_memory;
-        }
-        else
+        if(peak_memory == nullptr)
         {
             peak_memory = std::make_shared<PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory>();
-            peak_memory->parent = this;
-            children["peak-memory"] = peak_memory;
         }
-        return children.at("peak-memory");
+        return peak_memory;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::get_children() const
 {
-    if(children.find("curr-memory") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(curr_memory != nullptr)
     {
-        if(curr_memory != nullptr)
-        {
-            children["curr-memory"] = curr_memory;
-        }
+        children["curr-memory"] = curr_memory;
     }
 
-    if(children.find("peak-memory") == children.end())
+    if(peak_memory != nullptr)
     {
-        if(peak_memory != nullptr)
-        {
-            children["peak-memory"] = peak_memory;
-        }
+        children["peak-memory"] = peak_memory;
     }
 
     return children;
@@ -11043,7 +9779,7 @@ std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemp
 
 }
 
-EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11072,20 +9808,12 @@ EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTempl
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11163,7 +9891,7 @@ std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemp
 
 }
 
-EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11192,20 +9920,12 @@ EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTempl
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11242,7 +9962,6 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3Protocol()
     ospfv3_protocol_templates(std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates>())
 {
     ospfv3_protocol_templates->parent = this;
-    children["ospfv3-protocol-templates"] = ospfv3_protocol_templates;
 
     yang_name = "ospfv3-protocol"; yang_parent_name = "threshold";
 }
@@ -11271,7 +9990,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11294,41 +10013,24 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospfv3-protocol-templates")
     {
-        if(ospfv3_protocol_templates != nullptr)
-        {
-            children["ospfv3-protocol-templates"] = ospfv3_protocol_templates;
-        }
-        else
+        if(ospfv3_protocol_templates == nullptr)
         {
             ospfv3_protocol_templates = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates>();
-            ospfv3_protocol_templates->parent = this;
-            children["ospfv3-protocol-templates"] = ospfv3_protocol_templates;
         }
-        return children.at("ospfv3-protocol-templates");
+        return ospfv3_protocol_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::get_children() const
 {
-    if(children.find("ospfv3-protocol-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ospfv3_protocol_templates != nullptr)
     {
-        if(ospfv3_protocol_templates != nullptr)
-        {
-            children["ospfv3-protocol-templates"] = ospfv3_protocol_templates;
-        }
+        children["ospfv3-protocol-templates"] = ospfv3_protocol_templates;
     }
 
     return children;
@@ -11376,7 +10078,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_se
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11399,15 +10101,6 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_ent
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospfv3-protocol-template")
     {
         for(auto const & c : ospfv3_protocol_template)
@@ -11415,28 +10108,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTempl
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate>();
         c->parent = this;
-        ospfv3_protocol_template.push_back(std::move(c));
-        children[segment_path] = ospfv3_protocol_template.back();
-        return children.at(segment_path);
+        ospfv3_protocol_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ospfv3_protocol_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11541,7 +10230,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11566,478 +10255,290 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input-db-ds")
     {
-        if(input_db_ds != nullptr)
-        {
-            children["input-db-ds"] = input_db_ds;
-        }
-        else
+        if(input_db_ds == nullptr)
         {
             input_db_ds = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs>();
-            input_db_ds->parent = this;
-            children["input-db-ds"] = input_db_ds;
         }
-        return children.at("input-db-ds");
+        return input_db_ds;
     }
 
     if(child_yang_name == "input-db-ds-lsa")
     {
-        if(input_db_ds_lsa != nullptr)
-        {
-            children["input-db-ds-lsa"] = input_db_ds_lsa;
-        }
-        else
+        if(input_db_ds_lsa == nullptr)
         {
             input_db_ds_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa>();
-            input_db_ds_lsa->parent = this;
-            children["input-db-ds-lsa"] = input_db_ds_lsa;
         }
-        return children.at("input-db-ds-lsa");
+        return input_db_ds_lsa;
     }
 
     if(child_yang_name == "input-hello-packets")
     {
-        if(input_hello_packets != nullptr)
-        {
-            children["input-hello-packets"] = input_hello_packets;
-        }
-        else
+        if(input_hello_packets == nullptr)
         {
             input_hello_packets = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets>();
-            input_hello_packets->parent = this;
-            children["input-hello-packets"] = input_hello_packets;
         }
-        return children.at("input-hello-packets");
+        return input_hello_packets;
     }
 
     if(child_yang_name == "input-ls-requests")
     {
-        if(input_ls_requests != nullptr)
-        {
-            children["input-ls-requests"] = input_ls_requests;
-        }
-        else
+        if(input_ls_requests == nullptr)
         {
             input_ls_requests = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests>();
-            input_ls_requests->parent = this;
-            children["input-ls-requests"] = input_ls_requests;
         }
-        return children.at("input-ls-requests");
+        return input_ls_requests;
     }
 
     if(child_yang_name == "input-ls-requests-lsa")
     {
-        if(input_ls_requests_lsa != nullptr)
-        {
-            children["input-ls-requests-lsa"] = input_ls_requests_lsa;
-        }
-        else
+        if(input_ls_requests_lsa == nullptr)
         {
             input_ls_requests_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa>();
-            input_ls_requests_lsa->parent = this;
-            children["input-ls-requests-lsa"] = input_ls_requests_lsa;
         }
-        return children.at("input-ls-requests-lsa");
+        return input_ls_requests_lsa;
     }
 
     if(child_yang_name == "input-lsa-acks")
     {
-        if(input_lsa_acks != nullptr)
-        {
-            children["input-lsa-acks"] = input_lsa_acks;
-        }
-        else
+        if(input_lsa_acks == nullptr)
         {
             input_lsa_acks = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks>();
-            input_lsa_acks->parent = this;
-            children["input-lsa-acks"] = input_lsa_acks;
         }
-        return children.at("input-lsa-acks");
+        return input_lsa_acks;
     }
 
     if(child_yang_name == "input-lsa-acks-lsa")
     {
-        if(input_lsa_acks_lsa != nullptr)
-        {
-            children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
-        }
-        else
+        if(input_lsa_acks_lsa == nullptr)
         {
             input_lsa_acks_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa>();
-            input_lsa_acks_lsa->parent = this;
-            children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
         }
-        return children.at("input-lsa-acks-lsa");
+        return input_lsa_acks_lsa;
     }
 
     if(child_yang_name == "input-lsa-updates")
     {
-        if(input_lsa_updates != nullptr)
-        {
-            children["input-lsa-updates"] = input_lsa_updates;
-        }
-        else
+        if(input_lsa_updates == nullptr)
         {
             input_lsa_updates = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates>();
-            input_lsa_updates->parent = this;
-            children["input-lsa-updates"] = input_lsa_updates;
         }
-        return children.at("input-lsa-updates");
+        return input_lsa_updates;
     }
 
     if(child_yang_name == "input-lsa-updates-lsa")
     {
-        if(input_lsa_updates_lsa != nullptr)
-        {
-            children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
-        }
-        else
+        if(input_lsa_updates_lsa == nullptr)
         {
             input_lsa_updates_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa>();
-            input_lsa_updates_lsa->parent = this;
-            children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
         }
-        return children.at("input-lsa-updates-lsa");
+        return input_lsa_updates_lsa;
     }
 
     if(child_yang_name == "input-packets")
     {
-        if(input_packets != nullptr)
-        {
-            children["input-packets"] = input_packets;
-        }
-        else
+        if(input_packets == nullptr)
         {
             input_packets = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets>();
-            input_packets->parent = this;
-            children["input-packets"] = input_packets;
         }
-        return children.at("input-packets");
+        return input_packets;
     }
 
     if(child_yang_name == "output-db-ds")
     {
-        if(output_db_ds != nullptr)
-        {
-            children["output-db-ds"] = output_db_ds;
-        }
-        else
+        if(output_db_ds == nullptr)
         {
             output_db_ds = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs>();
-            output_db_ds->parent = this;
-            children["output-db-ds"] = output_db_ds;
         }
-        return children.at("output-db-ds");
+        return output_db_ds;
     }
 
     if(child_yang_name == "output-db-ds-lsa")
     {
-        if(output_db_ds_lsa != nullptr)
-        {
-            children["output-db-ds-lsa"] = output_db_ds_lsa;
-        }
-        else
+        if(output_db_ds_lsa == nullptr)
         {
             output_db_ds_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa>();
-            output_db_ds_lsa->parent = this;
-            children["output-db-ds-lsa"] = output_db_ds_lsa;
         }
-        return children.at("output-db-ds-lsa");
+        return output_db_ds_lsa;
     }
 
     if(child_yang_name == "output-hello-packets")
     {
-        if(output_hello_packets != nullptr)
-        {
-            children["output-hello-packets"] = output_hello_packets;
-        }
-        else
+        if(output_hello_packets == nullptr)
         {
             output_hello_packets = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets>();
-            output_hello_packets->parent = this;
-            children["output-hello-packets"] = output_hello_packets;
         }
-        return children.at("output-hello-packets");
+        return output_hello_packets;
     }
 
     if(child_yang_name == "output-ls-requests")
     {
-        if(output_ls_requests != nullptr)
-        {
-            children["output-ls-requests"] = output_ls_requests;
-        }
-        else
+        if(output_ls_requests == nullptr)
         {
             output_ls_requests = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests>();
-            output_ls_requests->parent = this;
-            children["output-ls-requests"] = output_ls_requests;
         }
-        return children.at("output-ls-requests");
+        return output_ls_requests;
     }
 
     if(child_yang_name == "output-ls-requests-lsa")
     {
-        if(output_ls_requests_lsa != nullptr)
-        {
-            children["output-ls-requests-lsa"] = output_ls_requests_lsa;
-        }
-        else
+        if(output_ls_requests_lsa == nullptr)
         {
             output_ls_requests_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa>();
-            output_ls_requests_lsa->parent = this;
-            children["output-ls-requests-lsa"] = output_ls_requests_lsa;
         }
-        return children.at("output-ls-requests-lsa");
+        return output_ls_requests_lsa;
     }
 
     if(child_yang_name == "output-lsa-acks")
     {
-        if(output_lsa_acks != nullptr)
-        {
-            children["output-lsa-acks"] = output_lsa_acks;
-        }
-        else
+        if(output_lsa_acks == nullptr)
         {
             output_lsa_acks = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks>();
-            output_lsa_acks->parent = this;
-            children["output-lsa-acks"] = output_lsa_acks;
         }
-        return children.at("output-lsa-acks");
+        return output_lsa_acks;
     }
 
     if(child_yang_name == "output-lsa-acks-lsa")
     {
-        if(output_lsa_acks_lsa != nullptr)
-        {
-            children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
-        }
-        else
+        if(output_lsa_acks_lsa == nullptr)
         {
             output_lsa_acks_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa>();
-            output_lsa_acks_lsa->parent = this;
-            children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
         }
-        return children.at("output-lsa-acks-lsa");
+        return output_lsa_acks_lsa;
     }
 
     if(child_yang_name == "output-lsa-updates")
     {
-        if(output_lsa_updates != nullptr)
-        {
-            children["output-lsa-updates"] = output_lsa_updates;
-        }
-        else
+        if(output_lsa_updates == nullptr)
         {
             output_lsa_updates = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates>();
-            output_lsa_updates->parent = this;
-            children["output-lsa-updates"] = output_lsa_updates;
         }
-        return children.at("output-lsa-updates");
+        return output_lsa_updates;
     }
 
     if(child_yang_name == "output-lsa-updates-lsa")
     {
-        if(output_lsa_updates_lsa != nullptr)
-        {
-            children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
-        }
-        else
+        if(output_lsa_updates_lsa == nullptr)
         {
             output_lsa_updates_lsa = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa>();
-            output_lsa_updates_lsa->parent = this;
-            children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
         }
-        return children.at("output-lsa-updates-lsa");
+        return output_lsa_updates_lsa;
     }
 
     if(child_yang_name == "output-packets")
     {
-        if(output_packets != nullptr)
-        {
-            children["output-packets"] = output_packets;
-        }
-        else
+        if(output_packets == nullptr)
         {
             output_packets = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets>();
-            output_packets->parent = this;
-            children["output-packets"] = output_packets;
         }
-        return children.at("output-packets");
+        return output_packets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::get_children() const
 {
-    if(children.find("input-db-ds") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input_db_ds != nullptr)
     {
-        if(input_db_ds != nullptr)
-        {
-            children["input-db-ds"] = input_db_ds;
-        }
+        children["input-db-ds"] = input_db_ds;
     }
 
-    if(children.find("input-db-ds-lsa") == children.end())
+    if(input_db_ds_lsa != nullptr)
     {
-        if(input_db_ds_lsa != nullptr)
-        {
-            children["input-db-ds-lsa"] = input_db_ds_lsa;
-        }
+        children["input-db-ds-lsa"] = input_db_ds_lsa;
     }
 
-    if(children.find("input-hello-packets") == children.end())
+    if(input_hello_packets != nullptr)
     {
-        if(input_hello_packets != nullptr)
-        {
-            children["input-hello-packets"] = input_hello_packets;
-        }
+        children["input-hello-packets"] = input_hello_packets;
     }
 
-    if(children.find("input-ls-requests") == children.end())
+    if(input_ls_requests != nullptr)
     {
-        if(input_ls_requests != nullptr)
-        {
-            children["input-ls-requests"] = input_ls_requests;
-        }
+        children["input-ls-requests"] = input_ls_requests;
     }
 
-    if(children.find("input-ls-requests-lsa") == children.end())
+    if(input_ls_requests_lsa != nullptr)
     {
-        if(input_ls_requests_lsa != nullptr)
-        {
-            children["input-ls-requests-lsa"] = input_ls_requests_lsa;
-        }
+        children["input-ls-requests-lsa"] = input_ls_requests_lsa;
     }
 
-    if(children.find("input-lsa-acks") == children.end())
+    if(input_lsa_acks != nullptr)
     {
-        if(input_lsa_acks != nullptr)
-        {
-            children["input-lsa-acks"] = input_lsa_acks;
-        }
+        children["input-lsa-acks"] = input_lsa_acks;
     }
 
-    if(children.find("input-lsa-acks-lsa") == children.end())
+    if(input_lsa_acks_lsa != nullptr)
     {
-        if(input_lsa_acks_lsa != nullptr)
-        {
-            children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
-        }
+        children["input-lsa-acks-lsa"] = input_lsa_acks_lsa;
     }
 
-    if(children.find("input-lsa-updates") == children.end())
+    if(input_lsa_updates != nullptr)
     {
-        if(input_lsa_updates != nullptr)
-        {
-            children["input-lsa-updates"] = input_lsa_updates;
-        }
+        children["input-lsa-updates"] = input_lsa_updates;
     }
 
-    if(children.find("input-lsa-updates-lsa") == children.end())
+    if(input_lsa_updates_lsa != nullptr)
     {
-        if(input_lsa_updates_lsa != nullptr)
-        {
-            children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
-        }
+        children["input-lsa-updates-lsa"] = input_lsa_updates_lsa;
     }
 
-    if(children.find("input-packets") == children.end())
+    if(input_packets != nullptr)
     {
-        if(input_packets != nullptr)
-        {
-            children["input-packets"] = input_packets;
-        }
+        children["input-packets"] = input_packets;
     }
 
-    if(children.find("output-db-ds") == children.end())
+    if(output_db_ds != nullptr)
     {
-        if(output_db_ds != nullptr)
-        {
-            children["output-db-ds"] = output_db_ds;
-        }
+        children["output-db-ds"] = output_db_ds;
     }
 
-    if(children.find("output-db-ds-lsa") == children.end())
+    if(output_db_ds_lsa != nullptr)
     {
-        if(output_db_ds_lsa != nullptr)
-        {
-            children["output-db-ds-lsa"] = output_db_ds_lsa;
-        }
+        children["output-db-ds-lsa"] = output_db_ds_lsa;
     }
 
-    if(children.find("output-hello-packets") == children.end())
+    if(output_hello_packets != nullptr)
     {
-        if(output_hello_packets != nullptr)
-        {
-            children["output-hello-packets"] = output_hello_packets;
-        }
+        children["output-hello-packets"] = output_hello_packets;
     }
 
-    if(children.find("output-ls-requests") == children.end())
+    if(output_ls_requests != nullptr)
     {
-        if(output_ls_requests != nullptr)
-        {
-            children["output-ls-requests"] = output_ls_requests;
-        }
+        children["output-ls-requests"] = output_ls_requests;
     }
 
-    if(children.find("output-ls-requests-lsa") == children.end())
+    if(output_ls_requests_lsa != nullptr)
     {
-        if(output_ls_requests_lsa != nullptr)
-        {
-            children["output-ls-requests-lsa"] = output_ls_requests_lsa;
-        }
+        children["output-ls-requests-lsa"] = output_ls_requests_lsa;
     }
 
-    if(children.find("output-lsa-acks") == children.end())
+    if(output_lsa_acks != nullptr)
     {
-        if(output_lsa_acks != nullptr)
-        {
-            children["output-lsa-acks"] = output_lsa_acks;
-        }
+        children["output-lsa-acks"] = output_lsa_acks;
     }
 
-    if(children.find("output-lsa-acks-lsa") == children.end())
+    if(output_lsa_acks_lsa != nullptr)
     {
-        if(output_lsa_acks_lsa != nullptr)
-        {
-            children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
-        }
+        children["output-lsa-acks-lsa"] = output_lsa_acks_lsa;
     }
 
-    if(children.find("output-lsa-updates") == children.end())
+    if(output_lsa_updates != nullptr)
     {
-        if(output_lsa_updates != nullptr)
-        {
-            children["output-lsa-updates"] = output_lsa_updates;
-        }
+        children["output-lsa-updates"] = output_lsa_updates;
     }
 
-    if(children.find("output-lsa-updates-lsa") == children.end())
+    if(output_lsa_updates_lsa != nullptr)
     {
-        if(output_lsa_updates_lsa != nullptr)
-        {
-            children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
-        }
+        children["output-lsa-updates-lsa"] = output_lsa_updates_lsa;
     }
 
-    if(children.find("output-packets") == children.end())
+    if(output_packets != nullptr)
     {
-        if(output_packets != nullptr)
-        {
-            children["output-packets"] = output_packets;
-        }
+        children["output-packets"] = output_packets;
     }
 
     return children;
@@ -12101,7 +10602,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12130,20 +10631,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12221,7 +10714,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12250,20 +10743,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12341,7 +10826,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12370,20 +10855,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12461,7 +10938,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12490,20 +10967,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12581,7 +11050,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12610,20 +11079,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12701,7 +11162,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12730,20 +11191,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12821,7 +11274,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12850,20 +11303,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12941,7 +11386,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12970,20 +11415,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13061,7 +11498,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13090,20 +11527,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13181,7 +11610,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13210,20 +11639,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13301,7 +11722,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13330,20 +11751,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13421,7 +11834,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13450,20 +11863,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13541,7 +11946,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13570,20 +11975,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13661,7 +12058,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13690,20 +12087,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13781,7 +12170,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13810,20 +12199,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13901,7 +12282,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13930,20 +12311,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14021,7 +12394,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14050,20 +12423,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14141,7 +12506,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14170,20 +12535,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14261,7 +12618,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14290,20 +12647,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14381,7 +12730,7 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 
 }
 
-EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14410,20 +12759,12 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

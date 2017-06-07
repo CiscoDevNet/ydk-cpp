@@ -14,7 +14,6 @@ Udp::Udp()
     nodes(std::make_shared<Udp::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "udp"; yang_parent_name = "Cisco-IOS-XR-ip-udp-oper";
 }
@@ -43,12 +42,12 @@ std::string Udp::get_segment_path() const
 
 }
 
-EntityPath Udp::get_entity_path(Entity* ancestor) const
+const EntityPath Udp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Udp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Udp::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Udp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Udp::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Udp::Nodes::get_segment_path() const
 
 }
 
-EntityPath Udp::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Udp::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Udp::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Udp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Udp::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Udp::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Udp::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ Udp::Nodes::Node::Node()
     statistics(std::make_shared<Udp::Nodes::Node::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string Udp::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Udp::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Udp::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath Udp::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Udp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Udp::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Udp::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -351,10 +302,8 @@ Udp::Nodes::Node::Statistics::Statistics()
 	,ipv6_traffic(std::make_shared<Udp::Nodes::Node::Statistics::Ipv6Traffic>())
 {
     ipv4_traffic->parent = this;
-    children["ipv4-traffic"] = ipv4_traffic;
 
     ipv6_traffic->parent = this;
-    children["ipv6-traffic"] = ipv6_traffic;
 
     yang_name = "statistics"; yang_parent_name = "node";
 }
@@ -385,7 +334,7 @@ std::string Udp::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath Udp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Udp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -408,64 +357,38 @@ EntityPath Udp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Udp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-traffic")
     {
-        if(ipv4_traffic != nullptr)
-        {
-            children["ipv4-traffic"] = ipv4_traffic;
-        }
-        else
+        if(ipv4_traffic == nullptr)
         {
             ipv4_traffic = std::make_shared<Udp::Nodes::Node::Statistics::Ipv4Traffic>();
-            ipv4_traffic->parent = this;
-            children["ipv4-traffic"] = ipv4_traffic;
         }
-        return children.at("ipv4-traffic");
+        return ipv4_traffic;
     }
 
     if(child_yang_name == "ipv6-traffic")
     {
-        if(ipv6_traffic != nullptr)
-        {
-            children["ipv6-traffic"] = ipv6_traffic;
-        }
-        else
+        if(ipv6_traffic == nullptr)
         {
             ipv6_traffic = std::make_shared<Udp::Nodes::Node::Statistics::Ipv6Traffic>();
-            ipv6_traffic->parent = this;
-            children["ipv6-traffic"] = ipv6_traffic;
         }
-        return children.at("ipv6-traffic");
+        return ipv6_traffic;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Udp::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::Statistics::get_children() const
 {
-    if(children.find("ipv4-traffic") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_traffic != nullptr)
     {
-        if(ipv4_traffic != nullptr)
-        {
-            children["ipv4-traffic"] = ipv4_traffic;
-        }
+        children["ipv4-traffic"] = ipv4_traffic;
     }
 
-    if(children.find("ipv6-traffic") == children.end())
+    if(ipv6_traffic != nullptr)
     {
-        if(ipv6_traffic != nullptr)
-        {
-            children["ipv6-traffic"] = ipv6_traffic;
-        }
+        children["ipv6-traffic"] = ipv6_traffic;
     }
 
     return children;
@@ -521,7 +444,7 @@ std::string Udp::Nodes::Node::Statistics::Ipv4Traffic::get_segment_path() const
 
 }
 
-EntityPath Udp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath Udp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -550,20 +473,12 @@ EntityPath Udp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Udp::Nodes::Node::Statistics::Ipv4Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Udp::Nodes::Node::Statistics::Ipv4Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::Statistics::Ipv4Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -641,7 +556,7 @@ std::string Udp::Nodes::Node::Statistics::Ipv6Traffic::get_segment_path() const
 
 }
 
-EntityPath Udp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath Udp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -670,20 +585,12 @@ EntityPath Udp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Udp::Nodes::Node::Statistics::Ipv6Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Udp::Nodes::Node::Statistics::Ipv6Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::Statistics::Ipv6Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -720,7 +627,6 @@ UdpConnection::UdpConnection()
     nodes(std::make_shared<UdpConnection::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "udp-connection"; yang_parent_name = "Cisco-IOS-XR-ip-udp-oper";
 }
@@ -749,12 +655,12 @@ std::string UdpConnection::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -769,41 +675,24 @@ EntityPath UdpConnection::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> UdpConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<UdpConnection::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -871,7 +760,7 @@ std::string UdpConnection::Nodes::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -894,15 +783,6 @@ EntityPath UdpConnection::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> UdpConnection::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -910,28 +790,24 @@ std::shared_ptr<Entity> UdpConnection::Nodes::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -951,16 +827,12 @@ UdpConnection::Nodes::Node::Node()
 	,statistics(std::make_shared<UdpConnection::Nodes::Node::Statistics>())
 {
     lpts->parent = this;
-    children["lpts"] = lpts;
 
     pcb_briefs->parent = this;
-    children["pcb-briefs"] = pcb_briefs;
 
     pcb_details->parent = this;
-    children["pcb-details"] = pcb_details;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -997,7 +869,7 @@ std::string UdpConnection::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1021,110 +893,66 @@ EntityPath UdpConnection::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lpts")
     {
-        if(lpts != nullptr)
-        {
-            children["lpts"] = lpts;
-        }
-        else
+        if(lpts == nullptr)
         {
             lpts = std::make_shared<UdpConnection::Nodes::Node::Lpts>();
-            lpts->parent = this;
-            children["lpts"] = lpts;
         }
-        return children.at("lpts");
+        return lpts;
     }
 
     if(child_yang_name == "pcb-briefs")
     {
-        if(pcb_briefs != nullptr)
-        {
-            children["pcb-briefs"] = pcb_briefs;
-        }
-        else
+        if(pcb_briefs == nullptr)
         {
             pcb_briefs = std::make_shared<UdpConnection::Nodes::Node::PcbBriefs>();
-            pcb_briefs->parent = this;
-            children["pcb-briefs"] = pcb_briefs;
         }
-        return children.at("pcb-briefs");
+        return pcb_briefs;
     }
 
     if(child_yang_name == "pcb-details")
     {
-        if(pcb_details != nullptr)
-        {
-            children["pcb-details"] = pcb_details;
-        }
-        else
+        if(pcb_details == nullptr)
         {
             pcb_details = std::make_shared<UdpConnection::Nodes::Node::PcbDetails>();
-            pcb_details->parent = this;
-            children["pcb-details"] = pcb_details;
         }
-        return children.at("pcb-details");
+        return pcb_details;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<UdpConnection::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::get_children() const
 {
-    if(children.find("lpts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lpts != nullptr)
     {
-        if(lpts != nullptr)
-        {
-            children["lpts"] = lpts;
-        }
+        children["lpts"] = lpts;
     }
 
-    if(children.find("pcb-briefs") == children.end())
+    if(pcb_briefs != nullptr)
     {
-        if(pcb_briefs != nullptr)
-        {
-            children["pcb-briefs"] = pcb_briefs;
-        }
+        children["pcb-briefs"] = pcb_briefs;
     }
 
-    if(children.find("pcb-details") == children.end())
+    if(pcb_details != nullptr)
     {
-        if(pcb_details != nullptr)
-        {
-            children["pcb-details"] = pcb_details;
-        }
+        children["pcb-details"] = pcb_details;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -1145,13 +973,10 @@ UdpConnection::Nodes::Node::Statistics::Statistics()
 	,summary(std::make_shared<UdpConnection::Nodes::Node::Statistics::Summary>())
 {
     clients->parent = this;
-    children["clients"] = clients;
 
     pcb_statistics->parent = this;
-    children["pcb-statistics"] = pcb_statistics;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "statistics"; yang_parent_name = "node";
 }
@@ -1184,7 +1009,7 @@ std::string UdpConnection::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1207,87 +1032,52 @@ EntityPath UdpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clients")
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
-        else
+        if(clients == nullptr)
         {
             clients = std::make_shared<UdpConnection::Nodes::Node::Statistics::Clients>();
-            clients->parent = this;
-            children["clients"] = clients;
         }
-        return children.at("clients");
+        return clients;
     }
 
     if(child_yang_name == "pcb-statistics")
     {
-        if(pcb_statistics != nullptr)
-        {
-            children["pcb-statistics"] = pcb_statistics;
-        }
-        else
+        if(pcb_statistics == nullptr)
         {
             pcb_statistics = std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics>();
-            pcb_statistics->parent = this;
-            children["pcb-statistics"] = pcb_statistics;
         }
-        return children.at("pcb-statistics");
+        return pcb_statistics;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<UdpConnection::Nodes::Node::Statistics::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::get_children() const
 {
-    if(children.find("clients") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clients != nullptr)
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
+        children["clients"] = clients;
     }
 
-    if(children.find("pcb-statistics") == children.end())
+    if(pcb_statistics != nullptr)
     {
-        if(pcb_statistics != nullptr)
-        {
-            children["pcb-statistics"] = pcb_statistics;
-        }
+        children["pcb-statistics"] = pcb_statistics;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -1335,7 +1125,7 @@ std::string UdpConnection::Nodes::Node::Statistics::Clients::get_segment_path() 
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1358,15 +1148,6 @@ EntityPath UdpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Enti
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
         for(auto const & c : client)
@@ -1374,28 +1155,24 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Clients::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Statistics::Clients::Client>();
         c->parent = this;
-        client.push_back(std::move(c));
-        children[segment_path] = client.back();
-        return children.at(segment_path);
+        client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::Clients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::Clients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1454,7 +1231,7 @@ std::string UdpConnection::Nodes::Node::Statistics::Clients::Client::get_segment
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1484,20 +1261,12 @@ EntityPath UdpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_p
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::Clients::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::Clients::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1591,7 +1360,7 @@ std::string UdpConnection::Nodes::Node::Statistics::Summary::get_segment_path() 
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1624,20 +1393,12 @@ EntityPath UdpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Enti
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1723,7 +1484,7 @@ std::string UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_segment_p
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1746,15 +1507,6 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_entity_pat
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pcb-statistic")
     {
         for(auto const & c : pcb_statistic)
@@ -1762,28 +1514,24 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic>();
         c->parent = this;
-        pcb_statistic.push_back(std::move(c));
-        children[segment_path] = pcb_statistic.back();
-        return children.at(segment_path);
+        pcb_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pcb_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1803,10 +1551,8 @@ UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::PcbStatisti
 	,send(std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send>())
 {
     receive->parent = this;
-    children["receive"] = receive;
 
     send->parent = this;
-    children["send"] = send;
 
     yang_name = "pcb-statistic"; yang_parent_name = "pcb-statistics";
 }
@@ -1843,7 +1589,7 @@ std::string UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1869,64 +1615,38 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "receive")
     {
-        if(receive != nullptr)
-        {
-            children["receive"] = receive;
-        }
-        else
+        if(receive == nullptr)
         {
             receive = std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive>();
-            receive->parent = this;
-            children["receive"] = receive;
         }
-        return children.at("receive");
+        return receive;
     }
 
     if(child_yang_name == "send")
     {
-        if(send != nullptr)
-        {
-            children["send"] = send;
-        }
-        else
+        if(send == nullptr)
         {
             send = std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send>();
-            send->parent = this;
-            children["send"] = send;
         }
-        return children.at("send");
+        return send;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_children() const
 {
-    if(children.find("receive") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(receive != nullptr)
     {
-        if(receive != nullptr)
-        {
-            children["receive"] = receive;
-        }
+        children["receive"] = receive;
     }
 
-    if(children.find("send") == children.end())
+    if(send != nullptr)
     {
-        if(send != nullptr)
-        {
-            children["send"] = send;
-        }
+        children["send"] = send;
     }
 
     return children;
@@ -1994,7 +1714,7 @@ std::string UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2023,20 +1743,12 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2111,7 +1823,7 @@ std::string UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2139,20 +1851,12 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2185,7 +1889,6 @@ UdpConnection::Nodes::Node::Lpts::Lpts()
     queries(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries>())
 {
     queries->parent = this;
-    children["queries"] = queries;
 
     yang_name = "lpts"; yang_parent_name = "node";
 }
@@ -2214,7 +1917,7 @@ std::string UdpConnection::Nodes::Node::Lpts::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2237,41 +1940,24 @@ EntityPath UdpConnection::Nodes::Node::Lpts::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queries")
     {
-        if(queries != nullptr)
-        {
-            children["queries"] = queries;
-        }
-        else
+        if(queries == nullptr)
         {
             queries = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries>();
-            queries->parent = this;
-            children["queries"] = queries;
         }
-        return children.at("queries");
+        return queries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::get_children() const
 {
-    if(children.find("queries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(queries != nullptr)
     {
-        if(queries != nullptr)
-        {
-            children["queries"] = queries;
-        }
+        children["queries"] = queries;
     }
 
     return children;
@@ -2319,7 +2005,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2342,15 +2028,6 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "query")
     {
         for(auto const & c : query)
@@ -2358,28 +2035,24 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query>();
         c->parent = this;
-        query.push_back(std::move(c));
-        children[segment_path] = query.back();
-        return children.at(segment_path);
+        query.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : query)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2396,7 +2069,6 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Query()
     pcbs(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs>())
 {
     pcbs->parent = this;
-    children["pcbs"] = pcbs;
 
     yang_name = "query"; yang_parent_name = "queries";
 }
@@ -2427,7 +2099,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::get_segment_path()
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2451,41 +2123,24 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::get_entity_path(Ent
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pcbs")
     {
-        if(pcbs != nullptr)
-        {
-            children["pcbs"] = pcbs;
-        }
-        else
+        if(pcbs == nullptr)
         {
             pcbs = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs>();
-            pcbs->parent = this;
-            children["pcbs"] = pcbs;
         }
-        return children.at("pcbs");
+        return pcbs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::get_children() const
 {
-    if(children.find("pcbs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pcbs != nullptr)
     {
-        if(pcbs != nullptr)
-        {
-            children["pcbs"] = pcbs;
-        }
+        children["pcbs"] = pcbs;
     }
 
     return children;
@@ -2537,7 +2192,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_segment_
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2560,15 +2215,6 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_entity_pa
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pcb")
     {
         for(auto const & c : pcb)
@@ -2576,28 +2222,24 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb>();
         c->parent = this;
-        pcb.push_back(std::move(c));
-        children[segment_path] = pcb.back();
-        return children.at(segment_path);
+        pcb.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pcb)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2619,13 +2261,10 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Pcb()
 	,local_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress>())
 {
     common->parent = this;
-    children["common"] = common;
 
     foreign_address->parent = this;
-    children["foreign-address"] = foreign_address;
 
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     yang_name = "pcb"; yang_parent_name = "pcbs";
 }
@@ -2666,7 +2305,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_seg
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2693,87 +2332,52 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_enti
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "common")
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
-        else
+        if(common == nullptr)
         {
             common = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common>();
-            common->parent = this;
-            children["common"] = common;
         }
-        return children.at("common");
+        return common;
     }
 
     if(child_yang_name == "foreign-address")
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
-        else
+        if(foreign_address == nullptr)
         {
             foreign_address = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress>();
-            foreign_address->parent = this;
-            children["foreign-address"] = foreign_address;
         }
-        return children.at("foreign-address");
+        return foreign_address;
     }
 
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_children() const
 {
-    if(children.find("common") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(common != nullptr)
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
+        children["common"] = common;
     }
 
-    if(children.find("foreign-address") == children.end())
+    if(foreign_address != nullptr)
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
+        children["foreign-address"] = foreign_address;
     }
 
-    if(children.find("local-address") == children.end())
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
     return children;
@@ -2836,7 +2440,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAd
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2862,20 +2466,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAdd
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2932,7 +2528,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Foreign
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2958,20 +2554,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignA
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2998,7 +2586,6 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::Common()
     lpts_pcb(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb>())
 {
     lpts_pcb->parent = this;
-    children["lpts-pcb"] = lpts_pcb;
 
     yang_name = "common"; yang_parent_name = "pcb";
 }
@@ -3029,7 +2616,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3053,41 +2640,24 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lpts-pcb")
     {
-        if(lpts_pcb != nullptr)
-        {
-            children["lpts-pcb"] = lpts_pcb;
-        }
-        else
+        if(lpts_pcb == nullptr)
         {
             lpts_pcb = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb>();
-            lpts_pcb->parent = this;
-            children["lpts-pcb"] = lpts_pcb;
         }
-        return children.at("lpts-pcb");
+        return lpts_pcb;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::get_children() const
 {
-    if(children.find("lpts-pcb") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lpts_pcb != nullptr)
     {
-        if(lpts_pcb != nullptr)
-        {
-            children["lpts-pcb"] = lpts_pcb;
-        }
+        children["lpts-pcb"] = lpts_pcb;
     }
 
     return children;
@@ -3111,13 +2681,10 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Lp
 	,options(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options>())
 {
     accept_mask->parent = this;
-    children["accept-mask"] = accept_mask;
 
     lpts_flags->parent = this;
-    children["lpts-flags"] = lpts_flags;
 
     options->parent = this;
-    children["options"] = options;
 
     yang_name = "lpts-pcb"; yang_parent_name = "common";
 }
@@ -3164,7 +2731,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3189,28 +2756,13 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accept-mask")
     {
-        if(accept_mask != nullptr)
-        {
-            children["accept-mask"] = accept_mask;
-        }
-        else
+        if(accept_mask == nullptr)
         {
             accept_mask = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask>();
-            accept_mask->parent = this;
-            children["accept-mask"] = accept_mask;
         }
-        return children.at("accept-mask");
+        return accept_mask;
     }
 
     if(child_yang_name == "filter")
@@ -3220,82 +2772,57 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter>();
         c->parent = this;
-        filter.push_back(std::move(c));
-        children[segment_path] = filter.back();
-        return children.at(segment_path);
+        filter.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lpts-flags")
     {
-        if(lpts_flags != nullptr)
-        {
-            children["lpts-flags"] = lpts_flags;
-        }
-        else
+        if(lpts_flags == nullptr)
         {
             lpts_flags = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags>();
-            lpts_flags->parent = this;
-            children["lpts-flags"] = lpts_flags;
         }
-        return children.at("lpts-flags");
+        return lpts_flags;
     }
 
     if(child_yang_name == "options")
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
-        else
+        if(options == nullptr)
         {
             options = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options>();
-            options->parent = this;
-            children["options"] = options;
         }
-        return children.at("options");
+        return options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::get_children() const
 {
-    if(children.find("accept-mask") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accept_mask != nullptr)
     {
-        if(accept_mask != nullptr)
-        {
-            children["accept-mask"] = accept_mask;
-        }
+        children["accept-mask"] = accept_mask;
     }
 
     for (auto const & c : filter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("lpts-flags") == children.end())
+    if(lpts_flags != nullptr)
     {
-        if(lpts_flags != nullptr)
-        {
-            children["lpts-flags"] = lpts_flags;
-        }
+        children["lpts-flags"] = lpts_flags;
     }
 
-    if(children.find("options") == children.end())
+    if(options != nullptr)
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
+        children["options"] = options;
     }
 
     return children;
@@ -3347,7 +2874,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3372,20 +2899,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3438,7 +2957,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3464,20 +2983,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3543,7 +3054,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3572,20 +3083,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3633,13 +3136,10 @@ UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Fi
 	,remote_address(std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress>())
 {
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     packet_type->parent = this;
-    children["packet-type"] = packet_type;
 
     remote_address->parent = this;
-    children["remote-address"] = remote_address;
 
     yang_name = "filter"; yang_parent_name = "lpts-pcb";
 }
@@ -3688,7 +3188,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3719,87 +3219,52 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     if(child_yang_name == "packet-type")
     {
-        if(packet_type != nullptr)
-        {
-            children["packet-type"] = packet_type;
-        }
-        else
+        if(packet_type == nullptr)
         {
             packet_type = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType>();
-            packet_type->parent = this;
-            children["packet-type"] = packet_type;
         }
-        return children.at("packet-type");
+        return packet_type;
     }
 
     if(child_yang_name == "remote-address")
     {
-        if(remote_address != nullptr)
-        {
-            children["remote-address"] = remote_address;
-        }
-        else
+        if(remote_address == nullptr)
         {
             remote_address = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress>();
-            remote_address->parent = this;
-            children["remote-address"] = remote_address;
         }
-        return children.at("remote-address");
+        return remote_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::get_children() const
 {
-    if(children.find("local-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
-    if(children.find("packet-type") == children.end())
+    if(packet_type != nullptr)
     {
-        if(packet_type != nullptr)
-        {
-            children["packet-type"] = packet_type;
-        }
+        children["packet-type"] = packet_type;
     }
 
-    if(children.find("remote-address") == children.end())
+    if(remote_address != nullptr)
     {
-        if(remote_address != nullptr)
-        {
-            children["remote-address"] = remote_address;
-        }
+        children["remote-address"] = remote_address;
     }
 
     return children;
@@ -3884,7 +3349,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3912,20 +3377,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3990,7 +3447,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4016,20 +3473,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4086,7 +3535,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 
 }
 
-EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4112,20 +3561,12 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4183,7 +3624,7 @@ std::string UdpConnection::Nodes::Node::PcbDetails::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbDetails::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4206,15 +3647,6 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pcb-detail")
     {
         for(auto const & c : pcb_detail)
@@ -4222,28 +3654,24 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail>();
         c->parent = this;
-        pcb_detail.push_back(std::move(c));
-        children[segment_path] = pcb_detail.back();
-        return children.at(segment_path);
+        pcb_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pcb_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4268,10 +3696,8 @@ UdpConnection::Nodes::Node::PcbDetails::PcbDetail::PcbDetail()
 	,local_address(std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress>())
 {
     foreign_address->parent = this;
-    children["foreign-address"] = foreign_address;
 
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     yang_name = "pcb-detail"; yang_parent_name = "pcb-details";
 }
@@ -4318,7 +3744,7 @@ std::string UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_segment_path(
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4349,64 +3775,38 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_entity_path(En
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "foreign-address")
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
-        else
+        if(foreign_address == nullptr)
         {
             foreign_address = std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress>();
-            foreign_address->parent = this;
-            children["foreign-address"] = foreign_address;
         }
-        return children.at("foreign-address");
+        return foreign_address;
     }
 
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_children() const
 {
-    if(children.find("foreign-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(foreign_address != nullptr)
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
+        children["foreign-address"] = foreign_address;
     }
 
-    if(children.find("local-address") == children.end())
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
     return children;
@@ -4485,7 +3885,7 @@ std::string UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4511,20 +3911,12 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4581,7 +3973,7 @@ std::string UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::g
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4607,20 +3999,12 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::ge
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4678,7 +4062,7 @@ std::string UdpConnection::Nodes::Node::PcbBriefs::get_segment_path() const
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4701,15 +4085,6 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pcb-brief")
     {
         for(auto const & c : pcb_brief)
@@ -4717,28 +4092,24 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief>();
         c->parent = this;
-        pcb_brief.push_back(std::move(c));
-        children[segment_path] = pcb_brief.back();
-        return children.at(segment_path);
+        pcb_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pcb_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4762,10 +4133,8 @@ UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::PcbBrief()
 	,local_address(std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress>())
 {
     foreign_address->parent = this;
-    children["foreign-address"] = foreign_address;
 
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     yang_name = "pcb-brief"; yang_parent_name = "pcb-briefs";
 }
@@ -4810,7 +4179,7 @@ std::string UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_segment_path() 
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4840,64 +4209,38 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_entity_path(Enti
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "foreign-address")
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
-        else
+        if(foreign_address == nullptr)
         {
             foreign_address = std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress>();
-            foreign_address->parent = this;
-            children["foreign-address"] = foreign_address;
         }
-        return children.at("foreign-address");
+        return foreign_address;
     }
 
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_children() const
 {
-    if(children.find("foreign-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(foreign_address != nullptr)
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
+        children["foreign-address"] = foreign_address;
     }
 
-    if(children.find("local-address") == children.end())
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
     return children;
@@ -4972,7 +4315,7 @@ std::string UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_s
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4998,20 +4341,12 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_en
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5068,7 +4403,7 @@ std::string UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get
 
 }
 
-EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_entity_path(Entity* ancestor) const
+const EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5094,20 +4429,12 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_
 
 std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

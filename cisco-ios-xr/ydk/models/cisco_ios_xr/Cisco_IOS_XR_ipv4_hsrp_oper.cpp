@@ -18,19 +18,14 @@ Hsrp::Hsrp()
 	,summary(std::make_shared<Hsrp::Summary>())
 {
     bfd_sessions->parent = this;
-    children["bfd-sessions"] = bfd_sessions;
 
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     mgo_sessions->parent = this;
-    children["mgo-sessions"] = mgo_sessions;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "hsrp"; yang_parent_name = "Cisco-IOS-XR-ipv4-hsrp-oper";
 }
@@ -67,12 +62,12 @@ std::string Hsrp::get_segment_path() const
 
 }
 
-EntityPath Hsrp::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -87,133 +82,80 @@ EntityPath Hsrp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-sessions")
     {
-        if(bfd_sessions != nullptr)
-        {
-            children["bfd-sessions"] = bfd_sessions;
-        }
-        else
+        if(bfd_sessions == nullptr)
         {
             bfd_sessions = std::make_shared<Hsrp::BfdSessions>();
-            bfd_sessions->parent = this;
-            children["bfd-sessions"] = bfd_sessions;
         }
-        return children.at("bfd-sessions");
+        return bfd_sessions;
     }
 
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Hsrp::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Hsrp::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     if(child_yang_name == "mgo-sessions")
     {
-        if(mgo_sessions != nullptr)
-        {
-            children["mgo-sessions"] = mgo_sessions;
-        }
-        else
+        if(mgo_sessions == nullptr)
         {
             mgo_sessions = std::make_shared<Hsrp::MgoSessions>();
-            mgo_sessions->parent = this;
-            children["mgo-sessions"] = mgo_sessions;
         }
-        return children.at("mgo-sessions");
+        return mgo_sessions;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Hsrp::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::get_children() const
 {
-    if(children.find("bfd-sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_sessions != nullptr)
     {
-        if(bfd_sessions != nullptr)
-        {
-            children["bfd-sessions"] = bfd_sessions;
-        }
+        children["bfd-sessions"] = bfd_sessions;
     }
 
-    if(children.find("ipv4") == children.end())
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
-    if(children.find("mgo-sessions") == children.end())
+    if(mgo_sessions != nullptr)
     {
-        if(mgo_sessions != nullptr)
-        {
-            children["mgo-sessions"] = mgo_sessions;
-        }
+        children["mgo-sessions"] = mgo_sessions;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -250,13 +192,10 @@ Hsrp::Ipv4::Ipv4()
 	,tracked_interfaces(std::make_shared<Hsrp::Ipv4::TrackedInterfaces>())
 {
     groups->parent = this;
-    children["groups"] = groups;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     tracked_interfaces->parent = this;
-    children["tracked-interfaces"] = tracked_interfaces;
 
     yang_name = "ipv4"; yang_parent_name = "hsrp";
 }
@@ -289,7 +228,7 @@ std::string Hsrp::Ipv4::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -312,87 +251,52 @@ EntityPath Hsrp::Ipv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<Hsrp::Ipv4::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Hsrp::Ipv4::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "tracked-interfaces")
     {
-        if(tracked_interfaces != nullptr)
-        {
-            children["tracked-interfaces"] = tracked_interfaces;
-        }
-        else
+        if(tracked_interfaces == nullptr)
         {
             tracked_interfaces = std::make_shared<Hsrp::Ipv4::TrackedInterfaces>();
-            tracked_interfaces->parent = this;
-            children["tracked-interfaces"] = tracked_interfaces;
         }
-        return children.at("tracked-interfaces");
+        return tracked_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::get_children() const
 {
-    if(children.find("groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("tracked-interfaces") == children.end())
+    if(tracked_interfaces != nullptr)
     {
-        if(tracked_interfaces != nullptr)
-        {
-            children["tracked-interfaces"] = tracked_interfaces;
-        }
+        children["tracked-interfaces"] = tracked_interfaces;
     }
 
     return children;
@@ -440,7 +344,7 @@ std::string Hsrp::Ipv4::Groups::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -463,15 +367,6 @@ EntityPath Hsrp::Ipv4::Groups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -479,28 +374,24 @@ std::shared_ptr<Entity> Hsrp::Ipv4::Groups::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv4::Groups::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -512,8 +403,8 @@ void Hsrp::Ipv4::Groups::set_value(const std::string & value_path, std::string v
 
 Hsrp::Ipv4::Groups::Group::Group()
     :
-    group_number{YType::int32, "group-number"},
     interface_name{YType::str, "interface-name"},
+    group_number{YType::int32, "group-number"},
     active_ip_address{YType::str, "active-ip-address"},
     active_ipv6_address{YType::str, "active-ipv6-address"},
     active_mac_address{YType::str, "active-mac-address"},
@@ -585,19 +476,14 @@ Hsrp::Ipv4::Groups::Group::Group()
 	,statistics(std::make_shared<Hsrp::Ipv4::Groups::Group::Statistics>())
 {
     coup_received_time->parent = this;
-    children["coup-received-time"] = coup_received_time;
 
     coup_sent_time->parent = this;
-    children["coup-sent-time"] = coup_sent_time;
 
     resign_received_time->parent = this;
-    children["resign-received-time"] = resign_received_time;
 
     resign_sent_time->parent = this;
-    children["resign-sent-time"] = resign_sent_time;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "group"; yang_parent_name = "groups";
 }
@@ -623,8 +509,8 @@ bool Hsrp::Ipv4::Groups::Group::has_data() const
         if(leaf.is_set)
             return true;
     }
-    return group_number.is_set
-	|| interface_name.is_set
+    return interface_name.is_set
+	|| group_number.is_set
 	|| active_ip_address.is_set
 	|| active_ipv6_address.is_set
 	|| active_mac_address.is_set
@@ -712,8 +598,8 @@ bool Hsrp::Ipv4::Groups::Group::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| is_set(group_number.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(group_number.operation)
 	|| is_set(active_ip_address.operation)
 	|| is_set(active_ipv6_address.operation)
 	|| is_set(active_mac_address.operation)
@@ -787,13 +673,13 @@ bool Hsrp::Ipv4::Groups::Group::has_operation() const
 std::string Hsrp::Ipv4::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-number='" <<group_number <<"']" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "group" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -807,8 +693,8 @@ EntityPath Hsrp::Ipv4::Groups::Group::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (active_ip_address.is_set || is_set(active_ip_address.operation)) leaf_name_data.push_back(active_ip_address.get_name_leafdata());
     if (active_ipv6_address.is_set || is_set(active_ipv6_address.operation)) leaf_name_data.push_back(active_ipv6_address.get_name_leafdata());
     if (active_mac_address.is_set || is_set(active_mac_address.operation)) leaf_name_data.push_back(active_mac_address.get_name_leafdata());
@@ -882,43 +768,22 @@ EntityPath Hsrp::Ipv4::Groups::Group::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "coup-received-time")
     {
-        if(coup_received_time != nullptr)
-        {
-            children["coup-received-time"] = coup_received_time;
-        }
-        else
+        if(coup_received_time == nullptr)
         {
             coup_received_time = std::make_shared<Hsrp::Ipv4::Groups::Group::CoupReceivedTime>();
-            coup_received_time->parent = this;
-            children["coup-received-time"] = coup_received_time;
         }
-        return children.at("coup-received-time");
+        return coup_received_time;
     }
 
     if(child_yang_name == "coup-sent-time")
     {
-        if(coup_sent_time != nullptr)
-        {
-            children["coup-sent-time"] = coup_sent_time;
-        }
-        else
+        if(coup_sent_time == nullptr)
         {
             coup_sent_time = std::make_shared<Hsrp::Ipv4::Groups::Group::CoupSentTime>();
-            coup_sent_time->parent = this;
-            children["coup-sent-time"] = coup_sent_time;
         }
-        return children.at("coup-sent-time");
+        return coup_sent_time;
     }
 
     if(child_yang_name == "global-address")
@@ -928,45 +793,31 @@ std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv4::Groups::Group::GlobalAddress>();
         c->parent = this;
-        global_address.push_back(std::move(c));
-        children[segment_path] = global_address.back();
-        return children.at(segment_path);
+        global_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "resign-received-time")
     {
-        if(resign_received_time != nullptr)
-        {
-            children["resign-received-time"] = resign_received_time;
-        }
-        else
+        if(resign_received_time == nullptr)
         {
             resign_received_time = std::make_shared<Hsrp::Ipv4::Groups::Group::ResignReceivedTime>();
-            resign_received_time->parent = this;
-            children["resign-received-time"] = resign_received_time;
         }
-        return children.at("resign-received-time");
+        return resign_received_time;
     }
 
     if(child_yang_name == "resign-sent-time")
     {
-        if(resign_sent_time != nullptr)
-        {
-            children["resign-sent-time"] = resign_sent_time;
-        }
-        else
+        if(resign_sent_time == nullptr)
         {
             resign_sent_time = std::make_shared<Hsrp::Ipv4::Groups::Group::ResignSentTime>();
-            resign_sent_time->parent = this;
-            children["resign-sent-time"] = resign_sent_time;
         }
-        return children.at("resign-sent-time");
+        return resign_sent_time;
     }
 
     if(child_yang_name == "state-change-history")
@@ -976,91 +827,63 @@ std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv4::Groups::Group::StateChangeHistory>();
         c->parent = this;
-        state_change_history.push_back(std::move(c));
-        children[segment_path] = state_change_history.back();
-        return children.at(segment_path);
+        state_change_history.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Hsrp::Ipv4::Groups::Group::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::get_children() const
 {
-    if(children.find("coup-received-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(coup_received_time != nullptr)
     {
-        if(coup_received_time != nullptr)
-        {
-            children["coup-received-time"] = coup_received_time;
-        }
+        children["coup-received-time"] = coup_received_time;
     }
 
-    if(children.find("coup-sent-time") == children.end())
+    if(coup_sent_time != nullptr)
     {
-        if(coup_sent_time != nullptr)
-        {
-            children["coup-sent-time"] = coup_sent_time;
-        }
+        children["coup-sent-time"] = coup_sent_time;
     }
 
     for (auto const & c : global_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("resign-received-time") == children.end())
+    if(resign_received_time != nullptr)
     {
-        if(resign_received_time != nullptr)
-        {
-            children["resign-received-time"] = resign_received_time;
-        }
+        children["resign-received-time"] = resign_received_time;
     }
 
-    if(children.find("resign-sent-time") == children.end())
+    if(resign_sent_time != nullptr)
     {
-        if(resign_sent_time != nullptr)
-        {
-            children["resign-sent-time"] = resign_sent_time;
-        }
+        children["resign-sent-time"] = resign_sent_time;
     }
 
     for (auto const & c : state_change_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -1068,13 +891,13 @@ std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::get_
 
 void Hsrp::Ipv4::Groups::Group::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "group-number")
-    {
-        group_number = value;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
+    }
+    if(value_path == "group-number")
+    {
+        group_number = value;
     }
     if(value_path == "active-ip-address")
     {
@@ -1364,7 +1187,7 @@ std::string Hsrp::Ipv4::Groups::Group::ResignSentTime::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::ResignSentTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::ResignSentTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1389,20 +1212,12 @@ EntityPath Hsrp::Ipv4::Groups::Group::ResignSentTime::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::ResignSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::ResignSentTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::ResignSentTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1452,7 +1267,7 @@ std::string Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_segment_path() co
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1477,20 +1292,12 @@ EntityPath Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_entity_path(Entity
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1540,7 +1347,7 @@ std::string Hsrp::Ipv4::Groups::Group::CoupSentTime::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::CoupSentTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::CoupSentTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1565,20 +1372,12 @@ EntityPath Hsrp::Ipv4::Groups::Group::CoupSentTime::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::CoupSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::CoupSentTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::CoupSentTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1628,7 +1427,7 @@ std::string Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_segment_path() cons
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1653,20 +1452,12 @@ EntityPath Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1755,7 +1546,7 @@ std::string Hsrp::Ipv4::Groups::Group::Statistics::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1793,20 +1584,12 @@ EntityPath Hsrp::Ipv4::Groups::Group::Statistics::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1905,7 +1688,7 @@ std::string Hsrp::Ipv4::Groups::Group::GlobalAddress::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::GlobalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::GlobalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1929,20 +1712,12 @@ EntityPath Hsrp::Ipv4::Groups::Group::GlobalAddress::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::GlobalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::GlobalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::GlobalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1963,7 +1738,6 @@ Hsrp::Ipv4::Groups::Group::StateChangeHistory::StateChangeHistory()
     time(std::make_shared<Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time>())
 {
     time->parent = this;
-    children["time"] = time;
 
     yang_name = "state-change-history"; yang_parent_name = "group";
 }
@@ -1998,7 +1772,7 @@ std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_segment_path() co
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2024,41 +1798,24 @@ EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_entity_path(Entity
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "time")
     {
-        if(time != nullptr)
-        {
-            children["time"] = time;
-        }
-        else
+        if(time == nullptr)
         {
             time = std::make_shared<Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time>();
-            time->parent = this;
-            children["time"] = time;
         }
-        return children.at("time");
+        return time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_children() const
 {
-    if(children.find("time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(time != nullptr)
     {
-        if(time != nullptr)
-        {
-            children["time"] = time;
-        }
+        children["time"] = time;
     }
 
     return children;
@@ -2114,7 +1871,7 @@ std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_segment_pat
 
 }
 
-EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2139,20 +1896,12 @@ EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_entity_path(
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2206,7 +1955,7 @@ std::string Hsrp::Ipv4::TrackedInterfaces::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::TrackedInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::TrackedInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2229,15 +1978,6 @@ EntityPath Hsrp::Ipv4::TrackedInterfaces::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Hsrp::Ipv4::TrackedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tracked-interface")
     {
         for(auto const & c : tracked_interface)
@@ -2245,28 +1985,24 @@ std::shared_ptr<Entity> Hsrp::Ipv4::TrackedInterfaces::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv4::TrackedInterfaces::TrackedInterface>();
         c->parent = this;
-        tracked_interface.push_back(std::move(c));
-        children[segment_path] = tracked_interface.back();
-        return children.at(segment_path);
+        tracked_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::TrackedInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::TrackedInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tracked_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2278,8 +2014,8 @@ void Hsrp::Ipv4::TrackedInterfaces::set_value(const std::string & value_path, st
 
 Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::TrackedInterface()
     :
-    group_number{YType::int32, "group-number"},
     interface_name{YType::str, "interface-name"},
+    group_number{YType::int32, "group-number"},
     tracked_interface_name{YType::str, "tracked-interface-name"},
     hsrp_group_number{YType::uint32, "hsrp-group-number"},
     interface{YType::str, "interface"},
@@ -2297,8 +2033,8 @@ Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::~TrackedInterface()
 
 bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_data() const
 {
-    return group_number.is_set
-	|| interface_name.is_set
+    return interface_name.is_set
+	|| group_number.is_set
 	|| tracked_interface_name.is_set
 	|| hsrp_group_number.is_set
 	|| interface.is_set
@@ -2311,8 +2047,8 @@ bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_data() const
 bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_operation() const
 {
     return is_set(operation)
-	|| is_set(group_number.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(group_number.operation)
 	|| is_set(tracked_interface_name.operation)
 	|| is_set(hsrp_group_number.operation)
 	|| is_set(interface.operation)
@@ -2325,13 +2061,13 @@ bool Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::has_operation() const
 std::string Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-interface" <<"[group-number='" <<group_number <<"']" <<"[interface-name='" <<interface_name <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
+    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2345,8 +2081,8 @@ EntityPath Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (tracked_interface_name.is_set || is_set(tracked_interface_name.operation)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
     if (hsrp_group_number.is_set || is_set(hsrp_group_number.operation)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
     if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
@@ -2363,32 +2099,24 @@ EntityPath Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_entity_path(Enti
 
 std::shared_ptr<Entity> Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void Hsrp::Ipv4::TrackedInterfaces::TrackedInterface::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "group-number")
-    {
-        group_number = value;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
+    }
+    if(value_path == "group-number")
+    {
+        group_number = value;
     }
     if(value_path == "tracked-interface-name")
     {
@@ -2458,7 +2186,7 @@ std::string Hsrp::Ipv4::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2481,15 +2209,6 @@ EntityPath Hsrp::Ipv4::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -2497,28 +2216,24 @@ std::shared_ptr<Entity> Hsrp::Ipv4::Interfaces::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv4::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2537,7 +2252,6 @@ Hsrp::Ipv4::Interfaces::Interface::Interface()
     statistics(std::make_shared<Hsrp::Ipv4::Interfaces::Interface::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -2572,7 +2286,7 @@ std::string Hsrp::Ipv4::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv4::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2598,41 +2312,24 @@ EntityPath Hsrp::Ipv4::Interfaces::Interface::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Hsrp::Ipv4::Interfaces::Interface::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Interfaces::Interface::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -2709,7 +2406,7 @@ std::string Hsrp::Ipv4::Interfaces::Interface::Statistics::get_segment_path() co
 
 }
 
-EntityPath Hsrp::Ipv4::Interfaces::Interface::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv4::Interfaces::Interface::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2741,20 +2438,12 @@ EntityPath Hsrp::Ipv4::Interfaces::Interface::Statistics::get_entity_path(Entity
 
 std::shared_ptr<Entity> Hsrp::Ipv4::Interfaces::Interface::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv4::Interfaces::Interface::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv4::Interfaces::Interface::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2836,7 +2525,7 @@ std::string Hsrp::MgoSessions::get_segment_path() const
 
 }
 
-EntityPath Hsrp::MgoSessions::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::MgoSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2859,15 +2548,6 @@ EntityPath Hsrp::MgoSessions::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::MgoSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mgo-session")
     {
         for(auto const & c : mgo_session)
@@ -2875,28 +2555,24 @@ std::shared_ptr<Entity> Hsrp::MgoSessions::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::MgoSessions::MgoSession>();
         c->parent = this;
-        mgo_session.push_back(std::move(c));
-        children[segment_path] = mgo_session.back();
-        return children.at(segment_path);
+        mgo_session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::MgoSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mgo_session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2962,7 +2638,7 @@ std::string Hsrp::MgoSessions::MgoSession::get_segment_path() const
 
 }
 
-EntityPath Hsrp::MgoSessions::MgoSession::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::MgoSessions::MgoSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2991,15 +2667,6 @@ EntityPath Hsrp::MgoSessions::MgoSession::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Hsrp::MgoSessions::MgoSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slave")
     {
         for(auto const & c : slave)
@@ -3007,28 +2674,24 @@ std::shared_ptr<Entity> Hsrp::MgoSessions::MgoSession::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::MgoSessions::MgoSession::Slave>();
         c->parent = this;
-        slave.push_back(std::move(c));
-        children[segment_path] = slave.back();
-        return children.at(segment_path);
+        slave.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::MgoSessions::MgoSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::MgoSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slave)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3096,7 +2759,7 @@ std::string Hsrp::MgoSessions::MgoSession::Slave::get_segment_path() const
 
 }
 
-EntityPath Hsrp::MgoSessions::MgoSession::Slave::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::MgoSessions::MgoSession::Slave::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3121,20 +2784,12 @@ EntityPath Hsrp::MgoSessions::MgoSession::Slave::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Hsrp::MgoSessions::MgoSession::Slave::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::MgoSessions::MgoSession::Slave::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::MgoSessions::MgoSession::Slave::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3157,13 +2812,10 @@ Hsrp::Ipv6::Ipv6()
 	,tracked_interfaces(std::make_shared<Hsrp::Ipv6::TrackedInterfaces>())
 {
     groups->parent = this;
-    children["groups"] = groups;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     tracked_interfaces->parent = this;
-    children["tracked-interfaces"] = tracked_interfaces;
 
     yang_name = "ipv6"; yang_parent_name = "hsrp";
 }
@@ -3196,7 +2848,7 @@ std::string Hsrp::Ipv6::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3219,87 +2871,52 @@ EntityPath Hsrp::Ipv6::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<Hsrp::Ipv6::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Hsrp::Ipv6::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "tracked-interfaces")
     {
-        if(tracked_interfaces != nullptr)
-        {
-            children["tracked-interfaces"] = tracked_interfaces;
-        }
-        else
+        if(tracked_interfaces == nullptr)
         {
             tracked_interfaces = std::make_shared<Hsrp::Ipv6::TrackedInterfaces>();
-            tracked_interfaces->parent = this;
-            children["tracked-interfaces"] = tracked_interfaces;
         }
-        return children.at("tracked-interfaces");
+        return tracked_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::get_children() const
 {
-    if(children.find("groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("tracked-interfaces") == children.end())
+    if(tracked_interfaces != nullptr)
     {
-        if(tracked_interfaces != nullptr)
-        {
-            children["tracked-interfaces"] = tracked_interfaces;
-        }
+        children["tracked-interfaces"] = tracked_interfaces;
     }
 
     return children;
@@ -3347,7 +2964,7 @@ std::string Hsrp::Ipv6::TrackedInterfaces::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::TrackedInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::TrackedInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3370,15 +2987,6 @@ EntityPath Hsrp::Ipv6::TrackedInterfaces::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Hsrp::Ipv6::TrackedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tracked-interface")
     {
         for(auto const & c : tracked_interface)
@@ -3386,28 +2994,24 @@ std::shared_ptr<Entity> Hsrp::Ipv6::TrackedInterfaces::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv6::TrackedInterfaces::TrackedInterface>();
         c->parent = this;
-        tracked_interface.push_back(std::move(c));
-        children[segment_path] = tracked_interface.back();
-        return children.at(segment_path);
+        tracked_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::TrackedInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::TrackedInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tracked_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3419,8 +3023,8 @@ void Hsrp::Ipv6::TrackedInterfaces::set_value(const std::string & value_path, st
 
 Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::TrackedInterface()
     :
-    group_number{YType::int32, "group-number"},
     interface_name{YType::str, "interface-name"},
+    group_number{YType::int32, "group-number"},
     tracked_interface_name{YType::str, "tracked-interface-name"},
     hsrp_group_number{YType::uint32, "hsrp-group-number"},
     interface{YType::str, "interface"},
@@ -3438,8 +3042,8 @@ Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::~TrackedInterface()
 
 bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_data() const
 {
-    return group_number.is_set
-	|| interface_name.is_set
+    return interface_name.is_set
+	|| group_number.is_set
 	|| tracked_interface_name.is_set
 	|| hsrp_group_number.is_set
 	|| interface.is_set
@@ -3452,8 +3056,8 @@ bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_data() const
 bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_operation() const
 {
     return is_set(operation)
-	|| is_set(group_number.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(group_number.operation)
 	|| is_set(tracked_interface_name.operation)
 	|| is_set(hsrp_group_number.operation)
 	|| is_set(interface.operation)
@@ -3466,13 +3070,13 @@ bool Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::has_operation() const
 std::string Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-interface" <<"[group-number='" <<group_number <<"']" <<"[interface-name='" <<interface_name <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
+    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3486,8 +3090,8 @@ EntityPath Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (tracked_interface_name.is_set || is_set(tracked_interface_name.operation)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
     if (hsrp_group_number.is_set || is_set(hsrp_group_number.operation)) leaf_name_data.push_back(hsrp_group_number.get_name_leafdata());
     if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
@@ -3504,32 +3108,24 @@ EntityPath Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_entity_path(Enti
 
 std::shared_ptr<Entity> Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void Hsrp::Ipv6::TrackedInterfaces::TrackedInterface::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "group-number")
-    {
-        group_number = value;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
+    }
+    if(value_path == "group-number")
+    {
+        group_number = value;
     }
     if(value_path == "tracked-interface-name")
     {
@@ -3599,7 +3195,7 @@ std::string Hsrp::Ipv6::Groups::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3622,15 +3218,6 @@ EntityPath Hsrp::Ipv6::Groups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -3638,28 +3225,24 @@ std::shared_ptr<Entity> Hsrp::Ipv6::Groups::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv6::Groups::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3671,8 +3254,8 @@ void Hsrp::Ipv6::Groups::set_value(const std::string & value_path, std::string v
 
 Hsrp::Ipv6::Groups::Group::Group()
     :
-    group_number{YType::int32, "group-number"},
     interface_name{YType::str, "interface-name"},
+    group_number{YType::int32, "group-number"},
     active_ip_address{YType::str, "active-ip-address"},
     active_ipv6_address{YType::str, "active-ipv6-address"},
     active_mac_address{YType::str, "active-mac-address"},
@@ -3744,19 +3327,14 @@ Hsrp::Ipv6::Groups::Group::Group()
 	,statistics(std::make_shared<Hsrp::Ipv6::Groups::Group::Statistics>())
 {
     coup_received_time->parent = this;
-    children["coup-received-time"] = coup_received_time;
 
     coup_sent_time->parent = this;
-    children["coup-sent-time"] = coup_sent_time;
 
     resign_received_time->parent = this;
-    children["resign-received-time"] = resign_received_time;
 
     resign_sent_time->parent = this;
-    children["resign-sent-time"] = resign_sent_time;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "group"; yang_parent_name = "groups";
 }
@@ -3782,8 +3360,8 @@ bool Hsrp::Ipv6::Groups::Group::has_data() const
         if(leaf.is_set)
             return true;
     }
-    return group_number.is_set
-	|| interface_name.is_set
+    return interface_name.is_set
+	|| group_number.is_set
 	|| active_ip_address.is_set
 	|| active_ipv6_address.is_set
 	|| active_mac_address.is_set
@@ -3871,8 +3449,8 @@ bool Hsrp::Ipv6::Groups::Group::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| is_set(group_number.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(group_number.operation)
 	|| is_set(active_ip_address.operation)
 	|| is_set(active_ipv6_address.operation)
 	|| is_set(active_mac_address.operation)
@@ -3946,13 +3524,13 @@ bool Hsrp::Ipv6::Groups::Group::has_operation() const
 std::string Hsrp::Ipv6::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-number='" <<group_number <<"']" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "group" <<"[interface-name='" <<interface_name <<"']" <<"[group-number='" <<group_number <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3966,8 +3544,8 @@ EntityPath Hsrp::Ipv6::Groups::Group::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (active_ip_address.is_set || is_set(active_ip_address.operation)) leaf_name_data.push_back(active_ip_address.get_name_leafdata());
     if (active_ipv6_address.is_set || is_set(active_ipv6_address.operation)) leaf_name_data.push_back(active_ipv6_address.get_name_leafdata());
     if (active_mac_address.is_set || is_set(active_mac_address.operation)) leaf_name_data.push_back(active_mac_address.get_name_leafdata());
@@ -4041,43 +3619,22 @@ EntityPath Hsrp::Ipv6::Groups::Group::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "coup-received-time")
     {
-        if(coup_received_time != nullptr)
-        {
-            children["coup-received-time"] = coup_received_time;
-        }
-        else
+        if(coup_received_time == nullptr)
         {
             coup_received_time = std::make_shared<Hsrp::Ipv6::Groups::Group::CoupReceivedTime>();
-            coup_received_time->parent = this;
-            children["coup-received-time"] = coup_received_time;
         }
-        return children.at("coup-received-time");
+        return coup_received_time;
     }
 
     if(child_yang_name == "coup-sent-time")
     {
-        if(coup_sent_time != nullptr)
-        {
-            children["coup-sent-time"] = coup_sent_time;
-        }
-        else
+        if(coup_sent_time == nullptr)
         {
             coup_sent_time = std::make_shared<Hsrp::Ipv6::Groups::Group::CoupSentTime>();
-            coup_sent_time->parent = this;
-            children["coup-sent-time"] = coup_sent_time;
         }
-        return children.at("coup-sent-time");
+        return coup_sent_time;
     }
 
     if(child_yang_name == "global-address")
@@ -4087,45 +3644,31 @@ std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv6::Groups::Group::GlobalAddress>();
         c->parent = this;
-        global_address.push_back(std::move(c));
-        children[segment_path] = global_address.back();
-        return children.at(segment_path);
+        global_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "resign-received-time")
     {
-        if(resign_received_time != nullptr)
-        {
-            children["resign-received-time"] = resign_received_time;
-        }
-        else
+        if(resign_received_time == nullptr)
         {
             resign_received_time = std::make_shared<Hsrp::Ipv6::Groups::Group::ResignReceivedTime>();
-            resign_received_time->parent = this;
-            children["resign-received-time"] = resign_received_time;
         }
-        return children.at("resign-received-time");
+        return resign_received_time;
     }
 
     if(child_yang_name == "resign-sent-time")
     {
-        if(resign_sent_time != nullptr)
-        {
-            children["resign-sent-time"] = resign_sent_time;
-        }
-        else
+        if(resign_sent_time == nullptr)
         {
             resign_sent_time = std::make_shared<Hsrp::Ipv6::Groups::Group::ResignSentTime>();
-            resign_sent_time->parent = this;
-            children["resign-sent-time"] = resign_sent_time;
         }
-        return children.at("resign-sent-time");
+        return resign_sent_time;
     }
 
     if(child_yang_name == "state-change-history")
@@ -4135,91 +3678,63 @@ std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv6::Groups::Group::StateChangeHistory>();
         c->parent = this;
-        state_change_history.push_back(std::move(c));
-        children[segment_path] = state_change_history.back();
-        return children.at(segment_path);
+        state_change_history.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Hsrp::Ipv6::Groups::Group::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::get_children() const
 {
-    if(children.find("coup-received-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(coup_received_time != nullptr)
     {
-        if(coup_received_time != nullptr)
-        {
-            children["coup-received-time"] = coup_received_time;
-        }
+        children["coup-received-time"] = coup_received_time;
     }
 
-    if(children.find("coup-sent-time") == children.end())
+    if(coup_sent_time != nullptr)
     {
-        if(coup_sent_time != nullptr)
-        {
-            children["coup-sent-time"] = coup_sent_time;
-        }
+        children["coup-sent-time"] = coup_sent_time;
     }
 
     for (auto const & c : global_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("resign-received-time") == children.end())
+    if(resign_received_time != nullptr)
     {
-        if(resign_received_time != nullptr)
-        {
-            children["resign-received-time"] = resign_received_time;
-        }
+        children["resign-received-time"] = resign_received_time;
     }
 
-    if(children.find("resign-sent-time") == children.end())
+    if(resign_sent_time != nullptr)
     {
-        if(resign_sent_time != nullptr)
-        {
-            children["resign-sent-time"] = resign_sent_time;
-        }
+        children["resign-sent-time"] = resign_sent_time;
     }
 
     for (auto const & c : state_change_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -4227,13 +3742,13 @@ std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::get_
 
 void Hsrp::Ipv6::Groups::Group::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "group-number")
-    {
-        group_number = value;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
+    }
+    if(value_path == "group-number")
+    {
+        group_number = value;
     }
     if(value_path == "active-ip-address")
     {
@@ -4523,7 +4038,7 @@ std::string Hsrp::Ipv6::Groups::Group::ResignSentTime::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::ResignSentTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::ResignSentTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4548,20 +4063,12 @@ EntityPath Hsrp::Ipv6::Groups::Group::ResignSentTime::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::ResignSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::ResignSentTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::ResignSentTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4611,7 +4118,7 @@ std::string Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_segment_path() co
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4636,20 +4143,12 @@ EntityPath Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_entity_path(Entity
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4699,7 +4198,7 @@ std::string Hsrp::Ipv6::Groups::Group::CoupSentTime::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::CoupSentTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::CoupSentTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4724,20 +4223,12 @@ EntityPath Hsrp::Ipv6::Groups::Group::CoupSentTime::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::CoupSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::CoupSentTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::CoupSentTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4787,7 +4278,7 @@ std::string Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_segment_path() cons
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4812,20 +4303,12 @@ EntityPath Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4914,7 +4397,7 @@ std::string Hsrp::Ipv6::Groups::Group::Statistics::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4952,20 +4435,12 @@ EntityPath Hsrp::Ipv6::Groups::Group::Statistics::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5064,7 +4539,7 @@ std::string Hsrp::Ipv6::Groups::Group::GlobalAddress::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::GlobalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::GlobalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5088,20 +4563,12 @@ EntityPath Hsrp::Ipv6::Groups::Group::GlobalAddress::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::GlobalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::GlobalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::GlobalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5122,7 +4589,6 @@ Hsrp::Ipv6::Groups::Group::StateChangeHistory::StateChangeHistory()
     time(std::make_shared<Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time>())
 {
     time->parent = this;
-    children["time"] = time;
 
     yang_name = "state-change-history"; yang_parent_name = "group";
 }
@@ -5157,7 +4623,7 @@ std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_segment_path() co
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5183,41 +4649,24 @@ EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_entity_path(Entity
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "time")
     {
-        if(time != nullptr)
-        {
-            children["time"] = time;
-        }
-        else
+        if(time == nullptr)
         {
             time = std::make_shared<Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time>();
-            time->parent = this;
-            children["time"] = time;
         }
-        return children.at("time");
+        return time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_children() const
 {
-    if(children.find("time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(time != nullptr)
     {
-        if(time != nullptr)
-        {
-            children["time"] = time;
-        }
+        children["time"] = time;
     }
 
     return children;
@@ -5273,7 +4722,7 @@ std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_segment_pat
 
 }
 
-EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5298,20 +4747,12 @@ EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_entity_path(
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5365,7 +4806,7 @@ std::string Hsrp::Ipv6::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5388,15 +4829,6 @@ EntityPath Hsrp::Ipv6::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -5404,28 +4836,24 @@ std::shared_ptr<Entity> Hsrp::Ipv6::Interfaces::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::Ipv6::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5444,7 +4872,6 @@ Hsrp::Ipv6::Interfaces::Interface::Interface()
     statistics(std::make_shared<Hsrp::Ipv6::Interfaces::Interface::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -5479,7 +4906,7 @@ std::string Hsrp::Ipv6::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Ipv6::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5505,41 +4932,24 @@ EntityPath Hsrp::Ipv6::Interfaces::Interface::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Hsrp::Ipv6::Interfaces::Interface::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Interfaces::Interface::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -5616,7 +5026,7 @@ std::string Hsrp::Ipv6::Interfaces::Interface::Statistics::get_segment_path() co
 
 }
 
-EntityPath Hsrp::Ipv6::Interfaces::Interface::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Ipv6::Interfaces::Interface::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5648,20 +5058,12 @@ EntityPath Hsrp::Ipv6::Interfaces::Interface::Statistics::get_entity_path(Entity
 
 std::shared_ptr<Entity> Hsrp::Ipv6::Interfaces::Interface::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Ipv6::Interfaces::Interface::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Ipv6::Interfaces::Interface::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5743,7 +5145,7 @@ std::string Hsrp::BfdSessions::get_segment_path() const
 
 }
 
-EntityPath Hsrp::BfdSessions::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::BfdSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5766,15 +5168,6 @@ EntityPath Hsrp::BfdSessions::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::BfdSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-session")
     {
         for(auto const & c : bfd_session)
@@ -5782,28 +5175,24 @@ std::shared_ptr<Entity> Hsrp::BfdSessions::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::BfdSessions::BfdSession>();
         c->parent = this;
-        bfd_session.push_back(std::move(c));
-        children[segment_path] = bfd_session.back();
-        return children.at(segment_path);
+        bfd_session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::BfdSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5878,7 +5267,7 @@ std::string Hsrp::BfdSessions::BfdSession::get_segment_path() const
 
 }
 
-EntityPath Hsrp::BfdSessions::BfdSession::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::BfdSessions::BfdSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5910,15 +5299,6 @@ EntityPath Hsrp::BfdSessions::BfdSession::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Hsrp::BfdSessions::BfdSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -5926,28 +5306,24 @@ std::shared_ptr<Entity> Hsrp::BfdSessions::BfdSession::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Hsrp::BfdSessions::BfdSession::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::BfdSessions::BfdSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::BfdSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6027,7 +5403,7 @@ std::string Hsrp::BfdSessions::BfdSession::Group::get_segment_path() const
 
 }
 
-EntityPath Hsrp::BfdSessions::BfdSession::Group::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::BfdSessions::BfdSession::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6052,20 +5428,12 @@ EntityPath Hsrp::BfdSessions::BfdSession::Group::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Hsrp::BfdSessions::BfdSession::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::BfdSessions::BfdSession::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::BfdSessions::BfdSession::Group::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6292,7 +5660,7 @@ std::string Hsrp::Summary::get_segment_path() const
 
 }
 
-EntityPath Hsrp::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Hsrp::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6376,20 +5744,12 @@ EntityPath Hsrp::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hsrp::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hsrp::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hsrp::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

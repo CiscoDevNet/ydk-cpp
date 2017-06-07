@@ -32,7 +32,7 @@ You can install YDK-Cpp on macOS or Linux.  It is not currently supported on Win
 Quick Install
 -------------
 **macOS**
-You can install the latest model packages using [homebrew](http://brew.sh).  It will manage the dependencies between YDK packages and all other sytem dependencies.  First, add the third-party repository (homebrew tap) for YDK:
+You can install the latest model packages using [homebrew](http://brew.sh).  This utility will manage the dependencies between YDK packages and all other sytem dependencies.  First, add the third-party repository (homebrew tap) for YDK:
 ```
 $ brew tap CiscoDevNet/ydk
 ```
@@ -42,23 +42,23 @@ You get a fully operational YDK environment by installing the ``cisco-ios-xr`` b
 $ brew install ydk-cisco-ios-xr
 ```
 
-Alternatively, you can perform a partial installation.  If you only want to install the ``openconfig`` bundle and its dependencies (``ydk`` and ``ietf`` packages), execute::
+Alternatively, you can perform a partial installation.  If you only want to install the ``openconfig`` bundle and its dependencies (``ydk`` and ``ietf`` packages), execute:
 ```
 $ brew install ydk-openconfig
 ```
 
-If you only want to install the ``ietf`` bundle and its dependencies (``ydk`` package), execute::
+If you only want to install the ``ietf`` bundle and its dependencies (``ydk`` package), execute:
 ```
 $ brew install ydk-ietf
 ```
 
-**Linux**
+**Linux**  
 Debian and RPM packages are coming soon.  Currently, you have to install it from source (see below).
 
 Installing from source
 ----------------------
 ### System Requirements
-**Linux**
+**Linux**  
 Ubuntu (Debian-based) - The following packages must be present in your system before installing YDK-Cpp:
 ```
 $ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev libxslt1-dev libtool-bin cmake
@@ -67,12 +67,11 @@ $ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev 
 Centos (Fedora-based) - The following packages must be present in your system before installing YDK-Cpp:
 ```
 $ sudo yum install epel-release
-$ sudo yum install python-pip python-devel libxml2-devel libxslt-devel libssh-devel libcurl-devel libtool clang cmake3 pcre-devel
-$ sudo ln -fs /usr/bin/cmake3 /usr/bin/cmake
+$ sudo yum install libxml2-devel libxslt-devel libssh-devel libtool gcc-c++ pcre-devel cmake
 ```
 
-**Mac**
-It is recommended to install homebrew (http://brew.sh) and Xcode command line tools on your system before installing YDK-Cpp
+**Mac**  
+It is recommended to install [homebrew](http://brew.sh) and Xcode command line tools on your system before installing YDK-Cpp:
 ```
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 $ brew install curl libssh pcre xml2 cmake
@@ -83,42 +82,42 @@ YDK uses ``cmake`` as the build system of choice. To install the ``core`` packag
 ```
 $ ydk-cpp$ cd core/ydk
 $ core$ mkdir build && cd build
-$ build$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ ..
-$ build$ make && sudo make install
+$ build$ cmake .. && make
+$ build$ sudo make install
 ```
 
-Once you have installed the ``core`` package, you can install one or more model bundles.  Note that some bundles have dependencies on other bundles.  Those dependencies are captured in the bundle packages used for quick installation. To install the IETF bundle, execute
+Once you have installed the ``core`` package, you can install one or more model bundles.  Note that some bundles have dependencies on other bundles.  Those dependencies are captured in the bundle packages used for quick installation. To install the `ietf` bundle, execute:
 ```
 $ core$ cd ../../ietf
 $ ietf$ mkdir build && cd build
-$ build$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ ..
-$ build$ make && sudo make install
+$ build$ cmake .. && make
+$ build$ sudo make install
 ```
 
-To install the openconfig bundle, execute
+To install the `openconfig` bundle, execute:
 ```
 $ ietf$ cd ../openconfig
 $ openconfig$ mkdir build && cd build
-$ build$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ ..
-$ build$ make && sudo make install
+$ build$ cmake .. && make
+$ build$ sudo make install
 ```
 
-To install the cisco-ios-xr bundle, execute
+To install the `cisco-ios-xr` bundle, execute:
 ```
 $ openconfig$ cd ../cisco-ios-xr
 $ cisco-ios-xr$ mkdir build && cd build
-$ build$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ ..
-$ build$ make && sudo make install
+$ build$ cmake .. && make
+$ build$ sudo make install
 $ build$ cd ../..
 ```
 
 Documentation and Support
-===============
-- Samples can be found under the `core/samples` directory
-- API documentation can be found at http://ydk.cisco.com/cpp/docs
-- Additional samples can be found at https://github.com/CiscoDevNet/ydk-cpp-samples
-- For queries related to usage of the API, please join the YDK community at https://communities.cisco.com/community/developer/ydk
+=========================
+- Read the [API documentation](http://ydk.cisco.com/cpp/docs) for details on how to use the API and specific models
+- Samples can be found under the [samples directory](https://github.com/CiscoDevNet/ydk-cpp/tree/master/core/samples)
+- Additional samples can be found in the [YDK-Cpp samples repository](https://github.com/CiscoDevNet/ydk-cpp-samples)
+- Join the [YDK community](https://communities.cisco.com/community/developer/ydk) to connect with other users and with the makers of YDK
 
 Release Notes
 ===============
-The current YDK release version is 0.5.4 (alpha). YDK-Cpp is licensed under the Apache 2.0 License.
+The current YDK release version is 0.5.5 (alpha). YDK-Cpp is licensed under the Apache 2.0 License.

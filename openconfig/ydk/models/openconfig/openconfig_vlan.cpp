@@ -47,12 +47,12 @@ std::string Vlans::get_segment_path() const
 
 }
 
-EntityPath Vlans::get_entity_path(Entity* ancestor) const
+const EntityPath Vlans::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath Vlans::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan")
     {
         for(auto const & c : vlan)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> Vlans::get_child_by_name(const std::string & child_yang_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vlans::Vlan>();
         c->parent = this;
-        vlan.push_back(std::move(c));
-        children[segment_path] = vlan.back();
-        return children.at(segment_path);
+        vlan.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlans::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlans::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -142,10 +129,8 @@ Vlans::Vlan::Vlan()
 	,state(std::make_shared<Vlans::Vlan::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "vlan"; yang_parent_name = "vlans";
 }
@@ -178,7 +163,7 @@ std::string Vlans::Vlan::get_segment_path() const
 
 }
 
-EntityPath Vlans::Vlan::get_entity_path(Entity* ancestor) const
+const EntityPath Vlans::Vlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -202,64 +187,38 @@ EntityPath Vlans::Vlan::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlans::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Vlans::Vlan::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Vlans::Vlan::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlans::Vlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -310,7 +269,7 @@ std::string Vlans::Vlan::Config::get_segment_path() const
 
 }
 
-EntityPath Vlans::Vlan::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Vlans::Vlan::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -336,20 +295,12 @@ EntityPath Vlans::Vlan::Config::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlans::Vlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlans::Vlan::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -418,7 +369,7 @@ std::string Vlans::Vlan::State::get_segment_path() const
 
 }
 
-EntityPath Vlans::Vlan::State::get_entity_path(Entity* ancestor) const
+const EntityPath Vlans::Vlan::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -446,20 +397,12 @@ EntityPath Vlans::Vlan::State::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vlans::Vlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vlans::Vlan::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

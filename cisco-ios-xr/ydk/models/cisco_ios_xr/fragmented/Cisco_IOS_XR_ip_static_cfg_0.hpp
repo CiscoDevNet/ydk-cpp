@@ -18,17 +18,15 @@ class RouterStatic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Vrfs; //type: RouterStatic::Vrfs
         class DefaultVrf; //type: RouterStatic::DefaultVrf
@@ -37,8 +35,7 @@ class RouterStatic : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::DefaultVrf> default_vrf;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::MaximumRoutes> maximum_routes;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs> vrfs;
-
-
+        
 }; // RouterStatic
 
 
@@ -50,19 +47,16 @@ class RouterStatic::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: RouterStatic::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf> > vrf;
-
-
+        
 }; // RouterStatic::Vrfs
 
 
@@ -74,20 +68,17 @@ class RouterStatic::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class AddressFamily; //type: RouterStatic::Vrfs::Vrf::AddressFamily
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily> address_family;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf
 
 
@@ -99,21 +90,18 @@ class RouterStatic::Vrfs::Vrf::AddressFamily : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrfipv4; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4
         class Vrfipv6; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4> vrfipv4;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6> vrfipv6;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily
 
 
@@ -125,21 +113,18 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfUnicast; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast
         class VrfMulticast; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast> vrf_multicast;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast> vrf_unicast;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4
 
 
@@ -151,13 +136,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Topologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies
         class VrfPrefixes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes
@@ -166,8 +149,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast : public Entit
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology> default_topology;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies> topologies;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes> vrf_prefixes;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast
 
 
@@ -179,19 +161,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Topology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology> > topology;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies
 
 
@@ -203,20 +182,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf topology_name; //type: string
-
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies> vrf_prefix_topologies;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology
 
 
@@ -228,19 +204,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology> > vrf_prefix_topology;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies
 
 
@@ -252,16 +225,14 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -269,8 +240,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes> vrf_recurse_routes;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute> vrf_route;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute> vrf_seg_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
 
@@ -282,19 +252,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable> vrf_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
@@ -306,13 +273,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -325,8 +290,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
@@ -338,12 +302,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -358,8 +321,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
@@ -372,12 +333,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -393,8 +353,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -407,12 +365,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -427,8 +384,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
@@ -441,12 +396,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -462,8 +416,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -476,12 +428,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -496,8 +447,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
@@ -510,19 +459,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute> > vrf_recurse_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
@@ -534,20 +480,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
@@ -559,13 +502,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -578,8 +519,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
@@ -591,12 +531,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -611,8 +550,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
@@ -625,12 +562,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -646,8 +582,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -660,12 +594,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -680,8 +613,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
@@ -694,12 +625,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -715,8 +645,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -729,12 +657,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -749,8 +676,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
@@ -763,19 +688,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable> segment_route_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
 
 
@@ -787,13 +709,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -806,8 +726,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
 
@@ -819,12 +738,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -839,8 +757,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
@@ -853,12 +769,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -874,8 +789,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -888,12 +801,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -908,8 +820,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
@@ -922,12 +832,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -943,8 +852,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -957,12 +864,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -977,8 +883,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
@@ -991,19 +895,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefix; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix> > vrf_prefix;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes
 
 
@@ -1015,16 +916,14 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute
@@ -1032,8 +931,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes> vrf_recurse_routes;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute> vrf_route;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute> vrf_seg_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix
 
 
@@ -1045,19 +943,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable> vrf_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute
 
 
@@ -1069,13 +964,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1088,8 +981,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
 
@@ -1101,12 +993,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1121,8 +1012,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
@@ -1135,12 +1024,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -1156,8 +1044,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -1170,12 +1056,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1190,8 +1075,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
@@ -1204,12 +1087,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -1225,8 +1107,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -1239,12 +1119,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1259,8 +1138,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
@@ -1273,19 +1150,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute> > vrf_recurse_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
 
 
@@ -1297,20 +1171,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
 
@@ -1322,13 +1193,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1341,8 +1210,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
@@ -1354,12 +1222,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1374,8 +1241,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
@@ -1388,12 +1253,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -1409,8 +1273,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -1423,12 +1285,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1443,8 +1304,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
@@ -1457,12 +1316,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -1478,8 +1336,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -1492,12 +1348,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1512,8 +1367,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
@@ -1526,19 +1379,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable> segment_route_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute
 
 
@@ -1550,13 +1400,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1569,8 +1417,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
 
@@ -1582,12 +1429,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1602,8 +1448,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
@@ -1616,12 +1460,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -1637,8 +1480,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -1651,12 +1492,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1671,8 +1511,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
@@ -1685,12 +1523,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -1706,8 +1543,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -1720,12 +1555,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1740,8 +1574,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
@@ -1754,19 +1586,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies> vrf_prefix_topologies;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology
 
 
@@ -1778,19 +1607,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology> > vrf_prefix_topology;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies
 
 
@@ -1802,16 +1628,14 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -1819,8 +1643,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes> vrf_recurse_routes;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute> vrf_route;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute> vrf_seg_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
 
@@ -1832,19 +1655,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable> vrf_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
@@ -1856,13 +1676,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1875,8 +1693,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
@@ -1888,12 +1705,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1908,8 +1724,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
@@ -1922,12 +1736,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -1943,8 +1756,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -1957,12 +1768,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -1977,8 +1787,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
@@ -1991,12 +1799,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -2012,8 +1819,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -2026,12 +1831,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2046,8 +1850,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
@@ -2060,19 +1862,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute> > vrf_recurse_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
@@ -2084,20 +1883,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
@@ -2109,13 +1905,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2128,8 +1922,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
@@ -2141,12 +1934,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2161,8 +1953,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
@@ -2175,12 +1965,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -2196,8 +1985,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -2210,12 +1997,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2230,8 +2016,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
@@ -2244,12 +2028,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -2265,8 +2048,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -2279,12 +2060,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2299,8 +2079,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
@@ -2313,19 +2091,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable> segment_route_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
 
 
@@ -2337,13 +2112,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2356,8 +2129,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
 
@@ -2369,12 +2141,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2389,8 +2160,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
@@ -2403,12 +2172,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -2424,8 +2192,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -2438,12 +2204,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2458,8 +2223,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
@@ -2472,12 +2235,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -2493,8 +2255,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -2507,12 +2267,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2527,8 +2286,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
@@ -2541,13 +2298,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Topologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies
         class VrfPrefixes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
@@ -2556,8 +2311,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast : public Ent
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology> default_topology;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies> topologies;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes> vrf_prefixes;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast
 
 
@@ -2569,19 +2323,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Topology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology> > topology;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies
 
 
@@ -2593,20 +2344,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf topology_name; //type: string
-
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies> vrf_prefix_topologies;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology
 
 
@@ -2618,19 +2366,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology> > vrf_prefix_topology;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies
 
 
@@ -2642,16 +2387,14 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -2659,8 +2402,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes> vrf_recurse_routes;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute> vrf_route;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute> vrf_seg_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
 
@@ -2672,19 +2414,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable> vrf_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
@@ -2696,13 +2435,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2715,8 +2452,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
@@ -2728,12 +2464,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2748,8 +2483,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
@@ -2762,12 +2495,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -2783,8 +2515,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -2797,12 +2527,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2817,8 +2546,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
@@ -2831,12 +2558,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -2852,8 +2578,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -2866,12 +2590,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -2886,8 +2609,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
@@ -2900,19 +2621,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute> > vrf_recurse_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
@@ -2924,20 +2642,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
@@ -2949,13 +2664,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2968,8 +2681,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
@@ -2981,12 +2693,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3001,8 +2712,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
@@ -3015,12 +2724,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -3036,8 +2744,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -3050,12 +2756,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3070,8 +2775,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
@@ -3084,12 +2787,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -3105,8 +2807,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -3119,12 +2819,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3139,8 +2838,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
@@ -3153,19 +2850,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable> segment_route_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
 
 
@@ -3177,13 +2871,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3196,8 +2888,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
 
@@ -3209,12 +2900,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3229,8 +2919,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
@@ -3243,12 +2931,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -3264,8 +2951,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -3278,12 +2963,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3298,8 +2982,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
@@ -3312,12 +2994,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -3333,8 +3014,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -3347,12 +3026,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3367,8 +3045,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
@@ -3381,19 +3057,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefix; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix> > vrf_prefix;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
 
@@ -3405,16 +3078,14 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute
@@ -3422,8 +3093,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes> vrf_recurse_routes;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute> vrf_route;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute> vrf_seg_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix
 
 
@@ -3435,19 +3105,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable> vrf_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute
 
 
@@ -3459,13 +3126,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3478,8 +3143,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
 
@@ -3491,12 +3155,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3511,8 +3174,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
@@ -3525,12 +3186,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -3546,8 +3206,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -3560,12 +3218,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3580,8 +3237,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
@@ -3594,12 +3249,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -3615,8 +3269,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -3629,12 +3281,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3649,8 +3300,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
@@ -3663,19 +3312,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute> > vrf_recurse_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
 
 
@@ -3687,20 +3333,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
 
@@ -3712,13 +3355,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3731,8 +3372,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
@@ -3744,12 +3384,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3764,8 +3403,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
@@ -3778,12 +3415,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -3799,8 +3435,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -3813,12 +3447,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3833,8 +3466,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
@@ -3847,12 +3478,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -3868,8 +3498,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -3882,12 +3510,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3902,8 +3529,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
@@ -3916,19 +3541,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable> segment_route_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute
 
 
@@ -3940,13 +3562,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3959,8 +3579,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
 
@@ -3972,12 +3591,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -3992,8 +3610,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
@@ -4006,12 +3622,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -4027,8 +3642,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -4041,12 +3654,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4061,8 +3673,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
@@ -4075,12 +3685,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -4096,8 +3705,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -4110,12 +3717,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4130,8 +3736,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
@@ -4144,19 +3748,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies> vrf_prefix_topologies;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology
 
 
@@ -4168,19 +3769,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology> > vrf_prefix_topology;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies
 
 
@@ -4192,16 +3790,14 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
-
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -4209,8 +3805,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes> vrf_recurse_routes;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute> vrf_route;
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute> vrf_seg_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
 
@@ -4222,19 +3817,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable> vrf_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
@@ -4246,13 +3838,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -4265,8 +3855,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
@@ -4278,12 +3867,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4298,8 +3886,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
@@ -4312,12 +3898,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -4333,8 +3918,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
@@ -4347,12 +3930,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4367,8 +3949,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
@@ -4381,12 +3961,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -4402,8 +3981,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
@@ -4416,12 +3993,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4436,8 +4012,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
@@ -4450,19 +4024,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute> > vrf_recurse_route;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
@@ -4474,20 +4045,17 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
@@ -4499,13 +4067,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -4518,8 +4084,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress> > vrf_next_hop_interface_name_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress> > vrf_next_hop_next_hop_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName> > vrf_next_hop_next_hop_address_explicit_path_name;
-
-
+        
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
@@ -4531,12 +4096,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4551,8 +4115,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
@@ -4565,12 +4127,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf next_hop_address; //type: string
@@ -4587,8 +4148,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
 
-
-
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
@@ -4600,12 +4159,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4620,8 +4178,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
@@ -4634,12 +4190,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop_address; //type: string
         YLeaf explicit_path_name; //type: string
@@ -4656,8 +4211,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
 
-
-
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
@@ -4669,12 +4222,11 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf explicit_path_name; //type: string
         YLeaf bfd_fast_detect; //type: boolean
@@ -4689,8 +4241,6 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
         YLeaf description; //type: string
         YLeaf load_metric; //type: uint32
         YLeaf index_; //type: string
-
-
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 

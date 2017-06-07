@@ -17,9 +17,6 @@ class LspRoleIdentity : public virtual Identity
         ~LspRoleIdentity();
 
 
-
-
-
 }; // LspRoleIdentity
 
 class LspOperStatusIdentity : public virtual Identity
@@ -27,9 +24,6 @@ class LspOperStatusIdentity : public virtual Identity
     public:
         LspOperStatusIdentity();
         ~LspOperStatusIdentity();
-
-
-
 
 
 }; // LspOperStatusIdentity
@@ -41,9 +35,6 @@ class ProtectionTypeIdentity : public virtual Identity
         ~ProtectionTypeIdentity();
 
 
-
-
-
 }; // ProtectionTypeIdentity
 
 class TunnelAdminStatusIdentity : public virtual Identity
@@ -51,9 +42,6 @@ class TunnelAdminStatusIdentity : public virtual Identity
     public:
         TunnelAdminStatusIdentity();
         ~TunnelAdminStatusIdentity();
-
-
-
 
 
 }; // TunnelAdminStatusIdentity
@@ -65,9 +53,6 @@ class NullLabelTypeIdentity : public virtual Identity
         ~NullLabelTypeIdentity();
 
 
-
-
-
 }; // NullLabelTypeIdentity
 
 class TunnelTypeIdentity : public virtual Identity
@@ -75,9 +60,6 @@ class TunnelTypeIdentity : public virtual Identity
     public:
         TunnelTypeIdentity();
         ~TunnelTypeIdentity();
-
-
-
 
 
 }; // TunnelTypeIdentity
@@ -89,9 +71,6 @@ class PathSetupProtocolIdentity : public virtual Identity
         ~PathSetupProtocolIdentity();
 
 
-
-
-
 }; // PathSetupProtocolIdentity
 
 class PathSetupSrIdentity : public openconfig_mpls_types::PathSetupProtocolIdentity, virtual Identity
@@ -99,8 +78,6 @@ class PathSetupSrIdentity : public openconfig_mpls_types::PathSetupProtocolIdent
     public:
         PathSetupSrIdentity();
         ~PathSetupSrIdentity();
-
-
 
 
 }; // PathSetupSrIdentity
@@ -112,8 +89,6 @@ class DownIdentity : public openconfig_mpls_types::LspOperStatusIdentity, virtua
         ~DownIdentity();
 
 
-
-
 }; // DownIdentity
 
 class UnprotectedIdentity : public openconfig_mpls_types::ProtectionTypeIdentity, virtual Identity
@@ -121,8 +96,6 @@ class UnprotectedIdentity : public openconfig_mpls_types::ProtectionTypeIdentity
     public:
         UnprotectedIdentity();
         ~UnprotectedIdentity();
-
-
 
 
 }; // UnprotectedIdentity
@@ -134,8 +107,6 @@ class PathSetupLdpIdentity : public openconfig_mpls_types::PathSetupProtocolIden
         ~PathSetupLdpIdentity();
 
 
-
-
 }; // PathSetupLdpIdentity
 
 class P2PIdentity : public openconfig_mpls_types::TunnelTypeIdentity, virtual Identity
@@ -143,8 +114,6 @@ class P2PIdentity : public openconfig_mpls_types::TunnelTypeIdentity, virtual Id
     public:
         P2PIdentity();
         ~P2PIdentity();
-
-
 
 
 }; // P2PIdentity
@@ -156,8 +125,6 @@ class Admin_DownIdentity : public openconfig_mpls_types::TunnelAdminStatusIdenti
         ~Admin_DownIdentity();
 
 
-
-
 }; // Admin_DownIdentity
 
 class ExplicitIdentity : public openconfig_mpls_types::NullLabelTypeIdentity, virtual Identity
@@ -165,8 +132,6 @@ class ExplicitIdentity : public openconfig_mpls_types::NullLabelTypeIdentity, vi
     public:
         ExplicitIdentity();
         ~ExplicitIdentity();
-
-
 
 
 }; // ExplicitIdentity
@@ -178,8 +143,6 @@ class Admin_UpIdentity : public openconfig_mpls_types::TunnelAdminStatusIdentity
         ~Admin_UpIdentity();
 
 
-
-
 }; // Admin_UpIdentity
 
 class P2MpIdentity : public openconfig_mpls_types::TunnelTypeIdentity, virtual Identity
@@ -187,8 +150,6 @@ class P2MpIdentity : public openconfig_mpls_types::TunnelTypeIdentity, virtual I
     public:
         P2MpIdentity();
         ~P2MpIdentity();
-
-
 
 
 }; // P2MpIdentity
@@ -200,8 +161,6 @@ class PathSetupRsvpIdentity : public openconfig_mpls_types::PathSetupProtocolIde
         ~PathSetupRsvpIdentity();
 
 
-
-
 }; // PathSetupRsvpIdentity
 
 class IngressIdentity : public openconfig_mpls_types::LspRoleIdentity, virtual Identity
@@ -209,8 +168,6 @@ class IngressIdentity : public openconfig_mpls_types::LspRoleIdentity, virtual I
     public:
         IngressIdentity();
         ~IngressIdentity();
-
-
 
 
 }; // IngressIdentity
@@ -222,8 +179,6 @@ class LinkProtectionRequestedIdentity : public openconfig_mpls_types::Protection
         ~LinkProtectionRequestedIdentity();
 
 
-
-
 }; // LinkProtectionRequestedIdentity
 
 class EgressIdentity : public openconfig_mpls_types::LspRoleIdentity, virtual Identity
@@ -231,8 +186,6 @@ class EgressIdentity : public openconfig_mpls_types::LspRoleIdentity, virtual Id
     public:
         EgressIdentity();
         ~EgressIdentity();
-
-
 
 
 }; // EgressIdentity
@@ -244,8 +197,6 @@ class LinkNodeProtectionRequestedIdentity : public openconfig_mpls_types::Protec
         ~LinkNodeProtectionRequestedIdentity();
 
 
-
-
 }; // LinkNodeProtectionRequestedIdentity
 
 class ImplicitIdentity : public openconfig_mpls_types::NullLabelTypeIdentity, virtual Identity
@@ -253,8 +204,6 @@ class ImplicitIdentity : public openconfig_mpls_types::NullLabelTypeIdentity, vi
     public:
         ImplicitIdentity();
         ~ImplicitIdentity();
-
-
 
 
 }; // ImplicitIdentity
@@ -266,8 +215,6 @@ class TransitIdentity : public openconfig_mpls_types::LspRoleIdentity, virtual I
         ~TransitIdentity();
 
 
-
-
 }; // TransitIdentity
 
 class UpIdentity : public openconfig_mpls_types::LspOperStatusIdentity, virtual Identity
@@ -275,8 +222,6 @@ class UpIdentity : public openconfig_mpls_types::LspOperStatusIdentity, virtual 
     public:
         UpIdentity();
         ~UpIdentity();
-
-
 
 
 }; // UpIdentity

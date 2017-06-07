@@ -14,7 +14,6 @@ AddressPoolService::AddressPoolService()
     nodes(std::make_shared<AddressPoolService::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "address-pool-service"; yang_parent_name = "Cisco-IOS-XR-ip-daps-oper";
 }
@@ -43,12 +42,12 @@ std::string AddressPoolService::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath AddressPoolService::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AddressPoolService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<AddressPoolService::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string AddressPoolService::Nodes::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath AddressPoolService::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -244,13 +213,10 @@ AddressPoolService::Nodes::Node::Node()
 	,vrfs(std::make_shared<AddressPoolService::Nodes::Node::Vrfs>())
 {
     pools->parent = this;
-    children["pools"] = pools;
 
     total_utilization->parent = this;
-    children["total-utilization"] = total_utilization;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -285,7 +251,7 @@ std::string AddressPoolService::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,87 +275,52 @@ EntityPath AddressPoolService::Nodes::Node::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pools")
     {
-        if(pools != nullptr)
-        {
-            children["pools"] = pools;
-        }
-        else
+        if(pools == nullptr)
         {
             pools = std::make_shared<AddressPoolService::Nodes::Node::Pools>();
-            pools->parent = this;
-            children["pools"] = pools;
         }
-        return children.at("pools");
+        return pools;
     }
 
     if(child_yang_name == "total-utilization")
     {
-        if(total_utilization != nullptr)
-        {
-            children["total-utilization"] = total_utilization;
-        }
-        else
+        if(total_utilization == nullptr)
         {
             total_utilization = std::make_shared<AddressPoolService::Nodes::Node::TotalUtilization>();
-            total_utilization->parent = this;
-            children["total-utilization"] = total_utilization;
         }
-        return children.at("total-utilization");
+        return total_utilization;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<AddressPoolService::Nodes::Node::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::get_children() const
 {
-    if(children.find("pools") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pools != nullptr)
     {
-        if(pools != nullptr)
-        {
-            children["pools"] = pools;
-        }
+        children["pools"] = pools;
     }
 
-    if(children.find("total-utilization") == children.end())
+    if(total_utilization != nullptr)
     {
-        if(total_utilization != nullptr)
-        {
-            children["total-utilization"] = total_utilization;
-        }
+        children["total-utilization"] = total_utilization;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -441,7 +372,7 @@ std::string AddressPoolService::Nodes::Node::Pools::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -464,15 +395,6 @@ EntityPath AddressPoolService::Nodes::Node::Pools::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pool")
     {
         for(auto const & c : pool)
@@ -480,28 +402,24 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool>();
         c->parent = this;
-        pool.push_back(std::move(c));
-        children[segment_path] = pool.back();
-        return children.at(segment_path);
+        pool.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pool)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -520,13 +438,10 @@ AddressPoolService::Nodes::Node::Pools::Pool::Pool()
 	,configuration(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::Configuration>())
 {
     address_ranges->parent = this;
-    children["address-ranges"] = address_ranges;
 
     allocated_addresses->parent = this;
-    children["allocated-addresses"] = allocated_addresses;
 
     configuration->parent = this;
-    children["configuration"] = configuration;
 
     yang_name = "pool"; yang_parent_name = "pools";
 }
@@ -561,7 +476,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::get_segment_path() con
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -585,87 +500,52 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::get_entity_path(Entity*
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-ranges")
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
-        else
+        if(address_ranges == nullptr)
         {
             address_ranges = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges>();
-            address_ranges->parent = this;
-            children["address-ranges"] = address_ranges;
         }
-        return children.at("address-ranges");
+        return address_ranges;
     }
 
     if(child_yang_name == "allocated-addresses")
     {
-        if(allocated_addresses != nullptr)
-        {
-            children["allocated-addresses"] = allocated_addresses;
-        }
-        else
+        if(allocated_addresses == nullptr)
         {
             allocated_addresses = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses>();
-            allocated_addresses->parent = this;
-            children["allocated-addresses"] = allocated_addresses;
         }
-        return children.at("allocated-addresses");
+        return allocated_addresses;
     }
 
     if(child_yang_name == "configuration")
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
-        else
+        if(configuration == nullptr)
         {
             configuration = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::Configuration>();
-            configuration->parent = this;
-            children["configuration"] = configuration;
         }
-        return children.at("configuration");
+        return configuration;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::get_children() const
 {
-    if(children.find("address-ranges") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_ranges != nullptr)
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
+        children["address-ranges"] = address_ranges;
     }
 
-    if(children.find("allocated-addresses") == children.end())
+    if(allocated_addresses != nullptr)
     {
-        if(allocated_addresses != nullptr)
-        {
-            children["allocated-addresses"] = allocated_addresses;
-        }
+        children["allocated-addresses"] = allocated_addresses;
     }
 
-    if(children.find("configuration") == children.end())
+    if(configuration != nullptr)
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
+        children["configuration"] = configuration;
     }
 
     return children;
@@ -717,7 +597,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_seg
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -740,15 +620,6 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_enti
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-range")
     {
         for(auto const & c : address_range)
@@ -756,28 +627,24 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(std::move(c));
-        children[segment_path] = address_range.back();
-        return children.at(segment_path);
+        address_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -804,13 +671,10 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Addre
 	,start_address_xr(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr>())
 {
     default_router->parent = this;
-    children["default-router"] = default_router;
 
     end_address->parent = this;
-    children["end-address"] = end_address;
 
     start_address_xr->parent = this;
-    children["start-address-xr"] = start_address_xr;
 
     yang_name = "address-range"; yang_parent_name = "address-ranges";
 }
@@ -861,7 +725,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -893,87 +757,52 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressR
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-router")
     {
-        if(default_router != nullptr)
-        {
-            children["default-router"] = default_router;
-        }
-        else
+        if(default_router == nullptr)
         {
             default_router = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter>();
-            default_router->parent = this;
-            children["default-router"] = default_router;
         }
-        return children.at("default-router");
+        return default_router;
     }
 
     if(child_yang_name == "end-address")
     {
-        if(end_address != nullptr)
-        {
-            children["end-address"] = end_address;
-        }
-        else
+        if(end_address == nullptr)
         {
             end_address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress>();
-            end_address->parent = this;
-            children["end-address"] = end_address;
         }
-        return children.at("end-address");
+        return end_address;
     }
 
     if(child_yang_name == "start-address-xr")
     {
-        if(start_address_xr != nullptr)
-        {
-            children["start-address-xr"] = start_address_xr;
-        }
-        else
+        if(start_address_xr == nullptr)
         {
             start_address_xr = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr>();
-            start_address_xr->parent = this;
-            children["start-address-xr"] = start_address_xr;
         }
-        return children.at("start-address-xr");
+        return start_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_children() const
 {
-    if(children.find("default-router") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_router != nullptr)
     {
-        if(default_router != nullptr)
-        {
-            children["default-router"] = default_router;
-        }
+        children["default-router"] = default_router;
     }
 
-    if(children.find("end-address") == children.end())
+    if(end_address != nullptr)
     {
-        if(end_address != nullptr)
-        {
-            children["end-address"] = end_address;
-        }
+        children["end-address"] = end_address;
     }
 
-    if(children.find("start-address-xr") == children.end())
+    if(start_address_xr != nullptr)
     {
-        if(start_address_xr != nullptr)
-        {
-            children["start-address-xr"] = start_address_xr;
-        }
+        children["start-address-xr"] = start_address_xr;
     }
 
     return children;
@@ -1024,7 +853,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Start
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "start-address-xr"; yang_parent_name = "address-range";
 }
@@ -1053,7 +881,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1076,41 +904,24 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressR
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -1157,7 +968,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1183,20 +994,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressR
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1221,7 +1024,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAd
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "end-address"; yang_parent_name = "address-range";
 }
@@ -1250,7 +1052,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1273,41 +1075,24 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressR
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -1354,7 +1139,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1380,20 +1165,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressR
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1418,7 +1195,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Defau
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "default-router"; yang_parent_name = "address-range";
 }
@@ -1447,7 +1223,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1470,41 +1246,24 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressR
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -1551,7 +1310,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1577,20 +1336,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressR
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1615,7 +1366,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AllocatedAddre
     pool_allocations(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations>())
 {
     pool_allocations->parent = this;
-    children["pool-allocations"] = pool_allocations;
 
     yang_name = "allocated-addresses"; yang_parent_name = "pool";
 }
@@ -1664,7 +1414,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::ge
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1687,15 +1437,6 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-range")
     {
         for(auto const & c : address_range)
@@ -1703,15 +1444,13 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange>();
         c->parent = this;
-        address_range.push_back(std::move(c));
-        children[segment_path] = address_range.back();
-        return children.at(segment_path);
+        address_range.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "in-use-address")
@@ -1721,59 +1460,43 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress>();
         c->parent = this;
-        in_use_address.push_back(std::move(c));
-        children[segment_path] = in_use_address.back();
-        return children.at(segment_path);
+        in_use_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pool-allocations")
     {
-        if(pool_allocations != nullptr)
-        {
-            children["pool-allocations"] = pool_allocations;
-        }
-        else
+        if(pool_allocations == nullptr)
         {
             pool_allocations = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations>();
-            pool_allocations->parent = this;
-            children["pool-allocations"] = pool_allocations;
         }
-        return children.at("pool-allocations");
+        return pool_allocations;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : in_use_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("pool-allocations") == children.end())
+    if(pool_allocations != nullptr)
     {
-        if(pool_allocations != nullptr)
-        {
-            children["pool-allocations"] = pool_allocations;
-        }
+        children["pool-allocations"] = pool_allocations;
     }
 
     return children;
@@ -1796,10 +1519,8 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
 	,low_threshold(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold>())
 {
     high_threshold->parent = this;
-    children["high-threshold"] = high_threshold;
 
     low_threshold->parent = this;
-    children["low-threshold"] = low_threshold;
 
     yang_name = "pool-allocations"; yang_parent_name = "allocated-addresses";
 }
@@ -1842,7 +1563,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Po
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1871,64 +1592,38 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Poo
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "high-threshold")
     {
-        if(high_threshold != nullptr)
-        {
-            children["high-threshold"] = high_threshold;
-        }
-        else
+        if(high_threshold == nullptr)
         {
             high_threshold = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold>();
-            high_threshold->parent = this;
-            children["high-threshold"] = high_threshold;
         }
-        return children.at("high-threshold");
+        return high_threshold;
     }
 
     if(child_yang_name == "low-threshold")
     {
-        if(low_threshold != nullptr)
-        {
-            children["low-threshold"] = low_threshold;
-        }
-        else
+        if(low_threshold == nullptr)
         {
             low_threshold = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold>();
-            low_threshold->parent = this;
-            children["low-threshold"] = low_threshold;
         }
-        return children.at("low-threshold");
+        return low_threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_children() const
 {
-    if(children.find("high-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(high_threshold != nullptr)
     {
-        if(high_threshold != nullptr)
-        {
-            children["high-threshold"] = high_threshold;
-        }
+        children["high-threshold"] = high_threshold;
     }
 
-    if(children.find("low-threshold") == children.end())
+    if(low_threshold != nullptr)
     {
-        if(low_threshold != nullptr)
-        {
-            children["low-threshold"] = low_threshold;
-        }
+        children["low-threshold"] = low_threshold;
     }
 
     return children;
@@ -1999,7 +1694,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Po
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2025,20 +1720,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Poo
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2095,7 +1782,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Po
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2121,20 +1808,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Poo
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2164,10 +1843,8 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
 	,start_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress>())
 {
     end_address->parent = this;
-    children["end-address"] = end_address;
 
     start_address->parent = this;
-    children["start-address"] = start_address;
 
     yang_name = "address-range"; yang_parent_name = "allocated-addresses";
 }
@@ -2204,7 +1881,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Ad
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2230,64 +1907,38 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Add
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "end-address")
     {
-        if(end_address != nullptr)
-        {
-            children["end-address"] = end_address;
-        }
-        else
+        if(end_address == nullptr)
         {
             end_address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress>();
-            end_address->parent = this;
-            children["end-address"] = end_address;
         }
-        return children.at("end-address");
+        return end_address;
     }
 
     if(child_yang_name == "start-address")
     {
-        if(start_address != nullptr)
-        {
-            children["start-address"] = start_address;
-        }
-        else
+        if(start_address == nullptr)
         {
             start_address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress>();
-            start_address->parent = this;
-            children["start-address"] = start_address;
         }
-        return children.at("start-address");
+        return start_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_children() const
 {
-    if(children.find("end-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(end_address != nullptr)
     {
-        if(end_address != nullptr)
-        {
-            children["end-address"] = end_address;
-        }
+        children["end-address"] = end_address;
     }
 
-    if(children.find("start-address") == children.end())
+    if(start_address != nullptr)
     {
-        if(start_address != nullptr)
-        {
-            children["start-address"] = start_address;
-        }
+        children["start-address"] = start_address;
     }
 
     return children;
@@ -2314,7 +1965,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "start-address"; yang_parent_name = "address-range";
 }
@@ -2343,7 +1993,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Ad
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2366,41 +2016,24 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Add
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -2447,7 +2080,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Ad
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2473,20 +2106,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Add
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2511,7 +2136,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "end-address"; yang_parent_name = "address-range";
 }
@@ -2540,7 +2164,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Ad
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2563,41 +2187,24 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Add
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -2644,7 +2251,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Ad
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2670,20 +2277,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Add
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2710,7 +2309,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "in-use-address"; yang_parent_name = "allocated-addresses";
 }
@@ -2741,7 +2339,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::In
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2765,41 +2363,24 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InU
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -2818,7 +2399,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "address"; yang_parent_name = "in-use-address";
 }
@@ -2847,7 +2427,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::In
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2870,41 +2450,24 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InU
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -2951,7 +2514,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::In
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2977,20 +2540,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InU
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3068,7 +2623,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_seg
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3101,20 +2656,12 @@ EntityPath AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_enti
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3199,7 +2746,7 @@ std::string AddressPoolService::Nodes::Node::TotalUtilization::get_segment_path(
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::TotalUtilization::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::TotalUtilization::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3225,20 +2772,12 @@ EntityPath AddressPoolService::Nodes::Node::TotalUtilization::get_entity_path(En
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::TotalUtilization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::TotalUtilization::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::TotalUtilization::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3296,7 +2835,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3319,15 +2858,6 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -3335,28 +2865,24 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3374,10 +2900,8 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Vrf()
 	,ipv6(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -3410,7 +2934,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3434,64 +2958,38 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -3510,7 +3008,6 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Ipv4()
     allocation_summary(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary>())
 {
     allocation_summary->parent = this;
-    children["allocation-summary"] = allocation_summary;
 
     yang_name = "ipv4"; yang_parent_name = "vrf";
 }
@@ -3549,7 +3046,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_segment_path()
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3572,28 +3069,13 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_entity_path(Ent
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "allocation-summary")
     {
-        if(allocation_summary != nullptr)
-        {
-            children["allocation-summary"] = allocation_summary;
-        }
-        else
+        if(allocation_summary == nullptr)
         {
             allocation_summary = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary>();
-            allocation_summary->parent = this;
-            children["allocation-summary"] = allocation_summary;
         }
-        return children.at("allocation-summary");
+        return allocation_summary;
     }
 
     if(child_yang_name == "pools")
@@ -3603,36 +3085,29 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools>();
         c->parent = this;
-        pools.push_back(std::move(c));
-        children[segment_path] = pools.back();
-        return children.at(segment_path);
+        pools.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_children() const
 {
-    if(children.find("allocation-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(allocation_summary != nullptr)
     {
-        if(allocation_summary != nullptr)
-        {
-            children["allocation-summary"] = allocation_summary;
-        }
+        children["allocation-summary"] = allocation_summary;
     }
 
     for (auto const & c : pools)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3691,7 +3166,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary:
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3721,20 +3196,12 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3816,7 +3283,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_segment
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3845,20 +3312,12 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_entity_p
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3895,7 +3354,6 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Ipv6()
     allocation_summary(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary>())
 {
     allocation_summary->parent = this;
-    children["allocation-summary"] = allocation_summary;
 
     yang_name = "ipv6"; yang_parent_name = "vrf";
 }
@@ -3934,7 +3392,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_segment_path()
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3957,28 +3415,13 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_entity_path(Ent
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "allocation-summary")
     {
-        if(allocation_summary != nullptr)
-        {
-            children["allocation-summary"] = allocation_summary;
-        }
-        else
+        if(allocation_summary == nullptr)
         {
             allocation_summary = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary>();
-            allocation_summary->parent = this;
-            children["allocation-summary"] = allocation_summary;
         }
-        return children.at("allocation-summary");
+        return allocation_summary;
     }
 
     if(child_yang_name == "pools")
@@ -3988,36 +3431,29 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools>();
         c->parent = this;
-        pools.push_back(std::move(c));
-        children[segment_path] = pools.back();
-        return children.at(segment_path);
+        pools.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_children() const
 {
-    if(children.find("allocation-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(allocation_summary != nullptr)
     {
-        if(allocation_summary != nullptr)
-        {
-            children["allocation-summary"] = allocation_summary;
-        }
+        children["allocation-summary"] = allocation_summary;
     }
 
     for (auto const & c : pools)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4076,7 +3512,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary:
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4106,20 +3542,12 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4201,7 +3629,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_segment
 
 }
 
-EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4230,20 +3658,12 @@ EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_entity_p
 
 std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

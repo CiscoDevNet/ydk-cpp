@@ -15,10 +15,8 @@ InterfaceDampening::InterfaceDampening()
 	,nodes(std::make_shared<InterfaceDampening::Nodes>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "interface-dampening"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper";
 }
@@ -49,12 +47,12 @@ std::string InterfaceDampening::get_segment_path() const
 
 }
 
-EntityPath InterfaceDampening::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath InterfaceDampening::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> InterfaceDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<InterfaceDampening::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<InterfaceDampening::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string InterfaceDampening::Interfaces::get_segment_path() const
 
 }
 
-EntityPath InterfaceDampening::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath InterfaceDampening::Interfaces::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> InterfaceDampening::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceDampening::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -271,7 +230,6 @@ InterfaceDampening::Interfaces::Interface::Interface()
     if_dampening(std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening>())
 {
     if_dampening->parent = this;
-    children["if-dampening"] = if_dampening;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -302,7 +260,7 @@ std::string InterfaceDampening::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath InterfaceDampening::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -326,41 +284,24 @@ EntityPath InterfaceDampening::Interfaces::Interface::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "if-dampening")
     {
-        if(if_dampening != nullptr)
-        {
-            children["if-dampening"] = if_dampening;
-        }
-        else
+        if(if_dampening == nullptr)
         {
             if_dampening = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening>();
-            if_dampening->parent = this;
-            children["if-dampening"] = if_dampening;
         }
-        return children.at("if-dampening");
+        return if_dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::get_children() const
 {
-    if(children.find("if-dampening") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(if_dampening != nullptr)
     {
-        if(if_dampening != nullptr)
-        {
-            children["if-dampening"] = if_dampening;
-        }
+        children["if-dampening"] = if_dampening;
     }
 
     return children;
@@ -388,7 +329,6 @@ InterfaceDampening::Interfaces::Interface::IfDampening::IfDampening()
     interface_dampening(std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_>())
 {
     interface_dampening->parent = this;
-    children["interface-dampening"] = interface_dampening;
 
     yang_name = "if-dampening"; yang_parent_name = "interface";
 }
@@ -443,7 +383,7 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::get_segment_
 
 }
 
-EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -474,15 +414,6 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::get_entity_pa
 
 std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capsulation")
     {
         for(auto const & c : capsulation)
@@ -490,51 +421,38 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation>();
         c->parent = this;
-        capsulation.push_back(std::move(c));
-        children[segment_path] = capsulation.back();
-        return children.at(segment_path);
+        capsulation.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "interface-dampening")
     {
-        if(interface_dampening != nullptr)
-        {
-            children["interface-dampening"] = interface_dampening;
-        }
-        else
+        if(interface_dampening == nullptr)
         {
             interface_dampening = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_>();
-            interface_dampening->parent = this;
-            children["interface-dampening"] = interface_dampening;
         }
-        return children.at("interface-dampening");
+        return interface_dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Interfaces::Interface::IfDampening::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : capsulation)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("interface-dampening") == children.end())
+    if(interface_dampening != nullptr)
     {
-        if(interface_dampening != nullptr)
-        {
-            children["interface-dampening"] = interface_dampening;
-        }
+        children["interface-dampening"] = interface_dampening;
     }
 
     return children;
@@ -619,7 +537,7 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDam
 
 }
 
-EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -647,20 +565,12 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDamp
 
 std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -695,7 +605,6 @@ InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation
     capsulation_dampening(std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening>())
 {
     capsulation_dampening->parent = this;
-    children["capsulation-dampening"] = capsulation_dampening;
 
     yang_name = "capsulation"; yang_parent_name = "if-dampening";
 }
@@ -726,7 +635,7 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation:
 
 }
 
-EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -750,41 +659,24 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::
 
 std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capsulation-dampening")
     {
-        if(capsulation_dampening != nullptr)
-        {
-            children["capsulation-dampening"] = capsulation_dampening;
-        }
-        else
+        if(capsulation_dampening == nullptr)
         {
             capsulation_dampening = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening>();
-            capsulation_dampening->parent = this;
-            children["capsulation-dampening"] = capsulation_dampening;
         }
-        return children.at("capsulation-dampening");
+        return capsulation_dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_children() const
 {
-    if(children.find("capsulation-dampening") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(capsulation_dampening != nullptr)
     {
-        if(capsulation_dampening != nullptr)
-        {
-            children["capsulation-dampening"] = capsulation_dampening;
-        }
+        children["capsulation-dampening"] = capsulation_dampening;
     }
 
     return children;
@@ -841,7 +733,7 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation:
 
 }
 
-EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -869,20 +761,12 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::
 
 std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -948,7 +832,7 @@ std::string InterfaceDampening::Nodes::get_segment_path() const
 
 }
 
-EntityPath InterfaceDampening::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -971,15 +855,6 @@ EntityPath InterfaceDampening::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -987,28 +862,24 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceDampening::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1025,7 +896,6 @@ InterfaceDampening::Nodes::Node::Node()
     show(std::make_shared<InterfaceDampening::Nodes::Node::Show>())
 {
     show->parent = this;
-    children["show"] = show;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -1056,7 +926,7 @@ std::string InterfaceDampening::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1080,41 +950,24 @@ EntityPath InterfaceDampening::Nodes::Node::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "show")
     {
-        if(show != nullptr)
-        {
-            children["show"] = show;
-        }
-        else
+        if(show == nullptr)
         {
             show = std::make_shared<InterfaceDampening::Nodes::Node::Show>();
-            show->parent = this;
-            children["show"] = show;
         }
-        return children.at("show");
+        return show;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::get_children() const
 {
-    if(children.find("show") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(show != nullptr)
     {
-        if(show != nullptr)
-        {
-            children["show"] = show;
-        }
+        children["show"] = show;
     }
 
     return children;
@@ -1133,7 +986,6 @@ InterfaceDampening::Nodes::Node::Show::Show()
     dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening>())
 {
     dampening->parent = this;
-    children["dampening"] = dampening;
 
     yang_name = "show"; yang_parent_name = "node";
 }
@@ -1162,7 +1014,7 @@ std::string InterfaceDampening::Nodes::Node::Show::get_segment_path() const
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1185,41 +1037,24 @@ EntityPath InterfaceDampening::Nodes::Node::Show::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dampening")
     {
-        if(dampening != nullptr)
-        {
-            children["dampening"] = dampening;
-        }
-        else
+        if(dampening == nullptr)
         {
             dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening>();
-            dampening->parent = this;
-            children["dampening"] = dampening;
         }
-        return children.at("dampening");
+        return dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::get_children() const
 {
-    if(children.find("dampening") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dampening != nullptr)
     {
-        if(dampening != nullptr)
-        {
-            children["dampening"] = dampening;
-        }
+        children["dampening"] = dampening;
     }
 
     return children;
@@ -1235,10 +1070,8 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Dampening()
 	,interfaces(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces>())
 {
     if_handles->parent = this;
-    children["if-handles"] = if_handles;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "dampening"; yang_parent_name = "show";
 }
@@ -1269,7 +1102,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::get_segment_path()
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1292,64 +1125,38 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::get_entity_path(Ent
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "if-handles")
     {
-        if(if_handles != nullptr)
-        {
-            children["if-handles"] = if_handles;
-        }
-        else
+        if(if_handles == nullptr)
         {
             if_handles = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles>();
-            if_handles->parent = this;
-            children["if-handles"] = if_handles;
         }
-        return children.at("if-handles");
+        return if_handles;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::get_children() const
 {
-    if(children.find("if-handles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(if_handles != nullptr)
     {
-        if(if_handles != nullptr)
-        {
-            children["if-handles"] = if_handles;
-        }
+        children["if-handles"] = if_handles;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -1397,7 +1204,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_seg
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1420,15 +1227,6 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_enti
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "if-handle")
     {
         for(auto const & c : if_handle)
@@ -1436,28 +1234,24 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHand
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle>();
         c->parent = this;
-        if_handle.push_back(std::move(c));
-        children[segment_path] = if_handle.back();
-        return children.at(segment_path);
+        if_handle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : if_handle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1482,7 +1276,6 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::IfHandle(
     interface_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_>())
 {
     interface_dampening->parent = this;
-    children["interface-dampening"] = interface_dampening;
 
     yang_name = "if-handle"; yang_parent_name = "if-handles";
 }
@@ -1539,7 +1332,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1571,15 +1364,6 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capsulation")
     {
         for(auto const & c : capsulation)
@@ -1587,51 +1371,38 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHand
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation>();
         c->parent = this;
-        capsulation.push_back(std::move(c));
-        children[segment_path] = capsulation.back();
-        return children.at(segment_path);
+        capsulation.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "interface-dampening")
     {
-        if(interface_dampening != nullptr)
-        {
-            children["interface-dampening"] = interface_dampening;
-        }
-        else
+        if(interface_dampening == nullptr)
         {
             interface_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_>();
-            interface_dampening->parent = this;
-            children["interface-dampening"] = interface_dampening;
         }
-        return children.at("interface-dampening");
+        return interface_dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : capsulation)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("interface-dampening") == children.end())
+    if(interface_dampening != nullptr)
     {
-        if(interface_dampening != nullptr)
-        {
-            children["interface-dampening"] = interface_dampening;
-        }
+        children["interface-dampening"] = interface_dampening;
     }
 
     return children;
@@ -1720,7 +1491,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1748,20 +1519,12 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1796,7 +1559,6 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulati
     capsulation_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening>())
 {
     capsulation_dampening->parent = this;
-    children["capsulation-dampening"] = capsulation_dampening;
 
     yang_name = "capsulation"; yang_parent_name = "if-handle";
 }
@@ -1827,7 +1589,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1851,41 +1613,24 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capsulation-dampening")
     {
-        if(capsulation_dampening != nullptr)
-        {
-            children["capsulation-dampening"] = capsulation_dampening;
-        }
-        else
+        if(capsulation_dampening == nullptr)
         {
             capsulation_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening>();
-            capsulation_dampening->parent = this;
-            children["capsulation-dampening"] = capsulation_dampening;
         }
-        return children.at("capsulation-dampening");
+        return capsulation_dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_children() const
 {
-    if(children.find("capsulation-dampening") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(capsulation_dampening != nullptr)
     {
-        if(capsulation_dampening != nullptr)
-        {
-            children["capsulation-dampening"] = capsulation_dampening;
-        }
+        children["capsulation-dampening"] = capsulation_dampening;
     }
 
     return children;
@@ -1942,7 +1687,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1970,20 +1715,12 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2049,7 +1786,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_se
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2072,15 +1809,6 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_ent
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -2088,28 +1816,24 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2134,7 +1858,6 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Interfa
     interface_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_>())
 {
     interface_dampening->parent = this;
-    children["interface-dampening"] = interface_dampening;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -2191,7 +1914,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2223,15 +1946,6 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capsulation")
     {
         for(auto const & c : capsulation)
@@ -2239,51 +1953,38 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation>();
         c->parent = this;
-        capsulation.push_back(std::move(c));
-        children[segment_path] = capsulation.back();
-        return children.at(segment_path);
+        capsulation.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "interface-dampening")
     {
-        if(interface_dampening != nullptr)
-        {
-            children["interface-dampening"] = interface_dampening;
-        }
-        else
+        if(interface_dampening == nullptr)
         {
             interface_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_>();
-            interface_dampening->parent = this;
-            children["interface-dampening"] = interface_dampening;
         }
-        return children.at("interface-dampening");
+        return interface_dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : capsulation)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("interface-dampening") == children.end())
+    if(interface_dampening != nullptr)
     {
-        if(interface_dampening != nullptr)
-        {
-            children["interface-dampening"] = interface_dampening;
-        }
+        children["interface-dampening"] = interface_dampening;
     }
 
     return children;
@@ -2372,7 +2073,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2400,20 +2101,12 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2448,7 +2141,6 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsula
     capsulation_dampening(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening>())
 {
     capsulation_dampening->parent = this;
-    children["capsulation-dampening"] = capsulation_dampening;
 
     yang_name = "capsulation"; yang_parent_name = "interface";
 }
@@ -2479,7 +2171,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2503,41 +2195,24 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capsulation-dampening")
     {
-        if(capsulation_dampening != nullptr)
-        {
-            children["capsulation-dampening"] = capsulation_dampening;
-        }
-        else
+        if(capsulation_dampening == nullptr)
         {
             capsulation_dampening = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening>();
-            capsulation_dampening->parent = this;
-            children["capsulation-dampening"] = capsulation_dampening;
         }
-        return children.at("capsulation-dampening");
+        return capsulation_dampening;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_children() const
 {
-    if(children.find("capsulation-dampening") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(capsulation_dampening != nullptr)
     {
-        if(capsulation_dampening != nullptr)
-        {
-            children["capsulation-dampening"] = capsulation_dampening;
-        }
+        children["capsulation-dampening"] = capsulation_dampening;
     }
 
     return children;
@@ -2594,7 +2269,7 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 
 }
 
-EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2622,20 +2297,12 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
 
 std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2668,7 +2335,6 @@ InterfaceProperties::InterfaceProperties()
     data_nodes(std::make_shared<InterfaceProperties::DataNodes>())
 {
     data_nodes->parent = this;
-    children["data-nodes"] = data_nodes;
 
     yang_name = "interface-properties"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper";
 }
@@ -2697,12 +2363,12 @@ std::string InterfaceProperties::get_segment_path() const
 
 }
 
-EntityPath InterfaceProperties::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -2717,41 +2383,24 @@ EntityPath InterfaceProperties::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> InterfaceProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data-nodes")
     {
-        if(data_nodes != nullptr)
-        {
-            children["data-nodes"] = data_nodes;
-        }
-        else
+        if(data_nodes == nullptr)
         {
             data_nodes = std::make_shared<InterfaceProperties::DataNodes>();
-            data_nodes->parent = this;
-            children["data-nodes"] = data_nodes;
         }
-        return children.at("data-nodes");
+        return data_nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::get_children() const
 {
-    if(children.find("data-nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data_nodes != nullptr)
     {
-        if(data_nodes != nullptr)
-        {
-            children["data-nodes"] = data_nodes;
-        }
+        children["data-nodes"] = data_nodes;
     }
 
     return children;
@@ -2819,7 +2468,7 @@ std::string InterfaceProperties::DataNodes::get_segment_path() const
 
 }
 
-EntityPath InterfaceProperties::DataNodes::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2842,15 +2491,6 @@ EntityPath InterfaceProperties::DataNodes::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data-node")
     {
         for(auto const & c : data_node)
@@ -2858,28 +2498,24 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode>();
         c->parent = this;
-        data_node.push_back(std::move(c));
-        children[segment_path] = data_node.back();
-        return children.at(segment_path);
+        data_node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : data_node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2898,13 +2534,10 @@ InterfaceProperties::DataNodes::DataNode::DataNode()
 	,system_view(std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView>())
 {
     locationviews->parent = this;
-    children["locationviews"] = locationviews;
 
     pq_node_locations->parent = this;
-    children["pq-node-locations"] = pq_node_locations;
 
     system_view->parent = this;
-    children["system-view"] = system_view;
 
     yang_name = "data-node"; yang_parent_name = "data-nodes";
 }
@@ -2939,7 +2572,7 @@ std::string InterfaceProperties::DataNodes::DataNode::get_segment_path() const
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2963,87 +2596,52 @@ EntityPath InterfaceProperties::DataNodes::DataNode::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "locationviews")
     {
-        if(locationviews != nullptr)
-        {
-            children["locationviews"] = locationviews;
-        }
-        else
+        if(locationviews == nullptr)
         {
             locationviews = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews>();
-            locationviews->parent = this;
-            children["locationviews"] = locationviews;
         }
-        return children.at("locationviews");
+        return locationviews;
     }
 
     if(child_yang_name == "pq-node-locations")
     {
-        if(pq_node_locations != nullptr)
-        {
-            children["pq-node-locations"] = pq_node_locations;
-        }
-        else
+        if(pq_node_locations == nullptr)
         {
             pq_node_locations = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations>();
-            pq_node_locations->parent = this;
-            children["pq-node-locations"] = pq_node_locations;
         }
-        return children.at("pq-node-locations");
+        return pq_node_locations;
     }
 
     if(child_yang_name == "system-view")
     {
-        if(system_view != nullptr)
-        {
-            children["system-view"] = system_view;
-        }
-        else
+        if(system_view == nullptr)
         {
             system_view = std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView>();
-            system_view->parent = this;
-            children["system-view"] = system_view;
         }
-        return children.at("system-view");
+        return system_view;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::get_children() const
 {
-    if(children.find("locationviews") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(locationviews != nullptr)
     {
-        if(locationviews != nullptr)
-        {
-            children["locationviews"] = locationviews;
-        }
+        children["locationviews"] = locationviews;
     }
 
-    if(children.find("pq-node-locations") == children.end())
+    if(pq_node_locations != nullptr)
     {
-        if(pq_node_locations != nullptr)
-        {
-            children["pq-node-locations"] = pq_node_locations;
-        }
+        children["pq-node-locations"] = pq_node_locations;
     }
 
-    if(children.find("system-view") == children.end())
+    if(system_view != nullptr)
     {
-        if(system_view != nullptr)
-        {
-            children["system-view"] = system_view;
-        }
+        children["system-view"] = system_view;
     }
 
     return children;
@@ -3095,7 +2693,7 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::get_segment
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3118,15 +2716,6 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::get_entity_p
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "locationview")
     {
         for(auto const & c : locationview)
@@ -3134,28 +2723,24 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview>();
         c->parent = this;
-        locationview.push_back(std::move(c));
-        children[segment_path] = locationview.back();
-        return children.at(segment_path);
+        locationview.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::Locationviews::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : locationview)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3172,7 +2757,6 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Locationv
     interfaces(std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "locationview"; yang_parent_name = "locationviews";
 }
@@ -3203,7 +2787,7 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationvie
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3227,41 +2811,24 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -3313,7 +2880,7 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationvie
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3336,15 +2903,6 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3352,28 +2910,24 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3453,7 +3007,7 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationvie
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3490,20 +3044,12 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3605,7 +3151,7 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_segme
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3628,15 +3174,6 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_entity
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pq-node-location")
     {
         for(auto const & c : pq_node_location)
@@ -3644,28 +3181,24 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocation
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation>();
         c->parent = this;
-        pq_node_location.push_back(std::move(c));
-        children[segment_path] = pq_node_location.back();
-        return children.at(segment_path);
+        pq_node_location.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pq_node_location)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3682,7 +3215,6 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::PqNod
     interfaces(std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "pq-node-location"; yang_parent_name = "pq-node-locations";
 }
@@ -3713,7 +3245,7 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoc
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3737,41 +3269,24 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoca
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -3823,7 +3338,7 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoc
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3846,15 +3361,6 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoca
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3862,28 +3368,24 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocation
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3963,7 +3465,7 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoc
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4000,20 +3502,12 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoca
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4082,7 +3576,6 @@ InterfaceProperties::DataNodes::DataNode::SystemView::SystemView()
     interfaces(std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "system-view"; yang_parent_name = "data-node";
 }
@@ -4111,7 +3604,7 @@ std::string InterfaceProperties::DataNodes::DataNode::SystemView::get_segment_pa
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4134,41 +3627,24 @@ EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::get_entity_path
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::SystemView::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -4216,7 +3692,7 @@ std::string InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::ge
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4239,15 +3715,6 @@ EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -4255,28 +3722,24 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::In
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4356,7 +3819,7 @@ std::string InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::In
 
 }
 
-EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4393,20 +3856,12 @@ EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Int
 
 std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

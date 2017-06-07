@@ -73,7 +73,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -107,20 +107,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -206,7 +198,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -231,20 +223,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -268,7 +252,6 @@ Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::Opaqu
     sidtlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv>())
 {
     sidtlv->parent = this;
-    children["sidtlv"] = sidtlv;
 
     yang_name = "sr-range-tlv"; yang_parent_name = "opaque-ritlv";
 }
@@ -301,7 +284,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -326,41 +309,24 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sidtlv")
     {
-        if(sidtlv != nullptr)
-        {
-            children["sidtlv"] = sidtlv;
-        }
-        else
+        if(sidtlv == nullptr)
         {
             sidtlv = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv>();
-            sidtlv->parent = this;
-            children["sidtlv"] = sidtlv;
         }
-        return children.at("sidtlv");
+        return sidtlv;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::get_children() const
 {
-    if(children.find("sidtlv") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sidtlv != nullptr)
     {
-        if(sidtlv != nullptr)
-        {
-            children["sidtlv"] = sidtlv;
-        }
+        children["sidtlv"] = sidtlv;
     }
 
     return children;
@@ -412,7 +378,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -437,20 +403,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -504,7 +462,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -527,15 +485,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tlv")
     {
         for(auto const & c : tlv)
@@ -543,28 +492,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv>();
         c->parent = this;
-        tlv.push_back(std::move(c));
-        children[segment_path] = tlv.back();
-        return children.at(segment_path);
+        tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -627,7 +572,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -655,15 +600,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te-link-sub-tlv")
     {
         for(auto const & c : te_link_sub_tlv)
@@ -671,28 +607,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv>();
         c->parent = this;
-        te_link_sub_tlv.push_back(std::move(c));
-        children[segment_path] = te_link_sub_tlv.back();
-        return children.at(segment_path);
+        te_link_sub_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : te_link_sub_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -759,7 +691,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -785,20 +717,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -856,7 +780,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -879,15 +803,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tlv")
     {
         for(auto const & c : tlv)
@@ -895,28 +810,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv>();
         c->parent = this;
-        tlv.push_back(std::move(c));
-        children[segment_path] = tlv.back();
-        return children.at(segment_path);
+        tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -979,7 +890,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1007,15 +918,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te-link-sub-tlv")
     {
         for(auto const & c : te_link_sub_tlv)
@@ -1023,28 +925,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv>();
         c->parent = this;
-        te_link_sub_tlv.push_back(std::move(c));
-        children[segment_path] = te_link_sub_tlv.back();
-        return children.at(segment_path);
+        te_link_sub_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : te_link_sub_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1111,7 +1009,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInterna
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1137,20 +1035,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternal
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1208,7 +1098,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::get_seg
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1231,15 +1121,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::get_enti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-summary")
     {
         for(auto const & c : lsa_summary)
@@ -1247,28 +1128,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummar
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary>();
         c->parent = this;
-        lsa_summary.push_back(std::move(c));
-        children[segment_path] = lsa_summary.back();
-        return children.at(segment_path);
+        lsa_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsa_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1291,7 +1168,6 @@ Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaSumm
     lsa_header(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaHeader>())
 {
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "lsa-summary"; yang_parent_name = "lsa-summaries";
 }
@@ -1334,7 +1210,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSumm
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1364,41 +1240,24 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSumma
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::get_children() const
 {
-    if(children.find("lsa-header") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -1491,7 +1350,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSumm
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1523,20 +1382,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSumma
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries::LsaSummary::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1618,7 +1469,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_segment_pa
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1641,15 +1492,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_entity_path
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary-prefix")
     {
         for(auto const & c : summary_prefix)
@@ -1657,28 +1499,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix>();
         c->parent = this;
-        summary_prefix.push_back(std::move(c));
-        children[segment_path] = summary_prefix.back();
-        return children.at(segment_path);
+        summary_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : summary_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1737,7 +1575,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix:
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1767,20 +1605,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1821,7 +1651,6 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::AreaStatistics()
     interface_stats_entries(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries>())
 {
     interface_stats_entries->parent = this;
-    children["interface-stats-entries"] = interface_stats_entries;
 
     yang_name = "area-statistics"; yang_parent_name = "vrf";
 }
@@ -1850,7 +1679,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::get_segment_pat
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1873,41 +1702,24 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::get_entity_path(
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-stats-entries")
     {
-        if(interface_stats_entries != nullptr)
-        {
-            children["interface-stats-entries"] = interface_stats_entries;
-        }
-        else
+        if(interface_stats_entries == nullptr)
         {
             interface_stats_entries = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries>();
-            interface_stats_entries->parent = this;
-            children["interface-stats-entries"] = interface_stats_entries;
         }
-        return children.at("interface-stats-entries");
+        return interface_stats_entries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::get_children() const
 {
-    if(children.find("interface-stats-entries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_stats_entries != nullptr)
     {
-        if(interface_stats_entries != nullptr)
-        {
-            children["interface-stats-entries"] = interface_stats_entries;
-        }
+        children["interface-stats-entries"] = interface_stats_entries;
     }
 
     return children;
@@ -1955,7 +1767,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsE
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1978,15 +1790,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEn
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-stats-entry")
     {
         for(auto const & c : interface_stats_entry)
@@ -1994,28 +1797,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::Int
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry>();
         c->parent = this;
-        interface_stats_entry.push_back(std::move(c));
-        children[segment_path] = interface_stats_entry.back();
-        return children.at(segment_path);
+        interface_stats_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_stats_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2072,7 +1871,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsE
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2098,15 +1897,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEn
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "if-entry")
     {
         for(auto const & c : if_entry)
@@ -2114,28 +1904,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::Int
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry>();
         c->parent = this;
-        if_entry.push_back(std::move(c));
-        children[segment_path] = if_entry.back();
-        return children.at(segment_path);
+        if_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : if_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2206,7 +1992,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsE
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2234,20 +2020,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEn
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2353,7 +2131,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::OspfSummary::get_segment_path()
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::OspfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::OspfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2394,20 +2172,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::OspfSummary::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::OspfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::OspfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::OspfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2492,7 +2262,6 @@ Ospf::Processes::Process::Vrfs::Vrf::FastReroute::FastReroute()
     topologies(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies>())
 {
     topologies->parent = this;
-    children["topologies"] = topologies;
 
     yang_name = "fast-reroute"; yang_parent_name = "vrf";
 }
@@ -2521,7 +2290,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::FastReroute::get_segment_path()
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2544,41 +2313,24 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topologies")
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
-        else
+        if(topologies == nullptr)
         {
             topologies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies>();
-            topologies->parent = this;
-            children["topologies"] = topologies;
         }
-        return children.at("topologies");
+        return topologies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::FastReroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::get_children() const
 {
-    if(children.find("topologies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(topologies != nullptr)
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
+        children["topologies"] = topologies;
     }
 
     return children;
@@ -2626,7 +2378,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::get_se
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2649,15 +2401,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::get_ent
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology")
     {
         for(auto const & c : topology)
@@ -2665,28 +2408,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topolo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology>();
         c->parent = this;
-        topology.push_back(std::move(c));
-        children[segment_path] = topology.back();
-        return children.at(segment_path);
+        topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2749,7 +2488,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topolo
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2777,15 +2516,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topolog
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipfrr-topo")
     {
         for(auto const & c : ipfrr_topo)
@@ -2793,28 +2523,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topolo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::IpfrrTopo>();
         c->parent = this;
-        ipfrr_topo.push_back(std::move(c));
-        children[segment_path] = ipfrr_topo.back();
-        return children.at(segment_path);
+        ipfrr_topo.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipfrr_topo)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2896,7 +2622,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topolo
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::IpfrrTopo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::IpfrrTopo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2927,20 +2653,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topolog
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::IpfrrTopo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::IpfrrTopo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FastReroute::Topologies::Topology::IpfrrTopo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2985,7 +2703,6 @@ Ospf::Processes::Process::Srms::Srms()
     policy(std::make_shared<Ospf::Processes::Process::Srms::Policy>())
 {
     policy->parent = this;
-    children["policy"] = policy;
 
     yang_name = "srms"; yang_parent_name = "process";
 }
@@ -3014,7 +2731,7 @@ std::string Ospf::Processes::Process::Srms::get_segment_path() const
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3037,41 +2754,24 @@ EntityPath Ospf::Processes::Process::Srms::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy")
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
-        else
+        if(policy == nullptr)
         {
             policy = std::make_shared<Ospf::Processes::Process::Srms::Policy>();
-            policy->parent = this;
-            children["policy"] = policy;
         }
-        return children.at("policy");
+        return policy;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::get_children() const
 {
-    if(children.find("policy") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy != nullptr)
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
+        children["policy"] = policy;
     }
 
     return children;
@@ -3086,7 +2786,6 @@ Ospf::Processes::Process::Srms::Policy::Policy()
     policy_ipv4(std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4>())
 {
     policy_ipv4->parent = this;
-    children["policy-ipv4"] = policy_ipv4;
 
     yang_name = "policy"; yang_parent_name = "srms";
 }
@@ -3115,7 +2814,7 @@ std::string Ospf::Processes::Process::Srms::Policy::get_segment_path() const
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3138,41 +2837,24 @@ EntityPath Ospf::Processes::Process::Srms::Policy::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-ipv4")
     {
-        if(policy_ipv4 != nullptr)
-        {
-            children["policy-ipv4"] = policy_ipv4;
-        }
-        else
+        if(policy_ipv4 == nullptr)
         {
             policy_ipv4 = std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4>();
-            policy_ipv4->parent = this;
-            children["policy-ipv4"] = policy_ipv4;
         }
-        return children.at("policy-ipv4");
+        return policy_ipv4;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::get_children() const
 {
-    if(children.find("policy-ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy_ipv4 != nullptr)
     {
-        if(policy_ipv4 != nullptr)
-        {
-            children["policy-ipv4"] = policy_ipv4;
-        }
+        children["policy-ipv4"] = policy_ipv4;
     }
 
     return children;
@@ -3188,10 +2870,8 @@ Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4()
 	,policy_ipv4_backup(std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup>())
 {
     policy_ipv4_active->parent = this;
-    children["policy-ipv4-active"] = policy_ipv4_active;
 
     policy_ipv4_backup->parent = this;
-    children["policy-ipv4-backup"] = policy_ipv4_backup;
 
     yang_name = "policy-ipv4"; yang_parent_name = "policy";
 }
@@ -3222,7 +2902,7 @@ std::string Ospf::Processes::Process::Srms::Policy::PolicyIpv4::get_segment_path
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3245,64 +2925,38 @@ EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::get_entity_path(E
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-ipv4-active")
     {
-        if(policy_ipv4_active != nullptr)
-        {
-            children["policy-ipv4-active"] = policy_ipv4_active;
-        }
-        else
+        if(policy_ipv4_active == nullptr)
         {
             policy_ipv4_active = std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active>();
-            policy_ipv4_active->parent = this;
-            children["policy-ipv4-active"] = policy_ipv4_active;
         }
-        return children.at("policy-ipv4-active");
+        return policy_ipv4_active;
     }
 
     if(child_yang_name == "policy-ipv4-backup")
     {
-        if(policy_ipv4_backup != nullptr)
-        {
-            children["policy-ipv4-backup"] = policy_ipv4_backup;
-        }
-        else
+        if(policy_ipv4_backup == nullptr)
         {
             policy_ipv4_backup = std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup>();
-            policy_ipv4_backup->parent = this;
-            children["policy-ipv4-backup"] = policy_ipv4_backup;
         }
-        return children.at("policy-ipv4-backup");
+        return policy_ipv4_backup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::PolicyIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::get_children() const
 {
-    if(children.find("policy-ipv4-active") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(policy_ipv4_active != nullptr)
     {
-        if(policy_ipv4_active != nullptr)
-        {
-            children["policy-ipv4-active"] = policy_ipv4_active;
-        }
+        children["policy-ipv4-active"] = policy_ipv4_active;
     }
 
-    if(children.find("policy-ipv4-backup") == children.end())
+    if(policy_ipv4_backup != nullptr)
     {
-        if(policy_ipv4_backup != nullptr)
-        {
-            children["policy-ipv4-backup"] = policy_ipv4_backup;
-        }
+        children["policy-ipv4-backup"] = policy_ipv4_backup;
     }
 
     return children;
@@ -3350,7 +3004,7 @@ std::string Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3373,15 +3027,6 @@ EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-mi")
     {
         for(auto const & c : policy_mi)
@@ -3389,28 +3034,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::Poli
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(std::move(c));
-        children[segment_path] = policy_mi.back();
-        return children.at(segment_path);
+        policy_mi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy_mi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3436,7 +3077,6 @@ Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::
     addr(std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr>())
 {
     addr->parent = this;
-    children["addr"] = addr;
 
     yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-backup";
 }
@@ -3485,7 +3125,7 @@ std::string Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3518,41 +3158,24 @@ EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "addr")
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
-        else
+        if(addr == nullptr)
         {
             addr = std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr>();
-            addr->parent = this;
-            children["addr"] = addr;
         }
-        return children.at("addr");
+        return addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_children() const
 {
-    if(children.find("addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
+        children["addr"] = addr;
     }
 
     return children;
@@ -3639,7 +3262,7 @@ std::string Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3665,20 +3288,12 @@ EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3736,7 +3351,7 @@ std::string Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3759,15 +3374,6 @@ EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-mi")
     {
         for(auto const & c : policy_mi)
@@ -3775,28 +3381,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::Poli
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
         c->parent = this;
-        policy_mi.push_back(std::move(c));
-        children[segment_path] = policy_mi.back();
-        return children.at(segment_path);
+        policy_mi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy_mi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3822,7 +3424,6 @@ Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::
     addr(std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>())
 {
     addr->parent = this;
-    children["addr"] = addr;
 
     yang_name = "policy-mi"; yang_parent_name = "policy-ipv4-active";
 }
@@ -3871,7 +3472,7 @@ std::string Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3904,41 +3505,24 @@ EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "addr")
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
-        else
+        if(addr == nullptr)
         {
             addr = std::make_shared<Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr>();
-            addr->parent = this;
-            children["addr"] = addr;
         }
-        return children.at("addr");
+        return addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children() const
 {
-    if(children.find("addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addr != nullptr)
     {
-        if(addr != nullptr)
-        {
-            children["addr"] = addr;
-        }
+        children["addr"] = addr;
     }
 
     return children;
@@ -4025,7 +3609,7 @@ std::string Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active
 
 }
 
-EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4051,20 +3635,12 @@ EntityPath Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4102,46 +3678,32 @@ Ospf::Processes::Process::DefaultVrf::DefaultVrf()
 	,summary_prefixes(std::make_shared<Ospf::Processes::Process::DefaultVrf::SummaryPrefixes>())
 {
     adjacency_information->parent = this;
-    children["adjacency-information"] = adjacency_information;
 
     area_statistics->parent = this;
-    children["area-statistics"] = area_statistics;
 
     areas->parent = this;
-    children["areas"] = areas;
 
     border_routers->parent = this;
-    children["border-routers"] = border_routers;
 
     database->parent = this;
-    children["database"] = database;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     flood_list_table->parent = this;
-    children["flood-list-table"] = flood_list_table;
 
     interface_information->parent = this;
-    children["interface-information"] = interface_information;
 
     mpls_te->parent = this;
-    children["mpls-te"] = mpls_te;
 
     ospf_summary->parent = this;
-    children["ospf-summary"] = ospf_summary;
 
     process_information->parent = this;
-    children["process-information"] = process_information;
 
     route_information->parent = this;
-    children["route-information"] = route_information;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     summary_prefixes->parent = this;
-    children["summary-prefixes"] = summary_prefixes;
 
     yang_name = "default-vrf"; yang_parent_name = "process";
 }
@@ -4196,7 +3758,7 @@ std::string Ospf::Processes::Process::DefaultVrf::get_segment_path() const
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4219,340 +3781,206 @@ EntityPath Ospf::Processes::Process::DefaultVrf::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-information")
     {
-        if(adjacency_information != nullptr)
-        {
-            children["adjacency-information"] = adjacency_information;
-        }
-        else
+        if(adjacency_information == nullptr)
         {
             adjacency_information = std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyInformation>();
-            adjacency_information->parent = this;
-            children["adjacency-information"] = adjacency_information;
         }
-        return children.at("adjacency-information");
+        return adjacency_information;
     }
 
     if(child_yang_name == "area-statistics")
     {
-        if(area_statistics != nullptr)
-        {
-            children["area-statistics"] = area_statistics;
-        }
-        else
+        if(area_statistics == nullptr)
         {
             area_statistics = std::make_shared<Ospf::Processes::Process::DefaultVrf::AreaStatistics>();
-            area_statistics->parent = this;
-            children["area-statistics"] = area_statistics;
         }
-        return children.at("area-statistics");
+        return area_statistics;
     }
 
     if(child_yang_name == "areas")
     {
-        if(areas != nullptr)
-        {
-            children["areas"] = areas;
-        }
-        else
+        if(areas == nullptr)
         {
             areas = std::make_shared<Ospf::Processes::Process::DefaultVrf::Areas>();
-            areas->parent = this;
-            children["areas"] = areas;
         }
-        return children.at("areas");
+        return areas;
     }
 
     if(child_yang_name == "border-routers")
     {
-        if(border_routers != nullptr)
-        {
-            children["border-routers"] = border_routers;
-        }
-        else
+        if(border_routers == nullptr)
         {
             border_routers = std::make_shared<Ospf::Processes::Process::DefaultVrf::BorderRouters>();
-            border_routers->parent = this;
-            children["border-routers"] = border_routers;
         }
-        return children.at("border-routers");
+        return border_routers;
     }
 
     if(child_yang_name == "database")
     {
-        if(database != nullptr)
-        {
-            children["database"] = database;
-        }
-        else
+        if(database == nullptr)
         {
             database = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database>();
-            database->parent = this;
-            children["database"] = database;
         }
-        return children.at("database");
+        return database;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<Ospf::Processes::Process::DefaultVrf::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "flood-list-table")
     {
-        if(flood_list_table != nullptr)
-        {
-            children["flood-list-table"] = flood_list_table;
-        }
-        else
+        if(flood_list_table == nullptr)
         {
             flood_list_table = std::make_shared<Ospf::Processes::Process::DefaultVrf::FloodListTable>();
-            flood_list_table->parent = this;
-            children["flood-list-table"] = flood_list_table;
         }
-        return children.at("flood-list-table");
+        return flood_list_table;
     }
 
     if(child_yang_name == "interface-information")
     {
-        if(interface_information != nullptr)
-        {
-            children["interface-information"] = interface_information;
-        }
-        else
+        if(interface_information == nullptr)
         {
             interface_information = std::make_shared<Ospf::Processes::Process::DefaultVrf::InterfaceInformation>();
-            interface_information->parent = this;
-            children["interface-information"] = interface_information;
         }
-        return children.at("interface-information");
+        return interface_information;
     }
 
     if(child_yang_name == "mpls-te")
     {
-        if(mpls_te != nullptr)
-        {
-            children["mpls-te"] = mpls_te;
-        }
-        else
+        if(mpls_te == nullptr)
         {
             mpls_te = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe>();
-            mpls_te->parent = this;
-            children["mpls-te"] = mpls_te;
         }
-        return children.at("mpls-te");
+        return mpls_te;
     }
 
     if(child_yang_name == "ospf-summary")
     {
-        if(ospf_summary != nullptr)
-        {
-            children["ospf-summary"] = ospf_summary;
-        }
-        else
+        if(ospf_summary == nullptr)
         {
             ospf_summary = std::make_shared<Ospf::Processes::Process::DefaultVrf::OspfSummary>();
-            ospf_summary->parent = this;
-            children["ospf-summary"] = ospf_summary;
         }
-        return children.at("ospf-summary");
+        return ospf_summary;
     }
 
     if(child_yang_name == "process-information")
     {
-        if(process_information != nullptr)
-        {
-            children["process-information"] = process_information;
-        }
-        else
+        if(process_information == nullptr)
         {
             process_information = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation>();
-            process_information->parent = this;
-            children["process-information"] = process_information;
         }
-        return children.at("process-information");
+        return process_information;
     }
 
     if(child_yang_name == "route-information")
     {
-        if(route_information != nullptr)
-        {
-            children["route-information"] = route_information;
-        }
-        else
+        if(route_information == nullptr)
         {
             route_information = std::make_shared<Ospf::Processes::Process::DefaultVrf::RouteInformation>();
-            route_information->parent = this;
-            children["route-information"] = route_information;
         }
-        return children.at("route-information");
+        return route_information;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "summary-prefixes")
     {
-        if(summary_prefixes != nullptr)
-        {
-            children["summary-prefixes"] = summary_prefixes;
-        }
-        else
+        if(summary_prefixes == nullptr)
         {
             summary_prefixes = std::make_shared<Ospf::Processes::Process::DefaultVrf::SummaryPrefixes>();
-            summary_prefixes->parent = this;
-            children["summary-prefixes"] = summary_prefixes;
         }
-        return children.at("summary-prefixes");
+        return summary_prefixes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::get_children() const
 {
-    if(children.find("adjacency-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_information != nullptr)
     {
-        if(adjacency_information != nullptr)
-        {
-            children["adjacency-information"] = adjacency_information;
-        }
+        children["adjacency-information"] = adjacency_information;
     }
 
-    if(children.find("area-statistics") == children.end())
+    if(area_statistics != nullptr)
     {
-        if(area_statistics != nullptr)
-        {
-            children["area-statistics"] = area_statistics;
-        }
+        children["area-statistics"] = area_statistics;
     }
 
-    if(children.find("areas") == children.end())
+    if(areas != nullptr)
     {
-        if(areas != nullptr)
-        {
-            children["areas"] = areas;
-        }
+        children["areas"] = areas;
     }
 
-    if(children.find("border-routers") == children.end())
+    if(border_routers != nullptr)
     {
-        if(border_routers != nullptr)
-        {
-            children["border-routers"] = border_routers;
-        }
+        children["border-routers"] = border_routers;
     }
 
-    if(children.find("database") == children.end())
+    if(database != nullptr)
     {
-        if(database != nullptr)
-        {
-            children["database"] = database;
-        }
+        children["database"] = database;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("flood-list-table") == children.end())
+    if(flood_list_table != nullptr)
     {
-        if(flood_list_table != nullptr)
-        {
-            children["flood-list-table"] = flood_list_table;
-        }
+        children["flood-list-table"] = flood_list_table;
     }
 
-    if(children.find("interface-information") == children.end())
+    if(interface_information != nullptr)
     {
-        if(interface_information != nullptr)
-        {
-            children["interface-information"] = interface_information;
-        }
+        children["interface-information"] = interface_information;
     }
 
-    if(children.find("mpls-te") == children.end())
+    if(mpls_te != nullptr)
     {
-        if(mpls_te != nullptr)
-        {
-            children["mpls-te"] = mpls_te;
-        }
+        children["mpls-te"] = mpls_te;
     }
 
-    if(children.find("ospf-summary") == children.end())
+    if(ospf_summary != nullptr)
     {
-        if(ospf_summary != nullptr)
-        {
-            children["ospf-summary"] = ospf_summary;
-        }
+        children["ospf-summary"] = ospf_summary;
     }
 
-    if(children.find("process-information") == children.end())
+    if(process_information != nullptr)
     {
-        if(process_information != nullptr)
-        {
-            children["process-information"] = process_information;
-        }
+        children["process-information"] = process_information;
     }
 
-    if(children.find("route-information") == children.end())
+    if(route_information != nullptr)
     {
-        if(route_information != nullptr)
-        {
-            children["route-information"] = route_information;
-        }
+        children["route-information"] = route_information;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("summary-prefixes") == children.end())
+    if(summary_prefixes != nullptr)
     {
-        if(summary_prefixes != nullptr)
-        {
-            children["summary-prefixes"] = summary_prefixes;
-        }
+        children["summary-prefixes"] = summary_prefixes;
     }
 
     return children;
@@ -4600,7 +4028,7 @@ std::string Ospf::Processes::Process::DefaultVrf::FloodListTable::get_segment_pa
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4623,15 +4051,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::get_entity_path
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::FloodListTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flood")
     {
         for(auto const & c : flood)
@@ -4639,28 +4058,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::FloodListTable::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood>();
         c->parent = this;
-        flood.push_back(std::move(c));
-        children[segment_path] = flood.back();
-        return children.at(segment_path);
+        flood.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::FloodListTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::FloodListTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : flood)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4730,7 +4145,7 @@ std::string Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::get_seg
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4757,15 +4172,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::get_enti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-flood")
     {
         for(auto const & c : area_flood)
@@ -4773,15 +4179,13 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::FloodListTable::Fl
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood>();
         c->parent = this;
-        area_flood.push_back(std::move(c));
-        children[segment_path] = area_flood.back();
-        return children.at(segment_path);
+        area_flood.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "as-flood")
@@ -4791,36 +4195,29 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::FloodListTable::Fl
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood>();
         c->parent = this;
-        as_flood.push_back(std::move(c));
-        children[segment_path] = as_flood.back();
-        return children.at(segment_path);
+        as_flood.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_flood)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : as_flood)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4892,7 +4289,7 @@ std::string Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlo
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4921,20 +4318,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFloo
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5012,7 +4401,7 @@ std::string Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5041,20 +4430,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5092,10 +4473,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTe()
 	,mpls_te_links(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks>())
 {
     mpls_te_fragments->parent = this;
-    children["mpls-te-fragments"] = mpls_te_fragments;
 
     mpls_te_links->parent = this;
-    children["mpls-te-links"] = mpls_te_links;
 
     yang_name = "mpls-te"; yang_parent_name = "default-vrf";
 }
@@ -5126,7 +4505,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::get_segment_path() con
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5149,64 +4528,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-te-fragments")
     {
-        if(mpls_te_fragments != nullptr)
-        {
-            children["mpls-te-fragments"] = mpls_te_fragments;
-        }
-        else
+        if(mpls_te_fragments == nullptr)
         {
             mpls_te_fragments = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments>();
-            mpls_te_fragments->parent = this;
-            children["mpls-te-fragments"] = mpls_te_fragments;
         }
-        return children.at("mpls-te-fragments");
+        return mpls_te_fragments;
     }
 
     if(child_yang_name == "mpls-te-links")
     {
-        if(mpls_te_links != nullptr)
-        {
-            children["mpls-te-links"] = mpls_te_links;
-        }
-        else
+        if(mpls_te_links == nullptr)
         {
             mpls_te_links = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks>();
-            mpls_te_links->parent = this;
-            children["mpls-te-links"] = mpls_te_links;
         }
-        return children.at("mpls-te-links");
+        return mpls_te_links;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::get_children() const
 {
-    if(children.find("mpls-te-fragments") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mpls_te_fragments != nullptr)
     {
-        if(mpls_te_fragments != nullptr)
-        {
-            children["mpls-te-fragments"] = mpls_te_fragments;
-        }
+        children["mpls-te-fragments"] = mpls_te_fragments;
     }
 
-    if(children.find("mpls-te-links") == children.end())
+    if(mpls_te_links != nullptr)
     {
-        if(mpls_te_links != nullptr)
-        {
-            children["mpls-te-links"] = mpls_te_links;
-        }
+        children["mpls-te-links"] = mpls_te_links;
     }
 
     return children;
@@ -5254,7 +4607,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::get_segme
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5277,15 +4630,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::get_entity
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-te-link")
     {
         for(auto const & c : mpls_te_link)
@@ -5293,28 +4637,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink>();
         c->parent = this;
-        mpls_te_link.push_back(std::move(c));
-        children[segment_path] = mpls_te_link.back();
-        return children.at(segment_path);
+        mpls_te_link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mpls_te_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5399,7 +4739,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5431,15 +4771,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-te-fragment")
     {
         for(auto const & c : mpls_te_fragment)
@@ -5447,15 +4778,13 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment>();
         c->parent = this;
-        mpls_te_fragment.push_back(std::move(c));
-        children[segment_path] = mpls_te_fragment.back();
-        return children.at(segment_path);
+        mpls_te_fragment.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mpls-te-link")
@@ -5465,36 +4794,29 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_>();
         c->parent = this;
-        mpls_te_link.push_back(std::move(c));
-        children[segment_path] = mpls_te_link.back();
-        return children.at(segment_path);
+        mpls_te_link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mpls_te_fragment)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : mpls_te_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5569,19 +4891,14 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
 	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority>())
 {
     extended_admin_group_list->parent = this;
-    children["extended-admin-group-list"] = extended_admin_group_list;
 
     global_unreserve_bw_per_priority->parent = this;
-    children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
 
     link_protocol_priority_capability->parent = this;
-    children["link-protocol-priority-capability"] = link_protocol_priority_capability;
 
     link_sw_capability->parent = this;
-    children["link-sw-capability"] = link_sw_capability;
 
     sub_pool_unreserve_bw_per_priority->parent = this;
-    children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
 
     yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-link";
 }
@@ -5666,7 +4983,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5708,73 +5025,40 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-admin-group-list")
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
-        else
+        if(extended_admin_group_list == nullptr)
         {
             extended_admin_group_list = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList>();
-            extended_admin_group_list->parent = this;
-            children["extended-admin-group-list"] = extended_admin_group_list;
         }
-        return children.at("extended-admin-group-list");
+        return extended_admin_group_list;
     }
 
     if(child_yang_name == "global-unreserve-bw-per-priority")
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
-        else
+        if(global_unreserve_bw_per_priority == nullptr)
         {
             global_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority>();
-            global_unreserve_bw_per_priority->parent = this;
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
         }
-        return children.at("global-unreserve-bw-per-priority");
+        return global_unreserve_bw_per_priority;
     }
 
     if(child_yang_name == "link-protocol-priority-capability")
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
-        else
+        if(link_protocol_priority_capability == nullptr)
         {
             link_protocol_priority_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability>();
-            link_protocol_priority_capability->parent = this;
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
         }
-        return children.at("link-protocol-priority-capability");
+        return link_protocol_priority_capability;
     }
 
     if(child_yang_name == "link-sw-capability")
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
-        else
+        if(link_sw_capability == nullptr)
         {
             link_sw_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability>();
-            link_sw_capability->parent = this;
-            children["link-sw-capability"] = link_sw_capability;
         }
-        return children.at("link-sw-capability");
+        return link_sw_capability;
     }
 
     if(child_yang_name == "mplste-link-opt-tlv")
@@ -5784,83 +5068,58 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sub-pool-unreserve-bw-per-priority")
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
-        else
+        if(sub_pool_unreserve_bw_per_priority == nullptr)
         {
             sub_pool_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority>();
-            sub_pool_unreserve_bw_per_priority->parent = this;
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
         }
-        return children.at("sub-pool-unreserve-bw-per-priority");
+        return sub_pool_unreserve_bw_per_priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::get_children() const
 {
-    if(children.find("extended-admin-group-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(extended_admin_group_list != nullptr)
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
+        children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
-    if(children.find("global-unreserve-bw-per-priority") == children.end())
+    if(global_unreserve_bw_per_priority != nullptr)
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
+        children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
     }
 
-    if(children.find("link-protocol-priority-capability") == children.end())
+    if(link_protocol_priority_capability != nullptr)
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
+        children["link-protocol-priority-capability"] = link_protocol_priority_capability;
     }
 
-    if(children.find("link-sw-capability") == children.end())
+    if(link_sw_capability != nullptr)
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
+        children["link-sw-capability"] = link_sw_capability;
     }
 
     for (auto const & c : mplste_link_opt_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("sub-pool-unreserve-bw-per-priority") == children.end())
+    if(sub_pool_unreserve_bw_per_priority != nullptr)
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
+        children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
     }
 
     return children;
@@ -5987,7 +5246,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6012,20 +5271,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6078,7 +5329,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6103,20 +5354,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6162,7 +5405,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6187,20 +5430,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6268,7 +5503,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6297,20 +5532,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6381,7 +5608,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6407,20 +5634,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6480,7 +5699,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6505,15 +5724,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
         for(auto const & c : mplste_link_opt_tlv_value)
@@ -6521,28 +5731,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv_value.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6570,16 +5776,12 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
 	,unidtlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
-    children["bctlv-value"] = bctlv_value;
 
     ixcdtlv_value->parent = this;
-    children["ixcdtlv-value"] = ixcdtlv_value;
 
     srlgtlv_value->parent = this;
-    children["srlgtlv-value"] = srlgtlv_value;
 
     unidtlv_value->parent = this;
-    children["unidtlv-value"] = unidtlv_value;
 
     yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv";
 }
@@ -6616,7 +5818,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6640,110 +5842,66 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bctlv-value")
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
-        else
+        if(bctlv_value == nullptr)
         {
             bctlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>();
-            bctlv_value->parent = this;
-            children["bctlv-value"] = bctlv_value;
         }
-        return children.at("bctlv-value");
+        return bctlv_value;
     }
 
     if(child_yang_name == "ixcdtlv-value")
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
-        else
+        if(ixcdtlv_value == nullptr)
         {
             ixcdtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>();
-            ixcdtlv_value->parent = this;
-            children["ixcdtlv-value"] = ixcdtlv_value;
         }
-        return children.at("ixcdtlv-value");
+        return ixcdtlv_value;
     }
 
     if(child_yang_name == "srlgtlv-value")
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
-        else
+        if(srlgtlv_value == nullptr)
         {
             srlgtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>();
-            srlgtlv_value->parent = this;
-            children["srlgtlv-value"] = srlgtlv_value;
         }
-        return children.at("srlgtlv-value");
+        return srlgtlv_value;
     }
 
     if(child_yang_name == "unidtlv-value")
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
-        else
+        if(unidtlv_value == nullptr)
         {
             unidtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>();
-            unidtlv_value->parent = this;
-            children["unidtlv-value"] = unidtlv_value;
         }
-        return children.at("unidtlv-value");
+        return unidtlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
-    if(children.find("bctlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bctlv_value != nullptr)
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
+        children["bctlv-value"] = bctlv_value;
     }
 
-    if(children.find("ixcdtlv-value") == children.end())
+    if(ixcdtlv_value != nullptr)
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
+        children["ixcdtlv-value"] = ixcdtlv_value;
     }
 
-    if(children.find("srlgtlv-value") == children.end())
+    if(srlgtlv_value != nullptr)
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
+        children["srlgtlv-value"] = srlgtlv_value;
     }
 
-    if(children.find("unidtlv-value") == children.end())
+    if(unidtlv_value != nullptr)
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
+        children["unidtlv-value"] = unidtlv_value;
     }
 
     return children;
@@ -6803,7 +5961,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6830,20 +5988,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6909,7 +6059,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6936,20 +6086,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6980,7 +6122,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
 {
     ixcd_switching_cap_type->parent = this;
-    children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
 
     yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value";
 }
@@ -7028,7 +6169,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7057,41 +6198,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcd-switching-cap-type")
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
-        else
+        if(ixcd_switching_cap_type == nullptr)
         {
             ixcd_switching_cap_type = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>();
-            ixcd_switching_cap_type->parent = this;
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
         }
-        return children.at("ixcd-switching-cap-type");
+        return ixcd_switching_cap_type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
-    if(children.find("ixcd-switching-cap-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcd_switching_cap_type != nullptr)
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
+        children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
     return children;
@@ -7129,10 +6253,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
 	,ixcdpsc_info(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
 {
     ixcdbw_sub_tlv->parent = this;
-    children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
 
     ixcdpsc_info->parent = this;
-    children["ixcdpsc-info"] = ixcdpsc_info;
 
     yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value";
 }
@@ -7165,7 +6287,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7189,64 +6311,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcdbw-sub-tlv")
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
-        else
+        if(ixcdbw_sub_tlv == nullptr)
         {
             ixcdbw_sub_tlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>();
-            ixcdbw_sub_tlv->parent = this;
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
         }
-        return children.at("ixcdbw-sub-tlv");
+        return ixcdbw_sub_tlv;
     }
 
     if(child_yang_name == "ixcdpsc-info")
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
-        else
+        if(ixcdpsc_info == nullptr)
         {
             ixcdpsc_info = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>();
-            ixcdpsc_info->parent = this;
-            children["ixcdpsc-info"] = ixcdpsc_info;
         }
-        return children.at("ixcdpsc-info");
+        return ixcdpsc_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
-    if(children.find("ixcdbw-sub-tlv") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcdbw_sub_tlv != nullptr)
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
+        children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
     }
 
-    if(children.find("ixcdpsc-info") == children.end())
+    if(ixcdpsc_info != nullptr)
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
+        children["ixcdpsc-info"] = ixcdpsc_info;
     }
 
     return children;
@@ -7294,7 +6390,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7319,20 +6415,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7386,7 +6474,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7409,15 +6497,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "arr-bw-sub-tlv")
     {
         for(auto const & c : arr_bw_sub_tlv)
@@ -7425,28 +6504,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(std::move(c));
-        children[segment_path] = arr_bw_sub_tlv.back();
-        return children.at(segment_path);
+        arr_bw_sub_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : arr_bw_sub_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7464,7 +6539,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
-    children["bw-sub-tlv-value"] = bw_sub_tlv_value;
 
     yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv";
 }
@@ -7497,7 +6571,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7522,41 +6596,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bw-sub-tlv-value")
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
-        else
+        if(bw_sub_tlv_value == nullptr)
         {
             bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>();
-            bw_sub_tlv_value->parent = this;
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
         }
-        return children.at("bw-sub-tlv-value");
+        return bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
-    if(children.find("bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bw_sub_tlv_value != nullptr)
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
+        children["bw-sub-tlv-value"] = bw_sub_tlv_value;
     }
 
     return children;
@@ -7582,10 +6639,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
 	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
-    children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
 
     flex_bw_sub_tlv_value->parent = this;
-    children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
 
     yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv";
 }
@@ -7618,7 +6673,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7642,64 +6697,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-bw-sub-tlv-value")
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
-        else
+        if(fixed_bw_sub_tlv_value == nullptr)
         {
             fixed_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>();
-            fixed_bw_sub_tlv_value->parent = this;
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
         }
-        return children.at("fixed-bw-sub-tlv-value");
+        return fixed_bw_sub_tlv_value;
     }
 
     if(child_yang_name == "flex-bw-sub-tlv-value")
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
-        else
+        if(flex_bw_sub_tlv_value == nullptr)
         {
             flex_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>();
-            flex_bw_sub_tlv_value->parent = this;
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
         }
-        return children.at("flex-bw-sub-tlv-value");
+        return flex_bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_bw_sub_tlv_value != nullptr)
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
+        children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
     }
 
-    if(children.find("flex-bw-sub-tlv-value") == children.end())
+    if(flex_bw_sub_tlv_value != nullptr)
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
+        children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
     }
 
     return children;
@@ -7720,7 +6749,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
 {
     fixed_sub_tlv_value->parent = this;
-    children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
 
     yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -7760,7 +6788,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7785,41 +6813,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-sub-tlv-value")
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
-        else
+        if(fixed_sub_tlv_value == nullptr)
         {
             fixed_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>();
-            fixed_sub_tlv_value->parent = this;
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
         }
-        return children.at("fixed-sub-tlv-value");
+        return fixed_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_sub_tlv_value != nullptr)
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
+        children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
     return children;
@@ -7906,7 +6917,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7944,20 +6955,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8033,7 +7036,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLin
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
 {
     flex_sub_tlv_value_common->parent = this;
-    children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
 
     yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -8084,7 +7086,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8111,41 +7113,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flex-sub-tlv-value-common")
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
-        else
+        if(flex_sub_tlv_value_common == nullptr)
         {
             flex_sub_tlv_value_common = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>();
-            flex_sub_tlv_value_common->parent = this;
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
         }
-        return children.at("flex-sub-tlv-value-common");
+        return flex_sub_tlv_value_common;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
-    if(children.find("flex-sub-tlv-value-common") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flex_sub_tlv_value_common != nullptr)
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
+        children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
     return children;
@@ -8236,7 +7221,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8274,20 +7259,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8386,7 +7363,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8410,20 +7387,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8485,7 +7454,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8512,15 +7481,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-te-link")
     {
         for(auto const & c : mpls_te_link)
@@ -8528,28 +7488,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_>();
         c->parent = this;
-        mpls_te_link.push_back(std::move(c));
-        children[segment_path] = mpls_te_link.back();
-        return children.at(segment_path);
+        mpls_te_link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mpls_te_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8604,19 +7560,14 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
 	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority>())
 {
     extended_admin_group_list->parent = this;
-    children["extended-admin-group-list"] = extended_admin_group_list;
 
     global_unreserve_bw_per_priority->parent = this;
-    children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
 
     link_protocol_priority_capability->parent = this;
-    children["link-protocol-priority-capability"] = link_protocol_priority_capability;
 
     link_sw_capability->parent = this;
-    children["link-sw-capability"] = link_sw_capability;
 
     sub_pool_unreserve_bw_per_priority->parent = this;
-    children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
 
     yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment";
 }
@@ -8701,7 +7652,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8743,73 +7694,40 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-admin-group-list")
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
-        else
+        if(extended_admin_group_list == nullptr)
         {
             extended_admin_group_list = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList>();
-            extended_admin_group_list->parent = this;
-            children["extended-admin-group-list"] = extended_admin_group_list;
         }
-        return children.at("extended-admin-group-list");
+        return extended_admin_group_list;
     }
 
     if(child_yang_name == "global-unreserve-bw-per-priority")
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
-        else
+        if(global_unreserve_bw_per_priority == nullptr)
         {
             global_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority>();
-            global_unreserve_bw_per_priority->parent = this;
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
         }
-        return children.at("global-unreserve-bw-per-priority");
+        return global_unreserve_bw_per_priority;
     }
 
     if(child_yang_name == "link-protocol-priority-capability")
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
-        else
+        if(link_protocol_priority_capability == nullptr)
         {
             link_protocol_priority_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability>();
-            link_protocol_priority_capability->parent = this;
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
         }
-        return children.at("link-protocol-priority-capability");
+        return link_protocol_priority_capability;
     }
 
     if(child_yang_name == "link-sw-capability")
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
-        else
+        if(link_sw_capability == nullptr)
         {
             link_sw_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability>();
-            link_sw_capability->parent = this;
-            children["link-sw-capability"] = link_sw_capability;
         }
-        return children.at("link-sw-capability");
+        return link_sw_capability;
     }
 
     if(child_yang_name == "mplste-link-opt-tlv")
@@ -8819,83 +7737,58 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sub-pool-unreserve-bw-per-priority")
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
-        else
+        if(sub_pool_unreserve_bw_per_priority == nullptr)
         {
             sub_pool_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority>();
-            sub_pool_unreserve_bw_per_priority->parent = this;
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
         }
-        return children.at("sub-pool-unreserve-bw-per-priority");
+        return sub_pool_unreserve_bw_per_priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::get_children() const
 {
-    if(children.find("extended-admin-group-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(extended_admin_group_list != nullptr)
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
+        children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
-    if(children.find("global-unreserve-bw-per-priority") == children.end())
+    if(global_unreserve_bw_per_priority != nullptr)
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
+        children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
     }
 
-    if(children.find("link-protocol-priority-capability") == children.end())
+    if(link_protocol_priority_capability != nullptr)
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
+        children["link-protocol-priority-capability"] = link_protocol_priority_capability;
     }
 
-    if(children.find("link-sw-capability") == children.end())
+    if(link_sw_capability != nullptr)
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
+        children["link-sw-capability"] = link_sw_capability;
     }
 
     for (auto const & c : mplste_link_opt_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("sub-pool-unreserve-bw-per-priority") == children.end())
+    if(sub_pool_unreserve_bw_per_priority != nullptr)
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
+        children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
     }
 
     return children;
@@ -9022,7 +7915,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9047,20 +7940,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9113,7 +7998,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9138,20 +8023,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9197,7 +8074,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9222,20 +8099,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9303,7 +8172,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9332,20 +8201,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9416,7 +8277,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9442,20 +8303,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9515,7 +8368,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9540,15 +8393,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
         for(auto const & c : mplste_link_opt_tlv_value)
@@ -9556,28 +8400,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv_value.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9605,16 +8445,12 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
 	,unidtlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
-    children["bctlv-value"] = bctlv_value;
 
     ixcdtlv_value->parent = this;
-    children["ixcdtlv-value"] = ixcdtlv_value;
 
     srlgtlv_value->parent = this;
-    children["srlgtlv-value"] = srlgtlv_value;
 
     unidtlv_value->parent = this;
-    children["unidtlv-value"] = unidtlv_value;
 
     yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv";
 }
@@ -9651,7 +8487,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9675,110 +8511,66 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bctlv-value")
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
-        else
+        if(bctlv_value == nullptr)
         {
             bctlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>();
-            bctlv_value->parent = this;
-            children["bctlv-value"] = bctlv_value;
         }
-        return children.at("bctlv-value");
+        return bctlv_value;
     }
 
     if(child_yang_name == "ixcdtlv-value")
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
-        else
+        if(ixcdtlv_value == nullptr)
         {
             ixcdtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>();
-            ixcdtlv_value->parent = this;
-            children["ixcdtlv-value"] = ixcdtlv_value;
         }
-        return children.at("ixcdtlv-value");
+        return ixcdtlv_value;
     }
 
     if(child_yang_name == "srlgtlv-value")
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
-        else
+        if(srlgtlv_value == nullptr)
         {
             srlgtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>();
-            srlgtlv_value->parent = this;
-            children["srlgtlv-value"] = srlgtlv_value;
         }
-        return children.at("srlgtlv-value");
+        return srlgtlv_value;
     }
 
     if(child_yang_name == "unidtlv-value")
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
-        else
+        if(unidtlv_value == nullptr)
         {
             unidtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>();
-            unidtlv_value->parent = this;
-            children["unidtlv-value"] = unidtlv_value;
         }
-        return children.at("unidtlv-value");
+        return unidtlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
-    if(children.find("bctlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bctlv_value != nullptr)
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
+        children["bctlv-value"] = bctlv_value;
     }
 
-    if(children.find("ixcdtlv-value") == children.end())
+    if(ixcdtlv_value != nullptr)
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
+        children["ixcdtlv-value"] = ixcdtlv_value;
     }
 
-    if(children.find("srlgtlv-value") == children.end())
+    if(srlgtlv_value != nullptr)
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
+        children["srlgtlv-value"] = srlgtlv_value;
     }
 
-    if(children.find("unidtlv-value") == children.end())
+    if(unidtlv_value != nullptr)
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
+        children["unidtlv-value"] = unidtlv_value;
     }
 
     return children;
@@ -9838,7 +8630,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9865,20 +8657,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9944,7 +8728,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9971,20 +8755,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10015,7 +8791,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
 {
     ixcd_switching_cap_type->parent = this;
-    children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
 
     yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value";
 }
@@ -10063,7 +8838,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10092,41 +8867,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcd-switching-cap-type")
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
-        else
+        if(ixcd_switching_cap_type == nullptr)
         {
             ixcd_switching_cap_type = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>();
-            ixcd_switching_cap_type->parent = this;
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
         }
-        return children.at("ixcd-switching-cap-type");
+        return ixcd_switching_cap_type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
-    if(children.find("ixcd-switching-cap-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcd_switching_cap_type != nullptr)
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
+        children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
     return children;
@@ -10164,10 +8922,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
 	,ixcdpsc_info(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
 {
     ixcdbw_sub_tlv->parent = this;
-    children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
 
     ixcdpsc_info->parent = this;
-    children["ixcdpsc-info"] = ixcdpsc_info;
 
     yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value";
 }
@@ -10200,7 +8956,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10224,64 +8980,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcdbw-sub-tlv")
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
-        else
+        if(ixcdbw_sub_tlv == nullptr)
         {
             ixcdbw_sub_tlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>();
-            ixcdbw_sub_tlv->parent = this;
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
         }
-        return children.at("ixcdbw-sub-tlv");
+        return ixcdbw_sub_tlv;
     }
 
     if(child_yang_name == "ixcdpsc-info")
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
-        else
+        if(ixcdpsc_info == nullptr)
         {
             ixcdpsc_info = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>();
-            ixcdpsc_info->parent = this;
-            children["ixcdpsc-info"] = ixcdpsc_info;
         }
-        return children.at("ixcdpsc-info");
+        return ixcdpsc_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
-    if(children.find("ixcdbw-sub-tlv") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcdbw_sub_tlv != nullptr)
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
+        children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
     }
 
-    if(children.find("ixcdpsc-info") == children.end())
+    if(ixcdpsc_info != nullptr)
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
+        children["ixcdpsc-info"] = ixcdpsc_info;
     }
 
     return children;
@@ -10329,7 +9059,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10354,20 +9084,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10421,7 +9143,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10444,15 +9166,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "arr-bw-sub-tlv")
     {
         for(auto const & c : arr_bw_sub_tlv)
@@ -10460,28 +9173,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLink
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(std::move(c));
-        children[segment_path] = arr_bw_sub_tlv.back();
-        return children.at(segment_path);
+        arr_bw_sub_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : arr_bw_sub_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10499,7 +9208,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
-    children["bw-sub-tlv-value"] = bw_sub_tlv_value;
 
     yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv";
 }
@@ -10532,7 +9240,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10557,41 +9265,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bw-sub-tlv-value")
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
-        else
+        if(bw_sub_tlv_value == nullptr)
         {
             bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>();
-            bw_sub_tlv_value->parent = this;
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
         }
-        return children.at("bw-sub-tlv-value");
+        return bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
-    if(children.find("bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bw_sub_tlv_value != nullptr)
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
+        children["bw-sub-tlv-value"] = bw_sub_tlv_value;
     }
 
     return children;
@@ -10617,10 +9308,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
 	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
-    children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
 
     flex_bw_sub_tlv_value->parent = this;
-    children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
 
     yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv";
 }
@@ -10653,7 +9342,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10677,64 +9366,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-bw-sub-tlv-value")
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
-        else
+        if(fixed_bw_sub_tlv_value == nullptr)
         {
             fixed_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>();
-            fixed_bw_sub_tlv_value->parent = this;
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
         }
-        return children.at("fixed-bw-sub-tlv-value");
+        return fixed_bw_sub_tlv_value;
     }
 
     if(child_yang_name == "flex-bw-sub-tlv-value")
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
-        else
+        if(flex_bw_sub_tlv_value == nullptr)
         {
             flex_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>();
-            flex_bw_sub_tlv_value->parent = this;
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
         }
-        return children.at("flex-bw-sub-tlv-value");
+        return flex_bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_bw_sub_tlv_value != nullptr)
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
+        children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
     }
 
-    if(children.find("flex-bw-sub-tlv-value") == children.end())
+    if(flex_bw_sub_tlv_value != nullptr)
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
+        children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
     }
 
     return children;
@@ -10755,7 +9418,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
 {
     fixed_sub_tlv_value->parent = this;
-    children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
 
     yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -10795,7 +9457,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10820,41 +9482,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-sub-tlv-value")
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
-        else
+        if(fixed_sub_tlv_value == nullptr)
         {
             fixed_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>();
-            fixed_sub_tlv_value->parent = this;
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
         }
-        return children.at("fixed-sub-tlv-value");
+        return fixed_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_sub_tlv_value != nullptr)
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
+        children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
     return children;
@@ -10941,7 +9586,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10979,20 +9624,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11068,7 +9705,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFra
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
 {
     flex_sub_tlv_value_common->parent = this;
-    children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
 
     yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -11119,7 +9755,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11146,41 +9782,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flex-sub-tlv-value-common")
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
-        else
+        if(flex_sub_tlv_value_common == nullptr)
         {
             flex_sub_tlv_value_common = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>();
-            flex_sub_tlv_value_common->parent = this;
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
         }
-        return children.at("flex-sub-tlv-value-common");
+        return flex_sub_tlv_value_common;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
-    if(children.find("flex-sub-tlv-value-common") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flex_sub_tlv_value_common != nullptr)
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
+        children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
     return children;
@@ -11271,7 +9890,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11309,20 +9928,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11421,7 +10032,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLin
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11445,20 +10056,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11508,7 +10111,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::get_s
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11531,15 +10134,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::get_en
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-te-fragment")
     {
         for(auto const & c : mpls_te_fragment)
@@ -11547,28 +10141,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment>();
         c->parent = this;
-        mpls_te_fragment.push_back(std::move(c));
-        children[segment_path] = mpls_te_fragment.back();
-        return children.at(segment_path);
+        mpls_te_fragment.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mpls_te_fragment)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11653,7 +10243,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11685,15 +10275,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-te-fragment")
     {
         for(auto const & c : mpls_te_fragment)
@@ -11701,15 +10282,13 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_>();
         c->parent = this;
-        mpls_te_fragment.push_back(std::move(c));
-        children[segment_path] = mpls_te_fragment.back();
-        return children.at(segment_path);
+        mpls_te_fragment.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mpls-te-link")
@@ -11719,36 +10298,29 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink>();
         c->parent = this;
-        mpls_te_link.push_back(std::move(c));
-        children[segment_path] = mpls_te_link.back();
-        return children.at(segment_path);
+        mpls_te_link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mpls_te_fragment)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : mpls_te_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11823,19 +10395,14 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority>())
 {
     extended_admin_group_list->parent = this;
-    children["extended-admin-group-list"] = extended_admin_group_list;
 
     global_unreserve_bw_per_priority->parent = this;
-    children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
 
     link_protocol_priority_capability->parent = this;
-    children["link-protocol-priority-capability"] = link_protocol_priority_capability;
 
     link_sw_capability->parent = this;
-    children["link-sw-capability"] = link_sw_capability;
 
     sub_pool_unreserve_bw_per_priority->parent = this;
-    children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
 
     yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment";
 }
@@ -11920,7 +10487,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11962,73 +10529,40 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-admin-group-list")
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
-        else
+        if(extended_admin_group_list == nullptr)
         {
             extended_admin_group_list = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList>();
-            extended_admin_group_list->parent = this;
-            children["extended-admin-group-list"] = extended_admin_group_list;
         }
-        return children.at("extended-admin-group-list");
+        return extended_admin_group_list;
     }
 
     if(child_yang_name == "global-unreserve-bw-per-priority")
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
-        else
+        if(global_unreserve_bw_per_priority == nullptr)
         {
             global_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority>();
-            global_unreserve_bw_per_priority->parent = this;
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
         }
-        return children.at("global-unreserve-bw-per-priority");
+        return global_unreserve_bw_per_priority;
     }
 
     if(child_yang_name == "link-protocol-priority-capability")
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
-        else
+        if(link_protocol_priority_capability == nullptr)
         {
             link_protocol_priority_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability>();
-            link_protocol_priority_capability->parent = this;
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
         }
-        return children.at("link-protocol-priority-capability");
+        return link_protocol_priority_capability;
     }
 
     if(child_yang_name == "link-sw-capability")
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
-        else
+        if(link_sw_capability == nullptr)
         {
             link_sw_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability>();
-            link_sw_capability->parent = this;
-            children["link-sw-capability"] = link_sw_capability;
         }
-        return children.at("link-sw-capability");
+        return link_sw_capability;
     }
 
     if(child_yang_name == "mplste-link-opt-tlv")
@@ -12038,83 +10572,58 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sub-pool-unreserve-bw-per-priority")
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
-        else
+        if(sub_pool_unreserve_bw_per_priority == nullptr)
         {
             sub_pool_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority>();
-            sub_pool_unreserve_bw_per_priority->parent = this;
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
         }
-        return children.at("sub-pool-unreserve-bw-per-priority");
+        return sub_pool_unreserve_bw_per_priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::get_children() const
 {
-    if(children.find("extended-admin-group-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(extended_admin_group_list != nullptr)
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
+        children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
-    if(children.find("global-unreserve-bw-per-priority") == children.end())
+    if(global_unreserve_bw_per_priority != nullptr)
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
+        children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
     }
 
-    if(children.find("link-protocol-priority-capability") == children.end())
+    if(link_protocol_priority_capability != nullptr)
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
+        children["link-protocol-priority-capability"] = link_protocol_priority_capability;
     }
 
-    if(children.find("link-sw-capability") == children.end())
+    if(link_sw_capability != nullptr)
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
+        children["link-sw-capability"] = link_sw_capability;
     }
 
     for (auto const & c : mplste_link_opt_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("sub-pool-unreserve-bw-per-priority") == children.end())
+    if(sub_pool_unreserve_bw_per_priority != nullptr)
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
+        children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
     }
 
     return children;
@@ -12241,7 +10750,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12266,20 +10775,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12332,7 +10833,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12357,20 +10858,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12416,7 +10909,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12441,20 +10934,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12522,7 +11007,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12551,20 +11036,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12635,7 +11112,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12661,20 +11138,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12734,7 +11203,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12759,15 +11228,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
         for(auto const & c : mplste_link_opt_tlv_value)
@@ -12775,28 +11235,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv_value.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12824,16 +11280,12 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,unidtlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
-    children["bctlv-value"] = bctlv_value;
 
     ixcdtlv_value->parent = this;
-    children["ixcdtlv-value"] = ixcdtlv_value;
 
     srlgtlv_value->parent = this;
-    children["srlgtlv-value"] = srlgtlv_value;
 
     unidtlv_value->parent = this;
-    children["unidtlv-value"] = unidtlv_value;
 
     yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv";
 }
@@ -12870,7 +11322,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12894,110 +11346,66 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bctlv-value")
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
-        else
+        if(bctlv_value == nullptr)
         {
             bctlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>();
-            bctlv_value->parent = this;
-            children["bctlv-value"] = bctlv_value;
         }
-        return children.at("bctlv-value");
+        return bctlv_value;
     }
 
     if(child_yang_name == "ixcdtlv-value")
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
-        else
+        if(ixcdtlv_value == nullptr)
         {
             ixcdtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>();
-            ixcdtlv_value->parent = this;
-            children["ixcdtlv-value"] = ixcdtlv_value;
         }
-        return children.at("ixcdtlv-value");
+        return ixcdtlv_value;
     }
 
     if(child_yang_name == "srlgtlv-value")
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
-        else
+        if(srlgtlv_value == nullptr)
         {
             srlgtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>();
-            srlgtlv_value->parent = this;
-            children["srlgtlv-value"] = srlgtlv_value;
         }
-        return children.at("srlgtlv-value");
+        return srlgtlv_value;
     }
 
     if(child_yang_name == "unidtlv-value")
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
-        else
+        if(unidtlv_value == nullptr)
         {
             unidtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>();
-            unidtlv_value->parent = this;
-            children["unidtlv-value"] = unidtlv_value;
         }
-        return children.at("unidtlv-value");
+        return unidtlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
-    if(children.find("bctlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bctlv_value != nullptr)
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
+        children["bctlv-value"] = bctlv_value;
     }
 
-    if(children.find("ixcdtlv-value") == children.end())
+    if(ixcdtlv_value != nullptr)
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
+        children["ixcdtlv-value"] = ixcdtlv_value;
     }
 
-    if(children.find("srlgtlv-value") == children.end())
+    if(srlgtlv_value != nullptr)
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
+        children["srlgtlv-value"] = srlgtlv_value;
     }
 
-    if(children.find("unidtlv-value") == children.end())
+    if(unidtlv_value != nullptr)
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
+        children["unidtlv-value"] = unidtlv_value;
     }
 
     return children;
@@ -13057,7 +11465,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13084,20 +11492,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13163,7 +11563,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13190,20 +11590,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13234,7 +11626,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
 {
     ixcd_switching_cap_type->parent = this;
-    children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
 
     yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value";
 }
@@ -13282,7 +11673,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13311,41 +11702,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcd-switching-cap-type")
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
-        else
+        if(ixcd_switching_cap_type == nullptr)
         {
             ixcd_switching_cap_type = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>();
-            ixcd_switching_cap_type->parent = this;
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
         }
-        return children.at("ixcd-switching-cap-type");
+        return ixcd_switching_cap_type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
-    if(children.find("ixcd-switching-cap-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcd_switching_cap_type != nullptr)
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
+        children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
     return children;
@@ -13383,10 +11757,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,ixcdpsc_info(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
 {
     ixcdbw_sub_tlv->parent = this;
-    children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
 
     ixcdpsc_info->parent = this;
-    children["ixcdpsc-info"] = ixcdpsc_info;
 
     yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value";
 }
@@ -13419,7 +11791,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13443,64 +11815,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcdbw-sub-tlv")
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
-        else
+        if(ixcdbw_sub_tlv == nullptr)
         {
             ixcdbw_sub_tlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>();
-            ixcdbw_sub_tlv->parent = this;
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
         }
-        return children.at("ixcdbw-sub-tlv");
+        return ixcdbw_sub_tlv;
     }
 
     if(child_yang_name == "ixcdpsc-info")
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
-        else
+        if(ixcdpsc_info == nullptr)
         {
             ixcdpsc_info = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>();
-            ixcdpsc_info->parent = this;
-            children["ixcdpsc-info"] = ixcdpsc_info;
         }
-        return children.at("ixcdpsc-info");
+        return ixcdpsc_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
-    if(children.find("ixcdbw-sub-tlv") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcdbw_sub_tlv != nullptr)
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
+        children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
     }
 
-    if(children.find("ixcdpsc-info") == children.end())
+    if(ixcdpsc_info != nullptr)
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
+        children["ixcdpsc-info"] = ixcdpsc_info;
     }
 
     return children;
@@ -13548,7 +11894,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13573,20 +11919,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13640,7 +11978,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13663,15 +12001,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "arr-bw-sub-tlv")
     {
         for(auto const & c : arr_bw_sub_tlv)
@@ -13679,28 +12008,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(std::move(c));
-        children[segment_path] = arr_bw_sub_tlv.back();
-        return children.at(segment_path);
+        arr_bw_sub_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : arr_bw_sub_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13718,7 +12043,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
-    children["bw-sub-tlv-value"] = bw_sub_tlv_value;
 
     yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv";
 }
@@ -13751,7 +12075,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13776,41 +12100,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bw-sub-tlv-value")
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
-        else
+        if(bw_sub_tlv_value == nullptr)
         {
             bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>();
-            bw_sub_tlv_value->parent = this;
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
         }
-        return children.at("bw-sub-tlv-value");
+        return bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
-    if(children.find("bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bw_sub_tlv_value != nullptr)
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
+        children["bw-sub-tlv-value"] = bw_sub_tlv_value;
     }
 
     return children;
@@ -13836,10 +12143,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
-    children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
 
     flex_bw_sub_tlv_value->parent = this;
-    children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
 
     yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv";
 }
@@ -13872,7 +12177,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13896,64 +12201,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-bw-sub-tlv-value")
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
-        else
+        if(fixed_bw_sub_tlv_value == nullptr)
         {
             fixed_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>();
-            fixed_bw_sub_tlv_value->parent = this;
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
         }
-        return children.at("fixed-bw-sub-tlv-value");
+        return fixed_bw_sub_tlv_value;
     }
 
     if(child_yang_name == "flex-bw-sub-tlv-value")
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
-        else
+        if(flex_bw_sub_tlv_value == nullptr)
         {
             flex_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>();
-            flex_bw_sub_tlv_value->parent = this;
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
         }
-        return children.at("flex-bw-sub-tlv-value");
+        return flex_bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_bw_sub_tlv_value != nullptr)
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
+        children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
     }
 
-    if(children.find("flex-bw-sub-tlv-value") == children.end())
+    if(flex_bw_sub_tlv_value != nullptr)
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
+        children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
     }
 
     return children;
@@ -13974,7 +12253,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
 {
     fixed_sub_tlv_value->parent = this;
-    children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
 
     yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -14014,7 +12292,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14039,41 +12317,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-sub-tlv-value")
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
-        else
+        if(fixed_sub_tlv_value == nullptr)
         {
             fixed_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>();
-            fixed_sub_tlv_value->parent = this;
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
         }
-        return children.at("fixed-sub-tlv-value");
+        return fixed_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_sub_tlv_value != nullptr)
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
+        children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
     return children;
@@ -14160,7 +12421,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14198,20 +12459,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14287,7 +12540,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
 {
     flex_sub_tlv_value_common->parent = this;
-    children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
 
     yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -14338,7 +12590,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14365,41 +12617,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flex-sub-tlv-value-common")
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
-        else
+        if(flex_sub_tlv_value_common == nullptr)
         {
             flex_sub_tlv_value_common = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>();
-            flex_sub_tlv_value_common->parent = this;
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
         }
-        return children.at("flex-sub-tlv-value-common");
+        return flex_sub_tlv_value_common;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
-    if(children.find("flex-sub-tlv-value-common") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flex_sub_tlv_value_common != nullptr)
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
+        children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
     return children;
@@ -14490,7 +12725,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14528,20 +12763,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14640,7 +12867,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14664,20 +12891,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14739,7 +12958,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14766,15 +12985,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-te-link")
     {
         for(auto const & c : mpls_te_link)
@@ -14782,28 +12992,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink>();
         c->parent = this;
-        mpls_te_link.push_back(std::move(c));
-        children[segment_path] = mpls_te_link.back();
-        return children.at(segment_path);
+        mpls_te_link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mpls_te_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14858,19 +13064,14 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority>())
 {
     extended_admin_group_list->parent = this;
-    children["extended-admin-group-list"] = extended_admin_group_list;
 
     global_unreserve_bw_per_priority->parent = this;
-    children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
 
     link_protocol_priority_capability->parent = this;
-    children["link-protocol-priority-capability"] = link_protocol_priority_capability;
 
     link_sw_capability->parent = this;
-    children["link-sw-capability"] = link_sw_capability;
 
     sub_pool_unreserve_bw_per_priority->parent = this;
-    children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
 
     yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment";
 }
@@ -14955,7 +13156,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14997,73 +13198,40 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-admin-group-list")
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
-        else
+        if(extended_admin_group_list == nullptr)
         {
             extended_admin_group_list = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList>();
-            extended_admin_group_list->parent = this;
-            children["extended-admin-group-list"] = extended_admin_group_list;
         }
-        return children.at("extended-admin-group-list");
+        return extended_admin_group_list;
     }
 
     if(child_yang_name == "global-unreserve-bw-per-priority")
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
-        else
+        if(global_unreserve_bw_per_priority == nullptr)
         {
             global_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority>();
-            global_unreserve_bw_per_priority->parent = this;
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
         }
-        return children.at("global-unreserve-bw-per-priority");
+        return global_unreserve_bw_per_priority;
     }
 
     if(child_yang_name == "link-protocol-priority-capability")
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
-        else
+        if(link_protocol_priority_capability == nullptr)
         {
             link_protocol_priority_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability>();
-            link_protocol_priority_capability->parent = this;
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
         }
-        return children.at("link-protocol-priority-capability");
+        return link_protocol_priority_capability;
     }
 
     if(child_yang_name == "link-sw-capability")
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
-        else
+        if(link_sw_capability == nullptr)
         {
             link_sw_capability = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability>();
-            link_sw_capability->parent = this;
-            children["link-sw-capability"] = link_sw_capability;
         }
-        return children.at("link-sw-capability");
+        return link_sw_capability;
     }
 
     if(child_yang_name == "mplste-link-opt-tlv")
@@ -15073,83 +13241,58 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sub-pool-unreserve-bw-per-priority")
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
-        else
+        if(sub_pool_unreserve_bw_per_priority == nullptr)
         {
             sub_pool_unreserve_bw_per_priority = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority>();
-            sub_pool_unreserve_bw_per_priority->parent = this;
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
         }
-        return children.at("sub-pool-unreserve-bw-per-priority");
+        return sub_pool_unreserve_bw_per_priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::get_children() const
 {
-    if(children.find("extended-admin-group-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(extended_admin_group_list != nullptr)
     {
-        if(extended_admin_group_list != nullptr)
-        {
-            children["extended-admin-group-list"] = extended_admin_group_list;
-        }
+        children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
-    if(children.find("global-unreserve-bw-per-priority") == children.end())
+    if(global_unreserve_bw_per_priority != nullptr)
     {
-        if(global_unreserve_bw_per_priority != nullptr)
-        {
-            children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
-        }
+        children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
     }
 
-    if(children.find("link-protocol-priority-capability") == children.end())
+    if(link_protocol_priority_capability != nullptr)
     {
-        if(link_protocol_priority_capability != nullptr)
-        {
-            children["link-protocol-priority-capability"] = link_protocol_priority_capability;
-        }
+        children["link-protocol-priority-capability"] = link_protocol_priority_capability;
     }
 
-    if(children.find("link-sw-capability") == children.end())
+    if(link_sw_capability != nullptr)
     {
-        if(link_sw_capability != nullptr)
-        {
-            children["link-sw-capability"] = link_sw_capability;
-        }
+        children["link-sw-capability"] = link_sw_capability;
     }
 
     for (auto const & c : mplste_link_opt_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("sub-pool-unreserve-bw-per-priority") == children.end())
+    if(sub_pool_unreserve_bw_per_priority != nullptr)
     {
-        if(sub_pool_unreserve_bw_per_priority != nullptr)
-        {
-            children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
-        }
+        children["sub-pool-unreserve-bw-per-priority"] = sub_pool_unreserve_bw_per_priority;
     }
 
     return children;
@@ -15276,7 +13419,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15301,20 +13444,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15367,7 +13502,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15392,20 +13527,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15451,7 +13578,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15476,20 +13603,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15557,7 +13676,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15586,20 +13705,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15670,7 +13781,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15696,20 +13807,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15769,7 +13872,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15794,15 +13897,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
         for(auto const & c : mplste_link_opt_tlv_value)
@@ -15810,28 +13904,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(std::move(c));
-        children[segment_path] = mplste_link_opt_tlv_value.back();
-        return children.at(segment_path);
+        mplste_link_opt_tlv_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15859,16 +13949,12 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,unidtlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
-    children["bctlv-value"] = bctlv_value;
 
     ixcdtlv_value->parent = this;
-    children["ixcdtlv-value"] = ixcdtlv_value;
 
     srlgtlv_value->parent = this;
-    children["srlgtlv-value"] = srlgtlv_value;
 
     unidtlv_value->parent = this;
-    children["unidtlv-value"] = unidtlv_value;
 
     yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv";
 }
@@ -15905,7 +13991,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15929,110 +14015,66 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bctlv-value")
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
-        else
+        if(bctlv_value == nullptr)
         {
             bctlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>();
-            bctlv_value->parent = this;
-            children["bctlv-value"] = bctlv_value;
         }
-        return children.at("bctlv-value");
+        return bctlv_value;
     }
 
     if(child_yang_name == "ixcdtlv-value")
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
-        else
+        if(ixcdtlv_value == nullptr)
         {
             ixcdtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>();
-            ixcdtlv_value->parent = this;
-            children["ixcdtlv-value"] = ixcdtlv_value;
         }
-        return children.at("ixcdtlv-value");
+        return ixcdtlv_value;
     }
 
     if(child_yang_name == "srlgtlv-value")
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
-        else
+        if(srlgtlv_value == nullptr)
         {
             srlgtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>();
-            srlgtlv_value->parent = this;
-            children["srlgtlv-value"] = srlgtlv_value;
         }
-        return children.at("srlgtlv-value");
+        return srlgtlv_value;
     }
 
     if(child_yang_name == "unidtlv-value")
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
-        else
+        if(unidtlv_value == nullptr)
         {
             unidtlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>();
-            unidtlv_value->parent = this;
-            children["unidtlv-value"] = unidtlv_value;
         }
-        return children.at("unidtlv-value");
+        return unidtlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
-    if(children.find("bctlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bctlv_value != nullptr)
     {
-        if(bctlv_value != nullptr)
-        {
-            children["bctlv-value"] = bctlv_value;
-        }
+        children["bctlv-value"] = bctlv_value;
     }
 
-    if(children.find("ixcdtlv-value") == children.end())
+    if(ixcdtlv_value != nullptr)
     {
-        if(ixcdtlv_value != nullptr)
-        {
-            children["ixcdtlv-value"] = ixcdtlv_value;
-        }
+        children["ixcdtlv-value"] = ixcdtlv_value;
     }
 
-    if(children.find("srlgtlv-value") == children.end())
+    if(srlgtlv_value != nullptr)
     {
-        if(srlgtlv_value != nullptr)
-        {
-            children["srlgtlv-value"] = srlgtlv_value;
-        }
+        children["srlgtlv-value"] = srlgtlv_value;
     }
 
-    if(children.find("unidtlv-value") == children.end())
+    if(unidtlv_value != nullptr)
     {
-        if(unidtlv_value != nullptr)
-        {
-            children["unidtlv-value"] = unidtlv_value;
-        }
+        children["unidtlv-value"] = unidtlv_value;
     }
 
     return children;
@@ -16092,7 +14134,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16119,20 +14161,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16198,7 +14232,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16225,20 +14259,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16269,7 +14295,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
 {
     ixcd_switching_cap_type->parent = this;
-    children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
 
     yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value";
 }
@@ -16317,7 +14342,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16346,41 +14371,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcd-switching-cap-type")
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
-        else
+        if(ixcd_switching_cap_type == nullptr)
         {
             ixcd_switching_cap_type = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>();
-            ixcd_switching_cap_type->parent = this;
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
         }
-        return children.at("ixcd-switching-cap-type");
+        return ixcd_switching_cap_type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
-    if(children.find("ixcd-switching-cap-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcd_switching_cap_type != nullptr)
     {
-        if(ixcd_switching_cap_type != nullptr)
-        {
-            children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
-        }
+        children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
     return children;
@@ -16418,10 +14426,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,ixcdpsc_info(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
 {
     ixcdbw_sub_tlv->parent = this;
-    children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
 
     ixcdpsc_info->parent = this;
-    children["ixcdpsc-info"] = ixcdpsc_info;
 
     yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value";
 }
@@ -16454,7 +14460,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16478,64 +14484,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ixcdbw-sub-tlv")
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
-        else
+        if(ixcdbw_sub_tlv == nullptr)
         {
             ixcdbw_sub_tlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>();
-            ixcdbw_sub_tlv->parent = this;
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
         }
-        return children.at("ixcdbw-sub-tlv");
+        return ixcdbw_sub_tlv;
     }
 
     if(child_yang_name == "ixcdpsc-info")
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
-        else
+        if(ixcdpsc_info == nullptr)
         {
             ixcdpsc_info = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>();
-            ixcdpsc_info->parent = this;
-            children["ixcdpsc-info"] = ixcdpsc_info;
         }
-        return children.at("ixcdpsc-info");
+        return ixcdpsc_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
-    if(children.find("ixcdbw-sub-tlv") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ixcdbw_sub_tlv != nullptr)
     {
-        if(ixcdbw_sub_tlv != nullptr)
-        {
-            children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
-        }
+        children["ixcdbw-sub-tlv"] = ixcdbw_sub_tlv;
     }
 
-    if(children.find("ixcdpsc-info") == children.end())
+    if(ixcdpsc_info != nullptr)
     {
-        if(ixcdpsc_info != nullptr)
-        {
-            children["ixcdpsc-info"] = ixcdpsc_info;
-        }
+        children["ixcdpsc-info"] = ixcdpsc_info;
     }
 
     return children;
@@ -16583,7 +14563,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16608,20 +14588,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16675,7 +14647,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16698,15 +14670,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "arr-bw-sub-tlv")
     {
         for(auto const & c : arr_bw_sub_tlv)
@@ -16714,28 +14677,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFrag
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(std::move(c));
-        children[segment_path] = arr_bw_sub_tlv.back();
-        return children.at(segment_path);
+        arr_bw_sub_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : arr_bw_sub_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16753,7 +14712,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
-    children["bw-sub-tlv-value"] = bw_sub_tlv_value;
 
     yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv";
 }
@@ -16786,7 +14744,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16811,41 +14769,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bw-sub-tlv-value")
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
-        else
+        if(bw_sub_tlv_value == nullptr)
         {
             bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>();
-            bw_sub_tlv_value->parent = this;
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
         }
-        return children.at("bw-sub-tlv-value");
+        return bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
-    if(children.find("bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bw_sub_tlv_value != nullptr)
     {
-        if(bw_sub_tlv_value != nullptr)
-        {
-            children["bw-sub-tlv-value"] = bw_sub_tlv_value;
-        }
+        children["bw-sub-tlv-value"] = bw_sub_tlv_value;
     }
 
     return children;
@@ -16871,10 +14812,8 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
 	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
-    children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
 
     flex_bw_sub_tlv_value->parent = this;
-    children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
 
     yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv";
 }
@@ -16907,7 +14846,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16931,64 +14870,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-bw-sub-tlv-value")
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
-        else
+        if(fixed_bw_sub_tlv_value == nullptr)
         {
             fixed_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>();
-            fixed_bw_sub_tlv_value->parent = this;
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
         }
-        return children.at("fixed-bw-sub-tlv-value");
+        return fixed_bw_sub_tlv_value;
     }
 
     if(child_yang_name == "flex-bw-sub-tlv-value")
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
-        else
+        if(flex_bw_sub_tlv_value == nullptr)
         {
             flex_bw_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>();
-            flex_bw_sub_tlv_value->parent = this;
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
         }
-        return children.at("flex-bw-sub-tlv-value");
+        return flex_bw_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-bw-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_bw_sub_tlv_value != nullptr)
     {
-        if(fixed_bw_sub_tlv_value != nullptr)
-        {
-            children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
-        }
+        children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
     }
 
-    if(children.find("flex-bw-sub-tlv-value") == children.end())
+    if(flex_bw_sub_tlv_value != nullptr)
     {
-        if(flex_bw_sub_tlv_value != nullptr)
-        {
-            children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
-        }
+        children["flex-bw-sub-tlv-value"] = flex_bw_sub_tlv_value;
     }
 
     return children;
@@ -17009,7 +14922,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
 {
     fixed_sub_tlv_value->parent = this;
-    children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
 
     yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -17049,7 +14961,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17074,41 +14986,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed-sub-tlv-value")
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
-        else
+        if(fixed_sub_tlv_value == nullptr)
         {
             fixed_sub_tlv_value = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>();
-            fixed_sub_tlv_value->parent = this;
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
         }
-        return children.at("fixed-sub-tlv-value");
+        return fixed_sub_tlv_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
-    if(children.find("fixed-sub-tlv-value") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed_sub_tlv_value != nullptr)
     {
-        if(fixed_sub_tlv_value != nullptr)
-        {
-            children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
-        }
+        children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
     return children;
@@ -17195,7 +15090,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17233,20 +15128,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17322,7 +15209,6 @@ Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::M
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
 {
     flex_sub_tlv_value_common->parent = this;
-    children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
 
     yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value";
 }
@@ -17373,7 +15259,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17400,41 +15286,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flex-sub-tlv-value-common")
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
-        else
+        if(flex_sub_tlv_value_common == nullptr)
         {
             flex_sub_tlv_value_common = std::make_shared<Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>();
-            flex_sub_tlv_value_common->parent = this;
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
         }
-        return children.at("flex-sub-tlv-value-common");
+        return flex_sub_tlv_value_common;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
-    if(children.find("flex-sub-tlv-value-common") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flex_sub_tlv_value_common != nullptr)
     {
-        if(flex_sub_tlv_value_common != nullptr)
-        {
-            children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-        }
+        children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
     return children;
@@ -17525,7 +15394,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17563,20 +15432,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17675,7 +15536,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsT
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17699,20 +15560,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTe
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17739,37 +15592,26 @@ Ospf::Processes::Process::DefaultVrf::Statistics::Statistics()
 	,te_stats(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::TeStats>())
 {
     frr_stats->parent = this;
-    children["frr-stats"] = frr_stats;
 
     interface_stats_entries->parent = this;
-    children["interface-stats-entries"] = interface_stats_entries;
 
     issu_stats->parent = this;
-    children["issu-stats"] = issu_stats;
 
     nsr_pl_stats->parent = this;
-    children["nsr-pl-stats"] = nsr_pl_stats;
 
     nsr_stats->parent = this;
-    children["nsr-stats"] = nsr_stats;
 
     protocol_stats->parent = this;
-    children["protocol-stats"] = protocol_stats;
 
     raw_io_stats->parent = this;
-    children["raw-io-stats"] = raw_io_stats;
 
     rib_batch_stats->parent = this;
-    children["rib-batch-stats"] = rib_batch_stats;
 
     rib_thread_stats->parent = this;
-    children["rib-thread-stats"] = rib_thread_stats;
 
     spf_stats->parent = this;
-    children["spf-stats"] = spf_stats;
 
     te_stats->parent = this;
-    children["te-stats"] = te_stats;
 
     yang_name = "statistics"; yang_parent_name = "default-vrf";
 }
@@ -17818,7 +15660,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::get_segment_path()
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17841,271 +15683,164 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-stats")
     {
-        if(frr_stats != nullptr)
-        {
-            children["frr-stats"] = frr_stats;
-        }
-        else
+        if(frr_stats == nullptr)
         {
             frr_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::FrrStats>();
-            frr_stats->parent = this;
-            children["frr-stats"] = frr_stats;
         }
-        return children.at("frr-stats");
+        return frr_stats;
     }
 
     if(child_yang_name == "interface-stats-entries")
     {
-        if(interface_stats_entries != nullptr)
-        {
-            children["interface-stats-entries"] = interface_stats_entries;
-        }
-        else
+        if(interface_stats_entries == nullptr)
         {
             interface_stats_entries = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::InterfaceStatsEntries>();
-            interface_stats_entries->parent = this;
-            children["interface-stats-entries"] = interface_stats_entries;
         }
-        return children.at("interface-stats-entries");
+        return interface_stats_entries;
     }
 
     if(child_yang_name == "issu-stats")
     {
-        if(issu_stats != nullptr)
-        {
-            children["issu-stats"] = issu_stats;
-        }
-        else
+        if(issu_stats == nullptr)
         {
             issu_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats>();
-            issu_stats->parent = this;
-            children["issu-stats"] = issu_stats;
         }
-        return children.at("issu-stats");
+        return issu_stats;
     }
 
     if(child_yang_name == "nsr-pl-stats")
     {
-        if(nsr_pl_stats != nullptr)
-        {
-            children["nsr-pl-stats"] = nsr_pl_stats;
-        }
-        else
+        if(nsr_pl_stats == nullptr)
         {
             nsr_pl_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::NsrPlStats>();
-            nsr_pl_stats->parent = this;
-            children["nsr-pl-stats"] = nsr_pl_stats;
         }
-        return children.at("nsr-pl-stats");
+        return nsr_pl_stats;
     }
 
     if(child_yang_name == "nsr-stats")
     {
-        if(nsr_stats != nullptr)
-        {
-            children["nsr-stats"] = nsr_stats;
-        }
-        else
+        if(nsr_stats == nullptr)
         {
             nsr_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::NsrStats>();
-            nsr_stats->parent = this;
-            children["nsr-stats"] = nsr_stats;
         }
-        return children.at("nsr-stats");
+        return nsr_stats;
     }
 
     if(child_yang_name == "protocol-stats")
     {
-        if(protocol_stats != nullptr)
-        {
-            children["protocol-stats"] = protocol_stats;
-        }
-        else
+        if(protocol_stats == nullptr)
         {
             protocol_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::ProtocolStats>();
-            protocol_stats->parent = this;
-            children["protocol-stats"] = protocol_stats;
         }
-        return children.at("protocol-stats");
+        return protocol_stats;
     }
 
     if(child_yang_name == "raw-io-stats")
     {
-        if(raw_io_stats != nullptr)
-        {
-            children["raw-io-stats"] = raw_io_stats;
-        }
-        else
+        if(raw_io_stats == nullptr)
         {
             raw_io_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::RawIoStats>();
-            raw_io_stats->parent = this;
-            children["raw-io-stats"] = raw_io_stats;
         }
-        return children.at("raw-io-stats");
+        return raw_io_stats;
     }
 
     if(child_yang_name == "rib-batch-stats")
     {
-        if(rib_batch_stats != nullptr)
-        {
-            children["rib-batch-stats"] = rib_batch_stats;
-        }
-        else
+        if(rib_batch_stats == nullptr)
         {
             rib_batch_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats>();
-            rib_batch_stats->parent = this;
-            children["rib-batch-stats"] = rib_batch_stats;
         }
-        return children.at("rib-batch-stats");
+        return rib_batch_stats;
     }
 
     if(child_yang_name == "rib-thread-stats")
     {
-        if(rib_thread_stats != nullptr)
-        {
-            children["rib-thread-stats"] = rib_thread_stats;
-        }
-        else
+        if(rib_thread_stats == nullptr)
         {
             rib_thread_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::RibThreadStats>();
-            rib_thread_stats->parent = this;
-            children["rib-thread-stats"] = rib_thread_stats;
         }
-        return children.at("rib-thread-stats");
+        return rib_thread_stats;
     }
 
     if(child_yang_name == "spf-stats")
     {
-        if(spf_stats != nullptr)
-        {
-            children["spf-stats"] = spf_stats;
-        }
-        else
+        if(spf_stats == nullptr)
         {
             spf_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats>();
-            spf_stats->parent = this;
-            children["spf-stats"] = spf_stats;
         }
-        return children.at("spf-stats");
+        return spf_stats;
     }
 
     if(child_yang_name == "te-stats")
     {
-        if(te_stats != nullptr)
-        {
-            children["te-stats"] = te_stats;
-        }
-        else
+        if(te_stats == nullptr)
         {
             te_stats = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::TeStats>();
-            te_stats->parent = this;
-            children["te-stats"] = te_stats;
         }
-        return children.at("te-stats");
+        return te_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::get_children() const
 {
-    if(children.find("frr-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_stats != nullptr)
     {
-        if(frr_stats != nullptr)
-        {
-            children["frr-stats"] = frr_stats;
-        }
+        children["frr-stats"] = frr_stats;
     }
 
-    if(children.find("interface-stats-entries") == children.end())
+    if(interface_stats_entries != nullptr)
     {
-        if(interface_stats_entries != nullptr)
-        {
-            children["interface-stats-entries"] = interface_stats_entries;
-        }
+        children["interface-stats-entries"] = interface_stats_entries;
     }
 
-    if(children.find("issu-stats") == children.end())
+    if(issu_stats != nullptr)
     {
-        if(issu_stats != nullptr)
-        {
-            children["issu-stats"] = issu_stats;
-        }
+        children["issu-stats"] = issu_stats;
     }
 
-    if(children.find("nsr-pl-stats") == children.end())
+    if(nsr_pl_stats != nullptr)
     {
-        if(nsr_pl_stats != nullptr)
-        {
-            children["nsr-pl-stats"] = nsr_pl_stats;
-        }
+        children["nsr-pl-stats"] = nsr_pl_stats;
     }
 
-    if(children.find("nsr-stats") == children.end())
+    if(nsr_stats != nullptr)
     {
-        if(nsr_stats != nullptr)
-        {
-            children["nsr-stats"] = nsr_stats;
-        }
+        children["nsr-stats"] = nsr_stats;
     }
 
-    if(children.find("protocol-stats") == children.end())
+    if(protocol_stats != nullptr)
     {
-        if(protocol_stats != nullptr)
-        {
-            children["protocol-stats"] = protocol_stats;
-        }
+        children["protocol-stats"] = protocol_stats;
     }
 
-    if(children.find("raw-io-stats") == children.end())
+    if(raw_io_stats != nullptr)
     {
-        if(raw_io_stats != nullptr)
-        {
-            children["raw-io-stats"] = raw_io_stats;
-        }
+        children["raw-io-stats"] = raw_io_stats;
     }
 
-    if(children.find("rib-batch-stats") == children.end())
+    if(rib_batch_stats != nullptr)
     {
-        if(rib_batch_stats != nullptr)
-        {
-            children["rib-batch-stats"] = rib_batch_stats;
-        }
+        children["rib-batch-stats"] = rib_batch_stats;
     }
 
-    if(children.find("rib-thread-stats") == children.end())
+    if(rib_thread_stats != nullptr)
     {
-        if(rib_thread_stats != nullptr)
-        {
-            children["rib-thread-stats"] = rib_thread_stats;
-        }
+        children["rib-thread-stats"] = rib_thread_stats;
     }
 
-    if(children.find("spf-stats") == children.end())
+    if(spf_stats != nullptr)
     {
-        if(spf_stats != nullptr)
-        {
-            children["spf-stats"] = spf_stats;
-        }
+        children["spf-stats"] = spf_stats;
     }
 
-    if(children.find("te-stats") == children.end())
+    if(te_stats != nullptr)
     {
-        if(te_stats != nullptr)
-        {
-            children["te-stats"] = te_stats;
-        }
+        children["te-stats"] = te_stats;
     }
 
     return children;
@@ -18120,7 +15855,6 @@ Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfStats()
     spf_header(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader>())
 {
     spf_header->parent = this;
-    children["spf-header"] = spf_header;
 
     yang_name = "spf-stats"; yang_parent_name = "statistics";
 }
@@ -18189,7 +15923,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::get_segm
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18212,15 +15946,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::get_entit
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "os-ex-runtime")
     {
         for(auto const & c : os_ex_runtime)
@@ -18228,15 +15953,13 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfSta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime>();
         c->parent = this;
-        os_ex_runtime.push_back(std::move(c));
-        children[segment_path] = os_ex_runtime.back();
-        return children.at(segment_path);
+        os_ex_runtime.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "os-runtime")
@@ -18246,15 +15969,13 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfSta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime>();
         c->parent = this;
-        os_runtime.push_back(std::move(c));
-        children[segment_path] = os_runtime.back();
-        return children.at(segment_path);
+        os_runtime.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "os-sum-runtime")
@@ -18264,15 +15985,13 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfSta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime>();
         c->parent = this;
-        os_sum_runtime.push_back(std::move(c));
-        children[segment_path] = os_sum_runtime.back();
-        return children.at(segment_path);
+        os_sum_runtime.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "runtime")
@@ -18282,75 +16001,53 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfSta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime>();
         c->parent = this;
-        runtime.push_back(std::move(c));
-        children[segment_path] = runtime.back();
-        return children.at(segment_path);
+        runtime.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "spf-header")
     {
-        if(spf_header != nullptr)
-        {
-            children["spf-header"] = spf_header;
-        }
-        else
+        if(spf_header == nullptr)
         {
             spf_header = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader>();
-            spf_header->parent = this;
-            children["spf-header"] = spf_header;
         }
-        return children.at("spf-header");
+        return spf_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : os_ex_runtime)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : os_runtime)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : os_sum_runtime)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : runtime)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("spf-header") == children.end())
+    if(spf_header != nullptr)
     {
-        if(spf_header != nullptr)
-        {
-            children["spf-header"] = spf_header;
-        }
+        children["spf-header"] = spf_header;
     }
 
     return children;
@@ -18404,7 +16101,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeade
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18429,15 +16126,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-summ")
     {
         for(auto const & c : area_summ)
@@ -18445,28 +16133,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfSta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::AreaSumm>();
         c->parent = this;
-        area_summ.push_back(std::move(c));
-        children[segment_path] = area_summ.back();
-        return children.at(segment_path);
+        area_summ.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_summ)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18518,7 +16202,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeade
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18543,20 +16227,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18581,10 +16257,8 @@ Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::OsRuntime
 	,si_start_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime>())
 {
     si_duration->parent = this;
-    children["si-duration"] = si_duration;
 
     si_start_time->parent = this;
-    children["si-start-time"] = si_start_time;
 
     yang_name = "os-runtime"; yang_parent_name = "spf-stats";
 }
@@ -18619,7 +16293,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntim
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18644,64 +16318,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "si-duration")
     {
-        if(si_duration != nullptr)
-        {
-            children["si-duration"] = si_duration;
-        }
-        else
+        if(si_duration == nullptr)
         {
             si_duration = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration>();
-            si_duration->parent = this;
-            children["si-duration"] = si_duration;
         }
-        return children.at("si-duration");
+        return si_duration;
     }
 
     if(child_yang_name == "si-start-time")
     {
-        if(si_start_time != nullptr)
-        {
-            children["si-start-time"] = si_start_time;
-        }
-        else
+        if(si_start_time == nullptr)
         {
             si_start_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime>();
-            si_start_time->parent = this;
-            children["si-start-time"] = si_start_time;
         }
-        return children.at("si-start-time");
+        return si_start_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::get_children() const
 {
-    if(children.find("si-duration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(si_duration != nullptr)
     {
-        if(si_duration != nullptr)
-        {
-            children["si-duration"] = si_duration;
-        }
+        children["si-duration"] = si_duration;
     }
 
-    if(children.find("si-start-time") == children.end())
+    if(si_start_time != nullptr)
     {
-        if(si_start_time != nullptr)
-        {
-            children["si-start-time"] = si_start_time;
-        }
+        children["si-start-time"] = si_start_time;
     }
 
     return children;
@@ -18753,7 +16401,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntim
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18778,20 +16426,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18841,7 +16481,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntim
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18866,20 +16506,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18905,10 +16537,8 @@ Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::OsSumR
 	,sp_start_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime>())
 {
     sp_duration->parent = this;
-    children["sp-duration"] = sp_duration;
 
     sp_start_time->parent = this;
-    children["sp-start-time"] = sp_start_time;
 
     yang_name = "os-sum-runtime"; yang_parent_name = "spf-stats";
 }
@@ -18945,7 +16575,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRun
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18971,64 +16601,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRunt
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sp-duration")
     {
-        if(sp_duration != nullptr)
-        {
-            children["sp-duration"] = sp_duration;
-        }
-        else
+        if(sp_duration == nullptr)
         {
             sp_duration = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration>();
-            sp_duration->parent = this;
-            children["sp-duration"] = sp_duration;
         }
-        return children.at("sp-duration");
+        return sp_duration;
     }
 
     if(child_yang_name == "sp-start-time")
     {
-        if(sp_start_time != nullptr)
-        {
-            children["sp-start-time"] = sp_start_time;
-        }
-        else
+        if(sp_start_time == nullptr)
         {
             sp_start_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime>();
-            sp_start_time->parent = this;
-            children["sp-start-time"] = sp_start_time;
         }
-        return children.at("sp-start-time");
+        return sp_start_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::get_children() const
 {
-    if(children.find("sp-duration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sp_duration != nullptr)
     {
-        if(sp_duration != nullptr)
-        {
-            children["sp-duration"] = sp_duration;
-        }
+        children["sp-duration"] = sp_duration;
     }
 
-    if(children.find("sp-start-time") == children.end())
+    if(sp_start_time != nullptr)
     {
-        if(sp_start_time != nullptr)
-        {
-            children["sp-start-time"] = sp_start_time;
-        }
+        children["sp-start-time"] = sp_start_time;
     }
 
     return children;
@@ -19084,7 +16688,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRun
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19109,20 +16713,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRunt
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19172,7 +16768,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRun
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19197,20 +16793,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRunt
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19236,10 +16824,8 @@ Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::OsExRun
 	,sp_start_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime>())
 {
     sp_duration->parent = this;
-    children["sp-duration"] = sp_duration;
 
     sp_start_time->parent = this;
-    children["sp-start-time"] = sp_start_time;
 
     yang_name = "os-ex-runtime"; yang_parent_name = "spf-stats";
 }
@@ -19276,7 +16862,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRunt
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19302,64 +16888,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRunti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sp-duration")
     {
-        if(sp_duration != nullptr)
-        {
-            children["sp-duration"] = sp_duration;
-        }
-        else
+        if(sp_duration == nullptr)
         {
             sp_duration = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration>();
-            sp_duration->parent = this;
-            children["sp-duration"] = sp_duration;
         }
-        return children.at("sp-duration");
+        return sp_duration;
     }
 
     if(child_yang_name == "sp-start-time")
     {
-        if(sp_start_time != nullptr)
-        {
-            children["sp-start-time"] = sp_start_time;
-        }
-        else
+        if(sp_start_time == nullptr)
         {
             sp_start_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime>();
-            sp_start_time->parent = this;
-            children["sp-start-time"] = sp_start_time;
         }
-        return children.at("sp-start-time");
+        return sp_start_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::get_children() const
 {
-    if(children.find("sp-duration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sp_duration != nullptr)
     {
-        if(sp_duration != nullptr)
-        {
-            children["sp-duration"] = sp_duration;
-        }
+        children["sp-duration"] = sp_duration;
     }
 
-    if(children.find("sp-start-time") == children.end())
+    if(sp_start_time != nullptr)
     {
-        if(sp_start_time != nullptr)
-        {
-            children["sp-start-time"] = sp_start_time;
-        }
+        children["sp-start-time"] = sp_start_time;
     }
 
     return children;
@@ -19415,7 +16975,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRunt
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19440,20 +17000,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRunti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19503,7 +17055,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRunt
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19528,20 +17080,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRunti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19565,7 +17109,6 @@ Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::Runtime()
     gbl_spf_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime>())
 {
     gbl_spf_time->parent = this;
-    children["gbl-spf-time"] = gbl_spf_time;
 
     yang_name = "runtime"; yang_parent_name = "spf-stats";
 }
@@ -19618,7 +17161,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime:
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19643,15 +17186,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-stat")
     {
         for(auto const & c : area_stat)
@@ -19659,30 +17193,22 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfSta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat>();
         c->parent = this;
-        area_stat.push_back(std::move(c));
-        children[segment_path] = area_stat.back();
-        return children.at(segment_path);
+        area_stat.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "gbl-spf-time")
     {
-        if(gbl_spf_time != nullptr)
-        {
-            children["gbl-spf-time"] = gbl_spf_time;
-        }
-        else
+        if(gbl_spf_time == nullptr)
         {
             gbl_spf_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime>();
-            gbl_spf_time->parent = this;
-            children["gbl-spf-time"] = gbl_spf_time;
         }
-        return children.at("gbl-spf-time");
+        return gbl_spf_time;
     }
 
     if(child_yang_name == "lsa-info")
@@ -19692,44 +17218,34 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfSta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo>();
         c->parent = this;
-        lsa_info.push_back(std::move(c));
-        children[segment_path] = lsa_info.back();
-        return children.at(segment_path);
+        lsa_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("gbl-spf-time") == children.end())
+    if(gbl_spf_time != nullptr)
     {
-        if(gbl_spf_time != nullptr)
-        {
-            children["gbl-spf-time"] = gbl_spf_time;
-        }
+        children["gbl-spf-time"] = gbl_spf_time;
     }
 
     for (auto const & c : lsa_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19796,7 +17312,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime:
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19826,20 +17342,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19918,7 +17426,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime:
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19946,20 +17454,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19995,7 +17495,6 @@ Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::A
     spf_time(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime>())
 {
     spf_time->parent = this;
-    children["spf-time"] = spf_time;
 
     yang_name = "area-stat"; yang_parent_name = "runtime";
 }
@@ -20037,7 +17536,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime:
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20063,41 +17562,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spf-time")
     {
-        if(spf_time != nullptr)
-        {
-            children["spf-time"] = spf_time;
-        }
-        else
+        if(spf_time == nullptr)
         {
             spf_time = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime>();
-            spf_time->parent = this;
-            children["spf-time"] = spf_time;
         }
-        return children.at("spf-time");
+        return spf_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::get_children() const
 {
-    if(children.find("spf-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spf_time != nullptr)
     {
-        if(spf_time != nullptr)
-        {
-            children["spf-time"] = spf_time;
-        }
+        children["spf-time"] = spf_time;
     }
 
     return children;
@@ -20164,7 +17646,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime:
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20194,20 +17676,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20281,7 +17755,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20304,15 +17778,6 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "priority-batch")
     {
         for(auto const & c : priority_batch)
@@ -20320,28 +17785,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::RibBat
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch>();
         c->parent = this;
-        priority_batch.push_back(std::move(c));
-        children[segment_path] = priority_batch.back();
-        return children.at(segment_path);
+        priority_batch.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : priority_batch)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20424,7 +17885,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::Pri
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20462,20 +17923,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::Prio
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20571,10 +18024,8 @@ Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::IssuStats()
 	,nsr_thd_sched(std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched>())
 {
     nsr_rtr_thd_sched->parent = this;
-    children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
 
     nsr_thd_sched->parent = this;
-    children["nsr-thd-sched"] = nsr_thd_sched;
 
     yang_name = "issu-stats"; yang_parent_name = "statistics";
 }
@@ -20647,7 +18098,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_seg
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20691,64 +18142,38 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_enti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nsr-rtr-thd-sched")
     {
-        if(nsr_rtr_thd_sched != nullptr)
-        {
-            children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
-        }
-        else
+        if(nsr_rtr_thd_sched == nullptr)
         {
             nsr_rtr_thd_sched = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched>();
-            nsr_rtr_thd_sched->parent = this;
-            children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
         }
-        return children.at("nsr-rtr-thd-sched");
+        return nsr_rtr_thd_sched;
     }
 
     if(child_yang_name == "nsr-thd-sched")
     {
-        if(nsr_thd_sched != nullptr)
-        {
-            children["nsr-thd-sched"] = nsr_thd_sched;
-        }
-        else
+        if(nsr_thd_sched == nullptr)
         {
             nsr_thd_sched = std::make_shared<Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched>();
-            nsr_thd_sched->parent = this;
-            children["nsr-thd-sched"] = nsr_thd_sched;
         }
-        return children.at("nsr-thd-sched");
+        return nsr_thd_sched;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::get_children() const
 {
-    if(children.find("nsr-rtr-thd-sched") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nsr_rtr_thd_sched != nullptr)
     {
-        if(nsr_rtr_thd_sched != nullptr)
-        {
-            children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
-        }
+        children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
     }
 
-    if(children.find("nsr-thd-sched") == children.end())
+    if(nsr_thd_sched != nullptr)
     {
-        if(nsr_thd_sched != nullptr)
-        {
-            children["nsr-thd-sched"] = nsr_thd_sched;
-        }
+        children["nsr-thd-sched"] = nsr_thd_sched;
     }
 
     return children;

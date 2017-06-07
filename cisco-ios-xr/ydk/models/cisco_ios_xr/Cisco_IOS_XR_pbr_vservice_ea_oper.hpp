@@ -18,23 +18,20 @@ class ServiceFunctionChaining : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: ServiceFunctionChaining::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes> nodes;
-
-
+        
 }; // ServiceFunctionChaining
 
 
@@ -46,19 +43,16 @@ class ServiceFunctionChaining::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: ServiceFunctionChaining::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node> > node;
-
-
+        
 }; // ServiceFunctionChaining::Nodes
 
 
@@ -70,20 +64,17 @@ class ServiceFunctionChaining::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Process; //type: ServiceFunctionChaining::Nodes::Node::Process
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process> process;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node
 
 
@@ -95,13 +86,11 @@ class ServiceFunctionChaining::Nodes::Node::Process : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServiceFunctionPath; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath
         class ServiceFunction; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction
@@ -110,8 +99,7 @@ class ServiceFunctionChaining::Nodes::Node::Process : public Entity
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction> service_function;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder> service_function_forwarder;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath> service_function_path;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process
 
 
@@ -123,19 +111,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PathIds; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds> path_ids;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath
 
 
@@ -147,19 +132,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PathId; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId> > path_id;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 
@@ -171,22 +153,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf id; //type: uint32
-
         class ServiceIndexes; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes
         class Stats; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes> service_indexes;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats> stats;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId
 
 
@@ -198,19 +177,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServiceIndex; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex> > service_index;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes
 
 
@@ -222,22 +198,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: uint32
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data
         class SiArr; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data> data;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr> > si_arr;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex
 
 
@@ -249,15 +222,13 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class Sfp; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term
@@ -271,8 +242,7 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp> sfp;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data
 
 
@@ -284,21 +254,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp
 
 
@@ -310,17 +277,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi
 
@@ -333,17 +297,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term
 
@@ -356,17 +317,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi
 
@@ -379,17 +337,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term
 
@@ -402,17 +357,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf
 
@@ -425,17 +377,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff
 
@@ -448,19 +397,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf malformed_err_pkts; //type: uint64
         YLeaf lookup_err_pkts; //type: uint64
         YLeaf malformed_err_bytes; //type: uint64
         YLeaf lookup_err_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal
 
@@ -473,20 +419,17 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf si; //type: uint8
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data> data;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr
 
 
@@ -498,22 +441,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data
 
 
@@ -525,17 +465,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi
 
@@ -548,17 +485,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term
 
@@ -571,21 +505,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Detail; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail
         class Summarized; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail> detail;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized> summarized;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats
 
 
@@ -597,21 +528,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data
         class SiArr; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data> data;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr> > si_arr;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail
 
 
@@ -623,15 +551,13 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class Sfp; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term
@@ -645,8 +571,7 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp> sfp;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data
 
 
@@ -658,21 +583,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp
 
 
@@ -684,17 +606,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi
 
@@ -707,17 +626,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term
 
@@ -730,17 +646,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi
 
@@ -753,17 +666,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term
 
@@ -776,17 +686,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf
 
@@ -799,17 +706,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff
 
@@ -822,19 +726,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf malformed_err_pkts; //type: uint64
         YLeaf lookup_err_pkts; //type: uint64
         YLeaf malformed_err_bytes; //type: uint64
         YLeaf lookup_err_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal
 
@@ -847,20 +748,17 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf si; //type: uint8
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data> data;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr
 
 
@@ -872,22 +770,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data
 
 
@@ -899,17 +794,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi
 
@@ -922,17 +814,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term
 
@@ -945,21 +834,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data
         class SiArr; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data> data;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr> > si_arr;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized
 
 
@@ -971,15 +857,13 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class Sfp; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term
@@ -993,8 +877,7 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp> sfp;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data
 
 
@@ -1006,21 +889,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp
 
 
@@ -1032,17 +912,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi
 
@@ -1055,17 +932,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term
 
@@ -1078,17 +952,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi
 
@@ -1101,17 +972,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term
 
@@ -1124,17 +992,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf
 
@@ -1147,17 +1012,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff
 
@@ -1170,19 +1032,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf malformed_err_pkts; //type: uint64
         YLeaf lookup_err_pkts; //type: uint64
         YLeaf malformed_err_bytes; //type: uint64
         YLeaf lookup_err_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal
 
@@ -1195,20 +1054,17 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf si; //type: uint8
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data> data;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr
 
 
@@ -1220,22 +1076,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data
 
 
@@ -1247,17 +1100,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi
 
@@ -1270,17 +1120,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term
 
@@ -1293,19 +1140,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SfNames; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames> sf_names;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction
 
 
@@ -1317,19 +1161,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SfName; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName> > sf_name;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames
 
 
@@ -1341,22 +1182,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data
         class SiArr; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data> data;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr> > si_arr;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName
 
 
@@ -1368,15 +1206,13 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class Sfp; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term
@@ -1390,8 +1226,7 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp> sfp;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data
 
 
@@ -1403,21 +1238,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp
 
 
@@ -1429,17 +1261,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi
 
@@ -1452,17 +1281,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term
 
@@ -1475,17 +1301,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi
 
@@ -1498,17 +1321,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term
 
@@ -1521,17 +1341,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf
 
@@ -1544,17 +1361,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff
 
@@ -1567,19 +1381,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf malformed_err_pkts; //type: uint64
         YLeaf lookup_err_pkts; //type: uint64
         YLeaf malformed_err_bytes; //type: uint64
         YLeaf lookup_err_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal
 
@@ -1592,20 +1403,17 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf si; //type: uint8
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data> data;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr
 
 
@@ -1617,22 +1425,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data
 
 
@@ -1644,17 +1449,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi
 
@@ -1667,17 +1469,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term
 
@@ -1690,21 +1489,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Local; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local
         class SffNames; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local> local;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames> sff_names;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder
 
 
@@ -1716,19 +1512,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Error; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error> error;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local
 
 
@@ -1740,21 +1533,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data
         class SiArr; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data> data;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr> > si_arr;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error
 
 
@@ -1766,15 +1556,13 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class Sfp; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term
@@ -1788,8 +1576,7 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp> sfp;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data
 
 
@@ -1801,21 +1588,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp
 
 
@@ -1827,17 +1611,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi
 
@@ -1850,17 +1631,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term
 
@@ -1873,17 +1651,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi
 
@@ -1896,17 +1671,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term
 
@@ -1919,17 +1691,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf
 
@@ -1942,17 +1711,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff
 
@@ -1965,19 +1731,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf malformed_err_pkts; //type: uint64
         YLeaf lookup_err_pkts; //type: uint64
         YLeaf malformed_err_bytes; //type: uint64
         YLeaf lookup_err_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal
 
@@ -1990,20 +1753,17 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf si; //type: uint8
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data> data;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr
 
 
@@ -2015,22 +1775,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data
 
 
@@ -2042,17 +1799,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi
 
@@ -2065,17 +1819,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term
 
@@ -2088,19 +1839,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SffName; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName> > sff_name;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames
 
 
@@ -2112,22 +1860,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data
         class SiArr; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data> data;
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr> > si_arr;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName
 
 
@@ -2139,15 +1884,13 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class Sfp; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term
@@ -2161,8 +1904,7 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp> sfp;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data
 
 
@@ -2174,21 +1916,18 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp
 
 
@@ -2200,17 +1939,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi
 
@@ -2223,17 +1959,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term
 
@@ -2246,17 +1979,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi
 
@@ -2269,17 +1999,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term
 
@@ -2292,17 +2019,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf
 
@@ -2315,17 +2039,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff
 
@@ -2338,19 +2059,16 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf malformed_err_pkts; //type: uint64
         YLeaf lookup_err_pkts; //type: uint64
         YLeaf malformed_err_bytes; //type: uint64
         YLeaf lookup_err_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal
 
@@ -2363,20 +2081,17 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf si; //type: uint8
-
         class Data; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data> data;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr
 
 
@@ -2388,22 +2103,19 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: VsNshStatsEnum
-
         class SpiSi; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi
         class Term; //type: ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi> spi_si;
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_ea_oper::ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term> term;
-
-
+        
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data
 
 
@@ -2415,17 +2127,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf processed_pkts; //type: uint64
         YLeaf processed_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi
 
@@ -2438,17 +2147,14 @@ class ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf terminated_pkts; //type: uint64
         YLeaf terminated_bytes; //type: uint64
-
-
 
 }; // ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term
 

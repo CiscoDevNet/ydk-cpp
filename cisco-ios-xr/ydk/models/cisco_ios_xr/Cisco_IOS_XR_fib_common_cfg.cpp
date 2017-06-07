@@ -17,10 +17,8 @@ Fib::Fib()
 	,platform(std::make_shared<Fib::Platform>())
 {
     pbts_forward_class_fallbacks->parent = this;
-    children["pbts-forward-class-fallbacks"] = pbts_forward_class_fallbacks;
 
     platform->parent = this;
-    children["platform"] = platform;
 
     yang_name = "fib"; yang_parent_name = "Cisco-IOS-XR-fib-common-cfg";
 }
@@ -53,12 +51,12 @@ std::string Fib::get_segment_path() const
 
 }
 
-EntityPath Fib::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -74,64 +72,38 @@ EntityPath Fib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pbts-forward-class-fallbacks")
     {
-        if(pbts_forward_class_fallbacks != nullptr)
-        {
-            children["pbts-forward-class-fallbacks"] = pbts_forward_class_fallbacks;
-        }
-        else
+        if(pbts_forward_class_fallbacks == nullptr)
         {
             pbts_forward_class_fallbacks = std::make_shared<Fib::PbtsForwardClassFallbacks>();
-            pbts_forward_class_fallbacks->parent = this;
-            children["pbts-forward-class-fallbacks"] = pbts_forward_class_fallbacks;
         }
-        return children.at("pbts-forward-class-fallbacks");
+        return pbts_forward_class_fallbacks;
     }
 
     if(child_yang_name == "platform")
     {
-        if(platform != nullptr)
-        {
-            children["platform"] = platform;
-        }
-        else
+        if(platform == nullptr)
         {
             platform = std::make_shared<Fib::Platform>();
-            platform->parent = this;
-            children["platform"] = platform;
         }
-        return children.at("platform");
+        return platform;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::get_children() const
 {
-    if(children.find("pbts-forward-class-fallbacks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pbts_forward_class_fallbacks != nullptr)
     {
-        if(pbts_forward_class_fallbacks != nullptr)
-        {
-            children["pbts-forward-class-fallbacks"] = pbts_forward_class_fallbacks;
-        }
+        children["pbts-forward-class-fallbacks"] = pbts_forward_class_fallbacks;
     }
 
-    if(children.find("platform") == children.end())
+    if(platform != nullptr)
     {
-        if(platform != nullptr)
-        {
-            children["platform"] = platform;
-        }
+        children["platform"] = platform;
     }
 
     return children;
@@ -203,7 +175,7 @@ std::string Fib::PbtsForwardClassFallbacks::get_segment_path() const
 
 }
 
-EntityPath Fib::PbtsForwardClassFallbacks::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::PbtsForwardClassFallbacks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -226,15 +198,6 @@ EntityPath Fib::PbtsForwardClassFallbacks::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Fib::PbtsForwardClassFallbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pbts-forward-class-fallback")
     {
         for(auto const & c : pbts_forward_class_fallback)
@@ -242,28 +205,24 @@ std::shared_ptr<Entity> Fib::PbtsForwardClassFallbacks::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback>();
         c->parent = this;
-        pbts_forward_class_fallback.push_back(std::move(c));
-        children[segment_path] = pbts_forward_class_fallback.back();
-        return children.at(segment_path);
+        pbts_forward_class_fallback.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::PbtsForwardClassFallbacks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::PbtsForwardClassFallbacks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pbts_forward_class_fallback)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -319,7 +278,7 @@ std::string Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_segmen
 
 }
 
-EntityPath Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -346,20 +305,12 @@ EntityPath Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_entity_
 
 std::shared_ptr<Entity> Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -384,7 +335,6 @@ Fib::Platform::Platform()
     label_switched_multicast(std::make_shared<Fib::Platform::LabelSwitchedMulticast>())
 {
     label_switched_multicast->parent = this;
-    children["label-switched-multicast"] = label_switched_multicast;
 
     yang_name = "platform"; yang_parent_name = "fib";
 }
@@ -413,7 +363,7 @@ std::string Fib::Platform::get_segment_path() const
 
 }
 
-EntityPath Fib::Platform::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Platform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -436,41 +386,24 @@ EntityPath Fib::Platform::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fib::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-switched-multicast")
     {
-        if(label_switched_multicast != nullptr)
-        {
-            children["label-switched-multicast"] = label_switched_multicast;
-        }
-        else
+        if(label_switched_multicast == nullptr)
         {
             label_switched_multicast = std::make_shared<Fib::Platform::LabelSwitchedMulticast>();
-            label_switched_multicast->parent = this;
-            children["label-switched-multicast"] = label_switched_multicast;
         }
-        return children.at("label-switched-multicast");
+        return label_switched_multicast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Platform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Platform::get_children() const
 {
-    if(children.find("label-switched-multicast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_switched_multicast != nullptr)
     {
-        if(label_switched_multicast != nullptr)
-        {
-            children["label-switched-multicast"] = label_switched_multicast;
-        }
+        children["label-switched-multicast"] = label_switched_multicast;
     }
 
     return children;
@@ -511,7 +444,7 @@ std::string Fib::Platform::LabelSwitchedMulticast::get_segment_path() const
 
 }
 
-EntityPath Fib::Platform::LabelSwitchedMulticast::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Platform::LabelSwitchedMulticast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -535,20 +468,12 @@ EntityPath Fib::Platform::LabelSwitchedMulticast::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Fib::Platform::LabelSwitchedMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Platform::LabelSwitchedMulticast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Platform::LabelSwitchedMulticast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -24,17 +24,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::LastDefaultOriginateTimestamp
 
@@ -47,17 +44,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::LastUpdateGroupStartTimestamp
 
@@ -70,17 +64,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::LastUpdateGroupExpiryTimestamp
 
@@ -93,17 +84,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::FirstUpdateQueuedTimestamp
 
@@ -116,17 +104,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::LastUpdateQueuedTimestamp
 
@@ -139,17 +124,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::LastRefreshUpdateQueuedTimestamp
 
@@ -162,17 +144,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::FirstUpdateWriteTimestamp
 
@@ -185,17 +164,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::LastUpdateWriteTimestamp
 
@@ -208,17 +184,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::LastRefreshUpdateWriteTimestamp
 
@@ -231,12 +204,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf update_out_queue_messages_high; //type: uint32
         YLeaf update_out_queue_messages_cumulative; //type: uint32
@@ -254,7 +226,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
         YLeaf last_update_recovery_age; //type: uint32
         YLeaf update_memory_allocation_fail_count; //type: uint32
         YLeaf last_update_memory_allocation_fail_age; //type: uint32
-
         class LastUpdateDiscardTimestamp; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateDiscardTimestamp
         class LastUpdateClearedTimestamp; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateClearedTimestamp
         class LastUpdateThrottleTimestamp; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateThrottleTimestamp
@@ -266,8 +237,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp> last_update_memory_allocation_fail_timestamp;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateRecoveryTimestamp> last_update_recovery_timestamp;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateThrottleTimestamp> last_update_throttle_timestamp;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics
 
 
@@ -279,17 +249,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateDiscardTimestamp
 
@@ -302,17 +269,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateClearedTimestamp
 
@@ -325,17 +289,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateThrottleTimestamp
 
@@ -348,17 +309,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateRecoveryTimestamp
 
@@ -371,17 +329,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationNeighbors::UpdateGenerationNeighbor::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp
 
@@ -394,12 +349,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf update_group_af_name; //type: BgpAfiEnum
         YLeaf update_main_table_version; //type: uint32
@@ -432,12 +386,10 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
         YLeaf table_refresh_sub_group_throttled_count; //type: uint32
         YLeaf update_table_filter_group_count; //type: uint32
         YLeaf table_neighbor_count; //type: uint32
-
         class UpdateStatistics; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics> update_statistics;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily
 
 
@@ -449,12 +401,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf update_out_queue_messages_high; //type: uint32
         YLeaf update_out_queue_messages_cumulative; //type: uint32
@@ -472,7 +423,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
         YLeaf last_update_recovery_age; //type: uint32
         YLeaf update_memory_allocation_fail_count; //type: uint32
         YLeaf last_update_memory_allocation_fail_age; //type: uint32
-
         class LastUpdateDiscardTimestamp; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateDiscardTimestamp
         class LastUpdateClearedTimestamp; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateClearedTimestamp
         class LastUpdateThrottleTimestamp; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateThrottleTimestamp
@@ -484,8 +434,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp> last_update_memory_allocation_fail_timestamp;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateRecoveryTimestamp> last_update_recovery_timestamp;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateThrottleTimestamp> last_update_throttle_timestamp;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics
 
 
@@ -497,17 +446,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateDiscardTimestamp
 
@@ -520,17 +466,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateClearedTimestamp
 
@@ -543,17 +486,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateThrottleTimestamp
 
@@ -566,17 +506,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateRecoveryTimestamp
 
@@ -589,17 +526,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::UpdateGenerationAddressFamily::UpdateStatistics::LastUpdateMemoryAllocationFailTimestamp
 
@@ -612,19 +546,16 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dampening; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening> > dampening;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings
 
 
@@ -636,12 +567,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf reuse; //type: int32
         YLeaf version; //type: int32
@@ -662,7 +592,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf vrf_name; //type: string
         YLeaf source_vrf_name; //type: string
         YLeaf srcaf_name; //type: BgpAfiEnum
-
         class NeighborAddressXr; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr
         class PathInformation; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation
         class AttributesAfterPolicyIn; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn
@@ -670,8 +599,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn> attributes_after_policy_in;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr> neighbor_address_xr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation> path_information;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening
 
 
@@ -683,12 +611,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -712,7 +639,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::Ipv4SrPolicyAddress
@@ -722,8 +648,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr
 
 
@@ -735,16 +660,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::L2VpnvplsAddress
 
@@ -757,16 +679,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::L2VpnMspwAddress
 
@@ -779,16 +698,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::Ipv4SrPolicyAddress
 
@@ -801,16 +717,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::NeighborAddressXr::Ipv6SrPolicyAddress
 
@@ -823,12 +736,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_type; //type: BgpRoute1Enum
         YLeaf is_path_valid; //type: boolean
@@ -923,7 +835,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf is_permanent_path; //type: boolean
         YLeaf graceful_shutdown; //type: boolean
         YLeaf labeled_unicast_safi_path; //type: boolean
-
         class BgpPrefix; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress
         class NextHop; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop
@@ -959,8 +870,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop> next_hop;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NhteTunnel> nhte_tunnel;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo> > pe_peers_advertised_to;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation
 
 
@@ -972,20 +882,17 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: uint16
-
         class Prefix; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix> prefix;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix
 
 
@@ -997,12 +904,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1026,7 +932,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress
@@ -1036,8 +941,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix
 
 
@@ -1049,16 +953,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::L2VpnvplsAddress
 
@@ -1071,16 +972,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::L2VpnMspwAddress
 
@@ -1093,16 +991,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress
 
@@ -1115,16 +1010,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress
 
@@ -1137,12 +1029,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1166,7 +1057,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::Ipv4SrPolicyAddress
@@ -1176,8 +1066,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress
 
 
@@ -1189,16 +1078,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::L2VpnvplsAddress
 
@@ -1211,16 +1097,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::L2VpnMspwAddress
 
@@ -1233,16 +1116,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::Ipv4SrPolicyAddress
 
@@ -1255,16 +1135,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NeighborAddress::Ipv6SrPolicyAddress
 
@@ -1277,12 +1154,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1306,7 +1182,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::Ipv4SrPolicyAddress
@@ -1316,8 +1191,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop
 
 
@@ -1329,16 +1203,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::L2VpnvplsAddress
 
@@ -1351,16 +1222,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::L2VpnMspwAddress
 
@@ -1373,16 +1241,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::Ipv4SrPolicyAddress
 
@@ -1395,16 +1260,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NextHop::Ipv6SrPolicyAddress
 
@@ -1417,12 +1279,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_type; //type: BgpteTunnelEnum
         YLeaf tunnel_name; //type: string
@@ -1436,8 +1297,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf tunnel_if_handle; //type: uint32
         YLeaf last_tunnel_update; //type: uint32
 
-
-
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::NhteTunnel
 
 
@@ -1449,12 +1308,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1478,7 +1336,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress
@@ -1488,8 +1345,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr
 
 
@@ -1501,16 +1357,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::L2VpnvplsAddress
 
@@ -1523,16 +1376,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::L2VpnMspwAddress
 
@@ -1545,16 +1395,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress
 
@@ -1567,16 +1414,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress
 
@@ -1589,16 +1433,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf esi; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::L2VpnEvpnEsi
 
@@ -1611,18 +1452,15 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf len; //type: BgpGwAddrLenEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::GwAddr
 
@@ -1635,12 +1473,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1664,7 +1501,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress
@@ -1674,8 +1510,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner
 
 
@@ -1687,16 +1522,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::L2VpnvplsAddress
 
@@ -1709,16 +1541,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::L2VpnMspwAddress
 
@@ -1731,16 +1560,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress
 
@@ -1753,16 +1579,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress
 
@@ -1775,12 +1598,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1804,7 +1626,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress
@@ -1814,8 +1635,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr
 
 
@@ -1827,16 +1647,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::L2VpnvplsAddress
 
@@ -1849,16 +1666,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::L2VpnMspwAddress
 
@@ -1871,16 +1685,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress
 
@@ -1893,16 +1704,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress
 
@@ -1915,12 +1723,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1944,7 +1751,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress
@@ -1954,8 +1760,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr
 
 
@@ -1967,16 +1772,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::L2VpnvplsAddress
 
@@ -1989,16 +1791,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::L2VpnMspwAddress
 
@@ -2011,16 +1810,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress
 
@@ -2033,16 +1829,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress
 
@@ -2055,16 +1848,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::L2VpnCircuitStatusValue
 
@@ -2077,16 +1867,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::MvpnPmsiValue
 
@@ -2099,16 +1886,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::ExtendedCommunity
 
@@ -2121,21 +1905,18 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_neighbor; //type: boolean
         YLeaf update_group_number; //type: uint32
-
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress> neighbor_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo
 
 
@@ -2147,12 +1928,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -2176,7 +1956,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
@@ -2186,8 +1965,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress
 
 
@@ -2199,16 +1977,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2VpnvplsAddress
 
@@ -2221,16 +1996,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2VpnMspwAddress
 
@@ -2243,16 +2015,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
 
@@ -2265,16 +2034,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
@@ -2287,21 +2053,18 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_neighbor; //type: boolean
         YLeaf update_group_number; //type: uint32
-
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress> neighbor_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo
 
 
@@ -2313,12 +2076,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -2342,7 +2104,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
@@ -2352,8 +2113,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress
 
 
@@ -2365,16 +2125,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2VpnvplsAddress
 
@@ -2387,16 +2144,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2VpnMspwAddress
 
@@ -2409,16 +2163,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
 
@@ -2431,16 +2182,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
@@ -2453,21 +2201,18 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_neighbor; //type: boolean
         YLeaf update_group_number; //type: uint32
-
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress> neighbor_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield
 
 
@@ -2479,12 +2224,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -2508,7 +2252,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
@@ -2518,8 +2261,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress
 
 
@@ -2531,16 +2273,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2VpnvplsAddress
 
@@ -2553,16 +2292,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::L2VpnMspwAddress
 
@@ -2575,16 +2311,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
 
@@ -2597,16 +2330,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
@@ -2619,21 +2349,18 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_neighbor; //type: boolean
         YLeaf update_group_number; //type: uint32
-
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress> neighbor_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield
 
 
@@ -2645,12 +2372,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -2674,7 +2400,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
@@ -2684,8 +2409,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress
 
 
@@ -2697,16 +2421,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2VpnvplsAddress
 
@@ -2719,16 +2440,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::L2VpnMspwAddress
 
@@ -2741,16 +2459,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
 
@@ -2763,16 +2478,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
@@ -2785,12 +2497,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_as_path2_byte; //type: boolean
         YLeaf is_application_gateway_present; //type: boolean
@@ -2815,7 +2526,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ribrnhip_table; //type: uint32
         YLeaf ribrnh_vni; //type: uint32
         YLeaf ribrnh_encap; //type: uint8
-
         class CommonAttributes; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes
         class AttrSet; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet
         class RnhAddr; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RnhAddr
@@ -2825,8 +2535,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes> common_attributes;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp> ribrnh_ip;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RnhAddr> rnh_addr;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn
 
 
@@ -2838,12 +2547,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_metric_present; //type: boolean
         YLeaf is_local_pref_present; //type: boolean
@@ -2882,7 +2590,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf sr_policy_preference; //type: uint32
         YLeaf sr_tunnel_state; //type: uint32
         YLeaf sr_tunnel_request_state; //type: BgpSrpolicyTunReqStateEnum
-
         class SrPolicyBindingSid; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid
         class SrPolicyAllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid
         class Community; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Community
@@ -2910,8 +2617,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid> sr_policy_binding_sid;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath> > sr_policy_explicit_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute> > unknown_attribute;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes
 
 
@@ -2923,18 +2629,15 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyBindingSid
 
@@ -2947,18 +2650,15 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyAllocatedBindingSid
 
@@ -2971,16 +2671,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Community
 
@@ -2993,16 +2690,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
 
@@ -3015,16 +2709,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
 
@@ -3037,16 +2728,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::Cluster
 
@@ -3059,16 +2747,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::L2Tpv3Cookie
 
@@ -3081,16 +2766,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
 
@@ -3103,16 +2785,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
 
@@ -3125,16 +2804,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LsAttr
 
@@ -3147,16 +2823,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::LabelIndexAttr
 
@@ -3169,17 +2842,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pe_address; //type: string
         YLeaf label; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
 
@@ -3192,20 +2862,17 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf weight; //type: uint8
-
         class Sid; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid> > sid;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath
 
 
@@ -3217,19 +2884,16 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: uint8
         YLeaf label; //type: uint32
         YLeaf ipv4; //type: string
         YLeaf ipv6; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::CommonAttributes::SrPolicyExplicitPath::Sid
 
@@ -3242,12 +2906,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_metric_present; //type: boolean
         YLeaf is_local_pref_present; //type: boolean
@@ -3286,7 +2949,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf sr_policy_preference; //type: uint32
         YLeaf sr_tunnel_state; //type: uint32
         YLeaf sr_tunnel_request_state; //type: BgpSrpolicyTunReqStateEnum
-
         class SrPolicyBindingSid; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid
         class SrPolicyAllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid
         class Community; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Community
@@ -3314,8 +2976,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid> sr_policy_binding_sid;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath> > sr_policy_explicit_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::UnknownAttribute> > unknown_attribute;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet
 
 
@@ -3327,18 +2988,15 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyBindingSid
 
@@ -3351,18 +3009,15 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyAllocatedBindingSid
 
@@ -3375,16 +3030,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Community
 
@@ -3397,16 +3049,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
 
@@ -3419,16 +3068,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
 
@@ -3441,16 +3087,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::Cluster
 
@@ -3463,16 +3106,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::L2Tpv3Cookie
 
@@ -3485,16 +3125,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::ConnectorValue
 
@@ -3507,16 +3144,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PmsiValue
 
@@ -3529,16 +3163,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LsAttr
 
@@ -3551,16 +3182,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::LabelIndexAttr
 
@@ -3573,17 +3201,14 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pe_address; //type: string
         YLeaf label; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
 
@@ -3596,20 +3221,17 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf weight; //type: uint8
-
         class Sid; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid> > sid;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath
 
 
@@ -3621,19 +3243,16 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: uint8
         YLeaf label; //type: uint32
         YLeaf ipv4; //type: string
         YLeaf ipv6; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::AttrSet::SrPolicyExplicitPath::Sid
 
@@ -3646,19 +3265,16 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf len; //type: BgpRnhAddrLenEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
         YLeaf mac_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RnhAddr
 
@@ -3671,12 +3287,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -3700,7 +3315,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
@@ -3710,8 +3324,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp
 
 
@@ -3723,16 +3336,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2VpnvplsAddress
 
@@ -3745,16 +3355,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::L2VpnMspwAddress
 
@@ -3767,16 +3374,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
 
@@ -3789,16 +3393,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampenings::Dampening::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
 
@@ -3811,19 +3412,16 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrefixFilter; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter> > prefix_filter;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters
 
 
@@ -3835,23 +3433,20 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_address; //type: string
         YLeaf af_name; //type: BgpAfiEnum
-
         class NeighborAddressXr; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr
         class PrefixListInfo; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr> neighbor_address_xr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo> prefix_list_info;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter
 
 
@@ -3863,12 +3458,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -3892,7 +3486,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv4SrPolicyAddress
@@ -3902,8 +3495,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr
 
 
@@ -3915,16 +3507,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2VpnvplsAddress
 
@@ -3937,16 +3526,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::L2VpnMspwAddress
 
@@ -3959,16 +3545,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv4SrPolicyAddress
 
@@ -3981,16 +3564,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::NeighborAddressXr::Ipv6SrPolicyAddress
 
@@ -4003,19 +3583,16 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BgpPfxlst; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst> > bgp_pfxlst;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo
 
 
@@ -4027,23 +3604,20 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sequence_number; //type: uint32
         YLeaf is_prefix_grant; //type: boolean
         YLeaf min_prefix_length; //type: uint8
         YLeaf max_prefix_length; //type: uint8
-
         class BgpPrefix; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix> bgp_prefix;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst
 
 
@@ -4055,20 +3629,17 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: uint16
-
         class Prefix; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix> prefix;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix
 
 
@@ -4080,12 +3651,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -4109,7 +3679,6 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv4SrPolicyAddress
@@ -4119,8 +3688,7 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix
 
 
@@ -4132,16 +3700,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2VpnvplsAddress
 
@@ -4154,16 +3719,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::L2VpnMspwAddress
 
@@ -4176,16 +3738,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv4SrPolicyAddress
 
@@ -4198,16 +3757,13 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::PrefixFilters::PrefixFilter::PrefixListInfo::BgpPfxlst::BgpPrefix::Prefix::Ipv6SrPolicyAddress
 
@@ -4220,19 +3776,16 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Attribute; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes::Attribute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes::Attribute> > attribute;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes
 
 
@@ -4244,12 +3797,11 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf attribute_iid; //type: int32
         YLeaf attribute_cache_bucket; //type: int32
@@ -4259,12 +3811,10 @@ class Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes:
         YLeaf attribute_structure_id; //type: uint32
         YLeaf attribute_structure_hash_value; //type: uint32
         YLeaf reference_count; //type: uint32
-
         class AttributeInfo; //type: Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes::Attribute::AttributeInfo
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes::Attribute::AttributeInfo> attribute_info;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Attributes::Attribute
 
 

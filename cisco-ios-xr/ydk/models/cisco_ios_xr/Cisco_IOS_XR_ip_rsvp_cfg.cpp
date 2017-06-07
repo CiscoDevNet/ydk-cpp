@@ -20,25 +20,18 @@ Rsvp::Rsvp()
 	,signalling(std::make_shared<Rsvp::Signalling>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     controllers->parent = this;
-    children["controllers"] = controllers;
 
     global_bandwidth->parent = this;
-    children["global-bandwidth"] = global_bandwidth;
 
     global_logging->parent = this;
-    children["global-logging"] = global_logging;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     signalling->parent = this;
-    children["signalling"] = signalling;
 
     yang_name = "rsvp"; yang_parent_name = "Cisco-IOS-XR-ip-rsvp-cfg";
 }
@@ -79,12 +72,12 @@ std::string Rsvp::get_segment_path() const
 
 }
 
-EntityPath Rsvp::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -99,179 +92,108 @@ EntityPath Rsvp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Rsvp::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "controllers")
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
-        else
+        if(controllers == nullptr)
         {
             controllers = std::make_shared<Rsvp::Controllers>();
-            controllers->parent = this;
-            children["controllers"] = controllers;
         }
-        return children.at("controllers");
+        return controllers;
     }
 
     if(child_yang_name == "global-bandwidth")
     {
-        if(global_bandwidth != nullptr)
-        {
-            children["global-bandwidth"] = global_bandwidth;
-        }
-        else
+        if(global_bandwidth == nullptr)
         {
             global_bandwidth = std::make_shared<Rsvp::GlobalBandwidth>();
-            global_bandwidth->parent = this;
-            children["global-bandwidth"] = global_bandwidth;
         }
-        return children.at("global-bandwidth");
+        return global_bandwidth;
     }
 
     if(child_yang_name == "global-logging")
     {
-        if(global_logging != nullptr)
-        {
-            children["global-logging"] = global_logging;
-        }
-        else
+        if(global_logging == nullptr)
         {
             global_logging = std::make_shared<Rsvp::GlobalLogging>();
-            global_logging->parent = this;
-            children["global-logging"] = global_logging;
         }
-        return children.at("global-logging");
+        return global_logging;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Rsvp::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Rsvp::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "signalling")
     {
-        if(signalling != nullptr)
-        {
-            children["signalling"] = signalling;
-        }
-        else
+        if(signalling == nullptr)
         {
             signalling = std::make_shared<Rsvp::Signalling>();
-            signalling->parent = this;
-            children["signalling"] = signalling;
         }
-        return children.at("signalling");
+        return signalling;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("controllers") == children.end())
+    if(controllers != nullptr)
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
+        children["controllers"] = controllers;
     }
 
-    if(children.find("global-bandwidth") == children.end())
+    if(global_bandwidth != nullptr)
     {
-        if(global_bandwidth != nullptr)
-        {
-            children["global-bandwidth"] = global_bandwidth;
-        }
+        children["global-bandwidth"] = global_bandwidth;
     }
 
-    if(children.find("global-logging") == children.end())
+    if(global_logging != nullptr)
     {
-        if(global_logging != nullptr)
-        {
-            children["global-logging"] = global_logging;
-        }
+        children["global-logging"] = global_logging;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("signalling") == children.end())
+    if(signalling != nullptr)
     {
-        if(signalling != nullptr)
-        {
-            children["signalling"] = signalling;
-        }
+        children["signalling"] = signalling;
     }
 
     return children;
@@ -339,7 +261,7 @@ std::string Rsvp::Neighbors::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -362,15 +284,6 @@ EntityPath Rsvp::Neighbors::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -378,28 +291,24 @@ std::shared_ptr<Entity> Rsvp::Neighbors::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -416,7 +325,6 @@ Rsvp::Neighbors::Neighbor::Neighbor()
     authentication(std::make_shared<Rsvp::Neighbors::Neighbor::Authentication>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     yang_name = "neighbor"; yang_parent_name = "neighbors";
 }
@@ -447,7 +355,7 @@ std::string Rsvp::Neighbors::Neighbor::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -471,41 +379,24 @@ EntityPath Rsvp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Rsvp::Neighbors::Neighbor::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Neighbors::Neighbor::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
     return children;
@@ -559,7 +450,7 @@ std::string Rsvp::Neighbors::Neighbor::Authentication::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Neighbors::Neighbor::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Neighbors::Neighbor::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -586,20 +477,12 @@ EntityPath Rsvp::Neighbors::Neighbor::Authentication::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Rsvp::Neighbors::Neighbor::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Neighbors::Neighbor::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Neighbors::Neighbor::Authentication::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -661,7 +544,7 @@ std::string Rsvp::Controllers::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Controllers::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Controllers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -684,15 +567,6 @@ EntityPath Rsvp::Controllers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "controller")
     {
         for(auto const & c : controller)
@@ -700,28 +574,24 @@ std::shared_ptr<Entity> Rsvp::Controllers::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(std::move(c));
-        children[segment_path] = controller.back();
-        return children.at(segment_path);
+        controller.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Controllers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Controllers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : controller)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -739,7 +609,6 @@ Rsvp::Controllers::Controller::Controller()
     cntl_signalling(std::make_shared<Rsvp::Controllers::Controller::CntlSignalling>())
 {
     cntl_signalling->parent = this;
-    children["cntl-signalling"] = cntl_signalling;
 
     yang_name = "controller"; yang_parent_name = "controllers";
 }
@@ -772,7 +641,7 @@ std::string Rsvp::Controllers::Controller::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Controllers::Controller::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Controllers::Controller::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -797,41 +666,24 @@ EntityPath Rsvp::Controllers::Controller::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Rsvp::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cntl-signalling")
     {
-        if(cntl_signalling != nullptr)
-        {
-            children["cntl-signalling"] = cntl_signalling;
-        }
-        else
+        if(cntl_signalling == nullptr)
         {
             cntl_signalling = std::make_shared<Rsvp::Controllers::Controller::CntlSignalling>();
-            cntl_signalling->parent = this;
-            children["cntl-signalling"] = cntl_signalling;
         }
-        return children.at("cntl-signalling");
+        return cntl_signalling;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Controllers::Controller::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Controllers::Controller::get_children() const
 {
-    if(children.find("cntl-signalling") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cntl_signalling != nullptr)
     {
-        if(cntl_signalling != nullptr)
-        {
-            children["cntl-signalling"] = cntl_signalling;
-        }
+        children["cntl-signalling"] = cntl_signalling;
     }
 
     return children;
@@ -854,7 +706,6 @@ Rsvp::Controllers::Controller::CntlSignalling::CntlSignalling()
     out_of_band(std::make_shared<Rsvp::Controllers::Controller::CntlSignalling::OutOfBand>())
 {
     out_of_band->parent = this;
-    children["out-of-band"] = out_of_band;
 
     yang_name = "cntl-signalling"; yang_parent_name = "controller";
 }
@@ -883,7 +734,7 @@ std::string Rsvp::Controllers::Controller::CntlSignalling::get_segment_path() co
 
 }
 
-EntityPath Rsvp::Controllers::Controller::CntlSignalling::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Controllers::Controller::CntlSignalling::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -906,41 +757,24 @@ EntityPath Rsvp::Controllers::Controller::CntlSignalling::get_entity_path(Entity
 
 std::shared_ptr<Entity> Rsvp::Controllers::Controller::CntlSignalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "out-of-band")
     {
-        if(out_of_band != nullptr)
-        {
-            children["out-of-band"] = out_of_band;
-        }
-        else
+        if(out_of_band == nullptr)
         {
             out_of_band = std::make_shared<Rsvp::Controllers::Controller::CntlSignalling::OutOfBand>();
-            out_of_band->parent = this;
-            children["out-of-band"] = out_of_band;
         }
-        return children.at("out-of-band");
+        return out_of_band;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Controllers::Controller::CntlSignalling::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Controllers::Controller::CntlSignalling::get_children() const
 {
-    if(children.find("out-of-band") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(out_of_band != nullptr)
     {
-        if(out_of_band != nullptr)
-        {
-            children["out-of-band"] = out_of_band;
-        }
+        children["out-of-band"] = out_of_band;
     }
 
     return children;
@@ -984,7 +818,7 @@ std::string Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_segmen
 
 }
 
-EntityPath Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1009,20 +843,12 @@ EntityPath Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_entity_
 
 std::shared_ptr<Entity> Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1072,7 +898,7 @@ std::string Rsvp::GlobalLogging::get_segment_path() const
 
 }
 
-EntityPath Rsvp::GlobalLogging::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1097,20 +923,12 @@ EntityPath Rsvp::GlobalLogging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::GlobalLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalLogging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalLogging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1131,7 +949,6 @@ Rsvp::GlobalBandwidth::GlobalBandwidth()
     default_interface_percent(std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent>())
 {
     default_interface_percent->parent = this;
-    children["default-interface-percent"] = default_interface_percent;
 
     yang_name = "global-bandwidth"; yang_parent_name = "rsvp";
 }
@@ -1160,7 +977,7 @@ std::string Rsvp::GlobalBandwidth::get_segment_path() const
 
 }
 
-EntityPath Rsvp::GlobalBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1183,41 +1000,24 @@ EntityPath Rsvp::GlobalBandwidth::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::GlobalBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-interface-percent")
     {
-        if(default_interface_percent != nullptr)
-        {
-            children["default-interface-percent"] = default_interface_percent;
-        }
-        else
+        if(default_interface_percent == nullptr)
         {
             default_interface_percent = std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent>();
-            default_interface_percent->parent = this;
-            children["default-interface-percent"] = default_interface_percent;
         }
-        return children.at("default-interface-percent");
+        return default_interface_percent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalBandwidth::get_children() const
 {
-    if(children.find("default-interface-percent") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_interface_percent != nullptr)
     {
-        if(default_interface_percent != nullptr)
-        {
-            children["default-interface-percent"] = default_interface_percent;
-        }
+        children["default-interface-percent"] = default_interface_percent;
     }
 
     return children;
@@ -1233,10 +1033,8 @@ Rsvp::GlobalBandwidth::DefaultInterfacePercent::DefaultInterfacePercent()
 	,rdm(std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm>())
 {
     mam->parent = this;
-    children["mam"] = mam;
 
     rdm->parent = this;
-    children["rdm"] = rdm;
 
     yang_name = "default-interface-percent"; yang_parent_name = "global-bandwidth";
 }
@@ -1267,7 +1065,7 @@ std::string Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_segment_path() c
 
 }
 
-EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1290,64 +1088,38 @@ EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_entity_path(Entit
 
 std::shared_ptr<Entity> Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mam")
     {
-        if(mam != nullptr)
-        {
-            children["mam"] = mam;
-        }
-        else
+        if(mam == nullptr)
         {
             mam = std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam>();
-            mam->parent = this;
-            children["mam"] = mam;
         }
-        return children.at("mam");
+        return mam;
     }
 
     if(child_yang_name == "rdm")
     {
-        if(rdm != nullptr)
-        {
-            children["rdm"] = rdm;
-        }
-        else
+        if(rdm == nullptr)
         {
             rdm = std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm>();
-            rdm->parent = this;
-            children["rdm"] = rdm;
         }
-        return children.at("rdm");
+        return rdm;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_children() const
 {
-    if(children.find("mam") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mam != nullptr)
     {
-        if(mam != nullptr)
-        {
-            children["mam"] = mam;
-        }
+        children["mam"] = mam;
     }
 
-    if(children.find("rdm") == children.end())
+    if(rdm != nullptr)
     {
-        if(rdm != nullptr)
-        {
-            children["rdm"] = rdm;
-        }
+        children["rdm"] = rdm;
     }
 
     return children;
@@ -1394,7 +1166,7 @@ std::string Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::get_segment_pat
 
 }
 
-EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1420,20 +1192,12 @@ EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::get_entity_path(
 
 std::shared_ptr<Entity> Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1487,7 +1251,7 @@ std::string Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::get_segment_pat
 
 }
 
-EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1512,20 +1276,12 @@ EntityPath Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::get_entity_path(
 
 std::shared_ptr<Entity> Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1579,7 +1335,7 @@ std::string Rsvp::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1602,15 +1358,6 @@ EntityPath Rsvp::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -1618,28 +1365,24 @@ std::shared_ptr<Entity> Rsvp::Interfaces::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1659,13 +1402,10 @@ Rsvp::Interfaces::Interface::Interface()
 	,if_signalling(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     bandwidth->parent = this;
-    children["bandwidth"] = bandwidth;
 
     if_signalling->parent = this;
-    children["if-signalling"] = if_signalling;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -1702,7 +1442,7 @@ std::string Rsvp::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1727,87 +1467,52 @@ EntityPath Rsvp::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Rsvp::Interfaces::Interface::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<Rsvp::Interfaces::Interface::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "if-signalling")
     {
-        if(if_signalling != nullptr)
-        {
-            children["if-signalling"] = if_signalling;
-        }
-        else
+        if(if_signalling == nullptr)
         {
             if_signalling = std::make_shared<Rsvp::Interfaces::Interface::IfSignalling>();
-            if_signalling->parent = this;
-            children["if-signalling"] = if_signalling;
         }
-        return children.at("if-signalling");
+        return if_signalling;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("bandwidth") == children.end())
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("if-signalling") == children.end())
+    if(if_signalling != nullptr)
     {
-        if(if_signalling != nullptr)
-        {
-            children["if-signalling"] = if_signalling;
-        }
+        children["if-signalling"] = if_signalling;
     }
 
     return children;
@@ -1838,13 +1543,10 @@ Rsvp::Interfaces::Interface::IfSignalling::IfSignalling()
 	,refresh_reduction(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction>())
 {
     interval_rate->parent = this;
-    children["interval-rate"] = interval_rate;
 
     out_of_band->parent = this;
-    children["out-of-band"] = out_of_band;
 
     refresh_reduction->parent = this;
-    children["refresh-reduction"] = refresh_reduction;
 
     yang_name = "if-signalling"; yang_parent_name = "interface";
 }
@@ -1887,7 +1589,7 @@ std::string Rsvp::Interfaces::Interface::IfSignalling::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::IfSignalling::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::IfSignalling::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1915,87 +1617,52 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::IfSignalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interval-rate")
     {
-        if(interval_rate != nullptr)
-        {
-            children["interval-rate"] = interval_rate;
-        }
-        else
+        if(interval_rate == nullptr)
         {
             interval_rate = std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::IntervalRate>();
-            interval_rate->parent = this;
-            children["interval-rate"] = interval_rate;
         }
-        return children.at("interval-rate");
+        return interval_rate;
     }
 
     if(child_yang_name == "out-of-band")
     {
-        if(out_of_band != nullptr)
-        {
-            children["out-of-band"] = out_of_band;
-        }
-        else
+        if(out_of_band == nullptr)
         {
             out_of_band = std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::OutOfBand>();
-            out_of_band->parent = this;
-            children["out-of-band"] = out_of_band;
         }
-        return children.at("out-of-band");
+        return out_of_band;
     }
 
     if(child_yang_name == "refresh-reduction")
     {
-        if(refresh_reduction != nullptr)
-        {
-            children["refresh-reduction"] = refresh_reduction;
-        }
-        else
+        if(refresh_reduction == nullptr)
         {
             refresh_reduction = std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction>();
-            refresh_reduction->parent = this;
-            children["refresh-reduction"] = refresh_reduction;
         }
-        return children.at("refresh-reduction");
+        return refresh_reduction;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::IfSignalling::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::IfSignalling::get_children() const
 {
-    if(children.find("interval-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interval_rate != nullptr)
     {
-        if(interval_rate != nullptr)
-        {
-            children["interval-rate"] = interval_rate;
-        }
+        children["interval-rate"] = interval_rate;
     }
 
-    if(children.find("out-of-band") == children.end())
+    if(out_of_band != nullptr)
     {
-        if(out_of_band != nullptr)
-        {
-            children["out-of-band"] = out_of_band;
-        }
+        children["out-of-band"] = out_of_band;
     }
 
-    if(children.find("refresh-reduction") == children.end())
+    if(refresh_reduction != nullptr)
     {
-        if(refresh_reduction != nullptr)
-        {
-            children["refresh-reduction"] = refresh_reduction;
-        }
+        children["refresh-reduction"] = refresh_reduction;
     }
 
     return children;
@@ -2074,7 +1741,7 @@ std::string Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_seg
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2104,20 +1771,12 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_enti
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2187,7 +1846,7 @@ std::string Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_segment
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2212,20 +1871,12 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_entity_p
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2275,7 +1926,7 @@ std::string Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_segment_pa
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2300,20 +1951,12 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_entity_path
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2335,10 +1978,8 @@ Rsvp::Interfaces::Interface::Bandwidth::Bandwidth()
 	,rdm(std::make_shared<Rsvp::Interfaces::Interface::Bandwidth::Rdm>())
 {
     mam->parent = this;
-    children["mam"] = mam;
 
     rdm->parent = this;
-    children["rdm"] = rdm;
 
     yang_name = "bandwidth"; yang_parent_name = "interface";
 }
@@ -2369,7 +2010,7 @@ std::string Rsvp::Interfaces::Interface::Bandwidth::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2392,64 +2033,38 @@ EntityPath Rsvp::Interfaces::Interface::Bandwidth::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mam")
     {
-        if(mam != nullptr)
-        {
-            children["mam"] = mam;
-        }
-        else
+        if(mam == nullptr)
         {
             mam = std::make_shared<Rsvp::Interfaces::Interface::Bandwidth::Mam>();
-            mam->parent = this;
-            children["mam"] = mam;
         }
-        return children.at("mam");
+        return mam;
     }
 
     if(child_yang_name == "rdm")
     {
-        if(rdm != nullptr)
-        {
-            children["rdm"] = rdm;
-        }
-        else
+        if(rdm == nullptr)
         {
             rdm = std::make_shared<Rsvp::Interfaces::Interface::Bandwidth::Rdm>();
-            rdm->parent = this;
-            children["rdm"] = rdm;
         }
-        return children.at("rdm");
+        return rdm;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::Bandwidth::get_children() const
 {
-    if(children.find("mam") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mam != nullptr)
     {
-        if(mam != nullptr)
-        {
-            children["mam"] = mam;
-        }
+        children["mam"] = mam;
     }
 
-    if(children.find("rdm") == children.end())
+    if(rdm != nullptr)
     {
-        if(rdm != nullptr)
-        {
-            children["rdm"] = rdm;
-        }
+        children["rdm"] = rdm;
     }
 
     return children;
@@ -2502,7 +2117,7 @@ std::string Rsvp::Interfaces::Interface::Bandwidth::Mam::get_segment_path() cons
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::Bandwidth::Mam::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::Bandwidth::Mam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2530,20 +2145,12 @@ EntityPath Rsvp::Interfaces::Interface::Bandwidth::Mam::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::Bandwidth::Mam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::Bandwidth::Mam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::Bandwidth::Mam::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2620,7 +2227,7 @@ std::string Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_segment_path() cons
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2650,20 +2257,12 @@ EntityPath Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2739,7 +2338,7 @@ std::string Rsvp::Interfaces::Interface::Authentication::get_segment_path() cons
 
 }
 
-EntityPath Rsvp::Interfaces::Interface::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Interfaces::Interface::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2766,20 +2365,12 @@ EntityPath Rsvp::Interfaces::Interface::Authentication::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Rsvp::Interfaces::Interface::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Interfaces::Interface::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::Interface::Authentication::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2815,19 +2406,14 @@ Rsvp::Signalling::Signalling()
 	,prefix_filtering(std::make_shared<Rsvp::Signalling::PrefixFiltering>())
 {
     checksum->parent = this;
-    children["checksum"] = checksum;
 
     global_out_of_band->parent = this;
-    children["global-out-of-band"] = global_out_of_band;
 
     graceful_restart->parent = this;
-    children["graceful-restart"] = graceful_restart;
 
     pesr->parent = this;
-    children["pesr"] = pesr;
 
     prefix_filtering->parent = this;
-    children["prefix-filtering"] = prefix_filtering;
 
     yang_name = "signalling"; yang_parent_name = "rsvp";
 }
@@ -2868,7 +2454,7 @@ std::string Rsvp::Signalling::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Signalling::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Signalling::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2893,133 +2479,80 @@ EntityPath Rsvp::Signalling::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Signalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checksum")
     {
-        if(checksum != nullptr)
-        {
-            children["checksum"] = checksum;
-        }
-        else
+        if(checksum == nullptr)
         {
             checksum = std::make_shared<Rsvp::Signalling::Checksum>();
-            checksum->parent = this;
-            children["checksum"] = checksum;
         }
-        return children.at("checksum");
+        return checksum;
     }
 
     if(child_yang_name == "global-out-of-band")
     {
-        if(global_out_of_band != nullptr)
-        {
-            children["global-out-of-band"] = global_out_of_band;
-        }
-        else
+        if(global_out_of_band == nullptr)
         {
             global_out_of_band = std::make_shared<Rsvp::Signalling::GlobalOutOfBand>();
-            global_out_of_band->parent = this;
-            children["global-out-of-band"] = global_out_of_band;
         }
-        return children.at("global-out-of-band");
+        return global_out_of_band;
     }
 
     if(child_yang_name == "graceful-restart")
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
-        else
+        if(graceful_restart == nullptr)
         {
             graceful_restart = std::make_shared<Rsvp::Signalling::GracefulRestart>();
-            graceful_restart->parent = this;
-            children["graceful-restart"] = graceful_restart;
         }
-        return children.at("graceful-restart");
+        return graceful_restart;
     }
 
     if(child_yang_name == "pesr")
     {
-        if(pesr != nullptr)
-        {
-            children["pesr"] = pesr;
-        }
-        else
+        if(pesr == nullptr)
         {
             pesr = std::make_shared<Rsvp::Signalling::Pesr>();
-            pesr->parent = this;
-            children["pesr"] = pesr;
         }
-        return children.at("pesr");
+        return pesr;
     }
 
     if(child_yang_name == "prefix-filtering")
     {
-        if(prefix_filtering != nullptr)
-        {
-            children["prefix-filtering"] = prefix_filtering;
-        }
-        else
+        if(prefix_filtering == nullptr)
         {
             prefix_filtering = std::make_shared<Rsvp::Signalling::PrefixFiltering>();
-            prefix_filtering->parent = this;
-            children["prefix-filtering"] = prefix_filtering;
         }
-        return children.at("prefix-filtering");
+        return prefix_filtering;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Signalling::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Signalling::get_children() const
 {
-    if(children.find("checksum") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(checksum != nullptr)
     {
-        if(checksum != nullptr)
-        {
-            children["checksum"] = checksum;
-        }
+        children["checksum"] = checksum;
     }
 
-    if(children.find("global-out-of-band") == children.end())
+    if(global_out_of_band != nullptr)
     {
-        if(global_out_of_band != nullptr)
-        {
-            children["global-out-of-band"] = global_out_of_band;
-        }
+        children["global-out-of-band"] = global_out_of_band;
     }
 
-    if(children.find("graceful-restart") == children.end())
+    if(graceful_restart != nullptr)
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
+        children["graceful-restart"] = graceful_restart;
     }
 
-    if(children.find("pesr") == children.end())
+    if(pesr != nullptr)
     {
-        if(pesr != nullptr)
-        {
-            children["pesr"] = pesr;
-        }
+        children["pesr"] = pesr;
     }
 
-    if(children.find("prefix-filtering") == children.end())
+    if(prefix_filtering != nullptr)
     {
-        if(prefix_filtering != nullptr)
-        {
-            children["prefix-filtering"] = prefix_filtering;
-        }
+        children["prefix-filtering"] = prefix_filtering;
     }
 
     return children;
@@ -3068,7 +2601,7 @@ std::string Rsvp::Signalling::GlobalOutOfBand::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Signalling::GlobalOutOfBand::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Signalling::GlobalOutOfBand::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3092,20 +2625,12 @@ EntityPath Rsvp::Signalling::GlobalOutOfBand::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Rsvp::Signalling::GlobalOutOfBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Signalling::GlobalOutOfBand::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Signalling::GlobalOutOfBand::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3154,7 +2679,7 @@ std::string Rsvp::Signalling::GracefulRestart::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Signalling::GracefulRestart::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Signalling::GracefulRestart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3180,20 +2705,12 @@ EntityPath Rsvp::Signalling::GracefulRestart::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Rsvp::Signalling::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Signalling::GracefulRestart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Signalling::GracefulRestart::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3220,7 +2737,6 @@ Rsvp::Signalling::PrefixFiltering::PrefixFiltering()
     default_deny_action(std::make_shared<Rsvp::Signalling::PrefixFiltering::DefaultDenyAction>())
 {
     default_deny_action->parent = this;
-    children["default-deny-action"] = default_deny_action;
 
     yang_name = "prefix-filtering"; yang_parent_name = "signalling";
 }
@@ -3251,7 +2767,7 @@ std::string Rsvp::Signalling::PrefixFiltering::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Signalling::PrefixFiltering::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Signalling::PrefixFiltering::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3275,41 +2791,24 @@ EntityPath Rsvp::Signalling::PrefixFiltering::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Rsvp::Signalling::PrefixFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-deny-action")
     {
-        if(default_deny_action != nullptr)
-        {
-            children["default-deny-action"] = default_deny_action;
-        }
-        else
+        if(default_deny_action == nullptr)
         {
             default_deny_action = std::make_shared<Rsvp::Signalling::PrefixFiltering::DefaultDenyAction>();
-            default_deny_action->parent = this;
-            children["default-deny-action"] = default_deny_action;
         }
-        return children.at("default-deny-action");
+        return default_deny_action;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Signalling::PrefixFiltering::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Signalling::PrefixFiltering::get_children() const
 {
-    if(children.find("default-deny-action") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_deny_action != nullptr)
     {
-        if(default_deny_action != nullptr)
-        {
-            children["default-deny-action"] = default_deny_action;
-        }
+        children["default-deny-action"] = default_deny_action;
     }
 
     return children;
@@ -3354,7 +2853,7 @@ std::string Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::get_segment_pa
 
 }
 
-EntityPath Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3378,20 +2877,12 @@ EntityPath Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::get_entity_path
 
 std::shared_ptr<Entity> Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3434,7 +2925,7 @@ std::string Rsvp::Signalling::Pesr::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Signalling::Pesr::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Signalling::Pesr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3458,20 +2949,12 @@ EntityPath Rsvp::Signalling::Pesr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Signalling::Pesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Signalling::Pesr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Signalling::Pesr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3514,7 +2997,7 @@ std::string Rsvp::Signalling::Checksum::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Signalling::Checksum::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Signalling::Checksum::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3538,20 +3021,12 @@ EntityPath Rsvp::Signalling::Checksum::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Signalling::Checksum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Signalling::Checksum::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Signalling::Checksum::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3603,7 +3078,7 @@ std::string Rsvp::Authentication::get_segment_path() const
 
 }
 
-EntityPath Rsvp::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3630,20 +3105,12 @@ EntityPath Rsvp::Authentication::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::Authentication::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

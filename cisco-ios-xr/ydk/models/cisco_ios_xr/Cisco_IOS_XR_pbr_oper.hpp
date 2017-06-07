@@ -18,23 +18,20 @@ class Pbr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: Pbr::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes> nodes;
-
-
+        
 }; // Pbr
 
 
@@ -46,19 +43,16 @@ class Pbr::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Pbr::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node> > node;
-
-
+        
 }; // Pbr::Nodes
 
 
@@ -70,20 +64,17 @@ class Pbr::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class PolicyMap; //type: Pbr::Nodes::Node::PolicyMap
 
         std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap> policy_map;
-
-
+        
 }; // Pbr::Nodes::Node
 
 
@@ -95,19 +86,16 @@ class Pbr::Nodes::Node::PolicyMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interfaces; //type: Pbr::Nodes::Node::PolicyMap::Interfaces
 
         std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces> interfaces;
-
-
+        
 }; // Pbr::Nodes::Node::PolicyMap
 
 
@@ -119,19 +107,16 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface> > interface;
-
-
+        
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces
 
 
@@ -143,20 +128,17 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class Direction; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction
 
         std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction> direction;
-
-
+        
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface
 
 
@@ -168,19 +150,16 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Input; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
         std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input> input;
-
-
+        
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction
 
 
@@ -192,23 +171,20 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
-
         class ClassStat; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat> > class_stat;
-
-
+        
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 
 
@@ -220,24 +196,21 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf class_id; //type: uint32
-
         class GeneralStats; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats
         class HttprStats; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats
 
         std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats> general_stats;
         std::shared_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats> httpr_stats;
-
-
+        
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat
 
 
@@ -249,12 +222,11 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -265,8 +237,6 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats
 
@@ -279,12 +249,11 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rqst_rcvd_packets; //type: uint64
         YLeaf rqst_rcvd_bytes; //type: uint64
@@ -292,8 +261,6 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Clas
         YLeaf drop_bytes; //type: uint64
         YLeaf resp_sent_packets; //type: uint64
         YLeaf resp_sent_bytes; //type: uint64
-
-
 
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats
 

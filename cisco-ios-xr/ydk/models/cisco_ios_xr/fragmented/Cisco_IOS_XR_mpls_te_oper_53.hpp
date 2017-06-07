@@ -22,12 +22,11 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_type; //type: TeOduLevelEnum
         YLeaf stage1; //type: TeOduLevelEnum
@@ -40,12 +39,10 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapab
         YLeaf tsg2p5; //type: boolean
         YLeaf vcat_capable; //type: boolean
         YLeaf lcas_capable; //type: boolean
-
         class BandwidthInfo; //type: MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo> bandwidth_info;
-
-
+        
 }; // MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability
 
 
@@ -57,22 +54,19 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: TeOduCapabilityEnum
-
         class Fixed; //type: MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed
         class Flex; //type: MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed> fixed;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex> flex;
-
-
+        
 }; // MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo
 
 
@@ -84,17 +78,14 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf maximum_od_us; //type: uint8
         YLeaf unreserved_od_us; //type: uint8
-
-
 
 }; // MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed
 
@@ -107,18 +98,15 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_bandwidth; //type: uint32
         YLeaf unreserved_bandwidth; //type: uint32
         YLeaf max_lsp_bandwidth; //type: uint32
-
-
 
 }; // MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex
 
@@ -131,17 +119,14 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::SharedRiskLi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf shared_risk_group; //type: uint32
         YLeaf srlg_name; //type: string
-
-
 
 }; // MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::SharedRiskLinkGroup
 
@@ -154,12 +139,11 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::AdjacencySid
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adjacency_sid; //type: uint32
         YLeaf link_type; //type: IgpSubnetEnum
@@ -173,8 +157,6 @@ class MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::AdjacencySid
         YLeaf flag_l; //type: boolean
         YLeaf flag_s; //type: boolean
 
-
-
 }; // MplsTeStandby::TopologyNodes::TopologyNode::TopologyNodeLink::AdjacencySid
 
 
@@ -186,21 +168,18 @@ class MplsTeStandby::AnnounceTunnelsInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AutorouteAnnounceTable; //type: MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable
         class AllAutorouteTable; //type: MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable> all_autoroute_table;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable> autoroute_announce_table;
-
-
+        
 }; // MplsTeStandby::AnnounceTunnelsInfo
 
 
@@ -212,19 +191,16 @@ class MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AnnounceDest; //type: MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest> > announce_dest;
-
-
+        
 }; // MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable
 
 
@@ -236,12 +212,11 @@ class MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
         YLeaf protocol; //type: MplsTeIgpProtocolEnum
@@ -255,12 +230,10 @@ class MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest :
         YLeaf autorouted_tunnels_count; //type: uint16
         YLeaf forwarding_adjacency_tunnels_count; //type: uint16
         YLeaf area_format; //type: IgpOspfAreaFormatEnum
-
         class TotalTunnel; //type: MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::TotalTunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::TotalTunnel> > total_tunnel;
-
-
+        
 }; // MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest
 
 
@@ -272,12 +245,11 @@ class MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_name; //type: string
         YLeaf tunnel_sig_name; //type: string
@@ -293,12 +265,10 @@ class MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::
         YLeaf is_sr_strict; //type: boolean
         YLeaf mesh_group_idaa; //type: uint32
         YLeaf is_exclude_segment_routing; //type: boolean
-
         class IgPs; //type: MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::TotalTunnel::IgPs
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::TotalTunnel::IgPs> > ig_ps;
-
-
+        
 }; // MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::TotalTunnel
 
 
@@ -310,17 +280,14 @@ class MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf igp_area_id; //type: string
         YLeaf afi; //type: MplsTeAfiEnum
-
-
 
 }; // MplsTeStandby::AnnounceTunnelsInfo::AutorouteAnnounceTable::AnnounceDest::TotalTunnel::IgPs
 
@@ -333,19 +300,16 @@ class MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AnnounceDest; //type: MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest> > announce_dest;
-
-
+        
 }; // MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable
 
 
@@ -357,12 +321,11 @@ class MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
         YLeaf protocol; //type: MplsTeIgpProtocolEnum
@@ -376,12 +339,10 @@ class MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest : publ
         YLeaf autorouted_tunnels_count; //type: uint16
         YLeaf forwarding_adjacency_tunnels_count; //type: uint16
         YLeaf area_format; //type: IgpOspfAreaFormatEnum
-
         class TotalTunnel; //type: MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::TotalTunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::TotalTunnel> > total_tunnel;
-
-
+        
 }; // MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest
 
 
@@ -393,12 +354,11 @@ class MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::Total
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_name; //type: string
         YLeaf tunnel_sig_name; //type: string
@@ -414,12 +374,10 @@ class MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::Total
         YLeaf is_sr_strict; //type: boolean
         YLeaf mesh_group_idaa; //type: uint32
         YLeaf is_exclude_segment_routing; //type: boolean
-
         class IgPs; //type: MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::TotalTunnel::IgPs
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::TotalTunnel::IgPs> > ig_ps;
-
-
+        
 }; // MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::TotalTunnel
 
 
@@ -431,17 +389,14 @@ class MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::Total
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf igp_area_id; //type: string
         YLeaf afi; //type: MplsTeAfiEnum
-
-
 
 }; // MplsTeStandby::AnnounceTunnelsInfo::AllAutorouteTable::AnnounceDest::TotalTunnel::IgPs
 
@@ -454,19 +409,16 @@ class MplsTeStandby::CollaboratorTimers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class P2MpTimer; //type: MplsTeStandby::CollaboratorTimers::P2MpTimer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::CollaboratorTimers::P2MpTimer> > p2mp_timer;
-
-
+        
 }; // MplsTeStandby::CollaboratorTimers
 
 
@@ -478,12 +430,11 @@ class MplsTeStandby::CollaboratorTimers::P2MpTimer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timer_type; //type: MplsTeP2MpTimerEnum
         YLeaf timer_name; //type: string
@@ -492,8 +443,6 @@ class MplsTeStandby::CollaboratorTimers::P2MpTimer : public Entity
         YLeaf stop_time; //type: uint32
         YLeaf duration; //type: uint32
         YLeaf is_running; //type: boolean
-
-
 
 }; // MplsTeStandby::CollaboratorTimers::P2MpTimer
 
@@ -506,13 +455,11 @@ class MplsTeStandby::AutoTunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pcc; //type: MplsTeStandby::AutoTunnel::Pcc
         class Mesh; //type: MplsTeStandby::AutoTunnel::Mesh
@@ -521,8 +468,7 @@ class MplsTeStandby::AutoTunnel : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup> backup;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh> mesh;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Pcc> pcc;
-
-
+        
 }; // MplsTeStandby::AutoTunnel
 
 
@@ -534,19 +480,16 @@ class MplsTeStandby::AutoTunnel::Pcc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: MplsTeStandby::AutoTunnel::Pcc::Summary
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Pcc::Summary> summary;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Pcc
 
 
@@ -558,18 +501,15 @@ class MplsTeStandby::AutoTunnel::Pcc::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pcc_auto_tunnel; //type: uint32
         YLeaf up_pcc_auto_tunnels; //type: uint32
         YLeaf down_pcc_auto_tunnels; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Pcc::Summary
 
@@ -582,13 +522,11 @@ class MplsTeStandby::AutoTunnel::Mesh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MeshGroups; //type: MplsTeStandby::AutoTunnel::Mesh::MeshGroups
         class Statistics; //type: MplsTeStandby::AutoTunnel::Mesh::Statistics
@@ -601,8 +539,7 @@ class MplsTeStandby::AutoTunnel::Mesh : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::OneHop> one_hop;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::Summary> summary;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Mesh
 
 
@@ -614,19 +551,16 @@ class MplsTeStandby::AutoTunnel::Mesh::MeshGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MeshGroup; //type: MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup> > mesh_group;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Mesh::MeshGroups
 
 
@@ -638,12 +572,11 @@ class MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mesh_group_id; //type: uint32
         YLeaf mesh_group_id_xr; //type: uint32
@@ -661,12 +594,10 @@ class MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup : public Entity
         YLeaf down_auto_mesh_tunnels; //type: uint32
         YLeaf frr_auto_mesh_tunnels; //type: uint32
         YLeaf auto_mesh_group_type; //type: TeMeshgroupEnum
-
         class Destination; //type: MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup::Destination
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup::Destination> > destination;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup
 
 
@@ -678,19 +609,16 @@ class MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup::Destination : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
         YLeaf tunnel_id; //type: uint16
         YLeaf operational_status; //type: MplsTeTunnelStateEnum
         YLeaf remaining_time; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Mesh::MeshGroups::MeshGroup::Destination
 
@@ -703,12 +631,11 @@ class MplsTeStandby::AutoTunnel::Mesh::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf created; //type: uint32
         YLeaf connected; //type: uint32
@@ -716,8 +643,6 @@ class MplsTeStandby::AutoTunnel::Mesh::Statistics : public Entity
         YLeaf removed_in_use; //type: uint32
         YLeaf removed_range_exceeded; //type: uint32
         YLeaf last_cleared_time; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Mesh::Statistics
 
@@ -730,12 +655,11 @@ class MplsTeStandby::AutoTunnel::Mesh::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf auto_mesh_tunnels; //type: uint32
         YLeaf up_auto_mesh_tunnels; //type: uint32
@@ -743,8 +667,6 @@ class MplsTeStandby::AutoTunnel::Mesh::Summary : public Entity
         YLeaf frr_auto_mesh_tunnels; //type: uint32
         YLeaf auto_mesh_groups; //type: uint32
         YLeaf auto_mesh_destinations; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Mesh::Summary
 
@@ -757,19 +679,16 @@ class MplsTeStandby::AutoTunnel::Mesh::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_configured; //type: boolean
         YLeaf unused_removal_timeout_configured; //type: uint32
         YLeaf min_tunnel_id; //type: uint16
         YLeaf max_tunnel_id; //type: uint16
-
-
 
 }; // MplsTeStandby::AutoTunnel::Mesh::Config
 
@@ -782,13 +701,11 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interfaces; //type: MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces
         class Statistics; //type: MplsTeStandby::AutoTunnel::Mesh::OneHop::Statistics
@@ -797,8 +714,7 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::OneHop::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::OneHop::Summary> summary;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Mesh::OneHop
 
 
@@ -810,19 +726,16 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface> > interface;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces
 
 
@@ -834,21 +747,18 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
-
         class Tunnel; //type: MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface::Tunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface::Tunnel> > tunnel;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface
 
 
@@ -860,20 +770,17 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface::Tunnel : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_id; //type: uint16
         YLeaf destination_address; //type: string
         YLeaf tunnel_lspid; //type: uint16
         YLeaf mesh_group_id; //type: uint32
         YLeaf tunnel_state; //type: MplsTeTunnelStateEnum
-
-
 
 }; // MplsTeStandby::AutoTunnel::Mesh::OneHop::Interfaces::Interface::Tunnel
 
@@ -886,12 +793,11 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf created; //type: uint32
         YLeaf connected; //type: uint32
@@ -899,8 +805,6 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop::Statistics : public Entity
         YLeaf removed_in_use; //type: uint32
         YLeaf removed_range_exceeded; //type: uint32
         YLeaf last_cleared_time; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Mesh::OneHop::Statistics
 
@@ -913,12 +817,11 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf auto_mesh_one_hop_tunnels; //type: uint32
         YLeaf up_auto_mesh_one_hop_tunnels; //type: uint32
@@ -926,8 +829,6 @@ class MplsTeStandby::AutoTunnel::Mesh::OneHop::Summary : public Entity
         YLeaf frr_auto_mesh_tunnels; //type: uint32
         YLeaf auto_mesh_one_hop_groups; //type: uint32
         YLeaf auto_mesh_one_hop_destinations; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Mesh::OneHop::Summary
 
@@ -940,13 +841,11 @@ class MplsTeStandby::AutoTunnel::Backup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tunnels; //type: MplsTeStandby::AutoTunnel::Backup::Tunnels
         class Statistics; //type: MplsTeStandby::AutoTunnel::Backup::Statistics
@@ -957,8 +856,7 @@ class MplsTeStandby::AutoTunnel::Backup : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup::Summary> summary;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup::Tunnels> tunnels;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Backup
 
 
@@ -970,19 +868,16 @@ class MplsTeStandby::AutoTunnel::Backup::Tunnels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tunnel; //type: MplsTeStandby::AutoTunnel::Backup::Tunnels::Tunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup::Tunnels::Tunnel> > tunnel;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Backup::Tunnels
 
 
@@ -994,12 +889,11 @@ class MplsTeStandby::AutoTunnel::Backup::Tunnels::Tunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf backup_tunnel_name; //type: string
         YLeaf tunnel_name; //type: string
@@ -1009,8 +903,6 @@ class MplsTeStandby::AutoTunnel::Backup::Tunnels::Tunnel : public Entity
         YLeaf protected_flows; //type: uint32
         YLeaf protected_interface_name; //type: string
         YLeaf protected_router_id; //type: string
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Tunnels::Tunnel
 
@@ -1023,15 +915,13 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf last_cleared_time; //type: uint32
-
         class Created; //type: MplsTeStandby::AutoTunnel::Backup::Statistics::Created
         class Connected; //type: MplsTeStandby::AutoTunnel::Backup::Statistics::Connected
         class RemovedDown; //type: MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedDown
@@ -1045,8 +935,7 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedInUse> removed_in_use;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedRangeExceeded> removed_range_exceeded;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedUnused> removed_unused;
-
-
+        
 }; // MplsTeStandby::AutoTunnel::Backup::Statistics
 
 
@@ -1058,18 +947,15 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics::Created : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_tunnels; //type: uint32
         YLeaf next_hop_tunnels; //type: uint32
         YLeaf next_next_hop_tunnels; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Statistics::Created
 
@@ -1082,18 +968,15 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics::Connected : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_tunnels; //type: uint32
         YLeaf next_hop_tunnels; //type: uint32
         YLeaf next_next_hop_tunnels; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Statistics::Connected
 
@@ -1106,18 +989,15 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedDown : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_tunnels; //type: uint32
         YLeaf next_hop_tunnels; //type: uint32
         YLeaf next_next_hop_tunnels; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedDown
 
@@ -1130,18 +1010,15 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedUnused : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_tunnels; //type: uint32
         YLeaf next_hop_tunnels; //type: uint32
         YLeaf next_next_hop_tunnels; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedUnused
 
@@ -1154,18 +1031,15 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedInUse : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_tunnels; //type: uint32
         YLeaf next_hop_tunnels; //type: uint32
         YLeaf next_next_hop_tunnels; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedInUse
 
@@ -1178,18 +1052,15 @@ class MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedRangeExceeded : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_tunnels; //type: uint32
         YLeaf next_hop_tunnels; //type: uint32
         YLeaf next_next_hop_tunnels; //type: uint32
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Statistics::RemovedRangeExceeded
 
@@ -1202,12 +1073,11 @@ class MplsTeStandby::AutoTunnel::Backup::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf autobackups; //type: uint32
         YLeaf up_autobackups; //type: uint32
@@ -1231,8 +1101,6 @@ class MplsTeStandby::AutoTunnel::Backup::Summary : public Entity
         YLeaf next_hop_srlg_autobackup_protected_s2_ls; //type: uint32
         YLeaf next_next_hop_srlg_autobackup_protected_s2_ls; //type: uint32
 
-
-
 }; // MplsTeStandby::AutoTunnel::Backup::Summary
 
 
@@ -1244,20 +1112,17 @@ class MplsTeStandby::AutoTunnel::Backup::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_configured; //type: boolean
         YLeaf interface_count; //type: uint32
         YLeaf unused_removal_timeout_configured; //type: uint32
         YLeaf min_tunnel_id; //type: uint16
         YLeaf max_tunnel_id; //type: uint16
-
-
 
 }; // MplsTeStandby::AutoTunnel::Backup::Config
 
@@ -1270,19 +1135,16 @@ class MplsTeStandby::SoftPreemption : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Statistics; //type: MplsTeStandby::SoftPreemption::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SoftPreemption::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SoftPreemption
 
 
@@ -1294,12 +1156,11 @@ class MplsTeStandby::SoftPreemption::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf last_cleared_timestamp; //type: uint32
         YLeaf soft_preemption_events; //type: uint32
@@ -1315,8 +1176,6 @@ class MplsTeStandby::SoftPreemption::Statistics : public Entity
         YLeaf torndown_soft_preempted_ls_ps; //type: uint32
         YLeaf path_protected_switchover_soft_preempted_ls_ps; //type: uint32
 
-
-
 }; // MplsTeStandby::SoftPreemption::Statistics
 
 
@@ -1328,19 +1187,16 @@ class MplsTeStandby::ForwardingAdjacencyDestinations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ForwardingAdjacencyDestination; //type: MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination> > forwarding_adjacency_destination;
-
-
+        
 }; // MplsTeStandby::ForwardingAdjacencyDestinations
 
 
@@ -1352,23 +1208,20 @@ class MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestina
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
         YLeaf adjacencies; //type: uint32
         YLeaf ipv6_adjacencies; //type: uint32
         YLeaf destination_address_xr; //type: string
-
         class ForwardAdjacency; //type: MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination::ForwardAdjacency
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination::ForwardAdjacency> > forward_adjacency;
-
-
+        
 }; // MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination
 
 
@@ -1380,23 +1233,20 @@ class MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestina
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_name; //type: string
         YLeaf traffic_share; //type: uint32
         YLeaf hold_time; //type: uint32
         YLeaf is_adjacency_up; //type: boolean
-
         class IgPs; //type: MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination::ForwardAdjacency::IgPs
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination::ForwardAdjacency::IgPs> > ig_ps;
-
-
+        
 }; // MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination::ForwardAdjacency
 
 
@@ -1408,17 +1258,14 @@ class MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestina
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf igp_area_id; //type: string
         YLeaf afi; //type: MplsTeAfiEnum
-
-
 
 }; // MplsTeStandby::ForwardingAdjacencyDestinations::ForwardingAdjacencyDestination::ForwardAdjacency::IgPs
 
@@ -1431,19 +1278,16 @@ class MplsTeStandby::IgpAreas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IgpArea; //type: MplsTeStandby::IgpAreas::IgpArea
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::IgpAreas::IgpArea> > igp_area;
-
-
+        
 }; // MplsTeStandby::IgpAreas
 
 
@@ -1455,12 +1299,11 @@ class MplsTeStandby::IgpAreas::IgpArea : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol; //type: MplsTeIgpProtocolEnum
         YLeaf process_tag; //type: string
@@ -1475,12 +1318,10 @@ class MplsTeStandby::IgpAreas::IgpArea : public Entity
         YLeaf connection_up_count; //type: uint32
         YLeaf connection_down_count; //type: uint32
         YLeafList secondary_router_id; //type: list of  string
-
         class Area; //type: MplsTeStandby::IgpAreas::IgpArea::Area
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::IgpAreas::IgpArea::Area> > area;
-
-
+        
 }; // MplsTeStandby::IgpAreas::IgpArea
 
 
@@ -1492,23 +1333,20 @@ class MplsTeStandby::IgpAreas::IgpArea::Area : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_index; //type: uint32
         YLeaf area_number; //type: uint32
         YLeaf area_format; //type: IgpOspfAreaFormatEnum
         YLeaf is_config_ready; //type: boolean
-
         class ActiveData; //type: MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData> active_data;
-
-
+        
 }; // MplsTeStandby::IgpAreas::IgpArea::Area
 
 
@@ -1520,12 +1358,11 @@ class MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interfaces_count; //type: uint32
         YLeaf link_idt_received; //type: boolean
@@ -1536,12 +1373,10 @@ class MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData : public Entity
         YLeaf p2p_forwarding_adjacency_count; //type: uint32
         YLeaf p2mp_destination_count; //type: uint32
         YLeaf tunnel_loose_hops; //type: uint32
-
         class AreaStatistics; //type: MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData::AreaStatistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData::AreaStatistics> area_statistics;
-
-
+        
 }; // MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData
 
 
@@ -1553,12 +1388,11 @@ class MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData::AreaStatistics : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_adjacency_request_messages; //type: uint32
         YLeaf area_adjacency_announce_messages; //type: uint32
@@ -1568,8 +1402,6 @@ class MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData::AreaStatistics : publi
         YLeaf area_lsa_delete_messages; //type: uint32
         YLeaf area_lsa_fragment_delete_messages; //type: uint32
         YLeaf area_tunnel_announce_messages; //type: uint32
-
-
 
 }; // MplsTeStandby::IgpAreas::IgpArea::Area::ActiveData::AreaStatistics
 
@@ -1582,19 +1414,16 @@ class MplsTeStandby::WrapProtection : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProtectedLsps; //type: MplsTeStandby::WrapProtection::ProtectedLsps
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::WrapProtection::ProtectedLsps> protected_lsps;
-
-
+        
 }; // MplsTeStandby::WrapProtection
 
 
@@ -1606,19 +1435,16 @@ class MplsTeStandby::WrapProtection::ProtectedLsps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProtectedLsp; //type: MplsTeStandby::WrapProtection::ProtectedLsps::ProtectedLsp
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::WrapProtection::ProtectedLsps::ProtectedLsp> > protected_lsp;
-
-
+        
 }; // MplsTeStandby::WrapProtection::ProtectedLsps
 
 
@@ -1630,12 +1456,11 @@ class MplsTeStandby::WrapProtection::ProtectedLsps::ProtectedLsp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
@@ -1661,8 +1486,6 @@ class MplsTeStandby::WrapProtection::ProtectedLsps::ProtectedLsp : public Entity
         YLeaf sub_group_id_xr; //type: uint16
         YLeaf p2mp_id_xr; //type: uint32
 
-
-
 }; // MplsTeStandby::WrapProtection::ProtectedLsps::ProtectedLsp
 
 
@@ -1674,13 +1497,11 @@ class MplsTeStandby::Topology : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Global; //type: MplsTeStandby::Topology::Global
         class DestinationPaths; //type: MplsTeStandby::Topology::DestinationPaths
@@ -1693,8 +1514,7 @@ class MplsTeStandby::Topology : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Global> global;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::PathTunnels> path_tunnels;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Srlgs> srlgs;
-
-
+        
 }; // MplsTeStandby::Topology
 
 
@@ -1706,22 +1526,19 @@ class MplsTeStandby::Topology::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf hold_down_interval; //type: uint32
         YLeaf link_add_remove_count; //type: uint32
         YLeaf local_model_id; //type: uint32
-
         class Areas; //type: MplsTeStandby::Topology::Global::Areas
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Global::Areas> > areas;
-
-
+        
 }; // MplsTeStandby::Topology::Global
 
 
@@ -1733,22 +1550,19 @@ class MplsTeStandby::Topology::Global::Areas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol; //type: IgpProtocolEnum
         YLeaf node_id; //type: string
         YLeaf area_id; //type: string
-
         class LocalSidAndSrbg; //type: MplsTeStandby::Topology::Global::Areas::LocalSidAndSrbg
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Global::Areas::LocalSidAndSrbg> local_sid_and_srbg;
-
-
+        
 }; // MplsTeStandby::Topology::Global::Areas
 
 
@@ -1760,19 +1574,16 @@ class MplsTeStandby::Topology::Global::Areas::LocalSidAndSrbg : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf segment_id; //type: uint32
         YLeaf segment_id_local_absolute_value; //type: uint32
         YLeaf srgb_start; //type: uint32
         YLeaf srgb_size; //type: uint32
-
-
 
 }; // MplsTeStandby::Topology::Global::Areas::LocalSidAndSrbg
 
@@ -1785,19 +1596,16 @@ class MplsTeStandby::Topology::DestinationPaths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DestinationPath; //type: MplsTeStandby::Topology::DestinationPaths::DestinationPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::DestinationPaths::DestinationPath> > destination_path;
-
-
+        
 }; // MplsTeStandby::Topology::DestinationPaths
 
 
@@ -1809,12 +1617,11 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
         YLeaf affinity_bits; //type: int32
@@ -1846,7 +1653,6 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath : public Entity
         YLeaf node_hop_count; //type: uint8
         YLeaf exclude_srlg_address; //type: string
         YLeafList hop; //type: list of  string
-
         class Affinity; //type: MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity
         class SharedRiskLinkGroup; //type: MplsTeStandby::Topology::DestinationPaths::DestinationPath::SharedRiskLinkGroup
         class SrSegment; //type: MplsTeStandby::Topology::DestinationPaths::DestinationPath::SrSegment
@@ -1854,8 +1660,7 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity> affinity;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::DestinationPaths::DestinationPath::SharedRiskLinkGroup> > shared_risk_link_group;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::DestinationPaths::DestinationPath::SrSegment> > sr_segment;
-
-
+        
 }; // MplsTeStandby::Topology::DestinationPaths::DestinationPath
 
 
@@ -1867,21 +1672,18 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf affinity_bits; //type: uint32
         YLeaf affinity_mask; //type: uint32
-
         class NamedAffinity; //type: MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity::NamedAffinity
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity::NamedAffinity> > named_affinity;
-
-
+        
 }; // MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity
 
 
@@ -1893,20 +1695,17 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity::Name
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf constraint_type; //type: uint8
         YLeaf constraint_value; //type: uint32
         YLeaf forward_ref_value; //type: uint32
         YLeafList constraint_extended_value; //type: list of  uint32
         YLeafList extended_forward_ref_value; //type: list of  uint32
-
-
 
 }; // MplsTeStandby::Topology::DestinationPaths::DestinationPath::Affinity::NamedAffinity
 
@@ -1919,17 +1718,14 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath::SharedRiskLink
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf shared_risk_group; //type: uint32
         YLeaf srlg_name; //type: string
-
-
 
 }; // MplsTeStandby::Topology::DestinationPaths::DestinationPath::SharedRiskLinkGroup
 
@@ -1942,12 +1738,11 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath::SrSegment : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_type; //type: TeSrSidEnum
         YLeaf has_ip_addresses; //type: boolean
@@ -1956,8 +1751,6 @@ class MplsTeStandby::Topology::DestinationPaths::DestinationPath::SrSegment : pu
         YLeaf has_mpls_label; //type: boolean
         YLeaf mpls_label_value; //type: uint32
         YLeaf has_entropy_label; //type: boolean
-
-
 
 }; // MplsTeStandby::Topology::DestinationPaths::DestinationPath::SrSegment
 
@@ -1970,19 +1763,16 @@ class MplsTeStandby::Topology::ConfiguredSrlgs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ConfiguredSrlg; //type: MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg> > configured_srlg;
-
-
+        
 }; // MplsTeStandby::Topology::ConfiguredSrlgs
 
 
@@ -1994,24 +1784,21 @@ class MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf srlg_number; //type: int32
         YLeaf srlg_number_xr; //type: uint32
         YLeaf srlg_name; //type: string
         YLeaf admin_weight; //type: uint32
         YLeaf is_admin_weight_configured; //type: boolean
-
         class SrlgLink; //type: MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg::SrlgLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg::SrlgLink> > srlg_link;
-
-
+        
 }; // MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg
 
 
@@ -2023,17 +1810,14 @@ class MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg::SrlgLink : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf local_address; //type: string
         YLeaf remote_address; //type: string
-
-
 
 }; // MplsTeStandby::Topology::ConfiguredSrlgs::ConfiguredSrlg::SrlgLink
 
@@ -2046,19 +1830,16 @@ class MplsTeStandby::Topology::Srlgs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Srlg; //type: MplsTeStandby::Topology::Srlgs::Srlg
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Srlgs::Srlg> > srlg;
-
-
+        
 }; // MplsTeStandby::Topology::Srlgs
 
 
@@ -2070,22 +1851,19 @@ class MplsTeStandby::Topology::Srlgs::Srlg : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf srlg_number; //type: int32
         YLeaf srlg_name; //type: string
         YLeaf admin_weight; //type: uint32
-
         class SrlgAreas; //type: MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas> > srlg_areas;
-
-
+        
 }; // MplsTeStandby::Topology::Srlgs::Srlg
 
 
@@ -2097,23 +1875,20 @@ class MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf igp_type; //type: IgpProtocolEnum
         YLeaf igp_instance; //type: string
         YLeaf igp_area; //type: uint32
         YLeaf igp_area_format; //type: IgpOspfAreaFormatEnum
-
         class SrlgLink; //type: MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink> > srlg_link;
-
-
+        
 }; // MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas
 
 
@@ -2125,21 +1900,18 @@ class MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_address; //type: string
         YLeaf te_router_id; //type: string
-
         class LinkAddressGeneric; //type: MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric> link_address_generic;
-
-
+        
 }; // MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink
 
 
@@ -2151,19 +1923,16 @@ class MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGene
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TeAddr; //type: MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric::TeAddr
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric::TeAddr> te_addr;
-
-
+        
 }; // MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric
 
 
@@ -2175,21 +1944,18 @@ class MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGene
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: TeAddrEnum
         YLeaf ipv4_address; //type: string
-
         class Ipv4UnnumberedAddress; //type: MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric::TeAddr::Ipv4UnnumberedAddress
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric::TeAddr::Ipv4UnnumberedAddress> ipv4_unnumbered_address;
-
-
+        
 }; // MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric::TeAddr
 
 
@@ -2201,17 +1967,14 @@ class MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGene
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_id; //type: string
         YLeaf interface_index; //type: uint32
-
-
 
 }; // MplsTeStandby::Topology::Srlgs::Srlg::SrlgAreas::SrlgLink::LinkAddressGeneric::TeAddr::Ipv4UnnumberedAddress
 
@@ -2224,19 +1987,16 @@ class MplsTeStandby::Topology::PathTunnels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PathTunnel; //type: MplsTeStandby::Topology::PathTunnels::PathTunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::PathTunnels::PathTunnel> > path_tunnel;
-
-
+        
 }; // MplsTeStandby::Topology::PathTunnels
 
 
@@ -2248,12 +2008,11 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_id; //type: int32
         YLeaf tunnel_name; //type: string
@@ -2272,7 +2031,6 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel : public Entity
         YLeaf node_hop_count; //type: uint8
         YLeaf exclude_srlg_address; //type: string
         YLeafList hop; //type: list of  string
-
         class Affinity; //type: MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity
         class SharedRiskLinkGroup; //type: MplsTeStandby::Topology::PathTunnels::PathTunnel::SharedRiskLinkGroup
         class SrSegment; //type: MplsTeStandby::Topology::PathTunnels::PathTunnel::SrSegment
@@ -2280,8 +2038,7 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity> affinity;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::PathTunnels::PathTunnel::SharedRiskLinkGroup> > shared_risk_link_group;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::PathTunnels::PathTunnel::SrSegment> > sr_segment;
-
-
+        
 }; // MplsTeStandby::Topology::PathTunnels::PathTunnel
 
 
@@ -2293,21 +2050,18 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf affinity_bits; //type: uint32
         YLeaf affinity_mask; //type: uint32
-
         class NamedAffinity; //type: MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity::NamedAffinity
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity::NamedAffinity> > named_affinity;
-
-
+        
 }; // MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity
 
 
@@ -2319,20 +2073,17 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity::NamedAffinity 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf constraint_type; //type: uint8
         YLeaf constraint_value; //type: uint32
         YLeaf forward_ref_value; //type: uint32
         YLeafList constraint_extended_value; //type: list of  uint32
         YLeafList extended_forward_ref_value; //type: list of  uint32
-
-
 
 }; // MplsTeStandby::Topology::PathTunnels::PathTunnel::Affinity::NamedAffinity
 
@@ -2345,17 +2096,14 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel::SharedRiskLinkGroup : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf shared_risk_group; //type: uint32
         YLeaf srlg_name; //type: string
-
-
 
 }; // MplsTeStandby::Topology::PathTunnels::PathTunnel::SharedRiskLinkGroup
 
@@ -2368,12 +2116,11 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel::SrSegment : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sid_type; //type: TeSrSidEnum
         YLeaf has_ip_addresses; //type: boolean
@@ -2382,8 +2129,6 @@ class MplsTeStandby::Topology::PathTunnels::PathTunnel::SrSegment : public Entit
         YLeaf has_mpls_label; //type: boolean
         YLeaf mpls_label_value; //type: uint32
         YLeaf has_entropy_label; //type: boolean
-
-
 
 }; // MplsTeStandby::Topology::PathTunnels::PathTunnel::SrSegment
 
@@ -2396,13 +2141,11 @@ class MplsTeStandby::SignallingCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Issu; //type: MplsTeStandby::SignallingCounters::Issu
         class HeadsCounters; //type: MplsTeStandby::SignallingCounters::HeadsCounters
@@ -2421,8 +2164,7 @@ class MplsTeStandby::SignallingCounters : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::SignallingSummary> signalling_summary;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings> signallings;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::TailsCounters> tails_counters;
-
-
+        
 }; // MplsTeStandby::SignallingCounters
 
 
@@ -2434,12 +2176,11 @@ class MplsTeStandby::SignallingCounters::Issu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf last_cleared_timestamp; //type: uint32
         YLeaf role; //type: TeProcRoleEnum
@@ -2448,8 +2189,6 @@ class MplsTeStandby::SignallingCounters::Issu : public Entity
         YLeaf total_deletions; //type: uint32
         YLeaf total_nac_ks; //type: uint64
         YLeaf total_id_ts; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::Issu
 
@@ -2462,19 +2201,16 @@ class MplsTeStandby::SignallingCounters::HeadsCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HeadsCounter; //type: MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter> > heads_counter;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadsCounters
 
 
@@ -2486,25 +2222,22 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_id; //type: int32
         YLeaf tunnel_name; //type: string
         YLeaf tunnel_sig_name; //type: string
         YLeaf lsp_id; //type: uint16
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Statistics
         class DestinationStatistic; //type: MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic> > destination_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter
 
 
@@ -2516,12 +2249,11 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Statistics
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -2547,8 +2279,6 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Statistics
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Statistics
 
@@ -2561,22 +2291,19 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Destinatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::Statistics
         class S2LStatistic; //type: MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::S2LStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::S2LStatistic> > s2l_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic
 
 
@@ -2588,12 +2315,11 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Destinatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -2619,8 +2345,6 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Destinatio
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::Statistics
 
@@ -2633,22 +2357,19 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Destinatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: uint16
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::S2LStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::S2LStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::S2LStatistic
 
 
@@ -2660,12 +2381,11 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Destinatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -2691,8 +2411,6 @@ class MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::Destinatio
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::HeadsCounters::HeadsCounter::DestinationStatistic::S2LStatistic::Statistics
 
@@ -2705,19 +2423,16 @@ class MplsTeStandby::SignallingCounters::MidsCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MidsCounter; //type: MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter> > mids_counter;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::MidsCounters
 
 
@@ -2729,12 +2444,11 @@ class MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
@@ -2742,14 +2456,12 @@ class MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter : public Enti
         YLeaf extended_tunnel_id; //type: string
         YLeaf lsp_id; //type: int32
         YLeaf tunnel_name; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::Statistics
         class S2LStatistic; //type: MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic> > s2l_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter
 
 
@@ -2761,12 +2473,11 @@ class MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::Statistics :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -2792,8 +2503,6 @@ class MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::Statistics :
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::Statistics
 
@@ -2806,22 +2515,19 @@ class MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: uint16
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic
 
 
@@ -2833,12 +2539,11 @@ class MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -2864,8 +2569,6 @@ class MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::MidsCounters::MidsCounter::S2LStatistic::Statistics
 
@@ -2878,19 +2581,16 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HeadSignallingCounter; //type: MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter> > head_signalling_counter;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadSignallingCounters
 
 
@@ -2902,26 +2602,23 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ctype; //type: CtypeEnum
         YLeaf tunnel_id; //type: int32
         YLeaf tunnel_name; //type: string
         YLeaf tunnel_sig_name; //type: string
         YLeaf lsp_id; //type: uint16
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::Statistics
         class DestinationStatistic; //type: MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic> > destination_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter
 
 
@@ -2933,12 +2630,11 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -2964,8 +2660,6 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::Statistics
 
@@ -2978,22 +2672,19 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::Statistics
         class S2LStatistic; //type: MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::S2LStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::S2LStatistic> > s2l_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic
 
 
@@ -3005,12 +2696,11 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3036,8 +2726,6 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::Statistics
 
@@ -3050,22 +2738,19 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: uint16
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::S2LStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::S2LStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::S2LStatistic
 
 
@@ -3077,12 +2762,11 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3108,8 +2792,6 @@ class MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingC
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::HeadSignallingCounters::HeadSignallingCounter::DestinationStatistic::S2LStatistic::Statistics
 
@@ -3122,19 +2804,16 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RemoteSignallingCounter; //type: MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter> > remote_signalling_counter;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::RemoteSignallingCounters
 
 
@@ -3146,12 +2825,11 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignall
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ctype; //type: CtypeEnum
         YLeaf tunnel_id; //type: int32
@@ -3163,14 +2841,12 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignall
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: int32
         YLeaf tunnel_name; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::Statistics
         class S2LStatistic; //type: MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::S2LStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::S2LStatistic> > s2l_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter
 
 
@@ -3182,12 +2858,11 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignall
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3213,8 +2888,6 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignall
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::Statistics
 
@@ -3227,22 +2900,19 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignall
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: uint16
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::S2LStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::S2LStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::S2LStatistic
 
 
@@ -3254,12 +2924,11 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignall
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3285,8 +2954,6 @@ class MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignall
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::RemoteSignallingCounters::RemoteSignallingCounter::S2LStatistic::Statistics
 
@@ -3299,19 +2966,16 @@ class MplsTeStandby::SignallingCounters::TailsCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TailsCounter; //type: MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter> > tails_counter;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::TailsCounters
 
 
@@ -3323,12 +2987,11 @@ class MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
@@ -3336,14 +2999,12 @@ class MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter : public En
         YLeaf extended_tunnel_id; //type: string
         YLeaf lsp_id; //type: int32
         YLeaf tunnel_name; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::Statistics
         class S2LStatistic; //type: MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatistic> > s2l_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter
 
 
@@ -3355,12 +3016,11 @@ class MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::Statistics
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3386,8 +3046,6 @@ class MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::Statistics
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::Statistics
 
@@ -3400,22 +3058,19 @@ class MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatist
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: uint16
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatistic
 
 
@@ -3427,12 +3082,11 @@ class MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatist
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3458,8 +3112,6 @@ class MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatist
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::TailsCounters::TailsCounter::S2LStatistic::Statistics
 
@@ -3472,19 +3124,16 @@ class MplsTeStandby::SignallingCounters::Signallings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Signalling; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling> > signalling;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings
 
 
@@ -3496,12 +3145,11 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ctype; //type: CtypeEnum
         YLeaf tunnel_id; //type: int32
@@ -3512,12 +3160,10 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling : public Entity
         YLeaf destination_address; //type: string
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: int32
-
         class TeSignallingFilterData; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData> te_signalling_filter_data;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling
 
 
@@ -3529,22 +3175,19 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf statistics_filter; //type: TeStatsSigFilterEnum
-
         class TeSignallingFilterVif; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif
         class TeSignallingFilterLsp; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp> te_signalling_filter_lsp;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif> te_signalling_filter_vif;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData
 
 
@@ -3556,24 +3199,21 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_name; //type: string
         YLeaf tunnel_sig_name; //type: string
         YLeaf lsp_id; //type: uint16
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::Statistics
         class DestinationStatistic; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic> > destination_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif
 
 
@@ -3585,12 +3225,11 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3616,8 +3255,6 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::Statistics
 
@@ -3630,22 +3267,19 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::Statistics
         class S2LStatistic; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::S2LStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::S2LStatistic> > s2l_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic
 
 
@@ -3657,12 +3291,11 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3688,8 +3321,6 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::Statistics
 
@@ -3702,22 +3333,19 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: uint16
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::S2LStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::S2LStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::S2LStatistic
 
 
@@ -3729,12 +3357,11 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3760,8 +3387,6 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterVif::DestinationStatistic::S2LStatistic::Statistics
 
@@ -3774,22 +3399,19 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_name; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::Statistics
         class S2LStatistic; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::S2LStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::S2LStatistic> > s2l_statistic;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp
 
 
@@ -3801,12 +3423,11 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3832,8 +3453,6 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::Statistics
 
@@ -3846,22 +3465,19 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_originator; //type: string
         YLeaf sub_group_id; //type: uint16
         YLeaf destination_address; //type: string
-
         class Statistics; //type: MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::S2LStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::S2LStatistic::Statistics> statistics;
-
-
+        
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::S2LStatistic
 
 
@@ -3873,12 +3489,11 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3904,8 +3519,6 @@ class MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFi
         YLeaf rx_backup_assign_err_event; //type: uint32
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
-
-
 
 }; // MplsTeStandby::SignallingCounters::Signallings::Signalling::TeSignallingFilterData::TeSignallingFilterLsp::S2LStatistic::Statistics
 
@@ -3918,12 +3531,11 @@ class MplsTeStandby::SignallingCounters::SignallingSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tx_event_unknown; //type: uint32
         YLeaf tx_path_create_event; //type: uint32
@@ -3950,8 +3562,6 @@ class MplsTeStandby::SignallingCounters::SignallingSummary : public Entity
         YLeaf events_total_count; //type: uint32
         YLeaf events_count; //type: uint32
 
-
-
 }; // MplsTeStandby::SignallingCounters::SignallingSummary
 
 
@@ -3963,19 +3573,16 @@ class MplsTeStandby::DiffServTeClasses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TeClass; //type: MplsTeStandby::DiffServTeClasses::TeClass
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::DiffServTeClasses::TeClass> > te_class;
-
-
+        
 }; // MplsTeStandby::DiffServTeClasses
 
 
@@ -3987,19 +3594,16 @@ class MplsTeStandby::DiffServTeClasses::TeClass : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf class_number; //type: uint8
         YLeaf class_type; //type: uint8
         YLeaf priority; //type: uint8
         YLeaf class_status; //type: MplsTeDsteClassStatusEnum
-
-
 
 }; // MplsTeStandby::DiffServTeClasses::TeClass
 
@@ -4012,21 +3616,18 @@ class MplsTeStandby::Issu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Status; //type: MplsTeStandby::Issu::Status
         class Detail; //type: MplsTeStandby::Issu::Detail
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail> detail;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status> status;
-
-
+        
 }; // MplsTeStandby::Issu
 
 
@@ -4038,20 +3639,17 @@ class MplsTeStandby::Issu::Status : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf role; //type: TeProcRoleEnum
-
         class SyncStatusInformation; //type: MplsTeStandby::Issu::Status::SyncStatusInformation
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation> sync_status_information;
-
-
+        
 }; // MplsTeStandby::Issu::Status
 
 
@@ -4063,22 +3661,19 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_show_type; //type: TeSyncStatusShowEnum
-
         class SlaveSyncInformation; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation
         class MasterSyncInformation; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation> master_sync_information;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation> slave_sync_information;
-
-
+        
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation
 
 
@@ -4090,18 +3685,16 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf insync_tunnels; //type: uint32
         YLeaf insync_sub_ls_ps; //type: uint32
         YLeaf pending_tunnels; //type: uint32
         YLeaf pending_sub_ls_ps; //type: uint32
-
         class Idt; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt
         class VifPending; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::VifPending
         class S2LPending; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending
@@ -4109,8 +3702,7 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation :
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt> idt;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending> > s2l_pending;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::VifPending> > vif_pending;
-
-
+        
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation
 
 
@@ -4122,21 +3714,18 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CurrentIdtInfo; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo
         class PreviousIdtStatus; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo> current_idt_info;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus> previous_idt_status;
-
-
+        
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt
 
 
@@ -4148,12 +3737,11 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ready_status; //type: boolean
         YLeaf reason; //type: TeSyncNotReadyReasonEnum
@@ -4161,8 +3749,6 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo
 
@@ -4175,12 +3761,11 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ready_status; //type: boolean
         YLeaf reason; //type: TeSyncNotReadyReasonEnum
@@ -4188,8 +3773,6 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus
 
@@ -4202,17 +3785,14 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pending_reason; //type: TeSyncPendingReasonEnum
         YLeaf tunnel_name; //type: string
-
-
 
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::VifPending
 
@@ -4225,18 +3805,15 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pending_reason; //type: TeSyncPendingReasonEnum
         YLeaf signaled_name; //type: string
         YLeaf s2l_role; //type: MplsTeTunnelRoleEnum
-
-
 
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending
 
@@ -4249,19 +3826,16 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Idt; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt> idt;
-
-
+        
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation
 
 
@@ -4273,21 +3847,18 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CurrentIdtInfo; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo
         class PreviousIdtStatus; //type: MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo> current_idt_info;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus> previous_idt_status;
-
-
+        
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt
 
 
@@ -4299,12 +3870,11 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ready_status; //type: boolean
         YLeaf reason; //type: TeSyncNotReadyReasonEnum
@@ -4312,8 +3882,6 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation:
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo
 
@@ -4326,12 +3894,11 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ready_status; //type: boolean
         YLeaf reason; //type: TeSyncNotReadyReasonEnum
@@ -4339,8 +3906,6 @@ class MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation:
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // MplsTeStandby::Issu::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus
 
@@ -4353,20 +3918,17 @@ class MplsTeStandby::Issu::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf role; //type: TeProcRoleEnum
-
         class SyncStatusInformation; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation> sync_status_information;
-
-
+        
 }; // MplsTeStandby::Issu::Detail
 
 
@@ -4378,22 +3940,19 @@ class MplsTeStandby::Issu::Detail::SyncStatusInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_show_type; //type: TeSyncStatusShowEnum
-
         class SlaveSyncInformation; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation
         class MasterSyncInformation; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation::MasterSyncInformation
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation::MasterSyncInformation> master_sync_information;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation> slave_sync_information;
-
-
+        
 }; // MplsTeStandby::Issu::Detail::SyncStatusInformation
 
 
@@ -4405,18 +3964,16 @@ class MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf insync_tunnels; //type: uint32
         YLeaf insync_sub_ls_ps; //type: uint32
         YLeaf pending_tunnels; //type: uint32
         YLeaf pending_sub_ls_ps; //type: uint32
-
         class Idt; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt
         class VifPending; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending
         class S2LPending; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending
@@ -4424,8 +3981,7 @@ class MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation :
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt> idt;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending> > s2l_pending;
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending> > vif_pending;
-
-
+        
 }; // MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation
 
 
@@ -4437,21 +3993,18 @@ class MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CurrentIdtInfo; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo
         class PreviousIdtStatus; //type: MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus
 
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo> current_idt_info;
         std::shared_ptr<Cisco_IOS_XR_mpls_te_oper::MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus> previous_idt_status;
-
-
+        
 }; // MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt
 
 
@@ -4463,12 +4016,11 @@ class MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ready_status; //type: boolean
         YLeaf reason; //type: TeSyncNotReadyReasonEnum
@@ -4476,8 +4028,6 @@ class MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // MplsTeStandby::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo
 

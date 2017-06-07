@@ -14,7 +14,6 @@ Sbfd::Sbfd()
     target_identifier(std::make_shared<Sbfd::TargetIdentifier>())
 {
     target_identifier->parent = this;
-    children["target-identifier"] = target_identifier;
 
     yang_name = "sbfd"; yang_parent_name = "Cisco-IOS-XR-ip-sbfd-oper";
 }
@@ -43,12 +42,12 @@ std::string Sbfd::get_segment_path() const
 
 }
 
-EntityPath Sbfd::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Sbfd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sbfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "target-identifier")
     {
-        if(target_identifier != nullptr)
-        {
-            children["target-identifier"] = target_identifier;
-        }
-        else
+        if(target_identifier == nullptr)
         {
             target_identifier = std::make_shared<Sbfd::TargetIdentifier>();
-            target_identifier->parent = this;
-            children["target-identifier"] = target_identifier;
         }
-        return children.at("target-identifier");
+        return target_identifier;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::get_children() const
 {
-    if(children.find("target-identifier") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(target_identifier != nullptr)
     {
-        if(target_identifier != nullptr)
-        {
-            children["target-identifier"] = target_identifier;
-        }
+        children["target-identifier"] = target_identifier;
     }
 
     return children;
@@ -133,10 +115,8 @@ Sbfd::TargetIdentifier::TargetIdentifier()
 	,remote_vrfs(std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs>())
 {
     local_vrfs->parent = this;
-    children["local-vrfs"] = local_vrfs;
 
     remote_vrfs->parent = this;
-    children["remote-vrfs"] = remote_vrfs;
 
     yang_name = "target-identifier"; yang_parent_name = "sbfd";
 }
@@ -167,7 +147,7 @@ std::string Sbfd::TargetIdentifier::get_segment_path() const
 
 }
 
-EntityPath Sbfd::TargetIdentifier::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -190,64 +170,38 @@ EntityPath Sbfd::TargetIdentifier::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-vrfs")
     {
-        if(local_vrfs != nullptr)
-        {
-            children["local-vrfs"] = local_vrfs;
-        }
-        else
+        if(local_vrfs == nullptr)
         {
             local_vrfs = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs>();
-            local_vrfs->parent = this;
-            children["local-vrfs"] = local_vrfs;
         }
-        return children.at("local-vrfs");
+        return local_vrfs;
     }
 
     if(child_yang_name == "remote-vrfs")
     {
-        if(remote_vrfs != nullptr)
-        {
-            children["remote-vrfs"] = remote_vrfs;
-        }
-        else
+        if(remote_vrfs == nullptr)
         {
             remote_vrfs = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs>();
-            remote_vrfs->parent = this;
-            children["remote-vrfs"] = remote_vrfs;
         }
-        return children.at("remote-vrfs");
+        return remote_vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::get_children() const
 {
-    if(children.find("local-vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_vrfs != nullptr)
     {
-        if(local_vrfs != nullptr)
-        {
-            children["local-vrfs"] = local_vrfs;
-        }
+        children["local-vrfs"] = local_vrfs;
     }
 
-    if(children.find("remote-vrfs") == children.end())
+    if(remote_vrfs != nullptr)
     {
-        if(remote_vrfs != nullptr)
-        {
-            children["remote-vrfs"] = remote_vrfs;
-        }
+        children["remote-vrfs"] = remote_vrfs;
     }
 
     return children;
@@ -295,7 +249,7 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::get_segment_path() const
 
 }
 
-EntityPath Sbfd::TargetIdentifier::RemoteVrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -318,15 +272,6 @@ EntityPath Sbfd::TargetIdentifier::RemoteVrfs::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-vrf")
     {
         for(auto const & c : remote_vrf)
@@ -334,28 +279,24 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf>();
         c->parent = this;
-        remote_vrf.push_back(std::move(c));
-        children[segment_path] = remote_vrf.back();
-        return children.at(segment_path);
+        remote_vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::RemoteVrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remote_vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -406,7 +347,7 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_segment_path() co
 
 }
 
-EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -430,15 +371,6 @@ EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_entity_path(Entity
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-discriminator")
     {
         for(auto const & c : remote_discriminator)
@@ -446,28 +378,24 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator>();
         c->parent = this;
-        remote_discriminator.push_back(std::move(c));
-        children[segment_path] = remote_discriminator.back();
-        return children.at(segment_path);
+        remote_discriminator.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remote_discriminator)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -495,7 +423,6 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::RemoteDiscri
     ip_address(std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress>())
 {
     ip_address->parent = this;
-    children["ip-address"] = ip_address;
 
     yang_name = "remote-discriminator"; yang_parent_name = "remote-vrf";
 }
@@ -540,7 +467,7 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::
 
 }
 
-EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -571,41 +498,24 @@ EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::g
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-address")
     {
-        if(ip_address != nullptr)
-        {
-            children["ip-address"] = ip_address;
-        }
-        else
+        if(ip_address == nullptr)
         {
             ip_address = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress>();
-            ip_address->parent = this;
-            children["ip-address"] = ip_address;
         }
-        return children.at("ip-address");
+        return ip_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_children() const
 {
-    if(children.find("ip-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_address != nullptr)
     {
-        if(ip_address != nullptr)
-        {
-            children["ip-address"] = ip_address;
-        }
+        children["ip-address"] = ip_address;
     }
 
     return children;
@@ -687,7 +597,7 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::
 
 }
 
-EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -714,20 +624,12 @@ EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::I
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -789,7 +691,7 @@ std::string Sbfd::TargetIdentifier::LocalVrfs::get_segment_path() const
 
 }
 
-EntityPath Sbfd::TargetIdentifier::LocalVrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::LocalVrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -812,15 +714,6 @@ EntityPath Sbfd::TargetIdentifier::LocalVrfs::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-vrf")
     {
         for(auto const & c : local_vrf)
@@ -828,28 +721,24 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf>();
         c->parent = this;
-        local_vrf.push_back(std::move(c));
-        children[segment_path] = local_vrf.back();
-        return children.at(segment_path);
+        local_vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::LocalVrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -900,7 +789,7 @@ std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_segment_path() cons
 
 }
 
-EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -924,15 +813,6 @@ EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-discriminator")
     {
         for(auto const & c : local_discriminator)
@@ -940,28 +820,24 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator>();
         c->parent = this;
-        local_discriminator.push_back(std::move(c));
-        children[segment_path] = local_discriminator.back();
-        return children.at(segment_path);
+        local_discriminator.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_discriminator)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1024,7 +900,7 @@ std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get
 
 }
 
-EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_entity_path(Entity* ancestor) const
+const EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1054,20 +930,12 @@ EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_
 
 std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

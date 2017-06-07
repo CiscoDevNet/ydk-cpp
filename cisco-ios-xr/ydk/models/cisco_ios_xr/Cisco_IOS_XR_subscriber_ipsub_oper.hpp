@@ -18,23 +18,20 @@ class IpSubscriber : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: IpSubscriber::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes> nodes;
-
-
+        
 }; // IpSubscriber
 
 
@@ -46,19 +43,16 @@ class IpSubscriber::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: IpSubscriber::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node> > node;
-
-
+        
 }; // IpSubscriber::Nodes
 
 
@@ -70,15 +64,13 @@ class IpSubscriber::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Summary; //type: IpSubscriber::Nodes::Node::Summary
         class Interfaces; //type: IpSubscriber::Nodes::Node::Interfaces
         class AccessInterfaces; //type: IpSubscriber::Nodes::Node::AccessInterfaces
@@ -86,8 +78,7 @@ class IpSubscriber::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces> access_interfaces;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary> summary;
-
-
+        
 }; // IpSubscriber::Nodes::Node
 
 
@@ -99,13 +90,11 @@ class IpSubscriber::Nodes::Node::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AccessInterfaceSummary; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary
         class InterfaceCounts; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts
@@ -114,8 +103,7 @@ class IpSubscriber::Nodes::Node::Summary : public Entity
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary> access_interface_summary;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts> interface_counts;
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::Vrf> > vrf;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Summary
 
 
@@ -127,22 +115,19 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interfaces; //type: uint32
-
         class Initiators; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators
         class Ipv6Initiators; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators> initiators;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators> ipv6_initiators;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary
 
 
@@ -154,21 +139,18 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp> dhcp;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger> packet_trigger;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators
 
 
@@ -180,17 +162,14 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dh
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fsol_packets; //type: uint32
         YLeaf fsol_bytes; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp
 
@@ -203,17 +182,14 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fsol_packets; //type: uint32
         YLeaf fsol_bytes; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger
 
@@ -226,21 +202,18 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp> dhcp;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger> packet_trigger;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
 
@@ -252,17 +225,14 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fsol_packets; //type: uint32
         YLeaf fsol_bytes; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp
 
@@ -275,17 +245,14 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fsol_packets; //type: uint32
         YLeaf fsol_bytes; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger
 
@@ -298,21 +265,18 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Initiators; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators
         class Ipv6Initiators; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators> initiators;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators> ipv6_initiators;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts
 
 
@@ -324,21 +288,18 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp> dhcp;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger> packet_trigger;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators
 
 
@@ -350,12 +311,11 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf invalid; //type: uint32
         YLeaf initialized; //type: uint32
@@ -372,8 +332,6 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp : pu
         YLeaf disconnected; //type: uint32
         YLeaf error; //type: uint32
         YLeaf total_interfaces; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp
 
@@ -386,12 +344,11 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTri
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf invalid; //type: uint32
         YLeaf initialized; //type: uint32
@@ -408,8 +365,6 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTri
         YLeaf disconnected; //type: uint32
         YLeaf error; //type: uint32
         YLeaf total_interfaces; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger
 
@@ -422,21 +377,18 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp> dhcp;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger> packet_trigger;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators
 
 
@@ -448,12 +400,11 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf invalid; //type: uint32
         YLeaf initialized; //type: uint32
@@ -470,8 +421,6 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp 
         YLeaf disconnected; //type: uint32
         YLeaf error; //type: uint32
         YLeaf total_interfaces; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp
 
@@ -484,12 +433,11 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Packe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf invalid; //type: uint32
         YLeaf initialized; //type: uint32
@@ -507,8 +455,6 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Packe
         YLeaf error; //type: uint32
         YLeaf total_interfaces; //type: uint32
 
-
-
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger
 
 
@@ -520,19 +466,16 @@ class IpSubscriber::Nodes::Node::Summary::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf ipv6vrf_name; //type: string
         YLeaf interfaces; //type: uint64
         YLeaf ipv6_interfaces; //type: uint64
-
-
 
 }; // IpSubscriber::Nodes::Node::Summary::Vrf
 
@@ -545,19 +488,16 @@ class IpSubscriber::Nodes::Node::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: IpSubscriber::Nodes::Node::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface> > interface;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Interfaces
 
 
@@ -569,12 +509,11 @@ class IpSubscriber::Nodes::Node::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf access_interface; //type: string
@@ -596,14 +535,12 @@ class IpSubscriber::Nodes::Node::Interfaces::Interface : public Entity
         YLeaf ipv6_current_change_age; //type: string
         YLeaf is_l2_connected; //type: boolean
         YLeaf session_type; //type: string
-
         class Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
         class Ipv6Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf> ipv6vrf;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf> vrf;
-
-
+        
 }; // IpSubscriber::Nodes::Node::Interfaces::Interface
 
 
@@ -615,17 +552,14 @@ class IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf table_name; //type: string
-
-
 
 }; // IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
 
@@ -638,17 +572,14 @@ class IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf table_name; //type: string
-
-
 
 }; // IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
 
@@ -661,19 +592,16 @@ class IpSubscriber::Nodes::Node::AccessInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AccessInterface; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface> > access_interface;
-
-
+        
 }; // IpSubscriber::Nodes::Node::AccessInterfaces
 
 
@@ -685,12 +613,11 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_creation_time; //type: string
@@ -699,7 +626,6 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface : public Enti
         YLeaf state; //type: IpsubMaParentIntfStateDataEnum
         YLeaf ipv6_state; //type: IpsubMaParentIntfStateDataEnum
         YLeaf vlan_type; //type: IpsubMaParentIntfVlanEnum
-
         class Initiators; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators
         class Ipv6Initiators; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators
         class SessionLimit; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
@@ -707,8 +633,7 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface : public Enti
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators> initiators;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators> ipv6_initiators;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit> session_limit;
-
-
+        
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface
 
 
@@ -720,21 +645,18 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dhcp; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp> dhcp;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger> packet_trigger;
-
-
+        
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators
 
 
@@ -746,12 +668,11 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_configured; //type: boolean
         YLeaf unique_ip_check; //type: boolean
@@ -763,8 +684,6 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::
         YLeaf fsol_dropped_packets_flow; //type: uint32
         YLeaf fsol_dropped_packets_session_limit; //type: uint32
         YLeaf fsol_dropped_packets_dup_addr; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp
 
@@ -777,12 +696,11 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_configured; //type: boolean
         YLeaf unique_ip_check; //type: boolean
@@ -794,8 +712,6 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::
         YLeaf fsol_dropped_packets_flow; //type: uint32
         YLeaf fsol_dropped_packets_session_limit; //type: uint32
         YLeaf fsol_dropped_packets_dup_addr; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger
 
@@ -808,21 +724,18 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiato
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Dhcp; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp> dhcp;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger> packet_trigger;
-
-
+        
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators
 
 
@@ -834,12 +747,11 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiato
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_configured; //type: boolean
         YLeaf unique_ip_check; //type: boolean
@@ -851,8 +763,6 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiato
         YLeaf fsol_dropped_packets_flow; //type: uint32
         YLeaf fsol_dropped_packets_session_limit; //type: uint32
         YLeaf fsol_dropped_packets_dup_addr; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp
 
@@ -865,12 +775,11 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiato
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_configured; //type: boolean
         YLeaf unique_ip_check; //type: boolean
@@ -883,8 +792,6 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiato
         YLeaf fsol_dropped_packets_session_limit; //type: uint32
         YLeaf fsol_dropped_packets_dup_addr; //type: uint32
 
-
-
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger
 
 
@@ -896,21 +803,18 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UnclassifiedSource; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource
         class Total; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total> total;
         std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource> unclassified_source;
-
-
+        
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
 
 
@@ -922,16 +826,13 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf per_vlan; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource
 
@@ -944,16 +845,13 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf per_vlan; //type: uint32
-
-
 
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
 

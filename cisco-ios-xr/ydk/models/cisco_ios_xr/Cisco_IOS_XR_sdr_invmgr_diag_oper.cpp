@@ -14,7 +14,6 @@ Diag::Diag()
     racks(std::make_shared<Diag::Racks>())
 {
     racks->parent = this;
-    children["racks"] = racks;
 
     yang_name = "diag"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-diag-oper";
 }
@@ -43,12 +42,12 @@ std::string Diag::get_segment_path() const
 
 }
 
-EntityPath Diag::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Diag::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Diag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "racks")
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
-        else
+        if(racks == nullptr)
         {
             racks = std::make_shared<Diag::Racks>();
-            racks->parent = this;
-            children["racks"] = racks;
         }
-        return children.at("racks");
+        return racks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::get_children() const
 {
-    if(children.find("racks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(racks != nullptr)
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
+        children["racks"] = racks;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Diag::Racks::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Diag::Racks::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Diag::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rack")
     {
         for(auto const & c : rack)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Diag::Racks::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Diag::Racks::Rack>();
         c->parent = this;
-        rack.push_back(std::move(c));
-        children[segment_path] = rack.back();
-        return children.at(segment_path);
+        rack.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rack)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -245,16 +214,12 @@ Diag::Racks::Rack::Rack()
 	,slots(std::make_shared<Diag::Racks::Rack::Slots>())
 {
     chassis->parent = this;
-    children["chassis"] = chassis;
 
     fan_traies->parent = this;
-    children["fan-traies"] = fan_traies;
 
     power_shelfs->parent = this;
-    children["power-shelfs"] = power_shelfs;
 
     slots->parent = this;
-    children["slots"] = slots;
 
     yang_name = "rack"; yang_parent_name = "racks";
 }
@@ -291,7 +256,7 @@ std::string Diag::Racks::Rack::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -315,110 +280,66 @@ EntityPath Diag::Racks::Rack::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Diag::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chassis")
     {
-        if(chassis != nullptr)
-        {
-            children["chassis"] = chassis;
-        }
-        else
+        if(chassis == nullptr)
         {
             chassis = std::make_shared<Diag::Racks::Rack::Chassis>();
-            chassis->parent = this;
-            children["chassis"] = chassis;
         }
-        return children.at("chassis");
+        return chassis;
     }
 
     if(child_yang_name == "fan-traies")
     {
-        if(fan_traies != nullptr)
-        {
-            children["fan-traies"] = fan_traies;
-        }
-        else
+        if(fan_traies == nullptr)
         {
             fan_traies = std::make_shared<Diag::Racks::Rack::FanTraies>();
-            fan_traies->parent = this;
-            children["fan-traies"] = fan_traies;
         }
-        return children.at("fan-traies");
+        return fan_traies;
     }
 
     if(child_yang_name == "power-shelfs")
     {
-        if(power_shelfs != nullptr)
-        {
-            children["power-shelfs"] = power_shelfs;
-        }
-        else
+        if(power_shelfs == nullptr)
         {
             power_shelfs = std::make_shared<Diag::Racks::Rack::PowerShelfs>();
-            power_shelfs->parent = this;
-            children["power-shelfs"] = power_shelfs;
         }
-        return children.at("power-shelfs");
+        return power_shelfs;
     }
 
     if(child_yang_name == "slots")
     {
-        if(slots != nullptr)
-        {
-            children["slots"] = slots;
-        }
-        else
+        if(slots == nullptr)
         {
             slots = std::make_shared<Diag::Racks::Rack::Slots>();
-            slots->parent = this;
-            children["slots"] = slots;
         }
-        return children.at("slots");
+        return slots;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::get_children() const
 {
-    if(children.find("chassis") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chassis != nullptr)
     {
-        if(chassis != nullptr)
-        {
-            children["chassis"] = chassis;
-        }
+        children["chassis"] = chassis;
     }
 
-    if(children.find("fan-traies") == children.end())
+    if(fan_traies != nullptr)
     {
-        if(fan_traies != nullptr)
-        {
-            children["fan-traies"] = fan_traies;
-        }
+        children["fan-traies"] = fan_traies;
     }
 
-    if(children.find("power-shelfs") == children.end())
+    if(power_shelfs != nullptr)
     {
-        if(power_shelfs != nullptr)
-        {
-            children["power-shelfs"] = power_shelfs;
-        }
+        children["power-shelfs"] = power_shelfs;
     }
 
-    if(children.find("slots") == children.end())
+    if(slots != nullptr)
     {
-        if(slots != nullptr)
-        {
-            children["slots"] = slots;
-        }
+        children["slots"] = slots;
     }
 
     return children;
@@ -470,7 +391,7 @@ std::string Diag::Racks::Rack::PowerShelfs::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::PowerShelfs::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::PowerShelfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -493,15 +414,6 @@ EntityPath Diag::Racks::Rack::PowerShelfs::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "power-shelf")
     {
         for(auto const & c : power_shelf)
@@ -509,28 +421,24 @@ std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf>();
         c->parent = this;
-        power_shelf.push_back(std::move(c));
-        children[segment_path] = power_shelf.back();
-        return children.at(segment_path);
+        power_shelf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::PowerShelfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : power_shelf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -547,7 +455,6 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerShelf()
     power_supplies(std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies>())
 {
     power_supplies->parent = this;
-    children["power-supplies"] = power_supplies;
 
     yang_name = "power-shelf"; yang_parent_name = "power-shelfs";
 }
@@ -578,7 +485,7 @@ std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -602,41 +509,24 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "power-supplies")
     {
-        if(power_supplies != nullptr)
-        {
-            children["power-supplies"] = power_supplies;
-        }
-        else
+        if(power_supplies == nullptr)
         {
             power_supplies = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies>();
-            power_supplies->parent = this;
-            children["power-supplies"] = power_supplies;
         }
-        return children.at("power-supplies");
+        return power_supplies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::PowerShelfs::PowerShelf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::get_children() const
 {
-    if(children.find("power-supplies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(power_supplies != nullptr)
     {
-        if(power_supplies != nullptr)
-        {
-            children["power-supplies"] = power_supplies;
-        }
+        children["power-supplies"] = power_supplies;
     }
 
     return children;
@@ -688,7 +578,7 @@ std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_segme
 
 }
 
-EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -711,15 +601,6 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_entity
 
 std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "power-supply")
     {
         for(auto const & c : power_supply)
@@ -727,28 +608,24 @@ std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplie
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply>();
         c->parent = this;
-        power_supply.push_back(std::move(c));
-        children[segment_path] = power_supply.back();
-        return children.at(segment_path);
+        power_supply.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : power_supply)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -765,7 +642,6 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::PowerSup
     information(std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information>())
 {
     information->parent = this;
-    children["information"] = information;
 
     yang_name = "power-supply"; yang_parent_name = "power-supplies";
 }
@@ -796,7 +672,7 @@ std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupp
 
 }
 
-EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -820,41 +696,24 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSuppl
 
 std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
-        else
+        if(information == nullptr)
         {
             information = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information>();
-            information->parent = this;
-            children["information"] = information;
         }
-        return children.at("information");
+        return information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_children() const
 {
-    if(children.find("information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(information != nullptr)
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
+        children["information"] = information;
     }
 
     return children;
@@ -930,7 +789,6 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Informat
     rma(std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "information"; yang_parent_name = "power-supply";
 }
@@ -1071,7 +929,7 @@ std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupp
 
 }
 
-EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1150,41 +1008,24 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSuppl
 
 std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -1455,7 +1296,7 @@ std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupp
 
 }
 
-EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1481,20 +1322,12 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSuppl
 
 std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1552,7 +1385,7 @@ std::string Diag::Racks::Rack::FanTraies::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::FanTraies::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::FanTraies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1575,15 +1408,6 @@ EntityPath Diag::Racks::Rack::FanTraies::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fan-tray")
     {
         for(auto const & c : fan_tray)
@@ -1591,28 +1415,24 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray>();
         c->parent = this;
-        fan_tray.push_back(std::move(c));
-        children[segment_path] = fan_tray.back();
-        return children.at(segment_path);
+        fan_tray.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::FanTraies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fan_tray)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1629,7 +1449,6 @@ Diag::Racks::Rack::FanTraies::FanTray::FanTray()
     fanses(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses>())
 {
     fanses->parent = this;
-    children["fanses"] = fanses;
 
     yang_name = "fan-tray"; yang_parent_name = "fan-traies";
 }
@@ -1660,7 +1479,7 @@ std::string Diag::Racks::Rack::FanTraies::FanTray::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::FanTraies::FanTray::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::FanTraies::FanTray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1684,41 +1503,24 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fanses")
     {
-        if(fanses != nullptr)
-        {
-            children["fanses"] = fanses;
-        }
-        else
+        if(fanses == nullptr)
         {
             fanses = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses>();
-            fanses->parent = this;
-            children["fanses"] = fanses;
         }
-        return children.at("fanses");
+        return fanses;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::FanTraies::FanTray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::get_children() const
 {
-    if(children.find("fanses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fanses != nullptr)
     {
-        if(fanses != nullptr)
-        {
-            children["fanses"] = fanses;
-        }
+        children["fanses"] = fanses;
     }
 
     return children;
@@ -1770,7 +1572,7 @@ std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_segment_path() co
 
 }
 
-EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1793,15 +1595,6 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_entity_path(Entity
 
 std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fans")
     {
         for(auto const & c : fans)
@@ -1809,28 +1602,24 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans>();
         c->parent = this;
-        fans.push_back(std::move(c));
-        children[segment_path] = fans.back();
-        return children.at(segment_path);
+        fans.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fans)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1847,7 +1636,6 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Fans()
     information(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information>())
 {
     information->parent = this;
-    children["information"] = information;
 
     yang_name = "fans"; yang_parent_name = "fanses";
 }
@@ -1878,7 +1666,7 @@ std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_segment_pat
 
 }
 
-EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1902,41 +1690,24 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_entity_path(
 
 std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
-        else
+        if(information == nullptr)
         {
             information = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information>();
-            information->parent = this;
-            children["information"] = information;
         }
-        return children.at("information");
+        return information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_children() const
 {
-    if(children.find("information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(information != nullptr)
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
+        children["information"] = information;
     }
 
     return children;
@@ -2012,7 +1783,6 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Information()
     rma(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "information"; yang_parent_name = "fans";
 }
@@ -2153,7 +1923,7 @@ std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::ge
 
 }
 
-EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2232,41 +2002,24 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get
 
 std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -2537,7 +2290,7 @@ std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rm
 
 }
 
-EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2563,20 +2316,12 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma
 
 std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2634,7 +2379,7 @@ std::string Diag::Racks::Rack::Slots::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2657,15 +2402,6 @@ EntityPath Diag::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slot")
     {
         for(auto const & c : slot)
@@ -2673,28 +2409,24 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(std::move(c));
-        children[segment_path] = slot.back();
-        return children.at(segment_path);
+        slot.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Slots::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slot)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2711,7 +2443,6 @@ Diag::Racks::Rack::Slots::Slot::Slot()
     instances(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances>())
 {
     instances->parent = this;
-    children["instances"] = instances;
 
     yang_name = "slot"; yang_parent_name = "slots";
 }
@@ -2742,7 +2473,7 @@ std::string Diag::Racks::Rack::Slots::Slot::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2766,41 +2497,24 @@ EntityPath Diag::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instances")
     {
-        if(instances != nullptr)
-        {
-            children["instances"] = instances;
-        }
-        else
+        if(instances == nullptr)
         {
             instances = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances>();
-            instances->parent = this;
-            children["instances"] = instances;
         }
-        return children.at("instances");
+        return instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Slots::Slot::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::get_children() const
 {
-    if(children.find("instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instances != nullptr)
     {
-        if(instances != nullptr)
-        {
-            children["instances"] = instances;
-        }
+        children["instances"] = instances;
     }
 
     return children;
@@ -2852,7 +2566,7 @@ std::string Diag::Racks::Rack::Slots::Slot::Instances::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::Slots::Slot::Instances::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2875,15 +2589,6 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance")
     {
         for(auto const & c : instance)
@@ -2891,28 +2596,24 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance>();
         c->parent = this;
-        instance.push_back(std::move(c));
-        children[segment_path] = instance.back();
-        return children.at(segment_path);
+        instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Slots::Slot::Instances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2929,7 +2630,6 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Instance()
     detail(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     yang_name = "instance"; yang_parent_name = "instances";
 }
@@ -2960,7 +2660,7 @@ std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_segment_pat
 
 }
 
-EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2984,41 +2684,24 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_entity_path(
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
     return children;
@@ -3039,7 +2722,6 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Detail()
     card_instance(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance>())
 {
     card_instance->parent = this;
-    children["card-instance"] = card_instance;
 
     yang_name = "detail"; yang_parent_name = "instance";
 }
@@ -3070,7 +2752,7 @@ std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_seg
 
 }
 
-EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3094,41 +2776,24 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_enti
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "card-instance")
     {
-        if(card_instance != nullptr)
-        {
-            children["card-instance"] = card_instance;
-        }
-        else
+        if(card_instance == nullptr)
         {
             card_instance = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance>();
-            card_instance->parent = this;
-            children["card-instance"] = card_instance;
         }
-        return children.at("card-instance");
+        return card_instance;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_children() const
 {
-    if(children.find("card-instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(card_instance != nullptr)
     {
-        if(card_instance != nullptr)
-        {
-            children["card-instance"] = card_instance;
-        }
+        children["card-instance"] = card_instance;
     }
 
     return children;
@@ -3204,7 +2869,6 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::CardI
     rma(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "card-instance"; yang_parent_name = "detail";
 }
@@ -3345,7 +3009,7 @@ std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardIns
 
 }
 
-EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3424,41 +3088,24 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInst
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -3729,7 +3376,7 @@ std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardIns
 
 }
 
-EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3755,20 +3402,12 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInst
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3850,7 +3489,6 @@ Diag::Racks::Rack::Chassis::Chassis()
     rma(std::make_shared<Diag::Racks::Rack::Chassis::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "chassis"; yang_parent_name = "rack";
 }
@@ -3991,7 +3629,7 @@ std::string Diag::Racks::Rack::Chassis::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::Chassis::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Chassis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4070,41 +3708,24 @@ EntityPath Diag::Racks::Rack::Chassis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Diag::Racks::Rack::Chassis::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Chassis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Chassis::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -4375,7 +3996,7 @@ std::string Diag::Racks::Rack::Chassis::Rma::get_segment_path() const
 
 }
 
-EntityPath Diag::Racks::Rack::Chassis::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Diag::Racks::Rack::Chassis::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4401,20 +4022,12 @@ EntityPath Diag::Racks::Rack::Chassis::Rma::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Diag::Racks::Rack::Chassis::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Diag::Racks::Rack::Chassis::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Chassis::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

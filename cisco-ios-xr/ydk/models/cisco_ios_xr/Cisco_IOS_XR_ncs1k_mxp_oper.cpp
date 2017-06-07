@@ -15,10 +15,8 @@ HwModule::HwModule()
 	,slice_ids(std::make_shared<HwModule::SliceIds>())
 {
     slice_all->parent = this;
-    children["slice-all"] = slice_all;
 
     slice_ids->parent = this;
-    children["slice-ids"] = slice_ids;
 
     yang_name = "hw-module"; yang_parent_name = "Cisco-IOS-XR-ncs1k-mxp-oper";
 }
@@ -49,12 +47,12 @@ std::string HwModule::get_segment_path() const
 
 }
 
-EntityPath HwModule::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath HwModule::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slice-all")
     {
-        if(slice_all != nullptr)
-        {
-            children["slice-all"] = slice_all;
-        }
-        else
+        if(slice_all == nullptr)
         {
             slice_all = std::make_shared<HwModule::SliceAll>();
-            slice_all->parent = this;
-            children["slice-all"] = slice_all;
         }
-        return children.at("slice-all");
+        return slice_all;
     }
 
     if(child_yang_name == "slice-ids")
     {
-        if(slice_ids != nullptr)
-        {
-            children["slice-ids"] = slice_ids;
-        }
-        else
+        if(slice_ids == nullptr)
         {
             slice_ids = std::make_shared<HwModule::SliceIds>();
-            slice_ids->parent = this;
-            children["slice-ids"] = slice_ids;
         }
-        return children.at("slice-ids");
+        return slice_ids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::get_children() const
 {
-    if(children.find("slice-all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(slice_all != nullptr)
     {
-        if(slice_all != nullptr)
-        {
-            children["slice-all"] = slice_all;
-        }
+        children["slice-all"] = slice_all;
     }
 
-    if(children.find("slice-ids") == children.end())
+    if(slice_ids != nullptr)
     {
-        if(slice_ids != nullptr)
-        {
-            children["slice-ids"] = slice_ids;
-        }
+        children["slice-ids"] = slice_ids;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string HwModule::SliceIds::get_segment_path() const
 
 }
 
-EntityPath HwModule::SliceIds::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath HwModule::SliceIds::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HwModule::SliceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slice-id")
     {
         for(auto const & c : slice_id)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> HwModule::SliceIds::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HwModule::SliceIds::SliceId>();
         c->parent = this;
-        slice_id.push_back(std::move(c));
-        children[segment_path] = slice_id.back();
-        return children.at(segment_path);
+        slice_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slice_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -305,7 +264,7 @@ std::string HwModule::SliceIds::SliceId::get_segment_path() const
 
 }
 
-EntityPath HwModule::SliceIds::SliceId::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceIds::SliceId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -329,15 +288,6 @@ EntityPath HwModule::SliceIds::SliceId::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HwModule::SliceIds::SliceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slice-info")
     {
         for(auto const & c : slice_info)
@@ -345,28 +295,24 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo>();
         c->parent = this;
-        slice_info.push_back(std::move(c));
-        children[segment_path] = slice_info.back();
-        return children.at(segment_path);
+        slice_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceIds::SliceId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slice_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -445,7 +391,7 @@ std::string HwModule::SliceIds::SliceId::SliceInfo::get_segment_path() const
 
 }
 
-EntityPath HwModule::SliceIds::SliceId::SliceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceIds::SliceId::SliceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -477,15 +423,6 @@ EntityPath HwModule::SliceIds::SliceId::SliceInfo::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-port")
     {
         for(auto const & c : client_port)
@@ -493,28 +430,24 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo::ClientPort>();
         c->parent = this;
-        client_port.push_back(std::move(c));
-        children[segment_path] = client_port.back();
-        return children.at(segment_path);
+        client_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceIds::SliceId::SliceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -604,7 +537,7 @@ std::string HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_segment_path
 
 }
 
-EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -629,15 +562,6 @@ EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_entity_path(E
 
 std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trunk-port")
     {
         for(auto const & c : trunk_port)
@@ -645,28 +569,24 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort>();
         c->parent = this;
-        trunk_port.push_back(std::move(c));
-        children[segment_path] = trunk_port.back();
-        return children.at(segment_path);
+        trunk_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : trunk_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -721,7 +641,7 @@ std::string HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_s
 
 }
 
-EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -747,20 +667,12 @@ EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_en
 
 std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -818,7 +730,7 @@ std::string HwModule::SliceAll::get_segment_path() const
 
 }
 
-EntityPath HwModule::SliceAll::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -841,15 +753,6 @@ EntityPath HwModule::SliceAll::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HwModule::SliceAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slice-info")
     {
         for(auto const & c : slice_info)
@@ -857,28 +760,24 @@ std::shared_ptr<Entity> HwModule::SliceAll::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HwModule::SliceAll::SliceInfo>();
         c->parent = this;
-        slice_info.push_back(std::move(c));
-        children[segment_path] = slice_info.back();
-        return children.at(segment_path);
+        slice_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slice_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -953,7 +852,7 @@ std::string HwModule::SliceAll::SliceInfo::get_segment_path() const
 
 }
 
-EntityPath HwModule::SliceAll::SliceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceAll::SliceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -985,15 +884,6 @@ EntityPath HwModule::SliceAll::SliceInfo::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-port")
     {
         for(auto const & c : client_port)
@@ -1001,28 +891,24 @@ std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HwModule::SliceAll::SliceInfo::ClientPort>();
         c->parent = this;
-        client_port.push_back(std::move(c));
-        children[segment_path] = client_port.back();
-        return children.at(segment_path);
+        client_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceAll::SliceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::SliceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1112,7 +998,7 @@ std::string HwModule::SliceAll::SliceInfo::ClientPort::get_segment_path() const
 
 }
 
-EntityPath HwModule::SliceAll::SliceInfo::ClientPort::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceAll::SliceInfo::ClientPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1137,15 +1023,6 @@ EntityPath HwModule::SliceAll::SliceInfo::ClientPort::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::ClientPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trunk-port")
     {
         for(auto const & c : trunk_port)
@@ -1153,28 +1030,24 @@ std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::ClientPort::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort>();
         c->parent = this;
-        trunk_port.push_back(std::move(c));
-        children[segment_path] = trunk_port.back();
-        return children.at(segment_path);
+        trunk_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceAll::SliceInfo::ClientPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::SliceInfo::ClientPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : trunk_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1229,7 +1102,7 @@ std::string HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_segment_pa
 
 }
 
-EntityPath HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_entity_path(Entity* ancestor) const
+const EntityPath HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1255,20 +1128,12 @@ EntityPath HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_entity_path
 
 std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

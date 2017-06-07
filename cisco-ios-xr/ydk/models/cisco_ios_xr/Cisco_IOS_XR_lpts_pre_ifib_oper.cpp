@@ -14,7 +14,6 @@ LptsPifib::LptsPifib()
     nodes(std::make_shared<LptsPifib::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "lpts-pifib"; yang_parent_name = "Cisco-IOS-XR-lpts-pre-ifib-oper";
 }
@@ -43,12 +42,12 @@ std::string LptsPifib::get_segment_path() const
 
 }
 
-EntityPath LptsPifib::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath LptsPifib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LptsPifib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<LptsPifib::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string LptsPifib::Nodes::get_segment_path() const
 
 }
 
-EntityPath LptsPifib::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath LptsPifib::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LptsPifib::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,10 +212,8 @@ LptsPifib::Nodes::Node::Node()
 	,type_values(std::make_shared<LptsPifib::Nodes::Node::TypeValues>())
 {
     hardware->parent = this;
-    children["hardware"] = hardware;
 
     type_values->parent = this;
-    children["type-values"] = type_values;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -279,7 +246,7 @@ std::string LptsPifib::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath LptsPifib::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,64 +270,38 @@ EntityPath LptsPifib::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hardware")
     {
-        if(hardware != nullptr)
-        {
-            children["hardware"] = hardware;
-        }
-        else
+        if(hardware == nullptr)
         {
             hardware = std::make_shared<LptsPifib::Nodes::Node::Hardware>();
-            hardware->parent = this;
-            children["hardware"] = hardware;
         }
-        return children.at("hardware");
+        return hardware;
     }
 
     if(child_yang_name == "type-values")
     {
-        if(type_values != nullptr)
-        {
-            children["type-values"] = type_values;
-        }
-        else
+        if(type_values == nullptr)
         {
             type_values = std::make_shared<LptsPifib::Nodes::Node::TypeValues>();
-            type_values->parent = this;
-            children["type-values"] = type_values;
         }
-        return children.at("type-values");
+        return type_values;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::get_children() const
 {
-    if(children.find("hardware") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hardware != nullptr)
     {
-        if(hardware != nullptr)
-        {
-            children["hardware"] = hardware;
-        }
+        children["hardware"] = hardware;
     }
 
-    if(children.find("type-values") == children.end())
+    if(type_values != nullptr)
     {
-        if(type_values != nullptr)
-        {
-            children["type-values"] = type_values;
-        }
+        children["type-values"] = type_values;
     }
 
     return children;
@@ -412,7 +353,7 @@ std::string LptsPifib::Nodes::Node::TypeValues::get_segment_path() const
 
 }
 
-EntityPath LptsPifib::Nodes::Node::TypeValues::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::TypeValues::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -435,15 +376,6 @@ EntityPath LptsPifib::Nodes::Node::TypeValues::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::TypeValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "type-value")
     {
         for(auto const & c : type_value)
@@ -451,28 +383,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::TypeValues::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::TypeValues::TypeValue>();
         c->parent = this;
-        type_value.push_back(std::move(c));
-        children[segment_path] = type_value.back();
-        return children.at(segment_path);
+        type_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::TypeValues::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::TypeValues::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : type_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -523,7 +451,7 @@ std::string LptsPifib::Nodes::Node::TypeValues::TypeValue::get_segment_path() co
 
 }
 
-EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -547,15 +475,6 @@ EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::get_entity_path(Entity
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::TypeValues::TypeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "entry")
     {
         for(auto const & c : entry)
@@ -563,28 +482,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::TypeValues::TypeValue::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry>();
         c->parent = this;
-        entry.push_back(std::move(c));
-        children[segment_path] = entry.back();
-        return children.at(segment_path);
+        entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::TypeValues::TypeValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::TypeValues::TypeValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -707,7 +622,7 @@ std::string LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_segment_pa
 
 }
 
-EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -757,20 +672,12 @@ EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_entity_path
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -896,22 +803,16 @@ LptsPifib::Nodes::Node::Hardware::Hardware()
 	,usage_entries(std::make_shared<LptsPifib::Nodes::Node::Hardware::UsageEntries>())
 {
     bfd->parent = this;
-    children["bfd"] = bfd;
 
     index_entries->parent = this;
-    children["index-entries"] = index_entries;
 
     police->parent = this;
-    children["police"] = police;
 
     static_police->parent = this;
-    children["static-police"] = static_police;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     usage_entries->parent = this;
-    children["usage-entries"] = usage_entries;
 
     yang_name = "hardware"; yang_parent_name = "node";
 }
@@ -950,7 +851,7 @@ std::string LptsPifib::Nodes::Node::Hardware::get_segment_path() const
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -973,156 +874,94 @@ EntityPath LptsPifib::Nodes::Node::Hardware::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd")
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
-        else
+        if(bfd == nullptr)
         {
             bfd = std::make_shared<LptsPifib::Nodes::Node::Hardware::Bfd>();
-            bfd->parent = this;
-            children["bfd"] = bfd;
         }
-        return children.at("bfd");
+        return bfd;
     }
 
     if(child_yang_name == "index-entries")
     {
-        if(index_entries != nullptr)
-        {
-            children["index-entries"] = index_entries;
-        }
-        else
+        if(index_entries == nullptr)
         {
             index_entries = std::make_shared<LptsPifib::Nodes::Node::Hardware::IndexEntries>();
-            index_entries->parent = this;
-            children["index-entries"] = index_entries;
         }
-        return children.at("index-entries");
+        return index_entries;
     }
 
     if(child_yang_name == "police")
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
-        else
+        if(police == nullptr)
         {
             police = std::make_shared<LptsPifib::Nodes::Node::Hardware::Police>();
-            police->parent = this;
-            children["police"] = police;
         }
-        return children.at("police");
+        return police;
     }
 
     if(child_yang_name == "static-police")
     {
-        if(static_police != nullptr)
-        {
-            children["static-police"] = static_police;
-        }
-        else
+        if(static_police == nullptr)
         {
             static_police = std::make_shared<LptsPifib::Nodes::Node::Hardware::StaticPolice>();
-            static_police->parent = this;
-            children["static-police"] = static_police;
         }
-        return children.at("static-police");
+        return static_police;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<LptsPifib::Nodes::Node::Hardware::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "usage-entries")
     {
-        if(usage_entries != nullptr)
-        {
-            children["usage-entries"] = usage_entries;
-        }
-        else
+        if(usage_entries == nullptr)
         {
             usage_entries = std::make_shared<LptsPifib::Nodes::Node::Hardware::UsageEntries>();
-            usage_entries->parent = this;
-            children["usage-entries"] = usage_entries;
         }
-        return children.at("usage-entries");
+        return usage_entries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::get_children() const
 {
-    if(children.find("bfd") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd != nullptr)
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
+        children["bfd"] = bfd;
     }
 
-    if(children.find("index-entries") == children.end())
+    if(index_entries != nullptr)
     {
-        if(index_entries != nullptr)
-        {
-            children["index-entries"] = index_entries;
-        }
+        children["index-entries"] = index_entries;
     }
 
-    if(children.find("police") == children.end())
+    if(police != nullptr)
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
+        children["police"] = police;
     }
 
-    if(children.find("static-police") == children.end())
+    if(static_police != nullptr)
     {
-        if(static_police != nullptr)
-        {
-            children["static-police"] = static_police;
-        }
+        children["static-police"] = static_police;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("usage-entries") == children.end())
+    if(usage_entries != nullptr)
     {
-        if(usage_entries != nullptr)
-        {
-            children["usage-entries"] = usage_entries;
-        }
+        children["usage-entries"] = usage_entries;
     }
 
     return children;
@@ -1170,7 +1009,7 @@ std::string LptsPifib::Nodes::Node::Hardware::UsageEntries::get_segment_path() c
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1193,15 +1032,6 @@ EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::get_entity_path(Entit
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::UsageEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "usage-entry")
     {
         for(auto const & c : usage_entry)
@@ -1209,28 +1039,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::UsageEntries::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry>();
         c->parent = this;
-        usage_entry.push_back(std::move(c));
-        children[segment_path] = usage_entry.back();
-        return children.at(segment_path);
+        usage_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::UsageEntries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::UsageEntries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : usage_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1281,7 +1107,7 @@ std::string LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_segm
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1305,15 +1131,6 @@ EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_entit
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "usage-info")
     {
         for(auto const & c : usage_info)
@@ -1321,28 +1138,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEnt
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo>();
         c->parent = this;
-        usage_info.push_back(std::move(c));
-        children[segment_path] = usage_info.back();
-        return children.at(segment_path);
+        usage_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : usage_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1399,7 +1212,7 @@ std::string LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInf
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1427,20 +1240,12 @@ EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1506,7 +1311,7 @@ std::string LptsPifib::Nodes::Node::Hardware::Police::get_segment_path() const
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::Police::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::Police::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1529,15 +1334,6 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Police::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "police-info")
     {
         for(auto const & c : police_info)
@@ -1545,28 +1341,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::Police::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo>();
         c->parent = this;
-        police_info.push_back(std::move(c));
-        children[segment_path] = police_info.back();
-        return children.at(segment_path);
+        police_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::Police::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::Police::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : police_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1637,7 +1429,7 @@ std::string LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_segment_pa
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1671,20 +1463,12 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_entity_path
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1774,7 +1558,7 @@ std::string LptsPifib::Nodes::Node::Hardware::StaticPolice::get_segment_path() c
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1797,15 +1581,6 @@ EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::get_entity_path(Entit
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::StaticPolice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "static-info")
     {
         for(auto const & c : static_info)
@@ -1813,28 +1588,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::StaticPolice::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo>();
         c->parent = this;
-        static_info.push_back(std::move(c));
-        children[segment_path] = static_info.back();
-        return children.at(segment_path);
+        static_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::StaticPolice::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::StaticPolice::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : static_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1896,7 +1667,7 @@ std::string LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_segm
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1927,20 +1698,12 @@ EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_entit
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2018,7 +1781,7 @@ std::string LptsPifib::Nodes::Node::Hardware::Bfd::get_segment_path() const
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2041,15 +1804,6 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-entry-info")
     {
         for(auto const & c : bfd_entry_info)
@@ -2057,28 +1811,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::Bfd::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo>();
         c->parent = this;
-        bfd_entry_info.push_back(std::move(c));
-        children[segment_path] = bfd_entry_info.back();
-        return children.at(segment_path);
+        bfd_entry_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::Bfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::Bfd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_entry_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2131,7 +1881,7 @@ std::string LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_segment_pat
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2159,20 +1909,12 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_entity_path(
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2240,7 +1982,7 @@ std::string LptsPifib::Nodes::Node::Hardware::Statistics::get_segment_path() con
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2267,20 +2009,12 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Statistics::get_entity_path(Entity*
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2342,7 +2076,7 @@ std::string LptsPifib::Nodes::Node::Hardware::IndexEntries::get_segment_path() c
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2365,15 +2099,6 @@ EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::get_entity_path(Entit
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::IndexEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "index-entry")
     {
         for(auto const & c : index_entry)
@@ -2381,28 +2106,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::IndexEntries::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry>();
         c->parent = this;
-        index_entry.push_back(std::move(c));
-        children[segment_path] = index_entry.back();
-        return children.at(segment_path);
+        index_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::IndexEntries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::IndexEntries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : index_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2591,7 +2312,7 @@ std::string LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_segm
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2661,15 +2382,6 @@ EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_entit
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hw-info")
     {
         for(auto const & c : hw_info)
@@ -2677,28 +2389,24 @@ std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEnt
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo>();
         c->parent = this;
-        hw_info.push_back(std::move(c));
-        children[segment_path] = hw_info.back();
-        return children.at(segment_path);
+        hw_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hw_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2942,7 +2650,7 @@ std::string LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::
 
 }
 
-EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_entity_path(Entity* ancestor) const
+const EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2971,20 +2679,12 @@ EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::g
 
 std::shared_ptr<Entity> LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

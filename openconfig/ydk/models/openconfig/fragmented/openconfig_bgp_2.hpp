@@ -22,16 +22,13 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
-
-
 
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config
 
@@ -44,16 +41,13 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
-
-
 
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State
 
@@ -66,21 +60,18 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config
         class State; //type: Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State
 
         std::shared_ptr<openconfig_bgp::Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config> config;
         std::shared_ptr<openconfig_bgp::Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State> state;
-
-
+        
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp
 
 
@@ -92,17 +83,14 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf allow_multiple_as; //type: boolean
         YLeaf maximum_paths; //type: uint32
-
-
 
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config
 
@@ -115,17 +103,14 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf allow_multiple_as; //type: boolean
         YLeaf maximum_paths; //type: uint32
-
-
 
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State
 
@@ -138,21 +123,18 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config
         class State; //type: Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State
 
         std::shared_ptr<openconfig_bgp::Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config> config;
         std::shared_ptr<openconfig_bgp::Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State> state;
-
-
+        
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp
 
 
@@ -164,16 +146,13 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf maximum_paths; //type: uint32
-
-
 
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config
 
@@ -186,16 +165,13 @@ class Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf maximum_paths; //type: uint32
-
-
 
 }; // Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State
 

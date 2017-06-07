@@ -18,19 +18,17 @@ class Install : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
         YLeaf log_size; //type: int32
-
         class ConfigurationRegisters; //type: Install::ConfigurationRegisters
         class RequestStatuses; //type: Install::RequestStatuses
         class BootVariables; //type: Install::BootVariables
@@ -48,8 +46,7 @@ class Install : public Entity
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses> request_statuses;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software> software;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory> software_inventory;
-
-
+        
 }; // Install
 
 
@@ -61,19 +58,16 @@ class Install::ConfigurationRegisters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ConfigurationRegister; //type: Install::ConfigurationRegisters::ConfigurationRegister
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::ConfigurationRegisters::ConfigurationRegister> > configuration_register;
-
-
+        
 }; // Install::ConfigurationRegisters
 
 
@@ -85,17 +79,14 @@ class Install::ConfigurationRegisters::ConfigurationRegister : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf config_register; //type: string
-
-
 
 }; // Install::ConfigurationRegisters::ConfigurationRegister
 
@@ -108,19 +99,16 @@ class Install::RequestStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RequestStatus; //type: Install::RequestStatuses::RequestStatus
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus> > request_status;
-
-
+        
 }; // Install::RequestStatuses
 
 
@@ -132,12 +120,11 @@ class Install::RequestStatuses::RequestStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: int32
         YLeaf percentage; //type: uint8
@@ -145,7 +132,6 @@ class Install::RequestStatuses::RequestStatus : public Entity
         YLeaf downloaded_bytes; //type: uint32
         YLeaf unanswered_query; //type: boolean
         YLeaf operation_phase; //type: InstmgrInstallPhaseEnum
-
         class RequestInformation; //type: Install::RequestStatuses::RequestStatus::RequestInformation
         class AbortStatus; //type: Install::RequestStatuses::RequestStatus::AbortStatus
         class IncrementalInstallInformation; //type: Install::RequestStatuses::RequestStatus::IncrementalInstallInformation
@@ -157,8 +143,7 @@ class Install::RequestStatuses::RequestStatus : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IssuMessage> > issu_message;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::Message> > message;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::RequestInformation> request_information;
-
-
+        
 }; // Install::RequestStatuses::RequestStatus
 
 
@@ -170,12 +155,11 @@ class Install::RequestStatuses::RequestStatus::RequestInformation : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf user_id; //type: string
@@ -183,8 +167,6 @@ class Install::RequestStatuses::RequestStatus::RequestInformation : public Entit
         YLeaf request_option; //type: int32
         YLeaf operation_type; //type: InstmgrRequestEnum
         YLeaf operation_detail; //type: string
-
-
 
 }; // Install::RequestStatuses::RequestStatus::RequestInformation
 
@@ -197,17 +179,14 @@ class Install::RequestStatuses::RequestStatus::AbortStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf abort_method; //type: InstmgrIssuAbortMethodEnum
         YLeaf abort_impact; //type: InstmgrIssuAbortImpactEnum
-
-
 
 }; // Install::RequestStatuses::RequestStatus::AbortStatus
 
@@ -220,21 +199,18 @@ class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: InstmgrBagIiDirectionEnum
         YLeaf ii_error; //type: string
-
         class Nodes; //type: Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes> > nodes;
-
-
+        
 }; // Install::RequestStatuses::RequestStatus::IncrementalInstallInformation
 
 
@@ -246,17 +222,14 @@ class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::No
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf state; //type: InstmgrBagIiStateEnum
-
-
 
 }; // Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes
 
@@ -269,21 +242,18 @@ class Install::RequestStatuses::RequestStatus::IssuMessage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: InstmgrBagUserMsgCategoryEnum
         YLeaf message; //type: string
-
         class Scope; //type: Install::RequestStatuses::RequestStatus::IssuMessage::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IssuMessage::Scope> scope;
-
-
+        
 }; // Install::RequestStatuses::RequestStatus::IssuMessage
 
 
@@ -295,17 +265,14 @@ class Install::RequestStatuses::RequestStatus::IssuMessage::Scope : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_read; //type: boolean
         YLeaf affected_sd_rs; //type: uint32
-
-
 
 }; // Install::RequestStatuses::RequestStatus::IssuMessage::Scope
 
@@ -318,21 +285,18 @@ class Install::RequestStatuses::RequestStatus::Message : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: InstmgrBagUserMsgCategoryEnum
         YLeaf message; //type: string
-
         class Scope; //type: Install::RequestStatuses::RequestStatus::Message::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::Message::Scope> scope;
-
-
+        
 }; // Install::RequestStatuses::RequestStatus::Message
 
 
@@ -344,17 +308,14 @@ class Install::RequestStatuses::RequestStatus::Message::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_read; //type: boolean
         YLeaf affected_sd_rs; //type: uint32
-
-
 
 }; // Install::RequestStatuses::RequestStatus::Message::Scope
 
@@ -367,19 +328,16 @@ class Install::BootVariables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BootVariable; //type: Install::BootVariables::BootVariable
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::BootVariables::BootVariable> > boot_variable;
-
-
+        
 }; // Install::BootVariables
 
 
@@ -391,17 +349,14 @@ class Install::BootVariables::BootVariable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf boot_variable; //type: string
-
-
 
 }; // Install::BootVariables::BootVariable
 
@@ -414,13 +369,11 @@ class Install::Software : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AliasDevices; //type: Install::Software::AliasDevices
         class PackageDevices; //type: Install::Software::PackageDevices
@@ -429,8 +382,7 @@ class Install::Software : public Entity
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::AliasDevices> alias_devices;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices> component_devices;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices> package_devices;
-
-
+        
 }; // Install::Software
 
 
@@ -442,19 +394,16 @@ class Install::Software::AliasDevices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AliasDevice; //type: Install::Software::AliasDevices::AliasDevice
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::AliasDevices::AliasDevice> > alias_device;
-
-
+        
 }; // Install::Software::AliasDevices
 
 
@@ -466,20 +415,17 @@ class Install::Software::AliasDevices::AliasDevice : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
-
         class Aliases; //type: Install::Software::AliasDevices::AliasDevice::Aliases
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::AliasDevices::AliasDevice::Aliases> aliases;
-
-
+        
 }; // Install::Software::AliasDevices::AliasDevice
 
 
@@ -491,19 +437,16 @@ class Install::Software::AliasDevices::AliasDevice::Aliases : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Alias; //type: Install::Software::AliasDevices::AliasDevice::Aliases::Alias
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::AliasDevices::AliasDevice::Aliases::Alias> > alias;
-
-
+        
 }; // Install::Software::AliasDevices::AliasDevice::Aliases
 
 
@@ -515,17 +458,14 @@ class Install::Software::AliasDevices::AliasDevice::Aliases::Alias : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf package_name; //type: string
         YLeaf alias_names; //type: string
-
-
 
 }; // Install::Software::AliasDevices::AliasDevice::Aliases::Alias
 
@@ -538,19 +478,16 @@ class Install::Software::PackageDevices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PackageDevice; //type: Install::Software::PackageDevices::PackageDevice
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice> > package_device;
-
-
+        
 }; // Install::Software::PackageDevices
 
 
@@ -562,20 +499,17 @@ class Install::Software::PackageDevices::PackageDevice : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
-
         class Packages; //type: Install::Software::PackageDevices::PackageDevice::Packages
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice::Packages> packages;
-
-
+        
 }; // Install::Software::PackageDevices::PackageDevice
 
 
@@ -587,19 +521,16 @@ class Install::Software::PackageDevices::PackageDevice::Packages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Package; //type: Install::Software::PackageDevices::PackageDevice::Packages::Package
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice::Packages::Package> > package;
-
-
+        
 }; // Install::Software::PackageDevices::PackageDevice::Packages
 
 
@@ -611,12 +542,11 @@ class Install::Software::PackageDevices::PackageDevice::Packages::Package : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf package_name; //type: string
         YLeaf name; //type: string
@@ -636,12 +566,10 @@ class Install::Software::PackageDevices::PackageDevice::Packages::Package : publ
         YLeaf uncompressed_size; //type: uint32
         YLeaf compressed_size; //type: uint32
         YLeafList cards; //type: list of  string
-
         class SubPkg; //type: Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg> > sub_pkg;
-
-
+        
 }; // Install::Software::PackageDevices::PackageDevice::Packages::Package
 
 
@@ -653,17 +581,14 @@ class Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPk
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf node_types; //type: uint64
-
-
 
 }; // Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg
 
@@ -676,19 +601,16 @@ class Install::Software::ComponentDevices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ComponentDevice; //type: Install::Software::ComponentDevices::ComponentDevice
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice> > component_device;
-
-
+        
 }; // Install::Software::ComponentDevices
 
 
@@ -700,20 +622,17 @@ class Install::Software::ComponentDevices::ComponentDevice : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
-
         class ComponentPackages; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice::ComponentPackages> component_packages;
-
-
+        
 }; // Install::Software::ComponentDevices::ComponentDevice
 
 
@@ -725,19 +644,16 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ComponentPackage; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage> > component_package;
-
-
+        
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages
 
 
@@ -749,20 +665,17 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::C
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf package_name; //type: string
-
         class Component; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component> > component;
-
-
+        
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage
 
 
@@ -774,12 +687,11 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::C
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf component_name; //type: string
         YLeaf name; //type: string
@@ -787,8 +699,6 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::C
         YLeaf release; //type: string
         YLeaf description; //type: string
         YLeafList files; //type: list of  string
-
-
 
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component
 
@@ -801,13 +711,11 @@ class Install::SoftwareInventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Committed; //type: Install::SoftwareInventory::Committed
         class Inactive; //type: Install::SoftwareInventory::Inactive
@@ -818,8 +726,7 @@ class Install::SoftwareInventory : public Entity
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed> committed;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive> inactive;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests> requests;
-
-
+        
 }; // Install::SoftwareInventory
 
 
@@ -831,21 +738,18 @@ class Install::SoftwareInventory::Committed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: Install::SoftwareInventory::Committed::Summary
         class Inventories; //type: Install::SoftwareInventory::Committed::Inventories
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories> inventories;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary> summary;
-
-
+        
 }; // Install::SoftwareInventory::Committed
 
 
@@ -857,13 +761,11 @@ class Install::SoftwareInventory::Committed::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DefaultLoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath
         class AdminLoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath
@@ -874,8 +776,7 @@ class Install::SoftwareInventory::Committed::Summary : public Entity
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath> default_load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath> > location_load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath> > sdr_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary
 
 
@@ -887,24 +788,21 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf admin_match; //type: boolean
         YLeafList secure_domain_router_name; //type: list of  string
-
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath
 
 
@@ -916,21 +814,18 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath
 
 
@@ -942,17 +837,14 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package
 
@@ -965,21 +857,18 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
 
 
@@ -991,17 +880,14 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
@@ -1014,22 +900,19 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
-
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath
 
 
@@ -1041,21 +924,18 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath
 
 
@@ -1067,17 +947,14 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::P
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package
 
@@ -1090,21 +967,18 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath
 
 
@@ -1116,17 +990,14 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package
 
@@ -1139,23 +1010,20 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf secure_domain_router_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath
 
 
@@ -1167,21 +1035,18 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath
 
 
@@ -1193,17 +1058,14 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Pac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package
 
@@ -1216,21 +1078,18 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath
 
 
@@ -1242,17 +1101,14 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package
 
@@ -1265,24 +1121,21 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf secure_domain_router_name; //type: string
         YLeaf node_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath
 
 
@@ -1294,21 +1147,18 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
 
 
@@ -1320,17 +1170,14 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package
 
@@ -1343,21 +1190,18 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyL
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath
 
 
@@ -1369,17 +1213,14 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyL
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package
 
@@ -1392,19 +1233,16 @@ class Install::SoftwareInventory::Committed::Inventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Inventory; //type: Install::SoftwareInventory::Committed::Inventories::Inventory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories::Inventory> > inventory;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Inventories
 
 
@@ -1416,12 +1254,11 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf major; //type: uint32
@@ -1429,12 +1266,10 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory : public Ent
         YLeaf boot_image_name; //type: string
         YLeaf node_type; //type: uint64
         YLeaf secure_domain_router_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath> > load_path;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Inventories::Inventory
 
 
@@ -1446,21 +1281,18 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath
 
 
@@ -1472,17 +1304,14 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::P
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package
 
@@ -1495,21 +1324,18 @@ class Install::SoftwareInventory::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: Install::SoftwareInventory::Inactive::Summary
         class Inventories; //type: Install::SoftwareInventory::Inactive::Inventories
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories> inventories;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary> summary;
-
-
+        
 }; // Install::SoftwareInventory::Inactive
 
 
@@ -1521,13 +1347,11 @@ class Install::SoftwareInventory::Inactive::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DefaultLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath
         class AdminLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath
@@ -1538,8 +1362,7 @@ class Install::SoftwareInventory::Inactive::Summary : public Entity
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath> default_load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath> > location_load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath> > sdr_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary
 
 
@@ -1551,24 +1374,21 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf admin_match; //type: boolean
         YLeafList secure_domain_router_name; //type: list of  string
-
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath
 
 
@@ -1580,21 +1400,18 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath
 
 
@@ -1606,17 +1423,14 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package
 
@@ -1629,21 +1443,18 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath
 
 
@@ -1655,17 +1466,14 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
@@ -1678,22 +1486,19 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
-
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath
 
 
@@ -1705,21 +1510,18 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath
 
 
@@ -1731,17 +1533,14 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package
 
@@ -1754,21 +1553,18 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath
 
 
@@ -1780,17 +1576,14 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package
 
@@ -1803,23 +1596,20 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf secure_domain_router_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath
 
 
@@ -1831,21 +1621,18 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath
 
 
@@ -1857,17 +1644,14 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Pack
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package
 
@@ -1880,21 +1664,18 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath
 
 
@@ -1906,17 +1687,14 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package
 
@@ -1929,24 +1707,21 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf secure_domain_router_name; //type: string
         YLeaf node_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath
 
 
@@ -1958,21 +1733,18 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath
 
 
@@ -1984,17 +1756,14 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package
 
@@ -2007,21 +1776,18 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
 
 
@@ -2033,17 +1799,14 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package
 
@@ -2056,19 +1819,16 @@ class Install::SoftwareInventory::Inactive::Inventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Inventory; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories::Inventory> > inventory;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Inventories
 
 
@@ -2080,12 +1840,11 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf major; //type: uint32
@@ -2093,12 +1852,10 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory : public Enti
         YLeaf boot_image_name; //type: string
         YLeaf node_type; //type: uint64
         YLeaf secure_domain_router_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath> > load_path;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Inventories::Inventory
 
 
@@ -2110,21 +1867,18 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath
 
 
@@ -2136,17 +1890,14 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package
 
@@ -2159,19 +1910,16 @@ class Install::SoftwareInventory::Requests : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Requests_; //type: Install::SoftwareInventory::Requests::Requests_
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_> requests;
-
-
+        
 }; // Install::SoftwareInventory::Requests
 
 
@@ -2183,19 +1931,16 @@ class Install::SoftwareInventory::Requests::Requests_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Request; //type: Install::SoftwareInventory::Requests::Requests_::Request
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request> > request;
-
-
+        
 }; // Install::SoftwareInventory::Requests::Requests_
 
 
@@ -2207,20 +1952,17 @@ class Install::SoftwareInventory::Requests::Requests_::Request : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: int32
-
         class Inventories; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories> inventories;
-
-
+        
 }; // Install::SoftwareInventory::Requests::Requests_::Request
 
 
@@ -2232,19 +1974,16 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Inventory; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory> > inventory;
-
-
+        
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories
 
 
@@ -2256,12 +1995,11 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf major; //type: uint32
@@ -2269,12 +2007,10 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
         YLeaf boot_image_name; //type: string
         YLeaf node_type; //type: uint64
         YLeaf secure_domain_router_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath> > load_path;
-
-
+        
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
 
@@ -2286,21 +2022,18 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath
 
 
@@ -2312,17 +2045,14 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
 
@@ -2335,21 +2065,18 @@ class Install::SoftwareInventory::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: Install::SoftwareInventory::Active::Summary
         class Inventories; //type: Install::SoftwareInventory::Active::Inventories
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories> inventories;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary> summary;
-
-
+        
 }; // Install::SoftwareInventory::Active
 
 
@@ -2361,13 +2088,11 @@ class Install::SoftwareInventory::Active::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DefaultLoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath
         class AdminLoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath
@@ -2378,8 +2103,7 @@ class Install::SoftwareInventory::Active::Summary : public Entity
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath> default_load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath> > location_load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath> > sdr_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary
 
 
@@ -2391,24 +2115,21 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf admin_match; //type: boolean
         YLeafList secure_domain_router_name; //type: list of  string
-
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath
 
 
@@ -2420,21 +2141,18 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath
 
 
@@ -2446,17 +2164,14 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package
 
@@ -2469,21 +2184,18 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath
 
 
@@ -2495,17 +2207,14 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
@@ -2518,22 +2227,19 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
-
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath
 
 
@@ -2545,21 +2251,18 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath
 
 
@@ -2571,17 +2274,14 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Pack
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package
 
@@ -2594,21 +2294,18 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath
 
 
@@ -2620,17 +2317,14 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package
 
@@ -2643,23 +2337,20 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf secure_domain_router_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath
 
 
@@ -2671,21 +2362,18 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath
 
 
@@ -2697,17 +2385,14 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Packag
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package
 
@@ -2720,21 +2405,18 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath
 
 
@@ -2746,17 +2428,14 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package
 
@@ -2769,24 +2448,21 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: uint32
         YLeaf secure_domain_router_name; //type: string
         YLeaf node_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath> > load_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath> > standby_load_path;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath
 
 
@@ -2798,21 +2474,18 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath
 
 
@@ -2824,17 +2497,14 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::P
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package
 
@@ -2847,21 +2517,18 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath
 
 
@@ -2873,17 +2540,14 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package
 
@@ -2896,19 +2560,16 @@ class Install::SoftwareInventory::Active::Inventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Inventory; //type: Install::SoftwareInventory::Active::Inventories::Inventory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories::Inventory> > inventory;
-
-
+        
 }; // Install::SoftwareInventory::Active::Inventories
 
 
@@ -2920,12 +2581,11 @@ class Install::SoftwareInventory::Active::Inventories::Inventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf major; //type: uint32
@@ -2933,12 +2593,10 @@ class Install::SoftwareInventory::Active::Inventories::Inventory : public Entity
         YLeaf boot_image_name; //type: string
         YLeaf node_type; //type: uint64
         YLeaf secure_domain_router_name; //type: string
-
         class LoadPath; //type: Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath> > load_path;
-
-
+        
 }; // Install::SoftwareInventory::Active::Inventories::Inventory
 
 
@@ -2950,21 +2608,18 @@ class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: string
         YLeaf build_information; //type: string
-
         class Package; //type: Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package> package;
-
-
+        
 }; // Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath
 
 
@@ -2976,17 +2631,14 @@ class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Pack
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
         YLeaf name; //type: string
-
-
 
 }; // Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package
 
@@ -2999,21 +2651,18 @@ class Install::Issu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CardInventories; //type: Install::Issu::CardInventories
         class Stage; //type: Install::Issu::Stage
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::CardInventories> card_inventories;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::Stage> stage;
-
-
+        
 }; // Install::Issu
 
 
@@ -3025,19 +2674,16 @@ class Install::Issu::CardInventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CardInventory; //type: Install::Issu::CardInventories::CardInventory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::CardInventories::CardInventory> > card_inventory;
-
-
+        
 }; // Install::Issu::CardInventories
 
 
@@ -3049,20 +2695,17 @@ class Install::Issu::CardInventories::CardInventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_type_id; //type: IsmCardTypeFamilyEnum
-
         class Summary; //type: Install::Issu::CardInventories::CardInventory::Summary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::CardInventories::CardInventory::Summary> > summary;
-
-
+        
 }; // Install::Issu::CardInventories::CardInventory
 
 
@@ -3074,12 +2717,11 @@ class Install::Issu::CardInventories::CardInventory::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf partner_node_name; //type: string
@@ -3094,8 +2736,6 @@ class Install::Issu::CardInventories::CardInventory::Summary : public Entity
         YLeaf attempts; //type: uint32
         YLeaf is_node_upgraded; //type: boolean
 
-
-
 }; // Install::Issu::CardInventories::CardInventory::Summary
 
 
@@ -3107,12 +2747,11 @@ class Install::Issu::Stage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf issu_state; //type: string
         YLeaf issu_op_id; //type: uint32
@@ -3125,7 +2764,6 @@ class Install::Issu::Stage : public Entity
         YLeaf num_of_nodes_in_load; //type: uint32
         YLeaf num_of_nodes_in_run; //type: uint32
         YLeaf numof_nc_nodes; //type: uint32
-
         class NodeInProgress; //type: Install::Issu::Stage::NodeInProgress
         class NodesInLoad; //type: Install::Issu::Stage::NodesInLoad
         class NodesInRun; //type: Install::Issu::Stage::NodesInRun
@@ -3135,8 +2773,7 @@ class Install::Issu::Stage : public Entity
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::Stage::NodeInProgress> node_in_progress;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::Stage::NodesInLoad> nodes_in_load;
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::Stage::NodesInRun> nodes_in_run;
-
-
+        
 }; // Install::Issu::Stage
 
 
@@ -3148,16 +2785,13 @@ class Install::Issu::Stage::NodeInProgress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList node; //type: list of  string
-
-
 
 }; // Install::Issu::Stage::NodeInProgress
 
@@ -3170,16 +2804,13 @@ class Install::Issu::Stage::NodesInLoad : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList node; //type: list of  string
-
-
 
 }; // Install::Issu::Stage::NodesInLoad
 
@@ -3192,16 +2823,13 @@ class Install::Issu::Stage::NodesInRun : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList node; //type: list of  string
-
-
 
 }; // Install::Issu::Stage::NodesInRun
 
@@ -3214,16 +2842,13 @@ class Install::Issu::Stage::NcNodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList node; //type: list of  string
-
-
 
 }; // Install::Issu::Stage::NcNodes
 
@@ -3236,16 +2861,13 @@ class Install::BootImage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf system_image_file; //type: string
-
-
 
 }; // Install::BootImage
 
@@ -3258,19 +2880,16 @@ class Install::Logs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Log; //type: Install::Logs::Log
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log> > log;
-
-
+        
 }; // Install::Logs
 
 
@@ -3282,15 +2901,13 @@ class Install::Logs::Log : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_id; //type: int32
-
         class Header; //type: Install::Logs::Log::Header
         class Summary; //type: Install::Logs::Log::Summary
         class Message; //type: Install::Logs::Log::Message
@@ -3304,8 +2921,7 @@ class Install::Logs::Log : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Header> > header;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Message> > message;
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Summary> > summary;
-
-
+        
 }; // Install::Logs::Log
 
 
@@ -3317,19 +2933,16 @@ class Install::Logs::Log::Header : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogContents; //type: Install::Logs::Log::Header::LogContents
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Header::LogContents> log_contents;
-
-
+        
 }; // Install::Logs::Log::Header
 
 
@@ -3341,20 +2954,17 @@ class Install::Logs::Log::Header::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: uint32
-
         class V3; //type: Install::Logs::Log::Header::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Header::LogContents::V3> v3;
-
-
+        
 }; // Install::Logs::Log::Header::LogContents
 
 
@@ -3366,21 +2976,18 @@ class Install::Logs::Log::Header::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
         YLeaf message; //type: string
-
         class Scope; //type: Install::Logs::Log::Header::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Header::LogContents::V3::Scope> scope;
-
-
+        
 }; // Install::Logs::Log::Header::LogContents::V3
 
 
@@ -3392,17 +2999,14 @@ class Install::Logs::Log::Header::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_read; //type: boolean
         YLeaf affected_sd_rs; //type: uint32
-
-
 
 }; // Install::Logs::Log::Header::LogContents::V3::Scope
 
@@ -3415,19 +3019,16 @@ class Install::Logs::Log::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogContents; //type: Install::Logs::Log::Summary::LogContents
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Summary::LogContents> log_contents;
-
-
+        
 }; // Install::Logs::Log::Summary
 
 
@@ -3439,20 +3040,17 @@ class Install::Logs::Log::Summary::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: uint32
-
         class V3; //type: Install::Logs::Log::Summary::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Summary::LogContents::V3> v3;
-
-
+        
 }; // Install::Logs::Log::Summary::LogContents
 
 
@@ -3464,21 +3062,18 @@ class Install::Logs::Log::Summary::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
         YLeaf message; //type: string
-
         class Scope; //type: Install::Logs::Log::Summary::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Summary::LogContents::V3::Scope> scope;
-
-
+        
 }; // Install::Logs::Log::Summary::LogContents::V3
 
 
@@ -3490,17 +3085,14 @@ class Install::Logs::Log::Summary::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_read; //type: boolean
         YLeaf affected_sd_rs; //type: uint32
-
-
 
 }; // Install::Logs::Log::Summary::LogContents::V3::Scope
 
@@ -3513,19 +3105,16 @@ class Install::Logs::Log::Message : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogContents; //type: Install::Logs::Log::Message::LogContents
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Message::LogContents> log_contents;
-
-
+        
 }; // Install::Logs::Log::Message
 
 
@@ -3537,20 +3126,17 @@ class Install::Logs::Log::Message::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: uint32
-
         class V3; //type: Install::Logs::Log::Message::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Message::LogContents::V3> v3;
-
-
+        
 }; // Install::Logs::Log::Message::LogContents
 
 
@@ -3562,21 +3148,18 @@ class Install::Logs::Log::Message::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
         YLeaf message; //type: string
-
         class Scope; //type: Install::Logs::Log::Message::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Message::LogContents::V3::Scope> scope;
-
-
+        
 }; // Install::Logs::Log::Message::LogContents::V3
 
 
@@ -3588,17 +3171,14 @@ class Install::Logs::Log::Message::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_read; //type: boolean
         YLeaf affected_sd_rs; //type: uint32
-
-
 
 }; // Install::Logs::Log::Message::LogContents::V3::Scope
 
@@ -3611,19 +3191,16 @@ class Install::Logs::Log::Change : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogContents; //type: Install::Logs::Log::Change::LogContents
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Change::LogContents> log_contents;
-
-
+        
 }; // Install::Logs::Log::Change
 
 
@@ -3635,20 +3212,17 @@ class Install::Logs::Log::Change::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: uint32
-
         class V3; //type: Install::Logs::Log::Change::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Change::LogContents::V3> v3;
-
-
+        
 }; // Install::Logs::Log::Change::LogContents
 
 
@@ -3660,21 +3234,18 @@ class Install::Logs::Log::Change::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
         YLeaf message; //type: string
-
         class Scope; //type: Install::Logs::Log::Change::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Change::LogContents::V3::Scope> scope;
-
-
+        
 }; // Install::Logs::Log::Change::LogContents::V3
 
 
@@ -3686,17 +3257,14 @@ class Install::Logs::Log::Change::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_read; //type: boolean
         YLeaf affected_sd_rs; //type: uint32
-
-
 
 }; // Install::Logs::Log::Change::LogContents::V3::Scope
 
@@ -3709,19 +3277,16 @@ class Install::Logs::Log::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogContents; //type: Install::Logs::Log::Detail::LogContents
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Detail::LogContents> log_contents;
-
-
+        
 }; // Install::Logs::Log::Detail
 
 
@@ -3733,20 +3298,17 @@ class Install::Logs::Log::Detail::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: uint32
-
         class V3; //type: Install::Logs::Log::Detail::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Detail::LogContents::V3> v3;
-
-
+        
 }; // Install::Logs::Log::Detail::LogContents
 
 
@@ -3758,21 +3320,18 @@ class Install::Logs::Log::Detail::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
         YLeaf message; //type: string
-
         class Scope; //type: Install::Logs::Log::Detail::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Detail::LogContents::V3::Scope> scope;
-
-
+        
 }; // Install::Logs::Log::Detail::LogContents::V3
 
 
@@ -3784,17 +3343,14 @@ class Install::Logs::Log::Detail::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf admin_read; //type: boolean
         YLeaf affected_sd_rs; //type: uint32
-
-
 
 }; // Install::Logs::Log::Detail::LogContents::V3::Scope
 
@@ -3807,19 +3363,16 @@ class Install::Logs::Log::Communication : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogContents; //type: Install::Logs::Log::Communication::LogContents
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Communication::LogContents> log_contents;
-
-
+        
 }; // Install::Logs::Log::Communication
 
 
@@ -3831,20 +3384,17 @@ class Install::Logs::Log::Communication::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version; //type: uint32
-
         class V3; //type: Install::Logs::Log::Communication::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Communication::LogContents::V3> v3;
-
-
+        
 }; // Install::Logs::Log::Communication::LogContents
 
 class InstmgrIssuAbortMethodEnum : public Enum

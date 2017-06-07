@@ -14,7 +14,6 @@ Tty::Tty()
     tty_lines(std::make_shared<Tty::TtyLines>())
 {
     tty_lines->parent = this;
-    children["tty-lines"] = tty_lines;
 
     yang_name = "tty"; yang_parent_name = "Cisco-IOS-XR-tty-server-cfg";
 }
@@ -43,12 +42,12 @@ std::string Tty::get_segment_path() const
 
 }
 
-EntityPath Tty::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Tty::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tty-lines")
     {
-        if(tty_lines != nullptr)
-        {
-            children["tty-lines"] = tty_lines;
-        }
-        else
+        if(tty_lines == nullptr)
         {
             tty_lines = std::make_shared<Tty::TtyLines>();
-            tty_lines->parent = this;
-            children["tty-lines"] = tty_lines;
         }
-        return children.at("tty-lines");
+        return tty_lines;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::get_children() const
 {
-    if(children.find("tty-lines") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tty_lines != nullptr)
     {
-        if(tty_lines != nullptr)
-        {
-            children["tty-lines"] = tty_lines;
-        }
+        children["tty-lines"] = tty_lines;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Tty::TtyLines::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Tty::TtyLines::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tty::TtyLines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tty-line")
     {
         for(auto const & c : tty_line)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Tty::TtyLines::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Tty::TtyLines::TtyLine>();
         c->parent = this;
-        tty_line.push_back(std::move(c));
-        children[segment_path] = tty_line.back();
-        return children.at(segment_path);
+        tty_line.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tty_line)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -247,22 +216,16 @@ Tty::TtyLines::TtyLine::TtyLine()
 	,telnet(std::make_shared<Tty::TtyLines::TtyLine::Telnet>())
 {
     aaa->parent = this;
-    children["aaa"] = aaa;
 
     connection->parent = this;
-    children["connection"] = connection;
 
     exec->parent = this;
-    children["exec"] = exec;
 
     exec_mode->parent = this;
-    children["exec-mode"] = exec_mode;
 
     general->parent = this;
-    children["general"] = general;
 
     telnet->parent = this;
-    children["telnet"] = telnet;
 
     yang_name = "tty-line"; yang_parent_name = "tty-lines";
 }
@@ -303,7 +266,7 @@ std::string Tty::TtyLines::TtyLine::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -327,156 +290,94 @@ EntityPath Tty::TtyLines::TtyLine::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aaa")
     {
-        if(aaa != nullptr)
-        {
-            children["aaa"] = aaa;
-        }
-        else
+        if(aaa == nullptr)
         {
             aaa = std::make_shared<Tty::TtyLines::TtyLine::Aaa>();
-            aaa->parent = this;
-            children["aaa"] = aaa;
         }
-        return children.at("aaa");
+        return aaa;
     }
 
     if(child_yang_name == "connection")
     {
-        if(connection != nullptr)
-        {
-            children["connection"] = connection;
-        }
-        else
+        if(connection == nullptr)
         {
             connection = std::make_shared<Tty::TtyLines::TtyLine::Connection>();
-            connection->parent = this;
-            children["connection"] = connection;
         }
-        return children.at("connection");
+        return connection;
     }
 
     if(child_yang_name == "exec")
     {
-        if(exec != nullptr)
-        {
-            children["exec"] = exec;
-        }
-        else
+        if(exec == nullptr)
         {
             exec = std::make_shared<Tty::TtyLines::TtyLine::Exec>();
-            exec->parent = this;
-            children["exec"] = exec;
         }
-        return children.at("exec");
+        return exec;
     }
 
     if(child_yang_name == "exec-mode")
     {
-        if(exec_mode != nullptr)
-        {
-            children["exec-mode"] = exec_mode;
-        }
-        else
+        if(exec_mode == nullptr)
         {
             exec_mode = std::make_shared<Tty::TtyLines::TtyLine::ExecMode>();
-            exec_mode->parent = this;
-            children["exec-mode"] = exec_mode;
         }
-        return children.at("exec-mode");
+        return exec_mode;
     }
 
     if(child_yang_name == "general")
     {
-        if(general != nullptr)
-        {
-            children["general"] = general;
-        }
-        else
+        if(general == nullptr)
         {
             general = std::make_shared<Tty::TtyLines::TtyLine::General>();
-            general->parent = this;
-            children["general"] = general;
         }
-        return children.at("general");
+        return general;
     }
 
     if(child_yang_name == "telnet")
     {
-        if(telnet != nullptr)
-        {
-            children["telnet"] = telnet;
-        }
-        else
+        if(telnet == nullptr)
         {
             telnet = std::make_shared<Tty::TtyLines::TtyLine::Telnet>();
-            telnet->parent = this;
-            children["telnet"] = telnet;
         }
-        return children.at("telnet");
+        return telnet;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::get_children() const
 {
-    if(children.find("aaa") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aaa != nullptr)
     {
-        if(aaa != nullptr)
-        {
-            children["aaa"] = aaa;
-        }
+        children["aaa"] = aaa;
     }
 
-    if(children.find("connection") == children.end())
+    if(connection != nullptr)
     {
-        if(connection != nullptr)
-        {
-            children["connection"] = connection;
-        }
+        children["connection"] = connection;
     }
 
-    if(children.find("exec") == children.end())
+    if(exec != nullptr)
     {
-        if(exec != nullptr)
-        {
-            children["exec"] = exec;
-        }
+        children["exec"] = exec;
     }
 
-    if(children.find("exec-mode") == children.end())
+    if(exec_mode != nullptr)
     {
-        if(exec_mode != nullptr)
-        {
-            children["exec-mode"] = exec_mode;
-        }
+        children["exec-mode"] = exec_mode;
     }
 
-    if(children.find("general") == children.end())
+    if(general != nullptr)
     {
-        if(general != nullptr)
-        {
-            children["general"] = general;
-        }
+        children["general"] = general;
     }
 
-    if(children.find("telnet") == children.end())
+    if(telnet != nullptr)
     {
-        if(telnet != nullptr)
-        {
-            children["telnet"] = telnet;
-        }
+        children["telnet"] = telnet;
     }
 
     return children;
@@ -527,7 +428,7 @@ std::string Tty::TtyLines::TtyLine::General::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::General::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::General::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -553,20 +454,12 @@ EntityPath Tty::TtyLines::TtyLine::General::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::General::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::General::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -617,7 +510,7 @@ std::string Tty::TtyLines::TtyLine::Telnet::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Telnet::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Telnet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -641,20 +534,12 @@ EntityPath Tty::TtyLines::TtyLine::Telnet::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Telnet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Telnet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -678,16 +563,12 @@ Tty::TtyLines::TtyLine::Aaa::Aaa()
 	,user_groups(std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups>())
 {
     accounting->parent = this;
-    children["accounting"] = accounting;
 
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     authorization->parent = this;
-    children["authorization"] = authorization;
 
     user_groups->parent = this;
-    children["user-groups"] = user_groups;
 
     yang_name = "aaa"; yang_parent_name = "tty-line";
 }
@@ -728,7 +609,7 @@ std::string Tty::TtyLines::TtyLine::Aaa::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Aaa::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Aaa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -754,110 +635,66 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting")
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
-        else
+        if(accounting == nullptr)
         {
             accounting = std::make_shared<Tty::TtyLines::TtyLine::Aaa::Accounting>();
-            accounting->parent = this;
-            children["accounting"] = accounting;
         }
-        return children.at("accounting");
+        return accounting;
     }
 
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Tty::TtyLines::TtyLine::Aaa::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "authorization")
     {
-        if(authorization != nullptr)
-        {
-            children["authorization"] = authorization;
-        }
-        else
+        if(authorization == nullptr)
         {
             authorization = std::make_shared<Tty::TtyLines::TtyLine::Aaa::Authorization>();
-            authorization->parent = this;
-            children["authorization"] = authorization;
         }
-        return children.at("authorization");
+        return authorization;
     }
 
     if(child_yang_name == "user-groups")
     {
-        if(user_groups != nullptr)
-        {
-            children["user-groups"] = user_groups;
-        }
-        else
+        if(user_groups == nullptr)
         {
             user_groups = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups>();
-            user_groups->parent = this;
-            children["user-groups"] = user_groups;
         }
-        return children.at("user-groups");
+        return user_groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Aaa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::get_children() const
 {
-    if(children.find("accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accounting != nullptr)
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
+        children["accounting"] = accounting;
     }
 
-    if(children.find("authentication") == children.end())
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("authorization") == children.end())
+    if(authorization != nullptr)
     {
-        if(authorization != nullptr)
-        {
-            children["authorization"] = authorization;
-        }
+        children["authorization"] = authorization;
     }
 
-    if(children.find("user-groups") == children.end())
+    if(user_groups != nullptr)
     {
-        if(user_groups != nullptr)
-        {
-            children["user-groups"] = user_groups;
-        }
+        children["user-groups"] = user_groups;
     }
 
     return children;
@@ -917,7 +754,7 @@ std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -940,15 +777,6 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "user-group")
     {
         for(auto const & c : user_group)
@@ -956,28 +784,24 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup>();
         c->parent = this;
-        user_group.push_back(std::move(c));
-        children[segment_path] = user_group.back();
-        return children.at(segment_path);
+        user_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Aaa::UserGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : user_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1021,7 +845,7 @@ std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_segment_path
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1046,20 +870,12 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_entity_path(E
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1112,7 +928,7 @@ std::string Tty::TtyLines::TtyLine::Aaa::Authorization::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Aaa::Authorization::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Aaa::Authorization::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1138,20 +954,12 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::Authorization::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Aaa::Authorization::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authorization::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1202,7 +1010,7 @@ std::string Tty::TtyLines::TtyLine::Aaa::Authentication::get_segment_path() cons
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Aaa::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Aaa::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1226,20 +1034,12 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::Authentication::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Aaa::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authentication::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1285,7 +1085,7 @@ std::string Tty::TtyLines::TtyLine::Aaa::Accounting::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Aaa::Accounting::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Aaa::Accounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1310,20 +1110,12 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::Accounting::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Aaa::Accounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Accounting::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1374,7 +1166,7 @@ std::string Tty::TtyLines::TtyLine::Exec::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Exec::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Exec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1398,41 +1190,24 @@ EntityPath Tty::TtyLines::TtyLine::Exec::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timeout")
     {
-        if(timeout != nullptr)
-        {
-            children["timeout"] = timeout;
-        }
-        else
+        if(timeout == nullptr)
         {
             timeout = std::make_shared<Tty::TtyLines::TtyLine::Exec::Timeout>();
-            timeout->parent = this;
-            children["timeout"] = timeout;
         }
-        return children.at("timeout");
+        return timeout;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Exec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::get_children() const
 {
-    if(children.find("timeout") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timeout != nullptr)
     {
-        if(timeout != nullptr)
-        {
-            children["timeout"] = timeout;
-        }
+        children["timeout"] = timeout;
     }
 
     return children;
@@ -1480,7 +1255,7 @@ std::string Tty::TtyLines::TtyLine::Exec::Timeout::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Exec::Timeout::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Exec::Timeout::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1505,20 +1280,12 @@ EntityPath Tty::TtyLines::TtyLine::Exec::Timeout::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Exec::Timeout::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::Timeout::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1549,7 +1316,6 @@ Tty::TtyLines::TtyLine::Connection::Connection()
 	,transport_output(nullptr) // presence node
 {
     transport_input->parent = this;
-    children["transport-input"] = transport_input;
 
     yang_name = "connection"; yang_parent_name = "tty-line";
 }
@@ -1596,7 +1362,7 @@ std::string Tty::TtyLines::TtyLine::Connection::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Connection::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Connection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1626,87 +1392,52 @@ EntityPath Tty::TtyLines::TtyLine::Connection::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-timeout")
     {
-        if(session_timeout != nullptr)
-        {
-            children["session-timeout"] = session_timeout;
-        }
-        else
+        if(session_timeout == nullptr)
         {
             session_timeout = std::make_shared<Tty::TtyLines::TtyLine::Connection::SessionTimeout>();
-            session_timeout->parent = this;
-            children["session-timeout"] = session_timeout;
         }
-        return children.at("session-timeout");
+        return session_timeout;
     }
 
     if(child_yang_name == "transport-input")
     {
-        if(transport_input != nullptr)
-        {
-            children["transport-input"] = transport_input;
-        }
-        else
+        if(transport_input == nullptr)
         {
             transport_input = std::make_shared<Tty::TtyLines::TtyLine::Connection::TransportInput>();
-            transport_input->parent = this;
-            children["transport-input"] = transport_input;
         }
-        return children.at("transport-input");
+        return transport_input;
     }
 
     if(child_yang_name == "transport-output")
     {
-        if(transport_output != nullptr)
-        {
-            children["transport-output"] = transport_output;
-        }
-        else
+        if(transport_output == nullptr)
         {
             transport_output = std::make_shared<Tty::TtyLines::TtyLine::Connection::TransportOutput>();
-            transport_output->parent = this;
-            children["transport-output"] = transport_output;
         }
-        return children.at("transport-output");
+        return transport_output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Connection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::get_children() const
 {
-    if(children.find("session-timeout") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session_timeout != nullptr)
     {
-        if(session_timeout != nullptr)
-        {
-            children["session-timeout"] = session_timeout;
-        }
+        children["session-timeout"] = session_timeout;
     }
 
-    if(children.find("transport-input") == children.end())
+    if(transport_input != nullptr)
     {
-        if(transport_input != nullptr)
-        {
-            children["transport-input"] = transport_input;
-        }
+        children["transport-input"] = transport_input;
     }
 
-    if(children.find("transport-output") == children.end())
+    if(transport_output != nullptr)
     {
-        if(transport_output != nullptr)
-        {
-            children["transport-output"] = transport_output;
-        }
+        children["transport-output"] = transport_output;
     }
 
     return children;
@@ -1784,7 +1515,7 @@ std::string Tty::TtyLines::TtyLine::Connection::TransportInput::get_segment_path
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Connection::TransportInput::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Connection::TransportInput::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1811,20 +1542,12 @@ EntityPath Tty::TtyLines::TtyLine::Connection::TransportInput::get_entity_path(E
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Connection::TransportInput::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::TransportInput::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1888,7 +1611,7 @@ std::string Tty::TtyLines::TtyLine::Connection::TransportOutput::get_segment_pat
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Connection::TransportOutput::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Connection::TransportOutput::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1915,20 +1638,12 @@ EntityPath Tty::TtyLines::TtyLine::Connection::TransportOutput::get_entity_path(
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::TransportOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Connection::TransportOutput::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::TransportOutput::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1986,7 +1701,7 @@ std::string Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_segment_path
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2011,20 +1726,12 @@ EntityPath Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_entity_path(E
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2071,7 +1778,7 @@ std::string Tty::TtyLines::TtyLine::ExecMode::get_segment_path() const
 
 }
 
-EntityPath Tty::TtyLines::TtyLine::ExecMode::get_entity_path(Entity* ancestor) const
+const EntityPath Tty::TtyLines::TtyLine::ExecMode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2095,20 +1802,12 @@ EntityPath Tty::TtyLines::TtyLine::ExecMode::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Tty::TtyLines::TtyLine::ExecMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tty::TtyLines::TtyLine::ExecMode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::ExecMode::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ LptsIfib::LptsIfib()
     nodes(std::make_shared<LptsIfib::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "lpts-ifib"; yang_parent_name = "Cisco-IOS-XR-lpts-ifib-oper";
 }
@@ -43,12 +42,12 @@ std::string LptsIfib::get_segment_path() const
 
 }
 
-EntityPath LptsIfib::get_entity_path(Entity* ancestor) const
+const EntityPath LptsIfib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath LptsIfib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LptsIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<LptsIfib::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsIfib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsIfib::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string LptsIfib::Nodes::get_segment_path() const
 
 }
 
-EntityPath LptsIfib::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath LptsIfib::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath LptsIfib::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LptsIfib::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> LptsIfib::Nodes::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsIfib::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsIfib::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ LptsIfib::Nodes::Node::Node()
     slice_ids(std::make_shared<LptsIfib::Nodes::Node::SliceIds>())
 {
     slice_ids->parent = this;
-    children["slice-ids"] = slice_ids;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string LptsIfib::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath LptsIfib::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath LptsIfib::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath LptsIfib::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LptsIfib::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slice-ids")
     {
-        if(slice_ids != nullptr)
-        {
-            children["slice-ids"] = slice_ids;
-        }
-        else
+        if(slice_ids == nullptr)
         {
             slice_ids = std::make_shared<LptsIfib::Nodes::Node::SliceIds>();
-            slice_ids->parent = this;
-            children["slice-ids"] = slice_ids;
         }
-        return children.at("slice-ids");
+        return slice_ids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsIfib::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::get_children() const
 {
-    if(children.find("slice-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(slice_ids != nullptr)
     {
-        if(slice_ids != nullptr)
-        {
-            children["slice-ids"] = slice_ids;
-        }
+        children["slice-ids"] = slice_ids;
     }
 
     return children;
@@ -383,7 +334,7 @@ std::string LptsIfib::Nodes::Node::SliceIds::get_segment_path() const
 
 }
 
-EntityPath LptsIfib::Nodes::Node::SliceIds::get_entity_path(Entity* ancestor) const
+const EntityPath LptsIfib::Nodes::Node::SliceIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -406,15 +357,6 @@ EntityPath LptsIfib::Nodes::Node::SliceIds::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> LptsIfib::Nodes::Node::SliceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slice-id")
     {
         for(auto const & c : slice_id)
@@ -422,28 +364,24 @@ std::shared_ptr<Entity> LptsIfib::Nodes::Node::SliceIds::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsIfib::Nodes::Node::SliceIds::SliceId>();
         c->parent = this;
-        slice_id.push_back(std::move(c));
-        children[segment_path] = slice_id.back();
-        return children.at(segment_path);
+        slice_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsIfib::Nodes::Node::SliceIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slice_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -494,7 +432,7 @@ std::string LptsIfib::Nodes::Node::SliceIds::SliceId::get_segment_path() const
 
 }
 
-EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::get_entity_path(Entity* ancestor) const
+const EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -518,15 +456,6 @@ EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> LptsIfib::Nodes::Node::SliceIds::SliceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "entry")
     {
         for(auto const & c : entry)
@@ -534,28 +463,24 @@ std::shared_ptr<Entity> LptsIfib::Nodes::Node::SliceIds::SliceId::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LptsIfib::Nodes::Node::SliceIds::SliceId::Entry>();
         c->parent = this;
-        entry.push_back(std::move(c));
-        children[segment_path] = entry.back();
-        return children.at(segment_path);
+        entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsIfib::Nodes::Node::SliceIds::SliceId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::SliceId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -675,7 +600,7 @@ std::string LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_segment_path() 
 
 }
 
-EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_entity_path(Entity* ancestor) const
+const EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -724,20 +649,12 @@ EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_entity_path(Enti
 
 std::shared_ptr<Entity> LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

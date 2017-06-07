@@ -17,9 +17,6 @@ class Address_FamilyIdentity : public virtual Identity
         ~Address_FamilyIdentity();
 
 
-
-
-
 }; // Address_FamilyIdentity
 
 class Ipv6Identity : public openconfig_types::Address_FamilyIdentity, virtual Identity
@@ -29,8 +26,6 @@ class Ipv6Identity : public openconfig_types::Address_FamilyIdentity, virtual Id
         ~Ipv6Identity();
 
 
-
-
 }; // Ipv6Identity
 
 class Ipv4Identity : public openconfig_types::Address_FamilyIdentity, virtual Identity
@@ -38,8 +33,6 @@ class Ipv4Identity : public openconfig_types::Address_FamilyIdentity, virtual Id
     public:
         Ipv4Identity();
         ~Ipv4Identity();
-
-
 
 
 }; // Ipv4Identity

@@ -16,7 +16,6 @@ Rib::Rib()
     af(std::make_shared<Rib::Af>())
 {
     af->parent = this;
-    children["af"] = af;
 
     yang_name = "rib"; yang_parent_name = "Cisco-IOS-XR-ip-rib-cfg";
 }
@@ -47,12 +46,12 @@ std::string Rib::get_segment_path() const
 
 }
 
-EntityPath Rib::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -68,41 +67,24 @@ EntityPath Rib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af")
     {
-        if(af != nullptr)
-        {
-            children["af"] = af;
-        }
-        else
+        if(af == nullptr)
         {
             af = std::make_shared<Rib::Af>();
-            af->parent = this;
-            children["af"] = af;
         }
-        return children.at("af");
+        return af;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::get_children() const
 {
-    if(children.find("af") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(af != nullptr)
     {
-        if(af != nullptr)
-        {
-            children["af"] = af;
-        }
+        children["af"] = af;
     }
 
     return children;
@@ -142,10 +124,8 @@ Rib::Af::Af()
 	,ipv6(std::make_shared<Rib::Af::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "af"; yang_parent_name = "rib";
 }
@@ -176,7 +156,7 @@ std::string Rib::Af::get_segment_path() const
 
 }
 
-EntityPath Rib::Af::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -199,64 +179,38 @@ EntityPath Rib::Af::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rib::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Rib::Af::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Rib::Af::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Af::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -273,7 +227,6 @@ Rib::Af::Ipv4::Ipv4()
     redistribution_history(std::make_shared<Rib::Af::Ipv4::RedistributionHistory>())
 {
     redistribution_history->parent = this;
-    children["redistribution-history"] = redistribution_history;
 
     yang_name = "ipv4"; yang_parent_name = "af";
 }
@@ -304,7 +257,7 @@ std::string Rib::Af::Ipv4::get_segment_path() const
 
 }
 
-EntityPath Rib::Af::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Af::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -328,41 +281,24 @@ EntityPath Rib::Af::Ipv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rib::Af::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "redistribution-history")
     {
-        if(redistribution_history != nullptr)
-        {
-            children["redistribution-history"] = redistribution_history;
-        }
-        else
+        if(redistribution_history == nullptr)
         {
             redistribution_history = std::make_shared<Rib::Af::Ipv4::RedistributionHistory>();
-            redistribution_history->parent = this;
-            children["redistribution-history"] = redistribution_history;
         }
-        return children.at("redistribution-history");
+        return redistribution_history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Af::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::get_children() const
 {
-    if(children.find("redistribution-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(redistribution_history != nullptr)
     {
-        if(redistribution_history != nullptr)
-        {
-            children["redistribution-history"] = redistribution_history;
-        }
+        children["redistribution-history"] = redistribution_history;
     }
 
     return children;
@@ -384,7 +320,6 @@ Rib::Af::Ipv4::RedistributionHistory::RedistributionHistory()
     keep(std::make_shared<Rib::Af::Ipv4::RedistributionHistory::Keep>())
 {
     keep->parent = this;
-    children["keep"] = keep;
 
     yang_name = "redistribution-history"; yang_parent_name = "ipv4";
 }
@@ -417,7 +352,7 @@ std::string Rib::Af::Ipv4::RedistributionHistory::get_segment_path() const
 
 }
 
-EntityPath Rib::Af::Ipv4::RedistributionHistory::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Af::Ipv4::RedistributionHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -442,41 +377,24 @@ EntityPath Rib::Af::Ipv4::RedistributionHistory::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Rib::Af::Ipv4::RedistributionHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "keep")
     {
-        if(keep != nullptr)
-        {
-            children["keep"] = keep;
-        }
-        else
+        if(keep == nullptr)
         {
             keep = std::make_shared<Rib::Af::Ipv4::RedistributionHistory::Keep>();
-            keep->parent = this;
-            children["keep"] = keep;
         }
-        return children.at("keep");
+        return keep;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Af::Ipv4::RedistributionHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHistory::get_children() const
 {
-    if(children.find("keep") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(keep != nullptr)
     {
-        if(keep != nullptr)
-        {
-            children["keep"] = keep;
-        }
+        children["keep"] = keep;
     }
 
     return children;
@@ -525,7 +443,7 @@ std::string Rib::Af::Ipv4::RedistributionHistory::Keep::get_segment_path() const
 
 }
 
-EntityPath Rib::Af::Ipv4::RedistributionHistory::Keep::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Af::Ipv4::RedistributionHistory::Keep::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -549,20 +467,12 @@ EntityPath Rib::Af::Ipv4::RedistributionHistory::Keep::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Rib::Af::Ipv4::RedistributionHistory::Keep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Af::Ipv4::RedistributionHistory::Keep::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHistory::Keep::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -581,7 +491,6 @@ Rib::Af::Ipv6::Ipv6()
     redistribution_history(std::make_shared<Rib::Af::Ipv6::RedistributionHistory>())
 {
     redistribution_history->parent = this;
-    children["redistribution-history"] = redistribution_history;
 
     yang_name = "ipv6"; yang_parent_name = "af";
 }
@@ -612,7 +521,7 @@ std::string Rib::Af::Ipv6::get_segment_path() const
 
 }
 
-EntityPath Rib::Af::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Af::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -636,41 +545,24 @@ EntityPath Rib::Af::Ipv6::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rib::Af::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "redistribution-history")
     {
-        if(redistribution_history != nullptr)
-        {
-            children["redistribution-history"] = redistribution_history;
-        }
-        else
+        if(redistribution_history == nullptr)
         {
             redistribution_history = std::make_shared<Rib::Af::Ipv6::RedistributionHistory>();
-            redistribution_history->parent = this;
-            children["redistribution-history"] = redistribution_history;
         }
-        return children.at("redistribution-history");
+        return redistribution_history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Af::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::get_children() const
 {
-    if(children.find("redistribution-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(redistribution_history != nullptr)
     {
-        if(redistribution_history != nullptr)
-        {
-            children["redistribution-history"] = redistribution_history;
-        }
+        children["redistribution-history"] = redistribution_history;
     }
 
     return children;
@@ -692,7 +584,6 @@ Rib::Af::Ipv6::RedistributionHistory::RedistributionHistory()
     keep(std::make_shared<Rib::Af::Ipv6::RedistributionHistory::Keep>())
 {
     keep->parent = this;
-    children["keep"] = keep;
 
     yang_name = "redistribution-history"; yang_parent_name = "ipv6";
 }
@@ -725,7 +616,7 @@ std::string Rib::Af::Ipv6::RedistributionHistory::get_segment_path() const
 
 }
 
-EntityPath Rib::Af::Ipv6::RedistributionHistory::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Af::Ipv6::RedistributionHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -750,41 +641,24 @@ EntityPath Rib::Af::Ipv6::RedistributionHistory::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Rib::Af::Ipv6::RedistributionHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "keep")
     {
-        if(keep != nullptr)
-        {
-            children["keep"] = keep;
-        }
-        else
+        if(keep == nullptr)
         {
             keep = std::make_shared<Rib::Af::Ipv6::RedistributionHistory::Keep>();
-            keep->parent = this;
-            children["keep"] = keep;
         }
-        return children.at("keep");
+        return keep;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Af::Ipv6::RedistributionHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHistory::get_children() const
 {
-    if(children.find("keep") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(keep != nullptr)
     {
-        if(keep != nullptr)
-        {
-            children["keep"] = keep;
-        }
+        children["keep"] = keep;
     }
 
     return children;
@@ -833,7 +707,7 @@ std::string Rib::Af::Ipv6::RedistributionHistory::Keep::get_segment_path() const
 
 }
 
-EntityPath Rib::Af::Ipv6::RedistributionHistory::Keep::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Af::Ipv6::RedistributionHistory::Keep::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -857,20 +731,12 @@ EntityPath Rib::Af::Ipv6::RedistributionHistory::Keep::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Rib::Af::Ipv6::RedistributionHistory::Keep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Af::Ipv6::RedistributionHistory::Keep::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHistory::Keep::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

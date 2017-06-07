@@ -18,19 +18,14 @@ Eem::Eem()
 	,reg_policies(std::make_shared<Eem::RegPolicies>())
 {
     avl_policies->parent = this;
-    children["avl-policies"] = avl_policies;
 
     dir_user->parent = this;
-    children["dir-user"] = dir_user;
 
     env_variables->parent = this;
-    children["env-variables"] = env_variables;
 
     refresh_time->parent = this;
-    children["refresh-time"] = refresh_time;
 
     reg_policies->parent = this;
-    children["reg-policies"] = reg_policies;
 
     yang_name = "eem"; yang_parent_name = "Cisco-IOS-XR-ha-eem-policy-oper";
 }
@@ -67,12 +62,12 @@ std::string Eem::get_segment_path() const
 
 }
 
-EntityPath Eem::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -87,133 +82,80 @@ EntityPath Eem::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "avl-policies")
     {
-        if(avl_policies != nullptr)
-        {
-            children["avl-policies"] = avl_policies;
-        }
-        else
+        if(avl_policies == nullptr)
         {
             avl_policies = std::make_shared<Eem::AvlPolicies>();
-            avl_policies->parent = this;
-            children["avl-policies"] = avl_policies;
         }
-        return children.at("avl-policies");
+        return avl_policies;
     }
 
     if(child_yang_name == "dir-user")
     {
-        if(dir_user != nullptr)
-        {
-            children["dir-user"] = dir_user;
-        }
-        else
+        if(dir_user == nullptr)
         {
             dir_user = std::make_shared<Eem::DirUser>();
-            dir_user->parent = this;
-            children["dir-user"] = dir_user;
         }
-        return children.at("dir-user");
+        return dir_user;
     }
 
     if(child_yang_name == "env-variables")
     {
-        if(env_variables != nullptr)
-        {
-            children["env-variables"] = env_variables;
-        }
-        else
+        if(env_variables == nullptr)
         {
             env_variables = std::make_shared<Eem::EnvVariables>();
-            env_variables->parent = this;
-            children["env-variables"] = env_variables;
         }
-        return children.at("env-variables");
+        return env_variables;
     }
 
     if(child_yang_name == "refresh-time")
     {
-        if(refresh_time != nullptr)
-        {
-            children["refresh-time"] = refresh_time;
-        }
-        else
+        if(refresh_time == nullptr)
         {
             refresh_time = std::make_shared<Eem::RefreshTime>();
-            refresh_time->parent = this;
-            children["refresh-time"] = refresh_time;
         }
-        return children.at("refresh-time");
+        return refresh_time;
     }
 
     if(child_yang_name == "reg-policies")
     {
-        if(reg_policies != nullptr)
-        {
-            children["reg-policies"] = reg_policies;
-        }
-        else
+        if(reg_policies == nullptr)
         {
             reg_policies = std::make_shared<Eem::RegPolicies>();
-            reg_policies->parent = this;
-            children["reg-policies"] = reg_policies;
         }
-        return children.at("reg-policies");
+        return reg_policies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::get_children() const
 {
-    if(children.find("avl-policies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(avl_policies != nullptr)
     {
-        if(avl_policies != nullptr)
-        {
-            children["avl-policies"] = avl_policies;
-        }
+        children["avl-policies"] = avl_policies;
     }
 
-    if(children.find("dir-user") == children.end())
+    if(dir_user != nullptr)
     {
-        if(dir_user != nullptr)
-        {
-            children["dir-user"] = dir_user;
-        }
+        children["dir-user"] = dir_user;
     }
 
-    if(children.find("env-variables") == children.end())
+    if(env_variables != nullptr)
     {
-        if(env_variables != nullptr)
-        {
-            children["env-variables"] = env_variables;
-        }
+        children["env-variables"] = env_variables;
     }
 
-    if(children.find("refresh-time") == children.end())
+    if(refresh_time != nullptr)
     {
-        if(refresh_time != nullptr)
-        {
-            children["refresh-time"] = refresh_time;
-        }
+        children["refresh-time"] = refresh_time;
     }
 
-    if(children.find("reg-policies") == children.end())
+    if(reg_policies != nullptr)
     {
-        if(reg_policies != nullptr)
-        {
-            children["reg-policies"] = reg_policies;
-        }
+        children["reg-policies"] = reg_policies;
     }
 
     return children;
@@ -249,10 +191,8 @@ Eem::DirUser::DirUser()
 	,policy(std::make_shared<Eem::DirUser::Policy>())
 {
     library->parent = this;
-    children["library"] = library;
 
     policy->parent = this;
-    children["policy"] = policy;
 
     yang_name = "dir-user"; yang_parent_name = "eem";
 }
@@ -283,7 +223,7 @@ std::string Eem::DirUser::get_segment_path() const
 
 }
 
-EntityPath Eem::DirUser::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::DirUser::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -306,64 +246,38 @@ EntityPath Eem::DirUser::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::DirUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "library")
     {
-        if(library != nullptr)
-        {
-            children["library"] = library;
-        }
-        else
+        if(library == nullptr)
         {
             library = std::make_shared<Eem::DirUser::Library>();
-            library->parent = this;
-            children["library"] = library;
         }
-        return children.at("library");
+        return library;
     }
 
     if(child_yang_name == "policy")
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
-        else
+        if(policy == nullptr)
         {
             policy = std::make_shared<Eem::DirUser::Policy>();
-            policy->parent = this;
-            children["policy"] = policy;
         }
-        return children.at("policy");
+        return policy;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::DirUser::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::DirUser::get_children() const
 {
-    if(children.find("library") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(library != nullptr)
     {
-        if(library != nullptr)
-        {
-            children["library"] = library;
-        }
+        children["library"] = library;
     }
 
-    if(children.find("policy") == children.end())
+    if(policy != nullptr)
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
+        children["policy"] = policy;
     }
 
     return children;
@@ -407,7 +321,7 @@ std::string Eem::DirUser::Library::get_segment_path() const
 
 }
 
-EntityPath Eem::DirUser::Library::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::DirUser::Library::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -432,20 +346,12 @@ EntityPath Eem::DirUser::Library::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::DirUser::Library::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::DirUser::Library::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::DirUser::Library::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -495,7 +401,7 @@ std::string Eem::DirUser::Policy::get_segment_path() const
 
 }
 
-EntityPath Eem::DirUser::Policy::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::DirUser::Policy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -520,20 +426,12 @@ EntityPath Eem::DirUser::Policy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::DirUser::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::DirUser::Policy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::DirUser::Policy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -587,7 +485,7 @@ std::string Eem::EnvVariables::get_segment_path() const
 
 }
 
-EntityPath Eem::EnvVariables::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::EnvVariables::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -610,15 +508,6 @@ EntityPath Eem::EnvVariables::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::EnvVariables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "env-variable")
     {
         for(auto const & c : env_variable)
@@ -626,28 +515,24 @@ std::shared_ptr<Entity> Eem::EnvVariables::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Eem::EnvVariables::EnvVariable>();
         c->parent = this;
-        env_variable.push_back(std::move(c));
-        children[segment_path] = env_variable.back();
-        return children.at(segment_path);
+        env_variable.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::EnvVariables::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::EnvVariables::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : env_variable)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -694,7 +579,7 @@ std::string Eem::EnvVariables::EnvVariable::get_segment_path() const
 
 }
 
-EntityPath Eem::EnvVariables::EnvVariable::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::EnvVariables::EnvVariable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -720,20 +605,12 @@ EntityPath Eem::EnvVariables::EnvVariable::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Eem::EnvVariables::EnvVariable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::EnvVariables::EnvVariable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::EnvVariables::EnvVariable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -784,7 +661,7 @@ std::string Eem::RefreshTime::get_segment_path() const
 
 }
 
-EntityPath Eem::RefreshTime::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::RefreshTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -808,20 +685,12 @@ EntityPath Eem::RefreshTime::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::RefreshTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::RefreshTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::RefreshTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -871,7 +740,7 @@ std::string Eem::RegPolicies::get_segment_path() const
 
 }
 
-EntityPath Eem::RegPolicies::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::RegPolicies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -894,15 +763,6 @@ EntityPath Eem::RegPolicies::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::RegPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reg-policy")
     {
         for(auto const & c : reg_policy)
@@ -910,28 +770,24 @@ std::shared_ptr<Entity> Eem::RegPolicies::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Eem::RegPolicies::RegPolicy>();
         c->parent = this;
-        reg_policy.push_back(std::move(c));
-        children[segment_path] = reg_policy.back();
-        return children.at(segment_path);
+        reg_policy.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::RegPolicies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::RegPolicies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : reg_policy)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -999,7 +855,7 @@ std::string Eem::RegPolicies::RegPolicy::get_segment_path() const
 
 }
 
-EntityPath Eem::RegPolicies::RegPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::RegPolicies::RegPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1032,20 +888,12 @@ EntityPath Eem::RegPolicies::RegPolicy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::RegPolicies::RegPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::RegPolicies::RegPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::RegPolicies::RegPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1131,7 +979,7 @@ std::string Eem::AvlPolicies::get_segment_path() const
 
 }
 
-EntityPath Eem::AvlPolicies::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::AvlPolicies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1154,15 +1002,6 @@ EntityPath Eem::AvlPolicies::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::AvlPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "avl-policy")
     {
         for(auto const & c : avl_policy)
@@ -1170,28 +1009,24 @@ std::shared_ptr<Entity> Eem::AvlPolicies::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Eem::AvlPolicies::AvlPolicy>();
         c->parent = this;
-        avl_policy.push_back(std::move(c));
-        children[segment_path] = avl_policy.back();
-        return children.at(segment_path);
+        avl_policy.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::AvlPolicies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : avl_policy)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1241,7 +1076,7 @@ std::string Eem::AvlPolicies::AvlPolicy::get_segment_path() const
 
 }
 
-EntityPath Eem::AvlPolicies::AvlPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Eem::AvlPolicies::AvlPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1268,20 +1103,12 @@ EntityPath Eem::AvlPolicies::AvlPolicy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Eem::AvlPolicies::AvlPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Eem::AvlPolicies::AvlPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::AvlPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

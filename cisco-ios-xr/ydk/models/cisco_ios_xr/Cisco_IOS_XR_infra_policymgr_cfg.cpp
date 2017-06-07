@@ -15,10 +15,8 @@ PolicyManager::PolicyManager()
 	,policy_maps(std::make_shared<PolicyManager::PolicyMaps>())
 {
     class_maps->parent = this;
-    children["class-maps"] = class_maps;
 
     policy_maps->parent = this;
-    children["policy-maps"] = policy_maps;
 
     yang_name = "policy-manager"; yang_parent_name = "Cisco-IOS-XR-infra-policymgr-cfg";
 }
@@ -49,12 +47,12 @@ std::string PolicyManager::get_segment_path() const
 
 }
 
-EntityPath PolicyManager::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath PolicyManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PolicyManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-maps")
     {
-        if(class_maps != nullptr)
-        {
-            children["class-maps"] = class_maps;
-        }
-        else
+        if(class_maps == nullptr)
         {
             class_maps = std::make_shared<PolicyManager::ClassMaps>();
-            class_maps->parent = this;
-            children["class-maps"] = class_maps;
         }
-        return children.at("class-maps");
+        return class_maps;
     }
 
     if(child_yang_name == "policy-maps")
     {
-        if(policy_maps != nullptr)
-        {
-            children["policy-maps"] = policy_maps;
-        }
-        else
+        if(policy_maps == nullptr)
         {
             policy_maps = std::make_shared<PolicyManager::PolicyMaps>();
-            policy_maps->parent = this;
-            children["policy-maps"] = policy_maps;
         }
-        return children.at("policy-maps");
+        return policy_maps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::get_children() const
 {
-    if(children.find("class-maps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(class_maps != nullptr)
     {
-        if(class_maps != nullptr)
-        {
-            children["class-maps"] = class_maps;
-        }
+        children["class-maps"] = class_maps;
     }
 
-    if(children.find("policy-maps") == children.end())
+    if(policy_maps != nullptr)
     {
-        if(policy_maps != nullptr)
-        {
-            children["policy-maps"] = policy_maps;
-        }
+        children["policy-maps"] = policy_maps;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string PolicyManager::ClassMaps::get_segment_path() const
 
 }
 
-EntityPath PolicyManager::ClassMaps::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath PolicyManager::ClassMaps::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-map")
     {
         for(auto const & c : class_map)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap>();
         c->parent = this;
-        class_map.push_back(std::move(c));
-        children[segment_path] = class_map.back();
-        return children.at(segment_path);
+        class_map.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_map)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -266,8 +225,8 @@ void PolicyManager::ClassMaps::set_value(const std::string & value_path, std::st
 
 PolicyManager::ClassMaps::ClassMap::ClassMap()
     :
-    name{YType::str, "name"},
     type{YType::enumeration, "type"},
+    name{YType::str, "name"},
     class_map_mode_match_all{YType::empty, "class-map-mode-match-all"},
     class_map_mode_match_any{YType::empty, "class-map-mode-match-any"},
     description{YType::str, "description"}
@@ -276,10 +235,8 @@ PolicyManager::ClassMaps::ClassMap::ClassMap()
 	,match_not(std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot>())
 {
     match->parent = this;
-    children["match"] = match;
 
     match_not->parent = this;
-    children["match-not"] = match_not;
 
     yang_name = "class-map"; yang_parent_name = "class-maps";
 }
@@ -290,8 +247,8 @@ PolicyManager::ClassMaps::ClassMap::~ClassMap()
 
 bool PolicyManager::ClassMaps::ClassMap::has_data() const
 {
-    return name.is_set
-	|| type.is_set
+    return type.is_set
+	|| name.is_set
 	|| class_map_mode_match_all.is_set
 	|| class_map_mode_match_any.is_set
 	|| description.is_set
@@ -302,8 +259,8 @@ bool PolicyManager::ClassMaps::ClassMap::has_data() const
 bool PolicyManager::ClassMaps::ClassMap::has_operation() const
 {
     return is_set(operation)
-	|| is_set(name.operation)
 	|| is_set(type.operation)
+	|| is_set(name.operation)
 	|| is_set(class_map_mode_match_all.operation)
 	|| is_set(class_map_mode_match_any.operation)
 	|| is_set(description.operation)
@@ -314,13 +271,13 @@ bool PolicyManager::ClassMaps::ClassMap::has_operation() const
 std::string PolicyManager::ClassMaps::ClassMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class-map" <<"[name='" <<name <<"']" <<"[type='" <<type <<"']";
+    path_buffer << "class-map" <<"[type='" <<type <<"']" <<"[name='" <<name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -334,8 +291,8 @@ EntityPath PolicyManager::ClassMaps::ClassMap::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
     if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
     if (class_map_mode_match_all.is_set || is_set(class_map_mode_match_all.operation)) leaf_name_data.push_back(class_map_mode_match_all.get_name_leafdata());
     if (class_map_mode_match_any.is_set || is_set(class_map_mode_match_any.operation)) leaf_name_data.push_back(class_map_mode_match_any.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
@@ -348,64 +305,38 @@ EntityPath PolicyManager::ClassMaps::ClassMap::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "match")
     {
-        if(match != nullptr)
-        {
-            children["match"] = match;
-        }
-        else
+        if(match == nullptr)
         {
             match = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match>();
-            match->parent = this;
-            children["match"] = match;
         }
-        return children.at("match");
+        return match;
     }
 
     if(child_yang_name == "match-not")
     {
-        if(match_not != nullptr)
-        {
-            children["match-not"] = match_not;
-        }
-        else
+        if(match_not == nullptr)
         {
             match_not = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot>();
-            match_not->parent = this;
-            children["match-not"] = match_not;
         }
-        return children.at("match-not");
+        return match_not;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::get_children() const
 {
-    if(children.find("match") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(match != nullptr)
     {
-        if(match != nullptr)
-        {
-            children["match"] = match;
-        }
+        children["match"] = match;
     }
 
-    if(children.find("match-not") == children.end())
+    if(match_not != nullptr)
     {
-        if(match_not != nullptr)
-        {
-            children["match-not"] = match_not;
-        }
+        children["match-not"] = match_not;
     }
 
     return children;
@@ -413,13 +344,13 @@ std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::Class
 
 void PolicyManager::ClassMaps::ClassMap::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "name")
-    {
-        name = value;
-    }
     if(value_path == "type")
     {
         type = value;
+    }
+    if(value_path == "name")
+    {
+        name = value;
     }
     if(value_path == "class-map-mode-match-all")
     {
@@ -503,7 +434,6 @@ PolicyManager::ClassMaps::ClassMap::Match::Match()
     flow(std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::Flow>())
 {
     flow->parent = this;
-    children["flow"] = flow;
 
     yang_name = "match"; yang_parent_name = "class-map";
 }
@@ -1103,7 +1033,7 @@ std::string PolicyManager::ClassMaps::ClassMap::Match::get_segment_path() const
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1231,15 +1161,6 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address-ipv4")
     {
         for(auto const & c : destination_address_ipv4)
@@ -1247,15 +1168,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4>();
         c->parent = this;
-        destination_address_ipv4.push_back(std::move(c));
-        children[segment_path] = destination_address_ipv4.back();
-        return children.at(segment_path);
+        destination_address_ipv4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "destination-address-ipv6")
@@ -1265,15 +1184,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6>();
         c->parent = this;
-        destination_address_ipv6.push_back(std::move(c));
-        children[segment_path] = destination_address_ipv6.back();
-        return children.at(segment_path);
+        destination_address_ipv6.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "domain-name")
@@ -1283,15 +1200,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DomainName>();
         c->parent = this;
-        domain_name.push_back(std::move(c));
-        children[segment_path] = domain_name.back();
-        return children.at(segment_path);
+        domain_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "domain-name-regex")
@@ -1301,30 +1216,22 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex>();
         c->parent = this;
-        domain_name_regex.push_back(std::move(c));
-        children[segment_path] = domain_name_regex.back();
-        return children.at(segment_path);
+        domain_name_regex.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "flow")
     {
-        if(flow != nullptr)
-        {
-            children["flow"] = flow;
-        }
-        else
+        if(flow == nullptr)
         {
             flow = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::Flow>();
-            flow->parent = this;
-            children["flow"] = flow;
         }
-        return children.at("flow");
+        return flow;
     }
 
     if(child_yang_name == "source-address-ipv4")
@@ -1334,15 +1241,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4>();
         c->parent = this;
-        source_address_ipv4.push_back(std::move(c));
-        children[segment_path] = source_address_ipv4.back();
-        return children.at(segment_path);
+        source_address_ipv4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "source-address-ipv6")
@@ -1352,76 +1257,54 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6>();
         c->parent = this;
-        source_address_ipv6.push_back(std::move(c));
-        children[segment_path] = source_address_ipv6.back();
-        return children.at(segment_path);
+        source_address_ipv6.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : destination_address_ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : destination_address_ipv6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : domain_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : domain_name_regex)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("flow") == children.end())
+    if(flow != nullptr)
     {
-        if(flow != nullptr)
-        {
-            children["flow"] = flow;
-        }
+        children["flow"] = flow;
     }
 
     for (auto const & c : source_address_ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : source_address_ipv6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1713,7 +1596,7 @@ std::string PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::g
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1738,20 +1621,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::ge
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1801,7 +1676,7 @@ std::string PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::g
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1826,20 +1701,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::ge
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1889,7 +1756,7 @@ std::string PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_se
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1914,20 +1781,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_ent
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1977,7 +1836,7 @@ std::string PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_se
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2002,20 +1861,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_ent
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2033,8 +1884,8 @@ void PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::set_value(con
 
 PolicyManager::ClassMaps::ClassMap::Match::DomainName::DomainName()
     :
-    format{YType::str, "format"},
-    name{YType::str, "name"}
+    name{YType::str, "name"},
+    format{YType::str, "format"}
 {
     yang_name = "domain-name"; yang_parent_name = "match";
 }
@@ -2045,27 +1896,27 @@ PolicyManager::ClassMaps::ClassMap::Match::DomainName::~DomainName()
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DomainName::has_data() const
 {
-    return format.is_set
-	|| name.is_set;
+    return name.is_set
+	|| format.is_set;
 }
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DomainName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(format.operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(format.operation);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "domain-name" <<"[format='" <<format <<"']" <<"[name='" <<name <<"']";
+    path_buffer << "domain-name" <<"[name='" <<name <<"']" <<"[format='" <<format <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2079,8 +1930,8 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
     if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2090,39 +1941,31 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_entity_pat
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void PolicyManager::ClassMaps::ClassMap::Match::DomainName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "format")
-    {
-        format = value;
-    }
     if(value_path == "name")
     {
         name = value;
+    }
+    if(value_path == "format")
+    {
+        format = value;
     }
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::DomainNameRegex()
     :
-    format{YType::str, "format"},
-    regex{YType::str, "regex"}
+    regex{YType::str, "regex"},
+    format{YType::str, "format"}
 {
     yang_name = "domain-name-regex"; yang_parent_name = "match";
 }
@@ -2133,27 +1976,27 @@ PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::~DomainNameRegex()
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::has_data() const
 {
-    return format.is_set
-	|| regex.is_set;
+    return regex.is_set
+	|| format.is_set;
 }
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::has_operation() const
 {
     return is_set(operation)
-	|| is_set(format.operation)
-	|| is_set(regex.operation);
+	|| is_set(regex.operation)
+	|| is_set(format.operation);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "domain-name-regex" <<"[format='" <<format <<"']" <<"[regex='" <<regex <<"']";
+    path_buffer << "domain-name-regex" <<"[regex='" <<regex <<"']" <<"[format='" <<format <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2167,8 +2010,8 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
     if (regex.is_set || is_set(regex.operation)) leaf_name_data.push_back(regex.get_name_leafdata());
+    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2178,32 +2021,24 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_entit
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "format")
-    {
-        format = value;
-    }
     if(value_path == "regex")
     {
         regex = value;
+    }
+    if(value_path == "format")
+    {
+        format = value;
     }
 }
 
@@ -2214,7 +2049,6 @@ PolicyManager::ClassMaps::ClassMap::Match::Flow::Flow()
     flow_cache(std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache>())
 {
     flow_cache->parent = this;
-    children["flow-cache"] = flow_cache;
 
     yang_name = "flow"; yang_parent_name = "match";
 }
@@ -2254,7 +2088,7 @@ std::string PolicyManager::ClassMaps::ClassMap::Match::Flow::get_segment_path() 
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2279,41 +2113,24 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::get_entity_path(Enti
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow-cache")
     {
-        if(flow_cache != nullptr)
-        {
-            children["flow-cache"] = flow_cache;
-        }
-        else
+        if(flow_cache == nullptr)
         {
             flow_cache = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache>();
-            flow_cache->parent = this;
-            children["flow-cache"] = flow_cache;
         }
-        return children.at("flow-cache");
+        return flow_cache;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::Flow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::Flow::get_children() const
 {
-    if(children.find("flow-cache") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flow_cache != nullptr)
     {
-        if(flow_cache != nullptr)
-        {
-            children["flow-cache"] = flow_cache;
-        }
+        children["flow-cache"] = flow_cache;
     }
 
     return children;
@@ -2358,7 +2175,7 @@ std::string PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_segm
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2382,20 +2199,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_entit
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2471,7 +2280,6 @@ PolicyManager::ClassMaps::ClassMap::MatchNot::MatchNot()
     flow(std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::Flow>())
 {
     flow->parent = this;
-    children["flow"] = flow;
 
     yang_name = "match-not"; yang_parent_name = "class-map";
 }
@@ -3063,7 +2871,7 @@ std::string PolicyManager::ClassMaps::ClassMap::MatchNot::get_segment_path() con
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3187,15 +2995,6 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address-ipv4")
     {
         for(auto const & c : destination_address_ipv4)
@@ -3203,15 +3002,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4>();
         c->parent = this;
-        destination_address_ipv4.push_back(std::move(c));
-        children[segment_path] = destination_address_ipv4.back();
-        return children.at(segment_path);
+        destination_address_ipv4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "destination-address-ipv6")
@@ -3221,15 +3018,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6>();
         c->parent = this;
-        destination_address_ipv6.push_back(std::move(c));
-        children[segment_path] = destination_address_ipv6.back();
-        return children.at(segment_path);
+        destination_address_ipv6.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "domain-name")
@@ -3239,15 +3034,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName>();
         c->parent = this;
-        domain_name.push_back(std::move(c));
-        children[segment_path] = domain_name.back();
-        return children.at(segment_path);
+        domain_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "domain-name-regex")
@@ -3257,30 +3050,22 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex>();
         c->parent = this;
-        domain_name_regex.push_back(std::move(c));
-        children[segment_path] = domain_name_regex.back();
-        return children.at(segment_path);
+        domain_name_regex.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "flow")
     {
-        if(flow != nullptr)
-        {
-            children["flow"] = flow;
-        }
-        else
+        if(flow == nullptr)
         {
             flow = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::Flow>();
-            flow->parent = this;
-            children["flow"] = flow;
         }
-        return children.at("flow");
+        return flow;
     }
 
     if(child_yang_name == "source-address-ipv4")
@@ -3290,15 +3075,13 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4>();
         c->parent = this;
-        source_address_ipv4.push_back(std::move(c));
-        children[segment_path] = source_address_ipv4.back();
-        return children.at(segment_path);
+        source_address_ipv4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "source-address-ipv6")
@@ -3308,76 +3091,54 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6>();
         c->parent = this;
-        source_address_ipv6.push_back(std::move(c));
-        children[segment_path] = source_address_ipv6.back();
-        return children.at(segment_path);
+        source_address_ipv6.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : destination_address_ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : destination_address_ipv6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : domain_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : domain_name_regex)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("flow") == children.end())
+    if(flow != nullptr)
     {
-        if(flow != nullptr)
-        {
-            children["flow"] = flow;
-        }
+        children["flow"] = flow;
     }
 
     for (auto const & c : source_address_ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : source_address_ipv6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3653,7 +3414,7 @@ std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3678,20 +3439,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4:
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3741,7 +3494,7 @@ std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3766,20 +3519,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6:
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3829,7 +3574,7 @@ std::string PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3854,20 +3599,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3917,7 +3654,7 @@ std::string PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3942,20 +3679,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3973,8 +3702,8 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::set_value(
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::DomainName()
     :
-    format{YType::str, "format"},
-    name{YType::str, "name"}
+    name{YType::str, "name"},
+    format{YType::str, "format"}
 {
     yang_name = "domain-name"; yang_parent_name = "match-not";
 }
@@ -3985,27 +3714,27 @@ PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::~DomainName()
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::has_data() const
 {
-    return format.is_set
-	|| name.is_set;
+    return name.is_set
+	|| format.is_set;
 }
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(format.operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(format.operation);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "domain-name" <<"[format='" <<format <<"']" <<"[name='" <<name <<"']";
+    path_buffer << "domain-name" <<"[name='" <<name <<"']" <<"[format='" <<format <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4019,8 +3748,8 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
     if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4030,39 +3759,31 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_entity_
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "format")
-    {
-        format = value;
-    }
     if(value_path == "name")
     {
         name = value;
+    }
+    if(value_path == "format")
+    {
+        format = value;
     }
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::DomainNameRegex()
     :
-    format{YType::str, "format"},
-    regex{YType::str, "regex"}
+    regex{YType::str, "regex"},
+    format{YType::str, "format"}
 {
     yang_name = "domain-name-regex"; yang_parent_name = "match-not";
 }
@@ -4073,27 +3794,27 @@ PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::~DomainNameRegex(
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::has_data() const
 {
-    return format.is_set
-	|| regex.is_set;
+    return regex.is_set
+	|| format.is_set;
 }
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::has_operation() const
 {
     return is_set(operation)
-	|| is_set(format.operation)
-	|| is_set(regex.operation);
+	|| is_set(regex.operation)
+	|| is_set(format.operation);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "domain-name-regex" <<"[format='" <<format <<"']" <<"[regex='" <<regex <<"']";
+    path_buffer << "domain-name-regex" <<"[regex='" <<regex <<"']" <<"[format='" <<format <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4107,8 +3828,8 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
     if (regex.is_set || is_set(regex.operation)) leaf_name_data.push_back(regex.get_name_leafdata());
+    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4118,32 +3839,24 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_en
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "format")
-    {
-        format = value;
-    }
     if(value_path == "regex")
     {
         regex = value;
+    }
+    if(value_path == "format")
+    {
+        format = value;
     }
 }
 
@@ -4188,7 +3901,7 @@ std::string PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_segment_path
 
 }
 
-EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4213,20 +3926,12 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_entity_path(E
 
 std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4276,7 +3981,7 @@ std::string PolicyManager::PolicyMaps::get_segment_path() const
 
 }
 
-EntityPath PolicyManager::PolicyMaps::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4299,15 +4004,6 @@ EntityPath PolicyManager::PolicyMaps::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy-map")
     {
         for(auto const & c : policy_map)
@@ -4315,28 +4011,24 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap>();
         c->parent = this;
-        policy_map.push_back(std::move(c));
-        children[segment_path] = policy_map.back();
-        return children.at(segment_path);
+        policy_map.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy_map)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4348,8 +4040,8 @@ void PolicyManager::PolicyMaps::set_value(const std::string & value_path, std::s
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMap()
     :
-    name{YType::str, "name"},
     type{YType::enumeration, "type"},
+    name{YType::str, "name"},
     description{YType::str, "description"}
 {
     yang_name = "policy-map"; yang_parent_name = "policy-maps";
@@ -4371,8 +4063,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::has_data() const
         if(policy_map_rule[index]->has_data())
             return true;
     }
-    return name.is_set
-	|| type.is_set
+    return type.is_set
+	|| name.is_set
 	|| description.is_set;
 }
 
@@ -4389,21 +4081,21 @@ bool PolicyManager::PolicyMaps::PolicyMap::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| is_set(name.operation)
 	|| is_set(type.operation)
+	|| is_set(name.operation)
 	|| is_set(description.operation);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-map" <<"[name='" <<name <<"']" <<"[type='" <<type <<"']";
+    path_buffer << "policy-map" <<"[type='" <<type <<"']" <<"[name='" <<name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4417,8 +4109,8 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
     if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
 
 
@@ -4429,15 +4121,6 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "event")
     {
         for(auto const & c : event)
@@ -4445,15 +4128,13 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event>();
         c->parent = this;
-        event.push_back(std::move(c));
-        children[segment_path] = event.back();
-        return children.at(segment_path);
+        event.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "policy-map-rule")
@@ -4463,36 +4144,29 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule>();
         c->parent = this;
-        policy_map_rule.push_back(std::move(c));
-        children[segment_path] = policy_map_rule.back();
-        return children.at(segment_path);
+        policy_map_rule.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : event)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : policy_map_rule)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4500,13 +4174,13 @@ std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::Poli
 
 void PolicyManager::PolicyMaps::PolicyMap::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "name")
-    {
-        name = value;
-    }
     if(value_path == "type")
     {
         type = value;
+    }
+    if(value_path == "name")
+    {
+        name = value;
     }
     if(value_path == "description")
     {
@@ -4561,7 +4235,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::get_segment_path() cons
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4587,15 +4261,6 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class")
     {
         for(auto const & c : class_)
@@ -4603,28 +4268,24 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_>();
         c->parent = this;
-        class_.push_back(std::move(c));
-        children[segment_path] = class_.back();
-        return children.at(segment_path);
+        class_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4693,7 +4354,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_segment_pat
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4719,15 +4380,6 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_entity_path(
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "action-rule")
     {
         for(auto const & c : action_rule)
@@ -4735,28 +4387,24 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule>();
         c->parent = this;
-        action_rule.push_back(std::move(c));
-        children[segment_path] = action_rule.back();
-        return children.at(segment_path);
+        action_rule.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : action_rule)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4792,10 +4440,8 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActionRule()
 	,stop_timer(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer>())
 {
     authenticate->parent = this;
-    children["authenticate"] = authenticate;
 
     stop_timer->parent = this;
-    children["stop-timer"] = stop_timer;
 
     yang_name = "action-rule"; yang_parent_name = "class";
 }
@@ -4840,7 +4486,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4866,156 +4512,94 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "activate-dynamic-template")
     {
-        if(activate_dynamic_template != nullptr)
-        {
-            children["activate-dynamic-template"] = activate_dynamic_template;
-        }
-        else
+        if(activate_dynamic_template == nullptr)
         {
             activate_dynamic_template = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate>();
-            activate_dynamic_template->parent = this;
-            children["activate-dynamic-template"] = activate_dynamic_template;
         }
-        return children.at("activate-dynamic-template");
+        return activate_dynamic_template;
     }
 
     if(child_yang_name == "authenticate")
     {
-        if(authenticate != nullptr)
-        {
-            children["authenticate"] = authenticate;
-        }
-        else
+        if(authenticate == nullptr)
         {
             authenticate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate>();
-            authenticate->parent = this;
-            children["authenticate"] = authenticate;
         }
-        return children.at("authenticate");
+        return authenticate;
     }
 
     if(child_yang_name == "authorize")
     {
-        if(authorize != nullptr)
-        {
-            children["authorize"] = authorize;
-        }
-        else
+        if(authorize == nullptr)
         {
             authorize = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize>();
-            authorize->parent = this;
-            children["authorize"] = authorize;
         }
-        return children.at("authorize");
+        return authorize;
     }
 
     if(child_yang_name == "deactivate-dynamic-template")
     {
-        if(deactivate_dynamic_template != nullptr)
-        {
-            children["deactivate-dynamic-template"] = deactivate_dynamic_template;
-        }
-        else
+        if(deactivate_dynamic_template == nullptr)
         {
             deactivate_dynamic_template = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate>();
-            deactivate_dynamic_template->parent = this;
-            children["deactivate-dynamic-template"] = deactivate_dynamic_template;
         }
-        return children.at("deactivate-dynamic-template");
+        return deactivate_dynamic_template;
     }
 
     if(child_yang_name == "set-timer")
     {
-        if(set_timer != nullptr)
-        {
-            children["set-timer"] = set_timer;
-        }
-        else
+        if(set_timer == nullptr)
         {
             set_timer = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer>();
-            set_timer->parent = this;
-            children["set-timer"] = set_timer;
         }
-        return children.at("set-timer");
+        return set_timer;
     }
 
     if(child_yang_name == "stop-timer")
     {
-        if(stop_timer != nullptr)
-        {
-            children["stop-timer"] = stop_timer;
-        }
-        else
+        if(stop_timer == nullptr)
         {
             stop_timer = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer>();
-            stop_timer->parent = this;
-            children["stop-timer"] = stop_timer;
         }
-        return children.at("stop-timer");
+        return stop_timer;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_children() const
 {
-    if(children.find("activate-dynamic-template") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(activate_dynamic_template != nullptr)
     {
-        if(activate_dynamic_template != nullptr)
-        {
-            children["activate-dynamic-template"] = activate_dynamic_template;
-        }
+        children["activate-dynamic-template"] = activate_dynamic_template;
     }
 
-    if(children.find("authenticate") == children.end())
+    if(authenticate != nullptr)
     {
-        if(authenticate != nullptr)
-        {
-            children["authenticate"] = authenticate;
-        }
+        children["authenticate"] = authenticate;
     }
 
-    if(children.find("authorize") == children.end())
+    if(authorize != nullptr)
     {
-        if(authorize != nullptr)
-        {
-            children["authorize"] = authorize;
-        }
+        children["authorize"] = authorize;
     }
 
-    if(children.find("deactivate-dynamic-template") == children.end())
+    if(deactivate_dynamic_template != nullptr)
     {
-        if(deactivate_dynamic_template != nullptr)
-        {
-            children["deactivate-dynamic-template"] = deactivate_dynamic_template;
-        }
+        children["deactivate-dynamic-template"] = deactivate_dynamic_template;
     }
 
-    if(children.find("set-timer") == children.end())
+    if(set_timer != nullptr)
     {
-        if(set_timer != nullptr)
-        {
-            children["set-timer"] = set_timer;
-        }
+        children["set-timer"] = set_timer;
     }
 
-    if(children.find("stop-timer") == children.end())
+    if(stop_timer != nullptr)
     {
-        if(stop_timer != nullptr)
-        {
-            children["stop-timer"] = stop_timer;
-        }
+        children["stop-timer"] = stop_timer;
     }
 
     return children;
@@ -5071,7 +4655,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Act
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5096,20 +4680,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Acti
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5156,7 +4732,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Aut
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5180,20 +4756,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Auth
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5245,7 +4813,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Aut
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5272,20 +4840,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Auth
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5343,7 +4903,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Dea
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5368,20 +4928,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deac
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5431,7 +4983,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Set
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5456,20 +5008,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetT
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5516,7 +5060,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Sto
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5540,20 +5084,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Stop
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5595,46 +5131,32 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PolicyMapRule()
 	,shape(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape>())
 {
     bandwidth_remaining->parent = this;
-    children["bandwidth-remaining"] = bandwidth_remaining;
 
     cac_local->parent = this;
-    children["cac-local"] = cac_local;
 
     flow_params->parent = this;
-    children["flow-params"] = flow_params;
 
     metrics_ipcbr->parent = this;
-    children["metrics-ipcbr"] = metrics_ipcbr;
 
     min_bandwidth->parent = this;
-    children["min-bandwidth"] = min_bandwidth;
 
     pbr_forward->parent = this;
-    children["pbr-forward"] = pbr_forward;
 
     pfc->parent = this;
-    children["pfc"] = pfc;
 
     police->parent = this;
-    children["police"] = police;
 
     queue_limit->parent = this;
-    children["queue-limit"] = queue_limit;
 
     react->parent = this;
-    children["react"] = react;
 
     service_function_path->parent = this;
-    children["service-function-path"] = service_function_path;
 
     service_policy->parent = this;
-    children["service-policy"] = service_policy;
 
     set->parent = this;
-    children["set"] = set;
 
     shape->parent = this;
-    children["shape"] = shape;
 
     yang_name = "policy-map-rule"; yang_parent_name = "policy-map";
 }
@@ -5721,7 +5243,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_segment_pat
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5755,148 +5277,85 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_entity_path(
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth-remaining")
     {
-        if(bandwidth_remaining != nullptr)
-        {
-            children["bandwidth-remaining"] = bandwidth_remaining;
-        }
-        else
+        if(bandwidth_remaining == nullptr)
         {
             bandwidth_remaining = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining>();
-            bandwidth_remaining->parent = this;
-            children["bandwidth-remaining"] = bandwidth_remaining;
         }
-        return children.at("bandwidth-remaining");
+        return bandwidth_remaining;
     }
 
     if(child_yang_name == "cac-local")
     {
-        if(cac_local != nullptr)
-        {
-            children["cac-local"] = cac_local;
-        }
-        else
+        if(cac_local == nullptr)
         {
             cac_local = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal>();
-            cac_local->parent = this;
-            children["cac-local"] = cac_local;
         }
-        return children.at("cac-local");
+        return cac_local;
     }
 
     if(child_yang_name == "flow-params")
     {
-        if(flow_params != nullptr)
-        {
-            children["flow-params"] = flow_params;
-        }
-        else
+        if(flow_params == nullptr)
         {
             flow_params = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams>();
-            flow_params->parent = this;
-            children["flow-params"] = flow_params;
         }
-        return children.at("flow-params");
+        return flow_params;
     }
 
     if(child_yang_name == "metrics-ipcbr")
     {
-        if(metrics_ipcbr != nullptr)
-        {
-            children["metrics-ipcbr"] = metrics_ipcbr;
-        }
-        else
+        if(metrics_ipcbr == nullptr)
         {
             metrics_ipcbr = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr>();
-            metrics_ipcbr->parent = this;
-            children["metrics-ipcbr"] = metrics_ipcbr;
         }
-        return children.at("metrics-ipcbr");
+        return metrics_ipcbr;
     }
 
     if(child_yang_name == "min-bandwidth")
     {
-        if(min_bandwidth != nullptr)
-        {
-            children["min-bandwidth"] = min_bandwidth;
-        }
-        else
+        if(min_bandwidth == nullptr)
         {
             min_bandwidth = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth>();
-            min_bandwidth->parent = this;
-            children["min-bandwidth"] = min_bandwidth;
         }
-        return children.at("min-bandwidth");
+        return min_bandwidth;
     }
 
     if(child_yang_name == "pbr-forward")
     {
-        if(pbr_forward != nullptr)
-        {
-            children["pbr-forward"] = pbr_forward;
-        }
-        else
+        if(pbr_forward == nullptr)
         {
             pbr_forward = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward>();
-            pbr_forward->parent = this;
-            children["pbr-forward"] = pbr_forward;
         }
-        return children.at("pbr-forward");
+        return pbr_forward;
     }
 
     if(child_yang_name == "pfc")
     {
-        if(pfc != nullptr)
-        {
-            children["pfc"] = pfc;
-        }
-        else
+        if(pfc == nullptr)
         {
             pfc = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc>();
-            pfc->parent = this;
-            children["pfc"] = pfc;
         }
-        return children.at("pfc");
+        return pfc;
     }
 
     if(child_yang_name == "police")
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
-        else
+        if(police == nullptr)
         {
             police = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police>();
-            police->parent = this;
-            children["police"] = police;
         }
-        return children.at("police");
+        return police;
     }
 
     if(child_yang_name == "queue-limit")
     {
-        if(queue_limit != nullptr)
-        {
-            children["queue-limit"] = queue_limit;
-        }
-        else
+        if(queue_limit == nullptr)
         {
             queue_limit = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit>();
-            queue_limit->parent = this;
-            children["queue-limit"] = queue_limit;
         }
-        return children.at("queue-limit");
+        return queue_limit;
     }
 
     if(child_yang_name == "random-detect")
@@ -5906,215 +5365,139 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect>();
         c->parent = this;
-        random_detect.push_back(std::move(c));
-        children[segment_path] = random_detect.back();
-        return children.at(segment_path);
+        random_detect.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "react")
     {
-        if(react != nullptr)
-        {
-            children["react"] = react;
-        }
-        else
+        if(react == nullptr)
         {
             react = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React>();
-            react->parent = this;
-            children["react"] = react;
         }
-        return children.at("react");
+        return react;
     }
 
     if(child_yang_name == "service-function-path")
     {
-        if(service_function_path != nullptr)
-        {
-            children["service-function-path"] = service_function_path;
-        }
-        else
+        if(service_function_path == nullptr)
         {
             service_function_path = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath>();
-            service_function_path->parent = this;
-            children["service-function-path"] = service_function_path;
         }
-        return children.at("service-function-path");
+        return service_function_path;
     }
 
     if(child_yang_name == "service-policy")
     {
-        if(service_policy != nullptr)
-        {
-            children["service-policy"] = service_policy;
-        }
-        else
+        if(service_policy == nullptr)
         {
             service_policy = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy>();
-            service_policy->parent = this;
-            children["service-policy"] = service_policy;
         }
-        return children.at("service-policy");
+        return service_policy;
     }
 
     if(child_yang_name == "set")
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
-        else
+        if(set == nullptr)
         {
             set = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set>();
-            set->parent = this;
-            children["set"] = set;
         }
-        return children.at("set");
+        return set;
     }
 
     if(child_yang_name == "shape")
     {
-        if(shape != nullptr)
-        {
-            children["shape"] = shape;
-        }
-        else
+        if(shape == nullptr)
         {
             shape = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape>();
-            shape->parent = this;
-            children["shape"] = shape;
         }
-        return children.at("shape");
+        return shape;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_children() const
 {
-    if(children.find("bandwidth-remaining") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth_remaining != nullptr)
     {
-        if(bandwidth_remaining != nullptr)
-        {
-            children["bandwidth-remaining"] = bandwidth_remaining;
-        }
+        children["bandwidth-remaining"] = bandwidth_remaining;
     }
 
-    if(children.find("cac-local") == children.end())
+    if(cac_local != nullptr)
     {
-        if(cac_local != nullptr)
-        {
-            children["cac-local"] = cac_local;
-        }
+        children["cac-local"] = cac_local;
     }
 
-    if(children.find("flow-params") == children.end())
+    if(flow_params != nullptr)
     {
-        if(flow_params != nullptr)
-        {
-            children["flow-params"] = flow_params;
-        }
+        children["flow-params"] = flow_params;
     }
 
-    if(children.find("metrics-ipcbr") == children.end())
+    if(metrics_ipcbr != nullptr)
     {
-        if(metrics_ipcbr != nullptr)
-        {
-            children["metrics-ipcbr"] = metrics_ipcbr;
-        }
+        children["metrics-ipcbr"] = metrics_ipcbr;
     }
 
-    if(children.find("min-bandwidth") == children.end())
+    if(min_bandwidth != nullptr)
     {
-        if(min_bandwidth != nullptr)
-        {
-            children["min-bandwidth"] = min_bandwidth;
-        }
+        children["min-bandwidth"] = min_bandwidth;
     }
 
-    if(children.find("pbr-forward") == children.end())
+    if(pbr_forward != nullptr)
     {
-        if(pbr_forward != nullptr)
-        {
-            children["pbr-forward"] = pbr_forward;
-        }
+        children["pbr-forward"] = pbr_forward;
     }
 
-    if(children.find("pfc") == children.end())
+    if(pfc != nullptr)
     {
-        if(pfc != nullptr)
-        {
-            children["pfc"] = pfc;
-        }
+        children["pfc"] = pfc;
     }
 
-    if(children.find("police") == children.end())
+    if(police != nullptr)
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
+        children["police"] = police;
     }
 
-    if(children.find("queue-limit") == children.end())
+    if(queue_limit != nullptr)
     {
-        if(queue_limit != nullptr)
-        {
-            children["queue-limit"] = queue_limit;
-        }
+        children["queue-limit"] = queue_limit;
     }
 
     for (auto const & c : random_detect)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("react") == children.end())
+    if(react != nullptr)
     {
-        if(react != nullptr)
-        {
-            children["react"] = react;
-        }
+        children["react"] = react;
     }
 
-    if(children.find("service-function-path") == children.end())
+    if(service_function_path != nullptr)
     {
-        if(service_function_path != nullptr)
-        {
-            children["service-function-path"] = service_function_path;
-        }
+        children["service-function-path"] = service_function_path;
     }
 
-    if(children.find("service-policy") == children.end())
+    if(service_policy != nullptr)
     {
-        if(service_policy != nullptr)
-        {
-            children["service-policy"] = service_policy;
-        }
+        children["service-policy"] = service_policy;
     }
 
-    if(children.find("set") == children.end())
+    if(set != nullptr)
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
+        children["set"] = set;
     }
 
-    if(children.find("shape") == children.end())
+    if(shape != nullptr)
     {
-        if(shape != nullptr)
-        {
-            children["shape"] = shape;
-        }
+        children["shape"] = shape;
     }
 
     return children;
@@ -6174,10 +5557,8 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Shape()
 	,rate(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate>())
 {
     burst->parent = this;
-    children["burst"] = burst;
 
     rate->parent = this;
-    children["rate"] = rate;
 
     yang_name = "shape"; yang_parent_name = "policy-map-rule";
 }
@@ -6208,7 +5589,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_segm
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6231,64 +5612,38 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_entit
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "burst")
     {
-        if(burst != nullptr)
-        {
-            children["burst"] = burst;
-        }
-        else
+        if(burst == nullptr)
         {
             burst = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst>();
-            burst->parent = this;
-            children["burst"] = burst;
         }
-        return children.at("burst");
+        return burst;
     }
 
     if(child_yang_name == "rate")
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
-        else
+        if(rate == nullptr)
         {
             rate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate>();
-            rate->parent = this;
-            children["rate"] = rate;
         }
-        return children.at("rate");
+        return rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_children() const
 {
-    if(children.find("burst") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(burst != nullptr)
     {
-        if(burst != nullptr)
-        {
-            children["burst"] = burst;
-        }
+        children["burst"] = burst;
     }
 
-    if(children.find("rate") == children.end())
+    if(rate != nullptr)
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
+        children["rate"] = rate;
     }
 
     return children;
@@ -6332,7 +5687,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::ge
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6357,20 +5712,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6420,7 +5767,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::g
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6445,20 +5792,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::ge
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6508,7 +5847,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::g
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6533,20 +5872,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::ge
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6596,7 +5927,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemain
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6621,20 +5952,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaini
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6684,7 +6007,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6709,20 +6032,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6747,13 +6062,10 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::Pfc()
 	,pfc_resume_threshold(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold>())
 {
     pfc_buffer_size->parent = this;
-    children["pfc-buffer-size"] = pfc_buffer_size;
 
     pfc_pause_threshold->parent = this;
-    children["pfc-pause-threshold"] = pfc_pause_threshold;
 
     pfc_resume_threshold->parent = this;
-    children["pfc-resume-threshold"] = pfc_resume_threshold;
 
     yang_name = "pfc"; yang_parent_name = "policy-map-rule";
 }
@@ -6788,7 +6100,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_segmen
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6812,87 +6124,52 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_entity_
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pfc-buffer-size")
     {
-        if(pfc_buffer_size != nullptr)
-        {
-            children["pfc-buffer-size"] = pfc_buffer_size;
-        }
-        else
+        if(pfc_buffer_size == nullptr)
         {
             pfc_buffer_size = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize>();
-            pfc_buffer_size->parent = this;
-            children["pfc-buffer-size"] = pfc_buffer_size;
         }
-        return children.at("pfc-buffer-size");
+        return pfc_buffer_size;
     }
 
     if(child_yang_name == "pfc-pause-threshold")
     {
-        if(pfc_pause_threshold != nullptr)
-        {
-            children["pfc-pause-threshold"] = pfc_pause_threshold;
-        }
-        else
+        if(pfc_pause_threshold == nullptr)
         {
             pfc_pause_threshold = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold>();
-            pfc_pause_threshold->parent = this;
-            children["pfc-pause-threshold"] = pfc_pause_threshold;
         }
-        return children.at("pfc-pause-threshold");
+        return pfc_pause_threshold;
     }
 
     if(child_yang_name == "pfc-resume-threshold")
     {
-        if(pfc_resume_threshold != nullptr)
-        {
-            children["pfc-resume-threshold"] = pfc_resume_threshold;
-        }
-        else
+        if(pfc_resume_threshold == nullptr)
         {
             pfc_resume_threshold = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold>();
-            pfc_resume_threshold->parent = this;
-            children["pfc-resume-threshold"] = pfc_resume_threshold;
         }
-        return children.at("pfc-resume-threshold");
+        return pfc_resume_threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_children() const
 {
-    if(children.find("pfc-buffer-size") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pfc_buffer_size != nullptr)
     {
-        if(pfc_buffer_size != nullptr)
-        {
-            children["pfc-buffer-size"] = pfc_buffer_size;
-        }
+        children["pfc-buffer-size"] = pfc_buffer_size;
     }
 
-    if(children.find("pfc-pause-threshold") == children.end())
+    if(pfc_pause_threshold != nullptr)
     {
-        if(pfc_pause_threshold != nullptr)
-        {
-            children["pfc-pause-threshold"] = pfc_pause_threshold;
-        }
+        children["pfc-pause-threshold"] = pfc_pause_threshold;
     }
 
-    if(children.find("pfc-resume-threshold") == children.end())
+    if(pfc_resume_threshold != nullptr)
     {
-        if(pfc_resume_threshold != nullptr)
-        {
-            children["pfc-resume-threshold"] = pfc_resume_threshold;
-        }
+        children["pfc-resume-threshold"] = pfc_resume_threshold;
     }
 
     return children;
@@ -6940,7 +6217,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferS
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6965,20 +6242,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSi
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7028,7 +6297,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseTh
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7053,20 +6322,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThr
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7116,7 +6377,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeT
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7141,20 +6402,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeTh
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7172,10 +6425,10 @@ void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshol
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::RandomDetect()
     :
-    threshold_max_units{YType::str, "threshold-max-units"},
-    threshold_max_value{YType::uint32, "threshold-max-value"},
-    threshold_min_units{YType::str, "threshold-min-units"},
     threshold_min_value{YType::uint32, "threshold-min-value"},
+    threshold_min_units{YType::str, "threshold-min-units"},
+    threshold_max_value{YType::uint32, "threshold-max-value"},
+    threshold_max_units{YType::str, "threshold-max-units"},
     cos{YType::str, "cos"},
     dei{YType::uint8, "dei"},
     discard_class{YType::uint8, "discard-class"},
@@ -7218,10 +6471,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_data
         if(leaf.is_set)
             return true;
     }
-    return threshold_max_units.is_set
-	|| threshold_max_value.is_set
+    return threshold_min_value.is_set
 	|| threshold_min_units.is_set
-	|| threshold_min_value.is_set
+	|| threshold_max_value.is_set
+	|| threshold_max_units.is_set
 	|| dei.is_set
 	|| ecn.is_set;
 }
@@ -7254,10 +6507,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_oper
             return true;
     }
     return is_set(operation)
-	|| is_set(threshold_max_units.operation)
-	|| is_set(threshold_max_value.operation)
-	|| is_set(threshold_min_units.operation)
 	|| is_set(threshold_min_value.operation)
+	|| is_set(threshold_min_units.operation)
+	|| is_set(threshold_max_value.operation)
+	|| is_set(threshold_max_units.operation)
 	|| is_set(cos.operation)
 	|| is_set(dei.operation)
 	|| is_set(discard_class.operation)
@@ -7270,13 +6523,13 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_oper
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "random-detect" <<"[threshold-max-units='" <<threshold_max_units <<"']" <<"[threshold-max-value='" <<threshold_max_value <<"']" <<"[threshold-min-units='" <<threshold_min_units <<"']" <<"[threshold-min-value='" <<threshold_min_value <<"']";
+    path_buffer << "random-detect" <<"[threshold-min-value='" <<threshold_min_value <<"']" <<"[threshold-min-units='" <<threshold_min_units <<"']" <<"[threshold-max-value='" <<threshold_max_value <<"']" <<"[threshold-max-units='" <<threshold_max_units <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7290,10 +6543,10 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (threshold_max_units.is_set || is_set(threshold_max_units.operation)) leaf_name_data.push_back(threshold_max_units.get_name_leafdata());
-    if (threshold_max_value.is_set || is_set(threshold_max_value.operation)) leaf_name_data.push_back(threshold_max_value.get_name_leafdata());
-    if (threshold_min_units.is_set || is_set(threshold_min_units.operation)) leaf_name_data.push_back(threshold_min_units.get_name_leafdata());
     if (threshold_min_value.is_set || is_set(threshold_min_value.operation)) leaf_name_data.push_back(threshold_min_value.get_name_leafdata());
+    if (threshold_min_units.is_set || is_set(threshold_min_units.operation)) leaf_name_data.push_back(threshold_min_units.get_name_leafdata());
+    if (threshold_max_value.is_set || is_set(threshold_max_value.operation)) leaf_name_data.push_back(threshold_max_value.get_name_leafdata());
+    if (threshold_max_units.is_set || is_set(threshold_max_units.operation)) leaf_name_data.push_back(threshold_max_units.get_name_leafdata());
     if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
     if (ecn.is_set || is_set(ecn.operation)) leaf_name_data.push_back(ecn.get_name_leafdata());
 
@@ -7315,40 +6568,32 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::ge
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "threshold-max-units")
+    if(value_path == "threshold-min-value")
     {
-        threshold_max_units = value;
-    }
-    if(value_path == "threshold-max-value")
-    {
-        threshold_max_value = value;
+        threshold_min_value = value;
     }
     if(value_path == "threshold-min-units")
     {
         threshold_min_units = value;
     }
-    if(value_path == "threshold-min-value")
+    if(value_path == "threshold-max-value")
     {
-        threshold_min_value = value;
+        threshold_max_value = value;
+    }
+    if(value_path == "threshold-max-units")
+    {
+        threshold_max_units = value;
     }
     if(value_path == "cos")
     {
@@ -7462,7 +6707,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_segmen
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7503,20 +6748,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_entity_
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7607,25 +6844,18 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Police()
 	,violate_action(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction>())
 {
     burst->parent = this;
-    children["burst"] = burst;
 
     conform_action->parent = this;
-    children["conform-action"] = conform_action;
 
     exceed_action->parent = this;
-    children["exceed-action"] = exceed_action;
 
     peak_burst->parent = this;
-    children["peak-burst"] = peak_burst;
 
     peak_rate->parent = this;
-    children["peak-rate"] = peak_rate;
 
     rate->parent = this;
-    children["rate"] = rate;
 
     violate_action->parent = this;
-    children["violate-action"] = violate_action;
 
     yang_name = "police"; yang_parent_name = "policy-map-rule";
 }
@@ -7666,7 +6896,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_seg
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7689,179 +6919,108 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_enti
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "burst")
     {
-        if(burst != nullptr)
-        {
-            children["burst"] = burst;
-        }
-        else
+        if(burst == nullptr)
         {
             burst = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst>();
-            burst->parent = this;
-            children["burst"] = burst;
         }
-        return children.at("burst");
+        return burst;
     }
 
     if(child_yang_name == "conform-action")
     {
-        if(conform_action != nullptr)
-        {
-            children["conform-action"] = conform_action;
-        }
-        else
+        if(conform_action == nullptr)
         {
             conform_action = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction>();
-            conform_action->parent = this;
-            children["conform-action"] = conform_action;
         }
-        return children.at("conform-action");
+        return conform_action;
     }
 
     if(child_yang_name == "exceed-action")
     {
-        if(exceed_action != nullptr)
-        {
-            children["exceed-action"] = exceed_action;
-        }
-        else
+        if(exceed_action == nullptr)
         {
             exceed_action = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction>();
-            exceed_action->parent = this;
-            children["exceed-action"] = exceed_action;
         }
-        return children.at("exceed-action");
+        return exceed_action;
     }
 
     if(child_yang_name == "peak-burst")
     {
-        if(peak_burst != nullptr)
-        {
-            children["peak-burst"] = peak_burst;
-        }
-        else
+        if(peak_burst == nullptr)
         {
             peak_burst = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst>();
-            peak_burst->parent = this;
-            children["peak-burst"] = peak_burst;
         }
-        return children.at("peak-burst");
+        return peak_burst;
     }
 
     if(child_yang_name == "peak-rate")
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
-        else
+        if(peak_rate == nullptr)
         {
             peak_rate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate>();
-            peak_rate->parent = this;
-            children["peak-rate"] = peak_rate;
         }
-        return children.at("peak-rate");
+        return peak_rate;
     }
 
     if(child_yang_name == "rate")
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
-        else
+        if(rate == nullptr)
         {
             rate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate>();
-            rate->parent = this;
-            children["rate"] = rate;
         }
-        return children.at("rate");
+        return rate;
     }
 
     if(child_yang_name == "violate-action")
     {
-        if(violate_action != nullptr)
-        {
-            children["violate-action"] = violate_action;
-        }
-        else
+        if(violate_action == nullptr)
         {
             violate_action = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction>();
-            violate_action->parent = this;
-            children["violate-action"] = violate_action;
         }
-        return children.at("violate-action");
+        return violate_action;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_children() const
 {
-    if(children.find("burst") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(burst != nullptr)
     {
-        if(burst != nullptr)
-        {
-            children["burst"] = burst;
-        }
+        children["burst"] = burst;
     }
 
-    if(children.find("conform-action") == children.end())
+    if(conform_action != nullptr)
     {
-        if(conform_action != nullptr)
-        {
-            children["conform-action"] = conform_action;
-        }
+        children["conform-action"] = conform_action;
     }
 
-    if(children.find("exceed-action") == children.end())
+    if(exceed_action != nullptr)
     {
-        if(exceed_action != nullptr)
-        {
-            children["exceed-action"] = exceed_action;
-        }
+        children["exceed-action"] = exceed_action;
     }
 
-    if(children.find("peak-burst") == children.end())
+    if(peak_burst != nullptr)
     {
-        if(peak_burst != nullptr)
-        {
-            children["peak-burst"] = peak_burst;
-        }
+        children["peak-burst"] = peak_burst;
     }
 
-    if(children.find("peak-rate") == children.end())
+    if(peak_rate != nullptr)
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
+        children["peak-rate"] = peak_rate;
     }
 
-    if(children.find("rate") == children.end())
+    if(rate != nullptr)
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
+        children["rate"] = rate;
     }
 
-    if(children.find("violate-action") == children.end())
+    if(violate_action != nullptr)
     {
-        if(violate_action != nullptr)
-        {
-            children["violate-action"] = violate_action;
-        }
+        children["violate-action"] = violate_action;
     }
 
     return children;
@@ -7905,7 +7064,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::g
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7930,20 +7089,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::ge
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7993,7 +7144,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRat
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8018,20 +7169,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8081,7 +7224,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8106,20 +7249,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::g
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8169,7 +7304,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBur
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8194,20 +7329,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurs
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8231,7 +7358,6 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Conf
     set(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set>())
 {
     set->parent = this;
-    children["set"] = set;
 
     yang_name = "conform-action"; yang_parent_name = "police";
 }
@@ -8264,7 +7390,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Conform
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8289,41 +7415,24 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformA
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "set")
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
-        else
+        if(set == nullptr)
         {
             set = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set>();
-            set->parent = this;
-            children["set"] = set;
         }
-        return children.at("set");
+        return set;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::get_children() const
 {
-    if(children.find("set") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(set != nullptr)
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
+        children["set"] = set;
     }
 
     return children;
@@ -8423,7 +7532,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Conform
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8464,20 +7573,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformA
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8565,7 +7666,6 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Excee
     set(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set>())
 {
     set->parent = this;
-    children["set"] = set;
 
     yang_name = "exceed-action"; yang_parent_name = "police";
 }
@@ -8598,7 +7698,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedA
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8623,41 +7723,24 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAc
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "set")
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
-        else
+        if(set == nullptr)
         {
             set = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set>();
-            set->parent = this;
-            children["set"] = set;
         }
-        return children.at("set");
+        return set;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::get_children() const
 {
-    if(children.find("set") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(set != nullptr)
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
+        children["set"] = set;
     }
 
     return children;
@@ -8757,7 +7840,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedA
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8798,20 +7881,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAc
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8899,7 +7974,6 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Viol
     set(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set>())
 {
     set->parent = this;
-    children["set"] = set;
 
     yang_name = "violate-action"; yang_parent_name = "police";
 }
@@ -8932,7 +8006,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Violate
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8957,41 +8031,24 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateA
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "set")
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
-        else
+        if(set == nullptr)
         {
             set = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set>();
-            set->parent = this;
-            children["set"] = set;
         }
-        return children.at("set");
+        return set;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::get_children() const
 {
-    if(children.find("set") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(set != nullptr)
     {
-        if(set != nullptr)
-        {
-            children["set"] = set;
-        }
+        children["set"] = set;
     }
 
     return children;
@@ -9091,7 +8148,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Violate
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9132,20 +8189,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateA
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9259,7 +8308,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9284,20 +8333,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::g
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9321,10 +8362,8 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::CacLocal()
 	,rate(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate>())
 {
     flow_rate->parent = this;
-    children["flow-rate"] = flow_rate;
 
     rate->parent = this;
-    children["rate"] = rate;
 
     yang_name = "cac-local"; yang_parent_name = "policy-map-rule";
 }
@@ -9357,7 +8396,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_s
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9381,64 +8420,38 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_en
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow-rate")
     {
-        if(flow_rate != nullptr)
-        {
-            children["flow-rate"] = flow_rate;
-        }
-        else
+        if(flow_rate == nullptr)
         {
             flow_rate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate>();
-            flow_rate->parent = this;
-            children["flow-rate"] = flow_rate;
         }
-        return children.at("flow-rate");
+        return flow_rate;
     }
 
     if(child_yang_name == "rate")
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
-        else
+        if(rate == nullptr)
         {
             rate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate>();
-            rate->parent = this;
-            children["rate"] = rate;
         }
-        return children.at("rate");
+        return rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_children() const
 {
-    if(children.find("flow-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flow_rate != nullptr)
     {
-        if(flow_rate != nullptr)
-        {
-            children["flow-rate"] = flow_rate;
-        }
+        children["flow-rate"] = flow_rate;
     }
 
-    if(children.find("rate") == children.end())
+    if(rate != nullptr)
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
+        children["rate"] = rate;
     }
 
     return children;
@@ -9486,7 +8499,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate:
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9511,20 +8524,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9574,7 +8579,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowR
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9599,20 +8604,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRa
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9668,7 +8665,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9695,20 +8692,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9738,10 +8727,8 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MetricsIpcbr(
 	,rate(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate>())
 {
     media_packet->parent = this;
-    children["media-packet"] = media_packet;
 
     rate->parent = this;
-    children["rate"] = rate;
 
     yang_name = "metrics-ipcbr"; yang_parent_name = "policy-map-rule";
 }
@@ -9772,7 +8759,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::g
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9795,64 +8782,38 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::ge
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "media-packet")
     {
-        if(media_packet != nullptr)
-        {
-            children["media-packet"] = media_packet;
-        }
-        else
+        if(media_packet == nullptr)
         {
             media_packet = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket>();
-            media_packet->parent = this;
-            children["media-packet"] = media_packet;
         }
-        return children.at("media-packet");
+        return media_packet;
     }
 
     if(child_yang_name == "rate")
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
-        else
+        if(rate == nullptr)
         {
             rate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate>();
-            rate->parent = this;
-            children["rate"] = rate;
         }
-        return children.at("rate");
+        return rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::get_children() const
 {
-    if(children.find("media-packet") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(media_packet != nullptr)
     {
-        if(media_packet != nullptr)
-        {
-            children["media-packet"] = media_packet;
-        }
+        children["media-packet"] = media_packet;
     }
 
-    if(children.find("rate") == children.end())
+    if(rate != nullptr)
     {
-        if(rate != nullptr)
-        {
-            children["rate"] = rate;
-        }
+        children["rate"] = rate;
     }
 
     return children;
@@ -9899,7 +8860,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::R
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9925,20 +8886,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Ra
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9992,7 +8945,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::M
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10017,20 +8970,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Me
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10060,13 +9005,10 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::React()
 	,threshold(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold>())
 {
     action->parent = this;
-    children["action"] = action;
 
     alarm->parent = this;
-    children["alarm"] = alarm;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "react"; yang_parent_name = "policy-map-rule";
 }
@@ -10111,7 +9053,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_segm
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10140,87 +9082,52 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_entit
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "action")
     {
-        if(action != nullptr)
-        {
-            children["action"] = action;
-        }
-        else
+        if(action == nullptr)
         {
             action = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action>();
-            action->parent = this;
-            children["action"] = action;
         }
-        return children.at("action");
+        return action;
     }
 
     if(child_yang_name == "alarm")
     {
-        if(alarm != nullptr)
-        {
-            children["alarm"] = alarm;
-        }
-        else
+        if(alarm == nullptr)
         {
             alarm = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm>();
-            alarm->parent = this;
-            children["alarm"] = alarm;
         }
-        return children.at("alarm");
+        return alarm;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_children() const
 {
-    if(children.find("action") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(action != nullptr)
     {
-        if(action != nullptr)
-        {
-            children["action"] = action;
-        }
+        children["action"] = action;
     }
 
-    if(children.find("alarm") == children.end())
+    if(alarm != nullptr)
     {
-        if(alarm != nullptr)
-        {
-            children["alarm"] = alarm;
-        }
+        children["alarm"] = alarm;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -10288,7 +9195,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10313,20 +9220,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::g
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10349,7 +9248,6 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Alarm()
     type(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type>())
 {
     type->parent = this;
-    children["type"] = type;
 
     yang_name = "alarm"; yang_parent_name = "react";
 }
@@ -10380,7 +9278,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::g
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10404,41 +9302,24 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::ge
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "type")
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
-        else
+        if(type == nullptr)
         {
             type = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type>();
-            type->parent = this;
-            children["type"] = type;
         }
-        return children.at("type");
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::get_children() const
 {
-    if(children.find("type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(type != nullptr)
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
+        children["type"] = type;
     }
 
     return children;
@@ -10489,7 +9370,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::T
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10515,20 +9396,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Ty
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10554,10 +9427,8 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Threshold
 	,trigger_value(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue>())
 {
     trigger_type->parent = this;
-    children["trigger-type"] = trigger_type;
 
     trigger_value->parent = this;
-    children["trigger-value"] = trigger_value;
 
     yang_name = "threshold"; yang_parent_name = "react";
 }
@@ -10588,7 +9459,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshol
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10611,64 +9482,38 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trigger-type")
     {
-        if(trigger_type != nullptr)
-        {
-            children["trigger-type"] = trigger_type;
-        }
-        else
+        if(trigger_type == nullptr)
         {
             trigger_type = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType>();
-            trigger_type->parent = this;
-            children["trigger-type"] = trigger_type;
         }
-        return children.at("trigger-type");
+        return trigger_type;
     }
 
     if(child_yang_name == "trigger-value")
     {
-        if(trigger_value != nullptr)
-        {
-            children["trigger-value"] = trigger_value;
-        }
-        else
+        if(trigger_value == nullptr)
         {
             trigger_value = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue>();
-            trigger_value->parent = this;
-            children["trigger-value"] = trigger_value;
         }
-        return children.at("trigger-value");
+        return trigger_value;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::get_children() const
 {
-    if(children.find("trigger-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(trigger_type != nullptr)
     {
-        if(trigger_type != nullptr)
-        {
-            children["trigger-type"] = trigger_type;
-        }
+        children["trigger-type"] = trigger_type;
     }
 
-    if(children.find("trigger-value") == children.end())
+    if(trigger_value != nullptr)
     {
-        if(trigger_value != nullptr)
-        {
-            children["trigger-value"] = trigger_value;
-        }
+        children["trigger-value"] = trigger_value;
     }
 
     return children;
@@ -10721,7 +9566,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshol
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10749,20 +9594,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10824,7 +9661,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshol
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10849,20 +9686,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10885,7 +9714,6 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::PbrForward()
     next_hop(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop>())
 {
     next_hop->parent = this;
-    children["next-hop"] = next_hop;
 
     yang_name = "pbr-forward"; yang_parent_name = "policy-map-rule";
 }
@@ -10916,7 +9744,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10940,41 +9768,24 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop")
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
-        else
+        if(next_hop == nullptr)
         {
             next_hop = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop>();
-            next_hop->parent = this;
-            children["next-hop"] = next_hop;
         }
-        return children.at("next-hop");
+        return next_hop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_children() const
 {
-    if(children.find("next-hop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(next_hop != nullptr)
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
+        children["next-hop"] = next_hop;
     }
 
     return children;
@@ -11025,7 +9836,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::Nex
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11051,20 +9862,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::Next
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11121,7 +9924,7 @@ std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunction
 
 }
 
-EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::get_entity_path(Entity* ancestor) const
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11147,20 +9950,12 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionP
 
 std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

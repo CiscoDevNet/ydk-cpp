@@ -14,7 +14,6 @@ EsAcl::EsAcl()
     accesses(std::make_shared<EsAcl::Accesses>())
 {
     accesses->parent = this;
-    children["accesses"] = accesses;
 
     yang_name = "es-acl"; yang_parent_name = "Cisco-IOS-XR-es-acl-cfg";
 }
@@ -43,12 +42,12 @@ std::string EsAcl::get_segment_path() const
 
 }
 
-EntityPath EsAcl::get_entity_path(Entity* ancestor) const
+const EntityPath EsAcl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath EsAcl::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EsAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accesses")
     {
-        if(accesses != nullptr)
-        {
-            children["accesses"] = accesses;
-        }
-        else
+        if(accesses == nullptr)
         {
             accesses = std::make_shared<EsAcl::Accesses>();
-            accesses->parent = this;
-            children["accesses"] = accesses;
         }
-        return children.at("accesses");
+        return accesses;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EsAcl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::get_children() const
 {
-    if(children.find("accesses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accesses != nullptr)
     {
-        if(accesses != nullptr)
-        {
-            children["accesses"] = accesses;
-        }
+        children["accesses"] = accesses;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string EsAcl::Accesses::get_segment_path() const
 
 }
 
-EntityPath EsAcl::Accesses::get_entity_path(Entity* ancestor) const
+const EntityPath EsAcl::Accesses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath EsAcl::Accesses::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EsAcl::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access")
     {
         for(auto const & c : access)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> EsAcl::Accesses::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EsAcl::Accesses::Access>();
         c->parent = this;
-        access.push_back(std::move(c));
-        children[segment_path] = access.back();
-        return children.at(segment_path);
+        access.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EsAcl::Accesses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ EsAcl::Accesses::Access::Access()
     access_list_entries(std::make_shared<EsAcl::Accesses::Access::AccessListEntries>())
 {
     access_list_entries->parent = this;
-    children["access-list-entries"] = access_list_entries;
 
     yang_name = "access"; yang_parent_name = "accesses";
 }
@@ -273,7 +241,7 @@ std::string EsAcl::Accesses::Access::get_segment_path() const
 
 }
 
-EntityPath EsAcl::Accesses::Access::get_entity_path(Entity* ancestor) const
+const EntityPath EsAcl::Accesses::Access::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath EsAcl::Accesses::Access::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EsAcl::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-list-entries")
     {
-        if(access_list_entries != nullptr)
-        {
-            children["access-list-entries"] = access_list_entries;
-        }
-        else
+        if(access_list_entries == nullptr)
         {
             access_list_entries = std::make_shared<EsAcl::Accesses::Access::AccessListEntries>();
-            access_list_entries->parent = this;
-            children["access-list-entries"] = access_list_entries;
         }
-        return children.at("access-list-entries");
+        return access_list_entries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EsAcl::Accesses::Access::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::get_children() const
 {
-    if(children.find("access-list-entries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_list_entries != nullptr)
     {
-        if(access_list_entries != nullptr)
-        {
-            children["access-list-entries"] = access_list_entries;
-        }
+        children["access-list-entries"] = access_list_entries;
     }
 
     return children;
@@ -383,7 +334,7 @@ std::string EsAcl::Accesses::Access::AccessListEntries::get_segment_path() const
 
 }
 
-EntityPath EsAcl::Accesses::Access::AccessListEntries::get_entity_path(Entity* ancestor) const
+const EntityPath EsAcl::Accesses::Access::AccessListEntries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -406,15 +357,6 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-list-entry")
     {
         for(auto const & c : access_list_entry)
@@ -422,28 +364,24 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry>();
         c->parent = this;
-        access_list_entry.push_back(std::move(c));
-        children[segment_path] = access_list_entry.back();
-        return children.at(segment_path);
+        access_list_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EsAcl::Accesses::Access::AccessListEntries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access_list_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -475,10 +413,8 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::AccessListEntry()
 	,source_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork>())
 {
     destination_network->parent = this;
-    children["destination-network"] = destination_network;
 
     source_network->parent = this;
-    children["source-network"] = source_network;
 
     yang_name = "access-list-entry"; yang_parent_name = "access-list-entries";
 }
@@ -539,7 +475,7 @@ std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_seg
 
 }
 
-EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_entity_path(Entity* ancestor) const
+const EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -577,64 +513,38 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_enti
 
 std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-network")
     {
-        if(destination_network != nullptr)
-        {
-            children["destination-network"] = destination_network;
-        }
-        else
+        if(destination_network == nullptr)
         {
             destination_network = std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>();
-            destination_network->parent = this;
-            children["destination-network"] = destination_network;
         }
-        return children.at("destination-network");
+        return destination_network;
     }
 
     if(child_yang_name == "source-network")
     {
-        if(source_network != nullptr)
-        {
-            children["source-network"] = source_network;
-        }
-        else
+        if(source_network == nullptr)
         {
             source_network = std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork>();
-            source_network->parent = this;
-            children["source-network"] = source_network;
         }
-        return children.at("source-network");
+        return source_network;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_children() const
 {
-    if(children.find("destination-network") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_network != nullptr)
     {
-        if(destination_network != nullptr)
-        {
-            children["destination-network"] = destination_network;
-        }
+        children["destination-network"] = destination_network;
     }
 
-    if(children.find("source-network") == children.end())
+    if(source_network != nullptr)
     {
-        if(source_network != nullptr)
-        {
-            children["source-network"] = source_network;
-        }
+        children["source-network"] = source_network;
     }
 
     return children;
@@ -738,7 +648,7 @@ std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceN
 
 }
 
-EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_entity_path(Entity* ancestor) const
+const EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -763,20 +673,12 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNe
 
 std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -826,7 +728,7 @@ std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::Destina
 
 }
 
-EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_entity_path(Entity* ancestor) const
+const EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -851,20 +753,12 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::Destinat
 
 std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ Mlan::Mlan()
     nodes(std::make_shared<Mlan::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "mlan"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-ethctrl-oper";
 }
@@ -43,12 +42,12 @@ std::string Mlan::get_segment_path() const
 
 }
 
-EntityPath Mlan::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Mlan::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Mlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Mlan::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Mlan::Nodes::get_segment_path() const
 
 }
 
-EntityPath Mlan::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Mlan::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Mlan::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Mlan::Nodes::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Mlan::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -245,16 +214,12 @@ Mlan::Nodes::Node::Node()
 	,switch_status_table(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable>())
 {
     atu_entry_numbers->parent = this;
-    children["atu-entry-numbers"] = atu_entry_numbers;
 
     port_counters_numbers->parent = this;
-    children["port-counters-numbers"] = port_counters_numbers;
 
     port_status_numbers->parent = this;
-    children["port-status-numbers"] = port_status_numbers;
 
     switch_status_table->parent = this;
-    children["switch-status-table"] = switch_status_table;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -291,7 +256,7 @@ std::string Mlan::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Mlan::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -315,110 +280,66 @@ EntityPath Mlan::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atu-entry-numbers")
     {
-        if(atu_entry_numbers != nullptr)
-        {
-            children["atu-entry-numbers"] = atu_entry_numbers;
-        }
-        else
+        if(atu_entry_numbers == nullptr)
         {
             atu_entry_numbers = std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers>();
-            atu_entry_numbers->parent = this;
-            children["atu-entry-numbers"] = atu_entry_numbers;
         }
-        return children.at("atu-entry-numbers");
+        return atu_entry_numbers;
     }
 
     if(child_yang_name == "port-counters-numbers")
     {
-        if(port_counters_numbers != nullptr)
-        {
-            children["port-counters-numbers"] = port_counters_numbers;
-        }
-        else
+        if(port_counters_numbers == nullptr)
         {
             port_counters_numbers = std::make_shared<Mlan::Nodes::Node::PortCountersNumbers>();
-            port_counters_numbers->parent = this;
-            children["port-counters-numbers"] = port_counters_numbers;
         }
-        return children.at("port-counters-numbers");
+        return port_counters_numbers;
     }
 
     if(child_yang_name == "port-status-numbers")
     {
-        if(port_status_numbers != nullptr)
-        {
-            children["port-status-numbers"] = port_status_numbers;
-        }
-        else
+        if(port_status_numbers == nullptr)
         {
             port_status_numbers = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers>();
-            port_status_numbers->parent = this;
-            children["port-status-numbers"] = port_status_numbers;
         }
-        return children.at("port-status-numbers");
+        return port_status_numbers;
     }
 
     if(child_yang_name == "switch-status-table")
     {
-        if(switch_status_table != nullptr)
-        {
-            children["switch-status-table"] = switch_status_table;
-        }
-        else
+        if(switch_status_table == nullptr)
         {
             switch_status_table = std::make_shared<Mlan::Nodes::Node::SwitchStatusTable>();
-            switch_status_table->parent = this;
-            children["switch-status-table"] = switch_status_table;
         }
-        return children.at("switch-status-table");
+        return switch_status_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::get_children() const
 {
-    if(children.find("atu-entry-numbers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atu_entry_numbers != nullptr)
     {
-        if(atu_entry_numbers != nullptr)
-        {
-            children["atu-entry-numbers"] = atu_entry_numbers;
-        }
+        children["atu-entry-numbers"] = atu_entry_numbers;
     }
 
-    if(children.find("port-counters-numbers") == children.end())
+    if(port_counters_numbers != nullptr)
     {
-        if(port_counters_numbers != nullptr)
-        {
-            children["port-counters-numbers"] = port_counters_numbers;
-        }
+        children["port-counters-numbers"] = port_counters_numbers;
     }
 
-    if(children.find("port-status-numbers") == children.end())
+    if(port_status_numbers != nullptr)
     {
-        if(port_status_numbers != nullptr)
-        {
-            children["port-status-numbers"] = port_status_numbers;
-        }
+        children["port-status-numbers"] = port_status_numbers;
     }
 
-    if(children.find("switch-status-table") == children.end())
+    if(switch_status_table != nullptr)
     {
-        if(switch_status_table != nullptr)
-        {
-            children["switch-status-table"] = switch_status_table;
-        }
+        children["switch-status-table"] = switch_status_table;
     }
 
     return children;
@@ -470,7 +391,7 @@ std::string Mlan::Nodes::Node::PortStatusNumbers::get_segment_path() const
 
 }
 
-EntityPath Mlan::Nodes::Node::PortStatusNumbers::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortStatusNumbers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -493,15 +414,6 @@ EntityPath Mlan::Nodes::Node::PortStatusNumbers::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-status-number")
     {
         for(auto const & c : port_status_number)
@@ -509,28 +421,24 @@ std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber>();
         c->parent = this;
-        port_status_number.push_back(std::move(c));
-        children[segment_path] = port_status_number.back();
-        return children.at(segment_path);
+        port_status_number.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortStatusNumbers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : port_status_number)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -547,7 +455,6 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatusNumber()
     port_status(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus>())
 {
     port_status->parent = this;
-    children["port-status"] = port_status;
 
     yang_name = "port-status-number"; yang_parent_name = "port-status-numbers";
 }
@@ -578,7 +485,7 @@ std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_segment_
 
 }
 
-EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -602,41 +509,24 @@ EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_entity_pa
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-status")
     {
-        if(port_status != nullptr)
-        {
-            children["port-status"] = port_status;
-        }
-        else
+        if(port_status == nullptr)
         {
             port_status = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus>();
-            port_status->parent = this;
-            children["port-status"] = port_status;
         }
-        return children.at("port-status");
+        return port_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_children() const
 {
-    if(children.find("port-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_status != nullptr)
     {
-        if(port_status != nullptr)
-        {
-            children["port-status"] = port_status;
-        }
+        children["port-status"] = port_status;
     }
 
     return children;
@@ -663,16 +553,12 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::PortStatus()
 	,serdes(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes>())
 {
     config->parent = this;
-    children["config"] = config;
 
     mac->parent = this;
-    children["mac"] = mac;
 
     phy->parent = this;
-    children["phy"] = phy;
 
     serdes->parent = this;
-    children["serdes"] = serdes;
 
     yang_name = "port-status"; yang_parent_name = "port-status-number";
 }
@@ -715,7 +601,7 @@ std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::
 
 }
 
-EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -742,110 +628,66 @@ EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::g
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "mac")
     {
-        if(mac != nullptr)
-        {
-            children["mac"] = mac;
-        }
-        else
+        if(mac == nullptr)
         {
             mac = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac>();
-            mac->parent = this;
-            children["mac"] = mac;
         }
-        return children.at("mac");
+        return mac;
     }
 
     if(child_yang_name == "phy")
     {
-        if(phy != nullptr)
-        {
-            children["phy"] = phy;
-        }
-        else
+        if(phy == nullptr)
         {
             phy = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy>();
-            phy->parent = this;
-            children["phy"] = phy;
         }
-        return children.at("phy");
+        return phy;
     }
 
     if(child_yang_name == "serdes")
     {
-        if(serdes != nullptr)
-        {
-            children["serdes"] = serdes;
-        }
-        else
+        if(serdes == nullptr)
         {
             serdes = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes>();
-            serdes->parent = this;
-            children["serdes"] = serdes;
         }
-        return children.at("serdes");
+        return serdes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("mac") == children.end())
+    if(mac != nullptr)
     {
-        if(mac != nullptr)
-        {
-            children["mac"] = mac;
-        }
+        children["mac"] = mac;
     }
 
-    if(children.find("phy") == children.end())
+    if(phy != nullptr)
     {
-        if(phy != nullptr)
-        {
-            children["phy"] = phy;
-        }
+        children["phy"] = phy;
     }
 
-    if(children.find("serdes") == children.end())
+    if(serdes != nullptr)
     {
-        if(serdes != nullptr)
-        {
-            children["serdes"] = serdes;
-        }
+        children["serdes"] = serdes;
     }
 
     return children;
@@ -914,7 +756,7 @@ std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::
 
 }
 
-EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -942,20 +784,12 @@ EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::C
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1024,7 +858,7 @@ std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::
 
 }
 
-EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1049,20 +883,12 @@ EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::P
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1115,7 +941,7 @@ std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::
 
 }
 
-EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1140,20 +966,12 @@ EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::S
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1206,7 +1024,7 @@ std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::
 
 }
 
-EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1231,20 +1049,12 @@ EntityPath Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::M
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1261,7 +1071,6 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatusTable()
     switch_status(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus>())
 {
     switch_status->parent = this;
-    children["switch-status"] = switch_status;
 
     yang_name = "switch-status-table"; yang_parent_name = "node";
 }
@@ -1290,7 +1099,7 @@ std::string Mlan::Nodes::Node::SwitchStatusTable::get_segment_path() const
 
 }
 
-EntityPath Mlan::Nodes::Node::SwitchStatusTable::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::SwitchStatusTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1313,41 +1122,24 @@ EntityPath Mlan::Nodes::Node::SwitchStatusTable::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "switch-status")
     {
-        if(switch_status != nullptr)
-        {
-            children["switch-status"] = switch_status;
-        }
-        else
+        if(switch_status == nullptr)
         {
             switch_status = std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus>();
-            switch_status->parent = this;
-            children["switch-status"] = switch_status;
         }
-        return children.at("switch-status");
+        return switch_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::SwitchStatusTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTable::get_children() const
 {
-    if(children.find("switch-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(switch_status != nullptr)
     {
-        if(switch_status != nullptr)
-        {
-            children["switch-status"] = switch_status;
-        }
+        children["switch-status"] = switch_status;
     }
 
     return children;
@@ -1366,13 +1158,10 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwitchStatus()
 	,sw_status(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus>())
 {
     sw_reg_1->parent = this;
-    children["sw-reg-1"] = sw_reg_1;
 
     sw_reg_2->parent = this;
-    children["sw-reg-2"] = sw_reg_2;
 
     sw_status->parent = this;
-    children["sw-status"] = sw_status;
 
     yang_name = "switch-status"; yang_parent_name = "switch-status-table";
 }
@@ -1407,7 +1196,7 @@ std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::get_segment_path
 
 }
 
-EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1431,87 +1220,52 @@ EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::get_entity_path(E
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sw-reg-1")
     {
-        if(sw_reg_1 != nullptr)
-        {
-            children["sw-reg-1"] = sw_reg_1;
-        }
-        else
+        if(sw_reg_1 == nullptr)
         {
             sw_reg_1 = std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1>();
-            sw_reg_1->parent = this;
-            children["sw-reg-1"] = sw_reg_1;
         }
-        return children.at("sw-reg-1");
+        return sw_reg_1;
     }
 
     if(child_yang_name == "sw-reg-2")
     {
-        if(sw_reg_2 != nullptr)
-        {
-            children["sw-reg-2"] = sw_reg_2;
-        }
-        else
+        if(sw_reg_2 == nullptr)
         {
             sw_reg_2 = std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2>();
-            sw_reg_2->parent = this;
-            children["sw-reg-2"] = sw_reg_2;
         }
-        return children.at("sw-reg-2");
+        return sw_reg_2;
     }
 
     if(child_yang_name == "sw-status")
     {
-        if(sw_status != nullptr)
-        {
-            children["sw-status"] = sw_status;
-        }
-        else
+        if(sw_status == nullptr)
         {
             sw_status = std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus>();
-            sw_status->parent = this;
-            children["sw-status"] = sw_status;
         }
-        return children.at("sw-status");
+        return sw_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::get_children() const
 {
-    if(children.find("sw-reg-1") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sw_reg_1 != nullptr)
     {
-        if(sw_reg_1 != nullptr)
-        {
-            children["sw-reg-1"] = sw_reg_1;
-        }
+        children["sw-reg-1"] = sw_reg_1;
     }
 
-    if(children.find("sw-reg-2") == children.end())
+    if(sw_reg_2 != nullptr)
     {
-        if(sw_reg_2 != nullptr)
-        {
-            children["sw-reg-2"] = sw_reg_2;
-        }
+        children["sw-reg-2"] = sw_reg_2;
     }
 
-    if(children.find("sw-status") == children.end())
+    if(sw_status != nullptr)
     {
-        if(sw_status != nullptr)
-        {
-            children["sw-status"] = sw_status;
-        }
+        children["sw-status"] = sw_status;
     }
 
     return children;
@@ -1566,7 +1320,7 @@ std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_segm
 
 }
 
-EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1591,20 +1345,12 @@ EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_entit
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1657,7 +1403,7 @@ std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_segm
 
 }
 
-EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1682,20 +1428,12 @@ EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_entit
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1756,7 +1494,7 @@ std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::get_se
 
 }
 
-EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1786,20 +1524,12 @@ EntityPath Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::get_ent
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1873,7 +1603,7 @@ std::string Mlan::Nodes::Node::PortCountersNumbers::get_segment_path() const
 
 }
 
-EntityPath Mlan::Nodes::Node::PortCountersNumbers::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortCountersNumbers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1896,15 +1626,6 @@ EntityPath Mlan::Nodes::Node::PortCountersNumbers::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortCountersNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-counters-number")
     {
         for(auto const & c : port_counters_number)
@@ -1912,28 +1633,24 @@ std::shared_ptr<Entity> Mlan::Nodes::Node::PortCountersNumbers::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber>();
         c->parent = this;
-        port_counters_number.push_back(std::move(c));
-        children[segment_path] = port_counters_number.back();
-        return children.at(segment_path);
+        port_counters_number.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortCountersNumbers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortCountersNumbers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : port_counters_number)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1950,7 +1667,6 @@ Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCountersNumber()
     port_counters(std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters>())
 {
     port_counters->parent = this;
-    children["port-counters"] = port_counters;
 
     yang_name = "port-counters-number"; yang_parent_name = "port-counters-numbers";
 }
@@ -1981,7 +1697,7 @@ std::string Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_segm
 
 }
 
-EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2005,41 +1721,24 @@ EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_entit
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-counters")
     {
-        if(port_counters != nullptr)
-        {
-            children["port-counters"] = port_counters;
-        }
-        else
+        if(port_counters == nullptr)
         {
             port_counters = std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters>();
-            port_counters->parent = this;
-            children["port-counters"] = port_counters;
         }
-        return children.at("port-counters");
+        return port_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_children() const
 {
-    if(children.find("port-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_counters != nullptr)
     {
-        if(port_counters != nullptr)
-        {
-            children["port-counters"] = port_counters;
-        }
+        children["port-counters"] = port_counters;
     }
 
     return children;
@@ -2060,7 +1759,6 @@ Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::PortCo
     mlan_stats(std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats>())
 {
     mlan_stats->parent = this;
-    children["mlan-stats"] = mlan_stats;
 
     yang_name = "port-counters"; yang_parent_name = "port-counters-number";
 }
@@ -2091,7 +1789,7 @@ std::string Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCoun
 
 }
 
-EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2115,41 +1813,24 @@ EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCount
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mlan-stats")
     {
-        if(mlan_stats != nullptr)
-        {
-            children["mlan-stats"] = mlan_stats;
-        }
-        else
+        if(mlan_stats == nullptr)
         {
             mlan_stats = std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats>();
-            mlan_stats->parent = this;
-            children["mlan-stats"] = mlan_stats;
         }
-        return children.at("mlan-stats");
+        return mlan_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::get_children() const
 {
-    if(children.find("mlan-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mlan_stats != nullptr)
     {
-        if(mlan_stats != nullptr)
-        {
-            children["mlan-stats"] = mlan_stats;
-        }
+        children["mlan-stats"] = mlan_stats;
     }
 
     return children;
@@ -2296,7 +1977,7 @@ std::string Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCoun
 
 }
 
-EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2354,20 +2035,12 @@ EntityPath Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCount
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2553,7 +2226,7 @@ std::string Mlan::Nodes::Node::AtuEntryNumbers::get_segment_path() const
 
 }
 
-EntityPath Mlan::Nodes::Node::AtuEntryNumbers::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::AtuEntryNumbers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2576,15 +2249,6 @@ EntityPath Mlan::Nodes::Node::AtuEntryNumbers::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atu-entry-number")
     {
         for(auto const & c : atu_entry_number)
@@ -2592,28 +2256,24 @@ std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber>();
         c->parent = this;
-        atu_entry_number.push_back(std::move(c));
-        children[segment_path] = atu_entry_number.back();
-        return children.at(segment_path);
+        atu_entry_number.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::AtuEntryNumbers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::AtuEntryNumbers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : atu_entry_number)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2630,7 +2290,6 @@ Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::AtuEntryNumber()
     switch_counters(std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters>())
 {
     switch_counters->parent = this;
-    children["switch-counters"] = switch_counters;
 
     yang_name = "atu-entry-number"; yang_parent_name = "atu-entry-numbers";
 }
@@ -2661,7 +2320,7 @@ std::string Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_segment_path
 
 }
 
-EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2685,41 +2344,24 @@ EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_entity_path(E
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "switch-counters")
     {
-        if(switch_counters != nullptr)
-        {
-            children["switch-counters"] = switch_counters;
-        }
-        else
+        if(switch_counters == nullptr)
         {
             switch_counters = std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters>();
-            switch_counters->parent = this;
-            children["switch-counters"] = switch_counters;
         }
-        return children.at("switch-counters");
+        return switch_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_children() const
 {
-    if(children.find("switch-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(switch_counters != nullptr)
     {
-        if(switch_counters != nullptr)
-        {
-            children["switch-counters"] = switch_counters;
-        }
+        children["switch-counters"] = switch_counters;
     }
 
     return children;
@@ -2740,7 +2382,6 @@ Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::SwitchCounte
     atu(std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu>())
 {
     atu->parent = this;
-    children["atu"] = atu;
 
     yang_name = "switch-counters"; yang_parent_name = "atu-entry-number";
 }
@@ -2771,7 +2412,7 @@ std::string Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::
 
 }
 
-EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2795,41 +2436,24 @@ EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::g
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atu")
     {
-        if(atu != nullptr)
-        {
-            children["atu"] = atu;
-        }
-        else
+        if(atu == nullptr)
         {
             atu = std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu>();
-            atu->parent = this;
-            children["atu"] = atu;
         }
-        return children.at("atu");
+        return atu;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::get_children() const
 {
-    if(children.find("atu") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atu != nullptr)
     {
-        if(atu != nullptr)
-        {
-            children["atu"] = atu;
-        }
+        children["atu"] = atu;
     }
 
     return children;
@@ -2898,7 +2522,7 @@ std::string Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::
 
 }
 
-EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::get_entity_path(Entity* ancestor) const
+const EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2928,20 +2552,12 @@ EntityPath Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::A
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

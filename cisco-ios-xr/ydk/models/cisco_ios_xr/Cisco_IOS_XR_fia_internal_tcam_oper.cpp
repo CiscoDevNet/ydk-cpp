@@ -14,7 +14,6 @@ Controller::Controller()
     dpa(std::make_shared<Controller::Dpa>())
 {
     dpa->parent = this;
-    children["dpa"] = dpa;
 
     yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-fia-internal-tcam-oper";
 }
@@ -43,12 +42,12 @@ std::string Controller::get_segment_path() const
 
 }
 
-EntityPath Controller::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Controller::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dpa")
     {
-        if(dpa != nullptr)
-        {
-            children["dpa"] = dpa;
-        }
-        else
+        if(dpa == nullptr)
         {
             dpa = std::make_shared<Controller::Dpa>();
-            dpa->parent = this;
-            children["dpa"] = dpa;
         }
-        return children.at("dpa");
+        return dpa;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::get_children() const
 {
-    if(children.find("dpa") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dpa != nullptr)
     {
-        if(dpa != nullptr)
-        {
-            children["dpa"] = dpa;
-        }
+        children["dpa"] = dpa;
     }
 
     return children;
@@ -132,7 +114,6 @@ Controller::Dpa::Dpa()
     nodes(std::make_shared<Controller::Dpa::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "dpa"; yang_parent_name = "controller";
 }
@@ -161,7 +142,7 @@ std::string Controller::Dpa::get_segment_path() const
 
 }
 
-EntityPath Controller::Dpa::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::Dpa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -184,41 +165,24 @@ EntityPath Controller::Dpa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Controller::Dpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Controller::Dpa::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::Dpa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -266,7 +230,7 @@ std::string Controller::Dpa::Nodes::get_segment_path() const
 
 }
 
-EntityPath Controller::Dpa::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::Dpa::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -289,15 +253,6 @@ EntityPath Controller::Dpa::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Controller::Dpa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -305,28 +260,24 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Controller::Dpa::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::Dpa::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -343,7 +294,6 @@ Controller::Dpa::Nodes::Node::Node()
     internal_tcam_resources(std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources>())
 {
     internal_tcam_resources->parent = this;
-    children["internal-tcam-resources"] = internal_tcam_resources;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -374,7 +324,7 @@ std::string Controller::Dpa::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Controller::Dpa::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::Dpa::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -398,41 +348,24 @@ EntityPath Controller::Dpa::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "internal-tcam-resources")
     {
-        if(internal_tcam_resources != nullptr)
-        {
-            children["internal-tcam-resources"] = internal_tcam_resources;
-        }
-        else
+        if(internal_tcam_resources == nullptr)
         {
             internal_tcam_resources = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources>();
-            internal_tcam_resources->parent = this;
-            children["internal-tcam-resources"] = internal_tcam_resources;
         }
-        return children.at("internal-tcam-resources");
+        return internal_tcam_resources;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::Dpa::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::get_children() const
 {
-    if(children.find("internal-tcam-resources") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(internal_tcam_resources != nullptr)
     {
-        if(internal_tcam_resources != nullptr)
-        {
-            children["internal-tcam-resources"] = internal_tcam_resources;
-        }
+        children["internal-tcam-resources"] = internal_tcam_resources;
     }
 
     return children;
@@ -484,7 +417,7 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::get_segment_pat
 
 }
 
-EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -507,15 +440,6 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::get_entity_path(
 
 std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "npu-tcam")
     {
         for(auto const & c : npu_tcam)
@@ -523,28 +447,24 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam>();
         c->parent = this;
-        npu_tcam.push_back(std::move(c));
-        children[segment_path] = npu_tcam.back();
-        return children.at(segment_path);
+        npu_tcam.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::Dpa::Nodes::Node::InternalTcamResources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : npu_tcam)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -595,7 +515,7 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_se
 
 }
 
-EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -619,15 +539,6 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_ent
 
 std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tcam-bank")
     {
         for(auto const & c : tcam_bank)
@@ -635,28 +546,24 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::Npu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank>();
         c->parent = this;
-        tcam_bank.push_back(std::move(c));
-        children[segment_path] = tcam_bank.back();
-        return children.at(segment_path);
+        tcam_bank.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tcam_bank)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -726,7 +633,7 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBa
 
 }
 
-EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -755,15 +662,6 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBan
 
 std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bank-db")
     {
         for(auto const & c : bank_db)
@@ -771,28 +669,24 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::Npu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb>();
         c->parent = this;
-        bank_db.push_back(std::move(c));
-        children[segment_path] = bank_db.back();
-        return children.at(segment_path);
+        bank_db.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bank_db)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -863,7 +757,7 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBa
 
 }
 
-EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_entity_path(Entity* ancestor) const
+const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -889,20 +783,12 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBan
 
 std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

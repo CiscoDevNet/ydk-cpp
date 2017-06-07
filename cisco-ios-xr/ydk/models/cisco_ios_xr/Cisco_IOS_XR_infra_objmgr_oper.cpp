@@ -15,10 +15,8 @@ ObjectGroup::ObjectGroup()
 	,port(std::make_shared<ObjectGroup::Port>())
 {
     network->parent = this;
-    children["network"] = network;
 
     port->parent = this;
-    children["port"] = port;
 
     yang_name = "object-group"; yang_parent_name = "Cisco-IOS-XR-infra-objmgr-oper";
 }
@@ -49,12 +47,12 @@ std::string ObjectGroup::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath ObjectGroup::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network")
     {
-        if(network != nullptr)
-        {
-            children["network"] = network;
-        }
-        else
+        if(network == nullptr)
         {
             network = std::make_shared<ObjectGroup::Network>();
-            network->parent = this;
-            children["network"] = network;
         }
-        return children.at("network");
+        return network;
     }
 
     if(child_yang_name == "port")
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
-        else
+        if(port == nullptr)
         {
             port = std::make_shared<ObjectGroup::Port>();
-            port->parent = this;
-            children["port"] = port;
         }
-        return children.at("port");
+        return port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::get_children() const
 {
-    if(children.find("network") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(network != nullptr)
     {
-        if(network != nullptr)
-        {
-            children["network"] = network;
-        }
+        children["network"] = network;
     }
 
-    if(children.find("port") == children.end())
+    if(port != nullptr)
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
+        children["port"] = port;
     }
 
     return children;
@@ -161,7 +133,6 @@ ObjectGroup::Port::Port()
     objects(std::make_shared<ObjectGroup::Port::Objects>())
 {
     objects->parent = this;
-    children["objects"] = objects;
 
     yang_name = "port"; yang_parent_name = "object-group";
 }
@@ -190,7 +161,7 @@ std::string ObjectGroup::Port::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Port::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -213,41 +184,24 @@ EntityPath ObjectGroup::Port::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectGroup::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "objects")
     {
-        if(objects != nullptr)
-        {
-            children["objects"] = objects;
-        }
-        else
+        if(objects == nullptr)
         {
             objects = std::make_shared<ObjectGroup::Port::Objects>();
-            objects->parent = this;
-            children["objects"] = objects;
         }
-        return children.at("objects");
+        return objects;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::get_children() const
 {
-    if(children.find("objects") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(objects != nullptr)
     {
-        if(objects != nullptr)
-        {
-            children["objects"] = objects;
-        }
+        children["objects"] = objects;
     }
 
     return children;
@@ -295,7 +249,7 @@ std::string ObjectGroup::Port::Objects::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Port::Objects::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -318,15 +272,6 @@ EntityPath ObjectGroup::Port::Objects::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "object")
     {
         for(auto const & c : object)
@@ -334,28 +279,24 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object>();
         c->parent = this;
-        object.push_back(std::move(c));
-        children[segment_path] = object.back();
-        return children.at(segment_path);
+        object.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -375,16 +316,12 @@ ObjectGroup::Port::Objects::Object::Object()
 	,port_ranges(std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges>())
 {
     nested_groups->parent = this;
-    children["nested-groups"] = nested_groups;
 
     operators->parent = this;
-    children["operators"] = operators;
 
     parent_groups->parent = this;
-    children["parent-groups"] = parent_groups;
 
     port_ranges->parent = this;
-    children["port-ranges"] = port_ranges;
 
     yang_name = "object"; yang_parent_name = "objects";
 }
@@ -421,7 +358,7 @@ std::string ObjectGroup::Port::Objects::Object::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -445,110 +382,66 @@ EntityPath ObjectGroup::Port::Objects::Object::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nested-groups")
     {
-        if(nested_groups != nullptr)
-        {
-            children["nested-groups"] = nested_groups;
-        }
-        else
+        if(nested_groups == nullptr)
         {
             nested_groups = std::make_shared<ObjectGroup::Port::Objects::Object::NestedGroups>();
-            nested_groups->parent = this;
-            children["nested-groups"] = nested_groups;
         }
-        return children.at("nested-groups");
+        return nested_groups;
     }
 
     if(child_yang_name == "operators")
     {
-        if(operators != nullptr)
-        {
-            children["operators"] = operators;
-        }
-        else
+        if(operators == nullptr)
         {
             operators = std::make_shared<ObjectGroup::Port::Objects::Object::Operators>();
-            operators->parent = this;
-            children["operators"] = operators;
         }
-        return children.at("operators");
+        return operators;
     }
 
     if(child_yang_name == "parent-groups")
     {
-        if(parent_groups != nullptr)
-        {
-            children["parent-groups"] = parent_groups;
-        }
-        else
+        if(parent_groups == nullptr)
         {
             parent_groups = std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups>();
-            parent_groups->parent = this;
-            children["parent-groups"] = parent_groups;
         }
-        return children.at("parent-groups");
+        return parent_groups;
     }
 
     if(child_yang_name == "port-ranges")
     {
-        if(port_ranges != nullptr)
-        {
-            children["port-ranges"] = port_ranges;
-        }
-        else
+        if(port_ranges == nullptr)
         {
             port_ranges = std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges>();
-            port_ranges->parent = this;
-            children["port-ranges"] = port_ranges;
         }
-        return children.at("port-ranges");
+        return port_ranges;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::get_children() const
 {
-    if(children.find("nested-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nested_groups != nullptr)
     {
-        if(nested_groups != nullptr)
-        {
-            children["nested-groups"] = nested_groups;
-        }
+        children["nested-groups"] = nested_groups;
     }
 
-    if(children.find("operators") == children.end())
+    if(operators != nullptr)
     {
-        if(operators != nullptr)
-        {
-            children["operators"] = operators;
-        }
+        children["operators"] = operators;
     }
 
-    if(children.find("parent-groups") == children.end())
+    if(parent_groups != nullptr)
     {
-        if(parent_groups != nullptr)
-        {
-            children["parent-groups"] = parent_groups;
-        }
+        children["parent-groups"] = parent_groups;
     }
 
-    if(children.find("port-ranges") == children.end())
+    if(port_ranges != nullptr)
     {
-        if(port_ranges != nullptr)
-        {
-            children["port-ranges"] = port_ranges;
-        }
+        children["port-ranges"] = port_ranges;
     }
 
     return children;
@@ -600,7 +493,7 @@ std::string ObjectGroup::Port::Objects::Object::NestedGroups::get_segment_path()
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -623,15 +516,6 @@ EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::get_entity_path(Ent
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::NestedGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nested-group")
     {
         for(auto const & c : nested_group)
@@ -639,28 +523,24 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::NestedGroups::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(std::move(c));
-        children[segment_path] = nested_group.back();
-        return children.at(segment_path);
+        nested_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::NestedGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::NestedGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nested_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -704,7 +584,7 @@ std::string ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_s
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -729,20 +609,12 @@ EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_en
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -796,7 +668,7 @@ std::string ObjectGroup::Port::Objects::Object::Operators::get_segment_path() co
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::Operators::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::Operators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -819,15 +691,6 @@ EntityPath ObjectGroup::Port::Objects::Object::Operators::get_entity_path(Entity
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::Operators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "operator")
     {
         for(auto const & c : operator_)
@@ -835,28 +698,24 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::Operators::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::Operators::Operator_>();
         c->parent = this;
-        operator_.push_back(std::move(c));
-        children[segment_path] = operator_.back();
-        return children.at(segment_path);
+        operator_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::Operators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::Operators::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : operator_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -906,7 +765,7 @@ std::string ObjectGroup::Port::Objects::Object::Operators::Operator_::get_segmen
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::Operators::Operator_::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::Operators::Operator_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -933,20 +792,12 @@ EntityPath ObjectGroup::Port::Objects::Object::Operators::Operator_::get_entity_
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::Operators::Operator_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::Operators::Operator_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::Operators::Operator_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1008,7 +859,7 @@ std::string ObjectGroup::Port::Objects::Object::PortRanges::get_segment_path() c
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::PortRanges::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::PortRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1031,15 +882,6 @@ EntityPath ObjectGroup::Port::Objects::Object::PortRanges::get_entity_path(Entit
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-range")
     {
         for(auto const & c : port_range)
@@ -1047,28 +889,24 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::PortRanges::PortRange>();
         c->parent = this;
-        port_range.push_back(std::move(c));
-        children[segment_path] = port_range.back();
-        return children.at(segment_path);
+        port_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::PortRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::PortRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : port_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1118,7 +956,7 @@ std::string ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_segme
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1145,20 +983,12 @@ EntityPath ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_entity
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1220,7 +1050,7 @@ std::string ObjectGroup::Port::Objects::Object::ParentGroups::get_segment_path()
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::ParentGroups::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::ParentGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1243,15 +1073,6 @@ EntityPath ObjectGroup::Port::Objects::Object::ParentGroups::get_entity_path(Ent
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::ParentGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "parent-group")
     {
         for(auto const & c : parent_group)
@@ -1259,28 +1080,24 @@ std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::ParentGroups::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup>();
         c->parent = this;
-        parent_group.push_back(std::move(c));
-        children[segment_path] = parent_group.back();
-        return children.at(segment_path);
+        parent_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::ParentGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::ParentGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : parent_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1324,7 +1141,7 @@ std::string ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_s
 
 }
 
-EntityPath ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1349,20 +1166,12 @@ EntityPath ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_en
 
 std::shared_ptr<Entity> ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::Objects::Object::ParentGroups::ParentGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1384,10 +1193,8 @@ ObjectGroup::Network::Network()
 	,ipv6(std::make_shared<ObjectGroup::Network::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "network"; yang_parent_name = "object-group";
 }
@@ -1418,7 +1225,7 @@ std::string ObjectGroup::Network::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Network::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1441,64 +1248,38 @@ EntityPath ObjectGroup::Network::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectGroup::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<ObjectGroup::Network::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<ObjectGroup::Network::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -1513,7 +1294,6 @@ ObjectGroup::Network::Ipv6::Ipv6()
     objects(std::make_shared<ObjectGroup::Network::Ipv6::Objects>())
 {
     objects->parent = this;
-    children["objects"] = objects;
 
     yang_name = "ipv6"; yang_parent_name = "network";
 }
@@ -1542,7 +1322,7 @@ std::string ObjectGroup::Network::Ipv6::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1565,41 +1345,24 @@ EntityPath ObjectGroup::Network::Ipv6::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "objects")
     {
-        if(objects != nullptr)
-        {
-            children["objects"] = objects;
-        }
-        else
+        if(objects == nullptr)
         {
             objects = std::make_shared<ObjectGroup::Network::Ipv6::Objects>();
-            objects->parent = this;
-            children["objects"] = objects;
         }
-        return children.at("objects");
+        return objects;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::get_children() const
 {
-    if(children.find("objects") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(objects != nullptr)
     {
-        if(objects != nullptr)
-        {
-            children["objects"] = objects;
-        }
+        children["objects"] = objects;
     }
 
     return children;
@@ -1647,7 +1410,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1670,15 +1433,6 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "object")
     {
         for(auto const & c : object)
@@ -1686,28 +1440,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object>();
         c->parent = this;
-        object.push_back(std::move(c));
-        children[segment_path] = object.back();
-        return children.at(segment_path);
+        object.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1728,19 +1478,14 @@ ObjectGroup::Network::Ipv6::Objects::Object::Object()
 	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>())
 {
     address_ranges->parent = this;
-    children["address-ranges"] = address_ranges;
 
     addresses->parent = this;
-    children["addresses"] = addresses;
 
     hosts->parent = this;
-    children["hosts"] = hosts;
 
     nested_groups->parent = this;
-    children["nested-groups"] = nested_groups;
 
     parent_groups->parent = this;
-    children["parent-groups"] = parent_groups;
 
     yang_name = "object"; yang_parent_name = "objects";
 }
@@ -1779,7 +1524,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::get_segment_path() cons
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1803,133 +1548,80 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-ranges")
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
-        else
+        if(address_ranges == nullptr)
         {
             address_ranges = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges>();
-            address_ranges->parent = this;
-            children["address-ranges"] = address_ranges;
         }
-        return children.at("address-ranges");
+        return address_ranges;
     }
 
     if(child_yang_name == "addresses")
     {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
-        else
+        if(addresses == nullptr)
         {
             addresses = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses>();
-            addresses->parent = this;
-            children["addresses"] = addresses;
         }
-        return children.at("addresses");
+        return addresses;
     }
 
     if(child_yang_name == "hosts")
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
-        else
+        if(hosts == nullptr)
         {
             hosts = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts>();
-            hosts->parent = this;
-            children["hosts"] = hosts;
         }
-        return children.at("hosts");
+        return hosts;
     }
 
     if(child_yang_name == "nested-groups")
     {
-        if(nested_groups != nullptr)
-        {
-            children["nested-groups"] = nested_groups;
-        }
-        else
+        if(nested_groups == nullptr)
         {
             nested_groups = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups>();
-            nested_groups->parent = this;
-            children["nested-groups"] = nested_groups;
         }
-        return children.at("nested-groups");
+        return nested_groups;
     }
 
     if(child_yang_name == "parent-groups")
     {
-        if(parent_groups != nullptr)
-        {
-            children["parent-groups"] = parent_groups;
-        }
-        else
+        if(parent_groups == nullptr)
         {
             parent_groups = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups>();
-            parent_groups->parent = this;
-            children["parent-groups"] = parent_groups;
         }
-        return children.at("parent-groups");
+        return parent_groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::get_children() const
 {
-    if(children.find("address-ranges") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_ranges != nullptr)
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
+        children["address-ranges"] = address_ranges;
     }
 
-    if(children.find("addresses") == children.end())
+    if(addresses != nullptr)
     {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
+        children["addresses"] = addresses;
     }
 
-    if(children.find("hosts") == children.end())
+    if(hosts != nullptr)
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
+        children["hosts"] = hosts;
     }
 
-    if(children.find("nested-groups") == children.end())
+    if(nested_groups != nullptr)
     {
-        if(nested_groups != nullptr)
-        {
-            children["nested-groups"] = nested_groups;
-        }
+        children["nested-groups"] = nested_groups;
     }
 
-    if(children.find("parent-groups") == children.end())
+    if(parent_groups != nullptr)
     {
-        if(parent_groups != nullptr)
-        {
-            children["parent-groups"] = parent_groups;
-        }
+        children["parent-groups"] = parent_groups;
     }
 
     return children;
@@ -1981,7 +1673,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_segme
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2004,15 +1696,6 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_entity
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nested-group")
     {
         for(auto const & c : nested_group)
@@ -2020,28 +1703,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroup
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(std::move(c));
-        children[segment_path] = nested_group.back();
-        return children.at(segment_path);
+        nested_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nested_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2085,7 +1764,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGro
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2110,20 +1789,12 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGrou
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2177,7 +1848,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_segment_
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2200,15 +1871,6 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_entity_pa
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
         for(auto const & c : address)
@@ -2216,28 +1878,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address>();
         c->parent = this;
-        address.push_back(std::move(c));
-        children[segment_path] = address.back();
-        return children.at(segment_path);
+        address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2287,7 +1945,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2314,20 +1972,12 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2389,7 +2039,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_segm
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2412,15 +2062,6 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_entit
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-range")
     {
         for(auto const & c : address_range)
@@ -2428,28 +2069,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRang
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(std::move(c));
-        children[segment_path] = address_range.back();
-        return children.at(segment_path);
+        address_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2499,7 +2136,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressR
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2526,20 +2163,12 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRa
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2601,7 +2230,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_segme
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2624,15 +2253,6 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_entity
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "parent-group")
     {
         for(auto const & c : parent_group)
@@ -2640,28 +2260,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroup
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup>();
         c->parent = this;
-        parent_group.push_back(std::move(c));
-        children[segment_path] = parent_group.back();
-        return children.at(segment_path);
+        parent_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : parent_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2705,7 +2321,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGro
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2730,20 +2346,12 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGrou
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::ParentGroups::ParentGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2797,7 +2405,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_segment_path
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2820,15 +2428,6 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_entity_path(E
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host")
     {
         for(auto const & c : host)
@@ -2836,28 +2435,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host>();
         c->parent = this;
-        host.push_back(std::move(c));
-        children[segment_path] = host.back();
-        return children.at(segment_path);
+        host.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2901,7 +2496,7 @@ std::string ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_segmen
 
 }
 
-EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2926,20 +2521,12 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_entity_
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2960,7 +2547,6 @@ ObjectGroup::Network::Ipv4::Ipv4()
     objects(std::make_shared<ObjectGroup::Network::Ipv4::Objects>())
 {
     objects->parent = this;
-    children["objects"] = objects;
 
     yang_name = "ipv4"; yang_parent_name = "network";
 }
@@ -2989,7 +2575,7 @@ std::string ObjectGroup::Network::Ipv4::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3012,41 +2598,24 @@ EntityPath ObjectGroup::Network::Ipv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "objects")
     {
-        if(objects != nullptr)
-        {
-            children["objects"] = objects;
-        }
-        else
+        if(objects == nullptr)
         {
             objects = std::make_shared<ObjectGroup::Network::Ipv4::Objects>();
-            objects->parent = this;
-            children["objects"] = objects;
         }
-        return children.at("objects");
+        return objects;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::get_children() const
 {
-    if(children.find("objects") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(objects != nullptr)
     {
-        if(objects != nullptr)
-        {
-            children["objects"] = objects;
-        }
+        children["objects"] = objects;
     }
 
     return children;
@@ -3094,7 +2663,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::get_segment_path() const
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3117,15 +2686,6 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "object")
     {
         for(auto const & c : object)
@@ -3133,28 +2693,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object>();
         c->parent = this;
-        object.push_back(std::move(c));
-        children[segment_path] = object.back();
-        return children.at(segment_path);
+        object.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3175,19 +2731,14 @@ ObjectGroup::Network::Ipv4::Objects::Object::Object()
 	,parent_groups(std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>())
 {
     address_ranges->parent = this;
-    children["address-ranges"] = address_ranges;
 
     addresses->parent = this;
-    children["addresses"] = addresses;
 
     hosts->parent = this;
-    children["hosts"] = hosts;
 
     nested_groups->parent = this;
-    children["nested-groups"] = nested_groups;
 
     parent_groups->parent = this;
-    children["parent-groups"] = parent_groups;
 
     yang_name = "object"; yang_parent_name = "objects";
 }
@@ -3226,7 +2777,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::get_segment_path() cons
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3250,133 +2801,80 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-ranges")
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
-        else
+        if(address_ranges == nullptr)
         {
             address_ranges = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges>();
-            address_ranges->parent = this;
-            children["address-ranges"] = address_ranges;
         }
-        return children.at("address-ranges");
+        return address_ranges;
     }
 
     if(child_yang_name == "addresses")
     {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
-        else
+        if(addresses == nullptr)
         {
             addresses = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses>();
-            addresses->parent = this;
-            children["addresses"] = addresses;
         }
-        return children.at("addresses");
+        return addresses;
     }
 
     if(child_yang_name == "hosts")
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
-        else
+        if(hosts == nullptr)
         {
             hosts = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts>();
-            hosts->parent = this;
-            children["hosts"] = hosts;
         }
-        return children.at("hosts");
+        return hosts;
     }
 
     if(child_yang_name == "nested-groups")
     {
-        if(nested_groups != nullptr)
-        {
-            children["nested-groups"] = nested_groups;
-        }
-        else
+        if(nested_groups == nullptr)
         {
             nested_groups = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups>();
-            nested_groups->parent = this;
-            children["nested-groups"] = nested_groups;
         }
-        return children.at("nested-groups");
+        return nested_groups;
     }
 
     if(child_yang_name == "parent-groups")
     {
-        if(parent_groups != nullptr)
-        {
-            children["parent-groups"] = parent_groups;
-        }
-        else
+        if(parent_groups == nullptr)
         {
             parent_groups = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups>();
-            parent_groups->parent = this;
-            children["parent-groups"] = parent_groups;
         }
-        return children.at("parent-groups");
+        return parent_groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::get_children() const
 {
-    if(children.find("address-ranges") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_ranges != nullptr)
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
+        children["address-ranges"] = address_ranges;
     }
 
-    if(children.find("addresses") == children.end())
+    if(addresses != nullptr)
     {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
+        children["addresses"] = addresses;
     }
 
-    if(children.find("hosts") == children.end())
+    if(hosts != nullptr)
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
+        children["hosts"] = hosts;
     }
 
-    if(children.find("nested-groups") == children.end())
+    if(nested_groups != nullptr)
     {
-        if(nested_groups != nullptr)
-        {
-            children["nested-groups"] = nested_groups;
-        }
+        children["nested-groups"] = nested_groups;
     }
 
-    if(children.find("parent-groups") == children.end())
+    if(parent_groups != nullptr)
     {
-        if(parent_groups != nullptr)
-        {
-            children["parent-groups"] = parent_groups;
-        }
+        children["parent-groups"] = parent_groups;
     }
 
     return children;
@@ -3428,7 +2926,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_segme
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3451,15 +2949,6 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_entity
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nested-group")
     {
         for(auto const & c : nested_group)
@@ -3467,28 +2956,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroup
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(std::move(c));
-        children[segment_path] = nested_group.back();
-        return children.at(segment_path);
+        nested_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nested_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3532,7 +3017,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGro
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3557,20 +3042,12 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGrou
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3624,7 +3101,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_segment_
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3647,15 +3124,6 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_entity_pa
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
         for(auto const & c : address)
@@ -3663,28 +3131,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address>();
         c->parent = this;
-        address.push_back(std::move(c));
-        children[segment_path] = address.back();
-        return children.at(segment_path);
+        address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3734,7 +3198,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3761,20 +3225,12 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3836,7 +3292,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_segm
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3859,15 +3315,6 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_entit
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-range")
     {
         for(auto const & c : address_range)
@@ -3875,28 +3322,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRang
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(std::move(c));
-        children[segment_path] = address_range.back();
-        return children.at(segment_path);
+        address_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3946,7 +3389,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressR
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3973,20 +3416,12 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRa
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4048,7 +3483,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_segme
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4071,15 +3506,6 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_entity
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "parent-group")
     {
         for(auto const & c : parent_group)
@@ -4087,28 +3513,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroup
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup>();
         c->parent = this;
-        parent_group.push_back(std::move(c));
-        children[segment_path] = parent_group.back();
-        return children.at(segment_path);
+        parent_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : parent_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4152,7 +3574,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGro
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4177,20 +3599,12 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGrou
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::ParentGroups::ParentGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4244,7 +3658,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_segment_path
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4267,15 +3681,6 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_entity_path(E
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host")
     {
         for(auto const & c : host)
@@ -4283,28 +3688,24 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host>();
         c->parent = this;
-        host.push_back(std::move(c));
-        children[segment_path] = host.back();
-        return children.at(segment_path);
+        host.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4348,7 +3749,7 @@ std::string ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_segmen
 
 }
 
-EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4373,20 +3774,12 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_entity_
 
 std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -18,23 +18,20 @@ class Inventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Racks; //type: Inventory::Racks
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks> racks;
-
-
+        
 }; // Inventory
 
 
@@ -46,19 +43,16 @@ class Inventory::Racks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rack; //type: Inventory::Racks::Rack
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack> > rack;
-
-
+        
 }; // Inventory::Racks
 
 
@@ -70,20 +64,17 @@ class Inventory::Racks::Rack : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Slots; //type: Inventory::Racks::Rack::Slots
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots> slots;
-
-
+        
 }; // Inventory::Racks::Rack
 
 
@@ -95,19 +86,16 @@ class Inventory::Racks::Rack::Slots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Slot; //type: Inventory::Racks::Rack::Slots::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot> > slot;
-
-
+        
 }; // Inventory::Racks::Rack::Slots
 
 
@@ -119,22 +107,19 @@ class Inventory::Racks::Rack::Slots::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Cards; //type: Inventory::Racks::Rack::Slots::Slot::Cards
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::BasicAttributes> basic_attributes;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards> cards;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot
 
 
@@ -146,19 +131,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Card; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card> > card;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards
 
 
@@ -170,15 +152,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class SubSlots; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
         class HwComponents; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
         class Sensors; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors
@@ -190,8 +170,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card : public Entity
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots> port_slots;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors> sensors;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots> sub_slots;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card
 
 
@@ -203,19 +182,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SubSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot> > sub_slot;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
 
 
@@ -227,22 +203,19 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Module; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes> basic_attributes;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module> module;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 
@@ -254,13 +227,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sensors; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors
         class PortSlots; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots
@@ -269,8 +240,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes> basic_attributes;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots> port_slots;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors> sensors;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 
 
@@ -282,19 +252,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor> > sensor;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors
 
 
@@ -306,20 +273,17 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes> basic_attributes;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor
 
 
@@ -331,21 +295,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes
 
 
@@ -357,12 +318,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -390,8 +350,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo
 
@@ -404,12 +362,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -418,14 +375,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo
 
 
@@ -437,17 +392,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -460,17 +412,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
@@ -483,19 +432,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PortSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot> > port_slot;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots
 
 
@@ -507,22 +453,19 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Port; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes> basic_attributes;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port> port;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot
 
 
@@ -534,19 +477,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes> basic_attributes;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port
 
 
@@ -558,21 +498,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes
 
 
@@ -584,12 +521,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -617,8 +553,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
 
@@ -631,12 +565,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -645,14 +578,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
 
 
@@ -664,17 +595,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -687,17 +615,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
@@ -710,21 +635,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes
 
 
@@ -736,12 +658,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -769,8 +690,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo
 
@@ -783,12 +702,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -797,14 +715,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo
 
 
@@ -816,17 +732,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -839,17 +752,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
@@ -862,21 +772,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes
 
 
@@ -888,12 +795,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -921,8 +827,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo
 
@@ -935,12 +839,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -949,14 +852,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo
 
 
@@ -968,17 +869,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -991,17 +889,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime
 
@@ -1014,21 +909,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes
 
 
@@ -1040,12 +932,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -1073,8 +964,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo
 
@@ -1087,12 +976,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -1101,14 +989,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo
 
 
@@ -1120,17 +1006,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -1143,17 +1026,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime
 
@@ -1166,19 +1046,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HwComponent; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent> > hw_component;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
 
 
@@ -1190,22 +1067,19 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Sensors; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes> basic_attributes;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors> sensors;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
 
@@ -1217,19 +1091,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor> > sensor;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors
 
 
@@ -1241,20 +1112,17 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes> basic_attributes;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor
 
 
@@ -1266,21 +1134,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes
 
 
@@ -1292,12 +1157,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -1325,8 +1189,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo
 
@@ -1339,12 +1201,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -1353,14 +1214,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo
 
 
@@ -1372,17 +1231,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -1395,17 +1251,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
@@ -1418,21 +1271,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes
 
 
@@ -1444,12 +1294,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -1477,8 +1326,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo
 
@@ -1491,12 +1338,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -1505,14 +1351,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo
 
 
@@ -1524,17 +1368,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -1547,17 +1388,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime
 
@@ -1570,19 +1408,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor> > sensor;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors
 
 
@@ -1594,20 +1429,17 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes> basic_attributes;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor
 
 
@@ -1619,21 +1451,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes
 
 
@@ -1645,12 +1474,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -1678,8 +1506,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo
 
@@ -1692,12 +1518,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -1706,14 +1531,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo
 
 
@@ -1725,17 +1548,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -1748,17 +1568,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
@@ -1771,19 +1588,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PortSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot> > port_slot;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots
 
 
@@ -1795,22 +1609,19 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Port; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes> basic_attributes;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port> port;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot
 
 
@@ -1822,19 +1633,16 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes> basic_attributes;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
 
 
@@ -1846,21 +1654,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes
 
 
@@ -1872,12 +1677,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -1905,8 +1709,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
 
@@ -1919,12 +1721,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -1933,14 +1734,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
 
 
@@ -1952,17 +1751,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -1975,17 +1771,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
@@ -1998,21 +1791,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes
 
 
@@ -2024,12 +1814,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -2057,8 +1846,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo
 
@@ -2071,12 +1858,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -2085,14 +1871,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo
 
 
@@ -2104,17 +1888,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -2127,17 +1908,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
@@ -2150,21 +1928,18 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes
 
 
@@ -2176,12 +1951,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -2209,8 +1983,6 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicIn
         YLeaf ceport; //type: boolean
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo
 
@@ -2223,12 +1995,11 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -2237,14 +2008,12 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
 
@@ -2256,17 +2025,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -2279,17 +2045,14 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime
 
@@ -2302,21 +2065,18 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo> basic_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo> fru_info;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes
 
 
@@ -2328,12 +2088,11 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -2362,8 +2121,6 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo : public E
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
 
-
-
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo
 
 
@@ -2375,12 +2132,11 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -2389,14 +2145,12 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo : public Ent
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_oper::Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo
 
 
@@ -2408,17 +2162,14 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange
 
@@ -2431,17 +2182,14 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime
 

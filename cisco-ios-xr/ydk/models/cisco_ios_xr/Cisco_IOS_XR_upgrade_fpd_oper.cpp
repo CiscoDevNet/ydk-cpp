@@ -15,10 +15,8 @@ Fpd::Fpd()
 	,packages(std::make_shared<Fpd::Packages>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     packages->parent = this;
-    children["packages"] = packages;
 
     yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-upgrade-fpd-oper";
 }
@@ -49,12 +47,12 @@ std::string Fpd::get_segment_path() const
 
 }
 
-EntityPath Fpd::get_entity_path(Entity* ancestor) const
+const EntityPath Fpd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath Fpd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Fpd::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     if(child_yang_name == "packages")
     {
-        if(packages != nullptr)
-        {
-            children["packages"] = packages;
-        }
-        else
+        if(packages == nullptr)
         {
             packages = std::make_shared<Fpd::Packages>();
-            packages->parent = this;
-            children["packages"] = packages;
         }
-        return children.at("packages");
+        return packages;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fpd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fpd::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
-    if(children.find("packages") == children.end())
+    if(packages != nullptr)
     {
-        if(packages != nullptr)
-        {
-            children["packages"] = packages;
-        }
+        children["packages"] = packages;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string Fpd::Nodes::get_segment_path() const
 
 }
 
-EntityPath Fpd::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Fpd::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath Fpd::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fpd::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> Fpd::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fpd::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fpd::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fpd::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -271,7 +230,6 @@ Fpd::Nodes::Node::Node()
     devices(std::make_shared<Fpd::Nodes::Node::Devices>())
 {
     devices->parent = this;
-    children["devices"] = devices;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -302,7 +260,7 @@ std::string Fpd::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Fpd::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Fpd::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -326,41 +284,24 @@ EntityPath Fpd::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fpd::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "devices")
     {
-        if(devices != nullptr)
-        {
-            children["devices"] = devices;
-        }
-        else
+        if(devices == nullptr)
         {
             devices = std::make_shared<Fpd::Nodes::Node::Devices>();
-            devices->parent = this;
-            children["devices"] = devices;
         }
-        return children.at("devices");
+        return devices;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fpd::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fpd::Nodes::Node::get_children() const
 {
-    if(children.find("devices") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(devices != nullptr)
     {
-        if(devices != nullptr)
-        {
-            children["devices"] = devices;
-        }
+        children["devices"] = devices;
     }
 
     return children;
@@ -412,7 +353,7 @@ std::string Fpd::Nodes::Node::Devices::get_segment_path() const
 
 }
 
-EntityPath Fpd::Nodes::Node::Devices::get_entity_path(Entity* ancestor) const
+const EntityPath Fpd::Nodes::Node::Devices::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -435,15 +376,6 @@ EntityPath Fpd::Nodes::Node::Devices::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fpd::Nodes::Node::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "device")
     {
         for(auto const & c : device)
@@ -451,28 +383,24 @@ std::shared_ptr<Entity> Fpd::Nodes::Node::Devices::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fpd::Nodes::Node::Devices::Device>();
         c->parent = this;
-        device.push_back(std::move(c));
-        children[segment_path] = device.back();
-        return children.at(segment_path);
+        device.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fpd::Nodes::Node::Devices::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fpd::Nodes::Node::Devices::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : device)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -531,7 +459,7 @@ std::string Fpd::Nodes::Node::Devices::Device::get_segment_path() const
 
 }
 
-EntityPath Fpd::Nodes::Node::Devices::Device::get_entity_path(Entity* ancestor) const
+const EntityPath Fpd::Nodes::Node::Devices::Device::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -561,20 +489,12 @@ EntityPath Fpd::Nodes::Node::Devices::Device::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Fpd::Nodes::Node::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fpd::Nodes::Node::Devices::Device::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fpd::Nodes::Node::Devices::Device::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -648,7 +568,7 @@ std::string Fpd::Packages::get_segment_path() const
 
 }
 
-EntityPath Fpd::Packages::get_entity_path(Entity* ancestor) const
+const EntityPath Fpd::Packages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -671,15 +591,6 @@ EntityPath Fpd::Packages::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fpd::Packages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "all-package")
     {
         for(auto const & c : all_package)
@@ -687,28 +598,24 @@ std::shared_ptr<Entity> Fpd::Packages::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fpd::Packages::AllPackage>();
         c->parent = this;
-        all_package.push_back(std::move(c));
-        children[segment_path] = all_package.back();
-        return children.at(segment_path);
+        all_package.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fpd::Packages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fpd::Packages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : all_package)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -767,7 +674,7 @@ std::string Fpd::Packages::AllPackage::get_segment_path() const
 
 }
 
-EntityPath Fpd::Packages::AllPackage::get_entity_path(Entity* ancestor) const
+const EntityPath Fpd::Packages::AllPackage::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -797,20 +704,12 @@ EntityPath Fpd::Packages::AllPackage::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fpd::Packages::AllPackage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fpd::Packages::AllPackage::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fpd::Packages::AllPackage::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

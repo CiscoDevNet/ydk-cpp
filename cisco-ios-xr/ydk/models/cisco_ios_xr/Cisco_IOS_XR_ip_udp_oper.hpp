@@ -18,23 +18,20 @@ class Udp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: Udp::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::Udp::Nodes> nodes;
-
-
+        
 }; // Udp
 
 
@@ -46,19 +43,16 @@ class Udp::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Udp::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::Udp::Nodes::Node> > node;
-
-
+        
 }; // Udp::Nodes
 
 
@@ -70,20 +64,17 @@ class Udp::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Statistics; //type: Udp::Nodes::Node::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::Udp::Nodes::Node::Statistics> statistics;
-
-
+        
 }; // Udp::Nodes::Node
 
 
@@ -95,21 +86,18 @@ class Udp::Nodes::Node::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4Traffic; //type: Udp::Nodes::Node::Statistics::Ipv4Traffic
         class Ipv6Traffic; //type: Udp::Nodes::Node::Statistics::Ipv6Traffic
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::Udp::Nodes::Node::Statistics::Ipv4Traffic> ipv4_traffic;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::Udp::Nodes::Node::Statistics::Ipv6Traffic> ipv6_traffic;
-
-
+        
 }; // Udp::Nodes::Node::Statistics
 
 
@@ -121,12 +109,11 @@ class Udp::Nodes::Node::Statistics::Ipv4Traffic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf udp_input_packets; //type: uint32
         YLeaf udp_checksum_error_packets; //type: uint32
@@ -134,8 +121,6 @@ class Udp::Nodes::Node::Statistics::Ipv4Traffic : public Entity
         YLeaf udp_bad_length_packets; //type: uint32
         YLeaf udp_output_packets; //type: uint32
         YLeaf udp_dropped_packets; //type: uint32
-
-
 
 }; // Udp::Nodes::Node::Statistics::Ipv4Traffic
 
@@ -148,12 +133,11 @@ class Udp::Nodes::Node::Statistics::Ipv6Traffic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf udp_input_packets; //type: uint32
         YLeaf udp_checksum_error_packets; //type: uint32
@@ -161,8 +145,6 @@ class Udp::Nodes::Node::Statistics::Ipv6Traffic : public Entity
         YLeaf udp_bad_length_packets; //type: uint32
         YLeaf udp_output_packets; //type: uint32
         YLeaf udp_dropped_packets; //type: uint32
-
-
 
 }; // Udp::Nodes::Node::Statistics::Ipv6Traffic
 
@@ -174,23 +156,20 @@ class UdpConnection : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: UdpConnection::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes> nodes;
-
-
+        
 }; // UdpConnection
 
 
@@ -202,19 +181,16 @@ class UdpConnection::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: UdpConnection::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node> > node;
-
-
+        
 }; // UdpConnection::Nodes
 
 
@@ -226,15 +202,13 @@ class UdpConnection::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Statistics; //type: UdpConnection::Nodes::Node::Statistics
         class Lpts; //type: UdpConnection::Nodes::Node::Lpts
         class PcbDetails; //type: UdpConnection::Nodes::Node::PcbDetails
@@ -244,8 +218,7 @@ class UdpConnection::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs> pcb_briefs;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails> pcb_details;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics> statistics;
-
-
+        
 }; // UdpConnection::Nodes::Node
 
 
@@ -257,13 +230,11 @@ class UdpConnection::Nodes::Node::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Clients; //type: UdpConnection::Nodes::Node::Statistics::Clients
         class Summary; //type: UdpConnection::Nodes::Node::Statistics::Summary
@@ -272,8 +243,7 @@ class UdpConnection::Nodes::Node::Statistics : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Clients> clients;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics> pcb_statistics;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Summary> summary;
-
-
+        
 }; // UdpConnection::Nodes::Node::Statistics
 
 
@@ -285,19 +255,16 @@ class UdpConnection::Nodes::Node::Statistics::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Client; //type: UdpConnection::Nodes::Node::Statistics::Clients::Client
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::Clients::Client> > client;
-
-
+        
 }; // UdpConnection::Nodes::Node::Statistics::Clients
 
 
@@ -309,12 +276,11 @@ class UdpConnection::Nodes::Node::Statistics::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf client_id; //type: uint32
         YLeaf client_jid; //type: int32
@@ -323,8 +289,6 @@ class UdpConnection::Nodes::Node::Statistics::Clients::Client : public Entity
         YLeaf ipv4_sent_packets; //type: uint32
         YLeaf ipv6_received_packets; //type: uint32
         YLeaf ipv6_sent_packets; //type: uint32
-
-
 
 }; // UdpConnection::Nodes::Node::Statistics::Clients::Client
 
@@ -337,12 +301,11 @@ class UdpConnection::Nodes::Node::Statistics::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_total_packets; //type: uint32
         YLeaf received_no_port_packets; //type: uint32
@@ -355,8 +318,6 @@ class UdpConnection::Nodes::Node::Statistics::Summary : public Entity
         YLeaf cloned_packets; //type: uint32
         YLeaf failed_clone_packets; //type: uint32
 
-
-
 }; // UdpConnection::Nodes::Node::Statistics::Summary
 
 
@@ -368,19 +329,16 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PcbStatistic; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic> > pcb_statistic;
-
-
+        
 }; // UdpConnection::Nodes::Node::Statistics::PcbStatistics
 
 
@@ -392,24 +350,21 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pcb_address; //type: int32
         YLeaf vrf_id; //type: uint32
         YLeaf is_paw_socket; //type: boolean
-
         class Send; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send
         class Receive; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive> receive;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send> send;
-
-
+        
 }; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic
 
 
@@ -421,12 +376,11 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_application_bytes; //type: uint64
         YLeaf received_xipc_pulses; //type: uint64
@@ -434,8 +388,6 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send 
         YLeaf sent_net_io_packets; //type: uint64
         YLeaf failed_queued_network_packets; //type: uint32
         YLeaf failed_queued_net_io_packets; //type: uint32
-
-
 
 }; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send
 
@@ -448,20 +400,17 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Recei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_network_packets; //type: uint64
         YLeaf failed_queued_application_packets; //type: uint32
         YLeaf queued_application_packets; //type: uint64
         YLeaf failed_queued_application_socket_packets; //type: uint32
         YLeaf queued_application_socket_packets; //type: uint64
-
-
 
 }; // UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive
 
@@ -474,19 +423,16 @@ class UdpConnection::Nodes::Node::Lpts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Queries; //type: UdpConnection::Nodes::Node::Lpts::Queries
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries> queries;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts
 
 
@@ -498,19 +444,16 @@ class UdpConnection::Nodes::Node::Lpts::Queries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Query; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query> > query;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts::Queries
 
 
@@ -522,20 +465,17 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf query_name; //type: LptsPcbQueryEnum
-
         class Pcbs; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs> pcbs;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query
 
 
@@ -547,19 +487,16 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pcb; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb> > pcb;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs
 
 
@@ -571,18 +508,16 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pcb_address; //type: int32
         YLeaf l4_protocol; //type: uint32
         YLeaf local_port; //type: uint16
         YLeaf foreign_port; //type: uint16
-
         class LocalAddress; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress
         class ForeignAddress; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress
         class Common; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common
@@ -590,8 +525,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb : public Entit
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common> common;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress> foreign_address;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress> local_address;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb
 
 
@@ -603,18 +537,15 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: AddrFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress
 
@@ -627,18 +558,15 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddres
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: AddrFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress
 
@@ -651,20 +579,17 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: AddrFamilyEnum
-
         class LptsPcb; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb> lpts_pcb;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common
 
 
@@ -676,16 +601,14 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ttl; //type: uint8
         YLeaf flow_types_info; //type: uint32
-
         class Options; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options
         class LptsFlags; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags
         class AcceptMask; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask
@@ -695,8 +618,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter> > filter;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags> lpts_flags;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options> options;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb
 
 
@@ -708,17 +630,14 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_receive_filter; //type: boolean
         YLeaf is_ip_sla; //type: boolean
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options
 
@@ -731,18 +650,15 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_pcb_bound; //type: boolean
         YLeaf is_local_address_ignore; //type: boolean
         YLeaf is_ignore_vrf_filter; //type: boolean
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags
 
@@ -755,12 +671,11 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_interface; //type: boolean
         YLeaf is_packet_type; //type: boolean
@@ -768,8 +683,6 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
         YLeaf is_remote_port; //type: boolean
         YLeaf is_local_address; //type: boolean
         YLeaf is_local_port; //type: boolean
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask
 
@@ -782,12 +695,11 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf remote_length; //type: uint16
@@ -797,7 +709,6 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
         YLeaf priority; //type: uint8
         YLeaf ttl; //type: uint8
         YLeaf flow_types_info; //type: uint32
-
         class PacketType; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType
         class RemoteAddress; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress
         class LocalAddress; //type: UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress
@@ -805,8 +716,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress> local_address;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType> packet_type;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress> remote_address;
-
-
+        
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter
 
 
@@ -818,20 +728,17 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: PacketEnum
         YLeaf icmp_message_type; //type: MessageTypeIcmpEnum
         YLeaf icm_pv6_message_type; //type: MessageTypeIcmpv6Enum
         YLeaf igmp_message_type; //type: MessageTypeIgmpEnum
         YLeaf message_id; //type: uint32
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType
 
@@ -844,18 +751,15 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: AddrFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress
 
@@ -868,18 +772,15 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: AddrFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress
 
@@ -892,19 +793,16 @@ class UdpConnection::Nodes::Node::PcbDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PcbDetail; //type: UdpConnection::Nodes::Node::PcbDetails::PcbDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail> > pcb_detail;
-
-
+        
 }; // UdpConnection::Nodes::Node::PcbDetails
 
 
@@ -916,12 +814,11 @@ class UdpConnection::Nodes::Node::PcbDetails::PcbDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pcb_address; //type: int32
         YLeaf af_name; //type: UdpAddressFamilyEnum
@@ -931,14 +828,12 @@ class UdpConnection::Nodes::Node::PcbDetails::PcbDetail : public Entity
         YLeaf receive_queue; //type: uint32
         YLeaf send_queue; //type: uint32
         YLeaf vrf_id; //type: uint32
-
         class LocalAddress; //type: UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress
         class ForeignAddress; //type: UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress> foreign_address;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress> local_address;
-
-
+        
 }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail
 
 
@@ -950,18 +845,15 @@ class UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: UdpAddressFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress
 
@@ -974,18 +866,15 @@ class UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: UdpAddressFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress
 
@@ -998,19 +887,16 @@ class UdpConnection::Nodes::Node::PcbBriefs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PcbBrief; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief> > pcb_brief;
-
-
+        
 }; // UdpConnection::Nodes::Node::PcbBriefs
 
 
@@ -1022,12 +908,11 @@ class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pcb_address; //type: int32
         YLeaf af_name; //type: UdpAddressFamilyEnum
@@ -1036,14 +921,12 @@ class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief : public Entity
         YLeaf receive_queue; //type: uint32
         YLeaf send_queue; //type: uint32
         YLeaf vrf_id; //type: uint32
-
         class LocalAddress; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress
         class ForeignAddress; //type: UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress
 
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress> foreign_address;
         std::shared_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress> local_address;
-
-
+        
 }; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
 
 
@@ -1055,18 +938,15 @@ class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: UdpAddressFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress
 
@@ -1079,18 +959,15 @@ class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: UdpAddressFamilyEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress
 

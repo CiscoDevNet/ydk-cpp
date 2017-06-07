@@ -67,13 +67,10 @@ Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Interface()
 	,subscriber_address(std::make_shared<Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface"; yang_parent_name = "global-interface-table";
 }
@@ -204,7 +201,7 @@ std::string Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_segme
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -276,87 +273,52 @@ EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_entity
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -599,7 +561,7 @@ std::string Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -625,20 +587,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::g
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -695,7 +649,7 @@ std::string Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAd
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -721,20 +675,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAdd
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -791,7 +737,7 @@ std::string Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Subscribe
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -817,20 +763,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::Subscriber
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -888,7 +826,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -911,15 +849,6 @@ EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ssm-map-detail")
     {
         for(auto const & c : ssm_map_detail)
@@ -927,28 +856,24 @@ std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail>();
         c->parent = this;
-        ssm_map_detail.push_back(std::move(c));
-        children[segment_path] = ssm_map_detail.back();
-        return children.at(segment_path);
+        ssm_map_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ssm_map_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -970,7 +895,6 @@ Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::SsmMapDetail()
     map_info(std::make_shared<Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo>())
 {
     map_info->parent = this;
-    children["map-info"] = map_info;
 
     yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details";
 }
@@ -1021,7 +945,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_segment_p
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1050,28 +974,13 @@ EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_entity_pat
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "map-info")
     {
-        if(map_info != nullptr)
-        {
-            children["map-info"] = map_info;
-        }
-        else
+        if(map_info == nullptr)
         {
             map_info = std::make_shared<Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo>();
-            map_info->parent = this;
-            children["map-info"] = map_info;
         }
-        return children.at("map-info");
+        return map_info;
     }
 
     if(child_yang_name == "sources")
@@ -1081,36 +990,29 @@ std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources>();
         c->parent = this;
-        sources.push_back(std::move(c));
-        children[segment_path] = sources.back();
-        return children.at(segment_path);
+        sources.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_children() const
 {
-    if(children.find("map-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(map_info != nullptr)
     {
-        if(map_info != nullptr)
-        {
-            children["map-info"] = map_info;
-        }
+        children["map-info"] = map_info;
     }
 
     for (auto const & c : sources)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1152,7 +1054,6 @@ Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::MapInfo()
     group_address_xr(std::make_shared<Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     yang_name = "map-info"; yang_parent_name = "ssm-map-detail";
 }
@@ -1185,7 +1086,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::get_
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1210,41 +1111,24 @@ EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::get_e
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
     return children;
@@ -1299,7 +1183,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::Grou
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1325,20 +1209,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::Group
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1395,7 +1271,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1421,20 +1297,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_e
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1492,7 +1360,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_segment_path() con
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1515,15 +1383,6 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-state-off")
     {
         for(auto const & c : interface_state_off)
@@ -1531,28 +1390,24 @@ std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff>();
         c->parent = this;
-        interface_state_off.push_back(std::move(c));
-        children[segment_path] = interface_state_off.back();
-        return children.at(segment_path);
+        interface_state_off.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_state_off)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1619,13 +1474,10 @@ Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::InterfaceStateO
 	,subscriber_address(std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs";
 }
@@ -1756,7 +1608,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1828,87 +1680,52 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -2151,7 +1968,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Add
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2177,20 +1994,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Addr
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2247,7 +2056,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Que
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2273,20 +2082,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Quer
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2343,7 +2144,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Sub
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2369,20 +2170,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Subs
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2440,7 +2233,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::get_segment_pa
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2463,15 +2256,6 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::get_entity_path
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-old-format-state-on")
     {
         for(auto const & c : interface_old_format_state_on)
@@ -2479,28 +2263,24 @@ std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn>();
         c->parent = this;
-        interface_old_format_state_on.push_back(std::move(c));
-        children[segment_path] = interface_old_format_state_on.back();
-        return children.at(segment_path);
+        interface_old_format_state_on.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_old_format_state_on)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2567,13 +2347,10 @@ Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn:
 	,subscriber_address(std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-old-format-state-on"; yang_parent_name = "interface-old-format-state-ons";
 }
@@ -2704,7 +2481,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFo
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2776,87 +2553,52 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFor
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -3099,7 +2841,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFo
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3125,20 +2867,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFor
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3195,7 +2929,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFo
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3221,20 +2955,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFor
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3291,7 +3017,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFo
 
 }
 
-EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3317,20 +3043,12 @@ EntityPath Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFor
 
 std::shared_ptr<Entity> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Vrfs::Vrf::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3360,22 +3078,16 @@ Igmp::Standby::Process::Process()
 	,unicast_qos_adjust_stats(std::make_shared<Igmp::Standby::Process::UnicastQosAdjustStats>())
 {
     amt_gatewaies->parent = this;
-    children["amt-gatewaies"] = amt_gatewaies;
 
     amt_summary->parent = this;
-    children["amt-summary"] = amt_summary;
 
     bvi_statistics->parent = this;
-    children["bvi-statistics"] = bvi_statistics;
 
     nsf->parent = this;
-    children["nsf"] = nsf;
 
     nsr->parent = this;
-    children["nsr"] = nsr;
 
     unicast_qos_adjust_stats->parent = this;
-    children["unicast-qos-adjust-stats"] = unicast_qos_adjust_stats;
 
     yang_name = "process"; yang_parent_name = "standby";
 }
@@ -3414,7 +3126,7 @@ std::string Igmp::Standby::Process::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::Process::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3437,156 +3149,94 @@ EntityPath Igmp::Standby::Process::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Igmp::Standby::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "amt-gatewaies")
     {
-        if(amt_gatewaies != nullptr)
-        {
-            children["amt-gatewaies"] = amt_gatewaies;
-        }
-        else
+        if(amt_gatewaies == nullptr)
         {
             amt_gatewaies = std::make_shared<Igmp::Standby::Process::AmtGatewaies>();
-            amt_gatewaies->parent = this;
-            children["amt-gatewaies"] = amt_gatewaies;
         }
-        return children.at("amt-gatewaies");
+        return amt_gatewaies;
     }
 
     if(child_yang_name == "amt-summary")
     {
-        if(amt_summary != nullptr)
-        {
-            children["amt-summary"] = amt_summary;
-        }
-        else
+        if(amt_summary == nullptr)
         {
             amt_summary = std::make_shared<Igmp::Standby::Process::AmtSummary>();
-            amt_summary->parent = this;
-            children["amt-summary"] = amt_summary;
         }
-        return children.at("amt-summary");
+        return amt_summary;
     }
 
     if(child_yang_name == "bvi-statistics")
     {
-        if(bvi_statistics != nullptr)
-        {
-            children["bvi-statistics"] = bvi_statistics;
-        }
-        else
+        if(bvi_statistics == nullptr)
         {
             bvi_statistics = std::make_shared<Igmp::Standby::Process::BviStatistics>();
-            bvi_statistics->parent = this;
-            children["bvi-statistics"] = bvi_statistics;
         }
-        return children.at("bvi-statistics");
+        return bvi_statistics;
     }
 
     if(child_yang_name == "nsf")
     {
-        if(nsf != nullptr)
-        {
-            children["nsf"] = nsf;
-        }
-        else
+        if(nsf == nullptr)
         {
             nsf = std::make_shared<Igmp::Standby::Process::Nsf>();
-            nsf->parent = this;
-            children["nsf"] = nsf;
         }
-        return children.at("nsf");
+        return nsf;
     }
 
     if(child_yang_name == "nsr")
     {
-        if(nsr != nullptr)
-        {
-            children["nsr"] = nsr;
-        }
-        else
+        if(nsr == nullptr)
         {
             nsr = std::make_shared<Igmp::Standby::Process::Nsr>();
-            nsr->parent = this;
-            children["nsr"] = nsr;
         }
-        return children.at("nsr");
+        return nsr;
     }
 
     if(child_yang_name == "unicast-qos-adjust-stats")
     {
-        if(unicast_qos_adjust_stats != nullptr)
-        {
-            children["unicast-qos-adjust-stats"] = unicast_qos_adjust_stats;
-        }
-        else
+        if(unicast_qos_adjust_stats == nullptr)
         {
             unicast_qos_adjust_stats = std::make_shared<Igmp::Standby::Process::UnicastQosAdjustStats>();
-            unicast_qos_adjust_stats->parent = this;
-            children["unicast-qos-adjust-stats"] = unicast_qos_adjust_stats;
         }
-        return children.at("unicast-qos-adjust-stats");
+        return unicast_qos_adjust_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::get_children() const
 {
-    if(children.find("amt-gatewaies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(amt_gatewaies != nullptr)
     {
-        if(amt_gatewaies != nullptr)
-        {
-            children["amt-gatewaies"] = amt_gatewaies;
-        }
+        children["amt-gatewaies"] = amt_gatewaies;
     }
 
-    if(children.find("amt-summary") == children.end())
+    if(amt_summary != nullptr)
     {
-        if(amt_summary != nullptr)
-        {
-            children["amt-summary"] = amt_summary;
-        }
+        children["amt-summary"] = amt_summary;
     }
 
-    if(children.find("bvi-statistics") == children.end())
+    if(bvi_statistics != nullptr)
     {
-        if(bvi_statistics != nullptr)
-        {
-            children["bvi-statistics"] = bvi_statistics;
-        }
+        children["bvi-statistics"] = bvi_statistics;
     }
 
-    if(children.find("nsf") == children.end())
+    if(nsf != nullptr)
     {
-        if(nsf != nullptr)
-        {
-            children["nsf"] = nsf;
-        }
+        children["nsf"] = nsf;
     }
 
-    if(children.find("nsr") == children.end())
+    if(nsr != nullptr)
     {
-        if(nsr != nullptr)
-        {
-            children["nsr"] = nsr;
-        }
+        children["nsr"] = nsr;
     }
 
-    if(children.find("unicast-qos-adjust-stats") == children.end())
+    if(unicast_qos_adjust_stats != nullptr)
     {
-        if(unicast_qos_adjust_stats != nullptr)
-        {
-            children["unicast-qos-adjust-stats"] = unicast_qos_adjust_stats;
-        }
+        children["unicast-qos-adjust-stats"] = unicast_qos_adjust_stats;
     }
 
     return children;
@@ -3666,7 +3316,7 @@ std::string Igmp::Standby::Process::AmtSummary::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::Process::AmtSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::AmtSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3703,20 +3353,12 @@ EntityPath Igmp::Standby::Process::AmtSummary::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Igmp::Standby::Process::AmtSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::AmtSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::AmtSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3847,7 +3489,7 @@ std::string Igmp::Standby::Process::Nsr::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::Process::Nsr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::Nsr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3883,20 +3525,12 @@ EntityPath Igmp::Standby::Process::Nsr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Igmp::Standby::Process::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::Nsr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::Nsr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3994,7 +3628,7 @@ std::string Igmp::Standby::Process::AmtGatewaies::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::Process::AmtGatewaies::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::AmtGatewaies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4017,15 +3651,6 @@ EntityPath Igmp::Standby::Process::AmtGatewaies::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Igmp::Standby::Process::AmtGatewaies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "amt-gateway")
     {
         for(auto const & c : amt_gateway)
@@ -4033,28 +3658,24 @@ std::shared_ptr<Entity> Igmp::Standby::Process::AmtGatewaies::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::Process::AmtGatewaies::AmtGateway>();
         c->parent = this;
-        amt_gateway.push_back(std::move(c));
-        children[segment_path] = amt_gateway.back();
-        return children.at(segment_path);
+        amt_gateway.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::AmtGatewaies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::AmtGatewaies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : amt_gateway)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4122,7 +3743,7 @@ std::string Igmp::Standby::Process::AmtGatewaies::AmtGateway::get_segment_path()
 
 }
 
-EntityPath Igmp::Standby::Process::AmtGatewaies::AmtGateway::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::AmtGatewaies::AmtGateway::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4155,20 +3776,12 @@ EntityPath Igmp::Standby::Process::AmtGatewaies::AmtGateway::get_entity_path(Ent
 
 std::shared_ptr<Entity> Igmp::Standby::Process::AmtGatewaies::AmtGateway::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::AmtGatewaies::AmtGateway::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::AmtGatewaies::AmtGateway::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4292,7 +3905,7 @@ std::string Igmp::Standby::Process::UnicastQosAdjustStats::get_segment_path() co
 
 }
 
-EntityPath Igmp::Standby::Process::UnicastQosAdjustStats::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::UnicastQosAdjustStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4331,20 +3944,12 @@ EntityPath Igmp::Standby::Process::UnicastQosAdjustStats::get_entity_path(Entity
 
 std::shared_ptr<Entity> Igmp::Standby::Process::UnicastQosAdjustStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::UnicastQosAdjustStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::UnicastQosAdjustStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4549,7 +4154,7 @@ std::string Igmp::Standby::Process::BviStatistics::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::Process::BviStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::BviStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4607,20 +4212,12 @@ EntityPath Igmp::Standby::Process::BviStatistics::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Igmp::Standby::Process::BviStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::BviStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::BviStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4826,7 +4423,7 @@ std::string Igmp::Standby::Process::Nsf::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::Process::Nsf::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::Process::Nsf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4859,20 +4456,12 @@ EntityPath Igmp::Standby::Process::Nsf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Igmp::Standby::Process::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::Process::Nsf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::Process::Nsf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4944,64 +4533,44 @@ Igmp::Standby::DefaultContext::DefaultContext()
 	,traffic_counters(std::make_shared<Igmp::Standby::DefaultContext::TrafficCounters>())
 {
     detail_groups->parent = this;
-    children["detail-groups"] = detail_groups;
 
     explicit_groups->parent = this;
-    children["explicit-groups"] = explicit_groups;
 
     global_interface_table->parent = this;
-    children["global-interface-table"] = global_interface_table;
 
     group_summary->parent = this;
-    children["group-summary"] = group_summary;
 
     groups->parent = this;
-    children["groups"] = groups;
 
     ifrs_interface_summary->parent = this;
-    children["ifrs-interface-summary"] = ifrs_interface_summary;
 
     ifrs_interfaces->parent = this;
-    children["ifrs-interfaces"] = ifrs_interfaces;
 
     interface_old_format_state_ons->parent = this;
-    children["interface-old-format-state-ons"] = interface_old_format_state_ons;
 
     interface_old_formats->parent = this;
-    children["interface-old-formats"] = interface_old_formats;
 
     interface_state_off_old_formats->parent = this;
-    children["interface-state-off-old-formats"] = interface_state_off_old_formats;
 
     interface_state_offs->parent = this;
-    children["interface-state-offs"] = interface_state_offs;
 
     interface_state_ons->parent = this;
-    children["interface-state-ons"] = interface_state_ons;
 
     interface_table->parent = this;
-    children["interface-table"] = interface_table;
 
     interface_unicast_qos_adjusts->parent = this;
-    children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
 
     non_active_groups->parent = this;
-    children["non-active-groups"] = non_active_groups;
 
     ranges->parent = this;
-    children["ranges"] = ranges;
 
     ssm_map_details->parent = this;
-    children["ssm-map-details"] = ssm_map_details;
 
     ssm_maps->parent = this;
-    children["ssm-maps"] = ssm_maps;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     traffic_counters->parent = this;
-    children["traffic-counters"] = traffic_counters;
 
     yang_name = "default-context"; yang_parent_name = "standby";
 }
@@ -5068,7 +4637,7 @@ std::string Igmp::Standby::DefaultContext::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5091,478 +4660,290 @@ EntityPath Igmp::Standby::DefaultContext::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-groups")
     {
-        if(detail_groups != nullptr)
-        {
-            children["detail-groups"] = detail_groups;
-        }
-        else
+        if(detail_groups == nullptr)
         {
             detail_groups = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups>();
-            detail_groups->parent = this;
-            children["detail-groups"] = detail_groups;
         }
-        return children.at("detail-groups");
+        return detail_groups;
     }
 
     if(child_yang_name == "explicit-groups")
     {
-        if(explicit_groups != nullptr)
-        {
-            children["explicit-groups"] = explicit_groups;
-        }
-        else
+        if(explicit_groups == nullptr)
         {
             explicit_groups = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups>();
-            explicit_groups->parent = this;
-            children["explicit-groups"] = explicit_groups;
         }
-        return children.at("explicit-groups");
+        return explicit_groups;
     }
 
     if(child_yang_name == "global-interface-table")
     {
-        if(global_interface_table != nullptr)
-        {
-            children["global-interface-table"] = global_interface_table;
-        }
-        else
+        if(global_interface_table == nullptr)
         {
             global_interface_table = std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable>();
-            global_interface_table->parent = this;
-            children["global-interface-table"] = global_interface_table;
         }
-        return children.at("global-interface-table");
+        return global_interface_table;
     }
 
     if(child_yang_name == "group-summary")
     {
-        if(group_summary != nullptr)
-        {
-            children["group-summary"] = group_summary;
-        }
-        else
+        if(group_summary == nullptr)
         {
             group_summary = std::make_shared<Igmp::Standby::DefaultContext::GroupSummary>();
-            group_summary->parent = this;
-            children["group-summary"] = group_summary;
         }
-        return children.at("group-summary");
+        return group_summary;
     }
 
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<Igmp::Standby::DefaultContext::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     if(child_yang_name == "ifrs-interface-summary")
     {
-        if(ifrs_interface_summary != nullptr)
-        {
-            children["ifrs-interface-summary"] = ifrs_interface_summary;
-        }
-        else
+        if(ifrs_interface_summary == nullptr)
         {
             ifrs_interface_summary = std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaceSummary>();
-            ifrs_interface_summary->parent = this;
-            children["ifrs-interface-summary"] = ifrs_interface_summary;
         }
-        return children.at("ifrs-interface-summary");
+        return ifrs_interface_summary;
     }
 
     if(child_yang_name == "ifrs-interfaces")
     {
-        if(ifrs_interfaces != nullptr)
-        {
-            children["ifrs-interfaces"] = ifrs_interfaces;
-        }
-        else
+        if(ifrs_interfaces == nullptr)
         {
             ifrs_interfaces = std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces>();
-            ifrs_interfaces->parent = this;
-            children["ifrs-interfaces"] = ifrs_interfaces;
         }
-        return children.at("ifrs-interfaces");
+        return ifrs_interfaces;
     }
 
     if(child_yang_name == "interface-old-format-state-ons")
     {
-        if(interface_old_format_state_ons != nullptr)
-        {
-            children["interface-old-format-state-ons"] = interface_old_format_state_ons;
-        }
-        else
+        if(interface_old_format_state_ons == nullptr)
         {
             interface_old_format_state_ons = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns>();
-            interface_old_format_state_ons->parent = this;
-            children["interface-old-format-state-ons"] = interface_old_format_state_ons;
         }
-        return children.at("interface-old-format-state-ons");
+        return interface_old_format_state_ons;
     }
 
     if(child_yang_name == "interface-old-formats")
     {
-        if(interface_old_formats != nullptr)
-        {
-            children["interface-old-formats"] = interface_old_formats;
-        }
-        else
+        if(interface_old_formats == nullptr)
         {
             interface_old_formats = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormats>();
-            interface_old_formats->parent = this;
-            children["interface-old-formats"] = interface_old_formats;
         }
-        return children.at("interface-old-formats");
+        return interface_old_formats;
     }
 
     if(child_yang_name == "interface-state-off-old-formats")
     {
-        if(interface_state_off_old_formats != nullptr)
-        {
-            children["interface-state-off-old-formats"] = interface_state_off_old_formats;
-        }
-        else
+        if(interface_state_off_old_formats == nullptr)
         {
             interface_state_off_old_formats = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats>();
-            interface_state_off_old_formats->parent = this;
-            children["interface-state-off-old-formats"] = interface_state_off_old_formats;
         }
-        return children.at("interface-state-off-old-formats");
+        return interface_state_off_old_formats;
     }
 
     if(child_yang_name == "interface-state-offs")
     {
-        if(interface_state_offs != nullptr)
-        {
-            children["interface-state-offs"] = interface_state_offs;
-        }
-        else
+        if(interface_state_offs == nullptr)
         {
             interface_state_offs = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs>();
-            interface_state_offs->parent = this;
-            children["interface-state-offs"] = interface_state_offs;
         }
-        return children.at("interface-state-offs");
+        return interface_state_offs;
     }
 
     if(child_yang_name == "interface-state-ons")
     {
-        if(interface_state_ons != nullptr)
-        {
-            children["interface-state-ons"] = interface_state_ons;
-        }
-        else
+        if(interface_state_ons == nullptr)
         {
             interface_state_ons = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOns>();
-            interface_state_ons->parent = this;
-            children["interface-state-ons"] = interface_state_ons;
         }
-        return children.at("interface-state-ons");
+        return interface_state_ons;
     }
 
     if(child_yang_name == "interface-table")
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
-        else
+        if(interface_table == nullptr)
         {
             interface_table = std::make_shared<Igmp::Standby::DefaultContext::InterfaceTable>();
-            interface_table->parent = this;
-            children["interface-table"] = interface_table;
         }
-        return children.at("interface-table");
+        return interface_table;
     }
 
     if(child_yang_name == "interface-unicast-qos-adjusts")
     {
-        if(interface_unicast_qos_adjusts != nullptr)
-        {
-            children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
-        }
-        else
+        if(interface_unicast_qos_adjusts == nullptr)
         {
             interface_unicast_qos_adjusts = std::make_shared<Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts>();
-            interface_unicast_qos_adjusts->parent = this;
-            children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
         }
-        return children.at("interface-unicast-qos-adjusts");
+        return interface_unicast_qos_adjusts;
     }
 
     if(child_yang_name == "non-active-groups")
     {
-        if(non_active_groups != nullptr)
-        {
-            children["non-active-groups"] = non_active_groups;
-        }
-        else
+        if(non_active_groups == nullptr)
         {
             non_active_groups = std::make_shared<Igmp::Standby::DefaultContext::NonActiveGroups>();
-            non_active_groups->parent = this;
-            children["non-active-groups"] = non_active_groups;
         }
-        return children.at("non-active-groups");
+        return non_active_groups;
     }
 
     if(child_yang_name == "ranges")
     {
-        if(ranges != nullptr)
-        {
-            children["ranges"] = ranges;
-        }
-        else
+        if(ranges == nullptr)
         {
             ranges = std::make_shared<Igmp::Standby::DefaultContext::Ranges>();
-            ranges->parent = this;
-            children["ranges"] = ranges;
         }
-        return children.at("ranges");
+        return ranges;
     }
 
     if(child_yang_name == "ssm-map-details")
     {
-        if(ssm_map_details != nullptr)
-        {
-            children["ssm-map-details"] = ssm_map_details;
-        }
-        else
+        if(ssm_map_details == nullptr)
         {
             ssm_map_details = std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails>();
-            ssm_map_details->parent = this;
-            children["ssm-map-details"] = ssm_map_details;
         }
-        return children.at("ssm-map-details");
+        return ssm_map_details;
     }
 
     if(child_yang_name == "ssm-maps")
     {
-        if(ssm_maps != nullptr)
-        {
-            children["ssm-maps"] = ssm_maps;
-        }
-        else
+        if(ssm_maps == nullptr)
         {
             ssm_maps = std::make_shared<Igmp::Standby::DefaultContext::SsmMaps>();
-            ssm_maps->parent = this;
-            children["ssm-maps"] = ssm_maps;
         }
-        return children.at("ssm-maps");
+        return ssm_maps;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Igmp::Standby::DefaultContext::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "traffic-counters")
     {
-        if(traffic_counters != nullptr)
-        {
-            children["traffic-counters"] = traffic_counters;
-        }
-        else
+        if(traffic_counters == nullptr)
         {
             traffic_counters = std::make_shared<Igmp::Standby::DefaultContext::TrafficCounters>();
-            traffic_counters->parent = this;
-            children["traffic-counters"] = traffic_counters;
         }
-        return children.at("traffic-counters");
+        return traffic_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::get_children() const
 {
-    if(children.find("detail-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail_groups != nullptr)
     {
-        if(detail_groups != nullptr)
-        {
-            children["detail-groups"] = detail_groups;
-        }
+        children["detail-groups"] = detail_groups;
     }
 
-    if(children.find("explicit-groups") == children.end())
+    if(explicit_groups != nullptr)
     {
-        if(explicit_groups != nullptr)
-        {
-            children["explicit-groups"] = explicit_groups;
-        }
+        children["explicit-groups"] = explicit_groups;
     }
 
-    if(children.find("global-interface-table") == children.end())
+    if(global_interface_table != nullptr)
     {
-        if(global_interface_table != nullptr)
-        {
-            children["global-interface-table"] = global_interface_table;
-        }
+        children["global-interface-table"] = global_interface_table;
     }
 
-    if(children.find("group-summary") == children.end())
+    if(group_summary != nullptr)
     {
-        if(group_summary != nullptr)
-        {
-            children["group-summary"] = group_summary;
-        }
+        children["group-summary"] = group_summary;
     }
 
-    if(children.find("groups") == children.end())
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
-    if(children.find("ifrs-interface-summary") == children.end())
+    if(ifrs_interface_summary != nullptr)
     {
-        if(ifrs_interface_summary != nullptr)
-        {
-            children["ifrs-interface-summary"] = ifrs_interface_summary;
-        }
+        children["ifrs-interface-summary"] = ifrs_interface_summary;
     }
 
-    if(children.find("ifrs-interfaces") == children.end())
+    if(ifrs_interfaces != nullptr)
     {
-        if(ifrs_interfaces != nullptr)
-        {
-            children["ifrs-interfaces"] = ifrs_interfaces;
-        }
+        children["ifrs-interfaces"] = ifrs_interfaces;
     }
 
-    if(children.find("interface-old-format-state-ons") == children.end())
+    if(interface_old_format_state_ons != nullptr)
     {
-        if(interface_old_format_state_ons != nullptr)
-        {
-            children["interface-old-format-state-ons"] = interface_old_format_state_ons;
-        }
+        children["interface-old-format-state-ons"] = interface_old_format_state_ons;
     }
 
-    if(children.find("interface-old-formats") == children.end())
+    if(interface_old_formats != nullptr)
     {
-        if(interface_old_formats != nullptr)
-        {
-            children["interface-old-formats"] = interface_old_formats;
-        }
+        children["interface-old-formats"] = interface_old_formats;
     }
 
-    if(children.find("interface-state-off-old-formats") == children.end())
+    if(interface_state_off_old_formats != nullptr)
     {
-        if(interface_state_off_old_formats != nullptr)
-        {
-            children["interface-state-off-old-formats"] = interface_state_off_old_formats;
-        }
+        children["interface-state-off-old-formats"] = interface_state_off_old_formats;
     }
 
-    if(children.find("interface-state-offs") == children.end())
+    if(interface_state_offs != nullptr)
     {
-        if(interface_state_offs != nullptr)
-        {
-            children["interface-state-offs"] = interface_state_offs;
-        }
+        children["interface-state-offs"] = interface_state_offs;
     }
 
-    if(children.find("interface-state-ons") == children.end())
+    if(interface_state_ons != nullptr)
     {
-        if(interface_state_ons != nullptr)
-        {
-            children["interface-state-ons"] = interface_state_ons;
-        }
+        children["interface-state-ons"] = interface_state_ons;
     }
 
-    if(children.find("interface-table") == children.end())
+    if(interface_table != nullptr)
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
+        children["interface-table"] = interface_table;
     }
 
-    if(children.find("interface-unicast-qos-adjusts") == children.end())
+    if(interface_unicast_qos_adjusts != nullptr)
     {
-        if(interface_unicast_qos_adjusts != nullptr)
-        {
-            children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
-        }
+        children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
     }
 
-    if(children.find("non-active-groups") == children.end())
+    if(non_active_groups != nullptr)
     {
-        if(non_active_groups != nullptr)
-        {
-            children["non-active-groups"] = non_active_groups;
-        }
+        children["non-active-groups"] = non_active_groups;
     }
 
-    if(children.find("ranges") == children.end())
+    if(ranges != nullptr)
     {
-        if(ranges != nullptr)
-        {
-            children["ranges"] = ranges;
-        }
+        children["ranges"] = ranges;
     }
 
-    if(children.find("ssm-map-details") == children.end())
+    if(ssm_map_details != nullptr)
     {
-        if(ssm_map_details != nullptr)
-        {
-            children["ssm-map-details"] = ssm_map_details;
-        }
+        children["ssm-map-details"] = ssm_map_details;
     }
 
-    if(children.find("ssm-maps") == children.end())
+    if(ssm_maps != nullptr)
     {
-        if(ssm_maps != nullptr)
-        {
-            children["ssm-maps"] = ssm_maps;
-        }
+        children["ssm-maps"] = ssm_maps;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("traffic-counters") == children.end())
+    if(traffic_counters != nullptr)
     {
-        if(traffic_counters != nullptr)
-        {
-            children["traffic-counters"] = traffic_counters;
-        }
+        children["traffic-counters"] = traffic_counters;
     }
 
     return children;
@@ -5640,7 +5021,7 @@ std::string Igmp::Standby::DefaultContext::Summary::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5673,15 +5054,6 @@ EntityPath Igmp::Standby::DefaultContext::Summary::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -5689,28 +5061,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Summary::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::Summary::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5812,7 +5180,7 @@ std::string Igmp::Standby::DefaultContext::Summary::Interface::get_segment_path(
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Summary::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Summary::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5843,20 +5211,12 @@ EntityPath Igmp::Standby::DefaultContext::Summary::Interface::get_entity_path(En
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Summary::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Summary::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Summary::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5934,7 +5294,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOns::get_segment_path()
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5957,15 +5317,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::get_entity_path(Ent
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-state-on")
     {
         for(auto const & c : interface_state_on)
@@ -5973,28 +5324,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOns::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn>();
         c->parent = this;
-        interface_state_on.push_back(std::move(c));
-        children[segment_path] = interface_state_on.back();
-        return children.at(segment_path);
+        interface_state_on.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_state_on)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6061,13 +5408,10 @@ Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::InterfaceSta
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons";
 }
@@ -6198,7 +5542,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6270,87 +5614,52 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::g
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -6593,7 +5902,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6619,20 +5928,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::A
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6689,7 +5990,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6715,20 +6016,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::Q
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6785,7 +6078,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6811,20 +6104,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::S
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6882,7 +6167,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::get_segment_path() cons
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6905,15 +6190,6 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-group")
     {
         for(auto const & c : detail_group)
@@ -6921,28 +6197,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup>();
         c->parent = this;
-        detail_group.push_back(std::move(c));
-        children[segment_path] = detail_group.back();
-        return children.at(segment_path);
+        detail_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6963,7 +6235,6 @@ Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::DetailGroup()
     group_info(std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo>())
 {
     group_info->parent = this;
-    children["group-info"] = group_info;
 
     yang_name = "detail-group"; yang_parent_name = "detail-groups";
 }
@@ -7012,7 +6283,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_segmen
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7040,28 +6311,13 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_entity_
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-info")
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
-        else
+        if(group_info == nullptr)
         {
             group_info = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo>();
-            group_info->parent = this;
-            children["group-info"] = group_info;
         }
-        return children.at("group-info");
+        return group_info;
     }
 
     if(child_yang_name == "source")
@@ -7071,36 +6327,29 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_children() const
 {
-    if(children.find("group-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_info != nullptr)
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
+        children["group-info"] = group_info;
     }
 
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7150,13 +6399,10 @@ Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupInfo()
 	,source_address(std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     last_reporter->parent = this;
-    children["last-reporter"] = last_reporter;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "group-info"; yang_parent_name = "detail-group";
 }
@@ -7213,7 +6459,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo:
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7248,87 +6494,52 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "last-reporter")
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
-        else
+        if(last_reporter == nullptr)
         {
             last_reporter = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter>();
-            last_reporter->parent = this;
-            children["last-reporter"] = last_reporter;
         }
-        return children.at("last-reporter");
+        return last_reporter;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
-    if(children.find("last-reporter") == children.end())
+    if(last_reporter != nullptr)
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
+        children["last-reporter"] = last_reporter;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -7423,7 +6634,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo:
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7449,20 +6660,12 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7519,7 +6722,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo:
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7545,20 +6748,12 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7615,7 +6810,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo:
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7641,20 +6836,12 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7688,7 +6875,6 @@ Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::Source()
     source_address(std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress>())
 {
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "source"; yang_parent_name = "detail-group";
 }
@@ -7733,7 +6919,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::ge
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7764,41 +6950,24 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::get
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::get_children() const
 {
-    if(children.find("source-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -7877,7 +7046,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::So
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7903,20 +7072,12 @@ EntityPath Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::Sou
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7974,7 +7135,7 @@ std::string Igmp::Standby::DefaultContext::NonActiveGroups::get_segment_path() c
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7997,15 +7158,6 @@ EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::get_entity_path(Entit
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::NonActiveGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "non-active-groups")
     {
         for(auto const & c : non_active_groups)
@@ -8013,28 +7165,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::NonActiveGroups::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_>();
         c->parent = this;
-        non_active_groups.push_back(std::move(c));
-        children[segment_path] = non_active_groups.back();
-        return children.at(segment_path);
+        non_active_groups.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::NonActiveGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::NonActiveGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : non_active_groups)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8053,10 +7201,8 @@ Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::NonActiveGroup
 	,source_address(std::make_shared<Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress>())
 {
     group_address->parent = this;
-    children["group-address"] = group_address;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "non-active-groups"; yang_parent_name = "non-active-groups";
 }
@@ -8091,7 +7237,7 @@ std::string Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::ge
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8116,64 +7262,38 @@ EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::get
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address")
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
-        else
+        if(group_address == nullptr)
         {
             group_address = std::make_shared<Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress>();
-            group_address->parent = this;
-            children["group-address"] = group_address;
         }
-        return children.at("group-address");
+        return group_address;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::get_children() const
 {
-    if(children.find("group-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address != nullptr)
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
+        children["group-address"] = group_address;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -8228,7 +7348,7 @@ std::string Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::Gr
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8254,20 +7374,12 @@ EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::Gro
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8324,7 +7436,7 @@ std::string Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::So
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8350,20 +7462,12 @@ EntityPath Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::Sou
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8421,7 +7525,7 @@ std::string Igmp::Standby::DefaultContext::SsmMaps::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMaps::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMaps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8444,15 +7548,6 @@ EntityPath Igmp::Standby::DefaultContext::SsmMaps::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ssm-map")
     {
         for(auto const & c : ssm_map)
@@ -8460,28 +7555,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMaps::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::SsmMaps::SsmMap>();
         c->parent = this;
-        ssm_map.push_back(std::move(c));
-        children[segment_path] = ssm_map.back();
-        return children.at(segment_path);
+        ssm_map.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMaps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMaps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ssm_map)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8501,7 +7592,6 @@ Igmp::Standby::DefaultContext::SsmMaps::SsmMap::SsmMap()
     group_address_xr(std::make_shared<Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     yang_name = "ssm-map"; yang_parent_name = "ssm-maps";
 }
@@ -8538,7 +7628,7 @@ std::string Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_segment_path() c
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8565,41 +7655,24 @@ EntityPath Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_entity_path(Entit
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
     return children;
@@ -8662,7 +7735,7 @@ std::string Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::get_
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8688,20 +7761,12 @@ EntityPath Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::get_e
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8759,7 +7824,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::get_segment_path() co
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8782,15 +7847,6 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::get_entity_path(Entity
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "explicit-group")
     {
         for(auto const & c : explicit_group)
@@ -8798,28 +7854,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup>();
         c->parent = this;
-        explicit_group.push_back(std::move(c));
-        children[segment_path] = explicit_group.back();
-        return children.at(segment_path);
+        explicit_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : explicit_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8840,7 +7892,6 @@ Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::ExplicitGroup()
     group_info(std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo>())
 {
     group_info->parent = this;
-    children["group-info"] = group_info;
 
     yang_name = "explicit-group"; yang_parent_name = "explicit-groups";
 }
@@ -8889,7 +7940,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_se
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8917,28 +7968,13 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_ent
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-info")
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
-        else
+        if(group_info == nullptr)
         {
             group_info = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo>();
-            group_info->parent = this;
-            children["group-info"] = group_info;
         }
-        return children.at("group-info");
+        return group_info;
     }
 
     if(child_yang_name == "host")
@@ -8948,36 +7984,29 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitG
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host>();
         c->parent = this;
-        host.push_back(std::move(c));
-        children[segment_path] = host.back();
-        return children.at(segment_path);
+        host.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_children() const
 {
-    if(children.find("group-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_info != nullptr)
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
+        children["group-info"] = group_info;
     }
 
     for (auto const & c : host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9027,13 +8056,10 @@ Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupIn
 	,source_address(std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     last_reporter->parent = this;
-    children["last-reporter"] = last_reporter;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "group-info"; yang_parent_name = "explicit-group";
 }
@@ -9090,7 +8116,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupI
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9125,87 +8151,52 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupIn
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "last-reporter")
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
-        else
+        if(last_reporter == nullptr)
         {
             last_reporter = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>();
-            last_reporter->parent = this;
-            children["last-reporter"] = last_reporter;
         }
-        return children.at("last-reporter");
+        return last_reporter;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
-    if(children.find("last-reporter") == children.end())
+    if(last_reporter != nullptr)
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
+        children["last-reporter"] = last_reporter;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -9300,7 +8291,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupI
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9326,20 +8317,12 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupIn
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9396,7 +8379,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupI
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9422,20 +8405,12 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupIn
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9492,7 +8467,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupI
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9518,20 +8493,12 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupIn
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9561,7 +8528,6 @@ Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Host()
     address(std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "host"; yang_parent_name = "explicit-group";
 }
@@ -9608,7 +8574,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9635,28 +8601,13 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::g
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "source-address")
@@ -9666,36 +8617,29 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitG
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress>();
         c->parent = this;
-        source_address.push_back(std::move(c));
-        children[segment_path] = source_address.back();
-        return children.at(segment_path);
+        source_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     for (auto const & c : source_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9758,7 +8702,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9784,20 +8728,12 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::A
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9854,7 +8790,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9880,20 +8816,12 @@ EntityPath Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::S
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9951,7 +8879,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceTable::get_segment_path() co
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceTable::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9974,15 +8902,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceTable::get_entity_path(Entity
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -9990,28 +8909,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceTable::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10078,13 +8993,10 @@ Igmp::Standby::DefaultContext::InterfaceTable::Interface::Interface()
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface"; yang_parent_name = "interface-table";
 }
@@ -10215,7 +9127,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceTable::Interface::get_segmen
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10287,87 +9199,52 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::get_entity_
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceTable::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceTable::Interface::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -10610,7 +9487,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address::g
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10636,20 +9513,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address::ge
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceTable::Interface::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10706,7 +9575,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAdd
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10732,20 +9601,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAddr
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceTable::Interface::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10802,7 +9663,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceTable::Interface::Subscriber
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10828,20 +9689,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberA
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceTable::Interface::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10899,7 +9752,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormats::get_segment_path
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10922,15 +9775,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::get_entity_path(E
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-old-format")
     {
         for(auto const & c : interface_old_format)
@@ -10938,28 +9782,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormats::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat>();
         c->parent = this;
-        interface_old_format.push_back(std::move(c));
-        children[segment_path] = interface_old_format.back();
-        return children.at(segment_path);
+        interface_old_format.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_old_format)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11026,13 +9866,10 @@ Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Interfac
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-old-format"; yang_parent_name = "interface-old-formats";
 }
@@ -11163,7 +10000,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForm
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11235,87 +10072,52 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForma
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -11558,7 +10360,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForm
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11584,20 +10386,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForma
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11654,7 +10448,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForm
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11680,20 +10474,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForma
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11750,7 +10536,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForm
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11776,20 +10562,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForma
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11847,7 +10625,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::get_segm
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11870,15 +10648,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::get_entit
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-state-off-old-format")
     {
         for(auto const & c : interface_state_off_old_format)
@@ -11886,28 +10655,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffOldForma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat>();
         c->parent = this;
-        interface_state_off_old_format.push_back(std::move(c));
-        children[segment_path] = interface_state_off_old_format.back();
-        return children.at(segment_path);
+        interface_state_off_old_format.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_state_off_old_format)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11974,13 +10739,10 @@ Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOld
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-state-off-old-format"; yang_parent_name = "interface-state-off-old-formats";
 }
@@ -12111,7 +10873,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interfac
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12183,87 +10945,52 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interface
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -12506,7 +11233,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interfac
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12532,20 +11259,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interface
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12602,7 +11321,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interfac
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12628,20 +11347,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interface
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12698,7 +11409,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interfac
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12724,20 +11435,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::Interface
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffOldFormats::InterfaceStateOffOldFormat::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12795,7 +11498,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::get_segme
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12818,15 +11521,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::get_entity
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-unicast-qos-adjust")
     {
         for(auto const & c : interface_unicast_qos_adjust)
@@ -12834,28 +11528,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjust
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust>();
         c->parent = this;
-        interface_unicast_qos_adjust.push_back(std::move(c));
-        children[segment_path] = interface_unicast_qos_adjust.back();
-        return children.at(segment_path);
+        interface_unicast_qos_adjust.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_unicast_qos_adjust)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12918,7 +11608,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12946,15 +11636,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceU
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "update")
     {
         for(auto const & c : update)
@@ -12962,28 +11643,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjust
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update>();
         c->parent = this;
-        update.push_back(std::move(c));
-        children[segment_path] = update.back();
-        return children.at(segment_path);
+        update.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : update)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13023,10 +11700,8 @@ Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAd
 	,source_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress>())
 {
     group_address->parent = this;
-    children["group-address"] = group_address;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust";
 }
@@ -13063,7 +11738,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13089,64 +11764,38 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceU
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address")
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
-        else
+        if(group_address == nullptr)
         {
             group_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>();
-            group_address->parent = this;
-            children["group-address"] = group_address;
         }
-        return children.at("group-address");
+        return group_address;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::get_children() const
 {
-    if(children.find("group-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address != nullptr)
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
+        children["group-address"] = group_address;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -13205,7 +11854,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13231,20 +11880,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceU
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13301,7 +11942,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13327,20 +11968,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceU
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13398,7 +12031,7 @@ std::string Igmp::Standby::DefaultContext::Ranges::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Ranges::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Ranges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13421,15 +12054,6 @@ EntityPath Igmp::Standby::DefaultContext::Ranges::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Ranges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "range")
     {
         for(auto const & c : range)
@@ -13437,28 +12061,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Ranges::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::Ranges::Range>();
         c->parent = this;
-        range.push_back(std::move(c));
-        children[segment_path] = range.back();
-        return children.at(segment_path);
+        range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Ranges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Ranges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13479,7 +12099,6 @@ Igmp::Standby::DefaultContext::Ranges::Range::Range()
     group_address_xr(std::make_shared<Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     yang_name = "range"; yang_parent_name = "ranges";
 }
@@ -13518,7 +12137,7 @@ std::string Igmp::Standby::DefaultContext::Ranges::Range::get_segment_path() con
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Ranges::Range::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Ranges::Range::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13546,41 +12165,24 @@ EntityPath Igmp::Standby::DefaultContext::Ranges::Range::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Ranges::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Ranges::Range::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Ranges::Range::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
     return children;
@@ -13647,7 +12249,7 @@ std::string Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr::get_se
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13673,20 +12275,12 @@ EntityPath Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr::get_ent
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Ranges::Range::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13744,7 +12338,7 @@ std::string Igmp::Standby::DefaultContext::IfrsInterfaces::get_segment_path() co
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13767,15 +12361,6 @@ EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::get_entity_path(Entity
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ifrs-interface")
     {
         for(auto const & c : ifrs_interface)
@@ -13783,28 +12368,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaces::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface>();
         c->parent = this;
-        ifrs_interface.push_back(std::move(c));
-        children[segment_path] = ifrs_interface.back();
-        return children.at(segment_path);
+        ifrs_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::IfrsInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::IfrsInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ifrs_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13822,7 +12403,6 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IfrsInterface()
     igmp_interface_entry(std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry>())
 {
     igmp_interface_entry->parent = this;
-    children["igmp-interface-entry"] = igmp_interface_entry;
 
     yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces";
 }
@@ -13855,7 +12435,7 @@ std::string Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::get_se
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13880,41 +12460,24 @@ EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::get_ent
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "igmp-interface-entry")
     {
-        if(igmp_interface_entry != nullptr)
-        {
-            children["igmp-interface-entry"] = igmp_interface_entry;
-        }
-        else
+        if(igmp_interface_entry == nullptr)
         {
             igmp_interface_entry = std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry>();
-            igmp_interface_entry->parent = this;
-            children["igmp-interface-entry"] = igmp_interface_entry;
         }
-        return children.at("igmp-interface-entry");
+        return igmp_interface_entry;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::get_children() const
 {
-    if(children.find("igmp-interface-entry") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(igmp_interface_entry != nullptr)
     {
-        if(igmp_interface_entry != nullptr)
-        {
-            children["igmp-interface-entry"] = igmp_interface_entry;
-        }
+        children["igmp-interface-entry"] = igmp_interface_entry;
     }
 
     return children;
@@ -13988,13 +12551,10 @@ Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "igmp-interface-entry"; yang_parent_name = "ifrs-interface";
 }
@@ -14123,7 +12683,7 @@ std::string Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpIn
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14194,87 +12754,52 @@ EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInt
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -14513,7 +13038,7 @@ std::string Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpIn
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14539,20 +13064,12 @@ EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInt
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14609,7 +13126,7 @@ std::string Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpIn
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14635,20 +13152,12 @@ EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInt
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14705,7 +13214,7 @@ std::string Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpIn
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14731,20 +13240,12 @@ EntityPath Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInt
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14897,7 +13398,7 @@ std::string Igmp::Standby::DefaultContext::TrafficCounters::get_segment_path() c
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::TrafficCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::TrafficCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14955,20 +13456,12 @@ EntityPath Igmp::Standby::DefaultContext::TrafficCounters::get_entity_path(Entit
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::TrafficCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::TrafficCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::TrafficCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15154,7 +13647,7 @@ std::string Igmp::Standby::DefaultContext::Groups::get_segment_path() const
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Groups::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15177,15 +13670,6 @@ EntityPath Igmp::Standby::DefaultContext::Groups::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -15193,28 +13677,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Groups::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::Groups::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Groups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15246,13 +13726,10 @@ Igmp::Standby::DefaultContext::Groups::Group::Group()
 	,source_address(std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::SourceAddress>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     last_reporter->parent = this;
-    children["last-reporter"] = last_reporter;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "group"; yang_parent_name = "groups";
 }
@@ -15313,7 +13790,7 @@ std::string Igmp::Standby::DefaultContext::Groups::Group::get_segment_path() con
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Groups::Group::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Groups::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15350,87 +13827,52 @@ EntityPath Igmp::Standby::DefaultContext::Groups::Group::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "last-reporter")
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
-        else
+        if(last_reporter == nullptr)
         {
             last_reporter = std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::LastReporter>();
-            last_reporter->parent = this;
-            children["last-reporter"] = last_reporter;
         }
-        return children.at("last-reporter");
+        return last_reporter;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Standby::DefaultContext::Groups::Group::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Groups::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Groups::Group::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
-    if(children.find("last-reporter") == children.end())
+    if(last_reporter != nullptr)
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
+        children["last-reporter"] = last_reporter;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -15533,7 +13975,7 @@ std::string Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::get_se
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15559,20 +14001,12 @@ EntityPath Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::get_ent
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Groups::Group::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15629,7 +14063,7 @@ std::string Igmp::Standby::DefaultContext::Groups::Group::LastReporter::get_segm
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Groups::Group::LastReporter::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Groups::Group::LastReporter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15655,20 +14089,12 @@ EntityPath Igmp::Standby::DefaultContext::Groups::Group::LastReporter::get_entit
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Groups::Group::LastReporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Groups::Group::LastReporter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Groups::Group::LastReporter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15725,7 +14151,7 @@ std::string Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::get_seg
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15751,20 +14177,12 @@ EntityPath Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::get_enti
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::Groups::Group::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15824,7 +14242,7 @@ std::string Igmp::Standby::DefaultContext::GroupSummary::get_segment_path() cons
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::GroupSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::GroupSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15851,20 +14269,12 @@ EntityPath Igmp::Standby::DefaultContext::GroupSummary::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::GroupSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::GroupSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15922,7 +14332,7 @@ std::string Igmp::Standby::DefaultContext::IfrsInterfaceSummary::get_segment_pat
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::IfrsInterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::IfrsInterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15947,20 +14357,12 @@ EntityPath Igmp::Standby::DefaultContext::IfrsInterfaceSummary::get_entity_path(
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::IfrsInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::IfrsInterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::IfrsInterfaceSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16014,7 +14416,7 @@ std::string Igmp::Standby::DefaultContext::GlobalInterfaceTable::get_segment_pat
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16037,15 +14439,6 @@ EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::get_entity_path(
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GlobalInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -16053,28 +14446,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GlobalInterfaceTable::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::GlobalInterfaceTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::GlobalInterfaceTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16141,13 +14530,10 @@ Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Interface()
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface"; yang_parent_name = "global-interface-table";
 }
@@ -16278,7 +14664,7 @@ std::string Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16350,87 +14736,52 @@ EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_e
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -16673,7 +15024,7 @@ std::string Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Addr
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16699,20 +15050,12 @@ EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Addre
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16769,7 +15112,7 @@ std::string Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Quer
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16795,20 +15138,12 @@ EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Queri
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16865,7 +15200,7 @@ std::string Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Subs
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16891,20 +15226,12 @@ EntityPath Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::Subsc
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16962,7 +15289,7 @@ std::string Igmp::Standby::DefaultContext::SsmMapDetails::get_segment_path() con
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16985,15 +15312,6 @@ EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ssm-map-detail")
     {
         for(auto const & c : ssm_map_detail)
@@ -17001,28 +15319,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail>();
         c->parent = this;
-        ssm_map_detail.push_back(std::move(c));
-        children[segment_path] = ssm_map_detail.back();
-        return children.at(segment_path);
+        ssm_map_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMapDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMapDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ssm_map_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17044,7 +15358,6 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::SsmMapDetail()
     map_info(std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo>())
 {
     map_info->parent = this;
-    children["map-info"] = map_info;
 
     yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details";
 }
@@ -17095,7 +15408,7 @@ std::string Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_segm
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17124,28 +15437,13 @@ EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_entit
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "map-info")
     {
-        if(map_info != nullptr)
-        {
-            children["map-info"] = map_info;
-        }
-        else
+        if(map_info == nullptr)
         {
             map_info = std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo>();
-            map_info->parent = this;
-            children["map-info"] = map_info;
         }
-        return children.at("map-info");
+        return map_info;
     }
 
     if(child_yang_name == "sources")
@@ -17155,36 +15453,29 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDeta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources>();
         c->parent = this;
-        sources.push_back(std::move(c));
-        children[segment_path] = sources.back();
-        return children.at(segment_path);
+        sources.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::get_children() const
 {
-    if(children.find("map-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(map_info != nullptr)
     {
-        if(map_info != nullptr)
-        {
-            children["map-info"] = map_info;
-        }
+        children["map-info"] = map_info;
     }
 
     for (auto const & c : sources)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17226,7 +15517,6 @@ Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::MapInfo()
     group_address_xr(std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     yang_name = "map-info"; yang_parent_name = "ssm-map-detail";
 }
@@ -17259,7 +15549,7 @@ std::string Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo:
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17284,41 +15574,24 @@ EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
     return children;
@@ -17373,7 +15646,7 @@ std::string Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo:
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17399,20 +15672,12 @@ EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17469,7 +15734,7 @@ std::string Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources:
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17495,20 +15760,12 @@ EntityPath Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17566,7 +15823,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffs::get_segment_path(
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17589,15 +15846,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::get_entity_path(En
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-state-off")
     {
         for(auto const & c : interface_state_off)
@@ -17605,28 +15853,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffs::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff>();
         c->parent = this;
-        interface_state_off.push_back(std::move(c));
-        children[segment_path] = interface_state_off.back();
-        return children.at(segment_path);
+        interface_state_off.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_state_off)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17693,13 +15937,10 @@ Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::InterfaceS
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs";
 }
@@ -17830,7 +16071,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17902,87 +16143,52 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff:
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -18225,7 +16431,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18251,20 +16457,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff:
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18321,7 +16519,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18347,20 +16545,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff:
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18417,7 +16607,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18443,20 +16633,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff:
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18514,7 +16696,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::get_segme
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18537,15 +16719,6 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::get_entity
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-old-format-state-on")
     {
         for(auto const & c : interface_old_format_state_on)
@@ -18553,28 +16726,24 @@ std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn>();
         c->parent = this;
-        interface_old_format_state_on.push_back(std::move(c));
-        children[segment_path] = interface_old_format_state_on.back();
-        return children.at(segment_path);
+        interface_old_format_state_on.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_old_format_state_on)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18641,13 +16810,10 @@ Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatSta
 	,subscriber_address(std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-old-format-state-on"; yang_parent_name = "interface-old-format-state-ons";
 }
@@ -18778,7 +16944,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18850,87 +17016,52 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -19173,7 +17304,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19199,20 +17330,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19269,7 +17392,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19295,20 +17418,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19365,7 +17480,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::Interface
 
 }
 
-EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19391,20 +17506,12 @@ EntityPath Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 std::shared_ptr<Entity> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Standby::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19431,13 +17538,10 @@ Igmp::Active::Active()
 	,vrfs(std::make_shared<Igmp::Active::Vrfs>())
 {
     default_context->parent = this;
-    children["default-context"] = default_context;
 
     process->parent = this;
-    children["process"] = process;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "active"; yang_parent_name = "igmp";
 }
@@ -19470,7 +17574,7 @@ std::string Igmp::Active::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19493,87 +17597,52 @@ EntityPath Igmp::Active::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Igmp::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-context")
     {
-        if(default_context != nullptr)
-        {
-            children["default-context"] = default_context;
-        }
-        else
+        if(default_context == nullptr)
         {
             default_context = std::make_shared<Igmp::Active::DefaultContext>();
-            default_context->parent = this;
-            children["default-context"] = default_context;
         }
-        return children.at("default-context");
+        return default_context;
     }
 
     if(child_yang_name == "process")
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
-        else
+        if(process == nullptr)
         {
             process = std::make_shared<Igmp::Active::Process>();
-            process->parent = this;
-            children["process"] = process;
         }
-        return children.at("process");
+        return process;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Igmp::Active::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::get_children() const
 {
-    if(children.find("default-context") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_context != nullptr)
     {
-        if(default_context != nullptr)
-        {
-            children["default-context"] = default_context;
-        }
+        children["default-context"] = default_context;
     }
 
-    if(children.find("process") == children.end())
+    if(process != nullptr)
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
+        children["process"] = process;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -19621,7 +17690,7 @@ std::string Igmp::Active::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19644,15 +17713,6 @@ EntityPath Igmp::Active::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -19660,28 +17720,24 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19717,64 +17773,44 @@ Igmp::Active::Vrfs::Vrf::Vrf()
 	,traffic_counters(std::make_shared<Igmp::Active::Vrfs::Vrf::TrafficCounters>())
 {
     detail_groups->parent = this;
-    children["detail-groups"] = detail_groups;
 
     explicit_groups->parent = this;
-    children["explicit-groups"] = explicit_groups;
 
     global_interface_table->parent = this;
-    children["global-interface-table"] = global_interface_table;
 
     group_summary->parent = this;
-    children["group-summary"] = group_summary;
 
     groups->parent = this;
-    children["groups"] = groups;
 
     ifrs_interface_summary->parent = this;
-    children["ifrs-interface-summary"] = ifrs_interface_summary;
 
     ifrs_interfaces->parent = this;
-    children["ifrs-interfaces"] = ifrs_interfaces;
 
     interface_old_format_state_ons->parent = this;
-    children["interface-old-format-state-ons"] = interface_old_format_state_ons;
 
     interface_old_formats->parent = this;
-    children["interface-old-formats"] = interface_old_formats;
 
     interface_state_off_old_formats->parent = this;
-    children["interface-state-off-old-formats"] = interface_state_off_old_formats;
 
     interface_state_offs->parent = this;
-    children["interface-state-offs"] = interface_state_offs;
 
     interface_state_ons->parent = this;
-    children["interface-state-ons"] = interface_state_ons;
 
     interface_table->parent = this;
-    children["interface-table"] = interface_table;
 
     interface_unicast_qos_adjusts->parent = this;
-    children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
 
     non_active_groups->parent = this;
-    children["non-active-groups"] = non_active_groups;
 
     ranges->parent = this;
-    children["ranges"] = ranges;
 
     ssm_map_details->parent = this;
-    children["ssm-map-details"] = ssm_map_details;
 
     ssm_maps->parent = this;
-    children["ssm-maps"] = ssm_maps;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     traffic_counters->parent = this;
-    children["traffic-counters"] = traffic_counters;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -19843,7 +17879,7 @@ std::string Igmp::Active::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19867,478 +17903,290 @@ EntityPath Igmp::Active::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-groups")
     {
-        if(detail_groups != nullptr)
-        {
-            children["detail-groups"] = detail_groups;
-        }
-        else
+        if(detail_groups == nullptr)
         {
             detail_groups = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups>();
-            detail_groups->parent = this;
-            children["detail-groups"] = detail_groups;
         }
-        return children.at("detail-groups");
+        return detail_groups;
     }
 
     if(child_yang_name == "explicit-groups")
     {
-        if(explicit_groups != nullptr)
-        {
-            children["explicit-groups"] = explicit_groups;
-        }
-        else
+        if(explicit_groups == nullptr)
         {
             explicit_groups = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups>();
-            explicit_groups->parent = this;
-            children["explicit-groups"] = explicit_groups;
         }
-        return children.at("explicit-groups");
+        return explicit_groups;
     }
 
     if(child_yang_name == "global-interface-table")
     {
-        if(global_interface_table != nullptr)
-        {
-            children["global-interface-table"] = global_interface_table;
-        }
-        else
+        if(global_interface_table == nullptr)
         {
             global_interface_table = std::make_shared<Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable>();
-            global_interface_table->parent = this;
-            children["global-interface-table"] = global_interface_table;
         }
-        return children.at("global-interface-table");
+        return global_interface_table;
     }
 
     if(child_yang_name == "group-summary")
     {
-        if(group_summary != nullptr)
-        {
-            children["group-summary"] = group_summary;
-        }
-        else
+        if(group_summary == nullptr)
         {
             group_summary = std::make_shared<Igmp::Active::Vrfs::Vrf::GroupSummary>();
-            group_summary->parent = this;
-            children["group-summary"] = group_summary;
         }
-        return children.at("group-summary");
+        return group_summary;
     }
 
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<Igmp::Active::Vrfs::Vrf::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     if(child_yang_name == "ifrs-interface-summary")
     {
-        if(ifrs_interface_summary != nullptr)
-        {
-            children["ifrs-interface-summary"] = ifrs_interface_summary;
-        }
-        else
+        if(ifrs_interface_summary == nullptr)
         {
             ifrs_interface_summary = std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaceSummary>();
-            ifrs_interface_summary->parent = this;
-            children["ifrs-interface-summary"] = ifrs_interface_summary;
         }
-        return children.at("ifrs-interface-summary");
+        return ifrs_interface_summary;
     }
 
     if(child_yang_name == "ifrs-interfaces")
     {
-        if(ifrs_interfaces != nullptr)
-        {
-            children["ifrs-interfaces"] = ifrs_interfaces;
-        }
-        else
+        if(ifrs_interfaces == nullptr)
         {
             ifrs_interfaces = std::make_shared<Igmp::Active::Vrfs::Vrf::IfrsInterfaces>();
-            ifrs_interfaces->parent = this;
-            children["ifrs-interfaces"] = ifrs_interfaces;
         }
-        return children.at("ifrs-interfaces");
+        return ifrs_interfaces;
     }
 
     if(child_yang_name == "interface-old-format-state-ons")
     {
-        if(interface_old_format_state_ons != nullptr)
-        {
-            children["interface-old-format-state-ons"] = interface_old_format_state_ons;
-        }
-        else
+        if(interface_old_format_state_ons == nullptr)
         {
             interface_old_format_state_ons = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceOldFormatStateOns>();
-            interface_old_format_state_ons->parent = this;
-            children["interface-old-format-state-ons"] = interface_old_format_state_ons;
         }
-        return children.at("interface-old-format-state-ons");
+        return interface_old_format_state_ons;
     }
 
     if(child_yang_name == "interface-old-formats")
     {
-        if(interface_old_formats != nullptr)
-        {
-            children["interface-old-formats"] = interface_old_formats;
-        }
-        else
+        if(interface_old_formats == nullptr)
         {
             interface_old_formats = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceOldFormats>();
-            interface_old_formats->parent = this;
-            children["interface-old-formats"] = interface_old_formats;
         }
-        return children.at("interface-old-formats");
+        return interface_old_formats;
     }
 
     if(child_yang_name == "interface-state-off-old-formats")
     {
-        if(interface_state_off_old_formats != nullptr)
-        {
-            children["interface-state-off-old-formats"] = interface_state_off_old_formats;
-        }
-        else
+        if(interface_state_off_old_formats == nullptr)
         {
             interface_state_off_old_formats = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffOldFormats>();
-            interface_state_off_old_formats->parent = this;
-            children["interface-state-off-old-formats"] = interface_state_off_old_formats;
         }
-        return children.at("interface-state-off-old-formats");
+        return interface_state_off_old_formats;
     }
 
     if(child_yang_name == "interface-state-offs")
     {
-        if(interface_state_offs != nullptr)
-        {
-            children["interface-state-offs"] = interface_state_offs;
-        }
-        else
+        if(interface_state_offs == nullptr)
         {
             interface_state_offs = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOffs>();
-            interface_state_offs->parent = this;
-            children["interface-state-offs"] = interface_state_offs;
         }
-        return children.at("interface-state-offs");
+        return interface_state_offs;
     }
 
     if(child_yang_name == "interface-state-ons")
     {
-        if(interface_state_ons != nullptr)
-        {
-            children["interface-state-ons"] = interface_state_ons;
-        }
-        else
+        if(interface_state_ons == nullptr)
         {
             interface_state_ons = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns>();
-            interface_state_ons->parent = this;
-            children["interface-state-ons"] = interface_state_ons;
         }
-        return children.at("interface-state-ons");
+        return interface_state_ons;
     }
 
     if(child_yang_name == "interface-table")
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
-        else
+        if(interface_table == nullptr)
         {
             interface_table = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceTable>();
-            interface_table->parent = this;
-            children["interface-table"] = interface_table;
         }
-        return children.at("interface-table");
+        return interface_table;
     }
 
     if(child_yang_name == "interface-unicast-qos-adjusts")
     {
-        if(interface_unicast_qos_adjusts != nullptr)
-        {
-            children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
-        }
-        else
+        if(interface_unicast_qos_adjusts == nullptr)
         {
             interface_unicast_qos_adjusts = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts>();
-            interface_unicast_qos_adjusts->parent = this;
-            children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
         }
-        return children.at("interface-unicast-qos-adjusts");
+        return interface_unicast_qos_adjusts;
     }
 
     if(child_yang_name == "non-active-groups")
     {
-        if(non_active_groups != nullptr)
-        {
-            children["non-active-groups"] = non_active_groups;
-        }
-        else
+        if(non_active_groups == nullptr)
         {
             non_active_groups = std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups>();
-            non_active_groups->parent = this;
-            children["non-active-groups"] = non_active_groups;
         }
-        return children.at("non-active-groups");
+        return non_active_groups;
     }
 
     if(child_yang_name == "ranges")
     {
-        if(ranges != nullptr)
-        {
-            children["ranges"] = ranges;
-        }
-        else
+        if(ranges == nullptr)
         {
             ranges = std::make_shared<Igmp::Active::Vrfs::Vrf::Ranges>();
-            ranges->parent = this;
-            children["ranges"] = ranges;
         }
-        return children.at("ranges");
+        return ranges;
     }
 
     if(child_yang_name == "ssm-map-details")
     {
-        if(ssm_map_details != nullptr)
-        {
-            children["ssm-map-details"] = ssm_map_details;
-        }
-        else
+        if(ssm_map_details == nullptr)
         {
             ssm_map_details = std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMapDetails>();
-            ssm_map_details->parent = this;
-            children["ssm-map-details"] = ssm_map_details;
         }
-        return children.at("ssm-map-details");
+        return ssm_map_details;
     }
 
     if(child_yang_name == "ssm-maps")
     {
-        if(ssm_maps != nullptr)
-        {
-            children["ssm-maps"] = ssm_maps;
-        }
-        else
+        if(ssm_maps == nullptr)
         {
             ssm_maps = std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps>();
-            ssm_maps->parent = this;
-            children["ssm-maps"] = ssm_maps;
         }
-        return children.at("ssm-maps");
+        return ssm_maps;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Igmp::Active::Vrfs::Vrf::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "traffic-counters")
     {
-        if(traffic_counters != nullptr)
-        {
-            children["traffic-counters"] = traffic_counters;
-        }
-        else
+        if(traffic_counters == nullptr)
         {
             traffic_counters = std::make_shared<Igmp::Active::Vrfs::Vrf::TrafficCounters>();
-            traffic_counters->parent = this;
-            children["traffic-counters"] = traffic_counters;
         }
-        return children.at("traffic-counters");
+        return traffic_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::get_children() const
 {
-    if(children.find("detail-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail_groups != nullptr)
     {
-        if(detail_groups != nullptr)
-        {
-            children["detail-groups"] = detail_groups;
-        }
+        children["detail-groups"] = detail_groups;
     }
 
-    if(children.find("explicit-groups") == children.end())
+    if(explicit_groups != nullptr)
     {
-        if(explicit_groups != nullptr)
-        {
-            children["explicit-groups"] = explicit_groups;
-        }
+        children["explicit-groups"] = explicit_groups;
     }
 
-    if(children.find("global-interface-table") == children.end())
+    if(global_interface_table != nullptr)
     {
-        if(global_interface_table != nullptr)
-        {
-            children["global-interface-table"] = global_interface_table;
-        }
+        children["global-interface-table"] = global_interface_table;
     }
 
-    if(children.find("group-summary") == children.end())
+    if(group_summary != nullptr)
     {
-        if(group_summary != nullptr)
-        {
-            children["group-summary"] = group_summary;
-        }
+        children["group-summary"] = group_summary;
     }
 
-    if(children.find("groups") == children.end())
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
-    if(children.find("ifrs-interface-summary") == children.end())
+    if(ifrs_interface_summary != nullptr)
     {
-        if(ifrs_interface_summary != nullptr)
-        {
-            children["ifrs-interface-summary"] = ifrs_interface_summary;
-        }
+        children["ifrs-interface-summary"] = ifrs_interface_summary;
     }
 
-    if(children.find("ifrs-interfaces") == children.end())
+    if(ifrs_interfaces != nullptr)
     {
-        if(ifrs_interfaces != nullptr)
-        {
-            children["ifrs-interfaces"] = ifrs_interfaces;
-        }
+        children["ifrs-interfaces"] = ifrs_interfaces;
     }
 
-    if(children.find("interface-old-format-state-ons") == children.end())
+    if(interface_old_format_state_ons != nullptr)
     {
-        if(interface_old_format_state_ons != nullptr)
-        {
-            children["interface-old-format-state-ons"] = interface_old_format_state_ons;
-        }
+        children["interface-old-format-state-ons"] = interface_old_format_state_ons;
     }
 
-    if(children.find("interface-old-formats") == children.end())
+    if(interface_old_formats != nullptr)
     {
-        if(interface_old_formats != nullptr)
-        {
-            children["interface-old-formats"] = interface_old_formats;
-        }
+        children["interface-old-formats"] = interface_old_formats;
     }
 
-    if(children.find("interface-state-off-old-formats") == children.end())
+    if(interface_state_off_old_formats != nullptr)
     {
-        if(interface_state_off_old_formats != nullptr)
-        {
-            children["interface-state-off-old-formats"] = interface_state_off_old_formats;
-        }
+        children["interface-state-off-old-formats"] = interface_state_off_old_formats;
     }
 
-    if(children.find("interface-state-offs") == children.end())
+    if(interface_state_offs != nullptr)
     {
-        if(interface_state_offs != nullptr)
-        {
-            children["interface-state-offs"] = interface_state_offs;
-        }
+        children["interface-state-offs"] = interface_state_offs;
     }
 
-    if(children.find("interface-state-ons") == children.end())
+    if(interface_state_ons != nullptr)
     {
-        if(interface_state_ons != nullptr)
-        {
-            children["interface-state-ons"] = interface_state_ons;
-        }
+        children["interface-state-ons"] = interface_state_ons;
     }
 
-    if(children.find("interface-table") == children.end())
+    if(interface_table != nullptr)
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
+        children["interface-table"] = interface_table;
     }
 
-    if(children.find("interface-unicast-qos-adjusts") == children.end())
+    if(interface_unicast_qos_adjusts != nullptr)
     {
-        if(interface_unicast_qos_adjusts != nullptr)
-        {
-            children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
-        }
+        children["interface-unicast-qos-adjusts"] = interface_unicast_qos_adjusts;
     }
 
-    if(children.find("non-active-groups") == children.end())
+    if(non_active_groups != nullptr)
     {
-        if(non_active_groups != nullptr)
-        {
-            children["non-active-groups"] = non_active_groups;
-        }
+        children["non-active-groups"] = non_active_groups;
     }
 
-    if(children.find("ranges") == children.end())
+    if(ranges != nullptr)
     {
-        if(ranges != nullptr)
-        {
-            children["ranges"] = ranges;
-        }
+        children["ranges"] = ranges;
     }
 
-    if(children.find("ssm-map-details") == children.end())
+    if(ssm_map_details != nullptr)
     {
-        if(ssm_map_details != nullptr)
-        {
-            children["ssm-map-details"] = ssm_map_details;
-        }
+        children["ssm-map-details"] = ssm_map_details;
     }
 
-    if(children.find("ssm-maps") == children.end())
+    if(ssm_maps != nullptr)
     {
-        if(ssm_maps != nullptr)
-        {
-            children["ssm-maps"] = ssm_maps;
-        }
+        children["ssm-maps"] = ssm_maps;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("traffic-counters") == children.end())
+    if(traffic_counters != nullptr)
     {
-        if(traffic_counters != nullptr)
-        {
-            children["traffic-counters"] = traffic_counters;
-        }
+        children["traffic-counters"] = traffic_counters;
     }
 
     return children;
@@ -20420,7 +18268,7 @@ std::string Igmp::Active::Vrfs::Vrf::Summary::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20453,15 +18301,6 @@ EntityPath Igmp::Active::Vrfs::Vrf::Summary::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -20469,28 +18308,24 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::Summary::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::Summary::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20592,7 +18427,7 @@ std::string Igmp::Active::Vrfs::Vrf::Summary::Interface::get_segment_path() cons
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::Summary::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::Summary::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20623,20 +18458,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::Summary::Interface::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::Summary::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::Summary::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::Summary::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20714,7 +18541,7 @@ std::string Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20737,15 +18564,6 @@ EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-state-on")
     {
         for(auto const & c : interface_state_on)
@@ -20753,28 +18571,24 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn>();
         c->parent = this;
-        interface_state_on.push_back(std::move(c));
-        children[segment_path] = interface_state_on.back();
-        return children.at(segment_path);
+        interface_state_on.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_state_on)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20841,13 +18655,10 @@ Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::InterfaceStateOn()
 	,subscriber_address(std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons";
 }
@@ -20978,7 +18789,7 @@ std::string Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_se
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21050,87 +18861,52 @@ EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_ent
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -21373,7 +19149,7 @@ std::string Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Addres
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21399,20 +19175,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21469,7 +19237,7 @@ std::string Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Querie
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21495,20 +19263,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Querier
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21565,7 +19325,7 @@ std::string Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Subscr
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21591,20 +19351,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Subscri
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21662,7 +19414,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21685,15 +19437,6 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-group")
     {
         for(auto const & c : detail_group)
@@ -21701,28 +19444,24 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup>();
         c->parent = this;
-        detail_group.push_back(std::move(c));
-        children[segment_path] = detail_group.back();
-        return children.at(segment_path);
+        detail_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21743,7 +19482,6 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::DetailGroup()
     group_info(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo>())
 {
     group_info->parent = this;
-    children["group-info"] = group_info;
 
     yang_name = "detail-group"; yang_parent_name = "detail-groups";
 }
@@ -21792,7 +19530,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_segment_path
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21820,28 +19558,13 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_entity_path(E
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-info")
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
-        else
+        if(group_info == nullptr)
         {
             group_info = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo>();
-            group_info->parent = this;
-            children["group-info"] = group_info;
         }
-        return children.at("group-info");
+        return group_info;
     }
 
     if(child_yang_name == "source")
@@ -21851,36 +19574,29 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_children() const
 {
-    if(children.find("group-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_info != nullptr)
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
+        children["group-info"] = group_info;
     }
 
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21930,13 +19646,10 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupInfo()
 	,source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     last_reporter->parent = this;
-    children["last-reporter"] = last_reporter;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "group-info"; yang_parent_name = "detail-group";
 }
@@ -21993,7 +19706,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::get_s
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22028,87 +19741,52 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::get_en
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "last-reporter")
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
-        else
+        if(last_reporter == nullptr)
         {
             last_reporter = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter>();
-            last_reporter->parent = this;
-            children["last-reporter"] = last_reporter;
         }
-        return children.at("last-reporter");
+        return last_reporter;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
-    if(children.find("last-reporter") == children.end())
+    if(last_reporter != nullptr)
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
+        children["last-reporter"] = last_reporter;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -22203,7 +19881,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::Group
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22229,20 +19907,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupA
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22299,7 +19969,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastR
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22325,20 +19995,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastRe
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22395,7 +20057,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::Sourc
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22421,20 +20083,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::Source
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22468,7 +20122,6 @@ Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::Source()
     source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress>())
 {
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "source"; yang_parent_name = "detail-group";
 }
@@ -22513,7 +20166,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_segm
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22544,41 +20197,24 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_entit
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_children() const
 {
-    if(children.find("source-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -22657,7 +20293,7 @@ std::string Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAd
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22683,20 +20319,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAdd
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22754,7 +20382,7 @@ std::string Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22777,15 +20405,6 @@ EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "non-active-groups")
     {
         for(auto const & c : non_active_groups)
@@ -22793,28 +20412,24 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_>();
         c->parent = this;
-        non_active_groups.push_back(std::move(c));
-        children[segment_path] = non_active_groups.back();
-        return children.at(segment_path);
+        non_active_groups.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::NonActiveGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : non_active_groups)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22833,10 +20448,8 @@ Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::NonActiveGroups_()
 	,source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress>())
 {
     group_address->parent = this;
-    children["group-address"] = group_address;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "non-active-groups"; yang_parent_name = "non-active-groups";
 }
@@ -22871,7 +20484,7 @@ std::string Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_segm
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22896,64 +20509,38 @@ EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_entit
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address")
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
-        else
+        if(group_address == nullptr)
         {
             group_address = std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress>();
-            group_address->parent = this;
-            children["group-address"] = group_address;
         }
-        return children.at("group-address");
+        return group_address;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_children() const
 {
-    if(children.find("group-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address != nullptr)
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
+        children["group-address"] = group_address;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -23008,7 +20595,7 @@ std::string Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAdd
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23034,20 +20621,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddr
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23104,7 +20683,7 @@ std::string Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAd
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23130,20 +20709,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAdd
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23201,7 +20772,7 @@ std::string Igmp::Active::Vrfs::Vrf::SsmMaps::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23224,15 +20795,6 @@ EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::SsmMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ssm-map")
     {
         for(auto const & c : ssm_map)
@@ -23240,28 +20802,24 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::SsmMaps::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap>();
         c->parent = this;
-        ssm_map.push_back(std::move(c));
-        children[segment_path] = ssm_map.back();
-        return children.at(segment_path);
+        ssm_map.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::SsmMaps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::SsmMaps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ssm_map)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23281,7 +20839,6 @@ Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::SsmMap()
     group_address_xr(std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     yang_name = "ssm-map"; yang_parent_name = "ssm-maps";
 }
@@ -23318,7 +20875,7 @@ std::string Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23345,41 +20902,24 @@ EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
     return children;
@@ -23442,7 +20982,7 @@ std::string Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::get_segmen
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23468,20 +21008,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::get_entity_
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23539,7 +21071,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_segment_path() const
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23562,15 +21094,6 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "explicit-group")
     {
         for(auto const & c : explicit_group)
@@ -23578,28 +21101,24 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup>();
         c->parent = this;
-        explicit_group.push_back(std::move(c));
-        children[segment_path] = explicit_group.back();
-        return children.at(segment_path);
+        explicit_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : explicit_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23620,7 +21139,6 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::ExplicitGroup()
     group_info(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo>())
 {
     group_info->parent = this;
-    children["group-info"] = group_info;
 
     yang_name = "explicit-group"; yang_parent_name = "explicit-groups";
 }
@@ -23669,7 +21187,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_segment_
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23697,28 +21215,13 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_entity_pa
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-info")
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
-        else
+        if(group_info == nullptr)
         {
             group_info = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo>();
-            group_info->parent = this;
-            children["group-info"] = group_info;
         }
-        return children.at("group-info");
+        return group_info;
     }
 
     if(child_yang_name == "host")
@@ -23728,36 +21231,29 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host>();
         c->parent = this;
-        host.push_back(std::move(c));
-        children[segment_path] = host.back();
-        return children.at(segment_path);
+        host.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_children() const
 {
-    if(children.find("group-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_info != nullptr)
     {
-        if(group_info != nullptr)
-        {
-            children["group-info"] = group_info;
-        }
+        children["group-info"] = group_info;
     }
 
     for (auto const & c : host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23807,13 +21303,10 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupInfo()
 	,source_address(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     last_reporter->parent = this;
-    children["last-reporter"] = last_reporter;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     yang_name = "group-info"; yang_parent_name = "explicit-group";
 }
@@ -23870,7 +21363,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::g
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23905,87 +21398,52 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::ge
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "last-reporter")
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
-        else
+        if(last_reporter == nullptr)
         {
             last_reporter = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>();
-            last_reporter->parent = this;
-            children["last-reporter"] = last_reporter;
         }
-        return children.at("last-reporter");
+        return last_reporter;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
-    if(children.find("last-reporter") == children.end())
+    if(last_reporter != nullptr)
     {
-        if(last_reporter != nullptr)
-        {
-            children["last-reporter"] = last_reporter;
-        }
+        children["last-reporter"] = last_reporter;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
     return children;
@@ -24080,7 +21538,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::G
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24106,20 +21564,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::Gr
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24176,7 +21626,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::L
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24202,20 +21652,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::La
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24272,7 +21714,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::S
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24298,20 +21740,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::So
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24341,7 +21775,6 @@ Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Host()
     address(std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "host"; yang_parent_name = "explicit-group";
 }
@@ -24388,7 +21821,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_se
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24415,28 +21848,13 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_ent
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "source-address")
@@ -24446,36 +21864,29 @@ std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress>();
         c->parent = this;
-        source_address.push_back(std::move(c));
-        children[segment_path] = source_address.back();
-        return children.at(segment_path);
+        source_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     for (auto const & c : source_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -24538,7 +21949,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Addres
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24564,20 +21975,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24634,7 +22037,7 @@ std::string Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Source
 
 }
 
-EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24660,20 +22063,12 @@ EntityPath Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceA
 
 std::shared_ptr<Entity> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

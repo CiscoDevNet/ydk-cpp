@@ -17,9 +17,6 @@ class InstallProtocolTypeIdentity : public virtual Identity
         ~InstallProtocolTypeIdentity();
 
 
-
-
-
 }; // InstallProtocolTypeIdentity
 
 class AttributeComparisonIdentity : public virtual Identity
@@ -27,9 +24,6 @@ class AttributeComparisonIdentity : public virtual Identity
     public:
         AttributeComparisonIdentity();
         ~AttributeComparisonIdentity();
-
-
-
 
 
 }; // AttributeComparisonIdentity
@@ -41,8 +35,6 @@ class IsisIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity
         ~IsisIdentity();
 
 
-
-
 }; // IsisIdentity
 
 class AttributeLeIdentity : public openconfig_policy_types::AttributeComparisonIdentity, virtual Identity
@@ -50,8 +42,6 @@ class AttributeLeIdentity : public openconfig_policy_types::AttributeComparisonI
     public:
         AttributeLeIdentity();
         ~AttributeLeIdentity();
-
-
 
 
 }; // AttributeLeIdentity
@@ -63,8 +53,6 @@ class AttributeGeIdentity : public openconfig_policy_types::AttributeComparisonI
         ~AttributeGeIdentity();
 
 
-
-
 }; // AttributeGeIdentity
 
 class BgpIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
@@ -72,8 +60,6 @@ class BgpIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity,
     public:
         BgpIdentity();
         ~BgpIdentity();
-
-
 
 
 }; // BgpIdentity
@@ -85,8 +71,6 @@ class DirectlyConnectedIdentity : public openconfig_policy_types::InstallProtoco
         ~DirectlyConnectedIdentity();
 
 
-
-
 }; // DirectlyConnectedIdentity
 
 class StaticIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
@@ -94,8 +78,6 @@ class StaticIdentity : public openconfig_policy_types::InstallProtocolTypeIdenti
     public:
         StaticIdentity();
         ~StaticIdentity();
-
-
 
 
 }; // StaticIdentity
@@ -107,8 +89,6 @@ class LocalAggregateIdentity : public openconfig_policy_types::InstallProtocolTy
         ~LocalAggregateIdentity();
 
 
-
-
 }; // LocalAggregateIdentity
 
 class AttributeEqIdentity : public openconfig_policy_types::AttributeComparisonIdentity, virtual Identity
@@ -116,8 +96,6 @@ class AttributeEqIdentity : public openconfig_policy_types::AttributeComparisonI
     public:
         AttributeEqIdentity();
         ~AttributeEqIdentity();
-
-
 
 
 }; // AttributeEqIdentity
@@ -129,8 +107,6 @@ class OspfIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity
         ~OspfIdentity();
 
 
-
-
 }; // OspfIdentity
 
 class Ospf3Identity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
@@ -138,8 +114,6 @@ class Ospf3Identity : public openconfig_policy_types::InstallProtocolTypeIdentit
     public:
         Ospf3Identity();
         ~Ospf3Identity();
-
-
 
 
 }; // Ospf3Identity

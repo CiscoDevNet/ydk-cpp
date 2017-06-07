@@ -15,10 +15,8 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,optics_hour24fec_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories>())
 {
     optics_hour24_optics_histories->parent = this;
-    children["optics-hour24-optics-histories"] = optics_hour24_optics_histories;
 
     optics_hour24fec_histories->parent = this;
-    children["optics-hour24fec-histories"] = optics_hour24fec_histories;
 
     yang_name = "optics-hour24-history"; yang_parent_name = "optics-port-history";
 }
@@ -49,7 +47,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -72,64 +70,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24-optics-histories")
     {
-        if(optics_hour24_optics_histories != nullptr)
-        {
-            children["optics-hour24-optics-histories"] = optics_hour24_optics_histories;
-        }
-        else
+        if(optics_hour24_optics_histories == nullptr)
         {
             optics_hour24_optics_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories>();
-            optics_hour24_optics_histories->parent = this;
-            children["optics-hour24-optics-histories"] = optics_hour24_optics_histories;
         }
-        return children.at("optics-hour24-optics-histories");
+        return optics_hour24_optics_histories;
     }
 
     if(child_yang_name == "optics-hour24fec-histories")
     {
-        if(optics_hour24fec_histories != nullptr)
-        {
-            children["optics-hour24fec-histories"] = optics_hour24fec_histories;
-        }
-        else
+        if(optics_hour24fec_histories == nullptr)
         {
             optics_hour24fec_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories>();
-            optics_hour24fec_histories->parent = this;
-            children["optics-hour24fec-histories"] = optics_hour24fec_histories;
         }
-        return children.at("optics-hour24fec-histories");
+        return optics_hour24fec_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::get_children() const
 {
-    if(children.find("optics-hour24-optics-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_hour24_optics_histories != nullptr)
     {
-        if(optics_hour24_optics_histories != nullptr)
-        {
-            children["optics-hour24-optics-histories"] = optics_hour24_optics_histories;
-        }
+        children["optics-hour24-optics-histories"] = optics_hour24_optics_histories;
     }
 
-    if(children.find("optics-hour24fec-histories") == children.end())
+    if(optics_hour24fec_histories != nullptr)
     {
-        if(optics_hour24fec_histories != nullptr)
-        {
-            children["optics-hour24fec-histories"] = optics_hour24fec_histories;
-        }
+        children["optics-hour24fec-histories"] = optics_hour24fec_histories;
     }
 
     return children;
@@ -177,7 +149,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -200,15 +172,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24-optics-history")
     {
         for(auto const & c : optics_hour24_optics_history)
@@ -216,28 +179,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory>();
         c->parent = this;
-        optics_hour24_optics_history.push_back(std::move(c));
-        children[segment_path] = optics_hour24_optics_history.back();
-        return children.at(segment_path);
+        optics_hour24_optics_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_hour24_optics_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -254,7 +213,6 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     optics_hour24_optics_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances>())
 {
     optics_hour24_optics_time_line_instances->parent = this;
-    children["optics-hour24-optics-time-line-instances"] = optics_hour24_optics_time_line_instances;
 
     yang_name = "optics-hour24-optics-history"; yang_parent_name = "optics-hour24-optics-histories";
 }
@@ -285,7 +243,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,41 +267,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24-optics-time-line-instances")
     {
-        if(optics_hour24_optics_time_line_instances != nullptr)
-        {
-            children["optics-hour24-optics-time-line-instances"] = optics_hour24_optics_time_line_instances;
-        }
-        else
+        if(optics_hour24_optics_time_line_instances == nullptr)
         {
             optics_hour24_optics_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances>();
-            optics_hour24_optics_time_line_instances->parent = this;
-            children["optics-hour24-optics-time-line-instances"] = optics_hour24_optics_time_line_instances;
         }
-        return children.at("optics-hour24-optics-time-line-instances");
+        return optics_hour24_optics_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::get_children() const
 {
-    if(children.find("optics-hour24-optics-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_hour24_optics_time_line_instances != nullptr)
     {
-        if(optics_hour24_optics_time_line_instances != nullptr)
-        {
-            children["optics-hour24-optics-time-line-instances"] = optics_hour24_optics_time_line_instances;
-        }
+        children["optics-hour24-optics-time-line-instances"] = optics_hour24_optics_time_line_instances;
     }
 
     return children;
@@ -395,7 +336,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -418,15 +359,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24-optics-time-line-instance")
     {
         for(auto const & c : optics_hour24_optics_time_line_instance)
@@ -434,28 +366,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance>();
         c->parent = this;
-        optics_hour24_optics_time_line_instance.push_back(std::move(c));
-        children[segment_path] = optics_hour24_optics_time_line_instance.back();
-        return children.at(segment_path);
+        optics_hour24_optics_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_hour24_optics_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -493,46 +421,32 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,rx_sig_pow(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow>())
 {
     cd->parent = this;
-    children["cd"] = cd;
 
     center_wavelength->parent = this;
-    children["center-wavelength"] = center_wavelength;
 
     dgd->parent = this;
-    children["dgd"] = dgd;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     lbc_pc->parent = this;
-    children["lbc-pc"] = lbc_pc;
 
     low_sig_freq_off->parent = this;
-    children["low-sig-freq-off"] = low_sig_freq_off;
 
     opr->parent = this;
-    children["opr"] = opr;
 
     opt->parent = this;
-    children["opt"] = opt;
 
     osnr->parent = this;
-    children["osnr"] = osnr;
 
     pcr->parent = this;
-    children["pcr"] = pcr;
 
     pdl->parent = this;
-    children["pdl"] = pdl;
 
     pmd->parent = this;
-    children["pmd"] = pmd;
 
     pn->parent = this;
-    children["pn"] = pn;
 
     rx_sig_pow->parent = this;
-    children["rx-sig-pow"] = rx_sig_pow;
 
     yang_name = "optics-hour24-optics-time-line-instance"; yang_parent_name = "optics-hour24-optics-time-line-instances";
 }
@@ -605,7 +519,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -637,340 +551,206 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cd")
     {
-        if(cd != nullptr)
-        {
-            children["cd"] = cd;
-        }
-        else
+        if(cd == nullptr)
         {
             cd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd>();
-            cd->parent = this;
-            children["cd"] = cd;
         }
-        return children.at("cd");
+        return cd;
     }
 
     if(child_yang_name == "center-wavelength")
     {
-        if(center_wavelength != nullptr)
-        {
-            children["center-wavelength"] = center_wavelength;
-        }
-        else
+        if(center_wavelength == nullptr)
         {
             center_wavelength = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength>();
-            center_wavelength->parent = this;
-            children["center-wavelength"] = center_wavelength;
         }
-        return children.at("center-wavelength");
+        return center_wavelength;
     }
 
     if(child_yang_name == "dgd")
     {
-        if(dgd != nullptr)
-        {
-            children["dgd"] = dgd;
-        }
-        else
+        if(dgd == nullptr)
         {
             dgd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd>();
-            dgd->parent = this;
-            children["dgd"] = dgd;
         }
-        return children.at("dgd");
+        return dgd;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "lbc-pc")
     {
-        if(lbc_pc != nullptr)
-        {
-            children["lbc-pc"] = lbc_pc;
-        }
-        else
+        if(lbc_pc == nullptr)
         {
             lbc_pc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LbcPc>();
-            lbc_pc->parent = this;
-            children["lbc-pc"] = lbc_pc;
         }
-        return children.at("lbc-pc");
+        return lbc_pc;
     }
 
     if(child_yang_name == "low-sig-freq-off")
     {
-        if(low_sig_freq_off != nullptr)
-        {
-            children["low-sig-freq-off"] = low_sig_freq_off;
-        }
-        else
+        if(low_sig_freq_off == nullptr)
         {
             low_sig_freq_off = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff>();
-            low_sig_freq_off->parent = this;
-            children["low-sig-freq-off"] = low_sig_freq_off;
         }
-        return children.at("low-sig-freq-off");
+        return low_sig_freq_off;
     }
 
     if(child_yang_name == "opr")
     {
-        if(opr != nullptr)
-        {
-            children["opr"] = opr;
-        }
-        else
+        if(opr == nullptr)
         {
             opr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opr>();
-            opr->parent = this;
-            children["opr"] = opr;
         }
-        return children.at("opr");
+        return opr;
     }
 
     if(child_yang_name == "opt")
     {
-        if(opt != nullptr)
-        {
-            children["opt"] = opt;
-        }
-        else
+        if(opt == nullptr)
         {
             opt = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opt>();
-            opt->parent = this;
-            children["opt"] = opt;
         }
-        return children.at("opt");
+        return opt;
     }
 
     if(child_yang_name == "osnr")
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
-        else
+        if(osnr == nullptr)
         {
             osnr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr>();
-            osnr->parent = this;
-            children["osnr"] = osnr;
         }
-        return children.at("osnr");
+        return osnr;
     }
 
     if(child_yang_name == "pcr")
     {
-        if(pcr != nullptr)
-        {
-            children["pcr"] = pcr;
-        }
-        else
+        if(pcr == nullptr)
         {
             pcr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr>();
-            pcr->parent = this;
-            children["pcr"] = pcr;
         }
-        return children.at("pcr");
+        return pcr;
     }
 
     if(child_yang_name == "pdl")
     {
-        if(pdl != nullptr)
-        {
-            children["pdl"] = pdl;
-        }
-        else
+        if(pdl == nullptr)
         {
             pdl = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl>();
-            pdl->parent = this;
-            children["pdl"] = pdl;
         }
-        return children.at("pdl");
+        return pdl;
     }
 
     if(child_yang_name == "pmd")
     {
-        if(pmd != nullptr)
-        {
-            children["pmd"] = pmd;
-        }
-        else
+        if(pmd == nullptr)
         {
             pmd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd>();
-            pmd->parent = this;
-            children["pmd"] = pmd;
         }
-        return children.at("pmd");
+        return pmd;
     }
 
     if(child_yang_name == "pn")
     {
-        if(pn != nullptr)
-        {
-            children["pn"] = pn;
-        }
-        else
+        if(pn == nullptr)
         {
             pn = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn>();
-            pn->parent = this;
-            children["pn"] = pn;
         }
-        return children.at("pn");
+        return pn;
     }
 
     if(child_yang_name == "rx-sig-pow")
     {
-        if(rx_sig_pow != nullptr)
-        {
-            children["rx-sig-pow"] = rx_sig_pow;
-        }
-        else
+        if(rx_sig_pow == nullptr)
         {
             rx_sig_pow = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow>();
-            rx_sig_pow->parent = this;
-            children["rx-sig-pow"] = rx_sig_pow;
         }
-        return children.at("rx-sig-pow");
+        return rx_sig_pow;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::get_children() const
 {
-    if(children.find("cd") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cd != nullptr)
     {
-        if(cd != nullptr)
-        {
-            children["cd"] = cd;
-        }
+        children["cd"] = cd;
     }
 
-    if(children.find("center-wavelength") == children.end())
+    if(center_wavelength != nullptr)
     {
-        if(center_wavelength != nullptr)
-        {
-            children["center-wavelength"] = center_wavelength;
-        }
+        children["center-wavelength"] = center_wavelength;
     }
 
-    if(children.find("dgd") == children.end())
+    if(dgd != nullptr)
     {
-        if(dgd != nullptr)
-        {
-            children["dgd"] = dgd;
-        }
+        children["dgd"] = dgd;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("lbc-pc") == children.end())
+    if(lbc_pc != nullptr)
     {
-        if(lbc_pc != nullptr)
-        {
-            children["lbc-pc"] = lbc_pc;
-        }
+        children["lbc-pc"] = lbc_pc;
     }
 
-    if(children.find("low-sig-freq-off") == children.end())
+    if(low_sig_freq_off != nullptr)
     {
-        if(low_sig_freq_off != nullptr)
-        {
-            children["low-sig-freq-off"] = low_sig_freq_off;
-        }
+        children["low-sig-freq-off"] = low_sig_freq_off;
     }
 
-    if(children.find("opr") == children.end())
+    if(opr != nullptr)
     {
-        if(opr != nullptr)
-        {
-            children["opr"] = opr;
-        }
+        children["opr"] = opr;
     }
 
-    if(children.find("opt") == children.end())
+    if(opt != nullptr)
     {
-        if(opt != nullptr)
-        {
-            children["opt"] = opt;
-        }
+        children["opt"] = opt;
     }
 
-    if(children.find("osnr") == children.end())
+    if(osnr != nullptr)
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
+        children["osnr"] = osnr;
     }
 
-    if(children.find("pcr") == children.end())
+    if(pcr != nullptr)
     {
-        if(pcr != nullptr)
-        {
-            children["pcr"] = pcr;
-        }
+        children["pcr"] = pcr;
     }
 
-    if(children.find("pdl") == children.end())
+    if(pdl != nullptr)
     {
-        if(pdl != nullptr)
-        {
-            children["pdl"] = pdl;
-        }
+        children["pdl"] = pdl;
     }
 
-    if(children.find("pmd") == children.end())
+    if(pmd != nullptr)
     {
-        if(pmd != nullptr)
-        {
-            children["pmd"] = pmd;
-        }
+        children["pmd"] = pmd;
     }
 
-    if(children.find("pn") == children.end())
+    if(pn != nullptr)
     {
-        if(pn != nullptr)
-        {
-            children["pn"] = pn;
-        }
+        children["pn"] = pn;
     }
 
-    if(children.find("rx-sig-pow") == children.end())
+    if(rx_sig_pow != nullptr)
     {
-        if(rx_sig_pow != nullptr)
-        {
-            children["rx-sig-pow"] = rx_sig_pow;
-        }
+        children["rx-sig-pow"] = rx_sig_pow;
     }
 
     return children;
@@ -1068,7 +848,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1099,20 +879,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1204,7 +976,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LbcPc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LbcPc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1235,20 +1007,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LbcPc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LbcPc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LbcPc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1340,7 +1104,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1371,20 +1135,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1476,7 +1232,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1507,20 +1263,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Opr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1612,7 +1360,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1643,20 +1391,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1748,7 +1488,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1779,20 +1519,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1884,7 +1616,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1915,20 +1647,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2020,7 +1744,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2051,20 +1775,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2156,7 +1872,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2187,20 +1903,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2292,7 +2000,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2323,20 +2031,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2428,7 +2128,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2459,20 +2159,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2564,7 +2256,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2595,20 +2287,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2700,7 +2384,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2731,20 +2415,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2836,7 +2512,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2867,20 +2543,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2958,7 +2626,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2981,15 +2649,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24fec-history")
     {
         for(auto const & c : optics_hour24fec_history)
@@ -2997,28 +2656,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory>();
         c->parent = this;
-        optics_hour24fec_history.push_back(std::move(c));
-        children[segment_path] = optics_hour24fec_history.back();
-        return children.at(segment_path);
+        optics_hour24fec_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_hour24fec_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3035,7 +2690,6 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     optics_hour24fec_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances>())
 {
     optics_hour24fec_time_line_instances->parent = this;
-    children["optics-hour24fec-time-line-instances"] = optics_hour24fec_time_line_instances;
 
     yang_name = "optics-hour24fec-history"; yang_parent_name = "optics-hour24fec-histories";
 }
@@ -3066,7 +2720,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3090,41 +2744,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24fec-time-line-instances")
     {
-        if(optics_hour24fec_time_line_instances != nullptr)
-        {
-            children["optics-hour24fec-time-line-instances"] = optics_hour24fec_time_line_instances;
-        }
-        else
+        if(optics_hour24fec_time_line_instances == nullptr)
         {
             optics_hour24fec_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances>();
-            optics_hour24fec_time_line_instances->parent = this;
-            children["optics-hour24fec-time-line-instances"] = optics_hour24fec_time_line_instances;
         }
-        return children.at("optics-hour24fec-time-line-instances");
+        return optics_hour24fec_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_children() const
 {
-    if(children.find("optics-hour24fec-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_hour24fec_time_line_instances != nullptr)
     {
-        if(optics_hour24fec_time_line_instances != nullptr)
-        {
-            children["optics-hour24fec-time-line-instances"] = optics_hour24fec_time_line_instances;
-        }
+        children["optics-hour24fec-time-line-instances"] = optics_hour24fec_time_line_instances;
     }
 
     return children;
@@ -3176,7 +2813,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3199,15 +2836,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24fec-time-line-instance")
     {
         for(auto const & c : optics_hour24fec_time_line_instance)
@@ -3215,28 +2843,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance>();
         c->parent = this;
-        optics_hour24fec_time_line_instance.push_back(std::move(c));
-        children[segment_path] = optics_hour24fec_time_line_instance.back();
-        return children.at(segment_path);
+        optics_hour24fec_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_hour24fec_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3266,22 +2890,16 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,uc_words(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "optics-hour24fec-time-line-instance"; yang_parent_name = "optics-hour24fec-time-line-instances";
 }
@@ -3338,7 +2956,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3370,156 +2988,94 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -3605,7 +3161,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3632,20 +3188,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3709,7 +3257,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3736,20 +3284,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3825,7 +3365,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3856,20 +3396,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3961,7 +3493,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3992,20 +3524,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4097,7 +3621,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4128,20 +3652,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4233,7 +3749,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4264,20 +3780,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4323,10 +3831,8 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,optics_second30fec_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories>())
 {
     optics_second30_optics_histories->parent = this;
-    children["optics-second30-optics-histories"] = optics_second30_optics_histories;
 
     optics_second30fec_histories->parent = this;
-    children["optics-second30fec-histories"] = optics_second30fec_histories;
 
     yang_name = "optics-second30-history"; yang_parent_name = "optics-port-history";
 }
@@ -4357,7 +3863,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4380,64 +3886,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-second30-optics-histories")
     {
-        if(optics_second30_optics_histories != nullptr)
-        {
-            children["optics-second30-optics-histories"] = optics_second30_optics_histories;
-        }
-        else
+        if(optics_second30_optics_histories == nullptr)
         {
             optics_second30_optics_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories>();
-            optics_second30_optics_histories->parent = this;
-            children["optics-second30-optics-histories"] = optics_second30_optics_histories;
         }
-        return children.at("optics-second30-optics-histories");
+        return optics_second30_optics_histories;
     }
 
     if(child_yang_name == "optics-second30fec-histories")
     {
-        if(optics_second30fec_histories != nullptr)
-        {
-            children["optics-second30fec-histories"] = optics_second30fec_histories;
-        }
-        else
+        if(optics_second30fec_histories == nullptr)
         {
             optics_second30fec_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories>();
-            optics_second30fec_histories->parent = this;
-            children["optics-second30fec-histories"] = optics_second30fec_histories;
         }
-        return children.at("optics-second30fec-histories");
+        return optics_second30fec_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::get_children() const
 {
-    if(children.find("optics-second30-optics-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_second30_optics_histories != nullptr)
     {
-        if(optics_second30_optics_histories != nullptr)
-        {
-            children["optics-second30-optics-histories"] = optics_second30_optics_histories;
-        }
+        children["optics-second30-optics-histories"] = optics_second30_optics_histories;
     }
 
-    if(children.find("optics-second30fec-histories") == children.end())
+    if(optics_second30fec_histories != nullptr)
     {
-        if(optics_second30fec_histories != nullptr)
-        {
-            children["optics-second30fec-histories"] = optics_second30fec_histories;
-        }
+        children["optics-second30fec-histories"] = optics_second30fec_histories;
     }
 
     return children;
@@ -4485,7 +3965,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4508,15 +3988,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-second30-optics-history")
     {
         for(auto const & c : optics_second30_optics_history)
@@ -4524,28 +3995,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory>();
         c->parent = this;
-        optics_second30_optics_history.push_back(std::move(c));
-        children[segment_path] = optics_second30_optics_history.back();
-        return children.at(segment_path);
+        optics_second30_optics_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_second30_optics_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4562,7 +4029,6 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     optics_second30_optics_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances>())
 {
     optics_second30_optics_time_line_instances->parent = this;
-    children["optics-second30-optics-time-line-instances"] = optics_second30_optics_time_line_instances;
 
     yang_name = "optics-second30-optics-history"; yang_parent_name = "optics-second30-optics-histories";
 }
@@ -4593,7 +4059,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4617,41 +4083,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-second30-optics-time-line-instances")
     {
-        if(optics_second30_optics_time_line_instances != nullptr)
-        {
-            children["optics-second30-optics-time-line-instances"] = optics_second30_optics_time_line_instances;
-        }
-        else
+        if(optics_second30_optics_time_line_instances == nullptr)
         {
             optics_second30_optics_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances>();
-            optics_second30_optics_time_line_instances->parent = this;
-            children["optics-second30-optics-time-line-instances"] = optics_second30_optics_time_line_instances;
         }
-        return children.at("optics-second30-optics-time-line-instances");
+        return optics_second30_optics_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::get_children() const
 {
-    if(children.find("optics-second30-optics-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_second30_optics_time_line_instances != nullptr)
     {
-        if(optics_second30_optics_time_line_instances != nullptr)
-        {
-            children["optics-second30-optics-time-line-instances"] = optics_second30_optics_time_line_instances;
-        }
+        children["optics-second30-optics-time-line-instances"] = optics_second30_optics_time_line_instances;
     }
 
     return children;
@@ -4703,7 +4152,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4726,15 +4175,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-second30-optics-time-line-instance")
     {
         for(auto const & c : optics_second30_optics_time_line_instance)
@@ -4742,28 +4182,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance>();
         c->parent = this;
-        optics_second30_optics_time_line_instance.push_back(std::move(c));
-        children[segment_path] = optics_second30_optics_time_line_instance.back();
-        return children.at(segment_path);
+        optics_second30_optics_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_second30_optics_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4801,46 +4237,32 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,rx_sig_pow(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow>())
 {
     cd->parent = this;
-    children["cd"] = cd;
 
     center_wavelength->parent = this;
-    children["center-wavelength"] = center_wavelength;
 
     dgd->parent = this;
-    children["dgd"] = dgd;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     lbc_pc->parent = this;
-    children["lbc-pc"] = lbc_pc;
 
     low_sig_freq_off->parent = this;
-    children["low-sig-freq-off"] = low_sig_freq_off;
 
     opr->parent = this;
-    children["opr"] = opr;
 
     opt->parent = this;
-    children["opt"] = opt;
 
     osnr->parent = this;
-    children["osnr"] = osnr;
 
     pcr->parent = this;
-    children["pcr"] = pcr;
 
     pdl->parent = this;
-    children["pdl"] = pdl;
 
     pmd->parent = this;
-    children["pmd"] = pmd;
 
     pn->parent = this;
-    children["pn"] = pn;
 
     rx_sig_pow->parent = this;
-    children["rx-sig-pow"] = rx_sig_pow;
 
     yang_name = "optics-second30-optics-time-line-instance"; yang_parent_name = "optics-second30-optics-time-line-instances";
 }
@@ -4913,7 +4335,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4945,340 +4367,206 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cd")
     {
-        if(cd != nullptr)
-        {
-            children["cd"] = cd;
-        }
-        else
+        if(cd == nullptr)
         {
             cd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Cd>();
-            cd->parent = this;
-            children["cd"] = cd;
         }
-        return children.at("cd");
+        return cd;
     }
 
     if(child_yang_name == "center-wavelength")
     {
-        if(center_wavelength != nullptr)
-        {
-            children["center-wavelength"] = center_wavelength;
-        }
-        else
+        if(center_wavelength == nullptr)
         {
             center_wavelength = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::CenterWavelength>();
-            center_wavelength->parent = this;
-            children["center-wavelength"] = center_wavelength;
         }
-        return children.at("center-wavelength");
+        return center_wavelength;
     }
 
     if(child_yang_name == "dgd")
     {
-        if(dgd != nullptr)
-        {
-            children["dgd"] = dgd;
-        }
-        else
+        if(dgd == nullptr)
         {
             dgd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Dgd>();
-            dgd->parent = this;
-            children["dgd"] = dgd;
         }
-        return children.at("dgd");
+        return dgd;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "lbc-pc")
     {
-        if(lbc_pc != nullptr)
-        {
-            children["lbc-pc"] = lbc_pc;
-        }
-        else
+        if(lbc_pc == nullptr)
         {
             lbc_pc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LbcPc>();
-            lbc_pc->parent = this;
-            children["lbc-pc"] = lbc_pc;
         }
-        return children.at("lbc-pc");
+        return lbc_pc;
     }
 
     if(child_yang_name == "low-sig-freq-off")
     {
-        if(low_sig_freq_off != nullptr)
-        {
-            children["low-sig-freq-off"] = low_sig_freq_off;
-        }
-        else
+        if(low_sig_freq_off == nullptr)
         {
             low_sig_freq_off = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff>();
-            low_sig_freq_off->parent = this;
-            children["low-sig-freq-off"] = low_sig_freq_off;
         }
-        return children.at("low-sig-freq-off");
+        return low_sig_freq_off;
     }
 
     if(child_yang_name == "opr")
     {
-        if(opr != nullptr)
-        {
-            children["opr"] = opr;
-        }
-        else
+        if(opr == nullptr)
         {
             opr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opr>();
-            opr->parent = this;
-            children["opr"] = opr;
         }
-        return children.at("opr");
+        return opr;
     }
 
     if(child_yang_name == "opt")
     {
-        if(opt != nullptr)
-        {
-            children["opt"] = opt;
-        }
-        else
+        if(opt == nullptr)
         {
             opt = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opt>();
-            opt->parent = this;
-            children["opt"] = opt;
         }
-        return children.at("opt");
+        return opt;
     }
 
     if(child_yang_name == "osnr")
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
-        else
+        if(osnr == nullptr)
         {
             osnr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Osnr>();
-            osnr->parent = this;
-            children["osnr"] = osnr;
         }
-        return children.at("osnr");
+        return osnr;
     }
 
     if(child_yang_name == "pcr")
     {
-        if(pcr != nullptr)
-        {
-            children["pcr"] = pcr;
-        }
-        else
+        if(pcr == nullptr)
         {
             pcr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pcr>();
-            pcr->parent = this;
-            children["pcr"] = pcr;
         }
-        return children.at("pcr");
+        return pcr;
     }
 
     if(child_yang_name == "pdl")
     {
-        if(pdl != nullptr)
-        {
-            children["pdl"] = pdl;
-        }
-        else
+        if(pdl == nullptr)
         {
             pdl = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pdl>();
-            pdl->parent = this;
-            children["pdl"] = pdl;
         }
-        return children.at("pdl");
+        return pdl;
     }
 
     if(child_yang_name == "pmd")
     {
-        if(pmd != nullptr)
-        {
-            children["pmd"] = pmd;
-        }
-        else
+        if(pmd == nullptr)
         {
             pmd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pmd>();
-            pmd->parent = this;
-            children["pmd"] = pmd;
         }
-        return children.at("pmd");
+        return pmd;
     }
 
     if(child_yang_name == "pn")
     {
-        if(pn != nullptr)
-        {
-            children["pn"] = pn;
-        }
-        else
+        if(pn == nullptr)
         {
             pn = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn>();
-            pn->parent = this;
-            children["pn"] = pn;
         }
-        return children.at("pn");
+        return pn;
     }
 
     if(child_yang_name == "rx-sig-pow")
     {
-        if(rx_sig_pow != nullptr)
-        {
-            children["rx-sig-pow"] = rx_sig_pow;
-        }
-        else
+        if(rx_sig_pow == nullptr)
         {
             rx_sig_pow = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow>();
-            rx_sig_pow->parent = this;
-            children["rx-sig-pow"] = rx_sig_pow;
         }
-        return children.at("rx-sig-pow");
+        return rx_sig_pow;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::get_children() const
 {
-    if(children.find("cd") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cd != nullptr)
     {
-        if(cd != nullptr)
-        {
-            children["cd"] = cd;
-        }
+        children["cd"] = cd;
     }
 
-    if(children.find("center-wavelength") == children.end())
+    if(center_wavelength != nullptr)
     {
-        if(center_wavelength != nullptr)
-        {
-            children["center-wavelength"] = center_wavelength;
-        }
+        children["center-wavelength"] = center_wavelength;
     }
 
-    if(children.find("dgd") == children.end())
+    if(dgd != nullptr)
     {
-        if(dgd != nullptr)
-        {
-            children["dgd"] = dgd;
-        }
+        children["dgd"] = dgd;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("lbc-pc") == children.end())
+    if(lbc_pc != nullptr)
     {
-        if(lbc_pc != nullptr)
-        {
-            children["lbc-pc"] = lbc_pc;
-        }
+        children["lbc-pc"] = lbc_pc;
     }
 
-    if(children.find("low-sig-freq-off") == children.end())
+    if(low_sig_freq_off != nullptr)
     {
-        if(low_sig_freq_off != nullptr)
-        {
-            children["low-sig-freq-off"] = low_sig_freq_off;
-        }
+        children["low-sig-freq-off"] = low_sig_freq_off;
     }
 
-    if(children.find("opr") == children.end())
+    if(opr != nullptr)
     {
-        if(opr != nullptr)
-        {
-            children["opr"] = opr;
-        }
+        children["opr"] = opr;
     }
 
-    if(children.find("opt") == children.end())
+    if(opt != nullptr)
     {
-        if(opt != nullptr)
-        {
-            children["opt"] = opt;
-        }
+        children["opt"] = opt;
     }
 
-    if(children.find("osnr") == children.end())
+    if(osnr != nullptr)
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
+        children["osnr"] = osnr;
     }
 
-    if(children.find("pcr") == children.end())
+    if(pcr != nullptr)
     {
-        if(pcr != nullptr)
-        {
-            children["pcr"] = pcr;
-        }
+        children["pcr"] = pcr;
     }
 
-    if(children.find("pdl") == children.end())
+    if(pdl != nullptr)
     {
-        if(pdl != nullptr)
-        {
-            children["pdl"] = pdl;
-        }
+        children["pdl"] = pdl;
     }
 
-    if(children.find("pmd") == children.end())
+    if(pmd != nullptr)
     {
-        if(pmd != nullptr)
-        {
-            children["pmd"] = pmd;
-        }
+        children["pmd"] = pmd;
     }
 
-    if(children.find("pn") == children.end())
+    if(pn != nullptr)
     {
-        if(pn != nullptr)
-        {
-            children["pn"] = pn;
-        }
+        children["pn"] = pn;
     }
 
-    if(children.find("rx-sig-pow") == children.end())
+    if(rx_sig_pow != nullptr)
     {
-        if(rx_sig_pow != nullptr)
-        {
-            children["rx-sig-pow"] = rx_sig_pow;
-        }
+        children["rx-sig-pow"] = rx_sig_pow;
     }
 
     return children;
@@ -5376,7 +4664,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5407,20 +4695,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5512,7 +4792,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LbcPc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LbcPc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5543,20 +4823,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LbcPc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LbcPc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LbcPc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5648,7 +4920,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5679,20 +4951,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5784,7 +5048,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5815,20 +5079,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5920,7 +5176,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Cd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Cd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5951,20 +5207,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Cd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Cd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Cd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6056,7 +5304,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Dgd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Dgd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6087,20 +5335,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Dgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Dgd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Dgd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6192,7 +5432,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pmd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pmd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6223,20 +5463,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pmd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pmd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6328,7 +5560,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Osnr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Osnr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6359,20 +5591,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Osnr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Osnr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6464,7 +5688,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::CenterWavelength::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::CenterWavelength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6495,20 +5719,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::CenterWavelength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::CenterWavelength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6600,7 +5816,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pdl::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pdl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6631,20 +5847,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pdl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pdl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6736,7 +5944,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pcr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pcr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6767,20 +5975,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pcr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pcr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6872,7 +6072,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6903,20 +6103,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7008,7 +6200,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7039,20 +6231,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7144,7 +6328,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7175,20 +6359,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7266,7 +6442,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7289,15 +6465,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-second30fec-history")
     {
         for(auto const & c : optics_second30fec_history)
@@ -7305,28 +6472,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory>();
         c->parent = this;
-        optics_second30fec_history.push_back(std::move(c));
-        children[segment_path] = optics_second30fec_history.back();
-        return children.at(segment_path);
+        optics_second30fec_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_second30fec_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7343,7 +6506,6 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     optics_second30fec_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances>())
 {
     optics_second30fec_time_line_instances->parent = this;
-    children["optics-second30fec-time-line-instances"] = optics_second30fec_time_line_instances;
 
     yang_name = "optics-second30fec-history"; yang_parent_name = "optics-second30fec-histories";
 }
@@ -7374,7 +6536,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7398,41 +6560,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-second30fec-time-line-instances")
     {
-        if(optics_second30fec_time_line_instances != nullptr)
-        {
-            children["optics-second30fec-time-line-instances"] = optics_second30fec_time_line_instances;
-        }
-        else
+        if(optics_second30fec_time_line_instances == nullptr)
         {
             optics_second30fec_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances>();
-            optics_second30fec_time_line_instances->parent = this;
-            children["optics-second30fec-time-line-instances"] = optics_second30fec_time_line_instances;
         }
-        return children.at("optics-second30fec-time-line-instances");
+        return optics_second30fec_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::get_children() const
 {
-    if(children.find("optics-second30fec-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_second30fec_time_line_instances != nullptr)
     {
-        if(optics_second30fec_time_line_instances != nullptr)
-        {
-            children["optics-second30fec-time-line-instances"] = optics_second30fec_time_line_instances;
-        }
+        children["optics-second30fec-time-line-instances"] = optics_second30fec_time_line_instances;
     }
 
     return children;
@@ -7484,7 +6629,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7507,15 +6652,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-second30fec-time-line-instance")
     {
         for(auto const & c : optics_second30fec_time_line_instance)
@@ -7523,28 +6659,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance>();
         c->parent = this;
-        optics_second30fec_time_line_instance.push_back(std::move(c));
-        children[segment_path] = optics_second30fec_time_line_instance.back();
-        return children.at(segment_path);
+        optics_second30fec_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_second30fec_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7574,22 +6706,16 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,uc_words(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "optics-second30fec-time-line-instance"; yang_parent_name = "optics-second30fec-time-line-instances";
 }
@@ -7646,7 +6772,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7678,156 +6804,94 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -7913,7 +6977,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7940,20 +7004,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8017,7 +7073,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8044,20 +7100,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8133,7 +7181,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8164,20 +7212,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8269,7 +7309,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8300,20 +7340,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8405,7 +7437,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8436,20 +7468,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8541,7 +7565,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8572,20 +7596,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30FecHistories::OpticsSecond30FecHistory::OpticsSecond30FecTimeLineInstances::OpticsSecond30FecTimeLineInstance::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8631,10 +7647,8 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,optics_minute15fec_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories>())
 {
     optics_minute15_optics_histories->parent = this;
-    children["optics-minute15-optics-histories"] = optics_minute15_optics_histories;
 
     optics_minute15fec_histories->parent = this;
-    children["optics-minute15fec-histories"] = optics_minute15fec_histories;
 
     yang_name = "optics-minute15-history"; yang_parent_name = "optics-port-history";
 }
@@ -8665,7 +7679,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8688,64 +7702,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-minute15-optics-histories")
     {
-        if(optics_minute15_optics_histories != nullptr)
-        {
-            children["optics-minute15-optics-histories"] = optics_minute15_optics_histories;
-        }
-        else
+        if(optics_minute15_optics_histories == nullptr)
         {
             optics_minute15_optics_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories>();
-            optics_minute15_optics_histories->parent = this;
-            children["optics-minute15-optics-histories"] = optics_minute15_optics_histories;
         }
-        return children.at("optics-minute15-optics-histories");
+        return optics_minute15_optics_histories;
     }
 
     if(child_yang_name == "optics-minute15fec-histories")
     {
-        if(optics_minute15fec_histories != nullptr)
-        {
-            children["optics-minute15fec-histories"] = optics_minute15fec_histories;
-        }
-        else
+        if(optics_minute15fec_histories == nullptr)
         {
             optics_minute15fec_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories>();
-            optics_minute15fec_histories->parent = this;
-            children["optics-minute15fec-histories"] = optics_minute15fec_histories;
         }
-        return children.at("optics-minute15fec-histories");
+        return optics_minute15fec_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::get_children() const
 {
-    if(children.find("optics-minute15-optics-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_minute15_optics_histories != nullptr)
     {
-        if(optics_minute15_optics_histories != nullptr)
-        {
-            children["optics-minute15-optics-histories"] = optics_minute15_optics_histories;
-        }
+        children["optics-minute15-optics-histories"] = optics_minute15_optics_histories;
     }
 
-    if(children.find("optics-minute15fec-histories") == children.end())
+    if(optics_minute15fec_histories != nullptr)
     {
-        if(optics_minute15fec_histories != nullptr)
-        {
-            children["optics-minute15fec-histories"] = optics_minute15fec_histories;
-        }
+        children["optics-minute15fec-histories"] = optics_minute15fec_histories;
     }
 
     return children;
@@ -8793,7 +7781,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8816,15 +7804,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-minute15-optics-history")
     {
         for(auto const & c : optics_minute15_optics_history)
@@ -8832,28 +7811,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory>();
         c->parent = this;
-        optics_minute15_optics_history.push_back(std::move(c));
-        children[segment_path] = optics_minute15_optics_history.back();
-        return children.at(segment_path);
+        optics_minute15_optics_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_minute15_optics_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8870,7 +7845,6 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     optics_minute15_optics_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances>())
 {
     optics_minute15_optics_time_line_instances->parent = this;
-    children["optics-minute15-optics-time-line-instances"] = optics_minute15_optics_time_line_instances;
 
     yang_name = "optics-minute15-optics-history"; yang_parent_name = "optics-minute15-optics-histories";
 }
@@ -8901,7 +7875,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8925,41 +7899,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-minute15-optics-time-line-instances")
     {
-        if(optics_minute15_optics_time_line_instances != nullptr)
-        {
-            children["optics-minute15-optics-time-line-instances"] = optics_minute15_optics_time_line_instances;
-        }
-        else
+        if(optics_minute15_optics_time_line_instances == nullptr)
         {
             optics_minute15_optics_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances>();
-            optics_minute15_optics_time_line_instances->parent = this;
-            children["optics-minute15-optics-time-line-instances"] = optics_minute15_optics_time_line_instances;
         }
-        return children.at("optics-minute15-optics-time-line-instances");
+        return optics_minute15_optics_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::get_children() const
 {
-    if(children.find("optics-minute15-optics-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_minute15_optics_time_line_instances != nullptr)
     {
-        if(optics_minute15_optics_time_line_instances != nullptr)
-        {
-            children["optics-minute15-optics-time-line-instances"] = optics_minute15_optics_time_line_instances;
-        }
+        children["optics-minute15-optics-time-line-instances"] = optics_minute15_optics_time_line_instances;
     }
 
     return children;
@@ -9011,7 +7968,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9034,15 +7991,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-minute15-optics-time-line-instance")
     {
         for(auto const & c : optics_minute15_optics_time_line_instance)
@@ -9050,28 +7998,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance>();
         c->parent = this;
-        optics_minute15_optics_time_line_instance.push_back(std::move(c));
-        children[segment_path] = optics_minute15_optics_time_line_instance.back();
-        return children.at(segment_path);
+        optics_minute15_optics_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_minute15_optics_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9109,46 +8053,32 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,rx_sig_pow(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow>())
 {
     cd->parent = this;
-    children["cd"] = cd;
 
     center_wavelength->parent = this;
-    children["center-wavelength"] = center_wavelength;
 
     dgd->parent = this;
-    children["dgd"] = dgd;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     lbc_pc->parent = this;
-    children["lbc-pc"] = lbc_pc;
 
     low_sig_freq_off->parent = this;
-    children["low-sig-freq-off"] = low_sig_freq_off;
 
     opr->parent = this;
-    children["opr"] = opr;
 
     opt->parent = this;
-    children["opt"] = opt;
 
     osnr->parent = this;
-    children["osnr"] = osnr;
 
     pcr->parent = this;
-    children["pcr"] = pcr;
 
     pdl->parent = this;
-    children["pdl"] = pdl;
 
     pmd->parent = this;
-    children["pmd"] = pmd;
 
     pn->parent = this;
-    children["pn"] = pn;
 
     rx_sig_pow->parent = this;
-    children["rx-sig-pow"] = rx_sig_pow;
 
     yang_name = "optics-minute15-optics-time-line-instance"; yang_parent_name = "optics-minute15-optics-time-line-instances";
 }
@@ -9221,7 +8151,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9253,340 +8183,206 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cd")
     {
-        if(cd != nullptr)
-        {
-            children["cd"] = cd;
-        }
-        else
+        if(cd == nullptr)
         {
             cd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Cd>();
-            cd->parent = this;
-            children["cd"] = cd;
         }
-        return children.at("cd");
+        return cd;
     }
 
     if(child_yang_name == "center-wavelength")
     {
-        if(center_wavelength != nullptr)
-        {
-            children["center-wavelength"] = center_wavelength;
-        }
-        else
+        if(center_wavelength == nullptr)
         {
             center_wavelength = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength>();
-            center_wavelength->parent = this;
-            children["center-wavelength"] = center_wavelength;
         }
-        return children.at("center-wavelength");
+        return center_wavelength;
     }
 
     if(child_yang_name == "dgd")
     {
-        if(dgd != nullptr)
-        {
-            children["dgd"] = dgd;
-        }
-        else
+        if(dgd == nullptr)
         {
             dgd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Dgd>();
-            dgd->parent = this;
-            children["dgd"] = dgd;
         }
-        return children.at("dgd");
+        return dgd;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "lbc-pc")
     {
-        if(lbc_pc != nullptr)
-        {
-            children["lbc-pc"] = lbc_pc;
-        }
-        else
+        if(lbc_pc == nullptr)
         {
             lbc_pc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LbcPc>();
-            lbc_pc->parent = this;
-            children["lbc-pc"] = lbc_pc;
         }
-        return children.at("lbc-pc");
+        return lbc_pc;
     }
 
     if(child_yang_name == "low-sig-freq-off")
     {
-        if(low_sig_freq_off != nullptr)
-        {
-            children["low-sig-freq-off"] = low_sig_freq_off;
-        }
-        else
+        if(low_sig_freq_off == nullptr)
         {
             low_sig_freq_off = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff>();
-            low_sig_freq_off->parent = this;
-            children["low-sig-freq-off"] = low_sig_freq_off;
         }
-        return children.at("low-sig-freq-off");
+        return low_sig_freq_off;
     }
 
     if(child_yang_name == "opr")
     {
-        if(opr != nullptr)
-        {
-            children["opr"] = opr;
-        }
-        else
+        if(opr == nullptr)
         {
             opr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opr>();
-            opr->parent = this;
-            children["opr"] = opr;
         }
-        return children.at("opr");
+        return opr;
     }
 
     if(child_yang_name == "opt")
     {
-        if(opt != nullptr)
-        {
-            children["opt"] = opt;
-        }
-        else
+        if(opt == nullptr)
         {
             opt = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opt>();
-            opt->parent = this;
-            children["opt"] = opt;
         }
-        return children.at("opt");
+        return opt;
     }
 
     if(child_yang_name == "osnr")
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
-        else
+        if(osnr == nullptr)
         {
             osnr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Osnr>();
-            osnr->parent = this;
-            children["osnr"] = osnr;
         }
-        return children.at("osnr");
+        return osnr;
     }
 
     if(child_yang_name == "pcr")
     {
-        if(pcr != nullptr)
-        {
-            children["pcr"] = pcr;
-        }
-        else
+        if(pcr == nullptr)
         {
             pcr = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr>();
-            pcr->parent = this;
-            children["pcr"] = pcr;
         }
-        return children.at("pcr");
+        return pcr;
     }
 
     if(child_yang_name == "pdl")
     {
-        if(pdl != nullptr)
-        {
-            children["pdl"] = pdl;
-        }
-        else
+        if(pdl == nullptr)
         {
             pdl = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl>();
-            pdl->parent = this;
-            children["pdl"] = pdl;
         }
-        return children.at("pdl");
+        return pdl;
     }
 
     if(child_yang_name == "pmd")
     {
-        if(pmd != nullptr)
-        {
-            children["pmd"] = pmd;
-        }
-        else
+        if(pmd == nullptr)
         {
             pmd = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pmd>();
-            pmd->parent = this;
-            children["pmd"] = pmd;
         }
-        return children.at("pmd");
+        return pmd;
     }
 
     if(child_yang_name == "pn")
     {
-        if(pn != nullptr)
-        {
-            children["pn"] = pn;
-        }
-        else
+        if(pn == nullptr)
         {
             pn = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn>();
-            pn->parent = this;
-            children["pn"] = pn;
         }
-        return children.at("pn");
+        return pn;
     }
 
     if(child_yang_name == "rx-sig-pow")
     {
-        if(rx_sig_pow != nullptr)
-        {
-            children["rx-sig-pow"] = rx_sig_pow;
-        }
-        else
+        if(rx_sig_pow == nullptr)
         {
             rx_sig_pow = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow>();
-            rx_sig_pow->parent = this;
-            children["rx-sig-pow"] = rx_sig_pow;
         }
-        return children.at("rx-sig-pow");
+        return rx_sig_pow;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::get_children() const
 {
-    if(children.find("cd") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cd != nullptr)
     {
-        if(cd != nullptr)
-        {
-            children["cd"] = cd;
-        }
+        children["cd"] = cd;
     }
 
-    if(children.find("center-wavelength") == children.end())
+    if(center_wavelength != nullptr)
     {
-        if(center_wavelength != nullptr)
-        {
-            children["center-wavelength"] = center_wavelength;
-        }
+        children["center-wavelength"] = center_wavelength;
     }
 
-    if(children.find("dgd") == children.end())
+    if(dgd != nullptr)
     {
-        if(dgd != nullptr)
-        {
-            children["dgd"] = dgd;
-        }
+        children["dgd"] = dgd;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("lbc-pc") == children.end())
+    if(lbc_pc != nullptr)
     {
-        if(lbc_pc != nullptr)
-        {
-            children["lbc-pc"] = lbc_pc;
-        }
+        children["lbc-pc"] = lbc_pc;
     }
 
-    if(children.find("low-sig-freq-off") == children.end())
+    if(low_sig_freq_off != nullptr)
     {
-        if(low_sig_freq_off != nullptr)
-        {
-            children["low-sig-freq-off"] = low_sig_freq_off;
-        }
+        children["low-sig-freq-off"] = low_sig_freq_off;
     }
 
-    if(children.find("opr") == children.end())
+    if(opr != nullptr)
     {
-        if(opr != nullptr)
-        {
-            children["opr"] = opr;
-        }
+        children["opr"] = opr;
     }
 
-    if(children.find("opt") == children.end())
+    if(opt != nullptr)
     {
-        if(opt != nullptr)
-        {
-            children["opt"] = opt;
-        }
+        children["opt"] = opt;
     }
 
-    if(children.find("osnr") == children.end())
+    if(osnr != nullptr)
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
+        children["osnr"] = osnr;
     }
 
-    if(children.find("pcr") == children.end())
+    if(pcr != nullptr)
     {
-        if(pcr != nullptr)
-        {
-            children["pcr"] = pcr;
-        }
+        children["pcr"] = pcr;
     }
 
-    if(children.find("pdl") == children.end())
+    if(pdl != nullptr)
     {
-        if(pdl != nullptr)
-        {
-            children["pdl"] = pdl;
-        }
+        children["pdl"] = pdl;
     }
 
-    if(children.find("pmd") == children.end())
+    if(pmd != nullptr)
     {
-        if(pmd != nullptr)
-        {
-            children["pmd"] = pmd;
-        }
+        children["pmd"] = pmd;
     }
 
-    if(children.find("pn") == children.end())
+    if(pn != nullptr)
     {
-        if(pn != nullptr)
-        {
-            children["pn"] = pn;
-        }
+        children["pn"] = pn;
     }
 
-    if(children.find("rx-sig-pow") == children.end())
+    if(rx_sig_pow != nullptr)
     {
-        if(rx_sig_pow != nullptr)
-        {
-            children["rx-sig-pow"] = rx_sig_pow;
-        }
+        children["rx-sig-pow"] = rx_sig_pow;
     }
 
     return children;
@@ -9684,7 +8480,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9715,20 +8511,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9820,7 +8608,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LbcPc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LbcPc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9851,20 +8639,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LbcPc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LbcPc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LbcPc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9956,7 +8736,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9987,20 +8767,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10092,7 +8864,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10123,20 +8895,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10228,7 +8992,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Cd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Cd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10259,20 +9023,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Cd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Cd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Cd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10364,7 +9120,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Dgd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Dgd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10395,20 +9151,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Dgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Dgd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Dgd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10500,7 +9248,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pmd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pmd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10531,20 +9279,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pmd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pmd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10636,7 +9376,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Osnr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Osnr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10667,20 +9407,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Osnr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Osnr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10772,7 +9504,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10803,20 +9535,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10908,7 +9632,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10939,20 +9663,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11044,7 +9760,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11075,20 +9791,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11180,7 +9888,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11211,20 +9919,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11316,7 +10016,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11347,20 +10047,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11452,7 +10144,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11483,20 +10175,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11574,7 +10258,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11597,15 +10281,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-minute15fec-history")
     {
         for(auto const & c : optics_minute15fec_history)
@@ -11613,28 +10288,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory>();
         c->parent = this;
-        optics_minute15fec_history.push_back(std::move(c));
-        children[segment_path] = optics_minute15fec_history.back();
-        return children.at(segment_path);
+        optics_minute15fec_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_minute15fec_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11651,7 +10322,6 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     optics_minute15fec_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances>())
 {
     optics_minute15fec_time_line_instances->parent = this;
-    children["optics-minute15fec-time-line-instances"] = optics_minute15fec_time_line_instances;
 
     yang_name = "optics-minute15fec-history"; yang_parent_name = "optics-minute15fec-histories";
 }
@@ -11682,7 +10352,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11706,41 +10376,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-minute15fec-time-line-instances")
     {
-        if(optics_minute15fec_time_line_instances != nullptr)
-        {
-            children["optics-minute15fec-time-line-instances"] = optics_minute15fec_time_line_instances;
-        }
-        else
+        if(optics_minute15fec_time_line_instances == nullptr)
         {
             optics_minute15fec_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances>();
-            optics_minute15fec_time_line_instances->parent = this;
-            children["optics-minute15fec-time-line-instances"] = optics_minute15fec_time_line_instances;
         }
-        return children.at("optics-minute15fec-time-line-instances");
+        return optics_minute15fec_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::get_children() const
 {
-    if(children.find("optics-minute15fec-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_minute15fec_time_line_instances != nullptr)
     {
-        if(optics_minute15fec_time_line_instances != nullptr)
-        {
-            children["optics-minute15fec-time-line-instances"] = optics_minute15fec_time_line_instances;
-        }
+        children["optics-minute15fec-time-line-instances"] = optics_minute15fec_time_line_instances;
     }
 
     return children;
@@ -11792,7 +10445,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11815,15 +10468,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-minute15fec-time-line-instance")
     {
         for(auto const & c : optics_minute15fec_time_line_instance)
@@ -11831,28 +10475,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance>();
         c->parent = this;
-        optics_minute15fec_time_line_instance.push_back(std::move(c));
-        children[segment_path] = optics_minute15fec_time_line_instance.back();
-        return children.at(segment_path);
+        optics_minute15fec_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_minute15fec_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11882,22 +10522,16 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,uc_words(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "optics-minute15fec-time-line-instance"; yang_parent_name = "optics-minute15fec-time-line-instances";
 }
@@ -11954,7 +10588,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11986,156 +10620,94 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -12221,7 +10793,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12248,20 +10820,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12325,7 +10889,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12352,20 +10916,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12441,7 +10997,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12472,20 +11028,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12577,7 +11125,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12608,20 +11156,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12713,7 +11253,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12744,20 +11284,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12849,7 +11381,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12880,20 +11412,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15FecHistories::OpticsMinute15FecHistory::OpticsMinute15FecTimeLineInstances::OpticsMinute15FecTimeLineInstance::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12938,7 +11462,6 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcHistory()
     oc_port_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories>())
 {
     oc_port_histories->parent = this;
-    children["oc-port-histories"] = oc_port_histories;
 
     yang_name = "oc-history"; yang_parent_name = "periodic";
 }
@@ -12967,7 +11490,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::get_segme
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12990,41 +11513,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::get_entity
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-port-histories")
     {
-        if(oc_port_histories != nullptr)
-        {
-            children["oc-port-histories"] = oc_port_histories;
-        }
-        else
+        if(oc_port_histories == nullptr)
         {
             oc_port_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories>();
-            oc_port_histories->parent = this;
-            children["oc-port-histories"] = oc_port_histories;
         }
-        return children.at("oc-port-histories");
+        return oc_port_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::get_children() const
 {
-    if(children.find("oc-port-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_port_histories != nullptr)
     {
-        if(oc_port_histories != nullptr)
-        {
-            children["oc-port-histories"] = oc_port_histories;
-        }
+        children["oc-port-histories"] = oc_port_histories;
     }
 
     return children;
@@ -13072,7 +11578,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13095,15 +11601,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-port-history")
     {
         for(auto const & c : oc_port_history)
@@ -13111,28 +11608,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory>();
         c->parent = this;
-        oc_port_history.push_back(std::move(c));
-        children[segment_path] = oc_port_history.back();
-        return children.at(segment_path);
+        oc_port_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : oc_port_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13150,10 +11643,8 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,oc_minute15_history(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History>())
 {
     oc_hour24_history->parent = this;
-    children["oc-hour24-history"] = oc_hour24_history;
 
     oc_minute15_history->parent = this;
-    children["oc-minute15-history"] = oc_minute15_history;
 
     yang_name = "oc-port-history"; yang_parent_name = "oc-port-histories";
 }
@@ -13186,7 +11677,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13210,64 +11701,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24-history")
     {
-        if(oc_hour24_history != nullptr)
-        {
-            children["oc-hour24-history"] = oc_hour24_history;
-        }
-        else
+        if(oc_hour24_history == nullptr)
         {
             oc_hour24_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History>();
-            oc_hour24_history->parent = this;
-            children["oc-hour24-history"] = oc_hour24_history;
         }
-        return children.at("oc-hour24-history");
+        return oc_hour24_history;
     }
 
     if(child_yang_name == "oc-minute15-history")
     {
-        if(oc_minute15_history != nullptr)
-        {
-            children["oc-minute15-history"] = oc_minute15_history;
-        }
-        else
+        if(oc_minute15_history == nullptr)
         {
             oc_minute15_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History>();
-            oc_minute15_history->parent = this;
-            children["oc-minute15-history"] = oc_minute15_history;
         }
-        return children.at("oc-minute15-history");
+        return oc_minute15_history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_children() const
 {
-    if(children.find("oc-hour24-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_hour24_history != nullptr)
     {
-        if(oc_hour24_history != nullptr)
-        {
-            children["oc-hour24-history"] = oc_hour24_history;
-        }
+        children["oc-hour24-history"] = oc_hour24_history;
     }
 
-    if(children.find("oc-minute15-history") == children.end())
+    if(oc_minute15_history != nullptr)
     {
-        if(oc_minute15_history != nullptr)
-        {
-            children["oc-minute15-history"] = oc_minute15_history;
-        }
+        children["oc-minute15-history"] = oc_minute15_history;
     }
 
     return children;
@@ -13286,7 +11751,6 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
     oc_hour24ocn_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories>())
 {
     oc_hour24ocn_histories->parent = this;
-    children["oc-hour24ocn-histories"] = oc_hour24ocn_histories;
 
     yang_name = "oc-hour24-history"; yang_parent_name = "oc-port-history";
 }
@@ -13315,7 +11779,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13338,41 +11802,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24ocn-histories")
     {
-        if(oc_hour24ocn_histories != nullptr)
-        {
-            children["oc-hour24ocn-histories"] = oc_hour24ocn_histories;
-        }
-        else
+        if(oc_hour24ocn_histories == nullptr)
         {
             oc_hour24ocn_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories>();
-            oc_hour24ocn_histories->parent = this;
-            children["oc-hour24ocn-histories"] = oc_hour24ocn_histories;
         }
-        return children.at("oc-hour24ocn-histories");
+        return oc_hour24ocn_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_children() const
 {
-    if(children.find("oc-hour24ocn-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_hour24ocn_histories != nullptr)
     {
-        if(oc_hour24ocn_histories != nullptr)
-        {
-            children["oc-hour24ocn-histories"] = oc_hour24ocn_histories;
-        }
+        children["oc-hour24ocn-histories"] = oc_hour24ocn_histories;
     }
 
     return children;
@@ -13420,7 +11867,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13443,15 +11890,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24ocn-history")
     {
         for(auto const & c : oc_hour24ocn_history)
@@ -13459,28 +11897,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory>();
         c->parent = this;
-        oc_hour24ocn_history.push_back(std::move(c));
-        children[segment_path] = oc_hour24ocn_history.back();
-        return children.at(segment_path);
+        oc_hour24ocn_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : oc_hour24ocn_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13497,7 +11931,6 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
     oc_hour24ocn_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances>())
 {
     oc_hour24ocn_time_line_instances->parent = this;
-    children["oc-hour24ocn-time-line-instances"] = oc_hour24ocn_time_line_instances;
 
     yang_name = "oc-hour24ocn-history"; yang_parent_name = "oc-hour24ocn-histories";
 }
@@ -13528,7 +11961,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13552,41 +11985,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24ocn-time-line-instances")
     {
-        if(oc_hour24ocn_time_line_instances != nullptr)
-        {
-            children["oc-hour24ocn-time-line-instances"] = oc_hour24ocn_time_line_instances;
-        }
-        else
+        if(oc_hour24ocn_time_line_instances == nullptr)
         {
             oc_hour24ocn_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances>();
-            oc_hour24ocn_time_line_instances->parent = this;
-            children["oc-hour24ocn-time-line-instances"] = oc_hour24ocn_time_line_instances;
         }
-        return children.at("oc-hour24ocn-time-line-instances");
+        return oc_hour24ocn_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::get_children() const
 {
-    if(children.find("oc-hour24ocn-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_hour24ocn_time_line_instances != nullptr)
     {
-        if(oc_hour24ocn_time_line_instances != nullptr)
-        {
-            children["oc-hour24ocn-time-line-instances"] = oc_hour24ocn_time_line_instances;
-        }
+        children["oc-hour24ocn-time-line-instances"] = oc_hour24ocn_time_line_instances;
     }
 
     return children;
@@ -13638,7 +12054,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13661,15 +12077,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24ocn-time-line-instance")
     {
         for(auto const & c : oc_hour24ocn_time_line_instance)
@@ -13677,28 +12084,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance>();
         c->parent = this;
-        oc_hour24ocn_time_line_instance.push_back(std::move(c));
-        children[segment_path] = oc_hour24ocn_time_line_instance.back();
-        return children.at(segment_path);
+        oc_hour24ocn_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : oc_hour24ocn_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13723,13 +12126,10 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,section(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section>())
 {
     fe_line->parent = this;
-    children["fe-line"] = fe_line;
 
     line->parent = this;
-    children["line"] = line;
 
     section->parent = this;
-    children["section"] = section;
 
     yang_name = "oc-hour24ocn-time-line-instance"; yang_parent_name = "oc-hour24ocn-time-line-instances";
 }
@@ -13776,7 +12176,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13806,87 +12206,52 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fe-line")
     {
-        if(fe_line != nullptr)
-        {
-            children["fe-line"] = fe_line;
-        }
-        else
+        if(fe_line == nullptr)
         {
             fe_line = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine>();
-            fe_line->parent = this;
-            children["fe-line"] = fe_line;
         }
-        return children.at("fe-line");
+        return fe_line;
     }
 
     if(child_yang_name == "line")
     {
-        if(line != nullptr)
-        {
-            children["line"] = line;
-        }
-        else
+        if(line == nullptr)
         {
             line = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line>();
-            line->parent = this;
-            children["line"] = line;
         }
-        return children.at("line");
+        return line;
     }
 
     if(child_yang_name == "section")
     {
-        if(section != nullptr)
-        {
-            children["section"] = section;
-        }
-        else
+        if(section == nullptr)
         {
             section = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section>();
-            section->parent = this;
-            children["section"] = section;
         }
-        return children.at("section");
+        return section;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::get_children() const
 {
-    if(children.find("fe-line") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fe_line != nullptr)
     {
-        if(fe_line != nullptr)
-        {
-            children["fe-line"] = fe_line;
-        }
+        children["fe-line"] = fe_line;
     }
 
-    if(children.find("line") == children.end())
+    if(line != nullptr)
     {
-        if(line != nullptr)
-        {
-            children["line"] = line;
-        }
+        children["line"] = line;
     }
 
-    if(children.find("section") == children.end())
+    if(section != nullptr)
     {
-        if(section != nullptr)
-        {
-            children["section"] = section;
-        }
+        children["section"] = section;
     }
 
     return children;
@@ -13934,16 +12299,12 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,section_sef_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSefSs>())
 {
     section_c_vs->parent = this;
-    children["section-c-vs"] = section_c_vs;
 
     section_e_ss->parent = this;
-    children["section-e-ss"] = section_e_ss;
 
     section_se_ss->parent = this;
-    children["section-se-ss"] = section_se_ss;
 
     section_sef_ss->parent = this;
-    children["section-sef-ss"] = section_sef_ss;
 
     yang_name = "section"; yang_parent_name = "oc-hour24ocn-time-line-instance";
 }
@@ -13980,7 +12341,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14004,110 +12365,66 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "section-c-vs")
     {
-        if(section_c_vs != nullptr)
-        {
-            children["section-c-vs"] = section_c_vs;
-        }
-        else
+        if(section_c_vs == nullptr)
         {
             section_c_vs = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionCVs>();
-            section_c_vs->parent = this;
-            children["section-c-vs"] = section_c_vs;
         }
-        return children.at("section-c-vs");
+        return section_c_vs;
     }
 
     if(child_yang_name == "section-e-ss")
     {
-        if(section_e_ss != nullptr)
-        {
-            children["section-e-ss"] = section_e_ss;
-        }
-        else
+        if(section_e_ss == nullptr)
         {
             section_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionESs>();
-            section_e_ss->parent = this;
-            children["section-e-ss"] = section_e_ss;
         }
-        return children.at("section-e-ss");
+        return section_e_ss;
     }
 
     if(child_yang_name == "section-se-ss")
     {
-        if(section_se_ss != nullptr)
-        {
-            children["section-se-ss"] = section_se_ss;
-        }
-        else
+        if(section_se_ss == nullptr)
         {
             section_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSeSs>();
-            section_se_ss->parent = this;
-            children["section-se-ss"] = section_se_ss;
         }
-        return children.at("section-se-ss");
+        return section_se_ss;
     }
 
     if(child_yang_name == "section-sef-ss")
     {
-        if(section_sef_ss != nullptr)
-        {
-            children["section-sef-ss"] = section_sef_ss;
-        }
-        else
+        if(section_sef_ss == nullptr)
         {
             section_sef_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSefSs>();
-            section_sef_ss->parent = this;
-            children["section-sef-ss"] = section_sef_ss;
         }
-        return children.at("section-sef-ss");
+        return section_sef_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::get_children() const
 {
-    if(children.find("section-c-vs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(section_c_vs != nullptr)
     {
-        if(section_c_vs != nullptr)
-        {
-            children["section-c-vs"] = section_c_vs;
-        }
+        children["section-c-vs"] = section_c_vs;
     }
 
-    if(children.find("section-e-ss") == children.end())
+    if(section_e_ss != nullptr)
     {
-        if(section_e_ss != nullptr)
-        {
-            children["section-e-ss"] = section_e_ss;
-        }
+        children["section-e-ss"] = section_e_ss;
     }
 
-    if(children.find("section-se-ss") == children.end())
+    if(section_se_ss != nullptr)
     {
-        if(section_se_ss != nullptr)
-        {
-            children["section-se-ss"] = section_se_ss;
-        }
+        children["section-se-ss"] = section_se_ss;
     }
 
-    if(children.find("section-sef-ss") == children.end())
+    if(section_sef_ss != nullptr)
     {
-        if(section_sef_ss != nullptr)
-        {
-            children["section-sef-ss"] = section_sef_ss;
-        }
+        children["section-sef-ss"] = section_sef_ss;
     }
 
     return children;
@@ -14158,7 +12475,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14184,20 +12501,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14254,7 +12563,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14280,20 +12589,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14350,7 +12651,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSefSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSefSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14376,20 +12677,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSefSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionSefSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14446,7 +12739,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionCVs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionCVs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14472,20 +12765,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionCVs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Section::SectionCVs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14516,19 +12801,14 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,line_ua_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineUaSs>())
 {
     line_c_vs->parent = this;
-    children["line-c-vs"] = line_c_vs;
 
     line_e_ss->parent = this;
-    children["line-e-ss"] = line_e_ss;
 
     line_fc_ls->parent = this;
-    children["line-fc-ls"] = line_fc_ls;
 
     line_se_ss->parent = this;
-    children["line-se-ss"] = line_se_ss;
 
     line_ua_ss->parent = this;
-    children["line-ua-ss"] = line_ua_ss;
 
     yang_name = "line"; yang_parent_name = "oc-hour24ocn-time-line-instance";
 }
@@ -14567,7 +12847,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14591,133 +12871,80 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "line-c-vs")
     {
-        if(line_c_vs != nullptr)
-        {
-            children["line-c-vs"] = line_c_vs;
-        }
-        else
+        if(line_c_vs == nullptr)
         {
             line_c_vs = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineCVs>();
-            line_c_vs->parent = this;
-            children["line-c-vs"] = line_c_vs;
         }
-        return children.at("line-c-vs");
+        return line_c_vs;
     }
 
     if(child_yang_name == "line-e-ss")
     {
-        if(line_e_ss != nullptr)
-        {
-            children["line-e-ss"] = line_e_ss;
-        }
-        else
+        if(line_e_ss == nullptr)
         {
             line_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineESs>();
-            line_e_ss->parent = this;
-            children["line-e-ss"] = line_e_ss;
         }
-        return children.at("line-e-ss");
+        return line_e_ss;
     }
 
     if(child_yang_name == "line-fc-ls")
     {
-        if(line_fc_ls != nullptr)
-        {
-            children["line-fc-ls"] = line_fc_ls;
-        }
-        else
+        if(line_fc_ls == nullptr)
         {
             line_fc_ls = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineFcLs>();
-            line_fc_ls->parent = this;
-            children["line-fc-ls"] = line_fc_ls;
         }
-        return children.at("line-fc-ls");
+        return line_fc_ls;
     }
 
     if(child_yang_name == "line-se-ss")
     {
-        if(line_se_ss != nullptr)
-        {
-            children["line-se-ss"] = line_se_ss;
-        }
-        else
+        if(line_se_ss == nullptr)
         {
             line_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineSeSs>();
-            line_se_ss->parent = this;
-            children["line-se-ss"] = line_se_ss;
         }
-        return children.at("line-se-ss");
+        return line_se_ss;
     }
 
     if(child_yang_name == "line-ua-ss")
     {
-        if(line_ua_ss != nullptr)
-        {
-            children["line-ua-ss"] = line_ua_ss;
-        }
-        else
+        if(line_ua_ss == nullptr)
         {
             line_ua_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineUaSs>();
-            line_ua_ss->parent = this;
-            children["line-ua-ss"] = line_ua_ss;
         }
-        return children.at("line-ua-ss");
+        return line_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::get_children() const
 {
-    if(children.find("line-c-vs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(line_c_vs != nullptr)
     {
-        if(line_c_vs != nullptr)
-        {
-            children["line-c-vs"] = line_c_vs;
-        }
+        children["line-c-vs"] = line_c_vs;
     }
 
-    if(children.find("line-e-ss") == children.end())
+    if(line_e_ss != nullptr)
     {
-        if(line_e_ss != nullptr)
-        {
-            children["line-e-ss"] = line_e_ss;
-        }
+        children["line-e-ss"] = line_e_ss;
     }
 
-    if(children.find("line-fc-ls") == children.end())
+    if(line_fc_ls != nullptr)
     {
-        if(line_fc_ls != nullptr)
-        {
-            children["line-fc-ls"] = line_fc_ls;
-        }
+        children["line-fc-ls"] = line_fc_ls;
     }
 
-    if(children.find("line-se-ss") == children.end())
+    if(line_se_ss != nullptr)
     {
-        if(line_se_ss != nullptr)
-        {
-            children["line-se-ss"] = line_se_ss;
-        }
+        children["line-se-ss"] = line_se_ss;
     }
 
-    if(children.find("line-ua-ss") == children.end())
+    if(line_ua_ss != nullptr)
     {
-        if(line_ua_ss != nullptr)
-        {
-            children["line-ua-ss"] = line_ua_ss;
-        }
+        children["line-ua-ss"] = line_ua_ss;
     }
 
     return children;
@@ -14768,7 +12995,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14794,20 +13021,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14864,7 +13083,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14890,20 +13109,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14960,7 +13171,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineCVs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineCVs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14986,20 +13197,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineCVs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineCVs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15056,7 +13259,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15082,20 +13285,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15152,7 +13347,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineFcLs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineFcLs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15178,20 +13373,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineFcLs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::Line::LineFcLs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15220,19 +13407,14 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,far_end_line_ua_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs>())
 {
     far_end_line_c_vs->parent = this;
-    children["far-end-line-c-vs"] = far_end_line_c_vs;
 
     far_end_line_e_ss->parent = this;
-    children["far-end-line-e-ss"] = far_end_line_e_ss;
 
     far_end_line_fc_ls->parent = this;
-    children["far-end-line-fc-ls"] = far_end_line_fc_ls;
 
     far_end_line_se_ss->parent = this;
-    children["far-end-line-se-ss"] = far_end_line_se_ss;
 
     far_end_line_ua_ss->parent = this;
-    children["far-end-line-ua-ss"] = far_end_line_ua_ss;
 
     yang_name = "fe-line"; yang_parent_name = "oc-hour24ocn-time-line-instance";
 }
@@ -15269,7 +13451,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15292,133 +13474,80 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "far-end-line-c-vs")
     {
-        if(far_end_line_c_vs != nullptr)
-        {
-            children["far-end-line-c-vs"] = far_end_line_c_vs;
-        }
-        else
+        if(far_end_line_c_vs == nullptr)
         {
             far_end_line_c_vs = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineCVs>();
-            far_end_line_c_vs->parent = this;
-            children["far-end-line-c-vs"] = far_end_line_c_vs;
         }
-        return children.at("far-end-line-c-vs");
+        return far_end_line_c_vs;
     }
 
     if(child_yang_name == "far-end-line-e-ss")
     {
-        if(far_end_line_e_ss != nullptr)
-        {
-            children["far-end-line-e-ss"] = far_end_line_e_ss;
-        }
-        else
+        if(far_end_line_e_ss == nullptr)
         {
             far_end_line_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineESs>();
-            far_end_line_e_ss->parent = this;
-            children["far-end-line-e-ss"] = far_end_line_e_ss;
         }
-        return children.at("far-end-line-e-ss");
+        return far_end_line_e_ss;
     }
 
     if(child_yang_name == "far-end-line-fc-ls")
     {
-        if(far_end_line_fc_ls != nullptr)
-        {
-            children["far-end-line-fc-ls"] = far_end_line_fc_ls;
-        }
-        else
+        if(far_end_line_fc_ls == nullptr)
         {
             far_end_line_fc_ls = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs>();
-            far_end_line_fc_ls->parent = this;
-            children["far-end-line-fc-ls"] = far_end_line_fc_ls;
         }
-        return children.at("far-end-line-fc-ls");
+        return far_end_line_fc_ls;
     }
 
     if(child_yang_name == "far-end-line-se-ss")
     {
-        if(far_end_line_se_ss != nullptr)
-        {
-            children["far-end-line-se-ss"] = far_end_line_se_ss;
-        }
-        else
+        if(far_end_line_se_ss == nullptr)
         {
             far_end_line_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs>();
-            far_end_line_se_ss->parent = this;
-            children["far-end-line-se-ss"] = far_end_line_se_ss;
         }
-        return children.at("far-end-line-se-ss");
+        return far_end_line_se_ss;
     }
 
     if(child_yang_name == "far-end-line-ua-ss")
     {
-        if(far_end_line_ua_ss != nullptr)
-        {
-            children["far-end-line-ua-ss"] = far_end_line_ua_ss;
-        }
-        else
+        if(far_end_line_ua_ss == nullptr)
         {
             far_end_line_ua_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs>();
-            far_end_line_ua_ss->parent = this;
-            children["far-end-line-ua-ss"] = far_end_line_ua_ss;
         }
-        return children.at("far-end-line-ua-ss");
+        return far_end_line_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::get_children() const
 {
-    if(children.find("far-end-line-c-vs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(far_end_line_c_vs != nullptr)
     {
-        if(far_end_line_c_vs != nullptr)
-        {
-            children["far-end-line-c-vs"] = far_end_line_c_vs;
-        }
+        children["far-end-line-c-vs"] = far_end_line_c_vs;
     }
 
-    if(children.find("far-end-line-e-ss") == children.end())
+    if(far_end_line_e_ss != nullptr)
     {
-        if(far_end_line_e_ss != nullptr)
-        {
-            children["far-end-line-e-ss"] = far_end_line_e_ss;
-        }
+        children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
-    if(children.find("far-end-line-fc-ls") == children.end())
+    if(far_end_line_fc_ls != nullptr)
     {
-        if(far_end_line_fc_ls != nullptr)
-        {
-            children["far-end-line-fc-ls"] = far_end_line_fc_ls;
-        }
+        children["far-end-line-fc-ls"] = far_end_line_fc_ls;
     }
 
-    if(children.find("far-end-line-se-ss") == children.end())
+    if(far_end_line_se_ss != nullptr)
     {
-        if(far_end_line_se_ss != nullptr)
-        {
-            children["far-end-line-se-ss"] = far_end_line_se_ss;
-        }
+        children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
-    if(children.find("far-end-line-ua-ss") == children.end())
+    if(far_end_line_ua_ss != nullptr)
     {
-        if(far_end_line_ua_ss != nullptr)
-        {
-            children["far-end-line-ua-ss"] = far_end_line_ua_ss;
-        }
+        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     return children;
@@ -15465,7 +13594,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15491,20 +13620,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15561,7 +13682,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15587,20 +13708,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15657,7 +13770,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15683,20 +13796,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15753,7 +13858,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15779,20 +13884,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15849,7 +13946,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15875,20 +13972,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24OcnHistories::OcHour24OcnHistory::OcHour24OcnTimeLineInstances::OcHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15913,7 +14002,6 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
     oc_minute15ocn_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories>())
 {
     oc_minute15ocn_histories->parent = this;
-    children["oc-minute15ocn-histories"] = oc_minute15ocn_histories;
 
     yang_name = "oc-minute15-history"; yang_parent_name = "oc-port-history";
 }
@@ -15942,7 +14030,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15965,41 +14053,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-minute15ocn-histories")
     {
-        if(oc_minute15ocn_histories != nullptr)
-        {
-            children["oc-minute15ocn-histories"] = oc_minute15ocn_histories;
-        }
-        else
+        if(oc_minute15ocn_histories == nullptr)
         {
             oc_minute15ocn_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories>();
-            oc_minute15ocn_histories->parent = this;
-            children["oc-minute15ocn-histories"] = oc_minute15ocn_histories;
         }
-        return children.at("oc-minute15ocn-histories");
+        return oc_minute15ocn_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_children() const
 {
-    if(children.find("oc-minute15ocn-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_minute15ocn_histories != nullptr)
     {
-        if(oc_minute15ocn_histories != nullptr)
-        {
-            children["oc-minute15ocn-histories"] = oc_minute15ocn_histories;
-        }
+        children["oc-minute15ocn-histories"] = oc_minute15ocn_histories;
     }
 
     return children;
@@ -16047,7 +14118,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16070,15 +14141,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-minute15ocn-history")
     {
         for(auto const & c : oc_minute15ocn_history)
@@ -16086,28 +14148,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory>();
         c->parent = this;
-        oc_minute15ocn_history.push_back(std::move(c));
-        children[segment_path] = oc_minute15ocn_history.back();
-        return children.at(segment_path);
+        oc_minute15ocn_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : oc_minute15ocn_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16124,7 +14182,6 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
     oc_minute15ocn_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances>())
 {
     oc_minute15ocn_time_line_instances->parent = this;
-    children["oc-minute15ocn-time-line-instances"] = oc_minute15ocn_time_line_instances;
 
     yang_name = "oc-minute15ocn-history"; yang_parent_name = "oc-minute15ocn-histories";
 }
@@ -16155,7 +14212,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16179,41 +14236,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-minute15ocn-time-line-instances")
     {
-        if(oc_minute15ocn_time_line_instances != nullptr)
-        {
-            children["oc-minute15ocn-time-line-instances"] = oc_minute15ocn_time_line_instances;
-        }
-        else
+        if(oc_minute15ocn_time_line_instances == nullptr)
         {
             oc_minute15ocn_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances>();
-            oc_minute15ocn_time_line_instances->parent = this;
-            children["oc-minute15ocn-time-line-instances"] = oc_minute15ocn_time_line_instances;
         }
-        return children.at("oc-minute15ocn-time-line-instances");
+        return oc_minute15ocn_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::get_children() const
 {
-    if(children.find("oc-minute15ocn-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_minute15ocn_time_line_instances != nullptr)
     {
-        if(oc_minute15ocn_time_line_instances != nullptr)
-        {
-            children["oc-minute15ocn-time-line-instances"] = oc_minute15ocn_time_line_instances;
-        }
+        children["oc-minute15ocn-time-line-instances"] = oc_minute15ocn_time_line_instances;
     }
 
     return children;
@@ -16265,7 +14305,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16288,15 +14328,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-minute15ocn-time-line-instance")
     {
         for(auto const & c : oc_minute15ocn_time_line_instance)
@@ -16304,28 +14335,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance>();
         c->parent = this;
-        oc_minute15ocn_time_line_instance.push_back(std::move(c));
-        children[segment_path] = oc_minute15ocn_time_line_instance.back();
-        return children.at(segment_path);
+        oc_minute15ocn_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : oc_minute15ocn_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16350,13 +14377,10 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,section(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section>())
 {
     fe_line->parent = this;
-    children["fe-line"] = fe_line;
 
     line->parent = this;
-    children["line"] = line;
 
     section->parent = this;
-    children["section"] = section;
 
     yang_name = "oc-minute15ocn-time-line-instance"; yang_parent_name = "oc-minute15ocn-time-line-instances";
 }
@@ -16403,7 +14427,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16433,87 +14457,52 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fe-line")
     {
-        if(fe_line != nullptr)
-        {
-            children["fe-line"] = fe_line;
-        }
-        else
+        if(fe_line == nullptr)
         {
             fe_line = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine>();
-            fe_line->parent = this;
-            children["fe-line"] = fe_line;
         }
-        return children.at("fe-line");
+        return fe_line;
     }
 
     if(child_yang_name == "line")
     {
-        if(line != nullptr)
-        {
-            children["line"] = line;
-        }
-        else
+        if(line == nullptr)
         {
             line = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line>();
-            line->parent = this;
-            children["line"] = line;
         }
-        return children.at("line");
+        return line;
     }
 
     if(child_yang_name == "section")
     {
-        if(section != nullptr)
-        {
-            children["section"] = section;
-        }
-        else
+        if(section == nullptr)
         {
             section = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section>();
-            section->parent = this;
-            children["section"] = section;
         }
-        return children.at("section");
+        return section;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::get_children() const
 {
-    if(children.find("fe-line") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fe_line != nullptr)
     {
-        if(fe_line != nullptr)
-        {
-            children["fe-line"] = fe_line;
-        }
+        children["fe-line"] = fe_line;
     }
 
-    if(children.find("line") == children.end())
+    if(line != nullptr)
     {
-        if(line != nullptr)
-        {
-            children["line"] = line;
-        }
+        children["line"] = line;
     }
 
-    if(children.find("section") == children.end())
+    if(section != nullptr)
     {
-        if(section != nullptr)
-        {
-            children["section"] = section;
-        }
+        children["section"] = section;
     }
 
     return children;
@@ -16561,16 +14550,12 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,section_sef_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSefSs>())
 {
     section_c_vs->parent = this;
-    children["section-c-vs"] = section_c_vs;
 
     section_e_ss->parent = this;
-    children["section-e-ss"] = section_e_ss;
 
     section_se_ss->parent = this;
-    children["section-se-ss"] = section_se_ss;
 
     section_sef_ss->parent = this;
-    children["section-sef-ss"] = section_sef_ss;
 
     yang_name = "section"; yang_parent_name = "oc-minute15ocn-time-line-instance";
 }
@@ -16607,7 +14592,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16631,110 +14616,66 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "section-c-vs")
     {
-        if(section_c_vs != nullptr)
-        {
-            children["section-c-vs"] = section_c_vs;
-        }
-        else
+        if(section_c_vs == nullptr)
         {
             section_c_vs = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionCVs>();
-            section_c_vs->parent = this;
-            children["section-c-vs"] = section_c_vs;
         }
-        return children.at("section-c-vs");
+        return section_c_vs;
     }
 
     if(child_yang_name == "section-e-ss")
     {
-        if(section_e_ss != nullptr)
-        {
-            children["section-e-ss"] = section_e_ss;
-        }
-        else
+        if(section_e_ss == nullptr)
         {
             section_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionESs>();
-            section_e_ss->parent = this;
-            children["section-e-ss"] = section_e_ss;
         }
-        return children.at("section-e-ss");
+        return section_e_ss;
     }
 
     if(child_yang_name == "section-se-ss")
     {
-        if(section_se_ss != nullptr)
-        {
-            children["section-se-ss"] = section_se_ss;
-        }
-        else
+        if(section_se_ss == nullptr)
         {
             section_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSeSs>();
-            section_se_ss->parent = this;
-            children["section-se-ss"] = section_se_ss;
         }
-        return children.at("section-se-ss");
+        return section_se_ss;
     }
 
     if(child_yang_name == "section-sef-ss")
     {
-        if(section_sef_ss != nullptr)
-        {
-            children["section-sef-ss"] = section_sef_ss;
-        }
-        else
+        if(section_sef_ss == nullptr)
         {
             section_sef_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSefSs>();
-            section_sef_ss->parent = this;
-            children["section-sef-ss"] = section_sef_ss;
         }
-        return children.at("section-sef-ss");
+        return section_sef_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::get_children() const
 {
-    if(children.find("section-c-vs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(section_c_vs != nullptr)
     {
-        if(section_c_vs != nullptr)
-        {
-            children["section-c-vs"] = section_c_vs;
-        }
+        children["section-c-vs"] = section_c_vs;
     }
 
-    if(children.find("section-e-ss") == children.end())
+    if(section_e_ss != nullptr)
     {
-        if(section_e_ss != nullptr)
-        {
-            children["section-e-ss"] = section_e_ss;
-        }
+        children["section-e-ss"] = section_e_ss;
     }
 
-    if(children.find("section-se-ss") == children.end())
+    if(section_se_ss != nullptr)
     {
-        if(section_se_ss != nullptr)
-        {
-            children["section-se-ss"] = section_se_ss;
-        }
+        children["section-se-ss"] = section_se_ss;
     }
 
-    if(children.find("section-sef-ss") == children.end())
+    if(section_sef_ss != nullptr)
     {
-        if(section_sef_ss != nullptr)
-        {
-            children["section-sef-ss"] = section_sef_ss;
-        }
+        children["section-sef-ss"] = section_sef_ss;
     }
 
     return children;
@@ -16785,7 +14726,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16811,20 +14752,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16881,7 +14814,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16907,20 +14840,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16977,7 +14902,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSefSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSefSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17003,20 +14928,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSefSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionSefSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17073,7 +14990,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionCVs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionCVs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17099,20 +15016,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionCVs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Section::SectionCVs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17143,19 +15052,14 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,line_ua_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineUaSs>())
 {
     line_c_vs->parent = this;
-    children["line-c-vs"] = line_c_vs;
 
     line_e_ss->parent = this;
-    children["line-e-ss"] = line_e_ss;
 
     line_fc_ls->parent = this;
-    children["line-fc-ls"] = line_fc_ls;
 
     line_se_ss->parent = this;
-    children["line-se-ss"] = line_se_ss;
 
     line_ua_ss->parent = this;
-    children["line-ua-ss"] = line_ua_ss;
 
     yang_name = "line"; yang_parent_name = "oc-minute15ocn-time-line-instance";
 }
@@ -17194,7 +15098,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17218,133 +15122,80 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "line-c-vs")
     {
-        if(line_c_vs != nullptr)
-        {
-            children["line-c-vs"] = line_c_vs;
-        }
-        else
+        if(line_c_vs == nullptr)
         {
             line_c_vs = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineCVs>();
-            line_c_vs->parent = this;
-            children["line-c-vs"] = line_c_vs;
         }
-        return children.at("line-c-vs");
+        return line_c_vs;
     }
 
     if(child_yang_name == "line-e-ss")
     {
-        if(line_e_ss != nullptr)
-        {
-            children["line-e-ss"] = line_e_ss;
-        }
-        else
+        if(line_e_ss == nullptr)
         {
             line_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineESs>();
-            line_e_ss->parent = this;
-            children["line-e-ss"] = line_e_ss;
         }
-        return children.at("line-e-ss");
+        return line_e_ss;
     }
 
     if(child_yang_name == "line-fc-ls")
     {
-        if(line_fc_ls != nullptr)
-        {
-            children["line-fc-ls"] = line_fc_ls;
-        }
-        else
+        if(line_fc_ls == nullptr)
         {
             line_fc_ls = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineFcLs>();
-            line_fc_ls->parent = this;
-            children["line-fc-ls"] = line_fc_ls;
         }
-        return children.at("line-fc-ls");
+        return line_fc_ls;
     }
 
     if(child_yang_name == "line-se-ss")
     {
-        if(line_se_ss != nullptr)
-        {
-            children["line-se-ss"] = line_se_ss;
-        }
-        else
+        if(line_se_ss == nullptr)
         {
             line_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineSeSs>();
-            line_se_ss->parent = this;
-            children["line-se-ss"] = line_se_ss;
         }
-        return children.at("line-se-ss");
+        return line_se_ss;
     }
 
     if(child_yang_name == "line-ua-ss")
     {
-        if(line_ua_ss != nullptr)
-        {
-            children["line-ua-ss"] = line_ua_ss;
-        }
-        else
+        if(line_ua_ss == nullptr)
         {
             line_ua_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineUaSs>();
-            line_ua_ss->parent = this;
-            children["line-ua-ss"] = line_ua_ss;
         }
-        return children.at("line-ua-ss");
+        return line_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::get_children() const
 {
-    if(children.find("line-c-vs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(line_c_vs != nullptr)
     {
-        if(line_c_vs != nullptr)
-        {
-            children["line-c-vs"] = line_c_vs;
-        }
+        children["line-c-vs"] = line_c_vs;
     }
 
-    if(children.find("line-e-ss") == children.end())
+    if(line_e_ss != nullptr)
     {
-        if(line_e_ss != nullptr)
-        {
-            children["line-e-ss"] = line_e_ss;
-        }
+        children["line-e-ss"] = line_e_ss;
     }
 
-    if(children.find("line-fc-ls") == children.end())
+    if(line_fc_ls != nullptr)
     {
-        if(line_fc_ls != nullptr)
-        {
-            children["line-fc-ls"] = line_fc_ls;
-        }
+        children["line-fc-ls"] = line_fc_ls;
     }
 
-    if(children.find("line-se-ss") == children.end())
+    if(line_se_ss != nullptr)
     {
-        if(line_se_ss != nullptr)
-        {
-            children["line-se-ss"] = line_se_ss;
-        }
+        children["line-se-ss"] = line_se_ss;
     }
 
-    if(children.find("line-ua-ss") == children.end())
+    if(line_ua_ss != nullptr)
     {
-        if(line_ua_ss != nullptr)
-        {
-            children["line-ua-ss"] = line_ua_ss;
-        }
+        children["line-ua-ss"] = line_ua_ss;
     }
 
     return children;
@@ -17395,7 +15246,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17421,20 +15272,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17491,7 +15334,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17517,20 +15360,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17587,7 +15422,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineCVs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineCVs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17613,20 +15448,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineCVs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineCVs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17683,7 +15510,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17709,20 +15536,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17779,7 +15598,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineFcLs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineFcLs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17805,20 +15624,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineFcLs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::Line::LineFcLs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17847,19 +15658,14 @@ PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPo
 	,far_end_line_ua_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs>())
 {
     far_end_line_c_vs->parent = this;
-    children["far-end-line-c-vs"] = far_end_line_c_vs;
 
     far_end_line_e_ss->parent = this;
-    children["far-end-line-e-ss"] = far_end_line_e_ss;
 
     far_end_line_fc_ls->parent = this;
-    children["far-end-line-fc-ls"] = far_end_line_fc_ls;
 
     far_end_line_se_ss->parent = this;
-    children["far-end-line-se-ss"] = far_end_line_se_ss;
 
     far_end_line_ua_ss->parent = this;
-    children["far-end-line-ua-ss"] = far_end_line_ua_ss;
 
     yang_name = "fe-line"; yang_parent_name = "oc-minute15ocn-time-line-instance";
 }
@@ -17896,7 +15702,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17919,133 +15725,80 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "far-end-line-c-vs")
     {
-        if(far_end_line_c_vs != nullptr)
-        {
-            children["far-end-line-c-vs"] = far_end_line_c_vs;
-        }
-        else
+        if(far_end_line_c_vs == nullptr)
         {
             far_end_line_c_vs = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs>();
-            far_end_line_c_vs->parent = this;
-            children["far-end-line-c-vs"] = far_end_line_c_vs;
         }
-        return children.at("far-end-line-c-vs");
+        return far_end_line_c_vs;
     }
 
     if(child_yang_name == "far-end-line-e-ss")
     {
-        if(far_end_line_e_ss != nullptr)
-        {
-            children["far-end-line-e-ss"] = far_end_line_e_ss;
-        }
-        else
+        if(far_end_line_e_ss == nullptr)
         {
             far_end_line_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineESs>();
-            far_end_line_e_ss->parent = this;
-            children["far-end-line-e-ss"] = far_end_line_e_ss;
         }
-        return children.at("far-end-line-e-ss");
+        return far_end_line_e_ss;
     }
 
     if(child_yang_name == "far-end-line-fc-ls")
     {
-        if(far_end_line_fc_ls != nullptr)
-        {
-            children["far-end-line-fc-ls"] = far_end_line_fc_ls;
-        }
-        else
+        if(far_end_line_fc_ls == nullptr)
         {
             far_end_line_fc_ls = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs>();
-            far_end_line_fc_ls->parent = this;
-            children["far-end-line-fc-ls"] = far_end_line_fc_ls;
         }
-        return children.at("far-end-line-fc-ls");
+        return far_end_line_fc_ls;
     }
 
     if(child_yang_name == "far-end-line-se-ss")
     {
-        if(far_end_line_se_ss != nullptr)
-        {
-            children["far-end-line-se-ss"] = far_end_line_se_ss;
-        }
-        else
+        if(far_end_line_se_ss == nullptr)
         {
             far_end_line_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs>();
-            far_end_line_se_ss->parent = this;
-            children["far-end-line-se-ss"] = far_end_line_se_ss;
         }
-        return children.at("far-end-line-se-ss");
+        return far_end_line_se_ss;
     }
 
     if(child_yang_name == "far-end-line-ua-ss")
     {
-        if(far_end_line_ua_ss != nullptr)
-        {
-            children["far-end-line-ua-ss"] = far_end_line_ua_ss;
-        }
-        else
+        if(far_end_line_ua_ss == nullptr)
         {
             far_end_line_ua_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs>();
-            far_end_line_ua_ss->parent = this;
-            children["far-end-line-ua-ss"] = far_end_line_ua_ss;
         }
-        return children.at("far-end-line-ua-ss");
+        return far_end_line_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::get_children() const
 {
-    if(children.find("far-end-line-c-vs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(far_end_line_c_vs != nullptr)
     {
-        if(far_end_line_c_vs != nullptr)
-        {
-            children["far-end-line-c-vs"] = far_end_line_c_vs;
-        }
+        children["far-end-line-c-vs"] = far_end_line_c_vs;
     }
 
-    if(children.find("far-end-line-e-ss") == children.end())
+    if(far_end_line_e_ss != nullptr)
     {
-        if(far_end_line_e_ss != nullptr)
-        {
-            children["far-end-line-e-ss"] = far_end_line_e_ss;
-        }
+        children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
-    if(children.find("far-end-line-fc-ls") == children.end())
+    if(far_end_line_fc_ls != nullptr)
     {
-        if(far_end_line_fc_ls != nullptr)
-        {
-            children["far-end-line-fc-ls"] = far_end_line_fc_ls;
-        }
+        children["far-end-line-fc-ls"] = far_end_line_fc_ls;
     }
 
-    if(children.find("far-end-line-se-ss") == children.end())
+    if(far_end_line_se_ss != nullptr)
     {
-        if(far_end_line_se_ss != nullptr)
-        {
-            children["far-end-line-se-ss"] = far_end_line_se_ss;
-        }
+        children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
-    if(children.find("far-end-line-ua-ss") == children.end())
+    if(far_end_line_ua_ss != nullptr)
     {
-        if(far_end_line_ua_ss != nullptr)
-        {
-            children["far-end-line-ua-ss"] = far_end_line_ua_ss;
-        }
+        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     return children;
@@ -18092,7 +15845,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18118,20 +15871,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18188,7 +15933,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18214,20 +15959,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18284,7 +16021,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18310,20 +16047,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18380,7 +16109,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18406,20 +16135,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18476,7 +16197,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHis
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18502,20 +16223,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHist
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15OcnHistories::OcMinute15OcnHistory::OcMinute15OcnTimeLineInstances::OcMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -36,19 +36,14 @@ NetconfState::NetconfState()
 	,statistics(std::make_shared<NetconfState::Statistics>())
 {
     capabilities->parent = this;
-    children["capabilities"] = capabilities;
 
     datastores->parent = this;
-    children["datastores"] = datastores;
 
     schemas->parent = this;
-    children["schemas"] = schemas;
 
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "netconf-state"; yang_parent_name = "ietf-netconf-monitoring";
 }
@@ -85,12 +80,12 @@ std::string NetconfState::get_segment_path() const
 
 }
 
-EntityPath NetconfState::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -105,133 +100,80 @@ EntityPath NetconfState::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NetconfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capabilities")
     {
-        if(capabilities != nullptr)
-        {
-            children["capabilities"] = capabilities;
-        }
-        else
+        if(capabilities == nullptr)
         {
             capabilities = std::make_shared<NetconfState::Capabilities>();
-            capabilities->parent = this;
-            children["capabilities"] = capabilities;
         }
-        return children.at("capabilities");
+        return capabilities;
     }
 
     if(child_yang_name == "datastores")
     {
-        if(datastores != nullptr)
-        {
-            children["datastores"] = datastores;
-        }
-        else
+        if(datastores == nullptr)
         {
             datastores = std::make_shared<NetconfState::Datastores>();
-            datastores->parent = this;
-            children["datastores"] = datastores;
         }
-        return children.at("datastores");
+        return datastores;
     }
 
     if(child_yang_name == "schemas")
     {
-        if(schemas != nullptr)
-        {
-            children["schemas"] = schemas;
-        }
-        else
+        if(schemas == nullptr)
         {
             schemas = std::make_shared<NetconfState::Schemas>();
-            schemas->parent = this;
-            children["schemas"] = schemas;
         }
-        return children.at("schemas");
+        return schemas;
     }
 
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<NetconfState::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<NetconfState::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::get_children() const
 {
-    if(children.find("capabilities") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(capabilities != nullptr)
     {
-        if(capabilities != nullptr)
-        {
-            children["capabilities"] = capabilities;
-        }
+        children["capabilities"] = capabilities;
     }
 
-    if(children.find("datastores") == children.end())
+    if(datastores != nullptr)
     {
-        if(datastores != nullptr)
-        {
-            children["datastores"] = datastores;
-        }
+        children["datastores"] = datastores;
     }
 
-    if(children.find("schemas") == children.end())
+    if(schemas != nullptr)
     {
-        if(schemas != nullptr)
-        {
-            children["schemas"] = schemas;
-        }
+        children["schemas"] = schemas;
     }
 
-    if(children.find("sessions") == children.end())
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -302,7 +244,7 @@ std::string NetconfState::Capabilities::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Capabilities::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Capabilities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -327,20 +269,12 @@ EntityPath NetconfState::Capabilities::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NetconfState::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Capabilities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Capabilities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -390,7 +324,7 @@ std::string NetconfState::Datastores::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Datastores::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Datastores::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -413,15 +347,6 @@ EntityPath NetconfState::Datastores::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NetconfState::Datastores::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "datastore")
     {
         for(auto const & c : datastore)
@@ -429,28 +354,24 @@ std::shared_ptr<Entity> NetconfState::Datastores::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NetconfState::Datastores::Datastore>();
         c->parent = this;
-        datastore.push_back(std::move(c));
-        children[segment_path] = datastore.back();
-        return children.at(segment_path);
+        datastore.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Datastores::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : datastore)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -495,7 +416,7 @@ std::string NetconfState::Datastores::Datastore::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Datastores::Datastore::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Datastores::Datastore::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -519,41 +440,24 @@ EntityPath NetconfState::Datastores::Datastore::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> NetconfState::Datastores::Datastore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "locks")
     {
-        if(locks != nullptr)
-        {
-            children["locks"] = locks;
-        }
-        else
+        if(locks == nullptr)
         {
             locks = std::make_shared<NetconfState::Datastores::Datastore::Locks>();
-            locks->parent = this;
-            children["locks"] = locks;
         }
-        return children.at("locks");
+        return locks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Datastores::Datastore::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::get_children() const
 {
-    if(children.find("locks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(locks != nullptr)
     {
-        if(locks != nullptr)
-        {
-            children["locks"] = locks;
-        }
+        children["locks"] = locks;
     }
 
     return children;
@@ -572,7 +476,6 @@ NetconfState::Datastores::Datastore::Locks::Locks()
     global_lock(std::make_shared<NetconfState::Datastores::Datastore::Locks::GlobalLock>())
 {
     global_lock->parent = this;
-    children["global-lock"] = global_lock;
 
     yang_name = "locks"; yang_parent_name = "datastore";
 }
@@ -611,7 +514,7 @@ std::string NetconfState::Datastores::Datastore::Locks::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Datastores::Datastore::Locks::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Datastores::Datastore::Locks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -634,28 +537,13 @@ EntityPath NetconfState::Datastores::Datastore::Locks::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-lock")
     {
-        if(global_lock != nullptr)
-        {
-            children["global-lock"] = global_lock;
-        }
-        else
+        if(global_lock == nullptr)
         {
             global_lock = std::make_shared<NetconfState::Datastores::Datastore::Locks::GlobalLock>();
-            global_lock->parent = this;
-            children["global-lock"] = global_lock;
         }
-        return children.at("global-lock");
+        return global_lock;
     }
 
     if(child_yang_name == "partial-lock")
@@ -665,36 +553,29 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NetconfState::Datastores::Datastore::Locks::PartialLock>();
         c->parent = this;
-        partial_lock.push_back(std::move(c));
-        children[segment_path] = partial_lock.back();
-        return children.at(segment_path);
+        partial_lock.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Datastores::Datastore::Locks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::get_children() const
 {
-    if(children.find("global-lock") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global_lock != nullptr)
     {
-        if(global_lock != nullptr)
-        {
-            children["global-lock"] = global_lock;
-        }
+        children["global-lock"] = global_lock;
     }
 
     for (auto const & c : partial_lock)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -738,7 +619,7 @@ std::string NetconfState::Datastores::Datastore::Locks::GlobalLock::get_segment_
 
 }
 
-EntityPath NetconfState::Datastores::Datastore::Locks::GlobalLock::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Datastores::Datastore::Locks::GlobalLock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -763,20 +644,12 @@ EntityPath NetconfState::Datastores::Datastore::Locks::GlobalLock::get_entity_pa
 
 std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::GlobalLock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Datastores::Datastore::Locks::GlobalLock::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::GlobalLock::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -853,7 +726,7 @@ std::string NetconfState::Datastores::Datastore::Locks::PartialLock::get_segment
 
 }
 
-EntityPath NetconfState::Datastores::Datastore::Locks::PartialLock::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Datastores::Datastore::Locks::PartialLock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -883,20 +756,12 @@ EntityPath NetconfState::Datastores::Datastore::Locks::PartialLock::get_entity_p
 
 std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::PartialLock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Datastores::Datastore::Locks::PartialLock::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::PartialLock::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -962,7 +827,7 @@ std::string NetconfState::Schemas::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Schemas::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Schemas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -985,15 +850,6 @@ EntityPath NetconfState::Schemas::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NetconfState::Schemas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "schema")
     {
         for(auto const & c : schema)
@@ -1001,28 +857,24 @@ std::shared_ptr<Entity> NetconfState::Schemas::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NetconfState::Schemas::Schema>();
         c->parent = this;
-        schema.push_back(std::move(c));
-        children[segment_path] = schema.back();
-        return children.at(segment_path);
+        schema.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Schemas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : schema)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1034,9 +886,9 @@ void NetconfState::Schemas::set_value(const std::string & value_path, std::strin
 
 NetconfState::Schemas::Schema::Schema()
     :
-    format{YType::identityref, "format"},
     identifier{YType::str, "identifier"},
     version{YType::str, "version"},
+    format{YType::identityref, "format"},
     location{YType::str, "location"},
     namespace_{YType::str, "namespace"}
 {
@@ -1054,9 +906,9 @@ bool NetconfState::Schemas::Schema::has_data() const
         if(leaf.is_set)
             return true;
     }
-    return format.is_set
-	|| identifier.is_set
+    return identifier.is_set
 	|| version.is_set
+	|| format.is_set
 	|| namespace_.is_set;
 }
 
@@ -1068,9 +920,9 @@ bool NetconfState::Schemas::Schema::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| is_set(format.operation)
 	|| is_set(identifier.operation)
 	|| is_set(version.operation)
+	|| is_set(format.operation)
 	|| is_set(location.operation)
 	|| is_set(namespace_.operation);
 }
@@ -1078,13 +930,13 @@ bool NetconfState::Schemas::Schema::has_operation() const
 std::string NetconfState::Schemas::Schema::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "schema" <<"[format='" <<format <<"']" <<"[identifier='" <<identifier <<"']" <<"[version='" <<version <<"']";
+    path_buffer << "schema" <<"[identifier='" <<identifier <<"']" <<"[version='" <<version <<"']" <<"[format='" <<format <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath NetconfState::Schemas::Schema::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Schemas::Schema::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1098,9 +950,9 @@ EntityPath NetconfState::Schemas::Schema::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
     if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
     if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
     if (namespace_.is_set || is_set(namespace_.operation)) leaf_name_data.push_back(namespace_.get_name_leafdata());
 
     auto location_name_datas = location.get_name_leafdata();
@@ -1113,29 +965,17 @@ EntityPath NetconfState::Schemas::Schema::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> NetconfState::Schemas::Schema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Schemas::Schema::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::Schema::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void NetconfState::Schemas::Schema::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "format")
-    {
-        format = value;
-    }
     if(value_path == "identifier")
     {
         identifier = value;
@@ -1143,6 +983,10 @@ void NetconfState::Schemas::Schema::set_value(const std::string & value_path, st
     if(value_path == "version")
     {
         version = value;
+    }
+    if(value_path == "format")
+    {
+        format = value;
     }
     if(value_path == "location")
     {
@@ -1192,7 +1036,7 @@ std::string NetconfState::Sessions::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1215,15 +1059,6 @@ EntityPath NetconfState::Sessions::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NetconfState::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -1231,28 +1066,24 @@ std::shared_ptr<Entity> NetconfState::Sessions::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NetconfState::Sessions::Session>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1317,7 +1148,7 @@ std::string NetconfState::Sessions::Session::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Sessions::Session::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Sessions::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1349,20 +1180,12 @@ EntityPath NetconfState::Sessions::Session::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> NetconfState::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Sessions::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1458,7 +1281,7 @@ std::string NetconfState::Statistics::get_segment_path() const
 
 }
 
-EntityPath NetconfState::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath NetconfState::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1489,20 +1312,12 @@ EntityPath NetconfState::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NetconfState::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NetconfState::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NetconfState::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1544,14 +1359,12 @@ void NetconfState::Statistics::set_value(const std::string & value_path, std::st
 
 GetSchemaRpc::GetSchemaRpc()
     :
-    format{YType::identityref, "format"},
-    identifier{YType::str, "identifier"},
-    version{YType::str, "version"}
-    	,
-    output(std::make_shared<GetSchemaRpc::Output>())
+    input(std::make_shared<GetSchemaRpc::Input>())
+	,output(std::make_shared<GetSchemaRpc::Output>())
 {
+    input->parent = this;
+
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring";
 }
@@ -1562,18 +1375,14 @@ GetSchemaRpc::~GetSchemaRpc()
 
 bool GetSchemaRpc::has_data() const
 {
-    return format.is_set
-	|| identifier.is_set
-	|| version.is_set
+    return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
 
 bool GetSchemaRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(format.operation)
-	|| is_set(identifier.operation)
-	|| is_set(version.operation)
+	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
 
@@ -1586,20 +1395,17 @@ std::string GetSchemaRpc::get_segment_path() const
 
 }
 
-EntityPath GetSchemaRpc::get_entity_path(Entity* ancestor) const
+const EntityPath GetSchemaRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1609,41 +1415,38 @@ EntityPath GetSchemaRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> GetSchemaRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<GetSchemaRpc::Input>();
+        }
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<GetSchemaRpc::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & GetSchemaRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> GetSchemaRpc::get_children() const
 {
-    if(children.find("output") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
     }
 
     return children;
@@ -1651,18 +1454,6 @@ std::map<std::string, std::shared_ptr<Entity>> & GetSchemaRpc::get_children()
 
 void GetSchemaRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "format")
-    {
-        format = value;
-    }
-    if(value_path == "identifier")
-    {
-        identifier = value;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-    }
 }
 
 std::shared_ptr<Entity> GetSchemaRpc::clone_ptr() const
@@ -1685,35 +1476,44 @@ augment_capabilities_function GetSchemaRpc::get_augment_capabilities_function() 
     return ietf_augment_lookup_tables;
 }
 
-GetSchemaRpc::Output::Output()
+GetSchemaRpc::Input::Input()
+    :
+    format{YType::identityref, "format"},
+    identifier{YType::str, "identifier"},
+    version{YType::str, "version"}
 {
-    yang_name = "output"; yang_parent_name = "get-schema";
+    yang_name = "input"; yang_parent_name = "get-schema";
 }
 
-GetSchemaRpc::Output::~Output()
+GetSchemaRpc::Input::~Input()
 {
 }
 
-bool GetSchemaRpc::Output::has_data() const
+bool GetSchemaRpc::Input::has_data() const
 {
-    return false;
+    return format.is_set
+	|| identifier.is_set
+	|| version.is_set;
 }
 
-bool GetSchemaRpc::Output::has_operation() const
+bool GetSchemaRpc::Input::has_operation() const
 {
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(format.operation)
+	|| is_set(identifier.operation)
+	|| is_set(version.operation);
 }
 
-std::string GetSchemaRpc::Output::get_segment_path() const
+std::string GetSchemaRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath GetSchemaRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath GetSchemaRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1727,6 +1527,89 @@ EntityPath GetSchemaRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> GetSchemaRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSchemaRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void GetSchemaRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "format")
+    {
+        format = value;
+    }
+    if(value_path == "identifier")
+    {
+        identifier = value;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+    }
+}
+
+GetSchemaRpc::Output::Output()
+    :
+    data{YType::str, "data"}
+{
+    yang_name = "output"; yang_parent_name = "get-schema";
+}
+
+GetSchemaRpc::Output::~Output()
+{
+}
+
+bool GetSchemaRpc::Output::has_data() const
+{
+    return data.is_set;
+}
+
+bool GetSchemaRpc::Output::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(data.operation);
+}
+
+std::string GetSchemaRpc::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath GetSchemaRpc::Output::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1736,25 +1619,21 @@ EntityPath GetSchemaRpc::Output::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> GetSchemaRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & GetSchemaRpc::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> GetSchemaRpc::Output::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void GetSchemaRpc::Output::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "data")
+    {
+        data = value;
+    }
 }
 
 NetconfBeepIdentity::NetconfBeepIdentity()

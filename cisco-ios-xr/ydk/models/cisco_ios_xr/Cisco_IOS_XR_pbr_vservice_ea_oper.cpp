@@ -14,7 +14,6 @@ ServiceFunctionChaining::ServiceFunctionChaining()
     nodes(std::make_shared<ServiceFunctionChaining::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "service-function-chaining"; yang_parent_name = "Cisco-IOS-XR-pbr-vservice-ea-oper";
 }
@@ -43,12 +42,12 @@ std::string ServiceFunctionChaining::get_segment_path() const
 
 }
 
-EntityPath ServiceFunctionChaining::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath ServiceFunctionChaining::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ServiceFunctionChaining::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<ServiceFunctionChaining::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string ServiceFunctionChaining::Nodes::get_segment_path() const
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath ServiceFunctionChaining::Nodes::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ ServiceFunctionChaining::Nodes::Node::Node()
     process(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process>())
 {
     process->parent = this;
-    children["process"] = process;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string ServiceFunctionChaining::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process")
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
-        else
+        if(process == nullptr)
         {
             process = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process>();
-            process->parent = this;
-            children["process"] = process;
         }
-        return children.at("process");
+        return process;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::get_children() const
 {
-    if(children.find("process") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(process != nullptr)
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
+        children["process"] = process;
     }
 
     return children;
@@ -352,13 +303,10 @@ ServiceFunctionChaining::Nodes::Node::Process::Process()
 	,service_function_path(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath>())
 {
     service_function->parent = this;
-    children["service-function"] = service_function;
 
     service_function_forwarder->parent = this;
-    children["service-function-forwarder"] = service_function_forwarder;
 
     service_function_path->parent = this;
-    children["service-function-path"] = service_function_path;
 
     yang_name = "process"; yang_parent_name = "node";
 }
@@ -391,7 +339,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::get_segment_path() co
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -414,87 +362,52 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::get_entity_path(Entity
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-function")
     {
-        if(service_function != nullptr)
-        {
-            children["service-function"] = service_function;
-        }
-        else
+        if(service_function == nullptr)
         {
             service_function = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction>();
-            service_function->parent = this;
-            children["service-function"] = service_function;
         }
-        return children.at("service-function");
+        return service_function;
     }
 
     if(child_yang_name == "service-function-forwarder")
     {
-        if(service_function_forwarder != nullptr)
-        {
-            children["service-function-forwarder"] = service_function_forwarder;
-        }
-        else
+        if(service_function_forwarder == nullptr)
         {
             service_function_forwarder = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder>();
-            service_function_forwarder->parent = this;
-            children["service-function-forwarder"] = service_function_forwarder;
         }
-        return children.at("service-function-forwarder");
+        return service_function_forwarder;
     }
 
     if(child_yang_name == "service-function-path")
     {
-        if(service_function_path != nullptr)
-        {
-            children["service-function-path"] = service_function_path;
-        }
-        else
+        if(service_function_path == nullptr)
         {
             service_function_path = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath>();
-            service_function_path->parent = this;
-            children["service-function-path"] = service_function_path;
         }
-        return children.at("service-function-path");
+        return service_function_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::get_children() const
 {
-    if(children.find("service-function") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_function != nullptr)
     {
-        if(service_function != nullptr)
-        {
-            children["service-function"] = service_function;
-        }
+        children["service-function"] = service_function;
     }
 
-    if(children.find("service-function-forwarder") == children.end())
+    if(service_function_forwarder != nullptr)
     {
-        if(service_function_forwarder != nullptr)
-        {
-            children["service-function-forwarder"] = service_function_forwarder;
-        }
+        children["service-function-forwarder"] = service_function_forwarder;
     }
 
-    if(children.find("service-function-path") == children.end())
+    if(service_function_path != nullptr)
     {
-        if(service_function_path != nullptr)
-        {
-            children["service-function-path"] = service_function_path;
-        }
+        children["service-function-path"] = service_function_path;
     }
 
     return children;
@@ -509,7 +422,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::ServiceFunct
     path_ids(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds>())
 {
     path_ids->parent = this;
-    children["path-ids"] = path_ids;
 
     yang_name = "service-function-path"; yang_parent_name = "process";
 }
@@ -538,7 +450,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -561,41 +473,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::g
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-ids")
     {
-        if(path_ids != nullptr)
-        {
-            children["path-ids"] = path_ids;
-        }
-        else
+        if(path_ids == nullptr)
         {
             path_ids = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds>();
-            path_ids->parent = this;
-            children["path-ids"] = path_ids;
         }
-        return children.at("path-ids");
+        return path_ids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::get_children() const
 {
-    if(children.find("path-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_ids != nullptr)
     {
-        if(path_ids != nullptr)
-        {
-            children["path-ids"] = path_ids;
-        }
+        children["path-ids"] = path_ids;
     }
 
     return children;
@@ -643,7 +538,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -666,15 +561,6 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-id")
     {
         for(auto const & c : path_id)
@@ -682,28 +568,24 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId>();
         c->parent = this;
-        path_id.push_back(std::move(c));
-        children[segment_path] = path_id.back();
-        return children.at(segment_path);
+        path_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -721,10 +603,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,stats(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats>())
 {
     service_indexes->parent = this;
-    children["service-indexes"] = service_indexes;
 
     stats->parent = this;
-    children["stats"] = stats;
 
     yang_name = "path-id"; yang_parent_name = "path-ids";
 }
@@ -757,7 +637,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -781,64 +661,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-indexes")
     {
-        if(service_indexes != nullptr)
-        {
-            children["service-indexes"] = service_indexes;
-        }
-        else
+        if(service_indexes == nullptr)
         {
             service_indexes = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes>();
-            service_indexes->parent = this;
-            children["service-indexes"] = service_indexes;
         }
-        return children.at("service-indexes");
+        return service_indexes;
     }
 
     if(child_yang_name == "stats")
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
-        else
+        if(stats == nullptr)
         {
             stats = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats>();
-            stats->parent = this;
-            children["stats"] = stats;
         }
-        return children.at("stats");
+        return stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_children() const
 {
-    if(children.find("service-indexes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_indexes != nullptr)
     {
-        if(service_indexes != nullptr)
-        {
-            children["service-indexes"] = service_indexes;
-        }
+        children["service-indexes"] = service_indexes;
     }
 
-    if(children.find("stats") == children.end())
+    if(stats != nullptr)
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
+        children["stats"] = stats;
     }
 
     return children;
@@ -890,7 +744,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -913,15 +767,6 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-index")
     {
         for(auto const & c : service_index)
@@ -929,28 +774,24 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex>();
         c->parent = this;
-        service_index.push_back(std::move(c));
-        children[segment_path] = service_index.back();
-        return children.at(segment_path);
+        service_index.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_index)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -967,7 +808,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "service-index"; yang_parent_name = "service-indexes";
 }
@@ -1008,7 +848,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1032,28 +872,13 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     if(child_yang_name == "si-arr")
@@ -1063,36 +888,29 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr>();
         c->parent = this;
-        si_arr.push_back(std::move(c));
-        children[segment_path] = si_arr.back();
-        return children.at(segment_path);
+        si_arr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     for (auto const & c : si_arr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1118,22 +936,16 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term>())
 {
     sf->parent = this;
-    children["sf"] = sf;
 
     sff->parent = this;
-    children["sff"] = sff;
 
     sff_local->parent = this;
-    children["sff-local"] = sff_local;
 
     sfp->parent = this;
-    children["sfp"] = sfp;
 
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "service-index";
 }
@@ -1174,7 +986,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1198,156 +1010,94 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf")
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
-        else
+        if(sf == nullptr)
         {
             sf = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf>();
-            sf->parent = this;
-            children["sf"] = sf;
         }
-        return children.at("sf");
+        return sf;
     }
 
     if(child_yang_name == "sff")
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
-        else
+        if(sff == nullptr)
         {
             sff = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff>();
-            sff->parent = this;
-            children["sff"] = sff;
         }
-        return children.at("sff");
+        return sff;
     }
 
     if(child_yang_name == "sff-local")
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
-        else
+        if(sff_local == nullptr)
         {
             sff_local = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal>();
-            sff_local->parent = this;
-            children["sff-local"] = sff_local;
         }
-        return children.at("sff-local");
+        return sff_local;
     }
 
     if(child_yang_name == "sfp")
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
-        else
+        if(sfp == nullptr)
         {
             sfp = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp>();
-            sfp->parent = this;
-            children["sfp"] = sfp;
         }
-        return children.at("sfp");
+        return sfp;
     }
 
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_children() const
 {
-    if(children.find("sf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sf != nullptr)
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
+        children["sf"] = sf;
     }
 
-    if(children.find("sff") == children.end())
+    if(sff != nullptr)
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
+        children["sff"] = sff;
     }
 
-    if(children.find("sff-local") == children.end())
+    if(sff_local != nullptr)
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
+        children["sff-local"] = sff_local;
     }
 
-    if(children.find("sfp") == children.end())
+    if(sfp != nullptr)
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
+        children["sfp"] = sfp;
     }
 
-    if(children.find("spi-si") == children.end())
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -1367,10 +1117,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "sfp"; yang_parent_name = "data";
 }
@@ -1401,7 +1149,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1424,64 +1172,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -1525,7 +1247,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1550,20 +1272,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1613,7 +1327,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1638,20 +1352,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1701,7 +1407,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1726,20 +1432,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1789,7 +1487,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1814,20 +1512,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1877,7 +1567,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1902,20 +1592,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1965,7 +1647,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1990,20 +1672,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2059,7 +1733,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2086,20 +1760,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2130,7 +1796,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "si-arr"; yang_parent_name = "service-index";
 }
@@ -2161,7 +1826,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2185,41 +1850,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -2241,10 +1889,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "si-arr";
 }
@@ -2277,7 +1923,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2301,64 +1947,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -2406,7 +2026,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2431,20 +2051,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2494,7 +2106,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2519,20 +2131,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2554,10 +2158,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,summarized(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     summarized->parent = this;
-    children["summarized"] = summarized;
 
     yang_name = "stats"; yang_parent_name = "path-id";
 }
@@ -2588,7 +2190,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2611,64 +2213,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "summarized")
     {
-        if(summarized != nullptr)
-        {
-            children["summarized"] = summarized;
-        }
-        else
+        if(summarized == nullptr)
         {
             summarized = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized>();
-            summarized->parent = this;
-            children["summarized"] = summarized;
         }
-        return children.at("summarized");
+        return summarized;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("summarized") == children.end())
+    if(summarized != nullptr)
     {
-        if(summarized != nullptr)
-        {
-            children["summarized"] = summarized;
-        }
+        children["summarized"] = summarized;
     }
 
     return children;
@@ -2683,7 +2259,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "detail"; yang_parent_name = "stats";
 }
@@ -2722,7 +2297,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2745,28 +2320,13 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     if(child_yang_name == "si-arr")
@@ -2776,36 +2336,29 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr>();
         c->parent = this;
-        si_arr.push_back(std::move(c));
-        children[segment_path] = si_arr.back();
-        return children.at(segment_path);
+        si_arr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     for (auto const & c : si_arr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2827,22 +2380,16 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term>())
 {
     sf->parent = this;
-    children["sf"] = sf;
 
     sff->parent = this;
-    children["sff"] = sff;
 
     sff_local->parent = this;
-    children["sff-local"] = sff_local;
 
     sfp->parent = this;
-    children["sfp"] = sfp;
 
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "detail";
 }
@@ -2883,7 +2430,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2907,156 +2454,94 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf")
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
-        else
+        if(sf == nullptr)
         {
             sf = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf>();
-            sf->parent = this;
-            children["sf"] = sf;
         }
-        return children.at("sf");
+        return sf;
     }
 
     if(child_yang_name == "sff")
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
-        else
+        if(sff == nullptr)
         {
             sff = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff>();
-            sff->parent = this;
-            children["sff"] = sff;
         }
-        return children.at("sff");
+        return sff;
     }
 
     if(child_yang_name == "sff-local")
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
-        else
+        if(sff_local == nullptr)
         {
             sff_local = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal>();
-            sff_local->parent = this;
-            children["sff-local"] = sff_local;
         }
-        return children.at("sff-local");
+        return sff_local;
     }
 
     if(child_yang_name == "sfp")
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
-        else
+        if(sfp == nullptr)
         {
             sfp = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp>();
-            sfp->parent = this;
-            children["sfp"] = sfp;
         }
-        return children.at("sfp");
+        return sfp;
     }
 
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_children() const
 {
-    if(children.find("sf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sf != nullptr)
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
+        children["sf"] = sf;
     }
 
-    if(children.find("sff") == children.end())
+    if(sff != nullptr)
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
+        children["sff"] = sff;
     }
 
-    if(children.find("sff-local") == children.end())
+    if(sff_local != nullptr)
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
+        children["sff-local"] = sff_local;
     }
 
-    if(children.find("sfp") == children.end())
+    if(sfp != nullptr)
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
+        children["sfp"] = sfp;
     }
 
-    if(children.find("spi-si") == children.end())
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -3076,10 +2561,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "sfp"; yang_parent_name = "data";
 }
@@ -3110,7 +2593,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3133,64 +2616,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -3234,7 +2691,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3259,20 +2716,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3322,7 +2771,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3347,20 +2796,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3410,7 +2851,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3435,20 +2876,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3498,7 +2931,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3523,20 +2956,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3586,7 +3011,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3611,20 +3036,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3674,7 +3091,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3699,20 +3116,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3768,7 +3177,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3795,20 +3204,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3839,7 +3240,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "si-arr"; yang_parent_name = "detail";
 }
@@ -3870,7 +3270,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3894,41 +3294,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -3950,10 +3333,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "si-arr";
 }
@@ -3986,7 +3367,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4010,64 +3391,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -4115,7 +3470,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4140,20 +3495,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4203,7 +3550,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4228,20 +3575,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4262,7 +3601,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "summarized"; yang_parent_name = "stats";
 }
@@ -4301,7 +3639,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4324,28 +3662,13 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     if(child_yang_name == "si-arr")
@@ -4355,36 +3678,29 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr>();
         c->parent = this;
-        si_arr.push_back(std::move(c));
-        children[segment_path] = si_arr.back();
-        return children.at(segment_path);
+        si_arr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     for (auto const & c : si_arr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4406,22 +3722,16 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term>())
 {
     sf->parent = this;
-    children["sf"] = sf;
 
     sff->parent = this;
-    children["sff"] = sff;
 
     sff_local->parent = this;
-    children["sff-local"] = sff_local;
 
     sfp->parent = this;
-    children["sfp"] = sfp;
 
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "summarized";
 }
@@ -4462,7 +3772,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4486,156 +3796,94 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf")
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
-        else
+        if(sf == nullptr)
         {
             sf = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf>();
-            sf->parent = this;
-            children["sf"] = sf;
         }
-        return children.at("sf");
+        return sf;
     }
 
     if(child_yang_name == "sff")
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
-        else
+        if(sff == nullptr)
         {
             sff = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff>();
-            sff->parent = this;
-            children["sff"] = sff;
         }
-        return children.at("sff");
+        return sff;
     }
 
     if(child_yang_name == "sff-local")
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
-        else
+        if(sff_local == nullptr)
         {
             sff_local = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal>();
-            sff_local->parent = this;
-            children["sff-local"] = sff_local;
         }
-        return children.at("sff-local");
+        return sff_local;
     }
 
     if(child_yang_name == "sfp")
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
-        else
+        if(sfp == nullptr)
         {
             sfp = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp>();
-            sfp->parent = this;
-            children["sfp"] = sfp;
         }
-        return children.at("sfp");
+        return sfp;
     }
 
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_children() const
 {
-    if(children.find("sf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sf != nullptr)
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
+        children["sf"] = sf;
     }
 
-    if(children.find("sff") == children.end())
+    if(sff != nullptr)
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
+        children["sff"] = sff;
     }
 
-    if(children.find("sff-local") == children.end())
+    if(sff_local != nullptr)
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
+        children["sff-local"] = sff_local;
     }
 
-    if(children.find("sfp") == children.end())
+    if(sfp != nullptr)
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
+        children["sfp"] = sfp;
     }
 
-    if(children.find("spi-si") == children.end())
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -4655,10 +3903,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "sfp"; yang_parent_name = "data";
 }
@@ -4689,7 +3935,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4712,64 +3958,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -4813,7 +4033,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4838,20 +4058,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4901,7 +4113,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4926,20 +4138,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4989,7 +4193,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5014,20 +4218,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5077,7 +4273,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5102,20 +4298,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5165,7 +4353,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5190,20 +4378,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5253,7 +4433,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5278,20 +4458,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5347,7 +4519,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5374,20 +4546,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5418,7 +4582,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "si-arr"; yang_parent_name = "summarized";
 }
@@ -5449,7 +4612,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5473,41 +4636,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -5529,10 +4675,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "si-arr";
 }
@@ -5565,7 +4709,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5589,64 +4733,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -5694,7 +4812,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5719,20 +4837,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5782,7 +4892,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5807,20 +4917,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5841,7 +4943,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::ServiceFunction(
     sf_names(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames>())
 {
     sf_names->parent = this;
-    children["sf-names"] = sf_names;
 
     yang_name = "service-function"; yang_parent_name = "process";
 }
@@ -5870,7 +4971,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5893,41 +4994,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_e
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf-names")
     {
-        if(sf_names != nullptr)
-        {
-            children["sf-names"] = sf_names;
-        }
-        else
+        if(sf_names == nullptr)
         {
             sf_names = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames>();
-            sf_names->parent = this;
-            children["sf-names"] = sf_names;
         }
-        return children.at("sf-names");
+        return sf_names;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_children() const
 {
-    if(children.find("sf-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sf_names != nullptr)
     {
-        if(sf_names != nullptr)
-        {
-            children["sf-names"] = sf_names;
-        }
+        children["sf-names"] = sf_names;
     }
 
     return children;
@@ -5975,7 +5059,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5998,15 +5082,6 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf-name")
     {
         for(auto const & c : sf_name)
@@ -6014,28 +5089,24 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName>();
         c->parent = this;
-        sf_name.push_back(std::move(c));
-        children[segment_path] = sf_name.back();
-        return children.at(segment_path);
+        sf_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sf_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6052,7 +5123,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "sf-name"; yang_parent_name = "sf-names";
 }
@@ -6093,7 +5163,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6117,28 +5187,13 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     if(child_yang_name == "si-arr")
@@ -6148,36 +5203,29 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr>();
         c->parent = this;
-        si_arr.push_back(std::move(c));
-        children[segment_path] = si_arr.back();
-        return children.at(segment_path);
+        si_arr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     for (auto const & c : si_arr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6203,22 +5251,16 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term>())
 {
     sf->parent = this;
-    children["sf"] = sf;
 
     sff->parent = this;
-    children["sff"] = sff;
 
     sff_local->parent = this;
-    children["sff-local"] = sff_local;
 
     sfp->parent = this;
-    children["sfp"] = sfp;
 
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "sf-name";
 }
@@ -6259,7 +5301,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6283,156 +5325,94 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf")
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
-        else
+        if(sf == nullptr)
         {
             sf = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf>();
-            sf->parent = this;
-            children["sf"] = sf;
         }
-        return children.at("sf");
+        return sf;
     }
 
     if(child_yang_name == "sff")
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
-        else
+        if(sff == nullptr)
         {
             sff = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff>();
-            sff->parent = this;
-            children["sff"] = sff;
         }
-        return children.at("sff");
+        return sff;
     }
 
     if(child_yang_name == "sff-local")
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
-        else
+        if(sff_local == nullptr)
         {
             sff_local = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal>();
-            sff_local->parent = this;
-            children["sff-local"] = sff_local;
         }
-        return children.at("sff-local");
+        return sff_local;
     }
 
     if(child_yang_name == "sfp")
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
-        else
+        if(sfp == nullptr)
         {
             sfp = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp>();
-            sfp->parent = this;
-            children["sfp"] = sfp;
         }
-        return children.at("sfp");
+        return sfp;
     }
 
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::get_children() const
 {
-    if(children.find("sf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sf != nullptr)
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
+        children["sf"] = sf;
     }
 
-    if(children.find("sff") == children.end())
+    if(sff != nullptr)
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
+        children["sff"] = sff;
     }
 
-    if(children.find("sff-local") == children.end())
+    if(sff_local != nullptr)
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
+        children["sff-local"] = sff_local;
     }
 
-    if(children.find("sfp") == children.end())
+    if(sfp != nullptr)
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
+        children["sfp"] = sfp;
     }
 
-    if(children.find("spi-si") == children.end())
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -6452,10 +5432,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "sfp"; yang_parent_name = "data";
 }
@@ -6486,7 +5464,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6509,64 +5487,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -6610,7 +5562,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6635,20 +5587,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6698,7 +5642,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6723,20 +5667,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6786,7 +5722,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6811,20 +5747,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6874,7 +5802,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6899,20 +5827,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6962,7 +5882,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6987,20 +5907,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7050,7 +5962,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7075,20 +5987,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7144,7 +6048,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7171,20 +6075,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7215,7 +6111,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "si-arr"; yang_parent_name = "sf-name";
 }
@@ -7246,7 +6141,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7270,41 +6165,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -7326,10 +6204,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "si-arr";
 }
@@ -7362,7 +6238,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7386,64 +6262,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -7491,7 +6341,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7516,20 +6366,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7579,7 +6421,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7604,20 +6446,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7639,10 +6473,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Service
 	,sff_names(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames>())
 {
     local->parent = this;
-    children["local"] = local;
 
     sff_names->parent = this;
-    children["sff-names"] = sff_names;
 
     yang_name = "service-function-forwarder"; yang_parent_name = "process";
 }
@@ -7673,7 +6505,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7696,64 +6528,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "sff-names")
     {
-        if(sff_names != nullptr)
-        {
-            children["sff-names"] = sff_names;
-        }
-        else
+        if(sff_names == nullptr)
         {
             sff_names = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames>();
-            sff_names->parent = this;
-            children["sff-names"] = sff_names;
         }
-        return children.at("sff-names");
+        return sff_names;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("sff-names") == children.end())
+    if(sff_names != nullptr)
     {
-        if(sff_names != nullptr)
-        {
-            children["sff-names"] = sff_names;
-        }
+        children["sff-names"] = sff_names;
     }
 
     return children;
@@ -7768,7 +6574,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     error(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error>())
 {
     error->parent = this;
-    children["error"] = error;
 
     yang_name = "local"; yang_parent_name = "service-function-forwarder";
 }
@@ -7797,7 +6602,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7820,41 +6625,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "error")
     {
-        if(error != nullptr)
-        {
-            children["error"] = error;
-        }
-        else
+        if(error == nullptr)
         {
             error = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error>();
-            error->parent = this;
-            children["error"] = error;
         }
-        return children.at("error");
+        return error;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::get_children() const
 {
-    if(children.find("error") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(error != nullptr)
     {
-        if(error != nullptr)
-        {
-            children["error"] = error;
-        }
+        children["error"] = error;
     }
 
     return children;
@@ -7869,7 +6657,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "error"; yang_parent_name = "local";
 }
@@ -7908,7 +6695,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7931,28 +6718,13 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     if(child_yang_name == "si-arr")
@@ -7962,36 +6734,29 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr>();
         c->parent = this;
-        si_arr.push_back(std::move(c));
-        children[segment_path] = si_arr.back();
-        return children.at(segment_path);
+        si_arr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     for (auto const & c : si_arr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8013,22 +6778,16 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term>())
 {
     sf->parent = this;
-    children["sf"] = sf;
 
     sff->parent = this;
-    children["sff"] = sff;
 
     sff_local->parent = this;
-    children["sff-local"] = sff_local;
 
     sfp->parent = this;
-    children["sfp"] = sfp;
 
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "error";
 }
@@ -8069,7 +6828,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8093,156 +6852,94 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf")
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
-        else
+        if(sf == nullptr)
         {
             sf = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf>();
-            sf->parent = this;
-            children["sf"] = sf;
         }
-        return children.at("sf");
+        return sf;
     }
 
     if(child_yang_name == "sff")
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
-        else
+        if(sff == nullptr)
         {
             sff = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff>();
-            sff->parent = this;
-            children["sff"] = sff;
         }
-        return children.at("sff");
+        return sff;
     }
 
     if(child_yang_name == "sff-local")
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
-        else
+        if(sff_local == nullptr)
         {
             sff_local = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal>();
-            sff_local->parent = this;
-            children["sff-local"] = sff_local;
         }
-        return children.at("sff-local");
+        return sff_local;
     }
 
     if(child_yang_name == "sfp")
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
-        else
+        if(sfp == nullptr)
         {
             sfp = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp>();
-            sfp->parent = this;
-            children["sfp"] = sfp;
         }
-        return children.at("sfp");
+        return sfp;
     }
 
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::get_children() const
 {
-    if(children.find("sf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sf != nullptr)
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
+        children["sf"] = sf;
     }
 
-    if(children.find("sff") == children.end())
+    if(sff != nullptr)
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
+        children["sff"] = sff;
     }
 
-    if(children.find("sff-local") == children.end())
+    if(sff_local != nullptr)
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
+        children["sff-local"] = sff_local;
     }
 
-    if(children.find("sfp") == children.end())
+    if(sfp != nullptr)
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
+        children["sfp"] = sfp;
     }
 
-    if(children.find("spi-si") == children.end())
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -8262,10 +6959,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "sfp"; yang_parent_name = "data";
 }
@@ -8296,7 +6991,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8319,64 +7014,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -8420,7 +7089,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8445,20 +7114,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8508,7 +7169,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8533,20 +7194,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8596,7 +7249,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8621,20 +7274,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8684,7 +7329,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8709,20 +7354,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8772,7 +7409,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8797,20 +7434,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8860,7 +7489,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8885,20 +7514,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8954,7 +7575,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8981,20 +7602,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9025,7 +7638,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "si-arr"; yang_parent_name = "error";
 }
@@ -9056,7 +7668,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9080,41 +7692,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -9136,10 +7731,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "si-arr";
 }
@@ -9172,7 +7765,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9196,64 +7789,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -9301,7 +7868,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9326,20 +7893,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9389,7 +7948,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9414,20 +7973,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9481,7 +8032,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9504,15 +8055,6 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sff-name")
     {
         for(auto const & c : sff_name)
@@ -9520,28 +8062,24 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName>();
         c->parent = this;
-        sff_name.push_back(std::move(c));
-        children[segment_path] = sff_name.back();
-        return children.at(segment_path);
+        sff_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sff_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9558,7 +8096,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "sff-name"; yang_parent_name = "sff-names";
 }
@@ -9599,7 +8136,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9623,28 +8160,13 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     if(child_yang_name == "si-arr")
@@ -9654,36 +8176,29 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr>();
         c->parent = this;
-        si_arr.push_back(std::move(c));
-        children[segment_path] = si_arr.back();
-        return children.at(segment_path);
+        si_arr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     for (auto const & c : si_arr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9709,22 +8224,16 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term>())
 {
     sf->parent = this;
-    children["sf"] = sf;
 
     sff->parent = this;
-    children["sff"] = sff;
 
     sff_local->parent = this;
-    children["sff-local"] = sff_local;
 
     sfp->parent = this;
-    children["sfp"] = sfp;
 
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "sff-name";
 }
@@ -9765,7 +8274,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9789,156 +8298,94 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sf")
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
-        else
+        if(sf == nullptr)
         {
             sf = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf>();
-            sf->parent = this;
-            children["sf"] = sf;
         }
-        return children.at("sf");
+        return sf;
     }
 
     if(child_yang_name == "sff")
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
-        else
+        if(sff == nullptr)
         {
             sff = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff>();
-            sff->parent = this;
-            children["sff"] = sff;
         }
-        return children.at("sff");
+        return sff;
     }
 
     if(child_yang_name == "sff-local")
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
-        else
+        if(sff_local == nullptr)
         {
             sff_local = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal>();
-            sff_local->parent = this;
-            children["sff-local"] = sff_local;
         }
-        return children.at("sff-local");
+        return sff_local;
     }
 
     if(child_yang_name == "sfp")
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
-        else
+        if(sfp == nullptr)
         {
             sfp = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp>();
-            sfp->parent = this;
-            children["sfp"] = sfp;
         }
-        return children.at("sfp");
+        return sfp;
     }
 
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::get_children() const
 {
-    if(children.find("sf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sf != nullptr)
     {
-        if(sf != nullptr)
-        {
-            children["sf"] = sf;
-        }
+        children["sf"] = sf;
     }
 
-    if(children.find("sff") == children.end())
+    if(sff != nullptr)
     {
-        if(sff != nullptr)
-        {
-            children["sff"] = sff;
-        }
+        children["sff"] = sff;
     }
 
-    if(children.find("sff-local") == children.end())
+    if(sff_local != nullptr)
     {
-        if(sff_local != nullptr)
-        {
-            children["sff-local"] = sff_local;
-        }
+        children["sff-local"] = sff_local;
     }
 
-    if(children.find("sfp") == children.end())
+    if(sfp != nullptr)
     {
-        if(sfp != nullptr)
-        {
-            children["sfp"] = sfp;
-        }
+        children["sfp"] = sfp;
     }
 
-    if(children.find("spi-si") == children.end())
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -9958,10 +8405,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "sfp"; yang_parent_name = "data";
 }
@@ -9992,7 +8437,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10015,64 +8460,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -10116,7 +8535,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10141,20 +8560,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10204,7 +8615,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10229,20 +8640,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10292,7 +8695,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10317,20 +8720,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10380,7 +8775,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10405,20 +8800,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10468,7 +8855,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10493,20 +8880,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10556,7 +8935,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10581,20 +8960,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10650,7 +9021,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10677,20 +9048,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10721,7 +9084,6 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "si-arr"; yang_parent_name = "sff-name";
 }
@@ -10752,7 +9114,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10776,41 +9138,24 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -10832,10 +9177,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term>())
 {
     spi_si->parent = this;
-    children["spi-si"] = spi_si;
 
     term->parent = this;
-    children["term"] = term;
 
     yang_name = "data"; yang_parent_name = "si-arr";
 }
@@ -10868,7 +9211,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10892,64 +9235,38 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spi-si")
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
-        else
+        if(spi_si == nullptr)
         {
             spi_si = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi>();
-            spi_si->parent = this;
-            children["spi-si"] = spi_si;
         }
-        return children.at("spi-si");
+        return spi_si;
     }
 
     if(child_yang_name == "term")
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
-        else
+        if(term == nullptr)
         {
             term = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term>();
-            term->parent = this;
-            children["term"] = term;
         }
-        return children.at("term");
+        return term;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_children() const
 {
-    if(children.find("spi-si") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(spi_si != nullptr)
     {
-        if(spi_si != nullptr)
-        {
-            children["spi-si"] = spi_si;
-        }
+        children["spi-si"] = spi_si;
     }
 
-    if(children.find("term") == children.end())
+    if(term != nullptr)
     {
-        if(term != nullptr)
-        {
-            children["term"] = term;
-        }
+        children["term"] = term;
     }
 
     return children;
@@ -10997,7 +9314,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11022,20 +9339,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11085,7 +9394,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 
 }
 
-EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
+const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11110,20 +9419,12 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
 
 std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

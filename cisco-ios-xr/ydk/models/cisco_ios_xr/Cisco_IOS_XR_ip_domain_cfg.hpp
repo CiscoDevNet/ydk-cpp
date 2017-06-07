@@ -18,23 +18,20 @@ class IpDomain : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Vrfs; //type: IpDomain::Vrfs
 
         std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs> vrfs;
-
-
+        
 }; // IpDomain
 
 
@@ -46,19 +43,16 @@ class IpDomain::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: IpDomain::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf> > vrf;
-
-
+        
 }; // IpDomain::Vrfs
 
 
@@ -70,19 +64,17 @@ class IpDomain::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf lookup; //type: empty
         YLeaf multicast_domain; //type: string
         YLeaf source_interface; //type: string
         YLeaf name; //type: string
-
         class Ipv6Hosts; //type: IpDomain::Vrfs::Vrf::Ipv6Hosts
         class Servers; //type: IpDomain::Vrfs::Vrf::Servers
         class Lists; //type: IpDomain::Vrfs::Vrf::Lists
@@ -92,8 +84,7 @@ class IpDomain::Vrfs::Vrf : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Ipv6Hosts> ipv6_hosts;
         std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Lists> lists;
         std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Servers> servers;
-
-
+        
 }; // IpDomain::Vrfs::Vrf
 
 
@@ -105,19 +96,16 @@ class IpDomain::Vrfs::Vrf::Ipv6Hosts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Host; //type: IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host> > ipv6_host;
-
-
+        
 }; // IpDomain::Vrfs::Vrf::Ipv6Hosts
 
 
@@ -129,17 +117,14 @@ class IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_name; //type: string
         YLeafList address; //type: list of  string
-
-
 
 }; // IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host
 
@@ -152,19 +137,16 @@ class IpDomain::Vrfs::Vrf::Servers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Server; //type: IpDomain::Vrfs::Vrf::Servers::Server
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Servers::Server> > server;
-
-
+        
 }; // IpDomain::Vrfs::Vrf::Servers
 
 
@@ -176,17 +158,14 @@ class IpDomain::Vrfs::Vrf::Servers::Server : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf order; //type: int32
         YLeaf server_address; //type: string
-
-
 
 }; // IpDomain::Vrfs::Vrf::Servers::Server
 
@@ -199,19 +178,16 @@ class IpDomain::Vrfs::Vrf::Lists : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class List; //type: IpDomain::Vrfs::Vrf::Lists::List
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Lists::List> > list;
-
-
+        
 }; // IpDomain::Vrfs::Vrf::Lists
 
 
@@ -223,17 +199,14 @@ class IpDomain::Vrfs::Vrf::Lists::List : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf order; //type: int32
         YLeaf list_name; //type: string
-
-
 
 }; // IpDomain::Vrfs::Vrf::Lists::List
 
@@ -246,19 +219,16 @@ class IpDomain::Vrfs::Vrf::Ipv4Hosts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4Host; //type: IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host> > ipv4_host;
-
-
+        
 }; // IpDomain::Vrfs::Vrf::Ipv4Hosts
 
 
@@ -270,17 +240,14 @@ class IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_name; //type: string
         YLeafList address; //type: list of  string
-
-
 
 }; // IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host
 

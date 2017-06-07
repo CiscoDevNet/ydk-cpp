@@ -47,12 +47,12 @@ std::string Icmp::get_segment_path() const
 
 }
 
-EntityPath Icmp::get_entity_path(Entity* ancestor) const
+const EntityPath Icmp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath Icmp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-protocol")
     {
         for(auto const & c : ip_protocol)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> Icmp::get_child_by_name(const std::string & child_yang_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Icmp::IpProtocol>();
         c->parent = this;
-        ip_protocol.push_back(std::move(c));
-        children[segment_path] = ip_protocol.back();
-        return children.at(segment_path);
+        ip_protocol.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Icmp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Icmp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ip_protocol)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -142,10 +129,8 @@ Icmp::IpProtocol::IpProtocol()
 	,source(std::make_shared<Icmp::IpProtocol::Source>())
 {
     rate_limit->parent = this;
-    children["rate-limit"] = rate_limit;
 
     source->parent = this;
-    children["source"] = source;
 
     yang_name = "ip-protocol"; yang_parent_name = "icmp";
 }
@@ -178,7 +163,7 @@ std::string Icmp::IpProtocol::get_segment_path() const
 
 }
 
-EntityPath Icmp::IpProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath Icmp::IpProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -202,64 +187,38 @@ EntityPath Icmp::IpProtocol::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Icmp::IpProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rate-limit")
     {
-        if(rate_limit != nullptr)
-        {
-            children["rate-limit"] = rate_limit;
-        }
-        else
+        if(rate_limit == nullptr)
         {
             rate_limit = std::make_shared<Icmp::IpProtocol::RateLimit>();
-            rate_limit->parent = this;
-            children["rate-limit"] = rate_limit;
         }
-        return children.at("rate-limit");
+        return rate_limit;
     }
 
     if(child_yang_name == "source")
     {
-        if(source != nullptr)
-        {
-            children["source"] = source;
-        }
-        else
+        if(source == nullptr)
         {
             source = std::make_shared<Icmp::IpProtocol::Source>();
-            source->parent = this;
-            children["source"] = source;
         }
-        return children.at("source");
+        return source;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Icmp::IpProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::get_children() const
 {
-    if(children.find("rate-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rate_limit != nullptr)
     {
-        if(rate_limit != nullptr)
-        {
-            children["rate-limit"] = rate_limit;
-        }
+        children["rate-limit"] = rate_limit;
     }
 
-    if(children.find("source") == children.end())
+    if(source != nullptr)
     {
-        if(source != nullptr)
-        {
-            children["source"] = source;
-        }
+        children["source"] = source;
     }
 
     return children;
@@ -278,7 +237,6 @@ Icmp::IpProtocol::RateLimit::RateLimit()
     unreachable(std::make_shared<Icmp::IpProtocol::RateLimit::Unreachable>())
 {
     unreachable->parent = this;
-    children["unreachable"] = unreachable;
 
     yang_name = "rate-limit"; yang_parent_name = "ip-protocol";
 }
@@ -307,7 +265,7 @@ std::string Icmp::IpProtocol::RateLimit::get_segment_path() const
 
 }
 
-EntityPath Icmp::IpProtocol::RateLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Icmp::IpProtocol::RateLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -330,41 +288,24 @@ EntityPath Icmp::IpProtocol::RateLimit::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Icmp::IpProtocol::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unreachable")
     {
-        if(unreachable != nullptr)
-        {
-            children["unreachable"] = unreachable;
-        }
-        else
+        if(unreachable == nullptr)
         {
             unreachable = std::make_shared<Icmp::IpProtocol::RateLimit::Unreachable>();
-            unreachable->parent = this;
-            children["unreachable"] = unreachable;
         }
-        return children.at("unreachable");
+        return unreachable;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Icmp::IpProtocol::RateLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::RateLimit::get_children() const
 {
-    if(children.find("unreachable") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(unreachable != nullptr)
     {
-        if(unreachable != nullptr)
-        {
-            children["unreachable"] = unreachable;
-        }
+        children["unreachable"] = unreachable;
     }
 
     return children;
@@ -408,7 +349,7 @@ std::string Icmp::IpProtocol::RateLimit::Unreachable::get_segment_path() const
 
 }
 
-EntityPath Icmp::IpProtocol::RateLimit::Unreachable::get_entity_path(Entity* ancestor) const
+const EntityPath Icmp::IpProtocol::RateLimit::Unreachable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -433,20 +374,12 @@ EntityPath Icmp::IpProtocol::RateLimit::Unreachable::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Icmp::IpProtocol::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Icmp::IpProtocol::RateLimit::Unreachable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::RateLimit::Unreachable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -493,7 +426,7 @@ std::string Icmp::IpProtocol::Source::get_segment_path() const
 
 }
 
-EntityPath Icmp::IpProtocol::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Icmp::IpProtocol::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -517,20 +450,12 @@ EntityPath Icmp::IpProtocol::Source::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Icmp::IpProtocol::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Icmp::IpProtocol::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

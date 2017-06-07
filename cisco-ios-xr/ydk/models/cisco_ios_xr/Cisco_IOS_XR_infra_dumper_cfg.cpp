@@ -59,12 +59,12 @@ std::string Exception::get_segment_path() const
 
 }
 
-EntityPath Exception::get_entity_path(Entity* ancestor) const
+const EntityPath Exception::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -83,87 +83,52 @@ EntityPath Exception::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Exception::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "choice1")
     {
-        if(choice1 != nullptr)
-        {
-            children["choice1"] = choice1;
-        }
-        else
+        if(choice1 == nullptr)
         {
             choice1 = std::make_shared<Exception::Choice1>();
-            choice1->parent = this;
-            children["choice1"] = choice1;
         }
-        return children.at("choice1");
+        return choice1;
     }
 
     if(child_yang_name == "choice2")
     {
-        if(choice2 != nullptr)
-        {
-            children["choice2"] = choice2;
-        }
-        else
+        if(choice2 == nullptr)
         {
             choice2 = std::make_shared<Exception::Choice2>();
-            choice2->parent = this;
-            children["choice2"] = choice2;
         }
-        return children.at("choice2");
+        return choice2;
     }
 
     if(child_yang_name == "choice3")
     {
-        if(choice3 != nullptr)
-        {
-            children["choice3"] = choice3;
-        }
-        else
+        if(choice3 == nullptr)
         {
             choice3 = std::make_shared<Exception::Choice3>();
-            choice3->parent = this;
-            children["choice3"] = choice3;
         }
-        return children.at("choice3");
+        return choice3;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Exception::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Exception::get_children() const
 {
-    if(children.find("choice1") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(choice1 != nullptr)
     {
-        if(choice1 != nullptr)
-        {
-            children["choice1"] = choice1;
-        }
+        children["choice1"] = choice1;
     }
 
-    if(children.find("choice2") == children.end())
+    if(choice2 != nullptr)
     {
-        if(choice2 != nullptr)
-        {
-            children["choice2"] = choice2;
-        }
+        children["choice2"] = choice2;
     }
 
-    if(children.find("choice3") == children.end())
+    if(choice3 != nullptr)
     {
-        if(choice3 != nullptr)
-        {
-            children["choice3"] = choice3;
-        }
+        children["choice3"] = choice3;
     }
 
     return children;
@@ -252,7 +217,7 @@ std::string Exception::Choice1::get_segment_path() const
 
 }
 
-EntityPath Exception::Choice1::get_entity_path(Entity* ancestor) const
+const EntityPath Exception::Choice1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -280,20 +245,12 @@ EntityPath Exception::Choice1::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Exception::Choice1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Exception::Choice1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Exception::Choice1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -364,7 +321,7 @@ std::string Exception::Choice3::get_segment_path() const
 
 }
 
-EntityPath Exception::Choice3::get_entity_path(Entity* ancestor) const
+const EntityPath Exception::Choice3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -392,20 +349,12 @@ EntityPath Exception::Choice3::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Exception::Choice3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Exception::Choice3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Exception::Choice3::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -476,7 +425,7 @@ std::string Exception::Choice2::get_segment_path() const
 
 }
 
-EntityPath Exception::Choice2::get_entity_path(Entity* ancestor) const
+const EntityPath Exception::Choice2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -504,20 +453,12 @@ EntityPath Exception::Choice2::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Exception::Choice2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Exception::Choice2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Exception::Choice2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

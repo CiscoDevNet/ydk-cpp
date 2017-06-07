@@ -26,16 +26,12 @@ LocalRoutes::LocalRoutes()
 	,static_routes(std::make_shared<LocalRoutes::StaticRoutes>())
 {
     config->parent = this;
-    children["config"] = config;
 
     local_aggregates->parent = this;
-    children["local-aggregates"] = local_aggregates;
 
     state->parent = this;
-    children["state"] = state;
 
     static_routes->parent = this;
-    children["static-routes"] = static_routes;
 
     yang_name = "local-routes"; yang_parent_name = "openconfig-local-routing";
 }
@@ -70,12 +66,12 @@ std::string LocalRoutes::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -90,110 +86,66 @@ EntityPath LocalRoutes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LocalRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<LocalRoutes::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "local-aggregates")
     {
-        if(local_aggregates != nullptr)
-        {
-            children["local-aggregates"] = local_aggregates;
-        }
-        else
+        if(local_aggregates == nullptr)
         {
             local_aggregates = std::make_shared<LocalRoutes::LocalAggregates>();
-            local_aggregates->parent = this;
-            children["local-aggregates"] = local_aggregates;
         }
-        return children.at("local-aggregates");
+        return local_aggregates;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<LocalRoutes::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     if(child_yang_name == "static-routes")
     {
-        if(static_routes != nullptr)
-        {
-            children["static-routes"] = static_routes;
-        }
-        else
+        if(static_routes == nullptr)
         {
             static_routes = std::make_shared<LocalRoutes::StaticRoutes>();
-            static_routes->parent = this;
-            children["static-routes"] = static_routes;
         }
-        return children.at("static-routes");
+        return static_routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("local-aggregates") == children.end())
+    if(local_aggregates != nullptr)
     {
-        if(local_aggregates != nullptr)
-        {
-            children["local-aggregates"] = local_aggregates;
-        }
+        children["local-aggregates"] = local_aggregates;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
-    if(children.find("static-routes") == children.end())
+    if(static_routes != nullptr)
     {
-        if(static_routes != nullptr)
-        {
-            children["static-routes"] = static_routes;
-        }
+        children["static-routes"] = static_routes;
     }
 
     return children;
@@ -251,7 +203,7 @@ std::string LocalRoutes::Config::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::Config::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -274,20 +226,12 @@ EntityPath LocalRoutes::Config::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LocalRoutes::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -323,7 +267,7 @@ std::string LocalRoutes::State::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::State::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -346,20 +290,12 @@ EntityPath LocalRoutes::State::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LocalRoutes::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -405,7 +341,7 @@ std::string LocalRoutes::StaticRoutes::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -428,15 +364,6 @@ EntityPath LocalRoutes::StaticRoutes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "static")
     {
         for(auto const & c : static_)
@@ -444,28 +371,24 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LocalRoutes::StaticRoutes::Static_>();
         c->parent = this;
-        static_.push_back(std::move(c));
-        children[segment_path] = static_.back();
-        return children.at(segment_path);
+        static_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : static_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -484,13 +407,10 @@ LocalRoutes::StaticRoutes::Static_::Static_()
 	,state(std::make_shared<LocalRoutes::StaticRoutes::Static_::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     next_hops->parent = this;
-    children["next-hops"] = next_hops;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "static"; yang_parent_name = "static-routes";
 }
@@ -525,7 +445,7 @@ std::string LocalRoutes::StaticRoutes::Static_::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -549,87 +469,52 @@ EntityPath LocalRoutes::StaticRoutes::Static_::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<LocalRoutes::StaticRoutes::Static_::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "next-hops")
     {
-        if(next_hops != nullptr)
-        {
-            children["next-hops"] = next_hops;
-        }
-        else
+        if(next_hops == nullptr)
         {
             next_hops = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops>();
-            next_hops->parent = this;
-            children["next-hops"] = next_hops;
         }
-        return children.at("next-hops");
+        return next_hops;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<LocalRoutes::StaticRoutes::Static_::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("next-hops") == children.end())
+    if(next_hops != nullptr)
     {
-        if(next_hops != nullptr)
-        {
-            children["next-hops"] = next_hops;
-        }
+        children["next-hops"] = next_hops;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -677,7 +562,7 @@ std::string LocalRoutes::StaticRoutes::Static_::Config::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::Config::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -702,20 +587,12 @@ EntityPath LocalRoutes::StaticRoutes::Static_::Config::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -765,7 +642,7 @@ std::string LocalRoutes::StaticRoutes::Static_::State::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::State::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -790,20 +667,12 @@ EntityPath LocalRoutes::StaticRoutes::Static_::State::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -857,7 +726,7 @@ std::string LocalRoutes::StaticRoutes::Static_::NextHops::get_segment_path() con
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -880,15 +749,6 @@ EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::get_entity_path(Entity*
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop")
     {
         for(auto const & c : next_hop)
@@ -896,28 +756,24 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop>();
         c->parent = this;
-        next_hop.push_back(std::move(c));
-        children[segment_path] = next_hop.back();
-        return children.at(segment_path);
+        next_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::NextHops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -936,13 +792,10 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::NextHop()
 	,state(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     interface_ref->parent = this;
-    children["interface-ref"] = interface_ref;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "next-hop"; yang_parent_name = "next-hops";
 }
@@ -977,7 +830,7 @@ std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_segment_p
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1001,87 +854,52 @@ EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_entity_pat
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "interface-ref")
     {
-        if(interface_ref != nullptr)
-        {
-            children["interface-ref"] = interface_ref;
-        }
-        else
+        if(interface_ref == nullptr)
         {
             interface_ref = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef>();
-            interface_ref->parent = this;
-            children["interface-ref"] = interface_ref;
         }
-        return children.at("interface-ref");
+        return interface_ref;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("interface-ref") == children.end())
+    if(interface_ref != nullptr)
     {
-        if(interface_ref != nullptr)
-        {
-            children["interface-ref"] = interface_ref;
-        }
+        children["interface-ref"] = interface_ref;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1135,7 +953,7 @@ std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_s
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1162,20 +980,12 @@ EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_en
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1239,7 +1049,7 @@ std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_se
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1266,20 +1076,12 @@ EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_ent
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1309,10 +1111,8 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::InterfaceRe
 	,state(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "interface-ref"; yang_parent_name = "next-hop";
 }
@@ -1343,7 +1143,7 @@ std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef:
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1366,64 +1166,38 @@ EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1467,7 +1241,7 @@ std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef:
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1492,20 +1266,12 @@ EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1555,7 +1321,7 @@ std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef:
 
 }
 
-EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1580,20 +1346,12 @@ EntityPath LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::
 
 std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1647,7 +1405,7 @@ std::string LocalRoutes::LocalAggregates::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::LocalAggregates::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::LocalAggregates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1670,15 +1428,6 @@ EntityPath LocalRoutes::LocalAggregates::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LocalRoutes::LocalAggregates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggregate")
     {
         for(auto const & c : aggregate)
@@ -1686,28 +1435,24 @@ std::shared_ptr<Entity> LocalRoutes::LocalAggregates::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LocalRoutes::LocalAggregates::Aggregate>();
         c->parent = this;
-        aggregate.push_back(std::move(c));
-        children[segment_path] = aggregate.back();
-        return children.at(segment_path);
+        aggregate.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::LocalAggregates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : aggregate)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1725,10 +1470,8 @@ LocalRoutes::LocalAggregates::Aggregate::Aggregate()
 	,state(std::make_shared<LocalRoutes::LocalAggregates::Aggregate::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "aggregate"; yang_parent_name = "local-aggregates";
 }
@@ -1761,7 +1504,7 @@ std::string LocalRoutes::LocalAggregates::Aggregate::get_segment_path() const
 
 }
 
-EntityPath LocalRoutes::LocalAggregates::Aggregate::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::LocalAggregates::Aggregate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1785,64 +1528,38 @@ EntityPath LocalRoutes::LocalAggregates::Aggregate::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> LocalRoutes::LocalAggregates::Aggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<LocalRoutes::LocalAggregates::Aggregate::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<LocalRoutes::LocalAggregates::Aggregate::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::LocalAggregates::Aggregate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::Aggregate::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1893,7 +1610,7 @@ std::string LocalRoutes::LocalAggregates::Aggregate::Config::get_segment_path() 
 
 }
 
-EntityPath LocalRoutes::LocalAggregates::Aggregate::Config::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::LocalAggregates::Aggregate::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1919,20 +1636,12 @@ EntityPath LocalRoutes::LocalAggregates::Aggregate::Config::get_entity_path(Enti
 
 std::shared_ptr<Entity> LocalRoutes::LocalAggregates::Aggregate::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::LocalAggregates::Aggregate::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::Aggregate::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1989,7 +1698,7 @@ std::string LocalRoutes::LocalAggregates::Aggregate::State::get_segment_path() c
 
 }
 
-EntityPath LocalRoutes::LocalAggregates::Aggregate::State::get_entity_path(Entity* ancestor) const
+const EntityPath LocalRoutes::LocalAggregates::Aggregate::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2015,20 +1724,12 @@ EntityPath LocalRoutes::LocalAggregates::Aggregate::State::get_entity_path(Entit
 
 std::shared_ptr<Entity> LocalRoutes::LocalAggregates::Aggregate::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LocalRoutes::LocalAggregates::Aggregate::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::Aggregate::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

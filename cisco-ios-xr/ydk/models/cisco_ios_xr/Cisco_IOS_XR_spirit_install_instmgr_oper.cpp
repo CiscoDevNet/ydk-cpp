@@ -26,43 +26,30 @@ SoftwareInstall::SoftwareInstall()
 	,version(std::make_shared<SoftwareInstall::Version>())
 {
     active->parent = this;
-    children["active"] = active;
 
     all_operations_log->parent = this;
-    children["all-operations-log"] = all_operations_log;
 
     committed->parent = this;
-    children["committed"] = committed;
 
     files->parent = this;
-    children["files"] = files;
 
     inactive->parent = this;
-    children["inactive"] = inactive;
 
     issu->parent = this;
-    children["issu"] = issu;
 
     last_n_operation_logs->parent = this;
-    children["last-n-operation-logs"] = last_n_operation_logs;
 
     operation_logs->parent = this;
-    children["operation-logs"] = operation_logs;
 
     packages->parent = this;
-    children["packages"] = packages;
 
     prepare->parent = this;
-    children["prepare"] = prepare;
 
     repository->parent = this;
-    children["repository"] = repository;
 
     request->parent = this;
-    children["request"] = request;
 
     version->parent = this;
-    children["version"] = version;
 
     yang_name = "software-install"; yang_parent_name = "Cisco-IOS-XR-spirit-install-instmgr-oper";
 }
@@ -115,12 +102,12 @@ std::string SoftwareInstall::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -135,317 +122,192 @@ EntityPath SoftwareInstall::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active")
     {
-        if(active != nullptr)
-        {
-            children["active"] = active;
-        }
-        else
+        if(active == nullptr)
         {
             active = std::make_shared<SoftwareInstall::Active>();
-            active->parent = this;
-            children["active"] = active;
         }
-        return children.at("active");
+        return active;
     }
 
     if(child_yang_name == "all-operations-log")
     {
-        if(all_operations_log != nullptr)
-        {
-            children["all-operations-log"] = all_operations_log;
-        }
-        else
+        if(all_operations_log == nullptr)
         {
             all_operations_log = std::make_shared<SoftwareInstall::AllOperationsLog>();
-            all_operations_log->parent = this;
-            children["all-operations-log"] = all_operations_log;
         }
-        return children.at("all-operations-log");
+        return all_operations_log;
     }
 
     if(child_yang_name == "committed")
     {
-        if(committed != nullptr)
-        {
-            children["committed"] = committed;
-        }
-        else
+        if(committed == nullptr)
         {
             committed = std::make_shared<SoftwareInstall::Committed>();
-            committed->parent = this;
-            children["committed"] = committed;
         }
-        return children.at("committed");
+        return committed;
     }
 
     if(child_yang_name == "files")
     {
-        if(files != nullptr)
-        {
-            children["files"] = files;
-        }
-        else
+        if(files == nullptr)
         {
             files = std::make_shared<SoftwareInstall::Files>();
-            files->parent = this;
-            children["files"] = files;
         }
-        return children.at("files");
+        return files;
     }
 
     if(child_yang_name == "inactive")
     {
-        if(inactive != nullptr)
-        {
-            children["inactive"] = inactive;
-        }
-        else
+        if(inactive == nullptr)
         {
             inactive = std::make_shared<SoftwareInstall::Inactive>();
-            inactive->parent = this;
-            children["inactive"] = inactive;
         }
-        return children.at("inactive");
+        return inactive;
     }
 
     if(child_yang_name == "issu")
     {
-        if(issu != nullptr)
-        {
-            children["issu"] = issu;
-        }
-        else
+        if(issu == nullptr)
         {
             issu = std::make_shared<SoftwareInstall::Issu>();
-            issu->parent = this;
-            children["issu"] = issu;
         }
-        return children.at("issu");
+        return issu;
     }
 
     if(child_yang_name == "last-n-operation-logs")
     {
-        if(last_n_operation_logs != nullptr)
-        {
-            children["last-n-operation-logs"] = last_n_operation_logs;
-        }
-        else
+        if(last_n_operation_logs == nullptr)
         {
             last_n_operation_logs = std::make_shared<SoftwareInstall::LastNOperationLogs>();
-            last_n_operation_logs->parent = this;
-            children["last-n-operation-logs"] = last_n_operation_logs;
         }
-        return children.at("last-n-operation-logs");
+        return last_n_operation_logs;
     }
 
     if(child_yang_name == "operation-logs")
     {
-        if(operation_logs != nullptr)
-        {
-            children["operation-logs"] = operation_logs;
-        }
-        else
+        if(operation_logs == nullptr)
         {
             operation_logs = std::make_shared<SoftwareInstall::OperationLogs>();
-            operation_logs->parent = this;
-            children["operation-logs"] = operation_logs;
         }
-        return children.at("operation-logs");
+        return operation_logs;
     }
 
     if(child_yang_name == "packages")
     {
-        if(packages != nullptr)
-        {
-            children["packages"] = packages;
-        }
-        else
+        if(packages == nullptr)
         {
             packages = std::make_shared<SoftwareInstall::Packages>();
-            packages->parent = this;
-            children["packages"] = packages;
         }
-        return children.at("packages");
+        return packages;
     }
 
     if(child_yang_name == "prepare")
     {
-        if(prepare != nullptr)
-        {
-            children["prepare"] = prepare;
-        }
-        else
+        if(prepare == nullptr)
         {
             prepare = std::make_shared<SoftwareInstall::Prepare>();
-            prepare->parent = this;
-            children["prepare"] = prepare;
         }
-        return children.at("prepare");
+        return prepare;
     }
 
     if(child_yang_name == "repository")
     {
-        if(repository != nullptr)
-        {
-            children["repository"] = repository;
-        }
-        else
+        if(repository == nullptr)
         {
             repository = std::make_shared<SoftwareInstall::Repository>();
-            repository->parent = this;
-            children["repository"] = repository;
         }
-        return children.at("repository");
+        return repository;
     }
 
     if(child_yang_name == "request")
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
-        else
+        if(request == nullptr)
         {
             request = std::make_shared<SoftwareInstall::Request>();
-            request->parent = this;
-            children["request"] = request;
         }
-        return children.at("request");
+        return request;
     }
 
     if(child_yang_name == "version")
     {
-        if(version != nullptr)
-        {
-            children["version"] = version;
-        }
-        else
+        if(version == nullptr)
         {
             version = std::make_shared<SoftwareInstall::Version>();
-            version->parent = this;
-            children["version"] = version;
         }
-        return children.at("version");
+        return version;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::get_children() const
 {
-    if(children.find("active") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(active != nullptr)
     {
-        if(active != nullptr)
-        {
-            children["active"] = active;
-        }
+        children["active"] = active;
     }
 
-    if(children.find("all-operations-log") == children.end())
+    if(all_operations_log != nullptr)
     {
-        if(all_operations_log != nullptr)
-        {
-            children["all-operations-log"] = all_operations_log;
-        }
+        children["all-operations-log"] = all_operations_log;
     }
 
-    if(children.find("committed") == children.end())
+    if(committed != nullptr)
     {
-        if(committed != nullptr)
-        {
-            children["committed"] = committed;
-        }
+        children["committed"] = committed;
     }
 
-    if(children.find("files") == children.end())
+    if(files != nullptr)
     {
-        if(files != nullptr)
-        {
-            children["files"] = files;
-        }
+        children["files"] = files;
     }
 
-    if(children.find("inactive") == children.end())
+    if(inactive != nullptr)
     {
-        if(inactive != nullptr)
-        {
-            children["inactive"] = inactive;
-        }
+        children["inactive"] = inactive;
     }
 
-    if(children.find("issu") == children.end())
+    if(issu != nullptr)
     {
-        if(issu != nullptr)
-        {
-            children["issu"] = issu;
-        }
+        children["issu"] = issu;
     }
 
-    if(children.find("last-n-operation-logs") == children.end())
+    if(last_n_operation_logs != nullptr)
     {
-        if(last_n_operation_logs != nullptr)
-        {
-            children["last-n-operation-logs"] = last_n_operation_logs;
-        }
+        children["last-n-operation-logs"] = last_n_operation_logs;
     }
 
-    if(children.find("operation-logs") == children.end())
+    if(operation_logs != nullptr)
     {
-        if(operation_logs != nullptr)
-        {
-            children["operation-logs"] = operation_logs;
-        }
+        children["operation-logs"] = operation_logs;
     }
 
-    if(children.find("packages") == children.end())
+    if(packages != nullptr)
     {
-        if(packages != nullptr)
-        {
-            children["packages"] = packages;
-        }
+        children["packages"] = packages;
     }
 
-    if(children.find("prepare") == children.end())
+    if(prepare != nullptr)
     {
-        if(prepare != nullptr)
-        {
-            children["prepare"] = prepare;
-        }
+        children["prepare"] = prepare;
     }
 
-    if(children.find("repository") == children.end())
+    if(repository != nullptr)
     {
-        if(repository != nullptr)
-        {
-            children["repository"] = repository;
-        }
+        children["repository"] = repository;
     }
 
-    if(children.find("request") == children.end())
+    if(request != nullptr)
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
+        children["request"] = request;
     }
 
-    if(children.find("version") == children.end())
+    if(version != nullptr)
     {
-        if(version != nullptr)
-        {
-            children["version"] = version;
-        }
+        children["version"] = version;
     }
 
     return children;
@@ -513,7 +375,7 @@ std::string SoftwareInstall::Files::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Files::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Files::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -536,15 +398,6 @@ EntityPath SoftwareInstall::Files::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Files::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "file")
     {
         for(auto const & c : file)
@@ -552,28 +405,24 @@ std::shared_ptr<Entity> SoftwareInstall::Files::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::Files::File>();
         c->parent = this;
-        file.push_back(std::move(c));
-        children[segment_path] = file.back();
-        return children.at(segment_path);
+        file.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Files::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : file)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -591,10 +440,8 @@ SoftwareInstall::Files::File::File()
 	,detail(std::make_shared<SoftwareInstall::Files::File::Detail>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     detail->parent = this;
-    children["detail"] = detail;
 
     yang_name = "file"; yang_parent_name = "files";
 }
@@ -627,7 +474,7 @@ std::string SoftwareInstall::Files::File::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Files::File::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Files::File::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -651,64 +498,38 @@ EntityPath SoftwareInstall::Files::File::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Files::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<SoftwareInstall::Files::File::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<SoftwareInstall::Files::File::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Files::File::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::File::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("detail") == children.end())
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
     return children;
@@ -753,7 +574,7 @@ std::string SoftwareInstall::Files::File::Brief::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Files::File::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Files::File::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -777,20 +598,12 @@ EntityPath SoftwareInstall::Files::File::Brief::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> SoftwareInstall::Files::File::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Files::File::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::File::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -833,7 +646,7 @@ std::string SoftwareInstall::Files::File::Detail::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Files::File::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Files::File::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -857,20 +670,12 @@ EntityPath SoftwareInstall::Files::File::Detail::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> SoftwareInstall::Files::File::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Files::File::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::File::Detail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -920,7 +725,7 @@ std::string SoftwareInstall::LastNOperationLogs::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::LastNOperationLogs::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::LastNOperationLogs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -943,15 +748,6 @@ EntityPath SoftwareInstall::LastNOperationLogs::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> SoftwareInstall::LastNOperationLogs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-n-operation-log")
     {
         for(auto const & c : last_n_operation_log)
@@ -959,28 +755,24 @@ std::shared_ptr<Entity> SoftwareInstall::LastNOperationLogs::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::LastNOperationLogs::LastNOperationLog>();
         c->parent = this;
-        last_n_operation_log.push_back(std::move(c));
-        children[segment_path] = last_n_operation_log.back();
-        return children.at(segment_path);
+        last_n_operation_log.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::LastNOperationLogs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLogs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : last_n_operation_log)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -998,10 +790,8 @@ SoftwareInstall::LastNOperationLogs::LastNOperationLog::LastNOperationLog()
 	,summary(std::make_shared<SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "last-n-operation-log"; yang_parent_name = "last-n-operation-logs";
 }
@@ -1034,7 +824,7 @@ std::string SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_segment_
 
 }
 
-EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1058,64 +848,38 @@ EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_entity_pa
 
 std::shared_ptr<Entity> SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -1160,7 +924,7 @@ std::string SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get
 
 }
 
-EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1184,20 +948,12 @@ EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get_
 
 std::shared_ptr<Entity> SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1240,7 +996,7 @@ std::string SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_
 
 }
 
-EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1264,20 +1020,12 @@ EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_e
 
 std::shared_ptr<Entity> SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1355,7 +1103,7 @@ std::string SoftwareInstall::Prepare::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Prepare::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Prepare::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1384,15 +1132,6 @@ EntityPath SoftwareInstall::Prepare::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Prepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "package")
     {
         for(auto const & c : package)
@@ -1400,15 +1139,13 @@ std::shared_ptr<Entity> SoftwareInstall::Prepare::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::Prepare::Package>();
         c->parent = this;
-        package.push_back(std::move(c));
-        children[segment_path] = package.back();
-        return children.at(segment_path);
+        package.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rpm")
@@ -1418,36 +1155,29 @@ std::shared_ptr<Entity> SoftwareInstall::Prepare::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::Prepare::Rpm>();
         c->parent = this;
-        rpm.push_back(std::move(c));
-        children[segment_path] = rpm.back();
-        return children.at(segment_path);
+        rpm.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Prepare::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : package)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : rpm)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1512,7 +1242,7 @@ std::string SoftwareInstall::Prepare::Rpm::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Prepare::Rpm::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Prepare::Rpm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1536,20 +1266,12 @@ EntityPath SoftwareInstall::Prepare::Rpm::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> SoftwareInstall::Prepare::Rpm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Prepare::Rpm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::Rpm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1592,7 +1314,7 @@ std::string SoftwareInstall::Prepare::Package::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Prepare::Package::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Prepare::Package::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1616,20 +1338,12 @@ EntityPath SoftwareInstall::Prepare::Package::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> SoftwareInstall::Prepare::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Prepare::Package::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::Package::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1679,7 +1393,7 @@ std::string SoftwareInstall::Active::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Active::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Active::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1702,15 +1416,6 @@ EntityPath SoftwareInstall::Active::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active-package-info")
     {
         for(auto const & c : active_package_info)
@@ -1718,28 +1423,24 @@ std::shared_ptr<Entity> SoftwareInstall::Active::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::Active::ActivePackageInfo>();
         c->parent = this;
-        active_package_info.push_back(std::move(c));
-        children[segment_path] = active_package_info.back();
-        return children.at(segment_path);
+        active_package_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Active::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Active::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : active_package_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1795,7 +1496,7 @@ std::string SoftwareInstall::Active::ActivePackageInfo::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Active::ActivePackageInfo::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Active::ActivePackageInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1824,20 +1525,12 @@ EntityPath SoftwareInstall::Active::ActivePackageInfo::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> SoftwareInstall::Active::ActivePackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Active::ActivePackageInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Active::ActivePackageInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1900,7 +1593,7 @@ std::string SoftwareInstall::Version::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Version::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Version::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1924,20 +1617,12 @@ EntityPath SoftwareInstall::Version::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Version::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Version::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1980,7 +1665,7 @@ std::string SoftwareInstall::Inactive::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Inactive::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Inactive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2004,20 +1689,12 @@ EntityPath SoftwareInstall::Inactive::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Inactive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Inactive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2060,7 +1737,7 @@ std::string SoftwareInstall::Request::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Request::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Request::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2084,20 +1761,12 @@ EntityPath SoftwareInstall::Request::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Request::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Request::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2115,10 +1784,8 @@ SoftwareInstall::Issu::Issu()
 	,stage(std::make_shared<SoftwareInstall::Issu::Stage>())
 {
     inventory->parent = this;
-    children["inventory"] = inventory;
 
     stage->parent = this;
-    children["stage"] = stage;
 
     yang_name = "issu"; yang_parent_name = "software-install";
 }
@@ -2149,7 +1816,7 @@ std::string SoftwareInstall::Issu::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Issu::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Issu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2172,64 +1839,38 @@ EntityPath SoftwareInstall::Issu::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inventory")
     {
-        if(inventory != nullptr)
-        {
-            children["inventory"] = inventory;
-        }
-        else
+        if(inventory == nullptr)
         {
             inventory = std::make_shared<SoftwareInstall::Issu::Inventory>();
-            inventory->parent = this;
-            children["inventory"] = inventory;
         }
-        return children.at("inventory");
+        return inventory;
     }
 
     if(child_yang_name == "stage")
     {
-        if(stage != nullptr)
-        {
-            children["stage"] = stage;
-        }
-        else
+        if(stage == nullptr)
         {
             stage = std::make_shared<SoftwareInstall::Issu::Stage>();
-            stage->parent = this;
-            children["stage"] = stage;
         }
-        return children.at("stage");
+        return stage;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Issu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::get_children() const
 {
-    if(children.find("inventory") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(inventory != nullptr)
     {
-        if(inventory != nullptr)
-        {
-            children["inventory"] = inventory;
-        }
+        children["inventory"] = inventory;
     }
 
-    if(children.find("stage") == children.end())
+    if(stage != nullptr)
     {
-        if(stage != nullptr)
-        {
-            children["stage"] = stage;
-        }
+        children["stage"] = stage;
     }
 
     return children;
@@ -2285,7 +1926,7 @@ std::string SoftwareInstall::Issu::Stage::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Issu::Stage::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Issu::Stage::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2314,20 +1955,12 @@ EntityPath SoftwareInstall::Issu::Stage::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Issu::Stage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Issu::Stage::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Stage::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2397,7 +2030,7 @@ std::string SoftwareInstall::Issu::Inventory::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Issu::Inventory::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Issu::Inventory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2420,15 +2053,6 @@ EntityPath SoftwareInstall::Issu::Inventory::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> SoftwareInstall::Issu::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invinfo")
     {
         for(auto const & c : invinfo)
@@ -2436,28 +2060,24 @@ std::shared_ptr<Entity> SoftwareInstall::Issu::Inventory::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::Issu::Inventory::Invinfo>();
         c->parent = this;
-        invinfo.push_back(std::move(c));
-        children[segment_path] = invinfo.back();
-        return children.at(segment_path);
+        invinfo.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Issu::Inventory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Inventory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : invinfo)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2510,7 +2130,7 @@ std::string SoftwareInstall::Issu::Inventory::Invinfo::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Issu::Inventory::Invinfo::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Issu::Inventory::Invinfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2538,20 +2158,12 @@ EntityPath SoftwareInstall::Issu::Inventory::Invinfo::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> SoftwareInstall::Issu::Inventory::Invinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Issu::Inventory::Invinfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Inventory::Invinfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2617,7 +2229,7 @@ std::string SoftwareInstall::Committed::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Committed::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Committed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2640,15 +2252,6 @@ EntityPath SoftwareInstall::Committed::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Committed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "committed-package-info")
     {
         for(auto const & c : committed_package_info)
@@ -2656,28 +2259,24 @@ std::shared_ptr<Entity> SoftwareInstall::Committed::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::Committed::CommittedPackageInfo>();
         c->parent = this;
-        committed_package_info.push_back(std::move(c));
-        children[segment_path] = committed_package_info.back();
-        return children.at(segment_path);
+        committed_package_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Committed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Committed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : committed_package_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2733,7 +2332,7 @@ std::string SoftwareInstall::Committed::CommittedPackageInfo::get_segment_path()
 
 }
 
-EntityPath SoftwareInstall::Committed::CommittedPackageInfo::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Committed::CommittedPackageInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2762,20 +2361,12 @@ EntityPath SoftwareInstall::Committed::CommittedPackageInfo::get_entity_path(Ent
 
 std::shared_ptr<Entity> SoftwareInstall::Committed::CommittedPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Committed::CommittedPackageInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Committed::CommittedPackageInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2813,10 +2404,8 @@ SoftwareInstall::AllOperationsLog::AllOperationsLog()
 	,summary(std::make_shared<SoftwareInstall::AllOperationsLog::Summary>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "all-operations-log"; yang_parent_name = "software-install";
 }
@@ -2847,7 +2436,7 @@ std::string SoftwareInstall::AllOperationsLog::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::AllOperationsLog::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::AllOperationsLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2870,64 +2459,38 @@ EntityPath SoftwareInstall::AllOperationsLog::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<SoftwareInstall::AllOperationsLog::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<SoftwareInstall::AllOperationsLog::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::AllOperationsLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -2968,7 +2531,7 @@ std::string SoftwareInstall::AllOperationsLog::Summary::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::AllOperationsLog::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::AllOperationsLog::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2992,20 +2555,12 @@ EntityPath SoftwareInstall::AllOperationsLog::Summary::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::AllOperationsLog::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3048,7 +2603,7 @@ std::string SoftwareInstall::AllOperationsLog::Detail::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::AllOperationsLog::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::AllOperationsLog::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3072,20 +2627,12 @@ EntityPath SoftwareInstall::AllOperationsLog::Detail::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::AllOperationsLog::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::Detail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3135,7 +2682,7 @@ std::string SoftwareInstall::Packages::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Packages::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Packages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3158,15 +2705,6 @@ EntityPath SoftwareInstall::Packages::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Packages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "package")
     {
         for(auto const & c : package)
@@ -3174,28 +2712,24 @@ std::shared_ptr<Entity> SoftwareInstall::Packages::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::Packages::Package>();
         c->parent = this;
-        package.push_back(std::move(c));
-        children[segment_path] = package.back();
-        return children.at(segment_path);
+        package.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Packages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : package)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3214,13 +2748,10 @@ SoftwareInstall::Packages::Package::Package()
 	,verbose(std::make_shared<SoftwareInstall::Packages::Package::Verbose>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     detail->parent = this;
-    children["detail"] = detail;
 
     verbose->parent = this;
-    children["verbose"] = verbose;
 
     yang_name = "package"; yang_parent_name = "packages";
 }
@@ -3255,7 +2786,7 @@ std::string SoftwareInstall::Packages::Package::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Packages::Package::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Packages::Package::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3279,87 +2810,52 @@ EntityPath SoftwareInstall::Packages::Package::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> SoftwareInstall::Packages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<SoftwareInstall::Packages::Package::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<SoftwareInstall::Packages::Package::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "verbose")
     {
-        if(verbose != nullptr)
-        {
-            children["verbose"] = verbose;
-        }
-        else
+        if(verbose == nullptr)
         {
             verbose = std::make_shared<SoftwareInstall::Packages::Package::Verbose>();
-            verbose->parent = this;
-            children["verbose"] = verbose;
         }
-        return children.at("verbose");
+        return verbose;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Packages::Package::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("detail") == children.end())
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("verbose") == children.end())
+    if(verbose != nullptr)
     {
-        if(verbose != nullptr)
-        {
-            children["verbose"] = verbose;
-        }
+        children["verbose"] = verbose;
     }
 
     return children;
@@ -3404,7 +2900,7 @@ std::string SoftwareInstall::Packages::Package::Verbose::get_segment_path() cons
 
 }
 
-EntityPath SoftwareInstall::Packages::Package::Verbose::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Packages::Package::Verbose::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3428,20 +2924,12 @@ EntityPath SoftwareInstall::Packages::Package::Verbose::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> SoftwareInstall::Packages::Package::Verbose::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Packages::Package::Verbose::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::Verbose::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3484,7 +2972,7 @@ std::string SoftwareInstall::Packages::Package::Brief::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Packages::Package::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Packages::Package::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3508,20 +2996,12 @@ EntityPath SoftwareInstall::Packages::Package::Brief::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> SoftwareInstall::Packages::Package::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Packages::Package::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3564,7 +3044,7 @@ std::string SoftwareInstall::Packages::Package::Detail::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Packages::Package::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Packages::Package::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3588,20 +3068,12 @@ EntityPath SoftwareInstall::Packages::Package::Detail::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> SoftwareInstall::Packages::Package::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Packages::Package::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::Detail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3651,7 +3123,7 @@ std::string SoftwareInstall::OperationLogs::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::OperationLogs::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::OperationLogs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3674,15 +3146,6 @@ EntityPath SoftwareInstall::OperationLogs::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> SoftwareInstall::OperationLogs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "operation-log")
     {
         for(auto const & c : operation_log)
@@ -3690,28 +3153,24 @@ std::shared_ptr<Entity> SoftwareInstall::OperationLogs::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SoftwareInstall::OperationLogs::OperationLog>();
         c->parent = this;
-        operation_log.push_back(std::move(c));
-        children[segment_path] = operation_log.back();
-        return children.at(segment_path);
+        operation_log.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::OperationLogs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : operation_log)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3729,10 +3188,8 @@ SoftwareInstall::OperationLogs::OperationLog::OperationLog()
 	,summary(std::make_shared<SoftwareInstall::OperationLogs::OperationLog::Summary>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "operation-log"; yang_parent_name = "operation-logs";
 }
@@ -3765,7 +3222,7 @@ std::string SoftwareInstall::OperationLogs::OperationLog::get_segment_path() con
 
 }
 
-EntityPath SoftwareInstall::OperationLogs::OperationLog::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::OperationLogs::OperationLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3789,64 +3246,38 @@ EntityPath SoftwareInstall::OperationLogs::OperationLog::get_entity_path(Entity*
 
 std::shared_ptr<Entity> SoftwareInstall::OperationLogs::OperationLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<SoftwareInstall::OperationLogs::OperationLog::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<SoftwareInstall::OperationLogs::OperationLog::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::OperationLogs::OperationLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::OperationLog::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -3891,7 +3322,7 @@ std::string SoftwareInstall::OperationLogs::OperationLog::Summary::get_segment_p
 
 }
 
-EntityPath SoftwareInstall::OperationLogs::OperationLog::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::OperationLogs::OperationLog::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3915,20 +3346,12 @@ EntityPath SoftwareInstall::OperationLogs::OperationLog::Summary::get_entity_pat
 
 std::shared_ptr<Entity> SoftwareInstall::OperationLogs::OperationLog::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::OperationLogs::OperationLog::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::OperationLog::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3971,7 +3394,7 @@ std::string SoftwareInstall::OperationLogs::OperationLog::Detail::get_segment_pa
 
 }
 
-EntityPath SoftwareInstall::OperationLogs::OperationLog::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::OperationLogs::OperationLog::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3995,20 +3418,12 @@ EntityPath SoftwareInstall::OperationLogs::OperationLog::Detail::get_entity_path
 
 std::shared_ptr<Entity> SoftwareInstall::OperationLogs::OperationLog::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::OperationLogs::OperationLog::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::OperationLog::Detail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4026,10 +3441,8 @@ SoftwareInstall::Repository::Repository()
 	,xr(std::make_shared<SoftwareInstall::Repository::Xr>())
 {
     all->parent = this;
-    children["all"] = all;
 
     xr->parent = this;
-    children["xr"] = xr;
 
     yang_name = "repository"; yang_parent_name = "software-install";
 }
@@ -4060,7 +3473,7 @@ std::string SoftwareInstall::Repository::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Repository::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Repository::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4083,64 +3496,38 @@ EntityPath SoftwareInstall::Repository::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SoftwareInstall::Repository::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "all")
     {
-        if(all != nullptr)
-        {
-            children["all"] = all;
-        }
-        else
+        if(all == nullptr)
         {
             all = std::make_shared<SoftwareInstall::Repository::All>();
-            all->parent = this;
-            children["all"] = all;
         }
-        return children.at("all");
+        return all;
     }
 
     if(child_yang_name == "xr")
     {
-        if(xr != nullptr)
-        {
-            children["xr"] = xr;
-        }
-        else
+        if(xr == nullptr)
         {
             xr = std::make_shared<SoftwareInstall::Repository::Xr>();
-            xr->parent = this;
-            children["xr"] = xr;
         }
-        return children.at("xr");
+        return xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Repository::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::get_children() const
 {
-    if(children.find("all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(all != nullptr)
     {
-        if(all != nullptr)
-        {
-            children["all"] = all;
-        }
+        children["all"] = all;
     }
 
-    if(children.find("xr") == children.end())
+    if(xr != nullptr)
     {
-        if(xr != nullptr)
-        {
-            children["xr"] = xr;
-        }
+        children["xr"] = xr;
     }
 
     return children;
@@ -4181,7 +3568,7 @@ std::string SoftwareInstall::Repository::Xr::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Repository::Xr::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Repository::Xr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4205,20 +3592,12 @@ EntityPath SoftwareInstall::Repository::Xr::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> SoftwareInstall::Repository::Xr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Repository::Xr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::Xr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4261,7 +3640,7 @@ std::string SoftwareInstall::Repository::All::get_segment_path() const
 
 }
 
-EntityPath SoftwareInstall::Repository::All::get_entity_path(Entity* ancestor) const
+const EntityPath SoftwareInstall::Repository::All::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4285,20 +3664,12 @@ EntityPath SoftwareInstall::Repository::All::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> SoftwareInstall::Repository::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SoftwareInstall::Repository::All::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::All::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

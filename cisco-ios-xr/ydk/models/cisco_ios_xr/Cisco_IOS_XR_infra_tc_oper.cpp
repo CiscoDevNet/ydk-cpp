@@ -17,16 +17,12 @@ TrafficCollector::TrafficCollector()
 	,vrf_table(std::make_shared<TrafficCollector::VrfTable>())
 {
     afs->parent = this;
-    children["afs"] = afs;
 
     external_interfaces->parent = this;
-    children["external-interfaces"] = external_interfaces;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     vrf_table->parent = this;
-    children["vrf-table"] = vrf_table;
 
     yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-oper";
 }
@@ -61,12 +57,12 @@ std::string TrafficCollector::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -81,110 +77,66 @@ EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TrafficCollector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afs")
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
-        else
+        if(afs == nullptr)
         {
             afs = std::make_shared<TrafficCollector::Afs>();
-            afs->parent = this;
-            children["afs"] = afs;
         }
-        return children.at("afs");
+        return afs;
     }
 
     if(child_yang_name == "external-interfaces")
     {
-        if(external_interfaces != nullptr)
-        {
-            children["external-interfaces"] = external_interfaces;
-        }
-        else
+        if(external_interfaces == nullptr)
         {
             external_interfaces = std::make_shared<TrafficCollector::ExternalInterfaces>();
-            external_interfaces->parent = this;
-            children["external-interfaces"] = external_interfaces;
         }
-        return children.at("external-interfaces");
+        return external_interfaces;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<TrafficCollector::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "vrf-table")
     {
-        if(vrf_table != nullptr)
-        {
-            children["vrf-table"] = vrf_table;
-        }
-        else
+        if(vrf_table == nullptr)
         {
             vrf_table = std::make_shared<TrafficCollector::VrfTable>();
-            vrf_table->parent = this;
-            children["vrf-table"] = vrf_table;
         }
-        return children.at("vrf-table");
+        return vrf_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::get_children() const
 {
-    if(children.find("afs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(afs != nullptr)
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
+        children["afs"] = afs;
     }
 
-    if(children.find("external-interfaces") == children.end())
+    if(external_interfaces != nullptr)
     {
-        if(external_interfaces != nullptr)
-        {
-            children["external-interfaces"] = external_interfaces;
-        }
+        children["external-interfaces"] = external_interfaces;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("vrf-table") == children.end())
+    if(vrf_table != nullptr)
     {
-        if(vrf_table != nullptr)
-        {
-            children["vrf-table"] = vrf_table;
-        }
+        children["vrf-table"] = vrf_table;
     }
 
     return children;
@@ -252,7 +204,7 @@ std::string TrafficCollector::ExternalInterfaces::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::ExternalInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::ExternalInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -275,15 +227,6 @@ EntityPath TrafficCollector::ExternalInterfaces::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-interface")
     {
         for(auto const & c : external_interface)
@@ -291,28 +234,24 @@ std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::ExternalInterfaces::ExternalInterface>();
         c->parent = this;
-        external_interface.push_back(std::move(c));
-        children[segment_path] = external_interface.back();
-        return children.at(segment_path);
+        external_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::ExternalInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : external_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -365,7 +304,7 @@ std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_segment
 
 }
 
-EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -393,20 +332,12 @@ EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_entity_p
 
 std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::ExternalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::ExternalInterfaces::ExternalInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::ExternalInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -445,7 +376,6 @@ TrafficCollector::Summary::Summary()
     database_statistics_external_interface(std::make_shared<TrafficCollector::Summary::DatabaseStatisticsExternalInterface>())
 {
     database_statistics_external_interface->parent = this;
-    children["database-statistics-external-interface"] = database_statistics_external_interface;
 
     yang_name = "summary"; yang_parent_name = "traffic-collector";
 }
@@ -514,7 +444,7 @@ std::string TrafficCollector::Summary::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -542,15 +472,6 @@ EntityPath TrafficCollector::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TrafficCollector::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-message-statistic")
     {
         for(auto const & c : checkpoint_message_statistic)
@@ -558,15 +479,13 @@ std::shared_ptr<Entity> TrafficCollector::Summary::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Summary::CheckpointMessageStatistic>();
         c->parent = this;
-        checkpoint_message_statistic.push_back(std::move(c));
-        children[segment_path] = checkpoint_message_statistic.back();
-        return children.at(segment_path);
+        checkpoint_message_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "collection-message-statistic")
@@ -576,30 +495,22 @@ std::shared_ptr<Entity> TrafficCollector::Summary::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Summary::CollectionMessageStatistic>();
         c->parent = this;
-        collection_message_statistic.push_back(std::move(c));
-        children[segment_path] = collection_message_statistic.back();
-        return children.at(segment_path);
+        collection_message_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "database-statistics-external-interface")
     {
-        if(database_statistics_external_interface != nullptr)
-        {
-            children["database-statistics-external-interface"] = database_statistics_external_interface;
-        }
-        else
+        if(database_statistics_external_interface == nullptr)
         {
             database_statistics_external_interface = std::make_shared<TrafficCollector::Summary::DatabaseStatisticsExternalInterface>();
-            database_statistics_external_interface->parent = this;
-            children["database-statistics-external-interface"] = database_statistics_external_interface;
         }
-        return children.at("database-statistics-external-interface");
+        return database_statistics_external_interface;
     }
 
     if(child_yang_name == "vrf-statistic")
@@ -609,52 +520,39 @@ std::shared_ptr<Entity> TrafficCollector::Summary::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Summary::VrfStatistic>();
         c->parent = this;
-        vrf_statistic.push_back(std::move(c));
-        children[segment_path] = vrf_statistic.back();
-        return children.at(segment_path);
+        vrf_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : checkpoint_message_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : collection_message_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("database-statistics-external-interface") == children.end())
+    if(database_statistics_external_interface != nullptr)
     {
-        if(database_statistics_external_interface != nullptr)
-        {
-            children["database-statistics-external-interface"] = database_statistics_external_interface;
-        }
+        children["database-statistics-external-interface"] = database_statistics_external_interface;
     }
 
     for (auto const & c : vrf_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -724,7 +622,7 @@ std::string TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_
 
 }
 
-EntityPath TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -751,20 +649,12 @@ EntityPath TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_e
 
 std::shared_ptr<Entity> TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -796,10 +686,8 @@ TrafficCollector::Summary::VrfStatistic::VrfStatistic()
 	,database_statistics_tunnel(std::make_shared<TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel>())
 {
     database_statistics_ipv4->parent = this;
-    children["database-statistics-ipv4"] = database_statistics_ipv4;
 
     database_statistics_tunnel->parent = this;
-    children["database-statistics-tunnel"] = database_statistics_tunnel;
 
     yang_name = "vrf-statistic"; yang_parent_name = "summary";
 }
@@ -832,7 +720,7 @@ std::string TrafficCollector::Summary::VrfStatistic::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::Summary::VrfStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Summary::VrfStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -856,64 +744,38 @@ EntityPath TrafficCollector::Summary::VrfStatistic::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> TrafficCollector::Summary::VrfStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "database-statistics-ipv4")
     {
-        if(database_statistics_ipv4 != nullptr)
-        {
-            children["database-statistics-ipv4"] = database_statistics_ipv4;
-        }
-        else
+        if(database_statistics_ipv4 == nullptr)
         {
             database_statistics_ipv4 = std::make_shared<TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4>();
-            database_statistics_ipv4->parent = this;
-            children["database-statistics-ipv4"] = database_statistics_ipv4;
         }
-        return children.at("database-statistics-ipv4");
+        return database_statistics_ipv4;
     }
 
     if(child_yang_name == "database-statistics-tunnel")
     {
-        if(database_statistics_tunnel != nullptr)
-        {
-            children["database-statistics-tunnel"] = database_statistics_tunnel;
-        }
-        else
+        if(database_statistics_tunnel == nullptr)
         {
             database_statistics_tunnel = std::make_shared<TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel>();
-            database_statistics_tunnel->parent = this;
-            children["database-statistics-tunnel"] = database_statistics_tunnel;
         }
-        return children.at("database-statistics-tunnel");
+        return database_statistics_tunnel;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Summary::VrfStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::VrfStatistic::get_children() const
 {
-    if(children.find("database-statistics-ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(database_statistics_ipv4 != nullptr)
     {
-        if(database_statistics_ipv4 != nullptr)
-        {
-            children["database-statistics-ipv4"] = database_statistics_ipv4;
-        }
+        children["database-statistics-ipv4"] = database_statistics_ipv4;
     }
 
-    if(children.find("database-statistics-tunnel") == children.end())
+    if(database_statistics_tunnel != nullptr)
     {
-        if(database_statistics_tunnel != nullptr)
-        {
-            children["database-statistics-tunnel"] = database_statistics_tunnel;
-        }
+        children["database-statistics-tunnel"] = database_statistics_tunnel;
     }
 
     return children;
@@ -967,7 +829,7 @@ std::string TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get
 
 }
 
-EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -994,20 +856,12 @@ EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get_
 
 std::shared_ptr<Entity> TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1071,7 +925,7 @@ std::string TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::g
 
 }
 
-EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1098,20 +952,12 @@ EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::ge
 
 std::shared_ptr<Entity> TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1181,7 +1027,7 @@ std::string TrafficCollector::Summary::CollectionMessageStatistic::get_segment_p
 
 }
 
-EntityPath TrafficCollector::Summary::CollectionMessageStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Summary::CollectionMessageStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1210,20 +1056,12 @@ EntityPath TrafficCollector::Summary::CollectionMessageStatistic::get_entity_pat
 
 std::shared_ptr<Entity> TrafficCollector::Summary::CollectionMessageStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Summary::CollectionMessageStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::CollectionMessageStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1301,7 +1139,7 @@ std::string TrafficCollector::Summary::CheckpointMessageStatistic::get_segment_p
 
 }
 
-EntityPath TrafficCollector::Summary::CheckpointMessageStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Summary::CheckpointMessageStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1330,20 +1168,12 @@ EntityPath TrafficCollector::Summary::CheckpointMessageStatistic::get_entity_pat
 
 std::shared_ptr<Entity> TrafficCollector::Summary::CheckpointMessageStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Summary::CheckpointMessageStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::CheckpointMessageStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1380,7 +1210,6 @@ TrafficCollector::VrfTable::VrfTable()
     default_vrf(std::make_shared<TrafficCollector::VrfTable::DefaultVrf>())
 {
     default_vrf->parent = this;
-    children["default-vrf"] = default_vrf;
 
     yang_name = "vrf-table"; yang_parent_name = "traffic-collector";
 }
@@ -1409,7 +1238,7 @@ std::string TrafficCollector::VrfTable::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::VrfTable::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1432,41 +1261,24 @@ EntityPath TrafficCollector::VrfTable::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-vrf")
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
-        else
+        if(default_vrf == nullptr)
         {
             default_vrf = std::make_shared<TrafficCollector::VrfTable::DefaultVrf>();
-            default_vrf->parent = this;
-            children["default-vrf"] = default_vrf;
         }
-        return children.at("default-vrf");
+        return default_vrf;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::get_children() const
 {
-    if(children.find("default-vrf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_vrf != nullptr)
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
+        children["default-vrf"] = default_vrf;
     }
 
     return children;
@@ -1481,7 +1293,6 @@ TrafficCollector::VrfTable::DefaultVrf::DefaultVrf()
     afs(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs>())
 {
     afs->parent = this;
-    children["afs"] = afs;
 
     yang_name = "default-vrf"; yang_parent_name = "vrf-table";
 }
@@ -1510,7 +1321,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1533,41 +1344,24 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afs")
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
-        else
+        if(afs == nullptr)
         {
             afs = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs>();
-            afs->parent = this;
-            children["afs"] = afs;
         }
-        return children.at("afs");
+        return afs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::get_children() const
 {
-    if(children.find("afs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(afs != nullptr)
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
+        children["afs"] = afs;
     }
 
     return children;
@@ -1615,7 +1409,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::get_segment_path() cons
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1638,15 +1432,6 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af")
     {
         for(auto const & c : af)
@@ -1654,28 +1439,24 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af>();
         c->parent = this;
-        af.push_back(std::move(c));
-        children[segment_path] = af.back();
-        return children.at(segment_path);
+        af.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : af)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1692,7 +1473,6 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Af()
     counters(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     yang_name = "af"; yang_parent_name = "afs";
 }
@@ -1723,7 +1503,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_segment_path() 
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1747,41 +1527,24 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_entity_path(Enti
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
     return children;
@@ -1801,10 +1564,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Counters()
 	,tunnels(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels>())
 {
     prefixes->parent = this;
-    children["prefixes"] = prefixes;
 
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "counters"; yang_parent_name = "af";
 }
@@ -1835,7 +1596,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_segme
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1858,64 +1619,38 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_entity
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefixes")
     {
-        if(prefixes != nullptr)
-        {
-            children["prefixes"] = prefixes;
-        }
-        else
+        if(prefixes == nullptr)
         {
             prefixes = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes>();
-            prefixes->parent = this;
-            children["prefixes"] = prefixes;
         }
-        return children.at("prefixes");
+        return prefixes;
     }
 
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_children() const
 {
-    if(children.find("prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefixes != nullptr)
     {
-        if(prefixes != nullptr)
-        {
-            children["prefixes"] = prefixes;
-        }
+        children["prefixes"] = prefixes;
     }
 
-    if(children.find("tunnels") == children.end())
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -1963,7 +1698,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1986,15 +1721,6 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
         for(auto const & c : prefix)
@@ -2002,28 +1728,24 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix>();
         c->parent = this;
-        prefix.push_back(std::move(c));
-        children[segment_path] = prefix.back();
-        return children.at(segment_path);
+        prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2046,10 +1768,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Pre
 	,traffic_matrix_counter_statistics(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>())
 {
     base_counter_statistics->parent = this;
-    children["base-counter-statistics"] = base_counter_statistics;
 
     traffic_matrix_counter_statistics->parent = this;
-    children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
 
     yang_name = "prefix"; yang_parent_name = "prefixes";
 }
@@ -2092,7 +1812,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2121,64 +1841,38 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base-counter-statistics")
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
-        else
+        if(base_counter_statistics == nullptr)
         {
             base_counter_statistics = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics>();
-            base_counter_statistics->parent = this;
-            children["base-counter-statistics"] = base_counter_statistics;
         }
-        return children.at("base-counter-statistics");
+        return base_counter_statistics;
     }
 
     if(child_yang_name == "traffic-matrix-counter-statistics")
     {
-        if(traffic_matrix_counter_statistics != nullptr)
-        {
-            children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
-        }
-        else
+        if(traffic_matrix_counter_statistics == nullptr)
         {
             traffic_matrix_counter_statistics = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>();
-            traffic_matrix_counter_statistics->parent = this;
-            children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
         }
-        return children.at("traffic-matrix-counter-statistics");
+        return traffic_matrix_counter_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::get_children() const
 {
-    if(children.find("base-counter-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base_counter_statistics != nullptr)
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
+        children["base-counter-statistics"] = base_counter_statistics;
     }
 
-    if(children.find("traffic-matrix-counter-statistics") == children.end())
+    if(traffic_matrix_counter_statistics != nullptr)
     {
-        if(traffic_matrix_counter_statistics != nullptr)
-        {
-            children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
-        }
+        children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
     }
 
     return children;
@@ -2256,7 +1950,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2281,15 +1975,6 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count-history")
     {
         for(auto const & c : count_history)
@@ -2297,28 +1982,24 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(std::move(c));
-        children[segment_path] = count_history.back();
-        return children.at(segment_path);
+        count_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2379,7 +2060,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2407,20 +2088,12 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2492,7 +2165,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2517,15 +2190,6 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count-history")
     {
         for(auto const & c : count_history)
@@ -2533,28 +2197,24 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(std::move(c));
-        children[segment_path] = count_history.back();
-        return children.at(segment_path);
+        count_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2615,7 +2275,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2643,20 +2303,12 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2722,7 +2374,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2745,15 +2397,6 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::g
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -2761,28 +2404,24 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2803,7 +2442,6 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::Tunn
     base_counter_statistics(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics>())
 {
     base_counter_statistics->parent = this;
-    children["base-counter-statistics"] = base_counter_statistics;
 
     yang_name = "tunnel"; yang_parent_name = "tunnels";
 }
@@ -2842,7 +2480,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2870,41 +2508,24 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::T
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base-counter-statistics")
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
-        else
+        if(base_counter_statistics == nullptr)
         {
             base_counter_statistics = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics>();
-            base_counter_statistics->parent = this;
-            children["base-counter-statistics"] = base_counter_statistics;
         }
-        return children.at("base-counter-statistics");
+        return base_counter_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::get_children() const
 {
-    if(children.find("base-counter-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base_counter_statistics != nullptr)
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
+        children["base-counter-statistics"] = base_counter_statistics;
     }
 
     return children;
@@ -2978,7 +2599,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3003,15 +2624,6 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::T
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count-history")
     {
         for(auto const & c : count_history)
@@ -3019,28 +2631,24 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(std::move(c));
-        children[segment_path] = count_history.back();
-        return children.at(segment_path);
+        count_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3101,7 +2709,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::
 
 }
 
-EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3129,20 +2737,12 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::T
 
 std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3208,7 +2808,7 @@ std::string TrafficCollector::Afs::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::Afs::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3231,15 +2831,6 @@ EntityPath TrafficCollector::Afs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TrafficCollector::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af")
     {
         for(auto const & c : af)
@@ -3247,28 +2838,24 @@ std::shared_ptr<Entity> TrafficCollector::Afs::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Afs::Af>();
         c->parent = this;
-        af.push_back(std::move(c));
-        children[segment_path] = af.back();
-        return children.at(segment_path);
+        af.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : af)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3285,7 +2872,6 @@ TrafficCollector::Afs::Af::Af()
     counters(std::make_shared<TrafficCollector::Afs::Af::Counters>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     yang_name = "af"; yang_parent_name = "afs";
 }
@@ -3316,7 +2902,7 @@ std::string TrafficCollector::Afs::Af::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::Afs::Af::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3340,41 +2926,24 @@ EntityPath TrafficCollector::Afs::Af::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<TrafficCollector::Afs::Af::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
     return children;
@@ -3394,10 +2963,8 @@ TrafficCollector::Afs::Af::Counters::Counters()
 	,tunnels(std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels>())
 {
     prefixes->parent = this;
-    children["prefixes"] = prefixes;
 
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "counters"; yang_parent_name = "af";
 }
@@ -3428,7 +2995,7 @@ std::string TrafficCollector::Afs::Af::Counters::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3451,64 +3018,38 @@ EntityPath TrafficCollector::Afs::Af::Counters::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefixes")
     {
-        if(prefixes != nullptr)
-        {
-            children["prefixes"] = prefixes;
-        }
-        else
+        if(prefixes == nullptr)
         {
             prefixes = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes>();
-            prefixes->parent = this;
-            children["prefixes"] = prefixes;
         }
-        return children.at("prefixes");
+        return prefixes;
     }
 
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::get_children() const
 {
-    if(children.find("prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefixes != nullptr)
     {
-        if(prefixes != nullptr)
-        {
-            children["prefixes"] = prefixes;
-        }
+        children["prefixes"] = prefixes;
     }
 
-    if(children.find("tunnels") == children.end())
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -3556,7 +3097,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::get_segment_path() co
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3579,15 +3120,6 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::get_entity_path(Entity
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
         for(auto const & c : prefix)
@@ -3595,28 +3127,24 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix>();
         c->parent = this;
-        prefix.push_back(std::move(c));
-        children[segment_path] = prefix.back();
-        return children.at(segment_path);
+        prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Prefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Prefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3639,10 +3167,8 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::Prefix()
 	,traffic_matrix_counter_statistics(std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>())
 {
     base_counter_statistics->parent = this;
-    children["base-counter-statistics"] = base_counter_statistics;
 
     traffic_matrix_counter_statistics->parent = this;
-    children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
 
     yang_name = "prefix"; yang_parent_name = "prefixes";
 }
@@ -3685,7 +3211,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_segment_p
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3714,64 +3240,38 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_entity_pat
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base-counter-statistics")
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
-        else
+        if(base_counter_statistics == nullptr)
         {
             base_counter_statistics = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics>();
-            base_counter_statistics->parent = this;
-            children["base-counter-statistics"] = base_counter_statistics;
         }
-        return children.at("base-counter-statistics");
+        return base_counter_statistics;
     }
 
     if(child_yang_name == "traffic-matrix-counter-statistics")
     {
-        if(traffic_matrix_counter_statistics != nullptr)
-        {
-            children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
-        }
-        else
+        if(traffic_matrix_counter_statistics == nullptr)
         {
             traffic_matrix_counter_statistics = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>();
-            traffic_matrix_counter_statistics->parent = this;
-            children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
         }
-        return children.at("traffic-matrix-counter-statistics");
+        return traffic_matrix_counter_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_children() const
 {
-    if(children.find("base-counter-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base_counter_statistics != nullptr)
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
+        children["base-counter-statistics"] = base_counter_statistics;
     }
 
-    if(children.find("traffic-matrix-counter-statistics") == children.end())
+    if(traffic_matrix_counter_statistics != nullptr)
     {
-        if(traffic_matrix_counter_statistics != nullptr)
-        {
-            children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
-        }
+        children["traffic-matrix-counter-statistics"] = traffic_matrix_counter_statistics;
     }
 
     return children;
@@ -3849,7 +3349,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterSt
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3874,15 +3374,6 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterSta
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count-history")
     {
         for(auto const & c : count_history)
@@ -3890,28 +3381,24 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::B
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(std::move(c));
-        children[segment_path] = count_history.back();
-        return children.at(segment_path);
+        count_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3972,7 +3459,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterSt
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4000,20 +3487,12 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterSta
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4085,7 +3564,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrix
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4110,15 +3589,6 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixC
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count-history")
     {
         for(auto const & c : count_history)
@@ -4126,28 +3596,24 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::T
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(std::move(c));
-        children[segment_path] = count_history.back();
-        return children.at(segment_path);
+        count_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4208,7 +3674,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrix
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4236,20 +3702,12 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixC
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4315,7 +3773,7 @@ std::string TrafficCollector::Afs::Af::Counters::Tunnels::get_segment_path() con
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4338,15 +3796,6 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::get_entity_path(Entity*
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -4354,28 +3803,24 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4396,7 +3841,6 @@ TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::Tunnel()
     base_counter_statistics(std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics>())
 {
     base_counter_statistics->parent = this;
-    children["base-counter-statistics"] = base_counter_statistics;
 
     yang_name = "tunnel"; yang_parent_name = "tunnels";
 }
@@ -4435,7 +3879,7 @@ std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_segment_pa
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4463,41 +3907,24 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_entity_path
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base-counter-statistics")
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
-        else
+        if(base_counter_statistics == nullptr)
         {
             base_counter_statistics = std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics>();
-            base_counter_statistics->parent = this;
-            children["base-counter-statistics"] = base_counter_statistics;
         }
-        return children.at("base-counter-statistics");
+        return base_counter_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_children() const
 {
-    if(children.find("base-counter-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base_counter_statistics != nullptr)
     {
-        if(base_counter_statistics != nullptr)
-        {
-            children["base-counter-statistics"] = base_counter_statistics;
-        }
+        children["base-counter-statistics"] = base_counter_statistics;
     }
 
     return children;
@@ -4571,7 +3998,7 @@ std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterSta
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4596,15 +4023,6 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStat
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count-history")
     {
         for(auto const & c : count_history)
@@ -4612,28 +4030,24 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::Ba
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(std::move(c));
-        children[segment_path] = count_history.back();
-        return children.at(segment_path);
+        count_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4694,7 +4108,7 @@ std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterSta
 
 }
 
-EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4722,20 +4136,12 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStat
 
 std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ Grid::Grid()
     nodes(std::make_shared<Grid::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "grid"; yang_parent_name = "Cisco-IOS-XR-fretta-grid-svr-oper";
 }
@@ -43,12 +42,12 @@ std::string Grid::get_segment_path() const
 
 }
 
-EntityPath Grid::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Grid::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Grid::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Grid::Nodes::get_segment_path() const
 
 }
 
-EntityPath Grid::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Grid::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grid::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Grid::Nodes::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Grid::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,10 +212,8 @@ Grid::Nodes::Node::Node()
 	,clients(std::make_shared<Grid::Nodes::Node::Clients>())
 {
     client_xr->parent = this;
-    children["client-xr"] = client_xr;
 
     clients->parent = this;
-    children["clients"] = clients;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -279,7 +246,7 @@ std::string Grid::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Grid::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,64 +270,38 @@ EntityPath Grid::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grid::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-xr")
     {
-        if(client_xr != nullptr)
-        {
-            children["client-xr"] = client_xr;
-        }
-        else
+        if(client_xr == nullptr)
         {
             client_xr = std::make_shared<Grid::Nodes::Node::ClientXr>();
-            client_xr->parent = this;
-            children["client-xr"] = client_xr;
         }
-        return children.at("client-xr");
+        return client_xr;
     }
 
     if(child_yang_name == "clients")
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
-        else
+        if(clients == nullptr)
         {
             clients = std::make_shared<Grid::Nodes::Node::Clients>();
-            clients->parent = this;
-            children["clients"] = clients;
         }
-        return children.at("clients");
+        return clients;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::get_children() const
 {
-    if(children.find("client-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client_xr != nullptr)
     {
-        if(client_xr != nullptr)
-        {
-            children["client-xr"] = client_xr;
-        }
+        children["client-xr"] = client_xr;
     }
 
-    if(children.find("clients") == children.end())
+    if(clients != nullptr)
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
+        children["clients"] = clients;
     }
 
     return children;
@@ -412,7 +353,7 @@ std::string Grid::Nodes::Node::ClientXr::get_segment_path() const
 
 }
 
-EntityPath Grid::Nodes::Node::ClientXr::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::Node::ClientXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -435,15 +376,6 @@ EntityPath Grid::Nodes::Node::ClientXr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grid::Nodes::Node::ClientXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
         for(auto const & c : client)
@@ -451,28 +383,24 @@ std::shared_ptr<Entity> Grid::Nodes::Node::ClientXr::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Grid::Nodes::Node::ClientXr::Client>();
         c->parent = this;
-        client.push_back(std::move(c));
-        children[segment_path] = client.back();
-        return children.at(segment_path);
+        client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::Node::ClientXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::ClientXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -523,7 +451,7 @@ std::string Grid::Nodes::Node::ClientXr::Client::get_segment_path() const
 
 }
 
-EntityPath Grid::Nodes::Node::ClientXr::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::Node::ClientXr::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -547,15 +475,6 @@ EntityPath Grid::Nodes::Node::ClientXr::Client::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Grid::Nodes::Node::ClientXr::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-data")
     {
         for(auto const & c : client_data)
@@ -563,28 +482,24 @@ std::shared_ptr<Entity> Grid::Nodes::Node::ClientXr::Client::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Grid::Nodes::Node::ClientXr::Client::ClientData>();
         c->parent = this;
-        client_data.push_back(std::move(c));
-        children[segment_path] = client_data.back();
-        return children.at(segment_path);
+        client_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::Node::ClientXr::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::ClientXr::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -629,7 +544,7 @@ std::string Grid::Nodes::Node::ClientXr::Client::ClientData::get_segment_path() 
 
 }
 
-EntityPath Grid::Nodes::Node::ClientXr::Client::ClientData::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::Node::ClientXr::Client::ClientData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -653,20 +568,12 @@ EntityPath Grid::Nodes::Node::ClientXr::Client::ClientData::get_entity_path(Enti
 
 std::shared_ptr<Entity> Grid::Nodes::Node::ClientXr::Client::ClientData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::Node::ClientXr::Client::ClientData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::ClientXr::Client::ClientData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -716,7 +623,7 @@ std::string Grid::Nodes::Node::Clients::get_segment_path() const
 
 }
 
-EntityPath Grid::Nodes::Node::Clients::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::Node::Clients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -739,15 +646,6 @@ EntityPath Grid::Nodes::Node::Clients::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Grid::Nodes::Node::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
         for(auto const & c : client)
@@ -755,28 +653,24 @@ std::shared_ptr<Entity> Grid::Nodes::Node::Clients::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Grid::Nodes::Node::Clients::Client>();
         c->parent = this;
-        client.push_back(std::move(c));
-        children[segment_path] = client.back();
-        return children.at(segment_path);
+        client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::Node::Clients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::Clients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -827,7 +721,7 @@ std::string Grid::Nodes::Node::Clients::Client::get_segment_path() const
 
 }
 
-EntityPath Grid::Nodes::Node::Clients::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::Node::Clients::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -851,15 +745,6 @@ EntityPath Grid::Nodes::Node::Clients::Client::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Grid::Nodes::Node::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-data")
     {
         for(auto const & c : client_data)
@@ -867,28 +752,24 @@ std::shared_ptr<Entity> Grid::Nodes::Node::Clients::Client::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Grid::Nodes::Node::Clients::Client::ClientData>();
         c->parent = this;
-        client_data.push_back(std::move(c));
-        children[segment_path] = client_data.back();
-        return children.at(segment_path);
+        client_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::Node::Clients::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::Clients::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -933,7 +814,7 @@ std::string Grid::Nodes::Node::Clients::Client::ClientData::get_segment_path() c
 
 }
 
-EntityPath Grid::Nodes::Node::Clients::Client::ClientData::get_entity_path(Entity* ancestor) const
+const EntityPath Grid::Nodes::Node::Clients::Client::ClientData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -957,20 +838,12 @@ EntityPath Grid::Nodes::Node::Clients::Client::ClientData::get_entity_path(Entit
 
 std::shared_ptr<Entity> Grid::Nodes::Node::Clients::Client::ClientData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Grid::Nodes::Node::Clients::Client::ClientData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::Clients::Client::ClientData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

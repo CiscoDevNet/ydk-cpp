@@ -14,7 +14,6 @@ CrossBarStats::CrossBarStats()
     nodes(std::make_shared<CrossBarStats::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "cross-bar-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-xbar-oper";
 }
@@ -43,12 +42,12 @@ std::string CrossBarStats::get_segment_path() const
 
 }
 
-EntityPath CrossBarStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath CrossBarStats::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CrossBarStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<CrossBarStats::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string CrossBarStats::Nodes::get_segment_path() const
 
 }
 
-EntityPath CrossBarStats::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath CrossBarStats::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<CrossBarStats::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ CrossBarStats::Nodes::Node::Node()
     cross_bar_table(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable>())
 {
     cross_bar_table->parent = this;
-    children["cross-bar-table"] = cross_bar_table;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string CrossBarStats::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath CrossBarStats::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cross-bar-table")
     {
-        if(cross_bar_table != nullptr)
-        {
-            children["cross-bar-table"] = cross_bar_table;
-        }
-        else
+        if(cross_bar_table == nullptr)
         {
             cross_bar_table = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable>();
-            cross_bar_table->parent = this;
-            children["cross-bar-table"] = cross_bar_table;
         }
-        return children.at("cross-bar-table");
+        return cross_bar_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::get_children() const
 {
-    if(children.find("cross-bar-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cross_bar_table != nullptr)
     {
-        if(cross_bar_table != nullptr)
-        {
-            children["cross-bar-table"] = cross_bar_table;
-        }
+        children["cross-bar-table"] = cross_bar_table;
     }
 
     return children;
@@ -351,10 +302,8 @@ CrossBarStats::Nodes::Node::CrossBarTable::CrossBarTable()
 	,sm15_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats>())
 {
     pkt_stats->parent = this;
-    children["pkt-stats"] = pkt_stats;
 
     sm15_stats->parent = this;
-    children["sm15-stats"] = sm15_stats;
 
     yang_name = "cross-bar-table"; yang_parent_name = "node";
 }
@@ -385,7 +334,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::get_segment_path() const
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -408,64 +357,38 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pkt-stats")
     {
-        if(pkt_stats != nullptr)
-        {
-            children["pkt-stats"] = pkt_stats;
-        }
-        else
+        if(pkt_stats == nullptr)
         {
             pkt_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::PktStats>();
-            pkt_stats->parent = this;
-            children["pkt-stats"] = pkt_stats;
         }
-        return children.at("pkt-stats");
+        return pkt_stats;
     }
 
     if(child_yang_name == "sm15-stats")
     {
-        if(sm15_stats != nullptr)
-        {
-            children["sm15-stats"] = sm15_stats;
-        }
-        else
+        if(sm15_stats == nullptr)
         {
             sm15_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats>();
-            sm15_stats->parent = this;
-            children["sm15-stats"] = sm15_stats;
         }
-        return children.at("sm15-stats");
+        return sm15_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::get_children() const
 {
-    if(children.find("pkt-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pkt_stats != nullptr)
     {
-        if(pkt_stats != nullptr)
-        {
-            children["pkt-stats"] = pkt_stats;
-        }
+        children["pkt-stats"] = pkt_stats;
     }
 
-    if(children.find("sm15-stats") == children.end())
+    if(sm15_stats != nullptr)
     {
-        if(sm15_stats != nullptr)
-        {
-            children["sm15-stats"] = sm15_stats;
-        }
+        children["sm15-stats"] = sm15_stats;
     }
 
     return children;
@@ -513,7 +436,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_segment_pat
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -536,15 +459,6 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_entity_path(
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pkt-stat")
     {
         for(auto const & c : pkt_stat)
@@ -552,28 +466,24 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat>();
         c->parent = this;
-        pkt_stat.push_back(std::move(c));
-        children[segment_path] = pkt_stat.back();
-        return children.at(segment_path);
+        pkt_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pkt_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -752,7 +662,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_se
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -822,20 +732,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_ent
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1069,7 +971,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_segment_pa
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1092,15 +994,6 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_entity_path
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sm15-stat")
     {
         for(auto const & c : sm15_stat)
@@ -1108,28 +1001,24 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat>();
         c->parent = this;
-        sm15_stat.push_back(std::move(c));
-        children[segment_path] = sm15_stat.back();
-        return children.at(segment_path);
+        sm15_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sm15_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1160,43 +1049,30 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Sm15Stat()
 	,ua2_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats>())
 {
     ca_stats->parent = this;
-    children["ca-stats"] = ca_stats;
 
     ma_stats->parent = this;
-    children["ma-stats"] = ma_stats;
 
     pe_cc_stats->parent = this;
-    children["pe-cc-stats"] = pe_cc_stats;
 
     pe_mc_stats->parent = this;
-    children["pe-mc-stats"] = pe_mc_stats;
 
     pe_stats->parent = this;
-    children["pe-stats"] = pe_stats;
 
     pe_uc_stats->parent = this;
-    children["pe-uc-stats"] = pe_uc_stats;
 
     pi_cc_stats->parent = this;
-    children["pi-cc-stats"] = pi_cc_stats;
 
     pi_mc_stats->parent = this;
-    children["pi-mc-stats"] = pi_mc_stats;
 
     pi_stats->parent = this;
-    children["pi-stats"] = pi_stats;
 
     pi_uc_stats->parent = this;
-    children["pi-uc-stats"] = pi_uc_stats;
 
     ua0_stats->parent = this;
-    children["ua0-stats"] = ua0_stats;
 
     ua1_stats->parent = this;
-    children["ua1-stats"] = ua1_stats;
 
     ua2_stats->parent = this;
-    children["ua2-stats"] = ua2_stats;
 
     yang_name = "sm15-stat"; yang_parent_name = "sm15-stats";
 }
@@ -1255,7 +1131,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1281,317 +1157,192 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_e
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ca-stats")
     {
-        if(ca_stats != nullptr)
-        {
-            children["ca-stats"] = ca_stats;
-        }
-        else
+        if(ca_stats == nullptr)
         {
             ca_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats>();
-            ca_stats->parent = this;
-            children["ca-stats"] = ca_stats;
         }
-        return children.at("ca-stats");
+        return ca_stats;
     }
 
     if(child_yang_name == "ma-stats")
     {
-        if(ma_stats != nullptr)
-        {
-            children["ma-stats"] = ma_stats;
-        }
-        else
+        if(ma_stats == nullptr)
         {
             ma_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats>();
-            ma_stats->parent = this;
-            children["ma-stats"] = ma_stats;
         }
-        return children.at("ma-stats");
+        return ma_stats;
     }
 
     if(child_yang_name == "pe-cc-stats")
     {
-        if(pe_cc_stats != nullptr)
-        {
-            children["pe-cc-stats"] = pe_cc_stats;
-        }
-        else
+        if(pe_cc_stats == nullptr)
         {
             pe_cc_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats>();
-            pe_cc_stats->parent = this;
-            children["pe-cc-stats"] = pe_cc_stats;
         }
-        return children.at("pe-cc-stats");
+        return pe_cc_stats;
     }
 
     if(child_yang_name == "pe-mc-stats")
     {
-        if(pe_mc_stats != nullptr)
-        {
-            children["pe-mc-stats"] = pe_mc_stats;
-        }
-        else
+        if(pe_mc_stats == nullptr)
         {
             pe_mc_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats>();
-            pe_mc_stats->parent = this;
-            children["pe-mc-stats"] = pe_mc_stats;
         }
-        return children.at("pe-mc-stats");
+        return pe_mc_stats;
     }
 
     if(child_yang_name == "pe-stats")
     {
-        if(pe_stats != nullptr)
-        {
-            children["pe-stats"] = pe_stats;
-        }
-        else
+        if(pe_stats == nullptr)
         {
             pe_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats>();
-            pe_stats->parent = this;
-            children["pe-stats"] = pe_stats;
         }
-        return children.at("pe-stats");
+        return pe_stats;
     }
 
     if(child_yang_name == "pe-uc-stats")
     {
-        if(pe_uc_stats != nullptr)
-        {
-            children["pe-uc-stats"] = pe_uc_stats;
-        }
-        else
+        if(pe_uc_stats == nullptr)
         {
             pe_uc_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats>();
-            pe_uc_stats->parent = this;
-            children["pe-uc-stats"] = pe_uc_stats;
         }
-        return children.at("pe-uc-stats");
+        return pe_uc_stats;
     }
 
     if(child_yang_name == "pi-cc-stats")
     {
-        if(pi_cc_stats != nullptr)
-        {
-            children["pi-cc-stats"] = pi_cc_stats;
-        }
-        else
+        if(pi_cc_stats == nullptr)
         {
             pi_cc_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats>();
-            pi_cc_stats->parent = this;
-            children["pi-cc-stats"] = pi_cc_stats;
         }
-        return children.at("pi-cc-stats");
+        return pi_cc_stats;
     }
 
     if(child_yang_name == "pi-mc-stats")
     {
-        if(pi_mc_stats != nullptr)
-        {
-            children["pi-mc-stats"] = pi_mc_stats;
-        }
-        else
+        if(pi_mc_stats == nullptr)
         {
             pi_mc_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats>();
-            pi_mc_stats->parent = this;
-            children["pi-mc-stats"] = pi_mc_stats;
         }
-        return children.at("pi-mc-stats");
+        return pi_mc_stats;
     }
 
     if(child_yang_name == "pi-stats")
     {
-        if(pi_stats != nullptr)
-        {
-            children["pi-stats"] = pi_stats;
-        }
-        else
+        if(pi_stats == nullptr)
         {
             pi_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats>();
-            pi_stats->parent = this;
-            children["pi-stats"] = pi_stats;
         }
-        return children.at("pi-stats");
+        return pi_stats;
     }
 
     if(child_yang_name == "pi-uc-stats")
     {
-        if(pi_uc_stats != nullptr)
-        {
-            children["pi-uc-stats"] = pi_uc_stats;
-        }
-        else
+        if(pi_uc_stats == nullptr)
         {
             pi_uc_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats>();
-            pi_uc_stats->parent = this;
-            children["pi-uc-stats"] = pi_uc_stats;
         }
-        return children.at("pi-uc-stats");
+        return pi_uc_stats;
     }
 
     if(child_yang_name == "ua0-stats")
     {
-        if(ua0_stats != nullptr)
-        {
-            children["ua0-stats"] = ua0_stats;
-        }
-        else
+        if(ua0_stats == nullptr)
         {
             ua0_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats>();
-            ua0_stats->parent = this;
-            children["ua0-stats"] = ua0_stats;
         }
-        return children.at("ua0-stats");
+        return ua0_stats;
     }
 
     if(child_yang_name == "ua1-stats")
     {
-        if(ua1_stats != nullptr)
-        {
-            children["ua1-stats"] = ua1_stats;
-        }
-        else
+        if(ua1_stats == nullptr)
         {
             ua1_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats>();
-            ua1_stats->parent = this;
-            children["ua1-stats"] = ua1_stats;
         }
-        return children.at("ua1-stats");
+        return ua1_stats;
     }
 
     if(child_yang_name == "ua2-stats")
     {
-        if(ua2_stats != nullptr)
-        {
-            children["ua2-stats"] = ua2_stats;
-        }
-        else
+        if(ua2_stats == nullptr)
         {
             ua2_stats = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats>();
-            ua2_stats->parent = this;
-            children["ua2-stats"] = ua2_stats;
         }
-        return children.at("ua2-stats");
+        return ua2_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_children() const
 {
-    if(children.find("ca-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ca_stats != nullptr)
     {
-        if(ca_stats != nullptr)
-        {
-            children["ca-stats"] = ca_stats;
-        }
+        children["ca-stats"] = ca_stats;
     }
 
-    if(children.find("ma-stats") == children.end())
+    if(ma_stats != nullptr)
     {
-        if(ma_stats != nullptr)
-        {
-            children["ma-stats"] = ma_stats;
-        }
+        children["ma-stats"] = ma_stats;
     }
 
-    if(children.find("pe-cc-stats") == children.end())
+    if(pe_cc_stats != nullptr)
     {
-        if(pe_cc_stats != nullptr)
-        {
-            children["pe-cc-stats"] = pe_cc_stats;
-        }
+        children["pe-cc-stats"] = pe_cc_stats;
     }
 
-    if(children.find("pe-mc-stats") == children.end())
+    if(pe_mc_stats != nullptr)
     {
-        if(pe_mc_stats != nullptr)
-        {
-            children["pe-mc-stats"] = pe_mc_stats;
-        }
+        children["pe-mc-stats"] = pe_mc_stats;
     }
 
-    if(children.find("pe-stats") == children.end())
+    if(pe_stats != nullptr)
     {
-        if(pe_stats != nullptr)
-        {
-            children["pe-stats"] = pe_stats;
-        }
+        children["pe-stats"] = pe_stats;
     }
 
-    if(children.find("pe-uc-stats") == children.end())
+    if(pe_uc_stats != nullptr)
     {
-        if(pe_uc_stats != nullptr)
-        {
-            children["pe-uc-stats"] = pe_uc_stats;
-        }
+        children["pe-uc-stats"] = pe_uc_stats;
     }
 
-    if(children.find("pi-cc-stats") == children.end())
+    if(pi_cc_stats != nullptr)
     {
-        if(pi_cc_stats != nullptr)
-        {
-            children["pi-cc-stats"] = pi_cc_stats;
-        }
+        children["pi-cc-stats"] = pi_cc_stats;
     }
 
-    if(children.find("pi-mc-stats") == children.end())
+    if(pi_mc_stats != nullptr)
     {
-        if(pi_mc_stats != nullptr)
-        {
-            children["pi-mc-stats"] = pi_mc_stats;
-        }
+        children["pi-mc-stats"] = pi_mc_stats;
     }
 
-    if(children.find("pi-stats") == children.end())
+    if(pi_stats != nullptr)
     {
-        if(pi_stats != nullptr)
-        {
-            children["pi-stats"] = pi_stats;
-        }
+        children["pi-stats"] = pi_stats;
     }
 
-    if(children.find("pi-uc-stats") == children.end())
+    if(pi_uc_stats != nullptr)
     {
-        if(pi_uc_stats != nullptr)
-        {
-            children["pi-uc-stats"] = pi_uc_stats;
-        }
+        children["pi-uc-stats"] = pi_uc_stats;
     }
 
-    if(children.find("ua0-stats") == children.end())
+    if(ua0_stats != nullptr)
     {
-        if(ua0_stats != nullptr)
-        {
-            children["ua0-stats"] = ua0_stats;
-        }
+        children["ua0-stats"] = ua0_stats;
     }
 
-    if(children.find("ua1-stats") == children.end())
+    if(ua1_stats != nullptr)
     {
-        if(ua1_stats != nullptr)
-        {
-            children["ua1-stats"] = ua1_stats;
-        }
+        children["ua1-stats"] = ua1_stats;
     }
 
-    if(children.find("ua2-stats") == children.end())
+    if(ua2_stats != nullptr)
     {
-        if(ua2_stats != nullptr)
-        {
-            children["ua2-stats"] = ua2_stats;
-        }
+        children["ua2-stats"] = ua2_stats;
     }
 
     return children;
@@ -1665,7 +1416,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0S
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1696,20 +1447,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0St
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1801,7 +1544,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1S
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1832,20 +1575,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1St
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1937,7 +1672,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2S
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1968,20 +1703,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2St
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2076,7 +1803,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaSt
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2108,20 +1835,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaSta
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2211,7 +1930,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaSt
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2240,20 +1959,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaSta
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2325,7 +2036,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiSt
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2352,20 +2063,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiSta
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2432,7 +2135,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeSt
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2460,20 +2163,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeSta
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2637,7 +2332,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUc
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2696,20 +2391,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcS
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2988,7 +2675,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMc
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3044,20 +2731,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcS
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3315,7 +2994,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCc
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3368,20 +3047,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcS
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3630,7 +3301,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUc
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3684,20 +3355,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcS
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3908,7 +3571,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMc
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3948,20 +3611,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcS
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4113,7 +3768,7 @@ std::string CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCc
 
 }
 
-EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::get_entity_path(Entity* ancestor) const
+const EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4152,20 +3807,12 @@ EntityPath CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcS
 
 std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

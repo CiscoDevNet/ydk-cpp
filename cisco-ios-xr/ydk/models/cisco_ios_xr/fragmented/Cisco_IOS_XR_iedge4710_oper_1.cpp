@@ -16,13 +16,10 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "state-xr"; yang_parent_name = "ipv4-address-vrf-summary";
 }
@@ -55,7 +52,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -78,87 +75,52 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -217,7 +179,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -247,20 +209,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -345,7 +299,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -375,20 +329,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -473,7 +419,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -503,20 +449,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -559,13 +497,10 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-vrf-summary";
 }
@@ -598,7 +533,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -621,87 +556,52 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -757,7 +657,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -786,20 +686,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -877,7 +769,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -906,20 +798,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -997,7 +881,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1026,20 +910,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1109,7 +985,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_segmen
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1132,15 +1008,6 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_entity_
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-family-summary")
     {
         for(auto const & c : address_family_summary)
@@ -1148,28 +1015,24 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary>();
         c->parent = this;
-        address_family_summary.push_back(std::move(c));
-        children[segment_path] = address_family_summary.back();
-        return children.at(segment_path);
+        address_family_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address_family_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1187,10 +1050,8 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr>())
 {
     address_family_xr->parent = this;
-    children["address-family-xr"] = address_family_xr;
 
     state_xr->parent = this;
-    children["state-xr"] = state_xr;
 
     yang_name = "address-family-summary"; yang_parent_name = "address-family-summaries";
 }
@@ -1223,7 +1084,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1247,64 +1108,38 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-family-xr")
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
-        else
+        if(address_family_xr == nullptr)
         {
             address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr>();
-            address_family_xr->parent = this;
-            children["address-family-xr"] = address_family_xr;
         }
-        return children.at("address-family-xr");
+        return address_family_xr;
     }
 
     if(child_yang_name == "state-xr")
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
-        else
+        if(state_xr == nullptr)
         {
             state_xr = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr>();
-            state_xr->parent = this;
-            children["state-xr"] = state_xr;
         }
-        return children.at("state-xr");
+        return state_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_children() const
 {
-    if(children.find("address-family-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
+        children["address-family-xr"] = address_family_xr;
     }
 
-    if(children.find("state-xr") == children.end())
+    if(state_xr != nullptr)
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
+        children["state-xr"] = state_xr;
     }
 
     return children;
@@ -1325,13 +1160,10 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "state-xr"; yang_parent_name = "address-family-summary";
 }
@@ -1364,7 +1196,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1387,87 +1219,52 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -1526,7 +1323,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1556,20 +1353,12 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1654,7 +1443,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1684,20 +1473,12 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1782,7 +1563,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1812,20 +1593,12 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1868,13 +1641,10 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "address-family-xr"; yang_parent_name = "address-family-summary";
 }
@@ -1907,7 +1677,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1930,87 +1700,52 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -2066,7 +1801,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2095,20 +1830,12 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2186,7 +1913,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2215,20 +1942,12 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2306,7 +2025,7 @@ std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFam
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2335,20 +2054,12 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2418,7 +2129,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::get_segment_pat
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2441,15 +2152,6 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::get_entity_path(
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "username-summary")
     {
         for(auto const & c : username_summary)
@@ -2457,28 +2159,24 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary>();
         c->parent = this;
-        username_summary.push_back(std::move(c));
-        children[segment_path] = username_summary.back();
-        return children.at(segment_path);
+        username_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : username_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2496,10 +2194,8 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::UsernameSu
 	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr>())
 {
     address_family_xr->parent = this;
-    children["address-family-xr"] = address_family_xr;
 
     state_xr->parent = this;
-    children["state-xr"] = state_xr;
 
     yang_name = "username-summary"; yang_parent_name = "username-summaries";
 }
@@ -2532,7 +2228,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2556,64 +2252,38 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-family-xr")
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
-        else
+        if(address_family_xr == nullptr)
         {
             address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr>();
-            address_family_xr->parent = this;
-            children["address-family-xr"] = address_family_xr;
         }
-        return children.at("address-family-xr");
+        return address_family_xr;
     }
 
     if(child_yang_name == "state-xr")
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
-        else
+        if(state_xr == nullptr)
         {
             state_xr = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr>();
-            state_xr->parent = this;
-            children["state-xr"] = state_xr;
         }
-        return children.at("state-xr");
+        return state_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_children() const
 {
-    if(children.find("address-family-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
+        children["address-family-xr"] = address_family_xr;
     }
 
-    if(children.find("state-xr") == children.end())
+    if(state_xr != nullptr)
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
+        children["state-xr"] = state_xr;
     }
 
     return children;
@@ -2634,13 +2304,10 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::S
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "state-xr"; yang_parent_name = "username-summary";
 }
@@ -2673,7 +2340,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2696,87 +2363,52 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -2835,7 +2467,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2865,20 +2497,12 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2963,7 +2587,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2993,20 +2617,12 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3091,7 +2707,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3121,20 +2737,12 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3177,13 +2785,10 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "address-family-xr"; yang_parent_name = "username-summary";
 }
@@ -3216,7 +2821,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3239,87 +2844,52 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -3375,7 +2945,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3404,20 +2974,12 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3495,7 +3057,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3524,20 +3086,12 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3615,7 +3169,7 @@ std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3644,20 +3198,12 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3727,7 +3273,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_segm
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3750,15 +3296,6 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_entit
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-interface-summary")
     {
         for(auto const & c : access_interface_summary)
@@ -3766,28 +3303,24 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummari
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary>();
         c->parent = this;
-        access_interface_summary.push_back(std::move(c));
-        children[segment_path] = access_interface_summary.back();
-        return children.at(segment_path);
+        access_interface_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access_interface_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3805,10 +3338,8 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr>())
 {
     address_family_xr->parent = this;
-    children["address-family-xr"] = address_family_xr;
 
     state_xr->parent = this;
-    children["state-xr"] = state_xr;
 
     yang_name = "access-interface-summary"; yang_parent_name = "access-interface-summaries";
 }
@@ -3841,7 +3372,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3865,64 +3396,38 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-family-xr")
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
-        else
+        if(address_family_xr == nullptr)
         {
             address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr>();
-            address_family_xr->parent = this;
-            children["address-family-xr"] = address_family_xr;
         }
-        return children.at("address-family-xr");
+        return address_family_xr;
     }
 
     if(child_yang_name == "state-xr")
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
-        else
+        if(state_xr == nullptr)
         {
             state_xr = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr>();
-            state_xr->parent = this;
-            children["state-xr"] = state_xr;
         }
-        return children.at("state-xr");
+        return state_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_children() const
 {
-    if(children.find("address-family-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
+        children["address-family-xr"] = address_family_xr;
     }
 
-    if(children.find("state-xr") == children.end())
+    if(state_xr != nullptr)
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
+        children["state-xr"] = state_xr;
     }
 
     return children;
@@ -3943,13 +3448,10 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "state-xr"; yang_parent_name = "access-interface-summary";
 }
@@ -3982,7 +3484,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4005,87 +3507,52 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -4144,7 +3611,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4174,20 +3641,12 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4272,7 +3731,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4302,20 +3761,12 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4400,7 +3851,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4430,20 +3881,12 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4486,13 +3929,10 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "address-family-xr"; yang_parent_name = "access-interface-summary";
 }
@@ -4525,7 +3965,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4548,87 +3988,52 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -4684,7 +4089,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4713,20 +4118,12 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4804,7 +4201,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4833,20 +4230,12 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4924,7 +4313,7 @@ std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessIn
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4953,20 +4342,12 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5036,7 +4417,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_segment_
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5059,15 +4440,6 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_entity_pa
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-address-summary")
     {
         for(auto const & c : ipv4_address_summary)
@@ -5075,28 +4447,24 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary>();
         c->parent = this;
-        ipv4_address_summary.push_back(std::move(c));
-        children[segment_path] = ipv4_address_summary.back();
-        return children.at(segment_path);
+        ipv4_address_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_address_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5114,10 +4482,8 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Ipv4
 	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr>())
 {
     address_family_xr->parent = this;
-    children["address-family-xr"] = address_family_xr;
 
     state_xr->parent = this;
-    children["state-xr"] = state_xr;
 
     yang_name = "ipv4-address-summary"; yang_parent_name = "ipv4-address-summaries";
 }
@@ -5150,7 +4516,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5174,64 +4540,38 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-family-xr")
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
-        else
+        if(address_family_xr == nullptr)
         {
             address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr>();
-            address_family_xr->parent = this;
-            children["address-family-xr"] = address_family_xr;
         }
-        return children.at("address-family-xr");
+        return address_family_xr;
     }
 
     if(child_yang_name == "state-xr")
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
-        else
+        if(state_xr == nullptr)
         {
             state_xr = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr>();
-            state_xr->parent = this;
-            children["state-xr"] = state_xr;
         }
-        return children.at("state-xr");
+        return state_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_children() const
 {
-    if(children.find("address-family-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
+        children["address-family-xr"] = address_family_xr;
     }
 
-    if(children.find("state-xr") == children.end())
+    if(state_xr != nullptr)
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
+        children["state-xr"] = state_xr;
     }
 
     return children;
@@ -5252,13 +4592,10 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "state-xr"; yang_parent_name = "ipv4-address-summary";
 }
@@ -5291,7 +4628,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5314,87 +4651,52 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -5453,7 +4755,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5483,20 +4785,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5581,7 +4875,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5611,20 +4905,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5709,7 +4995,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5739,20 +5025,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5795,13 +5073,10 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-summary";
 }
@@ -5834,7 +5109,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5857,87 +5132,52 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -5993,7 +5233,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6022,20 +5262,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6113,7 +5345,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6142,20 +5374,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6233,7 +5457,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6262,20 +5486,12 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6345,7 +5561,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::get_segment_path() c
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6368,15 +5584,6 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::get_entity_path(Entit
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-summary")
     {
         for(auto const & c : vrf_summary)
@@ -6384,28 +5591,24 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary>();
         c->parent = this;
-        vrf_summary.push_back(std::move(c));
-        children[segment_path] = vrf_summary.back();
-        return children.at(segment_path);
+        vrf_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6423,10 +5626,8 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::VrfSummary()
 	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr>())
 {
     address_family_xr->parent = this;
-    children["address-family-xr"] = address_family_xr;
 
     state_xr->parent = this;
-    children["state-xr"] = state_xr;
 
     yang_name = "vrf-summary"; yang_parent_name = "vrf-summaries";
 }
@@ -6459,7 +5660,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_segm
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6483,64 +5684,38 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_entit
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-family-xr")
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
-        else
+        if(address_family_xr == nullptr)
         {
             address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr>();
-            address_family_xr->parent = this;
-            children["address-family-xr"] = address_family_xr;
         }
-        return children.at("address-family-xr");
+        return address_family_xr;
     }
 
     if(child_yang_name == "state-xr")
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
-        else
+        if(state_xr == nullptr)
         {
             state_xr = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr>();
-            state_xr->parent = this;
-            children["state-xr"] = state_xr;
         }
-        return children.at("state-xr");
+        return state_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_children() const
 {
-    if(children.find("address-family-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
     {
-        if(address_family_xr != nullptr)
-        {
-            children["address-family-xr"] = address_family_xr;
-        }
+        children["address-family-xr"] = address_family_xr;
     }
 
-    if(children.find("state-xr") == children.end())
+    if(state_xr != nullptr)
     {
-        if(state_xr != nullptr)
-        {
-            children["state-xr"] = state_xr;
-        }
+        children["state-xr"] = state_xr;
     }
 
     return children;
@@ -6561,13 +5736,10 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::StateXr()
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "state-xr"; yang_parent_name = "vrf-summary";
 }
@@ -6600,7 +5772,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr:
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6623,87 +5795,52 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -6762,7 +5899,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr:
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6792,20 +5929,12 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6890,7 +6019,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr:
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6920,20 +6049,12 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7018,7 +6139,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr:
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7048,20 +6169,12 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7104,13 +6217,10 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Add
 	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-    children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
 
     ip_subscriber_packet->parent = this;
-    children["ip-subscriber-packet"] = ip_subscriber_packet;
 
     pppoe->parent = this;
-    children["pppoe"] = pppoe;
 
     yang_name = "address-family-xr"; yang_parent_name = "vrf-summary";
 }
@@ -7143,7 +6253,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressF
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7166,87 +6276,52 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-subscriber-dhcp")
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
-        else
+        if(ip_subscriber_dhcp == nullptr)
         {
             ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp>();
-            ip_subscriber_dhcp->parent = this;
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
         }
-        return children.at("ip-subscriber-dhcp");
+        return ip_subscriber_dhcp;
     }
 
     if(child_yang_name == "ip-subscriber-packet")
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
-        else
+        if(ip_subscriber_packet == nullptr)
         {
             ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket>();
-            ip_subscriber_packet->parent = this;
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
         }
-        return children.at("ip-subscriber-packet");
+        return ip_subscriber_packet;
     }
 
     if(child_yang_name == "pppoe")
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
-        else
+        if(pppoe == nullptr)
         {
             pppoe = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe>();
-            pppoe->parent = this;
-            children["pppoe"] = pppoe;
         }
-        return children.at("pppoe");
+        return pppoe;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_children() const
 {
-    if(children.find("ip-subscriber-dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
     {
-        if(ip_subscriber_dhcp != nullptr)
-        {
-            children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-        }
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
-    if(children.find("ip-subscriber-packet") == children.end())
+    if(ip_subscriber_packet != nullptr)
     {
-        if(ip_subscriber_packet != nullptr)
-        {
-            children["ip-subscriber-packet"] = ip_subscriber_packet;
-        }
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    if(children.find("pppoe") == children.end())
+    if(pppoe != nullptr)
     {
-        if(pppoe != nullptr)
-        {
-            children["pppoe"] = pppoe;
-        }
+        children["pppoe"] = pppoe;
     }
 
     return children;
@@ -7302,7 +6377,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressF
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7331,20 +6406,12 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7422,7 +6489,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressF
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7451,20 +6518,12 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7542,7 +6601,7 @@ std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressF
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7571,20 +6630,12 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7654,7 +6705,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::get_segment_path() const
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7677,15 +6728,6 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -7693,28 +6735,24 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7765,13 +6803,10 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::Session_()
 	,user_profile_attributes(std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes>())
 {
     accounting->parent = this;
-    children["accounting"] = accounting;
 
     mobility_attributes->parent = this;
-    children["mobility-attributes"] = mobility_attributes;
 
     user_profile_attributes->parent = this;
-    children["user-profile-attributes"] = user_profile_attributes;
 
     yang_name = "session"; yang_parent_name = "sessions";
 }
@@ -7880,7 +6915,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::get_segment_pa
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7936,43 +6971,22 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::get_entity_path
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting")
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
-        else
+        if(accounting == nullptr)
         {
             accounting = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting>();
-            accounting->parent = this;
-            children["accounting"] = accounting;
         }
-        return children.at("accounting");
+        return accounting;
     }
 
     if(child_yang_name == "mobility-attributes")
     {
-        if(mobility_attributes != nullptr)
-        {
-            children["mobility-attributes"] = mobility_attributes;
-        }
-        else
+        if(mobility_attributes == nullptr)
         {
             mobility_attributes = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes>();
-            mobility_attributes->parent = this;
-            children["mobility-attributes"] = mobility_attributes;
         }
-        return children.at("mobility-attributes");
+        return mobility_attributes;
     }
 
     if(child_yang_name == "session-change-of-authorization")
@@ -7982,67 +6996,48 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization>();
         c->parent = this;
-        session_change_of_authorization.push_back(std::move(c));
-        children[segment_path] = session_change_of_authorization.back();
-        return children.at(segment_path);
+        session_change_of_authorization.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "user-profile-attributes")
     {
-        if(user_profile_attributes != nullptr)
-        {
-            children["user-profile-attributes"] = user_profile_attributes;
-        }
-        else
+        if(user_profile_attributes == nullptr)
         {
             user_profile_attributes = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes>();
-            user_profile_attributes->parent = this;
-            children["user-profile-attributes"] = user_profile_attributes;
         }
-        return children.at("user-profile-attributes");
+        return user_profile_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Sessions::Session_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::get_children() const
 {
-    if(children.find("accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accounting != nullptr)
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
+        children["accounting"] = accounting;
     }
 
-    if(children.find("mobility-attributes") == children.end())
+    if(mobility_attributes != nullptr)
     {
-        if(mobility_attributes != nullptr)
-        {
-            children["mobility-attributes"] = mobility_attributes;
-        }
+        children["mobility-attributes"] = mobility_attributes;
     }
 
     for (auto const & c : session_change_of_authorization)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("user-profile-attributes") == children.end())
+    if(user_profile_attributes != nullptr)
     {
-        if(user_profile_attributes != nullptr)
-        {
-            children["user-profile-attributes"] = user_profile_attributes;
-        }
+        children["user-profile-attributes"] = user_profile_attributes;
     }
 
     return children;
@@ -8222,7 +7217,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::ge
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8245,15 +7240,6 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting-session")
     {
         for(auto const & c : accounting_session)
@@ -8261,28 +7247,24 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::Ac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession>();
         c->parent = this;
-        accounting_session.push_back(std::move(c));
-        children[segment_path] = accounting_session.back();
-        return children.at(segment_path);
+        accounting_session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : accounting_session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8365,7 +7347,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Ac
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8403,20 +7385,12 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Acc
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8659,7 +7633,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAtt
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8731,20 +7705,12 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttr
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9006,7 +7972,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttrib
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9039,20 +8005,12 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttribu
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9143,7 +8101,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeO
 
 }
 
-EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_entity_path(Entity* ancestor) const
+const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9171,20 +8129,12 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOf
 
 std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9217,7 +8167,6 @@ IedgeLicenseManager::IedgeLicenseManager()
     nodes(std::make_shared<IedgeLicenseManager::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "iedge-license-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-oper";
 }
@@ -9246,12 +8195,12 @@ std::string IedgeLicenseManager::get_segment_path() const
 
 }
 
-EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
+const EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -9266,41 +8215,24 @@ EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<IedgeLicenseManager::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IedgeLicenseManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -9368,7 +8300,7 @@ std::string IedgeLicenseManager::Nodes::get_segment_path() const
 
 }
 
-EntityPath IedgeLicenseManager::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath IedgeLicenseManager::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9391,15 +8323,6 @@ EntityPath IedgeLicenseManager::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IedgeLicenseManager::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -9407,28 +8330,24 @@ std::shared_ptr<Entity> IedgeLicenseManager::Nodes::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IedgeLicenseManager::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IedgeLicenseManager::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9445,7 +8364,6 @@ IedgeLicenseManager::Nodes::Node::Node()
     iedge_license_manager_summary(std::make_shared<IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary>())
 {
     iedge_license_manager_summary->parent = this;
-    children["iedge-license-manager-summary"] = iedge_license_manager_summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -9476,7 +8394,7 @@ std::string IedgeLicenseManager::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath IedgeLicenseManager::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath IedgeLicenseManager::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9500,41 +8418,24 @@ EntityPath IedgeLicenseManager::Nodes::Node::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> IedgeLicenseManager::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "iedge-license-manager-summary")
     {
-        if(iedge_license_manager_summary != nullptr)
-        {
-            children["iedge-license-manager-summary"] = iedge_license_manager_summary;
-        }
-        else
+        if(iedge_license_manager_summary == nullptr)
         {
             iedge_license_manager_summary = std::make_shared<IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary>();
-            iedge_license_manager_summary->parent = this;
-            children["iedge-license-manager-summary"] = iedge_license_manager_summary;
         }
-        return children.at("iedge-license-manager-summary");
+        return iedge_license_manager_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IedgeLicenseManager::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::Node::get_children() const
 {
-    if(children.find("iedge-license-manager-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(iedge_license_manager_summary != nullptr)
     {
-        if(iedge_license_manager_summary != nullptr)
-        {
-            children["iedge-license-manager-summary"] = iedge_license_manager_summary;
-        }
+        children["iedge-license-manager-summary"] = iedge_license_manager_summary;
     }
 
     return children;
@@ -9588,7 +8489,7 @@ std::string IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_se
 
 }
 
-EntityPath IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_entity_path(Entity* ancestor) const
+const EntityPath IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9615,20 +8516,12 @@ EntityPath IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_ent
 
 std::shared_ptr<Entity> IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

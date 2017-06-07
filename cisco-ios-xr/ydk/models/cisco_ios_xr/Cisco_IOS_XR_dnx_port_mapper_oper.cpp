@@ -14,7 +14,6 @@ Oor::Oor()
     nodes(std::make_shared<Oor::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "oor"; yang_parent_name = "Cisco-IOS-XR-dnx-port-mapper-oper";
 }
@@ -43,12 +42,12 @@ std::string Oor::get_segment_path() const
 
 }
 
-EntityPath Oor::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Oor::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Oor::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Oor::Nodes::get_segment_path() const
 
 }
 
-EntityPath Oor::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Oor::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Oor::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Oor::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -246,19 +215,14 @@ Oor::Nodes::Node::Node()
 	,oor_summary(std::make_shared<Oor::Nodes::Node::OorSummary>())
 {
     bundle_interface_details->parent = this;
-    children["bundle-interface-details"] = bundle_interface_details;
 
     interface_details->parent = this;
-    children["interface-details"] = interface_details;
 
     interface_npu_resources->parent = this;
-    children["interface-npu-resources"] = interface_npu_resources;
 
     interface_summary_datas->parent = this;
-    children["interface-summary-datas"] = interface_summary_datas;
 
     oor_summary->parent = this;
-    children["oor-summary"] = oor_summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -297,7 +261,7 @@ std::string Oor::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Oor::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -321,133 +285,80 @@ EntityPath Oor::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Oor::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-interface-details")
     {
-        if(bundle_interface_details != nullptr)
-        {
-            children["bundle-interface-details"] = bundle_interface_details;
-        }
-        else
+        if(bundle_interface_details == nullptr)
         {
             bundle_interface_details = std::make_shared<Oor::Nodes::Node::BundleInterfaceDetails>();
-            bundle_interface_details->parent = this;
-            children["bundle-interface-details"] = bundle_interface_details;
         }
-        return children.at("bundle-interface-details");
+        return bundle_interface_details;
     }
 
     if(child_yang_name == "interface-details")
     {
-        if(interface_details != nullptr)
-        {
-            children["interface-details"] = interface_details;
-        }
-        else
+        if(interface_details == nullptr)
         {
             interface_details = std::make_shared<Oor::Nodes::Node::InterfaceDetails>();
-            interface_details->parent = this;
-            children["interface-details"] = interface_details;
         }
-        return children.at("interface-details");
+        return interface_details;
     }
 
     if(child_yang_name == "interface-npu-resources")
     {
-        if(interface_npu_resources != nullptr)
-        {
-            children["interface-npu-resources"] = interface_npu_resources;
-        }
-        else
+        if(interface_npu_resources == nullptr)
         {
             interface_npu_resources = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources>();
-            interface_npu_resources->parent = this;
-            children["interface-npu-resources"] = interface_npu_resources;
         }
-        return children.at("interface-npu-resources");
+        return interface_npu_resources;
     }
 
     if(child_yang_name == "interface-summary-datas")
     {
-        if(interface_summary_datas != nullptr)
-        {
-            children["interface-summary-datas"] = interface_summary_datas;
-        }
-        else
+        if(interface_summary_datas == nullptr)
         {
             interface_summary_datas = std::make_shared<Oor::Nodes::Node::InterfaceSummaryDatas>();
-            interface_summary_datas->parent = this;
-            children["interface-summary-datas"] = interface_summary_datas;
         }
-        return children.at("interface-summary-datas");
+        return interface_summary_datas;
     }
 
     if(child_yang_name == "oor-summary")
     {
-        if(oor_summary != nullptr)
-        {
-            children["oor-summary"] = oor_summary;
-        }
-        else
+        if(oor_summary == nullptr)
         {
             oor_summary = std::make_shared<Oor::Nodes::Node::OorSummary>();
-            oor_summary->parent = this;
-            children["oor-summary"] = oor_summary;
         }
-        return children.at("oor-summary");
+        return oor_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::get_children() const
 {
-    if(children.find("bundle-interface-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_interface_details != nullptr)
     {
-        if(bundle_interface_details != nullptr)
-        {
-            children["bundle-interface-details"] = bundle_interface_details;
-        }
+        children["bundle-interface-details"] = bundle_interface_details;
     }
 
-    if(children.find("interface-details") == children.end())
+    if(interface_details != nullptr)
     {
-        if(interface_details != nullptr)
-        {
-            children["interface-details"] = interface_details;
-        }
+        children["interface-details"] = interface_details;
     }
 
-    if(children.find("interface-npu-resources") == children.end())
+    if(interface_npu_resources != nullptr)
     {
-        if(interface_npu_resources != nullptr)
-        {
-            children["interface-npu-resources"] = interface_npu_resources;
-        }
+        children["interface-npu-resources"] = interface_npu_resources;
     }
 
-    if(children.find("interface-summary-datas") == children.end())
+    if(interface_summary_datas != nullptr)
     {
-        if(interface_summary_datas != nullptr)
-        {
-            children["interface-summary-datas"] = interface_summary_datas;
-        }
+        children["interface-summary-datas"] = interface_summary_datas;
     }
 
-    if(children.find("oor-summary") == children.end())
+    if(oor_summary != nullptr)
     {
-        if(oor_summary != nullptr)
-        {
-            children["oor-summary"] = oor_summary;
-        }
+        children["oor-summary"] = oor_summary;
     }
 
     return children;
@@ -499,7 +410,7 @@ std::string Oor::Nodes::Node::InterfaceNpuResources::get_segment_path() const
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceNpuResources::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceNpuResources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -522,15 +433,6 @@ EntityPath Oor::Nodes::Node::InterfaceNpuResources::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-npu-resource")
     {
         for(auto const & c : interface_npu_resource)
@@ -538,28 +440,24 @@ std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource>();
         c->parent = this;
-        interface_npu_resource.push_back(std::move(c));
-        children[segment_path] = interface_npu_resource.back();
-        return children.at(segment_path);
+        interface_npu_resource.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceNpuResources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_npu_resource)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -637,7 +535,7 @@ std::string Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_s
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -670,15 +568,6 @@ EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_en
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member")
     {
         for(auto const & c : member)
@@ -686,28 +575,24 @@ std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuRes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member>();
         c->parent = this;
-        member.push_back(std::move(c));
-        children[segment_path] = member.back();
-        return children.at(segment_path);
+        member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -813,7 +698,7 @@ std::string Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Membe
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -842,15 +727,6 @@ EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dpa-table")
     {
         for(auto const & c : dpa_table)
@@ -858,28 +734,24 @@ std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuRes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable>();
         c->parent = this;
-        dpa_table.push_back(std::move(c));
-        children[segment_path] = dpa_table.back();
-        return children.at(segment_path);
+        dpa_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dpa_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -950,7 +822,7 @@ std::string Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Membe
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -976,20 +848,12 @@ EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1047,7 +911,7 @@ std::string Oor::Nodes::Node::BundleInterfaceDetails::get_segment_path() const
 
 }
 
-EntityPath Oor::Nodes::Node::BundleInterfaceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1070,15 +934,6 @@ EntityPath Oor::Nodes::Node::BundleInterfaceDetails::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-interface-detail")
     {
         for(auto const & c : bundle_interface_detail)
@@ -1086,28 +941,24 @@ std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail>();
         c->parent = this;
-        bundle_interface_detail.push_back(std::move(c));
-        children[segment_path] = bundle_interface_detail.back();
-        return children.at(segment_path);
+        bundle_interface_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::BundleInterfaceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::BundleInterfaceDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bundle_interface_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1164,7 +1015,7 @@ std::string Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get
 
 }
 
-EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1190,15 +1041,6 @@ EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_
 
 std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member")
     {
         for(auto const & c : member)
@@ -1206,28 +1048,24 @@ std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member>();
         c->parent = this;
-        member.push_back(std::move(c));
-        children[segment_path] = member.back();
-        return children.at(segment_path);
+        member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1292,7 +1130,7 @@ std::string Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Mem
 
 }
 
-EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1320,20 +1158,12 @@ EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Memb
 
 std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1399,7 +1229,7 @@ std::string Oor::Nodes::Node::InterfaceDetails::get_segment_path() const
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1422,15 +1252,6 @@ EntityPath Oor::Nodes::Node::InterfaceDetails::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-detail")
     {
         for(auto const & c : interface_detail)
@@ -1438,28 +1259,24 @@ std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceDetails::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node::InterfaceDetails::InterfaceDetail>();
         c->parent = this;
-        interface_detail.push_back(std::move(c));
-        children[segment_path] = interface_detail.back();
-        return children.at(segment_path);
+        interface_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1515,7 +1332,7 @@ std::string Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_segment_pat
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1544,20 +1361,12 @@ EntityPath Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_entity_path(
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1627,7 +1436,7 @@ std::string Oor::Nodes::Node::InterfaceSummaryDatas::get_segment_path() const
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1650,15 +1459,6 @@ EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceSummaryDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-summary-data")
     {
         for(auto const & c : interface_summary_data)
@@ -1666,28 +1466,24 @@ std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceSummaryDatas::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData>();
         c->parent = this;
-        interface_summary_data.push_back(std::move(c));
-        children[segment_path] = interface_summary_data.back();
-        return children.at(segment_path);
+        interface_summary_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceSummaryDatas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceSummaryDatas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_summary_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1737,7 +1533,7 @@ std::string Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_s
 
 }
 
-EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1764,20 +1560,12 @@ EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_en
 
 std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1838,7 +1626,7 @@ std::string Oor::Nodes::Node::OorSummary::get_segment_path() const
 
 }
 
-EntityPath Oor::Nodes::Node::OorSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::OorSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1864,20 +1652,12 @@ EntityPath Oor::Nodes::Node::OorSummary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Oor::Nodes::Node::OorSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Oor::Nodes::Node::OorSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::OorSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

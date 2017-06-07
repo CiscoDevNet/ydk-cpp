@@ -18,25 +18,22 @@ class Alarms : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Detail; //type: Alarms::Detail
         class Brief; //type: Alarms::Brief
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief> brief;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail> detail;
-
-
+        
 }; // Alarms
 
 
@@ -48,21 +45,18 @@ class Alarms::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DetailSystem; //type: Alarms::Detail::DetailSystem
         class DetailCard; //type: Alarms::Detail::DetailCard
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard> detail_card;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem> detail_system;
-
-
+        
 }; // Alarms::Detail
 
 
@@ -74,13 +68,11 @@ class Alarms::Detail::DetailSystem : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Active; //type: Alarms::Detail::DetailSystem::Active
         class History; //type: Alarms::Detail::DetailSystem::History
@@ -93,8 +85,7 @@ class Alarms::Detail::DetailSystem : public Entity
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::History> history;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Stats> stats;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Suppressed> suppressed;
-
-
+        
 }; // Alarms::Detail::DetailSystem
 
 
@@ -106,19 +97,16 @@ class Alarms::Detail::DetailSystem::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailSystem::Active::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Active::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Detail::DetailSystem::Active
 
 
@@ -130,12 +118,11 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf location; //type: string
@@ -156,14 +143,12 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo : public Entity
         YLeaf type; //type: AlarmEventEnum
         YLeaf interface; //type: string
         YLeaf alarm_name; //type: string
-
         class Otn; //type: Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn> otn;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca> tca;
-
-
+        
 }; // Alarms::Detail::DetailSystem::Active::AlarmInfo
 
 
@@ -175,17 +160,14 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: AlarmDirectionEnum
         YLeaf notification_source; //type: AlarmNotificationSrcEnum
-
-
 
 }; // Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn
 
@@ -198,18 +180,15 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_value; //type: string
         YLeaf current_value; //type: string
         YLeaf bucket_type; //type: TimingBucketEnum
-
-
 
 }; // Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca
 
@@ -222,19 +201,16 @@ class Alarms::Detail::DetailSystem::History : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailSystem::History::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::History::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Detail::DetailSystem::History
 
 
@@ -246,12 +222,11 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf location; //type: string
@@ -272,14 +247,12 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo : public Entity
         YLeaf type; //type: AlarmEventEnum
         YLeaf interface; //type: string
         YLeaf alarm_name; //type: string
-
         class Otn; //type: Alarms::Detail::DetailSystem::History::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailSystem::History::AlarmInfo::Tca
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::History::AlarmInfo::Otn> otn;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::History::AlarmInfo::Tca> tca;
-
-
+        
 }; // Alarms::Detail::DetailSystem::History::AlarmInfo
 
 
@@ -291,17 +264,14 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo::Otn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: AlarmDirectionEnum
         YLeaf notification_source; //type: AlarmNotificationSrcEnum
-
-
 
 }; // Alarms::Detail::DetailSystem::History::AlarmInfo::Otn
 
@@ -314,18 +284,15 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo::Tca : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_value; //type: string
         YLeaf current_value; //type: string
         YLeaf bucket_type; //type: TimingBucketEnum
-
-
 
 }; // Alarms::Detail::DetailSystem::History::AlarmInfo::Tca
 
@@ -338,19 +305,16 @@ class Alarms::Detail::DetailSystem::Suppressed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SuppressedInfo; //type: Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo> > suppressed_info;
-
-
+        
 }; // Alarms::Detail::DetailSystem::Suppressed
 
 
@@ -362,12 +326,11 @@ class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf location; //type: string
@@ -387,12 +350,10 @@ class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo : public Entity
         YLeaf service_affecting; //type: AlarmServiceAffectingEnum
         YLeaf interface; //type: string
         YLeaf alarm_name; //type: string
-
         class Otn; //type: Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn> otn;
-
-
+        
 }; // Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
 
 
@@ -404,17 +365,14 @@ class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: AlarmDirectionEnum
         YLeaf notification_source; //type: AlarmNotificationSrcEnum
-
-
 
 }; // Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn
 
@@ -427,12 +385,11 @@ class Alarms::Detail::DetailSystem::Stats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf reported; //type: uint64
         YLeaf dropped; //type: uint64
@@ -449,8 +406,6 @@ class Alarms::Detail::DetailSystem::Stats : public Entity
         YLeaf dropped_duplicate; //type: uint32
         YLeaf cache_hit; //type: uint32
         YLeaf cache_miss; //type: uint32
-
-
 
 }; // Alarms::Detail::DetailSystem::Stats
 
@@ -463,19 +418,16 @@ class Alarms::Detail::DetailSystem::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ClientInfo; //type: Alarms::Detail::DetailSystem::Clients::ClientInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Clients::ClientInfo> > client_info;
-
-
+        
 }; // Alarms::Detail::DetailSystem::Clients
 
 
@@ -487,12 +439,11 @@ class Alarms::Detail::DetailSystem::Clients::ClientInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf id; //type: uint32
@@ -511,8 +462,6 @@ class Alarms::Detail::DetailSystem::Clients::ClientInfo : public Entity
         YLeaf subscribe_count; //type: uint32
         YLeaf report_count; //type: uint32
 
-
-
 }; // Alarms::Detail::DetailSystem::Clients::ClientInfo
 
 
@@ -524,19 +473,16 @@ class Alarms::Detail::DetailCard : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DetailLocations; //type: Alarms::Detail::DetailCard::DetailLocations
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations> detail_locations;
-
-
+        
 }; // Alarms::Detail::DetailCard
 
 
@@ -548,19 +494,16 @@ class Alarms::Detail::DetailCard::DetailLocations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DetailLocation; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation> > detail_location;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations
 
 
@@ -572,15 +515,13 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_id; //type: string
-
         class Active; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active
         class History; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History
         class Suppressed; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed
@@ -592,8 +533,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation : public Entit
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History> history;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats> stats;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed> suppressed;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation
 
 
@@ -605,19 +545,16 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active
 
 
@@ -629,12 +566,11 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf location; //type: string
@@ -655,14 +591,12 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
         YLeaf type; //type: AlarmEventEnum
         YLeaf interface; //type: string
         YLeaf alarm_name; //type: string
-
         class Otn; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn> otn;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca> tca;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo
 
 
@@ -674,17 +608,14 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: AlarmDirectionEnum
         YLeaf notification_source; //type: AlarmNotificationSrcEnum
-
-
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn
 
@@ -697,18 +628,15 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_value; //type: string
         YLeaf current_value; //type: string
         YLeaf bucket_type; //type: TimingBucketEnum
-
-
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca
 
@@ -721,19 +649,16 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History
 
 
@@ -745,12 +670,11 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf location; //type: string
@@ -771,14 +695,12 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
         YLeaf type; //type: AlarmEventEnum
         YLeaf interface; //type: string
         YLeaf alarm_name; //type: string
-
         class Otn; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn> otn;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca> tca;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo
 
 
@@ -790,17 +712,14 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: AlarmDirectionEnum
         YLeaf notification_source; //type: AlarmNotificationSrcEnum
-
-
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn
 
@@ -813,18 +732,15 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_value; //type: string
         YLeaf current_value; //type: string
         YLeaf bucket_type; //type: TimingBucketEnum
-
-
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca
 
@@ -837,19 +753,16 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SuppressedInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo> > suppressed_info;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed
 
 
@@ -861,12 +774,11 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf location; //type: string
@@ -886,12 +798,10 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::S
         YLeaf service_affecting; //type: AlarmServiceAffectingEnum
         YLeaf interface; //type: string
         YLeaf alarm_name; //type: string
-
         class Otn; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn> otn;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo
 
 
@@ -903,17 +813,14 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: AlarmDirectionEnum
         YLeaf notification_source; //type: AlarmNotificationSrcEnum
-
-
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn
 
@@ -926,12 +833,11 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf reported; //type: uint64
         YLeaf dropped; //type: uint64
@@ -949,8 +855,6 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats : publi
         YLeaf cache_hit; //type: uint32
         YLeaf cache_miss; //type: uint32
 
-
-
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats
 
 
@@ -962,19 +866,16 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ClientInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo> > client_info;
-
-
+        
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients
 
 
@@ -986,12 +887,11 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::Clie
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf id; //type: uint32
@@ -1010,8 +910,6 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::Clie
         YLeaf subscribe_count; //type: uint32
         YLeaf report_count; //type: uint32
 
-
-
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
 
 
@@ -1023,21 +921,18 @@ class Alarms::Brief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BriefCard; //type: Alarms::Brief::BriefCard
         class BriefSystem; //type: Alarms::Brief::BriefSystem
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard> brief_card;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem> brief_system;
-
-
+        
 }; // Alarms::Brief
 
 
@@ -1049,19 +944,16 @@ class Alarms::Brief::BriefCard : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BriefLocations; //type: Alarms::Brief::BriefCard::BriefLocations
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations> brief_locations;
-
-
+        
 }; // Alarms::Brief::BriefCard
 
 
@@ -1073,19 +965,16 @@ class Alarms::Brief::BriefCard::BriefLocations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BriefLocation; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation> > brief_location;
-
-
+        
 }; // Alarms::Brief::BriefCard::BriefLocations
 
 
@@ -1097,15 +986,13 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_id; //type: string
-
         class Active; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active
         class History; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History
         class Suppressed; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed
@@ -1113,8 +1000,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation : public Entity
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active> active;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History> history;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed> suppressed;
-
-
+        
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation
 
 
@@ -1126,19 +1012,16 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active
 
 
@@ -1150,12 +1033,11 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf severity; //type: AlarmSeverityEnum
@@ -1165,8 +1047,6 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
         YLeaf clear_time; //type: string
         YLeaf clear_timestamp; //type: uint64
         YLeaf description; //type: string
-
-
 
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
 
@@ -1179,19 +1059,16 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History
 
 
@@ -1203,12 +1080,11 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf severity; //type: AlarmSeverityEnum
@@ -1218,8 +1094,6 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInf
         YLeaf clear_time; //type: string
         YLeaf clear_timestamp; //type: uint64
         YLeaf description; //type: string
-
-
 
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo
 
@@ -1232,19 +1106,16 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SuppressedInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo> > suppressed_info;
-
-
+        
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed
 
 
@@ -1256,12 +1127,11 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::Suppr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf severity; //type: AlarmSeverityEnum
@@ -1271,8 +1141,6 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::Suppr
         YLeaf suppressed_time; //type: string
         YLeaf suppressed_timestamp; //type: uint64
         YLeaf description; //type: string
-
-
 
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo
 
@@ -1285,13 +1153,11 @@ class Alarms::Brief::BriefSystem : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Active; //type: Alarms::Brief::BriefSystem::Active
         class History; //type: Alarms::Brief::BriefSystem::History
@@ -1300,8 +1166,7 @@ class Alarms::Brief::BriefSystem : public Entity
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::Active> active;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::History> history;
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::Suppressed> suppressed;
-
-
+        
 }; // Alarms::Brief::BriefSystem
 
 
@@ -1313,19 +1178,16 @@ class Alarms::Brief::BriefSystem::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefSystem::Active::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::Active::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Brief::BriefSystem::Active
 
 
@@ -1337,12 +1199,11 @@ class Alarms::Brief::BriefSystem::Active::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf severity; //type: AlarmSeverityEnum
@@ -1352,8 +1213,6 @@ class Alarms::Brief::BriefSystem::Active::AlarmInfo : public Entity
         YLeaf clear_time; //type: string
         YLeaf clear_timestamp; //type: uint64
         YLeaf description; //type: string
-
-
 
 }; // Alarms::Brief::BriefSystem::Active::AlarmInfo
 
@@ -1366,19 +1225,16 @@ class Alarms::Brief::BriefSystem::History : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefSystem::History::AlarmInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::History::AlarmInfo> > alarm_info;
-
-
+        
 }; // Alarms::Brief::BriefSystem::History
 
 
@@ -1390,12 +1246,11 @@ class Alarms::Brief::BriefSystem::History::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf severity; //type: AlarmSeverityEnum
@@ -1405,8 +1260,6 @@ class Alarms::Brief::BriefSystem::History::AlarmInfo : public Entity
         YLeaf clear_time; //type: string
         YLeaf clear_timestamp; //type: uint64
         YLeaf description; //type: string
-
-
 
 }; // Alarms::Brief::BriefSystem::History::AlarmInfo
 
@@ -1419,19 +1272,16 @@ class Alarms::Brief::BriefSystem::Suppressed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SuppressedInfo; //type: Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo> > suppressed_info;
-
-
+        
 }; // Alarms::Brief::BriefSystem::Suppressed
 
 
@@ -1443,12 +1293,11 @@ class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf severity; //type: AlarmSeverityEnum
@@ -1458,8 +1307,6 @@ class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public Entity
         YLeaf suppressed_time; //type: string
         YLeaf suppressed_timestamp; //type: uint64
         YLeaf description; //type: string
-
-
 
 }; // Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
 

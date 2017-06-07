@@ -14,7 +14,6 @@ Ssrp::Ssrp()
     profiles(std::make_shared<Ssrp::Profiles>())
 {
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     yang_name = "ssrp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-ssrp-cfg";
 }
@@ -43,12 +42,12 @@ std::string Ssrp::get_segment_path() const
 
 }
 
-EntityPath Ssrp::get_entity_path(Entity* ancestor) const
+const EntityPath Ssrp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Ssrp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<Ssrp::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssrp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssrp::get_children() const
 {
-    if(children.find("profiles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Ssrp::Profiles::get_segment_path() const
 
 }
 
-EntityPath Ssrp::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath Ssrp::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Ssrp::Profiles::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssrp::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Ssrp::Profiles::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ssrp::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssrp::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssrp::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -272,7 +241,7 @@ std::string Ssrp::Profiles::Profile::get_segment_path() const
 
 }
 
-EntityPath Ssrp::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath Ssrp::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -298,20 +267,12 @@ EntityPath Ssrp::Profiles::Profile::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ssrp::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ssrp::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ssrp::Profiles::Profile::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

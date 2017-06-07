@@ -17,7 +17,6 @@ Isis::Isis()
     instances(std::make_shared<Isis::Instances>())
 {
     instances->parent = this;
-    children["instances"] = instances;
 
     yang_name = "isis"; yang_parent_name = "Cisco-IOS-XR-clns-isis-oper";
 }
@@ -46,12 +45,12 @@ std::string Isis::get_segment_path() const
 
 }
 
-EntityPath Isis::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -66,41 +65,24 @@ EntityPath Isis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instances")
     {
-        if(instances != nullptr)
-        {
-            children["instances"] = instances;
-        }
-        else
+        if(instances == nullptr)
         {
             instances = std::make_shared<Isis::Instances>();
-            instances->parent = this;
-            children["instances"] = instances;
         }
-        return children.at("instances");
+        return instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::get_children() const
 {
-    if(children.find("instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instances != nullptr)
     {
-        if(instances != nullptr)
-        {
-            children["instances"] = instances;
-        }
+        children["instances"] = instances;
     }
 
     return children;
@@ -168,7 +150,7 @@ std::string Isis::Instances::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -191,15 +173,6 @@ EntityPath Isis::Instances::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Isis::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance")
     {
         for(auto const & c : instance)
@@ -207,28 +180,24 @@ std::shared_ptr<Entity> Isis::Instances::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance>();
         c->parent = this;
-        instance.push_back(std::move(c));
-        children[segment_path] = instance.back();
-        return children.at(segment_path);
+        instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -262,58 +231,40 @@ Isis::Instances::Instance::Instance()
 	,topologies(std::make_shared<Isis::Instances::Instance::Topologies>())
 {
     checkpoint_adjacencies->parent = this;
-    children["checkpoint-adjacencies"] = checkpoint_adjacencies;
 
     checkpoint_interfaces->parent = this;
-    children["checkpoint-interfaces"] = checkpoint_interfaces;
 
     checkpoint_lsps->parent = this;
-    children["checkpoint-lsps"] = checkpoint_lsps;
 
     checkpoint_te_tunnels->parent = this;
-    children["checkpoint-te-tunnels"] = checkpoint_te_tunnels;
 
     error_log->parent = this;
-    children["error-log"] = error_log;
 
     host_names->parent = this;
-    children["host-names"] = host_names;
 
     interface_statistics->parent = this;
-    children["interface-statistics"] = interface_statistics;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     levels->parent = this;
-    children["levels"] = levels;
 
     mesh_groups->parent = this;
-    children["mesh-groups"] = mesh_groups;
 
     neighbor_summaries->parent = this;
-    children["neighbor-summaries"] = neighbor_summaries;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     nsr_statistics->parent = this;
-    children["nsr-statistics"] = nsr_statistics;
 
     nsr_status->parent = this;
-    children["nsr-status"] = nsr_status;
 
     protocol->parent = this;
-    children["protocol"] = protocol;
 
     srms->parent = this;
-    children["srms"] = srms;
 
     statistics_global->parent = this;
-    children["statistics-global"] = statistics_global;
 
     topologies->parent = this;
-    children["topologies"] = topologies;
 
     yang_name = "instance"; yang_parent_name = "instances";
 }
@@ -378,7 +329,7 @@ std::string Isis::Instances::Instance::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -402,432 +353,262 @@ EntityPath Isis::Instances::Instance::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Isis::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-adjacencies")
     {
-        if(checkpoint_adjacencies != nullptr)
-        {
-            children["checkpoint-adjacencies"] = checkpoint_adjacencies;
-        }
-        else
+        if(checkpoint_adjacencies == nullptr)
         {
             checkpoint_adjacencies = std::make_shared<Isis::Instances::Instance::CheckpointAdjacencies>();
-            checkpoint_adjacencies->parent = this;
-            children["checkpoint-adjacencies"] = checkpoint_adjacencies;
         }
-        return children.at("checkpoint-adjacencies");
+        return checkpoint_adjacencies;
     }
 
     if(child_yang_name == "checkpoint-interfaces")
     {
-        if(checkpoint_interfaces != nullptr)
-        {
-            children["checkpoint-interfaces"] = checkpoint_interfaces;
-        }
-        else
+        if(checkpoint_interfaces == nullptr)
         {
             checkpoint_interfaces = std::make_shared<Isis::Instances::Instance::CheckpointInterfaces>();
-            checkpoint_interfaces->parent = this;
-            children["checkpoint-interfaces"] = checkpoint_interfaces;
         }
-        return children.at("checkpoint-interfaces");
+        return checkpoint_interfaces;
     }
 
     if(child_yang_name == "checkpoint-lsps")
     {
-        if(checkpoint_lsps != nullptr)
-        {
-            children["checkpoint-lsps"] = checkpoint_lsps;
-        }
-        else
+        if(checkpoint_lsps == nullptr)
         {
             checkpoint_lsps = std::make_shared<Isis::Instances::Instance::CheckpointLsps>();
-            checkpoint_lsps->parent = this;
-            children["checkpoint-lsps"] = checkpoint_lsps;
         }
-        return children.at("checkpoint-lsps");
+        return checkpoint_lsps;
     }
 
     if(child_yang_name == "checkpoint-te-tunnels")
     {
-        if(checkpoint_te_tunnels != nullptr)
-        {
-            children["checkpoint-te-tunnels"] = checkpoint_te_tunnels;
-        }
-        else
+        if(checkpoint_te_tunnels == nullptr)
         {
             checkpoint_te_tunnels = std::make_shared<Isis::Instances::Instance::CheckpointTeTunnels>();
-            checkpoint_te_tunnels->parent = this;
-            children["checkpoint-te-tunnels"] = checkpoint_te_tunnels;
         }
-        return children.at("checkpoint-te-tunnels");
+        return checkpoint_te_tunnels;
     }
 
     if(child_yang_name == "error-log")
     {
-        if(error_log != nullptr)
-        {
-            children["error-log"] = error_log;
-        }
-        else
+        if(error_log == nullptr)
         {
             error_log = std::make_shared<Isis::Instances::Instance::ErrorLog>();
-            error_log->parent = this;
-            children["error-log"] = error_log;
         }
-        return children.at("error-log");
+        return error_log;
     }
 
     if(child_yang_name == "host-names")
     {
-        if(host_names != nullptr)
-        {
-            children["host-names"] = host_names;
-        }
-        else
+        if(host_names == nullptr)
         {
             host_names = std::make_shared<Isis::Instances::Instance::HostNames>();
-            host_names->parent = this;
-            children["host-names"] = host_names;
         }
-        return children.at("host-names");
+        return host_names;
     }
 
     if(child_yang_name == "interface-statistics")
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
-        else
+        if(interface_statistics == nullptr)
         {
             interface_statistics = std::make_shared<Isis::Instances::Instance::InterfaceStatistics>();
-            interface_statistics->parent = this;
-            children["interface-statistics"] = interface_statistics;
         }
-        return children.at("interface-statistics");
+        return interface_statistics;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Isis::Instances::Instance::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "levels")
     {
-        if(levels != nullptr)
-        {
-            children["levels"] = levels;
-        }
-        else
+        if(levels == nullptr)
         {
             levels = std::make_shared<Isis::Instances::Instance::Levels>();
-            levels->parent = this;
-            children["levels"] = levels;
         }
-        return children.at("levels");
+        return levels;
     }
 
     if(child_yang_name == "mesh-groups")
     {
-        if(mesh_groups != nullptr)
-        {
-            children["mesh-groups"] = mesh_groups;
-        }
-        else
+        if(mesh_groups == nullptr)
         {
             mesh_groups = std::make_shared<Isis::Instances::Instance::MeshGroups>();
-            mesh_groups->parent = this;
-            children["mesh-groups"] = mesh_groups;
         }
-        return children.at("mesh-groups");
+        return mesh_groups;
     }
 
     if(child_yang_name == "neighbor-summaries")
     {
-        if(neighbor_summaries != nullptr)
-        {
-            children["neighbor-summaries"] = neighbor_summaries;
-        }
-        else
+        if(neighbor_summaries == nullptr)
         {
             neighbor_summaries = std::make_shared<Isis::Instances::Instance::NeighborSummaries>();
-            neighbor_summaries->parent = this;
-            children["neighbor-summaries"] = neighbor_summaries;
         }
-        return children.at("neighbor-summaries");
+        return neighbor_summaries;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Isis::Instances::Instance::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "nsr-statistics")
     {
-        if(nsr_statistics != nullptr)
-        {
-            children["nsr-statistics"] = nsr_statistics;
-        }
-        else
+        if(nsr_statistics == nullptr)
         {
             nsr_statistics = std::make_shared<Isis::Instances::Instance::NsrStatistics>();
-            nsr_statistics->parent = this;
-            children["nsr-statistics"] = nsr_statistics;
         }
-        return children.at("nsr-statistics");
+        return nsr_statistics;
     }
 
     if(child_yang_name == "nsr-status")
     {
-        if(nsr_status != nullptr)
-        {
-            children["nsr-status"] = nsr_status;
-        }
-        else
+        if(nsr_status == nullptr)
         {
             nsr_status = std::make_shared<Isis::Instances::Instance::NsrStatus>();
-            nsr_status->parent = this;
-            children["nsr-status"] = nsr_status;
         }
-        return children.at("nsr-status");
+        return nsr_status;
     }
 
     if(child_yang_name == "protocol")
     {
-        if(protocol != nullptr)
-        {
-            children["protocol"] = protocol;
-        }
-        else
+        if(protocol == nullptr)
         {
             protocol = std::make_shared<Isis::Instances::Instance::Protocol>();
-            protocol->parent = this;
-            children["protocol"] = protocol;
         }
-        return children.at("protocol");
+        return protocol;
     }
 
     if(child_yang_name == "srms")
     {
-        if(srms != nullptr)
-        {
-            children["srms"] = srms;
-        }
-        else
+        if(srms == nullptr)
         {
             srms = std::make_shared<Isis::Instances::Instance::Srms>();
-            srms->parent = this;
-            children["srms"] = srms;
         }
-        return children.at("srms");
+        return srms;
     }
 
     if(child_yang_name == "statistics-global")
     {
-        if(statistics_global != nullptr)
-        {
-            children["statistics-global"] = statistics_global;
-        }
-        else
+        if(statistics_global == nullptr)
         {
             statistics_global = std::make_shared<Isis::Instances::Instance::StatisticsGlobal>();
-            statistics_global->parent = this;
-            children["statistics-global"] = statistics_global;
         }
-        return children.at("statistics-global");
+        return statistics_global;
     }
 
     if(child_yang_name == "topologies")
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
-        else
+        if(topologies == nullptr)
         {
             topologies = std::make_shared<Isis::Instances::Instance::Topologies>();
-            topologies->parent = this;
-            children["topologies"] = topologies;
         }
-        return children.at("topologies");
+        return topologies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::get_children() const
 {
-    if(children.find("checkpoint-adjacencies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(checkpoint_adjacencies != nullptr)
     {
-        if(checkpoint_adjacencies != nullptr)
-        {
-            children["checkpoint-adjacencies"] = checkpoint_adjacencies;
-        }
+        children["checkpoint-adjacencies"] = checkpoint_adjacencies;
     }
 
-    if(children.find("checkpoint-interfaces") == children.end())
+    if(checkpoint_interfaces != nullptr)
     {
-        if(checkpoint_interfaces != nullptr)
-        {
-            children["checkpoint-interfaces"] = checkpoint_interfaces;
-        }
+        children["checkpoint-interfaces"] = checkpoint_interfaces;
     }
 
-    if(children.find("checkpoint-lsps") == children.end())
+    if(checkpoint_lsps != nullptr)
     {
-        if(checkpoint_lsps != nullptr)
-        {
-            children["checkpoint-lsps"] = checkpoint_lsps;
-        }
+        children["checkpoint-lsps"] = checkpoint_lsps;
     }
 
-    if(children.find("checkpoint-te-tunnels") == children.end())
+    if(checkpoint_te_tunnels != nullptr)
     {
-        if(checkpoint_te_tunnels != nullptr)
-        {
-            children["checkpoint-te-tunnels"] = checkpoint_te_tunnels;
-        }
+        children["checkpoint-te-tunnels"] = checkpoint_te_tunnels;
     }
 
-    if(children.find("error-log") == children.end())
+    if(error_log != nullptr)
     {
-        if(error_log != nullptr)
-        {
-            children["error-log"] = error_log;
-        }
+        children["error-log"] = error_log;
     }
 
-    if(children.find("host-names") == children.end())
+    if(host_names != nullptr)
     {
-        if(host_names != nullptr)
-        {
-            children["host-names"] = host_names;
-        }
+        children["host-names"] = host_names;
     }
 
-    if(children.find("interface-statistics") == children.end())
+    if(interface_statistics != nullptr)
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
+        children["interface-statistics"] = interface_statistics;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("levels") == children.end())
+    if(levels != nullptr)
     {
-        if(levels != nullptr)
-        {
-            children["levels"] = levels;
-        }
+        children["levels"] = levels;
     }
 
-    if(children.find("mesh-groups") == children.end())
+    if(mesh_groups != nullptr)
     {
-        if(mesh_groups != nullptr)
-        {
-            children["mesh-groups"] = mesh_groups;
-        }
+        children["mesh-groups"] = mesh_groups;
     }
 
-    if(children.find("neighbor-summaries") == children.end())
+    if(neighbor_summaries != nullptr)
     {
-        if(neighbor_summaries != nullptr)
-        {
-            children["neighbor-summaries"] = neighbor_summaries;
-        }
+        children["neighbor-summaries"] = neighbor_summaries;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("nsr-statistics") == children.end())
+    if(nsr_statistics != nullptr)
     {
-        if(nsr_statistics != nullptr)
-        {
-            children["nsr-statistics"] = nsr_statistics;
-        }
+        children["nsr-statistics"] = nsr_statistics;
     }
 
-    if(children.find("nsr-status") == children.end())
+    if(nsr_status != nullptr)
     {
-        if(nsr_status != nullptr)
-        {
-            children["nsr-status"] = nsr_status;
-        }
+        children["nsr-status"] = nsr_status;
     }
 
-    if(children.find("protocol") == children.end())
+    if(protocol != nullptr)
     {
-        if(protocol != nullptr)
-        {
-            children["protocol"] = protocol;
-        }
+        children["protocol"] = protocol;
     }
 
-    if(children.find("srms") == children.end())
+    if(srms != nullptr)
     {
-        if(srms != nullptr)
-        {
-            children["srms"] = srms;
-        }
+        children["srms"] = srms;
     }
 
-    if(children.find("statistics-global") == children.end())
+    if(statistics_global != nullptr)
     {
-        if(statistics_global != nullptr)
-        {
-            children["statistics-global"] = statistics_global;
-        }
+        children["statistics-global"] = statistics_global;
     }
 
-    if(children.find("topologies") == children.end())
+    if(topologies != nullptr)
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
+        children["topologies"] = topologies;
     }
 
     return children;
@@ -879,7 +660,7 @@ std::string Isis::Instances::Instance::Neighbors::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -902,15 +683,6 @@ EntityPath Isis::Instances::Instance::Neighbors::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -918,28 +690,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1048,7 +816,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::get_segment_path() c
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1086,15 +854,6 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::get_entity_path(Entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-per-address-family-data")
     {
         for(auto const & c : neighbor_per_address_family_data)
@@ -1102,15 +861,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData>();
         c->parent = this;
-        neighbor_per_address_family_data.push_back(std::move(c));
-        children[segment_path] = neighbor_per_address_family_data.back();
-        return children.at(segment_path);
+        neighbor_per_address_family_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "topologies-supported")
@@ -1120,36 +877,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported>();
         c->parent = this;
-        topologies_supported.push_back(std::move(c));
-        children[segment_path] = topologies_supported.back();
-        return children.at(segment_path);
+        topologies_supported.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_per_address_family_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : topologies_supported)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1255,7 +1005,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported:
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1282,20 +1032,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1327,10 +1069,8 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ne
 	,ipv6(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "neighbor-per-address-family-data"; yang_parent_name = "neighbor";
 }
@@ -1363,7 +1103,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1387,64 +1127,38 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -1469,10 +1183,8 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ip
 	,non_frr_adjacency_sid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid>())
 {
     adjacency_sid->parent = this;
-    children["adjacency-sid"] = adjacency_sid;
 
     non_frr_adjacency_sid->parent = this;
-    children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
 
     yang_name = "ipv4"; yang_parent_name = "neighbor-per-address-family-data";
 }
@@ -1538,7 +1250,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1568,64 +1280,38 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid")
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
-        else
+        if(adjacency_sid == nullptr)
         {
             adjacency_sid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid>();
-            adjacency_sid->parent = this;
-            children["adjacency-sid"] = adjacency_sid;
         }
-        return children.at("adjacency-sid");
+        return adjacency_sid;
     }
 
     if(child_yang_name == "non-frr-adjacency-sid")
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
-        else
+        if(non_frr_adjacency_sid == nullptr)
         {
             non_frr_adjacency_sid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid>();
-            non_frr_adjacency_sid->parent = this;
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
         }
-        return children.at("non-frr-adjacency-sid");
+        return non_frr_adjacency_sid;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_children() const
 {
-    if(children.find("adjacency-sid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid != nullptr)
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
+        children["adjacency-sid"] = adjacency_sid;
     }
 
-    if(children.find("non-frr-adjacency-sid") == children.end())
+    if(non_frr_adjacency_sid != nullptr)
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
+        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
     }
 
     return children;
@@ -1659,10 +1345,8 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ip
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "adjacency-sid"; yang_parent_name = "ipv4";
 }
@@ -1695,7 +1379,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1719,64 +1403,38 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -1842,7 +1500,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1871,20 +1529,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1964,7 +1614,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1993,20 +1643,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2042,10 +1684,8 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ip
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "non-frr-adjacency-sid"; yang_parent_name = "ipv4";
 }
@@ -2078,7 +1718,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2102,64 +1742,38 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -2225,7 +1839,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2254,20 +1868,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2347,7 +1953,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2376,20 +1982,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2428,10 +2026,8 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ip
 	,non_frr_adjacency_sid(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>())
 {
     adjacency_sid->parent = this;
-    children["adjacency-sid"] = adjacency_sid;
 
     non_frr_adjacency_sid->parent = this;
-    children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
 
     yang_name = "ipv6"; yang_parent_name = "neighbor-per-address-family-data";
 }
@@ -2497,7 +2093,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2527,64 +2123,38 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid")
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
-        else
+        if(adjacency_sid == nullptr)
         {
             adjacency_sid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid>();
-            adjacency_sid->parent = this;
-            children["adjacency-sid"] = adjacency_sid;
         }
-        return children.at("adjacency-sid");
+        return adjacency_sid;
     }
 
     if(child_yang_name == "non-frr-adjacency-sid")
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
-        else
+        if(non_frr_adjacency_sid == nullptr)
         {
             non_frr_adjacency_sid = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>();
-            non_frr_adjacency_sid->parent = this;
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
         }
-        return children.at("non-frr-adjacency-sid");
+        return non_frr_adjacency_sid;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_children() const
 {
-    if(children.find("adjacency-sid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid != nullptr)
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
+        children["adjacency-sid"] = adjacency_sid;
     }
 
-    if(children.find("non-frr-adjacency-sid") == children.end())
+    if(non_frr_adjacency_sid != nullptr)
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
+        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
     }
 
     return children;
@@ -2618,10 +2188,8 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ip
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "adjacency-sid"; yang_parent_name = "ipv6";
 }
@@ -2654,7 +2222,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2678,64 +2246,38 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -2801,7 +2343,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2830,20 +2372,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2923,7 +2457,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2952,20 +2486,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3001,10 +2527,8 @@ Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ip
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "non-frr-adjacency-sid"; yang_parent_name = "ipv6";
 }
@@ -3037,7 +2561,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3061,64 +2585,38 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -3184,7 +2682,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3213,20 +2711,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3306,7 +2796,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 
 }
 
-EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3335,20 +2825,12 @@ EntityPath Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFam
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3414,7 +2896,7 @@ std::string Isis::Instances::Instance::HostNames::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::HostNames::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::HostNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3437,15 +2919,6 @@ EntityPath Isis::Instances::Instance::HostNames::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Isis::Instances::Instance::HostNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host-name")
     {
         for(auto const & c : host_name)
@@ -3453,28 +2926,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::HostNames::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::HostNames::HostName>();
         c->parent = this;
-        host_name.push_back(std::move(c));
-        children[segment_path] = host_name.back();
-        return children.at(segment_path);
+        host_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::HostNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::HostNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3524,7 +2993,7 @@ std::string Isis::Instances::Instance::HostNames::HostName::get_segment_path() c
 
 }
 
-EntityPath Isis::Instances::Instance::HostNames::HostName::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::HostNames::HostName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3551,20 +3020,12 @@ EntityPath Isis::Instances::Instance::HostNames::HostName::get_entity_path(Entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::HostNames::HostName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::HostNames::HostName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::HostNames::HostName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3593,7 +3054,6 @@ Isis::Instances::Instance::StatisticsGlobal::StatisticsGlobal()
     statistics(std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "statistics-global"; yang_parent_name = "instance";
 }
@@ -3632,7 +3092,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::get_segment_path() cons
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3655,15 +3115,6 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-area-data")
     {
         for(auto const & c : per_area_data)
@@ -3671,51 +3122,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData>();
         c->parent = this;
-        per_area_data.push_back(std::move(c));
-        children[segment_path] = per_area_data.back();
-        return children.at(segment_path);
+        per_area_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : per_area_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -3759,28 +3197,20 @@ Isis::Instances::Instance::StatisticsGlobal::Statistics::Statistics()
 	,avg_psnp_transmit_time(std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime>())
 {
     avg_csnp_process_time->parent = this;
-    children["avg-csnp-process-time"] = avg_csnp_process_time;
 
     avg_csnp_transmit_time->parent = this;
-    children["avg-csnp-transmit-time"] = avg_csnp_transmit_time;
 
     avg_hello_process_time->parent = this;
-    children["avg-hello-process-time"] = avg_hello_process_time;
 
     avg_hello_transmit_time->parent = this;
-    children["avg-hello-transmit-time"] = avg_hello_transmit_time;
 
     avg_lsp_process_time->parent = this;
-    children["avg-lsp-process-time"] = avg_lsp_process_time;
 
     avg_lsp_transmit_time->parent = this;
-    children["avg-lsp-transmit-time"] = avg_lsp_transmit_time;
 
     avg_psnp_process_time->parent = this;
-    children["avg-psnp-process-time"] = avg_psnp_process_time;
 
     avg_psnp_transmit_time->parent = this;
-    children["avg-psnp-transmit-time"] = avg_psnp_transmit_time;
 
     yang_name = "statistics"; yang_parent_name = "statistics-global";
 }
@@ -3865,7 +3295,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::get_segment
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3909,202 +3339,122 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::get_entity_p
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "avg-csnp-process-time")
     {
-        if(avg_csnp_process_time != nullptr)
-        {
-            children["avg-csnp-process-time"] = avg_csnp_process_time;
-        }
-        else
+        if(avg_csnp_process_time == nullptr)
         {
             avg_csnp_process_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime>();
-            avg_csnp_process_time->parent = this;
-            children["avg-csnp-process-time"] = avg_csnp_process_time;
         }
-        return children.at("avg-csnp-process-time");
+        return avg_csnp_process_time;
     }
 
     if(child_yang_name == "avg-csnp-transmit-time")
     {
-        if(avg_csnp_transmit_time != nullptr)
-        {
-            children["avg-csnp-transmit-time"] = avg_csnp_transmit_time;
-        }
-        else
+        if(avg_csnp_transmit_time == nullptr)
         {
             avg_csnp_transmit_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime>();
-            avg_csnp_transmit_time->parent = this;
-            children["avg-csnp-transmit-time"] = avg_csnp_transmit_time;
         }
-        return children.at("avg-csnp-transmit-time");
+        return avg_csnp_transmit_time;
     }
 
     if(child_yang_name == "avg-hello-process-time")
     {
-        if(avg_hello_process_time != nullptr)
-        {
-            children["avg-hello-process-time"] = avg_hello_process_time;
-        }
-        else
+        if(avg_hello_process_time == nullptr)
         {
             avg_hello_process_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime>();
-            avg_hello_process_time->parent = this;
-            children["avg-hello-process-time"] = avg_hello_process_time;
         }
-        return children.at("avg-hello-process-time");
+        return avg_hello_process_time;
     }
 
     if(child_yang_name == "avg-hello-transmit-time")
     {
-        if(avg_hello_transmit_time != nullptr)
-        {
-            children["avg-hello-transmit-time"] = avg_hello_transmit_time;
-        }
-        else
+        if(avg_hello_transmit_time == nullptr)
         {
             avg_hello_transmit_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime>();
-            avg_hello_transmit_time->parent = this;
-            children["avg-hello-transmit-time"] = avg_hello_transmit_time;
         }
-        return children.at("avg-hello-transmit-time");
+        return avg_hello_transmit_time;
     }
 
     if(child_yang_name == "avg-lsp-process-time")
     {
-        if(avg_lsp_process_time != nullptr)
-        {
-            children["avg-lsp-process-time"] = avg_lsp_process_time;
-        }
-        else
+        if(avg_lsp_process_time == nullptr)
         {
             avg_lsp_process_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime>();
-            avg_lsp_process_time->parent = this;
-            children["avg-lsp-process-time"] = avg_lsp_process_time;
         }
-        return children.at("avg-lsp-process-time");
+        return avg_lsp_process_time;
     }
 
     if(child_yang_name == "avg-lsp-transmit-time")
     {
-        if(avg_lsp_transmit_time != nullptr)
-        {
-            children["avg-lsp-transmit-time"] = avg_lsp_transmit_time;
-        }
-        else
+        if(avg_lsp_transmit_time == nullptr)
         {
             avg_lsp_transmit_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime>();
-            avg_lsp_transmit_time->parent = this;
-            children["avg-lsp-transmit-time"] = avg_lsp_transmit_time;
         }
-        return children.at("avg-lsp-transmit-time");
+        return avg_lsp_transmit_time;
     }
 
     if(child_yang_name == "avg-psnp-process-time")
     {
-        if(avg_psnp_process_time != nullptr)
-        {
-            children["avg-psnp-process-time"] = avg_psnp_process_time;
-        }
-        else
+        if(avg_psnp_process_time == nullptr)
         {
             avg_psnp_process_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime>();
-            avg_psnp_process_time->parent = this;
-            children["avg-psnp-process-time"] = avg_psnp_process_time;
         }
-        return children.at("avg-psnp-process-time");
+        return avg_psnp_process_time;
     }
 
     if(child_yang_name == "avg-psnp-transmit-time")
     {
-        if(avg_psnp_transmit_time != nullptr)
-        {
-            children["avg-psnp-transmit-time"] = avg_psnp_transmit_time;
-        }
-        else
+        if(avg_psnp_transmit_time == nullptr)
         {
             avg_psnp_transmit_time = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime>();
-            avg_psnp_transmit_time->parent = this;
-            children["avg-psnp-transmit-time"] = avg_psnp_transmit_time;
         }
-        return children.at("avg-psnp-transmit-time");
+        return avg_psnp_transmit_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::get_children() const
 {
-    if(children.find("avg-csnp-process-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(avg_csnp_process_time != nullptr)
     {
-        if(avg_csnp_process_time != nullptr)
-        {
-            children["avg-csnp-process-time"] = avg_csnp_process_time;
-        }
+        children["avg-csnp-process-time"] = avg_csnp_process_time;
     }
 
-    if(children.find("avg-csnp-transmit-time") == children.end())
+    if(avg_csnp_transmit_time != nullptr)
     {
-        if(avg_csnp_transmit_time != nullptr)
-        {
-            children["avg-csnp-transmit-time"] = avg_csnp_transmit_time;
-        }
+        children["avg-csnp-transmit-time"] = avg_csnp_transmit_time;
     }
 
-    if(children.find("avg-hello-process-time") == children.end())
+    if(avg_hello_process_time != nullptr)
     {
-        if(avg_hello_process_time != nullptr)
-        {
-            children["avg-hello-process-time"] = avg_hello_process_time;
-        }
+        children["avg-hello-process-time"] = avg_hello_process_time;
     }
 
-    if(children.find("avg-hello-transmit-time") == children.end())
+    if(avg_hello_transmit_time != nullptr)
     {
-        if(avg_hello_transmit_time != nullptr)
-        {
-            children["avg-hello-transmit-time"] = avg_hello_transmit_time;
-        }
+        children["avg-hello-transmit-time"] = avg_hello_transmit_time;
     }
 
-    if(children.find("avg-lsp-process-time") == children.end())
+    if(avg_lsp_process_time != nullptr)
     {
-        if(avg_lsp_process_time != nullptr)
-        {
-            children["avg-lsp-process-time"] = avg_lsp_process_time;
-        }
+        children["avg-lsp-process-time"] = avg_lsp_process_time;
     }
 
-    if(children.find("avg-lsp-transmit-time") == children.end())
+    if(avg_lsp_transmit_time != nullptr)
     {
-        if(avg_lsp_transmit_time != nullptr)
-        {
-            children["avg-lsp-transmit-time"] = avg_lsp_transmit_time;
-        }
+        children["avg-lsp-transmit-time"] = avg_lsp_transmit_time;
     }
 
-    if(children.find("avg-psnp-process-time") == children.end())
+    if(avg_psnp_process_time != nullptr)
     {
-        if(avg_psnp_process_time != nullptr)
-        {
-            children["avg-psnp-process-time"] = avg_psnp_process_time;
-        }
+        children["avg-psnp-process-time"] = avg_psnp_process_time;
     }
 
-    if(children.find("avg-psnp-transmit-time") == children.end())
+    if(avg_psnp_transmit_time != nullptr)
     {
-        if(avg_psnp_transmit_time != nullptr)
-        {
-            children["avg-psnp-transmit-time"] = avg_psnp_transmit_time;
-        }
+        children["avg-psnp-transmit-time"] = avg_psnp_transmit_time;
     }
 
     return children;
@@ -4232,7 +3582,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloPro
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4257,20 +3607,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProc
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4320,7 +3662,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProc
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4345,20 +3687,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProce
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4408,7 +3742,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProc
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4433,20 +3767,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProce
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4496,7 +3822,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProce
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4521,20 +3847,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProces
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4584,7 +3902,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTra
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4609,20 +3927,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTran
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4672,7 +3982,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTran
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4697,20 +4007,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTrans
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4760,7 +4062,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTran
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4785,20 +4087,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTrans
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4848,7 +4142,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTrans
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4873,20 +4167,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransm
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4909,7 +4195,6 @@ Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerAreaData()
     statistics(std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "per-area-data"; yang_parent_name = "statistics-global";
 }
@@ -4950,7 +4235,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_segmen
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4974,15 +4259,6 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_entity_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-topology-data")
     {
         for(auto const & c : per_topology_data)
@@ -4990,51 +4266,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData>();
         c->parent = this;
-        per_topology_data.push_back(std::move(c));
-        children[segment_path] = per_topology_data.back();
-        return children.at(segment_path);
+        per_topology_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : per_topology_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -5082,7 +4345,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5107,20 +4370,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics:
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5142,10 +4397,8 @@ Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::PerTo
 	,statistics(std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics>())
 {
     id->parent = this;
-    children["id"] = id;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "per-topology-data"; yang_parent_name = "per-area-data";
 }
@@ -5176,7 +4429,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopolog
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5199,64 +4452,38 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopology
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "id")
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
-        else
+        if(id == nullptr)
         {
             id = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id>();
-            id->parent = this;
-            children["id"] = id;
         }
-        return children.at("id");
+        return id;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_children() const
 {
-    if(children.find("id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(id != nullptr)
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
+        children["id"] = id;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -5306,7 +4533,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopolog
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5333,20 +4560,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopology
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5413,7 +4632,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopolog
 
 }
 
-EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5441,20 +4660,12 @@ EntityPath Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopology
 
 std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5520,7 +4731,7 @@ std::string Isis::Instances::Instance::Levels::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5543,15 +4754,6 @@ EntityPath Isis::Instances::Instance::Levels::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "level")
     {
         for(auto const & c : level)
@@ -5559,28 +4761,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level>();
         c->parent = this;
-        level.push_back(std::move(c));
-        children[segment_path] = level.back();
-        return children.at(segment_path);
+        level.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : level)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5603,25 +4801,18 @@ Isis::Instances::Instance::Levels::Level::Level()
 	,lsps(std::make_shared<Isis::Instances::Instance::Levels::Level::Lsps>())
 {
     adjacencies->parent = this;
-    children["adjacencies"] = adjacencies;
 
     adjacency_log->parent = this;
-    children["adjacency-log"] = adjacency_log;
 
     database_log->parent = this;
-    children["database-log"] = database_log;
 
     detailed_lsps->parent = this;
-    children["detailed-lsps"] = detailed_lsps;
 
     lsp_log->parent = this;
-    children["lsp-log"] = lsp_log;
 
     lsp_table_summary->parent = this;
-    children["lsp-table-summary"] = lsp_table_summary;
 
     lsps->parent = this;
-    children["lsps"] = lsps;
 
     yang_name = "level"; yang_parent_name = "levels";
 }
@@ -5664,7 +4855,7 @@ std::string Isis::Instances::Instance::Levels::Level::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5688,179 +4879,108 @@ EntityPath Isis::Instances::Instance::Levels::Level::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacencies")
     {
-        if(adjacencies != nullptr)
-        {
-            children["adjacencies"] = adjacencies;
-        }
-        else
+        if(adjacencies == nullptr)
         {
             adjacencies = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies>();
-            adjacencies->parent = this;
-            children["adjacencies"] = adjacencies;
         }
-        return children.at("adjacencies");
+        return adjacencies;
     }
 
     if(child_yang_name == "adjacency-log")
     {
-        if(adjacency_log != nullptr)
-        {
-            children["adjacency-log"] = adjacency_log;
-        }
-        else
+        if(adjacency_log == nullptr)
         {
             adjacency_log = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog>();
-            adjacency_log->parent = this;
-            children["adjacency-log"] = adjacency_log;
         }
-        return children.at("adjacency-log");
+        return adjacency_log;
     }
 
     if(child_yang_name == "database-log")
     {
-        if(database_log != nullptr)
-        {
-            children["database-log"] = database_log;
-        }
-        else
+        if(database_log == nullptr)
         {
             database_log = std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog>();
-            database_log->parent = this;
-            children["database-log"] = database_log;
         }
-        return children.at("database-log");
+        return database_log;
     }
 
     if(child_yang_name == "detailed-lsps")
     {
-        if(detailed_lsps != nullptr)
-        {
-            children["detailed-lsps"] = detailed_lsps;
-        }
-        else
+        if(detailed_lsps == nullptr)
         {
             detailed_lsps = std::make_shared<Isis::Instances::Instance::Levels::Level::DetailedLsps>();
-            detailed_lsps->parent = this;
-            children["detailed-lsps"] = detailed_lsps;
         }
-        return children.at("detailed-lsps");
+        return detailed_lsps;
     }
 
     if(child_yang_name == "lsp-log")
     {
-        if(lsp_log != nullptr)
-        {
-            children["lsp-log"] = lsp_log;
-        }
-        else
+        if(lsp_log == nullptr)
         {
             lsp_log = std::make_shared<Isis::Instances::Instance::Levels::Level::LspLog>();
-            lsp_log->parent = this;
-            children["lsp-log"] = lsp_log;
         }
-        return children.at("lsp-log");
+        return lsp_log;
     }
 
     if(child_yang_name == "lsp-table-summary")
     {
-        if(lsp_table_summary != nullptr)
-        {
-            children["lsp-table-summary"] = lsp_table_summary;
-        }
-        else
+        if(lsp_table_summary == nullptr)
         {
             lsp_table_summary = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary>();
-            lsp_table_summary->parent = this;
-            children["lsp-table-summary"] = lsp_table_summary;
         }
-        return children.at("lsp-table-summary");
+        return lsp_table_summary;
     }
 
     if(child_yang_name == "lsps")
     {
-        if(lsps != nullptr)
-        {
-            children["lsps"] = lsps;
-        }
-        else
+        if(lsps == nullptr)
         {
             lsps = std::make_shared<Isis::Instances::Instance::Levels::Level::Lsps>();
-            lsps->parent = this;
-            children["lsps"] = lsps;
         }
-        return children.at("lsps");
+        return lsps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::get_children() const
 {
-    if(children.find("adjacencies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacencies != nullptr)
     {
-        if(adjacencies != nullptr)
-        {
-            children["adjacencies"] = adjacencies;
-        }
+        children["adjacencies"] = adjacencies;
     }
 
-    if(children.find("adjacency-log") == children.end())
+    if(adjacency_log != nullptr)
     {
-        if(adjacency_log != nullptr)
-        {
-            children["adjacency-log"] = adjacency_log;
-        }
+        children["adjacency-log"] = adjacency_log;
     }
 
-    if(children.find("database-log") == children.end())
+    if(database_log != nullptr)
     {
-        if(database_log != nullptr)
-        {
-            children["database-log"] = database_log;
-        }
+        children["database-log"] = database_log;
     }
 
-    if(children.find("detailed-lsps") == children.end())
+    if(detailed_lsps != nullptr)
     {
-        if(detailed_lsps != nullptr)
-        {
-            children["detailed-lsps"] = detailed_lsps;
-        }
+        children["detailed-lsps"] = detailed_lsps;
     }
 
-    if(children.find("lsp-log") == children.end())
+    if(lsp_log != nullptr)
     {
-        if(lsp_log != nullptr)
-        {
-            children["lsp-log"] = lsp_log;
-        }
+        children["lsp-log"] = lsp_log;
     }
 
-    if(children.find("lsp-table-summary") == children.end())
+    if(lsp_table_summary != nullptr)
     {
-        if(lsp_table_summary != nullptr)
-        {
-            children["lsp-table-summary"] = lsp_table_summary;
-        }
+        children["lsp-table-summary"] = lsp_table_summary;
     }
 
-    if(children.find("lsps") == children.end())
+    if(lsps != nullptr)
     {
-        if(lsps != nullptr)
-        {
-            children["lsps"] = lsps;
-        }
+        children["lsps"] = lsps;
     }
 
     return children;
@@ -5912,7 +5032,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_segment_
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5935,15 +5055,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_entity_pa
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-entry")
     {
         for(auto const & c : log_entry)
@@ -5951,28 +5062,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry>();
         c->parent = this;
-        log_entry.push_back(std::move(c));
-        children[segment_path] = log_entry.back();
-        return children.at(segment_path);
+        log_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5993,7 +5100,6 @@ Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::LogEntry()
     generic_data(std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData>())
 {
     generic_data->parent = this;
-    children["generic-data"] = generic_data;
 
     yang_name = "log-entry"; yang_parent_name = "adjacency-log";
 }
@@ -6042,7 +5148,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::ge
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6070,15 +5176,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-per-topology-change")
     {
         for(auto const & c : adjacency_per_topology_change)
@@ -6086,51 +5183,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange>();
         c->parent = this;
-        adjacency_per_topology_change.push_back(std::move(c));
-        children[segment_path] = adjacency_per_topology_change.back();
-        return children.at(segment_path);
+        adjacency_per_topology_change.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "generic-data")
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
-        else
+        if(generic_data == nullptr)
         {
             generic_data = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData>();
-            generic_data->parent = this;
-            children["generic-data"] = generic_data;
         }
-        return children.at("generic-data");
+        return generic_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : adjacency_per_topology_change)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("generic-data") == children.end())
+    if(generic_data != nullptr)
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
+        children["generic-data"] = generic_data;
     }
 
     return children;
@@ -6165,7 +5249,6 @@ Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::G
     timestamp(std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp>())
 {
     timestamp->parent = this;
-    children["timestamp"] = timestamp;
 
     yang_name = "generic-data"; yang_parent_name = "log-entry";
 }
@@ -6194,7 +5277,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Ge
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6217,41 +5300,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Gen
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timestamp")
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
-        else
+        if(timestamp == nullptr)
         {
             timestamp = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp>();
-            timestamp->parent = this;
-            children["timestamp"] = timestamp;
         }
-        return children.at("timestamp");
+        return timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_children() const
 {
-    if(children.find("timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timestamp != nullptr)
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
+        children["timestamp"] = timestamp;
     }
 
     return children;
@@ -6295,7 +5361,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Ge
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6320,20 +5386,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Gen
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6356,7 +5414,6 @@ Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTo
     id(std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id>())
 {
     id->parent = this;
-    children["id"] = id;
 
     yang_name = "adjacency-per-topology-change"; yang_parent_name = "log-entry";
 }
@@ -6387,7 +5444,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6411,41 +5468,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "id")
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
-        else
+        if(id == nullptr)
         {
             id = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id>();
-            id->parent = this;
-            children["id"] = id;
         }
-        return children.at("id");
+        return id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_children() const
 {
-    if(children.find("id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(id != nullptr)
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
+        children["id"] = id;
     }
 
     return children;
@@ -6499,7 +5539,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6526,20 +5566,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6569,10 +5601,8 @@ Isis::Instances::Instance::Levels::Level::LspTableSummary::LspTableSummary()
 	,fragment0lsp_stats(std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats>())
 {
     all_fragment_lsp_stats->parent = this;
-    children["all-fragment-lsp-stats"] = all_fragment_lsp_stats;
 
     fragment0lsp_stats->parent = this;
-    children["fragment0lsp-stats"] = fragment0lsp_stats;
 
     yang_name = "lsp-table-summary"; yang_parent_name = "level";
 }
@@ -6603,7 +5633,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::get_segme
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6626,64 +5656,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::get_entity
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "all-fragment-lsp-stats")
     {
-        if(all_fragment_lsp_stats != nullptr)
-        {
-            children["all-fragment-lsp-stats"] = all_fragment_lsp_stats;
-        }
-        else
+        if(all_fragment_lsp_stats == nullptr)
         {
             all_fragment_lsp_stats = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats>();
-            all_fragment_lsp_stats->parent = this;
-            children["all-fragment-lsp-stats"] = all_fragment_lsp_stats;
         }
-        return children.at("all-fragment-lsp-stats");
+        return all_fragment_lsp_stats;
     }
 
     if(child_yang_name == "fragment0lsp-stats")
     {
-        if(fragment0lsp_stats != nullptr)
-        {
-            children["fragment0lsp-stats"] = fragment0lsp_stats;
-        }
-        else
+        if(fragment0lsp_stats == nullptr)
         {
             fragment0lsp_stats = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats>();
-            fragment0lsp_stats->parent = this;
-            children["fragment0lsp-stats"] = fragment0lsp_stats;
         }
-        return children.at("fragment0lsp-stats");
+        return fragment0lsp_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::get_children() const
 {
-    if(children.find("all-fragment-lsp-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(all_fragment_lsp_stats != nullptr)
     {
-        if(all_fragment_lsp_stats != nullptr)
-        {
-            children["all-fragment-lsp-stats"] = all_fragment_lsp_stats;
-        }
+        children["all-fragment-lsp-stats"] = all_fragment_lsp_stats;
     }
 
-    if(children.find("fragment0lsp-stats") == children.end())
+    if(fragment0lsp_stats != nullptr)
     {
-        if(fragment0lsp_stats != nullptr)
-        {
-            children["fragment0lsp-stats"] = fragment0lsp_stats;
-        }
+        children["fragment0lsp-stats"] = fragment0lsp_stats;
     }
 
     return children;
@@ -6698,7 +5702,6 @@ Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::Fr
     node_counters(std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters>())
 {
     node_counters->parent = this;
-    children["node-counters"] = node_counters;
 
     yang_name = "fragment0lsp-stats"; yang_parent_name = "lsp-table-summary";
 }
@@ -6737,7 +5740,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6760,28 +5763,13 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-counters")
     {
-        if(node_counters != nullptr)
-        {
-            children["node-counters"] = node_counters;
-        }
-        else
+        if(node_counters == nullptr)
         {
             node_counters = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters>();
-            node_counters->parent = this;
-            children["node-counters"] = node_counters;
         }
-        return children.at("node-counters");
+        return node_counters;
     }
 
     if(child_yang_name == "per-topology-counter")
@@ -6791,36 +5779,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummar
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter>();
         c->parent = this;
-        per_topology_counter.push_back(std::move(c));
-        children[segment_path] = per_topology_counter.back();
-        return children.at(segment_path);
+        per_topology_counter.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::get_children() const
 {
-    if(children.find("node-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_counters != nullptr)
     {
-        if(node_counters != nullptr)
-        {
-            children["node-counters"] = node_counters;
-        }
+        children["node-counters"] = node_counters;
     }
 
     for (auto const & c : per_topology_counter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6836,10 +5817,8 @@ Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::No
 	,route_lsp_count(std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::RouteLspCount>())
 {
     pseudo_node_lsp_count->parent = this;
-    children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
 
     route_lsp_count->parent = this;
-    children["route-lsp-count"] = route_lsp_count;
 
     yang_name = "node-counters"; yang_parent_name = "fragment0lsp-stats";
 }
@@ -6870,7 +5849,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6893,64 +5872,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pseudo-node-lsp-count")
     {
-        if(pseudo_node_lsp_count != nullptr)
-        {
-            children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
-        }
-        else
+        if(pseudo_node_lsp_count == nullptr)
         {
             pseudo_node_lsp_count = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::PseudoNodeLspCount>();
-            pseudo_node_lsp_count->parent = this;
-            children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
         }
-        return children.at("pseudo-node-lsp-count");
+        return pseudo_node_lsp_count;
     }
 
     if(child_yang_name == "route-lsp-count")
     {
-        if(route_lsp_count != nullptr)
-        {
-            children["route-lsp-count"] = route_lsp_count;
-        }
-        else
+        if(route_lsp_count == nullptr)
         {
             route_lsp_count = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::RouteLspCount>();
-            route_lsp_count->parent = this;
-            children["route-lsp-count"] = route_lsp_count;
         }
-        return children.at("route-lsp-count");
+        return route_lsp_count;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::get_children() const
 {
-    if(children.find("pseudo-node-lsp-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pseudo_node_lsp_count != nullptr)
     {
-        if(pseudo_node_lsp_count != nullptr)
-        {
-            children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
-        }
+        children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
     }
 
-    if(children.find("route-lsp-count") == children.end())
+    if(route_lsp_count != nullptr)
     {
-        if(route_lsp_count != nullptr)
-        {
-            children["route-lsp-count"] = route_lsp_count;
-        }
+        children["route-lsp-count"] = route_lsp_count;
     }
 
     return children;
@@ -6994,7 +5947,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::RouteLspCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::RouteLspCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7019,20 +5972,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::RouteLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::RouteLspCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::RouteLspCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7082,7 +6027,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::PseudoNodeLspCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::PseudoNodeLspCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7107,20 +6052,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::PseudoNodeLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::PseudoNodeLspCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::NodeCounters::PseudoNodeLspCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7143,13 +6080,10 @@ Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::Pe
 	,overloaded_lsp_count(std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::OverloadedLspCount>())
 {
     attached_lsp_count->parent = this;
-    children["attached-lsp-count"] = attached_lsp_count;
 
     id->parent = this;
-    children["id"] = id;
 
     overloaded_lsp_count->parent = this;
-    children["overloaded-lsp-count"] = overloaded_lsp_count;
 
     yang_name = "per-topology-counter"; yang_parent_name = "fragment0lsp-stats";
 }
@@ -7182,7 +6116,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7205,87 +6139,52 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attached-lsp-count")
     {
-        if(attached_lsp_count != nullptr)
-        {
-            children["attached-lsp-count"] = attached_lsp_count;
-        }
-        else
+        if(attached_lsp_count == nullptr)
         {
             attached_lsp_count = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::AttachedLspCount>();
-            attached_lsp_count->parent = this;
-            children["attached-lsp-count"] = attached_lsp_count;
         }
-        return children.at("attached-lsp-count");
+        return attached_lsp_count;
     }
 
     if(child_yang_name == "id")
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
-        else
+        if(id == nullptr)
         {
             id = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::Id>();
-            id->parent = this;
-            children["id"] = id;
         }
-        return children.at("id");
+        return id;
     }
 
     if(child_yang_name == "overloaded-lsp-count")
     {
-        if(overloaded_lsp_count != nullptr)
-        {
-            children["overloaded-lsp-count"] = overloaded_lsp_count;
-        }
-        else
+        if(overloaded_lsp_count == nullptr)
         {
             overloaded_lsp_count = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::OverloadedLspCount>();
-            overloaded_lsp_count->parent = this;
-            children["overloaded-lsp-count"] = overloaded_lsp_count;
         }
-        return children.at("overloaded-lsp-count");
+        return overloaded_lsp_count;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::get_children() const
 {
-    if(children.find("attached-lsp-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attached_lsp_count != nullptr)
     {
-        if(attached_lsp_count != nullptr)
-        {
-            children["attached-lsp-count"] = attached_lsp_count;
-        }
+        children["attached-lsp-count"] = attached_lsp_count;
     }
 
-    if(children.find("id") == children.end())
+    if(id != nullptr)
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
+        children["id"] = id;
     }
 
-    if(children.find("overloaded-lsp-count") == children.end())
+    if(overloaded_lsp_count != nullptr)
     {
-        if(overloaded_lsp_count != nullptr)
-        {
-            children["overloaded-lsp-count"] = overloaded_lsp_count;
-        }
+        children["overloaded-lsp-count"] = overloaded_lsp_count;
     }
 
     return children;
@@ -7335,7 +6234,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::Id::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::Id::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7362,20 +6261,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::Id::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::Id::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7433,7 +6324,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::OverloadedLspCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::OverloadedLspCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7458,20 +6349,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::OverloadedLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::OverloadedLspCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::OverloadedLspCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7521,7 +6404,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::AttachedLspCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::AttachedLspCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7546,20 +6429,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0L
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::AttachedLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::AttachedLspCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::AttachedLspCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7580,7 +6455,6 @@ Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::
     node_counters(std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters>())
 {
     node_counters->parent = this;
-    children["node-counters"] = node_counters;
 
     yang_name = "all-fragment-lsp-stats"; yang_parent_name = "lsp-table-summary";
 }
@@ -7609,7 +6483,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragme
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7632,41 +6506,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmen
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-counters")
     {
-        if(node_counters != nullptr)
-        {
-            children["node-counters"] = node_counters;
-        }
-        else
+        if(node_counters == nullptr)
         {
             node_counters = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters>();
-            node_counters->parent = this;
-            children["node-counters"] = node_counters;
         }
-        return children.at("node-counters");
+        return node_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_children() const
 {
-    if(children.find("node-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_counters != nullptr)
     {
-        if(node_counters != nullptr)
-        {
-            children["node-counters"] = node_counters;
-        }
+        children["node-counters"] = node_counters;
     }
 
     return children;
@@ -7682,10 +6539,8 @@ Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::
 	,route_lsp_count(std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount>())
 {
     pseudo_node_lsp_count->parent = this;
-    children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
 
     route_lsp_count->parent = this;
-    children["route-lsp-count"] = route_lsp_count;
 
     yang_name = "node-counters"; yang_parent_name = "all-fragment-lsp-stats";
 }
@@ -7716,7 +6571,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragme
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7739,64 +6594,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmen
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pseudo-node-lsp-count")
     {
-        if(pseudo_node_lsp_count != nullptr)
-        {
-            children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
-        }
-        else
+        if(pseudo_node_lsp_count == nullptr)
         {
             pseudo_node_lsp_count = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount>();
-            pseudo_node_lsp_count->parent = this;
-            children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
         }
-        return children.at("pseudo-node-lsp-count");
+        return pseudo_node_lsp_count;
     }
 
     if(child_yang_name == "route-lsp-count")
     {
-        if(route_lsp_count != nullptr)
-        {
-            children["route-lsp-count"] = route_lsp_count;
-        }
-        else
+        if(route_lsp_count == nullptr)
         {
             route_lsp_count = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount>();
-            route_lsp_count->parent = this;
-            children["route-lsp-count"] = route_lsp_count;
         }
-        return children.at("route-lsp-count");
+        return route_lsp_count;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_children() const
 {
-    if(children.find("pseudo-node-lsp-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pseudo_node_lsp_count != nullptr)
     {
-        if(pseudo_node_lsp_count != nullptr)
-        {
-            children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
-        }
+        children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
     }
 
-    if(children.find("route-lsp-count") == children.end())
+    if(route_lsp_count != nullptr)
     {
-        if(route_lsp_count != nullptr)
-        {
-            children["route-lsp-count"] = route_lsp_count;
-        }
+        children["route-lsp-count"] = route_lsp_count;
     }
 
     return children;
@@ -7840,7 +6669,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragme
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7865,20 +6694,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmen
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7928,7 +6749,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragme
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7953,20 +6774,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmen
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8020,7 +6833,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::get_segment_p
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8043,15 +6856,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::get_entity_pat
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency")
     {
         for(auto const & c : adjacency)
@@ -8059,28 +6863,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency>();
         c->parent = this;
-        adjacency.push_back(std::move(c));
-        children[segment_path] = adjacency.back();
-        return children.at(segment_path);
+        adjacency.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : adjacency)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8228,7 +7028,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::ge
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8279,15 +7079,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-per-address-family-data")
     {
         for(auto const & c : adjacency_per_address_family_data)
@@ -8295,15 +7086,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::A
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData>();
         c->parent = this;
-        adjacency_per_address_family_data.push_back(std::move(c));
-        children[segment_path] = adjacency_per_address_family_data.back();
-        return children.at(segment_path);
+        adjacency_per_address_family_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "adjacency-topology")
@@ -8313,36 +7102,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::A
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology>();
         c->parent = this;
-        adjacency_topology.push_back(std::move(c));
-        children[segment_path] = adjacency_topology.back();
-        return children.at(segment_path);
+        adjacency_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : adjacency_per_address_family_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : adjacency_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8468,7 +7250,6 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopol
     id(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id>())
 {
     id->parent = this;
-    children["id"] = id;
 
     yang_name = "adjacency-topology"; yang_parent_name = "adjacency";
 }
@@ -8501,7 +7282,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8526,41 +7307,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "id")
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
-        else
+        if(id == nullptr)
         {
             id = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id>();
-            id->parent = this;
-            children["id"] = id;
         }
-        return children.at("id");
+        return id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::get_children() const
 {
-    if(children.find("id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(id != nullptr)
     {
-        if(id != nullptr)
-        {
-            children["id"] = id;
-        }
+        children["id"] = id;
     }
 
     return children;
@@ -8618,7 +7382,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8645,20 +7409,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8690,10 +7446,8 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAd
 	,ipv6(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "adjacency-per-address-family-data"; yang_parent_name = "adjacency";
 }
@@ -8726,7 +7480,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8750,64 +7504,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -8832,10 +7560,8 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAd
 	,non_frr_adjacency_sid(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid>())
 {
     adjacency_sid->parent = this;
-    children["adjacency-sid"] = adjacency_sid;
 
     non_frr_adjacency_sid->parent = this;
-    children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
 
     yang_name = "ipv4"; yang_parent_name = "adjacency-per-address-family-data";
 }
@@ -8901,7 +7627,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8931,64 +7657,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid")
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
-        else
+        if(adjacency_sid == nullptr)
         {
             adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid>();
-            adjacency_sid->parent = this;
-            children["adjacency-sid"] = adjacency_sid;
         }
-        return children.at("adjacency-sid");
+        return adjacency_sid;
     }
 
     if(child_yang_name == "non-frr-adjacency-sid")
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
-        else
+        if(non_frr_adjacency_sid == nullptr)
         {
             non_frr_adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid>();
-            non_frr_adjacency_sid->parent = this;
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
         }
-        return children.at("non-frr-adjacency-sid");
+        return non_frr_adjacency_sid;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::get_children() const
 {
-    if(children.find("adjacency-sid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid != nullptr)
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
+        children["adjacency-sid"] = adjacency_sid;
     }
 
-    if(children.find("non-frr-adjacency-sid") == children.end())
+    if(non_frr_adjacency_sid != nullptr)
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
+        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
     }
 
     return children;
@@ -9022,10 +7722,8 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAd
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "adjacency-sid"; yang_parent_name = "ipv4";
 }
@@ -9058,7 +7756,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9082,64 +7780,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -9205,7 +7877,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9234,20 +7906,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9327,7 +7991,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9356,20 +8020,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9405,10 +8061,8 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAd
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "non-frr-adjacency-sid"; yang_parent_name = "ipv4";
 }
@@ -9441,7 +8095,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9465,64 +8119,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -9588,7 +8216,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9617,20 +8245,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9710,7 +8330,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9739,20 +8359,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9791,10 +8403,8 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAd
 	,non_frr_adjacency_sid(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>())
 {
     adjacency_sid->parent = this;
-    children["adjacency-sid"] = adjacency_sid;
 
     non_frr_adjacency_sid->parent = this;
-    children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
 
     yang_name = "ipv6"; yang_parent_name = "adjacency-per-address-family-data";
 }
@@ -9860,7 +8470,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9890,64 +8500,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid")
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
-        else
+        if(adjacency_sid == nullptr)
         {
             adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid>();
-            adjacency_sid->parent = this;
-            children["adjacency-sid"] = adjacency_sid;
         }
-        return children.at("adjacency-sid");
+        return adjacency_sid;
     }
 
     if(child_yang_name == "non-frr-adjacency-sid")
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
-        else
+        if(non_frr_adjacency_sid == nullptr)
         {
             non_frr_adjacency_sid = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid>();
-            non_frr_adjacency_sid->parent = this;
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
         }
-        return children.at("non-frr-adjacency-sid");
+        return non_frr_adjacency_sid;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::get_children() const
 {
-    if(children.find("adjacency-sid") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid != nullptr)
     {
-        if(adjacency_sid != nullptr)
-        {
-            children["adjacency-sid"] = adjacency_sid;
-        }
+        children["adjacency-sid"] = adjacency_sid;
     }
 
-    if(children.find("non-frr-adjacency-sid") == children.end())
+    if(non_frr_adjacency_sid != nullptr)
     {
-        if(non_frr_adjacency_sid != nullptr)
-        {
-            children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
-        }
+        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
     }
 
     return children;
@@ -9981,10 +8565,8 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAd
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "adjacency-sid"; yang_parent_name = "ipv6";
 }
@@ -10017,7 +8599,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10041,64 +8623,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -10164,7 +8720,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10193,20 +8749,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10286,7 +8834,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10315,20 +8863,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10364,10 +8904,8 @@ Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAd
 	,adjacency_sid_backup_te(std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe>())
 {
     adjacency_sid_backup->parent = this;
-    children["adjacency-sid-backup"] = adjacency_sid_backup;
 
     adjacency_sid_backup_te->parent = this;
-    children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
 
     yang_name = "non-frr-adjacency-sid"; yang_parent_name = "ipv6";
 }
@@ -10400,7 +8938,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10424,64 +8962,38 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid-backup")
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
-        else
+        if(adjacency_sid_backup == nullptr)
         {
             adjacency_sid_backup = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup>();
-            adjacency_sid_backup->parent = this;
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
         }
-        return children.at("adjacency-sid-backup");
+        return adjacency_sid_backup;
     }
 
     if(child_yang_name == "adjacency-sid-backup-te")
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
-        else
+        if(adjacency_sid_backup_te == nullptr)
         {
             adjacency_sid_backup_te = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe>();
-            adjacency_sid_backup_te->parent = this;
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
         }
-        return children.at("adjacency-sid-backup-te");
+        return adjacency_sid_backup_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_children() const
 {
-    if(children.find("adjacency-sid-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_sid_backup != nullptr)
     {
-        if(adjacency_sid_backup != nullptr)
-        {
-            children["adjacency-sid-backup"] = adjacency_sid_backup;
-        }
+        children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
-    if(children.find("adjacency-sid-backup-te") == children.end())
+    if(adjacency_sid_backup_te != nullptr)
     {
-        if(adjacency_sid_backup_te != nullptr)
-        {
-            children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
-        }
+        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
     return children;
@@ -10547,7 +9059,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10576,20 +9088,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10669,7 +9173,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Ad
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10698,20 +9202,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::Adj
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10777,7 +9273,7 @@ std::string Isis::Instances::Instance::Levels::Level::DetailedLsps::get_segment_
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10800,15 +9296,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::get_entity_pa
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DetailedLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detailed-lsp")
     {
         for(auto const & c : detailed_lsp)
@@ -10816,28 +9303,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DetailedLsps::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp>();
         c->parent = this;
-        detailed_lsp.push_back(std::move(c));
-        children[segment_path] = detailed_lsp.back();
-        return children.at(segment_path);
+        detailed_lsp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DetailedLsps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DetailedLsps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detailed_lsp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10855,7 +9338,6 @@ Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::DetailedLsp
     lsp_header_data(std::make_shared<Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData>())
 {
     lsp_header_data->parent = this;
-    children["lsp-header-data"] = lsp_header_data;
 
     yang_name = "detailed-lsp"; yang_parent_name = "detailed-lsps";
 }
@@ -10888,7 +9370,7 @@ std::string Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp:
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10913,41 +9395,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-header-data")
     {
-        if(lsp_header_data != nullptr)
-        {
-            children["lsp-header-data"] = lsp_header_data;
-        }
-        else
+        if(lsp_header_data == nullptr)
         {
             lsp_header_data = std::make_shared<Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData>();
-            lsp_header_data->parent = this;
-            children["lsp-header-data"] = lsp_header_data;
         }
-        return children.at("lsp-header-data");
+        return lsp_header_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::get_children() const
 {
-    if(children.find("lsp-header-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsp_header_data != nullptr)
     {
-        if(lsp_header_data != nullptr)
-        {
-            children["lsp-header-data"] = lsp_header_data;
-        }
+        children["lsp-header-data"] = lsp_header_data;
     }
 
     return children;
@@ -11029,7 +9494,7 @@ std::string Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp:
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11064,20 +9529,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11171,7 +9628,7 @@ std::string Isis::Instances::Instance::Levels::Level::Lsps::get_segment_path() c
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Lsps::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Lsps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11194,15 +9651,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::Lsps::get_entity_path(Entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Lsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp")
     {
         for(auto const & c : lsp)
@@ -11210,28 +9658,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Lsps::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Lsps::Lsp>();
         c->parent = this;
-        lsp.push_back(std::move(c));
-        children[segment_path] = lsp.back();
-        return children.at(segment_path);
+        lsp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Lsps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Lsps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11249,7 +9693,6 @@ Isis::Instances::Instance::Levels::Level::Lsps::Lsp::Lsp()
     lsp_header_data(std::make_shared<Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData>())
 {
     lsp_header_data->parent = this;
-    children["lsp-header-data"] = lsp_header_data;
 
     yang_name = "lsp"; yang_parent_name = "lsps";
 }
@@ -11282,7 +9725,7 @@ std::string Isis::Instances::Instance::Levels::Level::Lsps::Lsp::get_segment_pat
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Lsps::Lsp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Lsps::Lsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11307,41 +9750,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::Lsps::Lsp::get_entity_path(
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Lsps::Lsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-header-data")
     {
-        if(lsp_header_data != nullptr)
-        {
-            children["lsp-header-data"] = lsp_header_data;
-        }
-        else
+        if(lsp_header_data == nullptr)
         {
             lsp_header_data = std::make_shared<Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData>();
-            lsp_header_data->parent = this;
-            children["lsp-header-data"] = lsp_header_data;
         }
-        return children.at("lsp-header-data");
+        return lsp_header_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Lsps::Lsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Lsps::Lsp::get_children() const
 {
-    if(children.find("lsp-header-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsp_header_data != nullptr)
     {
-        if(lsp_header_data != nullptr)
-        {
-            children["lsp-header-data"] = lsp_header_data;
-        }
+        children["lsp-header-data"] = lsp_header_data;
     }
 
     return children;
@@ -11423,7 +9849,7 @@ std::string Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData::
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11458,20 +9884,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData::g
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11565,7 +9983,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspLog::get_segment_path()
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspLog::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11588,15 +10006,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspLog::get_entity_path(Ent
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-entry")
     {
         for(auto const & c : log_entry)
@@ -11604,28 +10013,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspLog::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::LspLog::LogEntry>();
         c->parent = this;
-        log_entry.push_back(std::move(c));
-        children[segment_path] = log_entry.back();
-        return children.at(segment_path);
+        log_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11646,7 +10051,6 @@ Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::LogEntry()
     generic_data(std::make_shared<Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData>())
 {
     generic_data->parent = this;
-    children["generic-data"] = generic_data;
 
     yang_name = "log-entry"; yang_parent_name = "lsp-log";
 }
@@ -11694,7 +10098,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::get_segm
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11723,41 +10127,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::get_entit
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-data")
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
-        else
+        if(generic_data == nullptr)
         {
             generic_data = std::make_shared<Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData>();
-            generic_data->parent = this;
-            children["generic-data"] = generic_data;
         }
-        return children.at("generic-data");
+        return generic_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::get_children() const
 {
-    if(children.find("generic-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generic_data != nullptr)
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
+        children["generic-data"] = generic_data;
     }
 
     return children;
@@ -11792,7 +10179,6 @@ Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Generic
     timestamp(std::make_shared<Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Timestamp>())
 {
     timestamp->parent = this;
-    children["timestamp"] = timestamp;
 
     yang_name = "generic-data"; yang_parent_name = "log-entry";
 }
@@ -11821,7 +10207,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericD
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11844,41 +10230,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericDa
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timestamp")
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
-        else
+        if(timestamp == nullptr)
         {
             timestamp = std::make_shared<Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Timestamp>();
-            timestamp->parent = this;
-            children["timestamp"] = timestamp;
         }
-        return children.at("timestamp");
+        return timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::get_children() const
 {
-    if(children.find("timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timestamp != nullptr)
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
+        children["timestamp"] = timestamp;
     }
 
     return children;
@@ -11922,7 +10291,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericD
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11947,20 +10316,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericDa
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Timestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData::Timestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12014,7 +10375,7 @@ std::string Isis::Instances::Instance::Levels::Level::DatabaseLog::get_segment_p
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12037,15 +10398,6 @@ EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::get_entity_pat
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DatabaseLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-entry")
     {
         for(auto const & c : log_entry)
@@ -12053,28 +10405,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DatabaseLog::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry>();
         c->parent = this;
-        log_entry.push_back(std::move(c));
-        children[segment_path] = log_entry.back();
-        return children.at(segment_path);
+        log_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DatabaseLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DatabaseLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12093,13 +10441,10 @@ Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::LogEntry()
 	,old_lsp_entry(std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry>())
 {
     generic_data->parent = this;
-    children["generic-data"] = generic_data;
 
     new_lsp_entry->parent = this;
-    children["new-lsp-entry"] = new_lsp_entry;
 
     old_lsp_entry->parent = this;
-    children["old-lsp-entry"] = old_lsp_entry;
 
     yang_name = "log-entry"; yang_parent_name = "database-log";
 }
@@ -12134,7 +10479,7 @@ std::string Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::get
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12158,87 +10503,52 @@ EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::get_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-data")
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
-        else
+        if(generic_data == nullptr)
         {
             generic_data = std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData>();
-            generic_data->parent = this;
-            children["generic-data"] = generic_data;
         }
-        return children.at("generic-data");
+        return generic_data;
     }
 
     if(child_yang_name == "new-lsp-entry")
     {
-        if(new_lsp_entry != nullptr)
-        {
-            children["new-lsp-entry"] = new_lsp_entry;
-        }
-        else
+        if(new_lsp_entry == nullptr)
         {
             new_lsp_entry = std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry>();
-            new_lsp_entry->parent = this;
-            children["new-lsp-entry"] = new_lsp_entry;
         }
-        return children.at("new-lsp-entry");
+        return new_lsp_entry;
     }
 
     if(child_yang_name == "old-lsp-entry")
     {
-        if(old_lsp_entry != nullptr)
-        {
-            children["old-lsp-entry"] = old_lsp_entry;
-        }
-        else
+        if(old_lsp_entry == nullptr)
         {
             old_lsp_entry = std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry>();
-            old_lsp_entry->parent = this;
-            children["old-lsp-entry"] = old_lsp_entry;
         }
-        return children.at("old-lsp-entry");
+        return old_lsp_entry;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::get_children() const
 {
-    if(children.find("generic-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generic_data != nullptr)
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
+        children["generic-data"] = generic_data;
     }
 
-    if(children.find("new-lsp-entry") == children.end())
+    if(new_lsp_entry != nullptr)
     {
-        if(new_lsp_entry != nullptr)
-        {
-            children["new-lsp-entry"] = new_lsp_entry;
-        }
+        children["new-lsp-entry"] = new_lsp_entry;
     }
 
-    if(children.find("old-lsp-entry") == children.end())
+    if(old_lsp_entry != nullptr)
     {
-        if(old_lsp_entry != nullptr)
-        {
-            children["old-lsp-entry"] = old_lsp_entry;
-        }
+        children["old-lsp-entry"] = old_lsp_entry;
     }
 
     return children;
@@ -12257,7 +10567,6 @@ Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Ge
     timestamp(std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Timestamp>())
 {
     timestamp->parent = this;
-    children["timestamp"] = timestamp;
 
     yang_name = "generic-data"; yang_parent_name = "log-entry";
 }
@@ -12286,7 +10595,7 @@ std::string Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::Gen
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12309,41 +10618,24 @@ EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::Gene
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timestamp")
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
-        else
+        if(timestamp == nullptr)
         {
             timestamp = std::make_shared<Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Timestamp>();
-            timestamp->parent = this;
-            children["timestamp"] = timestamp;
         }
-        return children.at("timestamp");
+        return timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::get_children() const
 {
-    if(children.find("timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timestamp != nullptr)
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
+        children["timestamp"] = timestamp;
     }
 
     return children;
@@ -12387,7 +10679,7 @@ std::string Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::Gen
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12412,20 +10704,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::Gene
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Timestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData::Timestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12505,7 +10789,7 @@ std::string Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::New
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12540,20 +10824,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewL
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12673,7 +10949,7 @@ std::string Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::Old
 
 }
 
-EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12708,20 +10984,12 @@ EntityPath Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldL
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12815,7 +11083,7 @@ std::string Isis::Instances::Instance::Topologies::get_segment_path() const
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12838,15 +11106,6 @@ EntityPath Isis::Instances::Instance::Topologies::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology")
     {
         for(auto const & c : topology)
@@ -12854,28 +11113,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology>();
         c->parent = this;
-        topology.push_back(std::move(c));
-        children[segment_path] = topology.back();
-        return children.at(segment_path);
+        topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12899,22 +11154,16 @@ Isis::Instances::Instance::Topologies::Topology::Topology()
 	,topology_levels(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels>())
 {
     frr_summary->parent = this;
-    children["frr-summary"] = frr_summary;
 
     ipv4_routes->parent = this;
-    children["ipv4-routes"] = ipv4_routes;
 
     ipv4frr_backups->parent = this;
-    children["ipv4frr-backups"] = ipv4frr_backups;
 
     ipv6_routes->parent = this;
-    children["ipv6-routes"] = ipv6_routes;
 
     ipv6frr_backups->parent = this;
-    children["ipv6frr-backups"] = ipv6frr_backups;
 
     topology_levels->parent = this;
-    children["topology-levels"] = topology_levels;
 
     yang_name = "topology"; yang_parent_name = "topologies";
 }
@@ -12959,7 +11208,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::get_segment_path() 
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12985,156 +11234,94 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::get_entity_path(Enti
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-summary")
     {
-        if(frr_summary != nullptr)
-        {
-            children["frr-summary"] = frr_summary;
-        }
-        else
+        if(frr_summary == nullptr)
         {
             frr_summary = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary>();
-            frr_summary->parent = this;
-            children["frr-summary"] = frr_summary;
         }
-        return children.at("frr-summary");
+        return frr_summary;
     }
 
     if(child_yang_name == "ipv4-routes")
     {
-        if(ipv4_routes != nullptr)
-        {
-            children["ipv4-routes"] = ipv4_routes;
-        }
-        else
+        if(ipv4_routes == nullptr)
         {
             ipv4_routes = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4Routes>();
-            ipv4_routes->parent = this;
-            children["ipv4-routes"] = ipv4_routes;
         }
-        return children.at("ipv4-routes");
+        return ipv4_routes;
     }
 
     if(child_yang_name == "ipv4frr-backups")
     {
-        if(ipv4frr_backups != nullptr)
-        {
-            children["ipv4frr-backups"] = ipv4frr_backups;
-        }
-        else
+        if(ipv4frr_backups == nullptr)
         {
             ipv4frr_backups = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups>();
-            ipv4frr_backups->parent = this;
-            children["ipv4frr-backups"] = ipv4frr_backups;
         }
-        return children.at("ipv4frr-backups");
+        return ipv4frr_backups;
     }
 
     if(child_yang_name == "ipv6-routes")
     {
-        if(ipv6_routes != nullptr)
-        {
-            children["ipv6-routes"] = ipv6_routes;
-        }
-        else
+        if(ipv6_routes == nullptr)
         {
             ipv6_routes = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes>();
-            ipv6_routes->parent = this;
-            children["ipv6-routes"] = ipv6_routes;
         }
-        return children.at("ipv6-routes");
+        return ipv6_routes;
     }
 
     if(child_yang_name == "ipv6frr-backups")
     {
-        if(ipv6frr_backups != nullptr)
-        {
-            children["ipv6frr-backups"] = ipv6frr_backups;
-        }
-        else
+        if(ipv6frr_backups == nullptr)
         {
             ipv6frr_backups = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups>();
-            ipv6frr_backups->parent = this;
-            children["ipv6frr-backups"] = ipv6frr_backups;
         }
-        return children.at("ipv6frr-backups");
+        return ipv6frr_backups;
     }
 
     if(child_yang_name == "topology-levels")
     {
-        if(topology_levels != nullptr)
-        {
-            children["topology-levels"] = topology_levels;
-        }
-        else
+        if(topology_levels == nullptr)
         {
             topology_levels = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels>();
-            topology_levels->parent = this;
-            children["topology-levels"] = topology_levels;
         }
-        return children.at("topology-levels");
+        return topology_levels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::get_children() const
 {
-    if(children.find("frr-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_summary != nullptr)
     {
-        if(frr_summary != nullptr)
-        {
-            children["frr-summary"] = frr_summary;
-        }
+        children["frr-summary"] = frr_summary;
     }
 
-    if(children.find("ipv4-routes") == children.end())
+    if(ipv4_routes != nullptr)
     {
-        if(ipv4_routes != nullptr)
-        {
-            children["ipv4-routes"] = ipv4_routes;
-        }
+        children["ipv4-routes"] = ipv4_routes;
     }
 
-    if(children.find("ipv4frr-backups") == children.end())
+    if(ipv4frr_backups != nullptr)
     {
-        if(ipv4frr_backups != nullptr)
-        {
-            children["ipv4frr-backups"] = ipv4frr_backups;
-        }
+        children["ipv4frr-backups"] = ipv4frr_backups;
     }
 
-    if(children.find("ipv6-routes") == children.end())
+    if(ipv6_routes != nullptr)
     {
-        if(ipv6_routes != nullptr)
-        {
-            children["ipv6-routes"] = ipv6_routes;
-        }
+        children["ipv6-routes"] = ipv6_routes;
     }
 
-    if(children.find("ipv6frr-backups") == children.end())
+    if(ipv6frr_backups != nullptr)
     {
-        if(ipv6frr_backups != nullptr)
-        {
-            children["ipv6frr-backups"] = ipv6frr_backups;
-        }
+        children["ipv6frr-backups"] = ipv6frr_backups;
     }
 
-    if(children.find("topology-levels") == children.end())
+    if(topology_levels != nullptr)
     {
-        if(topology_levels != nullptr)
-        {
-            children["topology-levels"] = topology_levels;
-        }
+        children["topology-levels"] = topology_levels;
     }
 
     return children;
@@ -13163,13 +11350,10 @@ Isis::Instances::Instance::Topologies::Topology::FrrSummary::FrrSummary()
 	,unreachable_prefixes(std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes>())
 {
     level1_prefixes->parent = this;
-    children["level1-prefixes"] = level1_prefixes;
 
     level2_prefixes->parent = this;
-    children["level2-prefixes"] = level2_prefixes;
 
     unreachable_prefixes->parent = this;
-    children["unreachable-prefixes"] = unreachable_prefixes;
 
     yang_name = "frr-summary"; yang_parent_name = "topology";
 }
@@ -13202,7 +11386,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::get_seg
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13225,87 +11409,52 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::get_enti
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "level1-prefixes")
     {
-        if(level1_prefixes != nullptr)
-        {
-            children["level1-prefixes"] = level1_prefixes;
-        }
-        else
+        if(level1_prefixes == nullptr)
         {
             level1_prefixes = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes>();
-            level1_prefixes->parent = this;
-            children["level1-prefixes"] = level1_prefixes;
         }
-        return children.at("level1-prefixes");
+        return level1_prefixes;
     }
 
     if(child_yang_name == "level2-prefixes")
     {
-        if(level2_prefixes != nullptr)
-        {
-            children["level2-prefixes"] = level2_prefixes;
-        }
-        else
+        if(level2_prefixes == nullptr)
         {
             level2_prefixes = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes>();
-            level2_prefixes->parent = this;
-            children["level2-prefixes"] = level2_prefixes;
         }
-        return children.at("level2-prefixes");
+        return level2_prefixes;
     }
 
     if(child_yang_name == "unreachable-prefixes")
     {
-        if(unreachable_prefixes != nullptr)
-        {
-            children["unreachable-prefixes"] = unreachable_prefixes;
-        }
-        else
+        if(unreachable_prefixes == nullptr)
         {
             unreachable_prefixes = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes>();
-            unreachable_prefixes->parent = this;
-            children["unreachable-prefixes"] = unreachable_prefixes;
         }
-        return children.at("unreachable-prefixes");
+        return unreachable_prefixes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::get_children() const
 {
-    if(children.find("level1-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(level1_prefixes != nullptr)
     {
-        if(level1_prefixes != nullptr)
-        {
-            children["level1-prefixes"] = level1_prefixes;
-        }
+        children["level1-prefixes"] = level1_prefixes;
     }
 
-    if(children.find("level2-prefixes") == children.end())
+    if(level2_prefixes != nullptr)
     {
-        if(level2_prefixes != nullptr)
-        {
-            children["level2-prefixes"] = level2_prefixes;
-        }
+        children["level2-prefixes"] = level2_prefixes;
     }
 
-    if(children.find("unreachable-prefixes") == children.end())
+    if(unreachable_prefixes != nullptr)
     {
-        if(unreachable_prefixes != nullptr)
-        {
-            children["unreachable-prefixes"] = unreachable_prefixes;
-        }
+        children["unreachable-prefixes"] = unreachable_prefixes;
     }
 
     return children;
@@ -13322,13 +11471,10 @@ Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Lev
 	,unprotected(std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Unprotected>())
 {
     all_paths_protected->parent = this;
-    children["all-paths-protected"] = all_paths_protected;
 
     some_paths_protected->parent = this;
-    children["some-paths-protected"] = some_paths_protected;
 
     unprotected->parent = this;
-    children["unprotected"] = unprotected;
 
     yang_name = "level1-prefixes"; yang_parent_name = "frr-summary";
 }
@@ -13361,7 +11507,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13384,87 +11530,52 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "all-paths-protected")
     {
-        if(all_paths_protected != nullptr)
-        {
-            children["all-paths-protected"] = all_paths_protected;
-        }
-        else
+        if(all_paths_protected == nullptr)
         {
             all_paths_protected = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::AllPathsProtected>();
-            all_paths_protected->parent = this;
-            children["all-paths-protected"] = all_paths_protected;
         }
-        return children.at("all-paths-protected");
+        return all_paths_protected;
     }
 
     if(child_yang_name == "some-paths-protected")
     {
-        if(some_paths_protected != nullptr)
-        {
-            children["some-paths-protected"] = some_paths_protected;
-        }
-        else
+        if(some_paths_protected == nullptr)
         {
             some_paths_protected = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::SomePathsProtected>();
-            some_paths_protected->parent = this;
-            children["some-paths-protected"] = some_paths_protected;
         }
-        return children.at("some-paths-protected");
+        return some_paths_protected;
     }
 
     if(child_yang_name == "unprotected")
     {
-        if(unprotected != nullptr)
-        {
-            children["unprotected"] = unprotected;
-        }
-        else
+        if(unprotected == nullptr)
         {
             unprotected = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Unprotected>();
-            unprotected->parent = this;
-            children["unprotected"] = unprotected;
         }
-        return children.at("unprotected");
+        return unprotected;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::get_children() const
 {
-    if(children.find("all-paths-protected") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(all_paths_protected != nullptr)
     {
-        if(all_paths_protected != nullptr)
-        {
-            children["all-paths-protected"] = all_paths_protected;
-        }
+        children["all-paths-protected"] = all_paths_protected;
     }
 
-    if(children.find("some-paths-protected") == children.end())
+    if(some_paths_protected != nullptr)
     {
-        if(some_paths_protected != nullptr)
-        {
-            children["some-paths-protected"] = some_paths_protected;
-        }
+        children["some-paths-protected"] = some_paths_protected;
     }
 
-    if(children.find("unprotected") == children.end())
+    if(unprotected != nullptr)
     {
-        if(unprotected != nullptr)
-        {
-            children["unprotected"] = unprotected;
-        }
+        children["unprotected"] = unprotected;
     }
 
     return children;
@@ -13514,7 +11625,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::AllPathsProtected::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::AllPathsProtected::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13541,20 +11652,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::AllPathsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::AllPathsProtected::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::AllPathsProtected::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13618,7 +11721,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::SomePathsProtected::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::SomePathsProtected::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13645,20 +11748,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::SomePathsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::SomePathsProtected::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::SomePathsProtected::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13722,7 +11817,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Unprotected::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Unprotected::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13749,20 +11844,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Unprotected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Unprotected::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level1Prefixes::Unprotected::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13793,13 +11880,10 @@ Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Lev
 	,unprotected(std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Unprotected>())
 {
     all_paths_protected->parent = this;
-    children["all-paths-protected"] = all_paths_protected;
 
     some_paths_protected->parent = this;
-    children["some-paths-protected"] = some_paths_protected;
 
     unprotected->parent = this;
-    children["unprotected"] = unprotected;
 
     yang_name = "level2-prefixes"; yang_parent_name = "frr-summary";
 }
@@ -13832,7 +11916,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13855,87 +11939,52 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "all-paths-protected")
     {
-        if(all_paths_protected != nullptr)
-        {
-            children["all-paths-protected"] = all_paths_protected;
-        }
-        else
+        if(all_paths_protected == nullptr)
         {
             all_paths_protected = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::AllPathsProtected>();
-            all_paths_protected->parent = this;
-            children["all-paths-protected"] = all_paths_protected;
         }
-        return children.at("all-paths-protected");
+        return all_paths_protected;
     }
 
     if(child_yang_name == "some-paths-protected")
     {
-        if(some_paths_protected != nullptr)
-        {
-            children["some-paths-protected"] = some_paths_protected;
-        }
-        else
+        if(some_paths_protected == nullptr)
         {
             some_paths_protected = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::SomePathsProtected>();
-            some_paths_protected->parent = this;
-            children["some-paths-protected"] = some_paths_protected;
         }
-        return children.at("some-paths-protected");
+        return some_paths_protected;
     }
 
     if(child_yang_name == "unprotected")
     {
-        if(unprotected != nullptr)
-        {
-            children["unprotected"] = unprotected;
-        }
-        else
+        if(unprotected == nullptr)
         {
             unprotected = std::make_shared<Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Unprotected>();
-            unprotected->parent = this;
-            children["unprotected"] = unprotected;
         }
-        return children.at("unprotected");
+        return unprotected;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::get_children() const
 {
-    if(children.find("all-paths-protected") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(all_paths_protected != nullptr)
     {
-        if(all_paths_protected != nullptr)
-        {
-            children["all-paths-protected"] = all_paths_protected;
-        }
+        children["all-paths-protected"] = all_paths_protected;
     }
 
-    if(children.find("some-paths-protected") == children.end())
+    if(some_paths_protected != nullptr)
     {
-        if(some_paths_protected != nullptr)
-        {
-            children["some-paths-protected"] = some_paths_protected;
-        }
+        children["some-paths-protected"] = some_paths_protected;
     }
 
-    if(children.find("unprotected") == children.end())
+    if(unprotected != nullptr)
     {
-        if(unprotected != nullptr)
-        {
-            children["unprotected"] = unprotected;
-        }
+        children["unprotected"] = unprotected;
     }
 
     return children;
@@ -13985,7 +12034,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::AllPathsProtected::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::AllPathsProtected::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14012,20 +12061,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::AllPathsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::AllPathsProtected::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::AllPathsProtected::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14089,7 +12130,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::SomePathsProtected::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::SomePathsProtected::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14116,20 +12157,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::SomePathsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::SomePathsProtected::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::SomePathsProtected::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14193,7 +12226,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2P
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Unprotected::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Unprotected::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14220,20 +12253,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Pr
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Unprotected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Unprotected::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::Level2Prefixes::Unprotected::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14297,7 +12322,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::FrrSummary::Unreach
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14324,20 +12349,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::FrrSummary::Unreacha
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::FrrSummary::UnreachablePrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14399,7 +12416,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::get
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14422,15 +12439,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::get_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology-level")
     {
         for(auto const & c : topology_level)
@@ -14438,28 +12446,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel>();
         c->parent = this;
-        topology_level.push_back(std::move(c));
-        children[segment_path] = topology_level.back();
-        return children.at(segment_path);
+        topology_level.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology_level)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14482,25 +12486,18 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,topology_summary(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary>())
 {
     ipv4_link_topologies->parent = this;
-    children["ipv4-link-topologies"] = ipv4_link_topologies;
 
     ipv6_link_topologies->parent = this;
-    children["ipv6-link-topologies"] = ipv6_link_topologies;
 
     spf_log->parent = this;
-    children["spf-log"] = spf_log;
 
     te_adjacency_log->parent = this;
-    children["te-adjacency-log"] = te_adjacency_log;
 
     te_advertisements->parent = this;
-    children["te-advertisements"] = te_advertisements;
 
     te_tunnels->parent = this;
-    children["te-tunnels"] = te_tunnels;
 
     topology_summary->parent = this;
-    children["topology-summary"] = topology_summary;
 
     yang_name = "topology-level"; yang_parent_name = "topology-levels";
 }
@@ -14543,7 +12540,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14567,179 +12564,108 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-link-topologies")
     {
-        if(ipv4_link_topologies != nullptr)
-        {
-            children["ipv4-link-topologies"] = ipv4_link_topologies;
-        }
-        else
+        if(ipv4_link_topologies == nullptr)
         {
             ipv4_link_topologies = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies>();
-            ipv4_link_topologies->parent = this;
-            children["ipv4-link-topologies"] = ipv4_link_topologies;
         }
-        return children.at("ipv4-link-topologies");
+        return ipv4_link_topologies;
     }
 
     if(child_yang_name == "ipv6-link-topologies")
     {
-        if(ipv6_link_topologies != nullptr)
-        {
-            children["ipv6-link-topologies"] = ipv6_link_topologies;
-        }
-        else
+        if(ipv6_link_topologies == nullptr)
         {
             ipv6_link_topologies = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies>();
-            ipv6_link_topologies->parent = this;
-            children["ipv6-link-topologies"] = ipv6_link_topologies;
         }
-        return children.at("ipv6-link-topologies");
+        return ipv6_link_topologies;
     }
 
     if(child_yang_name == "spf-log")
     {
-        if(spf_log != nullptr)
-        {
-            children["spf-log"] = spf_log;
-        }
-        else
+        if(spf_log == nullptr)
         {
             spf_log = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog>();
-            spf_log->parent = this;
-            children["spf-log"] = spf_log;
         }
-        return children.at("spf-log");
+        return spf_log;
     }
 
     if(child_yang_name == "te-adjacency-log")
     {
-        if(te_adjacency_log != nullptr)
-        {
-            children["te-adjacency-log"] = te_adjacency_log;
-        }
-        else
+        if(te_adjacency_log == nullptr)
         {
             te_adjacency_log = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog>();
-            te_adjacency_log->parent = this;
-            children["te-adjacency-log"] = te_adjacency_log;
         }
-        return children.at("te-adjacency-log");
+        return te_adjacency_log;
     }
 
     if(child_yang_name == "te-advertisements")
     {
-        if(te_advertisements != nullptr)
-        {
-            children["te-advertisements"] = te_advertisements;
-        }
-        else
+        if(te_advertisements == nullptr)
         {
             te_advertisements = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements>();
-            te_advertisements->parent = this;
-            children["te-advertisements"] = te_advertisements;
         }
-        return children.at("te-advertisements");
+        return te_advertisements;
     }
 
     if(child_yang_name == "te-tunnels")
     {
-        if(te_tunnels != nullptr)
-        {
-            children["te-tunnels"] = te_tunnels;
-        }
-        else
+        if(te_tunnels == nullptr)
         {
             te_tunnels = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels>();
-            te_tunnels->parent = this;
-            children["te-tunnels"] = te_tunnels;
         }
-        return children.at("te-tunnels");
+        return te_tunnels;
     }
 
     if(child_yang_name == "topology-summary")
     {
-        if(topology_summary != nullptr)
-        {
-            children["topology-summary"] = topology_summary;
-        }
-        else
+        if(topology_summary == nullptr)
         {
             topology_summary = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary>();
-            topology_summary->parent = this;
-            children["topology-summary"] = topology_summary;
         }
-        return children.at("topology-summary");
+        return topology_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::get_children() const
 {
-    if(children.find("ipv4-link-topologies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_link_topologies != nullptr)
     {
-        if(ipv4_link_topologies != nullptr)
-        {
-            children["ipv4-link-topologies"] = ipv4_link_topologies;
-        }
+        children["ipv4-link-topologies"] = ipv4_link_topologies;
     }
 
-    if(children.find("ipv6-link-topologies") == children.end())
+    if(ipv6_link_topologies != nullptr)
     {
-        if(ipv6_link_topologies != nullptr)
-        {
-            children["ipv6-link-topologies"] = ipv6_link_topologies;
-        }
+        children["ipv6-link-topologies"] = ipv6_link_topologies;
     }
 
-    if(children.find("spf-log") == children.end())
+    if(spf_log != nullptr)
     {
-        if(spf_log != nullptr)
-        {
-            children["spf-log"] = spf_log;
-        }
+        children["spf-log"] = spf_log;
     }
 
-    if(children.find("te-adjacency-log") == children.end())
+    if(te_adjacency_log != nullptr)
     {
-        if(te_adjacency_log != nullptr)
-        {
-            children["te-adjacency-log"] = te_adjacency_log;
-        }
+        children["te-adjacency-log"] = te_adjacency_log;
     }
 
-    if(children.find("te-advertisements") == children.end())
+    if(te_advertisements != nullptr)
     {
-        if(te_advertisements != nullptr)
-        {
-            children["te-advertisements"] = te_advertisements;
-        }
+        children["te-advertisements"] = te_advertisements;
     }
 
-    if(children.find("te-tunnels") == children.end())
+    if(te_tunnels != nullptr)
     {
-        if(te_tunnels != nullptr)
-        {
-            children["te-tunnels"] = te_tunnels;
-        }
+        children["te-tunnels"] = te_tunnels;
     }
 
-    if(children.find("topology-summary") == children.end())
+    if(topology_summary != nullptr)
     {
-        if(topology_summary != nullptr)
-        {
-            children["topology-summary"] = topology_summary;
-        }
+        children["topology-summary"] = topology_summary;
     }
 
     return children;
@@ -14762,7 +12688,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     tepceadv(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv>())
 {
     tepceadv->parent = this;
-    children["tepceadv"] = tepceadv;
 
     yang_name = "te-advertisements"; yang_parent_name = "topology-level";
 }
@@ -14807,7 +12732,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14833,15 +12758,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te-adv")
     {
         for(auto const & c : te_adv)
@@ -14849,51 +12765,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv>();
         c->parent = this;
-        te_adv.push_back(std::move(c));
-        children[segment_path] = te_adv.back();
-        return children.at(segment_path);
+        te_adv.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tepceadv")
     {
-        if(tepceadv != nullptr)
-        {
-            children["tepceadv"] = tepceadv;
-        }
-        else
+        if(tepceadv == nullptr)
         {
             tepceadv = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv>();
-            tepceadv->parent = this;
-            children["tepceadv"] = tepceadv;
         }
-        return children.at("tepceadv");
+        return tepceadv;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : te_adv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("tepceadv") == children.end())
+    if(tepceadv != nullptr)
     {
-        if(tepceadv != nullptr)
-        {
-            children["tepceadv"] = tepceadv;
-        }
+        children["tepceadv"] = tepceadv;
     }
 
     return children;
@@ -14958,7 +12861,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14986,20 +12889,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15134,7 +13029,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15174,15 +13069,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te-sub-tlv")
     {
         for(auto const & c : te_sub_tlv)
@@ -15190,28 +13076,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::TeSubTlv>();
         c->parent = this;
-        te_sub_tlv.push_back(std::move(c));
-        children[segment_path] = te_sub_tlv.back();
-        return children.at(segment_path);
+        te_sub_tlv.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : te_sub_tlv)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15314,7 +13196,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::TeSubTlv::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::TeSubTlv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15340,20 +13222,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::TeSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::TeSubTlv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::TeSubTlv::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15411,7 +13285,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15434,15 +13308,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-entry")
     {
         for(auto const & c : log_entry)
@@ -15450,28 +13315,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry>();
         c->parent = this;
-        log_entry.push_back(std::move(c));
-        children[segment_path] = log_entry.back();
-        return children.at(segment_path);
+        log_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15491,7 +13352,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     generic_data(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData>())
 {
     generic_data->parent = this;
-    children["generic-data"] = generic_data;
 
     yang_name = "log-entry"; yang_parent_name = "te-adjacency-log";
 }
@@ -15528,7 +13388,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15555,41 +13415,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-data")
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
-        else
+        if(generic_data == nullptr)
         {
             generic_data = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData>();
-            generic_data->parent = this;
-            children["generic-data"] = generic_data;
         }
-        return children.at("generic-data");
+        return generic_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::get_children() const
 {
-    if(children.find("generic-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generic_data != nullptr)
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
+        children["generic-data"] = generic_data;
     }
 
     return children;
@@ -15620,7 +13463,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     timestamp(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::Timestamp>())
 {
     timestamp->parent = this;
-    children["timestamp"] = timestamp;
 
     yang_name = "generic-data"; yang_parent_name = "log-entry";
 }
@@ -15649,7 +13491,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15672,41 +13514,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timestamp")
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
-        else
+        if(timestamp == nullptr)
         {
             timestamp = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::Timestamp>();
-            timestamp->parent = this;
-            children["timestamp"] = timestamp;
         }
-        return children.at("timestamp");
+        return timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::get_children() const
 {
-    if(children.find("timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timestamp != nullptr)
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
+        children["timestamp"] = timestamp;
     }
 
     return children;
@@ -15750,7 +13575,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15775,20 +13600,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::Timestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdjacencyLog::LogEntry::GenericData::Timestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15842,7 +13659,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15865,15 +13682,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-entry")
     {
         for(auto const & c : log_entry)
@@ -15881,28 +13689,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry>();
         c->parent = this;
-        log_entry.push_back(std::move(c));
-        children[segment_path] = log_entry.back();
-        return children.at(segment_path);
+        log_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15925,16 +13729,12 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,triggers(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers>())
 {
     generic_data->parent = this;
-    children["generic-data"] = generic_data;
 
     route_update_statistics->parent = this;
-    children["route-update-statistics"] = route_update_statistics;
 
     spt_calculation_statistics->parent = this;
-    children["spt-calculation-statistics"] = spt_calculation_statistics;
 
     triggers->parent = this;
-    children["triggers"] = triggers;
 
     yang_name = "log-entry"; yang_parent_name = "spf-log";
 }
@@ -15977,7 +13777,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16004,110 +13804,66 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-data")
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
-        else
+        if(generic_data == nullptr)
         {
             generic_data = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData>();
-            generic_data->parent = this;
-            children["generic-data"] = generic_data;
         }
-        return children.at("generic-data");
+        return generic_data;
     }
 
     if(child_yang_name == "route-update-statistics")
     {
-        if(route_update_statistics != nullptr)
-        {
-            children["route-update-statistics"] = route_update_statistics;
-        }
-        else
+        if(route_update_statistics == nullptr)
         {
             route_update_statistics = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics>();
-            route_update_statistics->parent = this;
-            children["route-update-statistics"] = route_update_statistics;
         }
-        return children.at("route-update-statistics");
+        return route_update_statistics;
     }
 
     if(child_yang_name == "spt-calculation-statistics")
     {
-        if(spt_calculation_statistics != nullptr)
-        {
-            children["spt-calculation-statistics"] = spt_calculation_statistics;
-        }
-        else
+        if(spt_calculation_statistics == nullptr)
         {
             spt_calculation_statistics = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics>();
-            spt_calculation_statistics->parent = this;
-            children["spt-calculation-statistics"] = spt_calculation_statistics;
         }
-        return children.at("spt-calculation-statistics");
+        return spt_calculation_statistics;
     }
 
     if(child_yang_name == "triggers")
     {
-        if(triggers != nullptr)
-        {
-            children["triggers"] = triggers;
-        }
-        else
+        if(triggers == nullptr)
         {
             triggers = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers>();
-            triggers->parent = this;
-            children["triggers"] = triggers;
         }
-        return children.at("triggers");
+        return triggers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::get_children() const
 {
-    if(children.find("generic-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generic_data != nullptr)
     {
-        if(generic_data != nullptr)
-        {
-            children["generic-data"] = generic_data;
-        }
+        children["generic-data"] = generic_data;
     }
 
-    if(children.find("route-update-statistics") == children.end())
+    if(route_update_statistics != nullptr)
     {
-        if(route_update_statistics != nullptr)
-        {
-            children["route-update-statistics"] = route_update_statistics;
-        }
+        children["route-update-statistics"] = route_update_statistics;
     }
 
-    if(children.find("spt-calculation-statistics") == children.end())
+    if(spt_calculation_statistics != nullptr)
     {
-        if(spt_calculation_statistics != nullptr)
-        {
-            children["spt-calculation-statistics"] = spt_calculation_statistics;
-        }
+        children["spt-calculation-statistics"] = spt_calculation_statistics;
     }
 
-    if(children.find("triggers") == children.end())
+    if(triggers != nullptr)
     {
-        if(triggers != nullptr)
-        {
-            children["triggers"] = triggers;
-        }
+        children["triggers"] = triggers;
     }
 
     return children;
@@ -16138,7 +13894,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     timestamp(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::Timestamp>())
 {
     timestamp->parent = this;
-    children["timestamp"] = timestamp;
 
     yang_name = "generic-data"; yang_parent_name = "log-entry";
 }
@@ -16167,7 +13922,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16190,41 +13945,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timestamp")
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
-        else
+        if(timestamp == nullptr)
         {
             timestamp = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::Timestamp>();
-            timestamp->parent = this;
-            children["timestamp"] = timestamp;
         }
-        return children.at("timestamp");
+        return timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::get_children() const
 {
-    if(children.find("timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timestamp != nullptr)
     {
-        if(timestamp != nullptr)
-        {
-            children["timestamp"] = timestamp;
-        }
+        children["timestamp"] = timestamp;
     }
 
     return children;
@@ -16268,7 +14006,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::Timestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16293,20 +14031,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::Timestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::GenericData::Timestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16335,7 +14065,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     trigger_prefix(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix>())
 {
     trigger_prefix->parent = this;
-    children["trigger-prefix"] = trigger_prefix;
 
     yang_name = "triggers"; yang_parent_name = "log-entry";
 }
@@ -16387,7 +14116,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16418,41 +14147,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trigger-prefix")
     {
-        if(trigger_prefix != nullptr)
-        {
-            children["trigger-prefix"] = trigger_prefix;
-        }
-        else
+        if(trigger_prefix == nullptr)
         {
             trigger_prefix = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix>();
-            trigger_prefix->parent = this;
-            children["trigger-prefix"] = trigger_prefix;
         }
-        return children.at("trigger-prefix");
+        return trigger_prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::get_children() const
 {
-    if(children.find("trigger-prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(trigger_prefix != nullptr)
     {
-        if(trigger_prefix != nullptr)
-        {
-            children["trigger-prefix"] = trigger_prefix;
-        }
+        children["trigger-prefix"] = trigger_prefix;
     }
 
     return children;
@@ -16498,10 +14210,8 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,ipv6(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "trigger-prefix"; yang_parent_name = "triggers";
 }
@@ -16534,7 +14244,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16558,64 +14268,38 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -16663,7 +14347,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16688,20 +14372,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16751,7 +14427,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16776,20 +14452,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16811,10 +14479,8 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,node_counts(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::NodeCounts>())
 {
     duration->parent = this;
-    children["duration"] = duration;
 
     node_counts->parent = this;
-    children["node-counts"] = node_counts;
 
     yang_name = "spt-calculation-statistics"; yang_parent_name = "log-entry";
 }
@@ -16845,7 +14511,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16868,64 +14534,38 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "duration")
     {
-        if(duration != nullptr)
-        {
-            children["duration"] = duration;
-        }
-        else
+        if(duration == nullptr)
         {
             duration = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::Duration>();
-            duration->parent = this;
-            children["duration"] = duration;
         }
-        return children.at("duration");
+        return duration;
     }
 
     if(child_yang_name == "node-counts")
     {
-        if(node_counts != nullptr)
-        {
-            children["node-counts"] = node_counts;
-        }
-        else
+        if(node_counts == nullptr)
         {
             node_counts = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::NodeCounts>();
-            node_counts->parent = this;
-            children["node-counts"] = node_counts;
         }
-        return children.at("node-counts");
+        return node_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::get_children() const
 {
-    if(children.find("duration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(duration != nullptr)
     {
-        if(duration != nullptr)
-        {
-            children["duration"] = duration;
-        }
+        children["duration"] = duration;
     }
 
-    if(children.find("node-counts") == children.end())
+    if(node_counts != nullptr)
     {
-        if(node_counts != nullptr)
-        {
-            children["node-counts"] = node_counts;
-        }
+        children["node-counts"] = node_counts;
     }
 
     return children;
@@ -16969,7 +14609,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::Duration::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::Duration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16994,20 +14634,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::Duration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::Duration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17069,7 +14701,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::NodeCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::NodeCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17098,20 +14730,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::NodeCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::NodeCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics::NodeCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17153,22 +14777,16 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,route_counts(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts>())
 {
     duration->parent = this;
-    children["duration"] = duration;
 
     duration_breakdown->parent = this;
-    children["duration-breakdown"] = duration_breakdown;
 
     item_counts->parent = this;
-    children["item-counts"] = item_counts;
 
     node_counts->parent = this;
-    children["node-counts"] = node_counts;
 
     rib_batch_counts->parent = this;
-    children["rib-batch-counts"] = rib_batch_counts;
 
     route_counts->parent = this;
-    children["route-counts"] = route_counts;
 
     yang_name = "route-update-statistics"; yang_parent_name = "log-entry";
 }
@@ -17207,7 +14825,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17230,156 +14848,94 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "duration")
     {
-        if(duration != nullptr)
-        {
-            children["duration"] = duration;
-        }
-        else
+        if(duration == nullptr)
         {
             duration = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::Duration>();
-            duration->parent = this;
-            children["duration"] = duration;
         }
-        return children.at("duration");
+        return duration;
     }
 
     if(child_yang_name == "duration-breakdown")
     {
-        if(duration_breakdown != nullptr)
-        {
-            children["duration-breakdown"] = duration_breakdown;
-        }
-        else
+        if(duration_breakdown == nullptr)
         {
             duration_breakdown = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown>();
-            duration_breakdown->parent = this;
-            children["duration-breakdown"] = duration_breakdown;
         }
-        return children.at("duration-breakdown");
+        return duration_breakdown;
     }
 
     if(child_yang_name == "item-counts")
     {
-        if(item_counts != nullptr)
-        {
-            children["item-counts"] = item_counts;
-        }
-        else
+        if(item_counts == nullptr)
         {
             item_counts = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts>();
-            item_counts->parent = this;
-            children["item-counts"] = item_counts;
         }
-        return children.at("item-counts");
+        return item_counts;
     }
 
     if(child_yang_name == "node-counts")
     {
-        if(node_counts != nullptr)
-        {
-            children["node-counts"] = node_counts;
-        }
-        else
+        if(node_counts == nullptr)
         {
             node_counts = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts>();
-            node_counts->parent = this;
-            children["node-counts"] = node_counts;
         }
-        return children.at("node-counts");
+        return node_counts;
     }
 
     if(child_yang_name == "rib-batch-counts")
     {
-        if(rib_batch_counts != nullptr)
-        {
-            children["rib-batch-counts"] = rib_batch_counts;
-        }
-        else
+        if(rib_batch_counts == nullptr)
         {
             rib_batch_counts = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RibBatchCounts>();
-            rib_batch_counts->parent = this;
-            children["rib-batch-counts"] = rib_batch_counts;
         }
-        return children.at("rib-batch-counts");
+        return rib_batch_counts;
     }
 
     if(child_yang_name == "route-counts")
     {
-        if(route_counts != nullptr)
-        {
-            children["route-counts"] = route_counts;
-        }
-        else
+        if(route_counts == nullptr)
         {
             route_counts = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts>();
-            route_counts->parent = this;
-            children["route-counts"] = route_counts;
         }
-        return children.at("route-counts");
+        return route_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::get_children() const
 {
-    if(children.find("duration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(duration != nullptr)
     {
-        if(duration != nullptr)
-        {
-            children["duration"] = duration;
-        }
+        children["duration"] = duration;
     }
 
-    if(children.find("duration-breakdown") == children.end())
+    if(duration_breakdown != nullptr)
     {
-        if(duration_breakdown != nullptr)
-        {
-            children["duration-breakdown"] = duration_breakdown;
-        }
+        children["duration-breakdown"] = duration_breakdown;
     }
 
-    if(children.find("item-counts") == children.end())
+    if(item_counts != nullptr)
     {
-        if(item_counts != nullptr)
-        {
-            children["item-counts"] = item_counts;
-        }
+        children["item-counts"] = item_counts;
     }
 
-    if(children.find("node-counts") == children.end())
+    if(node_counts != nullptr)
     {
-        if(node_counts != nullptr)
-        {
-            children["node-counts"] = node_counts;
-        }
+        children["node-counts"] = node_counts;
     }
 
-    if(children.find("rib-batch-counts") == children.end())
+    if(rib_batch_counts != nullptr)
     {
-        if(rib_batch_counts != nullptr)
-        {
-            children["rib-batch-counts"] = rib_batch_counts;
-        }
+        children["rib-batch-counts"] = rib_batch_counts;
     }
 
-    if(children.find("route-counts") == children.end())
+    if(route_counts != nullptr)
     {
-        if(route_counts != nullptr)
-        {
-            children["route-counts"] = route_counts;
-        }
+        children["route-counts"] = route_counts;
     }
 
     return children;
@@ -17423,7 +14979,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::Duration::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::Duration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17448,20 +15004,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::Duration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::Duration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17484,13 +15032,10 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,local_rib_update(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate>())
 {
     global_rib_build->parent = this;
-    children["global-rib-build"] = global_rib_build;
 
     global_rib_send->parent = this;
-    children["global-rib-send"] = global_rib_send;
 
     local_rib_update->parent = this;
-    children["local-rib-update"] = local_rib_update;
 
     yang_name = "duration-breakdown"; yang_parent_name = "route-update-statistics";
 }
@@ -17523,7 +15068,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17546,87 +15091,52 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-rib-build")
     {
-        if(global_rib_build != nullptr)
-        {
-            children["global-rib-build"] = global_rib_build;
-        }
-        else
+        if(global_rib_build == nullptr)
         {
             global_rib_build = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild>();
-            global_rib_build->parent = this;
-            children["global-rib-build"] = global_rib_build;
         }
-        return children.at("global-rib-build");
+        return global_rib_build;
     }
 
     if(child_yang_name == "global-rib-send")
     {
-        if(global_rib_send != nullptr)
-        {
-            children["global-rib-send"] = global_rib_send;
-        }
-        else
+        if(global_rib_send == nullptr)
         {
             global_rib_send = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend>();
-            global_rib_send->parent = this;
-            children["global-rib-send"] = global_rib_send;
         }
-        return children.at("global-rib-send");
+        return global_rib_send;
     }
 
     if(child_yang_name == "local-rib-update")
     {
-        if(local_rib_update != nullptr)
-        {
-            children["local-rib-update"] = local_rib_update;
-        }
-        else
+        if(local_rib_update == nullptr)
         {
             local_rib_update = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate>();
-            local_rib_update->parent = this;
-            children["local-rib-update"] = local_rib_update;
         }
-        return children.at("local-rib-update");
+        return local_rib_update;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::get_children() const
 {
-    if(children.find("global-rib-build") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global_rib_build != nullptr)
     {
-        if(global_rib_build != nullptr)
-        {
-            children["global-rib-build"] = global_rib_build;
-        }
+        children["global-rib-build"] = global_rib_build;
     }
 
-    if(children.find("global-rib-send") == children.end())
+    if(global_rib_send != nullptr)
     {
-        if(global_rib_send != nullptr)
-        {
-            children["global-rib-send"] = global_rib_send;
-        }
+        children["global-rib-send"] = global_rib_send;
     }
 
-    if(children.find("local-rib-update") == children.end())
+    if(local_rib_update != nullptr)
     {
-        if(local_rib_update != nullptr)
-        {
-            children["local-rib-update"] = local_rib_update;
-        }
+        children["local-rib-update"] = local_rib_update;
     }
 
     return children;
@@ -17644,16 +15154,12 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,medium(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Medium>())
 {
     critical->parent = this;
-    children["critical"] = critical;
 
     high->parent = this;
-    children["high"] = high;
 
     low->parent = this;
-    children["low"] = low;
 
     medium->parent = this;
-    children["medium"] = medium;
 
     yang_name = "local-rib-update"; yang_parent_name = "duration-breakdown";
 }
@@ -17688,7 +15194,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17711,110 +15217,66 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical")
     {
-        if(critical != nullptr)
-        {
-            children["critical"] = critical;
-        }
-        else
+        if(critical == nullptr)
         {
             critical = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Critical>();
-            critical->parent = this;
-            children["critical"] = critical;
         }
-        return children.at("critical");
+        return critical;
     }
 
     if(child_yang_name == "high")
     {
-        if(high != nullptr)
-        {
-            children["high"] = high;
-        }
-        else
+        if(high == nullptr)
         {
             high = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::High>();
-            high->parent = this;
-            children["high"] = high;
         }
-        return children.at("high");
+        return high;
     }
 
     if(child_yang_name == "low")
     {
-        if(low != nullptr)
-        {
-            children["low"] = low;
-        }
-        else
+        if(low == nullptr)
         {
             low = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Low>();
-            low->parent = this;
-            children["low"] = low;
         }
-        return children.at("low");
+        return low;
     }
 
     if(child_yang_name == "medium")
     {
-        if(medium != nullptr)
-        {
-            children["medium"] = medium;
-        }
-        else
+        if(medium == nullptr)
         {
             medium = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Medium>();
-            medium->parent = this;
-            children["medium"] = medium;
         }
-        return children.at("medium");
+        return medium;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::get_children() const
 {
-    if(children.find("critical") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical != nullptr)
     {
-        if(critical != nullptr)
-        {
-            children["critical"] = critical;
-        }
+        children["critical"] = critical;
     }
 
-    if(children.find("high") == children.end())
+    if(high != nullptr)
     {
-        if(high != nullptr)
-        {
-            children["high"] = high;
-        }
+        children["high"] = high;
     }
 
-    if(children.find("low") == children.end())
+    if(low != nullptr)
     {
-        if(low != nullptr)
-        {
-            children["low"] = low;
-        }
+        children["low"] = low;
     }
 
-    if(children.find("medium") == children.end())
+    if(medium != nullptr)
     {
-        if(medium != nullptr)
-        {
-            children["medium"] = medium;
-        }
+        children["medium"] = medium;
     }
 
     return children;
@@ -17858,7 +15320,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Critical::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Critical::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17883,20 +15345,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Critical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Critical::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Critical::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17946,7 +15400,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::High::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::High::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17971,20 +15425,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::High::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::High::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18034,7 +15480,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Medium::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Medium::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18059,20 +15505,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Medium::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Medium::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Medium::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18122,7 +15560,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Low::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Low::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18147,20 +15585,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Low::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Low::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::LocalRibUpdate::Low::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18184,16 +15614,12 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,medium(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Medium>())
 {
     critical->parent = this;
-    children["critical"] = critical;
 
     high->parent = this;
-    children["high"] = high;
 
     low->parent = this;
-    children["low"] = low;
 
     medium->parent = this;
-    children["medium"] = medium;
 
     yang_name = "global-rib-build"; yang_parent_name = "duration-breakdown";
 }
@@ -18228,7 +15654,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18251,110 +15677,66 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical")
     {
-        if(critical != nullptr)
-        {
-            children["critical"] = critical;
-        }
-        else
+        if(critical == nullptr)
         {
             critical = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Critical>();
-            critical->parent = this;
-            children["critical"] = critical;
         }
-        return children.at("critical");
+        return critical;
     }
 
     if(child_yang_name == "high")
     {
-        if(high != nullptr)
-        {
-            children["high"] = high;
-        }
-        else
+        if(high == nullptr)
         {
             high = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::High>();
-            high->parent = this;
-            children["high"] = high;
         }
-        return children.at("high");
+        return high;
     }
 
     if(child_yang_name == "low")
     {
-        if(low != nullptr)
-        {
-            children["low"] = low;
-        }
-        else
+        if(low == nullptr)
         {
             low = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Low>();
-            low->parent = this;
-            children["low"] = low;
         }
-        return children.at("low");
+        return low;
     }
 
     if(child_yang_name == "medium")
     {
-        if(medium != nullptr)
-        {
-            children["medium"] = medium;
-        }
-        else
+        if(medium == nullptr)
         {
             medium = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Medium>();
-            medium->parent = this;
-            children["medium"] = medium;
         }
-        return children.at("medium");
+        return medium;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::get_children() const
 {
-    if(children.find("critical") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical != nullptr)
     {
-        if(critical != nullptr)
-        {
-            children["critical"] = critical;
-        }
+        children["critical"] = critical;
     }
 
-    if(children.find("high") == children.end())
+    if(high != nullptr)
     {
-        if(high != nullptr)
-        {
-            children["high"] = high;
-        }
+        children["high"] = high;
     }
 
-    if(children.find("low") == children.end())
+    if(low != nullptr)
     {
-        if(low != nullptr)
-        {
-            children["low"] = low;
-        }
+        children["low"] = low;
     }
 
-    if(children.find("medium") == children.end())
+    if(medium != nullptr)
     {
-        if(medium != nullptr)
-        {
-            children["medium"] = medium;
-        }
+        children["medium"] = medium;
     }
 
     return children;
@@ -18398,7 +15780,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Critical::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Critical::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18423,20 +15805,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Critical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Critical::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Critical::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18486,7 +15860,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::High::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::High::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18511,20 +15885,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::High::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::High::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18574,7 +15940,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Medium::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Medium::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18599,20 +15965,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Medium::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Medium::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Medium::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18662,7 +16020,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Low::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Low::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18687,20 +16045,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Low::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Low::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibBuild::Low::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18724,16 +16074,12 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,medium(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Medium>())
 {
     critical->parent = this;
-    children["critical"] = critical;
 
     high->parent = this;
-    children["high"] = high;
 
     low->parent = this;
-    children["low"] = low;
 
     medium->parent = this;
-    children["medium"] = medium;
 
     yang_name = "global-rib-send"; yang_parent_name = "duration-breakdown";
 }
@@ -18768,7 +16114,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18791,110 +16137,66 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical")
     {
-        if(critical != nullptr)
-        {
-            children["critical"] = critical;
-        }
-        else
+        if(critical == nullptr)
         {
             critical = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Critical>();
-            critical->parent = this;
-            children["critical"] = critical;
         }
-        return children.at("critical");
+        return critical;
     }
 
     if(child_yang_name == "high")
     {
-        if(high != nullptr)
-        {
-            children["high"] = high;
-        }
-        else
+        if(high == nullptr)
         {
             high = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::High>();
-            high->parent = this;
-            children["high"] = high;
         }
-        return children.at("high");
+        return high;
     }
 
     if(child_yang_name == "low")
     {
-        if(low != nullptr)
-        {
-            children["low"] = low;
-        }
-        else
+        if(low == nullptr)
         {
             low = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Low>();
-            low->parent = this;
-            children["low"] = low;
         }
-        return children.at("low");
+        return low;
     }
 
     if(child_yang_name == "medium")
     {
-        if(medium != nullptr)
-        {
-            children["medium"] = medium;
-        }
-        else
+        if(medium == nullptr)
         {
             medium = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Medium>();
-            medium->parent = this;
-            children["medium"] = medium;
         }
-        return children.at("medium");
+        return medium;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::get_children() const
 {
-    if(children.find("critical") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical != nullptr)
     {
-        if(critical != nullptr)
-        {
-            children["critical"] = critical;
-        }
+        children["critical"] = critical;
     }
 
-    if(children.find("high") == children.end())
+    if(high != nullptr)
     {
-        if(high != nullptr)
-        {
-            children["high"] = high;
-        }
+        children["high"] = high;
     }
 
-    if(children.find("low") == children.end())
+    if(low != nullptr)
     {
-        if(low != nullptr)
-        {
-            children["low"] = low;
-        }
+        children["low"] = low;
     }
 
-    if(children.find("medium") == children.end())
+    if(medium != nullptr)
     {
-        if(medium != nullptr)
-        {
-            children["medium"] = medium;
-        }
+        children["medium"] = medium;
     }
 
     return children;
@@ -18938,7 +16240,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Critical::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Critical::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18963,20 +16265,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Critical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Critical::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Critical::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19026,7 +16320,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::High::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::High::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19051,20 +16345,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::High::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::High::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19114,7 +16400,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Medium::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Medium::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19139,20 +16425,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Medium::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Medium::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Medium::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19202,7 +16480,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Low::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Low::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19227,20 +16505,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Low::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Low::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::DurationBreakdown::GlobalRibSend::Low::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19263,7 +16533,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     per_priority_touched(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::PerPriorityTouched>())
 {
     per_priority_touched->parent = this;
-    children["per-priority-touched"] = per_priority_touched;
 
     yang_name = "node-counts"; yang_parent_name = "route-update-statistics";
 }
@@ -19294,7 +16563,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19318,41 +16587,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-priority-touched")
     {
-        if(per_priority_touched != nullptr)
-        {
-            children["per-priority-touched"] = per_priority_touched;
-        }
-        else
+        if(per_priority_touched == nullptr)
         {
             per_priority_touched = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::PerPriorityTouched>();
-            per_priority_touched->parent = this;
-            children["per-priority-touched"] = per_priority_touched;
         }
-        return children.at("per-priority-touched");
+        return per_priority_touched;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::get_children() const
 {
-    if(children.find("per-priority-touched") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(per_priority_touched != nullptr)
     {
-        if(per_priority_touched != nullptr)
-        {
-            children["per-priority-touched"] = per_priority_touched;
-        }
+        children["per-priority-touched"] = per_priority_touched;
     }
 
     return children;
@@ -19406,7 +16658,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::PerPriorityTouched::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::PerPriorityTouched::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19433,20 +16685,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::PerPriorityTouched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::PerPriorityTouched::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::NodeCounts::PerPriorityTouched::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19480,22 +16724,16 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,unreachable(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Unreachable>())
 {
     added->parent = this;
-    children["added"] = added;
 
     deleted->parent = this;
-    children["deleted"] = deleted;
 
     modified->parent = this;
-    children["modified"] = modified;
 
     reachable->parent = this;
-    children["reachable"] = reachable;
 
     touched->parent = this;
-    children["touched"] = touched;
 
     unreachable->parent = this;
-    children["unreachable"] = unreachable;
 
     yang_name = "item-counts"; yang_parent_name = "route-update-statistics";
 }
@@ -19534,7 +16772,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19557,156 +16795,94 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "added")
     {
-        if(added != nullptr)
-        {
-            children["added"] = added;
-        }
-        else
+        if(added == nullptr)
         {
             added = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Added>();
-            added->parent = this;
-            children["added"] = added;
         }
-        return children.at("added");
+        return added;
     }
 
     if(child_yang_name == "deleted")
     {
-        if(deleted != nullptr)
-        {
-            children["deleted"] = deleted;
-        }
-        else
+        if(deleted == nullptr)
         {
             deleted = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Deleted>();
-            deleted->parent = this;
-            children["deleted"] = deleted;
         }
-        return children.at("deleted");
+        return deleted;
     }
 
     if(child_yang_name == "modified")
     {
-        if(modified != nullptr)
-        {
-            children["modified"] = modified;
-        }
-        else
+        if(modified == nullptr)
         {
             modified = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Modified>();
-            modified->parent = this;
-            children["modified"] = modified;
         }
-        return children.at("modified");
+        return modified;
     }
 
     if(child_yang_name == "reachable")
     {
-        if(reachable != nullptr)
-        {
-            children["reachable"] = reachable;
-        }
-        else
+        if(reachable == nullptr)
         {
             reachable = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Reachable>();
-            reachable->parent = this;
-            children["reachable"] = reachable;
         }
-        return children.at("reachable");
+        return reachable;
     }
 
     if(child_yang_name == "touched")
     {
-        if(touched != nullptr)
-        {
-            children["touched"] = touched;
-        }
-        else
+        if(touched == nullptr)
         {
             touched = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Touched>();
-            touched->parent = this;
-            children["touched"] = touched;
         }
-        return children.at("touched");
+        return touched;
     }
 
     if(child_yang_name == "unreachable")
     {
-        if(unreachable != nullptr)
-        {
-            children["unreachable"] = unreachable;
-        }
-        else
+        if(unreachable == nullptr)
         {
             unreachable = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Unreachable>();
-            unreachable->parent = this;
-            children["unreachable"] = unreachable;
         }
-        return children.at("unreachable");
+        return unreachable;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::get_children() const
 {
-    if(children.find("added") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(added != nullptr)
     {
-        if(added != nullptr)
-        {
-            children["added"] = added;
-        }
+        children["added"] = added;
     }
 
-    if(children.find("deleted") == children.end())
+    if(deleted != nullptr)
     {
-        if(deleted != nullptr)
-        {
-            children["deleted"] = deleted;
-        }
+        children["deleted"] = deleted;
     }
 
-    if(children.find("modified") == children.end())
+    if(modified != nullptr)
     {
-        if(modified != nullptr)
-        {
-            children["modified"] = modified;
-        }
+        children["modified"] = modified;
     }
 
-    if(children.find("reachable") == children.end())
+    if(reachable != nullptr)
     {
-        if(reachable != nullptr)
-        {
-            children["reachable"] = reachable;
-        }
+        children["reachable"] = reachable;
     }
 
-    if(children.find("touched") == children.end())
+    if(touched != nullptr)
     {
-        if(touched != nullptr)
-        {
-            children["touched"] = touched;
-        }
+        children["touched"] = touched;
     }
 
-    if(children.find("unreachable") == children.end())
+    if(unreachable != nullptr)
     {
-        if(unreachable != nullptr)
-        {
-            children["unreachable"] = unreachable;
-        }
+        children["unreachable"] = unreachable;
     }
 
     return children;
@@ -19756,7 +16932,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Unreachable::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Unreachable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19783,20 +16959,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Unreachable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Unreachable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19860,7 +17028,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Reachable::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Reachable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19887,20 +17055,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Reachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Reachable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Reachable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

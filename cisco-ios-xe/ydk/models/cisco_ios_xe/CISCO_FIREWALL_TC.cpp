@@ -1,0 +1,211 @@
+
+#include <sstream>
+#include <iostream>
+#include <ydk/entity_util.hpp>
+#include "bundle_info.hpp"
+#include "generated_entity_lookup.hpp"
+#include "CISCO_FIREWALL_TC.hpp"
+
+namespace ydk {
+namespace CISCO_FIREWALL_TC {
+
+const Enum::YLeaf CfwurlserverstatusEnum::online {1, "online"};
+const Enum::YLeaf CfwurlserverstatusEnum::offline {2, "offline"};
+const Enum::YLeaf CfwurlserverstatusEnum::indeterminate {3, "indeterminate"};
+
+const Enum::YLeaf CfwnetworkprotocolEnum::none {1, "none"};
+const Enum::YLeaf CfwnetworkprotocolEnum::other {2, "other"};
+const Enum::YLeaf CfwnetworkprotocolEnum::ip {3, "ip"};
+const Enum::YLeaf CfwnetworkprotocolEnum::icmp {4, "icmp"};
+const Enum::YLeaf CfwnetworkprotocolEnum::gre {5, "gre"};
+const Enum::YLeaf CfwnetworkprotocolEnum::udp {6, "udp"};
+const Enum::YLeaf CfwnetworkprotocolEnum::tcp {7, "tcp"};
+
+const Enum::YLeaf CfwurlfvendoridEnum::other {1, "other"};
+const Enum::YLeaf CfwurlfvendoridEnum::websense {2, "websense"};
+const Enum::YLeaf CfwurlfvendoridEnum::n2h2 {3, "n2h2"};
+
+const Enum::YLeaf CfwapplicationprotocolEnum::none {1, "none"};
+const Enum::YLeaf CfwapplicationprotocolEnum::other {2, "other"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ftp {3, "ftp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::telnet {4, "telnet"};
+const Enum::YLeaf CfwapplicationprotocolEnum::smtp {5, "smtp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::http {6, "http"};
+const Enum::YLeaf CfwapplicationprotocolEnum::tacacs {7, "tacacs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::dns {8, "dns"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sqlnet {9, "sqlnet"};
+const Enum::YLeaf CfwapplicationprotocolEnum::https {10, "https"};
+const Enum::YLeaf CfwapplicationprotocolEnum::tftp {11, "tftp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::gopher {12, "gopher"};
+const Enum::YLeaf CfwapplicationprotocolEnum::finger {13, "finger"};
+const Enum::YLeaf CfwapplicationprotocolEnum::kerberos {14, "kerberos"};
+const Enum::YLeaf CfwapplicationprotocolEnum::pop2 {15, "pop2"};
+const Enum::YLeaf CfwapplicationprotocolEnum::pop3 {16, "pop3"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sunRpc {17, "sunRpc"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msRpc {18, "msRpc"};
+const Enum::YLeaf CfwapplicationprotocolEnum::nntp {19, "nntp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::snmp {20, "snmp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::imap {21, "imap"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ldap {22, "ldap"};
+const Enum::YLeaf CfwapplicationprotocolEnum::exec {23, "exec"};
+const Enum::YLeaf CfwapplicationprotocolEnum::login {24, "login"};
+const Enum::YLeaf CfwapplicationprotocolEnum::shell {25, "shell"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msSql {26, "msSql"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sybaseSql {27, "sybaseSql"};
+const Enum::YLeaf CfwapplicationprotocolEnum::nfs {28, "nfs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::lotusnote {29, "lotusnote"};
+const Enum::YLeaf CfwapplicationprotocolEnum::h323 {30, "h323"};
+const Enum::YLeaf CfwapplicationprotocolEnum::cuseeme {31, "cuseeme"};
+const Enum::YLeaf CfwapplicationprotocolEnum::realmedia {32, "realmedia"};
+const Enum::YLeaf CfwapplicationprotocolEnum::netshow {33, "netshow"};
+const Enum::YLeaf CfwapplicationprotocolEnum::streamworks {34, "streamworks"};
+const Enum::YLeaf CfwapplicationprotocolEnum::vdolive {35, "vdolive"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sap {36, "sap"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sip {37, "sip"};
+const Enum::YLeaf CfwapplicationprotocolEnum::mgcp {38, "mgcp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rtsp {39, "rtsp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::skinny {40, "skinny"};
+const Enum::YLeaf CfwapplicationprotocolEnum::gtpV0 {41, "gtpV0"};
+const Enum::YLeaf CfwapplicationprotocolEnum::gtpV1 {42, "gtpV1"};
+const Enum::YLeaf CfwapplicationprotocolEnum::echo {43, "echo"};
+const Enum::YLeaf CfwapplicationprotocolEnum::discard {44, "discard"};
+const Enum::YLeaf CfwapplicationprotocolEnum::daytime {45, "daytime"};
+const Enum::YLeaf CfwapplicationprotocolEnum::netstat {46, "netstat"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ssh {47, "ssh"};
+const Enum::YLeaf CfwapplicationprotocolEnum::time {48, "time"};
+const Enum::YLeaf CfwapplicationprotocolEnum::tacacsDs {49, "tacacsDs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::bootps {50, "bootps"};
+const Enum::YLeaf CfwapplicationprotocolEnum::bootpc {51, "bootpc"};
+const Enum::YLeaf CfwapplicationprotocolEnum::dnsix {52, "dnsix"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rtelnet {53, "rtelnet"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ident {54, "ident"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sqlServ {55, "sqlServ"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ntp {56, "ntp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::pwdgen {57, "pwdgen"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ciscoFna {58, "ciscoFna"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ciscoTna {59, "ciscoTna"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ciscoSys {60, "ciscoSys"};
+const Enum::YLeaf CfwapplicationprotocolEnum::netbiosNs {61, "netbiosNs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::netbiosDgm {62, "netbiosDgm"};
+const Enum::YLeaf CfwapplicationprotocolEnum::netbiosSsn {63, "netbiosSsn"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sqlSrv {64, "sqlSrv"};
+const Enum::YLeaf CfwapplicationprotocolEnum::snmpTrap {65, "snmpTrap"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rsvd {66, "rsvd"};
+const Enum::YLeaf CfwapplicationprotocolEnum::send {67, "send"};
+const Enum::YLeaf CfwapplicationprotocolEnum::xdmcp {68, "xdmcp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::bgp {69, "bgp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::irc {70, "irc"};
+const Enum::YLeaf CfwapplicationprotocolEnum::qmtp {71, "qmtp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ipx {72, "ipx"};
+const Enum::YLeaf CfwapplicationprotocolEnum::dbase {73, "dbase"};
+const Enum::YLeaf CfwapplicationprotocolEnum::imap3 {74, "imap3"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rsvpTunnel {75, "rsvpTunnel"};
+const Enum::YLeaf CfwapplicationprotocolEnum::hpCollector {76, "hpCollector"};
+const Enum::YLeaf CfwapplicationprotocolEnum::hpManagedNode {77, "hpManagedNode"};
+const Enum::YLeaf CfwapplicationprotocolEnum::hpAlarmMgr {78, "hpAlarmMgr"};
+const Enum::YLeaf CfwapplicationprotocolEnum::microsoftDs {79, "microsoftDs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::creativeServer {80, "creativeServer"};
+const Enum::YLeaf CfwapplicationprotocolEnum::creativePartnr {81, "creativePartnr"};
+const Enum::YLeaf CfwapplicationprotocolEnum::appleQtc {82, "appleQtc"};
+const Enum::YLeaf CfwapplicationprotocolEnum::igmpV3Lite {83, "igmpV3Lite"};
+const Enum::YLeaf CfwapplicationprotocolEnum::isakmp {84, "isakmp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::biff {85, "biff"};
+const Enum::YLeaf CfwapplicationprotocolEnum::who {86, "who"};
+const Enum::YLeaf CfwapplicationprotocolEnum::syslog {87, "syslog"};
+const Enum::YLeaf CfwapplicationprotocolEnum::router {88, "router"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ncp {89, "ncp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::timed {90, "timed"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ircServ {91, "ircServ"};
+const Enum::YLeaf CfwapplicationprotocolEnum::uucp {92, "uucp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::syslogConn {93, "syslogConn"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sshell {94, "sshell"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ldaps {95, "ldaps"};
+const Enum::YLeaf CfwapplicationprotocolEnum::dhcpFailover {96, "dhcpFailover"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msexchRouting {97, "msexchRouting"};
+const Enum::YLeaf CfwapplicationprotocolEnum::entrustSvcs {98, "entrustSvcs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::entrustSvcHandler {99, "entrustSvcHandler"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ciscoTdp {100, "ciscoTdp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::webster {101, "webster"};
+const Enum::YLeaf CfwapplicationprotocolEnum::gdoi {102, "gdoi"};
+const Enum::YLeaf CfwapplicationprotocolEnum::iscsi {103, "iscsi"};
+const Enum::YLeaf CfwapplicationprotocolEnum::cddbp {104, "cddbp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ftps {105, "ftps"};
+const Enum::YLeaf CfwapplicationprotocolEnum::telnets {106, "telnets"};
+const Enum::YLeaf CfwapplicationprotocolEnum::imaps {107, "imaps"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ircs {108, "ircs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::pop3s {109, "pop3s"};
+const Enum::YLeaf CfwapplicationprotocolEnum::socks {110, "socks"};
+const Enum::YLeaf CfwapplicationprotocolEnum::kazaa {111, "kazaa"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msSqlM {112, "msSqlM"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msSna {113, "msSna"};
+const Enum::YLeaf CfwapplicationprotocolEnum::wins {114, "wins"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ica {115, "ica"};
+const Enum::YLeaf CfwapplicationprotocolEnum::orasrv {116, "orasrv"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rdbDbsDisp {117, "rdbDbsDisp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::vqp {118, "vqp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::icabrowser {119, "icabrowser"};
+const Enum::YLeaf CfwapplicationprotocolEnum::kermit {120, "kermit"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rsvpEncap {121, "rsvpEncap"};
+const Enum::YLeaf CfwapplicationprotocolEnum::l2tp {122, "l2tp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::pptp {123, "pptp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::h323Gatestat {124, "h323Gatestat"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rWinsock {125, "rWinsock"};
+const Enum::YLeaf CfwapplicationprotocolEnum::radius {126, "radius"};
+const Enum::YLeaf CfwapplicationprotocolEnum::hsrp {127, "hsrp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::net8Cman {128, "net8Cman"};
+const Enum::YLeaf CfwapplicationprotocolEnum::oracleEmVp {129, "oracleEmVp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::oracleNames {130, "oracleNames"};
+const Enum::YLeaf CfwapplicationprotocolEnum::oracle {131, "oracle"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ciscoSvcs {132, "ciscoSvcs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ciscoNetMgmt {133, "ciscoNetMgmt"};
+const Enum::YLeaf CfwapplicationprotocolEnum::stun {134, "stun"};
+const Enum::YLeaf CfwapplicationprotocolEnum::trRsrb {135, "trRsrb"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ddnsV3 {136, "ddnsV3"};
+const Enum::YLeaf CfwapplicationprotocolEnum::aceSvr {137, "aceSvr"};
+const Enum::YLeaf CfwapplicationprotocolEnum::giop {138, "giop"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ttc {139, "ttc"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ipass {140, "ipass"};
+const Enum::YLeaf CfwapplicationprotocolEnum::clp {141, "clp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::citrixImaClient {142, "citrixImaClient"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sms {143, "sms"};
+const Enum::YLeaf CfwapplicationprotocolEnum::citrix {144, "citrix"};
+const Enum::YLeaf CfwapplicationprotocolEnum::realSecure {145, "realSecure"};
+const Enum::YLeaf CfwapplicationprotocolEnum::lotusMtap {146, "lotusMtap"};
+const Enum::YLeaf CfwapplicationprotocolEnum::cifs {147, "cifs"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msDotnetster {148, "msDotnetster"};
+const Enum::YLeaf CfwapplicationprotocolEnum::tarantella {149, "tarantella"};
+const Enum::YLeaf CfwapplicationprotocolEnum::fcipPort {150, "fcipPort"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ssp {151, "ssp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::iscsiTarget {152, "iscsiTarget"};
+const Enum::YLeaf CfwapplicationprotocolEnum::mySql {153, "mySql"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msClusterNet {154, "msClusterNet"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ldapAdmin {155, "ldapAdmin"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ieee80211Iapp {156, "ieee80211Iapp"};
+const Enum::YLeaf CfwapplicationprotocolEnum::oemAgent {157, "oemAgent"};
+const Enum::YLeaf CfwapplicationprotocolEnum::rtcPmPort {158, "rtcPmPort"};
+const Enum::YLeaf CfwapplicationprotocolEnum::dbControlAgent {159, "dbControlAgent"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ipsecMsft {160, "ipsecMsft"};
+const Enum::YLeaf CfwapplicationprotocolEnum::sipTls {161, "sipTls"};
+const Enum::YLeaf CfwapplicationprotocolEnum::aim {162, "aim"};
+const Enum::YLeaf CfwapplicationprotocolEnum::pcAnyWhereData {163, "pcAnyWhereData"};
+const Enum::YLeaf CfwapplicationprotocolEnum::pcAnyWhereStat {164, "pcAnyWhereStat"};
+const Enum::YLeaf CfwapplicationprotocolEnum::x11 {165, "x11"};
+const Enum::YLeaf CfwapplicationprotocolEnum::ircu {166, "ircu"};
+const Enum::YLeaf CfwapplicationprotocolEnum::n2h2Server {167, "n2h2Server"};
+const Enum::YLeaf CfwapplicationprotocolEnum::h323CallSigAlt {168, "h323CallSigAlt"};
+const Enum::YLeaf CfwapplicationprotocolEnum::yahooMsgr {169, "yahooMsgr"};
+const Enum::YLeaf CfwapplicationprotocolEnum::msnMsgr {170, "msnMsgr"};
+
+const Enum::YLeaf CfwpolicytargettypeEnum::all {1, "all"};
+const Enum::YLeaf CfwpolicytargettypeEnum::other {2, "other"};
+const Enum::YLeaf CfwpolicytargettypeEnum::interface {3, "interface"};
+const Enum::YLeaf CfwpolicytargettypeEnum::zone {4, "zone"};
+const Enum::YLeaf CfwpolicytargettypeEnum::zonepair {5, "zonepair"};
+const Enum::YLeaf CfwpolicytargettypeEnum::user {6, "user"};
+const Enum::YLeaf CfwpolicytargettypeEnum::usergroup {7, "usergroup"};
+const Enum::YLeaf CfwpolicytargettypeEnum::context {8, "context"};
+
+
+}
+}
+

@@ -26,10 +26,8 @@ Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapRpf()
 	,rpf_neighbor(std::make_shared<Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor>())
 {
     group_map_information->parent = this;
-    children["group-map-information"] = group_map_information;
 
     rpf_neighbor->parent = this;
-    children["rpf-neighbor"] = rpf_neighbor;
 
     yang_name = "group-map-rpf"; yang_parent_name = "group-map-rpfs";
 }
@@ -78,7 +76,7 @@ std::string Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_segment
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -110,64 +108,38 @@ EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_entity_p
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-map-information")
     {
-        if(group_map_information != nullptr)
-        {
-            children["group-map-information"] = group_map_information;
-        }
-        else
+        if(group_map_information == nullptr)
         {
             group_map_information = std::make_shared<Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation>();
-            group_map_information->parent = this;
-            children["group-map-information"] = group_map_information;
         }
-        return children.at("group-map-information");
+        return group_map_information;
     }
 
     if(child_yang_name == "rpf-neighbor")
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
-        else
+        if(rpf_neighbor == nullptr)
         {
             rpf_neighbor = std::make_shared<Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor>();
-            rpf_neighbor->parent = this;
-            children["rpf-neighbor"] = rpf_neighbor;
         }
-        return children.at("rpf-neighbor");
+        return rpf_neighbor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_children() const
 {
-    if(children.find("group-map-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_map_information != nullptr)
     {
-        if(group_map_information != nullptr)
-        {
-            children["group-map-information"] = group_map_information;
-        }
+        children["group-map-information"] = group_map_information;
     }
 
-    if(children.find("rpf-neighbor") == children.end())
+    if(rpf_neighbor != nullptr)
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
+        children["rpf-neighbor"] = rpf_neighbor;
     }
 
     return children;
@@ -250,7 +222,7 @@ std::string Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -276,20 +248,12 @@ EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor:
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -324,10 +288,8 @@ Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Gr
 	,rp_address(std::make_shared<Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress>())
 {
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     rp_address->parent = this;
-    children["rp-address"] = rp_address;
 
     yang_name = "group-map-information"; yang_parent_name = "group-map-rpf";
 }
@@ -374,7 +336,7 @@ std::string Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInf
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -405,64 +367,38 @@ EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInfo
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     if(child_yang_name == "rp-address")
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
-        else
+        if(rp_address == nullptr)
         {
             rp_address = std::make_shared<Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress>();
-            rp_address->parent = this;
-            children["rp-address"] = rp_address;
         }
-        return children.at("rp-address");
+        return rp_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_children() const
 {
-    if(children.find("prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
-    if(children.find("rp-address") == children.end())
+    if(rp_address != nullptr)
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
+        children["rp-address"] = rp_address;
     }
 
     return children;
@@ -541,7 +477,7 @@ std::string Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInf
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -567,20 +503,12 @@ EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInfo
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -637,7 +565,7 @@ std::string Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInf
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -663,20 +591,12 @@ EntityPath Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInfo
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -844,7 +764,7 @@ std::string Pim::Standby::DefaultContext::Summary::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -907,20 +827,12 @@ EntityPath Pim::Standby::DefaultContext::Summary::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1094,10 +1006,8 @@ Pim::Standby::DefaultContext::Gre::Gre()
 	,gre_next_hops(std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops>())
 {
     gre_hashes->parent = this;
-    children["gre-hashes"] = gre_hashes;
 
     gre_next_hops->parent = this;
-    children["gre-next-hops"] = gre_next_hops;
 
     yang_name = "gre"; yang_parent_name = "default-context";
 }
@@ -1128,7 +1038,7 @@ std::string Pim::Standby::DefaultContext::Gre::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1151,64 +1061,38 @@ EntityPath Pim::Standby::DefaultContext::Gre::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gre-hashes")
     {
-        if(gre_hashes != nullptr)
-        {
-            children["gre-hashes"] = gre_hashes;
-        }
-        else
+        if(gre_hashes == nullptr)
         {
             gre_hashes = std::make_shared<Pim::Standby::DefaultContext::Gre::GreHashes>();
-            gre_hashes->parent = this;
-            children["gre-hashes"] = gre_hashes;
         }
-        return children.at("gre-hashes");
+        return gre_hashes;
     }
 
     if(child_yang_name == "gre-next-hops")
     {
-        if(gre_next_hops != nullptr)
-        {
-            children["gre-next-hops"] = gre_next_hops;
-        }
-        else
+        if(gre_next_hops == nullptr)
         {
             gre_next_hops = std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops>();
-            gre_next_hops->parent = this;
-            children["gre-next-hops"] = gre_next_hops;
         }
-        return children.at("gre-next-hops");
+        return gre_next_hops;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::get_children() const
 {
-    if(children.find("gre-hashes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(gre_hashes != nullptr)
     {
-        if(gre_hashes != nullptr)
-        {
-            children["gre-hashes"] = gre_hashes;
-        }
+        children["gre-hashes"] = gre_hashes;
     }
 
-    if(children.find("gre-next-hops") == children.end())
+    if(gre_next_hops != nullptr)
     {
-        if(gre_next_hops != nullptr)
-        {
-            children["gre-next-hops"] = gre_next_hops;
-        }
+        children["gre-next-hops"] = gre_next_hops;
     }
 
     return children;
@@ -1256,7 +1140,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreHashes::get_segment_path() con
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreHashes::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreHashes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1279,15 +1163,6 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreHashes::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreHashes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gre-hash")
     {
         for(auto const & c : gre_hash)
@@ -1295,28 +1170,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreHashes::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Gre::GreHashes::GreHash>();
         c->parent = this;
-        gre_hash.push_back(std::move(c));
-        children[segment_path] = gre_hash.back();
-        return children.at(segment_path);
+        gre_hash.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreHashes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreHashes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : gre_hash)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1328,9 +1199,9 @@ void Pim::Standby::DefaultContext::Gre::GreHashes::set_value(const std::string &
 
 Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::GreHash()
     :
+    source_address{YType::str, "source-address"},
     destination_address{YType::str, "destination-address"},
     ifname{YType::str, "ifname"},
-    source_address{YType::str, "source-address"},
     next_hop_interface{YType::str, "next-hop-interface"}
 {
     yang_name = "gre-hash"; yang_parent_name = "gre-hashes";
@@ -1342,31 +1213,31 @@ Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::~GreHash()
 
 bool Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::has_data() const
 {
-    return destination_address.is_set
+    return source_address.is_set
+	|| destination_address.is_set
 	|| ifname.is_set
-	|| source_address.is_set
 	|| next_hop_interface.is_set;
 }
 
 bool Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::has_operation() const
 {
     return is_set(operation)
+	|| is_set(source_address.operation)
 	|| is_set(destination_address.operation)
 	|| is_set(ifname.operation)
-	|| is_set(source_address.operation)
 	|| is_set(next_hop_interface.operation);
 }
 
 std::string Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "gre-hash" <<"[destination-address='" <<destination_address <<"']" <<"[ifname='" <<ifname <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "gre-hash" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']" <<"[ifname='" <<ifname <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1380,9 +1251,9 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
     if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (ifname.is_set || is_set(ifname.operation)) leaf_name_data.push_back(ifname.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
     if (next_hop_interface.is_set || is_set(next_hop_interface.operation)) leaf_name_data.push_back(next_hop_interface.get_name_leafdata());
 
 
@@ -1393,25 +1264,21 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_entity_pat
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "source-address")
+    {
+        source_address = value;
+    }
     if(value_path == "destination-address")
     {
         destination_address = value;
@@ -1419,10 +1286,6 @@ void Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::set_value(const std:
     if(value_path == "ifname")
     {
         ifname = value;
-    }
-    if(value_path == "source-address")
-    {
-        source_address = value;
     }
     if(value_path == "next-hop-interface")
     {
@@ -1468,7 +1331,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreNextHops::get_segment_path() c
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1491,15 +1354,6 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::get_entity_path(Entit
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gre-next-hop")
     {
         for(auto const & c : gre_next_hop)
@@ -1507,28 +1361,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop>();
         c->parent = this;
-        gre_next_hop.push_back(std::move(c));
-        children[segment_path] = gre_next_hop.back();
-        return children.at(segment_path);
+        gre_next_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreNextHops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreNextHops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : gre_next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1548,7 +1398,6 @@ Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GreNextHop()
     registered_address(std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress>())
 {
     registered_address->parent = this;
-    children["registered-address"] = registered_address;
 
     yang_name = "gre-next-hop"; yang_parent_name = "gre-next-hops";
 }
@@ -1595,7 +1444,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_segm
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1622,15 +1471,6 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_entit
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gre-path")
     {
         for(auto const & c : gre_path)
@@ -1638,51 +1478,38 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextH
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath>();
         c->parent = this;
-        gre_path.push_back(std::move(c));
-        children[segment_path] = gre_path.back();
-        return children.at(segment_path);
+        gre_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "registered-address")
     {
-        if(registered_address != nullptr)
-        {
-            children["registered-address"] = registered_address;
-        }
-        else
+        if(registered_address == nullptr)
         {
             registered_address = std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress>();
-            registered_address->parent = this;
-            children["registered-address"] = registered_address;
         }
-        return children.at("registered-address");
+        return registered_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : gre_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("registered-address") == children.end())
+    if(registered_address != nullptr)
     {
-        if(registered_address != nullptr)
-        {
-            children["registered-address"] = registered_address;
-        }
+        children["registered-address"] = registered_address;
     }
 
     return children;
@@ -1745,7 +1572,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::Register
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1771,20 +1598,12 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::Registere
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1816,10 +1635,8 @@ Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GrePath()
 	,gre_next_hop(std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_>())
 {
     gre_neighbor->parent = this;
-    children["gre-neighbor"] = gre_neighbor;
 
     gre_next_hop->parent = this;
-    children["gre-next-hop"] = gre_next_hop;
 
     yang_name = "gre-path"; yang_parent_name = "gre-next-hop";
 }
@@ -1860,7 +1677,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath:
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1888,64 +1705,38 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gre-neighbor")
     {
-        if(gre_neighbor != nullptr)
-        {
-            children["gre-neighbor"] = gre_neighbor;
-        }
-        else
+        if(gre_neighbor == nullptr)
         {
             gre_neighbor = std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor>();
-            gre_neighbor->parent = this;
-            children["gre-neighbor"] = gre_neighbor;
         }
-        return children.at("gre-neighbor");
+        return gre_neighbor;
     }
 
     if(child_yang_name == "gre-next-hop")
     {
-        if(gre_next_hop != nullptr)
-        {
-            children["gre-next-hop"] = gre_next_hop;
-        }
-        else
+        if(gre_next_hop == nullptr)
         {
             gre_next_hop = std::make_shared<Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_>();
-            gre_next_hop->parent = this;
-            children["gre-next-hop"] = gre_next_hop;
         }
-        return children.at("gre-next-hop");
+        return gre_next_hop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_children() const
 {
-    if(children.find("gre-neighbor") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(gre_neighbor != nullptr)
     {
-        if(gre_neighbor != nullptr)
-        {
-            children["gre-neighbor"] = gre_neighbor;
-        }
+        children["gre-neighbor"] = gre_neighbor;
     }
 
-    if(children.find("gre-next-hop") == children.end())
+    if(gre_next_hop != nullptr)
     {
-        if(gre_next_hop != nullptr)
-        {
-            children["gre-next-hop"] = gre_next_hop;
-        }
+        children["gre-next-hop"] = gre_next_hop;
     }
 
     return children;
@@ -2012,7 +1803,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath:
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2038,20 +1829,12 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2108,7 +1891,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath:
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2134,20 +1917,12 @@ EntityPath Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2205,7 +1980,7 @@ std::string Pim::Standby::DefaultContext::BidirDfWinners::get_segment_path() con
 
 }
 
-EntityPath Pim::Standby::DefaultContext::BidirDfWinners::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::BidirDfWinners::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2228,15 +2003,6 @@ EntityPath Pim::Standby::DefaultContext::BidirDfWinners::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::BidirDfWinners::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bidir-df-winner")
     {
         for(auto const & c : bidir_df_winner)
@@ -2244,28 +2010,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::BidirDfWinners::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner>();
         c->parent = this;
-        bidir_df_winner.push_back(std::move(c));
-        children[segment_path] = bidir_df_winner.back();
-        return children.at(segment_path);
+        bidir_df_winner.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::BidirDfWinners::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::BidirDfWinners::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bidir_df_winner)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2290,10 +2052,8 @@ Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::BidirDfWinner()
 	,rp_address_xr(std::make_shared<Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr>())
 {
     df_winner->parent = this;
-    children["df-winner"] = df_winner;
 
     rp_address_xr->parent = this;
-    children["rp-address-xr"] = rp_address_xr;
 
     yang_name = "bidir-df-winner"; yang_parent_name = "bidir-df-winners";
 }
@@ -2340,7 +2100,7 @@ std::string Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_seg
 
 }
 
-EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2371,64 +2131,38 @@ EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_enti
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "df-winner")
     {
-        if(df_winner != nullptr)
-        {
-            children["df-winner"] = df_winner;
-        }
-        else
+        if(df_winner == nullptr)
         {
             df_winner = std::make_shared<Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner>();
-            df_winner->parent = this;
-            children["df-winner"] = df_winner;
         }
-        return children.at("df-winner");
+        return df_winner;
     }
 
     if(child_yang_name == "rp-address-xr")
     {
-        if(rp_address_xr != nullptr)
-        {
-            children["rp-address-xr"] = rp_address_xr;
-        }
-        else
+        if(rp_address_xr == nullptr)
         {
             rp_address_xr = std::make_shared<Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr>();
-            rp_address_xr->parent = this;
-            children["rp-address-xr"] = rp_address_xr;
         }
-        return children.at("rp-address-xr");
+        return rp_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_children() const
 {
-    if(children.find("df-winner") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(df_winner != nullptr)
     {
-        if(df_winner != nullptr)
-        {
-            children["df-winner"] = df_winner;
-        }
+        children["df-winner"] = df_winner;
     }
 
-    if(children.find("rp-address-xr") == children.end())
+    if(rp_address_xr != nullptr)
     {
-        if(rp_address_xr != nullptr)
-        {
-            children["rp-address-xr"] = rp_address_xr;
-        }
+        children["rp-address-xr"] = rp_address_xr;
     }
 
     return children;
@@ -2507,7 +2241,7 @@ std::string Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddre
 
 }
 
-EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2533,20 +2267,12 @@ EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddres
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2603,7 +2329,7 @@ std::string Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinne
 
 }
 
-EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2629,20 +2355,12 @@ EntityPath Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2700,7 +2418,7 @@ std::string Pim::Standby::DefaultContext::TableContexts::get_segment_path() cons
 
 }
 
-EntityPath Pim::Standby::DefaultContext::TableContexts::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::TableContexts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2723,15 +2441,6 @@ EntityPath Pim::Standby::DefaultContext::TableContexts::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::TableContexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "table-context")
     {
         for(auto const & c : table_context)
@@ -2739,28 +2448,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::TableContexts::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::TableContexts::TableContext>();
         c->parent = this;
-        table_context.push_back(std::move(c));
-        children[segment_path] = table_context.back();
-        return children.at(segment_path);
+        table_context.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::TableContexts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::TableContexts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : table_context)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2837,7 +2542,7 @@ std::string Pim::Standby::DefaultContext::TableContexts::TableContext::get_segme
 
 }
 
-EntityPath Pim::Standby::DefaultContext::TableContexts::TableContext::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::TableContexts::TableContext::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2873,20 +2578,12 @@ EntityPath Pim::Standby::DefaultContext::TableContexts::TableContext::get_entity
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::TableContexts::TableContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::TableContexts::TableContext::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::TableContexts::TableContext::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2984,7 +2681,7 @@ std::string Pim::Standby::DefaultContext::NeighborSummaries::get_segment_path() 
 
 }
 
-EntityPath Pim::Standby::DefaultContext::NeighborSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::NeighborSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3007,15 +2704,6 @@ EntityPath Pim::Standby::DefaultContext::NeighborSummaries::get_entity_path(Enti
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::NeighborSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-summary")
     {
         for(auto const & c : neighbor_summary)
@@ -3023,28 +2711,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::NeighborSummaries::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary>();
         c->parent = this;
-        neighbor_summary.push_back(std::move(c));
-        children[segment_path] = neighbor_summary.back();
-        return children.at(segment_path);
+        neighbor_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::NeighborSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::NeighborSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3091,7 +2775,7 @@ std::string Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::ge
 
 }
 
-EntityPath Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3117,20 +2801,12 @@ EntityPath Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::get
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3305,10 +2981,8 @@ Pim::Standby::DefaultContext::Context::Context()
 	,rpf_default_table(std::make_shared<Pim::Standby::DefaultContext::Context::RpfDefaultTable>())
 {
     remote_default_group->parent = this;
-    children["remote-default-group"] = remote_default_group;
 
     rpf_default_table->parent = this;
-    children["rpf-default-table"] = rpf_default_table;
 
     yang_name = "context"; yang_parent_name = "default-context";
 }
@@ -3674,7 +3348,7 @@ std::string Pim::Standby::DefaultContext::Context::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Context::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Context::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3846,15 +3520,6 @@ EntityPath Pim::Standby::DefaultContext::Context::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "anycast-rp-range")
     {
         for(auto const & c : anycast_rp_range)
@@ -3862,15 +3527,13 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Context::AnycastRpRange>();
         c->parent = this;
-        anycast_rp_range.push_back(std::move(c));
-        children[segment_path] = anycast_rp_range.back();
-        return children.at(segment_path);
+        anycast_rp_range.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "export-route-target")
@@ -3880,15 +3543,13 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Context::ExportRouteTarget>();
         c->parent = this;
-        export_route_target.push_back(std::move(c));
-        children[segment_path] = export_route_target.back();
-        return children.at(segment_path);
+        export_route_target.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "import-route-target")
@@ -3898,90 +3559,62 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Context::ImportRouteTarget>();
         c->parent = this;
-        import_route_target.push_back(std::move(c));
-        children[segment_path] = import_route_target.back();
-        return children.at(segment_path);
+        import_route_target.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "remote-default-group")
     {
-        if(remote_default_group != nullptr)
-        {
-            children["remote-default-group"] = remote_default_group;
-        }
-        else
+        if(remote_default_group == nullptr)
         {
             remote_default_group = std::make_shared<Pim::Standby::DefaultContext::Context::RemoteDefaultGroup>();
-            remote_default_group->parent = this;
-            children["remote-default-group"] = remote_default_group;
         }
-        return children.at("remote-default-group");
+        return remote_default_group;
     }
 
     if(child_yang_name == "rpf-default-table")
     {
-        if(rpf_default_table != nullptr)
-        {
-            children["rpf-default-table"] = rpf_default_table;
-        }
-        else
+        if(rpf_default_table == nullptr)
         {
             rpf_default_table = std::make_shared<Pim::Standby::DefaultContext::Context::RpfDefaultTable>();
-            rpf_default_table->parent = this;
-            children["rpf-default-table"] = rpf_default_table;
         }
-        return children.at("rpf-default-table");
+        return rpf_default_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Context::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Context::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : anycast_rp_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : export_route_target)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : import_route_target)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("remote-default-group") == children.end())
+    if(remote_default_group != nullptr)
     {
-        if(remote_default_group != nullptr)
-        {
-            children["remote-default-group"] = remote_default_group;
-        }
+        children["remote-default-group"] = remote_default_group;
     }
 
-    if(children.find("rpf-default-table") == children.end())
+    if(rpf_default_table != nullptr)
     {
-        if(rpf_default_table != nullptr)
-        {
-            children["rpf-default-table"] = rpf_default_table;
-        }
+        children["rpf-default-table"] = rpf_default_table;
     }
 
     return children;
@@ -4620,7 +4253,7 @@ std::string Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::get_segme
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4646,20 +4279,12 @@ EntityPath Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::get_entity
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4740,7 +4365,7 @@ std::string Pim::Standby::DefaultContext::Context::RpfDefaultTable::get_segment_
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Context::RpfDefaultTable::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Context::RpfDefaultTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4774,20 +4399,12 @@ EntityPath Pim::Standby::DefaultContext::Context::RpfDefaultTable::get_entity_pa
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::RpfDefaultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Context::RpfDefaultTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Context::RpfDefaultTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4888,7 +4505,7 @@ std::string Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_segmen
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4918,20 +4535,12 @@ EntityPath Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_entity_
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5016,7 +4625,7 @@ std::string Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_segmen
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5046,20 +4655,12 @@ EntityPath Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_entity_
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5103,7 +4704,6 @@ Pim::Standby::DefaultContext::Context::AnycastRpRange::AnycastRpRange()
     prefix(std::make_shared<Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix>())
 {
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     yang_name = "anycast-rp-range"; yang_parent_name = "context";
 }
@@ -5136,7 +4736,7 @@ std::string Pim::Standby::DefaultContext::Context::AnycastRpRange::get_segment_p
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Context::AnycastRpRange::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Context::AnycastRpRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5161,41 +4761,24 @@ EntityPath Pim::Standby::DefaultContext::Context::AnycastRpRange::get_entity_pat
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::AnycastRpRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Context::AnycastRpRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Context::AnycastRpRange::get_children() const
 {
-    if(children.find("prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
     return children;
@@ -5250,7 +4833,7 @@ std::string Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::get_s
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5276,20 +4859,12 @@ EntityPath Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::get_en
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5347,7 +4922,7 @@ std::string Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::get_segm
 
 }
 
-EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5370,15 +4945,6 @@ EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::get_entit
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology-entry-flag-route-count")
     {
         for(auto const & c : topology_entry_flag_route_count)
@@ -5386,28 +4952,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::TopologyEntryFlagRouteCoun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount>();
         c->parent = this;
-        topology_entry_flag_route_count.push_back(std::move(c));
-        children[segment_path] = topology_entry_flag_route_count.back();
-        return children.at(segment_path);
+        topology_entry_flag_route_count.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology_entry_flag_route_count)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5430,7 +4992,6 @@ Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRou
     group_address(std::make_shared<Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress>())
 {
     group_address->parent = this;
-    children["group-address"] = group_address;
 
     yang_name = "topology-entry-flag-route-count"; yang_parent_name = "topology-entry-flag-route-counts";
 }
@@ -5473,7 +5034,7 @@ std::string Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::Topology
 
 }
 
-EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5503,41 +5064,24 @@ EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyE
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address")
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
-        else
+        if(group_address == nullptr)
         {
             group_address = std::make_shared<Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress>();
-            group_address->parent = this;
-            children["group-address"] = group_address;
         }
-        return children.at("group-address");
+        return group_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_children() const
 {
-    if(children.find("group-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address != nullptr)
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
+        children["group-address"] = group_address;
     }
 
     return children;
@@ -5612,7 +5156,7 @@ std::string Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::Topology
 
 }
 
-EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5638,20 +5182,12 @@ EntityPath Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyE
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5677,10 +5213,8 @@ Pim::Standby::DefaultContext::RpfRedirect::RpfRedirect()
 	,redirect_route_databases(std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases>())
 {
     bundle_interfaces->parent = this;
-    children["bundle-interfaces"] = bundle_interfaces;
 
     redirect_route_databases->parent = this;
-    children["redirect-route-databases"] = redirect_route_databases;
 
     yang_name = "rpf-redirect"; yang_parent_name = "default-context";
 }
@@ -5711,7 +5245,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5734,64 +5268,38 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-interfaces")
     {
-        if(bundle_interfaces != nullptr)
-        {
-            children["bundle-interfaces"] = bundle_interfaces;
-        }
-        else
+        if(bundle_interfaces == nullptr)
         {
             bundle_interfaces = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces>();
-            bundle_interfaces->parent = this;
-            children["bundle-interfaces"] = bundle_interfaces;
         }
-        return children.at("bundle-interfaces");
+        return bundle_interfaces;
     }
 
     if(child_yang_name == "redirect-route-databases")
     {
-        if(redirect_route_databases != nullptr)
-        {
-            children["redirect-route-databases"] = redirect_route_databases;
-        }
-        else
+        if(redirect_route_databases == nullptr)
         {
             redirect_route_databases = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases>();
-            redirect_route_databases->parent = this;
-            children["redirect-route-databases"] = redirect_route_databases;
         }
-        return children.at("redirect-route-databases");
+        return redirect_route_databases;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::get_children() const
 {
-    if(children.find("bundle-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_interfaces != nullptr)
     {
-        if(bundle_interfaces != nullptr)
-        {
-            children["bundle-interfaces"] = bundle_interfaces;
-        }
+        children["bundle-interfaces"] = bundle_interfaces;
     }
 
-    if(children.find("redirect-route-databases") == children.end())
+    if(redirect_route_databases != nullptr)
     {
-        if(redirect_route_databases != nullptr)
-        {
-            children["redirect-route-databases"] = redirect_route_databases;
-        }
+        children["redirect-route-databases"] = redirect_route_databases;
     }
 
     return children;
@@ -5839,7 +5347,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::g
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5862,15 +5370,6 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::ge
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "redirect-route-database")
     {
         for(auto const & c : redirect_route_database)
@@ -5878,28 +5377,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRoute
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase>();
         c->parent = this;
-        redirect_route_database.push_back(std::move(c));
-        children[segment_path] = redirect_route_database.back();
-        return children.at(segment_path);
+        redirect_route_database.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : redirect_route_database)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5920,10 +5415,8 @@ Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRoute
 	,source_address_xr(std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     source_address_xr->parent = this;
-    children["source-address-xr"] = source_address_xr;
 
     yang_name = "redirect-route-database"; yang_parent_name = "redirect-route-databases";
 }
@@ -5972,7 +5465,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::R
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5999,28 +5492,13 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Re
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "interface")
@@ -6030,59 +5508,43 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRoute
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "source-address-xr")
     {
-        if(source_address_xr != nullptr)
-        {
-            children["source-address-xr"] = source_address_xr;
-        }
-        else
+        if(source_address_xr == nullptr)
         {
             source_address_xr = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr>();
-            source_address_xr->parent = this;
-            children["source-address-xr"] = source_address_xr;
         }
-        return children.at("source-address-xr");
+        return source_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("source-address-xr") == children.end())
+    if(source_address_xr != nullptr)
     {
-        if(source_address_xr != nullptr)
-        {
-            children["source-address-xr"] = source_address_xr;
-        }
+        children["source-address-xr"] = source_address_xr;
     }
 
     return children;
@@ -6145,7 +5607,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::R
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6171,20 +5633,12 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Re
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6241,7 +5695,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::R
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6267,20 +5721,12 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Re
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6312,7 +5758,6 @@ Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRoute
     rpf_address(std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress>())
 {
     rpf_address->parent = this;
-    children["rpf-address"] = rpf_address;
 
     yang_name = "interface"; yang_parent_name = "redirect-route-database";
 }
@@ -6353,7 +5798,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::R
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6382,41 +5827,24 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Re
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rpf-address")
     {
-        if(rpf_address != nullptr)
-        {
-            children["rpf-address"] = rpf_address;
-        }
-        else
+        if(rpf_address == nullptr)
         {
             rpf_address = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress>();
-            rpf_address->parent = this;
-            children["rpf-address"] = rpf_address;
         }
-        return children.at("rpf-address");
+        return rpf_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_children() const
 {
-    if(children.find("rpf-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rpf_address != nullptr)
     {
-        if(rpf_address != nullptr)
-        {
-            children["rpf-address"] = rpf_address;
-        }
+        children["rpf-address"] = rpf_address;
     }
 
     return children;
@@ -6487,7 +5915,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::R
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6513,20 +5941,12 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Re
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6584,7 +6004,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::get_seg
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6607,15 +6027,6 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::get_enti
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-interface")
     {
         for(auto const & c : bundle_interface)
@@ -6623,28 +6034,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::BundleInterfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface>();
         c->parent = this;
-        bundle_interface.push_back(std::move(c));
-        children[segment_path] = bundle_interface.back();
-        return children.at(segment_path);
+        bundle_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bundle_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6715,7 +6122,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleI
 
 }
 
-EntityPath Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6749,20 +6156,12 @@ EntityPath Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleIn
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6852,7 +6251,7 @@ std::string Pim::Standby::DefaultContext::Tunnels::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6875,15 +6274,6 @@ EntityPath Pim::Standby::DefaultContext::Tunnels::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -6891,28 +6281,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Tunnels::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6933,16 +6319,12 @@ Pim::Standby::DefaultContext::Tunnels::Tunnel::Tunnel()
 	,source_address_netio(std::make_shared<Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio>())
 {
     group_address_netio->parent = this;
-    children["group-address-netio"] = group_address_netio;
 
     rp_address->parent = this;
-    children["rp-address"] = rp_address;
 
     source_address->parent = this;
-    children["source-address"] = source_address;
 
     source_address_netio->parent = this;
-    children["source-address-netio"] = source_address_netio;
 
     yang_name = "tunnel"; yang_parent_name = "tunnels";
 }
@@ -6981,7 +6363,7 @@ std::string Pim::Standby::DefaultContext::Tunnels::Tunnel::get_segment_path() co
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7006,110 +6388,66 @@ EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::get_entity_path(Entity
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-netio")
     {
-        if(group_address_netio != nullptr)
-        {
-            children["group-address-netio"] = group_address_netio;
-        }
-        else
+        if(group_address_netio == nullptr)
         {
             group_address_netio = std::make_shared<Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio>();
-            group_address_netio->parent = this;
-            children["group-address-netio"] = group_address_netio;
         }
-        return children.at("group-address-netio");
+        return group_address_netio;
     }
 
     if(child_yang_name == "rp-address")
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
-        else
+        if(rp_address == nullptr)
         {
             rp_address = std::make_shared<Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress>();
-            rp_address->parent = this;
-            children["rp-address"] = rp_address;
         }
-        return children.at("rp-address");
+        return rp_address;
     }
 
     if(child_yang_name == "source-address")
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
-        else
+        if(source_address == nullptr)
         {
             source_address = std::make_shared<Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress>();
-            source_address->parent = this;
-            children["source-address"] = source_address;
         }
-        return children.at("source-address");
+        return source_address;
     }
 
     if(child_yang_name == "source-address-netio")
     {
-        if(source_address_netio != nullptr)
-        {
-            children["source-address-netio"] = source_address_netio;
-        }
-        else
+        if(source_address_netio == nullptr)
         {
             source_address_netio = std::make_shared<Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio>();
-            source_address_netio->parent = this;
-            children["source-address-netio"] = source_address_netio;
         }
-        return children.at("source-address-netio");
+        return source_address_netio;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Tunnels::Tunnel::get_children() const
 {
-    if(children.find("group-address-netio") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_netio != nullptr)
     {
-        if(group_address_netio != nullptr)
-        {
-            children["group-address-netio"] = group_address_netio;
-        }
+        children["group-address-netio"] = group_address_netio;
     }
 
-    if(children.find("rp-address") == children.end())
+    if(rp_address != nullptr)
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
+        children["rp-address"] = rp_address;
     }
 
-    if(children.find("source-address") == children.end())
+    if(source_address != nullptr)
     {
-        if(source_address != nullptr)
-        {
-            children["source-address"] = source_address;
-        }
+        children["source-address"] = source_address;
     }
 
-    if(children.find("source-address-netio") == children.end())
+    if(source_address_netio != nullptr)
     {
-        if(source_address_netio != nullptr)
-        {
-            children["source-address-netio"] = source_address_netio;
-        }
+        children["source-address-netio"] = source_address_netio;
     }
 
     return children;
@@ -7164,7 +6502,7 @@ std::string Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::get_se
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7190,20 +6528,12 @@ EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::get_ent
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7260,7 +6590,7 @@ std::string Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::get_segmen
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7286,20 +6616,12 @@ EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::get_entity_
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7356,7 +6678,7 @@ std::string Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::g
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7382,20 +6704,12 @@ EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::ge
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7452,7 +6766,7 @@ std::string Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::ge
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7478,20 +6792,12 @@ EntityPath Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7549,7 +6855,7 @@ std::string Pim::Standby::DefaultContext::MulticastStaticRoutes::get_segment_pat
 
 }
 
-EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7572,15 +6878,6 @@ EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::get_entity_path(
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::MulticastStaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multicast-static-route")
     {
         for(auto const & c : multicast_static_route)
@@ -7588,28 +6885,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::MulticastStaticRoutes::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute>();
         c->parent = this;
-        multicast_static_route.push_back(std::move(c));
-        children[segment_path] = multicast_static_route.back();
-        return children.at(segment_path);
+        multicast_static_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::MulticastStaticRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::MulticastStaticRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : multicast_static_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7632,10 +6925,8 @@ Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Multi
 	,prefix(std::make_shared<Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix>())
 {
     nexthop->parent = this;
-    children["nexthop"] = nexthop;
 
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     yang_name = "multicast-static-route"; yang_parent_name = "multicast-static-routes";
 }
@@ -7678,7 +6969,7 @@ std::string Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStatic
 
 }
 
-EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7707,64 +6998,38 @@ EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticR
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nexthop")
     {
-        if(nexthop != nullptr)
-        {
-            children["nexthop"] = nexthop;
-        }
-        else
+        if(nexthop == nullptr)
         {
             nexthop = std::make_shared<Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop>();
-            nexthop->parent = this;
-            children["nexthop"] = nexthop;
         }
-        return children.at("nexthop");
+        return nexthop;
     }
 
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_children() const
 {
-    if(children.find("nexthop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nexthop != nullptr)
     {
-        if(nexthop != nullptr)
-        {
-            children["nexthop"] = nexthop;
-        }
+        children["nexthop"] = nexthop;
     }
 
-    if(children.find("prefix") == children.end())
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
     return children;
@@ -7835,7 +7100,7 @@ std::string Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStatic
 
 }
 
-EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7861,20 +7126,12 @@ EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticR
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7931,7 +7188,7 @@ std::string Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStatic
 
 }
 
-EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7957,20 +7214,12 @@ EntityPath Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticR
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8028,7 +7277,7 @@ std::string Pim::Standby::DefaultContext::GroupMapMatchSources::get_segment_path
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8051,15 +7300,6 @@ EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::get_entity_path(E
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapMatchSources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-map-match-source")
     {
         for(auto const & c : group_map_match_source)
@@ -8067,28 +7307,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapMatchSources::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource>();
         c->parent = this;
-        group_map_match_source.push_back(std::move(c));
-        children[segment_path] = group_map_match_source.back();
-        return children.at(segment_path);
+        group_map_match_source.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapMatchSources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapMatchSources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group_map_match_source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8109,10 +7345,8 @@ Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMa
 	,source_of_information(std::make_shared<Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation>())
 {
     group_map_information->parent = this;
-    children["group-map-information"] = group_map_information;
 
     source_of_information->parent = this;
-    children["source-of-information"] = source_of_information;
 
     yang_name = "group-map-match-source"; yang_parent_name = "group-map-match-sources";
 }
@@ -8151,7 +7385,7 @@ std::string Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSou
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8178,64 +7412,38 @@ EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSour
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-map-information")
     {
-        if(group_map_information != nullptr)
-        {
-            children["group-map-information"] = group_map_information;
-        }
-        else
+        if(group_map_information == nullptr)
         {
             group_map_information = std::make_shared<Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation>();
-            group_map_information->parent = this;
-            children["group-map-information"] = group_map_information;
         }
-        return children.at("group-map-information");
+        return group_map_information;
     }
 
     if(child_yang_name == "source-of-information")
     {
-        if(source_of_information != nullptr)
-        {
-            children["source-of-information"] = source_of_information;
-        }
-        else
+        if(source_of_information == nullptr)
         {
             source_of_information = std::make_shared<Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation>();
-            source_of_information->parent = this;
-            children["source-of-information"] = source_of_information;
         }
-        return children.at("source-of-information");
+        return source_of_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::get_children() const
 {
-    if(children.find("group-map-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_map_information != nullptr)
     {
-        if(group_map_information != nullptr)
-        {
-            children["group-map-information"] = group_map_information;
-        }
+        children["group-map-information"] = group_map_information;
     }
 
-    if(children.find("source-of-information") == children.end())
+    if(source_of_information != nullptr)
     {
-        if(source_of_information != nullptr)
-        {
-            children["source-of-information"] = source_of_information;
-        }
+        children["source-of-information"] = source_of_information;
     }
 
     return children;
@@ -8298,7 +7506,7 @@ std::string Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSou
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8324,20 +7532,12 @@ EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSour
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8372,10 +7572,8 @@ Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMa
 	,rp_address(std::make_shared<Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress>())
 {
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     rp_address->parent = this;
-    children["rp-address"] = rp_address;
 
     yang_name = "group-map-information"; yang_parent_name = "group-map-match-source";
 }
@@ -8422,7 +7620,7 @@ std::string Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSou
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8453,64 +7651,38 @@ EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSour
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     if(child_yang_name == "rp-address")
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
-        else
+        if(rp_address == nullptr)
         {
             rp_address = std::make_shared<Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress>();
-            rp_address->parent = this;
-            children["rp-address"] = rp_address;
         }
-        return children.at("rp-address");
+        return rp_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::get_children() const
 {
-    if(children.find("prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
-    if(children.find("rp-address") == children.end())
+    if(rp_address != nullptr)
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
+        children["rp-address"] = rp_address;
     }
 
     return children;
@@ -8589,7 +7761,7 @@ std::string Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSou
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8615,20 +7787,12 @@ EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSour
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8685,7 +7849,7 @@ std::string Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSou
 
 }
 
-EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8711,20 +7875,12 @@ EntityPath Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSour
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8782,7 +7938,7 @@ std::string Pim::Standby::DefaultContext::Neighbors::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8805,15 +7961,6 @@ EntityPath Pim::Standby::DefaultContext::Neighbors::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -8821,28 +7968,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Neighbors::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8941,7 +8084,7 @@ std::string Pim::Standby::DefaultContext::Neighbors::Neighbor::get_segment_path(
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8981,15 +8124,6 @@ EntityPath Pim::Standby::DefaultContext::Neighbors::Neighbor::get_entity_path(En
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-address-xr")
     {
         for(auto const & c : neighbor_address_xr)
@@ -8997,28 +8131,24 @@ std::shared_ptr<Entity> Pim::Standby::DefaultContext::Neighbors::Neighbor::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr>();
         c->parent = this;
-        neighbor_address_xr.push_back(std::move(c));
-        children[segment_path] = neighbor_address_xr.back();
-        return children.at(segment_path);
+        neighbor_address_xr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_address_xr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9133,7 +8263,7 @@ std::string Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr
 
 }
 
-EntityPath Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9159,20 +8289,12 @@ EntityPath Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr:
 
 std::shared_ptr<Entity> Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9201,19 +8323,14 @@ Pim::Standby::Process::Process()
 	,summary(std::make_shared<Pim::Standby::Process::Summary>())
 {
     checkpoint_statistics->parent = this;
-    children["checkpoint-statistics"] = checkpoint_statistics;
 
     issu->parent = this;
-    children["issu"] = issu;
 
     nsf->parent = this;
-    children["nsf"] = nsf;
 
     nsr->parent = this;
-    children["nsr"] = nsr;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "process"; yang_parent_name = "standby";
 }
@@ -9250,7 +8367,7 @@ std::string Pim::Standby::Process::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Process::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9273,133 +8390,80 @@ EntityPath Pim::Standby::Process::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pim::Standby::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-statistics")
     {
-        if(checkpoint_statistics != nullptr)
-        {
-            children["checkpoint-statistics"] = checkpoint_statistics;
-        }
-        else
+        if(checkpoint_statistics == nullptr)
         {
             checkpoint_statistics = std::make_shared<Pim::Standby::Process::CheckpointStatistics>();
-            checkpoint_statistics->parent = this;
-            children["checkpoint-statistics"] = checkpoint_statistics;
         }
-        return children.at("checkpoint-statistics");
+        return checkpoint_statistics;
     }
 
     if(child_yang_name == "issu")
     {
-        if(issu != nullptr)
-        {
-            children["issu"] = issu;
-        }
-        else
+        if(issu == nullptr)
         {
             issu = std::make_shared<Pim::Standby::Process::Issu>();
-            issu->parent = this;
-            children["issu"] = issu;
         }
-        return children.at("issu");
+        return issu;
     }
 
     if(child_yang_name == "nsf")
     {
-        if(nsf != nullptr)
-        {
-            children["nsf"] = nsf;
-        }
-        else
+        if(nsf == nullptr)
         {
             nsf = std::make_shared<Pim::Standby::Process::Nsf>();
-            nsf->parent = this;
-            children["nsf"] = nsf;
         }
-        return children.at("nsf");
+        return nsf;
     }
 
     if(child_yang_name == "nsr")
     {
-        if(nsr != nullptr)
-        {
-            children["nsr"] = nsr;
-        }
-        else
+        if(nsr == nullptr)
         {
             nsr = std::make_shared<Pim::Standby::Process::Nsr>();
-            nsr->parent = this;
-            children["nsr"] = nsr;
         }
-        return children.at("nsr");
+        return nsr;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Pim::Standby::Process::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Process::get_children() const
 {
-    if(children.find("checkpoint-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(checkpoint_statistics != nullptr)
     {
-        if(checkpoint_statistics != nullptr)
-        {
-            children["checkpoint-statistics"] = checkpoint_statistics;
-        }
+        children["checkpoint-statistics"] = checkpoint_statistics;
     }
 
-    if(children.find("issu") == children.end())
+    if(issu != nullptr)
     {
-        if(issu != nullptr)
-        {
-            children["issu"] = issu;
-        }
+        children["issu"] = issu;
     }
 
-    if(children.find("nsf") == children.end())
+    if(nsf != nullptr)
     {
-        if(nsf != nullptr)
-        {
-            children["nsf"] = nsf;
-        }
+        children["nsf"] = nsf;
     }
 
-    if(children.find("nsr") == children.end())
+    if(nsr != nullptr)
     {
-        if(nsr != nullptr)
-        {
-            children["nsr"] = nsr;
-        }
+        children["nsr"] = nsr;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -9447,7 +8511,7 @@ std::string Pim::Standby::Process::CheckpointStatistics::get_segment_path() cons
 
 }
 
-EntityPath Pim::Standby::Process::CheckpointStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Process::CheckpointStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9470,15 +8534,6 @@ EntityPath Pim::Standby::Process::CheckpointStatistics::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Pim::Standby::Process::CheckpointStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "checkpoint-table")
     {
         for(auto const & c : checkpoint_table)
@@ -9486,28 +8541,24 @@ std::shared_ptr<Entity> Pim::Standby::Process::CheckpointStatistics::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Process::CheckpointStatistics::CheckpointTable>();
         c->parent = this;
-        checkpoint_table.push_back(std::move(c));
-        children[segment_path] = checkpoint_table.back();
-        return children.at(segment_path);
+        checkpoint_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Process::CheckpointStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Process::CheckpointStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : checkpoint_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9566,7 +8617,7 @@ std::string Pim::Standby::Process::CheckpointStatistics::CheckpointTable::get_se
 
 }
 
-EntityPath Pim::Standby::Process::CheckpointStatistics::CheckpointTable::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Process::CheckpointStatistics::CheckpointTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9594,20 +8645,12 @@ EntityPath Pim::Standby::Process::CheckpointStatistics::CheckpointTable::get_ent
 
 std::shared_ptr<Entity> Pim::Standby::Process::CheckpointStatistics::CheckpointTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Process::CheckpointStatistics::CheckpointTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Process::CheckpointStatistics::CheckpointTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9698,7 +8741,7 @@ std::string Pim::Standby::Process::Nsr::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Process::Nsr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Process::Nsr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9734,20 +8777,12 @@ EntityPath Pim::Standby::Process::Nsr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pim::Standby::Process::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Process::Nsr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Process::Nsr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9955,7 +8990,7 @@ std::string Pim::Standby::Process::Summary::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Process::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Process::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10018,20 +9053,12 @@ EntityPath Pim::Standby::Process::Summary::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Pim::Standby::Process::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Process::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Process::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10266,7 +9293,7 @@ std::string Pim::Standby::Process::Nsf::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Process::Nsf::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Process::Nsf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10302,20 +9329,12 @@ EntityPath Pim::Standby::Process::Nsf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pim::Standby::Process::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Process::Nsf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Process::Nsf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10454,7 +9473,7 @@ std::string Pim::Standby::Process::Issu::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Process::Issu::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Process::Issu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10494,20 +9513,12 @@ EntityPath Pim::Standby::Process::Issu::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pim::Standby::Process::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Process::Issu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Process::Issu::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10621,7 +9632,7 @@ std::string Pim::Standby::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10644,15 +9655,6 @@ EntityPath Pim::Standby::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -10660,28 +9662,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10733,112 +9731,76 @@ Pim::Standby::Vrfs::Vrf::Vrf()
 	,tunnels(std::make_shared<Pim::Standby::Vrfs::Vrf::Tunnels>())
 {
     auto_rp->parent = this;
-    children["auto-rp"] = auto_rp;
 
     bgp_afs->parent = this;
-    children["bgp-afs"] = bgp_afs;
 
     bidir_df_states->parent = this;
-    children["bidir-df-states"] = bidir_df_states;
 
     bidir_df_winners->parent = this;
-    children["bidir-df-winners"] = bidir_df_winners;
 
     bsr->parent = this;
-    children["bsr"] = bsr;
 
     context->parent = this;
-    children["context"] = context;
 
     gre->parent = this;
-    children["gre"] = gre;
 
     group_map_match_rpfs->parent = this;
-    children["group-map-match-rpfs"] = group_map_match_rpfs;
 
     group_map_match_sources->parent = this;
-    children["group-map-match-sources"] = group_map_match_sources;
 
     group_map_rpfs->parent = this;
-    children["group-map-rpfs"] = group_map_rpfs;
 
     group_map_sources->parent = this;
-    children["group-map-sources"] = group_map_sources;
 
     ifrs_interfaces->parent = this;
-    children["ifrs-interfaces"] = ifrs_interfaces;
 
     ifrs_summary->parent = this;
-    children["ifrs-summary"] = ifrs_summary;
 
     interface_old_formats->parent = this;
-    children["interface-old-formats"] = interface_old_formats;
 
     interface_statistics->parent = this;
-    children["interface-statistics"] = interface_statistics;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     jp_statistics->parent = this;
-    children["jp-statistics"] = jp_statistics;
 
     mib_databases->parent = this;
-    children["mib-databases"] = mib_databases;
 
     multicast_static_routes->parent = this;
-    children["multicast-static-routes"] = multicast_static_routes;
 
     neighbor_old_formats->parent = this;
-    children["neighbor-old-formats"] = neighbor_old_formats;
 
     neighbor_summaries->parent = this;
-    children["neighbor-summaries"] = neighbor_summaries;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     net_io_tunnels->parent = this;
-    children["net-io-tunnels"] = net_io_tunnels;
 
     ranges->parent = this;
-    children["ranges"] = ranges;
 
     route_policy->parent = this;
-    children["route-policy"] = route_policy;
 
     rpf_redirect->parent = this;
-    children["rpf-redirect"] = rpf_redirect;
 
     rpf_summary->parent = this;
-    children["rpf-summary"] = rpf_summary;
 
     safs->parent = this;
-    children["safs"] = safs;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     table_contexts->parent = this;
-    children["table-contexts"] = table_contexts;
 
     topologies->parent = this;
-    children["topologies"] = topologies;
 
     topology_entry_flag_route_counts->parent = this;
-    children["topology-entry-flag-route-counts"] = topology_entry_flag_route_counts;
 
     topology_interface_flag_route_counts->parent = this;
-    children["topology-interface-flag-route-counts"] = topology_interface_flag_route_counts;
 
     topology_route_count->parent = this;
-    children["topology-route-count"] = topology_route_count;
 
     traffic_counters->parent = this;
-    children["traffic-counters"] = traffic_counters;
 
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -10939,7 +9901,7 @@ std::string Pim::Standby::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10963,846 +9925,514 @@ EntityPath Pim::Standby::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto-rp")
     {
-        if(auto_rp != nullptr)
-        {
-            children["auto-rp"] = auto_rp;
-        }
-        else
+        if(auto_rp == nullptr)
         {
             auto_rp = std::make_shared<Pim::Standby::Vrfs::Vrf::AutoRp>();
-            auto_rp->parent = this;
-            children["auto-rp"] = auto_rp;
         }
-        return children.at("auto-rp");
+        return auto_rp;
     }
 
     if(child_yang_name == "bgp-afs")
     {
-        if(bgp_afs != nullptr)
-        {
-            children["bgp-afs"] = bgp_afs;
-        }
-        else
+        if(bgp_afs == nullptr)
         {
             bgp_afs = std::make_shared<Pim::Standby::Vrfs::Vrf::BgpAfs>();
-            bgp_afs->parent = this;
-            children["bgp-afs"] = bgp_afs;
         }
-        return children.at("bgp-afs");
+        return bgp_afs;
     }
 
     if(child_yang_name == "bidir-df-states")
     {
-        if(bidir_df_states != nullptr)
-        {
-            children["bidir-df-states"] = bidir_df_states;
-        }
-        else
+        if(bidir_df_states == nullptr)
         {
             bidir_df_states = std::make_shared<Pim::Standby::Vrfs::Vrf::BidirDfStates>();
-            bidir_df_states->parent = this;
-            children["bidir-df-states"] = bidir_df_states;
         }
-        return children.at("bidir-df-states");
+        return bidir_df_states;
     }
 
     if(child_yang_name == "bidir-df-winners")
     {
-        if(bidir_df_winners != nullptr)
-        {
-            children["bidir-df-winners"] = bidir_df_winners;
-        }
-        else
+        if(bidir_df_winners == nullptr)
         {
             bidir_df_winners = std::make_shared<Pim::Standby::Vrfs::Vrf::BidirDfWinners>();
-            bidir_df_winners->parent = this;
-            children["bidir-df-winners"] = bidir_df_winners;
         }
-        return children.at("bidir-df-winners");
+        return bidir_df_winners;
     }
 
     if(child_yang_name == "bsr")
     {
-        if(bsr != nullptr)
-        {
-            children["bsr"] = bsr;
-        }
-        else
+        if(bsr == nullptr)
         {
             bsr = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr>();
-            bsr->parent = this;
-            children["bsr"] = bsr;
         }
-        return children.at("bsr");
+        return bsr;
     }
 
     if(child_yang_name == "context")
     {
-        if(context != nullptr)
-        {
-            children["context"] = context;
-        }
-        else
+        if(context == nullptr)
         {
             context = std::make_shared<Pim::Standby::Vrfs::Vrf::Context>();
-            context->parent = this;
-            children["context"] = context;
         }
-        return children.at("context");
+        return context;
     }
 
     if(child_yang_name == "gre")
     {
-        if(gre != nullptr)
-        {
-            children["gre"] = gre;
-        }
-        else
+        if(gre == nullptr)
         {
             gre = std::make_shared<Pim::Standby::Vrfs::Vrf::Gre>();
-            gre->parent = this;
-            children["gre"] = gre;
         }
-        return children.at("gre");
+        return gre;
     }
 
     if(child_yang_name == "group-map-match-rpfs")
     {
-        if(group_map_match_rpfs != nullptr)
-        {
-            children["group-map-match-rpfs"] = group_map_match_rpfs;
-        }
-        else
+        if(group_map_match_rpfs == nullptr)
         {
             group_map_match_rpfs = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs>();
-            group_map_match_rpfs->parent = this;
-            children["group-map-match-rpfs"] = group_map_match_rpfs;
         }
-        return children.at("group-map-match-rpfs");
+        return group_map_match_rpfs;
     }
 
     if(child_yang_name == "group-map-match-sources")
     {
-        if(group_map_match_sources != nullptr)
-        {
-            children["group-map-match-sources"] = group_map_match_sources;
-        }
-        else
+        if(group_map_match_sources == nullptr)
         {
             group_map_match_sources = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchSources>();
-            group_map_match_sources->parent = this;
-            children["group-map-match-sources"] = group_map_match_sources;
         }
-        return children.at("group-map-match-sources");
+        return group_map_match_sources;
     }
 
     if(child_yang_name == "group-map-rpfs")
     {
-        if(group_map_rpfs != nullptr)
-        {
-            children["group-map-rpfs"] = group_map_rpfs;
-        }
-        else
+        if(group_map_rpfs == nullptr)
         {
             group_map_rpfs = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapRpfs>();
-            group_map_rpfs->parent = this;
-            children["group-map-rpfs"] = group_map_rpfs;
         }
-        return children.at("group-map-rpfs");
+        return group_map_rpfs;
     }
 
     if(child_yang_name == "group-map-sources")
     {
-        if(group_map_sources != nullptr)
-        {
-            children["group-map-sources"] = group_map_sources;
-        }
-        else
+        if(group_map_sources == nullptr)
         {
             group_map_sources = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapSources>();
-            group_map_sources->parent = this;
-            children["group-map-sources"] = group_map_sources;
         }
-        return children.at("group-map-sources");
+        return group_map_sources;
     }
 
     if(child_yang_name == "ifrs-interfaces")
     {
-        if(ifrs_interfaces != nullptr)
-        {
-            children["ifrs-interfaces"] = ifrs_interfaces;
-        }
-        else
+        if(ifrs_interfaces == nullptr)
         {
             ifrs_interfaces = std::make_shared<Pim::Standby::Vrfs::Vrf::IfrsInterfaces>();
-            ifrs_interfaces->parent = this;
-            children["ifrs-interfaces"] = ifrs_interfaces;
         }
-        return children.at("ifrs-interfaces");
+        return ifrs_interfaces;
     }
 
     if(child_yang_name == "ifrs-summary")
     {
-        if(ifrs_summary != nullptr)
-        {
-            children["ifrs-summary"] = ifrs_summary;
-        }
-        else
+        if(ifrs_summary == nullptr)
         {
             ifrs_summary = std::make_shared<Pim::Standby::Vrfs::Vrf::IfrsSummary>();
-            ifrs_summary->parent = this;
-            children["ifrs-summary"] = ifrs_summary;
         }
-        return children.at("ifrs-summary");
+        return ifrs_summary;
     }
 
     if(child_yang_name == "interface-old-formats")
     {
-        if(interface_old_formats != nullptr)
-        {
-            children["interface-old-formats"] = interface_old_formats;
-        }
-        else
+        if(interface_old_formats == nullptr)
         {
             interface_old_formats = std::make_shared<Pim::Standby::Vrfs::Vrf::InterfaceOldFormats>();
-            interface_old_formats->parent = this;
-            children["interface-old-formats"] = interface_old_formats;
         }
-        return children.at("interface-old-formats");
+        return interface_old_formats;
     }
 
     if(child_yang_name == "interface-statistics")
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
-        else
+        if(interface_statistics == nullptr)
         {
             interface_statistics = std::make_shared<Pim::Standby::Vrfs::Vrf::InterfaceStatistics>();
-            interface_statistics->parent = this;
-            children["interface-statistics"] = interface_statistics;
         }
-        return children.at("interface-statistics");
+        return interface_statistics;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Pim::Standby::Vrfs::Vrf::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "jp-statistics")
     {
-        if(jp_statistics != nullptr)
-        {
-            children["jp-statistics"] = jp_statistics;
-        }
-        else
+        if(jp_statistics == nullptr)
         {
             jp_statistics = std::make_shared<Pim::Standby::Vrfs::Vrf::JpStatistics>();
-            jp_statistics->parent = this;
-            children["jp-statistics"] = jp_statistics;
         }
-        return children.at("jp-statistics");
+        return jp_statistics;
     }
 
     if(child_yang_name == "mib-databases")
     {
-        if(mib_databases != nullptr)
-        {
-            children["mib-databases"] = mib_databases;
-        }
-        else
+        if(mib_databases == nullptr)
         {
             mib_databases = std::make_shared<Pim::Standby::Vrfs::Vrf::MibDatabases>();
-            mib_databases->parent = this;
-            children["mib-databases"] = mib_databases;
         }
-        return children.at("mib-databases");
+        return mib_databases;
     }
 
     if(child_yang_name == "multicast-static-routes")
     {
-        if(multicast_static_routes != nullptr)
-        {
-            children["multicast-static-routes"] = multicast_static_routes;
-        }
-        else
+        if(multicast_static_routes == nullptr)
         {
             multicast_static_routes = std::make_shared<Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes>();
-            multicast_static_routes->parent = this;
-            children["multicast-static-routes"] = multicast_static_routes;
         }
-        return children.at("multicast-static-routes");
+        return multicast_static_routes;
     }
 
     if(child_yang_name == "neighbor-old-formats")
     {
-        if(neighbor_old_formats != nullptr)
-        {
-            children["neighbor-old-formats"] = neighbor_old_formats;
-        }
-        else
+        if(neighbor_old_formats == nullptr)
         {
             neighbor_old_formats = std::make_shared<Pim::Standby::Vrfs::Vrf::NeighborOldFormats>();
-            neighbor_old_formats->parent = this;
-            children["neighbor-old-formats"] = neighbor_old_formats;
         }
-        return children.at("neighbor-old-formats");
+        return neighbor_old_formats;
     }
 
     if(child_yang_name == "neighbor-summaries")
     {
-        if(neighbor_summaries != nullptr)
-        {
-            children["neighbor-summaries"] = neighbor_summaries;
-        }
-        else
+        if(neighbor_summaries == nullptr)
         {
             neighbor_summaries = std::make_shared<Pim::Standby::Vrfs::Vrf::NeighborSummaries>();
-            neighbor_summaries->parent = this;
-            children["neighbor-summaries"] = neighbor_summaries;
         }
-        return children.at("neighbor-summaries");
+        return neighbor_summaries;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Pim::Standby::Vrfs::Vrf::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "net-io-tunnels")
     {
-        if(net_io_tunnels != nullptr)
-        {
-            children["net-io-tunnels"] = net_io_tunnels;
-        }
-        else
+        if(net_io_tunnels == nullptr)
         {
             net_io_tunnels = std::make_shared<Pim::Standby::Vrfs::Vrf::NetIoTunnels>();
-            net_io_tunnels->parent = this;
-            children["net-io-tunnels"] = net_io_tunnels;
         }
-        return children.at("net-io-tunnels");
+        return net_io_tunnels;
     }
 
     if(child_yang_name == "ranges")
     {
-        if(ranges != nullptr)
-        {
-            children["ranges"] = ranges;
-        }
-        else
+        if(ranges == nullptr)
         {
             ranges = std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges>();
-            ranges->parent = this;
-            children["ranges"] = ranges;
         }
-        return children.at("ranges");
+        return ranges;
     }
 
     if(child_yang_name == "route-policy")
     {
-        if(route_policy != nullptr)
-        {
-            children["route-policy"] = route_policy;
-        }
-        else
+        if(route_policy == nullptr)
         {
             route_policy = std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy>();
-            route_policy->parent = this;
-            children["route-policy"] = route_policy;
         }
-        return children.at("route-policy");
+        return route_policy;
     }
 
     if(child_yang_name == "rpf-redirect")
     {
-        if(rpf_redirect != nullptr)
-        {
-            children["rpf-redirect"] = rpf_redirect;
-        }
-        else
+        if(rpf_redirect == nullptr)
         {
             rpf_redirect = std::make_shared<Pim::Standby::Vrfs::Vrf::RpfRedirect>();
-            rpf_redirect->parent = this;
-            children["rpf-redirect"] = rpf_redirect;
         }
-        return children.at("rpf-redirect");
+        return rpf_redirect;
     }
 
     if(child_yang_name == "rpf-summary")
     {
-        if(rpf_summary != nullptr)
-        {
-            children["rpf-summary"] = rpf_summary;
-        }
-        else
+        if(rpf_summary == nullptr)
         {
             rpf_summary = std::make_shared<Pim::Standby::Vrfs::Vrf::RpfSummary>();
-            rpf_summary->parent = this;
-            children["rpf-summary"] = rpf_summary;
         }
-        return children.at("rpf-summary");
+        return rpf_summary;
     }
 
     if(child_yang_name == "safs")
     {
-        if(safs != nullptr)
-        {
-            children["safs"] = safs;
-        }
-        else
+        if(safs == nullptr)
         {
             safs = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs>();
-            safs->parent = this;
-            children["safs"] = safs;
         }
-        return children.at("safs");
+        return safs;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Pim::Standby::Vrfs::Vrf::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "table-contexts")
     {
-        if(table_contexts != nullptr)
-        {
-            children["table-contexts"] = table_contexts;
-        }
-        else
+        if(table_contexts == nullptr)
         {
             table_contexts = std::make_shared<Pim::Standby::Vrfs::Vrf::TableContexts>();
-            table_contexts->parent = this;
-            children["table-contexts"] = table_contexts;
         }
-        return children.at("table-contexts");
+        return table_contexts;
     }
 
     if(child_yang_name == "topologies")
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
-        else
+        if(topologies == nullptr)
         {
             topologies = std::make_shared<Pim::Standby::Vrfs::Vrf::Topologies>();
-            topologies->parent = this;
-            children["topologies"] = topologies;
         }
-        return children.at("topologies");
+        return topologies;
     }
 
     if(child_yang_name == "topology-entry-flag-route-counts")
     {
-        if(topology_entry_flag_route_counts != nullptr)
-        {
-            children["topology-entry-flag-route-counts"] = topology_entry_flag_route_counts;
-        }
-        else
+        if(topology_entry_flag_route_counts == nullptr)
         {
             topology_entry_flag_route_counts = std::make_shared<Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts>();
-            topology_entry_flag_route_counts->parent = this;
-            children["topology-entry-flag-route-counts"] = topology_entry_flag_route_counts;
         }
-        return children.at("topology-entry-flag-route-counts");
+        return topology_entry_flag_route_counts;
     }
 
     if(child_yang_name == "topology-interface-flag-route-counts")
     {
-        if(topology_interface_flag_route_counts != nullptr)
-        {
-            children["topology-interface-flag-route-counts"] = topology_interface_flag_route_counts;
-        }
-        else
+        if(topology_interface_flag_route_counts == nullptr)
         {
             topology_interface_flag_route_counts = std::make_shared<Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts>();
-            topology_interface_flag_route_counts->parent = this;
-            children["topology-interface-flag-route-counts"] = topology_interface_flag_route_counts;
         }
-        return children.at("topology-interface-flag-route-counts");
+        return topology_interface_flag_route_counts;
     }
 
     if(child_yang_name == "topology-route-count")
     {
-        if(topology_route_count != nullptr)
-        {
-            children["topology-route-count"] = topology_route_count;
-        }
-        else
+        if(topology_route_count == nullptr)
         {
             topology_route_count = std::make_shared<Pim::Standby::Vrfs::Vrf::TopologyRouteCount>();
-            topology_route_count->parent = this;
-            children["topology-route-count"] = topology_route_count;
         }
-        return children.at("topology-route-count");
+        return topology_route_count;
     }
 
     if(child_yang_name == "traffic-counters")
     {
-        if(traffic_counters != nullptr)
-        {
-            children["traffic-counters"] = traffic_counters;
-        }
-        else
+        if(traffic_counters == nullptr)
         {
             traffic_counters = std::make_shared<Pim::Standby::Vrfs::Vrf::TrafficCounters>();
-            traffic_counters->parent = this;
-            children["traffic-counters"] = traffic_counters;
         }
-        return children.at("traffic-counters");
+        return traffic_counters;
     }
 
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<Pim::Standby::Vrfs::Vrf::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::get_children() const
 {
-    if(children.find("auto-rp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_rp != nullptr)
     {
-        if(auto_rp != nullptr)
-        {
-            children["auto-rp"] = auto_rp;
-        }
+        children["auto-rp"] = auto_rp;
     }
 
-    if(children.find("bgp-afs") == children.end())
+    if(bgp_afs != nullptr)
     {
-        if(bgp_afs != nullptr)
-        {
-            children["bgp-afs"] = bgp_afs;
-        }
+        children["bgp-afs"] = bgp_afs;
     }
 
-    if(children.find("bidir-df-states") == children.end())
+    if(bidir_df_states != nullptr)
     {
-        if(bidir_df_states != nullptr)
-        {
-            children["bidir-df-states"] = bidir_df_states;
-        }
+        children["bidir-df-states"] = bidir_df_states;
     }
 
-    if(children.find("bidir-df-winners") == children.end())
+    if(bidir_df_winners != nullptr)
     {
-        if(bidir_df_winners != nullptr)
-        {
-            children["bidir-df-winners"] = bidir_df_winners;
-        }
+        children["bidir-df-winners"] = bidir_df_winners;
     }
 
-    if(children.find("bsr") == children.end())
+    if(bsr != nullptr)
     {
-        if(bsr != nullptr)
-        {
-            children["bsr"] = bsr;
-        }
+        children["bsr"] = bsr;
     }
 
-    if(children.find("context") == children.end())
+    if(context != nullptr)
     {
-        if(context != nullptr)
-        {
-            children["context"] = context;
-        }
+        children["context"] = context;
     }
 
-    if(children.find("gre") == children.end())
+    if(gre != nullptr)
     {
-        if(gre != nullptr)
-        {
-            children["gre"] = gre;
-        }
+        children["gre"] = gre;
     }
 
-    if(children.find("group-map-match-rpfs") == children.end())
+    if(group_map_match_rpfs != nullptr)
     {
-        if(group_map_match_rpfs != nullptr)
-        {
-            children["group-map-match-rpfs"] = group_map_match_rpfs;
-        }
+        children["group-map-match-rpfs"] = group_map_match_rpfs;
     }
 
-    if(children.find("group-map-match-sources") == children.end())
+    if(group_map_match_sources != nullptr)
     {
-        if(group_map_match_sources != nullptr)
-        {
-            children["group-map-match-sources"] = group_map_match_sources;
-        }
+        children["group-map-match-sources"] = group_map_match_sources;
     }
 
-    if(children.find("group-map-rpfs") == children.end())
+    if(group_map_rpfs != nullptr)
     {
-        if(group_map_rpfs != nullptr)
-        {
-            children["group-map-rpfs"] = group_map_rpfs;
-        }
+        children["group-map-rpfs"] = group_map_rpfs;
     }
 
-    if(children.find("group-map-sources") == children.end())
+    if(group_map_sources != nullptr)
     {
-        if(group_map_sources != nullptr)
-        {
-            children["group-map-sources"] = group_map_sources;
-        }
+        children["group-map-sources"] = group_map_sources;
     }
 
-    if(children.find("ifrs-interfaces") == children.end())
+    if(ifrs_interfaces != nullptr)
     {
-        if(ifrs_interfaces != nullptr)
-        {
-            children["ifrs-interfaces"] = ifrs_interfaces;
-        }
+        children["ifrs-interfaces"] = ifrs_interfaces;
     }
 
-    if(children.find("ifrs-summary") == children.end())
+    if(ifrs_summary != nullptr)
     {
-        if(ifrs_summary != nullptr)
-        {
-            children["ifrs-summary"] = ifrs_summary;
-        }
+        children["ifrs-summary"] = ifrs_summary;
     }
 
-    if(children.find("interface-old-formats") == children.end())
+    if(interface_old_formats != nullptr)
     {
-        if(interface_old_formats != nullptr)
-        {
-            children["interface-old-formats"] = interface_old_formats;
-        }
+        children["interface-old-formats"] = interface_old_formats;
     }
 
-    if(children.find("interface-statistics") == children.end())
+    if(interface_statistics != nullptr)
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
+        children["interface-statistics"] = interface_statistics;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("jp-statistics") == children.end())
+    if(jp_statistics != nullptr)
     {
-        if(jp_statistics != nullptr)
-        {
-            children["jp-statistics"] = jp_statistics;
-        }
+        children["jp-statistics"] = jp_statistics;
     }
 
-    if(children.find("mib-databases") == children.end())
+    if(mib_databases != nullptr)
     {
-        if(mib_databases != nullptr)
-        {
-            children["mib-databases"] = mib_databases;
-        }
+        children["mib-databases"] = mib_databases;
     }
 
-    if(children.find("multicast-static-routes") == children.end())
+    if(multicast_static_routes != nullptr)
     {
-        if(multicast_static_routes != nullptr)
-        {
-            children["multicast-static-routes"] = multicast_static_routes;
-        }
+        children["multicast-static-routes"] = multicast_static_routes;
     }
 
-    if(children.find("neighbor-old-formats") == children.end())
+    if(neighbor_old_formats != nullptr)
     {
-        if(neighbor_old_formats != nullptr)
-        {
-            children["neighbor-old-formats"] = neighbor_old_formats;
-        }
+        children["neighbor-old-formats"] = neighbor_old_formats;
     }
 
-    if(children.find("neighbor-summaries") == children.end())
+    if(neighbor_summaries != nullptr)
     {
-        if(neighbor_summaries != nullptr)
-        {
-            children["neighbor-summaries"] = neighbor_summaries;
-        }
+        children["neighbor-summaries"] = neighbor_summaries;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("net-io-tunnels") == children.end())
+    if(net_io_tunnels != nullptr)
     {
-        if(net_io_tunnels != nullptr)
-        {
-            children["net-io-tunnels"] = net_io_tunnels;
-        }
+        children["net-io-tunnels"] = net_io_tunnels;
     }
 
-    if(children.find("ranges") == children.end())
+    if(ranges != nullptr)
     {
-        if(ranges != nullptr)
-        {
-            children["ranges"] = ranges;
-        }
+        children["ranges"] = ranges;
     }
 
-    if(children.find("route-policy") == children.end())
+    if(route_policy != nullptr)
     {
-        if(route_policy != nullptr)
-        {
-            children["route-policy"] = route_policy;
-        }
+        children["route-policy"] = route_policy;
     }
 
-    if(children.find("rpf-redirect") == children.end())
+    if(rpf_redirect != nullptr)
     {
-        if(rpf_redirect != nullptr)
-        {
-            children["rpf-redirect"] = rpf_redirect;
-        }
+        children["rpf-redirect"] = rpf_redirect;
     }
 
-    if(children.find("rpf-summary") == children.end())
+    if(rpf_summary != nullptr)
     {
-        if(rpf_summary != nullptr)
-        {
-            children["rpf-summary"] = rpf_summary;
-        }
+        children["rpf-summary"] = rpf_summary;
     }
 
-    if(children.find("safs") == children.end())
+    if(safs != nullptr)
     {
-        if(safs != nullptr)
-        {
-            children["safs"] = safs;
-        }
+        children["safs"] = safs;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("table-contexts") == children.end())
+    if(table_contexts != nullptr)
     {
-        if(table_contexts != nullptr)
-        {
-            children["table-contexts"] = table_contexts;
-        }
+        children["table-contexts"] = table_contexts;
     }
 
-    if(children.find("topologies") == children.end())
+    if(topologies != nullptr)
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
+        children["topologies"] = topologies;
     }
 
-    if(children.find("topology-entry-flag-route-counts") == children.end())
+    if(topology_entry_flag_route_counts != nullptr)
     {
-        if(topology_entry_flag_route_counts != nullptr)
-        {
-            children["topology-entry-flag-route-counts"] = topology_entry_flag_route_counts;
-        }
+        children["topology-entry-flag-route-counts"] = topology_entry_flag_route_counts;
     }
 
-    if(children.find("topology-interface-flag-route-counts") == children.end())
+    if(topology_interface_flag_route_counts != nullptr)
     {
-        if(topology_interface_flag_route_counts != nullptr)
-        {
-            children["topology-interface-flag-route-counts"] = topology_interface_flag_route_counts;
-        }
+        children["topology-interface-flag-route-counts"] = topology_interface_flag_route_counts;
     }
 
-    if(children.find("topology-route-count") == children.end())
+    if(topology_route_count != nullptr)
     {
-        if(topology_route_count != nullptr)
-        {
-            children["topology-route-count"] = topology_route_count;
-        }
+        children["topology-route-count"] = topology_route_count;
     }
 
-    if(children.find("traffic-counters") == children.end())
+    if(traffic_counters != nullptr)
     {
-        if(traffic_counters != nullptr)
-        {
-            children["traffic-counters"] = traffic_counters;
-        }
+        children["traffic-counters"] = traffic_counters;
     }
 
-    if(children.find("tunnels") == children.end())
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -11854,7 +10484,7 @@ std::string Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11877,15 +10507,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ifrs-interface")
     {
         for(auto const & c : ifrs_interface)
@@ -11893,28 +10514,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface>();
         c->parent = this;
-        ifrs_interface.push_back(std::move(c));
-        children[segment_path] = ifrs_interface.back();
-        return children.at(segment_path);
+        ifrs_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ifrs_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11962,7 +10579,6 @@ Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IfrsInterface()
     dr_address(std::make_shared<Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress>())
 {
     dr_address->parent = this;
-    children["dr-address"] = dr_address;
 
     yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces";
 }
@@ -12065,7 +10681,7 @@ std::string Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_segment_
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12120,28 +10736,13 @@ EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_entity_pa
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dr-address")
     {
-        if(dr_address != nullptr)
-        {
-            children["dr-address"] = dr_address;
-        }
-        else
+        if(dr_address == nullptr)
         {
             dr_address = std::make_shared<Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress>();
-            dr_address->parent = this;
-            children["dr-address"] = dr_address;
         }
-        return children.at("dr-address");
+        return dr_address;
     }
 
     if(child_yang_name == "interface-address")
@@ -12151,36 +10752,29 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress>();
         c->parent = this;
-        interface_address.push_back(std::move(c));
-        children[segment_path] = interface_address.back();
-        return children.at(segment_path);
+        interface_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_children() const
 {
-    if(children.find("dr-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dr_address != nullptr)
     {
-        if(dr_address != nullptr)
-        {
-            children["dr-address"] = dr_address;
-        }
+        children["dr-address"] = dr_address;
     }
 
     for (auto const & c : interface_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12355,7 +10949,7 @@ std::string Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::g
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12381,20 +10975,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::ge
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12451,7 +11037,7 @@ std::string Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAdd
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12477,20 +11063,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddr
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12548,7 +11126,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12571,15 +11149,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "saf")
     {
         for(auto const & c : saf)
@@ -12587,28 +11156,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf>();
         c->parent = this;
-        saf.push_back(std::move(c));
-        children[segment_path] = saf.back();
-        return children.at(segment_path);
+        saf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : saf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12628,13 +11193,10 @@ Pim::Standby::Vrfs::Vrf::Safs::Saf::Saf()
 	,rpfs(std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs>())
 {
     rpf_hash_source_groups->parent = this;
-    children["rpf-hash-source-groups"] = rpf_hash_source_groups;
 
     rpf_hash_sources->parent = this;
-    children["rpf-hash-sources"] = rpf_hash_sources;
 
     rpfs->parent = this;
-    children["rpfs"] = rpfs;
 
     yang_name = "saf"; yang_parent_name = "safs";
 }
@@ -12671,7 +11233,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12696,87 +11258,52 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rpf-hash-source-groups")
     {
-        if(rpf_hash_source_groups != nullptr)
-        {
-            children["rpf-hash-source-groups"] = rpf_hash_source_groups;
-        }
-        else
+        if(rpf_hash_source_groups == nullptr)
         {
             rpf_hash_source_groups = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups>();
-            rpf_hash_source_groups->parent = this;
-            children["rpf-hash-source-groups"] = rpf_hash_source_groups;
         }
-        return children.at("rpf-hash-source-groups");
+        return rpf_hash_source_groups;
     }
 
     if(child_yang_name == "rpf-hash-sources")
     {
-        if(rpf_hash_sources != nullptr)
-        {
-            children["rpf-hash-sources"] = rpf_hash_sources;
-        }
-        else
+        if(rpf_hash_sources == nullptr)
         {
             rpf_hash_sources = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources>();
-            rpf_hash_sources->parent = this;
-            children["rpf-hash-sources"] = rpf_hash_sources;
         }
-        return children.at("rpf-hash-sources");
+        return rpf_hash_sources;
     }
 
     if(child_yang_name == "rpfs")
     {
-        if(rpfs != nullptr)
-        {
-            children["rpfs"] = rpfs;
-        }
-        else
+        if(rpfs == nullptr)
         {
             rpfs = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs>();
-            rpfs->parent = this;
-            children["rpfs"] = rpfs;
         }
-        return children.at("rpfs");
+        return rpfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::get_children() const
 {
-    if(children.find("rpf-hash-source-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rpf_hash_source_groups != nullptr)
     {
-        if(rpf_hash_source_groups != nullptr)
-        {
-            children["rpf-hash-source-groups"] = rpf_hash_source_groups;
-        }
+        children["rpf-hash-source-groups"] = rpf_hash_source_groups;
     }
 
-    if(children.find("rpf-hash-sources") == children.end())
+    if(rpf_hash_sources != nullptr)
     {
-        if(rpf_hash_sources != nullptr)
-        {
-            children["rpf-hash-sources"] = rpf_hash_sources;
-        }
+        children["rpf-hash-sources"] = rpf_hash_sources;
     }
 
-    if(children.find("rpfs") == children.end())
+    if(rpfs != nullptr)
     {
-        if(rpfs != nullptr)
-        {
-            children["rpfs"] = rpfs;
-        }
+        children["rpfs"] = rpfs;
     }
 
     return children;
@@ -12832,7 +11359,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_segment
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12855,15 +11382,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_entity_p
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rpf-hash-source-group")
     {
         for(auto const & c : rpf_hash_source_group)
@@ -12871,28 +11389,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup>();
         c->parent = this;
-        rpf_hash_source_group.push_back(std::move(c));
-        children[segment_path] = rpf_hash_source_group.back();
-        return children.at(segment_path);
+        rpf_hash_source_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rpf_hash_source_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12916,10 +11430,8 @@ Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::Rpf
 	,secondary_next_hop_address(std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress>())
 {
     next_hop_address->parent = this;
-    children["next-hop-address"] = next_hop_address;
 
     secondary_next_hop_address->parent = this;
-    children["secondary-next-hop-address"] = secondary_next_hop_address;
 
     yang_name = "rpf-hash-source-group"; yang_parent_name = "rpf-hash-source-groups";
 }
@@ -12964,7 +11476,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSour
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12994,64 +11506,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourc
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop-address")
     {
-        if(next_hop_address != nullptr)
-        {
-            children["next-hop-address"] = next_hop_address;
-        }
-        else
+        if(next_hop_address == nullptr)
         {
             next_hop_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress>();
-            next_hop_address->parent = this;
-            children["next-hop-address"] = next_hop_address;
         }
-        return children.at("next-hop-address");
+        return next_hop_address;
     }
 
     if(child_yang_name == "secondary-next-hop-address")
     {
-        if(secondary_next_hop_address != nullptr)
-        {
-            children["secondary-next-hop-address"] = secondary_next_hop_address;
-        }
-        else
+        if(secondary_next_hop_address == nullptr)
         {
             secondary_next_hop_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress>();
-            secondary_next_hop_address->parent = this;
-            children["secondary-next-hop-address"] = secondary_next_hop_address;
         }
-        return children.at("secondary-next-hop-address");
+        return secondary_next_hop_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_children() const
 {
-    if(children.find("next-hop-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(next_hop_address != nullptr)
     {
-        if(next_hop_address != nullptr)
-        {
-            children["next-hop-address"] = next_hop_address;
-        }
+        children["next-hop-address"] = next_hop_address;
     }
 
-    if(children.find("secondary-next-hop-address") == children.end())
+    if(secondary_next_hop_address != nullptr)
     {
-        if(secondary_next_hop_address != nullptr)
-        {
-            children["secondary-next-hop-address"] = secondary_next_hop_address;
-        }
+        children["secondary-next-hop-address"] = secondary_next_hop_address;
     }
 
     return children;
@@ -13126,7 +11612,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSour
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13152,20 +11638,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourc
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13222,7 +11700,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSour
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13248,20 +11726,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourc
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13319,7 +11789,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_segment_path
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13342,15 +11812,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_entity_path(E
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rpf-hash-source")
     {
         for(auto const & c : rpf_hash_source)
@@ -13358,28 +11819,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource>();
         c->parent = this;
-        rpf_hash_source.push_back(std::move(c));
-        children[segment_path] = rpf_hash_source.back();
-        return children.at(segment_path);
+        rpf_hash_source.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rpf_hash_source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13401,10 +11858,8 @@ Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::RpfHashSource
 	,secondary_next_hop_address(std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress>())
 {
     next_hop_address->parent = this;
-    children["next-hop-address"] = next_hop_address;
 
     secondary_next_hop_address->parent = this;
-    children["secondary-next-hop-address"] = secondary_next_hop_address;
 
     yang_name = "rpf-hash-source"; yang_parent_name = "rpf-hash-sources";
 }
@@ -13445,7 +11900,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::g
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13473,64 +11928,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::ge
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop-address")
     {
-        if(next_hop_address != nullptr)
-        {
-            children["next-hop-address"] = next_hop_address;
-        }
-        else
+        if(next_hop_address == nullptr)
         {
             next_hop_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress>();
-            next_hop_address->parent = this;
-            children["next-hop-address"] = next_hop_address;
         }
-        return children.at("next-hop-address");
+        return next_hop_address;
     }
 
     if(child_yang_name == "secondary-next-hop-address")
     {
-        if(secondary_next_hop_address != nullptr)
-        {
-            children["secondary-next-hop-address"] = secondary_next_hop_address;
-        }
-        else
+        if(secondary_next_hop_address == nullptr)
         {
             secondary_next_hop_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress>();
-            secondary_next_hop_address->parent = this;
-            children["secondary-next-hop-address"] = secondary_next_hop_address;
         }
-        return children.at("secondary-next-hop-address");
+        return secondary_next_hop_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_children() const
 {
-    if(children.find("next-hop-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(next_hop_address != nullptr)
     {
-        if(next_hop_address != nullptr)
-        {
-            children["next-hop-address"] = next_hop_address;
-        }
+        children["next-hop-address"] = next_hop_address;
     }
 
-    if(children.find("secondary-next-hop-address") == children.end())
+    if(secondary_next_hop_address != nullptr)
     {
-        if(secondary_next_hop_address != nullptr)
-        {
-            children["secondary-next-hop-address"] = secondary_next_hop_address;
-        }
+        children["secondary-next-hop-address"] = secondary_next_hop_address;
     }
 
     return children;
@@ -13597,7 +12026,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::N
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13623,20 +12052,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::Ne
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13693,7 +12114,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::S
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13719,20 +12140,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::Se
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13790,7 +12203,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13813,15 +12226,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rpf")
     {
         for(auto const & c : rpf)
@@ -13829,28 +12233,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf>();
         c->parent = this;
-        rpf.push_back(std::move(c));
-        children[segment_path] = rpf.back();
-        return children.at(segment_path);
+        rpf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rpf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13871,7 +12271,6 @@ Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::Rpf()
     registered_address_xr(std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr>())
 {
     registered_address_xr->parent = this;
-    children["registered-address-xr"] = registered_address_xr;
 
     yang_name = "rpf"; yang_parent_name = "rpfs";
 }
@@ -13920,7 +12319,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_segment_path() co
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13948,28 +12347,13 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_entity_path(Entity
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "registered-address-xr")
     {
-        if(registered_address_xr != nullptr)
-        {
-            children["registered-address-xr"] = registered_address_xr;
-        }
-        else
+        if(registered_address_xr == nullptr)
         {
             registered_address_xr = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr>();
-            registered_address_xr->parent = this;
-            children["registered-address-xr"] = registered_address_xr;
         }
-        return children.at("registered-address-xr");
+        return registered_address_xr;
     }
 
     if(child_yang_name == "rpf-path")
@@ -13979,36 +12363,29 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath>();
         c->parent = this;
-        rpf_path.push_back(std::move(c));
-        children[segment_path] = rpf_path.back();
-        return children.at(segment_path);
+        rpf_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_children() const
 {
-    if(children.find("registered-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(registered_address_xr != nullptr)
     {
-        if(registered_address_xr != nullptr)
-        {
-            children["registered-address-xr"] = registered_address_xr;
-        }
+        children["registered-address-xr"] = registered_address_xr;
     }
 
     for (auto const & c : rpf_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14075,7 +12452,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14101,20 +12478,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::g
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14148,10 +12517,8 @@ Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfPath()
 	,rpf_nexthop(std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop>())
 {
     rpf_neighbor->parent = this;
-    children["rpf-neighbor"] = rpf_neighbor;
 
     rpf_nexthop->parent = this;
-    children["rpf-nexthop"] = rpf_nexthop;
 
     yang_name = "rpf-path"; yang_parent_name = "rpf";
 }
@@ -14196,7 +12563,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_segment_
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14226,64 +12593,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_entity_pa
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rpf-neighbor")
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
-        else
+        if(rpf_neighbor == nullptr)
         {
             rpf_neighbor = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor>();
-            rpf_neighbor->parent = this;
-            children["rpf-neighbor"] = rpf_neighbor;
         }
-        return children.at("rpf-neighbor");
+        return rpf_neighbor;
     }
 
     if(child_yang_name == "rpf-nexthop")
     {
-        if(rpf_nexthop != nullptr)
-        {
-            children["rpf-nexthop"] = rpf_nexthop;
-        }
-        else
+        if(rpf_nexthop == nullptr)
         {
             rpf_nexthop = std::make_shared<Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop>();
-            rpf_nexthop->parent = this;
-            children["rpf-nexthop"] = rpf_nexthop;
         }
-        return children.at("rpf-nexthop");
+        return rpf_nexthop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_children() const
 {
-    if(children.find("rpf-neighbor") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rpf_neighbor != nullptr)
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
+        children["rpf-neighbor"] = rpf_neighbor;
     }
 
-    if(children.find("rpf-nexthop") == children.end())
+    if(rpf_nexthop != nullptr)
     {
-        if(rpf_nexthop != nullptr)
-        {
-            children["rpf-nexthop"] = rpf_nexthop;
-        }
+        children["rpf-nexthop"] = rpf_nexthop;
     }
 
     return children;
@@ -14358,7 +12699,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor:
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14384,20 +12725,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14454,7 +12787,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14480,20 +12813,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::g
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14551,7 +12876,7 @@ std::string Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_segment_path() con
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14574,15 +12899,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-statistic")
     {
         for(auto const & c : interface_statistic)
@@ -14590,28 +12906,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic>();
         c->parent = this;
-        interface_statistic.push_back(std::move(c));
-        children[segment_path] = interface_statistic.back();
-        return children.at(segment_path);
+        interface_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::InterfaceStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14715,7 +13027,7 @@ std::string Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::ge
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14760,20 +13072,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14881,7 +13185,6 @@ Pim::Standby::Vrfs::Vrf::TopologyRouteCount::TopologyRouteCount()
     group_address(std::make_shared<Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress>())
 {
     group_address->parent = this;
-    children["group-address"] = group_address;
 
     yang_name = "topology-route-count"; yang_parent_name = "vrf";
 }
@@ -14922,7 +13225,7 @@ std::string Pim::Standby::Vrfs::Vrf::TopologyRouteCount::get_segment_path() cons
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::TopologyRouteCount::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::TopologyRouteCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14951,41 +13254,24 @@ EntityPath Pim::Standby::Vrfs::Vrf::TopologyRouteCount::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::TopologyRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address")
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
-        else
+        if(group_address == nullptr)
         {
             group_address = std::make_shared<Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress>();
-            group_address->parent = this;
-            children["group-address"] = group_address;
         }
-        return children.at("group-address");
+        return group_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::TopologyRouteCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::TopologyRouteCount::get_children() const
 {
-    if(children.find("group-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address != nullptr)
     {
-        if(group_address != nullptr)
-        {
-            children["group-address"] = group_address;
-        }
+        children["group-address"] = group_address;
     }
 
     return children;
@@ -15056,7 +13342,7 @@ std::string Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress::get_segme
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15082,20 +13368,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress::get_entity
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::TopologyRouteCount::GroupAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15153,7 +13431,7 @@ std::string Pim::Standby::Vrfs::Vrf::JpStatistics::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::JpStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::JpStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15176,15 +13454,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::JpStatistics::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::JpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "jp-statistic")
     {
         for(auto const & c : jp_statistic)
@@ -15192,28 +13461,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::JpStatistics::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic>();
         c->parent = this;
-        jp_statistic.push_back(std::move(c));
-        children[segment_path] = jp_statistic.back();
-        return children.at(segment_path);
+        jp_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::JpStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::JpStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : jp_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15290,7 +13555,7 @@ std::string Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic::get_segment_path
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15326,20 +13591,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic::get_entity_path(E
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::JpStatistics::JpStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15437,7 +13694,7 @@ std::string Pim::Standby::Vrfs::Vrf::MibDatabases::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15460,15 +13717,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::MibDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mib-database")
     {
         for(auto const & c : mib_database)
@@ -15476,28 +13724,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::MibDatabases::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase>();
         c->parent = this;
-        mib_database.push_back(std::move(c));
-        children[segment_path] = mib_database.back();
-        return children.at(segment_path);
+        mib_database.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::MibDatabases::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::MibDatabases::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mib_database)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15534,16 +13778,12 @@ Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::MibDatabase()
 	,source_address_xr(std::make_shared<Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     rpf_neighbor->parent = this;
-    children["rpf-neighbor"] = rpf_neighbor;
 
     rpf_root->parent = this;
-    children["rpf-root"] = rpf_root;
 
     source_address_xr->parent = this;
-    children["source-address-xr"] = source_address_xr;
 
     yang_name = "mib-database"; yang_parent_name = "mib-databases";
 }
@@ -15614,7 +13854,7 @@ std::string Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_segment_path
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15655,110 +13895,66 @@ EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_entity_path(E
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "rpf-neighbor")
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
-        else
+        if(rpf_neighbor == nullptr)
         {
             rpf_neighbor = std::make_shared<Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor>();
-            rpf_neighbor->parent = this;
-            children["rpf-neighbor"] = rpf_neighbor;
         }
-        return children.at("rpf-neighbor");
+        return rpf_neighbor;
     }
 
     if(child_yang_name == "rpf-root")
     {
-        if(rpf_root != nullptr)
-        {
-            children["rpf-root"] = rpf_root;
-        }
-        else
+        if(rpf_root == nullptr)
         {
             rpf_root = std::make_shared<Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot>();
-            rpf_root->parent = this;
-            children["rpf-root"] = rpf_root;
         }
-        return children.at("rpf-root");
+        return rpf_root;
     }
 
     if(child_yang_name == "source-address-xr")
     {
-        if(source_address_xr != nullptr)
-        {
-            children["source-address-xr"] = source_address_xr;
-        }
-        else
+        if(source_address_xr == nullptr)
         {
             source_address_xr = std::make_shared<Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr>();
-            source_address_xr->parent = this;
-            children["source-address-xr"] = source_address_xr;
         }
-        return children.at("source-address-xr");
+        return source_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
-    if(children.find("rpf-neighbor") == children.end())
+    if(rpf_neighbor != nullptr)
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
+        children["rpf-neighbor"] = rpf_neighbor;
     }
 
-    if(children.find("rpf-root") == children.end())
+    if(rpf_root != nullptr)
     {
-        if(rpf_root != nullptr)
-        {
-            children["rpf-root"] = rpf_root;
-        }
+        children["rpf-root"] = rpf_root;
     }
 
-    if(children.find("source-address-xr") == children.end())
+    if(source_address_xr != nullptr)
     {
-        if(source_address_xr != nullptr)
-        {
-            children["source-address-xr"] = source_address_xr;
-        }
+        children["source-address-xr"] = source_address_xr;
     }
 
     return children;
@@ -15877,7 +14073,7 @@ std::string Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr:
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15903,20 +14099,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15973,7 +14161,7 @@ std::string Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15999,20 +14187,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::g
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16069,7 +14249,7 @@ std::string Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16095,20 +14275,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16165,7 +14337,7 @@ std::string Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_seg
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16191,20 +14363,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_enti
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16262,7 +14426,7 @@ std::string Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16285,15 +14449,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-map-match-rpf")
     {
         for(auto const & c : group_map_match_rpf)
@@ -16301,28 +14456,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf>();
         c->parent = this;
-        group_map_match_rpf.push_back(std::move(c));
-        children[segment_path] = group_map_match_rpf.back();
-        return children.at(segment_path);
+        group_map_match_rpf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group_map_match_rpf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16343,10 +14494,8 @@ Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapMatchRpf()
 	,rpf_neighbor(std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor>())
 {
     group_map_information->parent = this;
-    children["group-map-information"] = group_map_information;
 
     rpf_neighbor->parent = this;
-    children["rpf-neighbor"] = rpf_neighbor;
 
     yang_name = "group-map-match-rpf"; yang_parent_name = "group-map-match-rpfs";
 }
@@ -16385,7 +14534,7 @@ std::string Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::get_se
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16412,64 +14561,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::get_ent
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-map-information")
     {
-        if(group_map_information != nullptr)
-        {
-            children["group-map-information"] = group_map_information;
-        }
-        else
+        if(group_map_information == nullptr)
         {
             group_map_information = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation>();
-            group_map_information->parent = this;
-            children["group-map-information"] = group_map_information;
         }
-        return children.at("group-map-information");
+        return group_map_information;
     }
 
     if(child_yang_name == "rpf-neighbor")
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
-        else
+        if(rpf_neighbor == nullptr)
         {
             rpf_neighbor = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor>();
-            rpf_neighbor->parent = this;
-            children["rpf-neighbor"] = rpf_neighbor;
         }
-        return children.at("rpf-neighbor");
+        return rpf_neighbor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::get_children() const
 {
-    if(children.find("group-map-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_map_information != nullptr)
     {
-        if(group_map_information != nullptr)
-        {
-            children["group-map-information"] = group_map_information;
-        }
+        children["group-map-information"] = group_map_information;
     }
 
-    if(children.find("rpf-neighbor") == children.end())
+    if(rpf_neighbor != nullptr)
     {
-        if(rpf_neighbor != nullptr)
-        {
-            children["rpf-neighbor"] = rpf_neighbor;
-        }
+        children["rpf-neighbor"] = rpf_neighbor;
     }
 
     return children;
@@ -16532,7 +14655,7 @@ std::string Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNei
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16558,20 +14681,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeig
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16606,10 +14721,8 @@ Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformatio
 	,rp_address(std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress>())
 {
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     rp_address->parent = this;
-    children["rp-address"] = rp_address;
 
     yang_name = "group-map-information"; yang_parent_name = "group-map-match-rpf";
 }
@@ -16656,7 +14769,7 @@ std::string Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupM
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16687,64 +14800,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMa
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     if(child_yang_name == "rp-address")
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
-        else
+        if(rp_address == nullptr)
         {
             rp_address = std::make_shared<Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress>();
-            rp_address->parent = this;
-            children["rp-address"] = rp_address;
         }
-        return children.at("rp-address");
+        return rp_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::get_children() const
 {
-    if(children.find("prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
-    if(children.find("rp-address") == children.end())
+    if(rp_address != nullptr)
     {
-        if(rp_address != nullptr)
-        {
-            children["rp-address"] = rp_address;
-        }
+        children["rp-address"] = rp_address;
     }
 
     return children;
@@ -16823,7 +14910,7 @@ std::string Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupM
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16849,20 +14936,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMa
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16919,7 +14998,7 @@ std::string Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupM
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16945,20 +15024,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMa
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17016,7 +15087,7 @@ std::string Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_segment_path() cons
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17039,15 +15110,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-old-format")
     {
         for(auto const & c : neighbor_old_format)
@@ -17055,28 +15117,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat>();
         c->parent = this;
-        neighbor_old_format.push_back(std::move(c));
-        children[segment_path] = neighbor_old_format.back();
-        return children.at(segment_path);
+        neighbor_old_format.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_old_format)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17175,7 +15233,7 @@ std::string Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17215,15 +15273,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_e
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-address-xr")
     {
         for(auto const & c : neighbor_address_xr)
@@ -17231,28 +15280,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOld
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr>();
         c->parent = this;
-        neighbor_address_xr.push_back(std::move(c));
-        children[segment_path] = neighbor_address_xr.back();
-        return children.at(segment_path);
+        neighbor_address_xr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_address_xr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17367,7 +15412,7 @@ std::string Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::Neig
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17393,20 +15438,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::Neigh
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17460,7 +15497,7 @@ std::string Pim::Standby::Vrfs::Vrf::IfrsSummary::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::IfrsSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::IfrsSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17485,20 +15522,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::IfrsSummary::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::IfrsSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::IfrsSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::IfrsSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17552,7 +15581,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Ranges::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Ranges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17575,15 +15604,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Ranges::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "range")
     {
         for(auto const & c : range)
@@ -17591,28 +15611,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range>();
         c->parent = this;
-        range.push_back(std::move(c));
-        children[segment_path] = range.back();
-        return children.at(segment_path);
+        range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Ranges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Ranges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17634,10 +15650,8 @@ Pim::Standby::Vrfs::Vrf::Ranges::Range::Range()
 	,source_of_information(std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation>())
 {
     rp_address_xr->parent = this;
-    children["rp-address-xr"] = rp_address_xr;
 
     source_of_information->parent = this;
-    children["source-of-information"] = source_of_information;
 
     yang_name = "range"; yang_parent_name = "ranges";
 }
@@ -17688,7 +15702,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17716,15 +15730,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-range")
     {
         for(auto const & c : group_range)
@@ -17732,74 +15737,52 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::Range::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange>();
         c->parent = this;
-        group_range.push_back(std::move(c));
-        children[segment_path] = group_range.back();
-        return children.at(segment_path);
+        group_range.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rp-address-xr")
     {
-        if(rp_address_xr != nullptr)
-        {
-            children["rp-address-xr"] = rp_address_xr;
-        }
-        else
+        if(rp_address_xr == nullptr)
         {
             rp_address_xr = std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr>();
-            rp_address_xr->parent = this;
-            children["rp-address-xr"] = rp_address_xr;
         }
-        return children.at("rp-address-xr");
+        return rp_address_xr;
     }
 
     if(child_yang_name == "source-of-information")
     {
-        if(source_of_information != nullptr)
-        {
-            children["source-of-information"] = source_of_information;
-        }
-        else
+        if(source_of_information == nullptr)
         {
             source_of_information = std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation>();
-            source_of_information->parent = this;
-            children["source-of-information"] = source_of_information;
         }
-        return children.at("source-of-information");
+        return source_of_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Ranges::Range::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Ranges::Range::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("rp-address-xr") == children.end())
+    if(rp_address_xr != nullptr)
     {
-        if(rp_address_xr != nullptr)
-        {
-            children["rp-address-xr"] = rp_address_xr;
-        }
+        children["rp-address-xr"] = rp_address_xr;
     }
 
-    if(children.find("source-of-information") == children.end())
+    if(source_of_information != nullptr)
     {
-        if(source_of_information != nullptr)
-        {
-            children["source-of-information"] = source_of_information;
-        }
+        children["source-of-information"] = source_of_information;
     }
 
     return children;
@@ -17866,7 +15849,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_segment_pat
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17892,20 +15875,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_entity_path(
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17962,7 +15937,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_seg
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17988,20 +15963,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_enti
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18031,10 +15998,8 @@ Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::GroupRange()
 	,source_of_information(std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation>())
 {
     prefix->parent = this;
-    children["prefix"] = prefix;
 
     source_of_information->parent = this;
-    children["source-of-information"] = source_of_information;
 
     yang_name = "group-range"; yang_parent_name = "range";
 }
@@ -18071,7 +16036,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_segment_path
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18097,64 +16062,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_entity_path(E
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix")
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
-        else
+        if(prefix == nullptr)
         {
             prefix = std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix>();
-            prefix->parent = this;
-            children["prefix"] = prefix;
         }
-        return children.at("prefix");
+        return prefix;
     }
 
     if(child_yang_name == "source-of-information")
     {
-        if(source_of_information != nullptr)
-        {
-            children["source-of-information"] = source_of_information;
-        }
-        else
+        if(source_of_information == nullptr)
         {
             source_of_information = std::make_shared<Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation>();
-            source_of_information->parent = this;
-            children["source-of-information"] = source_of_information;
         }
-        return children.at("source-of-information");
+        return source_of_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_children() const
 {
-    if(children.find("prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix != nullptr)
     {
-        if(prefix != nullptr)
-        {
-            children["prefix"] = prefix;
-        }
+        children["prefix"] = prefix;
     }
 
-    if(children.find("source-of-information") == children.end())
+    if(source_of_information != nullptr)
     {
-        if(source_of_information != nullptr)
-        {
-            children["source-of-information"] = source_of_information;
-        }
+        children["source-of-information"] = source_of_information;
     }
 
     return children;
@@ -18213,7 +16152,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_segm
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18239,20 +16178,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_entit
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18309,7 +16240,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformat
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18335,20 +16266,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformati
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18406,7 +16329,7 @@ std::string Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_segment_path() con
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18429,15 +16352,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-old-format")
     {
         for(auto const & c : interface_old_format)
@@ -18445,28 +16359,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat>();
         c->parent = this;
-        interface_old_format.push_back(std::move(c));
-        children[segment_path] = interface_old_format.back();
-        return children.at(segment_path);
+        interface_old_format.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_old_format)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18514,7 +16424,6 @@ Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceOldFo
     dr_address(std::make_shared<Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress>())
 {
     dr_address->parent = this;
-    children["dr-address"] = dr_address;
 
     yang_name = "interface-old-format"; yang_parent_name = "interface-old-formats";
 }
@@ -18617,7 +16526,7 @@ std::string Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::ge
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18672,28 +16581,13 @@ EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dr-address")
     {
-        if(dr_address != nullptr)
-        {
-            children["dr-address"] = dr_address;
-        }
-        else
+        if(dr_address == nullptr)
         {
             dr_address = std::make_shared<Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress>();
-            dr_address->parent = this;
-            children["dr-address"] = dr_address;
         }
-        return children.at("dr-address");
+        return dr_address;
     }
 
     if(child_yang_name == "interface-address")
@@ -18703,36 +16597,29 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress>();
         c->parent = this;
-        interface_address.push_back(std::move(c));
-        children[segment_path] = interface_address.back();
-        return children.at(segment_path);
+        interface_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_children() const
 {
-    if(children.find("dr-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dr_address != nullptr)
     {
-        if(dr_address != nullptr)
-        {
-            children["dr-address"] = dr_address;
-        }
+        children["dr-address"] = dr_address;
     }
 
     for (auto const & c : interface_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18907,7 +16794,7 @@ std::string Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::Dr
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18933,20 +16820,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrA
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19003,7 +16882,7 @@ std::string Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::In
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19029,20 +16908,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::Int
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19069,13 +16940,10 @@ Pim::Standby::Vrfs::Vrf::Bsr::Bsr()
 	,rp_caches(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches>())
 {
     bsr_elections->parent = this;
-    children["bsr-elections"] = bsr_elections;
 
     candidate_rps->parent = this;
-    children["candidate-rps"] = candidate_rps;
 
     rp_caches->parent = this;
-    children["rp-caches"] = rp_caches;
 
     yang_name = "bsr"; yang_parent_name = "vrf";
 }
@@ -19108,7 +16976,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19131,87 +16999,52 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bsr-elections")
     {
-        if(bsr_elections != nullptr)
-        {
-            children["bsr-elections"] = bsr_elections;
-        }
-        else
+        if(bsr_elections == nullptr)
         {
             bsr_elections = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::BsrElections>();
-            bsr_elections->parent = this;
-            children["bsr-elections"] = bsr_elections;
         }
-        return children.at("bsr-elections");
+        return bsr_elections;
     }
 
     if(child_yang_name == "candidate-rps")
     {
-        if(candidate_rps != nullptr)
-        {
-            children["candidate-rps"] = candidate_rps;
-        }
-        else
+        if(candidate_rps == nullptr)
         {
             candidate_rps = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps>();
-            candidate_rps->parent = this;
-            children["candidate-rps"] = candidate_rps;
         }
-        return children.at("candidate-rps");
+        return candidate_rps;
     }
 
     if(child_yang_name == "rp-caches")
     {
-        if(rp_caches != nullptr)
-        {
-            children["rp-caches"] = rp_caches;
-        }
-        else
+        if(rp_caches == nullptr)
         {
             rp_caches = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches>();
-            rp_caches->parent = this;
-            children["rp-caches"] = rp_caches;
         }
-        return children.at("rp-caches");
+        return rp_caches;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::get_children() const
 {
-    if(children.find("bsr-elections") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bsr_elections != nullptr)
     {
-        if(bsr_elections != nullptr)
-        {
-            children["bsr-elections"] = bsr_elections;
-        }
+        children["bsr-elections"] = bsr_elections;
     }
 
-    if(children.find("candidate-rps") == children.end())
+    if(candidate_rps != nullptr)
     {
-        if(candidate_rps != nullptr)
-        {
-            children["candidate-rps"] = candidate_rps;
-        }
+        children["candidate-rps"] = candidate_rps;
     }
 
-    if(children.find("rp-caches") == children.end())
+    if(rp_caches != nullptr)
     {
-        if(rp_caches != nullptr)
-        {
-            children["rp-caches"] = rp_caches;
-        }
+        children["rp-caches"] = rp_caches;
     }
 
     return children;
@@ -19259,7 +17092,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19282,15 +17115,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rp-cache")
     {
         for(auto const & c : rp_cache)
@@ -19298,28 +17122,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache>();
         c->parent = this;
-        rp_cache.push_back(std::move(c));
-        children[segment_path] = rp_cache.back();
-        return children.at(segment_path);
+        rp_cache.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rp_cache)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19339,10 +17159,8 @@ Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::RpCache()
 	,group_prefix_xr(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr>())
 {
     candidate_rp_list->parent = this;
-    children["candidate-rp-list"] = candidate_rp_list;
 
     group_prefix_xr->parent = this;
-    children["group-prefix-xr"] = group_prefix_xr;
 
     yang_name = "rp-cache"; yang_parent_name = "rp-caches";
 }
@@ -19379,7 +17197,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_segment_path() 
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19405,64 +17223,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_entity_path(Enti
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-rp-list")
     {
-        if(candidate_rp_list != nullptr)
-        {
-            children["candidate-rp-list"] = candidate_rp_list;
-        }
-        else
+        if(candidate_rp_list == nullptr)
         {
             candidate_rp_list = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList>();
-            candidate_rp_list->parent = this;
-            children["candidate-rp-list"] = candidate_rp_list;
         }
-        return children.at("candidate-rp-list");
+        return candidate_rp_list;
     }
 
     if(child_yang_name == "group-prefix-xr")
     {
-        if(group_prefix_xr != nullptr)
-        {
-            children["group-prefix-xr"] = group_prefix_xr;
-        }
-        else
+        if(group_prefix_xr == nullptr)
         {
             group_prefix_xr = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr>();
-            group_prefix_xr->parent = this;
-            children["group-prefix-xr"] = group_prefix_xr;
         }
-        return children.at("group-prefix-xr");
+        return group_prefix_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_children() const
 {
-    if(children.find("candidate-rp-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_rp_list != nullptr)
     {
-        if(candidate_rp_list != nullptr)
-        {
-            children["candidate-rp-list"] = candidate_rp_list;
-        }
+        children["candidate-rp-list"] = candidate_rp_list;
     }
 
-    if(children.find("group-prefix-xr") == children.end())
+    if(group_prefix_xr != nullptr)
     {
-        if(group_prefix_xr != nullptr)
-        {
-            children["group-prefix-xr"] = group_prefix_xr;
-        }
+        children["group-prefix-xr"] = group_prefix_xr;
     }
 
     return children;
@@ -19521,7 +17313,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19547,20 +17339,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_e
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19618,7 +17402,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::ge
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19641,15 +17425,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pim-bsr-crp-bag")
     {
         for(auto const & c : pim_bsr_crp_bag)
@@ -19657,28 +17432,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::Candida
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag>();
         c->parent = this;
-        pim_bsr_crp_bag.push_back(std::move(c));
-        children[segment_path] = pim_bsr_crp_bag.back();
-        return children.at(segment_path);
+        pim_bsr_crp_bag.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pim_bsr_crp_bag)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19699,7 +17470,6 @@ Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::
     candidate_rp_address(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
 {
     candidate_rp_address->parent = this;
-    children["candidate-rp-address"] = candidate_rp_address;
 
     yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list";
 }
@@ -19738,7 +17508,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::Pi
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19766,41 +17536,24 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::Pim
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-rp-address")
     {
-        if(candidate_rp_address != nullptr)
-        {
-            children["candidate-rp-address"] = candidate_rp_address;
-        }
-        else
+        if(candidate_rp_address == nullptr)
         {
             candidate_rp_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>();
-            candidate_rp_address->parent = this;
-            children["candidate-rp-address"] = candidate_rp_address;
         }
-        return children.at("candidate-rp-address");
+        return candidate_rp_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_children() const
 {
-    if(children.find("candidate-rp-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_rp_address != nullptr)
     {
-        if(candidate_rp_address != nullptr)
-        {
-            children["candidate-rp-address"] = candidate_rp_address;
-        }
+        children["candidate-rp-address"] = candidate_rp_address;
     }
 
     return children;
@@ -19867,7 +17620,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::Pi
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19893,20 +17646,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::Pim
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19964,7 +17709,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19987,15 +17732,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-rp")
     {
         for(auto const & c : candidate_rp)
@@ -20003,28 +17739,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp>();
         c->parent = this;
-        candidate_rp.push_back(std::move(c));
-        children[segment_path] = candidate_rp.back();
-        return children.at(segment_path);
+        candidate_rp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_rp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20048,7 +17780,6 @@ Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp()
     candidate_rp(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_>())
 {
     candidate_rp->parent = this;
-    children["candidate-rp"] = candidate_rp;
 
     yang_name = "candidate-rp"; yang_parent_name = "candidate-rps";
 }
@@ -20103,7 +17834,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::get_segment
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20134,28 +17865,13 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::get_entity_p
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-rp")
     {
-        if(candidate_rp != nullptr)
-        {
-            children["candidate-rp"] = candidate_rp;
-        }
-        else
+        if(candidate_rp == nullptr)
         {
             candidate_rp = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_>();
-            candidate_rp->parent = this;
-            children["candidate-rp"] = candidate_rp;
         }
-        return children.at("candidate-rp");
+        return candidate_rp;
     }
 
     if(child_yang_name == "crp-access")
@@ -20165,36 +17881,29 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess>();
         c->parent = this;
-        crp_access.push_back(std::move(c));
-        children[segment_path] = crp_access.back();
-        return children.at(segment_path);
+        crp_access.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::get_children() const
 {
-    if(children.find("candidate-rp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_rp != nullptr)
     {
-        if(candidate_rp != nullptr)
-        {
-            children["candidate-rp"] = candidate_rp;
-        }
+        children["candidate-rp"] = candidate_rp;
     }
 
     for (auto const & c : crp_access)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20273,7 +17982,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20299,20 +18008,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CandidateRp_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20366,7 +18067,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20391,20 +18092,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::g
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20458,7 +18151,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20481,15 +18174,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bsr-election")
     {
         for(auto const & c : bsr_election)
@@ -20497,28 +18181,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection>();
         c->parent = this;
-        bsr_election.push_back(std::move(c));
-        children[segment_path] = bsr_election.back();
-        return children.at(segment_path);
+        bsr_election.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bsr_election)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20546,10 +18226,8 @@ Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrElection()
 	,candidate_bsr_address(std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsrAddress>())
 {
     bsr_address->parent = this;
-    children["bsr-address"] = bsr_address;
 
     candidate_bsr_address->parent = this;
-    children["candidate-bsr-address"] = candidate_bsr_address;
 
     yang_name = "bsr-election"; yang_parent_name = "bsr-elections";
 }
@@ -20602,7 +18280,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::get_segment
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20636,64 +18314,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::get_entity_p
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bsr-address")
     {
-        if(bsr_address != nullptr)
-        {
-            children["bsr-address"] = bsr_address;
-        }
-        else
+        if(bsr_address == nullptr)
         {
             bsr_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress>();
-            bsr_address->parent = this;
-            children["bsr-address"] = bsr_address;
         }
-        return children.at("bsr-address");
+        return bsr_address;
     }
 
     if(child_yang_name == "candidate-bsr-address")
     {
-        if(candidate_bsr_address != nullptr)
-        {
-            children["candidate-bsr-address"] = candidate_bsr_address;
-        }
-        else
+        if(candidate_bsr_address == nullptr)
         {
             candidate_bsr_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsrAddress>();
-            candidate_bsr_address->parent = this;
-            children["candidate-bsr-address"] = candidate_bsr_address;
         }
-        return children.at("candidate-bsr-address");
+        return candidate_bsr_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::get_children() const
 {
-    if(children.find("bsr-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bsr_address != nullptr)
     {
-        if(bsr_address != nullptr)
-        {
-            children["bsr-address"] = bsr_address;
-        }
+        children["bsr-address"] = bsr_address;
     }
 
-    if(children.find("candidate-bsr-address") == children.end())
+    if(candidate_bsr_address != nullptr)
     {
-        if(candidate_bsr_address != nullptr)
-        {
-            children["candidate-bsr-address"] = candidate_bsr_address;
-        }
+        children["candidate-bsr-address"] = candidate_bsr_address;
     }
 
     return children;
@@ -20784,7 +18436,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress:
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20810,20 +18462,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress::
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::BsrAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20880,7 +18524,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBs
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsrAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsrAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20906,20 +18550,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsr
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsrAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Bsr::BsrElections::BsrElection::CandidateBsrAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20945,10 +18581,8 @@ Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicy()
 	,route_policy_tests(std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests>())
 {
     route_policy_statistics->parent = this;
-    children["route-policy-statistics"] = route_policy_statistics;
 
     route_policy_tests->parent = this;
-    children["route-policy-tests"] = route_policy_tests;
 
     yang_name = "route-policy"; yang_parent_name = "vrf";
 }
@@ -20979,7 +18613,7 @@ std::string Pim::Standby::Vrfs::Vrf::RoutePolicy::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21002,64 +18636,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-policy-statistics")
     {
-        if(route_policy_statistics != nullptr)
-        {
-            children["route-policy-statistics"] = route_policy_statistics;
-        }
-        else
+        if(route_policy_statistics == nullptr)
         {
             route_policy_statistics = std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics>();
-            route_policy_statistics->parent = this;
-            children["route-policy-statistics"] = route_policy_statistics;
         }
-        return children.at("route-policy-statistics");
+        return route_policy_statistics;
     }
 
     if(child_yang_name == "route-policy-tests")
     {
-        if(route_policy_tests != nullptr)
-        {
-            children["route-policy-tests"] = route_policy_tests;
-        }
-        else
+        if(route_policy_tests == nullptr)
         {
             route_policy_tests = std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests>();
-            route_policy_tests->parent = this;
-            children["route-policy-tests"] = route_policy_tests;
         }
-        return children.at("route-policy-tests");
+        return route_policy_tests;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::RoutePolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::RoutePolicy::get_children() const
 {
-    if(children.find("route-policy-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_policy_statistics != nullptr)
     {
-        if(route_policy_statistics != nullptr)
-        {
-            children["route-policy-statistics"] = route_policy_statistics;
-        }
+        children["route-policy-statistics"] = route_policy_statistics;
     }
 
-    if(children.find("route-policy-tests") == children.end())
+    if(route_policy_tests != nullptr)
     {
-        if(route_policy_tests != nullptr)
-        {
-            children["route-policy-tests"] = route_policy_tests;
-        }
+        children["route-policy-tests"] = route_policy_tests;
     }
 
     return children;
@@ -21115,7 +18723,7 @@ std::string Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics::get_seg
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21144,20 +18752,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics::get_enti
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21227,7 +18827,7 @@ std::string Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::get_segment_
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21250,15 +18850,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::get_entity_pa
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-policy-test")
     {
         for(auto const & c : route_policy_test)
@@ -21266,28 +18857,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest>();
         c->parent = this;
-        route_policy_test.push_back(std::move(c));
-        children[segment_path] = route_policy_test.back();
-        return children.at(segment_path);
+        route_policy_test.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route_policy_test)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21317,10 +18904,8 @@ Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::RoutePo
 	,source_address_xr(std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr>())
 {
     group_address_xr->parent = this;
-    children["group-address-xr"] = group_address_xr;
 
     source_address_xr->parent = this;
-    children["source-address-xr"] = source_address_xr;
 
     yang_name = "route-policy-test"; yang_parent_name = "route-policy-tests";
 }
@@ -21377,7 +18962,7 @@ std::string Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyT
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21413,64 +18998,38 @@ EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTe
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-address-xr")
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
-        else
+        if(group_address_xr == nullptr)
         {
             group_address_xr = std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr>();
-            group_address_xr->parent = this;
-            children["group-address-xr"] = group_address_xr;
         }
-        return children.at("group-address-xr");
+        return group_address_xr;
     }
 
     if(child_yang_name == "source-address-xr")
     {
-        if(source_address_xr != nullptr)
-        {
-            children["source-address-xr"] = source_address_xr;
-        }
-        else
+        if(source_address_xr == nullptr)
         {
             source_address_xr = std::make_shared<Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr>();
-            source_address_xr->parent = this;
-            children["source-address-xr"] = source_address_xr;
         }
-        return children.at("source-address-xr");
+        return source_address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::get_children() const
 {
-    if(children.find("group-address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(group_address_xr != nullptr)
     {
-        if(group_address_xr != nullptr)
-        {
-            children["group-address-xr"] = group_address_xr;
-        }
+        children["group-address-xr"] = group_address_xr;
     }
 
-    if(children.find("source-address-xr") == children.end())
+    if(source_address_xr != nullptr)
     {
-        if(source_address_xr != nullptr)
-        {
-            children["source-address-xr"] = source_address_xr;
-        }
+        children["source-address-xr"] = source_address_xr;
     }
 
     return children;
@@ -21569,7 +19128,7 @@ std::string Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyT
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21595,20 +19154,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTe
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21665,7 +19216,7 @@ std::string Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyT
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21691,20 +19242,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTe
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21803,7 +19346,7 @@ std::string Pim::Standby::Vrfs::Vrf::RpfSummary::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::RpfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::RpfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21843,20 +19386,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::RpfSummary::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::RpfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::RpfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::RpfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21970,7 +19505,7 @@ std::string Pim::Standby::Vrfs::Vrf::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21993,15 +19528,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -22009,28 +19535,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Interfaces::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22078,7 +19600,6 @@ Pim::Standby::Vrfs::Vrf::Interfaces::Interface::Interface()
     dr_address(std::make_shared<Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress>())
 {
     dr_address->parent = this;
-    children["dr-address"] = dr_address;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -22181,7 +19702,7 @@ std::string Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_segment_path() c
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22236,28 +19757,13 @@ EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entit
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dr-address")
     {
-        if(dr_address != nullptr)
-        {
-            children["dr-address"] = dr_address;
-        }
-        else
+        if(dr_address == nullptr)
         {
             dr_address = std::make_shared<Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress>();
-            dr_address->parent = this;
-            children["dr-address"] = dr_address;
         }
-        return children.at("dr-address");
+        return dr_address;
     }
 
     if(child_yang_name == "interface-address")
@@ -22267,36 +19773,29 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress>();
         c->parent = this;
-        interface_address.push_back(std::move(c));
-        children[segment_path] = interface_address.back();
-        return children.at(segment_path);
+        interface_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
-    if(children.find("dr-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dr_address != nullptr)
     {
-        if(dr_address != nullptr)
-        {
-            children["dr-address"] = dr_address;
-        }
+        children["dr-address"] = dr_address;
     }
 
     for (auto const & c : interface_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22471,7 +19970,7 @@ std::string Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress::get_segme
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22497,20 +19996,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress::get_entity
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Interfaces::Interface::DrAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22567,7 +20058,7 @@ std::string Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::ge
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22593,20 +20084,12 @@ EntityPath Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::get
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22664,7 +20147,7 @@ std::string Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_segment_path() const
 
 }
 
-EntityPath Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22687,15 +20170,6 @@ EntityPath Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "net-io-tunnel")
     {
         for(auto const & c : net_io_tunnel)
@@ -22703,28 +20177,24 @@ std::shared_ptr<Entity> Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel>();
         c->parent = this;
-        net_io_tunnel.push_back(std::move(c));
-        children[segment_path] = net_io_tunnel.back();
-        return children.at(segment_path);
+        net_io_tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::Standby::Vrfs::Vrf::NetIoTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : net_io_tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;

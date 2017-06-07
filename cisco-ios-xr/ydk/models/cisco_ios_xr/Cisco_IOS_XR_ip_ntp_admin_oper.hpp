@@ -18,23 +18,20 @@ class Ntp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Racks; //type: Ntp::Racks
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks> racks;
-
-
+        
 }; // Ntp
 
 
@@ -46,19 +43,16 @@ class Ntp::Racks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rack; //type: Ntp::Racks::Rack
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack> > rack;
-
-
+        
 }; // Ntp::Racks
 
 
@@ -70,20 +64,17 @@ class Ntp::Racks::Rack : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Slots; //type: Ntp::Racks::Rack::Slots
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots> slots;
-
-
+        
 }; // Ntp::Racks::Rack
 
 
@@ -95,19 +86,16 @@ class Ntp::Racks::Rack::Slots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Slot; //type: Ntp::Racks::Rack::Slots::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot> > slot;
-
-
+        
 }; // Ntp::Racks::Rack::Slots
 
 
@@ -119,20 +107,17 @@ class Ntp::Racks::Rack::Slots::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Instances; //type: Ntp::Racks::Rack::Slots::Slot::Instances
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances> instances;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot
 
 
@@ -144,19 +129,16 @@ class Ntp::Racks::Rack::Slots::Slot::Instances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Instance; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance> > instance;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances
 
 
@@ -168,15 +150,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class Status; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status
         class Associations; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations
         class AssociationsDetail; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail
@@ -184,8 +164,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations> associations;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail> associations_detail;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status> status;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance
 
 
@@ -197,12 +176,11 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ntp_enabled; //type: boolean
         YLeaf sys_dispersion; //type: string
@@ -218,14 +196,12 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status : public Entity
         YLeaf poll_interval; //type: uint8
         YLeaf is_updated; //type: ClockUpdateNodeEnum
         YLeaf last_update; //type: int32
-
         class SysRefTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime
         class SysDrift; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift> sys_drift;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime> sys_ref_time;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status
 
 
@@ -237,21 +213,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs> frac_secs;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec> sec;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime
 
 
@@ -263,16 +236,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Se
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf int_; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec
 
@@ -285,16 +255,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Fr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frac; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
 
@@ -307,21 +274,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs> frac_secs;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec> sec;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift
 
 
@@ -333,16 +297,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf int_; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec
 
@@ -355,16 +316,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Frac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frac; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs
 
@@ -377,21 +335,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ntp_enabled; //type: boolean
         YLeaf sys_leap; //type: NtpLeapEnum
-
         class PeerSummaryInfo; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo> > peer_summary_info;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations
 
 
@@ -403,20 +358,17 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSumm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_since; //type: int32
-
         class PeerInfoCommon; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon> peer_info_common;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo
 
 
@@ -428,12 +380,11 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSumm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_mode; //type: NtpModeEnum
         YLeaf is_configured; //type: boolean
@@ -448,8 +399,6 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSumm
         YLeaf dispersion; //type: string
         YLeaf is_sys_peer; //type: boolean
 
-
-
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon
 
 
@@ -461,21 +410,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_ntp_enabled; //type: boolean
         YLeaf sys_leap; //type: NtpLeapEnum
-
         class PeerDetailInfo; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo> > peer_detail_info;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail
 
 
@@ -487,12 +433,11 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf leap; //type: NtpLeapEnum
         YLeaf peer_mode; //type: NtpModeEnum
@@ -505,7 +450,6 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         YLeaf precision; //type: int8
         YLeaf version; //type: uint8
         YLeaf filter_index; //type: uint32
-
         class PeerInfoCommon; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon
         class RefTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime
         class OriginateTime; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime
@@ -519,8 +463,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime> receive_time;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime> ref_time;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime> transmit_time;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo
 
 
@@ -532,12 +475,11 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_mode; //type: NtpModeEnum
         YLeaf is_configured; //type: boolean
@@ -552,8 +494,6 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         YLeaf dispersion; //type: string
         YLeaf is_sys_peer; //type: boolean
 
-
-
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon
 
 
@@ -565,21 +505,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs> frac_secs;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec> sec;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime
 
 
@@ -591,16 +528,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf int_; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec
 
@@ -613,16 +547,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frac; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs
 
@@ -635,21 +566,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs> frac_secs;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec> sec;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime
 
 
@@ -661,16 +589,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf int_; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec
 
@@ -683,16 +608,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frac; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs
 
@@ -705,21 +627,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs> frac_secs;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec> sec;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime
 
 
@@ -731,16 +650,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf int_; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec
 
@@ -753,16 +669,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frac; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs
 
@@ -775,21 +688,18 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sec; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec
         class FracSecs; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs> frac_secs;
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec> sec;
-
-
+        
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime
 
 
@@ -801,16 +711,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf int_; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec
 
@@ -823,16 +730,13 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frac; //type: uint32
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs
 
@@ -845,18 +749,15 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf filter_delay; //type: string
         YLeaf filter_offset; //type: string
         YLeaf filter_disp; //type: string
-
-
 
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail
 

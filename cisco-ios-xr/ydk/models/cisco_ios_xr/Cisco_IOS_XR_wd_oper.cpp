@@ -14,7 +14,6 @@ Watchdog::Watchdog()
     nodes(std::make_shared<Watchdog::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-wd-oper";
 }
@@ -43,12 +42,12 @@ std::string Watchdog::get_segment_path() const
 
 }
 
-EntityPath Watchdog::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Watchdog::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Watchdog::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Watchdog::Nodes::get_segment_path() const
 
 }
 
-EntityPath Watchdog::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Watchdog::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Watchdog::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Watchdog::Nodes::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Watchdog::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -244,13 +213,10 @@ Watchdog::Nodes::Node::Node()
 	,threshold_memory(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory>())
 {
     memory_state->parent = this;
-    children["memory-state"] = memory_state;
 
     overload_state->parent = this;
-    children["overload-state"] = overload_state;
 
     threshold_memory->parent = this;
-    children["threshold-memory"] = threshold_memory;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -285,7 +251,7 @@ std::string Watchdog::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Watchdog::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,87 +275,52 @@ EntityPath Watchdog::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "memory-state")
     {
-        if(memory_state != nullptr)
-        {
-            children["memory-state"] = memory_state;
-        }
-        else
+        if(memory_state == nullptr)
         {
             memory_state = std::make_shared<Watchdog::Nodes::Node::MemoryState>();
-            memory_state->parent = this;
-            children["memory-state"] = memory_state;
         }
-        return children.at("memory-state");
+        return memory_state;
     }
 
     if(child_yang_name == "overload-state")
     {
-        if(overload_state != nullptr)
-        {
-            children["overload-state"] = overload_state;
-        }
-        else
+        if(overload_state == nullptr)
         {
             overload_state = std::make_shared<Watchdog::Nodes::Node::OverloadState>();
-            overload_state->parent = this;
-            children["overload-state"] = overload_state;
         }
-        return children.at("overload-state");
+        return overload_state;
     }
 
     if(child_yang_name == "threshold-memory")
     {
-        if(threshold_memory != nullptr)
-        {
-            children["threshold-memory"] = threshold_memory;
-        }
-        else
+        if(threshold_memory == nullptr)
         {
             threshold_memory = std::make_shared<Watchdog::Nodes::Node::ThresholdMemory>();
-            threshold_memory->parent = this;
-            children["threshold-memory"] = threshold_memory;
         }
-        return children.at("threshold-memory");
+        return threshold_memory;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::get_children() const
 {
-    if(children.find("memory-state") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(memory_state != nullptr)
     {
-        if(memory_state != nullptr)
-        {
-            children["memory-state"] = memory_state;
-        }
+        children["memory-state"] = memory_state;
     }
 
-    if(children.find("overload-state") == children.end())
+    if(overload_state != nullptr)
     {
-        if(overload_state != nullptr)
-        {
-            children["overload-state"] = overload_state;
-        }
+        children["overload-state"] = overload_state;
     }
 
-    if(children.find("threshold-memory") == children.end())
+    if(threshold_memory != nullptr)
     {
-        if(threshold_memory != nullptr)
-        {
-            children["threshold-memory"] = threshold_memory;
-        }
+        children["threshold-memory"] = threshold_memory;
     }
 
     return children;
@@ -409,10 +340,8 @@ Watchdog::Nodes::Node::ThresholdMemory::ThresholdMemory()
 	,default_(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default_>())
 {
     configured->parent = this;
-    children["configured"] = configured;
 
     default_->parent = this;
-    children["default"] = default_;
 
     yang_name = "threshold-memory"; yang_parent_name = "node";
 }
@@ -443,7 +372,7 @@ std::string Watchdog::Nodes::Node::ThresholdMemory::get_segment_path() const
 
 }
 
-EntityPath Watchdog::Nodes::Node::ThresholdMemory::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::ThresholdMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -466,64 +395,38 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configured")
     {
-        if(configured != nullptr)
-        {
-            children["configured"] = configured;
-        }
-        else
+        if(configured == nullptr)
         {
             configured = std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Configured>();
-            configured->parent = this;
-            children["configured"] = configured;
         }
-        return children.at("configured");
+        return configured;
     }
 
     if(child_yang_name == "default")
     {
-        if(default_ != nullptr)
-        {
-            children["default"] = default_;
-        }
-        else
+        if(default_ == nullptr)
         {
             default_ = std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default_>();
-            default_->parent = this;
-            children["default"] = default_;
         }
-        return children.at("default");
+        return default_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::ThresholdMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::get_children() const
 {
-    if(children.find("configured") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(configured != nullptr)
     {
-        if(configured != nullptr)
-        {
-            children["configured"] = configured;
-        }
+        children["configured"] = configured;
     }
 
-    if(children.find("default") == children.end())
+    if(default_ != nullptr)
     {
-        if(default_ != nullptr)
-        {
-            children["default"] = default_;
-        }
+        children["default"] = default_;
     }
 
     return children;
@@ -539,10 +442,8 @@ Watchdog::Nodes::Node::ThresholdMemory::Default_::Default_()
 	,memory(std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory>())
 {
     configured_memory->parent = this;
-    children["configured-memory"] = configured_memory;
 
     memory->parent = this;
-    children["memory"] = memory;
 
     yang_name = "default"; yang_parent_name = "threshold-memory";
 }
@@ -573,7 +474,7 @@ std::string Watchdog::Nodes::Node::ThresholdMemory::Default_::get_segment_path()
 
 }
 
-EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -596,64 +497,38 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::get_entity_path(Ent
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configured-memory")
     {
-        if(configured_memory != nullptr)
-        {
-            children["configured-memory"] = configured_memory;
-        }
-        else
+        if(configured_memory == nullptr)
         {
             configured_memory = std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory>();
-            configured_memory->parent = this;
-            children["configured-memory"] = configured_memory;
         }
-        return children.at("configured-memory");
+        return configured_memory;
     }
 
     if(child_yang_name == "memory")
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
-        else
+        if(memory == nullptr)
         {
             memory = std::make_shared<Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory>();
-            memory->parent = this;
-            children["memory"] = memory;
         }
-        return children.at("memory");
+        return memory;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::ThresholdMemory::Default_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default_::get_children() const
 {
-    if(children.find("configured-memory") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(configured_memory != nullptr)
     {
-        if(configured_memory != nullptr)
-        {
-            children["configured-memory"] = configured_memory;
-        }
+        children["configured-memory"] = configured_memory;
     }
 
-    if(children.find("memory") == children.end())
+    if(memory != nullptr)
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
+        children["memory"] = memory;
     }
 
     return children;
@@ -700,7 +575,7 @@ std::string Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::
 
 }
 
-EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -726,20 +601,12 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::g
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -796,7 +663,7 @@ std::string Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_segmen
 
 }
 
-EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -822,20 +689,12 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_entity_
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -892,7 +751,7 @@ std::string Watchdog::Nodes::Node::ThresholdMemory::Configured::get_segment_path
 
 }
 
-EntityPath Watchdog::Nodes::Node::ThresholdMemory::Configured::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::ThresholdMemory::Configured::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -918,20 +777,12 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Configured::get_entity_path(E
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Configured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::ThresholdMemory::Configured::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Configured::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -988,7 +839,7 @@ std::string Watchdog::Nodes::Node::MemoryState::get_segment_path() const
 
 }
 
-EntityPath Watchdog::Nodes::Node::MemoryState::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::MemoryState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1014,20 +865,12 @@ EntityPath Watchdog::Nodes::Node::MemoryState::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::MemoryState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::MemoryState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::MemoryState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1056,7 +899,6 @@ Watchdog::Nodes::Node::OverloadState::OverloadState()
     current_throttle(std::make_shared<Watchdog::Nodes::Node::OverloadState::CurrentThrottle>())
 {
     current_throttle->parent = this;
-    children["current-throttle"] = current_throttle;
 
     yang_name = "overload-state"; yang_parent_name = "node";
 }
@@ -1101,7 +943,7 @@ std::string Watchdog::Nodes::Node::OverloadState::get_segment_path() const
 
 }
 
-EntityPath Watchdog::Nodes::Node::OverloadState::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::OverloadState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1127,28 +969,13 @@ EntityPath Watchdog::Nodes::Node::OverloadState::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-throttle")
     {
-        if(current_throttle != nullptr)
-        {
-            children["current-throttle"] = current_throttle;
-        }
-        else
+        if(current_throttle == nullptr)
         {
             current_throttle = std::make_shared<Watchdog::Nodes::Node::OverloadState::CurrentThrottle>();
-            current_throttle->parent = this;
-            children["current-throttle"] = current_throttle;
         }
-        return children.at("current-throttle");
+        return current_throttle;
     }
 
     if(child_yang_name == "last-throttle")
@@ -1158,36 +985,29 @@ std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Watchdog::Nodes::Node::OverloadState::LastThrottle>();
         c->parent = this;
-        last_throttle.push_back(std::move(c));
-        children[segment_path] = last_throttle.back();
-        return children.at(segment_path);
+        last_throttle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::OverloadState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::OverloadState::get_children() const
 {
-    if(children.find("current-throttle") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_throttle != nullptr)
     {
-        if(current_throttle != nullptr)
-        {
-            children["current-throttle"] = current_throttle;
-        }
+        children["current-throttle"] = current_throttle;
     }
 
     for (auto const & c : last_throttle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1243,7 +1063,7 @@ std::string Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_segment_p
 
 }
 
-EntityPath Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1268,20 +1088,12 @@ EntityPath Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_entity_pat
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1334,7 +1146,7 @@ std::string Watchdog::Nodes::Node::OverloadState::LastThrottle::get_segment_path
 
 }
 
-EntityPath Watchdog::Nodes::Node::OverloadState::LastThrottle::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::Nodes::Node::OverloadState::LastThrottle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1360,20 +1172,12 @@ EntityPath Watchdog::Nodes::Node::OverloadState::LastThrottle::get_entity_path(E
 
 std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::LastThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::Nodes::Node::OverloadState::LastThrottle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::OverloadState::LastThrottle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

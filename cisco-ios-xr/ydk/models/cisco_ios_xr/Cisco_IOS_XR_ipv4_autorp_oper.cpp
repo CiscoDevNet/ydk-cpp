@@ -15,10 +15,8 @@ AutoRp::AutoRp()
 	,standby(std::make_shared<AutoRp::Standby>())
 {
     active->parent = this;
-    children["active"] = active;
 
     standby->parent = this;
-    children["standby"] = standby;
 
     yang_name = "auto-rp"; yang_parent_name = "Cisco-IOS-XR-ipv4-autorp-oper";
 }
@@ -49,12 +47,12 @@ std::string AutoRp::get_segment_path() const
 
 }
 
-EntityPath AutoRp::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath AutoRp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AutoRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active")
     {
-        if(active != nullptr)
-        {
-            children["active"] = active;
-        }
-        else
+        if(active == nullptr)
         {
             active = std::make_shared<AutoRp::Active>();
-            active->parent = this;
-            children["active"] = active;
         }
-        return children.at("active");
+        return active;
     }
 
     if(child_yang_name == "standby")
     {
-        if(standby != nullptr)
-        {
-            children["standby"] = standby;
-        }
-        else
+        if(standby == nullptr)
         {
             standby = std::make_shared<AutoRp::Standby>();
-            standby->parent = this;
-            children["standby"] = standby;
         }
-        return children.at("standby");
+        return standby;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::get_children() const
 {
-    if(children.find("active") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(active != nullptr)
     {
-        if(active != nullptr)
-        {
-            children["active"] = active;
-        }
+        children["active"] = active;
     }
 
-    if(children.find("standby") == children.end())
+    if(standby != nullptr)
     {
-        if(standby != nullptr)
-        {
-            children["standby"] = standby;
-        }
+        children["standby"] = standby;
     }
 
     return children;
@@ -162,10 +134,8 @@ AutoRp::Standby::Standby()
 	,mapping_agent(std::make_shared<AutoRp::Standby::MappingAgent>())
 {
     candidate_rp->parent = this;
-    children["candidate-rp"] = candidate_rp;
 
     mapping_agent->parent = this;
-    children["mapping-agent"] = mapping_agent;
 
     yang_name = "standby"; yang_parent_name = "auto-rp";
 }
@@ -196,7 +166,7 @@ std::string AutoRp::Standby::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -219,64 +189,38 @@ EntityPath AutoRp::Standby::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AutoRp::Standby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-rp")
     {
-        if(candidate_rp != nullptr)
-        {
-            children["candidate-rp"] = candidate_rp;
-        }
-        else
+        if(candidate_rp == nullptr)
         {
             candidate_rp = std::make_shared<AutoRp::Standby::CandidateRp>();
-            candidate_rp->parent = this;
-            children["candidate-rp"] = candidate_rp;
         }
-        return children.at("candidate-rp");
+        return candidate_rp;
     }
 
     if(child_yang_name == "mapping-agent")
     {
-        if(mapping_agent != nullptr)
-        {
-            children["mapping-agent"] = mapping_agent;
-        }
-        else
+        if(mapping_agent == nullptr)
         {
             mapping_agent = std::make_shared<AutoRp::Standby::MappingAgent>();
-            mapping_agent->parent = this;
-            children["mapping-agent"] = mapping_agent;
         }
-        return children.at("mapping-agent");
+        return mapping_agent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::get_children() const
 {
-    if(children.find("candidate-rp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_rp != nullptr)
     {
-        if(candidate_rp != nullptr)
-        {
-            children["candidate-rp"] = candidate_rp;
-        }
+        children["candidate-rp"] = candidate_rp;
     }
 
-    if(children.find("mapping-agent") == children.end())
+    if(mapping_agent != nullptr)
     {
-        if(mapping_agent != nullptr)
-        {
-            children["mapping-agent"] = mapping_agent;
-        }
+        children["mapping-agent"] = mapping_agent;
     }
 
     return children;
@@ -292,10 +236,8 @@ AutoRp::Standby::CandidateRp::CandidateRp()
 	,traffic(std::make_shared<AutoRp::Standby::CandidateRp::Traffic>())
 {
     rps->parent = this;
-    children["rps"] = rps;
 
     traffic->parent = this;
-    children["traffic"] = traffic;
 
     yang_name = "candidate-rp"; yang_parent_name = "standby";
 }
@@ -326,7 +268,7 @@ std::string AutoRp::Standby::CandidateRp::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::CandidateRp::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::CandidateRp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -349,64 +291,38 @@ EntityPath AutoRp::Standby::CandidateRp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rps")
     {
-        if(rps != nullptr)
-        {
-            children["rps"] = rps;
-        }
-        else
+        if(rps == nullptr)
         {
             rps = std::make_shared<AutoRp::Standby::CandidateRp::Rps>();
-            rps->parent = this;
-            children["rps"] = rps;
         }
-        return children.at("rps");
+        return rps;
     }
 
     if(child_yang_name == "traffic")
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
-        else
+        if(traffic == nullptr)
         {
             traffic = std::make_shared<AutoRp::Standby::CandidateRp::Traffic>();
-            traffic->parent = this;
-            children["traffic"] = traffic;
         }
-        return children.at("traffic");
+        return traffic;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::CandidateRp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::get_children() const
 {
-    if(children.find("rps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rps != nullptr)
     {
-        if(rps != nullptr)
-        {
-            children["rps"] = rps;
-        }
+        children["rps"] = rps;
     }
 
-    if(children.find("traffic") == children.end())
+    if(traffic != nullptr)
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
+        children["traffic"] = traffic;
     }
 
     return children;
@@ -450,7 +366,7 @@ std::string AutoRp::Standby::CandidateRp::Traffic::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::CandidateRp::Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::CandidateRp::Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -475,20 +391,12 @@ EntityPath AutoRp::Standby::CandidateRp::Traffic::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::CandidateRp::Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -542,7 +450,7 @@ std::string AutoRp::Standby::CandidateRp::Rps::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::CandidateRp::Rps::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::CandidateRp::Rps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -565,15 +473,6 @@ EntityPath AutoRp::Standby::CandidateRp::Rps::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rp")
     {
         for(auto const & c : rp)
@@ -581,28 +480,24 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AutoRp::Standby::CandidateRp::Rps::Rp>();
         c->parent = this;
-        rp.push_back(std::move(c));
-        children[segment_path] = rp.back();
-        return children.at(segment_path);
+        rp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::CandidateRp::Rps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -661,7 +556,7 @@ std::string AutoRp::Standby::CandidateRp::Rps::Rp::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::CandidateRp::Rps::Rp::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::CandidateRp::Rps::Rp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -691,20 +586,12 @@ EntityPath AutoRp::Standby::CandidateRp::Rps::Rp::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::Rp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::CandidateRp::Rps::Rp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps::Rp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -747,13 +634,10 @@ AutoRp::Standby::MappingAgent::MappingAgent()
 	,traffic(std::make_shared<AutoRp::Standby::MappingAgent::Traffic>())
 {
     rp_addresses->parent = this;
-    children["rp-addresses"] = rp_addresses;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     traffic->parent = this;
-    children["traffic"] = traffic;
 
     yang_name = "mapping-agent"; yang_parent_name = "standby";
 }
@@ -786,7 +670,7 @@ std::string AutoRp::Standby::MappingAgent::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::MappingAgent::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::MappingAgent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -809,87 +693,52 @@ EntityPath AutoRp::Standby::MappingAgent::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rp-addresses")
     {
-        if(rp_addresses != nullptr)
-        {
-            children["rp-addresses"] = rp_addresses;
-        }
-        else
+        if(rp_addresses == nullptr)
         {
             rp_addresses = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses>();
-            rp_addresses->parent = this;
-            children["rp-addresses"] = rp_addresses;
         }
-        return children.at("rp-addresses");
+        return rp_addresses;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<AutoRp::Standby::MappingAgent::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "traffic")
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
-        else
+        if(traffic == nullptr)
         {
             traffic = std::make_shared<AutoRp::Standby::MappingAgent::Traffic>();
-            traffic->parent = this;
-            children["traffic"] = traffic;
         }
-        return children.at("traffic");
+        return traffic;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::MappingAgent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::get_children() const
 {
-    if(children.find("rp-addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rp_addresses != nullptr)
     {
-        if(rp_addresses != nullptr)
-        {
-            children["rp-addresses"] = rp_addresses;
-        }
+        children["rp-addresses"] = rp_addresses;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("traffic") == children.end())
+    if(traffic != nullptr)
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
+        children["traffic"] = traffic;
     }
 
     return children;
@@ -939,7 +788,7 @@ std::string AutoRp::Standby::MappingAgent::Traffic::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::MappingAgent::Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::MappingAgent::Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -966,20 +815,12 @@ EntityPath AutoRp::Standby::MappingAgent::Traffic::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::MappingAgent::Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1041,7 +882,7 @@ std::string AutoRp::Standby::MappingAgent::RpAddresses::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::MappingAgent::RpAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::MappingAgent::RpAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1064,15 +905,6 @@ EntityPath AutoRp::Standby::MappingAgent::RpAddresses::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rp-address")
     {
         for(auto const & c : rp_address)
@@ -1080,28 +912,24 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress>();
         c->parent = this;
-        rp_address.push_back(std::move(c));
-        children[segment_path] = rp_address.back();
-        return children.at(segment_path);
+        rp_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::MappingAgent::RpAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rp_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1161,7 +989,7 @@ std::string AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_segment_p
 
 }
 
-EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1188,15 +1016,6 @@ EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_entity_pat
 
 std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "range")
     {
         for(auto const & c : range)
@@ -1204,28 +1023,24 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range>();
         c->parent = this;
-        range.push_back(std::move(c));
-        children[segment_path] = range.back();
-        return children.at(segment_path);
+        range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1300,7 +1115,7 @@ std::string AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_se
 
 }
 
-EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1330,20 +1145,12 @@ EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_ent
 
 std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1416,7 +1223,7 @@ std::string AutoRp::Standby::MappingAgent::Summary::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Standby::MappingAgent::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Standby::MappingAgent::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1442,20 +1249,12 @@ EntityPath AutoRp::Standby::MappingAgent::Summary::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Standby::MappingAgent::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1481,10 +1280,8 @@ AutoRp::Active::Active()
 	,mapping_agent(std::make_shared<AutoRp::Active::MappingAgent>())
 {
     candidate_rp->parent = this;
-    children["candidate-rp"] = candidate_rp;
 
     mapping_agent->parent = this;
-    children["mapping-agent"] = mapping_agent;
 
     yang_name = "active"; yang_parent_name = "auto-rp";
 }
@@ -1515,7 +1312,7 @@ std::string AutoRp::Active::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1538,64 +1335,38 @@ EntityPath AutoRp::Active::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AutoRp::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-rp")
     {
-        if(candidate_rp != nullptr)
-        {
-            children["candidate-rp"] = candidate_rp;
-        }
-        else
+        if(candidate_rp == nullptr)
         {
             candidate_rp = std::make_shared<AutoRp::Active::CandidateRp>();
-            candidate_rp->parent = this;
-            children["candidate-rp"] = candidate_rp;
         }
-        return children.at("candidate-rp");
+        return candidate_rp;
     }
 
     if(child_yang_name == "mapping-agent")
     {
-        if(mapping_agent != nullptr)
-        {
-            children["mapping-agent"] = mapping_agent;
-        }
-        else
+        if(mapping_agent == nullptr)
         {
             mapping_agent = std::make_shared<AutoRp::Active::MappingAgent>();
-            mapping_agent->parent = this;
-            children["mapping-agent"] = mapping_agent;
         }
-        return children.at("mapping-agent");
+        return mapping_agent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::get_children() const
 {
-    if(children.find("candidate-rp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_rp != nullptr)
     {
-        if(candidate_rp != nullptr)
-        {
-            children["candidate-rp"] = candidate_rp;
-        }
+        children["candidate-rp"] = candidate_rp;
     }
 
-    if(children.find("mapping-agent") == children.end())
+    if(mapping_agent != nullptr)
     {
-        if(mapping_agent != nullptr)
-        {
-            children["mapping-agent"] = mapping_agent;
-        }
+        children["mapping-agent"] = mapping_agent;
     }
 
     return children;
@@ -1611,10 +1382,8 @@ AutoRp::Active::CandidateRp::CandidateRp()
 	,traffic(std::make_shared<AutoRp::Active::CandidateRp::Traffic>())
 {
     rps->parent = this;
-    children["rps"] = rps;
 
     traffic->parent = this;
-    children["traffic"] = traffic;
 
     yang_name = "candidate-rp"; yang_parent_name = "active";
 }
@@ -1645,7 +1414,7 @@ std::string AutoRp::Active::CandidateRp::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::CandidateRp::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::CandidateRp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1668,64 +1437,38 @@ EntityPath AutoRp::Active::CandidateRp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AutoRp::Active::CandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rps")
     {
-        if(rps != nullptr)
-        {
-            children["rps"] = rps;
-        }
-        else
+        if(rps == nullptr)
         {
             rps = std::make_shared<AutoRp::Active::CandidateRp::Rps>();
-            rps->parent = this;
-            children["rps"] = rps;
         }
-        return children.at("rps");
+        return rps;
     }
 
     if(child_yang_name == "traffic")
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
-        else
+        if(traffic == nullptr)
         {
             traffic = std::make_shared<AutoRp::Active::CandidateRp::Traffic>();
-            traffic->parent = this;
-            children["traffic"] = traffic;
         }
-        return children.at("traffic");
+        return traffic;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::CandidateRp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::get_children() const
 {
-    if(children.find("rps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rps != nullptr)
     {
-        if(rps != nullptr)
-        {
-            children["rps"] = rps;
-        }
+        children["rps"] = rps;
     }
 
-    if(children.find("traffic") == children.end())
+    if(traffic != nullptr)
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
+        children["traffic"] = traffic;
     }
 
     return children;
@@ -1769,7 +1512,7 @@ std::string AutoRp::Active::CandidateRp::Traffic::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::CandidateRp::Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::CandidateRp::Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1794,20 +1537,12 @@ EntityPath AutoRp::Active::CandidateRp::Traffic::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::CandidateRp::Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1861,7 +1596,7 @@ std::string AutoRp::Active::CandidateRp::Rps::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::CandidateRp::Rps::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::CandidateRp::Rps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1884,15 +1619,6 @@ EntityPath AutoRp::Active::CandidateRp::Rps::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rp")
     {
         for(auto const & c : rp)
@@ -1900,28 +1626,24 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AutoRp::Active::CandidateRp::Rps::Rp>();
         c->parent = this;
-        rp.push_back(std::move(c));
-        children[segment_path] = rp.back();
-        return children.at(segment_path);
+        rp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::CandidateRp::Rps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1980,7 +1702,7 @@ std::string AutoRp::Active::CandidateRp::Rps::Rp::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::CandidateRp::Rps::Rp::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::CandidateRp::Rps::Rp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2010,20 +1732,12 @@ EntityPath AutoRp::Active::CandidateRp::Rps::Rp::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::Rp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::CandidateRp::Rps::Rp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps::Rp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2066,13 +1780,10 @@ AutoRp::Active::MappingAgent::MappingAgent()
 	,traffic(std::make_shared<AutoRp::Active::MappingAgent::Traffic>())
 {
     rp_addresses->parent = this;
-    children["rp-addresses"] = rp_addresses;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     traffic->parent = this;
-    children["traffic"] = traffic;
 
     yang_name = "mapping-agent"; yang_parent_name = "active";
 }
@@ -2105,7 +1816,7 @@ std::string AutoRp::Active::MappingAgent::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::MappingAgent::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::MappingAgent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2128,87 +1839,52 @@ EntityPath AutoRp::Active::MappingAgent::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AutoRp::Active::MappingAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rp-addresses")
     {
-        if(rp_addresses != nullptr)
-        {
-            children["rp-addresses"] = rp_addresses;
-        }
-        else
+        if(rp_addresses == nullptr)
         {
             rp_addresses = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses>();
-            rp_addresses->parent = this;
-            children["rp-addresses"] = rp_addresses;
         }
-        return children.at("rp-addresses");
+        return rp_addresses;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<AutoRp::Active::MappingAgent::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "traffic")
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
-        else
+        if(traffic == nullptr)
         {
             traffic = std::make_shared<AutoRp::Active::MappingAgent::Traffic>();
-            traffic->parent = this;
-            children["traffic"] = traffic;
         }
-        return children.at("traffic");
+        return traffic;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::MappingAgent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::get_children() const
 {
-    if(children.find("rp-addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rp_addresses != nullptr)
     {
-        if(rp_addresses != nullptr)
-        {
-            children["rp-addresses"] = rp_addresses;
-        }
+        children["rp-addresses"] = rp_addresses;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("traffic") == children.end())
+    if(traffic != nullptr)
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
+        children["traffic"] = traffic;
     }
 
     return children;
@@ -2258,7 +1934,7 @@ std::string AutoRp::Active::MappingAgent::Traffic::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::MappingAgent::Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::MappingAgent::Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2285,20 +1961,12 @@ EntityPath AutoRp::Active::MappingAgent::Traffic::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> AutoRp::Active::MappingAgent::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::MappingAgent::Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2360,7 +2028,7 @@ std::string AutoRp::Active::MappingAgent::RpAddresses::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::MappingAgent::RpAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::MappingAgent::RpAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2383,15 +2051,6 @@ EntityPath AutoRp::Active::MappingAgent::RpAddresses::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rp-address")
     {
         for(auto const & c : rp_address)
@@ -2399,28 +2058,24 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress>();
         c->parent = this;
-        rp_address.push_back(std::move(c));
-        children[segment_path] = rp_address.back();
-        return children.at(segment_path);
+        rp_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::MappingAgent::RpAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rp_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2480,7 +2135,7 @@ std::string AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_segment_pa
 
 }
 
-EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2507,15 +2162,6 @@ EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_entity_path
 
 std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "range")
     {
         for(auto const & c : range)
@@ -2523,28 +2169,24 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range>();
         c->parent = this;
-        range.push_back(std::move(c));
-        children[segment_path] = range.back();
-        return children.at(segment_path);
+        range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2619,7 +2261,7 @@ std::string AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_seg
 
 }
 
-EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2649,20 +2291,12 @@ EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_enti
 
 std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2735,7 +2369,7 @@ std::string AutoRp::Active::MappingAgent::Summary::get_segment_path() const
 
 }
 
-EntityPath AutoRp::Active::MappingAgent::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath AutoRp::Active::MappingAgent::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2761,20 +2395,12 @@ EntityPath AutoRp::Active::MappingAgent::Summary::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> AutoRp::Active::MappingAgent::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AutoRp::Active::MappingAgent::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -26,31 +26,22 @@ Pce::Pce()
 	,timers(std::make_shared<Pce::Timers>())
 {
     backoff->parent = this;
-    children["backoff"] = backoff;
 
     disjoint_path->parent = this;
-    children["disjoint-path"] = disjoint_path;
 
     explicit_paths->parent = this;
-    children["explicit-paths"] = explicit_paths;
 
     logging->parent = this;
-    children["logging"] = logging;
 
     netconf->parent = this;
-    children["netconf"] = netconf;
 
     pcc_addresses->parent = this;
-    children["pcc-addresses"] = pcc_addresses;
 
     segment_routing->parent = this;
-    children["segment-routing"] = segment_routing;
 
     state_syncs->parent = this;
-    children["state-syncs"] = state_syncs;
 
     timers->parent = this;
-    children["timers"] = timers;
 
     yang_name = "pce"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-cfg";
 }
@@ -101,12 +92,12 @@ std::string Pce::get_segment_path() const
 
 }
 
-EntityPath Pce::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -124,225 +115,136 @@ EntityPath Pce::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backoff")
     {
-        if(backoff != nullptr)
-        {
-            children["backoff"] = backoff;
-        }
-        else
+        if(backoff == nullptr)
         {
             backoff = std::make_shared<Pce::Backoff>();
-            backoff->parent = this;
-            children["backoff"] = backoff;
         }
-        return children.at("backoff");
+        return backoff;
     }
 
     if(child_yang_name == "disjoint-path")
     {
-        if(disjoint_path != nullptr)
-        {
-            children["disjoint-path"] = disjoint_path;
-        }
-        else
+        if(disjoint_path == nullptr)
         {
             disjoint_path = std::make_shared<Pce::DisjointPath>();
-            disjoint_path->parent = this;
-            children["disjoint-path"] = disjoint_path;
         }
-        return children.at("disjoint-path");
+        return disjoint_path;
     }
 
     if(child_yang_name == "explicit-paths")
     {
-        if(explicit_paths != nullptr)
-        {
-            children["explicit-paths"] = explicit_paths;
-        }
-        else
+        if(explicit_paths == nullptr)
         {
             explicit_paths = std::make_shared<Pce::ExplicitPaths>();
-            explicit_paths->parent = this;
-            children["explicit-paths"] = explicit_paths;
         }
-        return children.at("explicit-paths");
+        return explicit_paths;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
-        else
+        if(logging == nullptr)
         {
             logging = std::make_shared<Pce::Logging>();
-            logging->parent = this;
-            children["logging"] = logging;
         }
-        return children.at("logging");
+        return logging;
     }
 
     if(child_yang_name == "netconf")
     {
-        if(netconf != nullptr)
-        {
-            children["netconf"] = netconf;
-        }
-        else
+        if(netconf == nullptr)
         {
             netconf = std::make_shared<Pce::Netconf>();
-            netconf->parent = this;
-            children["netconf"] = netconf;
         }
-        return children.at("netconf");
+        return netconf;
     }
 
     if(child_yang_name == "pcc-addresses")
     {
-        if(pcc_addresses != nullptr)
-        {
-            children["pcc-addresses"] = pcc_addresses;
-        }
-        else
+        if(pcc_addresses == nullptr)
         {
             pcc_addresses = std::make_shared<Pce::PccAddresses>();
-            pcc_addresses->parent = this;
-            children["pcc-addresses"] = pcc_addresses;
         }
-        return children.at("pcc-addresses");
+        return pcc_addresses;
     }
 
     if(child_yang_name == "segment-routing")
     {
-        if(segment_routing != nullptr)
-        {
-            children["segment-routing"] = segment_routing;
-        }
-        else
+        if(segment_routing == nullptr)
         {
             segment_routing = std::make_shared<Pce::SegmentRouting>();
-            segment_routing->parent = this;
-            children["segment-routing"] = segment_routing;
         }
-        return children.at("segment-routing");
+        return segment_routing;
     }
 
     if(child_yang_name == "state-syncs")
     {
-        if(state_syncs != nullptr)
-        {
-            children["state-syncs"] = state_syncs;
-        }
-        else
+        if(state_syncs == nullptr)
         {
             state_syncs = std::make_shared<Pce::StateSyncs>();
-            state_syncs->parent = this;
-            children["state-syncs"] = state_syncs;
         }
-        return children.at("state-syncs");
+        return state_syncs;
     }
 
     if(child_yang_name == "timers")
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
-        else
+        if(timers == nullptr)
         {
             timers = std::make_shared<Pce::Timers>();
-            timers->parent = this;
-            children["timers"] = timers;
         }
-        return children.at("timers");
+        return timers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::get_children() const
 {
-    if(children.find("backoff") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backoff != nullptr)
     {
-        if(backoff != nullptr)
-        {
-            children["backoff"] = backoff;
-        }
+        children["backoff"] = backoff;
     }
 
-    if(children.find("disjoint-path") == children.end())
+    if(disjoint_path != nullptr)
     {
-        if(disjoint_path != nullptr)
-        {
-            children["disjoint-path"] = disjoint_path;
-        }
+        children["disjoint-path"] = disjoint_path;
     }
 
-    if(children.find("explicit-paths") == children.end())
+    if(explicit_paths != nullptr)
     {
-        if(explicit_paths != nullptr)
-        {
-            children["explicit-paths"] = explicit_paths;
-        }
+        children["explicit-paths"] = explicit_paths;
     }
 
-    if(children.find("logging") == children.end())
+    if(logging != nullptr)
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
+        children["logging"] = logging;
     }
 
-    if(children.find("netconf") == children.end())
+    if(netconf != nullptr)
     {
-        if(netconf != nullptr)
-        {
-            children["netconf"] = netconf;
-        }
+        children["netconf"] = netconf;
     }
 
-    if(children.find("pcc-addresses") == children.end())
+    if(pcc_addresses != nullptr)
     {
-        if(pcc_addresses != nullptr)
-        {
-            children["pcc-addresses"] = pcc_addresses;
-        }
+        children["pcc-addresses"] = pcc_addresses;
     }
 
-    if(children.find("segment-routing") == children.end())
+    if(segment_routing != nullptr)
     {
-        if(segment_routing != nullptr)
-        {
-            children["segment-routing"] = segment_routing;
-        }
+        children["segment-routing"] = segment_routing;
     }
 
-    if(children.find("state-syncs") == children.end())
+    if(state_syncs != nullptr)
     {
-        if(state_syncs != nullptr)
-        {
-            children["state-syncs"] = state_syncs;
-        }
+        children["state-syncs"] = state_syncs;
     }
 
-    if(children.find("timers") == children.end())
+    if(timers != nullptr)
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
+        children["timers"] = timers;
     }
 
     return children;
@@ -422,7 +324,7 @@ std::string Pce::PccAddresses::get_segment_path() const
 
 }
 
-EntityPath Pce::PccAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::PccAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -445,15 +347,6 @@ EntityPath Pce::PccAddresses::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::PccAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pcc-address")
     {
         for(auto const & c : pcc_address)
@@ -461,28 +354,24 @@ std::shared_ptr<Entity> Pce::PccAddresses::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pce::PccAddresses::PccAddress>();
         c->parent = this;
-        pcc_address.push_back(std::move(c));
-        children[segment_path] = pcc_address.back();
-        return children.at(segment_path);
+        pcc_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::PccAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pcc_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -500,7 +389,6 @@ Pce::PccAddresses::PccAddress::PccAddress()
     lsp_names(std::make_shared<Pce::PccAddresses::PccAddress::LspNames>())
 {
     lsp_names->parent = this;
-    children["lsp-names"] = lsp_names;
 
     yang_name = "pcc-address"; yang_parent_name = "pcc-addresses";
 }
@@ -533,7 +421,7 @@ std::string Pce::PccAddresses::PccAddress::get_segment_path() const
 
 }
 
-EntityPath Pce::PccAddresses::PccAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::PccAddresses::PccAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -558,41 +446,24 @@ EntityPath Pce::PccAddresses::PccAddress::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-names")
     {
-        if(lsp_names != nullptr)
-        {
-            children["lsp-names"] = lsp_names;
-        }
-        else
+        if(lsp_names == nullptr)
         {
             lsp_names = std::make_shared<Pce::PccAddresses::PccAddress::LspNames>();
-            lsp_names->parent = this;
-            children["lsp-names"] = lsp_names;
         }
-        return children.at("lsp-names");
+        return lsp_names;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::PccAddresses::PccAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::get_children() const
 {
-    if(children.find("lsp-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsp_names != nullptr)
     {
-        if(lsp_names != nullptr)
-        {
-            children["lsp-names"] = lsp_names;
-        }
+        children["lsp-names"] = lsp_names;
     }
 
     return children;
@@ -648,7 +519,7 @@ std::string Pce::PccAddresses::PccAddress::LspNames::get_segment_path() const
 
 }
 
-EntityPath Pce::PccAddresses::PccAddress::LspNames::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::PccAddresses::PccAddress::LspNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -671,15 +542,6 @@ EntityPath Pce::PccAddresses::PccAddress::LspNames::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::LspNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-name")
     {
         for(auto const & c : lsp_name)
@@ -687,28 +549,24 @@ std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::LspNames::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName>();
         c->parent = this;
-        lsp_name.push_back(std::move(c));
-        children[segment_path] = lsp_name.back();
-        return children.at(segment_path);
+        lsp_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::PccAddresses::PccAddress::LspNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::LspNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsp_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -728,7 +586,6 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::LspName()
     rsvp_te(std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe>())
 {
     rsvp_te->parent = this;
-    children["rsvp-te"] = rsvp_te;
 
     yang_name = "lsp-name"; yang_parent_name = "lsp-names";
 }
@@ -765,7 +622,7 @@ std::string Pce::PccAddresses::PccAddress::LspNames::LspName::get_segment_path()
 
 }
 
-EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -792,41 +649,24 @@ EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::get_entity_path(Ent
 
 std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::LspNames::LspName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-te")
     {
-        if(rsvp_te != nullptr)
-        {
-            children["rsvp-te"] = rsvp_te;
-        }
-        else
+        if(rsvp_te == nullptr)
         {
             rsvp_te = std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe>();
-            rsvp_te->parent = this;
-            children["rsvp-te"] = rsvp_te;
         }
-        return children.at("rsvp-te");
+        return rsvp_te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::PccAddresses::PccAddress::LspNames::LspName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::LspNames::LspName::get_children() const
 {
-    if(children.find("rsvp-te") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_te != nullptr)
     {
-        if(rsvp_te != nullptr)
-        {
-            children["rsvp-te"] = rsvp_te;
-        }
+        children["rsvp-te"] = rsvp_te;
     }
 
     return children;
@@ -862,7 +702,6 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::RsvpTe()
 	,priority(nullptr) // presence node
 {
     affinity->parent = this;
-    children["affinity"] = affinity;
 
     yang_name = "rsvp-te"; yang_parent_name = "lsp-name";
 }
@@ -899,7 +738,7 @@ std::string Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_segmen
 
 }
 
-EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -925,64 +764,38 @@ EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_entity_
 
 std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity")
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
-        else
+        if(affinity == nullptr)
         {
             affinity = std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity>();
-            affinity->parent = this;
-            children["affinity"] = affinity;
         }
-        return children.at("affinity");
+        return affinity;
     }
 
     if(child_yang_name == "priority")
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
-        else
+        if(priority == nullptr)
         {
             priority = std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority>();
-            priority->parent = this;
-            children["priority"] = priority;
         }
-        return children.at("priority");
+        return priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_children() const
 {
-    if(children.find("affinity") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity != nullptr)
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
+        children["affinity"] = affinity;
     }
 
-    if(children.find("priority") == children.end())
+    if(priority != nullptr)
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
+        children["priority"] = priority;
     }
 
     return children;
@@ -1041,7 +854,7 @@ std::string Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::
 
 }
 
-EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1067,20 +880,12 @@ EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::g
 
 std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1134,7 +939,7 @@ std::string Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::
 
 }
 
-EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1159,20 +964,12 @@ EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::g
 
 std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1222,7 +1019,7 @@ std::string Pce::Logging::get_segment_path() const
 
 }
 
-EntityPath Pce::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1247,20 +1044,12 @@ EntityPath Pce::Logging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1313,7 +1102,7 @@ std::string Pce::Backoff::get_segment_path() const
 
 }
 
-EntityPath Pce::Backoff::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::Backoff::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1339,20 +1128,12 @@ EntityPath Pce::Backoff::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::Backoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::Backoff::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::Backoff::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1410,7 +1191,7 @@ std::string Pce::StateSyncs::get_segment_path() const
 
 }
 
-EntityPath Pce::StateSyncs::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::StateSyncs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1433,15 +1214,6 @@ EntityPath Pce::StateSyncs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::StateSyncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "state-sync")
     {
         for(auto const & c : state_sync)
@@ -1449,28 +1221,24 @@ std::shared_ptr<Entity> Pce::StateSyncs::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pce::StateSyncs::StateSync>();
         c->parent = this;
-        state_sync.push_back(std::move(c));
-        children[segment_path] = state_sync.back();
-        return children.at(segment_path);
+        state_sync.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::StateSyncs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::StateSyncs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : state_sync)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1511,7 +1279,7 @@ std::string Pce::StateSyncs::StateSync::get_segment_path() const
 
 }
 
-EntityPath Pce::StateSyncs::StateSync::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::StateSyncs::StateSync::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1535,20 +1303,12 @@ EntityPath Pce::StateSyncs::StateSync::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::StateSyncs::StateSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::StateSyncs::StateSync::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::StateSyncs::StateSync::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1594,7 +1354,7 @@ std::string Pce::SegmentRouting::get_segment_path() const
 
 }
 
-EntityPath Pce::SegmentRouting::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::SegmentRouting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1619,20 +1379,12 @@ EntityPath Pce::SegmentRouting::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::SegmentRouting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1685,7 +1437,7 @@ std::string Pce::Timers::get_segment_path() const
 
 }
 
-EntityPath Pce::Timers::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::Timers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1711,20 +1463,12 @@ EntityPath Pce::Timers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::Timers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::Timers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1749,7 +1493,6 @@ Pce::Netconf::Netconf()
     netconf_ssh(std::make_shared<Pce::Netconf::NetconfSsh>())
 {
     netconf_ssh->parent = this;
-    children["netconf-ssh"] = netconf_ssh;
 
     yang_name = "netconf"; yang_parent_name = "pce";
 }
@@ -1778,7 +1521,7 @@ std::string Pce::Netconf::get_segment_path() const
 
 }
 
-EntityPath Pce::Netconf::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::Netconf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1801,41 +1544,24 @@ EntityPath Pce::Netconf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "netconf-ssh")
     {
-        if(netconf_ssh != nullptr)
-        {
-            children["netconf-ssh"] = netconf_ssh;
-        }
-        else
+        if(netconf_ssh == nullptr)
         {
             netconf_ssh = std::make_shared<Pce::Netconf::NetconfSsh>();
-            netconf_ssh->parent = this;
-            children["netconf-ssh"] = netconf_ssh;
         }
-        return children.at("netconf-ssh");
+        return netconf_ssh;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::Netconf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::Netconf::get_children() const
 {
-    if(children.find("netconf-ssh") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(netconf_ssh != nullptr)
     {
-        if(netconf_ssh != nullptr)
-        {
-            children["netconf-ssh"] = netconf_ssh;
-        }
+        children["netconf-ssh"] = netconf_ssh;
     }
 
     return children;
@@ -1879,7 +1605,7 @@ std::string Pce::Netconf::NetconfSsh::get_segment_path() const
 
 }
 
-EntityPath Pce::Netconf::NetconfSsh::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::Netconf::NetconfSsh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1904,20 +1630,12 @@ EntityPath Pce::Netconf::NetconfSsh::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::Netconf::NetconfSsh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::Netconf::NetconfSsh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::Netconf::NetconfSsh::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1938,7 +1656,6 @@ Pce::DisjointPath::DisjointPath()
     groups(std::make_shared<Pce::DisjointPath::Groups>())
 {
     groups->parent = this;
-    children["groups"] = groups;
 
     yang_name = "disjoint-path"; yang_parent_name = "pce";
 }
@@ -1967,7 +1684,7 @@ std::string Pce::DisjointPath::get_segment_path() const
 
 }
 
-EntityPath Pce::DisjointPath::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::DisjointPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1990,41 +1707,24 @@ EntityPath Pce::DisjointPath::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<Pce::DisjointPath::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::DisjointPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::get_children() const
 {
-    if(children.find("groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
     return children;
@@ -2072,7 +1772,7 @@ std::string Pce::DisjointPath::Groups::get_segment_path() const
 
 }
 
-EntityPath Pce::DisjointPath::Groups::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::DisjointPath::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2095,15 +1795,6 @@ EntityPath Pce::DisjointPath::Groups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::DisjointPath::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -2111,28 +1802,24 @@ std::shared_ptr<Entity> Pce::DisjointPath::Groups::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pce::DisjointPath::Groups::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::DisjointPath::Groups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2144,8 +1831,8 @@ void Pce::DisjointPath::Groups::set_value(const std::string & value_path, std::s
 
 Pce::DisjointPath::Groups::Group::Group()
     :
-    dp_type{YType::enumeration, "dp-type"},
     group_id{YType::uint32, "group-id"},
+    dp_type{YType::enumeration, "dp-type"},
     sub_id{YType::uint32, "sub-id"},
     strict{YType::empty, "strict"}
 {
@@ -2158,8 +1845,8 @@ Pce::DisjointPath::Groups::Group::~Group()
 
 bool Pce::DisjointPath::Groups::Group::has_data() const
 {
-    return dp_type.is_set
-	|| group_id.is_set
+    return group_id.is_set
+	|| dp_type.is_set
 	|| sub_id.is_set
 	|| strict.is_set;
 }
@@ -2167,8 +1854,8 @@ bool Pce::DisjointPath::Groups::Group::has_data() const
 bool Pce::DisjointPath::Groups::Group::has_operation() const
 {
     return is_set(operation)
-	|| is_set(dp_type.operation)
 	|| is_set(group_id.operation)
+	|| is_set(dp_type.operation)
 	|| is_set(sub_id.operation)
 	|| is_set(strict.operation);
 }
@@ -2176,13 +1863,13 @@ bool Pce::DisjointPath::Groups::Group::has_operation() const
 std::string Pce::DisjointPath::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[dp-type='" <<dp_type <<"']" <<"[group-id='" <<group_id <<"']" <<"[sub-id='" <<sub_id <<"']";
+    path_buffer << "group" <<"[group-id='" <<group_id <<"']" <<"[dp-type='" <<dp_type <<"']" <<"[sub-id='" <<sub_id <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Pce::DisjointPath::Groups::Group::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::DisjointPath::Groups::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2196,8 +1883,8 @@ EntityPath Pce::DisjointPath::Groups::Group::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dp_type.is_set || is_set(dp_type.operation)) leaf_name_data.push_back(dp_type.get_name_leafdata());
     if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (dp_type.is_set || is_set(dp_type.operation)) leaf_name_data.push_back(dp_type.get_name_leafdata());
     if (sub_id.is_set || is_set(sub_id.operation)) leaf_name_data.push_back(sub_id.get_name_leafdata());
     if (strict.is_set || is_set(strict.operation)) leaf_name_data.push_back(strict.get_name_leafdata());
 
@@ -2209,32 +1896,24 @@ EntityPath Pce::DisjointPath::Groups::Group::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Pce::DisjointPath::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::DisjointPath::Groups::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::Group::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void Pce::DisjointPath::Groups::Group::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "dp-type")
-    {
-        dp_type = value;
-    }
     if(value_path == "group-id")
     {
         group_id = value;
+    }
+    if(value_path == "dp-type")
+    {
+        dp_type = value;
     }
     if(value_path == "sub-id")
     {
@@ -2284,7 +1963,7 @@ std::string Pce::ExplicitPaths::get_segment_path() const
 
 }
 
-EntityPath Pce::ExplicitPaths::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::ExplicitPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2307,15 +1986,6 @@ EntityPath Pce::ExplicitPaths::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Pce::ExplicitPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "explicit-path")
     {
         for(auto const & c : explicit_path)
@@ -2323,28 +1993,24 @@ std::shared_ptr<Entity> Pce::ExplicitPaths::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pce::ExplicitPaths::ExplicitPath>();
         c->parent = this;
-        explicit_path.push_back(std::move(c));
-        children[segment_path] = explicit_path.back();
-        return children.at(segment_path);
+        explicit_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::ExplicitPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2362,7 +2028,6 @@ Pce::ExplicitPaths::ExplicitPath::ExplicitPath()
     path_hops(std::make_shared<Pce::ExplicitPaths::ExplicitPath::PathHops>())
 {
     path_hops->parent = this;
-    children["path-hops"] = path_hops;
 
     yang_name = "explicit-path"; yang_parent_name = "explicit-paths";
 }
@@ -2395,7 +2060,7 @@ std::string Pce::ExplicitPaths::ExplicitPath::get_segment_path() const
 
 }
 
-EntityPath Pce::ExplicitPaths::ExplicitPath::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::ExplicitPaths::ExplicitPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2420,41 +2085,24 @@ EntityPath Pce::ExplicitPaths::ExplicitPath::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Pce::ExplicitPaths::ExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-hops")
     {
-        if(path_hops != nullptr)
-        {
-            children["path-hops"] = path_hops;
-        }
-        else
+        if(path_hops == nullptr)
         {
             path_hops = std::make_shared<Pce::ExplicitPaths::ExplicitPath::PathHops>();
-            path_hops->parent = this;
-            children["path-hops"] = path_hops;
         }
-        return children.at("path-hops");
+        return path_hops;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::ExplicitPaths::ExplicitPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::ExplicitPath::get_children() const
 {
-    if(children.find("path-hops") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_hops != nullptr)
     {
-        if(path_hops != nullptr)
-        {
-            children["path-hops"] = path_hops;
-        }
+        children["path-hops"] = path_hops;
     }
 
     return children;
@@ -2510,7 +2158,7 @@ std::string Pce::ExplicitPaths::ExplicitPath::PathHops::get_segment_path() const
 
 }
 
-EntityPath Pce::ExplicitPaths::ExplicitPath::PathHops::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::ExplicitPaths::ExplicitPath::PathHops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2533,15 +2181,6 @@ EntityPath Pce::ExplicitPaths::ExplicitPath::PathHops::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Pce::ExplicitPaths::ExplicitPath::PathHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-hop")
     {
         for(auto const & c : path_hop)
@@ -2549,28 +2188,24 @@ std::shared_ptr<Entity> Pce::ExplicitPaths::ExplicitPath::PathHops::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop>();
         c->parent = this;
-        path_hop.push_back(std::move(c));
-        children[segment_path] = path_hop.back();
-        return children.at(segment_path);
+        path_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::ExplicitPaths::ExplicitPath::PathHops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::ExplicitPath::PathHops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2623,7 +2258,7 @@ std::string Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_segment_pat
 
 }
 
-EntityPath Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_entity_path(Entity* ancestor) const
+const EntityPath Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2651,20 +2286,12 @@ EntityPath Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_entity_path(
 
 std::shared_ptr<Entity> Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

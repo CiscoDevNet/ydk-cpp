@@ -29,10 +29,8 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInform
 	,vpls_id(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId>())
 {
     rd_value->parent = this;
-    children["rd-value"] = rd_value;
 
     vpls_id->parent = this;
-    children["vpls-id"] = vpls_id;
 
     yang_name = "discovery-information"; yang_parent_name = "bridge-vfi";
 }
@@ -107,7 +105,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -142,15 +140,6 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "export-rt")
     {
         for(auto const & c : export_rt)
@@ -158,15 +147,13 @@ std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::Br
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt>();
         c->parent = this;
-        export_rt.push_back(std::move(c));
-        children[segment_path] = export_rt.back();
-        return children.at(segment_path);
+        export_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "import-rt")
@@ -176,82 +163,57 @@ std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::Br
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt>();
         c->parent = this;
-        import_rt.push_back(std::move(c));
-        children[segment_path] = import_rt.back();
-        return children.at(segment_path);
+        import_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rd-value")
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
-        else
+        if(rd_value == nullptr)
         {
             rd_value = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue>();
-            rd_value->parent = this;
-            children["rd-value"] = rd_value;
         }
-        return children.at("rd-value");
+        return rd_value;
     }
 
     if(child_yang_name == "vpls-id")
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
-        else
+        if(vpls_id == nullptr)
         {
             vpls_id = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId>();
-            vpls_id->parent = this;
-            children["vpls-id"] = vpls_id;
         }
-        return children.at("vpls-id");
+        return vpls_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : export_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : import_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("rd-value") == children.end())
+    if(rd_value != nullptr)
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
+        children["rd-value"] = rd_value;
     }
 
-    if(children.find("vpls-id") == children.end())
+    if(vpls_id != nullptr)
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
+        children["vpls-id"] = vpls_id;
     }
 
     return children;
@@ -319,16 +281,12 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInform
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-value"; yang_parent_name = "discovery-information";
 }
@@ -365,7 +323,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -389,110 +347,66 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -540,7 +454,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -565,20 +479,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -628,7 +534,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -653,20 +559,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -716,7 +614,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -741,20 +639,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -804,7 +694,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -829,20 +719,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -867,13 +749,10 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInform
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "vpls-id"; yang_parent_name = "discovery-information";
 }
@@ -908,7 +787,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -932,87 +811,52 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -1060,7 +904,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1085,20 +929,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1148,7 +984,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1173,20 +1009,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1236,7 +1064,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1261,20 +1089,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1300,16 +1120,12 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInform
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "import-rt"; yang_parent_name = "discovery-information";
 }
@@ -1346,7 +1162,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1370,110 +1186,66 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -1521,7 +1293,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1546,20 +1318,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1609,7 +1373,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1634,20 +1398,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1697,7 +1453,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1722,20 +1478,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1785,7 +1533,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1810,20 +1558,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1849,16 +1589,12 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInform
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "export-rt"; yang_parent_name = "discovery-information";
 }
@@ -1895,7 +1631,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1919,110 +1655,66 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -2070,7 +1762,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2095,20 +1787,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2158,7 +1842,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2183,20 +1867,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2246,7 +1922,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2271,20 +1947,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2334,7 +2002,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Dis
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2359,20 +2027,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2437,7 +2097,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2M
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2467,20 +2127,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2Mp
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2527,7 +2179,6 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::BridgeAcc
     discovery_information(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation>())
 {
     discovery_information->parent = this;
-    children["discovery-information"] = discovery_information;
 
     yang_name = "bridge-access-vfi"; yang_parent_name = "bridge-domain-info";
 }
@@ -2576,7 +2227,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2604,28 +2255,13 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "discovery-information")
     {
-        if(discovery_information != nullptr)
-        {
-            children["discovery-information"] = discovery_information;
-        }
-        else
+        if(discovery_information == nullptr)
         {
             discovery_information = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation>();
-            discovery_information->parent = this;
-            children["discovery-information"] = discovery_information;
         }
-        return children.at("discovery-information");
+        return discovery_information;
     }
 
     if(child_yang_name == "p2mp-information")
@@ -2635,36 +2271,29 @@ std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::Br
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation>();
         c->parent = this;
-        p2mp_information.push_back(std::move(c));
-        children[segment_path] = p2mp_information.back();
-        return children.at(segment_path);
+        p2mp_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_children() const
 {
-    if(children.find("discovery-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(discovery_information != nullptr)
     {
-        if(discovery_information != nullptr)
-        {
-            children["discovery-information"] = discovery_information;
-        }
+        children["discovery-information"] = discovery_information;
     }
 
     for (auto const & c : p2mp_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2713,10 +2342,8 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::Discovery
 	,vpls_id(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId>())
 {
     rd_value->parent = this;
-    children["rd-value"] = rd_value;
 
     vpls_id->parent = this;
-    children["vpls-id"] = vpls_id;
 
     yang_name = "discovery-information"; yang_parent_name = "bridge-access-vfi";
 }
@@ -2791,7 +2418,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2826,15 +2453,6 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "export-rt")
     {
         for(auto const & c : export_rt)
@@ -2842,15 +2460,13 @@ std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::Br
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt>();
         c->parent = this;
-        export_rt.push_back(std::move(c));
-        children[segment_path] = export_rt.back();
-        return children.at(segment_path);
+        export_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "import-rt")
@@ -2860,82 +2476,57 @@ std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::Br
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt>();
         c->parent = this;
-        import_rt.push_back(std::move(c));
-        children[segment_path] = import_rt.back();
-        return children.at(segment_path);
+        import_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rd-value")
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
-        else
+        if(rd_value == nullptr)
         {
             rd_value = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue>();
-            rd_value->parent = this;
-            children["rd-value"] = rd_value;
         }
-        return children.at("rd-value");
+        return rd_value;
     }
 
     if(child_yang_name == "vpls-id")
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
-        else
+        if(vpls_id == nullptr)
         {
             vpls_id = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId>();
-            vpls_id->parent = this;
-            children["vpls-id"] = vpls_id;
         }
-        return children.at("vpls-id");
+        return vpls_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : export_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : import_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("rd-value") == children.end())
+    if(rd_value != nullptr)
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
+        children["rd-value"] = rd_value;
     }
 
-    if(children.find("vpls-id") == children.end())
+    if(vpls_id != nullptr)
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
+        children["vpls-id"] = vpls_id;
     }
 
     return children;
@@ -3003,16 +2594,12 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::Discovery
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-value"; yang_parent_name = "discovery-information";
 }
@@ -3049,7 +2636,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3073,110 +2660,66 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -3224,7 +2767,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3249,20 +2792,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3312,7 +2847,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3337,20 +2872,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3400,7 +2927,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3425,20 +2952,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3488,7 +3007,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3513,20 +3032,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3551,13 +3062,10 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::Discovery
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "vpls-id"; yang_parent_name = "discovery-information";
 }
@@ -3592,7 +3100,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3616,87 +3124,52 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -3744,7 +3217,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3769,20 +3242,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3832,7 +3297,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3857,20 +3322,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3920,7 +3377,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3945,20 +3402,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3984,16 +3433,12 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::Discovery
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "import-rt"; yang_parent_name = "discovery-information";
 }
@@ -4030,7 +3475,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4054,110 +3499,66 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -4205,7 +3606,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4230,20 +3631,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4293,7 +3686,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4318,20 +3711,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4381,7 +3766,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4406,20 +3791,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4469,7 +3846,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4494,20 +3871,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4533,16 +3902,12 @@ L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::Discovery
 	,v4_addr(std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "export-rt"; yang_parent_name = "discovery-information";
 }
@@ -4579,7 +3944,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4603,110 +3968,66 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -4754,7 +4075,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4779,20 +4100,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4842,7 +4155,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4867,20 +4180,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4930,7 +4235,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4955,20 +4260,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5018,7 +4315,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5043,20 +4340,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5121,7 +4410,7 @@ std::string L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVf
 
 }
 
-EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5151,20 +4440,12 @@ EntityPath L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 
 std::shared_ptr<Entity> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5270,7 +4551,7 @@ std::string L2Vpn::DiscoverySummary::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::DiscoverySummary::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::DiscoverySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5307,20 +4588,12 @@ EntityPath L2Vpn::DiscoverySummary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::DiscoverySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::DiscoverySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::DiscoverySummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5389,7 +4662,6 @@ L2Vpn::G8032::G8032()
     g8032_rings(std::make_shared<L2Vpn::G8032::G8032Rings>())
 {
     g8032_rings->parent = this;
-    children["g8032-rings"] = g8032_rings;
 
     yang_name = "g8032"; yang_parent_name = "l2vpn";
 }
@@ -5418,7 +4690,7 @@ std::string L2Vpn::G8032::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::G8032::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5441,41 +4713,24 @@ EntityPath L2Vpn::G8032::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::G8032::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-rings")
     {
-        if(g8032_rings != nullptr)
-        {
-            children["g8032-rings"] = g8032_rings;
-        }
-        else
+        if(g8032_rings == nullptr)
         {
             g8032_rings = std::make_shared<L2Vpn::G8032::G8032Rings>();
-            g8032_rings->parent = this;
-            children["g8032-rings"] = g8032_rings;
         }
-        return children.at("g8032-rings");
+        return g8032_rings;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::get_children() const
 {
-    if(children.find("g8032-rings") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g8032_rings != nullptr)
     {
-        if(g8032_rings != nullptr)
-        {
-            children["g8032-rings"] = g8032_rings;
-        }
+        children["g8032-rings"] = g8032_rings;
     }
 
     return children;
@@ -5523,7 +4778,7 @@ std::string L2Vpn::G8032::G8032Rings::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5546,15 +4801,6 @@ EntityPath L2Vpn::G8032::G8032Rings::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring")
     {
         for(auto const & c : g8032_ring)
@@ -5562,28 +4808,24 @@ std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring>();
         c->parent = this;
-        g8032_ring.push_back(std::move(c));
-        children[segment_path] = g8032_ring.back();
-        return children.at(segment_path);
+        g8032_ring.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : g8032_ring)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5603,16 +4845,12 @@ L2Vpn::G8032::G8032Rings::G8032Ring::G8032Ring()
 	,g8032_ring_summary(std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary>())
 {
     g8032_ring_detail->parent = this;
-    children["g8032-ring-detail"] = g8032_ring_detail;
 
     g8032_ring_instance_details->parent = this;
-    children["g8032-ring-instance-details"] = g8032_ring_instance_details;
 
     g8032_ring_instance_summaries->parent = this;
-    children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
 
     g8032_ring_summary->parent = this;
-    children["g8032-ring-summary"] = g8032_ring_summary;
 
     yang_name = "g8032-ring"; yang_parent_name = "g8032-rings";
 }
@@ -5649,7 +4887,7 @@ std::string L2Vpn::G8032::G8032Rings::G8032Ring::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5673,110 +4911,66 @@ EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring-detail")
     {
-        if(g8032_ring_detail != nullptr)
-        {
-            children["g8032-ring-detail"] = g8032_ring_detail;
-        }
-        else
+        if(g8032_ring_detail == nullptr)
         {
             g8032_ring_detail = std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail>();
-            g8032_ring_detail->parent = this;
-            children["g8032-ring-detail"] = g8032_ring_detail;
         }
-        return children.at("g8032-ring-detail");
+        return g8032_ring_detail;
     }
 
     if(child_yang_name == "g8032-ring-instance-details")
     {
-        if(g8032_ring_instance_details != nullptr)
-        {
-            children["g8032-ring-instance-details"] = g8032_ring_instance_details;
-        }
-        else
+        if(g8032_ring_instance_details == nullptr)
         {
             g8032_ring_instance_details = std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails>();
-            g8032_ring_instance_details->parent = this;
-            children["g8032-ring-instance-details"] = g8032_ring_instance_details;
         }
-        return children.at("g8032-ring-instance-details");
+        return g8032_ring_instance_details;
     }
 
     if(child_yang_name == "g8032-ring-instance-summaries")
     {
-        if(g8032_ring_instance_summaries != nullptr)
-        {
-            children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
-        }
-        else
+        if(g8032_ring_instance_summaries == nullptr)
         {
             g8032_ring_instance_summaries = std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries>();
-            g8032_ring_instance_summaries->parent = this;
-            children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
         }
-        return children.at("g8032-ring-instance-summaries");
+        return g8032_ring_instance_summaries;
     }
 
     if(child_yang_name == "g8032-ring-summary")
     {
-        if(g8032_ring_summary != nullptr)
-        {
-            children["g8032-ring-summary"] = g8032_ring_summary;
-        }
-        else
+        if(g8032_ring_summary == nullptr)
         {
             g8032_ring_summary = std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary>();
-            g8032_ring_summary->parent = this;
-            children["g8032-ring-summary"] = g8032_ring_summary;
         }
-        return children.at("g8032-ring-summary");
+        return g8032_ring_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::G8032Ring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::G8032Ring::get_children() const
 {
-    if(children.find("g8032-ring-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g8032_ring_detail != nullptr)
     {
-        if(g8032_ring_detail != nullptr)
-        {
-            children["g8032-ring-detail"] = g8032_ring_detail;
-        }
+        children["g8032-ring-detail"] = g8032_ring_detail;
     }
 
-    if(children.find("g8032-ring-instance-details") == children.end())
+    if(g8032_ring_instance_details != nullptr)
     {
-        if(g8032_ring_instance_details != nullptr)
-        {
-            children["g8032-ring-instance-details"] = g8032_ring_instance_details;
-        }
+        children["g8032-ring-instance-details"] = g8032_ring_instance_details;
     }
 
-    if(children.find("g8032-ring-instance-summaries") == children.end())
+    if(g8032_ring_instance_summaries != nullptr)
     {
-        if(g8032_ring_instance_summaries != nullptr)
-        {
-            children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
-        }
+        children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
     }
 
-    if(children.find("g8032-ring-summary") == children.end())
+    if(g8032_ring_summary != nullptr)
     {
-        if(g8032_ring_summary != nullptr)
-        {
-            children["g8032-ring-summary"] = g8032_ring_summary;
-        }
+        children["g8032-ring-summary"] = g8032_ring_summary;
     }
 
     return children;
@@ -5854,7 +5048,7 @@ std::string L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_segment_pa
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5887,20 +5081,12 @@ EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_entity_path
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5982,7 +5168,7 @@ std::string L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6005,15 +5191,6 @@ EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring-instance-summary")
     {
         for(auto const & c : g8032_ring_instance_summary)
@@ -6021,28 +5198,24 @@ std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary>();
         c->parent = this;
-        g8032_ring_instance_summary.push_back(std::move(c));
-        children[segment_path] = g8032_ring_instance_summary.back();
-        return children.at(segment_path);
+        g8032_ring_instance_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : g8032_ring_instance_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6107,7 +5280,7 @@ std::string L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G80
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6137,20 +5310,12 @@ EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G803
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6219,7 +5384,7 @@ std::string L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_segment_p
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6245,20 +5410,12 @@ EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_entity_pat
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6316,7 +5473,7 @@ std::string L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_s
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6339,15 +5496,6 @@ EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_en
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring-instance-detail")
     {
         for(auto const & c : g8032_ring_instance_detail)
@@ -6355,28 +5503,24 @@ std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDe
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail>();
         c->parent = this;
-        g8032_ring_instance_detail.push_back(std::move(c));
-        children[segment_path] = g8032_ring_instance_detail.back();
-        return children.at(segment_path);
+        g8032_ring_instance_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : g8032_ring_instance_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6456,7 +5600,7 @@ std::string L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032
 
 }
 
-EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6491,20 +5635,12 @@ EntityPath L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032R
 
 std::shared_ptr<Entity> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6594,7 +5730,7 @@ std::string L2Vpn::PseudowireClasses::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::PseudowireClasses::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::PseudowireClasses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6617,15 +5753,6 @@ EntityPath L2Vpn::PseudowireClasses::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::PseudowireClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pseudowire-class")
     {
         for(auto const & c : pseudowire_class)
@@ -6633,28 +5760,24 @@ std::shared_ptr<Entity> L2Vpn::PseudowireClasses::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::PseudowireClasses::PseudowireClass>();
         c->parent = this;
-        pseudowire_class.push_back(std::move(c));
-        children[segment_path] = pseudowire_class.back();
-        return children.at(segment_path);
+        pseudowire_class.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::PseudowireClasses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::PseudowireClasses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pseudowire_class)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6689,13 +5812,10 @@ L2Vpn::PseudowireClasses::PseudowireClass::PseudowireClass()
 	,preferred_path(std::make_shared<L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath>())
 {
     encapsulation_info->parent = this;
-    children["encapsulation-info"] = encapsulation_info;
 
     local_source_address->parent = this;
-    children["local-source-address"] = local_source_address;
 
     preferred_path->parent = this;
-    children["preferred-path"] = preferred_path;
 
     yang_name = "pseudowire-class"; yang_parent_name = "pseudowire-classes";
 }
@@ -6762,7 +5882,7 @@ std::string L2Vpn::PseudowireClasses::PseudowireClass::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::PseudowireClasses::PseudowireClass::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::PseudowireClasses::PseudowireClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6802,87 +5922,52 @@ EntityPath L2Vpn::PseudowireClasses::PseudowireClass::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> L2Vpn::PseudowireClasses::PseudowireClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "encapsulation-info")
     {
-        if(encapsulation_info != nullptr)
-        {
-            children["encapsulation-info"] = encapsulation_info;
-        }
-        else
+        if(encapsulation_info == nullptr)
         {
             encapsulation_info = std::make_shared<L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo>();
-            encapsulation_info->parent = this;
-            children["encapsulation-info"] = encapsulation_info;
         }
-        return children.at("encapsulation-info");
+        return encapsulation_info;
     }
 
     if(child_yang_name == "local-source-address")
     {
-        if(local_source_address != nullptr)
-        {
-            children["local-source-address"] = local_source_address;
-        }
-        else
+        if(local_source_address == nullptr)
         {
             local_source_address = std::make_shared<L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress>();
-            local_source_address->parent = this;
-            children["local-source-address"] = local_source_address;
         }
-        return children.at("local-source-address");
+        return local_source_address;
     }
 
     if(child_yang_name == "preferred-path")
     {
-        if(preferred_path != nullptr)
-        {
-            children["preferred-path"] = preferred_path;
-        }
-        else
+        if(preferred_path == nullptr)
         {
             preferred_path = std::make_shared<L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath>();
-            preferred_path->parent = this;
-            children["preferred-path"] = preferred_path;
         }
-        return children.at("preferred-path");
+        return preferred_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::PseudowireClasses::PseudowireClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::PseudowireClasses::PseudowireClass::get_children() const
 {
-    if(children.find("encapsulation-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(encapsulation_info != nullptr)
     {
-        if(encapsulation_info != nullptr)
-        {
-            children["encapsulation-info"] = encapsulation_info;
-        }
+        children["encapsulation-info"] = encapsulation_info;
     }
 
-    if(children.find("local-source-address") == children.end())
+    if(local_source_address != nullptr)
     {
-        if(local_source_address != nullptr)
-        {
-            children["local-source-address"] = local_source_address;
-        }
+        children["local-source-address"] = local_source_address;
     }
 
-    if(children.find("preferred-path") == children.end())
+    if(preferred_path != nullptr)
     {
-        if(preferred_path != nullptr)
-        {
-            children["preferred-path"] = preferred_path;
-        }
+        children["preferred-path"] = preferred_path;
     }
 
     return children;
@@ -6967,7 +6052,6 @@ L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::EncapsulationInfo(
     l2tpv3(std::make_shared<L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3>())
 {
     l2tpv3->parent = this;
-    children["l2tpv3"] = l2tpv3;
 
     yang_name = "encapsulation-info"; yang_parent_name = "pseudowire-class";
 }
@@ -6998,7 +6082,7 @@ std::string L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_se
 
 }
 
-EntityPath L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7022,41 +6106,24 @@ EntityPath L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_ent
 
 std::shared_ptr<Entity> L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tpv3")
     {
-        if(l2tpv3 != nullptr)
-        {
-            children["l2tpv3"] = l2tpv3;
-        }
-        else
+        if(l2tpv3 == nullptr)
         {
             l2tpv3 = std::make_shared<L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3>();
-            l2tpv3->parent = this;
-            children["l2tpv3"] = l2tpv3;
         }
-        return children.at("l2tpv3");
+        return l2tpv3;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_children() const
 {
-    if(children.find("l2tpv3") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tpv3 != nullptr)
     {
-        if(l2tpv3 != nullptr)
-        {
-            children["l2tpv3"] = l2tpv3;
-        }
+        children["l2tpv3"] = l2tpv3;
     }
 
     return children;
@@ -7125,7 +6192,7 @@ std::string L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3
 
 }
 
-EntityPath L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7157,20 +6224,12 @@ EntityPath L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3:
 
 std::shared_ptr<Entity> L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7257,7 +6316,7 @@ std::string L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath::get_segmen
 
 }
 
-EntityPath L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7285,20 +6344,12 @@ EntityPath L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath::get_entity_
 
 std::shared_ptr<Entity> L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::PseudowireClasses::PseudowireClass::PreferredPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7360,7 +6411,7 @@ std::string L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress::get_s
 
 }
 
-EntityPath L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7385,20 +6436,12 @@ EntityPath L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress::get_en
 
 std::shared_ptr<Entity> L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::PseudowireClasses::PseudowireClass::LocalSourceAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7419,7 +6462,6 @@ L2Vpn::L2VpnCollaborators::L2VpnCollaborators()
     collaborator_statistics(std::make_shared<L2Vpn::L2VpnCollaborators::CollaboratorStatistics>())
 {
     collaborator_statistics->parent = this;
-    children["collaborator-statistics"] = collaborator_statistics;
 
     yang_name = "l2vpn-collaborators"; yang_parent_name = "l2vpn";
 }
@@ -7448,7 +6490,7 @@ std::string L2Vpn::L2VpnCollaborators::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::L2VpnCollaborators::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::L2VpnCollaborators::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7471,41 +6513,24 @@ EntityPath L2Vpn::L2VpnCollaborators::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::L2VpnCollaborators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "collaborator-statistics")
     {
-        if(collaborator_statistics != nullptr)
-        {
-            children["collaborator-statistics"] = collaborator_statistics;
-        }
-        else
+        if(collaborator_statistics == nullptr)
         {
             collaborator_statistics = std::make_shared<L2Vpn::L2VpnCollaborators::CollaboratorStatistics>();
-            collaborator_statistics->parent = this;
-            children["collaborator-statistics"] = collaborator_statistics;
         }
-        return children.at("collaborator-statistics");
+        return collaborator_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::L2VpnCollaborators::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::L2VpnCollaborators::get_children() const
 {
-    if(children.find("collaborator-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(collaborator_statistics != nullptr)
     {
-        if(collaborator_statistics != nullptr)
-        {
-            children["collaborator-statistics"] = collaborator_statistics;
-        }
+        children["collaborator-statistics"] = collaborator_statistics;
     }
 
     return children;
@@ -7553,7 +6578,7 @@ std::string L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_segment_path(
 
 }
 
-EntityPath L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7576,15 +6601,6 @@ EntityPath L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_entity_path(En
 
 std::shared_ptr<Entity> L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count")
     {
         for(auto const & c : count)
@@ -7592,28 +6608,24 @@ std::shared_ptr<Entity> L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count>();
         c->parent = this;
-        count.push_back(std::move(c));
-        children[segment_path] = count.back();
-        return children.at(segment_path);
+        count.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::L2VpnCollaborators::CollaboratorStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7663,7 +6675,7 @@ std::string L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count::get_segmen
 
 }
 
-EntityPath L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7690,20 +6702,12 @@ EntityPath L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count::get_entity_
 
 std::shared_ptr<Entity> L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::L2VpnCollaborators::CollaboratorStatistics::Count::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7732,7 +6736,6 @@ L2Vpn::Mvrp::Mvrp()
     mvrp_main_ports(std::make_shared<L2Vpn::Mvrp::MvrpMainPorts>())
 {
     mvrp_main_ports->parent = this;
-    children["mvrp-main-ports"] = mvrp_main_ports;
 
     yang_name = "mvrp"; yang_parent_name = "l2vpn";
 }
@@ -7761,7 +6764,7 @@ std::string L2Vpn::Mvrp::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::Mvrp::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7784,41 +6787,24 @@ EntityPath L2Vpn::Mvrp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mvrp-main-ports")
     {
-        if(mvrp_main_ports != nullptr)
-        {
-            children["mvrp-main-ports"] = mvrp_main_ports;
-        }
-        else
+        if(mvrp_main_ports == nullptr)
         {
             mvrp_main_ports = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts>();
-            mvrp_main_ports->parent = this;
-            children["mvrp-main-ports"] = mvrp_main_ports;
         }
-        return children.at("mvrp-main-ports");
+        return mvrp_main_ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::get_children() const
 {
-    if(children.find("mvrp-main-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mvrp_main_ports != nullptr)
     {
-        if(mvrp_main_ports != nullptr)
-        {
-            children["mvrp-main-ports"] = mvrp_main_ports;
-        }
+        children["mvrp-main-ports"] = mvrp_main_ports;
     }
 
     return children;
@@ -7866,7 +6852,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7889,15 +6875,6 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mvrp-main-port")
     {
         for(auto const & c : mvrp_main_port)
@@ -7905,28 +6882,24 @@ std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort>();
         c->parent = this;
-        mvrp_main_port.push_back(std::move(c));
-        children[segment_path] = mvrp_main_port.back();
-        return children.at(segment_path);
+        mvrp_main_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mvrp_main_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7944,10 +6917,8 @@ L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPort()
 	,mvrp_main_port_info(std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo>())
 {
     mvrp_bridge_ports->parent = this;
-    children["mvrp-bridge-ports"] = mvrp_bridge_ports;
 
     mvrp_main_port_info->parent = this;
-    children["mvrp-main-port-info"] = mvrp_main_port_info;
 
     yang_name = "mvrp-main-port"; yang_parent_name = "mvrp-main-ports";
 }
@@ -7980,7 +6951,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8004,64 +6975,38 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mvrp-bridge-ports")
     {
-        if(mvrp_bridge_ports != nullptr)
-        {
-            children["mvrp-bridge-ports"] = mvrp_bridge_ports;
-        }
-        else
+        if(mvrp_bridge_ports == nullptr)
         {
             mvrp_bridge_ports = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts>();
-            mvrp_bridge_ports->parent = this;
-            children["mvrp-bridge-ports"] = mvrp_bridge_ports;
         }
-        return children.at("mvrp-bridge-ports");
+        return mvrp_bridge_ports;
     }
 
     if(child_yang_name == "mvrp-main-port-info")
     {
-        if(mvrp_main_port_info != nullptr)
-        {
-            children["mvrp-main-port-info"] = mvrp_main_port_info;
-        }
-        else
+        if(mvrp_main_port_info == nullptr)
         {
             mvrp_main_port_info = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo>();
-            mvrp_main_port_info->parent = this;
-            children["mvrp-main-port-info"] = mvrp_main_port_info;
         }
-        return children.at("mvrp-main-port-info");
+        return mvrp_main_port_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::get_children() const
 {
-    if(children.find("mvrp-bridge-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mvrp_bridge_ports != nullptr)
     {
-        if(mvrp_bridge_ports != nullptr)
-        {
-            children["mvrp-bridge-ports"] = mvrp_bridge_ports;
-        }
+        children["mvrp-bridge-ports"] = mvrp_bridge_ports;
     }
 
-    if(children.find("mvrp-main-port-info") == children.end())
+    if(mvrp_main_port_info != nullptr)
     {
-        if(mvrp_main_port_info != nullptr)
-        {
-            children["mvrp-main-port-info"] = mvrp_main_port_info;
-        }
+        children["mvrp-main-port-info"] = mvrp_main_port_info;
     }
 
     return children;
@@ -8085,7 +7030,6 @@ L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::MvrpMainPortInfo()
     default_bridge_port(std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort>())
 {
     default_bridge_port->parent = this;
-    children["default-bridge-port"] = default_bridge_port;
 
     yang_name = "mvrp-main-port-info"; yang_parent_name = "mvrp-main-port";
 }
@@ -8122,7 +7066,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::get_segm
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8149,41 +7093,24 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::get_entit
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-bridge-port")
     {
-        if(default_bridge_port != nullptr)
-        {
-            children["default-bridge-port"] = default_bridge_port;
-        }
-        else
+        if(default_bridge_port == nullptr)
         {
             default_bridge_port = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort>();
-            default_bridge_port->parent = this;
-            children["default-bridge-port"] = default_bridge_port;
         }
-        return children.at("default-bridge-port");
+        return default_bridge_port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::get_children() const
 {
-    if(children.find("default-bridge-port") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_bridge_port != nullptr)
     {
-        if(default_bridge_port != nullptr)
-        {
-            children["default-bridge-port"] = default_bridge_port;
-        }
+        children["default-bridge-port"] = default_bridge_port;
     }
 
     return children;
@@ -8256,7 +7183,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultB
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8282,15 +7209,6 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBr
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan-range")
     {
         for(auto const & c : vlan_range)
@@ -8298,28 +7216,24 @@ std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(std::move(c));
-        children[segment_path] = vlan_range.back();
-        return children.at(segment_path);
+        vlan_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8375,7 +7289,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultB
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::VlanRange::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::VlanRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8400,20 +7314,12 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBr
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::VlanRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpMainPortInfo::DefaultBridgePort::VlanRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8467,7 +7373,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::get_segme
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8490,15 +7396,6 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::get_entity
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mvrp-bridge-port")
     {
         for(auto const & c : mvrp_bridge_port)
@@ -8506,28 +7403,24 @@ std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePort
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort>();
         c->parent = this;
-        mvrp_bridge_port.push_back(std::move(c));
-        children[segment_path] = mvrp_bridge_port.back();
-        return children.at(segment_path);
+        mvrp_bridge_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mvrp_bridge_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8587,7 +7480,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridg
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8614,15 +7507,6 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridge
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan-range")
     {
         for(auto const & c : vlan_range)
@@ -8630,28 +7514,24 @@ std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePort
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(std::move(c));
-        children[segment_path] = vlan_range.back();
-        return children.at(segment_path);
+        vlan_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8711,7 +7591,7 @@ std::string L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridg
 
 }
 
-EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8736,20 +7616,12 @@ EntityPath L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridge
 
 std::shared_ptr<Entity> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8803,7 +7675,7 @@ std::string L2Vpn::GenericInterfaces::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::GenericInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::GenericInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8826,15 +7698,6 @@ EntityPath L2Vpn::GenericInterfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::GenericInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-interface")
     {
         for(auto const & c : generic_interface)
@@ -8842,28 +7705,24 @@ std::shared_ptr<Entity> L2Vpn::GenericInterfaces::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::GenericInterfaces::GenericInterface>();
         c->parent = this;
-        generic_interface.push_back(std::move(c));
-        children[segment_path] = generic_interface.back();
-        return children.at(segment_path);
+        generic_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::GenericInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::GenericInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : generic_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8926,7 +7785,7 @@ std::string L2Vpn::GenericInterfaces::GenericInterface::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::GenericInterfaces::GenericInterface::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::GenericInterfaces::GenericInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8954,15 +7813,6 @@ EntityPath L2Vpn::GenericInterfaces::GenericInterface::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> L2Vpn::GenericInterfaces::GenericInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -8970,28 +7820,24 @@ std::shared_ptr<Entity> L2Vpn::GenericInterfaces::GenericInterface::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::GenericInterfaces::GenericInterface::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::GenericInterfaces::GenericInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::GenericInterfaces::GenericInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9061,7 +7907,7 @@ std::string L2Vpn::GenericInterfaces::GenericInterface::Interface::get_segment_p
 
 }
 
-EntityPath L2Vpn::GenericInterfaces::GenericInterface::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::GenericInterfaces::GenericInterface::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9088,20 +7934,12 @@ EntityPath L2Vpn::GenericInterfaces::GenericInterface::Interface::get_entity_pat
 
 std::shared_ptr<Entity> L2Vpn::GenericInterfaces::GenericInterface::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::GenericInterfaces::GenericInterface::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::GenericInterfaces::GenericInterface::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9163,7 +8001,7 @@ std::string L2Vpn::MstpVlans::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::MstpVlans::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::MstpVlans::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9186,15 +8024,6 @@ EntityPath L2Vpn::MstpVlans::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::MstpVlans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mstp-vlan")
     {
         for(auto const & c : mstp_vlan)
@@ -9202,28 +8031,24 @@ std::shared_ptr<Entity> L2Vpn::MstpVlans::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::MstpVlans::MstpVlan>();
         c->parent = this;
-        mstp_vlan.push_back(std::move(c));
-        children[segment_path] = mstp_vlan.back();
-        return children.at(segment_path);
+        mstp_vlan.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::MstpVlans::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::MstpVlans::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mstp_vlan)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9283,7 +8108,7 @@ std::string L2Vpn::MstpVlans::MstpVlan::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::MstpVlans::MstpVlan::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::MstpVlans::MstpVlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9310,15 +8135,6 @@ EntityPath L2Vpn::MstpVlans::MstpVlan::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::MstpVlans::MstpVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sub-interface")
     {
         for(auto const & c : sub_interface)
@@ -9326,28 +8142,24 @@ std::shared_ptr<Entity> L2Vpn::MstpVlans::MstpVlan::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::MstpVlans::MstpVlan::SubInterface>();
         c->parent = this;
-        sub_interface.push_back(std::move(c));
-        children[segment_path] = sub_interface.back();
-        return children.at(segment_path);
+        sub_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::MstpVlans::MstpVlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::MstpVlans::MstpVlan::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sub_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9404,7 +8216,7 @@ std::string L2Vpn::MstpVlans::MstpVlan::SubInterface::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::MstpVlans::MstpVlan::SubInterface::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::MstpVlans::MstpVlan::SubInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9428,20 +8240,12 @@ EntityPath L2Vpn::MstpVlans::MstpVlan::SubInterface::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> L2Vpn::MstpVlans::MstpVlan::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::MstpVlans::MstpVlan::SubInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::MstpVlans::MstpVlan::SubInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9493,7 +8297,7 @@ std::string L2Vpn::L2VpnPbbBsa::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::L2VpnPbbBsa::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::L2VpnPbbBsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9520,20 +8324,12 @@ EntityPath L2Vpn::L2VpnPbbBsa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpn::L2VpnPbbBsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::L2VpnPbbBsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::L2VpnPbbBsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9595,7 +8391,7 @@ std::string L2Vpn::FlexibleXconnectServices::get_segment_path() const
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9618,15 +8414,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flexible-xconnect-service")
     {
         for(auto const & c : flexible_xconnect_service)
@@ -9634,28 +8421,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService>();
         c->parent = this;
-        flexible_xconnect_service.push_back(std::move(c));
-        children[segment_path] = flexible_xconnect_service.back();
-        return children.at(segment_path);
+        flexible_xconnect_service.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : flexible_xconnect_service)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9673,10 +8456,8 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,flexible_xconnect_service_info(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo>())
 {
     flexible_xconnect_service_acs->parent = this;
-    children["flexible-xconnect-service-acs"] = flexible_xconnect_service_acs;
 
     flexible_xconnect_service_info->parent = this;
-    children["flexible-xconnect-service-info"] = flexible_xconnect_service_info;
 
     yang_name = "flexible-xconnect-service"; yang_parent_name = "flexible-xconnect-services";
 }
@@ -9709,7 +8490,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::get_segmen
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9733,64 +8514,38 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::get_entity_
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flexible-xconnect-service-acs")
     {
-        if(flexible_xconnect_service_acs != nullptr)
-        {
-            children["flexible-xconnect-service-acs"] = flexible_xconnect_service_acs;
-        }
-        else
+        if(flexible_xconnect_service_acs == nullptr)
         {
             flexible_xconnect_service_acs = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs>();
-            flexible_xconnect_service_acs->parent = this;
-            children["flexible-xconnect-service-acs"] = flexible_xconnect_service_acs;
         }
-        return children.at("flexible-xconnect-service-acs");
+        return flexible_xconnect_service_acs;
     }
 
     if(child_yang_name == "flexible-xconnect-service-info")
     {
-        if(flexible_xconnect_service_info != nullptr)
-        {
-            children["flexible-xconnect-service-info"] = flexible_xconnect_service_info;
-        }
-        else
+        if(flexible_xconnect_service_info == nullptr)
         {
             flexible_xconnect_service_info = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo>();
-            flexible_xconnect_service_info->parent = this;
-            children["flexible-xconnect-service-info"] = flexible_xconnect_service_info;
         }
-        return children.at("flexible-xconnect-service-info");
+        return flexible_xconnect_service_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::get_children() const
 {
-    if(children.find("flexible-xconnect-service-acs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flexible_xconnect_service_acs != nullptr)
     {
-        if(flexible_xconnect_service_acs != nullptr)
-        {
-            children["flexible-xconnect-service-acs"] = flexible_xconnect_service_acs;
-        }
+        children["flexible-xconnect-service-acs"] = flexible_xconnect_service_acs;
     }
 
-    if(children.find("flexible-xconnect-service-info") == children.end())
+    if(flexible_xconnect_service_info != nullptr)
     {
-        if(flexible_xconnect_service_info != nullptr)
-        {
-            children["flexible-xconnect-service-info"] = flexible_xconnect_service_info;
-        }
+        children["flexible-xconnect-service-info"] = flexible_xconnect_service_info;
     }
 
     return children;
@@ -9842,7 +8597,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9865,15 +8620,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flexible-xconnect-service-ac")
     {
         for(auto const & c : flexible_xconnect_service_ac)
@@ -9881,28 +8627,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc>();
         c->parent = this;
-        flexible_xconnect_service_ac.push_back(std::move(c));
-        children[segment_path] = flexible_xconnect_service_ac.back();
-        return children.at(segment_path);
+        flexible_xconnect_service_ac.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : flexible_xconnect_service_ac)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9919,7 +8661,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     attachment_circuit(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit>())
 {
     attachment_circuit->parent = this;
-    children["attachment-circuit"] = attachment_circuit;
 
     yang_name = "flexible-xconnect-service-ac"; yang_parent_name = "flexible-xconnect-service-acs";
 }
@@ -9950,7 +8691,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9974,41 +8715,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attachment-circuit")
     {
-        if(attachment_circuit != nullptr)
-        {
-            children["attachment-circuit"] = attachment_circuit;
-        }
-        else
+        if(attachment_circuit == nullptr)
         {
             attachment_circuit = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit>();
-            attachment_circuit->parent = this;
-            children["attachment-circuit"] = attachment_circuit;
         }
-        return children.at("attachment-circuit");
+        return attachment_circuit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::get_children() const
 {
-    if(children.find("attachment-circuit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attachment_circuit != nullptr)
     {
-        if(attachment_circuit != nullptr)
-        {
-            children["attachment-circuit"] = attachment_circuit;
-        }
+        children["attachment-circuit"] = attachment_circuit;
     }
 
     return children;
@@ -10053,13 +8777,10 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,statistics(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics>())
 {
     interface->parent = this;
-    children["interface"] = interface;
 
     l2vpn_protection->parent = this;
-    children["l2vpn-protection"] = l2vpn_protection;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "attachment-circuit"; yang_parent_name = "flexible-xconnect-service-ac";
 }
@@ -10138,7 +8859,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10184,87 +8905,52 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
-        else
+        if(interface == nullptr)
         {
             interface = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
         }
-        return children.at("interface");
+        return interface;
     }
 
     if(child_yang_name == "l2vpn-protection")
     {
-        if(l2vpn_protection != nullptr)
-        {
-            children["l2vpn-protection"] = l2vpn_protection;
-        }
-        else
+        if(l2vpn_protection == nullptr)
         {
             l2vpn_protection = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::L2VpnProtection>();
-            l2vpn_protection->parent = this;
-            children["l2vpn-protection"] = l2vpn_protection;
         }
-        return children.at("l2vpn-protection");
+        return l2vpn_protection;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::get_children() const
 {
-    if(children.find("interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
-    if(children.find("l2vpn-protection") == children.end())
+    if(l2vpn_protection != nullptr)
     {
-        if(l2vpn_protection != nullptr)
-        {
-            children["l2vpn-protection"] = l2vpn_protection;
-        }
+        children["l2vpn-protection"] = l2vpn_protection;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -10375,7 +9061,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     parameters(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters>())
 {
     parameters->parent = this;
-    children["parameters"] = parameters;
 
     yang_name = "interface"; yang_parent_name = "attachment-circuit";
 }
@@ -10410,7 +9095,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10436,41 +9121,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "parameters")
     {
-        if(parameters != nullptr)
-        {
-            children["parameters"] = parameters;
-        }
-        else
+        if(parameters == nullptr)
         {
             parameters = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters>();
-            parameters->parent = this;
-            children["parameters"] = parameters;
         }
-        return children.at("parameters");
+        return parameters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::get_children() const
 {
-    if(children.find("parameters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(parameters != nullptr)
     {
-        if(parameters != nullptr)
-        {
-            children["parameters"] = parameters;
-        }
+        children["parameters"] = parameters;
     }
 
     return children;
@@ -10505,25 +9173,18 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,vlan(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan>())
 {
     atm->parent = this;
-    children["atm"] = atm;
 
     ethernet->parent = this;
-    children["ethernet"] = ethernet;
 
     fr->parent = this;
-    children["fr"] = fr;
 
     pseudowire_ether->parent = this;
-    children["pseudowire-ether"] = pseudowire_ether;
 
     pseudowire_iw->parent = this;
-    children["pseudowire-iw"] = pseudowire_iw;
 
     tdm->parent = this;
-    children["tdm"] = tdm;
 
     vlan->parent = this;
-    children["vlan"] = vlan;
 
     yang_name = "parameters"; yang_parent_name = "interface";
 }
@@ -10566,7 +9227,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10590,179 +9251,108 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atm")
     {
-        if(atm != nullptr)
-        {
-            children["atm"] = atm;
-        }
-        else
+        if(atm == nullptr)
         {
             atm = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Atm>();
-            atm->parent = this;
-            children["atm"] = atm;
         }
-        return children.at("atm");
+        return atm;
     }
 
     if(child_yang_name == "ethernet")
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
-        else
+        if(ethernet == nullptr)
         {
             ethernet = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Ethernet>();
-            ethernet->parent = this;
-            children["ethernet"] = ethernet;
         }
-        return children.at("ethernet");
+        return ethernet;
     }
 
     if(child_yang_name == "fr")
     {
-        if(fr != nullptr)
-        {
-            children["fr"] = fr;
-        }
-        else
+        if(fr == nullptr)
         {
             fr = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Fr>();
-            fr->parent = this;
-            children["fr"] = fr;
         }
-        return children.at("fr");
+        return fr;
     }
 
     if(child_yang_name == "pseudowire-ether")
     {
-        if(pseudowire_ether != nullptr)
-        {
-            children["pseudowire-ether"] = pseudowire_ether;
-        }
-        else
+        if(pseudowire_ether == nullptr)
         {
             pseudowire_ether = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther>();
-            pseudowire_ether->parent = this;
-            children["pseudowire-ether"] = pseudowire_ether;
         }
-        return children.at("pseudowire-ether");
+        return pseudowire_ether;
     }
 
     if(child_yang_name == "pseudowire-iw")
     {
-        if(pseudowire_iw != nullptr)
-        {
-            children["pseudowire-iw"] = pseudowire_iw;
-        }
-        else
+        if(pseudowire_iw == nullptr)
         {
             pseudowire_iw = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw>();
-            pseudowire_iw->parent = this;
-            children["pseudowire-iw"] = pseudowire_iw;
         }
-        return children.at("pseudowire-iw");
+        return pseudowire_iw;
     }
 
     if(child_yang_name == "tdm")
     {
-        if(tdm != nullptr)
-        {
-            children["tdm"] = tdm;
-        }
-        else
+        if(tdm == nullptr)
         {
             tdm = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm>();
-            tdm->parent = this;
-            children["tdm"] = tdm;
         }
-        return children.at("tdm");
+        return tdm;
     }
 
     if(child_yang_name == "vlan")
     {
-        if(vlan != nullptr)
-        {
-            children["vlan"] = vlan;
-        }
-        else
+        if(vlan == nullptr)
         {
             vlan = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan>();
-            vlan->parent = this;
-            children["vlan"] = vlan;
         }
-        return children.at("vlan");
+        return vlan;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::get_children() const
 {
-    if(children.find("atm") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atm != nullptr)
     {
-        if(atm != nullptr)
-        {
-            children["atm"] = atm;
-        }
+        children["atm"] = atm;
     }
 
-    if(children.find("ethernet") == children.end())
+    if(ethernet != nullptr)
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
+        children["ethernet"] = ethernet;
     }
 
-    if(children.find("fr") == children.end())
+    if(fr != nullptr)
     {
-        if(fr != nullptr)
-        {
-            children["fr"] = fr;
-        }
+        children["fr"] = fr;
     }
 
-    if(children.find("pseudowire-ether") == children.end())
+    if(pseudowire_ether != nullptr)
     {
-        if(pseudowire_ether != nullptr)
-        {
-            children["pseudowire-ether"] = pseudowire_ether;
-        }
+        children["pseudowire-ether"] = pseudowire_ether;
     }
 
-    if(children.find("pseudowire-iw") == children.end())
+    if(pseudowire_iw != nullptr)
     {
-        if(pseudowire_iw != nullptr)
-        {
-            children["pseudowire-iw"] = pseudowire_iw;
-        }
+        children["pseudowire-iw"] = pseudowire_iw;
     }
 
-    if(children.find("tdm") == children.end())
+    if(tdm != nullptr)
     {
-        if(tdm != nullptr)
-        {
-            children["tdm"] = tdm;
-        }
+        children["tdm"] = tdm;
     }
 
-    if(children.find("vlan") == children.end())
+    if(vlan != nullptr)
     {
-        if(vlan != nullptr)
-        {
-            children["vlan"] = vlan;
-        }
+        children["vlan"] = vlan;
     }
 
     return children;
@@ -10807,7 +9397,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Ethernet::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Ethernet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10831,20 +9421,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Ethernet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Ethernet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10921,7 +9503,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10951,15 +9533,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan-range")
     {
         for(auto const & c : vlan_range)
@@ -10967,28 +9540,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(std::move(c));
-        children[segment_path] = vlan_range.back();
-        return children.at(segment_path);
+        vlan_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11056,7 +9625,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11081,20 +9650,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11119,7 +9680,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     tdm_options(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions>())
 {
     tdm_options->parent = this;
-    children["tdm-options"] = tdm_options;
 
     yang_name = "tdm"; yang_parent_name = "parameters";
 }
@@ -11154,7 +9714,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11180,41 +9740,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tdm-options")
     {
-        if(tdm_options != nullptr)
-        {
-            children["tdm-options"] = tdm_options;
-        }
-        else
+        if(tdm_options == nullptr)
         {
             tdm_options = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions>();
-            tdm_options->parent = this;
-            children["tdm-options"] = tdm_options;
         }
-        return children.at("tdm-options");
+        return tdm_options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::get_children() const
 {
-    if(children.find("tdm-options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tdm_options != nullptr)
     {
-        if(tdm_options != nullptr)
-        {
-            children["tdm-options"] = tdm_options;
-        }
+        children["tdm-options"] = tdm_options;
     }
 
     return children;
@@ -11291,7 +9834,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11323,20 +9866,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11423,7 +9958,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Atm::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Atm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11451,20 +9986,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Atm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Atm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11526,7 +10053,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Fr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Fr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11551,20 +10078,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Fr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::Fr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11588,7 +10107,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     interface_list(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList>())
 {
     interface_list->parent = this;
-    children["interface-list"] = interface_list;
 
     yang_name = "pseudowire-ether"; yang_parent_name = "parameters";
 }
@@ -11621,7 +10139,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11646,41 +10164,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-list")
     {
-        if(interface_list != nullptr)
-        {
-            children["interface-list"] = interface_list;
-        }
-        else
+        if(interface_list == nullptr)
         {
             interface_list = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList>();
-            interface_list->parent = this;
-            children["interface-list"] = interface_list;
         }
-        return children.at("interface-list");
+        return interface_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_children() const
 {
-    if(children.find("interface-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_list != nullptr)
     {
-        if(interface_list != nullptr)
-        {
-            children["interface-list"] = interface_list;
-        }
+        children["interface-list"] = interface_list;
     }
 
     return children;
@@ -11742,7 +10243,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11767,15 +10268,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -11783,28 +10275,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11856,7 +10344,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11881,20 +10369,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11918,7 +10398,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     interface_list(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList>())
 {
     interface_list->parent = this;
-    children["interface-list"] = interface_list;
 
     yang_name = "pseudowire-iw"; yang_parent_name = "parameters";
 }
@@ -11951,7 +10430,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11976,41 +10455,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-list")
     {
-        if(interface_list != nullptr)
-        {
-            children["interface-list"] = interface_list;
-        }
-        else
+        if(interface_list == nullptr)
         {
             interface_list = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList>();
-            interface_list->parent = this;
-            children["interface-list"] = interface_list;
         }
-        return children.at("interface-list");
+        return interface_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_children() const
 {
-    if(children.find("interface-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_list != nullptr)
     {
-        if(interface_list != nullptr)
-        {
-            children["interface-list"] = interface_list;
-        }
+        children["interface-list"] = interface_list;
     }
 
     return children;
@@ -12072,7 +10534,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12097,15 +10559,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -12113,28 +10566,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12186,7 +10635,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12211,20 +10660,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12247,13 +10688,10 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,sequence_number(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::SequenceNumber>())
 {
     dispostion_stats->parent = this;
-    children["dispostion-stats"] = dispostion_stats;
 
     impostion_stats->parent = this;
-    children["impostion-stats"] = impostion_stats;
 
     sequence_number->parent = this;
-    children["sequence-number"] = sequence_number;
 
     yang_name = "statistics"; yang_parent_name = "attachment-circuit";
 }
@@ -12286,7 +10724,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12309,87 +10747,52 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dispostion-stats")
     {
-        if(dispostion_stats != nullptr)
-        {
-            children["dispostion-stats"] = dispostion_stats;
-        }
-        else
+        if(dispostion_stats == nullptr)
         {
             dispostion_stats = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats>();
-            dispostion_stats->parent = this;
-            children["dispostion-stats"] = dispostion_stats;
         }
-        return children.at("dispostion-stats");
+        return dispostion_stats;
     }
 
     if(child_yang_name == "impostion-stats")
     {
-        if(impostion_stats != nullptr)
-        {
-            children["impostion-stats"] = impostion_stats;
-        }
-        else
+        if(impostion_stats == nullptr)
         {
             impostion_stats = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats>();
-            impostion_stats->parent = this;
-            children["impostion-stats"] = impostion_stats;
         }
-        return children.at("impostion-stats");
+        return impostion_stats;
     }
 
     if(child_yang_name == "sequence-number")
     {
-        if(sequence_number != nullptr)
-        {
-            children["sequence-number"] = sequence_number;
-        }
-        else
+        if(sequence_number == nullptr)
         {
             sequence_number = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::SequenceNumber>();
-            sequence_number->parent = this;
-            children["sequence-number"] = sequence_number;
         }
-        return children.at("sequence-number");
+        return sequence_number;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::get_children() const
 {
-    if(children.find("dispostion-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dispostion_stats != nullptr)
     {
-        if(dispostion_stats != nullptr)
-        {
-            children["dispostion-stats"] = dispostion_stats;
-        }
+        children["dispostion-stats"] = dispostion_stats;
     }
 
-    if(children.find("impostion-stats") == children.end())
+    if(impostion_stats != nullptr)
     {
-        if(impostion_stats != nullptr)
-        {
-            children["impostion-stats"] = impostion_stats;
-        }
+        children["impostion-stats"] = impostion_stats;
     }
 
-    if(children.find("sequence-number") == children.end())
+    if(sequence_number != nullptr)
     {
-        if(sequence_number != nullptr)
-        {
-            children["sequence-number"] = sequence_number;
-        }
+        children["sequence-number"] = sequence_number;
     }
 
     return children;
@@ -12411,28 +10814,20 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,unknown_unicast(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast>())
 {
     broadcast->parent = this;
-    children["broadcast"] = broadcast;
 
     imposition_mtu_drop->parent = this;
-    children["imposition-mtu-drop"] = imposition_mtu_drop;
 
     imposition_stat->parent = this;
-    children["imposition-stat"] = imposition_stat;
 
     impostion_tail_drop->parent = this;
-    children["impostion-tail-drop"] = impostion_tail_drop;
 
     known_unicast->parent = this;
-    children["known-unicast"] = known_unicast;
 
     l2fsbi_drop->parent = this;
-    children["l2fsbi-drop"] = l2fsbi_drop;
 
     multicast->parent = this;
-    children["multicast"] = multicast;
 
     unknown_unicast->parent = this;
-    children["unknown-unicast"] = unknown_unicast;
 
     yang_name = "impostion-stats"; yang_parent_name = "statistics";
 }
@@ -12475,7 +10870,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12498,202 +10893,122 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast")
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
-        else
+        if(broadcast == nullptr)
         {
             broadcast = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Broadcast>();
-            broadcast->parent = this;
-            children["broadcast"] = broadcast;
         }
-        return children.at("broadcast");
+        return broadcast;
     }
 
     if(child_yang_name == "imposition-mtu-drop")
     {
-        if(imposition_mtu_drop != nullptr)
-        {
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
-        }
-        else
+        if(imposition_mtu_drop == nullptr)
         {
             imposition_mtu_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop>();
-            imposition_mtu_drop->parent = this;
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
         }
-        return children.at("imposition-mtu-drop");
+        return imposition_mtu_drop;
     }
 
     if(child_yang_name == "imposition-stat")
     {
-        if(imposition_stat != nullptr)
-        {
-            children["imposition-stat"] = imposition_stat;
-        }
-        else
+        if(imposition_stat == nullptr)
         {
             imposition_stat = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat>();
-            imposition_stat->parent = this;
-            children["imposition-stat"] = imposition_stat;
         }
-        return children.at("imposition-stat");
+        return imposition_stat;
     }
 
     if(child_yang_name == "impostion-tail-drop")
     {
-        if(impostion_tail_drop != nullptr)
-        {
-            children["impostion-tail-drop"] = impostion_tail_drop;
-        }
-        else
+        if(impostion_tail_drop == nullptr)
         {
             impostion_tail_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop>();
-            impostion_tail_drop->parent = this;
-            children["impostion-tail-drop"] = impostion_tail_drop;
         }
-        return children.at("impostion-tail-drop");
+        return impostion_tail_drop;
     }
 
     if(child_yang_name == "known-unicast")
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
-        else
+        if(known_unicast == nullptr)
         {
             known_unicast = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast>();
-            known_unicast->parent = this;
-            children["known-unicast"] = known_unicast;
         }
-        return children.at("known-unicast");
+        return known_unicast;
     }
 
     if(child_yang_name == "l2fsbi-drop")
     {
-        if(l2fsbi_drop != nullptr)
-        {
-            children["l2fsbi-drop"] = l2fsbi_drop;
-        }
-        else
+        if(l2fsbi_drop == nullptr)
         {
             l2fsbi_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop>();
-            l2fsbi_drop->parent = this;
-            children["l2fsbi-drop"] = l2fsbi_drop;
         }
-        return children.at("l2fsbi-drop");
+        return l2fsbi_drop;
     }
 
     if(child_yang_name == "multicast")
     {
-        if(multicast != nullptr)
-        {
-            children["multicast"] = multicast;
-        }
-        else
+        if(multicast == nullptr)
         {
             multicast = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast>();
-            multicast->parent = this;
-            children["multicast"] = multicast;
         }
-        return children.at("multicast");
+        return multicast;
     }
 
     if(child_yang_name == "unknown-unicast")
     {
-        if(unknown_unicast != nullptr)
-        {
-            children["unknown-unicast"] = unknown_unicast;
-        }
-        else
+        if(unknown_unicast == nullptr)
         {
             unknown_unicast = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast>();
-            unknown_unicast->parent = this;
-            children["unknown-unicast"] = unknown_unicast;
         }
-        return children.at("unknown-unicast");
+        return unknown_unicast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::get_children() const
 {
-    if(children.find("broadcast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast != nullptr)
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
+        children["broadcast"] = broadcast;
     }
 
-    if(children.find("imposition-mtu-drop") == children.end())
+    if(imposition_mtu_drop != nullptr)
     {
-        if(imposition_mtu_drop != nullptr)
-        {
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
-        }
+        children["imposition-mtu-drop"] = imposition_mtu_drop;
     }
 
-    if(children.find("imposition-stat") == children.end())
+    if(imposition_stat != nullptr)
     {
-        if(imposition_stat != nullptr)
-        {
-            children["imposition-stat"] = imposition_stat;
-        }
+        children["imposition-stat"] = imposition_stat;
     }
 
-    if(children.find("impostion-tail-drop") == children.end())
+    if(impostion_tail_drop != nullptr)
     {
-        if(impostion_tail_drop != nullptr)
-        {
-            children["impostion-tail-drop"] = impostion_tail_drop;
-        }
+        children["impostion-tail-drop"] = impostion_tail_drop;
     }
 
-    if(children.find("known-unicast") == children.end())
+    if(known_unicast != nullptr)
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
+        children["known-unicast"] = known_unicast;
     }
 
-    if(children.find("l2fsbi-drop") == children.end())
+    if(l2fsbi_drop != nullptr)
     {
-        if(l2fsbi_drop != nullptr)
-        {
-            children["l2fsbi-drop"] = l2fsbi_drop;
-        }
+        children["l2fsbi-drop"] = l2fsbi_drop;
     }
 
-    if(children.find("multicast") == children.end())
+    if(multicast != nullptr)
     {
-        if(multicast != nullptr)
-        {
-            children["multicast"] = multicast;
-        }
+        children["multicast"] = multicast;
     }
 
-    if(children.find("unknown-unicast") == children.end())
+    if(unknown_unicast != nullptr)
     {
-        if(unknown_unicast != nullptr)
-        {
-            children["unknown-unicast"] = unknown_unicast;
-        }
+        children["unknown-unicast"] = unknown_unicast;
     }
 
     return children;
@@ -12737,7 +11052,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12762,20 +11077,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12825,7 +11132,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12850,20 +11157,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12913,7 +11212,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12938,20 +11237,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13001,7 +11292,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13026,20 +11317,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13089,7 +11372,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13114,20 +11397,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13177,7 +11452,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13202,20 +11477,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13265,7 +11532,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13290,20 +11557,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13353,7 +11612,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13378,20 +11637,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13424,43 +11675,30 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,unicast_drop(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop>())
 {
     broadcast_drop->parent = this;
-    children["broadcast-drop"] = broadcast_drop;
 
     dai_drop->parent = this;
-    children["dai-drop"] = dai_drop;
 
     disposition_mtu_drop->parent = this;
-    children["disposition-mtu-drop"] = disposition_mtu_drop;
 
     disposition_oo_o_drops->parent = this;
-    children["disposition-oo-o-drops"] = disposition_oo_o_drops;
 
     disposition_p2mp_stats->parent = this;
-    children["disposition-p2mp-stats"] = disposition_p2mp_stats;
 
     disposition_stat->parent = this;
-    children["disposition-stat"] = disposition_stat;
 
     disposition_tail_drop->parent = this;
-    children["disposition-tail-drop"] = disposition_tail_drop;
 
     ipsg_drop->parent = this;
-    children["ipsg-drop"] = ipsg_drop;
 
     known_unicast->parent = this;
-    children["known-unicast"] = known_unicast;
 
     mac_move->parent = this;
-    children["mac-move"] = mac_move;
 
     multicast_drop->parent = this;
-    children["multicast-drop"] = multicast_drop;
 
     received_drops->parent = this;
-    children["received-drops"] = received_drops;
 
     unicast_drop->parent = this;
-    children["unicast-drop"] = unicast_drop;
 
     yang_name = "dispostion-stats"; yang_parent_name = "statistics";
 }
@@ -13513,7 +11751,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13536,317 +11774,192 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast-drop")
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
-        else
+        if(broadcast_drop == nullptr)
         {
             broadcast_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop>();
-            broadcast_drop->parent = this;
-            children["broadcast-drop"] = broadcast_drop;
         }
-        return children.at("broadcast-drop");
+        return broadcast_drop;
     }
 
     if(child_yang_name == "dai-drop")
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
-        else
+        if(dai_drop == nullptr)
         {
             dai_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DaiDrop>();
-            dai_drop->parent = this;
-            children["dai-drop"] = dai_drop;
         }
-        return children.at("dai-drop");
+        return dai_drop;
     }
 
     if(child_yang_name == "disposition-mtu-drop")
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
-        else
+        if(disposition_mtu_drop == nullptr)
         {
             disposition_mtu_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop>();
-            disposition_mtu_drop->parent = this;
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
         }
-        return children.at("disposition-mtu-drop");
+        return disposition_mtu_drop;
     }
 
     if(child_yang_name == "disposition-oo-o-drops")
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
-        else
+        if(disposition_oo_o_drops == nullptr)
         {
             disposition_oo_o_drops = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops>();
-            disposition_oo_o_drops->parent = this;
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
         }
-        return children.at("disposition-oo-o-drops");
+        return disposition_oo_o_drops;
     }
 
     if(child_yang_name == "disposition-p2mp-stats")
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
-        else
+        if(disposition_p2mp_stats == nullptr)
         {
             disposition_p2mp_stats = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats>();
-            disposition_p2mp_stats->parent = this;
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
         }
-        return children.at("disposition-p2mp-stats");
+        return disposition_p2mp_stats;
     }
 
     if(child_yang_name == "disposition-stat")
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
-        else
+        if(disposition_stat == nullptr)
         {
             disposition_stat = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionStat>();
-            disposition_stat->parent = this;
-            children["disposition-stat"] = disposition_stat;
         }
-        return children.at("disposition-stat");
+        return disposition_stat;
     }
 
     if(child_yang_name == "disposition-tail-drop")
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
-        else
+        if(disposition_tail_drop == nullptr)
         {
             disposition_tail_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop>();
-            disposition_tail_drop->parent = this;
-            children["disposition-tail-drop"] = disposition_tail_drop;
         }
-        return children.at("disposition-tail-drop");
+        return disposition_tail_drop;
     }
 
     if(child_yang_name == "ipsg-drop")
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
-        else
+        if(ipsg_drop == nullptr)
         {
             ipsg_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop>();
-            ipsg_drop->parent = this;
-            children["ipsg-drop"] = ipsg_drop;
         }
-        return children.at("ipsg-drop");
+        return ipsg_drop;
     }
 
     if(child_yang_name == "known-unicast")
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
-        else
+        if(known_unicast == nullptr)
         {
             known_unicast = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast>();
-            known_unicast->parent = this;
-            children["known-unicast"] = known_unicast;
         }
-        return children.at("known-unicast");
+        return known_unicast;
     }
 
     if(child_yang_name == "mac-move")
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
-        else
+        if(mac_move == nullptr)
         {
             mac_move = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MacMove>();
-            mac_move->parent = this;
-            children["mac-move"] = mac_move;
         }
-        return children.at("mac-move");
+        return mac_move;
     }
 
     if(child_yang_name == "multicast-drop")
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
-        else
+        if(multicast_drop == nullptr)
         {
             multicast_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop>();
-            multicast_drop->parent = this;
-            children["multicast-drop"] = multicast_drop;
         }
-        return children.at("multicast-drop");
+        return multicast_drop;
     }
 
     if(child_yang_name == "received-drops")
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
-        else
+        if(received_drops == nullptr)
         {
             received_drops = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops>();
-            received_drops->parent = this;
-            children["received-drops"] = received_drops;
         }
-        return children.at("received-drops");
+        return received_drops;
     }
 
     if(child_yang_name == "unicast-drop")
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
-        else
+        if(unicast_drop == nullptr)
         {
             unicast_drop = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop>();
-            unicast_drop->parent = this;
-            children["unicast-drop"] = unicast_drop;
         }
-        return children.at("unicast-drop");
+        return unicast_drop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::get_children() const
 {
-    if(children.find("broadcast-drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast_drop != nullptr)
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
+        children["broadcast-drop"] = broadcast_drop;
     }
 
-    if(children.find("dai-drop") == children.end())
+    if(dai_drop != nullptr)
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
+        children["dai-drop"] = dai_drop;
     }
 
-    if(children.find("disposition-mtu-drop") == children.end())
+    if(disposition_mtu_drop != nullptr)
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
+        children["disposition-mtu-drop"] = disposition_mtu_drop;
     }
 
-    if(children.find("disposition-oo-o-drops") == children.end())
+    if(disposition_oo_o_drops != nullptr)
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
+        children["disposition-oo-o-drops"] = disposition_oo_o_drops;
     }
 
-    if(children.find("disposition-p2mp-stats") == children.end())
+    if(disposition_p2mp_stats != nullptr)
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
+        children["disposition-p2mp-stats"] = disposition_p2mp_stats;
     }
 
-    if(children.find("disposition-stat") == children.end())
+    if(disposition_stat != nullptr)
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
+        children["disposition-stat"] = disposition_stat;
     }
 
-    if(children.find("disposition-tail-drop") == children.end())
+    if(disposition_tail_drop != nullptr)
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
+        children["disposition-tail-drop"] = disposition_tail_drop;
     }
 
-    if(children.find("ipsg-drop") == children.end())
+    if(ipsg_drop != nullptr)
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
+        children["ipsg-drop"] = ipsg_drop;
     }
 
-    if(children.find("known-unicast") == children.end())
+    if(known_unicast != nullptr)
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
+        children["known-unicast"] = known_unicast;
     }
 
-    if(children.find("mac-move") == children.end())
+    if(mac_move != nullptr)
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
+        children["mac-move"] = mac_move;
     }
 
-    if(children.find("multicast-drop") == children.end())
+    if(multicast_drop != nullptr)
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
+        children["multicast-drop"] = multicast_drop;
     }
 
-    if(children.find("received-drops") == children.end())
+    if(received_drops != nullptr)
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
+        children["received-drops"] = received_drops;
     }
 
-    if(children.find("unicast-drop") == children.end())
+    if(unicast_drop != nullptr)
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
+        children["unicast-drop"] = unicast_drop;
     }
 
     return children;
@@ -13890,7 +12003,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13915,20 +12028,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13978,7 +12083,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14003,20 +12108,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14066,7 +12163,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14091,20 +12188,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14154,7 +12243,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14179,20 +12268,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14242,7 +12323,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14267,20 +12348,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14330,7 +12403,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14355,20 +12428,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14418,7 +12483,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14443,20 +12508,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14506,7 +12563,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14531,20 +12588,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14594,7 +12643,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14619,20 +12668,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14682,7 +12723,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14707,20 +12748,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14770,7 +12803,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14795,20 +12828,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14858,7 +12883,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14883,20 +12908,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14946,7 +12963,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14971,20 +12988,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15040,7 +13049,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15067,20 +13076,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::SequenceNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::SequenceNumber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15147,7 +13148,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::L2VpnProtection::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::L2VpnProtection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15175,20 +13176,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::L2VpnProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::L2VpnProtection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::L2VpnProtection::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15263,7 +13256,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15289,15 +13282,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pseudowire")
     {
         for(auto const & c : pseudowire)
@@ -15305,28 +13289,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire>();
         c->parent = this;
-        pseudowire.push_back(std::move(c));
-        children[segment_path] = pseudowire.back();
-        return children.at(segment_path);
+        pseudowire.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pseudowire)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15441,31 +13421,22 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,statistics(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics>())
 {
     encapsulation_info->parent = this;
-    children["encapsulation-info"] = encapsulation_info;
 
     local_interface->parent = this;
-    children["local-interface"] = local_interface;
 
     local_signalling->parent = this;
-    children["local-signalling"] = local_signalling;
 
     p2mp_pw->parent = this;
-    children["p2mp-pw"] = p2mp_pw;
 
     peer_id->parent = this;
-    children["peer-id"] = peer_id;
 
     preferred_path->parent = this;
-    children["preferred-path"] = preferred_path;
 
     remote_interface->parent = this;
-    children["remote-interface"] = remote_interface;
 
     remote_signalling->parent = this;
-    children["remote-signalling"] = remote_signalling;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "pseudowire"; yang_parent_name = "flexible-xconnect-service-info";
 }
@@ -15668,7 +13639,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15770,225 +13741,136 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "encapsulation-info")
     {
-        if(encapsulation_info != nullptr)
-        {
-            children["encapsulation-info"] = encapsulation_info;
-        }
-        else
+        if(encapsulation_info == nullptr)
         {
             encapsulation_info = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo>();
-            encapsulation_info->parent = this;
-            children["encapsulation-info"] = encapsulation_info;
         }
-        return children.at("encapsulation-info");
+        return encapsulation_info;
     }
 
     if(child_yang_name == "local-interface")
     {
-        if(local_interface != nullptr)
-        {
-            children["local-interface"] = local_interface;
-        }
-        else
+        if(local_interface == nullptr)
         {
             local_interface = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface>();
-            local_interface->parent = this;
-            children["local-interface"] = local_interface;
         }
-        return children.at("local-interface");
+        return local_interface;
     }
 
     if(child_yang_name == "local-signalling")
     {
-        if(local_signalling != nullptr)
-        {
-            children["local-signalling"] = local_signalling;
-        }
-        else
+        if(local_signalling == nullptr)
         {
             local_signalling = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalSignalling>();
-            local_signalling->parent = this;
-            children["local-signalling"] = local_signalling;
         }
-        return children.at("local-signalling");
+        return local_signalling;
     }
 
     if(child_yang_name == "p2mp-pw")
     {
-        if(p2mp_pw != nullptr)
-        {
-            children["p2mp-pw"] = p2mp_pw;
-        }
-        else
+        if(p2mp_pw == nullptr)
         {
             p2mp_pw = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::P2MpPw>();
-            p2mp_pw->parent = this;
-            children["p2mp-pw"] = p2mp_pw;
         }
-        return children.at("p2mp-pw");
+        return p2mp_pw;
     }
 
     if(child_yang_name == "peer-id")
     {
-        if(peer_id != nullptr)
-        {
-            children["peer-id"] = peer_id;
-        }
-        else
+        if(peer_id == nullptr)
         {
             peer_id = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PeerId>();
-            peer_id->parent = this;
-            children["peer-id"] = peer_id;
         }
-        return children.at("peer-id");
+        return peer_id;
     }
 
     if(child_yang_name == "preferred-path")
     {
-        if(preferred_path != nullptr)
-        {
-            children["preferred-path"] = preferred_path;
-        }
-        else
+        if(preferred_path == nullptr)
         {
             preferred_path = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PreferredPath>();
-            preferred_path->parent = this;
-            children["preferred-path"] = preferred_path;
         }
-        return children.at("preferred-path");
+        return preferred_path;
     }
 
     if(child_yang_name == "remote-interface")
     {
-        if(remote_interface != nullptr)
-        {
-            children["remote-interface"] = remote_interface;
-        }
-        else
+        if(remote_interface == nullptr)
         {
             remote_interface = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::RemoteInterface>();
-            remote_interface->parent = this;
-            children["remote-interface"] = remote_interface;
         }
-        return children.at("remote-interface");
+        return remote_interface;
     }
 
     if(child_yang_name == "remote-signalling")
     {
-        if(remote_signalling != nullptr)
-        {
-            children["remote-signalling"] = remote_signalling;
-        }
-        else
+        if(remote_signalling == nullptr)
         {
             remote_signalling = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::RemoteSignalling>();
-            remote_signalling->parent = this;
-            children["remote-signalling"] = remote_signalling;
         }
-        return children.at("remote-signalling");
+        return remote_signalling;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::get_children() const
 {
-    if(children.find("encapsulation-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(encapsulation_info != nullptr)
     {
-        if(encapsulation_info != nullptr)
-        {
-            children["encapsulation-info"] = encapsulation_info;
-        }
+        children["encapsulation-info"] = encapsulation_info;
     }
 
-    if(children.find("local-interface") == children.end())
+    if(local_interface != nullptr)
     {
-        if(local_interface != nullptr)
-        {
-            children["local-interface"] = local_interface;
-        }
+        children["local-interface"] = local_interface;
     }
 
-    if(children.find("local-signalling") == children.end())
+    if(local_signalling != nullptr)
     {
-        if(local_signalling != nullptr)
-        {
-            children["local-signalling"] = local_signalling;
-        }
+        children["local-signalling"] = local_signalling;
     }
 
-    if(children.find("p2mp-pw") == children.end())
+    if(p2mp_pw != nullptr)
     {
-        if(p2mp_pw != nullptr)
-        {
-            children["p2mp-pw"] = p2mp_pw;
-        }
+        children["p2mp-pw"] = p2mp_pw;
     }
 
-    if(children.find("peer-id") == children.end())
+    if(peer_id != nullptr)
     {
-        if(peer_id != nullptr)
-        {
-            children["peer-id"] = peer_id;
-        }
+        children["peer-id"] = peer_id;
     }
 
-    if(children.find("preferred-path") == children.end())
+    if(preferred_path != nullptr)
     {
-        if(preferred_path != nullptr)
-        {
-            children["preferred-path"] = preferred_path;
-        }
+        children["preferred-path"] = preferred_path;
     }
 
-    if(children.find("remote-interface") == children.end())
+    if(remote_interface != nullptr)
     {
-        if(remote_interface != nullptr)
-        {
-            children["remote-interface"] = remote_interface;
-        }
+        children["remote-interface"] = remote_interface;
     }
 
-    if(children.find("remote-signalling") == children.end())
+    if(remote_signalling != nullptr)
     {
-        if(remote_signalling != nullptr)
-        {
-            children["remote-signalling"] = remote_signalling;
-        }
+        children["remote-signalling"] = remote_signalling;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -16354,7 +14236,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PeerId::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PeerId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16381,20 +14263,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PeerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PeerId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::PeerId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16426,10 +14300,8 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,l2tpv3(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2Tpv3>())
 {
     atom->parent = this;
-    children["atom"] = atom;
 
     l2tpv3->parent = this;
-    children["l2tpv3"] = l2tpv3;
 
     yang_name = "encapsulation-info"; yang_parent_name = "pseudowire";
 }
@@ -16462,7 +14334,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16486,64 +14358,38 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atom")
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
-        else
+        if(atom == nullptr)
         {
             atom = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom>();
-            atom->parent = this;
-            children["atom"] = atom;
         }
-        return children.at("atom");
+        return atom;
     }
 
     if(child_yang_name == "l2tpv3")
     {
-        if(l2tpv3 != nullptr)
-        {
-            children["l2tpv3"] = l2tpv3;
-        }
-        else
+        if(l2tpv3 == nullptr)
         {
             l2tpv3 = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2Tpv3>();
-            l2tpv3->parent = this;
-            children["l2tpv3"] = l2tpv3;
         }
-        return children.at("l2tpv3");
+        return l2tpv3;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::get_children() const
 {
-    if(children.find("atom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atom != nullptr)
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
+        children["atom"] = atom;
     }
 
-    if(children.find("l2tpv3") == children.end())
+    if(l2tpv3 != nullptr)
     {
-        if(l2tpv3 != nullptr)
-        {
-            children["l2tpv3"] = l2tpv3;
-        }
+        children["l2tpv3"] = l2tpv3;
     }
 
     return children;
@@ -16598,13 +14444,10 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,remote_agi(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi>())
 {
     local_agi->parent = this;
-    children["local-agi"] = local_agi;
 
     multi_segment_pseudowire_stats->parent = this;
-    children["multi-segment-pseudowire-stats"] = multi_segment_pseudowire_stats;
 
     remote_agi->parent = this;
-    children["remote-agi"] = remote_agi;
 
     yang_name = "atom"; yang_parent_name = "encapsulation-info";
 }
@@ -16703,7 +14546,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16759,87 +14602,52 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-agi")
     {
-        if(local_agi != nullptr)
-        {
-            children["local-agi"] = local_agi;
-        }
-        else
+        if(local_agi == nullptr)
         {
             local_agi = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi>();
-            local_agi->parent = this;
-            children["local-agi"] = local_agi;
         }
-        return children.at("local-agi");
+        return local_agi;
     }
 
     if(child_yang_name == "multi-segment-pseudowire-stats")
     {
-        if(multi_segment_pseudowire_stats != nullptr)
-        {
-            children["multi-segment-pseudowire-stats"] = multi_segment_pseudowire_stats;
-        }
-        else
+        if(multi_segment_pseudowire_stats == nullptr)
         {
             multi_segment_pseudowire_stats = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats>();
-            multi_segment_pseudowire_stats->parent = this;
-            children["multi-segment-pseudowire-stats"] = multi_segment_pseudowire_stats;
         }
-        return children.at("multi-segment-pseudowire-stats");
+        return multi_segment_pseudowire_stats;
     }
 
     if(child_yang_name == "remote-agi")
     {
-        if(remote_agi != nullptr)
-        {
-            children["remote-agi"] = remote_agi;
-        }
-        else
+        if(remote_agi == nullptr)
         {
             remote_agi = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi>();
-            remote_agi->parent = this;
-            children["remote-agi"] = remote_agi;
         }
-        return children.at("remote-agi");
+        return remote_agi;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::get_children() const
 {
-    if(children.find("local-agi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_agi != nullptr)
     {
-        if(local_agi != nullptr)
-        {
-            children["local-agi"] = local_agi;
-        }
+        children["local-agi"] = local_agi;
     }
 
-    if(children.find("multi-segment-pseudowire-stats") == children.end())
+    if(multi_segment_pseudowire_stats != nullptr)
     {
-        if(multi_segment_pseudowire_stats != nullptr)
-        {
-            children["multi-segment-pseudowire-stats"] = multi_segment_pseudowire_stats;
-        }
+        children["multi-segment-pseudowire-stats"] = multi_segment_pseudowire_stats;
     }
 
-    if(children.find("remote-agi") == children.end())
+    if(remote_agi != nullptr)
     {
-        if(remote_agi != nullptr)
-        {
-            children["remote-agi"] = remote_agi;
-        }
+        children["remote-agi"] = remote_agi;
     }
 
     return children;
@@ -16990,13 +14798,10 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,v4_addr(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "local-agi"; yang_parent_name = "atom";
 }
@@ -17031,7 +14836,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17055,87 +14860,52 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -17183,7 +14953,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17208,20 +14978,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17271,7 +15033,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17296,20 +15058,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17359,7 +15113,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17384,20 +15138,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17422,13 +15168,10 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,v4_addr(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "remote-agi"; yang_parent_name = "atom";
 }
@@ -17463,7 +15206,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17487,87 +15230,52 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -17615,7 +15323,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17640,20 +15348,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17703,7 +15403,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17728,20 +15428,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17791,7 +15483,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17816,20 +15508,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17879,7 +15563,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17904,20 +15588,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18027,7 +15703,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2Tpv3::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2Tpv3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18072,20 +15748,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2Tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2Tpv3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2Tpv3::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18190,7 +15858,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     parameters(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters>())
 {
     parameters->parent = this;
-    children["parameters"] = parameters;
 
     yang_name = "local-interface"; yang_parent_name = "pseudowire";
 }
@@ -18225,7 +15892,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18251,41 +15918,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "parameters")
     {
-        if(parameters != nullptr)
-        {
-            children["parameters"] = parameters;
-        }
-        else
+        if(parameters == nullptr)
         {
             parameters = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters>();
-            parameters->parent = this;
-            children["parameters"] = parameters;
         }
-        return children.at("parameters");
+        return parameters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_children() const
 {
-    if(children.find("parameters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(parameters != nullptr)
     {
-        if(parameters != nullptr)
-        {
-            children["parameters"] = parameters;
-        }
+        children["parameters"] = parameters;
     }
 
     return children;
@@ -18320,25 +15970,18 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
 	,vlan(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan>())
 {
     atm->parent = this;
-    children["atm"] = atm;
 
     ethernet->parent = this;
-    children["ethernet"] = ethernet;
 
     fr->parent = this;
-    children["fr"] = fr;
 
     pseudowire_ether->parent = this;
-    children["pseudowire-ether"] = pseudowire_ether;
 
     pseudowire_iw->parent = this;
-    children["pseudowire-iw"] = pseudowire_iw;
 
     tdm->parent = this;
-    children["tdm"] = tdm;
 
     vlan->parent = this;
-    children["vlan"] = vlan;
 
     yang_name = "parameters"; yang_parent_name = "local-interface";
 }
@@ -18381,7 +16024,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18405,179 +16048,108 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atm")
     {
-        if(atm != nullptr)
-        {
-            children["atm"] = atm;
-        }
-        else
+        if(atm == nullptr)
         {
             atm = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm>();
-            atm->parent = this;
-            children["atm"] = atm;
         }
-        return children.at("atm");
+        return atm;
     }
 
     if(child_yang_name == "ethernet")
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
-        else
+        if(ethernet == nullptr)
         {
             ethernet = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet>();
-            ethernet->parent = this;
-            children["ethernet"] = ethernet;
         }
-        return children.at("ethernet");
+        return ethernet;
     }
 
     if(child_yang_name == "fr")
     {
-        if(fr != nullptr)
-        {
-            children["fr"] = fr;
-        }
-        else
+        if(fr == nullptr)
         {
             fr = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr>();
-            fr->parent = this;
-            children["fr"] = fr;
         }
-        return children.at("fr");
+        return fr;
     }
 
     if(child_yang_name == "pseudowire-ether")
     {
-        if(pseudowire_ether != nullptr)
-        {
-            children["pseudowire-ether"] = pseudowire_ether;
-        }
-        else
+        if(pseudowire_ether == nullptr)
         {
             pseudowire_ether = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther>();
-            pseudowire_ether->parent = this;
-            children["pseudowire-ether"] = pseudowire_ether;
         }
-        return children.at("pseudowire-ether");
+        return pseudowire_ether;
     }
 
     if(child_yang_name == "pseudowire-iw")
     {
-        if(pseudowire_iw != nullptr)
-        {
-            children["pseudowire-iw"] = pseudowire_iw;
-        }
-        else
+        if(pseudowire_iw == nullptr)
         {
             pseudowire_iw = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireIw>();
-            pseudowire_iw->parent = this;
-            children["pseudowire-iw"] = pseudowire_iw;
         }
-        return children.at("pseudowire-iw");
+        return pseudowire_iw;
     }
 
     if(child_yang_name == "tdm")
     {
-        if(tdm != nullptr)
-        {
-            children["tdm"] = tdm;
-        }
-        else
+        if(tdm == nullptr)
         {
             tdm = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm>();
-            tdm->parent = this;
-            children["tdm"] = tdm;
         }
-        return children.at("tdm");
+        return tdm;
     }
 
     if(child_yang_name == "vlan")
     {
-        if(vlan != nullptr)
-        {
-            children["vlan"] = vlan;
-        }
-        else
+        if(vlan == nullptr)
         {
             vlan = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan>();
-            vlan->parent = this;
-            children["vlan"] = vlan;
         }
-        return children.at("vlan");
+        return vlan;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_children() const
 {
-    if(children.find("atm") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atm != nullptr)
     {
-        if(atm != nullptr)
-        {
-            children["atm"] = atm;
-        }
+        children["atm"] = atm;
     }
 
-    if(children.find("ethernet") == children.end())
+    if(ethernet != nullptr)
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
+        children["ethernet"] = ethernet;
     }
 
-    if(children.find("fr") == children.end())
+    if(fr != nullptr)
     {
-        if(fr != nullptr)
-        {
-            children["fr"] = fr;
-        }
+        children["fr"] = fr;
     }
 
-    if(children.find("pseudowire-ether") == children.end())
+    if(pseudowire_ether != nullptr)
     {
-        if(pseudowire_ether != nullptr)
-        {
-            children["pseudowire-ether"] = pseudowire_ether;
-        }
+        children["pseudowire-ether"] = pseudowire_ether;
     }
 
-    if(children.find("pseudowire-iw") == children.end())
+    if(pseudowire_iw != nullptr)
     {
-        if(pseudowire_iw != nullptr)
-        {
-            children["pseudowire-iw"] = pseudowire_iw;
-        }
+        children["pseudowire-iw"] = pseudowire_iw;
     }
 
-    if(children.find("tdm") == children.end())
+    if(tdm != nullptr)
     {
-        if(tdm != nullptr)
-        {
-            children["tdm"] = tdm;
-        }
+        children["tdm"] = tdm;
     }
 
-    if(children.find("vlan") == children.end())
+    if(vlan != nullptr)
     {
-        if(vlan != nullptr)
-        {
-            children["vlan"] = vlan;
-        }
+        children["vlan"] = vlan;
     }
 
     return children;
@@ -18622,7 +16194,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18646,20 +16218,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18736,7 +16300,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18766,15 +16330,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan-range")
     {
         for(auto const & c : vlan_range)
@@ -18782,28 +16337,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(std::move(c));
-        children[segment_path] = vlan_range.back();
-        return children.at(segment_path);
+        vlan_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18871,7 +16422,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18896,20 +16447,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18934,7 +16477,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     tdm_options(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions>())
 {
     tdm_options->parent = this;
-    children["tdm-options"] = tdm_options;
 
     yang_name = "tdm"; yang_parent_name = "parameters";
 }
@@ -18969,7 +16511,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18995,41 +16537,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tdm-options")
     {
-        if(tdm_options != nullptr)
-        {
-            children["tdm-options"] = tdm_options;
-        }
-        else
+        if(tdm_options == nullptr)
         {
             tdm_options = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions>();
-            tdm_options->parent = this;
-            children["tdm-options"] = tdm_options;
         }
-        return children.at("tdm-options");
+        return tdm_options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::get_children() const
 {
-    if(children.find("tdm-options") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tdm_options != nullptr)
     {
-        if(tdm_options != nullptr)
-        {
-            children["tdm-options"] = tdm_options;
-        }
+        children["tdm-options"] = tdm_options;
     }
 
     return children;
@@ -19106,7 +16631,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19138,20 +16663,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19238,7 +16755,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19266,20 +16783,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19341,7 +16850,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19366,20 +16875,12 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19403,7 +16904,6 @@ L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServic
     interface_list(std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList>())
 {
     interface_list->parent = this;
-    children["interface-list"] = interface_list;
 
     yang_name = "pseudowire-ether"; yang_parent_name = "parameters";
 }
@@ -19436,7 +16936,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19461,41 +16961,24 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-list")
     {
-        if(interface_list != nullptr)
-        {
-            children["interface-list"] = interface_list;
-        }
-        else
+        if(interface_list == nullptr)
         {
             interface_list = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList>();
-            interface_list->parent = this;
-            children["interface-list"] = interface_list;
         }
-        return children.at("interface-list");
+        return interface_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::get_children() const
 {
-    if(children.find("interface-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_list != nullptr)
     {
-        if(interface_list != nullptr)
-        {
-            children["interface-list"] = interface_list;
-        }
+        children["interface-list"] = interface_list;
     }
 
     return children;
@@ -19557,7 +17040,7 @@ std::string L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXc
 
 }
 
-EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19582,15 +17065,6 @@ EntityPath L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXco
 
 std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -19598,28 +17072,24 @@ std::shared_ptr<Entity> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpn::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;

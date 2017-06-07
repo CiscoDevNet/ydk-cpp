@@ -17,10 +17,8 @@ TrafficCollector::TrafficCollector()
 	,statistics(std::make_shared<TrafficCollector::Statistics>())
 {
     external_interfaces->parent = this;
-    children["external-interfaces"] = external_interfaces;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-cfg";
 }
@@ -53,12 +51,12 @@ std::string TrafficCollector::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -74,64 +72,38 @@ EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TrafficCollector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-interfaces")
     {
-        if(external_interfaces != nullptr)
-        {
-            children["external-interfaces"] = external_interfaces;
-        }
-        else
+        if(external_interfaces == nullptr)
         {
             external_interfaces = std::make_shared<TrafficCollector::ExternalInterfaces>();
-            external_interfaces->parent = this;
-            children["external-interfaces"] = external_interfaces;
         }
-        return children.at("external-interfaces");
+        return external_interfaces;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<TrafficCollector::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::get_children() const
 {
-    if(children.find("external-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(external_interfaces != nullptr)
     {
-        if(external_interfaces != nullptr)
-        {
-            children["external-interfaces"] = external_interfaces;
-        }
+        children["external-interfaces"] = external_interfaces;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -203,7 +175,7 @@ std::string TrafficCollector::ExternalInterfaces::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::ExternalInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::ExternalInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -226,15 +198,6 @@ EntityPath TrafficCollector::ExternalInterfaces::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-interface")
     {
         for(auto const & c : external_interface)
@@ -242,28 +205,24 @@ std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TrafficCollector::ExternalInterfaces::ExternalInterface>();
         c->parent = this;
-        external_interface.push_back(std::move(c));
-        children[segment_path] = external_interface.back();
-        return children.at(segment_path);
+        external_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::ExternalInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : external_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -307,7 +266,7 @@ std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_segment
 
 }
 
-EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -332,20 +291,12 @@ EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_entity_p
 
 std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::ExternalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::ExternalInterfaces::ExternalInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::ExternalInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -401,7 +352,7 @@ std::string TrafficCollector::Statistics::get_segment_path() const
 
 }
 
-EntityPath TrafficCollector::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath TrafficCollector::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -428,20 +379,12 @@ EntityPath TrafficCollector::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TrafficCollector::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TrafficCollector::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

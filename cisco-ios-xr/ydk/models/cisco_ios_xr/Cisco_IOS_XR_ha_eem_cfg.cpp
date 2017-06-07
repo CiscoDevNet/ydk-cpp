@@ -21,13 +21,10 @@ EventManager::EventManager()
 	,scheduler_script(std::make_shared<EventManager::SchedulerScript>())
 {
     environments->parent = this;
-    children["environments"] = environments;
 
     policies->parent = this;
-    children["policies"] = policies;
 
     scheduler_script->parent = this;
-    children["scheduler-script"] = scheduler_script;
 
     yang_name = "event-manager"; yang_parent_name = "Cisco-IOS-XR-ha-eem-cfg";
 }
@@ -68,12 +65,12 @@ std::string EventManager::get_segment_path() const
 
 }
 
-EntityPath EventManager::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -92,87 +89,52 @@ EntityPath EventManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EventManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "environments")
     {
-        if(environments != nullptr)
-        {
-            children["environments"] = environments;
-        }
-        else
+        if(environments == nullptr)
         {
             environments = std::make_shared<EventManager::Environments>();
-            environments->parent = this;
-            children["environments"] = environments;
         }
-        return children.at("environments");
+        return environments;
     }
 
     if(child_yang_name == "policies")
     {
-        if(policies != nullptr)
-        {
-            children["policies"] = policies;
-        }
-        else
+        if(policies == nullptr)
         {
             policies = std::make_shared<EventManager::Policies>();
-            policies->parent = this;
-            children["policies"] = policies;
         }
-        return children.at("policies");
+        return policies;
     }
 
     if(child_yang_name == "scheduler-script")
     {
-        if(scheduler_script != nullptr)
-        {
-            children["scheduler-script"] = scheduler_script;
-        }
-        else
+        if(scheduler_script == nullptr)
         {
             scheduler_script = std::make_shared<EventManager::SchedulerScript>();
-            scheduler_script->parent = this;
-            children["scheduler-script"] = scheduler_script;
         }
-        return children.at("scheduler-script");
+        return scheduler_script;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::get_children() const
 {
-    if(children.find("environments") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(environments != nullptr)
     {
-        if(environments != nullptr)
-        {
-            children["environments"] = environments;
-        }
+        children["environments"] = environments;
     }
 
-    if(children.find("policies") == children.end())
+    if(policies != nullptr)
     {
-        if(policies != nullptr)
-        {
-            children["policies"] = policies;
-        }
+        children["policies"] = policies;
     }
 
-    if(children.find("scheduler-script") == children.end())
+    if(scheduler_script != nullptr)
     {
-        if(scheduler_script != nullptr)
-        {
-            children["scheduler-script"] = scheduler_script;
-        }
+        children["scheduler-script"] = scheduler_script;
     }
 
     return children;
@@ -256,7 +218,7 @@ std::string EventManager::Policies::get_segment_path() const
 
 }
 
-EntityPath EventManager::Policies::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::Policies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -279,15 +241,6 @@ EntityPath EventManager::Policies::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EventManager::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy")
     {
         for(auto const & c : policy)
@@ -295,28 +248,24 @@ std::shared_ptr<Entity> EventManager::Policies::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EventManager::Policies::Policy>();
         c->parent = this;
-        policy.push_back(std::move(c));
-        children[segment_path] = policy.back();
-        return children.at(segment_path);
+        policy.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::Policies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::Policies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -378,7 +327,7 @@ std::string EventManager::Policies::Policy::get_segment_path() const
 
 }
 
-EntityPath EventManager::Policies::Policy::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::Policies::Policy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -409,20 +358,12 @@ EntityPath EventManager::Policies::Policy::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> EventManager::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::Policies::Policy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::Policies::Policy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -467,7 +408,6 @@ EventManager::SchedulerScript::SchedulerScript()
     thread_classes(std::make_shared<EventManager::SchedulerScript::ThreadClasses>())
 {
     thread_classes->parent = this;
-    children["thread-classes"] = thread_classes;
 
     yang_name = "scheduler-script"; yang_parent_name = "event-manager";
 }
@@ -496,7 +436,7 @@ std::string EventManager::SchedulerScript::get_segment_path() const
 
 }
 
-EntityPath EventManager::SchedulerScript::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::SchedulerScript::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -519,41 +459,24 @@ EntityPath EventManager::SchedulerScript::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> EventManager::SchedulerScript::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thread-classes")
     {
-        if(thread_classes != nullptr)
-        {
-            children["thread-classes"] = thread_classes;
-        }
-        else
+        if(thread_classes == nullptr)
         {
             thread_classes = std::make_shared<EventManager::SchedulerScript::ThreadClasses>();
-            thread_classes->parent = this;
-            children["thread-classes"] = thread_classes;
         }
-        return children.at("thread-classes");
+        return thread_classes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::SchedulerScript::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::get_children() const
 {
-    if(children.find("thread-classes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thread_classes != nullptr)
     {
-        if(thread_classes != nullptr)
-        {
-            children["thread-classes"] = thread_classes;
-        }
+        children["thread-classes"] = thread_classes;
     }
 
     return children;
@@ -601,7 +524,7 @@ std::string EventManager::SchedulerScript::ThreadClasses::get_segment_path() con
 
 }
 
-EntityPath EventManager::SchedulerScript::ThreadClasses::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::SchedulerScript::ThreadClasses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -624,15 +547,6 @@ EntityPath EventManager::SchedulerScript::ThreadClasses::get_entity_path(Entity*
 
 std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thread-class")
     {
         for(auto const & c : thread_class)
@@ -640,28 +554,24 @@ std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EventManager::SchedulerScript::ThreadClasses::ThreadClass>();
         c->parent = this;
-        thread_class.push_back(std::move(c));
-        children[segment_path] = thread_class.back();
-        return children.at(segment_path);
+        thread_class.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::SchedulerScript::ThreadClasses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::ThreadClasses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : thread_class)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -705,7 +615,7 @@ std::string EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_segme
 
 }
 
-EntityPath EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -730,20 +640,12 @@ EntityPath EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_entity
 
 std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -797,7 +699,7 @@ std::string EventManager::Environments::get_segment_path() const
 
 }
 
-EntityPath EventManager::Environments::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::Environments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -820,15 +722,6 @@ EntityPath EventManager::Environments::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EventManager::Environments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "environment")
     {
         for(auto const & c : environment)
@@ -836,28 +729,24 @@ std::shared_ptr<Entity> EventManager::Environments::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EventManager::Environments::Environment>();
         c->parent = this;
-        environment.push_back(std::move(c));
-        children[segment_path] = environment.back();
-        return children.at(segment_path);
+        environment.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::Environments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::Environments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : environment)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -901,7 +790,7 @@ std::string EventManager::Environments::Environment::get_segment_path() const
 
 }
 
-EntityPath EventManager::Environments::Environment::get_entity_path(Entity* ancestor) const
+const EntityPath EventManager::Environments::Environment::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -926,20 +815,12 @@ EntityPath EventManager::Environments::Environment::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> EventManager::Environments::Environment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EventManager::Environments::Environment::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EventManager::Environments::Environment::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

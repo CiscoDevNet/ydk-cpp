@@ -47,12 +47,12 @@ std::string ObjectTrackings::get_segment_path() const
 
 }
 
-EntityPath ObjectTrackings::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath ObjectTrackings::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectTrackings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "object-tracking")
     {
         for(auto const & c : object_tracking)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> ObjectTrackings::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTrackings::ObjectTracking>();
         c->parent = this;
-        object_tracking.push_back(std::move(c));
-        children[segment_path] = object_tracking.back();
-        return children.at(segment_path);
+        object_tracking.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : object_tracking)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -151,16 +138,12 @@ ObjectTrackings::ObjectTracking::ObjectTracking()
 	,type_route(std::make_shared<ObjectTrackings::ObjectTracking::TypeRoute>())
 {
     type_boolean_list->parent = this;
-    children["type-boolean-list"] = type_boolean_list;
 
     type_interface->parent = this;
-    children["type-interface"] = type_interface;
 
     type_list->parent = this;
-    children["type-list"] = type_list;
 
     type_route->parent = this;
-    children["type-route"] = type_route;
 
     yang_name = "object-tracking"; yang_parent_name = "object-trackings";
 }
@@ -211,7 +194,7 @@ std::string ObjectTrackings::ObjectTracking::get_segment_path() const
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -242,110 +225,66 @@ EntityPath ObjectTrackings::ObjectTracking::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "type-boolean-list")
     {
-        if(type_boolean_list != nullptr)
-        {
-            children["type-boolean-list"] = type_boolean_list;
-        }
-        else
+        if(type_boolean_list == nullptr)
         {
             type_boolean_list = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList>();
-            type_boolean_list->parent = this;
-            children["type-boolean-list"] = type_boolean_list;
         }
-        return children.at("type-boolean-list");
+        return type_boolean_list;
     }
 
     if(child_yang_name == "type-interface")
     {
-        if(type_interface != nullptr)
-        {
-            children["type-interface"] = type_interface;
-        }
-        else
+        if(type_interface == nullptr)
         {
             type_interface = std::make_shared<ObjectTrackings::ObjectTracking::TypeInterface>();
-            type_interface->parent = this;
-            children["type-interface"] = type_interface;
         }
-        return children.at("type-interface");
+        return type_interface;
     }
 
     if(child_yang_name == "type-list")
     {
-        if(type_list != nullptr)
-        {
-            children["type-list"] = type_list;
-        }
-        else
+        if(type_list == nullptr)
         {
             type_list = std::make_shared<ObjectTrackings::ObjectTracking::TypeList>();
-            type_list->parent = this;
-            children["type-list"] = type_list;
         }
-        return children.at("type-list");
+        return type_list;
     }
 
     if(child_yang_name == "type-route")
     {
-        if(type_route != nullptr)
-        {
-            children["type-route"] = type_route;
-        }
-        else
+        if(type_route == nullptr)
         {
             type_route = std::make_shared<ObjectTrackings::ObjectTracking::TypeRoute>();
-            type_route->parent = this;
-            children["type-route"] = type_route;
         }
-        return children.at("type-route");
+        return type_route;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::get_children() const
 {
-    if(children.find("type-boolean-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(type_boolean_list != nullptr)
     {
-        if(type_boolean_list != nullptr)
-        {
-            children["type-boolean-list"] = type_boolean_list;
-        }
+        children["type-boolean-list"] = type_boolean_list;
     }
 
-    if(children.find("type-interface") == children.end())
+    if(type_interface != nullptr)
     {
-        if(type_interface != nullptr)
-        {
-            children["type-interface"] = type_interface;
-        }
+        children["type-interface"] = type_interface;
     }
 
-    if(children.find("type-list") == children.end())
+    if(type_list != nullptr)
     {
-        if(type_list != nullptr)
-        {
-            children["type-list"] = type_list;
-        }
+        children["type-list"] = type_list;
     }
 
-    if(children.find("type-route") == children.end())
+    if(type_route != nullptr)
     {
-        if(type_route != nullptr)
-        {
-            children["type-route"] = type_route;
-        }
+        children["type-route"] = type_route;
     }
 
     return children;
@@ -418,7 +357,7 @@ std::string ObjectTrackings::ObjectTracking::TypeInterface::get_segment_path() c
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -442,20 +381,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeInterface::get_entity_path(Entit
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -475,16 +406,12 @@ ObjectTrackings::ObjectTracking::TypeList::TypeList()
 	,threshold_weight_object(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject>())
 {
     threshold_percentage->parent = this;
-    children["threshold-percentage"] = threshold_percentage;
 
     threshold_percentage_object->parent = this;
-    children["threshold-percentage-object"] = threshold_percentage_object;
 
     threshold_weight->parent = this;
-    children["threshold-weight"] = threshold_weight;
 
     threshold_weight_object->parent = this;
-    children["threshold-weight-object"] = threshold_weight_object;
 
     yang_name = "type-list"; yang_parent_name = "object-tracking";
 }
@@ -519,7 +446,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::get_segment_path() const
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -542,110 +469,66 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-percentage")
     {
-        if(threshold_percentage != nullptr)
-        {
-            children["threshold-percentage"] = threshold_percentage;
-        }
-        else
+        if(threshold_percentage == nullptr)
         {
             threshold_percentage = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage>();
-            threshold_percentage->parent = this;
-            children["threshold-percentage"] = threshold_percentage;
         }
-        return children.at("threshold-percentage");
+        return threshold_percentage;
     }
 
     if(child_yang_name == "threshold-percentage-object")
     {
-        if(threshold_percentage_object != nullptr)
-        {
-            children["threshold-percentage-object"] = threshold_percentage_object;
-        }
-        else
+        if(threshold_percentage_object == nullptr)
         {
             threshold_percentage_object = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject>();
-            threshold_percentage_object->parent = this;
-            children["threshold-percentage-object"] = threshold_percentage_object;
         }
-        return children.at("threshold-percentage-object");
+        return threshold_percentage_object;
     }
 
     if(child_yang_name == "threshold-weight")
     {
-        if(threshold_weight != nullptr)
-        {
-            children["threshold-weight"] = threshold_weight;
-        }
-        else
+        if(threshold_weight == nullptr)
         {
             threshold_weight = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight>();
-            threshold_weight->parent = this;
-            children["threshold-weight"] = threshold_weight;
         }
-        return children.at("threshold-weight");
+        return threshold_weight;
     }
 
     if(child_yang_name == "threshold-weight-object")
     {
-        if(threshold_weight_object != nullptr)
-        {
-            children["threshold-weight-object"] = threshold_weight_object;
-        }
-        else
+        if(threshold_weight_object == nullptr)
         {
             threshold_weight_object = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject>();
-            threshold_weight_object->parent = this;
-            children["threshold-weight-object"] = threshold_weight_object;
         }
-        return children.at("threshold-weight-object");
+        return threshold_weight_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::get_children() const
 {
-    if(children.find("threshold-percentage") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold_percentage != nullptr)
     {
-        if(threshold_percentage != nullptr)
-        {
-            children["threshold-percentage"] = threshold_percentage;
-        }
+        children["threshold-percentage"] = threshold_percentage;
     }
 
-    if(children.find("threshold-percentage-object") == children.end())
+    if(threshold_percentage_object != nullptr)
     {
-        if(threshold_percentage_object != nullptr)
-        {
-            children["threshold-percentage-object"] = threshold_percentage_object;
-        }
+        children["threshold-percentage-object"] = threshold_percentage_object;
     }
 
-    if(children.find("threshold-weight") == children.end())
+    if(threshold_weight != nullptr)
     {
-        if(threshold_weight != nullptr)
-        {
-            children["threshold-weight"] = threshold_weight;
-        }
+        children["threshold-weight"] = threshold_weight;
     }
 
-    if(children.find("threshold-weight-object") == children.end())
+    if(threshold_weight_object != nullptr)
     {
-        if(threshold_weight_object != nullptr)
-        {
-            children["threshold-weight-object"] = threshold_weight_object;
-        }
+        children["threshold-weight-object"] = threshold_weight_object;
     }
 
     return children;
@@ -660,7 +543,6 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdWeight()
     threshold_limits(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits>())
 {
     threshold_limits->parent = this;
-    children["threshold-limits"] = threshold_limits;
 
     yang_name = "threshold-weight"; yang_parent_name = "type-list";
 }
@@ -689,7 +571,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_segm
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -712,41 +594,24 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_entit
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-limits")
     {
-        if(threshold_limits != nullptr)
-        {
-            children["threshold-limits"] = threshold_limits;
-        }
-        else
+        if(threshold_limits == nullptr)
         {
             threshold_limits = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits>();
-            threshold_limits->parent = this;
-            children["threshold-limits"] = threshold_limits;
         }
-        return children.at("threshold-limits");
+        return threshold_limits;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_children() const
 {
-    if(children.find("threshold-limits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold_limits != nullptr)
     {
-        if(threshold_limits != nullptr)
-        {
-            children["threshold-limits"] = threshold_limits;
-        }
+        children["threshold-limits"] = threshold_limits;
     }
 
     return children;
@@ -761,7 +626,6 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::Thr
     threshold_up_values(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues>())
 {
     threshold_up_values->parent = this;
-    children["threshold-up-values"] = threshold_up_values;
 
     yang_name = "threshold-limits"; yang_parent_name = "threshold-weight";
 }
@@ -790,7 +654,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshol
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -813,41 +677,24 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshold
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-up-values")
     {
-        if(threshold_up_values != nullptr)
-        {
-            children["threshold-up-values"] = threshold_up_values;
-        }
-        else
+        if(threshold_up_values == nullptr)
         {
             threshold_up_values = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues>();
-            threshold_up_values->parent = this;
-            children["threshold-up-values"] = threshold_up_values;
         }
-        return children.at("threshold-up-values");
+        return threshold_up_values;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_children() const
 {
-    if(children.find("threshold-up-values") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold_up_values != nullptr)
     {
-        if(threshold_up_values != nullptr)
-        {
-            children["threshold-up-values"] = threshold_up_values;
-        }
+        children["threshold-up-values"] = threshold_up_values;
     }
 
     return children;
@@ -895,7 +742,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshol
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -918,15 +765,6 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshold
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-up-value")
     {
         for(auto const & c : threshold_up_value)
@@ -934,28 +772,24 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeig
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
         c->parent = this;
-        threshold_up_value.push_back(std::move(c));
-        children[segment_path] = threshold_up_value.back();
-        return children.at(segment_path);
+        threshold_up_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_up_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -999,7 +833,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshol
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1024,20 +858,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshold
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1091,7 +917,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1114,15 +940,6 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject:
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "object")
     {
         for(auto const & c : object)
@@ -1130,28 +947,24 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPerc
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object>();
         c->parent = this;
-        object.push_back(std::move(c));
-        children[segment_path] = object.back();
-        return children.at(segment_path);
+        object.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1195,7 +1008,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1220,20 +1033,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject:
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1254,7 +1059,6 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdPercent
     threshold_limits(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits>())
 {
     threshold_limits->parent = this;
-    children["threshold-limits"] = threshold_limits;
 
     yang_name = "threshold-percentage"; yang_parent_name = "type-list";
 }
@@ -1283,7 +1087,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1306,41 +1110,24 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_e
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-limits")
     {
-        if(threshold_limits != nullptr)
-        {
-            children["threshold-limits"] = threshold_limits;
-        }
-        else
+        if(threshold_limits == nullptr)
         {
             threshold_limits = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits>();
-            threshold_limits->parent = this;
-            children["threshold-limits"] = threshold_limits;
         }
-        return children.at("threshold-limits");
+        return threshold_limits;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_children() const
 {
-    if(children.find("threshold-limits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold_limits != nullptr)
     {
-        if(threshold_limits != nullptr)
-        {
-            children["threshold-limits"] = threshold_limits;
-        }
+        children["threshold-limits"] = threshold_limits;
     }
 
     return children;
@@ -1355,7 +1142,6 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits:
     threshold_up_values(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues>())
 {
     threshold_up_values->parent = this;
-    children["threshold-up-values"] = threshold_up_values;
 
     yang_name = "threshold-limits"; yang_parent_name = "threshold-percentage";
 }
@@ -1384,7 +1170,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thre
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1407,41 +1193,24 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thres
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-up-values")
     {
-        if(threshold_up_values != nullptr)
-        {
-            children["threshold-up-values"] = threshold_up_values;
-        }
-        else
+        if(threshold_up_values == nullptr)
         {
             threshold_up_values = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues>();
-            threshold_up_values->parent = this;
-            children["threshold-up-values"] = threshold_up_values;
         }
-        return children.at("threshold-up-values");
+        return threshold_up_values;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_children() const
 {
-    if(children.find("threshold-up-values") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold_up_values != nullptr)
     {
-        if(threshold_up_values != nullptr)
-        {
-            children["threshold-up-values"] = threshold_up_values;
-        }
+        children["threshold-up-values"] = threshold_up_values;
     }
 
     return children;
@@ -1489,7 +1258,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thre
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1512,15 +1281,6 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thres
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-up-value")
     {
         for(auto const & c : threshold_up_value)
@@ -1528,28 +1288,24 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPerc
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
         c->parent = this;
-        threshold_up_value.push_back(std::move(c));
-        children[segment_path] = threshold_up_value.back();
-        return children.at(segment_path);
+        threshold_up_value.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_up_value)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1593,7 +1349,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thre
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1618,20 +1374,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thres
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1685,7 +1433,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::ge
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1708,15 +1456,6 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "object")
     {
         for(auto const & c : object)
@@ -1724,28 +1463,24 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeig
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object>();
         c->parent = this;
-        object.push_back(std::move(c));
-        children[segment_path] = object.back();
-        return children.at(segment_path);
+        object.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1789,7 +1524,7 @@ std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Ob
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1814,20 +1549,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Obj
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1878,7 +1605,7 @@ std::string ObjectTrackings::ObjectTracking::TypeRoute::get_segment_path() const
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeRoute::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1902,41 +1629,24 @@ EntityPath ObjectTrackings::ObjectTracking::TypeRoute::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-address")
     {
-        if(ip_address != nullptr)
-        {
-            children["ip-address"] = ip_address;
-        }
-        else
+        if(ip_address == nullptr)
         {
             ip_address = std::make_shared<ObjectTrackings::ObjectTracking::TypeRoute::IpAddress>();
-            ip_address->parent = this;
-            children["ip-address"] = ip_address;
         }
-        return children.at("ip-address");
+        return ip_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeRoute::get_children() const
 {
-    if(children.find("ip-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_address != nullptr)
     {
-        if(ip_address != nullptr)
-        {
-            children["ip-address"] = ip_address;
-        }
+        children["ip-address"] = ip_address;
     }
 
     return children;
@@ -1984,7 +1694,7 @@ std::string ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_segment_p
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2009,20 +1719,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_entity_pat
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2044,10 +1746,8 @@ ObjectTrackings::ObjectTracking::TypeBooleanList::TypeBooleanList()
 	,or_objects(std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects>())
 {
     and_objects->parent = this;
-    children["and-objects"] = and_objects;
 
     or_objects->parent = this;
-    children["or-objects"] = or_objects;
 
     yang_name = "type-boolean-list"; yang_parent_name = "object-tracking";
 }
@@ -2078,7 +1778,7 @@ std::string ObjectTrackings::ObjectTracking::TypeBooleanList::get_segment_path()
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2101,64 +1801,38 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::get_entity_path(Ent
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "and-objects")
     {
-        if(and_objects != nullptr)
-        {
-            children["and-objects"] = and_objects;
-        }
-        else
+        if(and_objects == nullptr)
         {
             and_objects = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects>();
-            and_objects->parent = this;
-            children["and-objects"] = and_objects;
         }
-        return children.at("and-objects");
+        return and_objects;
     }
 
     if(child_yang_name == "or-objects")
     {
-        if(or_objects != nullptr)
-        {
-            children["or-objects"] = or_objects;
-        }
-        else
+        if(or_objects == nullptr)
         {
             or_objects = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects>();
-            or_objects->parent = this;
-            children["or-objects"] = or_objects;
         }
-        return children.at("or-objects");
+        return or_objects;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeBooleanList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::get_children() const
 {
-    if(children.find("and-objects") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(and_objects != nullptr)
     {
-        if(and_objects != nullptr)
-        {
-            children["and-objects"] = and_objects;
-        }
+        children["and-objects"] = and_objects;
     }
 
-    if(children.find("or-objects") == children.end())
+    if(or_objects != nullptr)
     {
-        if(or_objects != nullptr)
-        {
-            children["or-objects"] = or_objects;
-        }
+        children["or-objects"] = or_objects;
     }
 
     return children;
@@ -2206,7 +1880,7 @@ std::string ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_seg
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2229,15 +1903,6 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_enti
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "or-object")
     {
         for(auto const & c : or_object)
@@ -2245,28 +1910,24 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObje
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject>();
         c->parent = this;
-        or_object.push_back(std::move(c));
-        children[segment_path] = or_object.back();
-        return children.at(segment_path);
+        or_object.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : or_object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2310,7 +1971,7 @@ std::string ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObjec
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2335,20 +1996,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2402,7 +2055,7 @@ std::string ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_se
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2425,15 +2078,6 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_ent
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "and-object")
     {
         for(auto const & c : and_object)
@@ -2441,28 +2085,24 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObj
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject>();
         c->parent = this;
-        and_object.push_back(std::move(c));
-        children[segment_path] = and_object.back();
-        return children.at(segment_path);
+        and_object.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : and_object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2506,7 +2146,7 @@ std::string ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObj
 
 }
 
-EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2531,20 +2171,12 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObje
 
 std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

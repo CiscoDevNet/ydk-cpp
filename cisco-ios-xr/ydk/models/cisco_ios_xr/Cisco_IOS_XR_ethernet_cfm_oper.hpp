@@ -18,25 +18,22 @@ class Cfm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Nodes; //type: Cfm::Nodes
         class Global; //type: Cfm::Global
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global> global;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes> nodes;
-
-
+        
 }; // Cfm
 
 
@@ -48,19 +45,16 @@ class Cfm::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Cfm::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node> > node;
-
-
+        
 }; // Cfm::Nodes
 
 
@@ -72,15 +66,13 @@ class Cfm::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node; //type: string
-
         class InterfaceAises; //type: Cfm::Nodes::Node::InterfaceAises
         class InterfaceStatistics; //type: Cfm::Nodes::Node::InterfaceStatistics
         class Summary; //type: Cfm::Nodes::Node::Summary
@@ -90,8 +82,7 @@ class Cfm::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceAises> interface_aises;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceStatistics> interface_statistics;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::Summary> summary;
-
-
+        
 }; // Cfm::Nodes::Node
 
 
@@ -103,19 +94,16 @@ class Cfm::Nodes::Node::InterfaceAises : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceAis; //type: Cfm::Nodes::Node::InterfaceAises::InterfaceAis
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceAises::InterfaceAis> > interface_ais;
-
-
+        
 }; // Cfm::Nodes::Node::InterfaceAises
 
 
@@ -127,12 +115,11 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf direction; //type: CfmAisDirEnum
@@ -140,12 +127,10 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis : public Entity
         YLeaf interface_state; //type: string
         YLeaf interworking_state; //type: CfmBagIwStateEnum
         YLeaf stp_state; //type: CfmBagStpStateEnum
-
         class Statistics; //type: Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics> statistics;
-
-
+        
 }; // Cfm::Nodes::Node::InterfaceAises::InterfaceAis
 
 
@@ -157,12 +142,11 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf direction; //type: CfmBagDirectionEnum
         YLeaf lowest_level; //type: CfmBagMdLevelEnum
@@ -170,14 +154,12 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics : public Entity
         YLeaf transmission_interval; //type: CfmBagAisIntervalEnum
         YLeaf sent_packets; //type: uint32
         YLeafList via_level; //type: list of  CfmBagMdLevelEnum
-
         class Defects; //type: Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects
         class LastStarted; //type: Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects> defects;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted> last_started;
-
-
+        
 }; // Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics
 
 
@@ -189,12 +171,11 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ais_received; //type: boolean
         YLeaf peer_meps_that_timed_out; //type: uint32
@@ -203,12 +184,10 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects : publ
         YLeaf unexpected; //type: uint32
         YLeaf local_port_status; //type: boolean
         YLeaf peer_port_status; //type: boolean
-
         class RemoteMepsDefects; //type: Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects> remote_meps_defects;
-
-
+        
 }; // Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects
 
 
@@ -220,12 +199,11 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::Remot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf loss_threshold_exceeded; //type: boolean
         YLeaf invalid_level; //type: boolean
@@ -234,8 +212,6 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::Remot
         YLeaf received_our_mac; //type: boolean
         YLeaf received_our_mep_id; //type: boolean
         YLeaf received_rdi; //type: boolean
-
-
 
 }; // Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects
 
@@ -248,17 +224,14 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted
 
@@ -271,19 +244,16 @@ class Cfm::Nodes::Node::InterfaceStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceStatistic; //type: Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic> > interface_statistic;
-
-
+        
 }; // Cfm::Nodes::Node::InterfaceStatistics
 
 
@@ -295,21 +265,18 @@ class Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface; //type: string
         YLeaf interface_xr; //type: string
-
         class Statistics; //type: Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics> statistics;
-
-
+        
 }; // Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic
 
 
@@ -321,19 +288,16 @@ class Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf malformed_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
         YLeaf last_malformed_opcode; //type: CfmBagOpcodeEnum
         YLeaf last_malformed_reason; //type: CfmPmPktActionEnum
-
-
 
 }; // Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics
 
@@ -346,12 +310,11 @@ class Cfm::Nodes::Node::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domains; //type: uint32
         YLeaf services; //type: uint32
@@ -380,8 +343,6 @@ class Cfm::Nodes::Node::Summary : public Entity
         YLeaf issu_role; //type: CfmBagIssuRoleEnum
         YLeaf bnm_enabled_links; //type: uint32
 
-
-
 }; // Cfm::Nodes::Node::Summary
 
 
@@ -393,19 +354,16 @@ class Cfm::Nodes::Node::CcmLearningDatabases : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CcmLearningDatabase; //type: Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase> > ccm_learning_database;
-
-
+        
 }; // Cfm::Nodes::Node::CcmLearningDatabases
 
 
@@ -417,12 +375,11 @@ class Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -435,8 +392,6 @@ class Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase : public Entit
         YLeaf stale; //type: boolean
         YLeaf ingress_interface_string; //type: string
 
-
-
 }; // Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase
 
 
@@ -448,13 +403,11 @@ class Cfm::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IncompleteTraceroutes; //type: Cfm::Global::IncompleteTraceroutes
         class MaintenancePoints; //type: Cfm::Global::MaintenancePoints
@@ -471,8 +424,7 @@ class Cfm::Global : public Entity
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors> mep_configuration_errors;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S> peer_me_pv2s;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches> traceroute_caches;
-
-
+        
 }; // Cfm::Global
 
 
@@ -484,19 +436,16 @@ class Cfm::Global::IncompleteTraceroutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IncompleteTraceroute; //type: Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute> > incomplete_traceroute;
-
-
+        
 }; // Cfm::Global::IncompleteTraceroutes
 
 
@@ -508,12 +457,11 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -521,12 +469,10 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute : public Entity
         YLeaf interface; //type: string
         YLeaf transaction_id; //type: int32
         YLeaf time_left; //type: uint64
-
         class TracerouteInformation; //type: Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation> traceroute_information;
-
-
+        
 }; // Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 
 
@@ -538,12 +484,11 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -557,12 +502,10 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInform
         YLeaf timestamp; //type: uint64
         YLeaf ttl; //type: uint8
         YLeaf transaction_id; //type: uint32
-
         class Options; //type: Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options> options;
-
-
+        
 }; // Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation
 
 
@@ -574,22 +517,19 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mode; //type: CfmPmLtModeEnum
-
         class BasicOptions; //type: Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions
         class ExploratoryOptions; //type: Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions> basic_options;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions> exploratory_options;
-
-
+        
 }; // Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options
 
 
@@ -601,17 +541,14 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_auto; //type: boolean
         YLeaf fdb_only; //type: boolean
-
-
 
 }; // Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions
 
@@ -624,18 +561,15 @@ class Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf delay_model; //type: CfmPmEltDelayModelEnum
         YLeaf delay_constant_factor; //type: uint32
         YLeaf reply_filter; //type: CfmPmElmReplyFilterEnum
-
-
 
 }; // Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions
 
@@ -648,19 +582,16 @@ class Cfm::Global::MaintenancePoints : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MaintenancePoint; //type: Cfm::Global::MaintenancePoints::MaintenancePoint
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MaintenancePoints::MaintenancePoint> > maintenance_point;
-
-
+        
 }; // Cfm::Global::MaintenancePoints
 
 
@@ -672,24 +603,21 @@ class Cfm::Global::MaintenancePoints::MaintenancePoint : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
         YLeaf interface; //type: string
         YLeaf mep_has_error; //type: boolean
         YLeaf mac_address; //type: string
-
         class MaintenancePoint_; //type: Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_> maintenance_point;
-
-
+        
 }; // Cfm::Global::MaintenancePoints::MaintenancePoint
 
 
@@ -701,12 +629,11 @@ class Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_ : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain_name; //type: string
         YLeaf level; //type: CfmBagMdLevelEnum
@@ -714,8 +641,6 @@ class Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_ : publ
         YLeaf interface; //type: string
         YLeaf maintenance_point_type; //type: CfmMaMpVarietyEnum
         YLeaf mep_id; //type: uint16
-
-
 
 }; // Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_
 
@@ -728,19 +653,16 @@ class Cfm::Global::GlobalConfigurationErrors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GlobalConfigurationError; //type: Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError> > global_configuration_error;
-
-
+        
 }; // Cfm::Global::GlobalConfigurationErrors
 
 
@@ -752,12 +674,11 @@ class Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -766,12 +687,10 @@ class Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError : public 
         YLeaf service_name; //type: string
         YLeaf bridge_domain_is_configured; //type: boolean
         YLeaf l2_fib_download_error; //type: boolean
-
         class BridgeDomainId; //type: Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId> bridge_domain_id;
-
-
+        
 }; // Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError
 
 
@@ -783,20 +702,17 @@ class Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bridge_domain_id_format; //type: CfmBagBdidFmtEnum
         YLeaf group; //type: string
         YLeaf name; //type: string
         YLeaf ce_id; //type: uint16
         YLeaf remote_ce_id; //type: uint16
-
-
 
 }; // Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId
 
@@ -809,19 +725,16 @@ class Cfm::Global::MepConfigurationErrors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MepConfigurationError; //type: Cfm::Global::MepConfigurationErrors::MepConfigurationError
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError> > mep_configuration_error;
-
-
+        
 }; // Cfm::Global::MepConfigurationErrors
 
 
@@ -833,12 +746,11 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -869,7 +781,6 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError : public Entity
         YLeaf no_mlacp; //type: boolean
         YLeaf satellite_error_string; //type: string
         YLeaf satellite_id; //type: uint16
-
         class Mep; //type: Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep
         class ServiceBridgeDomain; //type: Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain
         class InterfaceBridgeDomain; //type: Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain
@@ -879,8 +790,7 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError : public Entity
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep> mep;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities> satellite_capabilities;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain> service_bridge_domain;
-
-
+        
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError
 
 
@@ -892,12 +802,11 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain_name; //type: string
         YLeaf level; //type: CfmBagMdLevelEnum
@@ -905,8 +814,6 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep : public E
         YLeaf interface; //type: string
         YLeaf maintenance_point_type; //type: CfmMaMpVarietyEnum
         YLeaf mep_id; //type: uint16
-
-
 
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep
 
@@ -919,20 +826,17 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeD
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bridge_domain_id_format; //type: CfmBagBdidFmtEnum
         YLeaf group; //type: string
         YLeaf name; //type: string
         YLeaf ce_id; //type: uint16
         YLeaf remote_ce_id; //type: uint16
-
-
 
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain
 
@@ -945,20 +849,17 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridg
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bridge_domain_id_format; //type: CfmBagBdidFmtEnum
         YLeaf group; //type: string
         YLeaf name; //type: string
         YLeaf ce_id; //type: uint16
         YLeaf remote_ce_id; //type: uint16
-
-
 
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain
 
@@ -971,13 +872,11 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Loopback; //type: Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback
         class DelayMeasurement; //type: Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement
@@ -986,8 +885,7 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapab
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement> delay_measurement;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback> loopback;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement> synthetic_loss_measurement;
-
-
+        
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities
 
 
@@ -999,17 +897,14 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf responder; //type: boolean
         YLeaf controller; //type: boolean
-
-
 
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback
 
@@ -1022,17 +917,14 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf responder; //type: boolean
         YLeaf controller; //type: boolean
-
-
 
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement
 
@@ -1045,17 +937,14 @@ class Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf responder; //type: boolean
         YLeaf controller; //type: boolean
-
-
 
 }; // Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement
 
@@ -1068,19 +957,16 @@ class Cfm::Global::TracerouteCaches : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TracerouteCache; //type: Cfm::Global::TracerouteCaches::TracerouteCache
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache> > traceroute_cache;
-
-
+        
 }; // Cfm::Global::TracerouteCaches
 
 
@@ -1092,12 +978,11 @@ class Cfm::Global::TracerouteCaches::TracerouteCache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -1105,7 +990,6 @@ class Cfm::Global::TracerouteCaches::TracerouteCache : public Entity
         YLeaf interface; //type: string
         YLeaf transaction_id; //type: int32
         YLeaf replies_dropped; //type: uint32
-
         class TracerouteInformation; //type: Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
         class LinktraceReply; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply
         class ExploratoryLinktraceReply; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply
@@ -1113,8 +997,7 @@ class Cfm::Global::TracerouteCaches::TracerouteCache : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply> > exploratory_linktrace_reply;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply> > linktrace_reply;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation> traceroute_information;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache
 
 
@@ -1126,12 +1009,11 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -1145,12 +1027,10 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation : pu
         YLeaf timestamp; //type: uint64
         YLeaf ttl; //type: uint8
         YLeaf transaction_id; //type: uint32
-
         class Options; //type: Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options> options;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
 
 
@@ -1162,22 +1042,19 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Opt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mode; //type: CfmPmLtModeEnum
-
         class BasicOptions; //type: Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions
         class ExploratoryOptions; //type: Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions> basic_options;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions> exploratory_options;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options
 
 
@@ -1189,17 +1066,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Opt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_auto; //type: boolean
         YLeaf fdb_only; //type: boolean
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions
 
@@ -1212,18 +1086,15 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Opt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf delay_model; //type: CfmPmEltDelayModelEnum
         YLeaf delay_constant_factor; //type: uint32
         YLeaf reply_filter; //type: CfmPmElmReplyFilterEnum
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions
 
@@ -1236,15 +1107,13 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf raw_data; //type: string
-
         class Header; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header
         class SenderId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId
         class EgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId
@@ -1262,8 +1131,7 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply : public En
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress> reply_ingress;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId> sender_id;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv> > unknown_tlv;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply
 
 
@@ -1275,12 +1143,11 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: CfmBagMdLevelEnum
         YLeaf version; //type: uint8
@@ -1290,8 +1157,6 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header : p
         YLeaf transaction_id; //type: uint32
         YLeaf ttl; //type: uint8
         YLeaf relay_action; //type: CfmPmRelayActionEnum
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header
 
@@ -1304,21 +1169,18 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf management_address_domain; //type: string
         YLeaf management_address; //type: string
-
         class ChassisId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId> chassis_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId
 
 
@@ -1330,22 +1192,19 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf chassis_id_type; //type: CfmPmChassisIdFmtEnum
         YLeaf chassis_id_type_value; //type: uint8
         YLeaf chassis_id; //type: string
-
         class ChassisIdValue; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue> chassis_id_value;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId
 
 
@@ -1357,19 +1216,16 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf chassis_id_format; //type: CfmPmIdFmtEnum
         YLeaf chassis_id_string; //type: string
         YLeaf chassis_id_mac; //type: string
         YLeaf chassis_id_raw; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue
 
@@ -1382,21 +1238,18 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LastEgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId
         class NextEgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId> last_egress_id;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId> next_egress_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId
 
 
@@ -1408,17 +1261,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId
 
@@ -1431,17 +1281,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId
 
@@ -1454,21 +1301,18 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngre
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf action; //type: CfmPmIngressActionEnum
         YLeaf mac_address; //type: string
-
         class PortId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId> port_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress
 
 
@@ -1480,22 +1324,19 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngre
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_type; //type: CfmPmPortIdFmtEnum
         YLeaf port_id_type_value; //type: uint8
         YLeaf port_id; //type: string
-
         class PortIdValue; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue> port_id_value;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId
 
 
@@ -1507,19 +1348,16 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngre
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_format; //type: CfmPmIdFmtEnum
         YLeaf port_id_string; //type: string
         YLeaf port_id_mac; //type: string
         YLeaf port_id_raw; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue
 
@@ -1532,21 +1370,18 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgres
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf action; //type: CfmPmEgressActionEnum
         YLeaf mac_address; //type: string
-
         class PortId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId> port_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress
 
 
@@ -1558,22 +1393,19 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgres
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_type; //type: CfmPmPortIdFmtEnum
         YLeaf port_id_type_value; //type: uint8
         YLeaf port_id; //type: string
-
         class PortIdValue; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue> port_id_value;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId
 
 
@@ -1585,19 +1417,16 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgres
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_format; //type: CfmPmIdFmtEnum
         YLeaf port_id_string; //type: string
         YLeaf port_id_mac; //type: string
         YLeaf port_id_raw; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue
 
@@ -1610,21 +1439,18 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf last_hop_format; //type: CfmPmLastHopFmtEnum
         YLeaf host_name; //type: string
-
         class EgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId> egress_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop
 
 
@@ -1636,17 +1462,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId
 
@@ -1659,18 +1482,15 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Organizati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oui; //type: string
         YLeaf subtype; //type: uint8
         YLeaf value_; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv
 
@@ -1683,17 +1503,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf typecode; //type: uint8
         YLeaf value_; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv
 
@@ -1706,15 +1523,13 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf raw_data; //type: string
-
         class Header; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header
         class SenderId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId
         class ReplyIngress; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress
@@ -1730,8 +1545,7 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress> reply_ingress;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId> sender_id;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv> > unknown_tlv;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply
 
 
@@ -1743,12 +1557,11 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: CfmBagMdLevelEnum
         YLeaf version; //type: uint8
@@ -1761,8 +1574,6 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
         YLeaf next_hop_timeout; //type: uint32
         YLeaf delay_model; //type: CfmPmEltDelayModelEnum
 
-
-
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header
 
 
@@ -1774,21 +1585,18 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf management_address_domain; //type: string
         YLeaf management_address; //type: string
-
         class ChassisId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId> chassis_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId
 
 
@@ -1800,22 +1608,19 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf chassis_id_type; //type: CfmPmChassisIdFmtEnum
         YLeaf chassis_id_type_value; //type: uint8
         YLeaf chassis_id; //type: string
-
         class ChassisIdValue; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue> chassis_id_value;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId
 
 
@@ -1827,19 +1632,16 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf chassis_id_format; //type: CfmPmIdFmtEnum
         YLeaf chassis_id_string; //type: string
         YLeaf chassis_id_mac; //type: string
         YLeaf chassis_id_raw; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue
 
@@ -1852,16 +1654,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf action; //type: CfmPmElrIngressActionEnum
         YLeaf mac_address; //type: string
-
         class LastEgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId
         class NextEgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId
         class PortId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId
@@ -1869,8 +1669,7 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId> last_egress_id;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId> next_egress_id;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId> port_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress
 
 
@@ -1882,17 +1681,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId
 
@@ -1905,17 +1701,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId
 
@@ -1928,22 +1721,19 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_type; //type: CfmPmPortIdFmtEnum
         YLeaf port_id_type_value; //type: uint8
         YLeaf port_id; //type: string
-
         class PortIdValue; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue> port_id_value;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId
 
 
@@ -1955,19 +1745,16 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_format; //type: CfmPmIdFmtEnum
         YLeaf port_id_string; //type: string
         YLeaf port_id_mac; //type: string
         YLeaf port_id_raw; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue
 
@@ -1980,16 +1767,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf action; //type: CfmPmElrEgressActionEnum
         YLeaf mac_address; //type: string
-
         class LastEgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId
         class NextEgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId
         class PortId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId
@@ -1997,8 +1782,7 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId> last_egress_id;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId> next_egress_id;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId> port_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress
 
 
@@ -2010,17 +1794,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId
 
@@ -2033,17 +1814,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId
 
@@ -2056,22 +1834,19 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_type; //type: CfmPmPortIdFmtEnum
         YLeaf port_id_type_value; //type: uint8
         YLeaf port_id; //type: string
-
         class PortIdValue; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue> port_id_value;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId
 
 
@@ -2083,19 +1858,16 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_id_format; //type: CfmPmIdFmtEnum
         YLeaf port_id_string; //type: string
         YLeaf port_id_mac; //type: string
         YLeaf port_id_raw; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue
 
@@ -2108,21 +1880,18 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf last_hop_format; //type: CfmPmLastHopFmtEnum
         YLeaf host_name; //type: string
-
         class EgressId; //type: Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId> egress_id;
-
-
+        
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop
 
 
@@ -2134,17 +1903,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unique_id; //type: uint16
         YLeaf mac_address; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId
 
@@ -2157,18 +1923,15 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oui; //type: string
         YLeaf subtype; //type: uint8
         YLeaf value_; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv
 
@@ -2181,17 +1944,14 @@ class Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf typecode; //type: uint8
         YLeaf value_; //type: string
-
-
 
 }; // Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv
 
@@ -2204,19 +1964,16 @@ class Cfm::Global::LocalMeps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LocalMep; //type: Cfm::Global::LocalMeps::LocalMep
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep> > local_mep;
-
-
+        
 }; // Cfm::Global::LocalMeps
 
 
@@ -2228,12 +1985,11 @@ class Cfm::Global::LocalMeps::LocalMep : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -2269,7 +2025,6 @@ class Cfm::Global::LocalMeps::LocalMep : public Entity
         YLeaf standby; //type: boolean
         YLeaf hairpin; //type: boolean
         YLeaf defects_ignored; //type: boolean
-
         class Statistics; //type: Cfm::Global::LocalMeps::LocalMep::Statistics
         class AisStatistics; //type: Cfm::Global::LocalMeps::LocalMep::AisStatistics
         class Defects; //type: Cfm::Global::LocalMeps::LocalMep::Defects
@@ -2277,8 +2032,7 @@ class Cfm::Global::LocalMeps::LocalMep : public Entity
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep::AisStatistics> ais_statistics;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep::Defects> defects;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep::Statistics> statistics;
-
-
+        
 }; // Cfm::Global::LocalMeps::LocalMep
 
 
@@ -2290,12 +2044,11 @@ class Cfm::Global::LocalMeps::LocalMep::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ccms_sent; //type: uint64
         YLeaf ccms_received; //type: uint64
@@ -2326,8 +2079,6 @@ class Cfm::Global::LocalMeps::LocalMep::Statistics : public Entity
         YLeaf bn_ms_received; //type: uint64
         YLeaf bn_ms_discarded; //type: uint64
 
-
-
 }; // Cfm::Global::LocalMeps::LocalMep::Statistics
 
 
@@ -2339,12 +2090,11 @@ class Cfm::Global::LocalMeps::LocalMep::AisStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: CfmBagMdLevelEnum
         YLeaf interval; //type: CfmBagAisIntervalEnum
@@ -2352,14 +2102,12 @@ class Cfm::Global::LocalMeps::LocalMep::AisStatistics : public Entity
         YLeaf receiving_ais; //type: CfmPmAisReceiveEnum
         YLeaf last_interval; //type: CfmBagAisIntervalEnum
         YLeaf last_mac_address; //type: string
-
         class SendingStart; //type: Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart
         class ReceivingStart; //type: Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart> receiving_start;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart> sending_start;
-
-
+        
 }; // Cfm::Global::LocalMeps::LocalMep::AisStatistics
 
 
@@ -2371,17 +2119,14 @@ class Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart
 
@@ -2394,17 +2139,14 @@ class Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart
 
@@ -2417,12 +2159,11 @@ class Cfm::Global::LocalMeps::LocalMep::Defects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ais_received; //type: boolean
         YLeaf peer_meps_that_timed_out; //type: uint32
@@ -2431,12 +2172,10 @@ class Cfm::Global::LocalMeps::LocalMep::Defects : public Entity
         YLeaf unexpected; //type: uint32
         YLeaf local_port_status; //type: boolean
         YLeaf peer_port_status; //type: boolean
-
         class RemoteMepsDefects; //type: Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects> remote_meps_defects;
-
-
+        
 }; // Cfm::Global::LocalMeps::LocalMep::Defects
 
 
@@ -2448,12 +2187,11 @@ class Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf loss_threshold_exceeded; //type: boolean
         YLeaf invalid_level; //type: boolean
@@ -2462,8 +2200,6 @@ class Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects : public Enti
         YLeaf received_our_mac; //type: boolean
         YLeaf received_our_mep_id; //type: boolean
         YLeaf received_rdi; //type: boolean
-
-
 
 }; // Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects
 
@@ -2476,19 +2212,16 @@ class Cfm::Global::PeerMePv2S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PeerMePv2; //type: Cfm::Global::PeerMePv2S::PeerMePv2
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2> > peer_me_pv2;
-
-
+        
 }; // Cfm::Global::PeerMePv2S
 
 
@@ -2500,12 +2233,11 @@ class Cfm::Global::PeerMePv2S::PeerMePv2 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain; //type: string
         YLeaf service; //type: string
@@ -2520,12 +2252,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2 : public Entity
         YLeaf interface_xr; //type: string
         YLeaf mep_direction; //type: CfmBagDirectionEnum
         YLeaf standby; //type: boolean
-
         class PeerMep; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep> peer_mep;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2
 
 
@@ -2537,19 +2267,17 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mep_id; //type: uint16
         YLeaf mac_address; //type: string
         YLeaf cross_check_state; //type: CfmPmRmepXcStateEnum
         YLeaf peer_mep_state; //type: CfmPmRmepStateEnum
         YLeaf ccm_offload; //type: CfmBagCcmOffloadEnum
-
         class ErrorState; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState
         class LastUpDownTime; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime
         class LastCcmReceived; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived
@@ -2559,8 +2287,7 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep : public Entity
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived> last_ccm_received;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime> last_up_down_time;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics> statistics;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep
 
 
@@ -2572,12 +2299,11 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf loss_threshold_exceeded; //type: boolean
         YLeaf invalid_level; //type: boolean
@@ -2586,8 +2312,6 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState : public Entity
         YLeaf received_our_mac; //type: boolean
         YLeaf received_our_mep_id; //type: boolean
         YLeaf received_rdi; //type: boolean
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState
 
@@ -2600,17 +2324,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime
 
@@ -2623,18 +2344,16 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_status; //type: CfmPmPortStatusEnum
         YLeaf interface_status; //type: CfmPmIntfStatusEnum
         YLeaf additional_interface_status; //type: CfmPmAddlIntfStatusEnum
         YLeaf raw_data; //type: string
-
         class Header; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
         class SenderId; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId
         class MepName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName
@@ -2646,8 +2365,7 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived : public Enti
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv> > organization_specific_tlv;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId> sender_id;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv> > unknown_tlv;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived
 
 
@@ -2659,12 +2377,11 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: CfmBagMdLevelEnum
         YLeaf version; //type: uint8
@@ -2674,14 +2391,12 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header : pub
         YLeaf mep_id; //type: uint16
         YLeaf mdid_format; //type: uint8
         YLeaf short_ma_name_format; //type: uint8
-
         class Mdid; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
         class ShortMaName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid> mdid;
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName> short_ma_name;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header
 
 
@@ -2693,23 +2408,20 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mdid_format_value; //type: CfmBagMdidFmtEnum
         YLeaf dns_like_name; //type: string
         YLeaf string_name; //type: string
         YLeaf mdid_data; //type: string
-
         class MacName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName> mac_name;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
 
 
@@ -2721,17 +2433,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf integer; //type: uint16
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName
 
@@ -2744,12 +2453,11 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Shor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf short_ma_name_format_value; //type: CfmBagSmanFmtEnum
         YLeaf vlan_id_name; //type: uint16
@@ -2757,12 +2465,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Shor
         YLeaf integer_name; //type: uint16
         YLeaf icc_based; //type: string
         YLeaf short_ma_name_data; //type: string
-
         class VpnIdName; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName> vpn_id_name;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName
 
 
@@ -2774,17 +2480,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Shor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oui; //type: uint32
         YLeaf index_; //type: uint32
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName
 
@@ -2797,21 +2500,18 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf management_address_domain; //type: string
         YLeaf management_address; //type: string
-
         class ChassisId; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId> chassis_id;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId
 
 
@@ -2823,22 +2523,19 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Ch
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf chassis_id_type; //type: CfmPmChassisIdFmtEnum
         YLeaf chassis_id_type_value; //type: uint8
         YLeaf chassis_id; //type: string
-
         class ChassisIdValue; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue> chassis_id_value;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId
 
 
@@ -2850,19 +2547,16 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Ch
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf chassis_id_format; //type: CfmPmIdFmtEnum
         YLeaf chassis_id_string; //type: string
         YLeaf chassis_id_mac; //type: string
         YLeaf chassis_id_raw; //type: string
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue
 
@@ -2875,16 +2569,13 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName
 
@@ -2897,18 +2588,15 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Organization
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf oui; //type: string
         YLeaf subtype; //type: uint8
         YLeaf value_; //type: string
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv
 
@@ -2921,17 +2609,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf typecode; //type: uint8
         YLeaf value_; //type: string
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv
 
@@ -2944,12 +2629,11 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ccms_received; //type: uint64
         YLeaf ccms_wrong_level; //type: uint64
@@ -2960,12 +2644,10 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics : public Entity
         YLeaf ccms_rdi; //type: uint64
         YLeaf ccms_out_of_sequence; //type: uint64
         YLeaf last_ccm_sequence_number; //type: uint32
-
         class LastCcmReceivedTime; //type: Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime
 
         std::shared_ptr<Cisco_IOS_XR_ethernet_cfm_oper::Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime> last_ccm_received_time;
-
-
+        
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics
 
 
@@ -2977,17 +2659,14 @@ class Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime
 

@@ -47,12 +47,12 @@ std::string IpUdp::get_segment_path() const
 
 }
 
-EntityPath IpUdp::get_entity_path(Entity* ancestor) const
+const EntityPath IpUdp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -68,64 +68,38 @@ EntityPath IpUdp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpUdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "directory")
     {
-        if(directory != nullptr)
-        {
-            children["directory"] = directory;
-        }
-        else
+        if(directory == nullptr)
         {
             directory = std::make_shared<IpUdp::Directory>();
-            directory->parent = this;
-            children["directory"] = directory;
         }
-        return children.at("directory");
+        return directory;
     }
 
     if(child_yang_name == "num-thread")
     {
-        if(num_thread != nullptr)
-        {
-            children["num-thread"] = num_thread;
-        }
-        else
+        if(num_thread == nullptr)
         {
             num_thread = std::make_shared<IpUdp::NumThread>();
-            num_thread->parent = this;
-            children["num-thread"] = num_thread;
         }
-        return children.at("num-thread");
+        return num_thread;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpUdp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpUdp::get_children() const
 {
-    if(children.find("directory") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(directory != nullptr)
     {
-        if(directory != nullptr)
-        {
-            children["directory"] = directory;
-        }
+        children["directory"] = directory;
     }
 
-    if(children.find("num-thread") == children.end())
+    if(num_thread != nullptr)
     {
-        if(num_thread != nullptr)
-        {
-            children["num-thread"] = num_thread;
-        }
+        children["num-thread"] = num_thread;
     }
 
     return children;
@@ -193,7 +167,7 @@ std::string IpUdp::NumThread::get_segment_path() const
 
 }
 
-EntityPath IpUdp::NumThread::get_entity_path(Entity* ancestor) const
+const EntityPath IpUdp::NumThread::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -218,20 +192,12 @@ EntityPath IpUdp::NumThread::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpUdp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpUdp::NumThread::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpUdp::NumThread::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -284,7 +250,7 @@ std::string IpUdp::Directory::get_segment_path() const
 
 }
 
-EntityPath IpUdp::Directory::get_entity_path(Entity* ancestor) const
+const EntityPath IpUdp::Directory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -310,20 +276,12 @@ EntityPath IpUdp::Directory::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpUdp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpUdp::Directory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpUdp::Directory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

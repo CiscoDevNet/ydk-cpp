@@ -14,7 +14,6 @@ XrXml::XrXml()
     agent(std::make_shared<XrXml::Agent>())
 {
     agent->parent = this;
-    children["agent"] = agent;
 
     yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg";
 }
@@ -43,12 +42,12 @@ std::string XrXml::get_segment_path() const
 
 }
 
-EntityPath XrXml::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath XrXml::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "agent")
     {
-        if(agent != nullptr)
-        {
-            children["agent"] = agent;
-        }
-        else
+        if(agent == nullptr)
         {
             agent = std::make_shared<XrXml::Agent>();
-            agent->parent = this;
-            children["agent"] = agent;
         }
-        return children.at("agent");
+        return agent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::get_children() const
 {
-    if(children.find("agent") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(agent != nullptr)
     {
-        if(agent != nullptr)
-        {
-            children["agent"] = agent;
-        }
+        children["agent"] = agent;
     }
 
     return children;
@@ -134,13 +116,10 @@ XrXml::Agent::Agent()
 	,tty(std::make_shared<XrXml::Agent::Tty>())
 {
     default_->parent = this;
-    children["default"] = default_;
 
     ssl->parent = this;
-    children["ssl"] = ssl;
 
     tty->parent = this;
-    children["tty"] = tty;
 
     yang_name = "agent"; yang_parent_name = "xr-xml";
 }
@@ -173,7 +152,7 @@ std::string XrXml::Agent::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -196,87 +175,52 @@ EntityPath XrXml::Agent::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default")
     {
-        if(default_ != nullptr)
-        {
-            children["default"] = default_;
-        }
-        else
+        if(default_ == nullptr)
         {
             default_ = std::make_shared<XrXml::Agent::Default_>();
-            default_->parent = this;
-            children["default"] = default_;
         }
-        return children.at("default");
+        return default_;
     }
 
     if(child_yang_name == "ssl")
     {
-        if(ssl != nullptr)
-        {
-            children["ssl"] = ssl;
-        }
-        else
+        if(ssl == nullptr)
         {
             ssl = std::make_shared<XrXml::Agent::Ssl>();
-            ssl->parent = this;
-            children["ssl"] = ssl;
         }
-        return children.at("ssl");
+        return ssl;
     }
 
     if(child_yang_name == "tty")
     {
-        if(tty != nullptr)
-        {
-            children["tty"] = tty;
-        }
-        else
+        if(tty == nullptr)
         {
             tty = std::make_shared<XrXml::Agent::Tty>();
-            tty->parent = this;
-            children["tty"] = tty;
         }
-        return children.at("tty");
+        return tty;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::get_children() const
 {
-    if(children.find("default") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_ != nullptr)
     {
-        if(default_ != nullptr)
-        {
-            children["default"] = default_;
-        }
+        children["default"] = default_;
     }
 
-    if(children.find("ssl") == children.end())
+    if(ssl != nullptr)
     {
-        if(ssl != nullptr)
-        {
-            children["ssl"] = ssl;
-        }
+        children["ssl"] = ssl;
     }
 
-    if(children.find("tty") == children.end())
+    if(tty != nullptr)
     {
-        if(tty != nullptr)
-        {
-            children["tty"] = tty;
-        }
+        children["tty"] = tty;
     }
 
     return children;
@@ -299,13 +243,10 @@ XrXml::Agent::Default_::Default_()
 	,vrfs(std::make_shared<XrXml::Agent::Default_::Vrfs>())
 {
     session->parent = this;
-    children["session"] = session;
 
     throttle->parent = this;
-    children["throttle"] = throttle;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "default"; yang_parent_name = "agent";
 }
@@ -348,7 +289,7 @@ std::string XrXml::Agent::Default_::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Default_::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Default_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -376,87 +317,52 @@ EntityPath XrXml::Agent::Default_::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<XrXml::Agent::Default_::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "throttle")
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
-        else
+        if(throttle == nullptr)
         {
             throttle = std::make_shared<XrXml::Agent::Default_::Throttle>();
-            throttle->parent = this;
-            children["throttle"] = throttle;
         }
-        return children.at("throttle");
+        return throttle;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<XrXml::Agent::Default_::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Default_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::get_children() const
 {
-    if(children.find("session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("throttle") == children.end())
+    if(throttle != nullptr)
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
+        children["throttle"] = throttle;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -517,7 +423,7 @@ std::string XrXml::Agent::Default_::Session::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Default_::Session::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Default_::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -541,20 +447,12 @@ EntityPath XrXml::Agent::Default_::Session::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> XrXml::Agent::Default_::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Default_::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -600,7 +498,7 @@ std::string XrXml::Agent::Default_::Throttle::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Default_::Throttle::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Default_::Throttle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -625,20 +523,12 @@ EntityPath XrXml::Agent::Default_::Throttle::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> XrXml::Agent::Default_::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Default_::Throttle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Throttle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -692,7 +582,7 @@ std::string XrXml::Agent::Default_::Vrfs::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Default_::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Default_::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -715,15 +605,6 @@ EntityPath XrXml::Agent::Default_::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Default_::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -731,28 +612,24 @@ std::shared_ptr<Entity> XrXml::Agent::Default_::Vrfs::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<XrXml::Agent::Default_::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Default_::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -805,7 +682,7 @@ std::string XrXml::Agent::Default_::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Default_::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Default_::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -833,20 +710,12 @@ EntityPath XrXml::Agent::Default_::Vrfs::Vrf::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> XrXml::Agent::Default_::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Default_::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Vrfs::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -884,10 +753,8 @@ XrXml::Agent::Tty::Tty()
 	,throttle(std::make_shared<XrXml::Agent::Tty::Throttle>())
 {
     session->parent = this;
-    children["session"] = session;
 
     throttle->parent = this;
-    children["throttle"] = throttle;
 
     yang_name = "tty"; yang_parent_name = "agent";
 }
@@ -924,7 +791,7 @@ std::string XrXml::Agent::Tty::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Tty::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Tty::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -950,64 +817,38 @@ EntityPath XrXml::Agent::Tty::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<XrXml::Agent::Tty::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "throttle")
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
-        else
+        if(throttle == nullptr)
         {
             throttle = std::make_shared<XrXml::Agent::Tty::Throttle>();
-            throttle->parent = this;
-            children["throttle"] = throttle;
         }
-        return children.at("throttle");
+        return throttle;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Tty::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children() const
 {
-    if(children.find("session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("throttle") == children.end())
+    if(throttle != nullptr)
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
+        children["throttle"] = throttle;
     }
 
     return children;
@@ -1060,7 +901,7 @@ std::string XrXml::Agent::Tty::Session::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1084,20 +925,12 @@ EntityPath XrXml::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Tty::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1143,7 +976,7 @@ std::string XrXml::Agent::Tty::Throttle::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1168,20 +1001,12 @@ EntityPath XrXml::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Tty::Throttle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Throttle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1208,13 +1033,10 @@ XrXml::Agent::Ssl::Ssl()
 	,vrfs(std::make_shared<XrXml::Agent::Ssl::Vrfs>())
 {
     session->parent = this;
-    children["session"] = session;
 
     throttle->parent = this;
-    children["throttle"] = throttle;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "ssl"; yang_parent_name = "agent";
 }
@@ -1253,7 +1075,7 @@ std::string XrXml::Agent::Ssl::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Ssl::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Ssl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1279,87 +1101,52 @@ EntityPath XrXml::Agent::Ssl::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<XrXml::Agent::Ssl::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "throttle")
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
-        else
+        if(throttle == nullptr)
         {
             throttle = std::make_shared<XrXml::Agent::Ssl::Throttle>();
-            throttle->parent = this;
-            children["throttle"] = throttle;
         }
-        return children.at("throttle");
+        return throttle;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<XrXml::Agent::Ssl::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Ssl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::get_children() const
 {
-    if(children.find("session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("throttle") == children.end())
+    if(throttle != nullptr)
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
+        children["throttle"] = throttle;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -1412,7 +1199,7 @@ std::string XrXml::Agent::Ssl::Session::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Ssl::Session::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Ssl::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1436,20 +1223,12 @@ EntityPath XrXml::Agent::Ssl::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Ssl::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Ssl::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1495,7 +1274,7 @@ std::string XrXml::Agent::Ssl::Throttle::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Ssl::Throttle::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Ssl::Throttle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1520,20 +1299,12 @@ EntityPath XrXml::Agent::Ssl::Throttle::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Ssl::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Ssl::Throttle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Throttle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1587,7 +1358,7 @@ std::string XrXml::Agent::Ssl::Vrfs::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Ssl::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Ssl::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1610,15 +1381,6 @@ EntityPath XrXml::Agent::Ssl::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -1626,28 +1388,24 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<XrXml::Agent::Ssl::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Ssl::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1700,7 +1458,7 @@ std::string XrXml::Agent::Ssl::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath XrXml::Agent::Ssl::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath XrXml::Agent::Ssl::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1728,20 +1486,12 @@ EntityPath XrXml::Agent::Ssl::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & XrXml::Agent::Ssl::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1774,7 +1524,6 @@ Netconf::Netconf()
     agent(std::make_shared<Netconf::Agent>())
 {
     agent->parent = this;
-    children["agent"] = agent;
 
     yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg";
 }
@@ -1803,12 +1552,12 @@ std::string Netconf::get_segment_path() const
 
 }
 
-EntityPath Netconf::get_entity_path(Entity* ancestor) const
+const EntityPath Netconf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1823,41 +1572,24 @@ EntityPath Netconf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "agent")
     {
-        if(agent != nullptr)
-        {
-            children["agent"] = agent;
-        }
-        else
+        if(agent == nullptr)
         {
             agent = std::make_shared<Netconf::Agent>();
-            agent->parent = this;
-            children["agent"] = agent;
         }
-        return children.at("agent");
+        return agent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Netconf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Netconf::get_children() const
 {
-    if(children.find("agent") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(agent != nullptr)
     {
-        if(agent != nullptr)
-        {
-            children["agent"] = agent;
-        }
+        children["agent"] = agent;
     }
 
     return children;
@@ -1892,7 +1624,6 @@ Netconf::Agent::Agent()
     tty(std::make_shared<Netconf::Agent::Tty>())
 {
     tty->parent = this;
-    children["tty"] = tty;
 
     yang_name = "agent"; yang_parent_name = "netconf";
 }
@@ -1921,7 +1652,7 @@ std::string Netconf::Agent::get_segment_path() const
 
 }
 
-EntityPath Netconf::Agent::get_entity_path(Entity* ancestor) const
+const EntityPath Netconf::Agent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1944,41 +1675,24 @@ EntityPath Netconf::Agent::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Netconf::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tty")
     {
-        if(tty != nullptr)
-        {
-            children["tty"] = tty;
-        }
-        else
+        if(tty == nullptr)
         {
             tty = std::make_shared<Netconf::Agent::Tty>();
-            tty->parent = this;
-            children["tty"] = tty;
         }
-        return children.at("tty");
+        return tty;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Netconf::Agent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::get_children() const
 {
-    if(children.find("tty") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tty != nullptr)
     {
-        if(tty != nullptr)
-        {
-            children["tty"] = tty;
-        }
+        children["tty"] = tty;
     }
 
     return children;
@@ -1996,10 +1710,8 @@ Netconf::Agent::Tty::Tty()
 	,throttle(std::make_shared<Netconf::Agent::Tty::Throttle>())
 {
     session->parent = this;
-    children["session"] = session;
 
     throttle->parent = this;
-    children["throttle"] = throttle;
 
     yang_name = "tty"; yang_parent_name = "agent";
 }
@@ -2032,7 +1744,7 @@ std::string Netconf::Agent::Tty::get_segment_path() const
 
 }
 
-EntityPath Netconf::Agent::Tty::get_entity_path(Entity* ancestor) const
+const EntityPath Netconf::Agent::Tty::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2056,64 +1768,38 @@ EntityPath Netconf::Agent::Tty::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<Netconf::Agent::Tty::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "throttle")
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
-        else
+        if(throttle == nullptr)
         {
             throttle = std::make_shared<Netconf::Agent::Tty::Throttle>();
-            throttle->parent = this;
-            children["throttle"] = throttle;
         }
-        return children.at("throttle");
+        return throttle;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Netconf::Agent::Tty::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children() const
 {
-    if(children.find("session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("throttle") == children.end())
+    if(throttle != nullptr)
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
+        children["throttle"] = throttle;
     }
 
     return children;
@@ -2164,7 +1850,7 @@ std::string Netconf::Agent::Tty::Throttle::get_segment_path() const
 
 }
 
-EntityPath Netconf::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) const
+const EntityPath Netconf::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2190,20 +1876,12 @@ EntityPath Netconf::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Netconf::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Netconf::Agent::Tty::Throttle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Throttle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2254,7 +1932,7 @@ std::string Netconf::Agent::Tty::Session::get_segment_path() const
 
 }
 
-EntityPath Netconf::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
+const EntityPath Netconf::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2278,20 +1956,12 @@ EntityPath Netconf::Agent::Tty::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Netconf::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Netconf::Agent::Tty::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

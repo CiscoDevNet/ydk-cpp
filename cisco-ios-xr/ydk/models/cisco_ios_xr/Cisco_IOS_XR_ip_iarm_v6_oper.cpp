@@ -18,13 +18,10 @@ Ipv6Arm::Ipv6Arm()
 	,vrf_summaries(std::make_shared<Ipv6Arm::VrfSummaries>())
 {
     addresses->parent = this;
-    children["addresses"] = addresses;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     vrf_summaries->parent = this;
-    children["vrf-summaries"] = vrf_summaries;
 
     yang_name = "ipv6arm"; yang_parent_name = "Cisco-IOS-XR-ip-iarm-v6-oper";
 }
@@ -59,12 +56,12 @@ std::string Ipv6Arm::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -80,87 +77,52 @@ EntityPath Ipv6Arm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Arm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "addresses")
     {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
-        else
+        if(addresses == nullptr)
         {
             addresses = std::make_shared<Ipv6Arm::Addresses>();
-            addresses->parent = this;
-            children["addresses"] = addresses;
         }
-        return children.at("addresses");
+        return addresses;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Ipv6Arm::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "vrf-summaries")
     {
-        if(vrf_summaries != nullptr)
-        {
-            children["vrf-summaries"] = vrf_summaries;
-        }
-        else
+        if(vrf_summaries == nullptr)
         {
             vrf_summaries = std::make_shared<Ipv6Arm::VrfSummaries>();
-            vrf_summaries->parent = this;
-            children["vrf-summaries"] = vrf_summaries;
         }
-        return children.at("vrf-summaries");
+        return vrf_summaries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::get_children() const
 {
-    if(children.find("addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(addresses != nullptr)
     {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
+        children["addresses"] = addresses;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("vrf-summaries") == children.end())
+    if(vrf_summaries != nullptr)
     {
-        if(vrf_summaries != nullptr)
-        {
-            children["vrf-summaries"] = vrf_summaries;
-        }
+        children["vrf-summaries"] = vrf_summaries;
     }
 
     return children;
@@ -199,7 +161,6 @@ Ipv6Arm::Addresses::Addresses()
     vrfs(std::make_shared<Ipv6Arm::Addresses::Vrfs>())
 {
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "addresses"; yang_parent_name = "ipv6arm";
 }
@@ -228,7 +189,7 @@ std::string Ipv6Arm::Addresses::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::Addresses::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -251,41 +212,24 @@ EntityPath Ipv6Arm::Addresses::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ipv6Arm::Addresses::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::get_children() const
 {
-    if(children.find("vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -333,7 +277,7 @@ std::string Ipv6Arm::Addresses::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -356,15 +300,6 @@ EntityPath Ipv6Arm::Addresses::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -372,28 +307,24 @@ std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -411,10 +342,8 @@ Ipv6Arm::Addresses::Vrfs::Vrf::Vrf()
 	,networks(std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Networks>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     networks->parent = this;
-    children["networks"] = networks;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -447,7 +376,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -471,64 +400,38 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "networks")
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
-        else
+        if(networks == nullptr)
         {
             networks = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Networks>();
-            networks->parent = this;
-            children["networks"] = networks;
         }
-        return children.at("networks");
+        return networks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("networks") == children.end())
+    if(networks != nullptr)
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
+        children["networks"] = networks;
     }
 
     return children;
@@ -580,7 +483,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -603,15 +506,6 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network")
     {
         for(auto const & c : network)
@@ -619,28 +513,24 @@ std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network>();
         c->parent = this;
-        network.push_back(std::move(c));
-        children[segment_path] = network.back();
-        return children.at(segment_path);
+        network.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : network)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -662,7 +552,6 @@ Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::Network()
     address_xr(std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr>())
 {
     address_xr->parent = this;
-    children["address-xr"] = address_xr;
 
     yang_name = "network"; yang_parent_name = "networks";
 }
@@ -703,7 +592,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::get_segment_path()
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -732,41 +621,24 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-xr")
     {
-        if(address_xr != nullptr)
-        {
-            children["address-xr"] = address_xr;
-        }
-        else
+        if(address_xr == nullptr)
         {
             address_xr = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr>();
-            address_xr->parent = this;
-            children["address-xr"] = address_xr;
         }
-        return children.at("address-xr");
+        return address_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::get_children() const
 {
-    if(children.find("address-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_xr != nullptr)
     {
-        if(address_xr != nullptr)
-        {
-            children["address-xr"] = address_xr;
-        }
+        children["address-xr"] = address_xr;
     }
 
     return children;
@@ -812,7 +684,6 @@ Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::AddressXr()
     address(std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "address-xr"; yang_parent_name = "network";
 }
@@ -853,7 +724,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_seg
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -882,41 +753,24 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_enti
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -987,7 +841,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1013,20 +867,12 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address:
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1084,7 +930,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1107,15 +953,6 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -1123,28 +960,24 @@ std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1201,7 +1034,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_segment_pa
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1227,15 +1060,6 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_entity_path
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
         for(auto const & c : address)
@@ -1243,28 +1067,24 @@ std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address>();
         c->parent = this;
-        address.push_back(std::move(c));
-        children[segment_path] = address.back();
-        return children.at(segment_path);
+        address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1298,7 +1118,6 @@ Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address()
     address(std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "address"; yang_parent_name = "interface";
 }
@@ -1339,7 +1158,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_s
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1368,41 +1187,24 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_en
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -1473,7 +1275,7 @@ std::string Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Addre
 
 }
 
-EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1499,20 +1301,12 @@ EntityPath Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Addres
 
 std::shared_ptr<Entity> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1575,7 +1369,7 @@ std::string Ipv6Arm::Summary::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1603,20 +1397,12 @@ EntityPath Ipv6Arm::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Arm::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1682,7 +1468,7 @@ std::string Ipv6Arm::VrfSummaries::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::VrfSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::VrfSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1705,15 +1491,6 @@ EntityPath Ipv6Arm::VrfSummaries::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Arm::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-summary")
     {
         for(auto const & c : vrf_summary)
@@ -1721,28 +1498,24 @@ std::shared_ptr<Entity> Ipv6Arm::VrfSummaries::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv6Arm::VrfSummaries::VrfSummary>();
         c->parent = this;
-        vrf_summary.push_back(std::move(c));
-        children[segment_path] = vrf_summary.back();
-        return children.at(segment_path);
+        vrf_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::VrfSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::VrfSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1789,7 +1562,7 @@ std::string Ipv6Arm::VrfSummaries::VrfSummary::get_segment_path() const
 
 }
 
-EntityPath Ipv6Arm::VrfSummaries::VrfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Arm::VrfSummaries::VrfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1815,20 +1588,12 @@ EntityPath Ipv6Arm::VrfSummaries::VrfSummary::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Ipv6Arm::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Arm::VrfSummaries::VrfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Arm::VrfSummaries::VrfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

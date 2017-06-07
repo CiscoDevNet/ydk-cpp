@@ -18,17 +18,15 @@ class TrafficCollector : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class ExternalInterfaces; //type: TrafficCollector::ExternalInterfaces
         class Summary; //type: TrafficCollector::Summary
@@ -39,8 +37,7 @@ class TrafficCollector : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::ExternalInterfaces> external_interfaces;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary> summary;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable> vrf_table;
-
-
+        
 }; // TrafficCollector
 
 
@@ -52,19 +49,16 @@ class TrafficCollector::ExternalInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ExternalInterface; //type: TrafficCollector::ExternalInterfaces::ExternalInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::ExternalInterfaces::ExternalInterface> > external_interface;
-
-
+        
 }; // TrafficCollector::ExternalInterfaces
 
 
@@ -76,20 +70,17 @@ class TrafficCollector::ExternalInterfaces::ExternalInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
         YLeaf interface_handle; //type: uint32
         YLeaf vrfid; //type: uint32
         YLeaf is_interface_enabled; //type: boolean
-
-
 
 }; // TrafficCollector::ExternalInterfaces::ExternalInterface
 
@@ -102,19 +93,17 @@ class TrafficCollector::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf collection_interval; //type: uint8
         YLeaf collection_timer_is_running; //type: boolean
         YLeaf timeout_interval; //type: uint16
         YLeaf timeout_timer_is_running; //type: boolean
         YLeaf history_size; //type: uint8
-
         class DatabaseStatisticsExternalInterface; //type: TrafficCollector::Summary::DatabaseStatisticsExternalInterface
         class VrfStatistic; //type: TrafficCollector::Summary::VrfStatistic
         class CollectionMessageStatistic; //type: TrafficCollector::Summary::CollectionMessageStatistic
@@ -124,8 +113,7 @@ class TrafficCollector::Summary : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::CollectionMessageStatistic> > collection_message_statistic;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::DatabaseStatisticsExternalInterface> database_statistics_external_interface;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::VrfStatistic> > vrf_statistic;
-
-
+        
 }; // TrafficCollector::Summary
 
 
@@ -137,19 +125,16 @@ class TrafficCollector::Summary::DatabaseStatisticsExternalInterface : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number_of_entries; //type: uint32
         YLeaf number_of_stale_entries; //type: uint32
         YLeaf number_of_add_o_perations; //type: uint64
         YLeaf number_of_delete_o_perations; //type: uint64
-
-
 
 }; // TrafficCollector::Summary::DatabaseStatisticsExternalInterface
 
@@ -162,22 +147,19 @@ class TrafficCollector::Summary::VrfStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class DatabaseStatisticsIpv4; //type: TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4
         class DatabaseStatisticsTunnel; //type: TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4> database_statistics_ipv4;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel> database_statistics_tunnel;
-
-
+        
 }; // TrafficCollector::Summary::VrfStatistic
 
 
@@ -189,19 +171,16 @@ class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4 : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number_of_entries; //type: uint32
         YLeaf number_of_stale_entries; //type: uint32
         YLeaf number_of_add_o_perations; //type: uint64
         YLeaf number_of_delete_o_perations; //type: uint64
-
-
 
 }; // TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4
 
@@ -214,19 +193,16 @@ class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number_of_entries; //type: uint32
         YLeaf number_of_stale_entries; //type: uint32
         YLeaf number_of_add_o_perations; //type: uint64
         YLeaf number_of_delete_o_perations; //type: uint64
-
-
 
 }; // TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel
 
@@ -239,12 +215,11 @@ class TrafficCollector::Summary::CollectionMessageStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_sent; //type: uint64
         YLeaf byte_sent; //type: uint64
@@ -252,8 +227,6 @@ class TrafficCollector::Summary::CollectionMessageStatistic : public Entity
         YLeaf byte_received; //type: uint64
         YLeaf maximum_roundtrip_latency; //type: uint32
         YLeaf maimum_latency_timestamp; //type: uint64
-
-
 
 }; // TrafficCollector::Summary::CollectionMessageStatistic
 
@@ -266,12 +239,11 @@ class TrafficCollector::Summary::CheckpointMessageStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_sent; //type: uint64
         YLeaf byte_sent; //type: uint64
@@ -279,8 +251,6 @@ class TrafficCollector::Summary::CheckpointMessageStatistic : public Entity
         YLeaf byte_received; //type: uint64
         YLeaf maximum_roundtrip_latency; //type: uint32
         YLeaf maimum_latency_timestamp; //type: uint64
-
-
 
 }; // TrafficCollector::Summary::CheckpointMessageStatistic
 
@@ -293,19 +263,16 @@ class TrafficCollector::VrfTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DefaultVrf; //type: TrafficCollector::VrfTable::DefaultVrf
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf> default_vrf;
-
-
+        
 }; // TrafficCollector::VrfTable
 
 
@@ -317,19 +284,16 @@ class TrafficCollector::VrfTable::DefaultVrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Afs; //type: TrafficCollector::VrfTable::DefaultVrf::Afs
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs> afs;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf
 
 
@@ -341,19 +305,16 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Af; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af> > af;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs
 
 
@@ -365,20 +326,17 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: TcOperAfNameEnum
-
         class Counters; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters> counters;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af
 
 
@@ -390,21 +348,18 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Prefixes; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes
         class Tunnels; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes> prefixes;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels> tunnels;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters
 
 
@@ -416,19 +371,16 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Prefix; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix> > prefix;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes
 
 
@@ -440,12 +392,11 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipaddr; //type: string
         YLeaf mask; //type: string
@@ -453,14 +404,12 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
         YLeaf prefix; //type: string
         YLeaf label_xr; //type: uint32
         YLeaf is_active; //type: boolean
-
         class BaseCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
         class TrafficMatrixCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics> base_counter_statistics;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics> traffic_matrix_counter_statistics;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 
@@ -472,21 +421,18 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets_per_second_switched; //type: uint64
         YLeaf transmit_bytes_per_second_switched; //type: uint64
-
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory> > count_history;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
 
 
@@ -498,20 +444,17 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_start_timestamp; //type: uint64
         YLeaf event_end_timestamp; //type: uint64
         YLeaf transmit_number_of_packets_switched; //type: uint64
         YLeaf transmit_number_of_bytes_switched; //type: uint64
         YLeaf is_valid; //type: boolean
-
-
 
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
@@ -524,21 +467,18 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets_per_second_switched; //type: uint64
         YLeaf transmit_bytes_per_second_switched; //type: uint64
-
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory> > count_history;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
 
@@ -550,20 +490,17 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_start_timestamp; //type: uint64
         YLeaf event_end_timestamp; //type: uint64
         YLeaf transmit_number_of_packets_switched; //type: uint64
         YLeaf transmit_number_of_bytes_switched; //type: uint64
         YLeaf is_valid; //type: boolean
-
-
 
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
@@ -576,19 +513,16 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tunnel; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel> > tunnel;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels
 
 
@@ -600,24 +534,21 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
         YLeaf interface_handle; //type: uint32
         YLeaf vrfid; //type: uint32
         YLeaf is_active; //type: boolean
-
         class BaseCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics> base_counter_statistics;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
 
@@ -629,21 +560,18 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets_per_second_switched; //type: uint64
         YLeaf transmit_bytes_per_second_switched; //type: uint64
-
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory> > count_history;
-
-
+        
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
 
@@ -655,20 +583,17 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_start_timestamp; //type: uint64
         YLeaf event_end_timestamp; //type: uint64
         YLeaf transmit_number_of_packets_switched; //type: uint64
         YLeaf transmit_number_of_bytes_switched; //type: uint64
         YLeaf is_valid; //type: boolean
-
-
 
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
@@ -681,19 +606,16 @@ class TrafficCollector::Afs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Af; //type: TrafficCollector::Afs::Af
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af> > af;
-
-
+        
 }; // TrafficCollector::Afs
 
 
@@ -705,20 +627,17 @@ class TrafficCollector::Afs::Af : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: TcOperAfNameEnum
-
         class Counters; //type: TrafficCollector::Afs::Af::Counters
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters> counters;
-
-
+        
 }; // TrafficCollector::Afs::Af
 
 
@@ -730,21 +649,18 @@ class TrafficCollector::Afs::Af::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Prefixes; //type: TrafficCollector::Afs::Af::Counters::Prefixes
         class Tunnels; //type: TrafficCollector::Afs::Af::Counters::Tunnels
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes> prefixes;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels> tunnels;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters
 
 
@@ -756,19 +672,16 @@ class TrafficCollector::Afs::Af::Counters::Prefixes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Prefix; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix> > prefix;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters::Prefixes
 
 
@@ -780,12 +693,11 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipaddr; //type: string
         YLeaf mask; //type: string
@@ -793,14 +705,12 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix : public Entity
         YLeaf prefix; //type: string
         YLeaf label_xr; //type: uint32
         YLeaf is_active; //type: boolean
-
         class BaseCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
         class TrafficMatrixCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics> base_counter_statistics;
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics> traffic_matrix_counter_statistics;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix
 
 
@@ -812,21 +722,18 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatisti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets_per_second_switched; //type: uint64
         YLeaf transmit_bytes_per_second_switched; //type: uint64
-
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory> > count_history;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
 
 
@@ -838,20 +745,17 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatisti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_start_timestamp; //type: uint64
         YLeaf event_end_timestamp; //type: uint64
         YLeaf transmit_number_of_packets_switched; //type: uint64
         YLeaf transmit_number_of_bytes_switched; //type: uint64
         YLeaf is_valid; //type: boolean
-
-
 
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
@@ -864,21 +768,18 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets_per_second_switched; //type: uint64
         YLeaf transmit_bytes_per_second_switched; //type: uint64
-
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory> > count_history;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
 
@@ -890,20 +791,17 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_start_timestamp; //type: uint64
         YLeaf event_end_timestamp; //type: uint64
         YLeaf transmit_number_of_packets_switched; //type: uint64
         YLeaf transmit_number_of_bytes_switched; //type: uint64
         YLeaf is_valid; //type: boolean
-
-
 
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
@@ -916,19 +814,16 @@ class TrafficCollector::Afs::Af::Counters::Tunnels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tunnel; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel> > tunnel;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters::Tunnels
 
 
@@ -940,24 +835,21 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
         YLeaf interface_handle; //type: uint32
         YLeaf vrfid; //type: uint32
         YLeaf is_active; //type: boolean
-
         class BaseCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics> base_counter_statistics;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel
 
 
@@ -969,21 +861,18 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets_per_second_switched; //type: uint64
         YLeaf transmit_bytes_per_second_switched; //type: uint64
-
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory> > count_history;
-
-
+        
 }; // TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
 
@@ -995,20 +884,17 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_start_timestamp; //type: uint64
         YLeaf event_end_timestamp; //type: uint64
         YLeaf transmit_number_of_packets_switched; //type: uint64
         YLeaf transmit_number_of_bytes_switched; //type: uint64
         YLeaf is_valid; //type: boolean
-
-
 
 }; // TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 

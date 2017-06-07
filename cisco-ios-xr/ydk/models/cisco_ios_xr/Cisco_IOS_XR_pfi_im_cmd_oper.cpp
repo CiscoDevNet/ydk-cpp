@@ -19,22 +19,16 @@ Interfaces::Interfaces()
 	,node_type_sets(std::make_shared<Interfaces::NodeTypeSets>())
 {
     interface_briefs->parent = this;
-    children["interface-briefs"] = interface_briefs;
 
     interface_summary->parent = this;
-    children["interface-summary"] = interface_summary;
 
     interface_xr->parent = this;
-    children["interface-xr"] = interface_xr;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     inventory_summary->parent = this;
-    children["inventory-summary"] = inventory_summary;
 
     node_type_sets->parent = this;
-    children["node-type-sets"] = node_type_sets;
 
     yang_name = "interfaces"; yang_parent_name = "Cisco-IOS-XR-pfi-im-cmd-oper";
 }
@@ -73,12 +67,12 @@ std::string Interfaces::get_segment_path() const
 
 }
 
-EntityPath Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -93,156 +87,94 @@ EntityPath Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-briefs")
     {
-        if(interface_briefs != nullptr)
-        {
-            children["interface-briefs"] = interface_briefs;
-        }
-        else
+        if(interface_briefs == nullptr)
         {
             interface_briefs = std::make_shared<Interfaces::InterfaceBriefs>();
-            interface_briefs->parent = this;
-            children["interface-briefs"] = interface_briefs;
         }
-        return children.at("interface-briefs");
+        return interface_briefs;
     }
 
     if(child_yang_name == "interface-summary")
     {
-        if(interface_summary != nullptr)
-        {
-            children["interface-summary"] = interface_summary;
-        }
-        else
+        if(interface_summary == nullptr)
         {
             interface_summary = std::make_shared<Interfaces::InterfaceSummary>();
-            interface_summary->parent = this;
-            children["interface-summary"] = interface_summary;
         }
-        return children.at("interface-summary");
+        return interface_summary;
     }
 
     if(child_yang_name == "interface-xr")
     {
-        if(interface_xr != nullptr)
-        {
-            children["interface-xr"] = interface_xr;
-        }
-        else
+        if(interface_xr == nullptr)
         {
             interface_xr = std::make_shared<Interfaces::InterfaceXr>();
-            interface_xr->parent = this;
-            children["interface-xr"] = interface_xr;
         }
-        return children.at("interface-xr");
+        return interface_xr;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Interfaces::Interfaces_>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "inventory-summary")
     {
-        if(inventory_summary != nullptr)
-        {
-            children["inventory-summary"] = inventory_summary;
-        }
-        else
+        if(inventory_summary == nullptr)
         {
             inventory_summary = std::make_shared<Interfaces::InventorySummary>();
-            inventory_summary->parent = this;
-            children["inventory-summary"] = inventory_summary;
         }
-        return children.at("inventory-summary");
+        return inventory_summary;
     }
 
     if(child_yang_name == "node-type-sets")
     {
-        if(node_type_sets != nullptr)
-        {
-            children["node-type-sets"] = node_type_sets;
-        }
-        else
+        if(node_type_sets == nullptr)
         {
             node_type_sets = std::make_shared<Interfaces::NodeTypeSets>();
-            node_type_sets->parent = this;
-            children["node-type-sets"] = node_type_sets;
         }
-        return children.at("node-type-sets");
+        return node_type_sets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
 {
-    if(children.find("interface-briefs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_briefs != nullptr)
     {
-        if(interface_briefs != nullptr)
-        {
-            children["interface-briefs"] = interface_briefs;
-        }
+        children["interface-briefs"] = interface_briefs;
     }
 
-    if(children.find("interface-summary") == children.end())
+    if(interface_summary != nullptr)
     {
-        if(interface_summary != nullptr)
-        {
-            children["interface-summary"] = interface_summary;
-        }
+        children["interface-summary"] = interface_summary;
     }
 
-    if(children.find("interface-xr") == children.end())
+    if(interface_xr != nullptr)
     {
-        if(interface_xr != nullptr)
-        {
-            children["interface-xr"] = interface_xr;
-        }
+        children["interface-xr"] = interface_xr;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("inventory-summary") == children.end())
+    if(inventory_summary != nullptr)
     {
-        if(inventory_summary != nullptr)
-        {
-            children["inventory-summary"] = inventory_summary;
-        }
+        children["inventory-summary"] = inventory_summary;
     }
 
-    if(children.find("node-type-sets") == children.end())
+    if(node_type_sets != nullptr)
     {
-        if(node_type_sets != nullptr)
-        {
-            children["node-type-sets"] = node_type_sets;
-        }
+        children["node-type-sets"] = node_type_sets;
     }
 
     return children;
@@ -310,7 +242,7 @@ std::string Interfaces::InterfaceXr::get_segment_path() const
 
 }
 
-EntityPath Interfaces::InterfaceXr::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -333,15 +265,6 @@ EntityPath Interfaces::InterfaceXr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -349,28 +272,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -429,40 +348,28 @@ Interfaces::InterfaceXr::Interface::Interface()
 	,nv_optical(std::make_shared<Interfaces::InterfaceXr::Interface::NvOptical>())
 {
     arp_information->parent = this;
-    children["arp-information"] = arp_information;
 
     burned_in_address->parent = this;
-    children["burned-in-address"] = burned_in_address;
 
     carrier_delay->parent = this;
-    children["carrier-delay"] = carrier_delay;
 
     dampening_information->parent = this;
-    children["dampening-information"] = dampening_information;
 
     data_rates->parent = this;
-    children["data-rates"] = data_rates;
 
     encapsulation_information->parent = this;
-    children["encapsulation-information"] = encapsulation_information;
 
     interface_statistics->parent = this;
-    children["interface-statistics"] = interface_statistics;
 
     interface_type_information->parent = this;
-    children["interface-type-information"] = interface_type_information;
 
     ip_information->parent = this;
-    children["ip-information"] = ip_information;
 
     l2_interface_statistics->parent = this;
-    children["l2-interface-statistics"] = l2_interface_statistics;
 
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     nv_optical->parent = this;
-    children["nv-optical"] = nv_optical;
 
     yang_name = "interface"; yang_parent_name = "interface-xr";
 }
@@ -577,7 +484,7 @@ std::string Interfaces::InterfaceXr::Interface::get_segment_path() const
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -632,294 +539,178 @@ EntityPath Interfaces::InterfaceXr::Interface::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "arp-information")
     {
-        if(arp_information != nullptr)
-        {
-            children["arp-information"] = arp_information;
-        }
-        else
+        if(arp_information == nullptr)
         {
             arp_information = std::make_shared<Interfaces::InterfaceXr::Interface::ArpInformation>();
-            arp_information->parent = this;
-            children["arp-information"] = arp_information;
         }
-        return children.at("arp-information");
+        return arp_information;
     }
 
     if(child_yang_name == "burned-in-address")
     {
-        if(burned_in_address != nullptr)
-        {
-            children["burned-in-address"] = burned_in_address;
-        }
-        else
+        if(burned_in_address == nullptr)
         {
             burned_in_address = std::make_shared<Interfaces::InterfaceXr::Interface::BurnedInAddress>();
-            burned_in_address->parent = this;
-            children["burned-in-address"] = burned_in_address;
         }
-        return children.at("burned-in-address");
+        return burned_in_address;
     }
 
     if(child_yang_name == "carrier-delay")
     {
-        if(carrier_delay != nullptr)
-        {
-            children["carrier-delay"] = carrier_delay;
-        }
-        else
+        if(carrier_delay == nullptr)
         {
             carrier_delay = std::make_shared<Interfaces::InterfaceXr::Interface::CarrierDelay>();
-            carrier_delay->parent = this;
-            children["carrier-delay"] = carrier_delay;
         }
-        return children.at("carrier-delay");
+        return carrier_delay;
     }
 
     if(child_yang_name == "dampening-information")
     {
-        if(dampening_information != nullptr)
-        {
-            children["dampening-information"] = dampening_information;
-        }
-        else
+        if(dampening_information == nullptr)
         {
             dampening_information = std::make_shared<Interfaces::InterfaceXr::Interface::DampeningInformation>();
-            dampening_information->parent = this;
-            children["dampening-information"] = dampening_information;
         }
-        return children.at("dampening-information");
+        return dampening_information;
     }
 
     if(child_yang_name == "data-rates")
     {
-        if(data_rates != nullptr)
-        {
-            children["data-rates"] = data_rates;
-        }
-        else
+        if(data_rates == nullptr)
         {
             data_rates = std::make_shared<Interfaces::InterfaceXr::Interface::DataRates>();
-            data_rates->parent = this;
-            children["data-rates"] = data_rates;
         }
-        return children.at("data-rates");
+        return data_rates;
     }
 
     if(child_yang_name == "encapsulation-information")
     {
-        if(encapsulation_information != nullptr)
-        {
-            children["encapsulation-information"] = encapsulation_information;
-        }
-        else
+        if(encapsulation_information == nullptr)
         {
             encapsulation_information = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation>();
-            encapsulation_information->parent = this;
-            children["encapsulation-information"] = encapsulation_information;
         }
-        return children.at("encapsulation-information");
+        return encapsulation_information;
     }
 
     if(child_yang_name == "interface-statistics")
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
-        else
+        if(interface_statistics == nullptr)
         {
             interface_statistics = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics>();
-            interface_statistics->parent = this;
-            children["interface-statistics"] = interface_statistics;
         }
-        return children.at("interface-statistics");
+        return interface_statistics;
     }
 
     if(child_yang_name == "interface-type-information")
     {
-        if(interface_type_information != nullptr)
-        {
-            children["interface-type-information"] = interface_type_information;
-        }
-        else
+        if(interface_type_information == nullptr)
         {
             interface_type_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation>();
-            interface_type_information->parent = this;
-            children["interface-type-information"] = interface_type_information;
         }
-        return children.at("interface-type-information");
+        return interface_type_information;
     }
 
     if(child_yang_name == "ip-information")
     {
-        if(ip_information != nullptr)
-        {
-            children["ip-information"] = ip_information;
-        }
-        else
+        if(ip_information == nullptr)
         {
             ip_information = std::make_shared<Interfaces::InterfaceXr::Interface::IpInformation>();
-            ip_information->parent = this;
-            children["ip-information"] = ip_information;
         }
-        return children.at("ip-information");
+        return ip_information;
     }
 
     if(child_yang_name == "l2-interface-statistics")
     {
-        if(l2_interface_statistics != nullptr)
-        {
-            children["l2-interface-statistics"] = l2_interface_statistics;
-        }
-        else
+        if(l2_interface_statistics == nullptr)
         {
             l2_interface_statistics = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics>();
-            l2_interface_statistics->parent = this;
-            children["l2-interface-statistics"] = l2_interface_statistics;
         }
-        return children.at("l2-interface-statistics");
+        return l2_interface_statistics;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<Interfaces::InterfaceXr::Interface::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     if(child_yang_name == "nv-optical")
     {
-        if(nv_optical != nullptr)
-        {
-            children["nv-optical"] = nv_optical;
-        }
-        else
+        if(nv_optical == nullptr)
         {
             nv_optical = std::make_shared<Interfaces::InterfaceXr::Interface::NvOptical>();
-            nv_optical->parent = this;
-            children["nv-optical"] = nv_optical;
         }
-        return children.at("nv-optical");
+        return nv_optical;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::get_children() const
 {
-    if(children.find("arp-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(arp_information != nullptr)
     {
-        if(arp_information != nullptr)
-        {
-            children["arp-information"] = arp_information;
-        }
+        children["arp-information"] = arp_information;
     }
 
-    if(children.find("burned-in-address") == children.end())
+    if(burned_in_address != nullptr)
     {
-        if(burned_in_address != nullptr)
-        {
-            children["burned-in-address"] = burned_in_address;
-        }
+        children["burned-in-address"] = burned_in_address;
     }
 
-    if(children.find("carrier-delay") == children.end())
+    if(carrier_delay != nullptr)
     {
-        if(carrier_delay != nullptr)
-        {
-            children["carrier-delay"] = carrier_delay;
-        }
+        children["carrier-delay"] = carrier_delay;
     }
 
-    if(children.find("dampening-information") == children.end())
+    if(dampening_information != nullptr)
     {
-        if(dampening_information != nullptr)
-        {
-            children["dampening-information"] = dampening_information;
-        }
+        children["dampening-information"] = dampening_information;
     }
 
-    if(children.find("data-rates") == children.end())
+    if(data_rates != nullptr)
     {
-        if(data_rates != nullptr)
-        {
-            children["data-rates"] = data_rates;
-        }
+        children["data-rates"] = data_rates;
     }
 
-    if(children.find("encapsulation-information") == children.end())
+    if(encapsulation_information != nullptr)
     {
-        if(encapsulation_information != nullptr)
-        {
-            children["encapsulation-information"] = encapsulation_information;
-        }
+        children["encapsulation-information"] = encapsulation_information;
     }
 
-    if(children.find("interface-statistics") == children.end())
+    if(interface_statistics != nullptr)
     {
-        if(interface_statistics != nullptr)
-        {
-            children["interface-statistics"] = interface_statistics;
-        }
+        children["interface-statistics"] = interface_statistics;
     }
 
-    if(children.find("interface-type-information") == children.end())
+    if(interface_type_information != nullptr)
     {
-        if(interface_type_information != nullptr)
-        {
-            children["interface-type-information"] = interface_type_information;
-        }
+        children["interface-type-information"] = interface_type_information;
     }
 
-    if(children.find("ip-information") == children.end())
+    if(ip_information != nullptr)
     {
-        if(ip_information != nullptr)
-        {
-            children["ip-information"] = ip_information;
-        }
+        children["ip-information"] = ip_information;
     }
 
-    if(children.find("l2-interface-statistics") == children.end())
+    if(l2_interface_statistics != nullptr)
     {
-        if(l2_interface_statistics != nullptr)
-        {
-            children["l2-interface-statistics"] = l2_interface_statistics;
-        }
+        children["l2-interface-statistics"] = l2_interface_statistics;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
-    if(children.find("nv-optical") == children.end())
+    if(nv_optical != nullptr)
     {
-        if(nv_optical != nullptr)
-        {
-            children["nv-optical"] = nv_optical;
-        }
+        children["nv-optical"] = nv_optical;
     }
 
     return children;
@@ -1109,7 +900,7 @@ std::string Interfaces::InterfaceXr::Interface::DampeningInformation::get_segmen
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::DampeningInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::DampeningInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1140,20 +931,12 @@ EntityPath Interfaces::InterfaceXr::Interface::DampeningInformation::get_entity_
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::DampeningInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::DampeningInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::DampeningInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1224,7 +1007,7 @@ std::string Interfaces::InterfaceXr::Interface::MacAddress::get_segment_path() c
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1248,20 +1031,12 @@ EntityPath Interfaces::InterfaceXr::Interface::MacAddress::get_entity_path(Entit
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1304,7 +1079,7 @@ std::string Interfaces::InterfaceXr::Interface::BurnedInAddress::get_segment_pat
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::BurnedInAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::BurnedInAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1328,20 +1103,12 @@ EntityPath Interfaces::InterfaceXr::Interface::BurnedInAddress::get_entity_path(
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::BurnedInAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::BurnedInAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::BurnedInAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1387,7 +1154,7 @@ std::string Interfaces::InterfaceXr::Interface::CarrierDelay::get_segment_path()
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::CarrierDelay::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::CarrierDelay::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1412,20 +1179,12 @@ EntityPath Interfaces::InterfaceXr::Interface::CarrierDelay::get_entity_path(Ent
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::CarrierDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::CarrierDelay::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::CarrierDelay::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1478,7 +1237,7 @@ std::string Interfaces::InterfaceXr::Interface::ArpInformation::get_segment_path
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::ArpInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::ArpInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1504,20 +1263,12 @@ EntityPath Interfaces::InterfaceXr::Interface::ArpInformation::get_entity_path(E
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::ArpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::ArpInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::ArpInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1571,7 +1322,7 @@ std::string Interfaces::InterfaceXr::Interface::IpInformation::get_segment_path(
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::IpInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::IpInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1596,20 +1347,12 @@ EntityPath Interfaces::InterfaceXr::Interface::IpInformation::get_entity_path(En
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::IpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::IpInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::IpInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1634,13 +1377,10 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::EncapsulationInfor
 	,ppp_information(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation>())
 {
     dot1q_information->parent = this;
-    children["dot1q-information"] = dot1q_information;
 
     frame_relay_information->parent = this;
-    children["frame-relay-information"] = frame_relay_information;
 
     ppp_information->parent = this;
-    children["ppp-information"] = ppp_information;
 
     yang_name = "encapsulation-information"; yang_parent_name = "interface";
 }
@@ -1675,7 +1415,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_se
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1699,87 +1439,52 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_ent
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dot1q-information")
     {
-        if(dot1q_information != nullptr)
-        {
-            children["dot1q-information"] = dot1q_information;
-        }
-        else
+        if(dot1q_information == nullptr)
         {
             dot1q_information = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation>();
-            dot1q_information->parent = this;
-            children["dot1q-information"] = dot1q_information;
         }
-        return children.at("dot1q-information");
+        return dot1q_information;
     }
 
     if(child_yang_name == "frame-relay-information")
     {
-        if(frame_relay_information != nullptr)
-        {
-            children["frame-relay-information"] = frame_relay_information;
-        }
-        else
+        if(frame_relay_information == nullptr)
         {
             frame_relay_information = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation>();
-            frame_relay_information->parent = this;
-            children["frame-relay-information"] = frame_relay_information;
         }
-        return children.at("frame-relay-information");
+        return frame_relay_information;
     }
 
     if(child_yang_name == "ppp-information")
     {
-        if(ppp_information != nullptr)
-        {
-            children["ppp-information"] = ppp_information;
-        }
-        else
+        if(ppp_information == nullptr)
         {
             ppp_information = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation>();
-            ppp_information->parent = this;
-            children["ppp-information"] = ppp_information;
         }
-        return children.at("ppp-information");
+        return ppp_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_children() const
 {
-    if(children.find("dot1q-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dot1q_information != nullptr)
     {
-        if(dot1q_information != nullptr)
-        {
-            children["dot1q-information"] = dot1q_information;
-        }
+        children["dot1q-information"] = dot1q_information;
     }
 
-    if(children.find("frame-relay-information") == children.end())
+    if(frame_relay_information != nullptr)
     {
-        if(frame_relay_information != nullptr)
-        {
-            children["frame-relay-information"] = frame_relay_information;
-        }
+        children["frame-relay-information"] = frame_relay_information;
     }
 
-    if(children.find("ppp-information") == children.end())
+    if(ppp_information != nullptr)
     {
-        if(ppp_information != nullptr)
-        {
-            children["ppp-information"] = ppp_information;
-        }
+        children["ppp-information"] = ppp_information;
     }
 
     return children;
@@ -1863,7 +1568,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameR
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1900,20 +1605,12 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRe
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1982,7 +1679,6 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::
     encapsulation_details(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails>())
 {
     encapsulation_details->parent = this;
-    children["encapsulation-details"] = encapsulation_details;
 
     yang_name = "dot1q-information"; yang_parent_name = "encapsulation-information";
 }
@@ -2011,7 +1707,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2034,41 +1730,24 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "encapsulation-details")
     {
-        if(encapsulation_details != nullptr)
-        {
-            children["encapsulation-details"] = encapsulation_details;
-        }
-        else
+        if(encapsulation_details == nullptr)
         {
             encapsulation_details = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails>();
-            encapsulation_details->parent = this;
-            children["encapsulation-details"] = encapsulation_details;
         }
-        return children.at("encapsulation-details");
+        return encapsulation_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_children() const
 {
-    if(children.find("encapsulation-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(encapsulation_details != nullptr)
     {
-        if(encapsulation_details != nullptr)
-        {
-            children["encapsulation-details"] = encapsulation_details;
-        }
+        children["encapsulation-details"] = encapsulation_details;
     }
 
     return children;
@@ -2093,13 +1772,10 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::
 	,stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack>())
 {
     dot1ad_dot1q_stack->parent = this;
-    children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
 
     service_instance_details->parent = this;
-    children["service-instance-details"] = service_instance_details;
 
     stack->parent = this;
-    children["stack"] = stack;
 
     yang_name = "encapsulation-details"; yang_parent_name = "dot1q-information";
 }
@@ -2146,7 +1822,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2176,87 +1852,52 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dot1ad-dot1q-stack")
     {
-        if(dot1ad_dot1q_stack != nullptr)
-        {
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
-        }
-        else
+        if(dot1ad_dot1q_stack == nullptr)
         {
             dot1ad_dot1q_stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack>();
-            dot1ad_dot1q_stack->parent = this;
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
         }
-        return children.at("dot1ad-dot1q-stack");
+        return dot1ad_dot1q_stack;
     }
 
     if(child_yang_name == "service-instance-details")
     {
-        if(service_instance_details != nullptr)
-        {
-            children["service-instance-details"] = service_instance_details;
-        }
-        else
+        if(service_instance_details == nullptr)
         {
             service_instance_details = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails>();
-            service_instance_details->parent = this;
-            children["service-instance-details"] = service_instance_details;
         }
-        return children.at("service-instance-details");
+        return service_instance_details;
     }
 
     if(child_yang_name == "stack")
     {
-        if(stack != nullptr)
-        {
-            children["stack"] = stack;
-        }
-        else
+        if(stack == nullptr)
         {
             stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack>();
-            stack->parent = this;
-            children["stack"] = stack;
         }
-        return children.at("stack");
+        return stack;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_children() const
 {
-    if(children.find("dot1ad-dot1q-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dot1ad_dot1q_stack != nullptr)
     {
-        if(dot1ad_dot1q_stack != nullptr)
-        {
-            children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
-        }
+        children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
     }
 
-    if(children.find("service-instance-details") == children.end())
+    if(service_instance_details != nullptr)
     {
-        if(service_instance_details != nullptr)
-        {
-            children["service-instance-details"] = service_instance_details;
-        }
+        children["service-instance-details"] = service_instance_details;
     }
 
-    if(children.find("stack") == children.end())
+    if(stack != nullptr)
     {
-        if(stack != nullptr)
-        {
-            children["stack"] = stack;
-        }
+        children["stack"] = stack;
     }
 
     return children;
@@ -2328,7 +1969,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2353,20 +1994,12 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2395,7 +2028,6 @@ Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::
     local_traffic_stack(std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>())
 {
     local_traffic_stack->parent = this;
-    children["local-traffic-stack"] = local_traffic_stack;
 
     yang_name = "service-instance-details"; yang_parent_name = "encapsulation-details";
 }
@@ -2458,7 +2090,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2488,28 +2120,13 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-traffic-stack")
     {
-        if(local_traffic_stack != nullptr)
-        {
-            children["local-traffic-stack"] = local_traffic_stack;
-        }
-        else
+        if(local_traffic_stack == nullptr)
         {
             local_traffic_stack = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack>();
-            local_traffic_stack->parent = this;
-            children["local-traffic-stack"] = local_traffic_stack;
         }
-        return children.at("local-traffic-stack");
+        return local_traffic_stack;
     }
 
     if(child_yang_name == "pushe")
@@ -2519,15 +2136,13 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
         c->parent = this;
-        pushe.push_back(std::move(c));
-        children[segment_path] = pushe.back();
-        return children.at(segment_path);
+        pushe.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tags-to-match")
@@ -2537,44 +2152,34 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
         c->parent = this;
-        tags_to_match.push_back(std::move(c));
-        children[segment_path] = tags_to_match.back();
-        return children.at(segment_path);
+        tags_to_match.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_children() const
 {
-    if(children.find("local-traffic-stack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_traffic_stack != nullptr)
     {
-        if(local_traffic_stack != nullptr)
-        {
-            children["local-traffic-stack"] = local_traffic_stack;
-        }
+        children["local-traffic-stack"] = local_traffic_stack;
     }
 
     for (auto const & c : pushe)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : tags_to_match)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2650,7 +2255,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2673,15 +2278,6 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-traffic-tag")
     {
         for(auto const & c : local_traffic_tag)
@@ -2689,28 +2285,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
         c->parent = this;
-        local_traffic_tag.push_back(std::move(c));
-        children[segment_path] = local_traffic_tag.back();
-        return children.at(segment_path);
+        local_traffic_tag.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_traffic_tag)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2754,7 +2346,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2779,20 +2371,12 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2852,7 +2436,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2877,15 +2461,6 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vlan-range")
     {
         for(auto const & c : vlan_range)
@@ -2893,28 +2468,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
         c->parent = this;
-        vlan_range.push_back(std::move(c));
-        children[segment_path] = vlan_range.back();
-        return children.at(segment_path);
+        vlan_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vlan_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2966,7 +2537,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2991,20 +2562,12 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3054,7 +2617,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3079,20 +2642,12 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3142,7 +2697,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QI
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3167,20 +2722,12 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3249,7 +2796,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3277,15 +2824,6 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ncp-info-array")
     {
         for(auto const & c : ncp_info_array)
@@ -3293,28 +2831,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray>();
         c->parent = this;
-        ncp_info_array.push_back(std::move(c));
-        children[segment_path] = ncp_info_array.back();
-        return children.at(segment_path);
+        ncp_info_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ncp_info_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3378,7 +2912,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3403,20 +2937,12 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3447,31 +2973,22 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::InterfaceTypeInfor
 	,tunnel_information(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation>())
 {
     bundle_information->parent = this;
-    children["bundle-information"] = bundle_information;
 
     cem_information->parent = this;
-    children["cem-information"] = cem_information;
 
     gcc_information->parent = this;
-    children["gcc-information"] = gcc_information;
 
     pseudowire_head_end_information->parent = this;
-    children["pseudowire-head-end-information"] = pseudowire_head_end_information;
 
     serial_information->parent = this;
-    children["serial-information"] = serial_information;
 
     sonet_pos_information->parent = this;
-    children["sonet-pos-information"] = sonet_pos_information;
 
     srp_information->parent = this;
-    children["srp-information"] = srp_information;
 
     tunnel_gre_information->parent = this;
-    children["tunnel-gre-information"] = tunnel_gre_information;
 
     tunnel_information->parent = this;
-    children["tunnel-information"] = tunnel_information;
 
     yang_name = "interface-type-information"; yang_parent_name = "interface";
 }
@@ -3518,7 +3035,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_se
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3542,225 +3059,136 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_ent
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-information")
     {
-        if(bundle_information != nullptr)
-        {
-            children["bundle-information"] = bundle_information;
-        }
-        else
+        if(bundle_information == nullptr)
         {
             bundle_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation>();
-            bundle_information->parent = this;
-            children["bundle-information"] = bundle_information;
         }
-        return children.at("bundle-information");
+        return bundle_information;
     }
 
     if(child_yang_name == "cem-information")
     {
-        if(cem_information != nullptr)
-        {
-            children["cem-information"] = cem_information;
-        }
-        else
+        if(cem_information == nullptr)
         {
             cem_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation>();
-            cem_information->parent = this;
-            children["cem-information"] = cem_information;
         }
-        return children.at("cem-information");
+        return cem_information;
     }
 
     if(child_yang_name == "gcc-information")
     {
-        if(gcc_information != nullptr)
-        {
-            children["gcc-information"] = gcc_information;
-        }
-        else
+        if(gcc_information == nullptr)
         {
             gcc_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation>();
-            gcc_information->parent = this;
-            children["gcc-information"] = gcc_information;
         }
-        return children.at("gcc-information");
+        return gcc_information;
     }
 
     if(child_yang_name == "pseudowire-head-end-information")
     {
-        if(pseudowire_head_end_information != nullptr)
-        {
-            children["pseudowire-head-end-information"] = pseudowire_head_end_information;
-        }
-        else
+        if(pseudowire_head_end_information == nullptr)
         {
             pseudowire_head_end_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation>();
-            pseudowire_head_end_information->parent = this;
-            children["pseudowire-head-end-information"] = pseudowire_head_end_information;
         }
-        return children.at("pseudowire-head-end-information");
+        return pseudowire_head_end_information;
     }
 
     if(child_yang_name == "serial-information")
     {
-        if(serial_information != nullptr)
-        {
-            children["serial-information"] = serial_information;
-        }
-        else
+        if(serial_information == nullptr)
         {
             serial_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation>();
-            serial_information->parent = this;
-            children["serial-information"] = serial_information;
         }
-        return children.at("serial-information");
+        return serial_information;
     }
 
     if(child_yang_name == "sonet-pos-information")
     {
-        if(sonet_pos_information != nullptr)
-        {
-            children["sonet-pos-information"] = sonet_pos_information;
-        }
-        else
+        if(sonet_pos_information == nullptr)
         {
             sonet_pos_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation>();
-            sonet_pos_information->parent = this;
-            children["sonet-pos-information"] = sonet_pos_information;
         }
-        return children.at("sonet-pos-information");
+        return sonet_pos_information;
     }
 
     if(child_yang_name == "srp-information")
     {
-        if(srp_information != nullptr)
-        {
-            children["srp-information"] = srp_information;
-        }
-        else
+        if(srp_information == nullptr)
         {
             srp_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation>();
-            srp_information->parent = this;
-            children["srp-information"] = srp_information;
         }
-        return children.at("srp-information");
+        return srp_information;
     }
 
     if(child_yang_name == "tunnel-gre-information")
     {
-        if(tunnel_gre_information != nullptr)
-        {
-            children["tunnel-gre-information"] = tunnel_gre_information;
-        }
-        else
+        if(tunnel_gre_information == nullptr)
         {
             tunnel_gre_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation>();
-            tunnel_gre_information->parent = this;
-            children["tunnel-gre-information"] = tunnel_gre_information;
         }
-        return children.at("tunnel-gre-information");
+        return tunnel_gre_information;
     }
 
     if(child_yang_name == "tunnel-information")
     {
-        if(tunnel_information != nullptr)
-        {
-            children["tunnel-information"] = tunnel_information;
-        }
-        else
+        if(tunnel_information == nullptr)
         {
             tunnel_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation>();
-            tunnel_information->parent = this;
-            children["tunnel-information"] = tunnel_information;
         }
-        return children.at("tunnel-information");
+        return tunnel_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_children() const
 {
-    if(children.find("bundle-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_information != nullptr)
     {
-        if(bundle_information != nullptr)
-        {
-            children["bundle-information"] = bundle_information;
-        }
+        children["bundle-information"] = bundle_information;
     }
 
-    if(children.find("cem-information") == children.end())
+    if(cem_information != nullptr)
     {
-        if(cem_information != nullptr)
-        {
-            children["cem-information"] = cem_information;
-        }
+        children["cem-information"] = cem_information;
     }
 
-    if(children.find("gcc-information") == children.end())
+    if(gcc_information != nullptr)
     {
-        if(gcc_information != nullptr)
-        {
-            children["gcc-information"] = gcc_information;
-        }
+        children["gcc-information"] = gcc_information;
     }
 
-    if(children.find("pseudowire-head-end-information") == children.end())
+    if(pseudowire_head_end_information != nullptr)
     {
-        if(pseudowire_head_end_information != nullptr)
-        {
-            children["pseudowire-head-end-information"] = pseudowire_head_end_information;
-        }
+        children["pseudowire-head-end-information"] = pseudowire_head_end_information;
     }
 
-    if(children.find("serial-information") == children.end())
+    if(serial_information != nullptr)
     {
-        if(serial_information != nullptr)
-        {
-            children["serial-information"] = serial_information;
-        }
+        children["serial-information"] = serial_information;
     }
 
-    if(children.find("sonet-pos-information") == children.end())
+    if(sonet_pos_information != nullptr)
     {
-        if(sonet_pos_information != nullptr)
-        {
-            children["sonet-pos-information"] = sonet_pos_information;
-        }
+        children["sonet-pos-information"] = sonet_pos_information;
     }
 
-    if(children.find("srp-information") == children.end())
+    if(srp_information != nullptr)
     {
-        if(srp_information != nullptr)
-        {
-            children["srp-information"] = srp_information;
-        }
+        children["srp-information"] = srp_information;
     }
 
-    if(children.find("tunnel-gre-information") == children.end())
+    if(tunnel_gre_information != nullptr)
     {
-        if(tunnel_gre_information != nullptr)
-        {
-            children["tunnel-gre-information"] = tunnel_gre_information;
-        }
+        children["tunnel-gre-information"] = tunnel_gre_information;
     }
 
-    if(children.find("tunnel-information") == children.end())
+    if(tunnel_information != nullptr)
     {
-        if(tunnel_information != nullptr)
-        {
-            children["tunnel-information"] = tunnel_information;
-        }
+        children["tunnel-information"] = tunnel_information;
     }
 
     return children;
@@ -3780,10 +3208,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 	,srp_statistics(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics>())
 {
     srp_information->parent = this;
-    children["srp-information"] = srp_information;
 
     srp_statistics->parent = this;
-    children["srp-statistics"] = srp_statistics;
 
     yang_name = "srp-information"; yang_parent_name = "interface-type-information";
 }
@@ -3814,7 +3240,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3837,64 +3263,38 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "srp-information")
     {
-        if(srp_information != nullptr)
-        {
-            children["srp-information"] = srp_information;
-        }
-        else
+        if(srp_information == nullptr)
         {
             srp_information = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_>();
-            srp_information->parent = this;
-            children["srp-information"] = srp_information;
         }
-        return children.at("srp-information");
+        return srp_information;
     }
 
     if(child_yang_name == "srp-statistics")
     {
-        if(srp_statistics != nullptr)
-        {
-            children["srp-statistics"] = srp_statistics;
-        }
-        else
+        if(srp_statistics == nullptr)
         {
             srp_statistics = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics>();
-            srp_statistics->parent = this;
-            children["srp-statistics"] = srp_statistics;
         }
-        return children.at("srp-statistics");
+        return srp_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_children() const
 {
-    if(children.find("srp-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(srp_information != nullptr)
     {
-        if(srp_information != nullptr)
-        {
-            children["srp-information"] = srp_information;
-        }
+        children["srp-information"] = srp_information;
     }
 
-    if(children.find("srp-statistics") == children.end())
+    if(srp_statistics != nullptr)
     {
-        if(srp_statistics != nullptr)
-        {
-            children["srp-statistics"] = srp_statistics;
-        }
+        children["srp-statistics"] = srp_statistics;
     }
 
     return children;
@@ -3912,16 +3312,12 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 	,topology_info(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo>())
 {
     ips_info->parent = this;
-    children["ips-info"] = ips_info;
 
     rate_limit_info->parent = this;
-    children["rate-limit-info"] = rate_limit_info;
 
     srr_info->parent = this;
-    children["srr-info"] = srr_info;
 
     topology_info->parent = this;
-    children["topology-info"] = topology_info;
 
     yang_name = "srp-information"; yang_parent_name = "srp-information";
 }
@@ -3956,7 +3352,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3979,110 +3375,66 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ips-info")
     {
-        if(ips_info != nullptr)
-        {
-            children["ips-info"] = ips_info;
-        }
-        else
+        if(ips_info == nullptr)
         {
             ips_info = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo>();
-            ips_info->parent = this;
-            children["ips-info"] = ips_info;
         }
-        return children.at("ips-info");
+        return ips_info;
     }
 
     if(child_yang_name == "rate-limit-info")
     {
-        if(rate_limit_info != nullptr)
-        {
-            children["rate-limit-info"] = rate_limit_info;
-        }
-        else
+        if(rate_limit_info == nullptr)
         {
             rate_limit_info = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo>();
-            rate_limit_info->parent = this;
-            children["rate-limit-info"] = rate_limit_info;
         }
-        return children.at("rate-limit-info");
+        return rate_limit_info;
     }
 
     if(child_yang_name == "srr-info")
     {
-        if(srr_info != nullptr)
-        {
-            children["srr-info"] = srr_info;
-        }
-        else
+        if(srr_info == nullptr)
         {
             srr_info = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo>();
-            srr_info->parent = this;
-            children["srr-info"] = srr_info;
         }
-        return children.at("srr-info");
+        return srr_info;
     }
 
     if(child_yang_name == "topology-info")
     {
-        if(topology_info != nullptr)
-        {
-            children["topology-info"] = topology_info;
-        }
-        else
+        if(topology_info == nullptr)
         {
             topology_info = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo>();
-            topology_info->parent = this;
-            children["topology-info"] = topology_info;
         }
-        return children.at("topology-info");
+        return topology_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_children() const
 {
-    if(children.find("ips-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ips_info != nullptr)
     {
-        if(ips_info != nullptr)
-        {
-            children["ips-info"] = ips_info;
-        }
+        children["ips-info"] = ips_info;
     }
 
-    if(children.find("rate-limit-info") == children.end())
+    if(rate_limit_info != nullptr)
     {
-        if(rate_limit_info != nullptr)
-        {
-            children["rate-limit-info"] = rate_limit_info;
-        }
+        children["rate-limit-info"] = rate_limit_info;
     }
 
-    if(children.find("srr-info") == children.end())
+    if(srr_info != nullptr)
     {
-        if(srr_info != nullptr)
-        {
-            children["srr-info"] = srr_info;
-        }
+        children["srr-info"] = srr_info;
     }
 
-    if(children.find("topology-info") == children.end())
+    if(topology_info != nullptr)
     {
-        if(topology_info != nullptr)
-        {
-            children["topology-info"] = topology_info;
-        }
+        children["topology-info"] = topology_info;
     }
 
     return children;
@@ -4133,7 +3485,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4157,15 +3509,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-information")
     {
         for(auto const & c : local_information)
@@ -4173,28 +3516,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation>();
         c->parent = this;
-        local_information.push_back(std::move(c));
-        children[segment_path] = local_information.back();
-        return children.at(segment_path);
+        local_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4218,10 +3557,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 	,side_b(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB>())
 {
     side_a->parent = this;
-    children["side-a"] = side_a;
 
     side_b->parent = this;
-    children["side-b"] = side_b;
 
     yang_name = "local-information"; yang_parent_name = "ips-info";
 }
@@ -4258,7 +3595,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4284,64 +3621,38 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "side-a")
     {
-        if(side_a != nullptr)
-        {
-            children["side-a"] = side_a;
-        }
-        else
+        if(side_a == nullptr)
         {
             side_a = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA>();
-            side_a->parent = this;
-            children["side-a"] = side_a;
         }
-        return children.at("side-a");
+        return side_a;
     }
 
     if(child_yang_name == "side-b")
     {
-        if(side_b != nullptr)
-        {
-            children["side-b"] = side_b;
-        }
-        else
+        if(side_b == nullptr)
         {
             side_b = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB>();
-            side_b->parent = this;
-            children["side-b"] = side_b;
         }
-        return children.at("side-b");
+        return side_b;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_children() const
 {
-    if(children.find("side-a") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(side_a != nullptr)
     {
-        if(side_a != nullptr)
-        {
-            children["side-a"] = side_a;
-        }
+        children["side-a"] = side_a;
     }
 
-    if(children.find("side-b") == children.end())
+    if(side_b != nullptr)
     {
-        if(side_b != nullptr)
-        {
-            children["side-b"] = side_b;
-        }
+        children["side-b"] = side_b;
     }
 
     return children;
@@ -4455,7 +3766,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4496,15 +3807,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "asserted-failure")
     {
         for(auto const & c : asserted_failure)
@@ -4512,28 +3814,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure>();
         c->parent = this;
-        asserted_failure.push_back(std::move(c));
-        children[segment_path] = asserted_failure.back();
-        return children.at(segment_path);
+        asserted_failure.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : asserted_failure)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4661,7 +3959,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4690,20 +3988,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4827,7 +4117,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4868,15 +4158,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "asserted-failure")
     {
         for(auto const & c : asserted_failure)
@@ -4884,28 +4165,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure>();
         c->parent = this;
-        asserted_failure.push_back(std::move(c));
-        children[segment_path] = asserted_failure.back();
-        return children.at(segment_path);
+        asserted_failure.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : asserted_failure)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5033,7 +4310,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5062,20 +4339,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5148,7 +4417,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5172,15 +4441,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-information")
     {
         for(auto const & c : local_information)
@@ -5188,28 +4448,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation>();
         c->parent = this;
-        local_information.push_back(std::move(c));
-        children[segment_path] = local_information.back();
-        return children.at(segment_path);
+        local_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5276,7 +4532,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5304,15 +4560,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ring-node")
     {
         for(auto const & c : ring_node)
@@ -5320,28 +4567,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode>();
         c->parent = this;
-        ring_node.push_back(std::move(c));
-        children[segment_path] = ring_node.back();
-        return children.at(segment_path);
+        ring_node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ring_node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5417,7 +4660,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5446,20 +4689,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5535,7 +4770,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5560,15 +4795,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "srr-detailed-info")
     {
         for(auto const & c : srr_detailed_info)
@@ -5576,28 +4802,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo>();
         c->parent = this;
-        srr_detailed_info.push_back(std::move(c));
-        children[segment_path] = srr_detailed_info.back();
-        return children.at(segment_path);
+        srr_detailed_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : srr_detailed_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5711,7 +4933,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5750,15 +4972,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes-not-on-ring")
     {
         for(auto const & c : nodes_not_on_ring)
@@ -5766,15 +4979,13 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing>();
         c->parent = this;
-        nodes_not_on_ring.push_back(std::move(c));
-        children[segment_path] = nodes_not_on_ring.back();
-        return children.at(segment_path);
+        nodes_not_on_ring.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "nodes-on-ring")
@@ -5784,36 +4995,29 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing>();
         c->parent = this;
-        nodes_on_ring.push_back(std::move(c));
-        children[segment_path] = nodes_on_ring.back();
-        return children.at(segment_path);
+        nodes_on_ring.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodes_not_on_ring)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : nodes_on_ring)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5936,7 +5140,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5966,20 +5170,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6064,7 +5260,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6094,20 +5290,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6184,7 +5372,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6208,15 +5396,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rate-limit-detailed-info")
     {
         for(auto const & c : rate_limit_detailed_info)
@@ -6224,28 +5403,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo>();
         c->parent = this;
-        rate_limit_detailed_info.push_back(std::move(c));
-        children[segment_path] = rate_limit_detailed_info.back();
-        return children.at(segment_path);
+        rate_limit_detailed_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rate_limit_detailed_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6290,7 +5465,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6314,20 +5489,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6349,16 +5516,12 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::Sr
 	,side_b_errors(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors>())
 {
     side_a_data_rate->parent = this;
-    children["side-a-data-rate"] = side_a_data_rate;
 
     side_a_errors->parent = this;
-    children["side-a-errors"] = side_a_errors;
 
     side_b_data_rate->parent = this;
-    children["side-b-data-rate"] = side_b_data_rate;
 
     side_b_errors->parent = this;
-    children["side-b-errors"] = side_b_errors;
 
     yang_name = "srp-statistics"; yang_parent_name = "srp-information";
 }
@@ -6395,7 +5558,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6419,110 +5582,66 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "side-a-data-rate")
     {
-        if(side_a_data_rate != nullptr)
-        {
-            children["side-a-data-rate"] = side_a_data_rate;
-        }
-        else
+        if(side_a_data_rate == nullptr)
         {
             side_a_data_rate = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate>();
-            side_a_data_rate->parent = this;
-            children["side-a-data-rate"] = side_a_data_rate;
         }
-        return children.at("side-a-data-rate");
+        return side_a_data_rate;
     }
 
     if(child_yang_name == "side-a-errors")
     {
-        if(side_a_errors != nullptr)
-        {
-            children["side-a-errors"] = side_a_errors;
-        }
-        else
+        if(side_a_errors == nullptr)
         {
             side_a_errors = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors>();
-            side_a_errors->parent = this;
-            children["side-a-errors"] = side_a_errors;
         }
-        return children.at("side-a-errors");
+        return side_a_errors;
     }
 
     if(child_yang_name == "side-b-data-rate")
     {
-        if(side_b_data_rate != nullptr)
-        {
-            children["side-b-data-rate"] = side_b_data_rate;
-        }
-        else
+        if(side_b_data_rate == nullptr)
         {
             side_b_data_rate = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate>();
-            side_b_data_rate->parent = this;
-            children["side-b-data-rate"] = side_b_data_rate;
         }
-        return children.at("side-b-data-rate");
+        return side_b_data_rate;
     }
 
     if(child_yang_name == "side-b-errors")
     {
-        if(side_b_errors != nullptr)
-        {
-            children["side-b-errors"] = side_b_errors;
-        }
-        else
+        if(side_b_errors == nullptr)
         {
             side_b_errors = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors>();
-            side_b_errors->parent = this;
-            children["side-b-errors"] = side_b_errors;
         }
-        return children.at("side-b-errors");
+        return side_b_errors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_children() const
 {
-    if(children.find("side-a-data-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(side_a_data_rate != nullptr)
     {
-        if(side_a_data_rate != nullptr)
-        {
-            children["side-a-data-rate"] = side_a_data_rate;
-        }
+        children["side-a-data-rate"] = side_a_data_rate;
     }
 
-    if(children.find("side-a-errors") == children.end())
+    if(side_a_errors != nullptr)
     {
-        if(side_a_errors != nullptr)
-        {
-            children["side-a-errors"] = side_a_errors;
-        }
+        children["side-a-errors"] = side_a_errors;
     }
 
-    if(children.find("side-b-data-rate") == children.end())
+    if(side_b_data_rate != nullptr)
     {
-        if(side_b_data_rate != nullptr)
-        {
-            children["side-b-data-rate"] = side_b_data_rate;
-        }
+        children["side-b-data-rate"] = side_b_data_rate;
     }
 
-    if(children.find("side-b-errors") == children.end())
+    if(side_b_errors != nullptr)
     {
-        if(side_b_errors != nullptr)
-        {
-            children["side-b-errors"] = side_b_errors;
-        }
+        children["side-b-errors"] = side_b_errors;
     }
 
     return children;
@@ -6576,7 +5695,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6603,20 +5722,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6680,7 +5791,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6707,20 +5818,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6799,7 +5902,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6831,20 +5934,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6943,7 +6038,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6975,20 +6070,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7078,7 +6165,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Tunnel
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7107,20 +6194,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7190,7 +6269,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7213,15 +6292,6 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member")
     {
         for(auto const & c : member)
@@ -7229,28 +6299,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member>();
         c->parent = this;
-        member.push_back(std::move(c));
-        children[segment_path] = member.back();
-        return children.at(segment_path);
+        member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7278,16 +6344,12 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
 	,member_mux_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     link_data->parent = this;
-    children["link-data"] = link_data;
 
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     member_mux_data->parent = this;
-    children["member-mux-data"] = member_mux_data;
 
     yang_name = "member"; yang_parent_name = "bundle-information";
 }
@@ -7340,7 +6402,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7372,110 +6434,66 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "link-data")
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
-        else
+        if(link_data == nullptr)
         {
             link_data = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData>();
-            link_data->parent = this;
-            children["link-data"] = link_data;
         }
-        return children.at("link-data");
+        return link_data;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     if(child_yang_name == "member-mux-data")
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
-        else
+        if(member_mux_data == nullptr)
         {
             member_mux_data = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData>();
-            member_mux_data->parent = this;
-            children["member-mux-data"] = member_mux_data;
         }
-        return children.at("member-mux-data");
+        return member_mux_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("link-data") == children.end())
+    if(link_data != nullptr)
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
+        children["link-data"] = link_data;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
-    if(children.find("member-mux-data") == children.end())
+    if(member_mux_data != nullptr)
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
+        children["member-mux-data"] = member_mux_data;
     }
 
     return children;
@@ -7582,7 +6600,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7616,20 +6634,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7754,7 +6764,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7792,20 +6802,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7884,7 +6886,6 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation:
     member_mux_state_reason_data(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
-    children["member-mux-state-reason-data"] = member_mux_state_reason_data;
 
     yang_name = "member-mux-data"; yang_parent_name = "member";
 }
@@ -7923,7 +6924,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7951,41 +6952,24 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-mux-state-reason-data")
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
-        else
+        if(member_mux_state_reason_data == nullptr)
         {
             member_mux_state_reason_data = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData>();
-            member_mux_state_reason_data->parent = this;
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
         }
-        return children.at("member-mux-state-reason-data");
+        return member_mux_state_reason_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_children() const
 {
-    if(children.find("member-mux-state-reason-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(member_mux_state_reason_data != nullptr)
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
+        children["member-mux-state-reason-data"] = member_mux_state_reason_data;
     }
 
     return children;
@@ -8049,7 +7033,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8074,20 +7058,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8134,7 +7110,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8158,20 +7134,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8214,7 +7182,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Serial
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8238,20 +7206,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialI
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8294,7 +7254,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetP
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8318,20 +7278,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8362,10 +7314,8 @@ Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformati
 	,source_ip_address(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress>())
 {
     destination_ip_address->parent = this;
-    children["destination-ip-address"] = destination_ip_address;
 
     source_ip_address->parent = this;
-    children["source-ip-address"] = source_ip_address;
 
     yang_name = "tunnel-gre-information"; yang_parent_name = "interface-type-information";
 }
@@ -8420,7 +7370,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Tunnel
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8455,64 +7405,38 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelG
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-ip-address")
     {
-        if(destination_ip_address != nullptr)
-        {
-            children["destination-ip-address"] = destination_ip_address;
-        }
-        else
+        if(destination_ip_address == nullptr)
         {
             destination_ip_address = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress>();
-            destination_ip_address->parent = this;
-            children["destination-ip-address"] = destination_ip_address;
         }
-        return children.at("destination-ip-address");
+        return destination_ip_address;
     }
 
     if(child_yang_name == "source-ip-address")
     {
-        if(source_ip_address != nullptr)
-        {
-            children["source-ip-address"] = source_ip_address;
-        }
-        else
+        if(source_ip_address == nullptr)
         {
             source_ip_address = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress>();
-            source_ip_address->parent = this;
-            children["source-ip-address"] = source_ip_address;
         }
-        return children.at("source-ip-address");
+        return source_ip_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_children() const
 {
-    if(children.find("destination-ip-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_ip_address != nullptr)
     {
-        if(destination_ip_address != nullptr)
-        {
-            children["destination-ip-address"] = destination_ip_address;
-        }
+        children["destination-ip-address"] = destination_ip_address;
     }
 
-    if(children.find("source-ip-address") == children.end())
+    if(source_ip_address != nullptr)
     {
-        if(source_ip_address != nullptr)
-        {
-            children["source-ip-address"] = source_ip_address;
-        }
+        children["source-ip-address"] = source_ip_address;
     }
 
     return children;
@@ -8607,7 +7531,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Tunnel
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8633,20 +7557,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelG
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8703,7 +7619,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Tunnel
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8729,20 +7645,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelG
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8799,7 +7707,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Pseudo
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8825,20 +7733,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Pseudow
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8898,7 +7798,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8925,20 +7825,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8996,7 +7888,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9021,20 +7913,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInfo
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9117,7 +8001,7 @@ std::string Interfaces::InterfaceXr::Interface::DataRates::get_segment_path() co
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::DataRates::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::DataRates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9153,20 +8037,12 @@ EntityPath Interfaces::InterfaceXr::Interface::DataRates::get_entity_path(Entity
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::DataRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::DataRates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::DataRates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9234,10 +8110,8 @@ Interfaces::InterfaceXr::Interface::InterfaceStatistics::InterfaceStatistics()
 	,full_interface_stats(std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats>())
 {
     basic_interface_stats->parent = this;
-    children["basic-interface-stats"] = basic_interface_stats;
 
     full_interface_stats->parent = this;
-    children["full-interface-stats"] = full_interface_stats;
 
     yang_name = "interface-statistics"; yang_parent_name = "interface";
 }
@@ -9270,7 +8144,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_segment
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9294,64 +8168,38 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_entity_p
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-interface-stats")
     {
-        if(basic_interface_stats != nullptr)
-        {
-            children["basic-interface-stats"] = basic_interface_stats;
-        }
-        else
+        if(basic_interface_stats == nullptr)
         {
             basic_interface_stats = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats>();
-            basic_interface_stats->parent = this;
-            children["basic-interface-stats"] = basic_interface_stats;
         }
-        return children.at("basic-interface-stats");
+        return basic_interface_stats;
     }
 
     if(child_yang_name == "full-interface-stats")
     {
-        if(full_interface_stats != nullptr)
-        {
-            children["full-interface-stats"] = full_interface_stats;
-        }
-        else
+        if(full_interface_stats == nullptr)
         {
             full_interface_stats = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats>();
-            full_interface_stats->parent = this;
-            children["full-interface-stats"] = full_interface_stats;
         }
-        return children.at("full-interface-stats");
+        return full_interface_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_children() const
 {
-    if(children.find("basic-interface-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_interface_stats != nullptr)
     {
-        if(basic_interface_stats != nullptr)
-        {
-            children["basic-interface-stats"] = basic_interface_stats;
-        }
+        children["basic-interface-stats"] = basic_interface_stats;
     }
 
-    if(children.find("full-interface-stats") == children.end())
+    if(full_interface_stats != nullptr)
     {
-        if(full_interface_stats != nullptr)
-        {
-            children["full-interface-stats"] = full_interface_stats;
-        }
+        children["full-interface-stats"] = full_interface_stats;
     }
 
     return children;
@@ -9501,7 +8349,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfa
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9560,20 +8408,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfac
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9801,7 +8641,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterf
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9840,20 +8680,12 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfa
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9933,7 +8765,6 @@ Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::L2InterfaceStatistics
     stats_id(std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId>())
 {
     stats_id->parent = this;
-    children["stats-id"] = stats_id;
 
     yang_name = "l2-interface-statistics"; yang_parent_name = "interface";
 }
@@ -9986,7 +8817,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_segme
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10011,15 +8842,6 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_entity
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "block-array")
     {
         for(auto const & c : block_array)
@@ -10027,15 +8849,13 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray>();
         c->parent = this;
-        block_array.push_back(std::move(c));
-        children[segment_path] = block_array.back();
-        return children.at(segment_path);
+        block_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "element-array")
@@ -10045,59 +8865,43 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray>();
         c->parent = this;
-        element_array.push_back(std::move(c));
-        children[segment_path] = element_array.back();
-        return children.at(segment_path);
+        element_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "stats-id")
     {
-        if(stats_id != nullptr)
-        {
-            children["stats-id"] = stats_id;
-        }
-        else
+        if(stats_id == nullptr)
         {
             stats_id = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId>();
-            stats_id->parent = this;
-            children["stats-id"] = stats_id;
         }
-        return children.at("stats-id");
+        return stats_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : block_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : element_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("stats-id") == children.end())
+    if(stats_id != nullptr)
     {
-        if(stats_id != nullptr)
-        {
-            children["stats-id"] = stats_id;
-        }
+        children["stats-id"] = stats_id;
     }
 
     return children;
@@ -10161,7 +8965,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10190,20 +8994,12 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::g
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10272,7 +9068,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArra
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10298,20 +9094,12 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10372,7 +9160,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementAr
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10396,15 +9184,6 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArr
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "block-array")
     {
         for(auto const & c : block_array)
@@ -10412,28 +9191,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray>();
         c->parent = this;
-        block_array.push_back(std::move(c));
-        children[segment_path] = block_array.back();
-        return children.at(segment_path);
+        block_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : block_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10484,7 +9259,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementAr
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10510,20 +9285,12 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArr
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10574,7 +9341,7 @@ std::string Interfaces::InterfaceXr::Interface::NvOptical::get_segment_path() co
 
 }
 
-EntityPath Interfaces::InterfaceXr::Interface::NvOptical::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceXr::Interface::NvOptical::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10598,20 +9365,12 @@ EntityPath Interfaces::InterfaceXr::Interface::NvOptical::get_entity_path(Entity
 
 std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::NvOptical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceXr::Interface::NvOptical::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::NvOptical::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10661,7 +9420,7 @@ std::string Interfaces::NodeTypeSets::get_segment_path() const
 
 }
 
-EntityPath Interfaces::NodeTypeSets::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::NodeTypeSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10684,15 +9443,6 @@ EntityPath Interfaces::NodeTypeSets::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Interfaces::NodeTypeSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-type-set")
     {
         for(auto const & c : node_type_set)
@@ -10700,28 +9450,24 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet>();
         c->parent = this;
-        node_type_set.push_back(std::move(c));
-        children[segment_path] = node_type_set.back();
-        return children.at(segment_path);
+        node_type_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::NodeTypeSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node_type_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10739,7 +9485,6 @@ Interfaces::NodeTypeSets::NodeTypeSet::NodeTypeSet()
     interface_summary(std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary>())
 {
     interface_summary->parent = this;
-    children["interface-summary"] = interface_summary;
 
     yang_name = "node-type-set"; yang_parent_name = "node-type-sets";
 }
@@ -10772,7 +9517,7 @@ std::string Interfaces::NodeTypeSets::NodeTypeSet::get_segment_path() const
 
 }
 
-EntityPath Interfaces::NodeTypeSets::NodeTypeSet::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::NodeTypeSets::NodeTypeSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10797,41 +9542,24 @@ EntityPath Interfaces::NodeTypeSets::NodeTypeSet::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-summary")
     {
-        if(interface_summary != nullptr)
-        {
-            children["interface-summary"] = interface_summary;
-        }
-        else
+        if(interface_summary == nullptr)
         {
             interface_summary = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary>();
-            interface_summary->parent = this;
-            children["interface-summary"] = interface_summary;
         }
-        return children.at("interface-summary");
+        return interface_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::NodeTypeSets::NodeTypeSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::get_children() const
 {
-    if(children.find("interface-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_summary != nullptr)
     {
-        if(interface_summary != nullptr)
-        {
-            children["interface-summary"] = interface_summary;
-        }
+        children["interface-summary"] = interface_summary;
     }
 
     return children;
@@ -10854,7 +9582,6 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceSummary()
     interface_counts(std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts>())
 {
     interface_counts->parent = this;
-    children["interface-counts"] = interface_counts;
 
     yang_name = "interface-summary"; yang_parent_name = "node-type-set";
 }
@@ -10893,7 +9620,7 @@ std::string Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_segment
 
 }
 
-EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10916,28 +9643,13 @@ EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_entity_p
 
 std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-counts")
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
-        else
+        if(interface_counts == nullptr)
         {
             interface_counts = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts>();
-            interface_counts->parent = this;
-            children["interface-counts"] = interface_counts;
         }
-        return children.at("interface-counts");
+        return interface_counts;
     }
 
     if(child_yang_name == "interface-type")
@@ -10947,36 +9659,29 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType>();
         c->parent = this;
-        interface_type.push_back(std::move(c));
-        children[segment_path] = interface_type.back();
-        return children.at(segment_path);
+        interface_type.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_children() const
 {
-    if(children.find("interface-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_counts != nullptr)
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
+        children["interface-counts"] = interface_counts;
     }
 
     for (auto const & c : interface_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11026,7 +9731,7 @@ std::string Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCo
 
 }
 
-EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11053,20 +9758,12 @@ EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCou
 
 std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11098,7 +9795,6 @@ Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::Interfac
     interface_counts(std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts>())
 {
     interface_counts->parent = this;
-    children["interface-counts"] = interface_counts;
 
     yang_name = "interface-type"; yang_parent_name = "interface-summary";
 }
@@ -11131,7 +9827,7 @@ std::string Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceTy
 
 }
 
-EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11156,41 +9852,24 @@ EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceTyp
 
 std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-counts")
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
-        else
+        if(interface_counts == nullptr)
         {
             interface_counts = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts>();
-            interface_counts->parent = this;
-            children["interface-counts"] = interface_counts;
         }
-        return children.at("interface-counts");
+        return interface_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_children() const
 {
-    if(children.find("interface-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_counts != nullptr)
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
+        children["interface-counts"] = interface_counts;
     }
 
     return children;
@@ -11248,7 +9927,7 @@ std::string Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceTy
 
 }
 
-EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11275,20 +9954,12 @@ EntityPath Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceTyp
 
 std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11350,7 +10021,7 @@ std::string Interfaces::InterfaceBriefs::get_segment_path() const
 
 }
 
-EntityPath Interfaces::InterfaceBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11373,15 +10044,6 @@ EntityPath Interfaces::InterfaceBriefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Interfaces::InterfaceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-brief")
     {
         for(auto const & c : interface_brief)
@@ -11389,28 +10051,24 @@ std::shared_ptr<Entity> Interfaces::InterfaceBriefs::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceBriefs::InterfaceBrief>();
         c->parent = this;
-        interface_brief.push_back(std::move(c));
-        children[segment_path] = interface_brief.back();
-        return children.at(segment_path);
+        interface_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11490,7 +10148,7 @@ std::string Interfaces::InterfaceBriefs::InterfaceBrief::get_segment_path() cons
 
 }
 
-EntityPath Interfaces::InterfaceBriefs::InterfaceBrief::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceBriefs::InterfaceBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11527,20 +10185,12 @@ EntityPath Interfaces::InterfaceBriefs::InterfaceBrief::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Interfaces::InterfaceBriefs::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceBriefs::InterfaceBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceBriefs::InterfaceBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11609,7 +10259,6 @@ Interfaces::InventorySummary::InventorySummary()
     interface_counts(std::make_shared<Interfaces::InventorySummary::InterfaceCounts>())
 {
     interface_counts->parent = this;
-    children["interface-counts"] = interface_counts;
 
     yang_name = "inventory-summary"; yang_parent_name = "interfaces";
 }
@@ -11648,7 +10297,7 @@ std::string Interfaces::InventorySummary::get_segment_path() const
 
 }
 
-EntityPath Interfaces::InventorySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InventorySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11671,28 +10320,13 @@ EntityPath Interfaces::InventorySummary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Interfaces::InventorySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-counts")
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
-        else
+        if(interface_counts == nullptr)
         {
             interface_counts = std::make_shared<Interfaces::InventorySummary::InterfaceCounts>();
-            interface_counts->parent = this;
-            children["interface-counts"] = interface_counts;
         }
-        return children.at("interface-counts");
+        return interface_counts;
     }
 
     if(child_yang_name == "interface-type")
@@ -11702,36 +10336,29 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InventorySummary::InterfaceType>();
         c->parent = this;
-        interface_type.push_back(std::move(c));
-        children[segment_path] = interface_type.back();
-        return children.at(segment_path);
+        interface_type.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InventorySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::get_children() const
 {
-    if(children.find("interface-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_counts != nullptr)
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
+        children["interface-counts"] = interface_counts;
     }
 
     for (auto const & c : interface_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11781,7 +10408,7 @@ std::string Interfaces::InventorySummary::InterfaceCounts::get_segment_path() co
 
 }
 
-EntityPath Interfaces::InventorySummary::InterfaceCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InventorySummary::InterfaceCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11808,20 +10435,12 @@ EntityPath Interfaces::InventorySummary::InterfaceCounts::get_entity_path(Entity
 
 std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InventorySummary::InterfaceCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11853,7 +10472,6 @@ Interfaces::InventorySummary::InterfaceType::InterfaceType()
     interface_counts(std::make_shared<Interfaces::InventorySummary::InterfaceType::InterfaceCounts>())
 {
     interface_counts->parent = this;
-    children["interface-counts"] = interface_counts;
 
     yang_name = "interface-type"; yang_parent_name = "inventory-summary";
 }
@@ -11886,7 +10504,7 @@ std::string Interfaces::InventorySummary::InterfaceType::get_segment_path() cons
 
 }
 
-EntityPath Interfaces::InventorySummary::InterfaceType::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InventorySummary::InterfaceType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11911,41 +10529,24 @@ EntityPath Interfaces::InventorySummary::InterfaceType::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-counts")
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
-        else
+        if(interface_counts == nullptr)
         {
             interface_counts = std::make_shared<Interfaces::InventorySummary::InterfaceType::InterfaceCounts>();
-            interface_counts->parent = this;
-            children["interface-counts"] = interface_counts;
         }
-        return children.at("interface-counts");
+        return interface_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InventorySummary::InterfaceType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceType::get_children() const
 {
-    if(children.find("interface-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_counts != nullptr)
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
+        children["interface-counts"] = interface_counts;
     }
 
     return children;
@@ -12003,7 +10604,7 @@ std::string Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_se
 
 }
 
-EntityPath Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12030,20 +10631,12 @@ EntityPath Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_ent
 
 std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12105,7 +10698,7 @@ std::string Interfaces::Interfaces_::get_segment_path() const
 
 }
 
-EntityPath Interfaces::Interfaces_::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::Interfaces_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12128,15 +10721,6 @@ EntityPath Interfaces::Interfaces_::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -12144,28 +10728,24 @@ std::shared_ptr<Entity> Interfaces::Interfaces_::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::Interfaces_::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::Interfaces_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interfaces_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12218,7 +10798,7 @@ std::string Interfaces::Interfaces_::Interface::get_segment_path() const
 
 }
 
-EntityPath Interfaces::Interfaces_::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::Interfaces_::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12246,20 +10826,12 @@ EntityPath Interfaces::Interfaces_::Interface::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::Interfaces_::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interfaces_::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12292,7 +10864,6 @@ Interfaces::InterfaceSummary::InterfaceSummary()
     interface_counts(std::make_shared<Interfaces::InterfaceSummary::InterfaceCounts>())
 {
     interface_counts->parent = this;
-    children["interface-counts"] = interface_counts;
 
     yang_name = "interface-summary"; yang_parent_name = "interfaces";
 }
@@ -12331,7 +10902,7 @@ std::string Interfaces::InterfaceSummary::get_segment_path() const
 
 }
 
-EntityPath Interfaces::InterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12354,28 +10925,13 @@ EntityPath Interfaces::InterfaceSummary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Interfaces::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-counts")
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
-        else
+        if(interface_counts == nullptr)
         {
             interface_counts = std::make_shared<Interfaces::InterfaceSummary::InterfaceCounts>();
-            interface_counts->parent = this;
-            children["interface-counts"] = interface_counts;
         }
-        return children.at("interface-counts");
+        return interface_counts;
     }
 
     if(child_yang_name == "interface-type")
@@ -12385,36 +10941,29 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Interfaces::InterfaceSummary::InterfaceType>();
         c->parent = this;
-        interface_type.push_back(std::move(c));
-        children[segment_path] = interface_type.back();
-        return children.at(segment_path);
+        interface_type.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::get_children() const
 {
-    if(children.find("interface-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_counts != nullptr)
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
+        children["interface-counts"] = interface_counts;
     }
 
     for (auto const & c : interface_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12464,7 +11013,7 @@ std::string Interfaces::InterfaceSummary::InterfaceCounts::get_segment_path() co
 
 }
 
-EntityPath Interfaces::InterfaceSummary::InterfaceCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceSummary::InterfaceCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12491,20 +11040,12 @@ EntityPath Interfaces::InterfaceSummary::InterfaceCounts::get_entity_path(Entity
 
 std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceSummary::InterfaceCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12536,7 +11077,6 @@ Interfaces::InterfaceSummary::InterfaceType::InterfaceType()
     interface_counts(std::make_shared<Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts>())
 {
     interface_counts->parent = this;
-    children["interface-counts"] = interface_counts;
 
     yang_name = "interface-type"; yang_parent_name = "interface-summary";
 }
@@ -12569,7 +11109,7 @@ std::string Interfaces::InterfaceSummary::InterfaceType::get_segment_path() cons
 
 }
 
-EntityPath Interfaces::InterfaceSummary::InterfaceType::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceSummary::InterfaceType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12594,41 +11134,24 @@ EntityPath Interfaces::InterfaceSummary::InterfaceType::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-counts")
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
-        else
+        if(interface_counts == nullptr)
         {
             interface_counts = std::make_shared<Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts>();
-            interface_counts->parent = this;
-            children["interface-counts"] = interface_counts;
         }
-        return children.at("interface-counts");
+        return interface_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceSummary::InterfaceType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceType::get_children() const
 {
-    if(children.find("interface-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_counts != nullptr)
     {
-        if(interface_counts != nullptr)
-        {
-            children["interface-counts"] = interface_counts;
-        }
+        children["interface-counts"] = interface_counts;
     }
 
     return children;
@@ -12686,7 +11209,7 @@ std::string Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_se
 
 }
 
-EntityPath Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12713,20 +11236,12 @@ EntityPath Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_ent
 
 std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

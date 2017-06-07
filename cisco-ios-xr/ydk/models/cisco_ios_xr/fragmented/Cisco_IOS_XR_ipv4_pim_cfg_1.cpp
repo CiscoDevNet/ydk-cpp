@@ -11,8 +11,8 @@ namespace Cisco_IOS_XR_ipv4_pim_cfg {
 
 Pim::DefaultContext::Ipv4::Paths::Path::Path()
     :
-    prefix_length{YType::uint8, "prefix-length"},
     source_address{YType::str, "source-address"},
+    prefix_length{YType::uint8, "prefix-length"},
     rpf_proxy_address{YType::str, "rpf-proxy-address"}
 {
     yang_name = "path"; yang_parent_name = "paths";
@@ -29,8 +29,8 @@ bool Pim::DefaultContext::Ipv4::Paths::Path::has_data() const
         if(leaf.is_set)
             return true;
     }
-    return prefix_length.is_set
-	|| source_address.is_set;
+    return source_address.is_set
+	|| prefix_length.is_set;
 }
 
 bool Pim::DefaultContext::Ipv4::Paths::Path::has_operation() const
@@ -41,21 +41,21 @@ bool Pim::DefaultContext::Ipv4::Paths::Path::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| is_set(prefix_length.operation)
 	|| is_set(source_address.operation)
+	|| is_set(prefix_length.operation)
 	|| is_set(rpf_proxy_address.operation);
 }
 
 std::string Pim::DefaultContext::Ipv4::Paths::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path" <<"[prefix-length='" <<prefix_length <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "path" <<"[source-address='" <<source_address <<"']" <<"[prefix-length='" <<prefix_length <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Pim::DefaultContext::Ipv4::Paths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::DefaultContext::Ipv4::Paths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -69,8 +69,8 @@ EntityPath Pim::DefaultContext::Ipv4::Paths::Path::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
     if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
     auto rpf_proxy_address_name_datas = rpf_proxy_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), rpf_proxy_address_name_datas.begin(), rpf_proxy_address_name_datas.end());
@@ -82,32 +82,24 @@ EntityPath Pim::DefaultContext::Ipv4::Paths::Path::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::DefaultContext::Ipv4::Paths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Paths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void Pim::DefaultContext::Ipv4::Paths::Path::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-    }
     if(value_path == "source-address")
     {
         source_address = value;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
     }
     if(value_path == "rpf-proxy-address")
     {
@@ -149,7 +141,7 @@ std::string Pim::DefaultContext::Ipv4::AllowRp::get_segment_path() const
 
 }
 
-EntityPath Pim::DefaultContext::Ipv4::AllowRp::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::DefaultContext::Ipv4::AllowRp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -174,20 +166,12 @@ EntityPath Pim::DefaultContext::Ipv4::AllowRp::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AllowRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::DefaultContext::Ipv4::AllowRp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AllowRp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -237,7 +221,7 @@ std::string Pim::DefaultContext::Ipv4::Convergence::get_segment_path() const
 
 }
 
-EntityPath Pim::DefaultContext::Ipv4::Convergence::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::DefaultContext::Ipv4::Convergence::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -262,20 +246,12 @@ EntityPath Pim::DefaultContext::Ipv4::Convergence::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Convergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::DefaultContext::Ipv4::Convergence::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Convergence::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -329,7 +305,7 @@ std::string Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_segment_path() c
 
 }
 
-EntityPath Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -352,15 +328,6 @@ EntityPath Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_entity_path(Entit
 
 std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cj-multicast-only-frr")
     {
         for(auto const & c : cj_multicast_only_frr)
@@ -368,28 +335,24 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr>();
         c->parent = this;
-        cj_multicast_only_frr.push_back(std::move(c));
-        children[segment_path] = cj_multicast_only_frr.back();
-        return children.at(segment_path);
+        cj_multicast_only_frr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cj_multicast_only_frr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -401,10 +364,10 @@ void Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::set_value(const std::string
 
 Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::CjMulticastOnlyFrr()
     :
-    backup{YType::str, "backup"},
-    prefix_length{YType::uint8, "prefix-length"},
+    source{YType::str, "source"},
     primary{YType::str, "primary"},
-    source{YType::str, "source"}
+    backup{YType::str, "backup"},
+    prefix_length{YType::uint8, "prefix-length"}
 {
     yang_name = "cj-multicast-only-frr"; yang_parent_name = "cj-multicast-only-frrs";
 }
@@ -415,31 +378,31 @@ Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::~CjMulticast
 
 bool Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::has_data() const
 {
-    return backup.is_set
-	|| prefix_length.is_set
+    return source.is_set
 	|| primary.is_set
-	|| source.is_set;
+	|| backup.is_set
+	|| prefix_length.is_set;
 }
 
 bool Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::has_operation() const
 {
     return is_set(operation)
-	|| is_set(backup.operation)
-	|| is_set(prefix_length.operation)
+	|| is_set(source.operation)
 	|| is_set(primary.operation)
-	|| is_set(source.operation);
+	|| is_set(backup.operation)
+	|| is_set(prefix_length.operation);
 }
 
 std::string Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cj-multicast-only-frr" <<"[backup='" <<backup <<"']" <<"[prefix-length='" <<prefix_length <<"']" <<"[primary='" <<primary <<"']" <<"[source='" <<source <<"']";
+    path_buffer << "cj-multicast-only-frr" <<"[source='" <<source <<"']" <<"[primary='" <<primary <<"']" <<"[backup='" <<backup <<"']" <<"[prefix-length='" <<prefix_length <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_entity_path(Entity* ancestor) const
+const EntityPath Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -453,10 +416,10 @@ EntityPath Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (primary.is_set || is_set(primary.operation)) leaf_name_data.push_back(primary.get_name_leafdata());
     if (backup.is_set || is_set(backup.operation)) leaf_name_data.push_back(backup.get_name_leafdata());
     if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (primary.is_set || is_set(primary.operation)) leaf_name_data.push_back(primary.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -466,25 +429,25 @@ EntityPath Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::g
 
 std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "source")
+    {
+        source = value;
+    }
+    if(value_path == "primary")
+    {
+        primary = value;
+    }
     if(value_path == "backup")
     {
         backup = value;
@@ -492,14 +455,6 @@ void Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::set_val
     if(value_path == "prefix-length")
     {
         prefix_length = value;
-    }
-    if(value_path == "primary")
-    {
-        primary = value;
-    }
-    if(value_path == "source")
-    {
-        source = value;
     }
 }
 

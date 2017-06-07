@@ -17,9 +17,6 @@ class HostAfIdBaseIdentity : public virtual Identity
         ~HostAfIdBaseIdentity();
 
 
-
-
-
 }; // HostAfIdBaseIdentity
 
 class Ipv4Identity : public Cisco_IOS_XR_tty_management_oper::HostAfIdBaseIdentity, virtual Identity
@@ -29,8 +26,6 @@ class Ipv4Identity : public Cisco_IOS_XR_tty_management_oper::HostAfIdBaseIdenti
         ~Ipv4Identity();
 
 
-
-
 }; // Ipv4Identity
 
 class Ipv6Identity : public Cisco_IOS_XR_tty_management_oper::HostAfIdBaseIdentity, virtual Identity
@@ -38,8 +33,6 @@ class Ipv6Identity : public Cisco_IOS_XR_tty_management_oper::HostAfIdBaseIdenti
     public:
         Ipv6Identity();
         ~Ipv6Identity();
-
-
 
 
 }; // Ipv6Identity

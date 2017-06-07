@@ -15,10 +15,8 @@ L3Vpn::L3Vpn()
 	,vrfs(std::make_shared<L3Vpn::Vrfs>())
 {
     invalid_vrfs->parent = this;
-    children["invalid-vrfs"] = invalid_vrfs;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "l3vpn"; yang_parent_name = "Cisco-IOS-XR-mpls-vpn-oper";
 }
@@ -49,12 +47,12 @@ std::string L3Vpn::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath L3Vpn::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L3Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalid-vrfs")
     {
-        if(invalid_vrfs != nullptr)
-        {
-            children["invalid-vrfs"] = invalid_vrfs;
-        }
-        else
+        if(invalid_vrfs == nullptr)
         {
             invalid_vrfs = std::make_shared<L3Vpn::InvalidVrfs>();
-            invalid_vrfs->parent = this;
-            children["invalid-vrfs"] = invalid_vrfs;
         }
-        return children.at("invalid-vrfs");
+        return invalid_vrfs;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<L3Vpn::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::get_children() const
 {
-    if(children.find("invalid-vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalid_vrfs != nullptr)
     {
-        if(invalid_vrfs != nullptr)
-        {
-            children["invalid-vrfs"] = invalid_vrfs;
-        }
+        children["invalid-vrfs"] = invalid_vrfs;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string L3Vpn::InvalidVrfs::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::InvalidVrfs::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::InvalidVrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath L3Vpn::InvalidVrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L3Vpn::InvalidVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalid-vrf")
     {
         for(auto const & c : invalid_vrf)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf>();
         c->parent = this;
-        invalid_vrf.push_back(std::move(c));
-        children[segment_path] = invalid_vrf.back();
-        return children.at(segment_path);
+        invalid_vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::InvalidVrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : invalid_vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -327,7 +286,7 @@ std::string L3Vpn::InvalidVrfs::InvalidVrf::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::InvalidVrfs::InvalidVrf::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -355,15 +314,6 @@ EntityPath L3Vpn::InvalidVrfs::InvalidVrf::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af")
     {
         for(auto const & c : af)
@@ -371,15 +321,13 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Af>();
         c->parent = this;
-        af.push_back(std::move(c));
-        children[segment_path] = af.back();
-        return children.at(segment_path);
+        af.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "interface")
@@ -389,36 +337,29 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::InvalidVrfs::InvalidVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : af)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -479,7 +420,7 @@ std::string L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -503,20 +444,12 @@ EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -578,7 +511,7 @@ std::string L3Vpn::InvalidVrfs::InvalidVrf::Af::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -605,15 +538,6 @@ EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
         for(auto const & c : route_target)
@@ -621,28 +545,24 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget>();
         c->parent = this;
-        route_target.push_back(std::move(c));
-        children[segment_path] = route_target.back();
-        return children.at(segment_path);
+        route_target.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::InvalidVrfs::InvalidVrf::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route_target)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -708,7 +628,7 @@ std::string L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_segment_path() 
 
 }
 
-EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -735,20 +655,12 @@ EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_entity_path(Enti
 
 std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -810,7 +722,7 @@ std::string L3Vpn::Vrfs::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -833,15 +745,6 @@ EntityPath L3Vpn::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L3Vpn::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -849,28 +752,24 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -943,7 +842,7 @@ std::string L3Vpn::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -971,15 +870,6 @@ EntityPath L3Vpn::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af")
     {
         for(auto const & c : af)
@@ -987,15 +877,13 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Af>();
         c->parent = this;
-        af.push_back(std::move(c));
-        children[segment_path] = af.back();
-        return children.at(segment_path);
+        af.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "interface")
@@ -1005,36 +893,29 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : af)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1095,7 +976,7 @@ std::string L3Vpn::Vrfs::Vrf::Interface::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::Vrfs::Vrf::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::Vrfs::Vrf::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1119,20 +1000,12 @@ EntityPath L3Vpn::Vrfs::Vrf::Interface::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::Vrfs::Vrf::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1194,7 +1067,7 @@ std::string L3Vpn::Vrfs::Vrf::Af::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::Vrfs::Vrf::Af::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::Vrfs::Vrf::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1221,15 +1094,6 @@ EntityPath L3Vpn::Vrfs::Vrf::Af::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
         for(auto const & c : route_target)
@@ -1237,28 +1101,24 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Af::RouteTarget>();
         c->parent = this;
-        route_target.push_back(std::move(c));
-        children[segment_path] = route_target.back();
-        return children.at(segment_path);
+        route_target.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::Vrfs::Vrf::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route_target)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1324,7 +1184,7 @@ std::string L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_segment_path() const
 
 }
 
-EntityPath L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_entity_path(Entity* ancestor) const
+const EntityPath L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1351,20 +1211,12 @@ EntityPath L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

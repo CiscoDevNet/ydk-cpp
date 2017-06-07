@@ -19,22 +19,16 @@ Sam::Sam()
 	,system_information(std::make_shared<Sam::SystemInformation>())
 {
     certificate_revocation_list_summary->parent = this;
-    children["certificate-revocation-list-summary"] = certificate_revocation_list_summary;
 
     certificate_revocations->parent = this;
-    children["certificate-revocations"] = certificate_revocations;
 
     devices->parent = this;
-    children["devices"] = devices;
 
     log_contents->parent = this;
-    children["log-contents"] = log_contents;
 
     packages->parent = this;
-    children["packages"] = packages;
 
     system_information->parent = this;
-    children["system-information"] = system_information;
 
     yang_name = "sam"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-oper";
 }
@@ -73,12 +67,12 @@ std::string Sam::get_segment_path() const
 
 }
 
-EntityPath Sam::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -93,156 +87,94 @@ EntityPath Sam::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate-revocation-list-summary")
     {
-        if(certificate_revocation_list_summary != nullptr)
-        {
-            children["certificate-revocation-list-summary"] = certificate_revocation_list_summary;
-        }
-        else
+        if(certificate_revocation_list_summary == nullptr)
         {
             certificate_revocation_list_summary = std::make_shared<Sam::CertificateRevocationListSummary>();
-            certificate_revocation_list_summary->parent = this;
-            children["certificate-revocation-list-summary"] = certificate_revocation_list_summary;
         }
-        return children.at("certificate-revocation-list-summary");
+        return certificate_revocation_list_summary;
     }
 
     if(child_yang_name == "certificate-revocations")
     {
-        if(certificate_revocations != nullptr)
-        {
-            children["certificate-revocations"] = certificate_revocations;
-        }
-        else
+        if(certificate_revocations == nullptr)
         {
             certificate_revocations = std::make_shared<Sam::CertificateRevocations>();
-            certificate_revocations->parent = this;
-            children["certificate-revocations"] = certificate_revocations;
         }
-        return children.at("certificate-revocations");
+        return certificate_revocations;
     }
 
     if(child_yang_name == "devices")
     {
-        if(devices != nullptr)
-        {
-            children["devices"] = devices;
-        }
-        else
+        if(devices == nullptr)
         {
             devices = std::make_shared<Sam::Devices>();
-            devices->parent = this;
-            children["devices"] = devices;
         }
-        return children.at("devices");
+        return devices;
     }
 
     if(child_yang_name == "log-contents")
     {
-        if(log_contents != nullptr)
-        {
-            children["log-contents"] = log_contents;
-        }
-        else
+        if(log_contents == nullptr)
         {
             log_contents = std::make_shared<Sam::LogContents>();
-            log_contents->parent = this;
-            children["log-contents"] = log_contents;
         }
-        return children.at("log-contents");
+        return log_contents;
     }
 
     if(child_yang_name == "packages")
     {
-        if(packages != nullptr)
-        {
-            children["packages"] = packages;
-        }
-        else
+        if(packages == nullptr)
         {
             packages = std::make_shared<Sam::Packages>();
-            packages->parent = this;
-            children["packages"] = packages;
         }
-        return children.at("packages");
+        return packages;
     }
 
     if(child_yang_name == "system-information")
     {
-        if(system_information != nullptr)
-        {
-            children["system-information"] = system_information;
-        }
-        else
+        if(system_information == nullptr)
         {
             system_information = std::make_shared<Sam::SystemInformation>();
-            system_information->parent = this;
-            children["system-information"] = system_information;
         }
-        return children.at("system-information");
+        return system_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::get_children() const
 {
-    if(children.find("certificate-revocation-list-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_revocation_list_summary != nullptr)
     {
-        if(certificate_revocation_list_summary != nullptr)
-        {
-            children["certificate-revocation-list-summary"] = certificate_revocation_list_summary;
-        }
+        children["certificate-revocation-list-summary"] = certificate_revocation_list_summary;
     }
 
-    if(children.find("certificate-revocations") == children.end())
+    if(certificate_revocations != nullptr)
     {
-        if(certificate_revocations != nullptr)
-        {
-            children["certificate-revocations"] = certificate_revocations;
-        }
+        children["certificate-revocations"] = certificate_revocations;
     }
 
-    if(children.find("devices") == children.end())
+    if(devices != nullptr)
     {
-        if(devices != nullptr)
-        {
-            children["devices"] = devices;
-        }
+        children["devices"] = devices;
     }
 
-    if(children.find("log-contents") == children.end())
+    if(log_contents != nullptr)
     {
-        if(log_contents != nullptr)
-        {
-            children["log-contents"] = log_contents;
-        }
+        children["log-contents"] = log_contents;
     }
 
-    if(children.find("packages") == children.end())
+    if(packages != nullptr)
     {
-        if(packages != nullptr)
-        {
-            children["packages"] = packages;
-        }
+        children["packages"] = packages;
     }
 
-    if(children.find("system-information") == children.end())
+    if(system_information != nullptr)
     {
-        if(system_information != nullptr)
-        {
-            children["system-information"] = system_information;
-        }
+        children["system-information"] = system_information;
     }
 
     return children;
@@ -309,7 +241,7 @@ std::string Sam::SystemInformation::get_segment_path() const
 
 }
 
-EntityPath Sam::SystemInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::SystemInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -335,20 +267,12 @@ EntityPath Sam::SystemInformation::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::SystemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::SystemInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::SystemInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -406,7 +330,7 @@ std::string Sam::LogContents::get_segment_path() const
 
 }
 
-EntityPath Sam::LogContents::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::LogContents::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -429,15 +353,6 @@ EntityPath Sam::LogContents::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::LogContents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log-content")
     {
         for(auto const & c : log_content)
@@ -445,28 +360,24 @@ std::shared_ptr<Entity> Sam::LogContents::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sam::LogContents::LogContent>();
         c->parent = this;
-        log_content.push_back(std::move(c));
-        children[segment_path] = log_content.back();
-        return children.at(segment_path);
+        log_content.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::LogContents::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log_content)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -523,7 +434,7 @@ std::string Sam::LogContents::LogContent::get_segment_path() const
 
 }
 
-EntityPath Sam::LogContents::LogContent::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::LogContents::LogContent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -549,15 +460,6 @@ EntityPath Sam::LogContents::LogContent::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::LogContents::LogContent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "logs")
     {
         for(auto const & c : logs)
@@ -565,28 +467,24 @@ std::shared_ptr<Entity> Sam::LogContents::LogContent::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sam::LogContents::LogContent::Logs>();
         c->parent = this;
-        logs.push_back(std::move(c));
-        children[segment_path] = logs.back();
-        return children.at(segment_path);
+        logs.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::LogContents::LogContent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::LogContent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : logs)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -669,7 +567,7 @@ std::string Sam::LogContents::LogContent::Logs::get_segment_path() const
 
 }
 
-EntityPath Sam::LogContents::LogContent::Logs::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::LogContents::LogContent::Logs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -703,20 +601,12 @@ EntityPath Sam::LogContents::LogContent::Logs::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Sam::LogContents::LogContent::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::LogContents::LogContent::Logs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::LogContent::Logs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -806,7 +696,7 @@ std::string Sam::Devices::get_segment_path() const
 
 }
 
-EntityPath Sam::Devices::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -829,15 +719,6 @@ EntityPath Sam::Devices::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "device")
     {
         for(auto const & c : device)
@@ -845,28 +726,24 @@ std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sam::Devices::Device>();
         c->parent = this;
-        device.push_back(std::move(c));
-        children[segment_path] = device.back();
-        return children.at(segment_path);
+        device.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : device)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -883,7 +760,6 @@ Sam::Devices::Device::Device()
     certificate(std::make_shared<Sam::Devices::Device::Certificate>())
 {
     certificate->parent = this;
-    children["certificate"] = certificate;
 
     yang_name = "device"; yang_parent_name = "devices";
 }
@@ -914,7 +790,7 @@ std::string Sam::Devices::Device::get_segment_path() const
 
 }
 
-EntityPath Sam::Devices::Device::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -938,41 +814,24 @@ EntityPath Sam::Devices::Device::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate")
     {
-        if(certificate != nullptr)
-        {
-            children["certificate"] = certificate;
-        }
-        else
+        if(certificate == nullptr)
         {
             certificate = std::make_shared<Sam::Devices::Device::Certificate>();
-            certificate->parent = this;
-            children["certificate"] = certificate;
         }
-        return children.at("certificate");
+        return certificate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::get_children() const
 {
-    if(children.find("certificate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate != nullptr)
     {
-        if(certificate != nullptr)
-        {
-            children["certificate"] = certificate;
-        }
+        children["certificate"] = certificate;
     }
 
     return children;
@@ -992,10 +851,8 @@ Sam::Devices::Device::Certificate::Certificate()
 	,certificate_indexes(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     certificate_indexes->parent = this;
-    children["certificate-indexes"] = certificate_indexes;
 
     yang_name = "certificate"; yang_parent_name = "device";
 }
@@ -1026,7 +883,7 @@ std::string Sam::Devices::Device::Certificate::get_segment_path() const
 
 }
 
-EntityPath Sam::Devices::Device::Certificate::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::Certificate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1049,64 +906,38 @@ EntityPath Sam::Devices::Device::Certificate::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Sam::Devices::Device::Certificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<Sam::Devices::Device::Certificate::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "certificate-indexes")
     {
-        if(certificate_indexes != nullptr)
-        {
-            children["certificate-indexes"] = certificate_indexes;
-        }
-        else
+        if(certificate_indexes == nullptr)
         {
             certificate_indexes = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes>();
-            certificate_indexes->parent = this;
-            children["certificate-indexes"] = certificate_indexes;
         }
-        return children.at("certificate-indexes");
+        return certificate_indexes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::Certificate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("certificate-indexes") == children.end())
+    if(certificate_indexes != nullptr)
     {
-        if(certificate_indexes != nullptr)
-        {
-            children["certificate-indexes"] = certificate_indexes;
-        }
+        children["certificate-indexes"] = certificate_indexes;
     }
 
     return children;
@@ -1124,7 +955,6 @@ Sam::Devices::Device::Certificate::Brief::Brief()
     certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::Brief::CertificateFlags>())
 {
     certificate_flags->parent = this;
-    children["certificate-flags"] = certificate_flags;
 
     yang_name = "brief"; yang_parent_name = "certificate";
 }
@@ -1157,7 +987,7 @@ std::string Sam::Devices::Device::Certificate::Brief::get_segment_path() const
 
 }
 
-EntityPath Sam::Devices::Device::Certificate::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::Certificate::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1182,41 +1012,24 @@ EntityPath Sam::Devices::Device::Certificate::Brief::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate-flags")
     {
-        if(certificate_flags != nullptr)
-        {
-            children["certificate-flags"] = certificate_flags;
-        }
-        else
+        if(certificate_flags == nullptr)
         {
             certificate_flags = std::make_shared<Sam::Devices::Device::Certificate::Brief::CertificateFlags>();
-            certificate_flags->parent = this;
-            children["certificate-flags"] = certificate_flags;
         }
-        return children.at("certificate-flags");
+        return certificate_flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::Certificate::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::get_children() const
 {
-    if(children.find("certificate-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_flags != nullptr)
     {
-        if(certificate_flags != nullptr)
-        {
-            children["certificate-flags"] = certificate_flags;
-        }
+        children["certificate-flags"] = certificate_flags;
     }
 
     return children;
@@ -1274,7 +1087,7 @@ std::string Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_segm
 
 }
 
-EntityPath Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1301,20 +1114,12 @@ EntityPath Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_entit
 
 std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1376,7 +1181,7 @@ std::string Sam::Devices::Device::Certificate::CertificateIndexes::get_segment_p
 
 }
 
-EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1399,15 +1204,6 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::get_entity_pat
 
 std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate-index")
     {
         for(auto const & c : certificate_index)
@@ -1415,28 +1211,24 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex>();
         c->parent = this;
-        certificate_index.push_back(std::move(c));
-        children[segment_path] = certificate_index.back();
-        return children.at(segment_path);
+        certificate_index.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::Certificate::CertificateIndexes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : certificate_index)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1453,7 +1245,6 @@ Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Certifi
     detail(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     yang_name = "certificate-index"; yang_parent_name = "certificate-indexes";
 }
@@ -1484,7 +1275,7 @@ std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIn
 
 }
 
-EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1508,41 +1299,24 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateInd
 
 std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
     return children;
@@ -1564,7 +1338,6 @@ Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail:
     certificate_flags(std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags>())
 {
     certificate_flags->parent = this;
-    children["certificate-flags"] = certificate_flags;
 
     yang_name = "detail"; yang_parent_name = "certificate-index";
 }
@@ -1597,7 +1370,7 @@ std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIn
 
 }
 
-EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1622,41 +1395,24 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateInd
 
 std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate-flags")
     {
-        if(certificate_flags != nullptr)
-        {
-            children["certificate-flags"] = certificate_flags;
-        }
-        else
+        if(certificate_flags == nullptr)
         {
             certificate_flags = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags>();
-            certificate_flags->parent = this;
-            children["certificate-flags"] = certificate_flags;
         }
-        return children.at("certificate-flags");
+        return certificate_flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_children() const
 {
-    if(children.find("certificate-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_flags != nullptr)
     {
-        if(certificate_flags != nullptr)
-        {
-            children["certificate-flags"] = certificate_flags;
-        }
+        children["certificate-flags"] = certificate_flags;
     }
 
     return children;
@@ -1714,7 +1470,7 @@ std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIn
 
 }
 
-EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1741,20 +1497,12 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateInd
 
 std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1816,7 +1564,7 @@ std::string Sam::Packages::get_segment_path() const
 
 }
 
-EntityPath Sam::Packages::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Packages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1839,15 +1587,6 @@ EntityPath Sam::Packages::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::Packages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "package")
     {
         for(auto const & c : package)
@@ -1855,28 +1594,24 @@ std::shared_ptr<Entity> Sam::Packages::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sam::Packages::Package>();
         c->parent = this;
-        package.push_back(std::move(c));
-        children[segment_path] = package.back();
-        return children.at(segment_path);
+        package.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Packages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : package)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1895,7 +1630,6 @@ Sam::Packages::Package::Package()
     certificate_flags(std::make_shared<Sam::Packages::Package::CertificateFlags>())
 {
     certificate_flags->parent = this;
-    children["certificate-flags"] = certificate_flags;
 
     yang_name = "package"; yang_parent_name = "packages";
 }
@@ -1930,7 +1664,7 @@ std::string Sam::Packages::Package::get_segment_path() const
 
 }
 
-EntityPath Sam::Packages::Package::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Packages::Package::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1956,41 +1690,24 @@ EntityPath Sam::Packages::Package::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::Packages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate-flags")
     {
-        if(certificate_flags != nullptr)
-        {
-            children["certificate-flags"] = certificate_flags;
-        }
-        else
+        if(certificate_flags == nullptr)
         {
             certificate_flags = std::make_shared<Sam::Packages::Package::CertificateFlags>();
-            certificate_flags->parent = this;
-            children["certificate-flags"] = certificate_flags;
         }
-        return children.at("certificate-flags");
+        return certificate_flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Packages::Package::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::Package::get_children() const
 {
-    if(children.find("certificate-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_flags != nullptr)
     {
-        if(certificate_flags != nullptr)
-        {
-            children["certificate-flags"] = certificate_flags;
-        }
+        children["certificate-flags"] = certificate_flags;
     }
 
     return children;
@@ -2052,7 +1769,7 @@ std::string Sam::Packages::Package::CertificateFlags::get_segment_path() const
 
 }
 
-EntityPath Sam::Packages::Package::CertificateFlags::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::Packages::Package::CertificateFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2079,20 +1796,12 @@ EntityPath Sam::Packages::Package::CertificateFlags::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Sam::Packages::Package::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::Packages::Package::CertificateFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::Package::CertificateFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2154,7 +1863,7 @@ std::string Sam::CertificateRevocations::get_segment_path() const
 
 }
 
-EntityPath Sam::CertificateRevocations::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::CertificateRevocations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2177,15 +1886,6 @@ EntityPath Sam::CertificateRevocations::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate-revocation")
     {
         for(auto const & c : certificate_revocation)
@@ -2193,28 +1893,24 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sam::CertificateRevocations::CertificateRevocation>();
         c->parent = this;
-        certificate_revocation.push_back(std::move(c));
-        children[segment_path] = certificate_revocation.back();
-        return children.at(segment_path);
+        certificate_revocation.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::CertificateRevocations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : certificate_revocation)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2231,7 +1927,6 @@ Sam::CertificateRevocations::CertificateRevocation::CertificateRevocation()
     certificate_revocation_list_detail(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail>())
 {
     certificate_revocation_list_detail->parent = this;
-    children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
 
     yang_name = "certificate-revocation"; yang_parent_name = "certificate-revocations";
 }
@@ -2262,7 +1957,7 @@ std::string Sam::CertificateRevocations::CertificateRevocation::get_segment_path
 
 }
 
-EntityPath Sam::CertificateRevocations::CertificateRevocation::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::CertificateRevocations::CertificateRevocation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2286,41 +1981,24 @@ EntityPath Sam::CertificateRevocations::CertificateRevocation::get_entity_path(E
 
 std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "certificate-revocation-list-detail")
     {
-        if(certificate_revocation_list_detail != nullptr)
-        {
-            children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
-        }
-        else
+        if(certificate_revocation_list_detail == nullptr)
         {
             certificate_revocation_list_detail = std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail>();
-            certificate_revocation_list_detail->parent = this;
-            children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
         }
-        return children.at("certificate-revocation-list-detail");
+        return certificate_revocation_list_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::CertificateRevocations::CertificateRevocation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::get_children() const
 {
-    if(children.find("certificate-revocation-list-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(certificate_revocation_list_detail != nullptr)
     {
-        if(certificate_revocation_list_detail != nullptr)
-        {
-            children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
-        }
+        children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
     }
 
     return children;
@@ -2342,7 +2020,6 @@ Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDet
     issuer(std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer>())
 {
     issuer->parent = this;
-    children["issuer"] = issuer;
 
     yang_name = "certificate-revocation-list-detail"; yang_parent_name = "certificate-revocation";
 }
@@ -2375,7 +2052,7 @@ std::string Sam::CertificateRevocations::CertificateRevocation::CertificateRevoc
 
 }
 
-EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2400,41 +2077,24 @@ EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevoca
 
 std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "issuer")
     {
-        if(issuer != nullptr)
-        {
-            children["issuer"] = issuer;
-        }
-        else
+        if(issuer == nullptr)
         {
             issuer = std::make_shared<Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer>();
-            issuer->parent = this;
-            children["issuer"] = issuer;
         }
-        return children.at("issuer");
+        return issuer;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_children() const
 {
-    if(children.find("issuer") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(issuer != nullptr)
     {
-        if(issuer != nullptr)
-        {
-            children["issuer"] = issuer;
-        }
+        children["issuer"] = issuer;
     }
 
     return children;
@@ -2489,7 +2149,7 @@ std::string Sam::CertificateRevocations::CertificateRevocation::CertificateRevoc
 
 }
 
-EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2515,20 +2175,12 @@ EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevoca
 
 std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2556,7 +2208,6 @@ Sam::CertificateRevocationListSummary::CertificateRevocationListSummary()
     issuer(std::make_shared<Sam::CertificateRevocationListSummary::Issuer>())
 {
     issuer->parent = this;
-    children["issuer"] = issuer;
 
     yang_name = "certificate-revocation-list-summary"; yang_parent_name = "sam";
 }
@@ -2589,7 +2240,7 @@ std::string Sam::CertificateRevocationListSummary::get_segment_path() const
 
 }
 
-EntityPath Sam::CertificateRevocationListSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::CertificateRevocationListSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2614,41 +2265,24 @@ EntityPath Sam::CertificateRevocationListSummary::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "issuer")
     {
-        if(issuer != nullptr)
-        {
-            children["issuer"] = issuer;
-        }
-        else
+        if(issuer == nullptr)
         {
             issuer = std::make_shared<Sam::CertificateRevocationListSummary::Issuer>();
-            issuer->parent = this;
-            children["issuer"] = issuer;
         }
-        return children.at("issuer");
+        return issuer;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::CertificateRevocationListSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::get_children() const
 {
-    if(children.find("issuer") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(issuer != nullptr)
     {
-        if(issuer != nullptr)
-        {
-            children["issuer"] = issuer;
-        }
+        children["issuer"] = issuer;
     }
 
     return children;
@@ -2703,7 +2337,7 @@ std::string Sam::CertificateRevocationListSummary::Issuer::get_segment_path() co
 
 }
 
-EntityPath Sam::CertificateRevocationListSummary::Issuer::get_entity_path(Entity* ancestor) const
+const EntityPath Sam::CertificateRevocationListSummary::Issuer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2729,20 +2363,12 @@ EntityPath Sam::CertificateRevocationListSummary::Issuer::get_entity_path(Entity
 
 std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sam::CertificateRevocationListSummary::Issuer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::Issuer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

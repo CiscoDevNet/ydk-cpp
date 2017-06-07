@@ -14,7 +14,6 @@ Cdp::Cdp()
     nodes(std::make_shared<Cdp::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-oper";
 }
@@ -43,12 +42,12 @@ std::string Cdp::get_segment_path() const
 
 }
 
-EntityPath Cdp::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Cdp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Cdp::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Cdp::Nodes::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Cdp::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cdp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Cdp::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -244,13 +213,10 @@ Cdp::Nodes::Node::Node()
 	,statistics(std::make_shared<Cdp::Nodes::Node::Statistics>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -285,7 +251,7 @@ std::string Cdp::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,87 +275,52 @@ EntityPath Cdp::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Cdp::Nodes::Node::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Cdp::Nodes::Node::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Cdp::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -410,13 +341,10 @@ Cdp::Nodes::Node::Neighbors::Neighbors()
 	,summaries(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries>())
 {
     details->parent = this;
-    children["details"] = details;
 
     devices->parent = this;
-    children["devices"] = devices;
 
     summaries->parent = this;
-    children["summaries"] = summaries;
 
     yang_name = "neighbors"; yang_parent_name = "node";
 }
@@ -449,7 +377,7 @@ std::string Cdp::Nodes::Node::Neighbors::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -472,87 +400,52 @@ EntityPath Cdp::Nodes::Node::Neighbors::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "details")
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
-        else
+        if(details == nullptr)
         {
             details = std::make_shared<Cdp::Nodes::Node::Neighbors::Details>();
-            details->parent = this;
-            children["details"] = details;
         }
-        return children.at("details");
+        return details;
     }
 
     if(child_yang_name == "devices")
     {
-        if(devices != nullptr)
-        {
-            children["devices"] = devices;
-        }
-        else
+        if(devices == nullptr)
         {
             devices = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices>();
-            devices->parent = this;
-            children["devices"] = devices;
         }
-        return children.at("devices");
+        return devices;
     }
 
     if(child_yang_name == "summaries")
     {
-        if(summaries != nullptr)
-        {
-            children["summaries"] = summaries;
-        }
-        else
+        if(summaries == nullptr)
         {
             summaries = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries>();
-            summaries->parent = this;
-            children["summaries"] = summaries;
         }
-        return children.at("summaries");
+        return summaries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::get_children() const
 {
-    if(children.find("details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(details != nullptr)
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
+        children["details"] = details;
     }
 
-    if(children.find("devices") == children.end())
+    if(devices != nullptr)
     {
-        if(devices != nullptr)
-        {
-            children["devices"] = devices;
-        }
+        children["devices"] = devices;
     }
 
-    if(children.find("summaries") == children.end())
+    if(summaries != nullptr)
     {
-        if(summaries != nullptr)
-        {
-            children["summaries"] = summaries;
-        }
+        children["summaries"] = summaries;
     }
 
     return children;
@@ -600,7 +493,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -623,15 +516,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
         for(auto const & c : detail)
@@ -639,28 +523,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail>();
         c->parent = this;
-        detail.push_back(std::move(c));
-        children[segment_path] = detail.back();
-        return children.at(segment_path);
+        detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -714,7 +594,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::get_segment_path() con
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -739,15 +619,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-neighbor")
     {
         for(auto const & c : cdp_neighbor)
@@ -755,28 +626,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor>();
         c->parent = this;
-        cdp_neighbor.push_back(std::move(c));
-        children[segment_path] = cdp_neighbor.back();
-        return children.at(segment_path);
+        cdp_neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -807,7 +674,6 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::CdpNeighbor()
     detail(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     yang_name = "cdp-neighbor"; yang_parent_name = "detail";
 }
@@ -850,7 +716,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_segme
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -880,41 +746,24 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_entity
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
     return children;
@@ -964,10 +813,8 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Detail_()
 	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList>())
 {
     network_addresses->parent = this;
-    children["network-addresses"] = network_addresses;
 
     protocol_hello_list->parent = this;
-    children["protocol-hello-list"] = protocol_hello_list;
 
     yang_name = "detail"; yang_parent_name = "cdp-neighbor";
 }
@@ -1008,7 +855,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1036,64 +883,38 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::g
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network-addresses")
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
-        else
+        if(network_addresses == nullptr)
         {
             network_addresses = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses>();
-            network_addresses->parent = this;
-            children["network-addresses"] = network_addresses;
         }
-        return children.at("network-addresses");
+        return network_addresses;
     }
 
     if(child_yang_name == "protocol-hello-list")
     {
-        if(protocol_hello_list != nullptr)
-        {
-            children["protocol-hello-list"] = protocol_hello_list;
-        }
-        else
+        if(protocol_hello_list == nullptr)
         {
             protocol_hello_list = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList>();
-            protocol_hello_list->parent = this;
-            children["protocol-hello-list"] = protocol_hello_list;
         }
-        return children.at("protocol-hello-list");
+        return protocol_hello_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_children() const
 {
-    if(children.find("network-addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(network_addresses != nullptr)
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
+        children["network-addresses"] = network_addresses;
     }
 
-    if(children.find("protocol-hello-list") == children.end())
+    if(protocol_hello_list != nullptr)
     {
-        if(protocol_hello_list != nullptr)
-        {
-            children["protocol-hello-list"] = protocol_hello_list;
-        }
+        children["protocol-hello-list"] = protocol_hello_list;
     }
 
     return children;
@@ -1161,7 +982,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1184,15 +1005,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::N
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-addr-entry")
     {
         for(auto const & c : cdp_addr_entry)
@@ -1200,28 +1012,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
-        cdp_addr_entry.push_back(std::move(c));
-        children[segment_path] = cdp_addr_entry.back();
-        return children.at(segment_path);
+        cdp_addr_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_addr_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1236,7 +1044,6 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
     address(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses";
 }
@@ -1265,7 +1072,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1288,41 +1095,24 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::N
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -1369,7 +1159,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1395,20 +1185,12 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::N
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1466,7 +1248,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1489,15 +1271,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::P
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-prot-hello-entry")
     {
         for(auto const & c : cdp_prot_hello_entry)
@@ -1505,28 +1278,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
-        cdp_prot_hello_entry.push_back(std::move(c));
-        children[segment_path] = cdp_prot_hello_entry.back();
-        return children.at(segment_path);
+        cdp_prot_hello_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_prot_hello_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1567,7 +1336,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1591,20 +1360,12 @@ EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::P
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1654,7 +1415,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1677,15 +1438,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "device")
     {
         for(auto const & c : device)
@@ -1693,28 +1445,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device>();
         c->parent = this;
-        device.push_back(std::move(c));
-        children[segment_path] = device.back();
-        return children.at(segment_path);
+        device.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : device)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1765,7 +1513,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::get_segment_path() con
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1789,15 +1537,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-neighbor")
     {
         for(auto const & c : cdp_neighbor)
@@ -1805,28 +1544,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor>();
         c->parent = this;
-        cdp_neighbor.push_back(std::move(c));
-        children[segment_path] = cdp_neighbor.back();
-        return children.at(segment_path);
+        cdp_neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1853,7 +1588,6 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::CdpNeighbor()
     detail(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     yang_name = "cdp-neighbor"; yang_parent_name = "device";
 }
@@ -1896,7 +1630,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_segme
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1926,41 +1660,24 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_entity
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
     return children;
@@ -2010,10 +1727,8 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Detail()
 	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList>())
 {
     network_addresses->parent = this;
-    children["network-addresses"] = network_addresses;
 
     protocol_hello_list->parent = this;
-    children["protocol-hello-list"] = protocol_hello_list;
 
     yang_name = "detail"; yang_parent_name = "cdp-neighbor";
 }
@@ -2054,7 +1769,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::g
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2082,64 +1797,38 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ge
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network-addresses")
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
-        else
+        if(network_addresses == nullptr)
         {
             network_addresses = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses>();
-            network_addresses->parent = this;
-            children["network-addresses"] = network_addresses;
         }
-        return children.at("network-addresses");
+        return network_addresses;
     }
 
     if(child_yang_name == "protocol-hello-list")
     {
-        if(protocol_hello_list != nullptr)
-        {
-            children["protocol-hello-list"] = protocol_hello_list;
-        }
-        else
+        if(protocol_hello_list == nullptr)
         {
             protocol_hello_list = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList>();
-            protocol_hello_list->parent = this;
-            children["protocol-hello-list"] = protocol_hello_list;
         }
-        return children.at("protocol-hello-list");
+        return protocol_hello_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_children() const
 {
-    if(children.find("network-addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(network_addresses != nullptr)
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
+        children["network-addresses"] = network_addresses;
     }
 
-    if(children.find("protocol-hello-list") == children.end())
+    if(protocol_hello_list != nullptr)
     {
-        if(protocol_hello_list != nullptr)
-        {
-            children["protocol-hello-list"] = protocol_hello_list;
-        }
+        children["protocol-hello-list"] = protocol_hello_list;
     }
 
     return children;
@@ -2207,7 +1896,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::N
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2230,15 +1919,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Ne
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-addr-entry")
     {
         for(auto const & c : cdp_addr_entry)
@@ -2246,28 +1926,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
-        cdp_addr_entry.push_back(std::move(c));
-        children[segment_path] = cdp_addr_entry.back();
-        return children.at(segment_path);
+        cdp_addr_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_addr_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2282,7 +1958,6 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
     address(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses";
 }
@@ -2311,7 +1986,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::N
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2334,41 +2009,24 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Ne
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -2415,7 +2073,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::N
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2441,20 +2099,12 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Ne
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2512,7 +2162,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::P
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2535,15 +2185,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Pr
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-prot-hello-entry")
     {
         for(auto const & c : cdp_prot_hello_entry)
@@ -2551,28 +2192,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
-        cdp_prot_hello_entry.push_back(std::move(c));
-        children[segment_path] = cdp_prot_hello_entry.back();
-        return children.at(segment_path);
+        cdp_prot_hello_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_prot_hello_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2613,7 +2250,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::P
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2637,20 +2274,12 @@ EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Pr
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2700,7 +2329,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2723,15 +2352,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary")
     {
         for(auto const & c : summary)
@@ -2739,28 +2359,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary>();
         c->parent = this;
-        summary.push_back(std::move(c));
-        children[segment_path] = summary.back();
-        return children.at(segment_path);
+        summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2814,7 +2430,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_segment_path() 
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2839,15 +2455,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_entity_path(Enti
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-neighbor")
     {
         for(auto const & c : cdp_neighbor)
@@ -2855,28 +2462,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor>();
         c->parent = this;
-        cdp_neighbor.push_back(std::move(c));
-        children[segment_path] = cdp_neighbor.back();
-        return children.at(segment_path);
+        cdp_neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2907,7 +2510,6 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::CdpNeighbor()
     detail(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     yang_name = "cdp-neighbor"; yang_parent_name = "summary";
 }
@@ -2950,7 +2552,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_se
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2980,41 +2582,24 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_ent
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
     return children;
@@ -3064,10 +2649,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Detail()
 	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList>())
 {
     network_addresses->parent = this;
-    children["network-addresses"] = network_addresses;
 
     protocol_hello_list->parent = this;
-    children["protocol-hello-list"] = protocol_hello_list;
 
     yang_name = "detail"; yang_parent_name = "cdp-neighbor";
 }
@@ -3108,7 +2691,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3136,64 +2719,38 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail:
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network-addresses")
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
-        else
+        if(network_addresses == nullptr)
         {
             network_addresses = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses>();
-            network_addresses->parent = this;
-            children["network-addresses"] = network_addresses;
         }
-        return children.at("network-addresses");
+        return network_addresses;
     }
 
     if(child_yang_name == "protocol-hello-list")
     {
-        if(protocol_hello_list != nullptr)
-        {
-            children["protocol-hello-list"] = protocol_hello_list;
-        }
-        else
+        if(protocol_hello_list == nullptr)
         {
             protocol_hello_list = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList>();
-            protocol_hello_list->parent = this;
-            children["protocol-hello-list"] = protocol_hello_list;
         }
-        return children.at("protocol-hello-list");
+        return protocol_hello_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_children() const
 {
-    if(children.find("network-addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(network_addresses != nullptr)
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
+        children["network-addresses"] = network_addresses;
     }
 
-    if(children.find("protocol-hello-list") == children.end())
+    if(protocol_hello_list != nullptr)
     {
-        if(protocol_hello_list != nullptr)
-        {
-            children["protocol-hello-list"] = protocol_hello_list;
-        }
+        children["protocol-hello-list"] = protocol_hello_list;
     }
 
     return children;
@@ -3261,7 +2818,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3284,15 +2841,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail:
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-addr-entry")
     {
         for(auto const & c : cdp_addr_entry)
@@ -3300,28 +2848,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
-        cdp_addr_entry.push_back(std::move(c));
-        children[segment_path] = cdp_addr_entry.back();
-        return children.at(segment_path);
+        cdp_addr_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_addr_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3336,7 +2880,6 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
     address(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses";
 }
@@ -3365,7 +2908,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3388,41 +2931,24 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail:
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -3469,7 +2995,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3495,20 +3021,12 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail:
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3566,7 +3084,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3589,15 +3107,6 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail:
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cdp-prot-hello-entry")
     {
         for(auto const & c : cdp_prot_hello_entry)
@@ -3605,28 +3114,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
-        cdp_prot_hello_entry.push_back(std::move(c));
-        children[segment_path] = cdp_prot_hello_entry.back();
-        return children.at(segment_path);
+        cdp_prot_hello_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdp_prot_hello_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3667,7 +3172,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 
 }
 
-EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3691,20 +3196,12 @@ EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail:
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3786,7 +3283,7 @@ std::string Cdp::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3823,20 +3320,12 @@ EntityPath Cdp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3938,7 +3427,7 @@ std::string Cdp::Nodes::Node::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3961,15 +3450,6 @@ EntityPath Cdp::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3977,28 +3457,24 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Cdp::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4051,7 +3527,7 @@ std::string Cdp::Nodes::Node::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Cdp::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Cdp::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4079,20 +3555,12 @@ EntityPath Cdp::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Cdp::Nodes::Node::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

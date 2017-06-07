@@ -18,23 +18,20 @@ class LptsIfib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: LptsIfib::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes> nodes;
-
-
+        
 }; // LptsIfib
 
 
@@ -46,19 +43,16 @@ class LptsIfib::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: LptsIfib::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes::Node> > node;
-
-
+        
 }; // LptsIfib::Nodes
 
 
@@ -70,20 +64,17 @@ class LptsIfib::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class SliceIds; //type: LptsIfib::Nodes::Node::SliceIds
 
         std::shared_ptr<Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes::Node::SliceIds> slice_ids;
-
-
+        
 }; // LptsIfib::Nodes::Node
 
 
@@ -95,19 +86,16 @@ class LptsIfib::Nodes::Node::SliceIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SliceId; //type: LptsIfib::Nodes::Node::SliceIds::SliceId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes::Node::SliceIds::SliceId> > slice_id;
-
-
+        
 }; // LptsIfib::Nodes::Node::SliceIds
 
 
@@ -119,20 +107,17 @@ class LptsIfib::Nodes::Node::SliceIds::SliceId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slice_name; //type: string
-
         class Entry; //type: LptsIfib::Nodes::Node::SliceIds::SliceId::Entry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_ifib_oper::LptsIfib::Nodes::Node::SliceIds::SliceId::Entry> > entry;
-
-
+        
 }; // LptsIfib::Nodes::Node::SliceIds::SliceId
 
 
@@ -144,12 +129,11 @@ class LptsIfib::Nodes::Node::SliceIds::SliceId::Entry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: int32
         YLeaf destination_type; //type: string
@@ -177,8 +161,6 @@ class LptsIfib::Nodes::Node::SliceIds::SliceId::Entry : public Entity
         YLeaf pending_ifibq_delay; //type: uint32
         YLeaf sl_ifibq_delay; //type: uint32
         YLeaf ifib_program_time; //type: string
-
-
 
 }; // LptsIfib::Nodes::Node::SliceIds::SliceId::Entry
 

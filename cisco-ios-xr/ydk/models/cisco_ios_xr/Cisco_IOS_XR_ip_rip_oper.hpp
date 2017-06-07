@@ -18,17 +18,15 @@ class Rip : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Vrfs; //type: Rip::Vrfs
         class Protocol; //type: Rip::Protocol
@@ -37,8 +35,7 @@ class Rip : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf> default_vrf;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol> protocol;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs> vrfs;
-
-
+        
 }; // Rip
 
 
@@ -50,19 +47,16 @@ class Rip::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: Rip::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf> > vrf;
-
-
+        
 }; // Rip::Vrfs
 
 
@@ -74,15 +68,13 @@ class Rip::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Routes; //type: Rip::Vrfs::Vrf::Routes
         class Configuration; //type: Rip::Vrfs::Vrf::Configuration
         class Statistics; //type: Rip::Vrfs::Vrf::Statistics
@@ -94,8 +86,7 @@ class Rip::Vrfs::Vrf : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Routes> routes;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Statistics> statistics;
-
-
+        
 }; // Rip::Vrfs::Vrf
 
 
@@ -107,19 +98,16 @@ class Rip::Vrfs::Vrf::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Route; //type: Rip::Vrfs::Vrf::Routes::Route
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Routes::Route> > route;
-
-
+        
 }; // Rip::Vrfs::Vrf::Routes
 
 
@@ -131,12 +119,11 @@ class Rip::Vrfs::Vrf::Routes::Route : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
@@ -152,12 +139,10 @@ class Rip::Vrfs::Vrf::Routes::Route : public Entity
         YLeaf active; //type: boolean
         YLeaf path_origin; //type: RipRouteOriginEnum
         YLeaf hold_down; //type: boolean
-
         class Paths; //type: Rip::Vrfs::Vrf::Routes::Route::Paths
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Routes::Route::Paths> > paths;
-
-
+        
 }; // Rip::Vrfs::Vrf::Routes::Route
 
 
@@ -169,12 +154,11 @@ class Rip::Vrfs::Vrf::Routes::Route::Paths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf next_hop_address; //type: string
@@ -183,8 +167,6 @@ class Rip::Vrfs::Vrf::Routes::Route::Paths : public Entity
         YLeaf interface; //type: string
         YLeaf uptime; //type: uint32
         YLeaf is_permanent; //type: boolean
-
-
 
 }; // Rip::Vrfs::Vrf::Routes::Route::Paths
 
@@ -197,12 +179,11 @@ class Rip::Vrfs::Vrf::Configuration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf active; //type: boolean
         YLeaf vr_fised_socket; //type: boolean
@@ -223,8 +204,6 @@ class Rip::Vrfs::Vrf::Configuration : public Entity
         YLeaf oom_flags; //type: uint32
         YLeaf nsf_status; //type: boolean
         YLeaf nsf_life_time; //type: uint32
-
-
 
 }; // Rip::Vrfs::Vrf::Configuration
 
@@ -237,12 +216,11 @@ class Rip::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint32
         YLeaf discarded_packets; //type: uint32
@@ -257,8 +235,6 @@ class Rip::Vrfs::Vrf::Statistics : public Entity
         YLeaf route_malloc_failures; //type: uint32
         YLeaf path_malloc_failures; //type: uint32
         YLeaf rib_updates; //type: uint32
-
-
 
 }; // Rip::Vrfs::Vrf::Statistics
 
@@ -271,19 +247,16 @@ class Rip::Vrfs::Vrf::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Rip::Vrfs::Vrf::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Interfaces::Interface> > interface;
-
-
+        
 }; // Rip::Vrfs::Vrf::Interfaces
 
 
@@ -295,12 +268,11 @@ class Rip::Vrfs::Vrf::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface; //type: string
@@ -332,14 +304,12 @@ class Rip::Vrfs::Vrf::Interfaces::Interface : public Entity
         YLeaf pkt_drop_no_auth; //type: uint32
         YLeaf pkt_drop_invalid_auth; //type: uint32
         YLeaf pkt_accepted_valid_auth; //type: uint32
-
         class RipSummary; //type: Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary
         class RipPeer; //type: Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer> > rip_peer;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary> > rip_summary;
-
-
+        
 }; // Rip::Vrfs::Vrf::Interfaces::Interface
 
 
@@ -351,19 +321,16 @@ class Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
         YLeaf next_hop_address; //type: string
         YLeaf metric; //type: int32
-
-
 
 }; // Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary
 
@@ -376,20 +343,17 @@ class Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf peer_uptime; //type: uint32
         YLeaf peer_address; //type: string
         YLeaf peer_version; //type: uint8
         YLeaf discarded_peer_packets; //type: uint32
         YLeaf discarded_peer_routes; //type: uint32
-
-
 
 }; // Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer
 
@@ -402,21 +366,18 @@ class Rip::Vrfs::Vrf::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfSummary; //type: Rip::Vrfs::Vrf::Global::VrfSummary
         class InterfaceSummary; //type: Rip::Vrfs::Vrf::Global::InterfaceSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Global::InterfaceSummary> > interface_summary;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Global::VrfSummary> vrf_summary;
-
-
+        
 }; // Rip::Vrfs::Vrf::Global
 
 
@@ -428,12 +389,11 @@ class Rip::Vrfs::Vrf::Global::VrfSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf active; //type: boolean
@@ -447,8 +407,6 @@ class Rip::Vrfs::Vrf::Global::VrfSummary : public Entity
         YLeaf flush_timer; //type: uint32
         YLeaf interface_configured_count; //type: uint32
         YLeaf active_interface_count; //type: uint32
-
-
 
 }; // Rip::Vrfs::Vrf::Global::VrfSummary
 
@@ -461,12 +419,11 @@ class Rip::Vrfs::Vrf::Global::InterfaceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf enabled; //type: boolean
@@ -477,8 +434,6 @@ class Rip::Vrfs::Vrf::Global::InterfaceSummary : public Entity
         YLeaf send_version; //type: uint32
         YLeaf receive_version; //type: uint32
         YLeaf neighbor_count; //type: uint32
-
-
 
 }; // Rip::Vrfs::Vrf::Global::InterfaceSummary
 
@@ -491,21 +446,18 @@ class Rip::Protocol : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Process; //type: Rip::Protocol::Process
         class DefaultVrf; //type: Rip::Protocol::DefaultVrf
 
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf> default_vrf;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::Process> process;
-
-
+        
 }; // Rip::Protocol
 
 
@@ -517,12 +469,11 @@ class Rip::Protocol::Process : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_config_count; //type: uint32
         YLeaf vrf_active_count; //type: uint32
@@ -530,12 +481,10 @@ class Rip::Protocol::Process : public Entity
         YLeaf current_oom_state; //type: int32
         YLeaf route_count; //type: uint32
         YLeaf path_count; //type: uint32
-
         class VrfSummary; //type: Rip::Protocol::Process::VrfSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::Process::VrfSummary> > vrf_summary;
-
-
+        
 }; // Rip::Protocol::Process
 
 
@@ -547,12 +496,11 @@ class Rip::Protocol::Process::VrfSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf active; //type: boolean
@@ -566,8 +514,6 @@ class Rip::Protocol::Process::VrfSummary : public Entity
         YLeaf flush_timer; //type: uint32
         YLeaf interface_configured_count; //type: uint32
         YLeaf active_interface_count; //type: uint32
-
-
 
 }; // Rip::Protocol::Process::VrfSummary
 
@@ -580,13 +526,11 @@ class Rip::Protocol::DefaultVrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Routes; //type: Rip::Protocol::DefaultVrf::Routes
         class Configuration; //type: Rip::Protocol::DefaultVrf::Configuration
@@ -599,8 +543,7 @@ class Rip::Protocol::DefaultVrf : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Routes> routes;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Statistics> statistics;
-
-
+        
 }; // Rip::Protocol::DefaultVrf
 
 
@@ -612,19 +555,16 @@ class Rip::Protocol::DefaultVrf::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Route; //type: Rip::Protocol::DefaultVrf::Routes::Route
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Routes::Route> > route;
-
-
+        
 }; // Rip::Protocol::DefaultVrf::Routes
 
 
@@ -636,12 +576,11 @@ class Rip::Protocol::DefaultVrf::Routes::Route : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
@@ -657,12 +596,10 @@ class Rip::Protocol::DefaultVrf::Routes::Route : public Entity
         YLeaf active; //type: boolean
         YLeaf path_origin; //type: RipRouteOriginEnum
         YLeaf hold_down; //type: boolean
-
         class Paths; //type: Rip::Protocol::DefaultVrf::Routes::Route::Paths
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Routes::Route::Paths> > paths;
-
-
+        
 }; // Rip::Protocol::DefaultVrf::Routes::Route
 
 
@@ -674,12 +611,11 @@ class Rip::Protocol::DefaultVrf::Routes::Route::Paths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf next_hop_address; //type: string
@@ -688,8 +624,6 @@ class Rip::Protocol::DefaultVrf::Routes::Route::Paths : public Entity
         YLeaf interface; //type: string
         YLeaf uptime; //type: uint32
         YLeaf is_permanent; //type: boolean
-
-
 
 }; // Rip::Protocol::DefaultVrf::Routes::Route::Paths
 
@@ -702,12 +636,11 @@ class Rip::Protocol::DefaultVrf::Configuration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf active; //type: boolean
         YLeaf vr_fised_socket; //type: boolean
@@ -729,8 +662,6 @@ class Rip::Protocol::DefaultVrf::Configuration : public Entity
         YLeaf nsf_status; //type: boolean
         YLeaf nsf_life_time; //type: uint32
 
-
-
 }; // Rip::Protocol::DefaultVrf::Configuration
 
 
@@ -742,12 +673,11 @@ class Rip::Protocol::DefaultVrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint32
         YLeaf discarded_packets; //type: uint32
@@ -763,8 +693,6 @@ class Rip::Protocol::DefaultVrf::Statistics : public Entity
         YLeaf path_malloc_failures; //type: uint32
         YLeaf rib_updates; //type: uint32
 
-
-
 }; // Rip::Protocol::DefaultVrf::Statistics
 
 
@@ -776,19 +704,16 @@ class Rip::Protocol::DefaultVrf::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Rip::Protocol::DefaultVrf::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Interfaces::Interface> > interface;
-
-
+        
 }; // Rip::Protocol::DefaultVrf::Interfaces
 
 
@@ -800,12 +725,11 @@ class Rip::Protocol::DefaultVrf::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface; //type: string
@@ -837,14 +761,12 @@ class Rip::Protocol::DefaultVrf::Interfaces::Interface : public Entity
         YLeaf pkt_drop_no_auth; //type: uint32
         YLeaf pkt_drop_invalid_auth; //type: uint32
         YLeaf pkt_accepted_valid_auth; //type: uint32
-
         class RipSummary; //type: Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary
         class RipPeer; //type: Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer> > rip_peer;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary> > rip_summary;
-
-
+        
 }; // Rip::Protocol::DefaultVrf::Interfaces::Interface
 
 
@@ -856,19 +778,16 @@ class Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
         YLeaf next_hop_address; //type: string
         YLeaf metric; //type: int32
-
-
 
 }; // Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary
 
@@ -881,20 +800,17 @@ class Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf peer_uptime; //type: uint32
         YLeaf peer_address; //type: string
         YLeaf peer_version; //type: uint8
         YLeaf discarded_peer_packets; //type: uint32
         YLeaf discarded_peer_routes; //type: uint32
-
-
 
 }; // Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer
 
@@ -907,21 +823,18 @@ class Rip::Protocol::DefaultVrf::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfSummary; //type: Rip::Protocol::DefaultVrf::Global::VrfSummary
         class InterfaceSummary; //type: Rip::Protocol::DefaultVrf::Global::InterfaceSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Global::InterfaceSummary> > interface_summary;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Global::VrfSummary> vrf_summary;
-
-
+        
 }; // Rip::Protocol::DefaultVrf::Global
 
 
@@ -933,12 +846,11 @@ class Rip::Protocol::DefaultVrf::Global::VrfSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf active; //type: boolean
@@ -953,8 +865,6 @@ class Rip::Protocol::DefaultVrf::Global::VrfSummary : public Entity
         YLeaf interface_configured_count; //type: uint32
         YLeaf active_interface_count; //type: uint32
 
-
-
 }; // Rip::Protocol::DefaultVrf::Global::VrfSummary
 
 
@@ -966,12 +876,11 @@ class Rip::Protocol::DefaultVrf::Global::InterfaceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf enabled; //type: boolean
@@ -982,8 +891,6 @@ class Rip::Protocol::DefaultVrf::Global::InterfaceSummary : public Entity
         YLeaf send_version; //type: uint32
         YLeaf receive_version; //type: uint32
         YLeaf neighbor_count; //type: uint32
-
-
 
 }; // Rip::Protocol::DefaultVrf::Global::InterfaceSummary
 
@@ -996,13 +903,11 @@ class Rip::DefaultVrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Routes; //type: Rip::DefaultVrf::Routes
         class Configuration; //type: Rip::DefaultVrf::Configuration
@@ -1015,8 +920,7 @@ class Rip::DefaultVrf : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Routes> routes;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Statistics> statistics;
-
-
+        
 }; // Rip::DefaultVrf
 
 
@@ -1028,19 +932,16 @@ class Rip::DefaultVrf::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Route; //type: Rip::DefaultVrf::Routes::Route
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Routes::Route> > route;
-
-
+        
 }; // Rip::DefaultVrf::Routes
 
 
@@ -1052,12 +953,11 @@ class Rip::DefaultVrf::Routes::Route : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
@@ -1073,12 +973,10 @@ class Rip::DefaultVrf::Routes::Route : public Entity
         YLeaf active; //type: boolean
         YLeaf path_origin; //type: RipRouteOriginEnum
         YLeaf hold_down; //type: boolean
-
         class Paths; //type: Rip::DefaultVrf::Routes::Route::Paths
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Routes::Route::Paths> > paths;
-
-
+        
 }; // Rip::DefaultVrf::Routes::Route
 
 
@@ -1090,12 +988,11 @@ class Rip::DefaultVrf::Routes::Route::Paths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf next_hop_address; //type: string
@@ -1104,8 +1001,6 @@ class Rip::DefaultVrf::Routes::Route::Paths : public Entity
         YLeaf interface; //type: string
         YLeaf uptime; //type: uint32
         YLeaf is_permanent; //type: boolean
-
-
 
 }; // Rip::DefaultVrf::Routes::Route::Paths
 
@@ -1118,12 +1013,11 @@ class Rip::DefaultVrf::Configuration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf active; //type: boolean
         YLeaf vr_fised_socket; //type: boolean
@@ -1145,8 +1039,6 @@ class Rip::DefaultVrf::Configuration : public Entity
         YLeaf nsf_status; //type: boolean
         YLeaf nsf_life_time; //type: uint32
 
-
-
 }; // Rip::DefaultVrf::Configuration
 
 
@@ -1158,12 +1050,11 @@ class Rip::DefaultVrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint32
         YLeaf discarded_packets; //type: uint32
@@ -1179,8 +1070,6 @@ class Rip::DefaultVrf::Statistics : public Entity
         YLeaf path_malloc_failures; //type: uint32
         YLeaf rib_updates; //type: uint32
 
-
-
 }; // Rip::DefaultVrf::Statistics
 
 
@@ -1192,19 +1081,16 @@ class Rip::DefaultVrf::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Rip::DefaultVrf::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Interfaces::Interface> > interface;
-
-
+        
 }; // Rip::DefaultVrf::Interfaces
 
 
@@ -1216,12 +1102,11 @@ class Rip::DefaultVrf::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface; //type: string
@@ -1253,14 +1138,12 @@ class Rip::DefaultVrf::Interfaces::Interface : public Entity
         YLeaf pkt_drop_no_auth; //type: uint32
         YLeaf pkt_drop_invalid_auth; //type: uint32
         YLeaf pkt_accepted_valid_auth; //type: uint32
-
         class RipSummary; //type: Rip::DefaultVrf::Interfaces::Interface::RipSummary
         class RipPeer; //type: Rip::DefaultVrf::Interfaces::Interface::RipPeer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Interfaces::Interface::RipPeer> > rip_peer;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Interfaces::Interface::RipSummary> > rip_summary;
-
-
+        
 }; // Rip::DefaultVrf::Interfaces::Interface
 
 
@@ -1272,19 +1155,16 @@ class Rip::DefaultVrf::Interfaces::Interface::RipSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint32
         YLeaf next_hop_address; //type: string
         YLeaf metric; //type: int32
-
-
 
 }; // Rip::DefaultVrf::Interfaces::Interface::RipSummary
 
@@ -1297,20 +1177,17 @@ class Rip::DefaultVrf::Interfaces::Interface::RipPeer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf peer_uptime; //type: uint32
         YLeaf peer_address; //type: string
         YLeaf peer_version; //type: uint8
         YLeaf discarded_peer_packets; //type: uint32
         YLeaf discarded_peer_routes; //type: uint32
-
-
 
 }; // Rip::DefaultVrf::Interfaces::Interface::RipPeer
 
@@ -1323,21 +1200,18 @@ class Rip::DefaultVrf::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfSummary; //type: Rip::DefaultVrf::Global::VrfSummary
         class InterfaceSummary; //type: Rip::DefaultVrf::Global::InterfaceSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Global::InterfaceSummary> > interface_summary;
         std::shared_ptr<Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Global::VrfSummary> vrf_summary;
-
-
+        
 }; // Rip::DefaultVrf::Global
 
 
@@ -1349,12 +1223,11 @@ class Rip::DefaultVrf::Global::VrfSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
         YLeaf active; //type: boolean
@@ -1369,8 +1242,6 @@ class Rip::DefaultVrf::Global::VrfSummary : public Entity
         YLeaf interface_configured_count; //type: uint32
         YLeaf active_interface_count; //type: uint32
 
-
-
 }; // Rip::DefaultVrf::Global::VrfSummary
 
 
@@ -1382,12 +1253,11 @@ class Rip::DefaultVrf::Global::InterfaceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf enabled; //type: boolean
@@ -1398,8 +1268,6 @@ class Rip::DefaultVrf::Global::InterfaceSummary : public Entity
         YLeaf send_version; //type: uint32
         YLeaf receive_version; //type: uint32
         YLeaf neighbor_count; //type: uint32
-
-
 
 }; // Rip::DefaultVrf::Global::InterfaceSummary
 

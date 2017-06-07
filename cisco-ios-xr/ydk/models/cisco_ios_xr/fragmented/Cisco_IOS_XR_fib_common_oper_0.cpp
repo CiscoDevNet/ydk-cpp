@@ -15,7 +15,6 @@ FibStatistics::FibStatistics()
     nodes(std::make_shared<FibStatistics::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "fib-statistics"; yang_parent_name = "Cisco-IOS-XR-fib-common-oper";
 }
@@ -44,12 +43,12 @@ std::string FibStatistics::get_segment_path() const
 
 }
 
-EntityPath FibStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath FibStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -64,41 +63,24 @@ EntityPath FibStatistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> FibStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<FibStatistics::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & FibStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> FibStatistics::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -166,7 +148,7 @@ std::string FibStatistics::Nodes::get_segment_path() const
 
 }
 
-EntityPath FibStatistics::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath FibStatistics::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -189,15 +171,6 @@ EntityPath FibStatistics::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> FibStatistics::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -205,28 +178,24 @@ std::shared_ptr<Entity> FibStatistics::Nodes::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<FibStatistics::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & FibStatistics::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> FibStatistics::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,7 +212,6 @@ FibStatistics::Nodes::Node::Node()
     drops(std::make_shared<FibStatistics::Nodes::Node::Drops>())
 {
     drops->parent = this;
-    children["drops"] = drops;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -274,7 +242,7 @@ std::string FibStatistics::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath FibStatistics::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath FibStatistics::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -298,41 +266,24 @@ EntityPath FibStatistics::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> FibStatistics::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "drops")
     {
-        if(drops != nullptr)
-        {
-            children["drops"] = drops;
-        }
-        else
+        if(drops == nullptr)
         {
             drops = std::make_shared<FibStatistics::Nodes::Node::Drops>();
-            drops->parent = this;
-            children["drops"] = drops;
         }
-        return children.at("drops");
+        return drops;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & FibStatistics::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> FibStatistics::Nodes::Node::get_children() const
 {
-    if(children.find("drops") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(drops != nullptr)
     {
-        if(drops != nullptr)
-        {
-            children["drops"] = drops;
-        }
+        children["drops"] = drops;
     }
 
     return children;
@@ -443,7 +394,7 @@ std::string FibStatistics::Nodes::Node::Drops::get_segment_path() const
 
 }
 
-EntityPath FibStatistics::Nodes::Node::Drops::get_entity_path(Entity* ancestor) const
+const EntityPath FibStatistics::Nodes::Node::Drops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -489,20 +440,12 @@ EntityPath FibStatistics::Nodes::Node::Drops::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> FibStatistics::Nodes::Node::Drops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & FibStatistics::Nodes::Node::Drops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> FibStatistics::Nodes::Node::Drops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -607,7 +550,6 @@ Fib::Fib()
     nodes(std::make_shared<Fib::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "fib"; yang_parent_name = "Cisco-IOS-XR-fib-common-oper";
 }
@@ -636,12 +578,12 @@ std::string Fib::get_segment_path() const
 
 }
 
-EntityPath Fib::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -656,41 +598,24 @@ EntityPath Fib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Fib::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -758,7 +683,7 @@ std::string Fib::Nodes::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -781,15 +706,6 @@ EntityPath Fib::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fib::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -797,28 +713,24 @@ std::shared_ptr<Entity> Fib::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -836,10 +748,8 @@ Fib::Nodes::Node::Node()
 	,protocols(std::make_shared<Fib::Nodes::Node::Protocols>())
 {
     global->parent = this;
-    children["global"] = global;
 
     protocols->parent = this;
-    children["protocols"] = protocols;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -872,7 +782,7 @@ std::string Fib::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -896,64 +806,38 @@ EntityPath Fib::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fib::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<Fib::Nodes::Node::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "protocols")
     {
-        if(protocols != nullptr)
-        {
-            children["protocols"] = protocols;
-        }
-        else
+        if(protocols == nullptr)
         {
             protocols = std::make_shared<Fib::Nodes::Node::Protocols>();
-            protocols->parent = this;
-            children["protocols"] = protocols;
         }
-        return children.at("protocols");
+        return protocols;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::get_children() const
 {
-    if(children.find("global") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("protocols") == children.end())
+    if(protocols != nullptr)
     {
-        if(protocols != nullptr)
-        {
-            children["protocols"] = protocols;
-        }
+        children["protocols"] = protocols;
     }
 
     return children;
@@ -973,10 +857,8 @@ Fib::Nodes::Node::Global::Global()
 	,summary(std::make_shared<Fib::Nodes::Node::Global::Summary>())
 {
     object_history->parent = this;
-    children["object-history"] = object_history;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "global"; yang_parent_name = "node";
 }
@@ -1007,7 +889,7 @@ std::string Fib::Nodes::Node::Global::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::Global::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1030,64 +912,38 @@ EntityPath Fib::Nodes::Node::Global::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "object-history")
     {
-        if(object_history != nullptr)
-        {
-            children["object-history"] = object_history;
-        }
-        else
+        if(object_history == nullptr)
         {
             object_history = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory>();
-            object_history->parent = this;
-            children["object-history"] = object_history;
         }
-        return children.at("object-history");
+        return object_history;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Fib::Nodes::Node::Global::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::get_children() const
 {
-    if(children.find("object-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(object_history != nullptr)
     {
-        if(object_history != nullptr)
-        {
-            children["object-history"] = object_history;
-        }
+        children["object-history"] = object_history;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -1103,10 +959,8 @@ Fib::Nodes::Node::Global::Summary::Summary()
 	,total(std::make_shared<Fib::Nodes::Node::Global::Summary::Total>())
 {
     protos->parent = this;
-    children["protos"] = protos;
 
     total->parent = this;
-    children["total"] = total;
 
     yang_name = "summary"; yang_parent_name = "global";
 }
@@ -1137,7 +991,7 @@ std::string Fib::Nodes::Node::Global::Summary::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1160,64 +1014,38 @@ EntityPath Fib::Nodes::Node::Global::Summary::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protos")
     {
-        if(protos != nullptr)
-        {
-            children["protos"] = protos;
-        }
-        else
+        if(protos == nullptr)
         {
             protos = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos>();
-            protos->parent = this;
-            children["protos"] = protos;
         }
-        return children.at("protos");
+        return protos;
     }
 
     if(child_yang_name == "total")
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
-        else
+        if(total == nullptr)
         {
             total = std::make_shared<Fib::Nodes::Node::Global::Summary::Total>();
-            total->parent = this;
-            children["total"] = total;
         }
-        return children.at("total");
+        return total;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::get_children() const
 {
-    if(children.find("protos") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protos != nullptr)
     {
-        if(protos != nullptr)
-        {
-            children["protos"] = protos;
-        }
+        children["protos"] = protos;
     }
 
-    if(children.find("total") == children.end())
+    if(total != nullptr)
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
+        children["total"] = total;
     }
 
     return children;
@@ -1233,10 +1061,8 @@ Fib::Nodes::Node::Global::Summary::Total::Total()
 	,total_counters(std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters>())
 {
     common_info->parent = this;
-    children["common-info"] = common_info;
 
     total_counters->parent = this;
-    children["total-counters"] = total_counters;
 
     yang_name = "total"; yang_parent_name = "summary";
 }
@@ -1267,7 +1093,7 @@ std::string Fib::Nodes::Node::Global::Summary::Total::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Total::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Total::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1290,64 +1116,38 @@ EntityPath Fib::Nodes::Node::Global::Summary::Total::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "common-info")
     {
-        if(common_info != nullptr)
-        {
-            children["common-info"] = common_info;
-        }
-        else
+        if(common_info == nullptr)
         {
             common_info = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::CommonInfo>();
-            common_info->parent = this;
-            children["common-info"] = common_info;
         }
-        return children.at("common-info");
+        return common_info;
     }
 
     if(child_yang_name == "total-counters")
     {
-        if(total_counters != nullptr)
-        {
-            children["total-counters"] = total_counters;
-        }
-        else
+        if(total_counters == nullptr)
         {
             total_counters = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters>();
-            total_counters->parent = this;
-            children["total-counters"] = total_counters;
         }
-        return children.at("total-counters");
+        return total_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Total::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::get_children() const
 {
-    if(children.find("common-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(common_info != nullptr)
     {
-        if(common_info != nullptr)
-        {
-            children["common-info"] = common_info;
-        }
+        children["common-info"] = common_info;
     }
 
-    if(children.find("total-counters") == children.end())
+    if(total_counters != nullptr)
     {
-        if(total_counters != nullptr)
-        {
-            children["total-counters"] = total_counters;
-        }
+        children["total-counters"] = total_counters;
     }
 
     return children;
@@ -1388,7 +1188,7 @@ std::string Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_segment_pa
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1412,20 +1212,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_entity_path
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1491,7 +1283,7 @@ std::string Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_segment
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1516,15 +1308,6 @@ EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_entity_p
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "array-number-of-object")
     {
         for(auto const & c : array_number_of_object)
@@ -1532,15 +1315,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject>();
         c->parent = this;
-        array_number_of_object.push_back(std::move(c));
-        children[segment_path] = array_number_of_object.back();
-        return children.at(segment_path);
+        array_number_of_object.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "array-number-of-retry")
@@ -1550,36 +1331,29 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry>();
         c->parent = this;
-        array_number_of_retry.push_back(std::move(c));
-        children[segment_path] = array_number_of_retry.back();
-        return children.at(segment_path);
+        array_number_of_retry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : array_number_of_object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : array_number_of_retry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1631,7 +1405,7 @@ std::string Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumber
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1656,20 +1430,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberO
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1719,7 +1485,7 @@ std::string Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumber
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1744,20 +1510,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberO
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1811,7 +1569,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1834,15 +1592,6 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "proto")
     {
         for(auto const & c : proto)
@@ -1850,28 +1599,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto>();
         c->parent = this;
-        proto.push_back(std::move(c));
-        children[segment_path] = proto.back();
-        return children.at(segment_path);
+        proto.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : proto)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1889,10 +1634,8 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Proto()
 	,summary(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_>())
 {
     common_info->parent = this;
-    children["common-info"] = common_info;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "proto"; yang_parent_name = "protos";
 }
@@ -1925,7 +1668,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::get_segment_path()
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1949,64 +1692,38 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::get_entity_path(Ent
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "common-info")
     {
-        if(common_info != nullptr)
-        {
-            children["common-info"] = common_info;
-        }
-        else
+        if(common_info == nullptr)
         {
             common_info = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo>();
-            common_info->parent = this;
-            children["common-info"] = common_info;
         }
-        return children.at("common-info");
+        return common_info;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::get_children() const
 {
-    if(children.find("common-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(common_info != nullptr)
     {
-        if(common_info != nullptr)
-        {
-            children["common-info"] = common_info;
-        }
+        children["common-info"] = common_info;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -2051,7 +1768,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_se
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2075,20 +1792,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_ent
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2107,13 +1816,10 @@ Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Summary_()
 	,summary_counts(std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts>())
 {
     base_object->parent = this;
-    children["base-object"] = base_object;
 
     health->parent = this;
-    children["health"] = health;
 
     summary_counts->parent = this;
-    children["summary-counts"] = summary_counts;
 
     yang_name = "summary"; yang_parent_name = "proto";
 }
@@ -2146,7 +1852,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_segm
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2169,87 +1875,52 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_entit
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base-object")
     {
-        if(base_object != nullptr)
-        {
-            children["base-object"] = base_object;
-        }
-        else
+        if(base_object == nullptr)
         {
             base_object = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject>();
-            base_object->parent = this;
-            children["base-object"] = base_object;
         }
-        return children.at("base-object");
+        return base_object;
     }
 
     if(child_yang_name == "health")
     {
-        if(health != nullptr)
-        {
-            children["health"] = health;
-        }
-        else
+        if(health == nullptr)
         {
             health = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health>();
-            health->parent = this;
-            children["health"] = health;
         }
-        return children.at("health");
+        return health;
     }
 
     if(child_yang_name == "summary-counts")
     {
-        if(summary_counts != nullptr)
-        {
-            children["summary-counts"] = summary_counts;
-        }
-        else
+        if(summary_counts == nullptr)
         {
             summary_counts = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts>();
-            summary_counts->parent = this;
-            children["summary-counts"] = summary_counts;
         }
-        return children.at("summary-counts");
+        return summary_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_children() const
 {
-    if(children.find("base-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base_object != nullptr)
     {
-        if(base_object != nullptr)
-        {
-            children["base-object"] = base_object;
-        }
+        children["base-object"] = base_object;
     }
 
-    if(children.find("health") == children.end())
+    if(health != nullptr)
     {
-        if(health != nullptr)
-        {
-            children["health"] = health;
-        }
+        children["health"] = health;
     }
 
-    if(children.find("summary-counts") == children.end())
+    if(summary_counts != nullptr)
     {
-        if(summary_counts != nullptr)
-        {
-            children["summary-counts"] = summary_counts;
-        }
+        children["summary-counts"] = summary_counts;
     }
 
     return children;
@@ -2290,7 +1961,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObje
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2314,20 +1985,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObjec
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2393,7 +2056,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryC
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2418,15 +2081,6 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCo
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "array-number-of-object")
     {
         for(auto const & c : array_number_of_object)
@@ -2434,15 +2088,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summar
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject>();
         c->parent = this;
-        array_number_of_object.push_back(std::move(c));
-        children[segment_path] = array_number_of_object.back();
-        return children.at(segment_path);
+        array_number_of_object.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "array-number-of-retry")
@@ -2452,36 +2104,29 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summar
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry>();
         c->parent = this;
-        array_number_of_retry.push_back(std::move(c));
-        children[segment_path] = array_number_of_retry.back();
-        return children.at(segment_path);
+        array_number_of_retry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : array_number_of_object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : array_number_of_retry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2533,7 +2178,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryC
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2558,20 +2203,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCo
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2621,7 +2258,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryC
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2646,20 +2283,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCo
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2706,7 +2335,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::
 
 }
 
-EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2730,20 +2359,12 @@ EntityPath Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::g
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2760,7 +2381,6 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjectHistory()
     obj_history_protos(std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos>())
 {
     obj_history_protos->parent = this;
-    children["obj-history-protos"] = obj_history_protos;
 
     yang_name = "object-history"; yang_parent_name = "global";
 }
@@ -2789,7 +2409,7 @@ std::string Fib::Nodes::Node::Global::ObjectHistory::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::Global::ObjectHistory::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::ObjectHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2812,41 +2432,24 @@ EntityPath Fib::Nodes::Node::Global::ObjectHistory::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "obj-history-protos")
     {
-        if(obj_history_protos != nullptr)
-        {
-            children["obj-history-protos"] = obj_history_protos;
-        }
-        else
+        if(obj_history_protos == nullptr)
         {
             obj_history_protos = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos>();
-            obj_history_protos->parent = this;
-            children["obj-history-protos"] = obj_history_protos;
         }
-        return children.at("obj-history-protos");
+        return obj_history_protos;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::ObjectHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::get_children() const
 {
-    if(children.find("obj-history-protos") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(obj_history_protos != nullptr)
     {
-        if(obj_history_protos != nullptr)
-        {
-            children["obj-history-protos"] = obj_history_protos;
-        }
+        children["obj-history-protos"] = obj_history_protos;
     }
 
     return children;
@@ -2894,7 +2497,7 @@ std::string Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_segme
 
 }
 
-EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2917,15 +2520,6 @@ EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_entity
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "obj-history-proto")
     {
         for(auto const & c : obj_history_proto)
@@ -2933,28 +2527,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto>();
         c->parent = this;
-        obj_history_proto.push_back(std::move(c));
-        children[segment_path] = obj_history_proto.back();
-        return children.at(segment_path);
+        obj_history_proto.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : obj_history_proto)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2972,10 +2562,8 @@ Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjH
 	,object_history(std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_>())
 {
     base_object->parent = this;
-    children["base-object"] = base_object;
 
     object_history->parent = this;
-    children["object-history"] = object_history;
 
     yang_name = "obj-history-proto"; yang_parent_name = "obj-history-protos";
 }
@@ -3008,7 +2596,7 @@ std::string Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistor
 
 }
 
-EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3032,64 +2620,38 @@ EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistory
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base-object")
     {
-        if(base_object != nullptr)
-        {
-            children["base-object"] = base_object;
-        }
-        else
+        if(base_object == nullptr)
         {
             base_object = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject>();
-            base_object->parent = this;
-            children["base-object"] = base_object;
         }
-        return children.at("base-object");
+        return base_object;
     }
 
     if(child_yang_name == "object-history")
     {
-        if(object_history != nullptr)
-        {
-            children["object-history"] = object_history;
-        }
-        else
+        if(object_history == nullptr)
         {
             object_history = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_>();
-            object_history->parent = this;
-            children["object-history"] = object_history;
         }
-        return children.at("object-history");
+        return object_history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_children() const
 {
-    if(children.find("base-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base_object != nullptr)
     {
-        if(base_object != nullptr)
-        {
-            children["base-object"] = base_object;
-        }
+        children["base-object"] = base_object;
     }
 
-    if(children.find("object-history") == children.end())
+    if(object_history != nullptr)
     {
-        if(object_history != nullptr)
-        {
-            children["object-history"] = object_history;
-        }
+        children["object-history"] = object_history;
     }
 
     return children;
@@ -3134,7 +2696,7 @@ std::string Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistor
 
 }
 
-EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3158,20 +2720,12 @@ EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistory
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3214,7 +2768,7 @@ std::string Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistor
 
 }
 
-EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3238,20 +2792,12 @@ EntityPath Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistory
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3301,7 +2847,7 @@ std::string Fib::Nodes::Node::Protocols::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3324,15 +2870,6 @@ EntityPath Fib::Nodes::Node::Protocols::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol")
     {
         for(auto const & c : protocol)
@@ -3340,28 +2877,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(std::move(c));
-        children[segment_path] = protocol.back();
-        return children.at(segment_path);
+        protocol.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3387,34 +2920,24 @@ Fib::Nodes::Node::Protocols::Protocol::Protocol()
 	,vrfs(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs>())
 {
     external_client_summaries->parent = this;
-    children["external-client-summaries"] = external_client_summaries;
 
     external_summary_all->parent = this;
-    children["external-summary-all"] = external_summary_all;
 
     fib_summaries->parent = this;
-    children["fib-summaries"] = fib_summaries;
 
     frr_log->parent = this;
-    children["frr-log"] = frr_log;
 
     issu_state->parent = this;
-    children["issu-state"] = issu_state;
 
     local_label->parent = this;
-    children["local-label"] = local_label;
 
     misc->parent = this;
-    children["misc"] = misc;
 
     nh_ids->parent = this;
-    children["nh-ids"] = nh_ids;
 
     resource->parent = this;
-    children["resource"] = resource;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "protocol"; yang_parent_name = "protocols";
 }
@@ -3463,7 +2986,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::get_segment_path() const
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3487,248 +3010,150 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-client-summaries")
     {
-        if(external_client_summaries != nullptr)
-        {
-            children["external-client-summaries"] = external_client_summaries;
-        }
-        else
+        if(external_client_summaries == nullptr)
         {
             external_client_summaries = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries>();
-            external_client_summaries->parent = this;
-            children["external-client-summaries"] = external_client_summaries;
         }
-        return children.at("external-client-summaries");
+        return external_client_summaries;
     }
 
     if(child_yang_name == "external-summary-all")
     {
-        if(external_summary_all != nullptr)
-        {
-            children["external-summary-all"] = external_summary_all;
-        }
-        else
+        if(external_summary_all == nullptr)
         {
             external_summary_all = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll>();
-            external_summary_all->parent = this;
-            children["external-summary-all"] = external_summary_all;
         }
-        return children.at("external-summary-all");
+        return external_summary_all;
     }
 
     if(child_yang_name == "fib-summaries")
     {
-        if(fib_summaries != nullptr)
-        {
-            children["fib-summaries"] = fib_summaries;
-        }
-        else
+        if(fib_summaries == nullptr)
         {
             fib_summaries = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries>();
-            fib_summaries->parent = this;
-            children["fib-summaries"] = fib_summaries;
         }
-        return children.at("fib-summaries");
+        return fib_summaries;
     }
 
     if(child_yang_name == "frr-log")
     {
-        if(frr_log != nullptr)
-        {
-            children["frr-log"] = frr_log;
-        }
-        else
+        if(frr_log == nullptr)
         {
             frr_log = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog>();
-            frr_log->parent = this;
-            children["frr-log"] = frr_log;
         }
-        return children.at("frr-log");
+        return frr_log;
     }
 
     if(child_yang_name == "issu-state")
     {
-        if(issu_state != nullptr)
-        {
-            children["issu-state"] = issu_state;
-        }
-        else
+        if(issu_state == nullptr)
         {
             issu_state = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::IssuState>();
-            issu_state->parent = this;
-            children["issu-state"] = issu_state;
         }
-        return children.at("issu-state");
+        return issu_state;
     }
 
     if(child_yang_name == "local-label")
     {
-        if(local_label != nullptr)
-        {
-            children["local-label"] = local_label;
-        }
-        else
+        if(local_label == nullptr)
         {
             local_label = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel>();
-            local_label->parent = this;
-            children["local-label"] = local_label;
         }
-        return children.at("local-label");
+        return local_label;
     }
 
     if(child_yang_name == "misc")
     {
-        if(misc != nullptr)
-        {
-            children["misc"] = misc;
-        }
-        else
+        if(misc == nullptr)
         {
             misc = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc>();
-            misc->parent = this;
-            children["misc"] = misc;
         }
-        return children.at("misc");
+        return misc;
     }
 
     if(child_yang_name == "nh-ids")
     {
-        if(nh_ids != nullptr)
-        {
-            children["nh-ids"] = nh_ids;
-        }
-        else
+        if(nh_ids == nullptr)
         {
             nh_ids = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::NhIds>();
-            nh_ids->parent = this;
-            children["nh-ids"] = nh_ids;
         }
-        return children.at("nh-ids");
+        return nh_ids;
     }
 
     if(child_yang_name == "resource")
     {
-        if(resource != nullptr)
-        {
-            children["resource"] = resource;
-        }
-        else
+        if(resource == nullptr)
         {
             resource = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource>();
-            resource->parent = this;
-            children["resource"] = resource;
         }
-        return children.at("resource");
+        return resource;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::get_children() const
 {
-    if(children.find("external-client-summaries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(external_client_summaries != nullptr)
     {
-        if(external_client_summaries != nullptr)
-        {
-            children["external-client-summaries"] = external_client_summaries;
-        }
+        children["external-client-summaries"] = external_client_summaries;
     }
 
-    if(children.find("external-summary-all") == children.end())
+    if(external_summary_all != nullptr)
     {
-        if(external_summary_all != nullptr)
-        {
-            children["external-summary-all"] = external_summary_all;
-        }
+        children["external-summary-all"] = external_summary_all;
     }
 
-    if(children.find("fib-summaries") == children.end())
+    if(fib_summaries != nullptr)
     {
-        if(fib_summaries != nullptr)
-        {
-            children["fib-summaries"] = fib_summaries;
-        }
+        children["fib-summaries"] = fib_summaries;
     }
 
-    if(children.find("frr-log") == children.end())
+    if(frr_log != nullptr)
     {
-        if(frr_log != nullptr)
-        {
-            children["frr-log"] = frr_log;
-        }
+        children["frr-log"] = frr_log;
     }
 
-    if(children.find("issu-state") == children.end())
+    if(issu_state != nullptr)
     {
-        if(issu_state != nullptr)
-        {
-            children["issu-state"] = issu_state;
-        }
+        children["issu-state"] = issu_state;
     }
 
-    if(children.find("local-label") == children.end())
+    if(local_label != nullptr)
     {
-        if(local_label != nullptr)
-        {
-            children["local-label"] = local_label;
-        }
+        children["local-label"] = local_label;
     }
 
-    if(children.find("misc") == children.end())
+    if(misc != nullptr)
     {
-        if(misc != nullptr)
-        {
-            children["misc"] = misc;
-        }
+        children["misc"] = misc;
     }
 
-    if(children.find("nh-ids") == children.end())
+    if(nh_ids != nullptr)
     {
-        if(nh_ids != nullptr)
-        {
-            children["nh-ids"] = nh_ids;
-        }
+        children["nh-ids"] = nh_ids;
     }
 
-    if(children.find("resource") == children.end())
+    if(resource != nullptr)
     {
-        if(resource != nullptr)
-        {
-            children["resource"] = resource;
-        }
+        children["resource"] = resource;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -3813,7 +3238,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::IssuState::get_segment_path()
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3847,15 +3272,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::get_entity_path(Ent
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fis-proto-state")
     {
         for(auto const & c : fis_proto_state)
@@ -3863,28 +3279,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState>();
         c->parent = this;
-        fis_proto_state.push_back(std::move(c));
-        children[segment_path] = fis_proto_state.back();
-        return children.at(segment_path);
+        fis_proto_state.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::IssuState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fis_proto_state)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4008,7 +3420,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4045,20 +3457,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4130,16 +3534,12 @@ Fib::Nodes::Node::Protocols::Protocol::Resource::Resource()
 	,resource_summary_info(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo>())
 {
     resource_detail_info->parent = this;
-    children["resource-detail-info"] = resource_detail_info;
 
     resource_hardware_egress_info->parent = this;
-    children["resource-hardware-egress-info"] = resource_hardware_egress_info;
 
     resource_hardware_ingress_info->parent = this;
-    children["resource-hardware-ingress-info"] = resource_hardware_ingress_info;
 
     resource_summary_info->parent = this;
-    children["resource-summary-info"] = resource_summary_info;
 
     yang_name = "resource"; yang_parent_name = "protocol";
 }
@@ -4174,7 +3574,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::get_segment_path() 
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4197,110 +3597,66 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::get_entity_path(Enti
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "resource-detail-info")
     {
-        if(resource_detail_info != nullptr)
-        {
-            children["resource-detail-info"] = resource_detail_info;
-        }
-        else
+        if(resource_detail_info == nullptr)
         {
             resource_detail_info = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo>();
-            resource_detail_info->parent = this;
-            children["resource-detail-info"] = resource_detail_info;
         }
-        return children.at("resource-detail-info");
+        return resource_detail_info;
     }
 
     if(child_yang_name == "resource-hardware-egress-info")
     {
-        if(resource_hardware_egress_info != nullptr)
-        {
-            children["resource-hardware-egress-info"] = resource_hardware_egress_info;
-        }
-        else
+        if(resource_hardware_egress_info == nullptr)
         {
             resource_hardware_egress_info = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo>();
-            resource_hardware_egress_info->parent = this;
-            children["resource-hardware-egress-info"] = resource_hardware_egress_info;
         }
-        return children.at("resource-hardware-egress-info");
+        return resource_hardware_egress_info;
     }
 
     if(child_yang_name == "resource-hardware-ingress-info")
     {
-        if(resource_hardware_ingress_info != nullptr)
-        {
-            children["resource-hardware-ingress-info"] = resource_hardware_ingress_info;
-        }
-        else
+        if(resource_hardware_ingress_info == nullptr)
         {
             resource_hardware_ingress_info = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo>();
-            resource_hardware_ingress_info->parent = this;
-            children["resource-hardware-ingress-info"] = resource_hardware_ingress_info;
         }
-        return children.at("resource-hardware-ingress-info");
+        return resource_hardware_ingress_info;
     }
 
     if(child_yang_name == "resource-summary-info")
     {
-        if(resource_summary_info != nullptr)
-        {
-            children["resource-summary-info"] = resource_summary_info;
-        }
-        else
+        if(resource_summary_info == nullptr)
         {
             resource_summary_info = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo>();
-            resource_summary_info->parent = this;
-            children["resource-summary-info"] = resource_summary_info;
         }
-        return children.at("resource-summary-info");
+        return resource_summary_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::get_children() const
 {
-    if(children.find("resource-detail-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(resource_detail_info != nullptr)
     {
-        if(resource_detail_info != nullptr)
-        {
-            children["resource-detail-info"] = resource_detail_info;
-        }
+        children["resource-detail-info"] = resource_detail_info;
     }
 
-    if(children.find("resource-hardware-egress-info") == children.end())
+    if(resource_hardware_egress_info != nullptr)
     {
-        if(resource_hardware_egress_info != nullptr)
-        {
-            children["resource-hardware-egress-info"] = resource_hardware_egress_info;
-        }
+        children["resource-hardware-egress-info"] = resource_hardware_egress_info;
     }
 
-    if(children.find("resource-hardware-ingress-info") == children.end())
+    if(resource_hardware_ingress_info != nullptr)
     {
-        if(resource_hardware_ingress_info != nullptr)
-        {
-            children["resource-hardware-ingress-info"] = resource_hardware_ingress_info;
-        }
+        children["resource-hardware-ingress-info"] = resource_hardware_ingress_info;
     }
 
-    if(children.find("resource-summary-info") == children.end())
+    if(resource_summary_info != nullptr)
     {
-        if(resource_summary_info != nullptr)
-        {
-            children["resource-summary-info"] = resource_summary_info;
-        }
+        children["resource-summary-info"] = resource_summary_info;
     }
 
     return children;
@@ -4378,7 +3734,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo:
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4409,15 +3765,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sr-shm-state")
     {
         for(auto const & c : sr_shm_state)
@@ -4425,28 +3772,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(std::move(c));
-        children[segment_path] = sr_shm_state.back();
-        return children.at(segment_path);
+        sr_shm_state.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sr_shm_state)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4521,7 +3864,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo:
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4547,20 +3890,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4648,7 +3983,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIng
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4679,15 +4014,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngr
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sr-shm-state")
     {
         for(auto const & c : sr_shm_state)
@@ -4695,28 +4021,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(std::move(c));
-        children[segment_path] = sr_shm_state.back();
-        return children.at(segment_path);
+        sr_shm_state.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sr_shm_state)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4791,7 +4113,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIng
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4817,20 +4139,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngr
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4918,7 +4232,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgr
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4949,15 +4263,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgre
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sr-shm-state")
     {
         for(auto const & c : sr_shm_state)
@@ -4965,28 +4270,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(std::move(c));
-        children[segment_path] = sr_shm_state.back();
-        return children.at(segment_path);
+        sr_shm_state.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sr_shm_state)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5061,7 +4362,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgr
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5087,20 +4388,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgre
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5188,7 +4481,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5219,15 +4512,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo:
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sr-shm-state")
     {
         for(auto const & c : sr_shm_state)
@@ -5235,28 +4519,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::Resourc
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState>();
         c->parent = this;
-        sr_shm_state.push_back(std::move(c));
-        children[segment_path] = sr_shm_state.back();
-        return children.at(segment_path);
+        sr_shm_state.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sr_shm_state)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5331,7 +4611,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5357,20 +4637,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo:
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5428,7 +4700,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_segment_pat
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5451,15 +4723,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_entity_path(
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-summary")
     {
         for(auto const & c : fib_summary)
@@ -5467,28 +4730,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary>();
         c->parent = this;
-        fib_summary.push_back(std::move(c));
-        children[segment_path] = fib_summary.back();
-        return children.at(segment_path);
+        fib_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fib_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5548,16 +4807,12 @@ Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::FibSummary()
 	,shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement>())
 {
     cross_shared_load_sharing_element->parent = this;
-    children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
 
     exclusive_load_sharing_element->parent = this;
-    children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
 
     label_shared_load_sharing_element->parent = this;
-    children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
 
     shared_load_sharing_element->parent = this;
-    children["shared-load-sharing-element"] = shared_load_sharing_element;
 
     yang_name = "fib-summary"; yang_parent_name = "fib-summaries";
 }
@@ -5674,7 +4929,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5738,110 +4993,66 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cross-shared-load-sharing-element")
     {
-        if(cross_shared_load_sharing_element != nullptr)
-        {
-            children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
-        }
-        else
+        if(cross_shared_load_sharing_element == nullptr)
         {
             cross_shared_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement>();
-            cross_shared_load_sharing_element->parent = this;
-            children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
         }
-        return children.at("cross-shared-load-sharing-element");
+        return cross_shared_load_sharing_element;
     }
 
     if(child_yang_name == "exclusive-load-sharing-element")
     {
-        if(exclusive_load_sharing_element != nullptr)
-        {
-            children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
-        }
-        else
+        if(exclusive_load_sharing_element == nullptr)
         {
             exclusive_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement>();
-            exclusive_load_sharing_element->parent = this;
-            children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
         }
-        return children.at("exclusive-load-sharing-element");
+        return exclusive_load_sharing_element;
     }
 
     if(child_yang_name == "label-shared-load-sharing-element")
     {
-        if(label_shared_load_sharing_element != nullptr)
-        {
-            children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
-        }
-        else
+        if(label_shared_load_sharing_element == nullptr)
         {
             label_shared_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement>();
-            label_shared_load_sharing_element->parent = this;
-            children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
         }
-        return children.at("label-shared-load-sharing-element");
+        return label_shared_load_sharing_element;
     }
 
     if(child_yang_name == "shared-load-sharing-element")
     {
-        if(shared_load_sharing_element != nullptr)
-        {
-            children["shared-load-sharing-element"] = shared_load_sharing_element;
-        }
-        else
+        if(shared_load_sharing_element == nullptr)
         {
             shared_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement>();
-            shared_load_sharing_element->parent = this;
-            children["shared-load-sharing-element"] = shared_load_sharing_element;
         }
-        return children.at("shared-load-sharing-element");
+        return shared_load_sharing_element;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_children() const
 {
-    if(children.find("cross-shared-load-sharing-element") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cross_shared_load_sharing_element != nullptr)
     {
-        if(cross_shared_load_sharing_element != nullptr)
-        {
-            children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
-        }
+        children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
     }
 
-    if(children.find("exclusive-load-sharing-element") == children.end())
+    if(exclusive_load_sharing_element != nullptr)
     {
-        if(exclusive_load_sharing_element != nullptr)
-        {
-            children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
-        }
+        children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
     }
 
-    if(children.find("label-shared-load-sharing-element") == children.end())
+    if(label_shared_load_sharing_element != nullptr)
     {
-        if(label_shared_load_sharing_element != nullptr)
-        {
-            children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
-        }
+        children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
     }
 
-    if(children.find("shared-load-sharing-element") == children.end())
+    if(shared_load_sharing_element != nullptr)
     {
-        if(shared_load_sharing_element != nullptr)
-        {
-            children["shared-load-sharing-element"] = shared_load_sharing_element;
-        }
+        children["shared-load-sharing-element"] = shared_load_sharing_element;
     }
 
     return children;
@@ -6070,7 +5281,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Exc
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6102,20 +5313,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Excl
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6214,7 +5417,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Sha
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6246,20 +5449,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Shar
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6358,7 +5553,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Cro
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6390,20 +5585,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Cros
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6502,7 +5689,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Lab
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6534,20 +5721,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Labe
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::LabelSharedLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6598,7 +5777,6 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::ExternalSummaryAll()
     sesa_pl_sum(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum>())
 {
     sesa_pl_sum->parent = this;
-    children["sesa-pl-sum"] = sesa_pl_sum;
 
     yang_name = "external-summary-all"; yang_parent_name = "protocol";
 }
@@ -6629,7 +5807,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_segme
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6653,41 +5831,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_entity
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sesa-pl-sum")
     {
-        if(sesa_pl_sum != nullptr)
-        {
-            children["sesa-pl-sum"] = sesa_pl_sum;
-        }
-        else
+        if(sesa_pl_sum == nullptr)
         {
             sesa_pl_sum = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum>();
-            sesa_pl_sum->parent = this;
-            children["sesa-pl-sum"] = sesa_pl_sum;
         }
-        return children.at("sesa-pl-sum");
+        return sesa_pl_sum;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_children() const
 {
-    if(children.find("sesa-pl-sum") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sesa_pl_sum != nullptr)
     {
-        if(sesa_pl_sum != nullptr)
-        {
-            children["sesa-pl-sum"] = sesa_pl_sum;
-        }
+        children["sesa-pl-sum"] = sesa_pl_sum;
     }
 
     return children;
@@ -6747,7 +5908,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6774,20 +5935,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum:
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6812,7 +5965,6 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrLog()
     frr_interfaces(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces>())
 {
     frr_interfaces->parent = this;
-    children["frr-interfaces"] = frr_interfaces;
 
     yang_name = "frr-log"; yang_parent_name = "protocol";
 }
@@ -6841,7 +5993,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_segment_path() co
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6864,41 +6016,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_entity_path(Entity
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-interfaces")
     {
-        if(frr_interfaces != nullptr)
-        {
-            children["frr-interfaces"] = frr_interfaces;
-        }
-        else
+        if(frr_interfaces == nullptr)
         {
             frr_interfaces = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces>();
-            frr_interfaces->parent = this;
-            children["frr-interfaces"] = frr_interfaces;
         }
-        return children.at("frr-interfaces");
+        return frr_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_children() const
 {
-    if(children.find("frr-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_interfaces != nullptr)
     {
-        if(frr_interfaces != nullptr)
-        {
-            children["frr-interfaces"] = frr_interfaces;
-        }
+        children["frr-interfaces"] = frr_interfaces;
     }
 
     return children;
@@ -6946,7 +6081,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_se
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6969,15 +6104,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_ent
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-interface")
     {
         for(auto const & c : frr_interface)
@@ -6985,28 +6111,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface>();
         c->parent = this;
-        frr_interface.push_back(std::move(c));
-        children[segment_path] = frr_interface.back();
-        return children.at(segment_path);
+        frr_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frr_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7023,7 +6145,6 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::FrrI
     logs(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs>())
 {
     logs->parent = this;
-    children["logs"] = logs;
 
     yang_name = "frr-interface"; yang_parent_name = "frr-interfaces";
 }
@@ -7054,7 +6175,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInt
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7078,41 +6199,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "logs")
     {
-        if(logs != nullptr)
-        {
-            children["logs"] = logs;
-        }
-        else
+        if(logs == nullptr)
         {
             logs = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs>();
-            logs->parent = this;
-            children["logs"] = logs;
         }
-        return children.at("logs");
+        return logs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_children() const
 {
-    if(children.find("logs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(logs != nullptr)
     {
-        if(logs != nullptr)
-        {
-            children["logs"] = logs;
-        }
+        children["logs"] = logs;
     }
 
     return children;
@@ -7164,7 +6268,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInt
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7187,15 +6291,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "log")
     {
         for(auto const & c : log)
@@ -7203,28 +6298,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log>();
         c->parent = this;
-        log.push_back(std::move(c));
-        children[segment_path] = log.back();
-        return children.at(segment_path);
+        log.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : log)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7246,7 +6337,6 @@ Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs
     frr_timestamp(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp>())
 {
     frr_timestamp->parent = this;
-    children["frr-timestamp"] = frr_timestamp;
 
     yang_name = "log"; yang_parent_name = "logs";
 }
@@ -7287,7 +6377,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInt
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7316,41 +6406,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-timestamp")
     {
-        if(frr_timestamp != nullptr)
-        {
-            children["frr-timestamp"] = frr_timestamp;
-        }
-        else
+        if(frr_timestamp == nullptr)
         {
             frr_timestamp = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp>();
-            frr_timestamp->parent = this;
-            children["frr-timestamp"] = frr_timestamp;
         }
-        return children.at("frr-timestamp");
+        return frr_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_children() const
 {
-    if(children.find("frr-timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_timestamp != nullptr)
     {
-        if(frr_timestamp != nullptr)
-        {
-            children["frr-timestamp"] = frr_timestamp;
-        }
+        children["frr-timestamp"] = frr_timestamp;
     }
 
     return children;
@@ -7418,7 +6491,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInt
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7443,20 +6516,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7510,7 +6575,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_segment_path() cons
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7533,15 +6598,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -7549,28 +6605,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7590,16 +6642,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Vrf()
 	,summary(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary>())
 {
     interface_infos->parent = this;
-    children["interface-infos"] = interface_infos;
 
     ip_prefix_briefs->parent = this;
-    children["ip-prefix-briefs"] = ip_prefix_briefs;
 
     ip_prefix_details->parent = this;
-    children["ip-prefix-details"] = ip_prefix_details;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -7636,7 +6684,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_segment_path()
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7660,110 +6708,66 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_entity_path(Ent
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-infos")
     {
-        if(interface_infos != nullptr)
-        {
-            children["interface-infos"] = interface_infos;
-        }
-        else
+        if(interface_infos == nullptr)
         {
             interface_infos = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos>();
-            interface_infos->parent = this;
-            children["interface-infos"] = interface_infos;
         }
-        return children.at("interface-infos");
+        return interface_infos;
     }
 
     if(child_yang_name == "ip-prefix-briefs")
     {
-        if(ip_prefix_briefs != nullptr)
-        {
-            children["ip-prefix-briefs"] = ip_prefix_briefs;
-        }
-        else
+        if(ip_prefix_briefs == nullptr)
         {
             ip_prefix_briefs = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs>();
-            ip_prefix_briefs->parent = this;
-            children["ip-prefix-briefs"] = ip_prefix_briefs;
         }
-        return children.at("ip-prefix-briefs");
+        return ip_prefix_briefs;
     }
 
     if(child_yang_name == "ip-prefix-details")
     {
-        if(ip_prefix_details != nullptr)
-        {
-            children["ip-prefix-details"] = ip_prefix_details;
-        }
-        else
+        if(ip_prefix_details == nullptr)
         {
             ip_prefix_details = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails>();
-            ip_prefix_details->parent = this;
-            children["ip-prefix-details"] = ip_prefix_details;
         }
-        return children.at("ip-prefix-details");
+        return ip_prefix_details;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_children() const
 {
-    if(children.find("interface-infos") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_infos != nullptr)
     {
-        if(interface_infos != nullptr)
-        {
-            children["interface-infos"] = interface_infos;
-        }
+        children["interface-infos"] = interface_infos;
     }
 
-    if(children.find("ip-prefix-briefs") == children.end())
+    if(ip_prefix_briefs != nullptr)
     {
-        if(ip_prefix_briefs != nullptr)
-        {
-            children["ip-prefix-briefs"] = ip_prefix_briefs;
-        }
+        children["ip-prefix-briefs"] = ip_prefix_briefs;
     }
 
-    if(children.find("ip-prefix-details") == children.end())
+    if(ip_prefix_details != nullptr)
     {
-        if(ip_prefix_details != nullptr)
-        {
-            children["ip-prefix-details"] = ip_prefix_details;
-        }
+        children["ip-prefix-details"] = ip_prefix_details;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -7815,7 +6819,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::g
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7838,15 +6842,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::ge
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-prefix-detail")
     {
         for(auto const & c : ip_prefix_detail)
@@ -7854,28 +6849,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail>();
         c->parent = this;
-        ip_prefix_detail.push_back(std::move(c));
-        children[segment_path] = ip_prefix_detail.back();
-        return children.at(segment_path);
+        ip_prefix_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ip_prefix_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7929,13 +6920,10 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 	,srv6_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information>())
 {
     detail_fib_entry_information->parent = this;
-    children["detail-fib-entry-information"] = detail_fib_entry_information;
 
     fib_entry_path->parent = this;
-    children["fib-entry-path"] = fib_entry_path;
 
     srv6_information->parent = this;
-    children["srv6-information"] = srv6_information;
 
     yang_name = "ip-prefix-detail"; yang_parent_name = "ip-prefix-details";
 }
@@ -8050,7 +7038,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8109,28 +7097,13 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-fib-entry-information")
     {
-        if(detail_fib_entry_information != nullptr)
-        {
-            children["detail-fib-entry-information"] = detail_fib_entry_information;
-        }
-        else
+        if(detail_fib_entry_information == nullptr)
         {
             detail_fib_entry_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation>();
-            detail_fib_entry_information->parent = this;
-            children["detail-fib-entry-information"] = detail_fib_entry_information;
         }
-        return children.at("detail-fib-entry-information");
+        return detail_fib_entry_information;
     }
 
     if(child_yang_name == "extension-object")
@@ -8140,82 +7113,57 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject>();
         c->parent = this;
-        extension_object.push_back(std::move(c));
-        children[segment_path] = extension_object.back();
-        return children.at(segment_path);
+        extension_object.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "fib-entry-path")
     {
-        if(fib_entry_path != nullptr)
-        {
-            children["fib-entry-path"] = fib_entry_path;
-        }
-        else
+        if(fib_entry_path == nullptr)
         {
             fib_entry_path = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath>();
-            fib_entry_path->parent = this;
-            children["fib-entry-path"] = fib_entry_path;
         }
-        return children.at("fib-entry-path");
+        return fib_entry_path;
     }
 
     if(child_yang_name == "srv6-information")
     {
-        if(srv6_information != nullptr)
-        {
-            children["srv6-information"] = srv6_information;
-        }
-        else
+        if(srv6_information == nullptr)
         {
             srv6_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information>();
-            srv6_information->parent = this;
-            children["srv6-information"] = srv6_information;
         }
-        return children.at("srv6-information");
+        return srv6_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_children() const
 {
-    if(children.find("detail-fib-entry-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail_fib_entry_information != nullptr)
     {
-        if(detail_fib_entry_information != nullptr)
-        {
-            children["detail-fib-entry-information"] = detail_fib_entry_information;
-        }
+        children["detail-fib-entry-information"] = detail_fib_entry_information;
     }
 
     for (auto const & c : extension_object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("fib-entry-path") == children.end())
+    if(fib_entry_path != nullptr)
     {
-        if(fib_entry_path != nullptr)
-        {
-            children["fib-entry-path"] = fib_entry_path;
-        }
+        children["fib-entry-path"] = fib_entry_path;
     }
 
-    if(children.find("srv6-information") == children.end())
+    if(srv6_information != nullptr)
     {
-        if(srv6_information != nullptr)
-        {
-            children["srv6-information"] = srv6_information;
-        }
+        children["srv6-information"] = srv6_information;
     }
 
     return children;
@@ -8414,7 +7362,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     loadshare_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation>())
 {
     loadshare_information->parent = this;
-    children["loadshare-information"] = loadshare_information;
 
     yang_name = "detail-fib-entry-information"; yang_parent_name = "ip-prefix-detail";
 }
@@ -8521,7 +7468,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8583,41 +7530,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "loadshare-information")
     {
-        if(loadshare_information != nullptr)
-        {
-            children["loadshare-information"] = loadshare_information;
-        }
-        else
+        if(loadshare_information == nullptr)
         {
             loadshare_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation>();
-            loadshare_information->parent = this;
-            children["loadshare-information"] = loadshare_information;
         }
-        return children.at("loadshare-information");
+        return loadshare_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_children() const
 {
-    if(children.find("loadshare-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(loadshare_information != nullptr)
     {
-        if(loadshare_information != nullptr)
-        {
-            children["loadshare-information"] = loadshare_information;
-        }
+        children["loadshare-information"] = loadshare_information;
     }
 
     return children;
@@ -8800,7 +7730,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     load_informtion_internal_data(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData>())
 {
     load_informtion_internal_data->parent = this;
-    children["load-informtion-internal-data"] = load_informtion_internal_data;
 
     yang_name = "loadshare-information"; yang_parent_name = "detail-fib-entry-information";
 }
@@ -8851,7 +7780,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8885,41 +7814,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "load-informtion-internal-data")
     {
-        if(load_informtion_internal_data != nullptr)
-        {
-            children["load-informtion-internal-data"] = load_informtion_internal_data;
-        }
-        else
+        if(load_informtion_internal_data == nullptr)
         {
             load_informtion_internal_data = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData>();
-            load_informtion_internal_data->parent = this;
-            children["load-informtion-internal-data"] = load_informtion_internal_data;
         }
-        return children.at("load-informtion-internal-data");
+        return load_informtion_internal_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_children() const
 {
-    if(children.find("load-informtion-internal-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(load_informtion_internal_data != nullptr)
     {
-        if(load_informtion_internal_data != nullptr)
-        {
-            children["load-informtion-internal-data"] = load_informtion_internal_data;
-        }
+        children["load-informtion-internal-data"] = load_informtion_internal_data;
     }
 
     return children;
@@ -9122,7 +8034,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9166,15 +8078,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-address")
     {
         for(auto const & c : adjacency_address)
@@ -9182,15 +8085,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress>();
         c->parent = this;
-        adjacency_address.push_back(std::move(c));
-        children[segment_path] = adjacency_address.back();
-        return children.at(segment_path);
+        adjacency_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pbts-class-is-fallback-mapped")
@@ -9200,15 +8101,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped>();
         c->parent = this;
-        pbts_class_is_fallback_mapped.push_back(std::move(c));
-        children[segment_path] = pbts_class_is_fallback_mapped.back();
-        return children.at(segment_path);
+        pbts_class_is_fallback_mapped.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pbts-fallback-to-drop")
@@ -9218,15 +8117,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop>();
         c->parent = this;
-        pbts_fallback_to_drop.push_back(std::move(c));
-        children[segment_path] = pbts_fallback_to_drop.back();
-        return children.at(segment_path);
+        pbts_fallback_to_drop.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tunnel-is-forward-class")
@@ -9236,52 +8133,39 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass>();
         c->parent = this;
-        tunnel_is_forward_class.push_back(std::move(c));
-        children[segment_path] = tunnel_is_forward_class.back();
-        return children.at(segment_path);
+        tunnel_is_forward_class.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : adjacency_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pbts_class_is_fallback_mapped)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pbts_fallback_to_drop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : tunnel_is_forward_class)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9394,7 +8278,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9418,20 +8302,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9474,7 +8350,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9498,20 +8374,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9554,7 +8422,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9578,20 +8446,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9634,7 +8494,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9658,20 +8518,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9721,7 +8573,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9744,15 +8596,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-sh-tbl-path")
     {
         for(auto const & c : fib_sh_tbl_path)
@@ -9760,28 +8603,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath>();
         c->parent = this;
-        fib_sh_tbl_path.push_back(std::move(c));
-        children[segment_path] = fib_sh_tbl_path.back();
-        return children.at(segment_path);
+        fib_sh_tbl_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fib_sh_tbl_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9820,10 +8659,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 	,mpls_information_for_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath>())
 {
     more_detail_about_path->parent = this;
-    children["more-detail-about-path"] = more_detail_about_path;
 
     mpls_information_for_path->parent = this;
-    children["mpls-information-for-path"] = mpls_information_for_path;
 
     yang_name = "fib-sh-tbl-path"; yang_parent_name = "fib-entry-path";
 }
@@ -9898,7 +8735,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9943,64 +8780,38 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "more-detail-about-path")
     {
-        if(more_detail_about_path != nullptr)
-        {
-            children["more-detail-about-path"] = more_detail_about_path;
-        }
-        else
+        if(more_detail_about_path == nullptr)
         {
             more_detail_about_path = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath>();
-            more_detail_about_path->parent = this;
-            children["more-detail-about-path"] = more_detail_about_path;
         }
-        return children.at("more-detail-about-path");
+        return more_detail_about_path;
     }
 
     if(child_yang_name == "mpls-information-for-path")
     {
-        if(mpls_information_for_path != nullptr)
-        {
-            children["mpls-information-for-path"] = mpls_information_for_path;
-        }
-        else
+        if(mpls_information_for_path == nullptr)
         {
             mpls_information_for_path = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath>();
-            mpls_information_for_path->parent = this;
-            children["mpls-information-for-path"] = mpls_information_for_path;
         }
-        return children.at("mpls-information-for-path");
+        return mpls_information_for_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_children() const
 {
-    if(children.find("more-detail-about-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(more_detail_about_path != nullptr)
     {
-        if(more_detail_about_path != nullptr)
-        {
-            children["more-detail-about-path"] = more_detail_about_path;
-        }
+        children["more-detail-about-path"] = more_detail_about_path;
     }
 
-    if(children.find("mpls-information-for-path") == children.end())
+    if(mpls_information_for_path != nullptr)
     {
-        if(mpls_information_for_path != nullptr)
-        {
-            children["mpls-information-for-path"] = mpls_information_for_path;
-        }
+        children["mpls-information-for-path"] = mpls_information_for_path;
     }
 
     return children;
@@ -10214,7 +9025,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10263,15 +9074,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spd-ipencap")
     {
         for(auto const & c : spd_ipencap)
@@ -10279,28 +9081,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap>();
         c->parent = this;
-        spd_ipencap.push_back(std::move(c));
-        children[segment_path] = spd_ipencap.back();
-        return children.at(segment_path);
+        spd_ipencap.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : spd_ipencap)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10479,7 +9277,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10511,15 +9309,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-encap-hdr")
     {
         for(auto const & c : ip_encap_hdr)
@@ -10527,28 +9316,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr>();
         c->parent = this;
-        ip_encap_hdr.push_back(std::move(c));
-        children[segment_path] = ip_encap_hdr.back();
-        return children.at(segment_path);
+        ip_encap_hdr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ip_encap_hdr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10631,7 +9416,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10657,20 +9442,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10746,7 +9523,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10775,15 +9552,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "igp-label-stack-array")
     {
         for(auto const & c : igp_label_stack_array)
@@ -10791,28 +9559,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray>();
         c->parent = this;
-        igp_label_stack_array.push_back(std::move(c));
-        children[segment_path] = igp_label_stack_array.back();
-        return children.at(segment_path);
+        igp_label_stack_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : igp_label_stack_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10895,7 +9659,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10923,20 +9687,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10969,7 +9725,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     srv6_statistics(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics>())
 {
     srv6_statistics->parent = this;
-    children["srv6-statistics"] = srv6_statistics;
 
     yang_name = "srv6-information"; yang_parent_name = "ip-prefix-detail";
 }
@@ -11004,7 +9759,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11030,41 +9785,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "srv6-statistics")
     {
-        if(srv6_statistics != nullptr)
-        {
-            children["srv6-statistics"] = srv6_statistics;
-        }
-        else
+        if(srv6_statistics == nullptr)
         {
             srv6_statistics = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics>();
-            srv6_statistics->parent = this;
-            children["srv6-statistics"] = srv6_statistics;
         }
-        return children.at("srv6-statistics");
+        return srv6_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::get_children() const
 {
-    if(children.find("srv6-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(srv6_statistics != nullptr)
     {
-        if(srv6_statistics != nullptr)
-        {
-            children["srv6-statistics"] = srv6_statistics;
-        }
+        children["srv6-statistics"] = srv6_statistics;
     }
 
     return children;
@@ -11120,7 +9858,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11145,20 +9883,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::Srv6Information::Srv6Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11181,7 +9911,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
     sfecd_le(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe>())
 {
     sfecd_le->parent = this;
-    children["sfecd-le"] = sfecd_le;
 
     yang_name = "extension-object"; yang_parent_name = "ip-prefix-detail";
 }
@@ -11212,7 +9941,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11236,41 +9965,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sfecd-le")
     {
-        if(sfecd_le != nullptr)
-        {
-            children["sfecd-le"] = sfecd_le;
-        }
-        else
+        if(sfecd_le == nullptr)
         {
             sfecd_le = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe>();
-            sfecd_le->parent = this;
-            children["sfecd-le"] = sfecd_le;
         }
-        return children.at("sfecd-le");
+        return sfecd_le;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::get_children() const
 {
-    if(children.find("sfecd-le") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sfecd_le != nullptr)
     {
-        if(sfecd_le != nullptr)
-        {
-            children["sfecd-le"] = sfecd_le;
-        }
+        children["sfecd-le"] = sfecd_le;
     }
 
     return children;
@@ -11318,7 +10030,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11343,20 +10055,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject::SfecdLe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11420,16 +10124,12 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::Summary()
 	,shared_load_sharing_element(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement>())
 {
     cross_shared_load_sharing_element->parent = this;
-    children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
 
     exclusive_load_sharing_element->parent = this;
-    children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
 
     label_shared_load_sharing_element->parent = this;
-    children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
 
     shared_load_sharing_element->parent = this;
-    children["shared-load-sharing-element"] = shared_load_sharing_element;
 
     yang_name = "summary"; yang_parent_name = "vrf";
 }
@@ -11542,7 +10242,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_segme
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11604,110 +10304,66 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_entity
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cross-shared-load-sharing-element")
     {
-        if(cross_shared_load_sharing_element != nullptr)
-        {
-            children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
-        }
-        else
+        if(cross_shared_load_sharing_element == nullptr)
         {
             cross_shared_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossSharedLoadSharingElement>();
-            cross_shared_load_sharing_element->parent = this;
-            children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
         }
-        return children.at("cross-shared-load-sharing-element");
+        return cross_shared_load_sharing_element;
     }
 
     if(child_yang_name == "exclusive-load-sharing-element")
     {
-        if(exclusive_load_sharing_element != nullptr)
-        {
-            children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
-        }
-        else
+        if(exclusive_load_sharing_element == nullptr)
         {
             exclusive_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveLoadSharingElement>();
-            exclusive_load_sharing_element->parent = this;
-            children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
         }
-        return children.at("exclusive-load-sharing-element");
+        return exclusive_load_sharing_element;
     }
 
     if(child_yang_name == "label-shared-load-sharing-element")
     {
-        if(label_shared_load_sharing_element != nullptr)
-        {
-            children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
-        }
-        else
+        if(label_shared_load_sharing_element == nullptr)
         {
             label_shared_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelSharedLoadSharingElement>();
-            label_shared_load_sharing_element->parent = this;
-            children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
         }
-        return children.at("label-shared-load-sharing-element");
+        return label_shared_load_sharing_element;
     }
 
     if(child_yang_name == "shared-load-sharing-element")
     {
-        if(shared_load_sharing_element != nullptr)
-        {
-            children["shared-load-sharing-element"] = shared_load_sharing_element;
-        }
-        else
+        if(shared_load_sharing_element == nullptr)
         {
             shared_load_sharing_element = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement>();
-            shared_load_sharing_element->parent = this;
-            children["shared-load-sharing-element"] = shared_load_sharing_element;
         }
-        return children.at("shared-load-sharing-element");
+        return shared_load_sharing_element;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_children() const
 {
-    if(children.find("cross-shared-load-sharing-element") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cross_shared_load_sharing_element != nullptr)
     {
-        if(cross_shared_load_sharing_element != nullptr)
-        {
-            children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
-        }
+        children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
     }
 
-    if(children.find("exclusive-load-sharing-element") == children.end())
+    if(exclusive_load_sharing_element != nullptr)
     {
-        if(exclusive_load_sharing_element != nullptr)
-        {
-            children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
-        }
+        children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
     }
 
-    if(children.find("label-shared-load-sharing-element") == children.end())
+    if(label_shared_load_sharing_element != nullptr)
     {
-        if(label_shared_load_sharing_element != nullptr)
-        {
-            children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
-        }
+        children["label-shared-load-sharing-element"] = label_shared_load_sharing_element;
     }
 
-    if(children.find("shared-load-sharing-element") == children.end())
+    if(shared_load_sharing_element != nullptr)
     {
-        if(shared_load_sharing_element != nullptr)
-        {
-            children["shared-load-sharing-element"] = shared_load_sharing_element;
-        }
+        children["shared-load-sharing-element"] = shared_load_sharing_element;
     }
 
     return children;
@@ -11928,7 +10584,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::Exclusive
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11960,20 +10616,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveL
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12072,7 +10720,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoa
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12104,20 +10752,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoad
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12216,7 +10856,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossShar
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12248,20 +10888,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossShare
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossSharedLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossSharedLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12360,7 +10992,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelShar
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelSharedLoadSharingElement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12392,20 +11024,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelShare
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelSharedLoadSharingElement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelSharedLoadSharingElement::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12487,7 +11111,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::ge
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12510,15 +11134,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::get
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-info")
     {
         for(auto const & c : interface_info)
@@ -12526,28 +11141,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo>();
         c->parent = this;
-        interface_info.push_back(std::move(c));
-        children[segment_path] = interface_info.back();
-        return children.at(segment_path);
+        interface_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12564,7 +11175,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo:
     interfaces(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "interface-info"; yang_parent_name = "interface-infos";
 }
@@ -12595,7 +11205,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12619,41 +11229,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -12705,7 +11298,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12728,15 +11321,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -12744,28 +11328,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12812,10 +11392,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo:
 	,si_internal(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal>())
 {
     detail_fib_int_information->parent = this;
-    children["detail-fib-int-information"] = detail_fib_int_information;
 
     si_internal->parent = this;
-    children["si-internal"] = si_internal;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -12906,7 +11484,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12959,64 +11537,38 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-fib-int-information")
     {
-        if(detail_fib_int_information != nullptr)
-        {
-            children["detail-fib-int-information"] = detail_fib_int_information;
-        }
-        else
+        if(detail_fib_int_information == nullptr)
         {
             detail_fib_int_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation>();
-            detail_fib_int_information->parent = this;
-            children["detail-fib-int-information"] = detail_fib_int_information;
         }
-        return children.at("detail-fib-int-information");
+        return detail_fib_int_information;
     }
 
     if(child_yang_name == "si-internal")
     {
-        if(si_internal != nullptr)
-        {
-            children["si-internal"] = si_internal;
-        }
-        else
+        if(si_internal == nullptr)
         {
             si_internal = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal>();
-            si_internal->parent = this;
-            children["si-internal"] = si_internal;
         }
-        return children.at("si-internal");
+        return si_internal;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::get_children() const
 {
-    if(children.find("detail-fib-int-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail_fib_int_information != nullptr)
     {
-        if(detail_fib_int_information != nullptr)
-        {
-            children["detail-fib-int-information"] = detail_fib_int_information;
-        }
+        children["detail-fib-int-information"] = detail_fib_int_information;
     }
 
-    if(children.find("si-internal") == children.end())
+    if(si_internal != nullptr)
     {
-        if(si_internal != nullptr)
-        {
-            children["si-internal"] = si_internal;
-        }
+        children["si-internal"] = si_internal;
     }
 
     return children;
@@ -13216,7 +11768,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13253,20 +11805,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13336,10 +11880,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo:
 	,fib_srte_head_hist(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist>())
 {
     fib_idb_hist->parent = this;
-    children["fib-idb-hist"] = fib_idb_hist;
 
     fib_srte_head_hist->parent = this;
-    children["fib-srte-head-hist"] = fib_srte_head_hist;
 
     yang_name = "si-internal"; yang_parent_name = "interface";
 }
@@ -13370,7 +11912,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13393,64 +11935,38 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-idb-hist")
     {
-        if(fib_idb_hist != nullptr)
-        {
-            children["fib-idb-hist"] = fib_idb_hist;
-        }
-        else
+        if(fib_idb_hist == nullptr)
         {
             fib_idb_hist = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist>();
-            fib_idb_hist->parent = this;
-            children["fib-idb-hist"] = fib_idb_hist;
         }
-        return children.at("fib-idb-hist");
+        return fib_idb_hist;
     }
 
     if(child_yang_name == "fib-srte-head-hist")
     {
-        if(fib_srte_head_hist != nullptr)
-        {
-            children["fib-srte-head-hist"] = fib_srte_head_hist;
-        }
-        else
+        if(fib_srte_head_hist == nullptr)
         {
             fib_srte_head_hist = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist>();
-            fib_srte_head_hist->parent = this;
-            children["fib-srte-head-hist"] = fib_srte_head_hist;
         }
-        return children.at("fib-srte-head-hist");
+        return fib_srte_head_hist;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::get_children() const
 {
-    if(children.find("fib-idb-hist") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_idb_hist != nullptr)
     {
-        if(fib_idb_hist != nullptr)
-        {
-            children["fib-idb-hist"] = fib_idb_hist;
-        }
+        children["fib-idb-hist"] = fib_idb_hist;
     }
 
-    if(children.find("fib-srte-head-hist") == children.end())
+    if(fib_srte_head_hist != nullptr)
     {
-        if(fib_srte_head_hist != nullptr)
-        {
-            children["fib-srte-head-hist"] = fib_srte_head_hist;
-        }
+        children["fib-srte-head-hist"] = fib_srte_head_hist;
     }
 
     return children;
@@ -13501,7 +12017,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13525,15 +12041,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evt-entry")
     {
         for(auto const & c : evt_entry)
@@ -13541,28 +12048,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry>();
         c->parent = this;
-        evt_entry.push_back(std::move(c));
-        children[segment_path] = evt_entry.back();
-        return children.at(segment_path);
+        evt_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evt_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13631,7 +12134,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13661,20 +12164,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13747,7 +12242,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13771,15 +12266,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evt-entry")
     {
         for(auto const & c : evt_entry)
@@ -13787,28 +12273,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry>();
         c->parent = this;
-        evt_entry.push_back(std::move(c));
-        children[segment_path] = evt_entry.back();
-        return children.at(segment_path);
+        evt_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evt_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13877,7 +12359,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13907,20 +12389,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13990,7 +12464,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::ge
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14013,15 +12487,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::get
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-prefix-brief")
     {
         for(auto const & c : ip_prefix_brief)
@@ -14029,28 +12494,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief>();
         c->parent = this;
-        ip_prefix_brief.push_back(std::move(c));
-        children[segment_path] = ip_prefix_brief.back();
-        return children.at(segment_path);
+        ip_prefix_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ip_prefix_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14104,13 +12565,10 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief:
 	,srv6_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information>())
 {
     detail_fib_entry_information->parent = this;
-    children["detail-fib-entry-information"] = detail_fib_entry_information;
 
     fib_entry_path->parent = this;
-    children["fib-entry-path"] = fib_entry_path;
 
     srv6_information->parent = this;
-    children["srv6-information"] = srv6_information;
 
     yang_name = "ip-prefix-brief"; yang_parent_name = "ip-prefix-briefs";
 }
@@ -14225,7 +12683,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14284,28 +12742,13 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-fib-entry-information")
     {
-        if(detail_fib_entry_information != nullptr)
-        {
-            children["detail-fib-entry-information"] = detail_fib_entry_information;
-        }
-        else
+        if(detail_fib_entry_information == nullptr)
         {
             detail_fib_entry_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation>();
-            detail_fib_entry_information->parent = this;
-            children["detail-fib-entry-information"] = detail_fib_entry_information;
         }
-        return children.at("detail-fib-entry-information");
+        return detail_fib_entry_information;
     }
 
     if(child_yang_name == "extension-object")
@@ -14315,82 +12758,57 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject>();
         c->parent = this;
-        extension_object.push_back(std::move(c));
-        children[segment_path] = extension_object.back();
-        return children.at(segment_path);
+        extension_object.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "fib-entry-path")
     {
-        if(fib_entry_path != nullptr)
-        {
-            children["fib-entry-path"] = fib_entry_path;
-        }
-        else
+        if(fib_entry_path == nullptr)
         {
             fib_entry_path = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath>();
-            fib_entry_path->parent = this;
-            children["fib-entry-path"] = fib_entry_path;
         }
-        return children.at("fib-entry-path");
+        return fib_entry_path;
     }
 
     if(child_yang_name == "srv6-information")
     {
-        if(srv6_information != nullptr)
-        {
-            children["srv6-information"] = srv6_information;
-        }
-        else
+        if(srv6_information == nullptr)
         {
             srv6_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information>();
-            srv6_information->parent = this;
-            children["srv6-information"] = srv6_information;
         }
-        return children.at("srv6-information");
+        return srv6_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::get_children() const
 {
-    if(children.find("detail-fib-entry-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail_fib_entry_information != nullptr)
     {
-        if(detail_fib_entry_information != nullptr)
-        {
-            children["detail-fib-entry-information"] = detail_fib_entry_information;
-        }
+        children["detail-fib-entry-information"] = detail_fib_entry_information;
     }
 
     for (auto const & c : extension_object)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("fib-entry-path") == children.end())
+    if(fib_entry_path != nullptr)
     {
-        if(fib_entry_path != nullptr)
-        {
-            children["fib-entry-path"] = fib_entry_path;
-        }
+        children["fib-entry-path"] = fib_entry_path;
     }
 
-    if(children.find("srv6-information") == children.end())
+    if(srv6_information != nullptr)
     {
-        if(srv6_information != nullptr)
-        {
-            children["srv6-information"] = srv6_information;
-        }
+        children["srv6-information"] = srv6_information;
     }
 
     return children;
@@ -14589,7 +13007,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief:
     loadshare_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation>())
 {
     loadshare_information->parent = this;
-    children["loadshare-information"] = loadshare_information;
 
     yang_name = "detail-fib-entry-information"; yang_parent_name = "ip-prefix-brief";
 }
@@ -14696,7 +13113,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14758,41 +13175,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "loadshare-information")
     {
-        if(loadshare_information != nullptr)
-        {
-            children["loadshare-information"] = loadshare_information;
-        }
-        else
+        if(loadshare_information == nullptr)
         {
             loadshare_information = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation>();
-            loadshare_information->parent = this;
-            children["loadshare-information"] = loadshare_information;
         }
-        return children.at("loadshare-information");
+        return loadshare_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::get_children() const
 {
-    if(children.find("loadshare-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(loadshare_information != nullptr)
     {
-        if(loadshare_information != nullptr)
-        {
-            children["loadshare-information"] = loadshare_information;
-        }
+        children["loadshare-information"] = loadshare_information;
     }
 
     return children;
@@ -14975,7 +13375,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief:
     load_informtion_internal_data(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData>())
 {
     load_informtion_internal_data->parent = this;
-    children["load-informtion-internal-data"] = load_informtion_internal_data;
 
     yang_name = "loadshare-information"; yang_parent_name = "detail-fib-entry-information";
 }
@@ -15026,7 +13425,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15060,41 +13459,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "load-informtion-internal-data")
     {
-        if(load_informtion_internal_data != nullptr)
-        {
-            children["load-informtion-internal-data"] = load_informtion_internal_data;
-        }
-        else
+        if(load_informtion_internal_data == nullptr)
         {
             load_informtion_internal_data = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData>();
-            load_informtion_internal_data->parent = this;
-            children["load-informtion-internal-data"] = load_informtion_internal_data;
         }
-        return children.at("load-informtion-internal-data");
+        return load_informtion_internal_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::get_children() const
 {
-    if(children.find("load-informtion-internal-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(load_informtion_internal_data != nullptr)
     {
-        if(load_informtion_internal_data != nullptr)
-        {
-            children["load-informtion-internal-data"] = load_informtion_internal_data;
-        }
+        children["load-informtion-internal-data"] = load_informtion_internal_data;
     }
 
     return children;
@@ -15297,7 +13679,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15341,15 +13723,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-address")
     {
         for(auto const & c : adjacency_address)
@@ -15357,15 +13730,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress>();
         c->parent = this;
-        adjacency_address.push_back(std::move(c));
-        children[segment_path] = adjacency_address.back();
-        return children.at(segment_path);
+        adjacency_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pbts-class-is-fallback-mapped")
@@ -15375,15 +13746,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped>();
         c->parent = this;
-        pbts_class_is_fallback_mapped.push_back(std::move(c));
-        children[segment_path] = pbts_class_is_fallback_mapped.back();
-        return children.at(segment_path);
+        pbts_class_is_fallback_mapped.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pbts-fallback-to-drop")
@@ -15393,15 +13762,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop>();
         c->parent = this;
-        pbts_fallback_to_drop.push_back(std::move(c));
-        children[segment_path] = pbts_fallback_to_drop.back();
-        return children.at(segment_path);
+        pbts_fallback_to_drop.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tunnel-is-forward-class")
@@ -15411,52 +13778,39 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass>();
         c->parent = this;
-        tunnel_is_forward_class.push_back(std::move(c));
-        children[segment_path] = tunnel_is_forward_class.back();
-        return children.at(segment_path);
+        tunnel_is_forward_class.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : adjacency_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pbts_class_is_fallback_mapped)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : pbts_fallback_to_drop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : tunnel_is_forward_class)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15569,7 +13923,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15593,20 +13947,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15649,7 +13995,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15673,20 +14019,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15729,7 +14067,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15753,20 +14091,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15809,7 +14139,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15833,20 +14163,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15896,7 +14218,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15919,15 +14241,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-sh-tbl-path")
     {
         for(auto const & c : fib_sh_tbl_path)
@@ -15935,28 +14248,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath>();
         c->parent = this;
-        fib_sh_tbl_path.push_back(std::move(c));
-        children[segment_path] = fib_sh_tbl_path.back();
-        return children.at(segment_path);
+        fib_sh_tbl_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fib_sh_tbl_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15995,10 +14304,8 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief:
 	,mpls_information_for_path(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath>())
 {
     more_detail_about_path->parent = this;
-    children["more-detail-about-path"] = more_detail_about_path;
 
     mpls_information_for_path->parent = this;
-    children["mpls-information-for-path"] = mpls_information_for_path;
 
     yang_name = "fib-sh-tbl-path"; yang_parent_name = "fib-entry-path";
 }
@@ -16073,7 +14380,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16118,64 +14425,38 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "more-detail-about-path")
     {
-        if(more_detail_about_path != nullptr)
-        {
-            children["more-detail-about-path"] = more_detail_about_path;
-        }
-        else
+        if(more_detail_about_path == nullptr)
         {
             more_detail_about_path = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath>();
-            more_detail_about_path->parent = this;
-            children["more-detail-about-path"] = more_detail_about_path;
         }
-        return children.at("more-detail-about-path");
+        return more_detail_about_path;
     }
 
     if(child_yang_name == "mpls-information-for-path")
     {
-        if(mpls_information_for_path != nullptr)
-        {
-            children["mpls-information-for-path"] = mpls_information_for_path;
-        }
-        else
+        if(mpls_information_for_path == nullptr)
         {
             mpls_information_for_path = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath>();
-            mpls_information_for_path->parent = this;
-            children["mpls-information-for-path"] = mpls_information_for_path;
         }
-        return children.at("mpls-information-for-path");
+        return mpls_information_for_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::get_children() const
 {
-    if(children.find("more-detail-about-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(more_detail_about_path != nullptr)
     {
-        if(more_detail_about_path != nullptr)
-        {
-            children["more-detail-about-path"] = more_detail_about_path;
-        }
+        children["more-detail-about-path"] = more_detail_about_path;
     }
 
-    if(children.find("mpls-information-for-path") == children.end())
+    if(mpls_information_for_path != nullptr)
     {
-        if(mpls_information_for_path != nullptr)
-        {
-            children["mpls-information-for-path"] = mpls_information_for_path;
-        }
+        children["mpls-information-for-path"] = mpls_information_for_path;
     }
 
     return children;
@@ -16389,7 +14670,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16438,15 +14719,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spd-ipencap")
     {
         for(auto const & c : spd_ipencap)
@@ -16454,28 +14726,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap>();
         c->parent = this;
-        spd_ipencap.push_back(std::move(c));
-        children[segment_path] = spd_ipencap.back();
-        return children.at(segment_path);
+        spd_ipencap.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : spd_ipencap)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16654,7 +14922,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16686,15 +14954,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-encap-hdr")
     {
         for(auto const & c : ip_encap_hdr)
@@ -16702,28 +14961,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr>();
         c->parent = this;
-        ip_encap_hdr.push_back(std::move(c));
-        children[segment_path] = ip_encap_hdr.back();
-        return children.at(segment_path);
+        ip_encap_hdr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ip_encap_hdr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16806,7 +15061,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16832,20 +15087,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16921,7 +15168,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16950,15 +15197,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "igp-label-stack-array")
     {
         for(auto const & c : igp_label_stack_array)
@@ -16966,28 +15204,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray>();
         c->parent = this;
-        igp_label_stack_array.push_back(std::move(c));
-        children[segment_path] = igp_label_stack_array.back();
-        return children.at(segment_path);
+        igp_label_stack_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : igp_label_stack_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17070,7 +15304,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17098,20 +15332,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17144,7 +15370,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief:
     srv6_statistics(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::Srv6Statistics>())
 {
     srv6_statistics->parent = this;
-    children["srv6-statistics"] = srv6_statistics;
 
     yang_name = "srv6-information"; yang_parent_name = "ip-prefix-brief";
 }
@@ -17179,7 +15404,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17205,41 +15430,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "srv6-statistics")
     {
-        if(srv6_statistics != nullptr)
-        {
-            children["srv6-statistics"] = srv6_statistics;
-        }
-        else
+        if(srv6_statistics == nullptr)
         {
             srv6_statistics = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::Srv6Statistics>();
-            srv6_statistics->parent = this;
-            children["srv6-statistics"] = srv6_statistics;
         }
-        return children.at("srv6-statistics");
+        return srv6_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::get_children() const
 {
-    if(children.find("srv6-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(srv6_statistics != nullptr)
     {
-        if(srv6_statistics != nullptr)
-        {
-            children["srv6-statistics"] = srv6_statistics;
-        }
+        children["srv6-statistics"] = srv6_statistics;
     }
 
     return children;
@@ -17295,7 +15503,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::Srv6Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::Srv6Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17320,20 +15528,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::Srv6Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::Srv6Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::Srv6Information::Srv6Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17356,7 +15556,6 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief:
     sfecd_le(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::SfecdLe>())
 {
     sfecd_le->parent = this;
-    children["sfecd-le"] = sfecd_le;
 
     yang_name = "extension-object"; yang_parent_name = "ip-prefix-brief";
 }
@@ -17387,7 +15586,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17411,41 +15610,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sfecd-le")
     {
-        if(sfecd_le != nullptr)
-        {
-            children["sfecd-le"] = sfecd_le;
-        }
-        else
+        if(sfecd_le == nullptr)
         {
             sfecd_le = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::SfecdLe>();
-            sfecd_le->parent = this;
-            children["sfecd-le"] = sfecd_le;
         }
-        return children.at("sfecd-le");
+        return sfecd_le;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::get_children() const
 {
-    if(children.find("sfecd-le") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sfecd_le != nullptr)
     {
-        if(sfecd_le != nullptr)
-        {
-            children["sfecd-le"] = sfecd_le;
-        }
+        children["sfecd-le"] = sfecd_le;
     }
 
     return children;
@@ -17493,7 +15675,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::SfecdLe::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::SfecdLe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17518,20 +15700,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::SfecdLe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::SfecdLe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::ExtensionObject::SfecdLe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17585,7 +15759,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::NhIds::get_segment_path() con
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::NhIds::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::NhIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17608,15 +15782,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::NhIds::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::NhIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nh-id")
     {
         for(auto const & c : nh_id)
@@ -17624,28 +15789,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::NhIds::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId>();
         c->parent = this;
-        nh_id.push_back(std::move(c));
-        children[segment_path] = nh_id.back();
-        return children.at(segment_path);
+        nh_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::NhIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::NhIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nh_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17716,7 +15877,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_segment_path
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17750,20 +15911,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_entity_path(E
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17853,7 +16006,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17876,15 +16029,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_e
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-client-summary")
     {
         for(auto const & c : external_client_summary)
@@ -17892,28 +16036,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalClientSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary>();
         c->parent = this;
-        external_client_summary.push_back(std::move(c));
-        children[segment_path] = external_client_summary.back();
-        return children.at(segment_path);
+        external_client_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : external_client_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17938,7 +16078,6 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSu
     ses_pl_sum(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum>())
 {
     ses_pl_sum->parent = this;
-    children["ses-pl-sum"] = ses_pl_sum;
 
     yang_name = "external-client-summary"; yang_parent_name = "external-client-summaries";
 }
@@ -17985,7 +16124,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exte
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18017,41 +16156,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exter
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ses-pl-sum")
     {
-        if(ses_pl_sum != nullptr)
-        {
-            children["ses-pl-sum"] = ses_pl_sum;
-        }
-        else
+        if(ses_pl_sum == nullptr)
         {
             ses_pl_sum = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum>();
-            ses_pl_sum->parent = this;
-            children["ses-pl-sum"] = ses_pl_sum;
         }
-        return children.at("ses-pl-sum");
+        return ses_pl_sum;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::get_children() const
 {
-    if(children.find("ses-pl-sum") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ses_pl_sum != nullptr)
     {
-        if(ses_pl_sum != nullptr)
-        {
-            children["ses-pl-sum"] = ses_pl_sum;
-        }
+        children["ses-pl-sum"] = ses_pl_sum;
     }
 
     return children;
@@ -18143,7 +16265,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exte
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18170,20 +16292,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exter
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18238,10 +16352,8 @@ Fib::Nodes::Node::Protocols::Protocol::Misc::Misc()
 	,mi_plat_capabilities(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities>())
 {
     mi_issu_state->parent = this;
-    children["mi-issu-state"] = mi_issu_state;
 
     mi_plat_capabilities->parent = this;
-    children["mi-plat-capabilities"] = mi_plat_capabilities;
 
     yang_name = "misc"; yang_parent_name = "protocol";
 }
@@ -18440,7 +16552,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::get_segment_path() cons
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18499,15 +16611,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mi-del")
     {
         for(auto const & c : mi_del)
@@ -18515,15 +16618,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel>();
         c->parent = this;
-        mi_del.push_back(std::move(c));
-        children[segment_path] = mi_del.back();
-        return children.at(segment_path);
+        mi_del.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mi-frr-stat")
@@ -18533,15 +16634,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat>();
         c->parent = this;
-        mi_frr_stat.push_back(std::move(c));
-        children[segment_path] = mi_frr_stat.back();
-        return children.at(segment_path);
+        mi_frr_stat.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mi-idb-purge-cntr")
@@ -18551,45 +16650,31 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr>();
         c->parent = this;
-        mi_idb_purge_cntr.push_back(std::move(c));
-        children[segment_path] = mi_idb_purge_cntr.back();
-        return children.at(segment_path);
+        mi_idb_purge_cntr.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mi-issu-state")
     {
-        if(mi_issu_state != nullptr)
-        {
-            children["mi-issu-state"] = mi_issu_state;
-        }
-        else
+        if(mi_issu_state == nullptr)
         {
             mi_issu_state = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState>();
-            mi_issu_state->parent = this;
-            children["mi-issu-state"] = mi_issu_state;
         }
-        return children.at("mi-issu-state");
+        return mi_issu_state;
     }
 
     if(child_yang_name == "mi-plat-capabilities")
     {
-        if(mi_plat_capabilities != nullptr)
-        {
-            children["mi-plat-capabilities"] = mi_plat_capabilities;
-        }
-        else
+        if(mi_plat_capabilities == nullptr)
         {
             mi_plat_capabilities = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities>();
-            mi_plat_capabilities->parent = this;
-            children["mi-plat-capabilities"] = mi_plat_capabilities;
         }
-        return children.at("mi-plat-capabilities");
+        return mi_plat_capabilities;
     }
 
     if(child_yang_name == "mi-proto-dbg-stat")
@@ -18599,68 +16684,49 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat>();
         c->parent = this;
-        mi_proto_dbg_stat.push_back(std::move(c));
-        children[segment_path] = mi_proto_dbg_stat.back();
-        return children.at(segment_path);
+        mi_proto_dbg_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mi_del)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : mi_frr_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : mi_idb_purge_cntr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mi-issu-state") == children.end())
+    if(mi_issu_state != nullptr)
     {
-        if(mi_issu_state != nullptr)
-        {
-            children["mi-issu-state"] = mi_issu_state;
-        }
+        children["mi-issu-state"] = mi_issu_state;
     }
 
-    if(children.find("mi-plat-capabilities") == children.end())
+    if(mi_plat_capabilities != nullptr)
     {
-        if(mi_plat_capabilities != nullptr)
-        {
-            children["mi-plat-capabilities"] = mi_plat_capabilities;
-        }
+        children["mi-plat-capabilities"] = mi_plat_capabilities;
     }
 
     for (auto const & c : mi_proto_dbg_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18853,7 +16919,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_segmen
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18887,15 +16953,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_entity_
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fis-proto-state")
     {
         for(auto const & c : fis_proto_state)
@@ -18903,28 +16960,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoState>();
         c->parent = this;
-        fis_proto_state.push_back(std::move(c));
-        children[segment_path] = fis_proto_state.back();
-        return children.at(segment_path);
+        fis_proto_state.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fis_proto_state)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19048,7 +17101,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoSt
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoState::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19085,20 +17138,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoSta
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19296,7 +17341,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19341,15 +17386,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get_
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fpc-lisp-decap-over-v4")
     {
         for(auto const & c : fpc_lisp_decap_over_v4)
@@ -19357,15 +17393,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapab
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV4>();
         c->parent = this;
-        fpc_lisp_decap_over_v4.push_back(std::move(c));
-        children[segment_path] = fpc_lisp_decap_over_v4.back();
-        return children.at(segment_path);
+        fpc_lisp_decap_over_v4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "fpc-lisp-decap-over-v6")
@@ -19375,15 +17409,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapab
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV6>();
         c->parent = this;
-        fpc_lisp_decap_over_v6.push_back(std::move(c));
-        children[segment_path] = fpc_lisp_decap_over_v6.back();
-        return children.at(segment_path);
+        fpc_lisp_decap_over_v6.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "fpc-lisp-ucmp")
@@ -19393,15 +17425,13 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapab
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispUcmp>();
         c->parent = this;
-        fpc_lisp_ucmp.push_back(std::move(c));
-        children[segment_path] = fpc_lisp_ucmp.back();
-        return children.at(segment_path);
+        fpc_lisp_ucmp.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "fpc-resolve-via-table")
@@ -19411,52 +17441,39 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapab
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcResolveViaTable>();
         c->parent = this;
-        fpc_resolve_via_table.push_back(std::move(c));
-        children[segment_path] = fpc_resolve_via_table.back();
-        return children.at(segment_path);
+        fpc_resolve_via_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fpc_lisp_decap_over_v4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : fpc_lisp_decap_over_v6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : fpc_lisp_ucmp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : fpc_resolve_via_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19585,7 +17602,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV4::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19609,20 +17626,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcL
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19665,7 +17674,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV6::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19689,20 +17698,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcL
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispDecapOverV6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19745,7 +17746,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispUcmp::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispUcmp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19769,20 +17770,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcL
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispUcmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispUcmp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcLispUcmp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19825,7 +17818,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcResolveViaTable::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcResolveViaTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19849,20 +17842,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcR
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcResolveViaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcResolveViaTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcResolveViaTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19930,10 +17915,8 @@ Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::MiProtoDbgStat()
 	,fpd_platf_upd_stats(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats>())
 {
     fpd_gtrie_timing->parent = this;
-    children["fpd-gtrie-timing"] = fpd_gtrie_timing;
 
     fpd_platf_upd_stats->parent = this;
-    children["fpd-platf-upd-stats"] = fpd_platf_upd_stats;
 
     yang_name = "mi-proto-dbg-stat"; yang_parent_name = "misc";
 }
@@ -20089,7 +18072,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_seg
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20164,64 +18147,38 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_enti
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fpd-gtrie-timing")
     {
-        if(fpd_gtrie_timing != nullptr)
-        {
-            children["fpd-gtrie-timing"] = fpd_gtrie_timing;
-        }
-        else
+        if(fpd_gtrie_timing == nullptr)
         {
             fpd_gtrie_timing = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming>();
-            fpd_gtrie_timing->parent = this;
-            children["fpd-gtrie-timing"] = fpd_gtrie_timing;
         }
-        return children.at("fpd-gtrie-timing");
+        return fpd_gtrie_timing;
     }
 
     if(child_yang_name == "fpd-platf-upd-stats")
     {
-        if(fpd_platf_upd_stats != nullptr)
-        {
-            children["fpd-platf-upd-stats"] = fpd_platf_upd_stats;
-        }
-        else
+        if(fpd_platf_upd_stats == nullptr)
         {
             fpd_platf_upd_stats = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats>();
-            fpd_platf_upd_stats->parent = this;
-            children["fpd-platf-upd-stats"] = fpd_platf_upd_stats;
         }
-        return children.at("fpd-platf-upd-stats");
+        return fpd_platf_upd_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_children() const
 {
-    if(children.find("fpd-gtrie-timing") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fpd_gtrie_timing != nullptr)
     {
-        if(fpd_gtrie_timing != nullptr)
-        {
-            children["fpd-gtrie-timing"] = fpd_gtrie_timing;
-        }
+        children["fpd-gtrie-timing"] = fpd_gtrie_timing;
     }
 
-    if(children.find("fpd-platf-upd-stats") == children.end())
+    if(fpd_platf_upd_stats != nullptr)
     {
-        if(fpd_platf_upd_stats != nullptr)
-        {
-            children["fpd-platf-upd-stats"] = fpd_platf_upd_stats;
-        }
+        children["fpd-platf-upd-stats"] = fpd_platf_upd_stats;
     }
 
     return children;
@@ -20474,7 +18431,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlat
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20500,15 +18457,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatf
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fpus-obj-stat")
     {
         for(auto const & c : fpus_obj_stat)
@@ -20516,28 +18464,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgS
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat>();
         c->parent = this;
-        fpus_obj_stat.push_back(std::move(c));
-        children[segment_path] = fpus_obj_stat.back();
-        return children.at(segment_path);
+        fpus_obj_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fpus_obj_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20603,7 +18547,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlat
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20628,15 +18572,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatf
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fos-obj-act-stat")
     {
         for(auto const & c : fos_obj_act_stat)
@@ -20644,28 +18579,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgS
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat>();
         c->parent = this;
-        fos_obj_act_stat.push_back(std::move(c));
-        children[segment_path] = fos_obj_act_stat.back();
-        return children.at(segment_path);
+        fos_obj_act_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fos_obj_act_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20732,7 +18663,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlat
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20762,20 +18693,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatf
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20858,7 +18781,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtri
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20884,15 +18807,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrie
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fgt-gtrie-fn-timing")
     {
         for(auto const & c : fgt_gtrie_fn_timing)
@@ -20900,28 +18814,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgS
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming>();
         c->parent = this;
-        fgt_gtrie_fn_timing.push_back(std::move(c));
-        children[segment_path] = fgt_gtrie_fn_timing.back();
-        return children.at(segment_path);
+        fgt_gtrie_fn_timing.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fgt_gtrie_fn_timing)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20989,7 +18899,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtri
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21018,20 +18928,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrie
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21104,7 +19006,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_seg
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21129,20 +19031,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_enti
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21197,7 +19091,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_segment_path
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21225,20 +19119,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_entity_path(E
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21339,7 +19225,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_segment_
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21377,20 +19263,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_entity_pa
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21463,7 +19341,6 @@ Fib::Nodes::Node::Protocols::Protocol::LocalLabel::LocalLabel()
     conflicts(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts>())
 {
     conflicts->parent = this;
-    children["conflicts"] = conflicts;
 
     yang_name = "local-label"; yang_parent_name = "protocol";
 }
@@ -21492,7 +19369,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_segment_path(
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21515,41 +19392,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_entity_path(En
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "conflicts")
     {
-        if(conflicts != nullptr)
-        {
-            children["conflicts"] = conflicts;
-        }
-        else
+        if(conflicts == nullptr)
         {
             conflicts = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts>();
-            conflicts->parent = this;
-            children["conflicts"] = conflicts;
         }
-        return children.at("conflicts");
+        return conflicts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_children() const
 {
-    if(children.find("conflicts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(conflicts != nullptr)
     {
-        if(conflicts != nullptr)
-        {
-            children["conflicts"] = conflicts;
-        }
+        children["conflicts"] = conflicts;
     }
 
     return children;
@@ -21597,7 +19457,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_se
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21620,15 +19480,6 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_ent
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "conflict")
     {
         for(auto const & c : conflict)
@@ -21636,28 +19487,24 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Confl
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict>();
         c->parent = this;
-        conflict.push_back(std::move(c));
-        children[segment_path] = conflict.back();
-        return children.at(segment_path);
+        conflict.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : conflict)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21684,7 +19531,6 @@ Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Conflict
     ext(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext>())
 {
     ext->parent = this;
-    children["ext"] = ext;
 
     yang_name = "conflict"; yang_parent_name = "conflicts";
 }
@@ -21735,7 +19581,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Confli
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21769,41 +19615,24 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ext")
     {
-        if(ext != nullptr)
-        {
-            children["ext"] = ext;
-        }
-        else
+        if(ext == nullptr)
         {
             ext = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext>();
-            ext->parent = this;
-            children["ext"] = ext;
         }
-        return children.at("ext");
+        return ext;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::get_children() const
 {
-    if(children.find("ext") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ext != nullptr)
     {
-        if(ext != nullptr)
-        {
-            children["ext"] = ext;
-        }
+        children["ext"] = ext;
     }
 
     return children;
@@ -21865,10 +19694,8 @@ Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Ext
 	,pfx(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx>())
 {
     lsm->parent = this;
-    children["lsm"] = lsm;
 
     pfx->parent = this;
-    children["pfx"] = pfx;
 
     yang_name = "ext"; yang_parent_name = "conflict";
 }
@@ -21901,7 +19728,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Confli
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21925,64 +19752,38 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsm")
     {
-        if(lsm != nullptr)
-        {
-            children["lsm"] = lsm;
-        }
-        else
+        if(lsm == nullptr)
         {
             lsm = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm>();
-            lsm->parent = this;
-            children["lsm"] = lsm;
         }
-        return children.at("lsm");
+        return lsm;
     }
 
     if(child_yang_name == "pfx")
     {
-        if(pfx != nullptr)
-        {
-            children["pfx"] = pfx;
-        }
-        else
+        if(pfx == nullptr)
         {
             pfx = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx>();
-            pfx->parent = this;
-            children["pfx"] = pfx;
         }
-        return children.at("pfx");
+        return pfx;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::get_children() const
 {
-    if(children.find("lsm") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsm != nullptr)
     {
-        if(lsm != nullptr)
-        {
-            children["lsm"] = lsm;
-        }
+        children["lsm"] = lsm;
     }
 
-    if(children.find("pfx") == children.end())
+    if(pfx != nullptr)
     {
-        if(pfx != nullptr)
-        {
-            children["pfx"] = pfx;
-        }
+        children["pfx"] = pfx;
     }
 
     return children;
@@ -22030,7 +19831,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Confli
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22055,20 +19856,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22118,7 +19911,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Confli
 
 }
 
-EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm::get_entity_path(Entity* ancestor) const
+const EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22143,20 +19936,12 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
 
 std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22177,7 +19962,6 @@ MplsForwarding::MplsForwarding()
     nodes(std::make_shared<MplsForwarding::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "mpls-forwarding"; yang_parent_name = "Cisco-IOS-XR-fib-common-oper";
 }
@@ -22206,12 +19990,12 @@ std::string MplsForwarding::get_segment_path() const
 
 }
 
-EntityPath MplsForwarding::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -22226,41 +20010,24 @@ EntityPath MplsForwarding::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<MplsForwarding::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -22328,7 +20095,7 @@ std::string MplsForwarding::Nodes::get_segment_path() const
 
 }
 
-EntityPath MplsForwarding::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22351,15 +20118,6 @@ EntityPath MplsForwarding::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -22367,28 +20125,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22409,19 +20163,14 @@ MplsForwarding::Nodes::Node::Node()
 	,tunnel(std::make_shared<MplsForwarding::Nodes::Node::Tunnel>())
 {
     forwarding_summary->parent = this;
-    children["forwarding-summary"] = forwarding_summary;
 
     frr_database->parent = this;
-    children["frr-database"] = frr_database;
 
     frr_logs->parent = this;
-    children["frr-logs"] = frr_logs;
 
     label_fib->parent = this;
-    children["label-fib"] = label_fib;
 
     tunnel->parent = this;
-    children["tunnel"] = tunnel;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -22460,7 +20209,7 @@ std::string MplsForwarding::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22484,133 +20233,80 @@ EntityPath MplsForwarding::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-summary")
     {
-        if(forwarding_summary != nullptr)
-        {
-            children["forwarding-summary"] = forwarding_summary;
-        }
-        else
+        if(forwarding_summary == nullptr)
         {
             forwarding_summary = std::make_shared<MplsForwarding::Nodes::Node::ForwardingSummary>();
-            forwarding_summary->parent = this;
-            children["forwarding-summary"] = forwarding_summary;
         }
-        return children.at("forwarding-summary");
+        return forwarding_summary;
     }
 
     if(child_yang_name == "frr-database")
     {
-        if(frr_database != nullptr)
-        {
-            children["frr-database"] = frr_database;
-        }
-        else
+        if(frr_database == nullptr)
         {
             frr_database = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase>();
-            frr_database->parent = this;
-            children["frr-database"] = frr_database;
         }
-        return children.at("frr-database");
+        return frr_database;
     }
 
     if(child_yang_name == "frr-logs")
     {
-        if(frr_logs != nullptr)
-        {
-            children["frr-logs"] = frr_logs;
-        }
-        else
+        if(frr_logs == nullptr)
         {
             frr_logs = std::make_shared<MplsForwarding::Nodes::Node::FrrLogs>();
-            frr_logs->parent = this;
-            children["frr-logs"] = frr_logs;
         }
-        return children.at("frr-logs");
+        return frr_logs;
     }
 
     if(child_yang_name == "label-fib")
     {
-        if(label_fib != nullptr)
-        {
-            children["label-fib"] = label_fib;
-        }
-        else
+        if(label_fib == nullptr)
         {
             label_fib = std::make_shared<MplsForwarding::Nodes::Node::LabelFib>();
-            label_fib->parent = this;
-            children["label-fib"] = label_fib;
         }
-        return children.at("label-fib");
+        return label_fib;
     }
 
     if(child_yang_name == "tunnel")
     {
-        if(tunnel != nullptr)
-        {
-            children["tunnel"] = tunnel;
-        }
-        else
+        if(tunnel == nullptr)
         {
             tunnel = std::make_shared<MplsForwarding::Nodes::Node::Tunnel>();
-            tunnel->parent = this;
-            children["tunnel"] = tunnel;
         }
-        return children.at("tunnel");
+        return tunnel;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::get_children() const
 {
-    if(children.find("forwarding-summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(forwarding_summary != nullptr)
     {
-        if(forwarding_summary != nullptr)
-        {
-            children["forwarding-summary"] = forwarding_summary;
-        }
+        children["forwarding-summary"] = forwarding_summary;
     }
 
-    if(children.find("frr-database") == children.end())
+    if(frr_database != nullptr)
     {
-        if(frr_database != nullptr)
-        {
-            children["frr-database"] = frr_database;
-        }
+        children["frr-database"] = frr_database;
     }
 
-    if(children.find("frr-logs") == children.end())
+    if(frr_logs != nullptr)
     {
-        if(frr_logs != nullptr)
-        {
-            children["frr-logs"] = frr_logs;
-        }
+        children["frr-logs"] = frr_logs;
     }
 
-    if(children.find("label-fib") == children.end())
+    if(label_fib != nullptr)
     {
-        if(label_fib != nullptr)
-        {
-            children["label-fib"] = label_fib;
-        }
+        children["label-fib"] = label_fib;
     }
 
-    if(children.find("tunnel") == children.end())
+    if(tunnel != nullptr)
     {
-        if(tunnel != nullptr)
-        {
-            children["tunnel"] = tunnel;
-        }
+        children["tunnel"] = tunnel;
     }
 
     return children;
@@ -22739,7 +20435,7 @@ std::string MplsForwarding::Nodes::Node::ForwardingSummary::get_segment_path() c
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::ForwardingSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::ForwardingSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22791,20 +20487,12 @@ EntityPath MplsForwarding::Nodes::Node::ForwardingSummary::get_entity_path(Entit
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::ForwardingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::ForwardingSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::ForwardingSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22966,7 +20654,7 @@ std::string MplsForwarding::Nodes::Node::FrrLogs::get_segment_path() const
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrLogs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrLogs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22989,15 +20677,6 @@ EntityPath MplsForwarding::Nodes::Node::FrrLogs::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrLogs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-log")
     {
         for(auto const & c : frr_log)
@@ -23005,28 +20684,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrLogs::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::FrrLogs::FrrLog>();
         c->parent = this;
-        frr_log.push_back(std::move(c));
-        children[segment_path] = frr_log.back();
-        return children.at(segment_path);
+        frr_log.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrLogs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrLogs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frr_log)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23050,7 +20725,6 @@ MplsForwarding::Nodes::Node::FrrLogs::FrrLog::FrrLog()
     start_time(std::make_shared<MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime>())
 {
     start_time->parent = this;
-    children["start-time"] = start_time;
 
     yang_name = "frr-log"; yang_parent_name = "frr-logs";
 }
@@ -23095,7 +20769,7 @@ std::string MplsForwarding::Nodes::Node::FrrLogs::FrrLog::get_segment_path() con
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrLogs::FrrLog::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrLogs::FrrLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23126,41 +20800,24 @@ EntityPath MplsForwarding::Nodes::Node::FrrLogs::FrrLog::get_entity_path(Entity*
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrLogs::FrrLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "start-time")
     {
-        if(start_time != nullptr)
-        {
-            children["start-time"] = start_time;
-        }
-        else
+        if(start_time == nullptr)
         {
             start_time = std::make_shared<MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime>();
-            start_time->parent = this;
-            children["start-time"] = start_time;
         }
-        return children.at("start-time");
+        return start_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrLogs::FrrLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrLogs::FrrLog::get_children() const
 {
-    if(children.find("start-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(start_time != nullptr)
     {
-        if(start_time != nullptr)
-        {
-            children["start-time"] = start_time;
-        }
+        children["start-time"] = start_time;
     }
 
     return children;
@@ -23236,7 +20893,7 @@ std::string MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime::get_segment
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23261,20 +20918,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime::get_entity_p
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23297,13 +20946,10 @@ MplsForwarding::Nodes::Node::LabelFib::LabelFib()
 	,label_security(std::make_shared<MplsForwarding::Nodes::Node::LabelFib::LabelSecurity>())
 {
     forwarding_details->parent = this;
-    children["forwarding-details"] = forwarding_details;
 
     informations->parent = this;
-    children["informations"] = informations;
 
     label_security->parent = this;
-    children["label-security"] = label_security;
 
     yang_name = "label-fib"; yang_parent_name = "node";
 }
@@ -23336,7 +20982,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::get_segment_path() const
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23359,87 +21005,52 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-details")
     {
-        if(forwarding_details != nullptr)
-        {
-            children["forwarding-details"] = forwarding_details;
-        }
-        else
+        if(forwarding_details == nullptr)
         {
             forwarding_details = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails>();
-            forwarding_details->parent = this;
-            children["forwarding-details"] = forwarding_details;
         }
-        return children.at("forwarding-details");
+        return forwarding_details;
     }
 
     if(child_yang_name == "informations")
     {
-        if(informations != nullptr)
-        {
-            children["informations"] = informations;
-        }
-        else
+        if(informations == nullptr)
         {
             informations = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations>();
-            informations->parent = this;
-            children["informations"] = informations;
         }
-        return children.at("informations");
+        return informations;
     }
 
     if(child_yang_name == "label-security")
     {
-        if(label_security != nullptr)
-        {
-            children["label-security"] = label_security;
-        }
-        else
+        if(label_security == nullptr)
         {
             label_security = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::LabelSecurity>();
-            label_security->parent = this;
-            children["label-security"] = label_security;
         }
-        return children.at("label-security");
+        return label_security;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::get_children() const
 {
-    if(children.find("forwarding-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(forwarding_details != nullptr)
     {
-        if(forwarding_details != nullptr)
-        {
-            children["forwarding-details"] = forwarding_details;
-        }
+        children["forwarding-details"] = forwarding_details;
     }
 
-    if(children.find("informations") == children.end())
+    if(informations != nullptr)
     {
-        if(informations != nullptr)
-        {
-            children["informations"] = informations;
-        }
+        children["informations"] = informations;
     }
 
-    if(children.find("label-security") == children.end())
+    if(label_security != nullptr)
     {
-        if(label_security != nullptr)
-        {
-            children["label-security"] = label_security;
-        }
+        children["label-security"] = label_security;
     }
 
     return children;
@@ -23487,7 +21098,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_segmen
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23510,15 +21121,6 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_entity_
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-detail")
     {
         for(auto const & c : forwarding_detail)
@@ -23526,28 +21128,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail>();
         c->parent = this;
-        forwarding_detail.push_back(std::move(c));
-        children[segment_path] = forwarding_detail.back();
-        return children.at(segment_path);
+        forwarding_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : forwarding_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23585,10 +21183,8 @@ MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::Forw
 	,multicast_information(std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation>())
 {
     ldi_information->parent = this;
-    children["ldi-information"] = ldi_information;
 
     multicast_information->parent = this;
-    children["multicast-information"] = multicast_information;
 
     yang_name = "forwarding-detail"; yang_parent_name = "forwarding-details";
 }
@@ -23671,7 +21267,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23715,15 +21311,6 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-information")
     {
         for(auto const & c : label_information)
@@ -23731,74 +21318,52 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation>();
         c->parent = this;
-        label_information.push_back(std::move(c));
-        children[segment_path] = label_information.back();
-        return children.at(segment_path);
+        label_information.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ldi-information")
     {
-        if(ldi_information != nullptr)
-        {
-            children["ldi-information"] = ldi_information;
-        }
-        else
+        if(ldi_information == nullptr)
         {
             ldi_information = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation>();
-            ldi_information->parent = this;
-            children["ldi-information"] = ldi_information;
         }
-        return children.at("ldi-information");
+        return ldi_information;
     }
 
     if(child_yang_name == "multicast-information")
     {
-        if(multicast_information != nullptr)
-        {
-            children["multicast-information"] = multicast_information;
-        }
-        else
+        if(multicast_information == nullptr)
         {
             multicast_information = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation>();
-            multicast_information->parent = this;
-            children["multicast-information"] = multicast_information;
         }
-        return children.at("multicast-information");
+        return multicast_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ldi-information") == children.end())
+    if(ldi_information != nullptr)
     {
-        if(ldi_information != nullptr)
-        {
-            children["ldi-information"] = ldi_information;
-        }
+        children["ldi-information"] = ldi_information;
     }
 
-    if(children.find("multicast-information") == children.end())
+    if(multicast_information != nullptr)
     {
-        if(multicast_information != nullptr)
-        {
-            children["multicast-information"] = multicast_information;
-        }
+        children["multicast-information"] = multicast_information;
     }
 
     return children;

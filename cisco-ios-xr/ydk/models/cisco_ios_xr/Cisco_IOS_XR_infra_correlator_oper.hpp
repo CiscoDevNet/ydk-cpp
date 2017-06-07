@@ -18,25 +18,22 @@ class Suppression : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class RuleSummaries; //type: Suppression::RuleSummaries
         class RuleDetails; //type: Suppression::RuleDetails
 
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails> rule_details;
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleSummaries> rule_summaries;
-
-
+        
 }; // Suppression
 
 
@@ -48,19 +45,16 @@ class Suppression::RuleSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleSummary; //type: Suppression::RuleSummaries::RuleSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleSummaries::RuleSummary> > rule_summary;
-
-
+        
 }; // Suppression::RuleSummaries
 
 
@@ -72,19 +66,16 @@ class Suppression::RuleSummaries::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf rule_name_xr; //type: string
         YLeaf rule_state; //type: AcRuleStateEnum
         YLeaf suppressed_alarms_count; //type: uint32
-
-
 
 }; // Suppression::RuleSummaries::RuleSummary
 
@@ -97,19 +88,16 @@ class Suppression::RuleDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleDetail; //type: Suppression::RuleDetails::RuleDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail> > rule_detail;
-
-
+        
 }; // Suppression::RuleDetails
 
 
@@ -121,25 +109,22 @@ class Suppression::RuleDetails::RuleDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf all_alarms; //type: boolean
         YLeaf alarm_severity; //type: AlAlarmSeverityEnum
         YLeafList apply_source; //type: list of  string
-
         class RuleSummary; //type: Suppression::RuleDetails::RuleDetail::RuleSummary
         class Codes; //type: Suppression::RuleDetails::RuleDetail::Codes
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::Codes> > codes;
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::RuleSummary> rule_summary;
-
-
+        
 }; // Suppression::RuleDetails::RuleDetail
 
 
@@ -151,18 +136,15 @@ class Suppression::RuleDetails::RuleDetail::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name_xr; //type: string
         YLeaf rule_state; //type: AcRuleStateEnum
         YLeaf suppressed_alarms_count; //type: uint32
-
-
 
 }; // Suppression::RuleDetails::RuleDetail::RuleSummary
 
@@ -175,18 +157,15 @@ class Suppression::RuleDetails::RuleDetail::Codes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf code; //type: string
-
-
 
 }; // Suppression::RuleDetails::RuleDetail::Codes
 
@@ -198,17 +177,15 @@ class Correlator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Rules; //type: Correlator::Rules
         class BufferStatus; //type: Correlator::BufferStatus
@@ -225,8 +202,7 @@ class Correlator : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetSummaries> rule_set_summaries;
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSummaries> rule_summaries;
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules> rules;
-
-
+        
 }; // Correlator
 
 
@@ -238,19 +214,16 @@ class Correlator::Rules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rule; //type: Correlator::Rules::Rule
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule> > rule;
-
-
+        
 }; // Correlator::Rules
 
 
@@ -262,12 +235,11 @@ class Correlator::Rules::Rule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf rule_name_xr; //type: string
@@ -275,12 +247,10 @@ class Correlator::Rules::Rule : public Entity
         YLeaf rule_state; //type: AcRuleStateEnum
         YLeafList apply_location; //type: list of  string
         YLeafList apply_context; //type: list of  string
-
         class Codes; //type: Correlator::Rules::Rule::Codes
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule::Codes> > codes;
-
-
+        
 }; // Correlator::Rules::Rule
 
 
@@ -292,18 +262,15 @@ class Correlator::Rules::Rule::Codes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf code; //type: string
-
-
 
 }; // Correlator::Rules::Rule::Codes
 
@@ -316,17 +283,14 @@ class Correlator::BufferStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf current_size; //type: uint32
         YLeaf configured_size; //type: uint32
-
-
 
 }; // Correlator::BufferStatus
 
@@ -339,19 +303,16 @@ class Correlator::Alarms : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Alarm; //type: Correlator::Alarms::Alarm
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::Alarms::Alarm> > alarm;
-
-
+        
 }; // Correlator::Alarms
 
 
@@ -363,22 +324,19 @@ class Correlator::Alarms::Alarm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf alarm_id; //type: int32
         YLeaf rule_name; //type: string
         YLeaf context; //type: string
-
         class AlarmInfo; //type: Correlator::Alarms::Alarm::AlarmInfo
 
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::Alarms::Alarm::AlarmInfo> alarm_info;
-
-
+        
 }; // Correlator::Alarms::Alarm
 
 
@@ -390,12 +348,11 @@ class Correlator::Alarms::Alarm::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_id; //type: string
         YLeaf timestamp; //type: uint64
@@ -408,8 +365,6 @@ class Correlator::Alarms::Alarm::AlarmInfo : public Entity
         YLeaf is_admin; //type: boolean
         YLeaf additional_text; //type: string
 
-
-
 }; // Correlator::Alarms::Alarm::AlarmInfo
 
 
@@ -421,19 +376,16 @@ class Correlator::RuleSetSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleSetSummary; //type: Correlator::RuleSetSummaries::RuleSetSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetSummaries::RuleSetSummary> > rule_set_summary;
-
-
+        
 }; // Correlator::RuleSetSummaries
 
 
@@ -445,17 +397,14 @@ class Correlator::RuleSetSummaries::RuleSetSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_set_name; //type: string
         YLeaf rule_set_name_xr; //type: string
-
-
 
 }; // Correlator::RuleSetSummaries::RuleSetSummary
 
@@ -468,19 +417,16 @@ class Correlator::RuleSetDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleSetDetail; //type: Correlator::RuleSetDetails::RuleSetDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetDetails::RuleSetDetail> > rule_set_detail;
-
-
+        
 }; // Correlator::RuleSetDetails
 
 
@@ -492,21 +438,18 @@ class Correlator::RuleSetDetails::RuleSetDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_set_name; //type: string
         YLeaf rule_set_name_xr; //type: string
-
         class Rules; //type: Correlator::RuleSetDetails::RuleSetDetail::Rules
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetDetails::RuleSetDetail::Rules> > rules;
-
-
+        
 }; // Correlator::RuleSetDetails::RuleSetDetail
 
 
@@ -518,19 +461,16 @@ class Correlator::RuleSetDetails::RuleSetDetail::Rules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name_xr; //type: string
         YLeaf stateful; //type: boolean
         YLeaf rule_state; //type: AcRuleStateEnum
         YLeaf buffered_alarms_count; //type: uint32
-
-
 
 }; // Correlator::RuleSetDetails::RuleSetDetail::Rules
 
@@ -543,19 +483,16 @@ class Correlator::RuleDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleDetail; //type: Correlator::RuleDetails::RuleDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail> > rule_detail;
-
-
+        
 }; // Correlator::RuleDetails
 
 
@@ -567,12 +504,11 @@ class Correlator::RuleDetails::RuleDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf timeout; //type: uint32
@@ -583,14 +519,12 @@ class Correlator::RuleDetails::RuleDetail : public Entity
         YLeaf context_correlation; //type: boolean
         YLeafList apply_location; //type: list of  string
         YLeafList apply_context; //type: list of  string
-
         class RuleSummary; //type: Correlator::RuleDetails::RuleDetail::RuleSummary
         class Codes; //type: Correlator::RuleDetails::RuleDetail::Codes
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::Codes> > codes;
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::RuleSummary> rule_summary;
-
-
+        
 }; // Correlator::RuleDetails::RuleDetail
 
 
@@ -602,19 +536,16 @@ class Correlator::RuleDetails::RuleDetail::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name_xr; //type: string
         YLeaf stateful; //type: boolean
         YLeaf rule_state; //type: AcRuleStateEnum
         YLeaf buffered_alarms_count; //type: uint32
-
-
 
 }; // Correlator::RuleDetails::RuleDetail::RuleSummary
 
@@ -627,18 +558,15 @@ class Correlator::RuleDetails::RuleDetail::Codes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf category; //type: string
         YLeaf group; //type: string
         YLeaf code; //type: string
-
-
 
 }; // Correlator::RuleDetails::RuleDetail::Codes
 
@@ -651,19 +579,16 @@ class Correlator::RuleSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RuleSummary; //type: Correlator::RuleSummaries::RuleSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSummaries::RuleSummary> > rule_summary;
-
-
+        
 }; // Correlator::RuleSummaries
 
 
@@ -675,20 +600,17 @@ class Correlator::RuleSummaries::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rule_name; //type: string
         YLeaf rule_name_xr; //type: string
         YLeaf stateful; //type: boolean
         YLeaf rule_state; //type: AcRuleStateEnum
         YLeaf buffered_alarms_count; //type: uint32
-
-
 
 }; // Correlator::RuleSummaries::RuleSummary
 

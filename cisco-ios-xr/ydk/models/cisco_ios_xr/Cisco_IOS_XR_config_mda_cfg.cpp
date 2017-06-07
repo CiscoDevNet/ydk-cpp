@@ -47,12 +47,12 @@ std::string ActiveNodes::get_segment_path() const
 
 }
 
-EntityPath ActiveNodes::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath ActiveNodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ActiveNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active-node")
     {
         for(auto const & c : active_node)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> ActiveNodes::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ActiveNodes::ActiveNode>();
         c->parent = this;
-        active_node.push_back(std::move(c));
-        children[segment_path] = active_node.back();
-        return children.at(segment_path);
+        active_node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : active_node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -145,19 +132,14 @@ ActiveNodes::ActiveNode::ActiveNode()
 	,ssrp_group(std::make_shared<ActiveNodes::ActiveNode::SsrpGroup>())
 {
     cisco_ios_xr_watchd_cfg_watchdog_node_threshold->parent = this;
-    children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
 
     cisco_ios_xr_wd_cfg_watchdog_node_threshold->parent = this;
-    children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
 
     lpts_local->parent = this;
-    children["lpts-local"] = lpts_local;
 
     ltrace->parent = this;
-    children["ltrace"] = ltrace;
 
     ssrp_group->parent = this;
-    children["ssrp-group"] = ssrp_group;
 
     yang_name = "active-node"; yang_parent_name = "active-nodes";
 }
@@ -196,7 +178,7 @@ std::string ActiveNodes::ActiveNode::get_segment_path() const
 
 }
 
-EntityPath ActiveNodes::ActiveNode::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -220,133 +202,80 @@ EntityPath ActiveNodes::ActiveNode::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold")
     {
-        if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
-        }
-        else
+        if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold == nullptr)
         {
             cisco_ios_xr_watchd_cfg_watchdog_node_threshold = std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold>();
-            cisco_ios_xr_watchd_cfg_watchdog_node_threshold->parent = this;
-            children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
         }
-        return children.at("Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold");
+        return cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold")
     {
-        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
-        }
-        else
+        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold == nullptr)
         {
             cisco_ios_xr_wd_cfg_watchdog_node_threshold = std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold>();
-            cisco_ios_xr_wd_cfg_watchdog_node_threshold->parent = this;
-            children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
         }
-        return children.at("Cisco-IOS-XR-wd-cfg_watchdog-node-threshold");
+        return cisco_ios_xr_wd_cfg_watchdog_node_threshold;
     }
 
     if(child_yang_name == "lpts-local")
     {
-        if(lpts_local != nullptr)
-        {
-            children["lpts-local"] = lpts_local;
-        }
-        else
+        if(lpts_local == nullptr)
         {
             lpts_local = std::make_shared<ActiveNodes::ActiveNode::LptsLocal>();
-            lpts_local->parent = this;
-            children["lpts-local"] = lpts_local;
         }
-        return children.at("lpts-local");
+        return lpts_local;
     }
 
     if(child_yang_name == "ltrace")
     {
-        if(ltrace != nullptr)
-        {
-            children["ltrace"] = ltrace;
-        }
-        else
+        if(ltrace == nullptr)
         {
             ltrace = std::make_shared<ActiveNodes::ActiveNode::Ltrace>();
-            ltrace->parent = this;
-            children["ltrace"] = ltrace;
         }
-        return children.at("ltrace");
+        return ltrace;
     }
 
     if(child_yang_name == "ssrp-group")
     {
-        if(ssrp_group != nullptr)
-        {
-            children["ssrp-group"] = ssrp_group;
-        }
-        else
+        if(ssrp_group == nullptr)
         {
             ssrp_group = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup>();
-            ssrp_group->parent = this;
-            children["ssrp-group"] = ssrp_group;
         }
-        return children.at("ssrp-group");
+        return ssrp_group;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::get_children() const
 {
-    if(children.find("Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
     {
-        if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
-        }
+        children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
-    if(children.find("Cisco-IOS-XR-wd-cfg_watchdog-node-threshold") == children.end())
+    if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
     {
-        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
-        }
+        children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
     }
 
-    if(children.find("lpts-local") == children.end())
+    if(lpts_local != nullptr)
     {
-        if(lpts_local != nullptr)
-        {
-            children["lpts-local"] = lpts_local;
-        }
+        children["lpts-local"] = lpts_local;
     }
 
-    if(children.find("ltrace") == children.end())
+    if(ltrace != nullptr)
     {
-        if(ltrace != nullptr)
-        {
-            children["ltrace"] = ltrace;
-        }
+        children["ltrace"] = ltrace;
     }
 
-    if(children.find("ssrp-group") == children.end())
+    if(ssrp_group != nullptr)
     {
-        if(ssrp_group != nullptr)
-        {
-            children["ssrp-group"] = ssrp_group;
-        }
+        children["ssrp-group"] = ssrp_group;
     }
 
     return children;
@@ -360,46 +289,45 @@ void ActiveNodes::ActiveNode::set_value(const std::string & value_path, std::str
     }
 }
 
-ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::CiscoIosXrWdCfg_WatchdogNodeThreshold()
+ActiveNodes::ActiveNode::Ltrace::Ltrace()
     :
-    memory_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>())
+    allocation_params(std::make_shared<ActiveNodes::ActiveNode::Ltrace::AllocationParams>())
 {
-    memory_threshold->parent = this;
-    children["memory-threshold"] = memory_threshold;
+    allocation_params->parent = this;
 
-    yang_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; yang_parent_name = "active-node";
+    yang_name = "ltrace"; yang_parent_name = "active-node";
 }
 
-ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::~CiscoIosXrWdCfg_WatchdogNodeThreshold()
+ActiveNodes::ActiveNode::Ltrace::~Ltrace()
 {
 }
 
-bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_data() const
+bool ActiveNodes::ActiveNode::Ltrace::has_data() const
 {
-    return (memory_threshold !=  nullptr && memory_threshold->has_data());
+    return (allocation_params !=  nullptr && allocation_params->has_data());
 }
 
-bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
+bool ActiveNodes::ActiveNode::Ltrace::has_operation() const
 {
     return is_set(operation)
-	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
+	|| (allocation_params !=  nullptr && allocation_params->has_operation());
 }
 
-std::string ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_segment_path() const
+std::string ActiveNodes::ActiveNode::Ltrace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-wd-cfg:Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+    path_buffer << "Cisco-IOS-XR-infra-ltrace-cfg:ltrace";
 
     return path_buffer.str();
 
 }
 
-EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::Ltrace::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CiscoIosXrWdCfg_WatchdogNodeThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ltrace' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -415,95 +343,75 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_e
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "allocation-params")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "memory-threshold")
-    {
-        if(memory_threshold != nullptr)
+        if(allocation_params == nullptr)
         {
-            children["memory-threshold"] = memory_threshold;
+            allocation_params = std::make_shared<ActiveNodes::ActiveNode::Ltrace::AllocationParams>();
         }
-        else
-        {
-            memory_threshold = std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>();
-            memory_threshold->parent = this;
-            children["memory-threshold"] = memory_threshold;
-        }
-        return children.at("memory-threshold");
+        return allocation_params;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::get_children() const
 {
-    if(children.find("memory-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(allocation_params != nullptr)
     {
-        if(memory_threshold != nullptr)
-        {
-            children["memory-threshold"] = memory_threshold;
-        }
+        children["allocation-params"] = allocation_params;
     }
 
     return children;
 }
 
-void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::Ltrace::set_value(const std::string & value_path, std::string value)
 {
 }
 
-ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
+ActiveNodes::ActiveNode::Ltrace::AllocationParams::AllocationParams()
     :
-    critical{YType::uint32, "critical"},
-    minor{YType::uint32, "minor"},
-    severe{YType::uint32, "severe"}
+    mode{YType::enumeration, "mode"},
+    scale_factor{YType::enumeration, "scale-factor"}
 {
-    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+    yang_name = "allocation-params"; yang_parent_name = "ltrace";
 }
 
-ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
+ActiveNodes::ActiveNode::Ltrace::AllocationParams::~AllocationParams()
 {
 }
 
-bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_data() const
+bool ActiveNodes::ActiveNode::Ltrace::AllocationParams::has_data() const
 {
-    return critical.is_set
-	|| minor.is_set
-	|| severe.is_set;
+    return mode.is_set
+	|| scale_factor.is_set;
 }
 
-bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
+bool ActiveNodes::ActiveNode::Ltrace::AllocationParams::has_operation() const
 {
     return is_set(operation)
-	|| is_set(critical.operation)
-	|| is_set(minor.operation)
-	|| is_set(severe.operation);
+	|| is_set(mode.operation)
+	|| is_set(scale_factor.operation);
 }
 
-std::string ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
+std::string ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "memory-threshold";
+    path_buffer << "allocation-params";
 
     return path_buffer.str();
 
 }
 
-EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MemoryThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'AllocationParams' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -512,9 +420,8 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::Memor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
-    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (scale_factor.is_set || is_set(scale_factor.operation)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -522,335 +429,26 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::Memor
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::Ltrace::AllocationParams::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "critical")
+    if(value_path == "mode")
     {
-        critical = value;
+        mode = value;
     }
-    if(value_path == "minor")
+    if(value_path == "scale-factor")
     {
-        minor = value;
-    }
-    if(value_path == "severe")
-    {
-        severe = value;
-    }
-}
-
-ActiveNodes::ActiveNode::SsrpGroup::SsrpGroup()
-    :
-    groups(std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups>())
-{
-    groups->parent = this;
-    children["groups"] = groups;
-
-    yang_name = "ssrp-group"; yang_parent_name = "active-node";
-}
-
-ActiveNodes::ActiveNode::SsrpGroup::~SsrpGroup()
-{
-}
-
-bool ActiveNodes::ActiveNode::SsrpGroup::has_data() const
-{
-    return (groups !=  nullptr && groups->has_data());
-}
-
-bool ActiveNodes::ActiveNode::SsrpGroup::has_operation() const
-{
-    return is_set(operation)
-	|| (groups !=  nullptr && groups->has_operation());
-}
-
-std::string ActiveNodes::ActiveNode::SsrpGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-group";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ActiveNodes::ActiveNode::SsrpGroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsrpGroup' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "groups")
-    {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
-        {
-            groups = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
-        }
-        return children.at("groups");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::SsrpGroup::get_children()
-{
-    if(children.find("groups") == children.end())
-    {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-    }
-
-    return children;
-}
-
-void ActiveNodes::ActiveNode::SsrpGroup::set_value(const std::string & value_path, std::string value)
-{
-}
-
-ActiveNodes::ActiveNode::SsrpGroup::Groups::Groups()
-{
-    yang_name = "groups"; yang_parent_name = "ssrp-group";
-}
-
-ActiveNodes::ActiveNode::SsrpGroup::Groups::~Groups()
-{
-}
-
-bool ActiveNodes::ActiveNode::SsrpGroup::Groups::has_data() const
-{
-    for (std::size_t index=0; index<group.size(); index++)
-    {
-        if(group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ActiveNodes::ActiveNode::SsrpGroup::Groups::has_operation() const
-{
-    for (std::size_t index=0; index<group.size(); index++)
-    {
-        if(group[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string ActiveNodes::ActiveNode::SsrpGroup::Groups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "groups";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ActiveNodes::ActiveNode::SsrpGroup::Groups::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Groups' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "group")
-    {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups::Group>();
-        c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::SsrpGroup::Groups::get_children()
-{
-    for (auto const & c : group)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void ActiveNodes::ActiveNode::SsrpGroup::Groups::set_value(const std::string & value_path, std::string value)
-{
-}
-
-ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::Group()
-    :
-    group_id{YType::uint32, "group-id"},
-    profile{YType::str, "profile"}
-{
-    yang_name = "group"; yang_parent_name = "groups";
-}
-
-ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::~Group()
-{
-}
-
-bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_data() const
-{
-    return group_id.is_set
-	|| profile.is_set;
-}
-
-bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(group_id.operation)
-	|| is_set(profile.operation);
-}
-
-std::string ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-id='" <<group_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Group' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_children()
-{
-    return children;
-}
-
-void ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "group-id")
-    {
-        group_id = value;
-    }
-    if(value_path == "profile")
-    {
-        profile = value;
+        scale_factor = value;
     }
 }
 
@@ -860,7 +458,6 @@ ActiveNodes::ActiveNode::LptsLocal::LptsLocal()
 	,ipolicer_local_tables(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables>())
 {
     ipolicer_local_tables->parent = this;
-    children["ipolicer-local-tables"] = ipolicer_local_tables;
 
     yang_name = "lpts-local"; yang_parent_name = "active-node";
 }
@@ -891,7 +488,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::get_segment_path() const
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -914,64 +511,38 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipolicer-local")
     {
-        if(ipolicer_local != nullptr)
-        {
-            children["ipolicer-local"] = ipolicer_local;
-        }
-        else
+        if(ipolicer_local == nullptr)
         {
             ipolicer_local = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal>();
-            ipolicer_local->parent = this;
-            children["ipolicer-local"] = ipolicer_local;
         }
-        return children.at("ipolicer-local");
+        return ipolicer_local;
     }
 
     if(child_yang_name == "ipolicer-local-tables")
     {
-        if(ipolicer_local_tables != nullptr)
-        {
-            children["ipolicer-local-tables"] = ipolicer_local_tables;
-        }
-        else
+        if(ipolicer_local_tables == nullptr)
         {
             ipolicer_local_tables = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables>();
-            ipolicer_local_tables->parent = this;
-            children["ipolicer-local-tables"] = ipolicer_local_tables;
         }
-        return children.at("ipolicer-local-tables");
+        return ipolicer_local_tables;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::get_children() const
 {
-    if(children.find("ipolicer-local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipolicer_local != nullptr)
     {
-        if(ipolicer_local != nullptr)
-        {
-            children["ipolicer-local"] = ipolicer_local;
-        }
+        children["ipolicer-local"] = ipolicer_local;
     }
 
-    if(children.find("ipolicer-local-tables") == children.end())
+    if(ipolicer_local_tables != nullptr)
     {
-        if(ipolicer_local_tables != nullptr)
-        {
-            children["ipolicer-local-tables"] = ipolicer_local_tables;
-        }
+        children["ipolicer-local-tables"] = ipolicer_local_tables;
     }
 
     return children;
@@ -1019,7 +590,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_segment
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1042,15 +613,6 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_entity_p
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipolicer-local-table")
     {
         for(auto const & c : ipolicer_local_table)
@@ -1058,28 +620,24 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
         c->parent = this;
-        ipolicer_local_table.push_back(std::move(c));
-        children[segment_path] = ipolicer_local_table.back();
-        return children.at(segment_path);
+        ipolicer_local_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipolicer_local_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1096,7 +654,6 @@ ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Ipo
     nps(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>())
 {
     nps->parent = this;
-    children["nps"] = nps;
 
     yang_name = "ipolicer-local-table"; yang_parent_name = "ipolicer-local-tables";
 }
@@ -1127,7 +684,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoc
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1151,41 +708,24 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoca
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nps")
     {
-        if(nps != nullptr)
-        {
-            children["nps"] = nps;
-        }
-        else
+        if(nps == nullptr)
         {
             nps = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>();
-            nps->parent = this;
-            children["nps"] = nps;
         }
-        return children.at("nps");
+        return nps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
 {
-    if(children.find("nps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nps != nullptr)
     {
-        if(nps != nullptr)
-        {
-            children["nps"] = nps;
-        }
+        children["nps"] = nps;
     }
 
     return children;
@@ -1237,7 +777,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoc
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1260,15 +800,6 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoca
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "np")
     {
         for(auto const & c : np)
@@ -1276,28 +807,24 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np>();
         c->parent = this;
-        np.push_back(std::move(c));
-        children[segment_path] = np.back();
-        return children.at(segment_path);
+        np.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : np)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1341,7 +868,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoc
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1366,20 +893,12 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoca
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1402,7 +921,6 @@ ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::IpolicerLocal()
     flows(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows>())
 {
     flows->parent = this;
-    children["flows"] = flows;
 
     yang_name = "ipolicer-local"; yang_parent_name = "lpts-local";
 }
@@ -1433,7 +951,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_segment_path(
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1457,41 +975,24 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_entity_path(En
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flows")
     {
-        if(flows != nullptr)
-        {
-            children["flows"] = flows;
-        }
-        else
+        if(flows == nullptr)
         {
             flows = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows>();
-            flows->parent = this;
-            children["flows"] = flows;
         }
-        return children.at("flows");
+        return flows;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_children() const
 {
-    if(children.find("flows") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flows != nullptr)
     {
-        if(flows != nullptr)
-        {
-            children["flows"] = flows;
-        }
+        children["flows"] = flows;
     }
 
     return children;
@@ -1543,7 +1044,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_segmen
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1566,15 +1067,6 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_entity_
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow")
     {
         for(auto const & c : flow)
@@ -1582,28 +1074,24 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow>();
         c->parent = this;
-        flow.push_back(std::move(c));
-        children[segment_path] = flow.back();
-        return children.at(segment_path);
+        flow.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : flow)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1621,7 +1109,6 @@ ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Flow()
     precedences(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences>())
 {
     precedences->parent = this;
-    children["precedences"] = precedences;
 
     yang_name = "flow"; yang_parent_name = "flows";
 }
@@ -1654,7 +1141,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1679,41 +1166,24 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_e
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "precedences")
     {
-        if(precedences != nullptr)
-        {
-            children["precedences"] = precedences;
-        }
-        else
+        if(precedences == nullptr)
         {
             precedences = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences>();
-            precedences->parent = this;
-            children["precedences"] = precedences;
         }
-        return children.at("precedences");
+        return precedences;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
 {
-    if(children.find("precedences") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(precedences != nullptr)
     {
-        if(precedences != nullptr)
-        {
-            children["precedences"] = precedences;
-        }
+        children["precedences"] = precedences;
     }
 
     return children;
@@ -1772,7 +1242,7 @@ std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Prec
 
 }
 
-EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1797,20 +1267,12 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Prece
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1822,46 +1284,45 @@ void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences
     }
 }
 
-ActiveNodes::ActiveNode::Ltrace::Ltrace()
+ActiveNodes::ActiveNode::SsrpGroup::SsrpGroup()
     :
-    allocation_params(std::make_shared<ActiveNodes::ActiveNode::Ltrace::AllocationParams>())
+    groups(std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups>())
 {
-    allocation_params->parent = this;
-    children["allocation-params"] = allocation_params;
+    groups->parent = this;
 
-    yang_name = "ltrace"; yang_parent_name = "active-node";
+    yang_name = "ssrp-group"; yang_parent_name = "active-node";
 }
 
-ActiveNodes::ActiveNode::Ltrace::~Ltrace()
+ActiveNodes::ActiveNode::SsrpGroup::~SsrpGroup()
 {
 }
 
-bool ActiveNodes::ActiveNode::Ltrace::has_data() const
+bool ActiveNodes::ActiveNode::SsrpGroup::has_data() const
 {
-    return (allocation_params !=  nullptr && allocation_params->has_data());
+    return (groups !=  nullptr && groups->has_data());
 }
 
-bool ActiveNodes::ActiveNode::Ltrace::has_operation() const
+bool ActiveNodes::ActiveNode::SsrpGroup::has_operation() const
 {
     return is_set(operation)
-	|| (allocation_params !=  nullptr && allocation_params->has_operation());
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
-std::string ActiveNodes::ActiveNode::Ltrace::get_segment_path() const
+std::string ActiveNodes::ActiveNode::SsrpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-ltrace-cfg:ltrace";
+    path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-group";
 
     return path_buffer.str();
 
 }
 
-EntityPath ActiveNodes::ActiveNode::Ltrace::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::SsrpGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ltrace' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'SsrpGroup' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1877,92 +1338,79 @@ EntityPath ActiveNodes::ActiveNode::Ltrace::get_entity_path(Entity* ancestor) co
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "groups")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "allocation-params")
-    {
-        if(allocation_params != nullptr)
+        if(groups == nullptr)
         {
-            children["allocation-params"] = allocation_params;
+            groups = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups>();
         }
-        else
-        {
-            allocation_params = std::make_shared<ActiveNodes::ActiveNode::Ltrace::AllocationParams>();
-            allocation_params->parent = this;
-            children["allocation-params"] = allocation_params;
-        }
-        return children.at("allocation-params");
+        return groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::Ltrace::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::get_children() const
 {
-    if(children.find("allocation-params") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(groups != nullptr)
     {
-        if(allocation_params != nullptr)
-        {
-            children["allocation-params"] = allocation_params;
-        }
+        children["groups"] = groups;
     }
 
     return children;
 }
 
-void ActiveNodes::ActiveNode::Ltrace::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::SsrpGroup::set_value(const std::string & value_path, std::string value)
 {
 }
 
-ActiveNodes::ActiveNode::Ltrace::AllocationParams::AllocationParams()
-    :
-    mode{YType::enumeration, "mode"},
-    scale_factor{YType::enumeration, "scale-factor"}
+ActiveNodes::ActiveNode::SsrpGroup::Groups::Groups()
 {
-    yang_name = "allocation-params"; yang_parent_name = "ltrace";
+    yang_name = "groups"; yang_parent_name = "ssrp-group";
 }
 
-ActiveNodes::ActiveNode::Ltrace::AllocationParams::~AllocationParams()
+ActiveNodes::ActiveNode::SsrpGroup::Groups::~Groups()
 {
 }
 
-bool ActiveNodes::ActiveNode::Ltrace::AllocationParams::has_data() const
+bool ActiveNodes::ActiveNode::SsrpGroup::Groups::has_data() const
 {
-    return mode.is_set
-	|| scale_factor.is_set;
+    for (std::size_t index=0; index<group.size(); index++)
+    {
+        if(group[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool ActiveNodes::ActiveNode::Ltrace::AllocationParams::has_operation() const
+bool ActiveNodes::ActiveNode::SsrpGroup::Groups::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mode.operation)
-	|| is_set(scale_factor.operation);
+    for (std::size_t index=0; index<group.size(); index++)
+    {
+        if(group[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
 }
 
-std::string ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_segment_path() const
+std::string ActiveNodes::ActiveNode::SsrpGroup::Groups::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "allocation-params";
+    path_buffer << "groups";
 
     return path_buffer.str();
 
 }
 
-EntityPath ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::SsrpGroup::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AllocationParams' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Groups' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1971,8 +1419,6 @@ EntityPath ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (scale_factor.is_set || is_set(scale_factor.operation)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1980,34 +1426,119 @@ EntityPath ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_entity_path(En
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "group")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        for(auto const & c : group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups::Group>();
+        c->parent = this;
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
-void ActiveNodes::ActiveNode::Ltrace::AllocationParams::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::SsrpGroup::Groups::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "mode")
+}
+
+ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::Group()
+    :
+    group_id{YType::uint32, "group-id"},
+    profile{YType::str, "profile"}
+{
+    yang_name = "group"; yang_parent_name = "groups";
+}
+
+ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::~Group()
+{
+}
+
+bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_data() const
+{
+    return group_id.is_set
+	|| profile.is_set;
+}
+
+bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(group_id.operation)
+	|| is_set(profile.operation);
+}
+
+std::string ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group" <<"[group-id='" <<group_id <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
     {
-        mode = value;
+        throw(YCPPInvalidArgumentError{"ancestor for 'Group' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
     }
-    if(value_path == "scale-factor")
+    else
     {
-        scale_factor = value;
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "group-id")
+    {
+        group_id = value;
+    }
+    if(value_path == "profile")
+    {
+        profile = value;
     }
 }
 
@@ -2016,7 +1547,6 @@ ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::CiscoIosXrWa
     memory_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold>())
 {
     memory_threshold->parent = this;
-    children["memory-threshold"] = memory_threshold;
 
     yang_name = "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"; yang_parent_name = "active-node";
 }
@@ -2045,7 +1575,7 @@ std::string ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::
 
 }
 
-EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2068,41 +1598,24 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::g
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "memory-threshold")
     {
-        if(memory_threshold != nullptr)
-        {
-            children["memory-threshold"] = memory_threshold;
-        }
-        else
+        if(memory_threshold == nullptr)
         {
             memory_threshold = std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold>();
-            memory_threshold->parent = this;
-            children["memory-threshold"] = memory_threshold;
         }
-        return children.at("memory-threshold");
+        return memory_threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_children() const
 {
-    if(children.find("memory-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(memory_threshold != nullptr)
     {
-        if(memory_threshold != nullptr)
-        {
-            children["memory-threshold"] = memory_threshold;
-        }
+        children["memory-threshold"] = memory_threshold;
     }
 
     return children;
@@ -2149,7 +1662,7 @@ std::string ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::
 
 }
 
-EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2175,24 +1688,187 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::M
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "critical")
     {
-        return children.at(child_yang_name);
+        critical = value;
     }
-    else if(children.find(segment_path) != children.end())
+    if(value_path == "minor")
     {
-        return children.at(segment_path);
+        minor = value;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+    }
+}
+
+ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::CiscoIosXrWdCfg_WatchdogNodeThreshold()
+    :
+    memory_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>())
+{
+    memory_threshold->parent = this;
+
+    yang_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; yang_parent_name = "active-node";
+}
+
+ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::~CiscoIosXrWdCfg_WatchdogNodeThreshold()
+{
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_data() const
+{
+    return (memory_threshold !=  nullptr && memory_threshold->has_data());
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
+{
+    return is_set(operation)
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
+}
+
+std::string ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-wd-cfg:Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'CiscoIosXrWdCfg_WatchdogNodeThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "memory-threshold")
+    {
+        if(memory_threshold == nullptr)
+        {
+            memory_threshold = std::make_shared<ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>();
+        }
+        return memory_threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(memory_threshold != nullptr)
+    {
+        children["memory-threshold"] = memory_threshold;
+    }
+
     return children;
 }
 
-void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+{
+}
+
+ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
+    :
+    critical{YType::uint32, "critical"},
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"}
+{
+    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+}
+
+ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
+{
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_data() const
+{
+    return critical.is_set
+	|| minor.is_set
+	|| severe.is_set;
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(critical.operation)
+	|| is_set(minor.operation)
+	|| is_set(severe.operation);
+}
+
+std::string ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "memory-threshold";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'MemoryThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
+    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "critical")
     {
@@ -2246,12 +1922,12 @@ std::string PreconfiguredNodes::get_segment_path() const
 
 }
 
-EntityPath PreconfiguredNodes::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -2266,15 +1942,6 @@ EntityPath PreconfiguredNodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PreconfiguredNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "preconfigured-node")
     {
         for(auto const & c : preconfigured_node)
@@ -2282,28 +1949,24 @@ std::shared_ptr<Entity> PreconfiguredNodes::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode>();
         c->parent = this;
-        preconfigured_node.push_back(std::move(c));
-        children[segment_path] = preconfigured_node.back();
-        return children.at(segment_path);
+        preconfigured_node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : preconfigured_node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2343,16 +2006,12 @@ PreconfiguredNodes::PreconfiguredNode::PreconfiguredNode()
 	,ltrace(std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace>())
 {
     cisco_ios_xr_watchd_cfg_watchdog_node_threshold->parent = this;
-    children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
 
     cisco_ios_xr_wd_cfg_watchdog_node_threshold->parent = this;
-    children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
 
     lpts_local->parent = this;
-    children["lpts-local"] = lpts_local;
 
     ltrace->parent = this;
-    children["ltrace"] = ltrace;
 
     yang_name = "preconfigured-node"; yang_parent_name = "preconfigured-nodes";
 }
@@ -2389,7 +2048,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::get_segment_path() const
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2413,110 +2072,66 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold")
     {
-        if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
-        }
-        else
+        if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold == nullptr)
         {
             cisco_ios_xr_watchd_cfg_watchdog_node_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold>();
-            cisco_ios_xr_watchd_cfg_watchdog_node_threshold->parent = this;
-            children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
         }
-        return children.at("Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold");
+        return cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold")
     {
-        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
-        }
-        else
+        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold == nullptr)
         {
             cisco_ios_xr_wd_cfg_watchdog_node_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold>();
-            cisco_ios_xr_wd_cfg_watchdog_node_threshold->parent = this;
-            children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
         }
-        return children.at("Cisco-IOS-XR-wd-cfg_watchdog-node-threshold");
+        return cisco_ios_xr_wd_cfg_watchdog_node_threshold;
     }
 
     if(child_yang_name == "lpts-local")
     {
-        if(lpts_local != nullptr)
-        {
-            children["lpts-local"] = lpts_local;
-        }
-        else
+        if(lpts_local == nullptr)
         {
             lpts_local = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal>();
-            lpts_local->parent = this;
-            children["lpts-local"] = lpts_local;
         }
-        return children.at("lpts-local");
+        return lpts_local;
     }
 
     if(child_yang_name == "ltrace")
     {
-        if(ltrace != nullptr)
-        {
-            children["ltrace"] = ltrace;
-        }
-        else
+        if(ltrace == nullptr)
         {
             ltrace = std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace>();
-            ltrace->parent = this;
-            children["ltrace"] = ltrace;
         }
-        return children.at("ltrace");
+        return ltrace;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::get_children() const
 {
-    if(children.find("Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
     {
-        if(cisco_ios_xr_watchd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
-        }
+        children["Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"] = cisco_ios_xr_watchd_cfg_watchdog_node_threshold;
     }
 
-    if(children.find("Cisco-IOS-XR-wd-cfg_watchdog-node-threshold") == children.end())
+    if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
     {
-        if(cisco_ios_xr_wd_cfg_watchdog_node_threshold != nullptr)
-        {
-            children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
-        }
+        children["Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"] = cisco_ios_xr_wd_cfg_watchdog_node_threshold;
     }
 
-    if(children.find("lpts-local") == children.end())
+    if(lpts_local != nullptr)
     {
-        if(lpts_local != nullptr)
-        {
-            children["lpts-local"] = lpts_local;
-        }
+        children["lpts-local"] = lpts_local;
     }
 
-    if(children.find("ltrace") == children.end())
+    if(ltrace != nullptr)
     {
-        if(ltrace != nullptr)
-        {
-            children["ltrace"] = ltrace;
-        }
+        children["ltrace"] = ltrace;
     }
 
     return children;
@@ -2530,46 +2145,45 @@ void PreconfiguredNodes::PreconfiguredNode::set_value(const std::string & value_
     }
 }
 
-PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::CiscoIosXrWdCfg_WatchdogNodeThreshold()
+PreconfiguredNodes::PreconfiguredNode::Ltrace::Ltrace()
     :
-    memory_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>())
+    allocation_params(std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams>())
 {
-    memory_threshold->parent = this;
-    children["memory-threshold"] = memory_threshold;
+    allocation_params->parent = this;
 
-    yang_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; yang_parent_name = "preconfigured-node";
+    yang_name = "ltrace"; yang_parent_name = "preconfigured-node";
 }
 
-PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::~CiscoIosXrWdCfg_WatchdogNodeThreshold()
+PreconfiguredNodes::PreconfiguredNode::Ltrace::~Ltrace()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_data() const
 {
-    return (memory_threshold !=  nullptr && memory_threshold->has_data());
+    return (allocation_params !=  nullptr && allocation_params->has_data());
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_operation() const
 {
     return is_set(operation)
-	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
+	|| (allocation_params !=  nullptr && allocation_params->has_operation());
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::Ltrace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-wd-cfg:Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+    path_buffer << "Cisco-IOS-XR-infra-ltrace-cfg:ltrace";
 
     return path_buffer.str();
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::Ltrace::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CiscoIosXrWdCfg_WatchdogNodeThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ltrace' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2585,95 +2199,75 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeTh
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "allocation-params")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "memory-threshold")
-    {
-        if(memory_threshold != nullptr)
+        if(allocation_params == nullptr)
         {
-            children["memory-threshold"] = memory_threshold;
+            allocation_params = std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams>();
         }
-        else
-        {
-            memory_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>();
-            memory_threshold->parent = this;
-            children["memory-threshold"] = memory_threshold;
-        }
-        return children.at("memory-threshold");
+        return allocation_params;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_children() const
 {
-    if(children.find("memory-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(allocation_params != nullptr)
     {
-        if(memory_threshold != nullptr)
-        {
-            children["memory-threshold"] = memory_threshold;
-        }
+        children["allocation-params"] = allocation_params;
     }
 
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::Ltrace::set_value(const std::string & value_path, std::string value)
 {
 }
 
-PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
+PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::AllocationParams()
     :
-    critical{YType::uint32, "critical"},
-    minor{YType::uint32, "minor"},
-    severe{YType::uint32, "severe"}
+    mode{YType::enumeration, "mode"},
+    scale_factor{YType::enumeration, "scale-factor"}
 {
-    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+    yang_name = "allocation-params"; yang_parent_name = "ltrace";
 }
 
-PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
+PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::~AllocationParams()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::has_data() const
 {
-    return critical.is_set
-	|| minor.is_set
-	|| severe.is_set;
+    return mode.is_set
+	|| scale_factor.is_set;
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::has_operation() const
 {
     return is_set(operation)
-	|| is_set(critical.operation)
-	|| is_set(minor.operation)
-	|| is_set(severe.operation);
+	|| is_set(mode.operation)
+	|| is_set(scale_factor.operation);
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "memory-threshold";
+    path_buffer << "allocation-params";
 
     return path_buffer.str();
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MemoryThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'AllocationParams' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2682,9 +2276,8 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeTh
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
-    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (scale_factor.is_set || is_set(scale_factor.operation)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2692,38 +2285,26 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeTh
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "critical")
+    if(value_path == "mode")
     {
-        critical = value;
+        mode = value;
     }
-    if(value_path == "minor")
+    if(value_path == "scale-factor")
     {
-        minor = value;
-    }
-    if(value_path == "severe")
-    {
-        severe = value;
+        scale_factor = value;
     }
 }
 
@@ -2733,7 +2314,6 @@ PreconfiguredNodes::PreconfiguredNode::LptsLocal::LptsLocal()
 	,ipolicer_local_tables(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables>())
 {
     ipolicer_local_tables->parent = this;
-    children["ipolicer-local-tables"] = ipolicer_local_tables;
 
     yang_name = "lpts-local"; yang_parent_name = "preconfigured-node";
 }
@@ -2764,7 +2344,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_segment_path()
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2787,64 +2367,38 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_entity_path(Ent
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipolicer-local")
     {
-        if(ipolicer_local != nullptr)
-        {
-            children["ipolicer-local"] = ipolicer_local;
-        }
-        else
+        if(ipolicer_local == nullptr)
         {
             ipolicer_local = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal>();
-            ipolicer_local->parent = this;
-            children["ipolicer-local"] = ipolicer_local;
         }
-        return children.at("ipolicer-local");
+        return ipolicer_local;
     }
 
     if(child_yang_name == "ipolicer-local-tables")
     {
-        if(ipolicer_local_tables != nullptr)
-        {
-            children["ipolicer-local-tables"] = ipolicer_local_tables;
-        }
-        else
+        if(ipolicer_local_tables == nullptr)
         {
             ipolicer_local_tables = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables>();
-            ipolicer_local_tables->parent = this;
-            children["ipolicer-local-tables"] = ipolicer_local_tables;
         }
-        return children.at("ipolicer-local-tables");
+        return ipolicer_local_tables;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_children() const
 {
-    if(children.find("ipolicer-local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipolicer_local != nullptr)
     {
-        if(ipolicer_local != nullptr)
-        {
-            children["ipolicer-local"] = ipolicer_local;
-        }
+        children["ipolicer-local"] = ipolicer_local;
     }
 
-    if(children.find("ipolicer-local-tables") == children.end())
+    if(ipolicer_local_tables != nullptr)
     {
-        if(ipolicer_local_tables != nullptr)
-        {
-            children["ipolicer-local-tables"] = ipolicer_local_tables;
-        }
+        children["ipolicer-local-tables"] = ipolicer_local_tables;
     }
 
     return children;
@@ -2892,7 +2446,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTable
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2915,15 +2469,6 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipolicer-local-table")
     {
         for(auto const & c : ipolicer_local_table)
@@ -2931,28 +2476,24 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
         c->parent = this;
-        ipolicer_local_table.push_back(std::move(c));
-        children[segment_path] = ipolicer_local_table.back();
-        return children.at(segment_path);
+        ipolicer_local_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipolicer_local_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2969,7 +2510,6 @@ PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerL
     nps(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>())
 {
     nps->parent = this;
-    children["nps"] = nps;
 
     yang_name = "ipolicer-local-table"; yang_parent_name = "ipolicer-local-tables";
 }
@@ -3000,7 +2540,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTable
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3024,41 +2564,24 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nps")
     {
-        if(nps != nullptr)
-        {
-            children["nps"] = nps;
-        }
-        else
+        if(nps == nullptr)
         {
             nps = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>();
-            nps->parent = this;
-            children["nps"] = nps;
         }
-        return children.at("nps");
+        return nps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
 {
-    if(children.find("nps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nps != nullptr)
     {
-        if(nps != nullptr)
-        {
-            children["nps"] = nps;
-        }
+        children["nps"] = nps;
     }
 
     return children;
@@ -3110,7 +2633,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTable
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3133,15 +2656,6 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "np")
     {
         for(auto const & c : np)
@@ -3149,28 +2663,24 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np>();
         c->parent = this;
-        np.push_back(std::move(c));
-        children[segment_path] = np.back();
-        return children.at(segment_path);
+        np.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : np)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3214,7 +2724,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTable
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3239,20 +2749,12 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3275,7 +2777,6 @@ PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::IpolicerLocal()
     flows(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows>())
 {
     flows->parent = this;
-    children["flows"] = flows;
 
     yang_name = "ipolicer-local"; yang_parent_name = "lpts-local";
 }
@@ -3306,7 +2807,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3330,41 +2831,24 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flows")
     {
-        if(flows != nullptr)
-        {
-            children["flows"] = flows;
-        }
-        else
+        if(flows == nullptr)
         {
             flows = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows>();
-            flows->parent = this;
-            children["flows"] = flows;
         }
-        return children.at("flows");
+        return flows;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_children() const
 {
-    if(children.find("flows") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flows != nullptr)
     {
-        if(flows != nullptr)
-        {
-            children["flows"] = flows;
-        }
+        children["flows"] = flows;
     }
 
     return children;
@@ -3416,7 +2900,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flo
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3439,15 +2923,6 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flow
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow")
     {
         for(auto const & c : flow)
@@ -3455,28 +2930,24 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow>();
         c->parent = this;
-        flow.push_back(std::move(c));
-        children[segment_path] = flow.back();
-        return children.at(segment_path);
+        flow.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : flow)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3494,7 +2965,6 @@ PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Fl
     precedences(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences>())
 {
     precedences->parent = this;
-    children["precedences"] = precedences;
 
     yang_name = "flow"; yang_parent_name = "flows";
 }
@@ -3527,7 +2997,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flo
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3552,41 +3022,24 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flow
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "precedences")
     {
-        if(precedences != nullptr)
-        {
-            children["precedences"] = precedences;
-        }
-        else
+        if(precedences == nullptr)
         {
             precedences = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences>();
-            precedences->parent = this;
-            children["precedences"] = precedences;
         }
-        return children.at("precedences");
+        return precedences;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
 {
-    if(children.find("precedences") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(precedences != nullptr)
     {
-        if(precedences != nullptr)
-        {
-            children["precedences"] = precedences;
-        }
+        children["precedences"] = precedences;
     }
 
     return children;
@@ -3645,7 +3098,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flo
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3670,20 +3123,12 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flow
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3695,201 +3140,11 @@ void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flo
     }
 }
 
-PreconfiguredNodes::PreconfiguredNode::Ltrace::Ltrace()
-    :
-    allocation_params(std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams>())
-{
-    allocation_params->parent = this;
-    children["allocation-params"] = allocation_params;
-
-    yang_name = "ltrace"; yang_parent_name = "preconfigured-node";
-}
-
-PreconfiguredNodes::PreconfiguredNode::Ltrace::~Ltrace()
-{
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_data() const
-{
-    return (allocation_params !=  nullptr && allocation_params->has_data());
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_operation() const
-{
-    return is_set(operation)
-	|| (allocation_params !=  nullptr && allocation_params->has_operation());
-}
-
-std::string PreconfiguredNodes::PreconfiguredNode::Ltrace::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-ltrace-cfg:ltrace";
-
-    return path_buffer.str();
-
-}
-
-EntityPath PreconfiguredNodes::PreconfiguredNode::Ltrace::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ltrace' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "allocation-params")
-    {
-        if(allocation_params != nullptr)
-        {
-            children["allocation-params"] = allocation_params;
-        }
-        else
-        {
-            allocation_params = std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams>();
-            allocation_params->parent = this;
-            children["allocation-params"] = allocation_params;
-        }
-        return children.at("allocation-params");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::Ltrace::get_children()
-{
-    if(children.find("allocation-params") == children.end())
-    {
-        if(allocation_params != nullptr)
-        {
-            children["allocation-params"] = allocation_params;
-        }
-    }
-
-    return children;
-}
-
-void PreconfiguredNodes::PreconfiguredNode::Ltrace::set_value(const std::string & value_path, std::string value)
-{
-}
-
-PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::AllocationParams()
-    :
-    mode{YType::enumeration, "mode"},
-    scale_factor{YType::enumeration, "scale-factor"}
-{
-    yang_name = "allocation-params"; yang_parent_name = "ltrace";
-}
-
-PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::~AllocationParams()
-{
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::has_data() const
-{
-    return mode.is_set
-	|| scale_factor.is_set;
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(mode.operation)
-	|| is_set(scale_factor.operation);
-}
-
-std::string PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "allocation-params";
-
-    return path_buffer.str();
-
-}
-
-EntityPath PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AllocationParams' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (scale_factor.is_set || is_set(scale_factor.operation)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_children()
-{
-    return children;
-}
-
-void PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "mode")
-    {
-        mode = value;
-    }
-    if(value_path == "scale-factor")
-    {
-        scale_factor = value;
-    }
-}
-
 PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::CiscoIosXrWatchdCfg_WatchdogNodeThreshold()
     :
     memory_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold>())
 {
     memory_threshold->parent = this;
-    children["memory-threshold"] = memory_threshold;
 
     yang_name = "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold"; yang_parent_name = "preconfigured-node";
 }
@@ -3918,7 +3173,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogN
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3941,41 +3196,24 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNo
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "memory-threshold")
     {
-        if(memory_threshold != nullptr)
-        {
-            children["memory-threshold"] = memory_threshold;
-        }
-        else
+        if(memory_threshold == nullptr)
         {
             memory_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold>();
-            memory_threshold->parent = this;
-            children["memory-threshold"] = memory_threshold;
         }
-        return children.at("memory-threshold");
+        return memory_threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_children() const
 {
-    if(children.find("memory-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(memory_threshold != nullptr)
     {
-        if(memory_threshold != nullptr)
-        {
-            children["memory-threshold"] = memory_threshold;
-        }
+        children["memory-threshold"] = memory_threshold;
     }
 
     return children;
@@ -4022,7 +3260,7 @@ std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogN
 
 }
 
-EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4048,24 +3286,187 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNo
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "critical")
     {
-        return children.at(child_yang_name);
+        critical = value;
     }
-    else if(children.find(segment_path) != children.end())
+    if(value_path == "minor")
     {
-        return children.at(segment_path);
+        minor = value;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+    }
+}
+
+PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::CiscoIosXrWdCfg_WatchdogNodeThreshold()
+    :
+    memory_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>())
+{
+    memory_threshold->parent = this;
+
+    yang_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold"; yang_parent_name = "preconfigured-node";
+}
+
+PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::~CiscoIosXrWdCfg_WatchdogNodeThreshold()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_data() const
+{
+    return (memory_threshold !=  nullptr && memory_threshold->has_data());
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
+{
+    return is_set(operation)
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-wd-cfg:Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'CiscoIosXrWdCfg_WatchdogNodeThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "memory-threshold")
+    {
+        if(memory_threshold == nullptr)
+        {
+            memory_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold>();
+        }
+        return memory_threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(memory_threshold != nullptr)
+    {
+        children["memory-threshold"] = memory_threshold;
+    }
+
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+{
+}
+
+PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
+    :
+    critical{YType::uint32, "critical"},
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"}
+{
+    yang_name = "memory-threshold"; yang_parent_name = "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold";
+}
+
+PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_data() const
+{
+    return critical.is_set
+	|| minor.is_set
+	|| severe.is_set;
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(critical.operation)
+	|| is_set(minor.operation)
+	|| is_set(severe.operation);
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "memory-threshold";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'MemoryThreshold' in Cisco_IOS_XR_config_mda_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
+    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "critical")
     {

@@ -23,12 +23,11 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -57,8 +56,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag : public En
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
 
-
-
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag
 
 
@@ -70,24 +67,21 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf inv_card_type; //type: uint8
         YLeaf opaque_data; //type: string
         YLeaf opaque_data_size; //type: uint32
         YLeaf has_eeprom; //type: uint32
         YLeaf description; //type: string
-
         class Eeprom; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom> eeprom;
-
-
+        
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo
 
 
@@ -99,12 +93,11 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf idprom_format_rev; //type: string
@@ -162,12 +155,10 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom :
         YLeaf engineer_use; //type: string
         YLeaf snmpoid; //type: string
         YLeaf rma_code; //type: string
-
         class Rma; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma> rma;
-
-
+        
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom
 
 
@@ -179,18 +170,15 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf test_history; //type: string
         YLeaf rma_number; //type: string
         YLeaf rma_history; //type: string
-
-
 
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma
 
@@ -203,18 +191,16 @@ class Inventory::Racks::Rack::Attributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf module_done; //type: int32
         YLeaf vm_node_id; //type: uint32
         YLeaf vm_done; //type: int32
         YLeaf node_id; //type: uint32
-
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Attributes::PwgInfo
         class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfoXml
@@ -232,8 +218,7 @@ class Inventory::Racks::Rack::Attributes : public Entity
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::InvEepromInfo> inv_eeprom_info;
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::PwgInfo> pwg_info;
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold> threshold;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes
 
 
@@ -245,12 +230,11 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf field_validity_bitmap; //type: uint32
         YLeaf device_description; //type: string
@@ -265,8 +249,6 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfo : public Entity
         YLeaf age_time_stamp; //type: uint32
         YLeaf update_rate; //type: uint32
 
-
-
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfo
 
 
@@ -278,19 +260,16 @@ class Inventory::Racks::Rack::Attributes::PwgInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf power_group_redundancy_mode; //type: int32
         YLeaf power_group_power_units; //type: string
         YLeaf power_group_available_current; //type: int32
         YLeaf power_group_drawn_current; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Attributes::PwgInfo
 
@@ -303,12 +282,11 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf units; //type: UnitEnum
@@ -316,12 +294,10 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml : public Entity
         YLeaf data_type; //type: SensorDataEnum
         YLeaf status; //type: SensorStatusEnum
         YLeaf update_rate; //type: uint32
-
         class Threshold; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold> threshold;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfoXml
 
 
@@ -333,19 +309,16 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThresholdArray; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray> > threshold_array;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold
 
 
@@ -357,19 +330,16 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::Threshold
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: ThresholdSeverityEnum
         YLeaf threshold_relation; //type: ThresholdRelationEnum
         YLeaf threshold_value; //type: int32
         YLeaf threshold_name; //type: string
-
-
 
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
@@ -382,12 +352,11 @@ class Inventory::Racks::Rack::Attributes::InvAssetBag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf part_number; //type: string
         YLeaf manufacturer_assembly_number; //type: string
@@ -396,8 +365,6 @@ class Inventory::Racks::Rack::Attributes::InvAssetBag : public Entity
         YLeaf manufacturer_software_identifier; //type: string
         YLeaf manufacturer_common_language_equipment_identifier; //type: string
         YLeaf original_equipment_manufacturer_string; //type: string
-
-
 
 }; // Inventory::Racks::Rack::Attributes::InvAssetBag
 
@@ -410,13 +377,11 @@ class Inventory::Racks::Rack::Attributes::Threshold : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MajorLo; //type: Inventory::Racks::Rack::Attributes::Threshold::MajorLo
         class CriticalHi; //type: Inventory::Racks::Rack::Attributes::Threshold::CriticalHi
@@ -431,8 +396,7 @@ class Inventory::Racks::Rack::Attributes::Threshold : public Entity
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::MajorLo> major_lo;
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::MinorHi> minor_hi;
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::MinorLo> minor_lo;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::Threshold
 
 
@@ -444,19 +408,16 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorLo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorLo
 
 
@@ -468,20 +429,17 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: uint32
         YLeaf threshold_relation; //type: uint32
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag
 
@@ -494,19 +452,16 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalHi
 
 
@@ -518,20 +473,17 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: uint32
         YLeaf threshold_relation; //type: uint32
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag
 
@@ -544,19 +496,16 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorHi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorHi
 
 
@@ -568,20 +517,17 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: uint32
         YLeaf threshold_relation; //type: uint32
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag
 
@@ -594,19 +540,16 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorHi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorHi
 
 
@@ -618,20 +561,17 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: uint32
         YLeaf threshold_relation; //type: uint32
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag
 
@@ -644,19 +584,16 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalLo
 
 
@@ -668,20 +605,17 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: uint32
         YLeaf threshold_relation; //type: uint32
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag
 
@@ -694,19 +628,16 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorLo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorLo
 
 
@@ -718,20 +649,17 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: uint32
         YLeaf threshold_relation; //type: uint32
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag
 
@@ -744,12 +672,11 @@ class Inventory::Racks::Rack::Attributes::FruInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf card_administrative_state; //type: int32
         YLeaf power_administrative_state; //type: int32
@@ -758,14 +685,12 @@ class Inventory::Racks::Rack::Attributes::FruInfo : public Entity
         YLeaf card_reset_reason; //type: CardResetReasonEnum
         YLeaf power_current_measurement; //type: int32
         YLeaf power_operational_state; //type: int32
-
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime> card_up_time;
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::FruInfo
 
 
@@ -777,17 +702,14 @@ class Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange
 
@@ -800,17 +722,14 @@ class Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_in_seconds; //type: int32
         YLeaf time_in_nano_seconds; //type: int32
-
-
 
 }; // Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime
 
@@ -823,12 +742,11 @@ class Inventory::Racks::Rack::Attributes::InvBasicBag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf vendor_type; //type: string
@@ -857,8 +775,6 @@ class Inventory::Racks::Rack::Attributes::InvBasicBag : public Entity
         YLeaf xr_scoped; //type: boolean
         YLeaf unique_id; //type: int32
 
-
-
 }; // Inventory::Racks::Rack::Attributes::InvBasicBag
 
 
@@ -870,24 +786,21 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf inv_card_type; //type: uint8
         YLeaf opaque_data; //type: string
         YLeaf opaque_data_size; //type: uint32
         YLeaf has_eeprom; //type: uint32
         YLeaf description; //type: string
-
         class Eeprom; //type: Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom> eeprom;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::InvEepromInfo
 
 
@@ -899,12 +812,11 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf idprom_format_rev; //type: string
@@ -962,12 +874,10 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom : public Entity
         YLeaf engineer_use; //type: string
         YLeaf snmpoid; //type: string
         YLeaf rma_code; //type: string
-
         class Rma; //type: Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma> rma;
-
-
+        
 }; // Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom
 
 
@@ -979,18 +889,15 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf test_history; //type: string
         YLeaf rma_number; //type: string
         YLeaf rma_history; //type: string
-
-
 
 }; // Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma
 

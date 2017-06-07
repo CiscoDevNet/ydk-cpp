@@ -71,12 +71,12 @@ std::string IpTcp::get_segment_path() const
 
 }
 
-EntityPath IpTcp::get_entity_path(Entity* ancestor) const
+const EntityPath IpTcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -99,87 +99,52 @@ EntityPath IpTcp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpTcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "directory")
     {
-        if(directory != nullptr)
-        {
-            children["directory"] = directory;
-        }
-        else
+        if(directory == nullptr)
         {
             directory = std::make_shared<IpTcp::Directory>();
-            directory->parent = this;
-            children["directory"] = directory;
         }
-        return children.at("directory");
+        return directory;
     }
 
     if(child_yang_name == "num-thread")
     {
-        if(num_thread != nullptr)
-        {
-            children["num-thread"] = num_thread;
-        }
-        else
+        if(num_thread == nullptr)
         {
             num_thread = std::make_shared<IpTcp::NumThread>();
-            num_thread->parent = this;
-            children["num-thread"] = num_thread;
         }
-        return children.at("num-thread");
+        return num_thread;
     }
 
     if(child_yang_name == "throttle")
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
-        else
+        if(throttle == nullptr)
         {
             throttle = std::make_shared<IpTcp::Throttle>();
-            throttle->parent = this;
-            children["throttle"] = throttle;
         }
-        return children.at("throttle");
+        return throttle;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpTcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpTcp::get_children() const
 {
-    if(children.find("directory") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(directory != nullptr)
     {
-        if(directory != nullptr)
-        {
-            children["directory"] = directory;
-        }
+        children["directory"] = directory;
     }
 
-    if(children.find("num-thread") == children.end())
+    if(num_thread != nullptr)
     {
-        if(num_thread != nullptr)
-        {
-            children["num-thread"] = num_thread;
-        }
+        children["num-thread"] = num_thread;
     }
 
-    if(children.find("throttle") == children.end())
+    if(throttle != nullptr)
     {
-        if(throttle != nullptr)
-        {
-            children["throttle"] = throttle;
-        }
+        children["throttle"] = throttle;
     }
 
     return children;
@@ -278,7 +243,7 @@ std::string IpTcp::Directory::get_segment_path() const
 
 }
 
-EntityPath IpTcp::Directory::get_entity_path(Entity* ancestor) const
+const EntityPath IpTcp::Directory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -304,20 +269,12 @@ EntityPath IpTcp::Directory::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpTcp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpTcp::Directory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpTcp::Directory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -371,7 +328,7 @@ std::string IpTcp::Throttle::get_segment_path() const
 
 }
 
-EntityPath IpTcp::Throttle::get_entity_path(Entity* ancestor) const
+const EntityPath IpTcp::Throttle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -396,20 +353,12 @@ EntityPath IpTcp::Throttle::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpTcp::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpTcp::Throttle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpTcp::Throttle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -459,7 +408,7 @@ std::string IpTcp::NumThread::get_segment_path() const
 
 }
 
-EntityPath IpTcp::NumThread::get_entity_path(Entity* ancestor) const
+const EntityPath IpTcp::NumThread::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -484,20 +433,12 @@ EntityPath IpTcp::NumThread::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpTcp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpTcp::NumThread::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpTcp::NumThread::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -519,10 +460,8 @@ Ip::Ip()
 	,forward_protocol(std::make_shared<Ip::ForwardProtocol>())
 {
     cinetd->parent = this;
-    children["cinetd"] = cinetd;
 
     forward_protocol->parent = this;
-    children["forward-protocol"] = forward_protocol;
 
     yang_name = "ip"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-cfg";
 }
@@ -553,12 +492,12 @@ std::string Ip::get_segment_path() const
 
 }
 
-EntityPath Ip::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -573,64 +512,38 @@ EntityPath Ip::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cinetd")
     {
-        if(cinetd != nullptr)
-        {
-            children["cinetd"] = cinetd;
-        }
-        else
+        if(cinetd == nullptr)
         {
             cinetd = std::make_shared<Ip::Cinetd>();
-            cinetd->parent = this;
-            children["cinetd"] = cinetd;
         }
-        return children.at("cinetd");
+        return cinetd;
     }
 
     if(child_yang_name == "forward-protocol")
     {
-        if(forward_protocol != nullptr)
-        {
-            children["forward-protocol"] = forward_protocol;
-        }
-        else
+        if(forward_protocol == nullptr)
         {
             forward_protocol = std::make_shared<Ip::ForwardProtocol>();
-            forward_protocol->parent = this;
-            children["forward-protocol"] = forward_protocol;
         }
-        return children.at("forward-protocol");
+        return forward_protocol;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::get_children() const
 {
-    if(children.find("cinetd") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cinetd != nullptr)
     {
-        if(cinetd != nullptr)
-        {
-            children["cinetd"] = cinetd;
-        }
+        children["cinetd"] = cinetd;
     }
 
-    if(children.find("forward-protocol") == children.end())
+    if(forward_protocol != nullptr)
     {
-        if(forward_protocol != nullptr)
-        {
-            children["forward-protocol"] = forward_protocol;
-        }
+        children["forward-protocol"] = forward_protocol;
     }
 
     return children;
@@ -665,7 +578,6 @@ Ip::Cinetd::Cinetd()
     services(std::make_shared<Ip::Cinetd::Services>())
 {
     services->parent = this;
-    children["services"] = services;
 
     yang_name = "cinetd"; yang_parent_name = "ip";
 }
@@ -694,7 +606,7 @@ std::string Ip::Cinetd::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -717,41 +629,24 @@ EntityPath Ip::Cinetd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::Cinetd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "services")
     {
-        if(services != nullptr)
-        {
-            children["services"] = services;
-        }
-        else
+        if(services == nullptr)
         {
             services = std::make_shared<Ip::Cinetd::Services>();
-            services->parent = this;
-            children["services"] = services;
         }
-        return children.at("services");
+        return services;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::get_children() const
 {
-    if(children.find("services") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(services != nullptr)
     {
-        if(services != nullptr)
-        {
-            children["services"] = services;
-        }
+        children["services"] = services;
     }
 
     return children;
@@ -768,13 +663,10 @@ Ip::Cinetd::Services::Services()
 	,vrfs(std::make_shared<Ip::Cinetd::Services::Vrfs>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "services"; yang_parent_name = "cinetd";
 }
@@ -807,7 +699,7 @@ std::string Ip::Cinetd::Services::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -830,87 +722,52 @@ EntityPath Ip::Cinetd::Services::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Ip::Cinetd::Services::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Ip::Cinetd::Services::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ip::Cinetd::Services::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -925,7 +782,6 @@ Ip::Cinetd::Services::Ipv4::Ipv4()
     small_servers(std::make_shared<Ip::Cinetd::Services::Ipv4::SmallServers>())
 {
     small_servers->parent = this;
-    children["small-servers"] = small_servers;
 
     yang_name = "ipv4"; yang_parent_name = "services";
 }
@@ -954,7 +810,7 @@ std::string Ip::Cinetd::Services::Ipv4::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -977,41 +833,24 @@ EntityPath Ip::Cinetd::Services::Ipv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "small-servers")
     {
-        if(small_servers != nullptr)
-        {
-            children["small-servers"] = small_servers;
-        }
-        else
+        if(small_servers == nullptr)
         {
             small_servers = std::make_shared<Ip::Cinetd::Services::Ipv4::SmallServers>();
-            small_servers->parent = this;
-            children["small-servers"] = small_servers;
         }
-        return children.at("small-servers");
+        return small_servers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::get_children() const
 {
-    if(children.find("small-servers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(small_servers != nullptr)
     {
-        if(small_servers != nullptr)
-        {
-            children["small-servers"] = small_servers;
-        }
+        children["small-servers"] = small_servers;
     }
 
     return children;
@@ -1055,7 +894,7 @@ std::string Ip::Cinetd::Services::Ipv4::SmallServers::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1078,64 +917,38 @@ EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tcp-small-servers")
     {
-        if(tcp_small_servers != nullptr)
-        {
-            children["tcp-small-servers"] = tcp_small_servers;
-        }
-        else
+        if(tcp_small_servers == nullptr)
         {
             tcp_small_servers = std::make_shared<Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers>();
-            tcp_small_servers->parent = this;
-            children["tcp-small-servers"] = tcp_small_servers;
         }
-        return children.at("tcp-small-servers");
+        return tcp_small_servers;
     }
 
     if(child_yang_name == "udp-small-servers")
     {
-        if(udp_small_servers != nullptr)
-        {
-            children["udp-small-servers"] = udp_small_servers;
-        }
-        else
+        if(udp_small_servers == nullptr)
         {
             udp_small_servers = std::make_shared<Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers>();
-            udp_small_servers->parent = this;
-            children["udp-small-servers"] = udp_small_servers;
         }
-        return children.at("udp-small-servers");
+        return udp_small_servers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Ipv4::SmallServers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::get_children() const
 {
-    if(children.find("tcp-small-servers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tcp_small_servers != nullptr)
     {
-        if(tcp_small_servers != nullptr)
-        {
-            children["tcp-small-servers"] = tcp_small_servers;
-        }
+        children["tcp-small-servers"] = tcp_small_servers;
     }
 
-    if(children.find("udp-small-servers") == children.end())
+    if(udp_small_servers != nullptr)
     {
-        if(udp_small_servers != nullptr)
-        {
-            children["udp-small-servers"] = udp_small_servers;
-        }
+        children["udp-small-servers"] = udp_small_servers;
     }
 
     return children;
@@ -1179,7 +992,7 @@ std::string Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_segme
 
 }
 
-EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1204,20 +1017,12 @@ EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_entity
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1267,7 +1072,7 @@ std::string Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_segme
 
 }
 
-EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1292,20 +1097,12 @@ EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_entity
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1359,7 +1156,7 @@ std::string Ip::Cinetd::Services::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1382,15 +1179,6 @@ EntityPath Ip::Cinetd::Services::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -1398,28 +1186,24 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1437,10 +1221,8 @@ Ip::Cinetd::Services::Vrfs::Vrf::Vrf()
 	,ipv6(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -1473,7 +1255,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1497,64 +1279,38 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -1574,10 +1330,8 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Ipv6()
 	,tftp(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp>())
 {
     telnet->parent = this;
-    children["telnet"] = telnet;
 
     tftp->parent = this;
-    children["tftp"] = tftp;
 
     yang_name = "ipv6"; yang_parent_name = "vrf";
 }
@@ -1608,7 +1362,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1631,64 +1385,38 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "telnet")
     {
-        if(telnet != nullptr)
-        {
-            children["telnet"] = telnet;
-        }
-        else
+        if(telnet == nullptr)
         {
             telnet = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet>();
-            telnet->parent = this;
-            children["telnet"] = telnet;
         }
-        return children.at("telnet");
+        return telnet;
     }
 
     if(child_yang_name == "tftp")
     {
-        if(tftp != nullptr)
-        {
-            children["tftp"] = tftp;
-        }
-        else
+        if(tftp == nullptr)
         {
             tftp = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp>();
-            tftp->parent = this;
-            children["tftp"] = tftp;
         }
-        return children.at("tftp");
+        return tftp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_children() const
 {
-    if(children.find("telnet") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(telnet != nullptr)
     {
-        if(telnet != nullptr)
-        {
-            children["telnet"] = telnet;
-        }
+        children["telnet"] = telnet;
     }
 
-    if(children.find("tftp") == children.end())
+    if(tftp != nullptr)
     {
-        if(tftp != nullptr)
-        {
-            children["tftp"] = tftp;
-        }
+        children["tftp"] = tftp;
     }
 
     return children;
@@ -1729,7 +1457,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_segment_path() co
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1752,41 +1480,24 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tcp")
     {
-        if(tcp != nullptr)
-        {
-            children["tcp"] = tcp;
-        }
-        else
+        if(tcp == nullptr)
         {
             tcp = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp>();
-            tcp->parent = this;
-            children["tcp"] = tcp;
         }
-        return children.at("tcp");
+        return tcp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_children() const
 {
-    if(children.find("tcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tcp != nullptr)
     {
-        if(tcp != nullptr)
-        {
-            children["tcp"] = tcp;
-        }
+        children["tcp"] = tcp;
     }
 
     return children;
@@ -1830,7 +1541,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_segment_path
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1855,20 +1566,12 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_entity_path(E
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1915,7 +1618,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_segment_path() cons
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1938,41 +1641,24 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "udp")
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
-        else
+        if(udp == nullptr)
         {
             udp = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp>();
-            udp->parent = this;
-            children["udp"] = udp;
         }
-        return children.at("udp");
+        return udp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_children() const
 {
-    if(children.find("udp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(udp != nullptr)
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
+        children["udp"] = udp;
     }
 
     return children;
@@ -2022,7 +1708,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_segment_path()
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2049,20 +1735,12 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2092,10 +1770,8 @@ Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Ipv4()
 	,tftp(std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp>())
 {
     telnet->parent = this;
-    children["telnet"] = telnet;
 
     tftp->parent = this;
-    children["tftp"] = tftp;
 
     yang_name = "ipv4"; yang_parent_name = "vrf";
 }
@@ -2126,7 +1802,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2149,64 +1825,38 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "telnet")
     {
-        if(telnet != nullptr)
-        {
-            children["telnet"] = telnet;
-        }
-        else
+        if(telnet == nullptr)
         {
             telnet = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet>();
-            telnet->parent = this;
-            children["telnet"] = telnet;
         }
-        return children.at("telnet");
+        return telnet;
     }
 
     if(child_yang_name == "tftp")
     {
-        if(tftp != nullptr)
-        {
-            children["tftp"] = tftp;
-        }
-        else
+        if(tftp == nullptr)
         {
             tftp = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp>();
-            tftp->parent = this;
-            children["tftp"] = tftp;
         }
-        return children.at("tftp");
+        return tftp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_children() const
 {
-    if(children.find("telnet") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(telnet != nullptr)
     {
-        if(telnet != nullptr)
-        {
-            children["telnet"] = telnet;
-        }
+        children["telnet"] = telnet;
     }
 
-    if(children.find("tftp") == children.end())
+    if(tftp != nullptr)
     {
-        if(tftp != nullptr)
-        {
-            children["tftp"] = tftp;
-        }
+        children["tftp"] = tftp;
     }
 
     return children;
@@ -2247,7 +1897,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_segment_path() co
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2270,41 +1920,24 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tcp")
     {
-        if(tcp != nullptr)
-        {
-            children["tcp"] = tcp;
-        }
-        else
+        if(tcp == nullptr)
         {
             tcp = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp>();
-            tcp->parent = this;
-            children["tcp"] = tcp;
         }
-        return children.at("tcp");
+        return tcp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_children() const
 {
-    if(children.find("tcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tcp != nullptr)
     {
-        if(tcp != nullptr)
-        {
-            children["tcp"] = tcp;
-        }
+        children["tcp"] = tcp;
     }
 
     return children;
@@ -2348,7 +1981,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_segment_path
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2373,20 +2006,12 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_entity_path(E
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2433,7 +2058,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_segment_path() cons
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2456,41 +2081,24 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "udp")
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
-        else
+        if(udp == nullptr)
         {
             udp = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp>();
-            udp->parent = this;
-            children["udp"] = udp;
         }
-        return children.at("udp");
+        return udp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_children() const
 {
-    if(children.find("udp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(udp != nullptr)
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
+        children["udp"] = udp;
     }
 
     return children;
@@ -2540,7 +2148,7 @@ std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_segment_path()
 
 }
 
-EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2567,20 +2175,12 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2609,7 +2209,6 @@ Ip::Cinetd::Services::Ipv6::Ipv6()
     small_servers(std::make_shared<Ip::Cinetd::Services::Ipv6::SmallServers>())
 {
     small_servers->parent = this;
-    children["small-servers"] = small_servers;
 
     yang_name = "ipv6"; yang_parent_name = "services";
 }
@@ -2638,7 +2237,7 @@ std::string Ip::Cinetd::Services::Ipv6::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2661,41 +2260,24 @@ EntityPath Ip::Cinetd::Services::Ipv6::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "small-servers")
     {
-        if(small_servers != nullptr)
-        {
-            children["small-servers"] = small_servers;
-        }
-        else
+        if(small_servers == nullptr)
         {
             small_servers = std::make_shared<Ip::Cinetd::Services::Ipv6::SmallServers>();
-            small_servers->parent = this;
-            children["small-servers"] = small_servers;
         }
-        return children.at("small-servers");
+        return small_servers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::get_children() const
 {
-    if(children.find("small-servers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(small_servers != nullptr)
     {
-        if(small_servers != nullptr)
-        {
-            children["small-servers"] = small_servers;
-        }
+        children["small-servers"] = small_servers;
     }
 
     return children;
@@ -2736,7 +2318,7 @@ std::string Ip::Cinetd::Services::Ipv6::SmallServers::get_segment_path() const
 
 }
 
-EntityPath Ip::Cinetd::Services::Ipv6::SmallServers::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Ipv6::SmallServers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2759,41 +2341,24 @@ EntityPath Ip::Cinetd::Services::Ipv6::SmallServers::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tcp-small-servers")
     {
-        if(tcp_small_servers != nullptr)
-        {
-            children["tcp-small-servers"] = tcp_small_servers;
-        }
-        else
+        if(tcp_small_servers == nullptr)
         {
             tcp_small_servers = std::make_shared<Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers>();
-            tcp_small_servers->parent = this;
-            children["tcp-small-servers"] = tcp_small_servers;
         }
-        return children.at("tcp-small-servers");
+        return tcp_small_servers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Ipv6::SmallServers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::get_children() const
 {
-    if(children.find("tcp-small-servers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tcp_small_servers != nullptr)
     {
-        if(tcp_small_servers != nullptr)
-        {
-            children["tcp-small-servers"] = tcp_small_servers;
-        }
+        children["tcp-small-servers"] = tcp_small_servers;
     }
 
     return children;
@@ -2837,7 +2402,7 @@ std::string Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_segme
 
 }
 
-EntityPath Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2862,20 +2427,12 @@ EntityPath Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_entity
 
 std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2896,7 +2453,6 @@ Ip::ForwardProtocol::ForwardProtocol()
     udp(std::make_shared<Ip::ForwardProtocol::Udp>())
 {
     udp->parent = this;
-    children["udp"] = udp;
 
     yang_name = "forward-protocol"; yang_parent_name = "ip";
 }
@@ -2925,7 +2481,7 @@ std::string Ip::ForwardProtocol::get_segment_path() const
 
 }
 
-EntityPath Ip::ForwardProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::ForwardProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2948,41 +2504,24 @@ EntityPath Ip::ForwardProtocol::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::ForwardProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "udp")
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
-        else
+        if(udp == nullptr)
         {
             udp = std::make_shared<Ip::ForwardProtocol::Udp>();
-            udp->parent = this;
-            children["udp"] = udp;
         }
-        return children.at("udp");
+        return udp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::ForwardProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::get_children() const
 {
-    if(children.find("udp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(udp != nullptr)
     {
-        if(udp != nullptr)
-        {
-            children["udp"] = udp;
-        }
+        children["udp"] = udp;
     }
 
     return children;
@@ -2999,7 +2538,6 @@ Ip::ForwardProtocol::Udp::Udp()
     ports(std::make_shared<Ip::ForwardProtocol::Udp::Ports>())
 {
     ports->parent = this;
-    children["ports"] = ports;
 
     yang_name = "udp"; yang_parent_name = "forward-protocol";
 }
@@ -3030,7 +2568,7 @@ std::string Ip::ForwardProtocol::Udp::get_segment_path() const
 
 }
 
-EntityPath Ip::ForwardProtocol::Udp::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::ForwardProtocol::Udp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3054,41 +2592,24 @@ EntityPath Ip::ForwardProtocol::Udp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ports")
     {
-        if(ports != nullptr)
-        {
-            children["ports"] = ports;
-        }
-        else
+        if(ports == nullptr)
         {
             ports = std::make_shared<Ip::ForwardProtocol::Udp::Ports>();
-            ports->parent = this;
-            children["ports"] = ports;
         }
-        return children.at("ports");
+        return ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::ForwardProtocol::Udp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::get_children() const
 {
-    if(children.find("ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ports != nullptr)
     {
-        if(ports != nullptr)
-        {
-            children["ports"] = ports;
-        }
+        children["ports"] = ports;
     }
 
     return children;
@@ -3140,7 +2661,7 @@ std::string Ip::ForwardProtocol::Udp::Ports::get_segment_path() const
 
 }
 
-EntityPath Ip::ForwardProtocol::Udp::Ports::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::ForwardProtocol::Udp::Ports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3163,15 +2684,6 @@ EntityPath Ip::ForwardProtocol::Udp::Ports::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port")
     {
         for(auto const & c : port)
@@ -3179,28 +2691,24 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ip::ForwardProtocol::Udp::Ports::Port>();
         c->parent = this;
-        port.push_back(std::move(c));
-        children[segment_path] = port.back();
-        return children.at(segment_path);
+        port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::ForwardProtocol::Udp::Ports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3244,7 +2752,7 @@ std::string Ip::ForwardProtocol::Udp::Ports::Port::get_segment_path() const
 
 }
 
-EntityPath Ip::ForwardProtocol::Udp::Ports::Port::get_entity_path(Entity* ancestor) const
+const EntityPath Ip::ForwardProtocol::Udp::Ports::Port::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3269,20 +2777,12 @@ EntityPath Ip::ForwardProtocol::Udp::Ports::Port::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ip::ForwardProtocol::Udp::Ports::Port::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::Port::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

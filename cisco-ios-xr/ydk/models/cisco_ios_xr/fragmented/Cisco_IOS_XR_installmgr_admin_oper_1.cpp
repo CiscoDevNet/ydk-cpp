@@ -17,7 +17,6 @@ Install::Logs::Log::Communication::LogContents::V3::V3()
     scope(std::make_shared<Install::Logs::Log::Communication::LogContents::V3::Scope>())
 {
     scope->parent = this;
-    children["scope"] = scope;
 
     yang_name = "v3"; yang_parent_name = "log-contents";
 }
@@ -50,7 +49,7 @@ std::string Install::Logs::Log::Communication::LogContents::V3::get_segment_path
 
 }
 
-EntityPath Install::Logs::Log::Communication::LogContents::V3::get_entity_path(Entity* ancestor) const
+const EntityPath Install::Logs::Log::Communication::LogContents::V3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -75,41 +74,24 @@ EntityPath Install::Logs::Log::Communication::LogContents::V3::get_entity_path(E
 
 std::shared_ptr<Entity> Install::Logs::Log::Communication::LogContents::V3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "scope")
     {
-        if(scope != nullptr)
-        {
-            children["scope"] = scope;
-        }
-        else
+        if(scope == nullptr)
         {
             scope = std::make_shared<Install::Logs::Log::Communication::LogContents::V3::Scope>();
-            scope->parent = this;
-            children["scope"] = scope;
         }
-        return children.at("scope");
+        return scope;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Install::Logs::Log::Communication::LogContents::V3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::LogContents::V3::get_children() const
 {
-    if(children.find("scope") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(scope != nullptr)
     {
-        if(scope != nullptr)
-        {
-            children["scope"] = scope;
-        }
+        children["scope"] = scope;
     }
 
     return children;
@@ -161,7 +143,7 @@ std::string Install::Logs::Log::Communication::LogContents::V3::Scope::get_segme
 
 }
 
-EntityPath Install::Logs::Log::Communication::LogContents::V3::Scope::get_entity_path(Entity* ancestor) const
+const EntityPath Install::Logs::Log::Communication::LogContents::V3::Scope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -186,20 +168,12 @@ EntityPath Install::Logs::Log::Communication::LogContents::V3::Scope::get_entity
 
 std::shared_ptr<Entity> Install::Logs::Log::Communication::LogContents::V3::Scope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Install::Logs::Log::Communication::LogContents::V3::Scope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::LogContents::V3::Scope::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

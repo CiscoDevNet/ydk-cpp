@@ -14,7 +14,6 @@ Telnet::Telnet()
     vrfs(std::make_shared<Telnet::Vrfs>())
 {
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-mgmt-cfg";
 }
@@ -43,12 +42,12 @@ std::string Telnet::get_segment_path() const
 
 }
 
-EntityPath Telnet::get_entity_path(Entity* ancestor) const
+const EntityPath Telnet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Telnet::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Telnet::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Telnet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Telnet::get_children() const
 {
-    if(children.find("vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Telnet::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Telnet::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Telnet::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Telnet::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Telnet::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Telnet::Vrfs::get_child_by_name(const std::string & chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Telnet::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Telnet::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ Telnet::Vrfs::Vrf::Vrf()
     ipv4(std::make_shared<Telnet::Vrfs::Vrf::Ipv4>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -273,7 +241,7 @@ std::string Telnet::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Telnet::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Telnet::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath Telnet::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Telnet::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Telnet::Vrfs::Vrf::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Telnet::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::Vrf::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
     return children;
@@ -376,7 +327,7 @@ std::string Telnet::Vrfs::Vrf::Ipv4::get_segment_path() const
 
 }
 
-EntityPath Telnet::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Telnet::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -400,20 +351,12 @@ EntityPath Telnet::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Telnet::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Telnet::Vrfs::Vrf::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::Vrf::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

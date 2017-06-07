@@ -49,7 +49,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -72,15 +72,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multi-area-interface-scope")
     {
         for(auto const & c : multi_area_interface_scope)
@@ -88,28 +79,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope>();
         c->parent = this;
-        multi_area_interface_scope.push_back(std::move(c));
-        children[segment_path] = multi_area_interface_scope.back();
-        return children.at(segment_path);
+        multi_area_interface_scope.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : multi_area_interface_scope)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -140,19 +127,14 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterf
 	,neighbors(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     cost_fallback->parent = this;
-    children["cost-fallback"] = cost_fallback;
 
     dead_interval_minimal->parent = this;
-    children["dead-interval-minimal"] = dead_interval_minimal;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     yang_name = "multi-area-interface-scope"; yang_parent_name = "multi-area-interface-scopes";
 }
@@ -211,7 +193,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -244,156 +226,94 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "cost-fallback")
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
-        else
+        if(cost_fallback == nullptr)
         {
             cost_fallback = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback>();
-            cost_fallback->parent = this;
-            children["cost-fallback"] = cost_fallback;
         }
-        return children.at("cost-fallback");
+        return cost_fallback;
     }
 
     if(child_yang_name == "dead-interval-minimal")
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
-        else
+        if(dead_interval_minimal == nullptr)
         {
             dead_interval_minimal = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal>();
-            dead_interval_minimal->parent = this;
-            children["dead-interval-minimal"] = dead_interval_minimal;
         }
-        return children.at("dead-interval-minimal");
+        return dead_interval_minimal;
     }
 
     if(child_yang_name == "distribute-list")
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
-        else
+        if(distribute_list == nullptr)
         {
             distribute_list = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList>();
-            distribute_list->parent = this;
-            children["distribute-list"] = distribute_list;
         }
-        return children.at("distribute-list");
+        return distribute_list;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("cost-fallback") == children.end())
+    if(cost_fallback != nullptr)
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
+        children["cost-fallback"] = cost_fallback;
     }
 
-    if(children.find("dead-interval-minimal") == children.end())
+    if(dead_interval_minimal != nullptr)
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
+        children["dead-interval-minimal"] = dead_interval_minimal;
     }
 
-    if(children.find("distribute-list") == children.end())
+    if(distribute_list != nullptr)
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
+        children["distribute-list"] = distribute_list;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
     return children;
@@ -477,7 +397,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -502,20 +422,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -539,10 +451,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterf
 	,type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type>())
 {
     message_digest_keies->parent = this;
-    children["message-digest-keies"] = message_digest_keies;
 
     type->parent = this;
-    children["type"] = type;
 
     yang_name = "authentication"; yang_parent_name = "multi-area-interface-scope";
 }
@@ -575,7 +485,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -599,64 +509,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-keies")
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
-        else
+        if(message_digest_keies == nullptr)
         {
             message_digest_keies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies>();
-            message_digest_keies->parent = this;
-            children["message-digest-keies"] = message_digest_keies;
         }
-        return children.at("message-digest-keies");
+        return message_digest_keies;
     }
 
     if(child_yang_name == "type")
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
-        else
+        if(type == nullptr)
         {
             type = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type>();
-            type->parent = this;
-            children["type"] = type;
         }
-        return children.at("type");
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_children() const
 {
-    if(children.find("message-digest-keies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(message_digest_keies != nullptr)
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
+        children["message-digest-keies"] = message_digest_keies;
     }
 
-    if(children.find("type") == children.end())
+    if(type != nullptr)
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
+        children["type"] = type;
     }
 
     return children;
@@ -707,7 +591,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -733,20 +617,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -804,7 +680,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -827,15 +703,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-key")
     {
         for(auto const & c : message_digest_key)
@@ -843,28 +710,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey>();
         c->parent = this;
-        message_digest_key.push_back(std::move(c));
-        children[segment_path] = message_digest_key.back();
-        return children.at(segment_path);
+        message_digest_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message_digest_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -908,7 +771,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -933,20 +796,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1000,7 +855,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1023,15 +878,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -1039,28 +885,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1113,7 +955,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1141,20 +983,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1216,7 +1050,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1241,20 +1075,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1278,10 +1104,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterf
 	,per_prefix(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
-    children["per-link"] = per_link;
 
     per_prefix->parent = this;
-    children["per-prefix"] = per_prefix;
 
     yang_name = "fast-reroute"; yang_parent_name = "multi-area-interface-scope";
 }
@@ -1314,7 +1138,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1338,64 +1162,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-link")
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
-        else
+        if(per_link == nullptr)
         {
             per_link = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink>();
-            per_link->parent = this;
-            children["per-link"] = per_link;
         }
-        return children.at("per-link");
+        return per_link;
     }
 
     if(child_yang_name == "per-prefix")
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
-        else
+        if(per_prefix == nullptr)
         {
             per_prefix = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix>();
-            per_prefix->parent = this;
-            children["per-prefix"] = per_prefix;
         }
-        return children.at("per-prefix");
+        return per_prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_children() const
 {
-    if(children.find("per-link") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(per_link != nullptr)
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
+        children["per-link"] = per_link;
     }
 
-    if(children.find("per-prefix") == children.end())
+    if(per_prefix != nullptr)
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
+        children["per-prefix"] = per_prefix;
     }
 
     return children;
@@ -1417,10 +1215,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterf
 	,exclude_interfaces(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     yang_name = "per-link"; yang_parent_name = "fast-reroute";
 }
@@ -1453,7 +1249,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1477,64 +1273,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
     return children;
@@ -1586,7 +1356,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1609,15 +1379,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -1625,28 +1386,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1687,7 +1444,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1711,20 +1468,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1774,7 +1523,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1797,15 +1546,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -1813,28 +1553,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1875,7 +1611,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1899,20 +1635,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1935,16 +1663,12 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterf
 	,tiebreakers(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     remote_lfa->parent = this;
-    children["remote-lfa"] = remote_lfa;
 
     tiebreakers->parent = this;
-    children["tiebreakers"] = tiebreakers;
 
     yang_name = "per-prefix"; yang_parent_name = "fast-reroute";
 }
@@ -1983,7 +1707,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2008,110 +1732,66 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     if(child_yang_name == "remote-lfa")
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
-        else
+        if(remote_lfa == nullptr)
         {
             remote_lfa = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa>();
-            remote_lfa->parent = this;
-            children["remote-lfa"] = remote_lfa;
         }
-        return children.at("remote-lfa");
+        return remote_lfa;
     }
 
     if(child_yang_name == "tiebreakers")
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
-        else
+        if(tiebreakers == nullptr)
         {
             tiebreakers = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers>();
-            tiebreakers->parent = this;
-            children["tiebreakers"] = tiebreakers;
         }
-        return children.at("tiebreakers");
+        return tiebreakers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
-    if(children.find("remote-lfa") == children.end())
+    if(remote_lfa != nullptr)
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
+        children["remote-lfa"] = remote_lfa;
     }
 
-    if(children.find("tiebreakers") == children.end())
+    if(tiebreakers != nullptr)
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
+        children["tiebreakers"] = tiebreakers;
     }
 
     return children;
@@ -2163,7 +1843,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2188,20 +1868,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2255,7 +1927,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2278,15 +1950,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tiebreaker")
     {
         for(auto const & c : tiebreaker)
@@ -2294,28 +1957,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker>();
         c->parent = this;
-        tiebreaker.push_back(std::move(c));
-        children[segment_path] = tiebreaker.back();
-        return children.at(segment_path);
+        tiebreaker.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tiebreaker)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2359,7 +2018,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2384,20 +2043,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2451,7 +2102,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2474,15 +2125,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -2490,28 +2132,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2552,7 +2190,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2576,20 +2214,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2639,7 +2269,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2662,15 +2292,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -2678,28 +2299,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2740,7 +2357,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2764,20 +2381,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2823,7 +2432,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mul
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2848,20 +2457,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Mult
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2915,7 +2516,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Are
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2938,15 +2539,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Area
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-range")
     {
         for(auto const & c : area_range)
@@ -2954,28 +2546,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::AreaRange>();
         c->parent = this;
-        area_range.push_back(std::move(c));
-        children[segment_path] = area_range.back();
-        return children.at(segment_path);
+        area_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3022,7 +2610,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Are
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::AreaRange::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::AreaRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3048,20 +2636,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Area
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::AreaRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::AreaRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaRanges::AreaRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3124,7 +2704,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nss
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3152,20 +2732,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3215,25 +2787,18 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaAreaId()
 	,virtual_link_scopes(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes>())
 {
     area_ranges->parent = this;
-    children["area-ranges"] = area_ranges;
 
     area_scope->parent = this;
-    children["area-scope"] = area_scope;
 
     multi_area_interface_scopes->parent = this;
-    children["multi-area-interface-scopes"] = multi_area_interface_scopes;
 
     name_scopes->parent = this;
-    children["name-scopes"] = name_scopes;
 
     nssa->parent = this;
-    children["nssa"] = nssa;
 
     sham_link_scopes->parent = this;
-    children["sham-link-scopes"] = sham_link_scopes;
 
     virtual_link_scopes->parent = this;
-    children["virtual-link-scopes"] = virtual_link_scopes;
 
     yang_name = "area-area-id"; yang_parent_name = "area-addresses";
 }
@@ -3294,7 +2859,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3327,179 +2892,108 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_e
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-ranges")
     {
-        if(area_ranges != nullptr)
-        {
-            children["area-ranges"] = area_ranges;
-        }
-        else
+        if(area_ranges == nullptr)
         {
             area_ranges = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges>();
-            area_ranges->parent = this;
-            children["area-ranges"] = area_ranges;
         }
-        return children.at("area-ranges");
+        return area_ranges;
     }
 
     if(child_yang_name == "area-scope")
     {
-        if(area_scope != nullptr)
-        {
-            children["area-scope"] = area_scope;
-        }
-        else
+        if(area_scope == nullptr)
         {
             area_scope = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope>();
-            area_scope->parent = this;
-            children["area-scope"] = area_scope;
         }
-        return children.at("area-scope");
+        return area_scope;
     }
 
     if(child_yang_name == "multi-area-interface-scopes")
     {
-        if(multi_area_interface_scopes != nullptr)
-        {
-            children["multi-area-interface-scopes"] = multi_area_interface_scopes;
-        }
-        else
+        if(multi_area_interface_scopes == nullptr)
         {
             multi_area_interface_scopes = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes>();
-            multi_area_interface_scopes->parent = this;
-            children["multi-area-interface-scopes"] = multi_area_interface_scopes;
         }
-        return children.at("multi-area-interface-scopes");
+        return multi_area_interface_scopes;
     }
 
     if(child_yang_name == "name-scopes")
     {
-        if(name_scopes != nullptr)
-        {
-            children["name-scopes"] = name_scopes;
-        }
-        else
+        if(name_scopes == nullptr)
         {
             name_scopes = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes>();
-            name_scopes->parent = this;
-            children["name-scopes"] = name_scopes;
         }
-        return children.at("name-scopes");
+        return name_scopes;
     }
 
     if(child_yang_name == "nssa")
     {
-        if(nssa != nullptr)
-        {
-            children["nssa"] = nssa;
-        }
-        else
+        if(nssa == nullptr)
         {
             nssa = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa>();
-            nssa->parent = this;
-            children["nssa"] = nssa;
         }
-        return children.at("nssa");
+        return nssa;
     }
 
     if(child_yang_name == "sham-link-scopes")
     {
-        if(sham_link_scopes != nullptr)
-        {
-            children["sham-link-scopes"] = sham_link_scopes;
-        }
-        else
+        if(sham_link_scopes == nullptr)
         {
             sham_link_scopes = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes>();
-            sham_link_scopes->parent = this;
-            children["sham-link-scopes"] = sham_link_scopes;
         }
-        return children.at("sham-link-scopes");
+        return sham_link_scopes;
     }
 
     if(child_yang_name == "virtual-link-scopes")
     {
-        if(virtual_link_scopes != nullptr)
-        {
-            children["virtual-link-scopes"] = virtual_link_scopes;
-        }
-        else
+        if(virtual_link_scopes == nullptr)
         {
             virtual_link_scopes = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes>();
-            virtual_link_scopes->parent = this;
-            children["virtual-link-scopes"] = virtual_link_scopes;
         }
-        return children.at("virtual-link-scopes");
+        return virtual_link_scopes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_children() const
 {
-    if(children.find("area-ranges") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(area_ranges != nullptr)
     {
-        if(area_ranges != nullptr)
-        {
-            children["area-ranges"] = area_ranges;
-        }
+        children["area-ranges"] = area_ranges;
     }
 
-    if(children.find("area-scope") == children.end())
+    if(area_scope != nullptr)
     {
-        if(area_scope != nullptr)
-        {
-            children["area-scope"] = area_scope;
-        }
+        children["area-scope"] = area_scope;
     }
 
-    if(children.find("multi-area-interface-scopes") == children.end())
+    if(multi_area_interface_scopes != nullptr)
     {
-        if(multi_area_interface_scopes != nullptr)
-        {
-            children["multi-area-interface-scopes"] = multi_area_interface_scopes;
-        }
+        children["multi-area-interface-scopes"] = multi_area_interface_scopes;
     }
 
-    if(children.find("name-scopes") == children.end())
+    if(name_scopes != nullptr)
     {
-        if(name_scopes != nullptr)
-        {
-            children["name-scopes"] = name_scopes;
-        }
+        children["name-scopes"] = name_scopes;
     }
 
-    if(children.find("nssa") == children.end())
+    if(nssa != nullptr)
     {
-        if(nssa != nullptr)
-        {
-            children["nssa"] = nssa;
-        }
+        children["nssa"] = nssa;
     }
 
-    if(children.find("sham-link-scopes") == children.end())
+    if(sham_link_scopes != nullptr)
     {
-        if(sham_link_scopes != nullptr)
-        {
-            children["sham-link-scopes"] = sham_link_scopes;
-        }
+        children["sham-link-scopes"] = sham_link_scopes;
     }
 
-    if(children.find("virtual-link-scopes") == children.end())
+    if(virtual_link_scopes != nullptr)
     {
-        if(virtual_link_scopes != nullptr)
-        {
-            children["virtual-link-scopes"] = virtual_link_scopes;
-        }
+        children["virtual-link-scopes"] = virtual_link_scopes;
     }
 
     return children;
@@ -3587,7 +3081,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virt
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3610,15 +3104,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virtu
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "virtual-link-scope")
     {
         for(auto const & c : virtual_link_scope)
@@ -3626,28 +3111,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope>();
         c->parent = this;
-        virtual_link_scope.push_back(std::move(c));
-        children[segment_path] = virtual_link_scope.back();
-        return children.at(segment_path);
+        virtual_link_scope.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : virtual_link_scope)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3669,10 +3150,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScope
 	,dead_interval_minimal(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     dead_interval_minimal->parent = this;
-    children["dead-interval-minimal"] = dead_interval_minimal;
 
     yang_name = "virtual-link-scope"; yang_parent_name = "virtual-link-scopes";
 }
@@ -3713,7 +3192,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virt
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3741,64 +3220,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virtu
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "dead-interval-minimal")
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
-        else
+        if(dead_interval_minimal == nullptr)
         {
             dead_interval_minimal = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal>();
-            dead_interval_minimal->parent = this;
-            children["dead-interval-minimal"] = dead_interval_minimal;
         }
-        return children.at("dead-interval-minimal");
+        return dead_interval_minimal;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("dead-interval-minimal") == children.end())
+    if(dead_interval_minimal != nullptr)
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
+        children["dead-interval-minimal"] = dead_interval_minimal;
     }
 
     return children;
@@ -3836,10 +3289,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScope
 	,type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type>())
 {
     message_digest_keies->parent = this;
-    children["message-digest-keies"] = message_digest_keies;
 
     type->parent = this;
-    children["type"] = type;
 
     yang_name = "authentication"; yang_parent_name = "virtual-link-scope";
 }
@@ -3872,7 +3323,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virt
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3896,64 +3347,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virtu
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-keies")
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
-        else
+        if(message_digest_keies == nullptr)
         {
             message_digest_keies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies>();
-            message_digest_keies->parent = this;
-            children["message-digest-keies"] = message_digest_keies;
         }
-        return children.at("message-digest-keies");
+        return message_digest_keies;
     }
 
     if(child_yang_name == "type")
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
-        else
+        if(type == nullptr)
         {
             type = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type>();
-            type->parent = this;
-            children["type"] = type;
         }
-        return children.at("type");
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::get_children() const
 {
-    if(children.find("message-digest-keies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(message_digest_keies != nullptr)
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
+        children["message-digest-keies"] = message_digest_keies;
     }
 
-    if(children.find("type") == children.end())
+    if(type != nullptr)
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
+        children["type"] = type;
     }
 
     return children;
@@ -4004,7 +3429,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virt
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4030,20 +3455,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virtu
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4101,7 +3518,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virt
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4124,15 +3541,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virtu
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-key")
     {
         for(auto const & c : message_digest_key)
@@ -4140,28 +3548,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey>();
         c->parent = this;
-        message_digest_key.push_back(std::move(c));
-        children[segment_path] = message_digest_key.back();
-        return children.at(segment_path);
+        message_digest_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message_digest_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4205,7 +3609,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virt
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4230,20 +3634,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virtu
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4293,7 +3689,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virt
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4318,20 +3714,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Virtu
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4385,7 +3773,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Sham
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4408,15 +3796,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sham-link-scope")
     {
         for(auto const & c : sham_link_scope)
@@ -4424,28 +3803,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope>();
         c->parent = this;
-        sham_link_scope.push_back(std::move(c));
-        children[segment_path] = sham_link_scope.back();
-        return children.at(segment_path);
+        sham_link_scope.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sham_link_scope)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4457,8 +3832,8 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
 
 Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::ShamLinkScope()
     :
-    destination_address{YType::str, "destination-address"},
     source_address{YType::str, "source-address"},
+    destination_address{YType::str, "destination-address"},
     cost{YType::uint32, "cost"},
     hello_interval{YType::uint32, "hello-interval"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
@@ -4470,10 +3845,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::
 	,dead_interval_minimal(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     dead_interval_minimal->parent = this;
-    children["dead-interval-minimal"] = dead_interval_minimal;
 
     yang_name = "sham-link-scope"; yang_parent_name = "sham-link-scopes";
 }
@@ -4484,8 +3857,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::has_data() const
 {
-    return destination_address.is_set
-	|| source_address.is_set
+    return source_address.is_set
+	|| destination_address.is_set
 	|| cost.is_set
 	|| hello_interval.is_set
 	|| retransmit_interval.is_set
@@ -4499,8 +3872,8 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::has_operation() const
 {
     return is_set(operation)
-	|| is_set(destination_address.operation)
 	|| is_set(source_address.operation)
+	|| is_set(destination_address.operation)
 	|| is_set(cost.operation)
 	|| is_set(hello_interval.operation)
 	|| is_set(retransmit_interval.operation)
@@ -4514,13 +3887,13 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
 std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sham-link-scope" <<"[destination-address='" <<destination_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "sham-link-scope" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4534,8 +3907,8 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (cost.is_set || is_set(cost.operation)) leaf_name_data.push_back(cost.get_name_leafdata());
     if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
     if (retransmit_interval.is_set || is_set(retransmit_interval.operation)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
@@ -4551,64 +3924,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "dead-interval-minimal")
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
-        else
+        if(dead_interval_minimal == nullptr)
         {
             dead_interval_minimal = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal>();
-            dead_interval_minimal->parent = this;
-            children["dead-interval-minimal"] = dead_interval_minimal;
         }
-        return children.at("dead-interval-minimal");
+        return dead_interval_minimal;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("dead-interval-minimal") == children.end())
+    if(dead_interval_minimal != nullptr)
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
+        children["dead-interval-minimal"] = dead_interval_minimal;
     }
 
     return children;
@@ -4616,13 +3963,13 @@ std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs:
 
 void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-    }
     if(value_path == "source-address")
     {
         source_address = value;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
     }
     if(value_path == "cost")
     {
@@ -4658,10 +4005,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::
 	,type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type>())
 {
     message_digest_keies->parent = this;
-    children["message-digest-keies"] = message_digest_keies;
 
     type->parent = this;
-    children["type"] = type;
 
     yang_name = "authentication"; yang_parent_name = "sham-link-scope";
 }
@@ -4694,7 +4039,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Sham
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4718,64 +4063,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-keies")
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
-        else
+        if(message_digest_keies == nullptr)
         {
             message_digest_keies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies>();
-            message_digest_keies->parent = this;
-            children["message-digest-keies"] = message_digest_keies;
         }
-        return children.at("message-digest-keies");
+        return message_digest_keies;
     }
 
     if(child_yang_name == "type")
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
-        else
+        if(type == nullptr)
         {
             type = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type>();
-            type->parent = this;
-            children["type"] = type;
         }
-        return children.at("type");
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::get_children() const
 {
-    if(children.find("message-digest-keies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(message_digest_keies != nullptr)
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
+        children["message-digest-keies"] = message_digest_keies;
     }
 
-    if(children.find("type") == children.end())
+    if(type != nullptr)
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
+        children["type"] = type;
     }
 
     return children;
@@ -4826,7 +4145,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Sham
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4852,20 +4171,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4923,7 +4234,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Sham
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4946,15 +4257,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-key")
     {
         for(auto const & c : message_digest_key)
@@ -4962,28 +4264,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey>();
         c->parent = this;
-        message_digest_key.push_back(std::move(c));
-        children[segment_path] = message_digest_key.back();
-        return children.at(segment_path);
+        message_digest_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message_digest_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5027,7 +4325,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Sham
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5052,20 +4350,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5115,7 +4405,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Sham
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5140,20 +4430,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamL
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5201,22 +4483,16 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::AreaS
 	,security(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     bfd->parent = this;
-    children["bfd"] = bfd;
 
     cost_fallback->parent = this;
-    children["cost-fallback"] = cost_fallback;
 
     dead_interval_minimal->parent = this;
-    children["dead-interval-minimal"] = dead_interval_minimal;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     security->parent = this;
-    children["security"] = security;
 
     yang_name = "area-scope"; yang_parent_name = "area-area-id";
 }
@@ -5297,7 +4573,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5340,179 +4616,108 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "bfd")
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
-        else
+        if(bfd == nullptr)
         {
             bfd = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Bfd>();
-            bfd->parent = this;
-            children["bfd"] = bfd;
         }
-        return children.at("bfd");
+        return bfd;
     }
 
     if(child_yang_name == "cost-fallback")
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
-        else
+        if(cost_fallback == nullptr)
         {
             cost_fallback = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::CostFallback>();
-            cost_fallback->parent = this;
-            children["cost-fallback"] = cost_fallback;
         }
-        return children.at("cost-fallback");
+        return cost_fallback;
     }
 
     if(child_yang_name == "dead-interval-minimal")
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
-        else
+        if(dead_interval_minimal == nullptr)
         {
             dead_interval_minimal = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DeadIntervalMinimal>();
-            dead_interval_minimal->parent = this;
-            children["dead-interval-minimal"] = dead_interval_minimal;
         }
-        return children.at("dead-interval-minimal");
+        return dead_interval_minimal;
     }
 
     if(child_yang_name == "distribute-list")
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
-        else
+        if(distribute_list == nullptr)
         {
             distribute_list = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList>();
-            distribute_list->parent = this;
-            children["distribute-list"] = distribute_list;
         }
-        return children.at("distribute-list");
+        return distribute_list;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "security")
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
-        else
+        if(security == nullptr)
         {
             security = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security>();
-            security->parent = this;
-            children["security"] = security;
         }
-        return children.at("security");
+        return security;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("bfd") == children.end())
+    if(bfd != nullptr)
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
+        children["bfd"] = bfd;
     }
 
-    if(children.find("cost-fallback") == children.end())
+    if(cost_fallback != nullptr)
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
+        children["cost-fallback"] = cost_fallback;
     }
 
-    if(children.find("dead-interval-minimal") == children.end())
+    if(dead_interval_minimal != nullptr)
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
+        children["dead-interval-minimal"] = dead_interval_minimal;
     }
 
-    if(children.find("distribute-list") == children.end())
+    if(distribute_list != nullptr)
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
+        children["distribute-list"] = distribute_list;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("security") == children.end())
+    if(security != nullptr)
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
+        children["security"] = security;
     }
 
     return children;
@@ -5636,7 +4841,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5661,20 +4866,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5727,7 +4924,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Bfd::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Bfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5753,20 +4950,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Bfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Bfd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5794,10 +4983,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authe
 	,type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type>())
 {
     message_digest_keies->parent = this;
-    children["message-digest-keies"] = message_digest_keies;
 
     type->parent = this;
-    children["type"] = type;
 
     yang_name = "authentication"; yang_parent_name = "area-scope";
 }
@@ -5830,7 +5017,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5854,64 +5041,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-keies")
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
-        else
+        if(message_digest_keies == nullptr)
         {
             message_digest_keies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies>();
-            message_digest_keies->parent = this;
-            children["message-digest-keies"] = message_digest_keies;
         }
-        return children.at("message-digest-keies");
+        return message_digest_keies;
     }
 
     if(child_yang_name == "type")
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
-        else
+        if(type == nullptr)
         {
             type = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type>();
-            type->parent = this;
-            children["type"] = type;
         }
-        return children.at("type");
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::get_children() const
 {
-    if(children.find("message-digest-keies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(message_digest_keies != nullptr)
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
+        children["message-digest-keies"] = message_digest_keies;
     }
 
-    if(children.find("type") == children.end())
+    if(type != nullptr)
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
+        children["type"] = type;
     }
 
     return children;
@@ -5962,7 +5123,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5988,20 +5149,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6059,7 +5212,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6082,15 +5235,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-key")
     {
         for(auto const & c : message_digest_key)
@@ -6098,28 +5242,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey>();
         c->parent = this;
-        message_digest_key.push_back(std::move(c));
-        children[segment_path] = message_digest_key.back();
-        return children.at(segment_path);
+        message_digest_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message_digest_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6163,7 +5303,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6188,20 +5328,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6222,7 +5354,6 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Secur
     ttl(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::Ttl>())
 {
     ttl->parent = this;
-    children["ttl"] = ttl;
 
     yang_name = "security"; yang_parent_name = "area-scope";
 }
@@ -6251,7 +5382,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6274,41 +5405,24 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ttl")
     {
-        if(ttl != nullptr)
-        {
-            children["ttl"] = ttl;
-        }
-        else
+        if(ttl == nullptr)
         {
             ttl = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::Ttl>();
-            ttl->parent = this;
-            children["ttl"] = ttl;
         }
-        return children.at("ttl");
+        return ttl;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::get_children() const
 {
-    if(children.find("ttl") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ttl != nullptr)
     {
-        if(ttl != nullptr)
-        {
-            children["ttl"] = ttl;
-        }
+        children["ttl"] = ttl;
     }
 
     return children;
@@ -6352,7 +5466,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::Ttl::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::Ttl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6377,20 +5491,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::Ttl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::Ttl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security::Ttl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6440,7 +5546,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6465,20 +5571,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DeadIntervalMinimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DeadIntervalMinimal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DeadIntervalMinimal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6502,10 +5600,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastR
 	,per_prefix(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
-    children["per-link"] = per_link;
 
     per_prefix->parent = this;
-    children["per-prefix"] = per_prefix;
 
     yang_name = "fast-reroute"; yang_parent_name = "area-scope";
 }
@@ -6538,7 +5634,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6562,64 +5658,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-link")
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
-        else
+        if(per_link == nullptr)
         {
             per_link = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink>();
-            per_link->parent = this;
-            children["per-link"] = per_link;
         }
-        return children.at("per-link");
+        return per_link;
     }
 
     if(child_yang_name == "per-prefix")
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
-        else
+        if(per_prefix == nullptr)
         {
             per_prefix = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix>();
-            per_prefix->parent = this;
-            children["per-prefix"] = per_prefix;
         }
-        return children.at("per-prefix");
+        return per_prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::get_children() const
 {
-    if(children.find("per-link") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(per_link != nullptr)
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
+        children["per-link"] = per_link;
     }
 
-    if(children.find("per-prefix") == children.end())
+    if(per_prefix != nullptr)
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
+        children["per-prefix"] = per_prefix;
     }
 
     return children;
@@ -6641,10 +5711,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastR
 	,exclude_interfaces(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     yang_name = "per-link"; yang_parent_name = "fast-reroute";
 }
@@ -6677,7 +5745,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6701,64 +5769,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
     return children;
@@ -6810,7 +5852,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6833,15 +5875,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -6849,28 +5882,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6911,7 +5940,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6935,20 +5964,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6998,7 +6019,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7021,15 +6042,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -7037,28 +6049,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7099,7 +6107,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7123,20 +6131,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7159,16 +6159,12 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastR
 	,tiebreakers(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     remote_lfa->parent = this;
-    children["remote-lfa"] = remote_lfa;
 
     tiebreakers->parent = this;
-    children["tiebreakers"] = tiebreakers;
 
     yang_name = "per-prefix"; yang_parent_name = "fast-reroute";
 }
@@ -7207,7 +6203,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7232,110 +6228,66 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     if(child_yang_name == "remote-lfa")
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
-        else
+        if(remote_lfa == nullptr)
         {
             remote_lfa = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa>();
-            remote_lfa->parent = this;
-            children["remote-lfa"] = remote_lfa;
         }
-        return children.at("remote-lfa");
+        return remote_lfa;
     }
 
     if(child_yang_name == "tiebreakers")
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
-        else
+        if(tiebreakers == nullptr)
         {
             tiebreakers = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers>();
-            tiebreakers->parent = this;
-            children["tiebreakers"] = tiebreakers;
         }
-        return children.at("tiebreakers");
+        return tiebreakers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
-    if(children.find("remote-lfa") == children.end())
+    if(remote_lfa != nullptr)
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
+        children["remote-lfa"] = remote_lfa;
     }
 
-    if(children.find("tiebreakers") == children.end())
+    if(tiebreakers != nullptr)
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
+        children["tiebreakers"] = tiebreakers;
     }
 
     return children;
@@ -7387,7 +6339,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7412,20 +6364,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7479,7 +6423,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7502,15 +6446,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tiebreaker")
     {
         for(auto const & c : tiebreaker)
@@ -7518,28 +6453,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker>();
         c->parent = this;
-        tiebreaker.push_back(std::move(c));
-        children[segment_path] = tiebreaker.back();
-        return children.at(segment_path);
+        tiebreaker.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tiebreaker)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7583,7 +6514,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7608,20 +6539,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7675,7 +6598,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7698,15 +6621,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -7714,28 +6628,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7776,7 +6686,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7800,20 +6710,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7863,7 +6765,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7886,15 +6788,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -7902,28 +6795,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7964,7 +6853,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7988,20 +6877,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8047,7 +6928,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::CostFallback::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::CostFallback::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8072,20 +6953,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::CostFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::CostFallback::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::CostFallback::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8139,7 +7012,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8162,15 +7035,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "name-scope")
     {
         for(auto const & c : name_scope)
@@ -8178,28 +7042,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope>();
         c->parent = this;
-        name_scope.push_back(std::move(c));
-        children[segment_path] = name_scope.back();
-        return children.at(segment_path);
+        name_scope.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : name_scope)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8246,25 +7106,18 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
 	,security(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     bfd->parent = this;
-    children["bfd"] = bfd;
 
     cost_fallback->parent = this;
-    children["cost-fallback"] = cost_fallback;
 
     dead_interval_minimal->parent = this;
-    children["dead-interval-minimal"] = dead_interval_minimal;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     security->parent = this;
-    children["security"] = security;
 
     yang_name = "name-scope"; yang_parent_name = "name-scopes";
 }
@@ -8355,7 +7208,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8400,248 +7253,150 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "bfd")
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
-        else
+        if(bfd == nullptr)
         {
             bfd = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd>();
-            bfd->parent = this;
-            children["bfd"] = bfd;
         }
-        return children.at("bfd");
+        return bfd;
     }
 
     if(child_yang_name == "cost-fallback")
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
-        else
+        if(cost_fallback == nullptr)
         {
             cost_fallback = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback>();
-            cost_fallback->parent = this;
-            children["cost-fallback"] = cost_fallback;
         }
-        return children.at("cost-fallback");
+        return cost_fallback;
     }
 
     if(child_yang_name == "dead-interval-minimal")
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
-        else
+        if(dead_interval_minimal == nullptr)
         {
             dead_interval_minimal = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DeadIntervalMinimal>();
-            dead_interval_minimal->parent = this;
-            children["dead-interval-minimal"] = dead_interval_minimal;
         }
-        return children.at("dead-interval-minimal");
+        return dead_interval_minimal;
     }
 
     if(child_yang_name == "distribute-list")
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
-        else
+        if(distribute_list == nullptr)
         {
             distribute_list = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList>();
-            distribute_list->parent = this;
-            children["distribute-list"] = distribute_list;
         }
-        return children.at("distribute-list");
+        return distribute_list;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "prefix-sid")
     {
-        if(prefix_sid != nullptr)
-        {
-            children["prefix-sid"] = prefix_sid;
-        }
-        else
+        if(prefix_sid == nullptr)
         {
             prefix_sid = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid>();
-            prefix_sid->parent = this;
-            children["prefix-sid"] = prefix_sid;
         }
-        return children.at("prefix-sid");
+        return prefix_sid;
     }
 
     if(child_yang_name == "prefix-sid-strict")
     {
-        if(prefix_sid_strict != nullptr)
-        {
-            children["prefix-sid-strict"] = prefix_sid_strict;
-        }
-        else
+        if(prefix_sid_strict == nullptr)
         {
             prefix_sid_strict = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict>();
-            prefix_sid_strict->parent = this;
-            children["prefix-sid-strict"] = prefix_sid_strict;
         }
-        return children.at("prefix-sid-strict");
+        return prefix_sid_strict;
     }
 
     if(child_yang_name == "security")
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
-        else
+        if(security == nullptr)
         {
             security = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security>();
-            security->parent = this;
-            children["security"] = security;
         }
-        return children.at("security");
+        return security;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("bfd") == children.end())
+    if(bfd != nullptr)
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
+        children["bfd"] = bfd;
     }
 
-    if(children.find("cost-fallback") == children.end())
+    if(cost_fallback != nullptr)
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
+        children["cost-fallback"] = cost_fallback;
     }
 
-    if(children.find("dead-interval-minimal") == children.end())
+    if(dead_interval_minimal != nullptr)
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
+        children["dead-interval-minimal"] = dead_interval_minimal;
     }
 
-    if(children.find("distribute-list") == children.end())
+    if(distribute_list != nullptr)
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
+        children["distribute-list"] = distribute_list;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("prefix-sid") == children.end())
+    if(prefix_sid != nullptr)
     {
-        if(prefix_sid != nullptr)
-        {
-            children["prefix-sid"] = prefix_sid;
-        }
+        children["prefix-sid"] = prefix_sid;
     }
 
-    if(children.find("prefix-sid-strict") == children.end())
+    if(prefix_sid_strict != nullptr)
     {
-        if(prefix_sid_strict != nullptr)
-        {
-            children["prefix-sid-strict"] = prefix_sid_strict;
-        }
+        children["prefix-sid-strict"] = prefix_sid_strict;
     }
 
-    if(children.find("security") == children.end())
+    if(security != nullptr)
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
+        children["security"] = security;
     }
 
     return children;
@@ -8779,7 +7534,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8806,20 +7561,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8883,7 +7630,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8910,20 +7657,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8981,7 +7720,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9006,20 +7745,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DistributeList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9072,7 +7803,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9098,20 +7829,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9139,10 +7862,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
 	,type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type>())
 {
     message_digest_keies->parent = this;
-    children["message-digest-keies"] = message_digest_keies;
 
     type->parent = this;
-    children["type"] = type;
 
     yang_name = "authentication"; yang_parent_name = "name-scope";
 }
@@ -9175,7 +7896,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9199,64 +7920,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-keies")
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
-        else
+        if(message_digest_keies == nullptr)
         {
             message_digest_keies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies>();
-            message_digest_keies->parent = this;
-            children["message-digest-keies"] = message_digest_keies;
         }
-        return children.at("message-digest-keies");
+        return message_digest_keies;
     }
 
     if(child_yang_name == "type")
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
-        else
+        if(type == nullptr)
         {
             type = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type>();
-            type->parent = this;
-            children["type"] = type;
         }
-        return children.at("type");
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::get_children() const
 {
-    if(children.find("message-digest-keies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(message_digest_keies != nullptr)
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
+        children["message-digest-keies"] = message_digest_keies;
     }
 
-    if(children.find("type") == children.end())
+    if(type != nullptr)
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
+        children["type"] = type;
     }
 
     return children;
@@ -9307,7 +8002,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9333,20 +8028,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9404,7 +8091,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9427,15 +8114,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-key")
     {
         for(auto const & c : message_digest_key)
@@ -9443,28 +8121,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey>();
         c->parent = this;
-        message_digest_key.push_back(std::move(c));
-        children[segment_path] = message_digest_key.back();
-        return children.at(segment_path);
+        message_digest_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message_digest_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9508,7 +8182,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9533,20 +8207,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9567,7 +8233,6 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
     ttl(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::Ttl>())
 {
     ttl->parent = this;
-    children["ttl"] = ttl;
 
     yang_name = "security"; yang_parent_name = "name-scope";
 }
@@ -9596,7 +8261,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9619,41 +8284,24 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ttl")
     {
-        if(ttl != nullptr)
-        {
-            children["ttl"] = ttl;
-        }
-        else
+        if(ttl == nullptr)
         {
             ttl = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::Ttl>();
-            ttl->parent = this;
-            children["ttl"] = ttl;
         }
-        return children.at("ttl");
+        return ttl;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::get_children() const
 {
-    if(children.find("ttl") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ttl != nullptr)
     {
-        if(ttl != nullptr)
-        {
-            children["ttl"] = ttl;
-        }
+        children["ttl"] = ttl;
     }
 
     return children;
@@ -9697,7 +8345,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::Ttl::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::Ttl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9722,20 +8370,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::Ttl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::Ttl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security::Ttl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9789,7 +8429,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9812,15 +8452,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -9828,28 +8459,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9902,7 +8529,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9930,20 +8557,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10005,7 +8624,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10030,20 +8649,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DeadIntervalMinimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DeadIntervalMinimal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::DeadIntervalMinimal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10067,10 +8678,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
 	,per_prefix(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
-    children["per-link"] = per_link;
 
     per_prefix->parent = this;
-    children["per-prefix"] = per_prefix;
 
     yang_name = "fast-reroute"; yang_parent_name = "name-scope";
 }
@@ -10103,7 +8712,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10127,64 +8736,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-link")
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
-        else
+        if(per_link == nullptr)
         {
             per_link = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink>();
-            per_link->parent = this;
-            children["per-link"] = per_link;
         }
-        return children.at("per-link");
+        return per_link;
     }
 
     if(child_yang_name == "per-prefix")
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
-        else
+        if(per_prefix == nullptr)
         {
             per_prefix = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix>();
-            per_prefix->parent = this;
-            children["per-prefix"] = per_prefix;
         }
-        return children.at("per-prefix");
+        return per_prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::get_children() const
 {
-    if(children.find("per-link") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(per_link != nullptr)
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
+        children["per-link"] = per_link;
     }
 
-    if(children.find("per-prefix") == children.end())
+    if(per_prefix != nullptr)
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
+        children["per-prefix"] = per_prefix;
     }
 
     return children;
@@ -10206,10 +8789,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
 	,exclude_interfaces(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     yang_name = "per-link"; yang_parent_name = "fast-reroute";
 }
@@ -10242,7 +8823,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10266,64 +8847,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
     return children;
@@ -10375,7 +8930,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10398,15 +8953,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -10414,28 +8960,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10476,7 +9018,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10500,20 +9042,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10563,7 +9097,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10586,15 +9120,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -10602,28 +9127,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10664,7 +9185,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10688,20 +9209,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10724,16 +9237,12 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
 	,tiebreakers(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     remote_lfa->parent = this;
-    children["remote-lfa"] = remote_lfa;
 
     tiebreakers->parent = this;
-    children["tiebreakers"] = tiebreakers;
 
     yang_name = "per-prefix"; yang_parent_name = "fast-reroute";
 }
@@ -10772,7 +9281,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10797,110 +9306,66 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     if(child_yang_name == "remote-lfa")
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
-        else
+        if(remote_lfa == nullptr)
         {
             remote_lfa = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa>();
-            remote_lfa->parent = this;
-            children["remote-lfa"] = remote_lfa;
         }
-        return children.at("remote-lfa");
+        return remote_lfa;
     }
 
     if(child_yang_name == "tiebreakers")
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
-        else
+        if(tiebreakers == nullptr)
         {
             tiebreakers = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers>();
-            tiebreakers->parent = this;
-            children["tiebreakers"] = tiebreakers;
         }
-        return children.at("tiebreakers");
+        return tiebreakers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
-    if(children.find("remote-lfa") == children.end())
+    if(remote_lfa != nullptr)
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
+        children["remote-lfa"] = remote_lfa;
     }
 
-    if(children.find("tiebreakers") == children.end())
+    if(tiebreakers != nullptr)
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
+        children["tiebreakers"] = tiebreakers;
     }
 
     return children;
@@ -10952,7 +9417,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10977,20 +9442,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11044,7 +9501,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11067,15 +9524,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tiebreaker")
     {
         for(auto const & c : tiebreaker)
@@ -11083,28 +9531,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker>();
         c->parent = this;
-        tiebreaker.push_back(std::move(c));
-        children[segment_path] = tiebreaker.back();
-        return children.at(segment_path);
+        tiebreaker.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tiebreaker)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11148,7 +9592,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11173,20 +9617,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11240,7 +9676,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11263,15 +9699,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -11279,28 +9706,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11341,7 +9764,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11365,20 +9788,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11428,7 +9843,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11451,15 +9866,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -11467,28 +9873,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11529,7 +9931,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11553,20 +9955,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11612,7 +10006,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Name
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11637,20 +10031,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameS
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11704,7 +10090,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11727,15 +10113,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multi-area-interface-scope")
     {
         for(auto const & c : multi_area_interface_scope)
@@ -11743,28 +10120,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope>();
         c->parent = this;
-        multi_area_interface_scope.push_back(std::move(c));
-        children[segment_path] = multi_area_interface_scope.back();
-        return children.at(segment_path);
+        multi_area_interface_scope.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : multi_area_interface_scope)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11795,19 +10168,14 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfa
 	,neighbors(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     cost_fallback->parent = this;
-    children["cost-fallback"] = cost_fallback;
 
     dead_interval_minimal->parent = this;
-    children["dead-interval-minimal"] = dead_interval_minimal;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     yang_name = "multi-area-interface-scope"; yang_parent_name = "multi-area-interface-scopes";
 }
@@ -11866,7 +10234,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11899,156 +10267,94 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "cost-fallback")
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
-        else
+        if(cost_fallback == nullptr)
         {
             cost_fallback = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback>();
-            cost_fallback->parent = this;
-            children["cost-fallback"] = cost_fallback;
         }
-        return children.at("cost-fallback");
+        return cost_fallback;
     }
 
     if(child_yang_name == "dead-interval-minimal")
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
-        else
+        if(dead_interval_minimal == nullptr)
         {
             dead_interval_minimal = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal>();
-            dead_interval_minimal->parent = this;
-            children["dead-interval-minimal"] = dead_interval_minimal;
         }
-        return children.at("dead-interval-minimal");
+        return dead_interval_minimal;
     }
 
     if(child_yang_name == "distribute-list")
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
-        else
+        if(distribute_list == nullptr)
         {
             distribute_list = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList>();
-            distribute_list->parent = this;
-            children["distribute-list"] = distribute_list;
         }
-        return children.at("distribute-list");
+        return distribute_list;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("cost-fallback") == children.end())
+    if(cost_fallback != nullptr)
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
+        children["cost-fallback"] = cost_fallback;
     }
 
-    if(children.find("dead-interval-minimal") == children.end())
+    if(dead_interval_minimal != nullptr)
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
+        children["dead-interval-minimal"] = dead_interval_minimal;
     }
 
-    if(children.find("distribute-list") == children.end())
+    if(distribute_list != nullptr)
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
+        children["distribute-list"] = distribute_list;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
     return children;
@@ -12132,7 +10438,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12157,20 +10463,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DistributeList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12194,10 +10492,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfa
 	,type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type>())
 {
     message_digest_keies->parent = this;
-    children["message-digest-keies"] = message_digest_keies;
 
     type->parent = this;
-    children["type"] = type;
 
     yang_name = "authentication"; yang_parent_name = "multi-area-interface-scope";
 }
@@ -12230,7 +10526,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12254,64 +10550,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-keies")
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
-        else
+        if(message_digest_keies == nullptr)
         {
             message_digest_keies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies>();
-            message_digest_keies->parent = this;
-            children["message-digest-keies"] = message_digest_keies;
         }
-        return children.at("message-digest-keies");
+        return message_digest_keies;
     }
 
     if(child_yang_name == "type")
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
-        else
+        if(type == nullptr)
         {
             type = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type>();
-            type->parent = this;
-            children["type"] = type;
         }
-        return children.at("type");
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::get_children() const
 {
-    if(children.find("message-digest-keies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(message_digest_keies != nullptr)
     {
-        if(message_digest_keies != nullptr)
-        {
-            children["message-digest-keies"] = message_digest_keies;
-        }
+        children["message-digest-keies"] = message_digest_keies;
     }
 
-    if(children.find("type") == children.end())
+    if(type != nullptr)
     {
-        if(type != nullptr)
-        {
-            children["type"] = type;
-        }
+        children["type"] = type;
     }
 
     return children;
@@ -12362,7 +10632,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12388,20 +10658,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12459,7 +10721,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12482,15 +10744,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message-digest-key")
     {
         for(auto const & c : message_digest_key)
@@ -12498,28 +10751,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey>();
         c->parent = this;
-        message_digest_key.push_back(std::move(c));
-        children[segment_path] = message_digest_key.back();
-        return children.at(segment_path);
+        message_digest_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message_digest_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12563,7 +10812,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12588,20 +10837,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::MessageDigestKeies::MessageDigestKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12655,7 +10896,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12678,15 +10919,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -12694,28 +10926,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12768,7 +10996,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12796,20 +11024,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12871,7 +11091,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12896,20 +11116,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::DeadIntervalMinimal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12933,10 +11145,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfa
 	,per_prefix(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
-    children["per-link"] = per_link;
 
     per_prefix->parent = this;
-    children["per-prefix"] = per_prefix;
 
     yang_name = "fast-reroute"; yang_parent_name = "multi-area-interface-scope";
 }
@@ -12969,7 +11179,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12993,64 +11203,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "per-link")
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
-        else
+        if(per_link == nullptr)
         {
             per_link = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink>();
-            per_link->parent = this;
-            children["per-link"] = per_link;
         }
-        return children.at("per-link");
+        return per_link;
     }
 
     if(child_yang_name == "per-prefix")
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
-        else
+        if(per_prefix == nullptr)
         {
             per_prefix = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix>();
-            per_prefix->parent = this;
-            children["per-prefix"] = per_prefix;
         }
-        return children.at("per-prefix");
+        return per_prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::get_children() const
 {
-    if(children.find("per-link") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(per_link != nullptr)
     {
-        if(per_link != nullptr)
-        {
-            children["per-link"] = per_link;
-        }
+        children["per-link"] = per_link;
     }
 
-    if(children.find("per-prefix") == children.end())
+    if(per_prefix != nullptr)
     {
-        if(per_prefix != nullptr)
-        {
-            children["per-prefix"] = per_prefix;
-        }
+        children["per-prefix"] = per_prefix;
     }
 
     return children;
@@ -13072,10 +11256,8 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfa
 	,exclude_interfaces(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     yang_name = "per-link"; yang_parent_name = "fast-reroute";
 }
@@ -13108,7 +11290,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13132,64 +11314,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
     return children;
@@ -13241,7 +11397,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13264,15 +11420,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -13280,28 +11427,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13342,7 +11485,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13366,20 +11509,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13429,7 +11564,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13452,15 +11587,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -13468,28 +11594,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13530,7 +11652,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13554,20 +11676,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13590,16 +11704,12 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfa
 	,tiebreakers(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers>())
 {
     candidate_interfaces->parent = this;
-    children["candidate-interfaces"] = candidate_interfaces;
 
     exclude_interfaces->parent = this;
-    children["exclude-interfaces"] = exclude_interfaces;
 
     remote_lfa->parent = this;
-    children["remote-lfa"] = remote_lfa;
 
     tiebreakers->parent = this;
-    children["tiebreakers"] = tiebreakers;
 
     yang_name = "per-prefix"; yang_parent_name = "fast-reroute";
 }
@@ -13638,7 +11748,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13663,110 +11773,66 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interfaces")
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
-        else
+        if(candidate_interfaces == nullptr)
         {
             candidate_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces>();
-            candidate_interfaces->parent = this;
-            children["candidate-interfaces"] = candidate_interfaces;
         }
-        return children.at("candidate-interfaces");
+        return candidate_interfaces;
     }
 
     if(child_yang_name == "exclude-interfaces")
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
-        else
+        if(exclude_interfaces == nullptr)
         {
             exclude_interfaces = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces>();
-            exclude_interfaces->parent = this;
-            children["exclude-interfaces"] = exclude_interfaces;
         }
-        return children.at("exclude-interfaces");
+        return exclude_interfaces;
     }
 
     if(child_yang_name == "remote-lfa")
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
-        else
+        if(remote_lfa == nullptr)
         {
             remote_lfa = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa>();
-            remote_lfa->parent = this;
-            children["remote-lfa"] = remote_lfa;
         }
-        return children.at("remote-lfa");
+        return remote_lfa;
     }
 
     if(child_yang_name == "tiebreakers")
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
-        else
+        if(tiebreakers == nullptr)
         {
             tiebreakers = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers>();
-            tiebreakers->parent = this;
-            children["tiebreakers"] = tiebreakers;
         }
-        return children.at("tiebreakers");
+        return tiebreakers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::get_children() const
 {
-    if(children.find("candidate-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_interfaces != nullptr)
     {
-        if(candidate_interfaces != nullptr)
-        {
-            children["candidate-interfaces"] = candidate_interfaces;
-        }
+        children["candidate-interfaces"] = candidate_interfaces;
     }
 
-    if(children.find("exclude-interfaces") == children.end())
+    if(exclude_interfaces != nullptr)
     {
-        if(exclude_interfaces != nullptr)
-        {
-            children["exclude-interfaces"] = exclude_interfaces;
-        }
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
-    if(children.find("remote-lfa") == children.end())
+    if(remote_lfa != nullptr)
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
+        children["remote-lfa"] = remote_lfa;
     }
 
-    if(children.find("tiebreakers") == children.end())
+    if(tiebreakers != nullptr)
     {
-        if(tiebreakers != nullptr)
-        {
-            children["tiebreakers"] = tiebreakers;
-        }
+        children["tiebreakers"] = tiebreakers;
     }
 
     return children;
@@ -13818,7 +11884,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13843,20 +11909,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13910,7 +11968,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13933,15 +11991,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tiebreaker")
     {
         for(auto const & c : tiebreaker)
@@ -13949,28 +11998,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker>();
         c->parent = this;
-        tiebreaker.push_back(std::move(c));
-        children[segment_path] = tiebreaker.back();
-        return children.at(segment_path);
+        tiebreaker.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tiebreaker)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14014,7 +12059,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14039,20 +12084,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14106,7 +12143,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14129,15 +12166,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-interface")
     {
         for(auto const & c : candidate_interface)
@@ -14145,28 +12173,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(std::move(c));
-        children[segment_path] = candidate_interface.back();
-        return children.at(segment_path);
+        candidate_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : candidate_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14207,7 +12231,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14231,20 +12255,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14294,7 +12310,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14317,15 +12333,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-interface")
     {
         for(auto const & c : exclude_interface)
@@ -14333,28 +12340,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(std::move(c));
-        children[segment_path] = exclude_interface.back();
-        return children.at(segment_path);
+        exclude_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14395,7 +12398,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14419,20 +12422,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14478,7 +12473,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Mult
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14503,20 +12498,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Multi
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::CostFallback::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14570,7 +12557,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14593,15 +12580,6 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaR
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-range")
     {
         for(auto const & c : area_range)
@@ -14609,28 +12587,24 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::Area
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::AreaRange>();
         c->parent = this;
-        area_range.push_back(std::move(c));
-        children[segment_path] = area_range.back();
-        return children.at(segment_path);
+        area_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14677,7 +12651,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Area
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::AreaRange::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::AreaRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14703,20 +12677,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaR
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::AreaRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::AreaRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaRanges::AreaRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14779,7 +12745,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14807,20 +12773,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa:
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14860,10 +12818,8 @@ Ospf::Processes::Process::Vrfs::Vrf::Timers::Timers()
 	,spf_timer(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer>())
 {
     lsa_generation_timer->parent = this;
-    children["lsa-generation-timer"] = lsa_generation_timer;
 
     spf_timer->parent = this;
-    children["spf-timer"] = spf_timer;
 
     yang_name = "timers"; yang_parent_name = "vrf";
 }
@@ -14904,7 +12860,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Timers::get_segment_path() cons
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14932,64 +12888,38 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-generation-timer")
     {
-        if(lsa_generation_timer != nullptr)
-        {
-            children["lsa-generation-timer"] = lsa_generation_timer;
-        }
-        else
+        if(lsa_generation_timer == nullptr)
         {
             lsa_generation_timer = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer>();
-            lsa_generation_timer->parent = this;
-            children["lsa-generation-timer"] = lsa_generation_timer;
         }
-        return children.at("lsa-generation-timer");
+        return lsa_generation_timer;
     }
 
     if(child_yang_name == "spf-timer")
     {
-        if(spf_timer != nullptr)
-        {
-            children["spf-timer"] = spf_timer;
-        }
-        else
+        if(spf_timer == nullptr)
         {
             spf_timer = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer>();
-            spf_timer->parent = this;
-            children["spf-timer"] = spf_timer;
         }
-        return children.at("spf-timer");
+        return spf_timer;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Timers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Timers::get_children() const
 {
-    if(children.find("lsa-generation-timer") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_generation_timer != nullptr)
     {
-        if(lsa_generation_timer != nullptr)
-        {
-            children["lsa-generation-timer"] = lsa_generation_timer;
-        }
+        children["lsa-generation-timer"] = lsa_generation_timer;
     }
 
-    if(children.find("spf-timer") == children.end())
+    if(spf_timer != nullptr)
     {
-        if(spf_timer != nullptr)
-        {
-            children["spf-timer"] = spf_timer;
-        }
+        children["spf-timer"] = spf_timer;
     }
 
     return children;
@@ -15056,7 +12986,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer::get_segment_p
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15082,20 +13012,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer::get_entity_pat
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Timers::SpfTimer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15152,7 +13074,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer::get
 
 }
 
-EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15178,20 +13100,12 @@ EntityPath Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer::get_
 
 std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Timers::LsaGenerationTimer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15245,7 +13159,7 @@ std::string Ospf::Processes::Process::GracefulShutdownTimers::get_segment_path()
 
 }
 
-EntityPath Ospf::Processes::Process::GracefulShutdownTimers::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::GracefulShutdownTimers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15270,20 +13184,12 @@ EntityPath Ospf::Processes::Process::GracefulShutdownTimers::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ospf::Processes::Process::GracefulShutdownTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::GracefulShutdownTimers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::GracefulShutdownTimers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15336,64 +13242,44 @@ Ospf::Processes::Process::DefaultVrf::DefaultVrf()
 	,ucmp(std::make_shared<Ospf::Processes::Process::DefaultVrf::Ucmp>())
 {
     adjacency_stagger->parent = this;
-    children["adjacency-stagger"] = adjacency_stagger;
 
     area_addresses->parent = this;
-    children["area-addresses"] = area_addresses;
 
     auto_cost->parent = this;
-    children["auto-cost"] = auto_cost;
 
     default_information->parent = this;
-    children["default-information"] = default_information;
 
     distance->parent = this;
-    children["distance"] = distance;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     max_metric->parent = this;
-    children["max-metric"] = max_metric;
 
     maximum_redistribute_prefix->parent = this;
-    children["maximum-redistribute-prefix"] = maximum_redistribute_prefix;
 
     microloop->parent = this;
-    children["microloop"] = microloop;
 
     monitor_convergence->parent = this;
-    children["monitor-convergence"] = monitor_convergence;
 
     mpls->parent = this;
-    children["mpls"] = mpls;
 
     nsf->parent = this;
-    children["nsf"] = nsf;
 
     outgoing_route_updates->parent = this;
-    children["outgoing-route-updates"] = outgoing_route_updates;
 
     process_scope->parent = this;
-    children["process-scope"] = process_scope;
 
     queue->parent = this;
-    children["queue"] = queue;
 
     redistribution->parent = this;
-    children["redistribution"] = redistribution;
 
     segment_routing->parent = this;
-    children["segment-routing"] = segment_routing;
 
     summary_prefixes->parent = this;
-    children["summary-prefixes"] = summary_prefixes;
 
     timers->parent = this;
-    children["timers"] = timers;
 
     ucmp->parent = this;
-    children["ucmp"] = ucmp;
 
     yang_name = "default-vrf"; yang_parent_name = "process";
 }
@@ -15484,7 +13370,7 @@ std::string Ospf::Processes::Process::DefaultVrf::get_segment_path() const
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15517,524 +13403,318 @@ EntityPath Ospf::Processes::Process::DefaultVrf::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-stagger")
     {
-        if(adjacency_stagger != nullptr)
-        {
-            children["adjacency-stagger"] = adjacency_stagger;
-        }
-        else
+        if(adjacency_stagger == nullptr)
         {
             adjacency_stagger = std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyStagger>();
-            adjacency_stagger->parent = this;
-            children["adjacency-stagger"] = adjacency_stagger;
         }
-        return children.at("adjacency-stagger");
+        return adjacency_stagger;
     }
 
     if(child_yang_name == "af")
     {
-        if(af != nullptr)
-        {
-            children["af"] = af;
-        }
-        else
+        if(af == nullptr)
         {
             af = std::make_shared<Ospf::Processes::Process::DefaultVrf::Af>();
-            af->parent = this;
-            children["af"] = af;
         }
-        return children.at("af");
+        return af;
     }
 
     if(child_yang_name == "area-addresses")
     {
-        if(area_addresses != nullptr)
-        {
-            children["area-addresses"] = area_addresses;
-        }
-        else
+        if(area_addresses == nullptr)
         {
             area_addresses = std::make_shared<Ospf::Processes::Process::DefaultVrf::AreaAddresses>();
-            area_addresses->parent = this;
-            children["area-addresses"] = area_addresses;
         }
-        return children.at("area-addresses");
+        return area_addresses;
     }
 
     if(child_yang_name == "auto-cost")
     {
-        if(auto_cost != nullptr)
-        {
-            children["auto-cost"] = auto_cost;
-        }
-        else
+        if(auto_cost == nullptr)
         {
             auto_cost = std::make_shared<Ospf::Processes::Process::DefaultVrf::AutoCost>();
-            auto_cost->parent = this;
-            children["auto-cost"] = auto_cost;
         }
-        return children.at("auto-cost");
+        return auto_cost;
     }
 
     if(child_yang_name == "default-information")
     {
-        if(default_information != nullptr)
-        {
-            children["default-information"] = default_information;
-        }
-        else
+        if(default_information == nullptr)
         {
             default_information = std::make_shared<Ospf::Processes::Process::DefaultVrf::DefaultInformation>();
-            default_information->parent = this;
-            children["default-information"] = default_information;
         }
-        return children.at("default-information");
+        return default_information;
     }
 
     if(child_yang_name == "distance")
     {
-        if(distance != nullptr)
-        {
-            children["distance"] = distance;
-        }
-        else
+        if(distance == nullptr)
         {
             distance = std::make_shared<Ospf::Processes::Process::DefaultVrf::Distance>();
-            distance->parent = this;
-            children["distance"] = distance;
         }
-        return children.at("distance");
+        return distance;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<Ospf::Processes::Process::DefaultVrf::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "max-lsa")
     {
-        if(max_lsa != nullptr)
-        {
-            children["max-lsa"] = max_lsa;
-        }
-        else
+        if(max_lsa == nullptr)
         {
             max_lsa = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxLsa>();
-            max_lsa->parent = this;
-            children["max-lsa"] = max_lsa;
         }
-        return children.at("max-lsa");
+        return max_lsa;
     }
 
     if(child_yang_name == "max-metric")
     {
-        if(max_metric != nullptr)
-        {
-            children["max-metric"] = max_metric;
-        }
-        else
+        if(max_metric == nullptr)
         {
             max_metric = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxMetric>();
-            max_metric->parent = this;
-            children["max-metric"] = max_metric;
         }
-        return children.at("max-metric");
+        return max_metric;
     }
 
     if(child_yang_name == "maximum-redistribute-prefix")
     {
-        if(maximum_redistribute_prefix != nullptr)
-        {
-            children["maximum-redistribute-prefix"] = maximum_redistribute_prefix;
-        }
-        else
+        if(maximum_redistribute_prefix == nullptr)
         {
             maximum_redistribute_prefix = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix>();
-            maximum_redistribute_prefix->parent = this;
-            children["maximum-redistribute-prefix"] = maximum_redistribute_prefix;
         }
-        return children.at("maximum-redistribute-prefix");
+        return maximum_redistribute_prefix;
     }
 
     if(child_yang_name == "microloop")
     {
-        if(microloop != nullptr)
-        {
-            children["microloop"] = microloop;
-        }
-        else
+        if(microloop == nullptr)
         {
             microloop = std::make_shared<Ospf::Processes::Process::DefaultVrf::Microloop>();
-            microloop->parent = this;
-            children["microloop"] = microloop;
         }
-        return children.at("microloop");
+        return microloop;
     }
 
     if(child_yang_name == "monitor-convergence")
     {
-        if(monitor_convergence != nullptr)
-        {
-            children["monitor-convergence"] = monitor_convergence;
-        }
-        else
+        if(monitor_convergence == nullptr)
         {
             monitor_convergence = std::make_shared<Ospf::Processes::Process::DefaultVrf::MonitorConvergence>();
-            monitor_convergence->parent = this;
-            children["monitor-convergence"] = monitor_convergence;
         }
-        return children.at("monitor-convergence");
+        return monitor_convergence;
     }
 
     if(child_yang_name == "mpls")
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
-        else
+        if(mpls == nullptr)
         {
             mpls = std::make_shared<Ospf::Processes::Process::DefaultVrf::Mpls>();
-            mpls->parent = this;
-            children["mpls"] = mpls;
         }
-        return children.at("mpls");
+        return mpls;
     }
 
     if(child_yang_name == "nsf")
     {
-        if(nsf != nullptr)
-        {
-            children["nsf"] = nsf;
-        }
-        else
+        if(nsf == nullptr)
         {
             nsf = std::make_shared<Ospf::Processes::Process::DefaultVrf::Nsf>();
-            nsf->parent = this;
-            children["nsf"] = nsf;
         }
-        return children.at("nsf");
+        return nsf;
     }
 
     if(child_yang_name == "outgoing-route-updates")
     {
-        if(outgoing_route_updates != nullptr)
-        {
-            children["outgoing-route-updates"] = outgoing_route_updates;
-        }
-        else
+        if(outgoing_route_updates == nullptr)
         {
             outgoing_route_updates = std::make_shared<Ospf::Processes::Process::DefaultVrf::OutgoingRouteUpdates>();
-            outgoing_route_updates->parent = this;
-            children["outgoing-route-updates"] = outgoing_route_updates;
         }
-        return children.at("outgoing-route-updates");
+        return outgoing_route_updates;
     }
 
     if(child_yang_name == "process-scope")
     {
-        if(process_scope != nullptr)
-        {
-            children["process-scope"] = process_scope;
-        }
-        else
+        if(process_scope == nullptr)
         {
             process_scope = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope>();
-            process_scope->parent = this;
-            children["process-scope"] = process_scope;
         }
-        return children.at("process-scope");
+        return process_scope;
     }
 
     if(child_yang_name == "queue")
     {
-        if(queue != nullptr)
-        {
-            children["queue"] = queue;
-        }
-        else
+        if(queue == nullptr)
         {
             queue = std::make_shared<Ospf::Processes::Process::DefaultVrf::Queue>();
-            queue->parent = this;
-            children["queue"] = queue;
         }
-        return children.at("queue");
+        return queue;
     }
 
     if(child_yang_name == "redistribution")
     {
-        if(redistribution != nullptr)
-        {
-            children["redistribution"] = redistribution;
-        }
-        else
+        if(redistribution == nullptr)
         {
             redistribution = std::make_shared<Ospf::Processes::Process::DefaultVrf::Redistribution>();
-            redistribution->parent = this;
-            children["redistribution"] = redistribution;
         }
-        return children.at("redistribution");
+        return redistribution;
     }
 
     if(child_yang_name == "segment-routing")
     {
-        if(segment_routing != nullptr)
-        {
-            children["segment-routing"] = segment_routing;
-        }
-        else
+        if(segment_routing == nullptr)
         {
             segment_routing = std::make_shared<Ospf::Processes::Process::DefaultVrf::SegmentRouting>();
-            segment_routing->parent = this;
-            children["segment-routing"] = segment_routing;
         }
-        return children.at("segment-routing");
+        return segment_routing;
     }
 
     if(child_yang_name == "summary-prefixes")
     {
-        if(summary_prefixes != nullptr)
-        {
-            children["summary-prefixes"] = summary_prefixes;
-        }
-        else
+        if(summary_prefixes == nullptr)
         {
             summary_prefixes = std::make_shared<Ospf::Processes::Process::DefaultVrf::SummaryPrefixes>();
-            summary_prefixes->parent = this;
-            children["summary-prefixes"] = summary_prefixes;
         }
-        return children.at("summary-prefixes");
+        return summary_prefixes;
     }
 
     if(child_yang_name == "timers")
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
-        else
+        if(timers == nullptr)
         {
             timers = std::make_shared<Ospf::Processes::Process::DefaultVrf::Timers>();
-            timers->parent = this;
-            children["timers"] = timers;
         }
-        return children.at("timers");
+        return timers;
     }
 
     if(child_yang_name == "ucmp")
     {
-        if(ucmp != nullptr)
-        {
-            children["ucmp"] = ucmp;
-        }
-        else
+        if(ucmp == nullptr)
         {
             ucmp = std::make_shared<Ospf::Processes::Process::DefaultVrf::Ucmp>();
-            ucmp->parent = this;
-            children["ucmp"] = ucmp;
         }
-        return children.at("ucmp");
+        return ucmp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::get_children() const
 {
-    if(children.find("adjacency-stagger") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjacency_stagger != nullptr)
     {
-        if(adjacency_stagger != nullptr)
-        {
-            children["adjacency-stagger"] = adjacency_stagger;
-        }
+        children["adjacency-stagger"] = adjacency_stagger;
     }
 
-    if(children.find("af") == children.end())
+    if(af != nullptr)
     {
-        if(af != nullptr)
-        {
-            children["af"] = af;
-        }
+        children["af"] = af;
     }
 
-    if(children.find("area-addresses") == children.end())
+    if(area_addresses != nullptr)
     {
-        if(area_addresses != nullptr)
-        {
-            children["area-addresses"] = area_addresses;
-        }
+        children["area-addresses"] = area_addresses;
     }
 
-    if(children.find("auto-cost") == children.end())
+    if(auto_cost != nullptr)
     {
-        if(auto_cost != nullptr)
-        {
-            children["auto-cost"] = auto_cost;
-        }
+        children["auto-cost"] = auto_cost;
     }
 
-    if(children.find("default-information") == children.end())
+    if(default_information != nullptr)
     {
-        if(default_information != nullptr)
-        {
-            children["default-information"] = default_information;
-        }
+        children["default-information"] = default_information;
     }
 
-    if(children.find("distance") == children.end())
+    if(distance != nullptr)
     {
-        if(distance != nullptr)
-        {
-            children["distance"] = distance;
-        }
+        children["distance"] = distance;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("max-lsa") == children.end())
+    if(max_lsa != nullptr)
     {
-        if(max_lsa != nullptr)
-        {
-            children["max-lsa"] = max_lsa;
-        }
+        children["max-lsa"] = max_lsa;
     }
 
-    if(children.find("max-metric") == children.end())
+    if(max_metric != nullptr)
     {
-        if(max_metric != nullptr)
-        {
-            children["max-metric"] = max_metric;
-        }
+        children["max-metric"] = max_metric;
     }
 
-    if(children.find("maximum-redistribute-prefix") == children.end())
+    if(maximum_redistribute_prefix != nullptr)
     {
-        if(maximum_redistribute_prefix != nullptr)
-        {
-            children["maximum-redistribute-prefix"] = maximum_redistribute_prefix;
-        }
+        children["maximum-redistribute-prefix"] = maximum_redistribute_prefix;
     }
 
-    if(children.find("microloop") == children.end())
+    if(microloop != nullptr)
     {
-        if(microloop != nullptr)
-        {
-            children["microloop"] = microloop;
-        }
+        children["microloop"] = microloop;
     }
 
-    if(children.find("monitor-convergence") == children.end())
+    if(monitor_convergence != nullptr)
     {
-        if(monitor_convergence != nullptr)
-        {
-            children["monitor-convergence"] = monitor_convergence;
-        }
+        children["monitor-convergence"] = monitor_convergence;
     }
 
-    if(children.find("mpls") == children.end())
+    if(mpls != nullptr)
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
+        children["mpls"] = mpls;
     }
 
-    if(children.find("nsf") == children.end())
+    if(nsf != nullptr)
     {
-        if(nsf != nullptr)
-        {
-            children["nsf"] = nsf;
-        }
+        children["nsf"] = nsf;
     }
 
-    if(children.find("outgoing-route-updates") == children.end())
+    if(outgoing_route_updates != nullptr)
     {
-        if(outgoing_route_updates != nullptr)
-        {
-            children["outgoing-route-updates"] = outgoing_route_updates;
-        }
+        children["outgoing-route-updates"] = outgoing_route_updates;
     }
 
-    if(children.find("process-scope") == children.end())
+    if(process_scope != nullptr)
     {
-        if(process_scope != nullptr)
-        {
-            children["process-scope"] = process_scope;
-        }
+        children["process-scope"] = process_scope;
     }
 
-    if(children.find("queue") == children.end())
+    if(queue != nullptr)
     {
-        if(queue != nullptr)
-        {
-            children["queue"] = queue;
-        }
+        children["queue"] = queue;
     }
 
-    if(children.find("redistribution") == children.end())
+    if(redistribution != nullptr)
     {
-        if(redistribution != nullptr)
-        {
-            children["redistribution"] = redistribution;
-        }
+        children["redistribution"] = redistribution;
     }
 
-    if(children.find("segment-routing") == children.end())
+    if(segment_routing != nullptr)
     {
-        if(segment_routing != nullptr)
-        {
-            children["segment-routing"] = segment_routing;
-        }
+        children["segment-routing"] = segment_routing;
     }
 
-    if(children.find("summary-prefixes") == children.end())
+    if(summary_prefixes != nullptr)
     {
-        if(summary_prefixes != nullptr)
-        {
-            children["summary-prefixes"] = summary_prefixes;
-        }
+        children["summary-prefixes"] = summary_prefixes;
     }
 
-    if(children.find("timers") == children.end())
+    if(timers != nullptr)
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
+        children["timers"] = timers;
     }
 
-    if(children.find("ucmp") == children.end())
+    if(ucmp != nullptr)
     {
-        if(ucmp != nullptr)
-        {
-            children["ucmp"] = ucmp;
-        }
+        children["ucmp"] = ucmp;
     }
 
     return children;
@@ -16127,7 +13807,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MonitorConvergence::get_segmen
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MonitorConvergence::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MonitorConvergence::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16155,20 +13835,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MonitorConvergence::get_entity_
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MonitorConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MonitorConvergence::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MonitorConvergence::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16205,7 +13877,6 @@ Ospf::Processes::Process::DefaultVrf::SegmentRouting::SegmentRouting()
     sr_prefer(std::make_shared<Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer>())
 {
     sr_prefer->parent = this;
-    children["sr-prefer"] = sr_prefer;
 
     yang_name = "segment-routing"; yang_parent_name = "default-vrf";
 }
@@ -16240,7 +13911,7 @@ std::string Ospf::Processes::Process::DefaultVrf::SegmentRouting::get_segment_pa
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::SegmentRouting::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::SegmentRouting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16266,41 +13937,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::SegmentRouting::get_entity_path
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sr-prefer")
     {
-        if(sr_prefer != nullptr)
-        {
-            children["sr-prefer"] = sr_prefer;
-        }
-        else
+        if(sr_prefer == nullptr)
         {
             sr_prefer = std::make_shared<Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer>();
-            sr_prefer->parent = this;
-            children["sr-prefer"] = sr_prefer;
         }
-        return children.at("sr-prefer");
+        return sr_prefer;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::SegmentRouting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::SegmentRouting::get_children() const
 {
-    if(children.find("sr-prefer") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sr_prefer != nullptr)
     {
-        if(sr_prefer != nullptr)
-        {
-            children["sr-prefer"] = sr_prefer;
-        }
+        children["sr-prefer"] = sr_prefer;
     }
 
     return children;
@@ -16356,7 +14010,7 @@ std::string Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer::get_
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16381,20 +14035,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer::get_e
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrPrefer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16420,7 +14066,6 @@ Ospf::Processes::Process::DefaultVrf::Mpls::Mpls()
     mpls_router_id(std::make_shared<Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId>())
 {
     mpls_router_id->parent = this;
-    children["mpls-router-id"] = mpls_router_id;
 
     yang_name = "mpls"; yang_parent_name = "default-vrf";
 }
@@ -16457,7 +14102,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Mpls::get_segment_path() const
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Mpls::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Mpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16484,41 +14129,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Mpls::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls-router-id")
     {
-        if(mpls_router_id != nullptr)
-        {
-            children["mpls-router-id"] = mpls_router_id;
-        }
-        else
+        if(mpls_router_id == nullptr)
         {
             mpls_router_id = std::make_shared<Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId>();
-            mpls_router_id->parent = this;
-            children["mpls-router-id"] = mpls_router_id;
         }
-        return children.at("mpls-router-id");
+        return mpls_router_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Mpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Mpls::get_children() const
 {
-    if(children.find("mpls-router-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mpls_router_id != nullptr)
     {
-        if(mpls_router_id != nullptr)
-        {
-            children["mpls-router-id"] = mpls_router_id;
-        }
+        children["mpls-router-id"] = mpls_router_id;
     }
 
     return children;
@@ -16578,7 +14206,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId::get_segmen
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16603,20 +14231,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId::get_entity_
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Mpls::MplsRouterId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16637,7 +14257,6 @@ Ospf::Processes::Process::DefaultVrf::Microloop::Microloop()
     avoidance(std::make_shared<Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance>())
 {
     avoidance->parent = this;
-    children["avoidance"] = avoidance;
 
     yang_name = "microloop"; yang_parent_name = "default-vrf";
 }
@@ -16666,7 +14285,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Microloop::get_segment_path() 
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Microloop::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Microloop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16689,41 +14308,24 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Microloop::get_entity_path(Enti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Microloop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "avoidance")
     {
-        if(avoidance != nullptr)
-        {
-            children["avoidance"] = avoidance;
-        }
-        else
+        if(avoidance == nullptr)
         {
             avoidance = std::make_shared<Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance>();
-            avoidance->parent = this;
-            children["avoidance"] = avoidance;
         }
-        return children.at("avoidance");
+        return avoidance;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Microloop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Microloop::get_children() const
 {
-    if(children.find("avoidance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(avoidance != nullptr)
     {
-        if(avoidance != nullptr)
-        {
-            children["avoidance"] = avoidance;
-        }
+        children["avoidance"] = avoidance;
     }
 
     return children;
@@ -16767,7 +14369,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance::get_segm
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16792,20 +14394,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance::get_entit
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16858,7 +14452,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix::get
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16884,20 +14478,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix::get_
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MaximumRedistributePrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16957,7 +14543,7 @@ std::string Ospf::Processes::Process::DefaultVrf::DefaultInformation::get_segmen
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::DefaultInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::DefaultInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16984,20 +14570,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::DefaultInformation::get_entity_
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::DefaultInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::DefaultInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17055,7 +14633,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Af::get_segment_path() const
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Af::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17080,20 +14658,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Af::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Af::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17158,7 +14728,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Queue::get_segment_path() cons
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Queue::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Queue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17188,20 +14758,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Queue::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Queue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Queue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17248,19 +14810,14 @@ Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetric()
 	,max_metric_on_switchover(std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover>())
 {
     max_metric_always->parent = this;
-    children["max-metric-always"] = max_metric_always;
 
     max_metric_on_proc_migration->parent = this;
-    children["max-metric-on-proc-migration"] = max_metric_on_proc_migration;
 
     max_metric_on_proc_restart->parent = this;
-    children["max-metric-on-proc-restart"] = max_metric_on_proc_restart;
 
     max_metric_on_startup->parent = this;
-    children["max-metric-on-startup"] = max_metric_on_startup;
 
     max_metric_on_switchover->parent = this;
-    children["max-metric-on-switchover"] = max_metric_on_switchover;
 
     yang_name = "max-metric"; yang_parent_name = "default-vrf";
 }
@@ -17299,7 +14856,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::get_segment_path() 
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17323,133 +14880,80 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::get_entity_path(Enti
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "max-metric-always")
     {
-        if(max_metric_always != nullptr)
-        {
-            children["max-metric-always"] = max_metric_always;
-        }
-        else
+        if(max_metric_always == nullptr)
         {
             max_metric_always = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways>();
-            max_metric_always->parent = this;
-            children["max-metric-always"] = max_metric_always;
         }
-        return children.at("max-metric-always");
+        return max_metric_always;
     }
 
     if(child_yang_name == "max-metric-on-proc-migration")
     {
-        if(max_metric_on_proc_migration != nullptr)
-        {
-            children["max-metric-on-proc-migration"] = max_metric_on_proc_migration;
-        }
-        else
+        if(max_metric_on_proc_migration == nullptr)
         {
             max_metric_on_proc_migration = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration>();
-            max_metric_on_proc_migration->parent = this;
-            children["max-metric-on-proc-migration"] = max_metric_on_proc_migration;
         }
-        return children.at("max-metric-on-proc-migration");
+        return max_metric_on_proc_migration;
     }
 
     if(child_yang_name == "max-metric-on-proc-restart")
     {
-        if(max_metric_on_proc_restart != nullptr)
-        {
-            children["max-metric-on-proc-restart"] = max_metric_on_proc_restart;
-        }
-        else
+        if(max_metric_on_proc_restart == nullptr)
         {
             max_metric_on_proc_restart = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart>();
-            max_metric_on_proc_restart->parent = this;
-            children["max-metric-on-proc-restart"] = max_metric_on_proc_restart;
         }
-        return children.at("max-metric-on-proc-restart");
+        return max_metric_on_proc_restart;
     }
 
     if(child_yang_name == "max-metric-on-startup")
     {
-        if(max_metric_on_startup != nullptr)
-        {
-            children["max-metric-on-startup"] = max_metric_on_startup;
-        }
-        else
+        if(max_metric_on_startup == nullptr)
         {
             max_metric_on_startup = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup>();
-            max_metric_on_startup->parent = this;
-            children["max-metric-on-startup"] = max_metric_on_startup;
         }
-        return children.at("max-metric-on-startup");
+        return max_metric_on_startup;
     }
 
     if(child_yang_name == "max-metric-on-switchover")
     {
-        if(max_metric_on_switchover != nullptr)
-        {
-            children["max-metric-on-switchover"] = max_metric_on_switchover;
-        }
-        else
+        if(max_metric_on_switchover == nullptr)
         {
             max_metric_on_switchover = std::make_shared<Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover>();
-            max_metric_on_switchover->parent = this;
-            children["max-metric-on-switchover"] = max_metric_on_switchover;
         }
-        return children.at("max-metric-on-switchover");
+        return max_metric_on_switchover;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MaxMetric::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::get_children() const
 {
-    if(children.find("max-metric-always") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(max_metric_always != nullptr)
     {
-        if(max_metric_always != nullptr)
-        {
-            children["max-metric-always"] = max_metric_always;
-        }
+        children["max-metric-always"] = max_metric_always;
     }
 
-    if(children.find("max-metric-on-proc-migration") == children.end())
+    if(max_metric_on_proc_migration != nullptr)
     {
-        if(max_metric_on_proc_migration != nullptr)
-        {
-            children["max-metric-on-proc-migration"] = max_metric_on_proc_migration;
-        }
+        children["max-metric-on-proc-migration"] = max_metric_on_proc_migration;
     }
 
-    if(children.find("max-metric-on-proc-restart") == children.end())
+    if(max_metric_on_proc_restart != nullptr)
     {
-        if(max_metric_on_proc_restart != nullptr)
-        {
-            children["max-metric-on-proc-restart"] = max_metric_on_proc_restart;
-        }
+        children["max-metric-on-proc-restart"] = max_metric_on_proc_restart;
     }
 
-    if(children.find("max-metric-on-startup") == children.end())
+    if(max_metric_on_startup != nullptr)
     {
-        if(max_metric_on_startup != nullptr)
-        {
-            children["max-metric-on-startup"] = max_metric_on_startup;
-        }
+        children["max-metric-on-startup"] = max_metric_on_startup;
     }
 
-    if(children.find("max-metric-on-switchover") == children.end())
+    if(max_metric_on_switchover != nullptr)
     {
-        if(max_metric_on_switchover != nullptr)
-        {
-            children["max-metric-on-switchover"] = max_metric_on_switchover;
-        }
+        children["max-metric-on-switchover"] = max_metric_on_switchover;
     }
 
     return children;
@@ -17512,7 +15016,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRest
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17542,20 +15046,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcResta
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17640,7 +15136,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup:
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17670,20 +15166,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17768,7 +15256,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigr
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17798,20 +15286,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigra
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17890,7 +15370,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::ge
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17918,20 +15398,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18008,7 +15480,7 @@ std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchov
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18038,20 +15510,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchove
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18136,7 +15600,7 @@ std::string Ospf::Processes::Process::DefaultVrf::Nsf::get_segment_path() const
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::Nsf::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::Nsf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18166,20 +15630,12 @@ EntityPath Ospf::Processes::Process::DefaultVrf::Nsf::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::Nsf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Nsf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18251,22 +15707,16 @@ Ospf::Processes::Process::DefaultVrf::ProcessScope::ProcessScope()
 	,srgb(nullptr) // presence node
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     bfd->parent = this;
-    children["bfd"] = bfd;
 
     cost_fallback->parent = this;
-    children["cost-fallback"] = cost_fallback;
 
     dead_interval_minimal->parent = this;
-    children["dead-interval-minimal"] = dead_interval_minimal;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     security->parent = this;
-    children["security"] = security;
 
     yang_name = "process-scope"; yang_parent_name = "default-vrf";
 }
@@ -18355,7 +15805,7 @@ std::string Ospf::Processes::Process::DefaultVrf::ProcessScope::get_segment_path
 
 }
 
-EntityPath Ospf::Processes::Process::DefaultVrf::ProcessScope::get_entity_path(Entity* ancestor) const
+const EntityPath Ospf::Processes::Process::DefaultVrf::ProcessScope::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18401,202 +15851,122 @@ EntityPath Ospf::Processes::Process::DefaultVrf::ProcessScope::get_entity_path(E
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::ProcessScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "bfd")
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
-        else
+        if(bfd == nullptr)
         {
             bfd = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::Bfd>();
-            bfd->parent = this;
-            children["bfd"] = bfd;
         }
-        return children.at("bfd");
+        return bfd;
     }
 
     if(child_yang_name == "cost-fallback")
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
-        else
+        if(cost_fallback == nullptr)
         {
             cost_fallback = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::CostFallback>();
-            cost_fallback->parent = this;
-            children["cost-fallback"] = cost_fallback;
         }
-        return children.at("cost-fallback");
+        return cost_fallback;
     }
 
     if(child_yang_name == "dead-interval-minimal")
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
-        else
+        if(dead_interval_minimal == nullptr)
         {
             dead_interval_minimal = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::DeadIntervalMinimal>();
-            dead_interval_minimal->parent = this;
-            children["dead-interval-minimal"] = dead_interval_minimal;
         }
-        return children.at("dead-interval-minimal");
+        return dead_interval_minimal;
     }
 
     if(child_yang_name == "distribute-list")
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
-        else
+        if(distribute_list == nullptr)
         {
             distribute_list = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::DistributeList>();
-            distribute_list->parent = this;
-            children["distribute-list"] = distribute_list;
         }
-        return children.at("distribute-list");
+        return distribute_list;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "security")
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
-        else
+        if(security == nullptr)
         {
             security = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::Security>();
-            security->parent = this;
-            children["security"] = security;
         }
-        return children.at("security");
+        return security;
     }
 
     if(child_yang_name == "srgb")
     {
-        if(srgb != nullptr)
-        {
-            children["srgb"] = srgb;
-        }
-        else
+        if(srgb == nullptr)
         {
             srgb = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessScope::Srgb>();
-            srgb->parent = this;
-            children["srgb"] = srgb;
         }
-        return children.at("srgb");
+        return srgb;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospf::Processes::Process::DefaultVrf::ProcessScope::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::ProcessScope::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("bfd") == children.end())
+    if(bfd != nullptr)
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
+        children["bfd"] = bfd;
     }
 
-    if(children.find("cost-fallback") == children.end())
+    if(cost_fallback != nullptr)
     {
-        if(cost_fallback != nullptr)
-        {
-            children["cost-fallback"] = cost_fallback;
-        }
+        children["cost-fallback"] = cost_fallback;
     }
 
-    if(children.find("dead-interval-minimal") == children.end())
+    if(dead_interval_minimal != nullptr)
     {
-        if(dead_interval_minimal != nullptr)
-        {
-            children["dead-interval-minimal"] = dead_interval_minimal;
-        }
+        children["dead-interval-minimal"] = dead_interval_minimal;
     }
 
-    if(children.find("distribute-list") == children.end())
+    if(distribute_list != nullptr)
     {
-        if(distribute_list != nullptr)
-        {
-            children["distribute-list"] = distribute_list;
-        }
+        children["distribute-list"] = distribute_list;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("security") == children.end())
+    if(security != nullptr)
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
+        children["security"] = security;
     }
 
-    if(children.find("srgb") == children.end())
+    if(srgb != nullptr)
     {
-        if(srgb != nullptr)
-        {
-            children["srgb"] = srgb;
-        }
+        children["srgb"] = srgb;
     }
 
     return children;

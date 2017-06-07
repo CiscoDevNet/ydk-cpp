@@ -15,10 +15,8 @@ SubscriberManager::SubscriberManager()
 	,srg(std::make_shared<SubscriberManager::Srg>())
 {
     accounting->parent = this;
-    children["accounting"] = accounting;
 
     srg->parent = this;
-    children["srg"] = srg;
 
     yang_name = "subscriber-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg";
 }
@@ -49,12 +47,12 @@ std::string SubscriberManager::get_segment_path() const
 
 }
 
-EntityPath SubscriberManager::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath SubscriberManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubscriberManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting")
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
-        else
+        if(accounting == nullptr)
         {
             accounting = std::make_shared<SubscriberManager::Accounting>();
-            accounting->parent = this;
-            children["accounting"] = accounting;
         }
-        return children.at("accounting");
+        return accounting;
     }
 
     if(child_yang_name == "srg")
     {
-        if(srg != nullptr)
-        {
-            children["srg"] = srg;
-        }
-        else
+        if(srg == nullptr)
         {
             srg = std::make_shared<SubscriberManager::Srg>();
-            srg->parent = this;
-            children["srg"] = srg;
         }
-        return children.at("srg");
+        return srg;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::get_children() const
 {
-    if(children.find("accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accounting != nullptr)
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
+        children["accounting"] = accounting;
     }
 
-    if(children.find("srg") == children.end())
+    if(srg != nullptr)
     {
-        if(srg != nullptr)
-        {
-            children["srg"] = srg;
-        }
+        children["srg"] = srg;
     }
 
     return children;
@@ -162,10 +134,8 @@ SubscriberManager::Accounting::Accounting()
 	,send_stop(std::make_shared<SubscriberManager::Accounting::SendStop>())
 {
     interim->parent = this;
-    children["interim"] = interim;
 
     send_stop->parent = this;
-    children["send-stop"] = send_stop;
 
     yang_name = "accounting"; yang_parent_name = "subscriber-manager";
 }
@@ -196,7 +166,7 @@ std::string SubscriberManager::Accounting::get_segment_path() const
 
 }
 
-EntityPath SubscriberManager::Accounting::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberManager::Accounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -219,64 +189,38 @@ EntityPath SubscriberManager::Accounting::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> SubscriberManager::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interim")
     {
-        if(interim != nullptr)
-        {
-            children["interim"] = interim;
-        }
-        else
+        if(interim == nullptr)
         {
             interim = std::make_shared<SubscriberManager::Accounting::Interim>();
-            interim->parent = this;
-            children["interim"] = interim;
         }
-        return children.at("interim");
+        return interim;
     }
 
     if(child_yang_name == "send-stop")
     {
-        if(send_stop != nullptr)
-        {
-            children["send-stop"] = send_stop;
-        }
-        else
+        if(send_stop == nullptr)
         {
             send_stop = std::make_shared<SubscriberManager::Accounting::SendStop>();
-            send_stop->parent = this;
-            children["send-stop"] = send_stop;
         }
-        return children.at("send-stop");
+        return send_stop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberManager::Accounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::get_children() const
 {
-    if(children.find("interim") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interim != nullptr)
     {
-        if(interim != nullptr)
-        {
-            children["interim"] = interim;
-        }
+        children["interim"] = interim;
     }
 
-    if(children.find("send-stop") == children.end())
+    if(send_stop != nullptr)
     {
-        if(send_stop != nullptr)
-        {
-            children["send-stop"] = send_stop;
-        }
+        children["send-stop"] = send_stop;
     }
 
     return children;
@@ -317,7 +261,7 @@ std::string SubscriberManager::Accounting::SendStop::get_segment_path() const
 
 }
 
-EntityPath SubscriberManager::Accounting::SendStop::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberManager::Accounting::SendStop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -341,20 +285,12 @@ EntityPath SubscriberManager::Accounting::SendStop::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> SubscriberManager::Accounting::SendStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberManager::Accounting::SendStop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::SendStop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -371,7 +307,6 @@ SubscriberManager::Accounting::Interim::Interim()
     variation(std::make_shared<SubscriberManager::Accounting::Interim::Variation>())
 {
     variation->parent = this;
-    children["variation"] = variation;
 
     yang_name = "interim"; yang_parent_name = "accounting";
 }
@@ -400,7 +335,7 @@ std::string SubscriberManager::Accounting::Interim::get_segment_path() const
 
 }
 
-EntityPath SubscriberManager::Accounting::Interim::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberManager::Accounting::Interim::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -423,41 +358,24 @@ EntityPath SubscriberManager::Accounting::Interim::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> SubscriberManager::Accounting::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "variation")
     {
-        if(variation != nullptr)
-        {
-            children["variation"] = variation;
-        }
-        else
+        if(variation == nullptr)
         {
             variation = std::make_shared<SubscriberManager::Accounting::Interim::Variation>();
-            variation->parent = this;
-            children["variation"] = variation;
         }
-        return children.at("variation");
+        return variation;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberManager::Accounting::Interim::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::Interim::get_children() const
 {
-    if(children.find("variation") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(variation != nullptr)
     {
-        if(variation != nullptr)
-        {
-            children["variation"] = variation;
-        }
+        children["variation"] = variation;
     }
 
     return children;
@@ -498,7 +416,7 @@ std::string SubscriberManager::Accounting::Interim::Variation::get_segment_path(
 
 }
 
-EntityPath SubscriberManager::Accounting::Interim::Variation::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberManager::Accounting::Interim::Variation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -522,20 +440,12 @@ EntityPath SubscriberManager::Accounting::Interim::Variation::get_entity_path(En
 
 std::shared_ptr<Entity> SubscriberManager::Accounting::Interim::Variation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberManager::Accounting::Interim::Variation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::Interim::Variation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -578,7 +488,7 @@ std::string SubscriberManager::Srg::get_segment_path() const
 
 }
 
-EntityPath SubscriberManager::Srg::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberManager::Srg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -602,20 +512,12 @@ EntityPath SubscriberManager::Srg::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubscriberManager::Srg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberManager::Srg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Srg::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -665,12 +567,12 @@ std::string SubscriberFeaturette::get_segment_path() const
 
 }
 
-EntityPath SubscriberFeaturette::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberFeaturette::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -685,15 +587,6 @@ EntityPath SubscriberFeaturette::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubscriberFeaturette::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "identity-change")
     {
         for(auto const & c : identity_change)
@@ -701,28 +594,24 @@ std::shared_ptr<Entity> SubscriberFeaturette::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SubscriberFeaturette::IdentityChange>();
         c->parent = this;
-        identity_change.push_back(std::move(c));
-        children[segment_path] = identity_change.back();
-        return children.at(segment_path);
+        identity_change.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberFeaturette::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : identity_change)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -786,7 +675,7 @@ std::string SubscriberFeaturette::IdentityChange::get_segment_path() const
 
 }
 
-EntityPath SubscriberFeaturette::IdentityChange::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberFeaturette::IdentityChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -811,20 +700,12 @@ EntityPath SubscriberFeaturette::IdentityChange::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> SubscriberFeaturette::IdentityChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberFeaturette::IdentityChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::IdentityChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -878,12 +759,12 @@ std::string IedgeLicenseManager::get_segment_path() const
 
 }
 
-EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
+const EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -898,15 +779,6 @@ EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -914,28 +786,24 @@ std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IedgeLicenseManager::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IedgeLicenseManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1002,7 +870,7 @@ std::string IedgeLicenseManager::Node::get_segment_path() const
 
 }
 
-EntityPath IedgeLicenseManager::Node::get_entity_path(Entity* ancestor) const
+const EntityPath IedgeLicenseManager::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1028,20 +896,12 @@ EntityPath IedgeLicenseManager::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IedgeLicenseManager::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IedgeLicenseManager::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1099,12 +959,12 @@ std::string SubManager::get_segment_path() const
 
 }
 
-EntityPath SubManager::get_entity_path(Entity* ancestor) const
+const EntityPath SubManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1119,15 +979,6 @@ EntityPath SubManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "location")
     {
         for(auto const & c : location)
@@ -1135,28 +986,24 @@ std::shared_ptr<Entity> SubManager::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SubManager::Location>();
         c->parent = this;
-        location.push_back(std::move(c));
-        children[segment_path] = location.back();
-        return children.at(segment_path);
+        location.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubManager::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : location)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1194,7 +1041,6 @@ SubManager::Location::Location()
     trace(std::make_shared<SubManager::Location::Trace>())
 {
     trace->parent = this;
-    children["trace"] = trace;
 
     yang_name = "location"; yang_parent_name = "sub-manager";
 }
@@ -1227,7 +1073,7 @@ std::string SubManager::Location::get_segment_path() const
 
 }
 
-EntityPath SubManager::Location::get_entity_path(Entity* ancestor) const
+const EntityPath SubManager::Location::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1252,41 +1098,24 @@ EntityPath SubManager::Location::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubManager::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trace")
     {
-        if(trace != nullptr)
-        {
-            children["trace"] = trace;
-        }
-        else
+        if(trace == nullptr)
         {
             trace = std::make_shared<SubManager::Location::Trace>();
-            trace->parent = this;
-            children["trace"] = trace;
         }
-        return children.at("trace");
+        return trace;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubManager::Location::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::get_children() const
 {
-    if(children.find("trace") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(trace != nullptr)
     {
-        if(trace != nullptr)
-        {
-            children["trace"] = trace;
-        }
+        children["trace"] = trace;
     }
 
     return children;
@@ -1335,7 +1164,7 @@ std::string SubManager::Location::Trace::get_segment_path() const
 
 }
 
-EntityPath SubManager::Location::Trace::get_entity_path(Entity* ancestor) const
+const EntityPath SubManager::Location::Trace::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1359,20 +1188,12 @@ EntityPath SubManager::Location::Trace::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubManager::Location::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubManager::Location::Trace::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::Trace::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

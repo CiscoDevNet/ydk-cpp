@@ -18,17 +18,15 @@ class EthernetInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Statistics; //type: EthernetInterface::Statistics
         class Interfaces; //type: EthernetInterface::Interfaces
@@ -37,8 +35,7 @@ class EthernetInterface : public Entity
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Berts> berts;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Statistics> statistics;
-
-
+        
 }; // EthernetInterface
 
 
@@ -50,19 +47,16 @@ class EthernetInterface::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Statistic; //type: EthernetInterface::Statistics::Statistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Statistics::Statistic> > statistic;
-
-
+        
 }; // EthernetInterface::Statistics
 
 
@@ -74,12 +68,11 @@ class EthernetInterface::Statistics::Statistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf received_total_bytes; //type: uint64
@@ -138,8 +131,6 @@ class EthernetInterface::Statistics::Statistic : public Entity
         YLeaf uncounted_dropped_frames; //type: uint64
         YLeaf miscellaneous_output_errors; //type: uint64
 
-
-
 }; // EthernetInterface::Statistics::Statistic
 
 
@@ -151,19 +142,16 @@ class EthernetInterface::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: EthernetInterface::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface> > interface;
-
-
+        
 }; // EthernetInterface::Interfaces
 
 
@@ -175,17 +163,15 @@ class EthernetInterface::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf admin_state; //type: EthernetPortEnableEnum
         YLeaf oper_state_up; //type: boolean
-
         class PhyInfo; //type: EthernetInterface::Interfaces::Interface::PhyInfo
         class Layer1Info; //type: EthernetInterface::Interfaces::Interface::Layer1Info
         class MacInfo; //type: EthernetInterface::Interfaces::Interface::MacInfo
@@ -195,8 +181,7 @@ class EthernetInterface::Interfaces::Interface : public Entity
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::MacInfo> mac_info;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo> phy_info;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::TransportInfo> transport_info;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface
 
 
@@ -208,24 +193,21 @@ class EthernetInterface::Interfaces::Interface::PhyInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf media_type; //type: EthernetMediaEnum
         YLeaf phy_present; //type: EtherPhyPresentEnum
         YLeaf loopback; //type: EthernetLoopbackEnum
-
         class PhyDetails; //type: EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails
         class FecDetails; //type: EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails
 
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails> fec_details;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails> phy_details;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::PhyInfo
 
 
@@ -237,12 +219,11 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vendor; //type: string
         YLeaf vendor_part_number; //type: string
@@ -253,7 +234,6 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails : public Ent
         YLeaf transceiver_rx_power; //type: int32
         YLeaf transceiver_tx_bias; //type: int32
         YLeaf optics_wavelength; //type: uint32
-
         class LaneFieldValidity; //type: EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity
         class DigOptMonAlarmThresholds; //type: EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds
         class DigOptMonAlarms; //type: EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms
@@ -263,8 +243,7 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails : public Ent
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms> dig_opt_mon_alarms;
         std::vector<std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane> > lane;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity> lane_field_validity;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails
 
 
@@ -276,19 +255,16 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldVa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wavelength_valid; //type: int32
         YLeaf transmit_power_valid; //type: int32
         YLeaf receive_power_valid; //type: int32
         YLeaf laser_bias_valid; //type: int32
-
-
 
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity
 
@@ -301,12 +277,11 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAl
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transceiver_temperature_alarm_high; //type: int32
         YLeaf transceiver_temperature_warning_high; //type: int32
@@ -328,12 +303,10 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAl
         YLeaf optical_receive_power_warning_high; //type: uint32
         YLeaf optical_receive_power_warning_low; //type: uint32
         YLeaf optical_receive_power_alarm_low; //type: uint32
-
         class FieldValidity; //type: EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::FieldValidity
 
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::FieldValidity> field_validity;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds
 
 
@@ -345,20 +318,17 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAl
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf temperature_valid; //type: int32
         YLeaf voltage_valid; //type: int32
         YLeaf laser_bias_valid; //type: int32
         YLeaf transmit_power_valid; //type: int32
         YLeaf receive_power_valid; //type: int32
-
-
 
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::FieldValidity
 
@@ -371,20 +341,17 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAl
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transceiver_temperature; //type: EtherDomAlarmEnum
         YLeaf transceiver_voltage; //type: EtherDomAlarmEnum
         YLeaf transmit_laser_power; //type: EtherDomAlarmEnum
         YLeaf received_laser_power; //type: EtherDomAlarmEnum
         YLeaf laser_bias_current; //type: EtherDomAlarmEnum
-
-
 
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms
 
@@ -397,24 +364,21 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf center_wavelength; //type: uint32
         YLeaf transmit_laser_power; //type: int32
         YLeaf received_laser_power; //type: int32
         YLeaf laser_bias_current; //type: uint32
         YLeaf lane_id; //type: uint32
-
         class DigOptMonAlarm; //type: EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAlarm
 
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAlarm> dig_opt_mon_alarm;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane
 
 
@@ -426,18 +390,15 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_laser_power; //type: EtherDomAlarmEnum
         YLeaf received_laser_power; //type: EtherDomAlarmEnum
         YLeaf laser_bias_current; //type: EtherDomAlarmEnum
-
-
 
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAlarm
 
@@ -450,18 +411,15 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fec; //type: EthernetFecEnum
         YLeaf corrected_codeword_count; //type: uint64
         YLeaf uncorrected_codeword_count; //type: uint64
-
-
 
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails
 
@@ -474,12 +432,11 @@ class EthernetInterface::Interfaces::Interface::Layer1Info : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_state; //type: EtherLinkStateEnum
         YLeaf led_state; //type: EtherLedStateEnum
@@ -490,7 +447,6 @@ class EthernetInterface::Interfaces::Interface::Layer1Info : public Entity
         YLeaf laser_squelch_enabled; //type: boolean
         YLeaf bandwidth_utilization; //type: uint32
         YLeaf bandwidth; //type: uint64
-
         class Autoneg; //type: EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg
         class CurrentAlarms; //type: EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms
         class PreviousAlarms; //type: EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms
@@ -506,8 +462,7 @@ class EthernetInterface::Interfaces::Interface::Layer1Info : public Entity
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring> opd_monitoring;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo> pfc_info;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms> previous_alarms;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::Layer1Info
 
 
@@ -519,12 +474,11 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf autoneg_enabled; //type: int32
         YLeaf mask; //type: uint32
@@ -533,8 +487,6 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg : public Ent
         YLeaf flowcontrol; //type: EtherFlowcontrolEnum
         YLeaf config_override; //type: int32
         YLeaf fec; //type: EthernetFecEnum
-
-
 
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg
 
@@ -547,12 +499,11 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_loss_of_signal_alarm; //type: EthCtrlrAlarmStateEnum
         YLeaf pcs_loss_of_block_lock_alarm; //type: EthCtrlrAlarmStateEnum
@@ -564,8 +515,6 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms : publ
         YLeaf hi_ber_alarm; //type: EthCtrlrAlarmStateEnum
         YLeaf squelch_alarm; //type: EthCtrlrAlarmStateEnum
         YLeaf rx_opd_alarm; //type: EthCtrlrAlarmStateEnum
-
-
 
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms
 
@@ -578,12 +527,11 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_loss_of_signal_alarm; //type: EthCtrlrAlarmStateEnum
         YLeaf pcs_loss_of_block_lock_alarm; //type: EthCtrlrAlarmStateEnum
@@ -596,8 +544,6 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms : pub
         YLeaf squelch_alarm; //type: EthCtrlrAlarmStateEnum
         YLeaf rx_opd_alarm; //type: EthCtrlrAlarmStateEnum
 
-
-
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms
 
 
@@ -609,17 +555,14 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_header_errors; //type: uint64
         YLeaf pcsbip_errors; //type: uint64
-
-
 
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts
 
@@ -632,20 +575,17 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf supported; //type: int32
-
         class Settings; //type: EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings
 
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings> settings;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring
 
 
@@ -657,20 +597,17 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Setti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_degrade_threshold; //type: uint32
         YLeaf signal_degrade_alarm; //type: int32
         YLeaf signal_fail_threshold; //type: uint32
         YLeaf signal_fail_alarm; //type: int32
         YLeaf signal_remote_fault; //type: int32
-
-
 
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings
 
@@ -683,20 +620,17 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf supported; //type: int32
-
         class Settings; //type: EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings
 
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings> settings;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring
 
 
@@ -708,17 +642,14 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Setti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_optical_power_degrade_threshold_set; //type: int32
         YLeaf received_optical_power_degrade_threshold; //type: int32
-
-
 
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings
 
@@ -731,19 +662,16 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority_flowcontrol; //type: EtherPfcEnum
         YLeaf priority_enabled_bitmap; //type: uint8
         YLeafList rx_frame; //type: list of  uint64
         YLeafList tx_frame; //type: list of  uint64
-
-
 
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo
 
@@ -756,25 +684,22 @@ class EthernetInterface::Interfaces::Interface::MacInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mtu; //type: uint32
         YLeaf mru; //type: uint32
         YLeaf burned_in_mac_address; //type: string
         YLeaf operational_mac_address; //type: string
-
         class UnicastMacFilters; //type: EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters
         class MulticastMacFilters; //type: EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters
 
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters> multicast_mac_filters;
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters> unicast_mac_filters;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::MacInfo
 
 
@@ -786,16 +711,13 @@ class EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList unicast_mac_address; //type: list of  string
-
-
 
 }; // EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters
 
@@ -808,20 +730,17 @@ class EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf multicast_promiscuous; //type: boolean
-
         class MulticastMacAddress; //type: EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress> > multicast_mac_address;
-
-
+        
 }; // EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters
 
 
@@ -833,17 +752,14 @@ class EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::Mu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf mask; //type: string
-
-
 
 }; // EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress
 
@@ -856,19 +772,16 @@ class EthernetInterface::Interfaces::Interface::TransportInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf maintenance_mode_enabled; //type: boolean
         YLeaf ains_status; //type: EtherAinsStatusEnum
         YLeaf total_duration; //type: uint32
         YLeaf remaining_duration; //type: uint32
-
-
 
 }; // EthernetInterface::Interfaces::Interface::TransportInfo
 
@@ -881,19 +794,16 @@ class EthernetInterface::Berts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Bert; //type: EthernetInterface::Berts::Bert
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Berts::Bert> > bert;
-
-
+        
 }; // EthernetInterface::Berts
 
 
@@ -905,22 +815,19 @@ class EthernetInterface::Berts::Bert : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf time_left; //type: uint32
         YLeaf port_bert_interval; //type: uint32
-
         class BertStatus; //type: EthernetInterface::Berts::Bert::BertStatus
 
         std::shared_ptr<Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Berts::Bert::BertStatus> bert_status;
-
-
+        
 }; // EthernetInterface::Berts::Bert
 
 
@@ -932,12 +839,11 @@ class EthernetInterface::Berts::Bert::BertStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bert_state_enabled; //type: boolean
         YLeaf data_availability; //type: uint32
@@ -948,8 +854,6 @@ class EthernetInterface::Berts::Bert::BertStatus : public Entity
         YLeaf test_pattern; //type: EthernetBertPatternEnum
         YLeaf device_under_test; //type: EthernetDevEnum
         YLeaf interface_device; //type: EthernetDevIfEnum
-
-
 
 }; // EthernetInterface::Berts::Bert::BertStatus
 

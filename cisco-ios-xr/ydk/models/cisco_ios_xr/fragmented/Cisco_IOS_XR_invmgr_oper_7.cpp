@@ -115,7 +115,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_
 
 }
 
-EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -164,20 +164,12 @@ EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_e
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -300,7 +292,6 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::InvEepromInfo(
     eeprom(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
-    children["eeprom"] = eeprom;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes";
 }
@@ -339,7 +330,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::ge
 
 }
 
-EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -367,41 +358,24 @@ EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::get
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "eeprom")
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
-        else
+        if(eeprom == nullptr)
         {
             eeprom = std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom>();
-            eeprom->parent = this;
-            children["eeprom"] = eeprom;
         }
-        return children.at("eeprom");
+        return eeprom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::get_children() const
 {
-    if(children.find("eeprom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(eeprom != nullptr)
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
+        children["eeprom"] = eeprom;
     }
 
     return children;
@@ -493,7 +467,6 @@ Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Eeprom
     rma(std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info";
 }
@@ -634,7 +607,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Ee
 
 }
 
-EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -713,41 +686,24 @@ EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eep
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -1018,7 +974,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Ee
 
 }
 
-EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1044,20 +1000,12 @@ EntityPath Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eep
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1094,28 +1042,20 @@ Inventory::Racks::Rack::Attributes::Attributes()
 	,threshold(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold>())
 {
     env_sensor_info->parent = this;
-    children["env-sensor-info"] = env_sensor_info;
 
     env_sensor_info_xml->parent = this;
-    children["env-sensor-info-xml"] = env_sensor_info_xml;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     inv_asset_bag->parent = this;
-    children["inv-asset-bag"] = inv_asset_bag;
 
     inv_basic_bag->parent = this;
-    children["inv-basic-bag"] = inv_basic_bag;
 
     inv_eeprom_info->parent = this;
-    children["inv-eeprom-info"] = inv_eeprom_info;
 
     pwg_info->parent = this;
-    children["pwg-info"] = pwg_info;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "attributes"; yang_parent_name = "rack";
 }
@@ -1166,7 +1106,7 @@ std::string Inventory::Racks::Rack::Attributes::get_segment_path() const
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1193,202 +1133,122 @@ EntityPath Inventory::Racks::Rack::Attributes::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "env-sensor-info")
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
-        else
+        if(env_sensor_info == nullptr)
         {
             env_sensor_info = std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfo>();
-            env_sensor_info->parent = this;
-            children["env-sensor-info"] = env_sensor_info;
         }
-        return children.at("env-sensor-info");
+        return env_sensor_info;
     }
 
     if(child_yang_name == "env-sensor-info-xml")
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
-        else
+        if(env_sensor_info_xml == nullptr)
         {
             env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml>();
-            env_sensor_info_xml->parent = this;
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
         }
-        return children.at("env-sensor-info-xml");
+        return env_sensor_info_xml;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     if(child_yang_name == "inv-asset-bag")
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
-        else
+        if(inv_asset_bag == nullptr)
         {
             inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Attributes::InvAssetBag>();
-            inv_asset_bag->parent = this;
-            children["inv-asset-bag"] = inv_asset_bag;
         }
-        return children.at("inv-asset-bag");
+        return inv_asset_bag;
     }
 
     if(child_yang_name == "inv-basic-bag")
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
-        else
+        if(inv_basic_bag == nullptr)
         {
             inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Attributes::InvBasicBag>();
-            inv_basic_bag->parent = this;
-            children["inv-basic-bag"] = inv_basic_bag;
         }
-        return children.at("inv-basic-bag");
+        return inv_basic_bag;
     }
 
     if(child_yang_name == "inv-eeprom-info")
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
-        else
+        if(inv_eeprom_info == nullptr)
         {
             inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo>();
-            inv_eeprom_info->parent = this;
-            children["inv-eeprom-info"] = inv_eeprom_info;
         }
-        return children.at("inv-eeprom-info");
+        return inv_eeprom_info;
     }
 
     if(child_yang_name == "pwg-info")
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
-        else
+        if(pwg_info == nullptr)
         {
             pwg_info = std::make_shared<Inventory::Racks::Rack::Attributes::PwgInfo>();
-            pwg_info->parent = this;
-            children["pwg-info"] = pwg_info;
         }
-        return children.at("pwg-info");
+        return pwg_info;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::get_children() const
 {
-    if(children.find("env-sensor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(env_sensor_info != nullptr)
     {
-        if(env_sensor_info != nullptr)
-        {
-            children["env-sensor-info"] = env_sensor_info;
-        }
+        children["env-sensor-info"] = env_sensor_info;
     }
 
-    if(children.find("env-sensor-info-xml") == children.end())
+    if(env_sensor_info_xml != nullptr)
     {
-        if(env_sensor_info_xml != nullptr)
-        {
-            children["env-sensor-info-xml"] = env_sensor_info_xml;
-        }
+        children["env-sensor-info-xml"] = env_sensor_info_xml;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
-    if(children.find("inv-asset-bag") == children.end())
+    if(inv_asset_bag != nullptr)
     {
-        if(inv_asset_bag != nullptr)
-        {
-            children["inv-asset-bag"] = inv_asset_bag;
-        }
+        children["inv-asset-bag"] = inv_asset_bag;
     }
 
-    if(children.find("inv-basic-bag") == children.end())
+    if(inv_basic_bag != nullptr)
     {
-        if(inv_basic_bag != nullptr)
-        {
-            children["inv-basic-bag"] = inv_basic_bag;
-        }
+        children["inv-basic-bag"] = inv_basic_bag;
     }
 
-    if(children.find("inv-eeprom-info") == children.end())
+    if(inv_eeprom_info != nullptr)
     {
-        if(inv_eeprom_info != nullptr)
-        {
-            children["inv-eeprom-info"] = inv_eeprom_info;
-        }
+        children["inv-eeprom-info"] = inv_eeprom_info;
     }
 
-    if(children.find("pwg-info") == children.end())
+    if(pwg_info != nullptr)
     {
-        if(pwg_info != nullptr)
-        {
-            children["pwg-info"] = pwg_info;
-        }
+        children["pwg-info"] = pwg_info;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -1478,7 +1338,7 @@ std::string Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_segment_path(
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1513,20 +1373,12 @@ EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_entity_path(En
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1622,7 +1474,7 @@ std::string Inventory::Racks::Rack::Attributes::PwgInfo::get_segment_path() cons
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::PwgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1649,20 +1501,12 @@ EntityPath Inventory::Racks::Rack::Attributes::PwgInfo::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::PwgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::PwgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1698,7 +1542,6 @@ Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::EnvSensorInfoXml()
     threshold(std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes";
 }
@@ -1739,7 +1582,7 @@ std::string Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_segment_pa
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1768,41 +1611,24 @@ EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_entity_path
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_children() const
 {
-    if(children.find("threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -1874,7 +1700,7 @@ std::string Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1897,15 +1723,6 @@ EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get_
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-array")
     {
         for(auto const & c : threshold_array)
@@ -1913,28 +1730,24 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Th
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
-        threshold_array.push_back(std::move(c));
-        children[segment_path] = threshold_array.back();
-        return children.at(segment_path);
+        threshold_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1984,7 +1797,7 @@ std::string Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::Thr
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2011,20 +1824,12 @@ EntityPath Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::Thre
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2097,7 +1902,7 @@ std::string Inventory::Racks::Rack::Attributes::InvAssetBag::get_segment_path() 
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::InvAssetBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2127,20 +1932,12 @@ EntityPath Inventory::Racks::Rack::Attributes::InvAssetBag::get_entity_path(Enti
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::InvAssetBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvAssetBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2186,22 +1983,16 @@ Inventory::Racks::Rack::Attributes::Threshold::Threshold()
 	,minor_lo(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorLo>())
 {
     critical_hi->parent = this;
-    children["critical-hi"] = critical_hi;
 
     critical_lo->parent = this;
-    children["critical-lo"] = critical_lo;
 
     major_hi->parent = this;
-    children["major-hi"] = major_hi;
 
     major_lo->parent = this;
-    children["major-lo"] = major_lo;
 
     minor_hi->parent = this;
-    children["minor-hi"] = minor_hi;
 
     minor_lo->parent = this;
-    children["minor-lo"] = minor_lo;
 
     yang_name = "threshold"; yang_parent_name = "attributes";
 }
@@ -2240,7 +2031,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::get_segment_path() co
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2263,156 +2054,94 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::get_entity_path(Entity
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "critical-hi")
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
-        else
+        if(critical_hi == nullptr)
         {
             critical_hi = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalHi>();
-            critical_hi->parent = this;
-            children["critical-hi"] = critical_hi;
         }
-        return children.at("critical-hi");
+        return critical_hi;
     }
 
     if(child_yang_name == "critical-lo")
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
-        else
+        if(critical_lo == nullptr)
         {
             critical_lo = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalLo>();
-            critical_lo->parent = this;
-            children["critical-lo"] = critical_lo;
         }
-        return children.at("critical-lo");
+        return critical_lo;
     }
 
     if(child_yang_name == "major-hi")
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
-        else
+        if(major_hi == nullptr)
         {
             major_hi = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorHi>();
-            major_hi->parent = this;
-            children["major-hi"] = major_hi;
         }
-        return children.at("major-hi");
+        return major_hi;
     }
 
     if(child_yang_name == "major-lo")
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
-        else
+        if(major_lo == nullptr)
         {
             major_lo = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorLo>();
-            major_lo->parent = this;
-            children["major-lo"] = major_lo;
         }
-        return children.at("major-lo");
+        return major_lo;
     }
 
     if(child_yang_name == "minor-hi")
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
-        else
+        if(minor_hi == nullptr)
         {
             minor_hi = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorHi>();
-            minor_hi->parent = this;
-            children["minor-hi"] = minor_hi;
         }
-        return children.at("minor-hi");
+        return minor_hi;
     }
 
     if(child_yang_name == "minor-lo")
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
-        else
+        if(minor_lo == nullptr)
         {
             minor_lo = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorLo>();
-            minor_lo->parent = this;
-            children["minor-lo"] = minor_lo;
         }
-        return children.at("minor-lo");
+        return minor_lo;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::get_children() const
 {
-    if(children.find("critical-hi") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(critical_hi != nullptr)
     {
-        if(critical_hi != nullptr)
-        {
-            children["critical-hi"] = critical_hi;
-        }
+        children["critical-hi"] = critical_hi;
     }
 
-    if(children.find("critical-lo") == children.end())
+    if(critical_lo != nullptr)
     {
-        if(critical_lo != nullptr)
-        {
-            children["critical-lo"] = critical_lo;
-        }
+        children["critical-lo"] = critical_lo;
     }
 
-    if(children.find("major-hi") == children.end())
+    if(major_hi != nullptr)
     {
-        if(major_hi != nullptr)
-        {
-            children["major-hi"] = major_hi;
-        }
+        children["major-hi"] = major_hi;
     }
 
-    if(children.find("major-lo") == children.end())
+    if(major_lo != nullptr)
     {
-        if(major_lo != nullptr)
-        {
-            children["major-lo"] = major_lo;
-        }
+        children["major-lo"] = major_lo;
     }
 
-    if(children.find("minor-hi") == children.end())
+    if(minor_hi != nullptr)
     {
-        if(minor_hi != nullptr)
-        {
-            children["minor-hi"] = minor_hi;
-        }
+        children["minor-hi"] = minor_hi;
     }
 
-    if(children.find("minor-lo") == children.end())
+    if(minor_lo != nullptr)
     {
-        if(minor_lo != nullptr)
-        {
-            children["minor-lo"] = minor_lo;
-        }
+        children["minor-lo"] = minor_lo;
     }
 
     return children;
@@ -2427,7 +2156,6 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorLo::MajorLo()
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-lo"; yang_parent_name = "threshold";
 }
@@ -2456,7 +2184,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_segment_
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2479,41 +2207,24 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_entity_pa
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -2566,7 +2277,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::g
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2594,20 +2305,12 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::ge
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2640,7 +2343,6 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::CriticalHi()
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-hi"; yang_parent_name = "threshold";
 }
@@ -2669,7 +2371,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_segme
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2692,41 +2394,24 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_entity
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -2779,7 +2464,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2807,20 +2492,12 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag:
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2853,7 +2530,6 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorHi::MinorHi()
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-hi"; yang_parent_name = "threshold";
 }
@@ -2882,7 +2558,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_segment_
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2905,41 +2581,24 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_entity_pa
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -2992,7 +2651,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::g
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3020,20 +2679,12 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::ge
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3066,7 +2717,6 @@ Inventory::Racks::Rack::Attributes::Threshold::MajorHi::MajorHi()
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "major-hi"; yang_parent_name = "threshold";
 }
@@ -3095,7 +2745,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_segment_
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3118,41 +2768,24 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_entity_pa
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -3205,7 +2838,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::g
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3233,20 +2866,12 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::ge
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3279,7 +2904,6 @@ Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::CriticalLo()
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "critical-lo"; yang_parent_name = "threshold";
 }
@@ -3308,7 +2932,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_segme
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3331,41 +2955,24 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_entity
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -3418,7 +3025,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3446,20 +3053,12 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag:
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3492,7 +3091,6 @@ Inventory::Racks::Rack::Attributes::Threshold::MinorLo::MinorLo()
     thresh_bag(std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
-    children["thresh-bag"] = thresh_bag;
 
     yang_name = "minor-lo"; yang_parent_name = "threshold";
 }
@@ -3521,7 +3119,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_segment_
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3544,41 +3142,24 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_entity_pa
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresh-bag")
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
-        else
+        if(thresh_bag == nullptr)
         {
             thresh_bag = std::make_shared<Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag>();
-            thresh_bag->parent = this;
-            children["thresh-bag"] = thresh_bag;
         }
-        return children.at("thresh-bag");
+        return thresh_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_children() const
 {
-    if(children.find("thresh-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresh_bag != nullptr)
     {
-        if(thresh_bag != nullptr)
-        {
-            children["thresh-bag"] = thresh_bag;
-        }
+        children["thresh-bag"] = thresh_bag;
     }
 
     return children;
@@ -3631,7 +3212,7 @@ std::string Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::g
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3659,20 +3240,12 @@ EntityPath Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::ge
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3714,10 +3287,8 @@ Inventory::Racks::Rack::Attributes::FruInfo::FruInfo()
 	,last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange>())
 {
     card_up_time->parent = this;
-    children["card-up-time"] = card_up_time;
 
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -3762,7 +3333,7 @@ std::string Inventory::Racks::Rack::Attributes::FruInfo::get_segment_path() cons
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3792,64 +3363,38 @@ EntityPath Inventory::Racks::Rack::Attributes::FruInfo::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "card-up-time")
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
-        else
+        if(card_up_time == nullptr)
         {
             card_up_time = std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime>();
-            card_up_time->parent = this;
-            children["card-up-time"] = card_up_time;
         }
-        return children.at("card-up-time");
+        return card_up_time;
     }
 
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::FruInfo::get_children() const
 {
-    if(children.find("card-up-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(card_up_time != nullptr)
     {
-        if(card_up_time != nullptr)
-        {
-            children["card-up-time"] = card_up_time;
-        }
+        children["card-up-time"] = card_up_time;
     }
 
-    if(children.find("last-operational-state-change") == children.end())
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
     return children;
@@ -3921,7 +3466,7 @@ std::string Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateCha
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3946,20 +3491,12 @@ EntityPath Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChan
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4009,7 +3546,7 @@ std::string Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_segment
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4034,20 +3571,12 @@ EntityPath Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_entity_p
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4169,7 +3698,7 @@ std::string Inventory::Racks::Rack::Attributes::InvBasicBag::get_segment_path() 
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::InvBasicBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4218,20 +3747,12 @@ EntityPath Inventory::Racks::Rack::Attributes::InvBasicBag::get_entity_path(Enti
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::InvBasicBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvBasicBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4354,7 +3875,6 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::InvEepromInfo()
     eeprom(std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
-    children["eeprom"] = eeprom;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes";
 }
@@ -4393,7 +3913,7 @@ std::string Inventory::Racks::Rack::Attributes::InvEepromInfo::get_segment_path(
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4421,41 +3941,24 @@ EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::get_entity_path(En
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "eeprom")
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
-        else
+        if(eeprom == nullptr)
         {
             eeprom = std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom>();
-            eeprom->parent = this;
-            children["eeprom"] = eeprom;
         }
-        return children.at("eeprom");
+        return eeprom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::InvEepromInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvEepromInfo::get_children() const
 {
-    if(children.find("eeprom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(eeprom != nullptr)
     {
-        if(eeprom != nullptr)
-        {
-            children["eeprom"] = eeprom;
-        }
+        children["eeprom"] = eeprom;
     }
 
     return children;
@@ -4547,7 +4050,6 @@ Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Eeprom()
     rma(std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
-    children["rma"] = rma;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info";
 }
@@ -4688,7 +4190,7 @@ std::string Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_segme
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4767,41 +4269,24 @@ EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_entity
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rma")
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
-        else
+        if(rma == nullptr)
         {
             rma = std::make_shared<Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma>();
-            rma->parent = this;
-            children["rma"] = rma;
         }
-        return children.at("rma");
+        return rma;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
-    if(children.find("rma") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rma != nullptr)
     {
-        if(rma != nullptr)
-        {
-            children["rma"] = rma;
-        }
+        children["rma"] = rma;
     }
 
     return children;
@@ -5072,7 +4557,7 @@ std::string Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_
 
 }
 
-EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
+const EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5098,20 +4583,12 @@ EntityPath Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_e
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

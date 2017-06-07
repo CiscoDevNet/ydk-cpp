@@ -19,7 +19,6 @@ Watchdog::Watchdog()
     threshold_memory(std::make_shared<Watchdog::ThresholdMemory>())
 {
     threshold_memory->parent = this;
-    children["threshold-memory"] = threshold_memory;
 
     yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-watchd-cfg";
 }
@@ -56,12 +55,12 @@ std::string Watchdog::get_segment_path() const
 
 }
 
-EntityPath Watchdog::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -80,41 +79,24 @@ EntityPath Watchdog::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-memory")
     {
-        if(threshold_memory != nullptr)
-        {
-            children["threshold-memory"] = threshold_memory;
-        }
-        else
+        if(threshold_memory == nullptr)
         {
             threshold_memory = std::make_shared<Watchdog::ThresholdMemory>();
-            threshold_memory->parent = this;
-            children["threshold-memory"] = threshold_memory;
         }
-        return children.at("threshold-memory");
+        return threshold_memory;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::get_children() const
 {
-    if(children.find("threshold-memory") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(threshold_memory != nullptr)
     {
-        if(threshold_memory != nullptr)
-        {
-            children["threshold-memory"] = threshold_memory;
-        }
+        children["threshold-memory"] = threshold_memory;
     }
 
     return children;
@@ -197,7 +179,7 @@ std::string Watchdog::ThresholdMemory::get_segment_path() const
 
 }
 
-EntityPath Watchdog::ThresholdMemory::get_entity_path(Entity* ancestor) const
+const EntityPath Watchdog::ThresholdMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -223,20 +205,12 @@ EntityPath Watchdog::ThresholdMemory::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Watchdog::ThresholdMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchdog::ThresholdMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::ThresholdMemory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -287,12 +261,12 @@ std::string Watchd::get_segment_path() const
 
 }
 
-EntityPath Watchd::get_entity_path(Entity* ancestor) const
+const EntityPath Watchd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -308,20 +282,12 @@ EntityPath Watchd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Watchd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Watchd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Watchd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

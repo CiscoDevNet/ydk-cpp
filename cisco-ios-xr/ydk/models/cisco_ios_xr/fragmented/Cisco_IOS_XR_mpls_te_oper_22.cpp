@@ -53,7 +53,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Wdm::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Wdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -81,20 +81,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Wdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Wdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Wdm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -168,7 +160,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Otn_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Otn_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -195,20 +187,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Otn_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Otn_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::PathEgressLabel::Otn_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -236,10 +220,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::La
 	,wdm(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Wdm>())
 {
     otn->parent = this;
-    children["otn"] = otn;
 
     wdm->parent = this;
-    children["wdm"] = wdm;
 
     yang_name = "resv-ingress-label"; yang_parent_name = "labels";
 }
@@ -272,7 +254,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -296,64 +278,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otn")
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
-        else
+        if(otn == nullptr)
         {
             otn = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Otn_>();
-            otn->parent = this;
-            children["otn"] = otn;
         }
-        return children.at("otn");
+        return otn;
     }
 
     if(child_yang_name == "wdm")
     {
-        if(wdm != nullptr)
-        {
-            children["wdm"] = wdm;
-        }
-        else
+        if(wdm == nullptr)
         {
             wdm = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Wdm>();
-            wdm->parent = this;
-            children["wdm"] = wdm;
         }
-        return children.at("wdm");
+        return wdm;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::get_children() const
 {
-    if(children.find("otn") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otn != nullptr)
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
+        children["otn"] = otn;
     }
 
-    if(children.find("wdm") == children.end())
+    if(wdm != nullptr)
     {
-        if(wdm != nullptr)
-        {
-            children["wdm"] = wdm;
-        }
+        children["wdm"] = wdm;
     }
 
     return children;
@@ -410,7 +366,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Wdm::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Wdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -438,20 +394,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Wdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Wdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Wdm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -525,7 +473,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Otn_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Otn_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -552,20 +500,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Otn_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Otn_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvIngressLabel::Otn_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -593,10 +533,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::La
 	,wdm(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Wdm>())
 {
     otn->parent = this;
-    children["otn"] = otn;
 
     wdm->parent = this;
-    children["wdm"] = wdm;
 
     yang_name = "resv-egress-label"; yang_parent_name = "labels";
 }
@@ -629,7 +567,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -653,64 +591,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otn")
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
-        else
+        if(otn == nullptr)
         {
             otn = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Otn_>();
-            otn->parent = this;
-            children["otn"] = otn;
         }
-        return children.at("otn");
+        return otn;
     }
 
     if(child_yang_name == "wdm")
     {
-        if(wdm != nullptr)
-        {
-            children["wdm"] = wdm;
-        }
-        else
+        if(wdm == nullptr)
         {
             wdm = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Wdm>();
-            wdm->parent = this;
-            children["wdm"] = wdm;
         }
-        return children.at("wdm");
+        return wdm;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::get_children() const
 {
-    if(children.find("otn") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otn != nullptr)
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
+        children["otn"] = otn;
     }
 
-    if(children.find("wdm") == children.end())
+    if(wdm != nullptr)
     {
-        if(wdm != nullptr)
-        {
-            children["wdm"] = wdm;
-        }
+        children["wdm"] = wdm;
     }
 
     return children;
@@ -767,7 +679,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Wdm::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Wdm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -795,20 +707,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Wdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Wdm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Wdm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -882,7 +786,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Otn_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Otn_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -909,20 +813,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Otn_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Otn_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Otn::Labels::ResvEgressLabel::Otn_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -947,7 +843,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::Ap
     protection_info(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::ProtectionInfo>())
 {
     protection_info->parent = this;
-    children["protection-info"] = protection_info;
 
     yang_name = "aps"; yang_parent_name = "otn-s2l";
 }
@@ -976,7 +871,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -999,41 +894,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protection-info")
     {
-        if(protection_info != nullptr)
-        {
-            children["protection-info"] = protection_info;
-        }
-        else
+        if(protection_info == nullptr)
         {
             protection_info = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::ProtectionInfo>();
-            protection_info->parent = this;
-            children["protection-info"] = protection_info;
         }
-        return children.at("protection-info");
+        return protection_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::get_children() const
 {
-    if(children.find("protection-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protection_info != nullptr)
     {
-        if(protection_info != nullptr)
-        {
-            children["protection-info"] = protection_info;
-        }
+        children["protection-info"] = protection_info;
     }
 
     return children;
@@ -1110,7 +988,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Otn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::ProtectionInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::ProtectionInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1146,20 +1024,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::ProtectionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::ProtectionInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OtnS2L::Aps::ProtectionInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1231,10 +1101,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo:
 	,session_info(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::SessionInfo>())
 {
     deletion_history->parent = this;
-    children["deletion-history"] = deletion_history;
 
     session_info->parent = this;
-    children["session-info"] = session_info;
 
     yang_name = "head-end-bfd-info"; yang_parent_name = "s2l";
 }
@@ -1284,7 +1152,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Hea
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1313,64 +1181,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Head
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "deletion-history")
     {
-        if(deletion_history != nullptr)
-        {
-            children["deletion-history"] = deletion_history;
-        }
-        else
+        if(deletion_history == nullptr)
         {
             deletion_history = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::DeletionHistory>();
-            deletion_history->parent = this;
-            children["deletion-history"] = deletion_history;
         }
-        return children.at("deletion-history");
+        return deletion_history;
     }
 
     if(child_yang_name == "session-info")
     {
-        if(session_info != nullptr)
-        {
-            children["session-info"] = session_info;
-        }
-        else
+        if(session_info == nullptr)
         {
             session_info = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::SessionInfo>();
-            session_info->parent = this;
-            children["session-info"] = session_info;
         }
-        return children.at("session-info");
+        return session_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::get_children() const
 {
-    if(children.find("deletion-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(deletion_history != nullptr)
     {
-        if(deletion_history != nullptr)
-        {
-            children["deletion-history"] = deletion_history;
-        }
+        children["deletion-history"] = deletion_history;
     }
 
-    if(children.find("session-info") == children.end())
+    if(session_info != nullptr)
     {
-        if(session_info != nullptr)
-        {
-            children["session-info"] = session_info;
-        }
+        children["session-info"] = session_info;
     }
 
     return children;
@@ -1434,7 +1276,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Hea
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::SessionInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::SessionInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1459,20 +1301,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Head
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::SessionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::SessionInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::SessionInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1528,7 +1362,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Hea
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::DeletionHistory::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::DeletionHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1555,20 +1389,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Head
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::DeletionHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::DeletionHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::HeadEndBfdInfo::DeletionHistory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1606,7 +1432,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo:
     session_info(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::SessionInfo>())
 {
     session_info->parent = this;
-    children["session-info"] = session_info;
 
     yang_name = "tail-end-bfd-info"; yang_parent_name = "s2l";
 }
@@ -1651,7 +1476,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Tai
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1682,41 +1507,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Tail
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-info")
     {
-        if(session_info != nullptr)
-        {
-            children["session-info"] = session_info;
-        }
-        else
+        if(session_info == nullptr)
         {
             session_info = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::SessionInfo>();
-            session_info->parent = this;
-            children["session-info"] = session_info;
         }
-        return children.at("session-info");
+        return session_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::get_children() const
 {
-    if(children.find("session-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session_info != nullptr)
     {
-        if(session_info != nullptr)
-        {
-            children["session-info"] = session_info;
-        }
+        children["session-info"] = session_info;
     }
 
     return children;
@@ -1792,7 +1600,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Tai
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::SessionInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::SessionInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1817,20 +1625,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Tail
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::SessionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::SessionInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::TailEndBfdInfo::SessionInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1889,7 +1689,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Srl
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SrlgCollection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SrlgCollection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1915,20 +1715,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Srlg
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SrlgCollection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SrlgCollection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SrlgCollection::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1999,7 +1791,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Ass
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Association::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Association::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2029,20 +1821,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Asso
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Association::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Association::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Association::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2153,7 +1937,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pro
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Protection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Protection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2193,20 +1977,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Prot
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Protection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Protection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Protection::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2293,7 +2069,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::
     fec_destination_info(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::FecDestinationInfo>())
 {
     fec_destination_info->parent = this;
-    children["fec-destination-info"] = fec_destination_info;
 
     yang_name = "reverse-lsp-fec"; yang_parent_name = "s2l";
 }
@@ -2332,7 +2107,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Rev
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2360,41 +2135,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Reve
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fec-destination-info")
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
-        else
+        if(fec_destination_info == nullptr)
         {
             fec_destination_info = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::FecDestinationInfo>();
-            fec_destination_info->parent = this;
-            children["fec-destination-info"] = fec_destination_info;
         }
-        return children.at("fec-destination-info");
+        return fec_destination_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::get_children() const
 {
-    if(children.find("fec-destination-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fec_destination_info != nullptr)
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
+        children["fec-destination-info"] = fec_destination_info;
     }
 
     return children;
@@ -2461,7 +2219,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Rev
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2487,20 +2245,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Reve
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::FecDestinationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::FecDestinationInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseLspFec::FecDestinationInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2557,7 +2307,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Rev
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseTspec::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseTspec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2583,20 +2333,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Reve
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseTspec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseTspec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2637,7 +2379,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexI
     flex_fec(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexFec>())
 {
     flex_fec->parent = this;
-    children["flex-fec"] = flex_fec;
 
     yang_name = "flex-info"; yang_parent_name = "s2l";
 }
@@ -2696,7 +2437,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Fle
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2734,41 +2475,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Flex
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flex-fec")
     {
-        if(flex_fec != nullptr)
-        {
-            children["flex-fec"] = flex_fec;
-        }
-        else
+        if(flex_fec == nullptr)
         {
             flex_fec = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexFec>();
-            flex_fec->parent = this;
-            children["flex-fec"] = flex_fec;
         }
-        return children.at("flex-fec");
+        return flex_fec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::get_children() const
 {
-    if(children.find("flex-fec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flex_fec != nullptr)
     {
-        if(flex_fec != nullptr)
-        {
-            children["flex-fec"] = flex_fec;
-        }
+        children["flex-fec"] = flex_fec;
     }
 
     return children;
@@ -2896,7 +2620,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Fle
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexFec::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexFec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2929,20 +2653,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Flex
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexFec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexFec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::FlexInfo::FlexFec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3033,7 +2749,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Lsp
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::LspWrapInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::LspWrapInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3061,20 +2777,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::LspW
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::LspWrapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::LspWrapInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::LspWrapInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3133,7 +2841,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Div
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::DiversityInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::DiversityInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3157,20 +2865,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Dive
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::DiversityInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::DiversityInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::DiversityInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3216,7 +2916,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Sha
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SharedRiskLinkGroup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SharedRiskLinkGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3241,20 +2941,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Shar
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SharedRiskLinkGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SharedRiskLinkGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::SharedRiskLinkGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3278,10 +2970,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::OutEro(
 	,unnumbered_ero_sub_object(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::UnnumberedEroSubObject>())
 {
     ipv4ero_sub_object->parent = this;
-    children["ipv4ero-sub-object"] = ipv4ero_sub_object;
 
     unnumbered_ero_sub_object->parent = this;
-    children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
 
     yang_name = "out-ero"; yang_parent_name = "s2l";
 }
@@ -3314,7 +3004,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Out
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3338,64 +3028,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutE
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4ero-sub-object")
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
-        else
+        if(ipv4ero_sub_object == nullptr)
         {
             ipv4ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::Ipv4EroSubObject>();
-            ipv4ero_sub_object->parent = this;
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
         }
-        return children.at("ipv4ero-sub-object");
+        return ipv4ero_sub_object;
     }
 
     if(child_yang_name == "unnumbered-ero-sub-object")
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
-        else
+        if(unnumbered_ero_sub_object == nullptr)
         {
             unnumbered_ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::UnnumberedEroSubObject>();
-            unnumbered_ero_sub_object->parent = this;
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
         }
-        return children.at("unnumbered-ero-sub-object");
+        return unnumbered_ero_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::get_children() const
 {
-    if(children.find("ipv4ero-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
-    if(children.find("unnumbered-ero-sub-object") == children.end())
+    if(unnumbered_ero_sub_object != nullptr)
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
     return children;
@@ -3446,7 +3110,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Out
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3472,20 +3136,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutE
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::Ipv4EroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::Ipv4EroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3545,7 +3201,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Out
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3572,20 +3228,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutE
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::UnnumberedEroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::OutEro::UnnumberedEroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3617,10 +3265,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::InEro()
 	,unnumbered_ero_sub_object(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::UnnumberedEroSubObject>())
 {
     ipv4ero_sub_object->parent = this;
-    children["ipv4ero-sub-object"] = ipv4ero_sub_object;
 
     unnumbered_ero_sub_object->parent = this;
-    children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
 
     yang_name = "in-ero"; yang_parent_name = "s2l";
 }
@@ -3653,7 +3299,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InE
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3677,64 +3323,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4ero-sub-object")
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
-        else
+        if(ipv4ero_sub_object == nullptr)
         {
             ipv4ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::Ipv4EroSubObject>();
-            ipv4ero_sub_object->parent = this;
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
         }
-        return children.at("ipv4ero-sub-object");
+        return ipv4ero_sub_object;
     }
 
     if(child_yang_name == "unnumbered-ero-sub-object")
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
-        else
+        if(unnumbered_ero_sub_object == nullptr)
         {
             unnumbered_ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::UnnumberedEroSubObject>();
-            unnumbered_ero_sub_object->parent = this;
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
         }
-        return children.at("unnumbered-ero-sub-object");
+        return unnumbered_ero_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::get_children() const
 {
-    if(children.find("ipv4ero-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
-    if(children.find("unnumbered-ero-sub-object") == children.end())
+    if(unnumbered_ero_sub_object != nullptr)
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
     return children;
@@ -3785,7 +3405,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InE
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3811,20 +3431,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::Ipv4EroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::Ipv4EroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3884,7 +3496,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InE
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3911,20 +3523,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::UnnumberedEroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::InEro::UnnumberedEroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3958,16 +3562,12 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::PathRr
 	,unnumbered_rro_sub_object(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject>())
 {
     ipv4rro_sub_object->parent = this;
-    children["ipv4rro-sub-object"] = ipv4rro_sub_object;
 
     label_rro_sub_object->parent = this;
-    children["label-rro-sub-object"] = label_rro_sub_object;
 
     srlg_rro_sub_object->parent = this;
-    children["srlg-rro-sub-object"] = srlg_rro_sub_object;
 
     unnumbered_rro_sub_object->parent = this;
-    children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
 
     yang_name = "path-rro"; yang_parent_name = "s2l";
 }
@@ -4004,7 +3604,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4028,110 +3628,66 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4rro-sub-object")
     {
-        if(ipv4rro_sub_object != nullptr)
-        {
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
-        }
-        else
+        if(ipv4rro_sub_object == nullptr)
         {
             ipv4rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject>();
-            ipv4rro_sub_object->parent = this;
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
         }
-        return children.at("ipv4rro-sub-object");
+        return ipv4rro_sub_object;
     }
 
     if(child_yang_name == "label-rro-sub-object")
     {
-        if(label_rro_sub_object != nullptr)
-        {
-            children["label-rro-sub-object"] = label_rro_sub_object;
-        }
-        else
+        if(label_rro_sub_object == nullptr)
         {
             label_rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject>();
-            label_rro_sub_object->parent = this;
-            children["label-rro-sub-object"] = label_rro_sub_object;
         }
-        return children.at("label-rro-sub-object");
+        return label_rro_sub_object;
     }
 
     if(child_yang_name == "srlg-rro-sub-object")
     {
-        if(srlg_rro_sub_object != nullptr)
-        {
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
-        }
-        else
+        if(srlg_rro_sub_object == nullptr)
         {
             srlg_rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::SrlgRroSubObject>();
-            srlg_rro_sub_object->parent = this;
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
         }
-        return children.at("srlg-rro-sub-object");
+        return srlg_rro_sub_object;
     }
 
     if(child_yang_name == "unnumbered-rro-sub-object")
     {
-        if(unnumbered_rro_sub_object != nullptr)
-        {
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
-        }
-        else
+        if(unnumbered_rro_sub_object == nullptr)
         {
             unnumbered_rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject>();
-            unnumbered_rro_sub_object->parent = this;
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
         }
-        return children.at("unnumbered-rro-sub-object");
+        return unnumbered_rro_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::get_children() const
 {
-    if(children.find("ipv4rro-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4rro_sub_object != nullptr)
     {
-        if(ipv4rro_sub_object != nullptr)
-        {
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
-        }
+        children["ipv4rro-sub-object"] = ipv4rro_sub_object;
     }
 
-    if(children.find("label-rro-sub-object") == children.end())
+    if(label_rro_sub_object != nullptr)
     {
-        if(label_rro_sub_object != nullptr)
-        {
-            children["label-rro-sub-object"] = label_rro_sub_object;
-        }
+        children["label-rro-sub-object"] = label_rro_sub_object;
     }
 
-    if(children.find("srlg-rro-sub-object") == children.end())
+    if(srlg_rro_sub_object != nullptr)
     {
-        if(srlg_rro_sub_object != nullptr)
-        {
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
-        }
+        children["srlg-rro-sub-object"] = srlg_rro_sub_object;
     }
 
-    if(children.find("unnumbered-rro-sub-object") == children.end())
+    if(unnumbered_rro_sub_object != nullptr)
     {
-        if(unnumbered_rro_sub_object != nullptr)
-        {
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
-        }
+        children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
     }
 
     return children;
@@ -4152,7 +3708,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4Rr
     flags(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "ipv4rro-sub-object"; yang_parent_name = "path-rro";
 }
@@ -4183,7 +3738,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4207,41 +3762,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -4298,7 +3836,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4326,20 +3864,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Ipv4RroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4376,7 +3906,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelR
     flags(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "label-rro-sub-object"; yang_parent_name = "path-rro";
 }
@@ -4420,7 +3949,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4447,41 +3976,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -4534,7 +4046,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4558,20 +4070,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::LabelRroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4591,7 +4095,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::Unnumb
     flags(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "path-rro";
 }
@@ -4624,7 +4127,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4649,41 +4152,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -4744,7 +4230,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4772,20 +4258,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::UnnumberedRroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4854,7 +4332,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4879,20 +4357,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::SrlgRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathRro::SrlgRroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4914,16 +4384,12 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::ResvRr
 	,unnumbered_rro_sub_object(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject>())
 {
     ipv4rro_sub_object->parent = this;
-    children["ipv4rro-sub-object"] = ipv4rro_sub_object;
 
     label_rro_sub_object->parent = this;
-    children["label-rro-sub-object"] = label_rro_sub_object;
 
     srlg_rro_sub_object->parent = this;
-    children["srlg-rro-sub-object"] = srlg_rro_sub_object;
 
     unnumbered_rro_sub_object->parent = this;
-    children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
 
     yang_name = "resv-rro"; yang_parent_name = "s2l";
 }
@@ -4960,7 +4426,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4984,110 +4450,66 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4rro-sub-object")
     {
-        if(ipv4rro_sub_object != nullptr)
-        {
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
-        }
-        else
+        if(ipv4rro_sub_object == nullptr)
         {
             ipv4rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject>();
-            ipv4rro_sub_object->parent = this;
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
         }
-        return children.at("ipv4rro-sub-object");
+        return ipv4rro_sub_object;
     }
 
     if(child_yang_name == "label-rro-sub-object")
     {
-        if(label_rro_sub_object != nullptr)
-        {
-            children["label-rro-sub-object"] = label_rro_sub_object;
-        }
-        else
+        if(label_rro_sub_object == nullptr)
         {
             label_rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject>();
-            label_rro_sub_object->parent = this;
-            children["label-rro-sub-object"] = label_rro_sub_object;
         }
-        return children.at("label-rro-sub-object");
+        return label_rro_sub_object;
     }
 
     if(child_yang_name == "srlg-rro-sub-object")
     {
-        if(srlg_rro_sub_object != nullptr)
-        {
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
-        }
-        else
+        if(srlg_rro_sub_object == nullptr)
         {
             srlg_rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::SrlgRroSubObject>();
-            srlg_rro_sub_object->parent = this;
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
         }
-        return children.at("srlg-rro-sub-object");
+        return srlg_rro_sub_object;
     }
 
     if(child_yang_name == "unnumbered-rro-sub-object")
     {
-        if(unnumbered_rro_sub_object != nullptr)
-        {
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
-        }
-        else
+        if(unnumbered_rro_sub_object == nullptr)
         {
             unnumbered_rro_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject>();
-            unnumbered_rro_sub_object->parent = this;
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
         }
-        return children.at("unnumbered-rro-sub-object");
+        return unnumbered_rro_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::get_children() const
 {
-    if(children.find("ipv4rro-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4rro_sub_object != nullptr)
     {
-        if(ipv4rro_sub_object != nullptr)
-        {
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
-        }
+        children["ipv4rro-sub-object"] = ipv4rro_sub_object;
     }
 
-    if(children.find("label-rro-sub-object") == children.end())
+    if(label_rro_sub_object != nullptr)
     {
-        if(label_rro_sub_object != nullptr)
-        {
-            children["label-rro-sub-object"] = label_rro_sub_object;
-        }
+        children["label-rro-sub-object"] = label_rro_sub_object;
     }
 
-    if(children.find("srlg-rro-sub-object") == children.end())
+    if(srlg_rro_sub_object != nullptr)
     {
-        if(srlg_rro_sub_object != nullptr)
-        {
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
-        }
+        children["srlg-rro-sub-object"] = srlg_rro_sub_object;
     }
 
-    if(children.find("unnumbered-rro-sub-object") == children.end())
+    if(unnumbered_rro_sub_object != nullptr)
     {
-        if(unnumbered_rro_sub_object != nullptr)
-        {
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
-        }
+        children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
     }
 
     return children;
@@ -5108,7 +4530,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4Rr
     flags(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "ipv4rro-sub-object"; yang_parent_name = "resv-rro";
 }
@@ -5139,7 +4560,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5163,41 +4584,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -5254,7 +4658,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5282,20 +4686,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Ipv4RroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5332,7 +4728,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelR
     flags(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "label-rro-sub-object"; yang_parent_name = "resv-rro";
 }
@@ -5376,7 +4771,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5403,41 +4798,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -5490,7 +4868,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5514,20 +4892,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::LabelRroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5547,7 +4917,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::Unnumb
     flags(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "resv-rro";
 }
@@ -5580,7 +4949,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5605,41 +4974,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -5700,7 +5052,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5728,20 +5080,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::UnnumberedRroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5810,7 +5154,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Res
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5835,20 +5179,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Resv
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::SrlgRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ResvRro::SrlgRroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5906,7 +5242,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Pat
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathAffinityArray::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathAffinityArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5933,20 +5269,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Path
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathAffinityArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathAffinityArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::PathAffinityArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5974,10 +5302,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::R
 	,unnumbered_ero_sub_object(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::UnnumberedEroSubObject>())
 {
     ipv4ero_sub_object->parent = this;
-    children["ipv4ero-sub-object"] = ipv4ero_sub_object;
 
     unnumbered_ero_sub_object->parent = this;
-    children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
 
     yang_name = "reverse-ero-in"; yang_parent_name = "s2l";
 }
@@ -6010,7 +5336,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Rev
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6034,64 +5360,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Reve
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4ero-sub-object")
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
-        else
+        if(ipv4ero_sub_object == nullptr)
         {
             ipv4ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::Ipv4EroSubObject>();
-            ipv4ero_sub_object->parent = this;
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
         }
-        return children.at("ipv4ero-sub-object");
+        return ipv4ero_sub_object;
     }
 
     if(child_yang_name == "unnumbered-ero-sub-object")
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
-        else
+        if(unnumbered_ero_sub_object == nullptr)
         {
             unnumbered_ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::UnnumberedEroSubObject>();
-            unnumbered_ero_sub_object->parent = this;
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
         }
-        return children.at("unnumbered-ero-sub-object");
+        return unnumbered_ero_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::get_children() const
 {
-    if(children.find("ipv4ero-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
-    if(children.find("unnumbered-ero-sub-object") == children.end())
+    if(unnumbered_ero_sub_object != nullptr)
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
     return children;
@@ -6142,7 +5442,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Rev
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6168,20 +5468,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Reve
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::Ipv4EroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::Ipv4EroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6241,7 +5533,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Rev
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6268,20 +5560,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::Reve
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::UnnumberedEroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::ReverseEroIn::UnnumberedEroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6354,7 +5638,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::S2L
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::S2LSegmentRoutingPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::S2LSegmentRoutingPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6384,20 +5668,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::S2LS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::S2LSegmentRoutingPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::S2LSegmentRoutingPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::CleanedLsp::S2L::S2LSegmentRoutingPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6442,13 +5718,10 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::P2PInfo()
 	,auto_bandwidth_status(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthStatus>())
 {
     auto_bandwidth_config->parent = this;
-    children["auto-bandwidth-config"] = auto_bandwidth_config;
 
     auto_bandwidth_oper->parent = this;
-    children["auto-bandwidth-oper"] = auto_bandwidth_oper;
 
     auto_bandwidth_status->parent = this;
-    children["auto-bandwidth-status"] = auto_bandwidth_status;
 
     yang_name = "p2p-info"; yang_parent_name = "tunnel-head";
 }
@@ -6483,7 +5756,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::get_segment
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6507,87 +5780,52 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto-bandwidth-config")
     {
-        if(auto_bandwidth_config != nullptr)
-        {
-            children["auto-bandwidth-config"] = auto_bandwidth_config;
-        }
-        else
+        if(auto_bandwidth_config == nullptr)
         {
             auto_bandwidth_config = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthConfig>();
-            auto_bandwidth_config->parent = this;
-            children["auto-bandwidth-config"] = auto_bandwidth_config;
         }
-        return children.at("auto-bandwidth-config");
+        return auto_bandwidth_config;
     }
 
     if(child_yang_name == "auto-bandwidth-oper")
     {
-        if(auto_bandwidth_oper != nullptr)
-        {
-            children["auto-bandwidth-oper"] = auto_bandwidth_oper;
-        }
-        else
+        if(auto_bandwidth_oper == nullptr)
         {
             auto_bandwidth_oper = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthOper>();
-            auto_bandwidth_oper->parent = this;
-            children["auto-bandwidth-oper"] = auto_bandwidth_oper;
         }
-        return children.at("auto-bandwidth-oper");
+        return auto_bandwidth_oper;
     }
 
     if(child_yang_name == "auto-bandwidth-status")
     {
-        if(auto_bandwidth_status != nullptr)
-        {
-            children["auto-bandwidth-status"] = auto_bandwidth_status;
-        }
-        else
+        if(auto_bandwidth_status == nullptr)
         {
             auto_bandwidth_status = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthStatus>();
-            auto_bandwidth_status->parent = this;
-            children["auto-bandwidth-status"] = auto_bandwidth_status;
         }
-        return children.at("auto-bandwidth-status");
+        return auto_bandwidth_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::get_children() const
 {
-    if(children.find("auto-bandwidth-config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_bandwidth_config != nullptr)
     {
-        if(auto_bandwidth_config != nullptr)
-        {
-            children["auto-bandwidth-config"] = auto_bandwidth_config;
-        }
+        children["auto-bandwidth-config"] = auto_bandwidth_config;
     }
 
-    if(children.find("auto-bandwidth-oper") == children.end())
+    if(auto_bandwidth_oper != nullptr)
     {
-        if(auto_bandwidth_oper != nullptr)
-        {
-            children["auto-bandwidth-oper"] = auto_bandwidth_oper;
-        }
+        children["auto-bandwidth-oper"] = auto_bandwidth_oper;
     }
 
-    if(children.find("auto-bandwidth-status") == children.end())
+    if(auto_bandwidth_status != nullptr)
     {
-        if(auto_bandwidth_status != nullptr)
-        {
-            children["auto-bandwidth-status"] = auto_bandwidth_status;
-        }
+        children["auto-bandwidth-status"] = auto_bandwidth_status;
     }
 
     return children;
@@ -6635,7 +5873,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwid
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthStatus::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6660,20 +5898,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6756,7 +5986,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwid
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthConfig::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6792,20 +6022,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthConfig::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6941,7 +6163,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwid
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthOper::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthOper::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6980,20 +6202,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthOper::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::P2PInfo::AutoBandwidthOper::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7080,37 +6294,26 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::History()
 	,standby_setup(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup>())
 {
     current_setup->parent = this;
-    children["current-setup"] = current_setup;
 
     gmpls_other_protect_setup->parent = this;
-    children["gmpls-other-protect-setup"] = gmpls_other_protect_setup;
 
     gmpls_other_setup->parent = this;
-    children["gmpls-other-setup"] = gmpls_other_setup;
 
     gmpls_path_protect_setup->parent = this;
-    children["gmpls-path-protect-setup"] = gmpls_path_protect_setup;
 
     last_re_opt_fail->parent = this;
-    children["last-re-opt-fail"] = last_re_opt_fail;
 
     last_stdby_re_opt_fail->parent = this;
-    children["last-stdby-re-opt-fail"] = last_stdby_re_opt_fail;
 
     previous_gmpls_path_protect_setup->parent = this;
-    children["previous-gmpls-path-protect-setup"] = previous_gmpls_path_protect_setup;
 
     previous_setup->parent = this;
-    children["previous-setup"] = previous_setup;
 
     reopt_setup->parent = this;
-    children["reopt-setup"] = reopt_setup;
 
     standby_reopt_setup->parent = this;
-    children["standby-reopt-setup"] = standby_reopt_setup;
 
     standby_setup->parent = this;
-    children["standby-setup"] = standby_setup;
 
     yang_name = "history"; yang_parent_name = "tunnel-head";
 }
@@ -7159,7 +6362,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::get_segment
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7182,271 +6385,164 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-setup")
     {
-        if(current_setup != nullptr)
-        {
-            children["current-setup"] = current_setup;
-        }
-        else
+        if(current_setup == nullptr)
         {
             current_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup>();
-            current_setup->parent = this;
-            children["current-setup"] = current_setup;
         }
-        return children.at("current-setup");
+        return current_setup;
     }
 
     if(child_yang_name == "gmpls-other-protect-setup")
     {
-        if(gmpls_other_protect_setup != nullptr)
-        {
-            children["gmpls-other-protect-setup"] = gmpls_other_protect_setup;
-        }
-        else
+        if(gmpls_other_protect_setup == nullptr)
         {
             gmpls_other_protect_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherProtectSetup>();
-            gmpls_other_protect_setup->parent = this;
-            children["gmpls-other-protect-setup"] = gmpls_other_protect_setup;
         }
-        return children.at("gmpls-other-protect-setup");
+        return gmpls_other_protect_setup;
     }
 
     if(child_yang_name == "gmpls-other-setup")
     {
-        if(gmpls_other_setup != nullptr)
-        {
-            children["gmpls-other-setup"] = gmpls_other_setup;
-        }
-        else
+        if(gmpls_other_setup == nullptr)
         {
             gmpls_other_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherSetup>();
-            gmpls_other_setup->parent = this;
-            children["gmpls-other-setup"] = gmpls_other_setup;
         }
-        return children.at("gmpls-other-setup");
+        return gmpls_other_setup;
     }
 
     if(child_yang_name == "gmpls-path-protect-setup")
     {
-        if(gmpls_path_protect_setup != nullptr)
-        {
-            children["gmpls-path-protect-setup"] = gmpls_path_protect_setup;
-        }
-        else
+        if(gmpls_path_protect_setup == nullptr)
         {
             gmpls_path_protect_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathProtectSetup>();
-            gmpls_path_protect_setup->parent = this;
-            children["gmpls-path-protect-setup"] = gmpls_path_protect_setup;
         }
-        return children.at("gmpls-path-protect-setup");
+        return gmpls_path_protect_setup;
     }
 
     if(child_yang_name == "last-re-opt-fail")
     {
-        if(last_re_opt_fail != nullptr)
-        {
-            children["last-re-opt-fail"] = last_re_opt_fail;
-        }
-        else
+        if(last_re_opt_fail == nullptr)
         {
             last_re_opt_fail = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFail>();
-            last_re_opt_fail->parent = this;
-            children["last-re-opt-fail"] = last_re_opt_fail;
         }
-        return children.at("last-re-opt-fail");
+        return last_re_opt_fail;
     }
 
     if(child_yang_name == "last-stdby-re-opt-fail")
     {
-        if(last_stdby_re_opt_fail != nullptr)
-        {
-            children["last-stdby-re-opt-fail"] = last_stdby_re_opt_fail;
-        }
-        else
+        if(last_stdby_re_opt_fail == nullptr)
         {
             last_stdby_re_opt_fail = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyReOptFail>();
-            last_stdby_re_opt_fail->parent = this;
-            children["last-stdby-re-opt-fail"] = last_stdby_re_opt_fail;
         }
-        return children.at("last-stdby-re-opt-fail");
+        return last_stdby_re_opt_fail;
     }
 
     if(child_yang_name == "previous-gmpls-path-protect-setup")
     {
-        if(previous_gmpls_path_protect_setup != nullptr)
-        {
-            children["previous-gmpls-path-protect-setup"] = previous_gmpls_path_protect_setup;
-        }
-        else
+        if(previous_gmpls_path_protect_setup == nullptr)
         {
             previous_gmpls_path_protect_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmplsPathProtectSetup>();
-            previous_gmpls_path_protect_setup->parent = this;
-            children["previous-gmpls-path-protect-setup"] = previous_gmpls_path_protect_setup;
         }
-        return children.at("previous-gmpls-path-protect-setup");
+        return previous_gmpls_path_protect_setup;
     }
 
     if(child_yang_name == "previous-setup")
     {
-        if(previous_setup != nullptr)
-        {
-            children["previous-setup"] = previous_setup;
-        }
-        else
+        if(previous_setup == nullptr)
         {
             previous_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSetup>();
-            previous_setup->parent = this;
-            children["previous-setup"] = previous_setup;
         }
-        return children.at("previous-setup");
+        return previous_setup;
     }
 
     if(child_yang_name == "reopt-setup")
     {
-        if(reopt_setup != nullptr)
-        {
-            children["reopt-setup"] = reopt_setup;
-        }
-        else
+        if(reopt_setup == nullptr)
         {
             reopt_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup>();
-            reopt_setup->parent = this;
-            children["reopt-setup"] = reopt_setup;
         }
-        return children.at("reopt-setup");
+        return reopt_setup;
     }
 
     if(child_yang_name == "standby-reopt-setup")
     {
-        if(standby_reopt_setup != nullptr)
-        {
-            children["standby-reopt-setup"] = standby_reopt_setup;
-        }
-        else
+        if(standby_reopt_setup == nullptr)
         {
             standby_reopt_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup>();
-            standby_reopt_setup->parent = this;
-            children["standby-reopt-setup"] = standby_reopt_setup;
         }
-        return children.at("standby-reopt-setup");
+        return standby_reopt_setup;
     }
 
     if(child_yang_name == "standby-setup")
     {
-        if(standby_setup != nullptr)
-        {
-            children["standby-setup"] = standby_setup;
-        }
-        else
+        if(standby_setup == nullptr)
         {
             standby_setup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup>();
-            standby_setup->parent = this;
-            children["standby-setup"] = standby_setup;
         }
-        return children.at("standby-setup");
+        return standby_setup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::get_children() const
 {
-    if(children.find("current-setup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_setup != nullptr)
     {
-        if(current_setup != nullptr)
-        {
-            children["current-setup"] = current_setup;
-        }
+        children["current-setup"] = current_setup;
     }
 
-    if(children.find("gmpls-other-protect-setup") == children.end())
+    if(gmpls_other_protect_setup != nullptr)
     {
-        if(gmpls_other_protect_setup != nullptr)
-        {
-            children["gmpls-other-protect-setup"] = gmpls_other_protect_setup;
-        }
+        children["gmpls-other-protect-setup"] = gmpls_other_protect_setup;
     }
 
-    if(children.find("gmpls-other-setup") == children.end())
+    if(gmpls_other_setup != nullptr)
     {
-        if(gmpls_other_setup != nullptr)
-        {
-            children["gmpls-other-setup"] = gmpls_other_setup;
-        }
+        children["gmpls-other-setup"] = gmpls_other_setup;
     }
 
-    if(children.find("gmpls-path-protect-setup") == children.end())
+    if(gmpls_path_protect_setup != nullptr)
     {
-        if(gmpls_path_protect_setup != nullptr)
-        {
-            children["gmpls-path-protect-setup"] = gmpls_path_protect_setup;
-        }
+        children["gmpls-path-protect-setup"] = gmpls_path_protect_setup;
     }
 
-    if(children.find("last-re-opt-fail") == children.end())
+    if(last_re_opt_fail != nullptr)
     {
-        if(last_re_opt_fail != nullptr)
-        {
-            children["last-re-opt-fail"] = last_re_opt_fail;
-        }
+        children["last-re-opt-fail"] = last_re_opt_fail;
     }
 
-    if(children.find("last-stdby-re-opt-fail") == children.end())
+    if(last_stdby_re_opt_fail != nullptr)
     {
-        if(last_stdby_re_opt_fail != nullptr)
-        {
-            children["last-stdby-re-opt-fail"] = last_stdby_re_opt_fail;
-        }
+        children["last-stdby-re-opt-fail"] = last_stdby_re_opt_fail;
     }
 
-    if(children.find("previous-gmpls-path-protect-setup") == children.end())
+    if(previous_gmpls_path_protect_setup != nullptr)
     {
-        if(previous_gmpls_path_protect_setup != nullptr)
-        {
-            children["previous-gmpls-path-protect-setup"] = previous_gmpls_path_protect_setup;
-        }
+        children["previous-gmpls-path-protect-setup"] = previous_gmpls_path_protect_setup;
     }
 
-    if(children.find("previous-setup") == children.end())
+    if(previous_setup != nullptr)
     {
-        if(previous_setup != nullptr)
-        {
-            children["previous-setup"] = previous_setup;
-        }
+        children["previous-setup"] = previous_setup;
     }
 
-    if(children.find("reopt-setup") == children.end())
+    if(reopt_setup != nullptr)
     {
-        if(reopt_setup != nullptr)
-        {
-            children["reopt-setup"] = reopt_setup;
-        }
+        children["reopt-setup"] = reopt_setup;
     }
 
-    if(children.find("standby-reopt-setup") == children.end())
+    if(standby_reopt_setup != nullptr)
     {
-        if(standby_reopt_setup != nullptr)
-        {
-            children["standby-reopt-setup"] = standby_reopt_setup;
-        }
+        children["standby-reopt-setup"] = standby_reopt_setup;
     }
 
-    if(children.find("standby-setup") == children.end())
+    if(standby_setup != nullptr)
     {
-        if(standby_setup != nullptr)
-        {
-            children["standby-setup"] = standby_setup;
-        }
+        children["standby-setup"] = standby_setup;
     }
 
     return children;
@@ -7465,7 +6561,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::CurrentSe
     connected_uptimes(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes>())
 {
     connected_uptimes->parent = this;
-    children["connected-uptimes"] = connected_uptimes;
 
     yang_name = "current-setup"; yang_parent_name = "history";
 }
@@ -7500,7 +6595,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetu
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7526,41 +6621,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "connected-uptimes")
     {
-        if(connected_uptimes != nullptr)
-        {
-            children["connected-uptimes"] = connected_uptimes;
-        }
-        else
+        if(connected_uptimes == nullptr)
         {
             connected_uptimes = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes>();
-            connected_uptimes->parent = this;
-            children["connected-uptimes"] = connected_uptimes;
         }
-        return children.at("connected-uptimes");
+        return connected_uptimes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::get_children() const
 {
-    if(children.find("connected-uptimes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(connected_uptimes != nullptr)
     {
-        if(connected_uptimes != nullptr)
-        {
-            children["connected-uptimes"] = connected_uptimes;
-        }
+        children["connected-uptimes"] = connected_uptimes;
     }
 
     return children;
@@ -7616,7 +6694,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetu
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7641,20 +6719,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7707,7 +6777,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7733,20 +6803,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7803,7 +6865,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathPr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathProtectSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathProtectSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7829,20 +6891,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathPro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathProtectSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathProtectSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsPathProtectSetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7902,7 +6956,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSet
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7929,20 +6983,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSetu
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousSetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8006,7 +7052,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmp
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmplsPathProtectSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmplsPathProtectSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8033,20 +7079,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmpl
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmplsPathProtectSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmplsPathProtectSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::PreviousGmplsPathProtectSetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8104,7 +7142,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherS
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8129,20 +7167,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherSe
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherSetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8192,7 +7222,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherP
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherProtectSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherProtectSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8217,20 +7247,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherPr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherProtectSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherProtectSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherProtectSetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8280,7 +7302,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetu
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8305,20 +7327,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8371,7 +7385,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReop
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8397,20 +7411,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReopt
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8467,7 +7473,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFa
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8493,20 +7499,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFai
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastReOptFail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8563,7 +7561,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyRe
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyReOptFail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyReOptFail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8589,20 +7587,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyReO
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyReOptFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyReOptFail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::History::LastStdbyReOptFail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8639,7 +7629,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::PathProtection()
     switchover(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switchover>())
 {
     switchover->parent = this;
-    children["switchover"] = switchover;
 
     yang_name = "path-protection"; yang_parent_name = "tunnel-head";
 }
@@ -8690,7 +7679,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::get_
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8724,41 +7713,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::get_e
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "switchover")
     {
-        if(switchover != nullptr)
-        {
-            children["switchover"] = switchover;
-        }
-        else
+        if(switchover == nullptr)
         {
             switchover = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switchover>();
-            switchover->parent = this;
-            children["switchover"] = switchover;
         }
-        return children.at("switchover");
+        return switchover;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::get_children() const
 {
-    if(children.find("switchover") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(switchover != nullptr)
     {
-        if(switchover != nullptr)
-        {
-            children["switchover"] = switchover;
-        }
+        children["switchover"] = switchover;
     }
 
     return children;
@@ -8864,7 +7836,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Swit
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switchover::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switchover::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8895,20 +7867,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switc
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switchover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switchover::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PathProtection::Switchover::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8965,7 +7929,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::AutoBackup()
     weighted_srlg_info(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo>())
 {
     weighted_srlg_info->parent = this;
-    children["weighted-srlg-info"] = weighted_srlg_info;
 
     yang_name = "auto-backup"; yang_parent_name = "tunnel-head";
 }
@@ -9026,7 +7989,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::get_segm
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9060,15 +8023,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::get_entit
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "iep")
     {
         for(auto const & c : iep)
@@ -9076,51 +8030,38 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBack
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep>();
         c->parent = this;
-        iep.push_back(std::move(c));
-        children[segment_path] = iep.back();
-        return children.at(segment_path);
+        iep.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "weighted-srlg-info")
     {
-        if(weighted_srlg_info != nullptr)
-        {
-            children["weighted-srlg-info"] = weighted_srlg_info;
-        }
-        else
+        if(weighted_srlg_info == nullptr)
         {
             weighted_srlg_info = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo>();
-            weighted_srlg_info->parent = this;
-            children["weighted-srlg-info"] = weighted_srlg_info;
         }
-        return children.at("weighted-srlg-info");
+        return weighted_srlg_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : iep)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("weighted-srlg-info") == children.end())
+    if(weighted_srlg_info != nullptr)
     {
-        if(weighted_srlg_info != nullptr)
-        {
-            children["weighted-srlg-info"] = weighted_srlg_info;
-        }
+        children["weighted-srlg-info"] = weighted_srlg_info;
     }
 
     return children;
@@ -9222,7 +8163,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Weighted
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9245,15 +8186,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protected-interface-srlg")
     {
         for(auto const & c : protected_interface_srlg)
@@ -9261,15 +8193,13 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBack
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg>();
         c->parent = this;
-        protected_interface_srlg.push_back(std::move(c));
-        children[segment_path] = protected_interface_srlg.back();
-        return children.at(segment_path);
+        protected_interface_srlg.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "weighted-srlg-hop")
@@ -9279,36 +8209,29 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBack
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop>();
         c->parent = this;
-        weighted_srlg_hop.push_back(std::move(c));
-        children[segment_path] = weighted_srlg_hop.back();
-        return children.at(segment_path);
+        weighted_srlg_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protected_interface_srlg)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : weighted_srlg_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9355,7 +8278,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Weighted
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9381,20 +8304,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::ProtectedInterfaceSrlg::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9463,7 +8378,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Weighted
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9491,20 +8406,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedS
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::WeightedSrlgInfo::WeightedSrlgHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9569,7 +8476,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::get
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9593,15 +8500,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::get_
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "iep-hop")
     {
         for(auto const & c : iep_hop)
@@ -9609,28 +8507,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBack
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::IepHop>();
         c->parent = this;
-        iep_hop.push_back(std::move(c));
-        children[segment_path] = iep_hop.back();
-        return children.at(segment_path);
+        iep_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : iep_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9681,7 +8575,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::Iep
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::IepHop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::IepHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9707,20 +8601,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::IepH
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::IepHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::IepHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoBackup::Iep::IepHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9783,7 +8669,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoMesh::get_segmen
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoMesh::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoMesh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9811,20 +8697,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoMesh::get_entity_
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoMesh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoMesh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoMesh::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9901,7 +8779,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoPcc::get_segment
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoPcc::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoPcc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9931,20 +8809,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoPcc::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoPcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoPcc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::AutoPcc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10020,7 +8890,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PceDelegation::get_s
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PceDelegation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PceDelegation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10047,20 +8917,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PceDelegation::get_en
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PceDelegation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PceDelegation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::PceDelegation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10093,7 +8955,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemption()
     soft_preemption_counters(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionCounters>())
 {
     soft_preemption_counters->parent = this;
-    children["soft-preemption-counters"] = soft_preemption_counters;
 
     yang_name = "soft-preemption"; yang_parent_name = "tunnel-head";
 }
@@ -10138,7 +8999,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::get_
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10164,28 +9025,13 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::get_e
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "soft-preemption-counters")
     {
-        if(soft_preemption_counters != nullptr)
-        {
-            children["soft-preemption-counters"] = soft_preemption_counters;
-        }
-        else
+        if(soft_preemption_counters == nullptr)
         {
             soft_preemption_counters = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionCounters>();
-            soft_preemption_counters->parent = this;
-            children["soft-preemption-counters"] = soft_preemption_counters;
         }
-        return children.at("soft-preemption-counters");
+        return soft_preemption_counters;
     }
 
     if(child_yang_name == "soft-preemption-path-error")
@@ -10195,36 +9041,29 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPree
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionPathError>();
         c->parent = this;
-        soft_preemption_path_error.push_back(std::move(c));
-        children[segment_path] = soft_preemption_path_error.back();
-        return children.at(segment_path);
+        soft_preemption_path_error.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::get_children() const
 {
-    if(children.find("soft-preemption-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(soft_preemption_counters != nullptr)
     {
-        if(soft_preemption_counters != nullptr)
-        {
-            children["soft-preemption-counters"] = soft_preemption_counters;
-        }
+        children["soft-preemption-counters"] = soft_preemption_counters;
     }
 
     for (auto const & c : soft_preemption_path_error)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10298,7 +9137,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::Soft
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionCounters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10329,20 +9168,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftP
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10416,7 +9247,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::Soft
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionPathError::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionPathError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10441,20 +9272,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftP
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionPathError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionPathError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::SoftPreemption::SoftPreemptionPathError::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10534,7 +9357,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::WdmUnitunnel::get_se
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::WdmUnitunnel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::WdmUnitunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10569,20 +9392,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::WdmUnitunnel::get_ent
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::WdmUnitunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::WdmUnitunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::WdmUnitunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10647,13 +9462,10 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::TransportTu
 	,static_uni(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::StaticUni>())
 {
     egress_static_uni->parent = this;
-    children["egress-static-uni"] = egress_static_uni;
 
     otn->parent = this;
-    children["otn"] = otn;
 
     static_uni->parent = this;
-    children["static-uni"] = static_uni;
 
     yang_name = "transport-tunnel-info"; yang_parent_name = "tunnel-head";
 }
@@ -10708,7 +9520,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10732,15 +9544,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "diversity-info")
     {
         for(auto const & c : diversity_info)
@@ -10748,30 +9551,22 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Transpor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::DiversityInfo>();
         c->parent = this;
-        diversity_info.push_back(std::move(c));
-        children[segment_path] = diversity_info.back();
-        return children.at(segment_path);
+        diversity_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "egress-static-uni")
     {
-        if(egress_static_uni != nullptr)
-        {
-            children["egress-static-uni"] = egress_static_uni;
-        }
-        else
+        if(egress_static_uni == nullptr)
         {
             egress_static_uni = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni>();
-            egress_static_uni->parent = this;
-            children["egress-static-uni"] = egress_static_uni;
         }
-        return children.at("egress-static-uni");
+        return egress_static_uni;
     }
 
     if(child_yang_name == "homepath-ero")
@@ -10781,90 +9576,62 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Transpor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro>();
         c->parent = this;
-        homepath_ero.push_back(std::move(c));
-        children[segment_path] = homepath_ero.back();
-        return children.at(segment_path);
+        homepath_ero.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "otn")
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
-        else
+        if(otn == nullptr)
         {
             otn = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn>();
-            otn->parent = this;
-            children["otn"] = otn;
         }
-        return children.at("otn");
+        return otn;
     }
 
     if(child_yang_name == "static-uni")
     {
-        if(static_uni != nullptr)
-        {
-            children["static-uni"] = static_uni;
-        }
-        else
+        if(static_uni == nullptr)
         {
             static_uni = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::StaticUni>();
-            static_uni->parent = this;
-            children["static-uni"] = static_uni;
         }
-        return children.at("static-uni");
+        return static_uni;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : diversity_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("egress-static-uni") == children.end())
+    if(egress_static_uni != nullptr)
     {
-        if(egress_static_uni != nullptr)
-        {
-            children["egress-static-uni"] = egress_static_uni;
-        }
+        children["egress-static-uni"] = egress_static_uni;
     }
 
     for (auto const & c : homepath_ero)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("otn") == children.end())
+    if(otn != nullptr)
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
+        children["otn"] = otn;
     }
 
-    if(children.find("static-uni") == children.end())
+    if(static_uni != nullptr)
     {
-        if(static_uni != nullptr)
-        {
-            children["static-uni"] = static_uni;
-        }
+        children["static-uni"] = static_uni;
     }
 
     return children;
@@ -10883,7 +9650,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::Otn()
     bandwidth_cfg(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg>())
 {
     bandwidth_cfg->parent = this;
-    children["bandwidth-cfg"] = bandwidth_cfg;
 
     yang_name = "otn"; yang_parent_name = "transport-tunnel-info";
 }
@@ -10912,7 +9678,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10935,41 +9701,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth-cfg")
     {
-        if(bandwidth_cfg != nullptr)
-        {
-            children["bandwidth-cfg"] = bandwidth_cfg;
-        }
-        else
+        if(bandwidth_cfg == nullptr)
         {
             bandwidth_cfg = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg>();
-            bandwidth_cfg->parent = this;
-            children["bandwidth-cfg"] = bandwidth_cfg;
         }
-        return children.at("bandwidth-cfg");
+        return bandwidth_cfg;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::get_children() const
 {
-    if(children.find("bandwidth-cfg") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth_cfg != nullptr)
     {
-        if(bandwidth_cfg != nullptr)
-        {
-            children["bandwidth-cfg"] = bandwidth_cfg;
-        }
+        children["bandwidth-cfg"] = bandwidth_cfg;
     }
 
     return children;
@@ -10988,13 +9737,10 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::Bandwi
 	,odu_flex_gfp_f_res(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes>())
 {
     odu_flex_cbr->parent = this;
-    children["odu-flex-cbr"] = odu_flex_cbr;
 
     odu_flex_gfp_f_non_res->parent = this;
-    children["odu-flex-gfp-f-non-res"] = odu_flex_gfp_f_non_res;
 
     odu_flex_gfp_f_res->parent = this;
-    children["odu-flex-gfp-f-res"] = odu_flex_gfp_f_res;
 
     yang_name = "bandwidth-cfg"; yang_parent_name = "otn";
 }
@@ -11029,7 +9775,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11053,87 +9799,52 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-flex-cbr")
     {
-        if(odu_flex_cbr != nullptr)
-        {
-            children["odu-flex-cbr"] = odu_flex_cbr;
-        }
-        else
+        if(odu_flex_cbr == nullptr)
         {
             odu_flex_cbr = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr>();
-            odu_flex_cbr->parent = this;
-            children["odu-flex-cbr"] = odu_flex_cbr;
         }
-        return children.at("odu-flex-cbr");
+        return odu_flex_cbr;
     }
 
     if(child_yang_name == "odu-flex-gfp-f-non-res")
     {
-        if(odu_flex_gfp_f_non_res != nullptr)
-        {
-            children["odu-flex-gfp-f-non-res"] = odu_flex_gfp_f_non_res;
-        }
-        else
+        if(odu_flex_gfp_f_non_res == nullptr)
         {
             odu_flex_gfp_f_non_res = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes>();
-            odu_flex_gfp_f_non_res->parent = this;
-            children["odu-flex-gfp-f-non-res"] = odu_flex_gfp_f_non_res;
         }
-        return children.at("odu-flex-gfp-f-non-res");
+        return odu_flex_gfp_f_non_res;
     }
 
     if(child_yang_name == "odu-flex-gfp-f-res")
     {
-        if(odu_flex_gfp_f_res != nullptr)
-        {
-            children["odu-flex-gfp-f-res"] = odu_flex_gfp_f_res;
-        }
-        else
+        if(odu_flex_gfp_f_res == nullptr)
         {
             odu_flex_gfp_f_res = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes>();
-            odu_flex_gfp_f_res->parent = this;
-            children["odu-flex-gfp-f-res"] = odu_flex_gfp_f_res;
         }
-        return children.at("odu-flex-gfp-f-res");
+        return odu_flex_gfp_f_res;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::get_children() const
 {
-    if(children.find("odu-flex-cbr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(odu_flex_cbr != nullptr)
     {
-        if(odu_flex_cbr != nullptr)
-        {
-            children["odu-flex-cbr"] = odu_flex_cbr;
-        }
+        children["odu-flex-cbr"] = odu_flex_cbr;
     }
 
-    if(children.find("odu-flex-gfp-f-non-res") == children.end())
+    if(odu_flex_gfp_f_non_res != nullptr)
     {
-        if(odu_flex_gfp_f_non_res != nullptr)
-        {
-            children["odu-flex-gfp-f-non-res"] = odu_flex_gfp_f_non_res;
-        }
+        children["odu-flex-gfp-f-non-res"] = odu_flex_gfp_f_non_res;
     }
 
-    if(children.find("odu-flex-gfp-f-res") == children.end())
+    if(odu_flex_gfp_f_res != nullptr)
     {
-        if(odu_flex_gfp_f_res != nullptr)
-        {
-            children["odu-flex-gfp-f-res"] = odu_flex_gfp_f_res;
-        }
+        children["odu-flex-gfp-f-res"] = odu_flex_gfp_f_res;
     }
 
     return children;
@@ -11181,7 +9892,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11206,20 +9917,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexCbr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11266,7 +9969,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11290,20 +9993,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFRes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11346,7 +10041,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11370,20 +10065,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::Otn::BandwidthCfg::OduFlexGfpFNonRes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11456,7 +10143,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::StaticUni::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::StaticUni::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11490,20 +10177,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::StaticUni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::StaticUni::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::StaticUni::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11564,10 +10243,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStati
 	,term_egress_port(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort>())
 {
     egress_port->parent = this;
-    children["egress-port"] = egress_port;
 
     term_egress_port->parent = this;
-    children["term-egress-port"] = term_egress_port;
 
     yang_name = "egress-static-uni"; yang_parent_name = "transport-tunnel-info";
 }
@@ -11602,7 +10279,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11627,64 +10304,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "egress-port")
     {
-        if(egress_port != nullptr)
-        {
-            children["egress-port"] = egress_port;
-        }
-        else
+        if(egress_port == nullptr)
         {
             egress_port = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort>();
-            egress_port->parent = this;
-            children["egress-port"] = egress_port;
         }
-        return children.at("egress-port");
+        return egress_port;
     }
 
     if(child_yang_name == "term-egress-port")
     {
-        if(term_egress_port != nullptr)
-        {
-            children["term-egress-port"] = term_egress_port;
-        }
-        else
+        if(term_egress_port == nullptr)
         {
             term_egress_port = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort>();
-            term_egress_port->parent = this;
-            children["term-egress-port"] = term_egress_port;
         }
-        return children.at("term-egress-port");
+        return term_egress_port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::get_children() const
 {
-    if(children.find("egress-port") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(egress_port != nullptr)
     {
-        if(egress_port != nullptr)
-        {
-            children["egress-port"] = egress_port;
-        }
+        children["egress-port"] = egress_port;
     }
 
-    if(children.find("term-egress-port") == children.end())
+    if(term_egress_port != nullptr)
     {
-        if(term_egress_port != nullptr)
-        {
-            children["term-egress-port"] = term_egress_port;
-        }
+        children["term-egress-port"] = term_egress_port;
     }
 
     return children;
@@ -11707,7 +10358,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStati
     te_addr(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr>())
 {
     te_addr->parent = this;
-    children["te-addr"] = te_addr;
 
     yang_name = "egress-port"; yang_parent_name = "egress-static-uni";
 }
@@ -11736,7 +10386,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11759,41 +10409,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te-addr")
     {
-        if(te_addr != nullptr)
-        {
-            children["te-addr"] = te_addr;
-        }
-        else
+        if(te_addr == nullptr)
         {
             te_addr = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr>();
-            te_addr->parent = this;
-            children["te-addr"] = te_addr;
         }
-        return children.at("te-addr");
+        return te_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::get_children() const
 {
-    if(children.find("te-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(te_addr != nullptr)
     {
-        if(te_addr != nullptr)
-        {
-            children["te-addr"] = te_addr;
-        }
+        children["te-addr"] = te_addr;
     }
 
     return children;
@@ -11811,7 +10444,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStati
     ipv4_unnumbered_address(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress>())
 {
     ipv4_unnumbered_address->parent = this;
-    children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
 
     yang_name = "te-addr"; yang_parent_name = "egress-port";
 }
@@ -11844,7 +10476,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11869,41 +10501,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-unnumbered-address")
     {
-        if(ipv4_unnumbered_address != nullptr)
-        {
-            children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
-        }
-        else
+        if(ipv4_unnumbered_address == nullptr)
         {
             ipv4_unnumbered_address = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress>();
-            ipv4_unnumbered_address->parent = this;
-            children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
         }
-        return children.at("ipv4-unnumbered-address");
+        return ipv4_unnumbered_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::get_children() const
 {
-    if(children.find("ipv4-unnumbered-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_unnumbered_address != nullptr)
     {
-        if(ipv4_unnumbered_address != nullptr)
-        {
-            children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
-        }
+        children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
     }
 
     return children;
@@ -11955,7 +10570,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11980,20 +10595,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::EgressPort::TeAddr::Ipv4UnnumberedAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12014,7 +10621,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStati
     te_addr(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr>())
 {
     te_addr->parent = this;
-    children["te-addr"] = te_addr;
 
     yang_name = "term-egress-port"; yang_parent_name = "egress-static-uni";
 }
@@ -12043,7 +10649,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12066,41 +10672,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te-addr")
     {
-        if(te_addr != nullptr)
-        {
-            children["te-addr"] = te_addr;
-        }
-        else
+        if(te_addr == nullptr)
         {
             te_addr = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr>();
-            te_addr->parent = this;
-            children["te-addr"] = te_addr;
         }
-        return children.at("te-addr");
+        return te_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::get_children() const
 {
-    if(children.find("te-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(te_addr != nullptr)
     {
-        if(te_addr != nullptr)
-        {
-            children["te-addr"] = te_addr;
-        }
+        children["te-addr"] = te_addr;
     }
 
     return children;
@@ -12118,7 +10707,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStati
     ipv4_unnumbered_address(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress>())
 {
     ipv4_unnumbered_address->parent = this;
-    children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
 
     yang_name = "te-addr"; yang_parent_name = "term-egress-port";
 }
@@ -12151,7 +10739,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12176,41 +10764,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-unnumbered-address")
     {
-        if(ipv4_unnumbered_address != nullptr)
-        {
-            children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
-        }
-        else
+        if(ipv4_unnumbered_address == nullptr)
         {
             ipv4_unnumbered_address = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress>();
-            ipv4_unnumbered_address->parent = this;
-            children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
         }
-        return children.at("ipv4-unnumbered-address");
+        return ipv4_unnumbered_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::get_children() const
 {
-    if(children.find("ipv4-unnumbered-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_unnumbered_address != nullptr)
     {
-        if(ipv4_unnumbered_address != nullptr)
-        {
-            children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
-        }
+        children["ipv4-unnumbered-address"] = ipv4_unnumbered_address;
     }
 
     return children;
@@ -12262,7 +10833,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12287,20 +10858,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::EgressStaticUni::TermEgressPort::TeAddr::Ipv4UnnumberedAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12324,10 +10887,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro
 	,unnumbered_ero_sub_object(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject>())
 {
     ipv4ero_sub_object->parent = this;
-    children["ipv4ero-sub-object"] = ipv4ero_sub_object;
 
     unnumbered_ero_sub_object->parent = this;
-    children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
 
     yang_name = "homepath-ero"; yang_parent_name = "transport-tunnel-info";
 }
@@ -12360,7 +10921,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12384,64 +10945,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4ero-sub-object")
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
-        else
+        if(ipv4ero_sub_object == nullptr)
         {
             ipv4ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject>();
-            ipv4ero_sub_object->parent = this;
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
         }
-        return children.at("ipv4ero-sub-object");
+        return ipv4ero_sub_object;
     }
 
     if(child_yang_name == "unnumbered-ero-sub-object")
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
-        else
+        if(unnumbered_ero_sub_object == nullptr)
         {
             unnumbered_ero_sub_object = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject>();
-            unnumbered_ero_sub_object->parent = this;
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
         }
-        return children.at("unnumbered-ero-sub-object");
+        return unnumbered_ero_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::get_children() const
 {
-    if(children.find("ipv4ero-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
-    if(children.find("unnumbered-ero-sub-object") == children.end())
+    if(unnumbered_ero_sub_object != nullptr)
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
     return children;
@@ -12492,7 +11027,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12518,20 +11053,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::Ipv4EroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12591,7 +11118,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12618,20 +11145,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::HomepathEro::UnnumberedEroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12686,7 +11205,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo:
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::DiversityInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::DiversityInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12710,20 +11229,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::DiversityInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::DiversityInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::TransportTunnelInfo::DiversityInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12747,7 +11258,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::BfdInfo()
     event_counters(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounters>())
 {
     event_counters->parent = this;
-    children["event-counters"] = event_counters;
 
     yang_name = "bfd-info"; yang_parent_name = "tunnel-head";
 }
@@ -12798,7 +11308,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::get_segment
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12827,15 +11337,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dampening-info")
     {
         for(auto const & c : dampening_info)
@@ -12843,51 +11344,38 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningInfo>();
         c->parent = this;
-        dampening_info.push_back(std::move(c));
-        children[segment_path] = dampening_info.back();
-        return children.at(segment_path);
+        dampening_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "event-counters")
     {
-        if(event_counters != nullptr)
-        {
-            children["event-counters"] = event_counters;
-        }
-        else
+        if(event_counters == nullptr)
         {
             event_counters = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounters>();
-            event_counters->parent = this;
-            children["event-counters"] = event_counters;
         }
-        return children.at("event-counters");
+        return event_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dampening_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("event-counters") == children.end())
+    if(event_counters != nullptr)
     {
-        if(event_counters != nullptr)
-        {
-            children["event-counters"] = event_counters;
-        }
+        children["event-counters"] = event_counters;
     }
 
     return children;
@@ -12976,7 +11464,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounte
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13008,20 +11496,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounter
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::EventCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13105,7 +11585,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningIn
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13132,20 +11612,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningInf
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::BfdInfo::DampeningInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13175,10 +11647,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::OtnBidir()
 	,restoration(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration>())
 {
     aps->parent = this;
-    children["aps"] = aps;
 
     restoration->parent = this;
-    children["restoration"] = restoration;
 
     yang_name = "otn-bidir"; yang_parent_name = "tunnel-head";
 }
@@ -13209,7 +11679,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::get_segmen
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13232,64 +11702,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::get_entity_
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aps")
     {
-        if(aps != nullptr)
-        {
-            children["aps"] = aps;
-        }
-        else
+        if(aps == nullptr)
         {
             aps = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps>();
-            aps->parent = this;
-            children["aps"] = aps;
         }
-        return children.at("aps");
+        return aps;
     }
 
     if(child_yang_name == "restoration")
     {
-        if(restoration != nullptr)
-        {
-            children["restoration"] = restoration;
-        }
-        else
+        if(restoration == nullptr)
         {
             restoration = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration>();
-            restoration->parent = this;
-            children["restoration"] = restoration;
         }
-        return children.at("restoration");
+        return restoration;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::get_children() const
 {
-    if(children.find("aps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aps != nullptr)
     {
-        if(aps != nullptr)
-        {
-            children["aps"] = aps;
-        }
+        children["aps"] = aps;
     }
 
-    if(children.find("restoration") == children.end())
+    if(restoration != nullptr)
     {
-        if(restoration != nullptr)
-        {
-            children["restoration"] = restoration;
-        }
+        children["restoration"] = restoration;
     }
 
     return children;
@@ -13307,7 +11751,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::Aps()
     protection_profile(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile>())
 {
     protection_profile->parent = this;
-    children["protection-profile"] = protection_profile;
 
     yang_name = "aps"; yang_parent_name = "otn-bidir";
 }
@@ -13340,7 +11783,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::get_s
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13365,41 +11808,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::get_en
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protection-profile")
     {
-        if(protection_profile != nullptr)
-        {
-            children["protection-profile"] = protection_profile;
-        }
-        else
+        if(protection_profile == nullptr)
         {
             protection_profile = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile>();
-            protection_profile->parent = this;
-            children["protection-profile"] = protection_profile;
         }
-        return children.at("protection-profile");
+        return protection_profile;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::get_children() const
 {
-    if(children.find("protection-profile") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protection_profile != nullptr)
     {
-        if(protection_profile != nullptr)
-        {
-            children["protection-profile"] = protection_profile;
-        }
+        children["protection-profile"] = protection_profile;
     }
 
     return children;
@@ -13431,7 +11857,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile
     revert_schedule(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::RevertSchedule>())
 {
     revert_schedule->parent = this;
-    children["revert-schedule"] = revert_schedule;
 
     yang_name = "protection-profile"; yang_parent_name = "aps";
 }
@@ -13476,7 +11901,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::Prote
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13507,41 +11932,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::Protec
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "revert-schedule")
     {
-        if(revert_schedule != nullptr)
-        {
-            children["revert-schedule"] = revert_schedule;
-        }
-        else
+        if(revert_schedule == nullptr)
         {
             revert_schedule = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::RevertSchedule>();
-            revert_schedule->parent = this;
-            children["revert-schedule"] = revert_schedule;
         }
-        return children.at("revert-schedule");
+        return revert_schedule;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::get_children() const
 {
-    if(children.find("revert-schedule") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(revert_schedule != nullptr)
     {
-        if(revert_schedule != nullptr)
-        {
-            children["revert-schedule"] = revert_schedule;
-        }
+        children["revert-schedule"] = revert_schedule;
     }
 
     return children;
@@ -13626,7 +12034,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::Prote
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::RevertSchedule::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::RevertSchedule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13654,20 +12062,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::Protec
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::RevertSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::RevertSchedule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Aps::ProtectionProfile::RevertSchedule::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13732,7 +12132,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoratio
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13758,20 +12158,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::OtnBidir::Restoration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13802,16 +12194,12 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::Bidir()
 	,reverse_ero_error_standby_reopt(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt>())
 {
     reverse_ero_error_current->parent = this;
-    children["reverse-ero-error-current"] = reverse_ero_error_current;
 
     reverse_ero_error_reopt->parent = this;
-    children["reverse-ero-error-reopt"] = reverse_ero_error_reopt;
 
     reverse_ero_error_standby->parent = this;
-    children["reverse-ero-error-standby"] = reverse_ero_error_standby;
 
     reverse_ero_error_standby_reopt->parent = this;
-    children["reverse-ero-error-standby-reopt"] = reverse_ero_error_standby_reopt;
 
     yang_name = "bidir"; yang_parent_name = "tunnel-head";
 }
@@ -13850,7 +12238,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::get_segment_p
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13875,110 +12263,66 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::get_entity_pat
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reverse-ero-error-current")
     {
-        if(reverse_ero_error_current != nullptr)
-        {
-            children["reverse-ero-error-current"] = reverse_ero_error_current;
-        }
-        else
+        if(reverse_ero_error_current == nullptr)
         {
             reverse_ero_error_current = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent>();
-            reverse_ero_error_current->parent = this;
-            children["reverse-ero-error-current"] = reverse_ero_error_current;
         }
-        return children.at("reverse-ero-error-current");
+        return reverse_ero_error_current;
     }
 
     if(child_yang_name == "reverse-ero-error-reopt")
     {
-        if(reverse_ero_error_reopt != nullptr)
-        {
-            children["reverse-ero-error-reopt"] = reverse_ero_error_reopt;
-        }
-        else
+        if(reverse_ero_error_reopt == nullptr)
         {
             reverse_ero_error_reopt = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt>();
-            reverse_ero_error_reopt->parent = this;
-            children["reverse-ero-error-reopt"] = reverse_ero_error_reopt;
         }
-        return children.at("reverse-ero-error-reopt");
+        return reverse_ero_error_reopt;
     }
 
     if(child_yang_name == "reverse-ero-error-standby")
     {
-        if(reverse_ero_error_standby != nullptr)
-        {
-            children["reverse-ero-error-standby"] = reverse_ero_error_standby;
-        }
-        else
+        if(reverse_ero_error_standby == nullptr)
         {
             reverse_ero_error_standby = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby>();
-            reverse_ero_error_standby->parent = this;
-            children["reverse-ero-error-standby"] = reverse_ero_error_standby;
         }
-        return children.at("reverse-ero-error-standby");
+        return reverse_ero_error_standby;
     }
 
     if(child_yang_name == "reverse-ero-error-standby-reopt")
     {
-        if(reverse_ero_error_standby_reopt != nullptr)
-        {
-            children["reverse-ero-error-standby-reopt"] = reverse_ero_error_standby_reopt;
-        }
-        else
+        if(reverse_ero_error_standby_reopt == nullptr)
         {
             reverse_ero_error_standby_reopt = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt>();
-            reverse_ero_error_standby_reopt->parent = this;
-            children["reverse-ero-error-standby-reopt"] = reverse_ero_error_standby_reopt;
         }
-        return children.at("reverse-ero-error-standby-reopt");
+        return reverse_ero_error_standby_reopt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::get_children() const
 {
-    if(children.find("reverse-ero-error-current") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(reverse_ero_error_current != nullptr)
     {
-        if(reverse_ero_error_current != nullptr)
-        {
-            children["reverse-ero-error-current"] = reverse_ero_error_current;
-        }
+        children["reverse-ero-error-current"] = reverse_ero_error_current;
     }
 
-    if(children.find("reverse-ero-error-reopt") == children.end())
+    if(reverse_ero_error_reopt != nullptr)
     {
-        if(reverse_ero_error_reopt != nullptr)
-        {
-            children["reverse-ero-error-reopt"] = reverse_ero_error_reopt;
-        }
+        children["reverse-ero-error-reopt"] = reverse_ero_error_reopt;
     }
 
-    if(children.find("reverse-ero-error-standby") == children.end())
+    if(reverse_ero_error_standby != nullptr)
     {
-        if(reverse_ero_error_standby != nullptr)
-        {
-            children["reverse-ero-error-standby"] = reverse_ero_error_standby;
-        }
+        children["reverse-ero-error-standby"] = reverse_ero_error_standby;
     }
 
-    if(children.find("reverse-ero-error-standby-reopt") == children.end())
+    if(reverse_ero_error_standby_reopt != nullptr)
     {
-        if(reverse_ero_error_standby_reopt != nullptr)
-        {
-            children["reverse-ero-error-standby-reopt"] = reverse_ero_error_standby_reopt;
-        }
+        children["reverse-ero-error-standby-reopt"] = reverse_ero_error_standby_reopt;
     }
 
     return children;
@@ -14094,7 +12438,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14137,15 +12481,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-calculation-error")
     {
         for(auto const & c : path_calculation_error)
@@ -14153,28 +12488,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::R
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::PathCalculationError>();
         c->parent = this;
-        path_calculation_error.push_back(std::move(c));
-        children[segment_path] = path_calculation_error.back();
-        return children.at(segment_path);
+        path_calculation_error.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_calculation_error)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14301,7 +12632,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::PathCalculationError::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::PathCalculationError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14327,20 +12658,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::PathCalculationError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::PathCalculationError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorCurrent::PathCalculationError::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14458,7 +12781,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14501,15 +12824,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-calculation-error")
     {
         for(auto const & c : path_calculation_error)
@@ -14517,28 +12831,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::R
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::PathCalculationError>();
         c->parent = this;
-        path_calculation_error.push_back(std::move(c));
-        children[segment_path] = path_calculation_error.back();
-        return children.at(segment_path);
+        path_calculation_error.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_calculation_error)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14665,7 +12975,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::PathCalculationError::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::PathCalculationError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14691,20 +13001,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::PathCalculationError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::PathCalculationError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorReopt::PathCalculationError::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14822,7 +13124,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14865,15 +13167,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-calculation-error")
     {
         for(auto const & c : path_calculation_error)
@@ -14881,28 +13174,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::R
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::PathCalculationError>();
         c->parent = this;
-        path_calculation_error.push_back(std::move(c));
-        children[segment_path] = path_calculation_error.back();
-        return children.at(segment_path);
+        path_calculation_error.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_calculation_error)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15029,7 +13318,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::PathCalculationError::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::PathCalculationError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15055,20 +13344,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::PathCalculationError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::PathCalculationError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandby::PathCalculationError::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15186,7 +13467,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15229,15 +13510,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-calculation-error")
     {
         for(auto const & c : path_calculation_error)
@@ -15245,28 +13517,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::R
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError>();
         c->parent = this;
-        path_calculation_error.push_back(std::move(c));
-        children[segment_path] = path_calculation_error.back();
-        return children.at(segment_path);
+        path_calculation_error.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_calculation_error)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15393,7 +13661,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErr
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15419,20 +13687,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErro
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::Bidir::ReverseEroErrorStandbyReopt::PathCalculationError::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15460,7 +13720,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::XroAttributeSet
     attribute_set_union(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion>())
 {
     attribute_set_union->parent = this;
-    children["attribute-set-union"] = attribute_set_union;
 
     yang_name = "xro-attribute-set"; yang_parent_name = "tunnel-head";
 }
@@ -15493,7 +13752,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::get
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15518,41 +13777,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::get_
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attribute-set-union")
     {
-        if(attribute_set_union != nullptr)
-        {
-            children["attribute-set-union"] = attribute_set_union;
-        }
-        else
+        if(attribute_set_union == nullptr)
         {
             attribute_set_union = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion>();
-            attribute_set_union->parent = this;
-            children["attribute-set-union"] = attribute_set_union;
         }
-        return children.at("attribute-set-union");
+        return attribute_set_union;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::get_children() const
 {
-    if(children.find("attribute-set-union") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attribute_set_union != nullptr)
     {
-        if(attribute_set_union != nullptr)
-        {
-            children["attribute-set-union"] = attribute_set_union;
-        }
+        children["attribute-set-union"] = attribute_set_union;
     }
 
     return children;
@@ -15583,25 +13825,18 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
 	,attribute_set_xro(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro>())
 {
     attribute_set_aps_pp->parent = this;
-    children["attribute-set-aps-pp"] = attribute_set_aps_pp;
 
     attribute_set_autobackup->parent = this;
-    children["attribute-set-autobackup"] = attribute_set_autobackup;
 
     attribute_set_automesh->parent = this;
-    children["attribute-set-automesh"] = attribute_set_automesh;
 
     attribute_set_p2mpte->parent = this;
-    children["attribute-set-p2mpte"] = attribute_set_p2mpte;
 
     attribute_set_p2p_te->parent = this;
-    children["attribute-set-p2p-te"] = attribute_set_p2p_te;
 
     attribute_set_path_option->parent = this;
-    children["attribute-set-path-option"] = attribute_set_path_option;
 
     attribute_set_xro->parent = this;
-    children["attribute-set-xro"] = attribute_set_xro;
 
     yang_name = "attribute-set-union"; yang_parent_name = "xro-attribute-set";
 }
@@ -15644,7 +13879,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15668,179 +13903,108 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attribute-set-aps-pp")
     {
-        if(attribute_set_aps_pp != nullptr)
-        {
-            children["attribute-set-aps-pp"] = attribute_set_aps_pp;
-        }
-        else
+        if(attribute_set_aps_pp == nullptr)
         {
             attribute_set_aps_pp = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetApsPp>();
-            attribute_set_aps_pp->parent = this;
-            children["attribute-set-aps-pp"] = attribute_set_aps_pp;
         }
-        return children.at("attribute-set-aps-pp");
+        return attribute_set_aps_pp;
     }
 
     if(child_yang_name == "attribute-set-autobackup")
     {
-        if(attribute_set_autobackup != nullptr)
-        {
-            children["attribute-set-autobackup"] = attribute_set_autobackup;
-        }
-        else
+        if(attribute_set_autobackup == nullptr)
         {
             attribute_set_autobackup = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup>();
-            attribute_set_autobackup->parent = this;
-            children["attribute-set-autobackup"] = attribute_set_autobackup;
         }
-        return children.at("attribute-set-autobackup");
+        return attribute_set_autobackup;
     }
 
     if(child_yang_name == "attribute-set-automesh")
     {
-        if(attribute_set_automesh != nullptr)
-        {
-            children["attribute-set-automesh"] = attribute_set_automesh;
-        }
-        else
+        if(attribute_set_automesh == nullptr)
         {
             attribute_set_automesh = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh>();
-            attribute_set_automesh->parent = this;
-            children["attribute-set-automesh"] = attribute_set_automesh;
         }
-        return children.at("attribute-set-automesh");
+        return attribute_set_automesh;
     }
 
     if(child_yang_name == "attribute-set-p2mpte")
     {
-        if(attribute_set_p2mpte != nullptr)
-        {
-            children["attribute-set-p2mpte"] = attribute_set_p2mpte;
-        }
-        else
+        if(attribute_set_p2mpte == nullptr)
         {
             attribute_set_p2mpte = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte>();
-            attribute_set_p2mpte->parent = this;
-            children["attribute-set-p2mpte"] = attribute_set_p2mpte;
         }
-        return children.at("attribute-set-p2mpte");
+        return attribute_set_p2mpte;
     }
 
     if(child_yang_name == "attribute-set-p2p-te")
     {
-        if(attribute_set_p2p_te != nullptr)
-        {
-            children["attribute-set-p2p-te"] = attribute_set_p2p_te;
-        }
-        else
+        if(attribute_set_p2p_te == nullptr)
         {
             attribute_set_p2p_te = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2PTe>();
-            attribute_set_p2p_te->parent = this;
-            children["attribute-set-p2p-te"] = attribute_set_p2p_te;
         }
-        return children.at("attribute-set-p2p-te");
+        return attribute_set_p2p_te;
     }
 
     if(child_yang_name == "attribute-set-path-option")
     {
-        if(attribute_set_path_option != nullptr)
-        {
-            children["attribute-set-path-option"] = attribute_set_path_option;
-        }
-        else
+        if(attribute_set_path_option == nullptr)
         {
             attribute_set_path_option = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption>();
-            attribute_set_path_option->parent = this;
-            children["attribute-set-path-option"] = attribute_set_path_option;
         }
-        return children.at("attribute-set-path-option");
+        return attribute_set_path_option;
     }
 
     if(child_yang_name == "attribute-set-xro")
     {
-        if(attribute_set_xro != nullptr)
-        {
-            children["attribute-set-xro"] = attribute_set_xro;
-        }
-        else
+        if(attribute_set_xro == nullptr)
         {
             attribute_set_xro = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro>();
-            attribute_set_xro->parent = this;
-            children["attribute-set-xro"] = attribute_set_xro;
         }
-        return children.at("attribute-set-xro");
+        return attribute_set_xro;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::get_children() const
 {
-    if(children.find("attribute-set-aps-pp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attribute_set_aps_pp != nullptr)
     {
-        if(attribute_set_aps_pp != nullptr)
-        {
-            children["attribute-set-aps-pp"] = attribute_set_aps_pp;
-        }
+        children["attribute-set-aps-pp"] = attribute_set_aps_pp;
     }
 
-    if(children.find("attribute-set-autobackup") == children.end())
+    if(attribute_set_autobackup != nullptr)
     {
-        if(attribute_set_autobackup != nullptr)
-        {
-            children["attribute-set-autobackup"] = attribute_set_autobackup;
-        }
+        children["attribute-set-autobackup"] = attribute_set_autobackup;
     }
 
-    if(children.find("attribute-set-automesh") == children.end())
+    if(attribute_set_automesh != nullptr)
     {
-        if(attribute_set_automesh != nullptr)
-        {
-            children["attribute-set-automesh"] = attribute_set_automesh;
-        }
+        children["attribute-set-automesh"] = attribute_set_automesh;
     }
 
-    if(children.find("attribute-set-p2mpte") == children.end())
+    if(attribute_set_p2mpte != nullptr)
     {
-        if(attribute_set_p2mpte != nullptr)
-        {
-            children["attribute-set-p2mpte"] = attribute_set_p2mpte;
-        }
+        children["attribute-set-p2mpte"] = attribute_set_p2mpte;
     }
 
-    if(children.find("attribute-set-p2p-te") == children.end())
+    if(attribute_set_p2p_te != nullptr)
     {
-        if(attribute_set_p2p_te != nullptr)
-        {
-            children["attribute-set-p2p-te"] = attribute_set_p2p_te;
-        }
+        children["attribute-set-p2p-te"] = attribute_set_p2p_te;
     }
 
-    if(children.find("attribute-set-path-option") == children.end())
+    if(attribute_set_path_option != nullptr)
     {
-        if(attribute_set_path_option != nullptr)
-        {
-            children["attribute-set-path-option"] = attribute_set_path_option;
-        }
+        children["attribute-set-path-option"] = attribute_set_path_option;
     }
 
-    if(children.find("attribute-set-xro") == children.end())
+    if(attribute_set_xro != nullptr)
     {
-        if(attribute_set_xro != nullptr)
-        {
-            children["attribute-set-xro"] = attribute_set_xro;
-        }
+        children["attribute-set-xro"] = attribute_set_xro;
     }
 
     return children;
@@ -15888,10 +14052,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
 	,bfd_reverse_path(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath>())
 {
     affinity->parent = this;
-    children["affinity"] = affinity;
 
     bfd_reverse_path->parent = this;
-    children["bfd-reverse-path"] = bfd_reverse_path;
 
     yang_name = "attribute-set-path-option"; yang_parent_name = "attribute-set-union";
 }
@@ -15995,7 +14157,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16046,43 +14208,22 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity")
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
-        else
+        if(affinity == nullptr)
         {
             affinity = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity>();
-            affinity->parent = this;
-            children["affinity"] = affinity;
         }
-        return children.at("affinity");
+        return affinity;
     }
 
     if(child_yang_name == "bfd-reverse-path")
     {
-        if(bfd_reverse_path != nullptr)
-        {
-            children["bfd-reverse-path"] = bfd_reverse_path;
-        }
-        else
+        if(bfd_reverse_path == nullptr)
         {
             bfd_reverse_path = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath>();
-            bfd_reverse_path->parent = this;
-            children["bfd-reverse-path"] = bfd_reverse_path;
         }
-        return children.at("bfd-reverse-path");
+        return bfd_reverse_path;
     }
 
     if(child_yang_name == "version-info")
@@ -16092,44 +14233,34 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo>();
         c->parent = this;
-        version_info.push_back(std::move(c));
-        children[segment_path] = version_info.back();
-        return children.at(segment_path);
+        version_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::get_children() const
 {
-    if(children.find("affinity") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity != nullptr)
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
+        children["affinity"] = affinity;
     }
 
-    if(children.find("bfd-reverse-path") == children.end())
+    if(bfd_reverse_path != nullptr)
     {
-        if(bfd_reverse_path != nullptr)
-        {
-            children["bfd-reverse-path"] = bfd_reverse_path;
-        }
+        children["bfd-reverse-path"] = bfd_reverse_path;
     }
 
     for (auto const & c : version_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16291,7 +14422,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16316,15 +14447,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "named-affinity")
     {
         for(auto const & c : named_affinity)
@@ -16332,28 +14454,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity>();
         c->parent = this;
-        named_affinity.push_back(std::move(c));
-        children[segment_path] = named_affinity.back();
-        return children.at(segment_path);
+        named_affinity.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : named_affinity)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16432,7 +14550,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16462,20 +14580,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::Affinity::NamedAffinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16537,7 +14647,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16562,20 +14672,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::BfdReversePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16628,7 +14730,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16654,20 +14756,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetPathOption::VersionInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16705,13 +14799,10 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
 	,signalled_name(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName>())
 {
     affinity->parent = this;
-    children["affinity"] = affinity;
 
     logging->parent = this;
-    children["logging"] = logging;
 
     signalled_name->parent = this;
-    children["signalled-name"] = signalled_name;
 
     yang_name = "attribute-set-autobackup"; yang_parent_name = "attribute-set-union";
 }
@@ -16792,7 +14883,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16827,43 +14918,22 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity")
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
-        else
+        if(affinity == nullptr)
         {
             affinity = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity>();
-            affinity->parent = this;
-            children["affinity"] = affinity;
         }
-        return children.at("affinity");
+        return affinity;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
-        else
+        if(logging == nullptr)
         {
             logging = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging>();
-            logging->parent = this;
-            children["logging"] = logging;
         }
-        return children.at("logging");
+        return logging;
     }
 
     if(child_yang_name == "protected-interface")
@@ -16873,67 +14943,48 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface>();
         c->parent = this;
-        protected_interface.push_back(std::move(c));
-        children[segment_path] = protected_interface.back();
-        return children.at(segment_path);
+        protected_interface.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "signalled-name")
     {
-        if(signalled_name != nullptr)
-        {
-            children["signalled-name"] = signalled_name;
-        }
-        else
+        if(signalled_name == nullptr)
         {
             signalled_name = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName>();
-            signalled_name->parent = this;
-            children["signalled-name"] = signalled_name;
         }
-        return children.at("signalled-name");
+        return signalled_name;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::get_children() const
 {
-    if(children.find("affinity") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity != nullptr)
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
+        children["affinity"] = affinity;
     }
 
-    if(children.find("logging") == children.end())
+    if(logging != nullptr)
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
+        children["logging"] = logging;
     }
 
     for (auto const & c : protected_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("signalled-name") == children.end())
+    if(signalled_name != nullptr)
     {
-        if(signalled_name != nullptr)
-        {
-            children["signalled-name"] = signalled_name;
-        }
+        children["signalled-name"] = signalled_name;
     }
 
     return children;
@@ -17023,7 +15074,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17050,20 +15101,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::SignalledName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17131,7 +15174,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17156,15 +15199,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "named-affinity")
     {
         for(auto const & c : named_affinity)
@@ -17172,28 +15206,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity>();
         c->parent = this;
-        named_affinity.push_back(std::move(c));
-        children[segment_path] = named_affinity.back();
-        return children.at(segment_path);
+        named_affinity.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : named_affinity)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17272,7 +15302,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17302,20 +15332,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Affinity::NamedAffinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17395,7 +15417,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17426,20 +15448,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17510,7 +15524,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17534,20 +15548,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutobackup::ProtectedInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17589,10 +15595,8 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
 	,logging(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging>())
 {
     affinity->parent = this;
-    children["affinity"] = affinity;
 
     logging->parent = this;
-    children["logging"] = logging;
 
     yang_name = "attribute-set-automesh"; yang_parent_name = "attribute-set-union";
 }
@@ -17696,7 +15700,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17745,64 +15749,38 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity")
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
-        else
+        if(affinity == nullptr)
         {
             affinity = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity>();
-            affinity->parent = this;
-            children["affinity"] = affinity;
         }
-        return children.at("affinity");
+        return affinity;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
-        else
+        if(logging == nullptr)
         {
             logging = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging>();
-            logging->parent = this;
-            children["logging"] = logging;
         }
-        return children.at("logging");
+        return logging;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::get_children() const
 {
-    if(children.find("affinity") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity != nullptr)
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
+        children["affinity"] = affinity;
     }
 
-    if(children.find("logging") == children.end())
+    if(logging != nullptr)
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
+        children["logging"] = logging;
     }
 
     return children;
@@ -17948,7 +15926,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17973,15 +15951,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "named-affinity")
     {
         for(auto const & c : named_affinity)
@@ -17989,28 +15958,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity>();
         c->parent = this;
-        named_affinity.push_back(std::move(c));
-        children[segment_path] = named_affinity.back();
-        return children.at(segment_path);
+        named_affinity.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : named_affinity)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18089,7 +16054,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18119,20 +16084,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Affinity::NamedAffinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18212,7 +16169,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18243,20 +16200,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetAutomesh::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18301,7 +16250,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
     xro(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro>())
 {
     xro->parent = this;
-    children["xro"] = xro;
 
     yang_name = "attribute-set-xro"; yang_parent_name = "attribute-set-union";
 }
@@ -18330,7 +16278,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18353,41 +16301,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "xro")
     {
-        if(xro != nullptr)
-        {
-            children["xro"] = xro;
-        }
-        else
+        if(xro == nullptr)
         {
             xro = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro>();
-            xro->parent = this;
-            children["xro"] = xro;
         }
-        return children.at("xro");
+        return xro;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::get_children() const
 {
-    if(children.find("xro") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(xro != nullptr)
     {
-        if(xro != nullptr)
-        {
-            children["xro"] = xro;
-        }
+        children["xro"] = xro;
     }
 
     return children;
@@ -18438,7 +16369,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18462,15 +16393,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "xro-subobject")
     {
         for(auto const & c : xro_subobject)
@@ -18478,28 +16400,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject>();
         c->parent = this;
-        xro_subobject.push_back(std::move(c));
-        children[segment_path] = xro_subobject.back();
-        return children.at(segment_path);
+        xro_subobject.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : xro_subobject)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18525,22 +16443,16 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
 	,unnumbered_subobject(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject>())
 {
     as_subobject->parent = this;
-    children["as-subobject"] = as_subobject;
 
     ipv4_subobject->parent = this;
-    children["ipv4-subobject"] = ipv4_subobject;
 
     ipv6_subobject->parent = this;
-    children["ipv6-subobject"] = ipv6_subobject;
 
     lsp_subobject->parent = this;
-    children["lsp-subobject"] = lsp_subobject;
 
     srlg_subobject->parent = this;
-    children["srlg-subobject"] = srlg_subobject;
 
     unnumbered_subobject->parent = this;
-    children["unnumbered-subobject"] = unnumbered_subobject;
 
     yang_name = "xro-subobject"; yang_parent_name = "xro";
 }
@@ -18581,7 +16493,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18605,156 +16517,94 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "as-subobject")
     {
-        if(as_subobject != nullptr)
-        {
-            children["as-subobject"] = as_subobject;
-        }
-        else
+        if(as_subobject == nullptr)
         {
             as_subobject = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject>();
-            as_subobject->parent = this;
-            children["as-subobject"] = as_subobject;
         }
-        return children.at("as-subobject");
+        return as_subobject;
     }
 
     if(child_yang_name == "ipv4-subobject")
     {
-        if(ipv4_subobject != nullptr)
-        {
-            children["ipv4-subobject"] = ipv4_subobject;
-        }
-        else
+        if(ipv4_subobject == nullptr)
         {
             ipv4_subobject = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject>();
-            ipv4_subobject->parent = this;
-            children["ipv4-subobject"] = ipv4_subobject;
         }
-        return children.at("ipv4-subobject");
+        return ipv4_subobject;
     }
 
     if(child_yang_name == "ipv6-subobject")
     {
-        if(ipv6_subobject != nullptr)
-        {
-            children["ipv6-subobject"] = ipv6_subobject;
-        }
-        else
+        if(ipv6_subobject == nullptr)
         {
             ipv6_subobject = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject>();
-            ipv6_subobject->parent = this;
-            children["ipv6-subobject"] = ipv6_subobject;
         }
-        return children.at("ipv6-subobject");
+        return ipv6_subobject;
     }
 
     if(child_yang_name == "lsp-subobject")
     {
-        if(lsp_subobject != nullptr)
-        {
-            children["lsp-subobject"] = lsp_subobject;
-        }
-        else
+        if(lsp_subobject == nullptr)
         {
             lsp_subobject = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject>();
-            lsp_subobject->parent = this;
-            children["lsp-subobject"] = lsp_subobject;
         }
-        return children.at("lsp-subobject");
+        return lsp_subobject;
     }
 
     if(child_yang_name == "srlg-subobject")
     {
-        if(srlg_subobject != nullptr)
-        {
-            children["srlg-subobject"] = srlg_subobject;
-        }
-        else
+        if(srlg_subobject == nullptr)
         {
             srlg_subobject = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject>();
-            srlg_subobject->parent = this;
-            children["srlg-subobject"] = srlg_subobject;
         }
-        return children.at("srlg-subobject");
+        return srlg_subobject;
     }
 
     if(child_yang_name == "unnumbered-subobject")
     {
-        if(unnumbered_subobject != nullptr)
-        {
-            children["unnumbered-subobject"] = unnumbered_subobject;
-        }
-        else
+        if(unnumbered_subobject == nullptr)
         {
             unnumbered_subobject = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject>();
-            unnumbered_subobject->parent = this;
-            children["unnumbered-subobject"] = unnumbered_subobject;
         }
-        return children.at("unnumbered-subobject");
+        return unnumbered_subobject;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::get_children() const
 {
-    if(children.find("as-subobject") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(as_subobject != nullptr)
     {
-        if(as_subobject != nullptr)
-        {
-            children["as-subobject"] = as_subobject;
-        }
+        children["as-subobject"] = as_subobject;
     }
 
-    if(children.find("ipv4-subobject") == children.end())
+    if(ipv4_subobject != nullptr)
     {
-        if(ipv4_subobject != nullptr)
-        {
-            children["ipv4-subobject"] = ipv4_subobject;
-        }
+        children["ipv4-subobject"] = ipv4_subobject;
     }
 
-    if(children.find("ipv6-subobject") == children.end())
+    if(ipv6_subobject != nullptr)
     {
-        if(ipv6_subobject != nullptr)
-        {
-            children["ipv6-subobject"] = ipv6_subobject;
-        }
+        children["ipv6-subobject"] = ipv6_subobject;
     }
 
-    if(children.find("lsp-subobject") == children.end())
+    if(lsp_subobject != nullptr)
     {
-        if(lsp_subobject != nullptr)
-        {
-            children["lsp-subobject"] = lsp_subobject;
-        }
+        children["lsp-subobject"] = lsp_subobject;
     }
 
-    if(children.find("srlg-subobject") == children.end())
+    if(srlg_subobject != nullptr)
     {
-        if(srlg_subobject != nullptr)
-        {
-            children["srlg-subobject"] = srlg_subobject;
-        }
+        children["srlg-subobject"] = srlg_subobject;
     }
 
-    if(children.find("unnumbered-subobject") == children.end())
+    if(unnumbered_subobject != nullptr)
     {
-        if(unnumbered_subobject != nullptr)
-        {
-            children["unnumbered-subobject"] = unnumbered_subobject;
-        }
+        children["unnumbered-subobject"] = unnumbered_subobject;
     }
 
     return children;
@@ -18808,7 +16658,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18835,20 +16685,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv4Subobject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18912,7 +16754,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18939,20 +16781,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::Ipv6Subobject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19016,7 +16850,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19043,20 +16877,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::UnnumberedSubobject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19111,7 +16937,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19135,20 +16961,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::AsSubobject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19194,7 +17012,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19219,20 +17037,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::SrlgSubobject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19259,7 +17069,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
     fec(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec>())
 {
     fec->parent = this;
-    children["fec"] = fec;
 
     yang_name = "lsp-subobject"; yang_parent_name = "xro-subobject";
 }
@@ -19298,7 +17107,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19326,41 +17135,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fec")
     {
-        if(fec != nullptr)
-        {
-            children["fec"] = fec;
-        }
-        else
+        if(fec == nullptr)
         {
             fec = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec>();
-            fec->parent = this;
-            children["fec"] = fec;
         }
-        return children.at("fec");
+        return fec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::get_children() const
 {
-    if(children.find("fec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fec != nullptr)
     {
-        if(fec != nullptr)
-        {
-            children["fec"] = fec;
-        }
+        children["fec"] = fec;
     }
 
     return children;
@@ -19401,7 +17193,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
     fec_destination_info(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo>())
 {
     fec_destination_info->parent = this;
-    children["fec-destination-info"] = fec_destination_info;
 
     yang_name = "fec"; yang_parent_name = "lsp-subobject";
 }
@@ -19440,7 +17231,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19468,41 +17259,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fec-destination-info")
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
-        else
+        if(fec_destination_info == nullptr)
         {
             fec_destination_info = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo>();
-            fec_destination_info->parent = this;
-            children["fec-destination-info"] = fec_destination_info;
         }
-        return children.at("fec-destination-info");
+        return fec_destination_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::get_children() const
 {
-    if(children.find("fec-destination-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fec_destination_info != nullptr)
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
+        children["fec-destination-info"] = fec_destination_info;
     }
 
     return children;
@@ -19569,7 +17343,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19595,20 +17369,12 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetXro::Xro::XroSubobject::LspSubobject::Fec::FecDestinationInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19644,7 +17410,6 @@ MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUni
     affinity(std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity>())
 {
     affinity->parent = this;
-    children["affinity"] = affinity;
 
     yang_name = "attribute-set-p2mpte"; yang_parent_name = "attribute-set-union";
 }
@@ -19702,7 +17467,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19736,41 +17501,24 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity")
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
-        else
+        if(affinity == nullptr)
         {
             affinity = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity>();
-            affinity->parent = this;
-            children["affinity"] = affinity;
         }
-        return children.at("affinity");
+        return affinity;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::get_children() const
 {
-    if(children.find("affinity") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity != nullptr)
     {
-        if(affinity != nullptr)
-        {
-            children["affinity"] = affinity;
-        }
+        children["affinity"] = affinity;
     }
 
     return children;
@@ -19864,7 +17612,7 @@ std::string MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Att
 
 }
 
-EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19889,15 +17637,6 @@ EntityPath MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::Attr
 
 std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "named-affinity")
     {
         for(auto const & c : named_affinity)
@@ -19905,28 +17644,24 @@ std::shared_ptr<Entity> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::NamedAffinity>();
         c->parent = this;
-        named_affinity.push_back(std::move(c));
-        children[segment_path] = named_affinity.back();
-        return children.at(segment_path);
+        named_affinity.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2PP2MpTunnel::TunnelHeads::TunnelHead::XroAttributeSet::AttributeSetUnion::AttributeSetP2Mpte::Affinity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : named_affinity)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;

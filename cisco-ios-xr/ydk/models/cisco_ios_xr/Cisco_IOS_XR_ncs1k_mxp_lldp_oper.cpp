@@ -15,10 +15,8 @@ LldpSnoopData::LldpSnoopData()
 	,lldp_neighbor_brief(std::make_shared<LldpSnoopData::LldpNeighborBrief>())
 {
     ethernet_controller_names->parent = this;
-    children["ethernet-controller-names"] = ethernet_controller_names;
 
     lldp_neighbor_brief->parent = this;
-    children["lldp-neighbor-brief"] = lldp_neighbor_brief;
 
     yang_name = "lldp-snoop-data"; yang_parent_name = "Cisco-IOS-XR-ncs1k-mxp-lldp-oper";
 }
@@ -49,12 +47,12 @@ std::string LldpSnoopData::get_segment_path() const
 
 }
 
-EntityPath LldpSnoopData::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath LldpSnoopData::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LldpSnoopData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-controller-names")
     {
-        if(ethernet_controller_names != nullptr)
-        {
-            children["ethernet-controller-names"] = ethernet_controller_names;
-        }
-        else
+        if(ethernet_controller_names == nullptr)
         {
             ethernet_controller_names = std::make_shared<LldpSnoopData::EthernetControllerNames>();
-            ethernet_controller_names->parent = this;
-            children["ethernet-controller-names"] = ethernet_controller_names;
         }
-        return children.at("ethernet-controller-names");
+        return ethernet_controller_names;
     }
 
     if(child_yang_name == "lldp-neighbor-brief")
     {
-        if(lldp_neighbor_brief != nullptr)
-        {
-            children["lldp-neighbor-brief"] = lldp_neighbor_brief;
-        }
-        else
+        if(lldp_neighbor_brief == nullptr)
         {
             lldp_neighbor_brief = std::make_shared<LldpSnoopData::LldpNeighborBrief>();
-            lldp_neighbor_brief->parent = this;
-            children["lldp-neighbor-brief"] = lldp_neighbor_brief;
         }
-        return children.at("lldp-neighbor-brief");
+        return lldp_neighbor_brief;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::get_children() const
 {
-    if(children.find("ethernet-controller-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet_controller_names != nullptr)
     {
-        if(ethernet_controller_names != nullptr)
-        {
-            children["ethernet-controller-names"] = ethernet_controller_names;
-        }
+        children["ethernet-controller-names"] = ethernet_controller_names;
     }
 
-    if(children.find("lldp-neighbor-brief") == children.end())
+    if(lldp_neighbor_brief != nullptr)
     {
-        if(lldp_neighbor_brief != nullptr)
-        {
-            children["lldp-neighbor-brief"] = lldp_neighbor_brief;
-        }
+        children["lldp-neighbor-brief"] = lldp_neighbor_brief;
     }
 
     return children;
@@ -163,7 +135,6 @@ LldpSnoopData::LldpNeighborBrief::LldpNeighborBrief()
     neighbours(std::make_shared<LldpSnoopData::LldpNeighborBrief::Neighbours>())
 {
     neighbours->parent = this;
-    children["neighbours"] = neighbours;
 
     yang_name = "lldp-neighbor-brief"; yang_parent_name = "lldp-snoop-data";
 }
@@ -194,7 +165,7 @@ std::string LldpSnoopData::LldpNeighborBrief::get_segment_path() const
 
 }
 
-EntityPath LldpSnoopData::LldpNeighborBrief::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::LldpNeighborBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -218,41 +189,24 @@ EntityPath LldpSnoopData::LldpNeighborBrief::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbours")
     {
-        if(neighbours != nullptr)
-        {
-            children["neighbours"] = neighbours;
-        }
-        else
+        if(neighbours == nullptr)
         {
             neighbours = std::make_shared<LldpSnoopData::LldpNeighborBrief::Neighbours>();
-            neighbours->parent = this;
-            children["neighbours"] = neighbours;
         }
-        return children.at("neighbours");
+        return neighbours;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::LldpNeighborBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief::get_children() const
 {
-    if(children.find("neighbours") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(neighbours != nullptr)
     {
-        if(neighbours != nullptr)
-        {
-            children["neighbours"] = neighbours;
-        }
+        children["neighbours"] = neighbours;
     }
 
     return children;
@@ -304,7 +258,7 @@ std::string LldpSnoopData::LldpNeighborBrief::Neighbours::get_segment_path() con
 
 }
 
-EntityPath LldpSnoopData::LldpNeighborBrief::Neighbours::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::LldpNeighborBrief::Neighbours::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -327,15 +281,6 @@ EntityPath LldpSnoopData::LldpNeighborBrief::Neighbours::get_entity_path(Entity*
 
 std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::Neighbours::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lldp-neighbor-brief-entry")
     {
         for(auto const & c : lldp_neighbor_brief_entry)
@@ -343,28 +288,24 @@ std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::Neighbours::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry>();
         c->parent = this;
-        lldp_neighbor_brief_entry.push_back(std::move(c));
-        children[segment_path] = lldp_neighbor_brief_entry.back();
-        return children.at(segment_path);
+        lldp_neighbor_brief_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::LldpNeighborBrief::Neighbours::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief::Neighbours::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lldp_neighbor_brief_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -420,7 +361,7 @@ std::string LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry
 
 }
 
-EntityPath LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -449,20 +390,12 @@ EntityPath LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry:
 
 std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -532,7 +465,7 @@ std::string LldpSnoopData::EthernetControllerNames::get_segment_path() const
 
 }
 
-EntityPath LldpSnoopData::EthernetControllerNames::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::EthernetControllerNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -555,15 +488,6 @@ EntityPath LldpSnoopData::EthernetControllerNames::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-controller-name")
     {
         for(auto const & c : ethernet_controller_name)
@@ -571,28 +495,24 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName>();
         c->parent = this;
-        ethernet_controller_name.push_back(std::move(c));
-        children[segment_path] = ethernet_controller_name.back();
-        return children.at(segment_path);
+        ethernet_controller_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::EthernetControllerNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_controller_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -621,7 +541,6 @@ LldpSnoopData::EthernetControllerNames::EthernetControllerName::EthernetControll
     network_addresses(std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses>())
 {
     network_addresses->parent = this;
-    children["network-addresses"] = network_addresses;
 
     yang_name = "ethernet-controller-name"; yang_parent_name = "ethernet-controller-names";
 }
@@ -676,7 +595,7 @@ std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_
 
 }
 
-EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -712,41 +631,24 @@ EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_e
 
 std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network-addresses")
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
-        else
+        if(network_addresses == nullptr)
         {
             network_addresses = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses>();
-            network_addresses->parent = this;
-            children["network-addresses"] = network_addresses;
         }
-        return children.at("network-addresses");
+        return network_addresses;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_children() const
 {
-    if(children.find("network-addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(network_addresses != nullptr)
     {
-        if(network_addresses != nullptr)
-        {
-            children["network-addresses"] = network_addresses;
-        }
+        children["network-addresses"] = network_addresses;
     }
 
     return children;
@@ -846,7 +748,7 @@ std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netw
 
 }
 
-EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -869,15 +771,6 @@ EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netwo
 
 std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lldp-addr-entry")
     {
         for(auto const & c : lldp_addr_entry)
@@ -885,28 +778,24 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
-        lldp_addr_entry.push_back(std::move(c));
-        children[segment_path] = lldp_addr_entry.back();
-        return children.at(segment_path);
+        lldp_addr_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lldp_addr_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -924,7 +813,6 @@ LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses
     address(std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address>())
 {
     address->parent = this;
-    children["address"] = address;
 
     yang_name = "lldp-addr-entry"; yang_parent_name = "network-addresses";
 }
@@ -957,7 +845,7 @@ std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netw
 
 }
 
-EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -982,41 +870,24 @@ EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netwo
 
 std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
     return children;
@@ -1071,7 +942,7 @@ std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netw
 
 }
 
-EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_entity_path(Entity* ancestor) const
+const EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1097,20 +968,12 @@ EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netwo
 
 std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ AddressPoolService::AddressPoolService()
     vrfs(std::make_shared<AddressPoolService::Vrfs>())
 {
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "address-pool-service"; yang_parent_name = "Cisco-IOS-XR-ip-daps-cfg";
 }
@@ -43,12 +42,12 @@ std::string AddressPoolService::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath AddressPoolService::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AddressPoolService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<AddressPoolService::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::get_children() const
 {
-    if(children.find("vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string AddressPoolService::Vrfs::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath AddressPoolService::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,10 +212,8 @@ AddressPoolService::Vrfs::Vrf::Vrf()
 	,ipv6(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -279,7 +246,7 @@ std::string AddressPoolService::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,64 +270,38 @@ EntityPath AddressPoolService::Vrfs::Vrf::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -379,7 +320,6 @@ AddressPoolService::Vrfs::Vrf::Ipv6::Ipv6()
     pools(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools>())
 {
     pools->parent = this;
-    children["pools"] = pools;
 
     yang_name = "ipv6"; yang_parent_name = "vrf";
 }
@@ -408,7 +348,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -431,41 +371,24 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pools")
     {
-        if(pools != nullptr)
-        {
-            children["pools"] = pools;
-        }
-        else
+        if(pools == nullptr)
         {
             pools = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools>();
-            pools->parent = this;
-            children["pools"] = pools;
         }
-        return children.at("pools");
+        return pools;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::get_children() const
 {
-    if(children.find("pools") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pools != nullptr)
     {
-        if(pools != nullptr)
-        {
-            children["pools"] = pools;
-        }
+        children["pools"] = pools;
     }
 
     return children;
@@ -513,7 +436,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -536,15 +459,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pool")
     {
         for(auto const & c : pool)
@@ -552,28 +466,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool>();
         c->parent = this;
-        pool.push_back(std::move(c));
-        children[segment_path] = pool.back();
-        return children.at(segment_path);
+        pool.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pool)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -595,19 +505,14 @@ AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Pool()
 	,utilization_mark(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark>())
 {
     address_ranges->parent = this;
-    children["address-ranges"] = address_ranges;
 
     excludes->parent = this;
-    children["excludes"] = excludes;
 
     networks->parent = this;
-    children["networks"] = networks;
 
     prefix_ranges->parent = this;
-    children["prefix-ranges"] = prefix_ranges;
 
     utilization_mark->parent = this;
-    children["utilization-mark"] = utilization_mark;
 
     yang_name = "pool"; yang_parent_name = "pools";
 }
@@ -648,7 +553,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::get_segment_path()
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -673,133 +578,80 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::get_entity_path(Ent
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-ranges")
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
-        else
+        if(address_ranges == nullptr)
         {
             address_ranges = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges>();
-            address_ranges->parent = this;
-            children["address-ranges"] = address_ranges;
         }
-        return children.at("address-ranges");
+        return address_ranges;
     }
 
     if(child_yang_name == "excludes")
     {
-        if(excludes != nullptr)
-        {
-            children["excludes"] = excludes;
-        }
-        else
+        if(excludes == nullptr)
         {
             excludes = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes>();
-            excludes->parent = this;
-            children["excludes"] = excludes;
         }
-        return children.at("excludes");
+        return excludes;
     }
 
     if(child_yang_name == "networks")
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
-        else
+        if(networks == nullptr)
         {
             networks = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks>();
-            networks->parent = this;
-            children["networks"] = networks;
         }
-        return children.at("networks");
+        return networks;
     }
 
     if(child_yang_name == "prefix-ranges")
     {
-        if(prefix_ranges != nullptr)
-        {
-            children["prefix-ranges"] = prefix_ranges;
-        }
-        else
+        if(prefix_ranges == nullptr)
         {
             prefix_ranges = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges>();
-            prefix_ranges->parent = this;
-            children["prefix-ranges"] = prefix_ranges;
         }
-        return children.at("prefix-ranges");
+        return prefix_ranges;
     }
 
     if(child_yang_name == "utilization-mark")
     {
-        if(utilization_mark != nullptr)
-        {
-            children["utilization-mark"] = utilization_mark;
-        }
-        else
+        if(utilization_mark == nullptr)
         {
             utilization_mark = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark>();
-            utilization_mark->parent = this;
-            children["utilization-mark"] = utilization_mark;
         }
-        return children.at("utilization-mark");
+        return utilization_mark;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::get_children() const
 {
-    if(children.find("address-ranges") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_ranges != nullptr)
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
+        children["address-ranges"] = address_ranges;
     }
 
-    if(children.find("excludes") == children.end())
+    if(excludes != nullptr)
     {
-        if(excludes != nullptr)
-        {
-            children["excludes"] = excludes;
-        }
+        children["excludes"] = excludes;
     }
 
-    if(children.find("networks") == children.end())
+    if(networks != nullptr)
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
+        children["networks"] = networks;
     }
 
-    if(children.find("prefix-ranges") == children.end())
+    if(prefix_ranges != nullptr)
     {
-        if(prefix_ranges != nullptr)
-        {
-            children["prefix-ranges"] = prefix_ranges;
-        }
+        children["prefix-ranges"] = prefix_ranges;
     }
 
-    if(children.find("utilization-mark") == children.end())
+    if(utilization_mark != nullptr)
     {
-        if(utilization_mark != nullptr)
-        {
-            children["utilization-mark"] = utilization_mark;
-        }
+        children["utilization-mark"] = utilization_mark;
     }
 
     return children;
@@ -855,7 +707,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::get
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -878,15 +730,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::get_
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-range")
     {
         for(auto const & c : address_range)
@@ -894,28 +737,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Addres
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(std::move(c));
-        children[segment_path] = address_range.back();
-        return children.at(segment_path);
+        address_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -962,7 +801,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::Add
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -988,20 +827,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::Addr
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1059,7 +890,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::get_segm
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1082,15 +913,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::get_entit
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude")
     {
         for(auto const & c : exclude)
@@ -1098,28 +920,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Exclud
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude>();
         c->parent = this;
-        exclude.push_back(std::move(c));
-        children[segment_path] = exclude.back();
-        return children.at(segment_path);
+        exclude.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1163,7 +981,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude:
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1188,20 +1006,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude::
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1251,7 +1061,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::g
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1276,20 +1086,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::ge
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1343,7 +1145,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::get_
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1366,15 +1168,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::get_e
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-range")
     {
         for(auto const & c : prefix_range)
@@ -1382,28 +1175,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Prefix
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange>();
         c->parent = this;
-        prefix_range.push_back(std::move(c));
-        children[segment_path] = prefix_range.back();
-        return children.at(segment_path);
+        prefix_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prefix_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1450,7 +1239,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::Pref
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1476,20 +1265,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::Prefi
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1547,7 +1328,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::get_segm
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1570,15 +1351,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::get_entit
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network")
     {
         for(auto const & c : network)
@@ -1586,28 +1358,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networ
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network>();
         c->parent = this;
-        network.push_back(std::move(c));
-        children[segment_path] = network.back();
-        return children.at(segment_path);
+        network.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : network)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1654,7 +1422,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network:
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1680,20 +1448,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network::
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1718,7 +1478,6 @@ AddressPoolService::Vrfs::Vrf::Ipv4::Ipv4()
     pools(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools>())
 {
     pools->parent = this;
-    children["pools"] = pools;
 
     yang_name = "ipv4"; yang_parent_name = "vrf";
 }
@@ -1747,7 +1506,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1770,41 +1529,24 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pools")
     {
-        if(pools != nullptr)
-        {
-            children["pools"] = pools;
-        }
-        else
+        if(pools == nullptr)
         {
             pools = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools>();
-            pools->parent = this;
-            children["pools"] = pools;
         }
-        return children.at("pools");
+        return pools;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::get_children() const
 {
-    if(children.find("pools") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pools != nullptr)
     {
-        if(pools != nullptr)
-        {
-            children["pools"] = pools;
-        }
+        children["pools"] = pools;
     }
 
     return children;
@@ -1852,7 +1594,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_segment_path() const
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1875,15 +1617,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pool")
     {
         for(auto const & c : pool)
@@ -1891,28 +1624,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool>();
         c->parent = this;
-        pool.push_back(std::move(c));
-        children[segment_path] = pool.back();
-        return children.at(segment_path);
+        pool.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pool)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1932,16 +1661,12 @@ AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Pool()
 	,utilization_mark(std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark>())
 {
     address_ranges->parent = this;
-    children["address-ranges"] = address_ranges;
 
     excludes->parent = this;
-    children["excludes"] = excludes;
 
     networks->parent = this;
-    children["networks"] = networks;
 
     utilization_mark->parent = this;
-    children["utilization-mark"] = utilization_mark;
 
     yang_name = "pool"; yang_parent_name = "pools";
 }
@@ -1978,7 +1703,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::get_segment_path()
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2002,110 +1727,66 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::get_entity_path(Ent
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-ranges")
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
-        else
+        if(address_ranges == nullptr)
         {
             address_ranges = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges>();
-            address_ranges->parent = this;
-            children["address-ranges"] = address_ranges;
         }
-        return children.at("address-ranges");
+        return address_ranges;
     }
 
     if(child_yang_name == "excludes")
     {
-        if(excludes != nullptr)
-        {
-            children["excludes"] = excludes;
-        }
-        else
+        if(excludes == nullptr)
         {
             excludes = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes>();
-            excludes->parent = this;
-            children["excludes"] = excludes;
         }
-        return children.at("excludes");
+        return excludes;
     }
 
     if(child_yang_name == "networks")
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
-        else
+        if(networks == nullptr)
         {
             networks = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks>();
-            networks->parent = this;
-            children["networks"] = networks;
         }
-        return children.at("networks");
+        return networks;
     }
 
     if(child_yang_name == "utilization-mark")
     {
-        if(utilization_mark != nullptr)
-        {
-            children["utilization-mark"] = utilization_mark;
-        }
-        else
+        if(utilization_mark == nullptr)
         {
             utilization_mark = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark>();
-            utilization_mark->parent = this;
-            children["utilization-mark"] = utilization_mark;
         }
-        return children.at("utilization-mark");
+        return utilization_mark;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::get_children() const
 {
-    if(children.find("address-ranges") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_ranges != nullptr)
     {
-        if(address_ranges != nullptr)
-        {
-            children["address-ranges"] = address_ranges;
-        }
+        children["address-ranges"] = address_ranges;
     }
 
-    if(children.find("excludes") == children.end())
+    if(excludes != nullptr)
     {
-        if(excludes != nullptr)
-        {
-            children["excludes"] = excludes;
-        }
+        children["excludes"] = excludes;
     }
 
-    if(children.find("networks") == children.end())
+    if(networks != nullptr)
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
+        children["networks"] = networks;
     }
 
-    if(children.find("utilization-mark") == children.end())
+    if(utilization_mark != nullptr)
     {
-        if(utilization_mark != nullptr)
-        {
-            children["utilization-mark"] = utilization_mark;
-        }
+        children["utilization-mark"] = utilization_mark;
     }
 
     return children;
@@ -2157,7 +1838,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::get
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2180,15 +1861,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::get_
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-range")
     {
         for(auto const & c : address_range)
@@ -2196,28 +1868,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Addres
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(std::move(c));
-        children[segment_path] = address_range.back();
-        return children.at(segment_path);
+        address_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : address_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2264,7 +1932,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::Add
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2290,20 +1958,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::Addr
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2361,7 +2021,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::get_segm
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2384,15 +2044,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::get_entit
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude")
     {
         for(auto const & c : exclude)
@@ -2400,28 +2051,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Exclud
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude>();
         c->parent = this;
-        exclude.push_back(std::move(c));
-        children[segment_path] = exclude.back();
-        return children.at(segment_path);
+        exclude.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : exclude)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2465,7 +2112,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude:
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2490,20 +2137,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude::
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2553,7 +2192,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::g
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2578,20 +2217,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::ge
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2645,7 +2276,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::get_segm
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2668,15 +2299,6 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::get_entit
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network")
     {
         for(auto const & c : network)
@@ -2684,28 +2306,24 @@ std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networ
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network>();
         c->parent = this;
-        network.push_back(std::move(c));
-        children[segment_path] = network.back();
-        return children.at(segment_path);
+        network.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : network)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2755,7 +2373,7 @@ std::string AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network:
 
 }
 
-EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network::get_entity_path(Entity* ancestor) const
+const EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2782,20 +2400,12 @@ EntityPath AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network::
 
 std::shared_ptr<Entity> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ MacsecCtrlrOper::MacsecCtrlrOper()
     macsec_ctrlr_ports(std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts>())
 {
     macsec_ctrlr_ports->parent = this;
-    children["macsec-ctrlr-ports"] = macsec_ctrlr_ports;
 
     yang_name = "macsec-ctrlr-oper"; yang_parent_name = "Cisco-IOS-XR-macsec-ctrlr-oper";
 }
@@ -43,12 +42,12 @@ std::string MacsecCtrlrOper::get_segment_path() const
 
 }
 
-EntityPath MacsecCtrlrOper::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath MacsecCtrlrOper::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MacsecCtrlrOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "macsec-ctrlr-ports")
     {
-        if(macsec_ctrlr_ports != nullptr)
-        {
-            children["macsec-ctrlr-ports"] = macsec_ctrlr_ports;
-        }
-        else
+        if(macsec_ctrlr_ports == nullptr)
         {
             macsec_ctrlr_ports = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts>();
-            macsec_ctrlr_ports->parent = this;
-            children["macsec-ctrlr-ports"] = macsec_ctrlr_ports;
         }
-        return children.at("macsec-ctrlr-ports");
+        return macsec_ctrlr_ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::get_children() const
 {
-    if(children.find("macsec-ctrlr-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(macsec_ctrlr_ports != nullptr)
     {
-        if(macsec_ctrlr_ports != nullptr)
-        {
-            children["macsec-ctrlr-ports"] = macsec_ctrlr_ports;
-        }
+        children["macsec-ctrlr-ports"] = macsec_ctrlr_ports;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::get_segment_path() const
 
 }
 
-EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "macsec-ctrlr-port")
     {
         for(auto const & c : macsec_ctrlr_port)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort>();
         c->parent = this;
-        macsec_ctrlr_port.push_back(std::move(c));
-        children[segment_path] = macsec_ctrlr_port.back();
-        return children.at(segment_path);
+        macsec_ctrlr_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::MacsecCtrlrPorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : macsec_ctrlr_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrPort()
     macsec_ctrlr_info(std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo>())
 {
     macsec_ctrlr_info->parent = this;
-    children["macsec-ctrlr-info"] = macsec_ctrlr_info;
 
     yang_name = "macsec-ctrlr-port"; yang_parent_name = "macsec-ctrlr-ports";
 }
@@ -273,7 +241,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_segment_path
 
 }
 
-EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_entity_path(E
 
 std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "macsec-ctrlr-info")
     {
-        if(macsec_ctrlr_info != nullptr)
-        {
-            children["macsec-ctrlr-info"] = macsec_ctrlr_info;
-        }
-        else
+        if(macsec_ctrlr_info == nullptr)
         {
             macsec_ctrlr_info = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo>();
-            macsec_ctrlr_info->parent = this;
-            children["macsec-ctrlr-info"] = macsec_ctrlr_info;
         }
-        return children.at("macsec-ctrlr-info");
+        return macsec_ctrlr_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_children() const
 {
-    if(children.find("macsec-ctrlr-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(macsec_ctrlr_info != nullptr)
     {
-        if(macsec_ctrlr_info != nullptr)
-        {
-            children["macsec-ctrlr-info"] = macsec_ctrlr_info;
-        }
+        children["macsec-ctrlr-info"] = macsec_ctrlr_info;
     }
 
     return children;
@@ -356,10 +307,8 @@ MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::MacsecCtrlr
 	,encrypt_sc_status(std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus>())
 {
     decrypt_sc_status->parent = this;
-    children["decrypt-sc-status"] = decrypt_sc_status;
 
     encrypt_sc_status->parent = this;
-    children["encrypt-sc-status"] = encrypt_sc_status;
 
     yang_name = "macsec-ctrlr-info"; yang_parent_name = "macsec-ctrlr-port";
 }
@@ -398,7 +347,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 
 }
 
-EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -425,64 +374,38 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
 
 std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "decrypt-sc-status")
     {
-        if(decrypt_sc_status != nullptr)
-        {
-            children["decrypt-sc-status"] = decrypt_sc_status;
-        }
-        else
+        if(decrypt_sc_status == nullptr)
         {
             decrypt_sc_status = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus>();
-            decrypt_sc_status->parent = this;
-            children["decrypt-sc-status"] = decrypt_sc_status;
         }
-        return children.at("decrypt-sc-status");
+        return decrypt_sc_status;
     }
 
     if(child_yang_name == "encrypt-sc-status")
     {
-        if(encrypt_sc_status != nullptr)
-        {
-            children["encrypt-sc-status"] = encrypt_sc_status;
-        }
-        else
+        if(encrypt_sc_status == nullptr)
         {
             encrypt_sc_status = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus>();
-            encrypt_sc_status->parent = this;
-            children["encrypt-sc-status"] = encrypt_sc_status;
         }
-        return children.at("encrypt-sc-status");
+        return encrypt_sc_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_children() const
 {
-    if(children.find("decrypt-sc-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(decrypt_sc_status != nullptr)
     {
-        if(decrypt_sc_status != nullptr)
-        {
-            children["decrypt-sc-status"] = decrypt_sc_status;
-        }
+        children["decrypt-sc-status"] = decrypt_sc_status;
     }
 
-    if(children.find("encrypt-sc-status") == children.end())
+    if(encrypt_sc_status != nullptr)
     {
-        if(encrypt_sc_status != nullptr)
-        {
-            children["encrypt-sc-status"] = encrypt_sc_status;
-        }
+        children["encrypt-sc-status"] = encrypt_sc_status;
     }
 
     return children;
@@ -564,7 +487,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 
 }
 
-EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -593,15 +516,6 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
 
 std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active-association")
     {
         for(auto const & c : active_association)
@@ -609,28 +523,24 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation>();
         c->parent = this;
-        active_association.push_back(std::move(c));
-        children[segment_path] = active_association.back();
-        return children.at(segment_path);
+        active_association.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : active_association)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -698,7 +608,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 
 }
 
-EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -723,20 +633,12 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
 
 std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -808,7 +710,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 
 }
 
-EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -837,15 +739,6 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
 
 std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active-association")
     {
         for(auto const & c : active_association)
@@ -853,28 +746,24 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation>();
         c->parent = this;
-        active_association.push_back(std::move(c));
-        children[segment_path] = active_association.back();
-        return children.at(segment_path);
+        active_association.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : active_association)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -942,7 +831,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 
 }
 
-EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_entity_path(Entity* ancestor) const
+const EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -967,20 +856,12 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
 
 std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

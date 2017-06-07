@@ -14,7 +14,6 @@ Logging::Logging()
     history(std::make_shared<Logging::History>())
 {
     history->parent = this;
-    children["history"] = history;
 
     yang_name = "logging"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper";
 }
@@ -43,12 +42,12 @@ std::string Logging::get_segment_path() const
 
 }
 
-EntityPath Logging::get_entity_path(Entity* ancestor) const
+const EntityPath Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Logging::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "history")
     {
-        if(history != nullptr)
-        {
-            children["history"] = history;
-        }
-        else
+        if(history == nullptr)
         {
             history = std::make_shared<Logging::History>();
-            history->parent = this;
-            children["history"] = history;
         }
-        return children.at("history");
+        return history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Logging::get_children() const
 {
-    if(children.find("history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(history != nullptr)
     {
-        if(history != nullptr)
-        {
-            children["history"] = history;
-        }
+        children["history"] = history;
     }
 
     return children;
@@ -161,7 +143,7 @@ std::string Logging::History::get_segment_path() const
 
 }
 
-EntityPath Logging::History::get_entity_path(Entity* ancestor) const
+const EntityPath Logging::History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -186,20 +168,12 @@ EntityPath Logging::History::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Logging::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Logging::History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Logging::History::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -223,16 +197,12 @@ Syslog::Syslog()
 	,messages(std::make_shared<Syslog::Messages>())
 {
     an_remote_servers->parent = this;
-    children["an-remote-servers"] = an_remote_servers;
 
     logging_files->parent = this;
-    children["logging-files"] = logging_files;
 
     logging_statistics->parent = this;
-    children["logging-statistics"] = logging_statistics;
 
     messages->parent = this;
-    children["messages"] = messages;
 
     yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper";
 }
@@ -267,12 +237,12 @@ std::string Syslog::get_segment_path() const
 
 }
 
-EntityPath Syslog::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -287,110 +257,66 @@ EntityPath Syslog::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "an-remote-servers")
     {
-        if(an_remote_servers != nullptr)
-        {
-            children["an-remote-servers"] = an_remote_servers;
-        }
-        else
+        if(an_remote_servers == nullptr)
         {
             an_remote_servers = std::make_shared<Syslog::AnRemoteServers>();
-            an_remote_servers->parent = this;
-            children["an-remote-servers"] = an_remote_servers;
         }
-        return children.at("an-remote-servers");
+        return an_remote_servers;
     }
 
     if(child_yang_name == "logging-files")
     {
-        if(logging_files != nullptr)
-        {
-            children["logging-files"] = logging_files;
-        }
-        else
+        if(logging_files == nullptr)
         {
             logging_files = std::make_shared<Syslog::LoggingFiles>();
-            logging_files->parent = this;
-            children["logging-files"] = logging_files;
         }
-        return children.at("logging-files");
+        return logging_files;
     }
 
     if(child_yang_name == "logging-statistics")
     {
-        if(logging_statistics != nullptr)
-        {
-            children["logging-statistics"] = logging_statistics;
-        }
-        else
+        if(logging_statistics == nullptr)
         {
             logging_statistics = std::make_shared<Syslog::LoggingStatistics>();
-            logging_statistics->parent = this;
-            children["logging-statistics"] = logging_statistics;
         }
-        return children.at("logging-statistics");
+        return logging_statistics;
     }
 
     if(child_yang_name == "messages")
     {
-        if(messages != nullptr)
-        {
-            children["messages"] = messages;
-        }
-        else
+        if(messages == nullptr)
         {
             messages = std::make_shared<Syslog::Messages>();
-            messages->parent = this;
-            children["messages"] = messages;
         }
-        return children.at("messages");
+        return messages;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
 {
-    if(children.find("an-remote-servers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(an_remote_servers != nullptr)
     {
-        if(an_remote_servers != nullptr)
-        {
-            children["an-remote-servers"] = an_remote_servers;
-        }
+        children["an-remote-servers"] = an_remote_servers;
     }
 
-    if(children.find("logging-files") == children.end())
+    if(logging_files != nullptr)
     {
-        if(logging_files != nullptr)
-        {
-            children["logging-files"] = logging_files;
-        }
+        children["logging-files"] = logging_files;
     }
 
-    if(children.find("logging-statistics") == children.end())
+    if(logging_statistics != nullptr)
     {
-        if(logging_statistics != nullptr)
-        {
-            children["logging-statistics"] = logging_statistics;
-        }
+        children["logging-statistics"] = logging_statistics;
     }
 
-    if(children.find("messages") == children.end())
+    if(messages != nullptr)
     {
-        if(messages != nullptr)
-        {
-            children["messages"] = messages;
-        }
+        children["messages"] = messages;
     }
 
     return children;
@@ -458,7 +384,7 @@ std::string Syslog::LoggingFiles::get_segment_path() const
 
 }
 
-EntityPath Syslog::LoggingFiles::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingFiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -481,15 +407,6 @@ EntityPath Syslog::LoggingFiles::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "file-log-detail")
     {
         for(auto const & c : file_log_detail)
@@ -497,28 +414,24 @@ std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::LoggingFiles::FileLogDetail>();
         c->parent = this;
-        file_log_detail.push_back(std::move(c));
-        children[segment_path] = file_log_detail.back();
-        return children.at(segment_path);
+        file_log_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingFiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : file_log_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -562,7 +475,7 @@ std::string Syslog::LoggingFiles::FileLogDetail::get_segment_path() const
 
 }
 
-EntityPath Syslog::LoggingFiles::FileLogDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingFiles::FileLogDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -587,20 +500,12 @@ EntityPath Syslog::LoggingFiles::FileLogDetail::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Syslog::LoggingFiles::FileLogDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingFiles::FileLogDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::FileLogDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -654,7 +559,7 @@ std::string Syslog::AnRemoteServers::get_segment_path() const
 
 }
 
-EntityPath Syslog::AnRemoteServers::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::AnRemoteServers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -677,15 +582,6 @@ EntityPath Syslog::AnRemoteServers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::AnRemoteServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "an-remote-log-server")
     {
         for(auto const & c : an_remote_log_server)
@@ -693,28 +589,24 @@ std::shared_ptr<Entity> Syslog::AnRemoteServers::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::AnRemoteServers::AnRemoteLogServer>();
         c->parent = this;
-        an_remote_log_server.push_back(std::move(c));
-        children[segment_path] = an_remote_log_server.back();
-        return children.at(segment_path);
+        an_remote_log_server.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::AnRemoteServers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AnRemoteServers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : an_remote_log_server)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -764,7 +656,7 @@ std::string Syslog::AnRemoteServers::AnRemoteLogServer::get_segment_path() const
 
 }
 
-EntityPath Syslog::AnRemoteServers::AnRemoteLogServer::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::AnRemoteServers::AnRemoteLogServer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -791,20 +683,12 @@ EntityPath Syslog::AnRemoteServers::AnRemoteLogServer::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Syslog::AnRemoteServers::AnRemoteLogServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::AnRemoteServers::AnRemoteLogServer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AnRemoteServers::AnRemoteLogServer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -866,7 +750,7 @@ std::string Syslog::Messages::get_segment_path() const
 
 }
 
-EntityPath Syslog::Messages::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Messages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -889,15 +773,6 @@ EntityPath Syslog::Messages::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message")
     {
         for(auto const & c : message)
@@ -905,28 +780,24 @@ std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::Messages::Message>();
         c->parent = this;
-        message.push_back(std::move(c));
-        children[segment_path] = message.back();
-        return children.at(segment_path);
+        message.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Messages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1000,7 +871,7 @@ std::string Syslog::Messages::Message::get_segment_path() const
 
 }
 
-EntityPath Syslog::Messages::Message::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::Messages::Message::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1035,20 +906,12 @@ EntityPath Syslog::Messages::Message::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::Messages::Message::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::Message::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1113,19 +976,14 @@ Syslog::LoggingStatistics::LoggingStatistics()
 	,trap_logging_stats(std::make_shared<Syslog::LoggingStatistics::TrapLoggingStats>())
 {
     buffer_logging_stats->parent = this;
-    children["buffer-logging-stats"] = buffer_logging_stats;
 
     console_logging_stats->parent = this;
-    children["console-logging-stats"] = console_logging_stats;
 
     logging_stats->parent = this;
-    children["logging-stats"] = logging_stats;
 
     monitor_logging_stats->parent = this;
-    children["monitor-logging-stats"] = monitor_logging_stats;
 
     trap_logging_stats->parent = this;
-    children["trap-logging-stats"] = trap_logging_stats;
 
     yang_name = "logging-statistics"; yang_parent_name = "syslog";
 }
@@ -1192,7 +1050,7 @@ std::string Syslog::LoggingStatistics::get_segment_path() const
 
 }
 
-EntityPath Syslog::LoggingStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1215,43 +1073,22 @@ EntityPath Syslog::LoggingStatistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "buffer-logging-stats")
     {
-        if(buffer_logging_stats != nullptr)
-        {
-            children["buffer-logging-stats"] = buffer_logging_stats;
-        }
-        else
+        if(buffer_logging_stats == nullptr)
         {
             buffer_logging_stats = std::make_shared<Syslog::LoggingStatistics::BufferLoggingStats>();
-            buffer_logging_stats->parent = this;
-            children["buffer-logging-stats"] = buffer_logging_stats;
         }
-        return children.at("buffer-logging-stats");
+        return buffer_logging_stats;
     }
 
     if(child_yang_name == "console-logging-stats")
     {
-        if(console_logging_stats != nullptr)
-        {
-            children["console-logging-stats"] = console_logging_stats;
-        }
-        else
+        if(console_logging_stats == nullptr)
         {
             console_logging_stats = std::make_shared<Syslog::LoggingStatistics::ConsoleLoggingStats>();
-            console_logging_stats->parent = this;
-            children["console-logging-stats"] = console_logging_stats;
         }
-        return children.at("console-logging-stats");
+        return console_logging_stats;
     }
 
     if(child_yang_name == "file-logging-stat")
@@ -1261,45 +1098,31 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::LoggingStatistics::FileLoggingStat>();
         c->parent = this;
-        file_logging_stat.push_back(std::move(c));
-        children[segment_path] = file_logging_stat.back();
-        return children.at(segment_path);
+        file_logging_stat.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "logging-stats")
     {
-        if(logging_stats != nullptr)
-        {
-            children["logging-stats"] = logging_stats;
-        }
-        else
+        if(logging_stats == nullptr)
         {
             logging_stats = std::make_shared<Syslog::LoggingStatistics::LoggingStats>();
-            logging_stats->parent = this;
-            children["logging-stats"] = logging_stats;
         }
-        return children.at("logging-stats");
+        return logging_stats;
     }
 
     if(child_yang_name == "monitor-logging-stats")
     {
-        if(monitor_logging_stats != nullptr)
-        {
-            children["monitor-logging-stats"] = monitor_logging_stats;
-        }
-        else
+        if(monitor_logging_stats == nullptr)
         {
             monitor_logging_stats = std::make_shared<Syslog::LoggingStatistics::MonitorLoggingStats>();
-            monitor_logging_stats->parent = this;
-            children["monitor-logging-stats"] = monitor_logging_stats;
         }
-        return children.at("monitor-logging-stats");
+        return monitor_logging_stats;
     }
 
     if(child_yang_name == "remote-logging-stat")
@@ -1309,15 +1132,13 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::LoggingStatistics::RemoteLoggingStat>();
         c->parent = this;
-        remote_logging_stat.push_back(std::move(c));
-        children[segment_path] = remote_logging_stat.back();
-        return children.at(segment_path);
+        remote_logging_stat.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tls-remote-logging-stat")
@@ -1327,99 +1148,68 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Syslog::LoggingStatistics::TlsRemoteLoggingStat>();
         c->parent = this;
-        tls_remote_logging_stat.push_back(std::move(c));
-        children[segment_path] = tls_remote_logging_stat.back();
-        return children.at(segment_path);
+        tls_remote_logging_stat.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "trap-logging-stats")
     {
-        if(trap_logging_stats != nullptr)
-        {
-            children["trap-logging-stats"] = trap_logging_stats;
-        }
-        else
+        if(trap_logging_stats == nullptr)
         {
             trap_logging_stats = std::make_shared<Syslog::LoggingStatistics::TrapLoggingStats>();
-            trap_logging_stats->parent = this;
-            children["trap-logging-stats"] = trap_logging_stats;
         }
-        return children.at("trap-logging-stats");
+        return trap_logging_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::get_children() const
 {
-    if(children.find("buffer-logging-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(buffer_logging_stats != nullptr)
     {
-        if(buffer_logging_stats != nullptr)
-        {
-            children["buffer-logging-stats"] = buffer_logging_stats;
-        }
+        children["buffer-logging-stats"] = buffer_logging_stats;
     }
 
-    if(children.find("console-logging-stats") == children.end())
+    if(console_logging_stats != nullptr)
     {
-        if(console_logging_stats != nullptr)
-        {
-            children["console-logging-stats"] = console_logging_stats;
-        }
+        children["console-logging-stats"] = console_logging_stats;
     }
 
     for (auto const & c : file_logging_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("logging-stats") == children.end())
+    if(logging_stats != nullptr)
     {
-        if(logging_stats != nullptr)
-        {
-            children["logging-stats"] = logging_stats;
-        }
+        children["logging-stats"] = logging_stats;
     }
 
-    if(children.find("monitor-logging-stats") == children.end())
+    if(monitor_logging_stats != nullptr)
     {
-        if(monitor_logging_stats != nullptr)
-        {
-            children["monitor-logging-stats"] = monitor_logging_stats;
-        }
+        children["monitor-logging-stats"] = monitor_logging_stats;
     }
 
     for (auto const & c : remote_logging_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : tls_remote_logging_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("trap-logging-stats") == children.end())
+    if(trap_logging_stats != nullptr)
     {
-        if(trap_logging_stats != nullptr)
-        {
-            children["trap-logging-stats"] = trap_logging_stats;
-        }
+        children["trap-logging-stats"] = trap_logging_stats;
     }
 
     return children;
@@ -1469,7 +1259,7 @@ std::string Syslog::LoggingStatistics::LoggingStats::get_segment_path() const
 
 }
 
-EntityPath Syslog::LoggingStatistics::LoggingStats::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::LoggingStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1496,20 +1286,12 @@ EntityPath Syslog::LoggingStatistics::LoggingStats::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::LoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::LoggingStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::LoggingStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1573,7 +1355,7 @@ std::string Syslog::LoggingStatistics::ConsoleLoggingStats::get_segment_path() c
 
 }
 
-EntityPath Syslog::LoggingStatistics::ConsoleLoggingStats::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::ConsoleLoggingStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1600,20 +1382,12 @@ EntityPath Syslog::LoggingStatistics::ConsoleLoggingStats::get_entity_path(Entit
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::ConsoleLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::ConsoleLoggingStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::ConsoleLoggingStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1677,7 +1451,7 @@ std::string Syslog::LoggingStatistics::MonitorLoggingStats::get_segment_path() c
 
 }
 
-EntityPath Syslog::LoggingStatistics::MonitorLoggingStats::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::MonitorLoggingStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1704,20 +1478,12 @@ EntityPath Syslog::LoggingStatistics::MonitorLoggingStats::get_entity_path(Entit
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::MonitorLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::MonitorLoggingStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::MonitorLoggingStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1781,7 +1547,7 @@ std::string Syslog::LoggingStatistics::TrapLoggingStats::get_segment_path() cons
 
 }
 
-EntityPath Syslog::LoggingStatistics::TrapLoggingStats::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::TrapLoggingStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1808,20 +1574,12 @@ EntityPath Syslog::LoggingStatistics::TrapLoggingStats::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::TrapLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::TrapLoggingStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TrapLoggingStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1885,7 +1643,7 @@ std::string Syslog::LoggingStatistics::BufferLoggingStats::get_segment_path() co
 
 }
 
-EntityPath Syslog::LoggingStatistics::BufferLoggingStats::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::BufferLoggingStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1912,20 +1670,12 @@ EntityPath Syslog::LoggingStatistics::BufferLoggingStats::get_entity_path(Entity
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::BufferLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::BufferLoggingStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::BufferLoggingStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1983,7 +1733,7 @@ std::string Syslog::LoggingStatistics::RemoteLoggingStat::get_segment_path() con
 
 }
 
-EntityPath Syslog::LoggingStatistics::RemoteLoggingStat::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::RemoteLoggingStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2008,20 +1758,12 @@ EntityPath Syslog::LoggingStatistics::RemoteLoggingStat::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::RemoteLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::RemoteLoggingStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::RemoteLoggingStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2071,7 +1813,7 @@ std::string Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_segment_path() 
 
 }
 
-EntityPath Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2096,20 +1838,12 @@ EntityPath Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_entity_path(Enti
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2159,7 +1893,7 @@ std::string Syslog::LoggingStatistics::FileLoggingStat::get_segment_path() const
 
 }
 
-EntityPath Syslog::LoggingStatistics::FileLoggingStat::get_entity_path(Entity* ancestor) const
+const EntityPath Syslog::LoggingStatistics::FileLoggingStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2184,20 +1918,12 @@ EntityPath Syslog::LoggingStatistics::FileLoggingStat::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Syslog::LoggingStatistics::FileLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Syslog::LoggingStatistics::FileLoggingStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::FileLoggingStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

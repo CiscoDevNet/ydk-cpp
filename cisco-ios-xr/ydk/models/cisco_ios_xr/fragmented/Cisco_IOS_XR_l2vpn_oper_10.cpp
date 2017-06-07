@@ -44,7 +44,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -69,20 +69,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -132,7 +124,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -157,20 +149,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::UnknownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -203,43 +187,30 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::
 	,unicast_drop(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop>())
 {
     broadcast_drop->parent = this;
-    children["broadcast-drop"] = broadcast_drop;
 
     dai_drop->parent = this;
-    children["dai-drop"] = dai_drop;
 
     disposition_mtu_drop->parent = this;
-    children["disposition-mtu-drop"] = disposition_mtu_drop;
 
     disposition_oo_o_drops->parent = this;
-    children["disposition-oo-o-drops"] = disposition_oo_o_drops;
 
     disposition_p2mp_stats->parent = this;
-    children["disposition-p2mp-stats"] = disposition_p2mp_stats;
 
     disposition_stat->parent = this;
-    children["disposition-stat"] = disposition_stat;
 
     disposition_tail_drop->parent = this;
-    children["disposition-tail-drop"] = disposition_tail_drop;
 
     ipsg_drop->parent = this;
-    children["ipsg-drop"] = ipsg_drop;
 
     known_unicast->parent = this;
-    children["known-unicast"] = known_unicast;
 
     mac_move->parent = this;
-    children["mac-move"] = mac_move;
 
     multicast_drop->parent = this;
-    children["multicast-drop"] = multicast_drop;
 
     received_drops->parent = this;
-    children["received-drops"] = received_drops;
 
     unicast_drop->parent = this;
-    children["unicast-drop"] = unicast_drop;
 
     yang_name = "dispostion-stats"; yang_parent_name = "statistics";
 }
@@ -292,7 +263,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -315,317 +286,192 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast-drop")
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
-        else
+        if(broadcast_drop == nullptr)
         {
             broadcast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::BroadcastDrop>();
-            broadcast_drop->parent = this;
-            children["broadcast-drop"] = broadcast_drop;
         }
-        return children.at("broadcast-drop");
+        return broadcast_drop;
     }
 
     if(child_yang_name == "dai-drop")
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
-        else
+        if(dai_drop == nullptr)
         {
             dai_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DaiDrop>();
-            dai_drop->parent = this;
-            children["dai-drop"] = dai_drop;
         }
-        return children.at("dai-drop");
+        return dai_drop;
     }
 
     if(child_yang_name == "disposition-mtu-drop")
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
-        else
+        if(disposition_mtu_drop == nullptr)
         {
             disposition_mtu_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionMtuDrop>();
-            disposition_mtu_drop->parent = this;
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
         }
-        return children.at("disposition-mtu-drop");
+        return disposition_mtu_drop;
     }
 
     if(child_yang_name == "disposition-oo-o-drops")
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
-        else
+        if(disposition_oo_o_drops == nullptr)
         {
             disposition_oo_o_drops = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionOoODrops>();
-            disposition_oo_o_drops->parent = this;
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
         }
-        return children.at("disposition-oo-o-drops");
+        return disposition_oo_o_drops;
     }
 
     if(child_yang_name == "disposition-p2mp-stats")
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
-        else
+        if(disposition_p2mp_stats == nullptr)
         {
             disposition_p2mp_stats = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionP2MpStats>();
-            disposition_p2mp_stats->parent = this;
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
         }
-        return children.at("disposition-p2mp-stats");
+        return disposition_p2mp_stats;
     }
 
     if(child_yang_name == "disposition-stat")
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
-        else
+        if(disposition_stat == nullptr)
         {
             disposition_stat = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionStat>();
-            disposition_stat->parent = this;
-            children["disposition-stat"] = disposition_stat;
         }
-        return children.at("disposition-stat");
+        return disposition_stat;
     }
 
     if(child_yang_name == "disposition-tail-drop")
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
-        else
+        if(disposition_tail_drop == nullptr)
         {
             disposition_tail_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionTailDrop>();
-            disposition_tail_drop->parent = this;
-            children["disposition-tail-drop"] = disposition_tail_drop;
         }
-        return children.at("disposition-tail-drop");
+        return disposition_tail_drop;
     }
 
     if(child_yang_name == "ipsg-drop")
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
-        else
+        if(ipsg_drop == nullptr)
         {
             ipsg_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::IpsgDrop>();
-            ipsg_drop->parent = this;
-            children["ipsg-drop"] = ipsg_drop;
         }
-        return children.at("ipsg-drop");
+        return ipsg_drop;
     }
 
     if(child_yang_name == "known-unicast")
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
-        else
+        if(known_unicast == nullptr)
         {
             known_unicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::KnownUnicast>();
-            known_unicast->parent = this;
-            children["known-unicast"] = known_unicast;
         }
-        return children.at("known-unicast");
+        return known_unicast;
     }
 
     if(child_yang_name == "mac-move")
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
-        else
+        if(mac_move == nullptr)
         {
             mac_move = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MacMove>();
-            mac_move->parent = this;
-            children["mac-move"] = mac_move;
         }
-        return children.at("mac-move");
+        return mac_move;
     }
 
     if(child_yang_name == "multicast-drop")
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
-        else
+        if(multicast_drop == nullptr)
         {
             multicast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MulticastDrop>();
-            multicast_drop->parent = this;
-            children["multicast-drop"] = multicast_drop;
         }
-        return children.at("multicast-drop");
+        return multicast_drop;
     }
 
     if(child_yang_name == "received-drops")
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
-        else
+        if(received_drops == nullptr)
         {
             received_drops = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::ReceivedDrops>();
-            received_drops->parent = this;
-            children["received-drops"] = received_drops;
         }
-        return children.at("received-drops");
+        return received_drops;
     }
 
     if(child_yang_name == "unicast-drop")
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
-        else
+        if(unicast_drop == nullptr)
         {
             unicast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop>();
-            unicast_drop->parent = this;
-            children["unicast-drop"] = unicast_drop;
         }
-        return children.at("unicast-drop");
+        return unicast_drop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::get_children() const
 {
-    if(children.find("broadcast-drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast_drop != nullptr)
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
+        children["broadcast-drop"] = broadcast_drop;
     }
 
-    if(children.find("dai-drop") == children.end())
+    if(dai_drop != nullptr)
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
+        children["dai-drop"] = dai_drop;
     }
 
-    if(children.find("disposition-mtu-drop") == children.end())
+    if(disposition_mtu_drop != nullptr)
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
+        children["disposition-mtu-drop"] = disposition_mtu_drop;
     }
 
-    if(children.find("disposition-oo-o-drops") == children.end())
+    if(disposition_oo_o_drops != nullptr)
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
+        children["disposition-oo-o-drops"] = disposition_oo_o_drops;
     }
 
-    if(children.find("disposition-p2mp-stats") == children.end())
+    if(disposition_p2mp_stats != nullptr)
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
+        children["disposition-p2mp-stats"] = disposition_p2mp_stats;
     }
 
-    if(children.find("disposition-stat") == children.end())
+    if(disposition_stat != nullptr)
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
+        children["disposition-stat"] = disposition_stat;
     }
 
-    if(children.find("disposition-tail-drop") == children.end())
+    if(disposition_tail_drop != nullptr)
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
+        children["disposition-tail-drop"] = disposition_tail_drop;
     }
 
-    if(children.find("ipsg-drop") == children.end())
+    if(ipsg_drop != nullptr)
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
+        children["ipsg-drop"] = ipsg_drop;
     }
 
-    if(children.find("known-unicast") == children.end())
+    if(known_unicast != nullptr)
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
+        children["known-unicast"] = known_unicast;
     }
 
-    if(children.find("mac-move") == children.end())
+    if(mac_move != nullptr)
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
+        children["mac-move"] = mac_move;
     }
 
-    if(children.find("multicast-drop") == children.end())
+    if(multicast_drop != nullptr)
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
+        children["multicast-drop"] = multicast_drop;
     }
 
-    if(children.find("received-drops") == children.end())
+    if(received_drops != nullptr)
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
+        children["received-drops"] = received_drops;
     }
 
-    if(children.find("unicast-drop") == children.end())
+    if(unicast_drop != nullptr)
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
+        children["unicast-drop"] = unicast_drop;
     }
 
     return children;
@@ -669,7 +515,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -694,20 +540,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -757,7 +595,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -782,20 +620,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionMtuDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -845,7 +675,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -870,20 +700,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionTailDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -933,7 +755,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -958,20 +780,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MulticastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1021,7 +835,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1046,20 +860,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1109,7 +915,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1134,20 +940,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::BroadcastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1197,7 +995,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1222,20 +1020,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::ReceivedDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1285,7 +1075,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1310,20 +1100,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DaiDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DaiDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1373,7 +1155,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1398,20 +1180,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::IpsgDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1461,7 +1235,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1486,20 +1260,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionOoODrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1549,7 +1315,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1574,20 +1340,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionP2MpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionP2MpStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1637,7 +1395,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1662,20 +1420,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1725,7 +1475,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1750,20 +1500,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MacMove::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MacMove::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1819,7 +1561,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1846,20 +1588,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::SequenceNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::SequenceNumber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1920,7 +1654,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::BmacMapping::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::BmacMapping::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1946,20 +1680,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::BmacMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::BmacMapping::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::BmacMapping::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1986,7 +1712,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::
     core_port(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort>())
 {
     core_port->parent = this;
-    children["core-port"] = core_port;
 
     yang_name = "pbb-core"; yang_parent_name = "pbb-parameters";
 }
@@ -2017,7 +1742,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2041,41 +1766,24 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "core-port")
     {
-        if(core_port != nullptr)
-        {
-            children["core-port"] = core_port;
-        }
-        else
+        if(core_port == nullptr)
         {
             core_port = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort>();
-            core_port->parent = this;
-            children["core-port"] = core_port;
         }
-        return children.at("core-port");
+        return core_port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::get_children() const
 {
-    if(children.find("core-port") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(core_port != nullptr)
     {
-        if(core_port != nullptr)
-        {
-            children["core-port"] = core_port;
-        }
+        children["core-port"] = core_port;
     }
 
     return children;
@@ -2098,7 +1806,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::
     security_parameters(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters>())
 {
     security_parameters->parent = this;
-    children["security-parameters"] = security_parameters;
 
     yang_name = "core-port"; yang_parent_name = "pbb-core";
 }
@@ -2133,7 +1840,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2159,41 +1866,24 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "security-parameters")
     {
-        if(security_parameters != nullptr)
-        {
-            children["security-parameters"] = security_parameters;
-        }
-        else
+        if(security_parameters == nullptr)
         {
             security_parameters = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters>();
-            security_parameters->parent = this;
-            children["security-parameters"] = security_parameters;
         }
-        return children.at("security-parameters");
+        return security_parameters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::get_children() const
 {
-    if(children.find("security-parameters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(security_parameters != nullptr)
     {
-        if(security_parameters != nullptr)
-        {
-            children["security-parameters"] = security_parameters;
-        }
+        children["security-parameters"] = security_parameters;
     }
 
     return children;
@@ -2232,10 +1922,8 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::
 	,storm_control(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl>())
 {
     base->parent = this;
-    children["base"] = base;
 
     storm_control->parent = this;
-    children["storm-control"] = storm_control;
 
     yang_name = "security-parameters"; yang_parent_name = "core-port";
 }
@@ -2286,7 +1974,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2319,64 +2007,38 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "storm-control")
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
-        else
+        if(storm_control == nullptr)
         {
             storm_control = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl>();
-            storm_control->parent = this;
-            children["storm-control"] = storm_control;
         }
-        return children.at("storm-control");
+        return storm_control;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("storm-control") == children.end())
+    if(storm_control != nullptr)
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
+        children["storm-control"] = storm_control;
     }
 
     return children;
@@ -2472,7 +2134,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::
     storm_control(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl>())
 {
     storm_control->parent = this;
-    children["storm-control"] = storm_control;
 
     yang_name = "base"; yang_parent_name = "security-parameters";
 }
@@ -2581,7 +2242,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2644,41 +2305,24 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "storm-control")
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
-        else
+        if(storm_control == nullptr)
         {
             storm_control = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl>();
-            storm_control->parent = this;
-            children["storm-control"] = storm_control;
         }
-        return children.at("storm-control");
+        return storm_control;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::get_children() const
 {
-    if(children.find("storm-control") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(storm_control != nullptr)
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
+        children["storm-control"] = storm_control;
     }
 
     return children;
@@ -2888,7 +2532,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2915,20 +2559,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2992,7 +2628,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Pbb
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3019,20 +2655,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3063,7 +2691,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters:
     evpn_port(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort>())
 {
     evpn_port->parent = this;
-    children["evpn-port"] = evpn_port;
 
     yang_name = "evpn-parameters"; yang_parent_name = "bridge-domain-info";
 }
@@ -3094,7 +2721,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3118,41 +2745,24 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evpn-port")
     {
-        if(evpn_port != nullptr)
-        {
-            children["evpn-port"] = evpn_port;
-        }
-        else
+        if(evpn_port == nullptr)
         {
             evpn_port = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort>();
-            evpn_port->parent = this;
-            children["evpn-port"] = evpn_port;
         }
-        return children.at("evpn-port");
+        return evpn_port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::get_children() const
 {
-    if(children.find("evpn-port") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(evpn_port != nullptr)
     {
-        if(evpn_port != nullptr)
-        {
-            children["evpn-port"] = evpn_port;
-        }
+        children["evpn-port"] = evpn_port;
     }
 
     return children;
@@ -3175,10 +2785,8 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters:
 	,statistics(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics>())
 {
     security_parameters->parent = this;
-    children["security-parameters"] = security_parameters;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "evpn-port"; yang_parent_name = "evpn-parameters";
 }
@@ -3213,7 +2821,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3238,64 +2846,38 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "security-parameters")
     {
-        if(security_parameters != nullptr)
-        {
-            children["security-parameters"] = security_parameters;
-        }
-        else
+        if(security_parameters == nullptr)
         {
             security_parameters = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters>();
-            security_parameters->parent = this;
-            children["security-parameters"] = security_parameters;
         }
-        return children.at("security-parameters");
+        return security_parameters;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::get_children() const
 {
-    if(children.find("security-parameters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(security_parameters != nullptr)
     {
-        if(security_parameters != nullptr)
-        {
-            children["security-parameters"] = security_parameters;
-        }
+        children["security-parameters"] = security_parameters;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -3330,10 +2912,8 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters:
 	,storm_control(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl>())
 {
     base->parent = this;
-    children["base"] = base;
 
     storm_control->parent = this;
-    children["storm-control"] = storm_control;
 
     yang_name = "security-parameters"; yang_parent_name = "evpn-port";
 }
@@ -3384,7 +2964,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3417,64 +2997,38 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "storm-control")
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
-        else
+        if(storm_control == nullptr)
         {
             storm_control = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl>();
-            storm_control->parent = this;
-            children["storm-control"] = storm_control;
         }
-        return children.at("storm-control");
+        return storm_control;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("storm-control") == children.end())
+    if(storm_control != nullptr)
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
+        children["storm-control"] = storm_control;
     }
 
     return children;
@@ -3570,7 +3124,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters:
     storm_control(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl>())
 {
     storm_control->parent = this;
-    children["storm-control"] = storm_control;
 
     yang_name = "base"; yang_parent_name = "security-parameters";
 }
@@ -3679,7 +3232,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3742,41 +3295,24 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "storm-control")
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
-        else
+        if(storm_control == nullptr)
         {
             storm_control = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl>();
-            storm_control->parent = this;
-            children["storm-control"] = storm_control;
         }
-        return children.at("storm-control");
+        return storm_control;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::get_children() const
 {
-    if(children.find("storm-control") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(storm_control != nullptr)
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
+        children["storm-control"] = storm_control;
     }
 
     return children;
@@ -3986,7 +3522,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4013,20 +3549,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4090,7 +3618,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4117,20 +3645,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4161,13 +3681,10 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters:
 	,sequence_number(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber>())
 {
     dispostion_stats->parent = this;
-    children["dispostion-stats"] = dispostion_stats;
 
     impostion_stats->parent = this;
-    children["impostion-stats"] = impostion_stats;
 
     sequence_number->parent = this;
-    children["sequence-number"] = sequence_number;
 
     yang_name = "statistics"; yang_parent_name = "evpn-port";
 }
@@ -4200,7 +3717,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4223,87 +3740,52 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dispostion-stats")
     {
-        if(dispostion_stats != nullptr)
-        {
-            children["dispostion-stats"] = dispostion_stats;
-        }
-        else
+        if(dispostion_stats == nullptr)
         {
             dispostion_stats = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats>();
-            dispostion_stats->parent = this;
-            children["dispostion-stats"] = dispostion_stats;
         }
-        return children.at("dispostion-stats");
+        return dispostion_stats;
     }
 
     if(child_yang_name == "impostion-stats")
     {
-        if(impostion_stats != nullptr)
-        {
-            children["impostion-stats"] = impostion_stats;
-        }
-        else
+        if(impostion_stats == nullptr)
         {
             impostion_stats = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats>();
-            impostion_stats->parent = this;
-            children["impostion-stats"] = impostion_stats;
         }
-        return children.at("impostion-stats");
+        return impostion_stats;
     }
 
     if(child_yang_name == "sequence-number")
     {
-        if(sequence_number != nullptr)
-        {
-            children["sequence-number"] = sequence_number;
-        }
-        else
+        if(sequence_number == nullptr)
         {
             sequence_number = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber>();
-            sequence_number->parent = this;
-            children["sequence-number"] = sequence_number;
         }
-        return children.at("sequence-number");
+        return sequence_number;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::get_children() const
 {
-    if(children.find("dispostion-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dispostion_stats != nullptr)
     {
-        if(dispostion_stats != nullptr)
-        {
-            children["dispostion-stats"] = dispostion_stats;
-        }
+        children["dispostion-stats"] = dispostion_stats;
     }
 
-    if(children.find("impostion-stats") == children.end())
+    if(impostion_stats != nullptr)
     {
-        if(impostion_stats != nullptr)
-        {
-            children["impostion-stats"] = impostion_stats;
-        }
+        children["impostion-stats"] = impostion_stats;
     }
 
-    if(children.find("sequence-number") == children.end())
+    if(sequence_number != nullptr)
     {
-        if(sequence_number != nullptr)
-        {
-            children["sequence-number"] = sequence_number;
-        }
+        children["sequence-number"] = sequence_number;
     }
 
     return children;
@@ -4325,28 +3807,20 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters:
 	,unknown_unicast(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast>())
 {
     broadcast->parent = this;
-    children["broadcast"] = broadcast;
 
     imposition_mtu_drop->parent = this;
-    children["imposition-mtu-drop"] = imposition_mtu_drop;
 
     imposition_stat->parent = this;
-    children["imposition-stat"] = imposition_stat;
 
     impostion_tail_drop->parent = this;
-    children["impostion-tail-drop"] = impostion_tail_drop;
 
     known_unicast->parent = this;
-    children["known-unicast"] = known_unicast;
 
     l2fsbi_drop->parent = this;
-    children["l2fsbi-drop"] = l2fsbi_drop;
 
     multicast->parent = this;
-    children["multicast"] = multicast;
 
     unknown_unicast->parent = this;
-    children["unknown-unicast"] = unknown_unicast;
 
     yang_name = "impostion-stats"; yang_parent_name = "statistics";
 }
@@ -4389,7 +3863,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4412,202 +3886,122 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast")
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
-        else
+        if(broadcast == nullptr)
         {
             broadcast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Broadcast>();
-            broadcast->parent = this;
-            children["broadcast"] = broadcast;
         }
-        return children.at("broadcast");
+        return broadcast;
     }
 
     if(child_yang_name == "imposition-mtu-drop")
     {
-        if(imposition_mtu_drop != nullptr)
-        {
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
-        }
-        else
+        if(imposition_mtu_drop == nullptr)
         {
             imposition_mtu_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionMtuDrop>();
-            imposition_mtu_drop->parent = this;
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
         }
-        return children.at("imposition-mtu-drop");
+        return imposition_mtu_drop;
     }
 
     if(child_yang_name == "imposition-stat")
     {
-        if(imposition_stat != nullptr)
-        {
-            children["imposition-stat"] = imposition_stat;
-        }
-        else
+        if(imposition_stat == nullptr)
         {
             imposition_stat = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionStat>();
-            imposition_stat->parent = this;
-            children["imposition-stat"] = imposition_stat;
         }
-        return children.at("imposition-stat");
+        return imposition_stat;
     }
 
     if(child_yang_name == "impostion-tail-drop")
     {
-        if(impostion_tail_drop != nullptr)
-        {
-            children["impostion-tail-drop"] = impostion_tail_drop;
-        }
-        else
+        if(impostion_tail_drop == nullptr)
         {
             impostion_tail_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpostionTailDrop>();
-            impostion_tail_drop->parent = this;
-            children["impostion-tail-drop"] = impostion_tail_drop;
         }
-        return children.at("impostion-tail-drop");
+        return impostion_tail_drop;
     }
 
     if(child_yang_name == "known-unicast")
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
-        else
+        if(known_unicast == nullptr)
         {
             known_unicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::KnownUnicast>();
-            known_unicast->parent = this;
-            children["known-unicast"] = known_unicast;
         }
-        return children.at("known-unicast");
+        return known_unicast;
     }
 
     if(child_yang_name == "l2fsbi-drop")
     {
-        if(l2fsbi_drop != nullptr)
-        {
-            children["l2fsbi-drop"] = l2fsbi_drop;
-        }
-        else
+        if(l2fsbi_drop == nullptr)
         {
             l2fsbi_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::L2FsbiDrop>();
-            l2fsbi_drop->parent = this;
-            children["l2fsbi-drop"] = l2fsbi_drop;
         }
-        return children.at("l2fsbi-drop");
+        return l2fsbi_drop;
     }
 
     if(child_yang_name == "multicast")
     {
-        if(multicast != nullptr)
-        {
-            children["multicast"] = multicast;
-        }
-        else
+        if(multicast == nullptr)
         {
             multicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Multicast>();
-            multicast->parent = this;
-            children["multicast"] = multicast;
         }
-        return children.at("multicast");
+        return multicast;
     }
 
     if(child_yang_name == "unknown-unicast")
     {
-        if(unknown_unicast != nullptr)
-        {
-            children["unknown-unicast"] = unknown_unicast;
-        }
-        else
+        if(unknown_unicast == nullptr)
         {
             unknown_unicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast>();
-            unknown_unicast->parent = this;
-            children["unknown-unicast"] = unknown_unicast;
         }
-        return children.at("unknown-unicast");
+        return unknown_unicast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::get_children() const
 {
-    if(children.find("broadcast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast != nullptr)
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
+        children["broadcast"] = broadcast;
     }
 
-    if(children.find("imposition-mtu-drop") == children.end())
+    if(imposition_mtu_drop != nullptr)
     {
-        if(imposition_mtu_drop != nullptr)
-        {
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
-        }
+        children["imposition-mtu-drop"] = imposition_mtu_drop;
     }
 
-    if(children.find("imposition-stat") == children.end())
+    if(imposition_stat != nullptr)
     {
-        if(imposition_stat != nullptr)
-        {
-            children["imposition-stat"] = imposition_stat;
-        }
+        children["imposition-stat"] = imposition_stat;
     }
 
-    if(children.find("impostion-tail-drop") == children.end())
+    if(impostion_tail_drop != nullptr)
     {
-        if(impostion_tail_drop != nullptr)
-        {
-            children["impostion-tail-drop"] = impostion_tail_drop;
-        }
+        children["impostion-tail-drop"] = impostion_tail_drop;
     }
 
-    if(children.find("known-unicast") == children.end())
+    if(known_unicast != nullptr)
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
+        children["known-unicast"] = known_unicast;
     }
 
-    if(children.find("l2fsbi-drop") == children.end())
+    if(l2fsbi_drop != nullptr)
     {
-        if(l2fsbi_drop != nullptr)
-        {
-            children["l2fsbi-drop"] = l2fsbi_drop;
-        }
+        children["l2fsbi-drop"] = l2fsbi_drop;
     }
 
-    if(children.find("multicast") == children.end())
+    if(multicast != nullptr)
     {
-        if(multicast != nullptr)
-        {
-            children["multicast"] = multicast;
-        }
+        children["multicast"] = multicast;
     }
 
-    if(children.find("unknown-unicast") == children.end())
+    if(unknown_unicast != nullptr)
     {
-        if(unknown_unicast != nullptr)
-        {
-            children["unknown-unicast"] = unknown_unicast;
-        }
+        children["unknown-unicast"] = unknown_unicast;
     }
 
     return children;
@@ -4651,7 +4045,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionStat::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4676,20 +4070,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4739,7 +4125,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionMtuDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionMtuDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4764,20 +4150,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionMtuDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4827,7 +4205,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpostionTailDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpostionTailDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4852,20 +4230,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpostionTailDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4915,7 +4285,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::L2FsbiDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::L2FsbiDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4940,20 +4310,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::L2FsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::L2FsbiDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::L2FsbiDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5003,7 +4365,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Multicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Multicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5028,20 +4390,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Multicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Multicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5091,7 +4445,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Broadcast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Broadcast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5116,20 +4470,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Broadcast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Broadcast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5179,7 +4525,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5204,20 +4550,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5267,7 +4605,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5292,20 +4630,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5338,43 +4668,30 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters:
 	,unicast_drop(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop>())
 {
     broadcast_drop->parent = this;
-    children["broadcast-drop"] = broadcast_drop;
 
     dai_drop->parent = this;
-    children["dai-drop"] = dai_drop;
 
     disposition_mtu_drop->parent = this;
-    children["disposition-mtu-drop"] = disposition_mtu_drop;
 
     disposition_oo_o_drops->parent = this;
-    children["disposition-oo-o-drops"] = disposition_oo_o_drops;
 
     disposition_p2mp_stats->parent = this;
-    children["disposition-p2mp-stats"] = disposition_p2mp_stats;
 
     disposition_stat->parent = this;
-    children["disposition-stat"] = disposition_stat;
 
     disposition_tail_drop->parent = this;
-    children["disposition-tail-drop"] = disposition_tail_drop;
 
     ipsg_drop->parent = this;
-    children["ipsg-drop"] = ipsg_drop;
 
     known_unicast->parent = this;
-    children["known-unicast"] = known_unicast;
 
     mac_move->parent = this;
-    children["mac-move"] = mac_move;
 
     multicast_drop->parent = this;
-    children["multicast-drop"] = multicast_drop;
 
     received_drops->parent = this;
-    children["received-drops"] = received_drops;
 
     unicast_drop->parent = this;
-    children["unicast-drop"] = unicast_drop;
 
     yang_name = "dispostion-stats"; yang_parent_name = "statistics";
 }
@@ -5427,7 +4744,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5450,317 +4767,192 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast-drop")
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
-        else
+        if(broadcast_drop == nullptr)
         {
             broadcast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::BroadcastDrop>();
-            broadcast_drop->parent = this;
-            children["broadcast-drop"] = broadcast_drop;
         }
-        return children.at("broadcast-drop");
+        return broadcast_drop;
     }
 
     if(child_yang_name == "dai-drop")
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
-        else
+        if(dai_drop == nullptr)
         {
             dai_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DaiDrop>();
-            dai_drop->parent = this;
-            children["dai-drop"] = dai_drop;
         }
-        return children.at("dai-drop");
+        return dai_drop;
     }
 
     if(child_yang_name == "disposition-mtu-drop")
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
-        else
+        if(disposition_mtu_drop == nullptr)
         {
             disposition_mtu_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionMtuDrop>();
-            disposition_mtu_drop->parent = this;
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
         }
-        return children.at("disposition-mtu-drop");
+        return disposition_mtu_drop;
     }
 
     if(child_yang_name == "disposition-oo-o-drops")
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
-        else
+        if(disposition_oo_o_drops == nullptr)
         {
             disposition_oo_o_drops = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionOoODrops>();
-            disposition_oo_o_drops->parent = this;
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
         }
-        return children.at("disposition-oo-o-drops");
+        return disposition_oo_o_drops;
     }
 
     if(child_yang_name == "disposition-p2mp-stats")
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
-        else
+        if(disposition_p2mp_stats == nullptr)
         {
             disposition_p2mp_stats = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionP2MpStats>();
-            disposition_p2mp_stats->parent = this;
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
         }
-        return children.at("disposition-p2mp-stats");
+        return disposition_p2mp_stats;
     }
 
     if(child_yang_name == "disposition-stat")
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
-        else
+        if(disposition_stat == nullptr)
         {
             disposition_stat = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionStat>();
-            disposition_stat->parent = this;
-            children["disposition-stat"] = disposition_stat;
         }
-        return children.at("disposition-stat");
+        return disposition_stat;
     }
 
     if(child_yang_name == "disposition-tail-drop")
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
-        else
+        if(disposition_tail_drop == nullptr)
         {
             disposition_tail_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionTailDrop>();
-            disposition_tail_drop->parent = this;
-            children["disposition-tail-drop"] = disposition_tail_drop;
         }
-        return children.at("disposition-tail-drop");
+        return disposition_tail_drop;
     }
 
     if(child_yang_name == "ipsg-drop")
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
-        else
+        if(ipsg_drop == nullptr)
         {
             ipsg_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::IpsgDrop>();
-            ipsg_drop->parent = this;
-            children["ipsg-drop"] = ipsg_drop;
         }
-        return children.at("ipsg-drop");
+        return ipsg_drop;
     }
 
     if(child_yang_name == "known-unicast")
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
-        else
+        if(known_unicast == nullptr)
         {
             known_unicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::KnownUnicast>();
-            known_unicast->parent = this;
-            children["known-unicast"] = known_unicast;
         }
-        return children.at("known-unicast");
+        return known_unicast;
     }
 
     if(child_yang_name == "mac-move")
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
-        else
+        if(mac_move == nullptr)
         {
             mac_move = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MacMove>();
-            mac_move->parent = this;
-            children["mac-move"] = mac_move;
         }
-        return children.at("mac-move");
+        return mac_move;
     }
 
     if(child_yang_name == "multicast-drop")
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
-        else
+        if(multicast_drop == nullptr)
         {
             multicast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MulticastDrop>();
-            multicast_drop->parent = this;
-            children["multicast-drop"] = multicast_drop;
         }
-        return children.at("multicast-drop");
+        return multicast_drop;
     }
 
     if(child_yang_name == "received-drops")
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
-        else
+        if(received_drops == nullptr)
         {
             received_drops = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::ReceivedDrops>();
-            received_drops->parent = this;
-            children["received-drops"] = received_drops;
         }
-        return children.at("received-drops");
+        return received_drops;
     }
 
     if(child_yang_name == "unicast-drop")
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
-        else
+        if(unicast_drop == nullptr)
         {
             unicast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop>();
-            unicast_drop->parent = this;
-            children["unicast-drop"] = unicast_drop;
         }
-        return children.at("unicast-drop");
+        return unicast_drop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::get_children() const
 {
-    if(children.find("broadcast-drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast_drop != nullptr)
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
+        children["broadcast-drop"] = broadcast_drop;
     }
 
-    if(children.find("dai-drop") == children.end())
+    if(dai_drop != nullptr)
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
+        children["dai-drop"] = dai_drop;
     }
 
-    if(children.find("disposition-mtu-drop") == children.end())
+    if(disposition_mtu_drop != nullptr)
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
+        children["disposition-mtu-drop"] = disposition_mtu_drop;
     }
 
-    if(children.find("disposition-oo-o-drops") == children.end())
+    if(disposition_oo_o_drops != nullptr)
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
+        children["disposition-oo-o-drops"] = disposition_oo_o_drops;
     }
 
-    if(children.find("disposition-p2mp-stats") == children.end())
+    if(disposition_p2mp_stats != nullptr)
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
+        children["disposition-p2mp-stats"] = disposition_p2mp_stats;
     }
 
-    if(children.find("disposition-stat") == children.end())
+    if(disposition_stat != nullptr)
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
+        children["disposition-stat"] = disposition_stat;
     }
 
-    if(children.find("disposition-tail-drop") == children.end())
+    if(disposition_tail_drop != nullptr)
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
+        children["disposition-tail-drop"] = disposition_tail_drop;
     }
 
-    if(children.find("ipsg-drop") == children.end())
+    if(ipsg_drop != nullptr)
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
+        children["ipsg-drop"] = ipsg_drop;
     }
 
-    if(children.find("known-unicast") == children.end())
+    if(known_unicast != nullptr)
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
+        children["known-unicast"] = known_unicast;
     }
 
-    if(children.find("mac-move") == children.end())
+    if(mac_move != nullptr)
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
+        children["mac-move"] = mac_move;
     }
 
-    if(children.find("multicast-drop") == children.end())
+    if(multicast_drop != nullptr)
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
+        children["multicast-drop"] = multicast_drop;
     }
 
-    if(children.find("received-drops") == children.end())
+    if(received_drops != nullptr)
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
+        children["received-drops"] = received_drops;
     }
 
-    if(children.find("unicast-drop") == children.end())
+    if(unicast_drop != nullptr)
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
+        children["unicast-drop"] = unicast_drop;
     }
 
     return children;
@@ -5804,7 +4996,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5829,20 +5021,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5892,7 +5076,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5917,20 +5101,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionMtuDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5980,7 +5156,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6005,20 +5181,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionTailDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6068,7 +5236,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6093,20 +5261,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MulticastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6156,7 +5316,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6181,20 +5341,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6244,7 +5396,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6269,20 +5421,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::BroadcastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6332,7 +5476,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6357,20 +5501,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::ReceivedDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6420,7 +5556,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6445,20 +5581,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DaiDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DaiDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6508,7 +5636,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6533,20 +5661,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::IpsgDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6596,7 +5716,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6621,20 +5741,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionOoODrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6684,7 +5796,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6709,20 +5821,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionP2MpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionP2MpStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6772,7 +5876,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6797,20 +5901,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6860,7 +5956,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6885,20 +5981,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MacMove::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MacMove::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6954,7 +6042,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evp
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6981,20 +6069,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Evpn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7036,10 +6116,8 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::
 	,statistics(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics>())
 {
     security_parameters->parent = this;
-    children["security-parameters"] = security_parameters;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "vni-parameters"; yang_parent_name = "bridge-domain-info";
 }
@@ -7102,7 +6180,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7136,28 +6214,13 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "security-parameters")
     {
-        if(security_parameters != nullptr)
-        {
-            children["security-parameters"] = security_parameters;
-        }
-        else
+        if(security_parameters == nullptr)
         {
             security_parameters = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters>();
-            security_parameters->parent = this;
-            children["security-parameters"] = security_parameters;
         }
-        return children.at("security-parameters");
+        return security_parameters;
     }
 
     if(child_yang_name == "static-mac")
@@ -7167,59 +6230,43 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDom
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac>();
         c->parent = this;
-        static_mac.push_back(std::move(c));
-        children[segment_path] = static_mac.back();
-        return children.at(segment_path);
+        static_mac.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::get_children() const
 {
-    if(children.find("security-parameters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(security_parameters != nullptr)
     {
-        if(security_parameters != nullptr)
-        {
-            children["security-parameters"] = security_parameters;
-        }
+        children["security-parameters"] = security_parameters;
     }
 
     for (auto const & c : static_mac)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -7290,10 +6337,8 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::
 	,storm_control(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl>())
 {
     base->parent = this;
-    children["base"] = base;
 
     storm_control->parent = this;
-    children["storm-control"] = storm_control;
 
     yang_name = "security-parameters"; yang_parent_name = "vni-parameters";
 }
@@ -7344,7 +6389,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7377,64 +6422,38 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "storm-control")
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
-        else
+        if(storm_control == nullptr)
         {
             storm_control = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl>();
-            storm_control->parent = this;
-            children["storm-control"] = storm_control;
         }
-        return children.at("storm-control");
+        return storm_control;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("storm-control") == children.end())
+    if(storm_control != nullptr)
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
+        children["storm-control"] = storm_control;
     }
 
     return children;
@@ -7530,7 +6549,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::
     storm_control(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl>())
 {
     storm_control->parent = this;
-    children["storm-control"] = storm_control;
 
     yang_name = "base"; yang_parent_name = "security-parameters";
 }
@@ -7639,7 +6657,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7702,41 +6720,24 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "storm-control")
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
-        else
+        if(storm_control == nullptr)
         {
             storm_control = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl>();
-            storm_control->parent = this;
-            children["storm-control"] = storm_control;
         }
-        return children.at("storm-control");
+        return storm_control;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::get_children() const
 {
-    if(children.find("storm-control") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(storm_control != nullptr)
     {
-        if(storm_control != nullptr)
-        {
-            children["storm-control"] = storm_control;
-        }
+        children["storm-control"] = storm_control;
     }
 
     return children;
@@ -7946,7 +6947,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7973,20 +6974,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8050,7 +7043,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8077,20 +7070,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8121,13 +7106,10 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::
 	,sequence_number(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber>())
 {
     dispostion_stats->parent = this;
-    children["dispostion-stats"] = dispostion_stats;
 
     impostion_stats->parent = this;
-    children["impostion-stats"] = impostion_stats;
 
     sequence_number->parent = this;
-    children["sequence-number"] = sequence_number;
 
     yang_name = "statistics"; yang_parent_name = "vni-parameters";
 }
@@ -8160,7 +7142,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8183,87 +7165,52 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dispostion-stats")
     {
-        if(dispostion_stats != nullptr)
-        {
-            children["dispostion-stats"] = dispostion_stats;
-        }
-        else
+        if(dispostion_stats == nullptr)
         {
             dispostion_stats = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats>();
-            dispostion_stats->parent = this;
-            children["dispostion-stats"] = dispostion_stats;
         }
-        return children.at("dispostion-stats");
+        return dispostion_stats;
     }
 
     if(child_yang_name == "impostion-stats")
     {
-        if(impostion_stats != nullptr)
-        {
-            children["impostion-stats"] = impostion_stats;
-        }
-        else
+        if(impostion_stats == nullptr)
         {
             impostion_stats = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats>();
-            impostion_stats->parent = this;
-            children["impostion-stats"] = impostion_stats;
         }
-        return children.at("impostion-stats");
+        return impostion_stats;
     }
 
     if(child_yang_name == "sequence-number")
     {
-        if(sequence_number != nullptr)
-        {
-            children["sequence-number"] = sequence_number;
-        }
-        else
+        if(sequence_number == nullptr)
         {
             sequence_number = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber>();
-            sequence_number->parent = this;
-            children["sequence-number"] = sequence_number;
         }
-        return children.at("sequence-number");
+        return sequence_number;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::get_children() const
 {
-    if(children.find("dispostion-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dispostion_stats != nullptr)
     {
-        if(dispostion_stats != nullptr)
-        {
-            children["dispostion-stats"] = dispostion_stats;
-        }
+        children["dispostion-stats"] = dispostion_stats;
     }
 
-    if(children.find("impostion-stats") == children.end())
+    if(impostion_stats != nullptr)
     {
-        if(impostion_stats != nullptr)
-        {
-            children["impostion-stats"] = impostion_stats;
-        }
+        children["impostion-stats"] = impostion_stats;
     }
 
-    if(children.find("sequence-number") == children.end())
+    if(sequence_number != nullptr)
     {
-        if(sequence_number != nullptr)
-        {
-            children["sequence-number"] = sequence_number;
-        }
+        children["sequence-number"] = sequence_number;
     }
 
     return children;
@@ -8285,28 +7232,20 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::
 	,unknown_unicast(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast>())
 {
     broadcast->parent = this;
-    children["broadcast"] = broadcast;
 
     imposition_mtu_drop->parent = this;
-    children["imposition-mtu-drop"] = imposition_mtu_drop;
 
     imposition_stat->parent = this;
-    children["imposition-stat"] = imposition_stat;
 
     impostion_tail_drop->parent = this;
-    children["impostion-tail-drop"] = impostion_tail_drop;
 
     known_unicast->parent = this;
-    children["known-unicast"] = known_unicast;
 
     l2fsbi_drop->parent = this;
-    children["l2fsbi-drop"] = l2fsbi_drop;
 
     multicast->parent = this;
-    children["multicast"] = multicast;
 
     unknown_unicast->parent = this;
-    children["unknown-unicast"] = unknown_unicast;
 
     yang_name = "impostion-stats"; yang_parent_name = "statistics";
 }
@@ -8349,7 +7288,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8372,202 +7311,122 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast")
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
-        else
+        if(broadcast == nullptr)
         {
             broadcast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Broadcast>();
-            broadcast->parent = this;
-            children["broadcast"] = broadcast;
         }
-        return children.at("broadcast");
+        return broadcast;
     }
 
     if(child_yang_name == "imposition-mtu-drop")
     {
-        if(imposition_mtu_drop != nullptr)
-        {
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
-        }
-        else
+        if(imposition_mtu_drop == nullptr)
         {
             imposition_mtu_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionMtuDrop>();
-            imposition_mtu_drop->parent = this;
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
         }
-        return children.at("imposition-mtu-drop");
+        return imposition_mtu_drop;
     }
 
     if(child_yang_name == "imposition-stat")
     {
-        if(imposition_stat != nullptr)
-        {
-            children["imposition-stat"] = imposition_stat;
-        }
-        else
+        if(imposition_stat == nullptr)
         {
             imposition_stat = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionStat>();
-            imposition_stat->parent = this;
-            children["imposition-stat"] = imposition_stat;
         }
-        return children.at("imposition-stat");
+        return imposition_stat;
     }
 
     if(child_yang_name == "impostion-tail-drop")
     {
-        if(impostion_tail_drop != nullptr)
-        {
-            children["impostion-tail-drop"] = impostion_tail_drop;
-        }
-        else
+        if(impostion_tail_drop == nullptr)
         {
             impostion_tail_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpostionTailDrop>();
-            impostion_tail_drop->parent = this;
-            children["impostion-tail-drop"] = impostion_tail_drop;
         }
-        return children.at("impostion-tail-drop");
+        return impostion_tail_drop;
     }
 
     if(child_yang_name == "known-unicast")
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
-        else
+        if(known_unicast == nullptr)
         {
             known_unicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::KnownUnicast>();
-            known_unicast->parent = this;
-            children["known-unicast"] = known_unicast;
         }
-        return children.at("known-unicast");
+        return known_unicast;
     }
 
     if(child_yang_name == "l2fsbi-drop")
     {
-        if(l2fsbi_drop != nullptr)
-        {
-            children["l2fsbi-drop"] = l2fsbi_drop;
-        }
-        else
+        if(l2fsbi_drop == nullptr)
         {
             l2fsbi_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::L2FsbiDrop>();
-            l2fsbi_drop->parent = this;
-            children["l2fsbi-drop"] = l2fsbi_drop;
         }
-        return children.at("l2fsbi-drop");
+        return l2fsbi_drop;
     }
 
     if(child_yang_name == "multicast")
     {
-        if(multicast != nullptr)
-        {
-            children["multicast"] = multicast;
-        }
-        else
+        if(multicast == nullptr)
         {
             multicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Multicast>();
-            multicast->parent = this;
-            children["multicast"] = multicast;
         }
-        return children.at("multicast");
+        return multicast;
     }
 
     if(child_yang_name == "unknown-unicast")
     {
-        if(unknown_unicast != nullptr)
-        {
-            children["unknown-unicast"] = unknown_unicast;
-        }
-        else
+        if(unknown_unicast == nullptr)
         {
             unknown_unicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast>();
-            unknown_unicast->parent = this;
-            children["unknown-unicast"] = unknown_unicast;
         }
-        return children.at("unknown-unicast");
+        return unknown_unicast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::get_children() const
 {
-    if(children.find("broadcast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast != nullptr)
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
+        children["broadcast"] = broadcast;
     }
 
-    if(children.find("imposition-mtu-drop") == children.end())
+    if(imposition_mtu_drop != nullptr)
     {
-        if(imposition_mtu_drop != nullptr)
-        {
-            children["imposition-mtu-drop"] = imposition_mtu_drop;
-        }
+        children["imposition-mtu-drop"] = imposition_mtu_drop;
     }
 
-    if(children.find("imposition-stat") == children.end())
+    if(imposition_stat != nullptr)
     {
-        if(imposition_stat != nullptr)
-        {
-            children["imposition-stat"] = imposition_stat;
-        }
+        children["imposition-stat"] = imposition_stat;
     }
 
-    if(children.find("impostion-tail-drop") == children.end())
+    if(impostion_tail_drop != nullptr)
     {
-        if(impostion_tail_drop != nullptr)
-        {
-            children["impostion-tail-drop"] = impostion_tail_drop;
-        }
+        children["impostion-tail-drop"] = impostion_tail_drop;
     }
 
-    if(children.find("known-unicast") == children.end())
+    if(known_unicast != nullptr)
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
+        children["known-unicast"] = known_unicast;
     }
 
-    if(children.find("l2fsbi-drop") == children.end())
+    if(l2fsbi_drop != nullptr)
     {
-        if(l2fsbi_drop != nullptr)
-        {
-            children["l2fsbi-drop"] = l2fsbi_drop;
-        }
+        children["l2fsbi-drop"] = l2fsbi_drop;
     }
 
-    if(children.find("multicast") == children.end())
+    if(multicast != nullptr)
     {
-        if(multicast != nullptr)
-        {
-            children["multicast"] = multicast;
-        }
+        children["multicast"] = multicast;
     }
 
-    if(children.find("unknown-unicast") == children.end())
+    if(unknown_unicast != nullptr)
     {
-        if(unknown_unicast != nullptr)
-        {
-            children["unknown-unicast"] = unknown_unicast;
-        }
+        children["unknown-unicast"] = unknown_unicast;
     }
 
     return children;
@@ -8611,7 +7470,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionStat::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8636,20 +7495,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8699,7 +7550,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionMtuDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionMtuDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8724,20 +7575,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionMtuDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8787,7 +7630,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpostionTailDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpostionTailDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8812,20 +7655,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpostionTailDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8875,7 +7710,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::L2FsbiDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::L2FsbiDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8900,20 +7735,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::L2FsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::L2FsbiDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::L2FsbiDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8963,7 +7790,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Multicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Multicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8988,20 +7815,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Multicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Multicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9051,7 +7870,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Broadcast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Broadcast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9076,20 +7895,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Broadcast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Broadcast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9139,7 +7950,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9164,20 +7975,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9227,7 +8030,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9252,20 +8055,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9298,43 +8093,30 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::
 	,unicast_drop(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop>())
 {
     broadcast_drop->parent = this;
-    children["broadcast-drop"] = broadcast_drop;
 
     dai_drop->parent = this;
-    children["dai-drop"] = dai_drop;
 
     disposition_mtu_drop->parent = this;
-    children["disposition-mtu-drop"] = disposition_mtu_drop;
 
     disposition_oo_o_drops->parent = this;
-    children["disposition-oo-o-drops"] = disposition_oo_o_drops;
 
     disposition_p2mp_stats->parent = this;
-    children["disposition-p2mp-stats"] = disposition_p2mp_stats;
 
     disposition_stat->parent = this;
-    children["disposition-stat"] = disposition_stat;
 
     disposition_tail_drop->parent = this;
-    children["disposition-tail-drop"] = disposition_tail_drop;
 
     ipsg_drop->parent = this;
-    children["ipsg-drop"] = ipsg_drop;
 
     known_unicast->parent = this;
-    children["known-unicast"] = known_unicast;
 
     mac_move->parent = this;
-    children["mac-move"] = mac_move;
 
     multicast_drop->parent = this;
-    children["multicast-drop"] = multicast_drop;
 
     received_drops->parent = this;
-    children["received-drops"] = received_drops;
 
     unicast_drop->parent = this;
-    children["unicast-drop"] = unicast_drop;
 
     yang_name = "dispostion-stats"; yang_parent_name = "statistics";
 }
@@ -9387,7 +8169,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9410,317 +8192,192 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast-drop")
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
-        else
+        if(broadcast_drop == nullptr)
         {
             broadcast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::BroadcastDrop>();
-            broadcast_drop->parent = this;
-            children["broadcast-drop"] = broadcast_drop;
         }
-        return children.at("broadcast-drop");
+        return broadcast_drop;
     }
 
     if(child_yang_name == "dai-drop")
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
-        else
+        if(dai_drop == nullptr)
         {
             dai_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DaiDrop>();
-            dai_drop->parent = this;
-            children["dai-drop"] = dai_drop;
         }
-        return children.at("dai-drop");
+        return dai_drop;
     }
 
     if(child_yang_name == "disposition-mtu-drop")
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
-        else
+        if(disposition_mtu_drop == nullptr)
         {
             disposition_mtu_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionMtuDrop>();
-            disposition_mtu_drop->parent = this;
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
         }
-        return children.at("disposition-mtu-drop");
+        return disposition_mtu_drop;
     }
 
     if(child_yang_name == "disposition-oo-o-drops")
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
-        else
+        if(disposition_oo_o_drops == nullptr)
         {
             disposition_oo_o_drops = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionOoODrops>();
-            disposition_oo_o_drops->parent = this;
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
         }
-        return children.at("disposition-oo-o-drops");
+        return disposition_oo_o_drops;
     }
 
     if(child_yang_name == "disposition-p2mp-stats")
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
-        else
+        if(disposition_p2mp_stats == nullptr)
         {
             disposition_p2mp_stats = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionP2MpStats>();
-            disposition_p2mp_stats->parent = this;
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
         }
-        return children.at("disposition-p2mp-stats");
+        return disposition_p2mp_stats;
     }
 
     if(child_yang_name == "disposition-stat")
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
-        else
+        if(disposition_stat == nullptr)
         {
             disposition_stat = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionStat>();
-            disposition_stat->parent = this;
-            children["disposition-stat"] = disposition_stat;
         }
-        return children.at("disposition-stat");
+        return disposition_stat;
     }
 
     if(child_yang_name == "disposition-tail-drop")
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
-        else
+        if(disposition_tail_drop == nullptr)
         {
             disposition_tail_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionTailDrop>();
-            disposition_tail_drop->parent = this;
-            children["disposition-tail-drop"] = disposition_tail_drop;
         }
-        return children.at("disposition-tail-drop");
+        return disposition_tail_drop;
     }
 
     if(child_yang_name == "ipsg-drop")
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
-        else
+        if(ipsg_drop == nullptr)
         {
             ipsg_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::IpsgDrop>();
-            ipsg_drop->parent = this;
-            children["ipsg-drop"] = ipsg_drop;
         }
-        return children.at("ipsg-drop");
+        return ipsg_drop;
     }
 
     if(child_yang_name == "known-unicast")
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
-        else
+        if(known_unicast == nullptr)
         {
             known_unicast = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::KnownUnicast>();
-            known_unicast->parent = this;
-            children["known-unicast"] = known_unicast;
         }
-        return children.at("known-unicast");
+        return known_unicast;
     }
 
     if(child_yang_name == "mac-move")
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
-        else
+        if(mac_move == nullptr)
         {
             mac_move = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MacMove>();
-            mac_move->parent = this;
-            children["mac-move"] = mac_move;
         }
-        return children.at("mac-move");
+        return mac_move;
     }
 
     if(child_yang_name == "multicast-drop")
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
-        else
+        if(multicast_drop == nullptr)
         {
             multicast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MulticastDrop>();
-            multicast_drop->parent = this;
-            children["multicast-drop"] = multicast_drop;
         }
-        return children.at("multicast-drop");
+        return multicast_drop;
     }
 
     if(child_yang_name == "received-drops")
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
-        else
+        if(received_drops == nullptr)
         {
             received_drops = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::ReceivedDrops>();
-            received_drops->parent = this;
-            children["received-drops"] = received_drops;
         }
-        return children.at("received-drops");
+        return received_drops;
     }
 
     if(child_yang_name == "unicast-drop")
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
-        else
+        if(unicast_drop == nullptr)
         {
             unicast_drop = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop>();
-            unicast_drop->parent = this;
-            children["unicast-drop"] = unicast_drop;
         }
-        return children.at("unicast-drop");
+        return unicast_drop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::get_children() const
 {
-    if(children.find("broadcast-drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast_drop != nullptr)
     {
-        if(broadcast_drop != nullptr)
-        {
-            children["broadcast-drop"] = broadcast_drop;
-        }
+        children["broadcast-drop"] = broadcast_drop;
     }
 
-    if(children.find("dai-drop") == children.end())
+    if(dai_drop != nullptr)
     {
-        if(dai_drop != nullptr)
-        {
-            children["dai-drop"] = dai_drop;
-        }
+        children["dai-drop"] = dai_drop;
     }
 
-    if(children.find("disposition-mtu-drop") == children.end())
+    if(disposition_mtu_drop != nullptr)
     {
-        if(disposition_mtu_drop != nullptr)
-        {
-            children["disposition-mtu-drop"] = disposition_mtu_drop;
-        }
+        children["disposition-mtu-drop"] = disposition_mtu_drop;
     }
 
-    if(children.find("disposition-oo-o-drops") == children.end())
+    if(disposition_oo_o_drops != nullptr)
     {
-        if(disposition_oo_o_drops != nullptr)
-        {
-            children["disposition-oo-o-drops"] = disposition_oo_o_drops;
-        }
+        children["disposition-oo-o-drops"] = disposition_oo_o_drops;
     }
 
-    if(children.find("disposition-p2mp-stats") == children.end())
+    if(disposition_p2mp_stats != nullptr)
     {
-        if(disposition_p2mp_stats != nullptr)
-        {
-            children["disposition-p2mp-stats"] = disposition_p2mp_stats;
-        }
+        children["disposition-p2mp-stats"] = disposition_p2mp_stats;
     }
 
-    if(children.find("disposition-stat") == children.end())
+    if(disposition_stat != nullptr)
     {
-        if(disposition_stat != nullptr)
-        {
-            children["disposition-stat"] = disposition_stat;
-        }
+        children["disposition-stat"] = disposition_stat;
     }
 
-    if(children.find("disposition-tail-drop") == children.end())
+    if(disposition_tail_drop != nullptr)
     {
-        if(disposition_tail_drop != nullptr)
-        {
-            children["disposition-tail-drop"] = disposition_tail_drop;
-        }
+        children["disposition-tail-drop"] = disposition_tail_drop;
     }
 
-    if(children.find("ipsg-drop") == children.end())
+    if(ipsg_drop != nullptr)
     {
-        if(ipsg_drop != nullptr)
-        {
-            children["ipsg-drop"] = ipsg_drop;
-        }
+        children["ipsg-drop"] = ipsg_drop;
     }
 
-    if(children.find("known-unicast") == children.end())
+    if(known_unicast != nullptr)
     {
-        if(known_unicast != nullptr)
-        {
-            children["known-unicast"] = known_unicast;
-        }
+        children["known-unicast"] = known_unicast;
     }
 
-    if(children.find("mac-move") == children.end())
+    if(mac_move != nullptr)
     {
-        if(mac_move != nullptr)
-        {
-            children["mac-move"] = mac_move;
-        }
+        children["mac-move"] = mac_move;
     }
 
-    if(children.find("multicast-drop") == children.end())
+    if(multicast_drop != nullptr)
     {
-        if(multicast_drop != nullptr)
-        {
-            children["multicast-drop"] = multicast_drop;
-        }
+        children["multicast-drop"] = multicast_drop;
     }
 
-    if(children.find("received-drops") == children.end())
+    if(received_drops != nullptr)
     {
-        if(received_drops != nullptr)
-        {
-            children["received-drops"] = received_drops;
-        }
+        children["received-drops"] = received_drops;
     }
 
-    if(children.find("unicast-drop") == children.end())
+    if(unicast_drop != nullptr)
     {
-        if(unicast_drop != nullptr)
-        {
-            children["unicast-drop"] = unicast_drop;
-        }
+        children["unicast-drop"] = unicast_drop;
     }
 
     return children;
@@ -9764,7 +8421,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9789,20 +8446,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9852,7 +8501,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionMtuDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9877,20 +8526,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionMtuDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9940,7 +8581,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionTailDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9965,20 +8606,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionTailDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10028,7 +8661,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MulticastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10053,20 +8686,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MulticastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10116,7 +8741,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10141,20 +8766,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10204,7 +8821,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::BroadcastDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10229,20 +8846,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::BroadcastDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10292,7 +8901,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::ReceivedDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10317,20 +8926,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::ReceivedDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10380,7 +8981,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DaiDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10405,20 +9006,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DaiDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DaiDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10468,7 +9061,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::IpsgDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10493,20 +9086,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::IpsgDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10556,7 +9141,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionOoODrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10581,20 +9166,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionOoODrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10644,7 +9221,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10669,20 +9246,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionP2MpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionP2MpStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10732,7 +9301,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10757,20 +9326,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::KnownUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10820,7 +9381,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10845,20 +9406,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MacMove::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MacMove::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10914,7 +9467,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10941,20 +9494,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11015,7 +9560,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Vni
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11041,20 +9586,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11084,16 +9621,12 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Rd()
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd"; yang_parent_name = "bridge-domain-info";
 }
@@ -11130,7 +9663,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd:
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11154,110 +9687,66 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -11305,7 +9794,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd:
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11330,20 +9819,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11393,7 +9874,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd:
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11418,20 +9899,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11481,7 +9954,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd:
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11506,20 +9979,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11569,7 +10034,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd:
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11594,20 +10059,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11660,7 +10117,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Mac
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacFilter::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacFilter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11686,20 +10143,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacF
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacFilter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacFilter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11730,7 +10179,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Brid
     discovery_information(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation>())
 {
     discovery_information->parent = this;
-    children["discovery-information"] = discovery_information;
 
     yang_name = "bridge-vfi"; yang_parent_name = "bridge-domain-info";
 }
@@ -11779,7 +10227,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11807,28 +10255,13 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "discovery-information")
     {
-        if(discovery_information != nullptr)
-        {
-            children["discovery-information"] = discovery_information;
-        }
-        else
+        if(discovery_information == nullptr)
         {
             discovery_information = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation>();
-            discovery_information->parent = this;
-            children["discovery-information"] = discovery_information;
         }
-        return children.at("discovery-information");
+        return discovery_information;
     }
 
     if(child_yang_name == "p2mp-information")
@@ -11838,36 +10271,29 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDom
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation>();
         c->parent = this;
-        p2mp_information.push_back(std::move(c));
-        children[segment_path] = p2mp_information.back();
-        return children.at(segment_path);
+        p2mp_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::get_children() const
 {
-    if(children.find("discovery-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(discovery_information != nullptr)
     {
-        if(discovery_information != nullptr)
-        {
-            children["discovery-information"] = discovery_information;
-        }
+        children["discovery-information"] = discovery_information;
     }
 
     for (auto const & c : p2mp_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11916,10 +10342,8 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 	,vpls_id(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId>())
 {
     rd_value->parent = this;
-    children["rd-value"] = rd_value;
 
     vpls_id->parent = this;
-    children["vpls-id"] = vpls_id;
 
     yang_name = "discovery-information"; yang_parent_name = "bridge-vfi";
 }
@@ -11994,7 +10418,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12029,15 +10453,6 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "export-rt")
     {
         for(auto const & c : export_rt)
@@ -12045,15 +10460,13 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDom
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt>();
         c->parent = this;
-        export_rt.push_back(std::move(c));
-        children[segment_path] = export_rt.back();
-        return children.at(segment_path);
+        export_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "import-rt")
@@ -12063,82 +10476,57 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDom
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt>();
         c->parent = this;
-        import_rt.push_back(std::move(c));
-        children[segment_path] = import_rt.back();
-        return children.at(segment_path);
+        import_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rd-value")
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
-        else
+        if(rd_value == nullptr)
         {
             rd_value = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue>();
-            rd_value->parent = this;
-            children["rd-value"] = rd_value;
         }
-        return children.at("rd-value");
+        return rd_value;
     }
 
     if(child_yang_name == "vpls-id")
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
-        else
+        if(vpls_id == nullptr)
         {
             vpls_id = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId>();
-            vpls_id->parent = this;
-            children["vpls-id"] = vpls_id;
         }
-        return children.at("vpls-id");
+        return vpls_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : export_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : import_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("rd-value") == children.end())
+    if(rd_value != nullptr)
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
+        children["rd-value"] = rd_value;
     }
 
-    if(children.find("vpls-id") == children.end())
+    if(vpls_id != nullptr)
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
+        children["vpls-id"] = vpls_id;
     }
 
     return children;
@@ -12206,16 +10594,12 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-value"; yang_parent_name = "discovery-information";
 }
@@ -12252,7 +10636,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12276,110 +10660,66 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -12427,7 +10767,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12452,20 +10792,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12515,7 +10847,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12540,20 +10872,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12603,7 +10927,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12628,20 +10952,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12691,7 +11007,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12716,20 +11032,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12754,13 +11062,10 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "vpls-id"; yang_parent_name = "discovery-information";
 }
@@ -12795,7 +11100,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12819,87 +11124,52 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -12947,7 +11217,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12972,20 +11242,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13035,7 +11297,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13060,20 +11322,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13123,7 +11377,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13148,20 +11402,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::VplsId::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13187,16 +11433,12 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "import-rt"; yang_parent_name = "discovery-information";
 }
@@ -13233,7 +11475,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13257,110 +11499,66 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -13408,7 +11606,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13433,20 +11631,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13496,7 +11686,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13521,20 +11711,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13584,7 +11766,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13609,20 +11791,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13672,7 +11846,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13697,20 +11871,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13736,16 +11902,12 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::Disc
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "export-rt"; yang_parent_name = "discovery-information";
 }
@@ -13782,7 +11944,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13806,110 +11968,66 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -13957,7 +12075,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13982,20 +12100,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14045,7 +12155,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14070,20 +12180,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14133,7 +12235,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14158,20 +12260,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14221,7 +12315,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14246,20 +12340,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14324,7 +12410,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14354,20 +12440,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14414,7 +12492,6 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
     discovery_information(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation>())
 {
     discovery_information->parent = this;
-    children["discovery-information"] = discovery_information;
 
     yang_name = "bridge-access-vfi"; yang_parent_name = "bridge-domain-info";
 }
@@ -14463,7 +12540,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14491,28 +12568,13 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "discovery-information")
     {
-        if(discovery_information != nullptr)
-        {
-            children["discovery-information"] = discovery_information;
-        }
-        else
+        if(discovery_information == nullptr)
         {
             discovery_information = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation>();
-            discovery_information->parent = this;
-            children["discovery-information"] = discovery_information;
         }
-        return children.at("discovery-information");
+        return discovery_information;
     }
 
     if(child_yang_name == "p2mp-information")
@@ -14522,36 +12584,29 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDom
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation>();
         c->parent = this;
-        p2mp_information.push_back(std::move(c));
-        children[segment_path] = p2mp_information.back();
-        return children.at(segment_path);
+        p2mp_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::get_children() const
 {
-    if(children.find("discovery-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(discovery_information != nullptr)
     {
-        if(discovery_information != nullptr)
-        {
-            children["discovery-information"] = discovery_information;
-        }
+        children["discovery-information"] = discovery_information;
     }
 
     for (auto const & c : p2mp_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14600,10 +12655,8 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 	,vpls_id(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId>())
 {
     rd_value->parent = this;
-    children["rd-value"] = rd_value;
 
     vpls_id->parent = this;
-    children["vpls-id"] = vpls_id;
 
     yang_name = "discovery-information"; yang_parent_name = "bridge-access-vfi";
 }
@@ -14678,7 +12731,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14713,15 +12766,6 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "export-rt")
     {
         for(auto const & c : export_rt)
@@ -14729,15 +12773,13 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDom
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt>();
         c->parent = this;
-        export_rt.push_back(std::move(c));
-        children[segment_path] = export_rt.back();
-        return children.at(segment_path);
+        export_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "import-rt")
@@ -14747,82 +12789,57 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDom
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt>();
         c->parent = this;
-        import_rt.push_back(std::move(c));
-        children[segment_path] = import_rt.back();
-        return children.at(segment_path);
+        import_rt.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rd-value")
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
-        else
+        if(rd_value == nullptr)
         {
             rd_value = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue>();
-            rd_value->parent = this;
-            children["rd-value"] = rd_value;
         }
-        return children.at("rd-value");
+        return rd_value;
     }
 
     if(child_yang_name == "vpls-id")
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
-        else
+        if(vpls_id == nullptr)
         {
             vpls_id = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId>();
-            vpls_id->parent = this;
-            children["vpls-id"] = vpls_id;
         }
-        return children.at("vpls-id");
+        return vpls_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : export_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : import_rt)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("rd-value") == children.end())
+    if(rd_value != nullptr)
     {
-        if(rd_value != nullptr)
-        {
-            children["rd-value"] = rd_value;
-        }
+        children["rd-value"] = rd_value;
     }
 
-    if(children.find("vpls-id") == children.end())
+    if(vpls_id != nullptr)
     {
-        if(vpls_id != nullptr)
-        {
-            children["vpls-id"] = vpls_id;
-        }
+        children["vpls-id"] = vpls_id;
     }
 
     return children;
@@ -14890,16 +12907,12 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-value"; yang_parent_name = "discovery-information";
 }
@@ -14936,7 +12949,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14960,110 +12973,66 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -15111,7 +13080,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15136,20 +13105,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15199,7 +13160,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15224,20 +13185,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15287,7 +13240,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15312,20 +13265,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15375,7 +13320,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15400,20 +13345,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::RdValue::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15438,13 +13375,10 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "vpls-id"; yang_parent_name = "discovery-information";
 }
@@ -15479,7 +13413,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15503,87 +13437,52 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -15631,7 +13530,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15656,20 +13555,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15719,7 +13610,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15744,20 +13635,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15807,7 +13690,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15832,20 +13715,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::VplsId::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15871,16 +13746,12 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "import-rt"; yang_parent_name = "discovery-information";
 }
@@ -15917,7 +13788,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15941,110 +13812,66 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -16092,7 +13919,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16117,20 +13944,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16180,7 +13999,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16205,20 +14024,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16268,7 +14079,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16293,20 +14104,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16356,7 +14159,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16381,20 +14184,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ImportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16420,16 +14215,12 @@ L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi
 	,v4_addr(std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "export-rt"; yang_parent_name = "discovery-information";
 }
@@ -16466,7 +14257,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16490,110 +14281,66 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -16641,7 +14388,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16666,20 +14413,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16729,7 +14468,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16754,20 +14493,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16817,7 +14548,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16842,20 +14573,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16905,7 +14628,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16930,20 +14653,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::DiscoveryInformation::ExportRt::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17008,7 +14723,7 @@ std::string L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bri
 
 }
 
-EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17038,20 +14753,12 @@ EntityPath L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::Brid
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi::P2MpInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17157,7 +14864,7 @@ std::string L2Vpnv2::Standby::DiscoverySummary::get_segment_path() const
 
 }
 
-EntityPath L2Vpnv2::Standby::DiscoverySummary::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::DiscoverySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17194,20 +14901,12 @@ EntityPath L2Vpnv2::Standby::DiscoverySummary::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::DiscoverySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::DiscoverySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::DiscoverySummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17276,7 +14975,6 @@ L2Vpnv2::Standby::G8032::G8032()
     g8032_rings(std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings>())
 {
     g8032_rings->parent = this;
-    children["g8032-rings"] = g8032_rings;
 
     yang_name = "g8032"; yang_parent_name = "standby";
 }
@@ -17305,7 +15003,7 @@ std::string L2Vpnv2::Standby::G8032::get_segment_path() const
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17328,41 +15026,24 @@ EntityPath L2Vpnv2::Standby::G8032::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-rings")
     {
-        if(g8032_rings != nullptr)
-        {
-            children["g8032-rings"] = g8032_rings;
-        }
-        else
+        if(g8032_rings == nullptr)
         {
             g8032_rings = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings>();
-            g8032_rings->parent = this;
-            children["g8032-rings"] = g8032_rings;
         }
-        return children.at("g8032-rings");
+        return g8032_rings;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::get_children() const
 {
-    if(children.find("g8032-rings") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g8032_rings != nullptr)
     {
-        if(g8032_rings != nullptr)
-        {
-            children["g8032-rings"] = g8032_rings;
-        }
+        children["g8032-rings"] = g8032_rings;
     }
 
     return children;
@@ -17410,7 +15091,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::get_segment_path() const
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17433,15 +15114,6 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring")
     {
         for(auto const & c : g8032_ring)
@@ -17449,28 +15121,24 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring>();
         c->parent = this;
-        g8032_ring.push_back(std::move(c));
-        children[segment_path] = g8032_ring.back();
-        return children.at(segment_path);
+        g8032_ring.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : g8032_ring)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17490,16 +15158,12 @@ L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032Ring()
 	,g8032_ring_summary(std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary>())
 {
     g8032_ring_detail->parent = this;
-    children["g8032-ring-detail"] = g8032_ring_detail;
 
     g8032_ring_instance_details->parent = this;
-    children["g8032-ring-instance-details"] = g8032_ring_instance_details;
 
     g8032_ring_instance_summaries->parent = this;
-    children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
 
     g8032_ring_summary->parent = this;
-    children["g8032-ring-summary"] = g8032_ring_summary;
 
     yang_name = "g8032-ring"; yang_parent_name = "g8032-rings";
 }
@@ -17536,7 +15200,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::get_segment_path() c
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17560,110 +15224,66 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::get_entity_path(Entit
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring-detail")
     {
-        if(g8032_ring_detail != nullptr)
-        {
-            children["g8032-ring-detail"] = g8032_ring_detail;
-        }
-        else
+        if(g8032_ring_detail == nullptr)
         {
             g8032_ring_detail = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail>();
-            g8032_ring_detail->parent = this;
-            children["g8032-ring-detail"] = g8032_ring_detail;
         }
-        return children.at("g8032-ring-detail");
+        return g8032_ring_detail;
     }
 
     if(child_yang_name == "g8032-ring-instance-details")
     {
-        if(g8032_ring_instance_details != nullptr)
-        {
-            children["g8032-ring-instance-details"] = g8032_ring_instance_details;
-        }
-        else
+        if(g8032_ring_instance_details == nullptr)
         {
             g8032_ring_instance_details = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails>();
-            g8032_ring_instance_details->parent = this;
-            children["g8032-ring-instance-details"] = g8032_ring_instance_details;
         }
-        return children.at("g8032-ring-instance-details");
+        return g8032_ring_instance_details;
     }
 
     if(child_yang_name == "g8032-ring-instance-summaries")
     {
-        if(g8032_ring_instance_summaries != nullptr)
-        {
-            children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
-        }
-        else
+        if(g8032_ring_instance_summaries == nullptr)
         {
             g8032_ring_instance_summaries = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries>();
-            g8032_ring_instance_summaries->parent = this;
-            children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
         }
-        return children.at("g8032-ring-instance-summaries");
+        return g8032_ring_instance_summaries;
     }
 
     if(child_yang_name == "g8032-ring-summary")
     {
-        if(g8032_ring_summary != nullptr)
-        {
-            children["g8032-ring-summary"] = g8032_ring_summary;
-        }
-        else
+        if(g8032_ring_summary == nullptr)
         {
             g8032_ring_summary = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary>();
-            g8032_ring_summary->parent = this;
-            children["g8032-ring-summary"] = g8032_ring_summary;
         }
-        return children.at("g8032-ring-summary");
+        return g8032_ring_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::get_children() const
 {
-    if(children.find("g8032-ring-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g8032_ring_detail != nullptr)
     {
-        if(g8032_ring_detail != nullptr)
-        {
-            children["g8032-ring-detail"] = g8032_ring_detail;
-        }
+        children["g8032-ring-detail"] = g8032_ring_detail;
     }
 
-    if(children.find("g8032-ring-instance-details") == children.end())
+    if(g8032_ring_instance_details != nullptr)
     {
-        if(g8032_ring_instance_details != nullptr)
-        {
-            children["g8032-ring-instance-details"] = g8032_ring_instance_details;
-        }
+        children["g8032-ring-instance-details"] = g8032_ring_instance_details;
     }
 
-    if(children.find("g8032-ring-instance-summaries") == children.end())
+    if(g8032_ring_instance_summaries != nullptr)
     {
-        if(g8032_ring_instance_summaries != nullptr)
-        {
-            children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
-        }
+        children["g8032-ring-instance-summaries"] = g8032_ring_instance_summaries;
     }
 
-    if(children.find("g8032-ring-summary") == children.end())
+    if(g8032_ring_summary != nullptr)
     {
-        if(g8032_ring_summary != nullptr)
-        {
-            children["g8032-ring-summary"] = g8032_ring_summary;
-        }
+        children["g8032-ring-summary"] = g8032_ring_summary;
     }
 
     return children;
@@ -17741,7 +15361,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail::get
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17774,20 +15394,12 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17869,7 +15481,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSum
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17892,15 +15504,6 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSumm
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring-instance-summary")
     {
         for(auto const & c : g8032_ring_instance_summary)
@@ -17908,28 +15511,24 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032Rin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary>();
         c->parent = this;
-        g8032_ring_instance_summary.push_back(std::move(c));
-        children[segment_path] = g8032_ring_instance_summary.back();
-        return children.at(segment_path);
+        g8032_ring_instance_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : g8032_ring_instance_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17994,7 +15593,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSum
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18024,20 +15623,12 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSumm
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceSummaries::G8032RingInstanceSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18106,7 +15697,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary::ge
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18132,20 +15723,12 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary::get
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18203,7 +15786,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDet
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18226,15 +15809,6 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDeta
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g8032-ring-instance-detail")
     {
         for(auto const & c : g8032_ring_instance_detail)
@@ -18242,28 +15816,24 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032Rin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail>();
         c->parent = this;
-        g8032_ring_instance_detail.push_back(std::move(c));
-        children[segment_path] = g8032_ring_instance_detail.back();
-        return children.at(segment_path);
+        g8032_ring_instance_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : g8032_ring_instance_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18343,7 +15913,7 @@ std::string L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDet
 
 }
 
-EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18378,20 +15948,12 @@ EntityPath L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDeta
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::G8032::G8032Rings::G8032Ring::G8032RingInstanceDetails::G8032RingInstanceDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18481,7 +16043,7 @@ std::string L2Vpnv2::Standby::PseudowireClasses::get_segment_path() const
 
 }
 
-EntityPath L2Vpnv2::Standby::PseudowireClasses::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::PseudowireClasses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18504,15 +16066,6 @@ EntityPath L2Vpnv2::Standby::PseudowireClasses::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::PseudowireClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pseudowire-class")
     {
         for(auto const & c : pseudowire_class)
@@ -18520,28 +16073,24 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::PseudowireClasses::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Vpnv2::Standby::PseudowireClasses::PseudowireClass>();
         c->parent = this;
-        pseudowire_class.push_back(std::move(c));
-        children[segment_path] = pseudowire_class.back();
-        return children.at(segment_path);
+        pseudowire_class.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::PseudowireClasses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::PseudowireClasses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pseudowire_class)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18576,13 +16125,10 @@ L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::PseudowireClass()
 	,preferred_path(std::make_shared<L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::PreferredPath>())
 {
     encapsulation_info->parent = this;
-    children["encapsulation-info"] = encapsulation_info;
 
     local_source_address->parent = this;
-    children["local-source-address"] = local_source_address;
 
     preferred_path->parent = this;
-    children["preferred-path"] = preferred_path;
 
     yang_name = "pseudowire-class"; yang_parent_name = "pseudowire-classes";
 }
@@ -18649,7 +16195,7 @@ std::string L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::get_segment_pa
 
 }
 
-EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18689,87 +16235,52 @@ EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::get_entity_path
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "encapsulation-info")
     {
-        if(encapsulation_info != nullptr)
-        {
-            children["encapsulation-info"] = encapsulation_info;
-        }
-        else
+        if(encapsulation_info == nullptr)
         {
             encapsulation_info = std::make_shared<L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo>();
-            encapsulation_info->parent = this;
-            children["encapsulation-info"] = encapsulation_info;
         }
-        return children.at("encapsulation-info");
+        return encapsulation_info;
     }
 
     if(child_yang_name == "local-source-address")
     {
-        if(local_source_address != nullptr)
-        {
-            children["local-source-address"] = local_source_address;
-        }
-        else
+        if(local_source_address == nullptr)
         {
             local_source_address = std::make_shared<L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::LocalSourceAddress>();
-            local_source_address->parent = this;
-            children["local-source-address"] = local_source_address;
         }
-        return children.at("local-source-address");
+        return local_source_address;
     }
 
     if(child_yang_name == "preferred-path")
     {
-        if(preferred_path != nullptr)
-        {
-            children["preferred-path"] = preferred_path;
-        }
-        else
+        if(preferred_path == nullptr)
         {
             preferred_path = std::make_shared<L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::PreferredPath>();
-            preferred_path->parent = this;
-            children["preferred-path"] = preferred_path;
         }
-        return children.at("preferred-path");
+        return preferred_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::get_children() const
 {
-    if(children.find("encapsulation-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(encapsulation_info != nullptr)
     {
-        if(encapsulation_info != nullptr)
-        {
-            children["encapsulation-info"] = encapsulation_info;
-        }
+        children["encapsulation-info"] = encapsulation_info;
     }
 
-    if(children.find("local-source-address") == children.end())
+    if(local_source_address != nullptr)
     {
-        if(local_source_address != nullptr)
-        {
-            children["local-source-address"] = local_source_address;
-        }
+        children["local-source-address"] = local_source_address;
     }
 
-    if(children.find("preferred-path") == children.end())
+    if(preferred_path != nullptr)
     {
-        if(preferred_path != nullptr)
-        {
-            children["preferred-path"] = preferred_path;
-        }
+        children["preferred-path"] = preferred_path;
     }
 
     return children;
@@ -18854,7 +16365,6 @@ L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::Encapsu
     l2tpv3(std::make_shared<L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3>())
 {
     l2tpv3->parent = this;
-    children["l2tpv3"] = l2tpv3;
 
     yang_name = "encapsulation-info"; yang_parent_name = "pseudowire-class";
 }
@@ -18885,7 +16395,7 @@ std::string L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationI
 
 }
 
-EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18909,41 +16419,24 @@ EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationIn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tpv3")
     {
-        if(l2tpv3 != nullptr)
-        {
-            children["l2tpv3"] = l2tpv3;
-        }
-        else
+        if(l2tpv3 == nullptr)
         {
             l2tpv3 = std::make_shared<L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3>();
-            l2tpv3->parent = this;
-            children["l2tpv3"] = l2tpv3;
         }
-        return children.at("l2tpv3");
+        return l2tpv3;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::get_children() const
 {
-    if(children.find("l2tpv3") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tpv3 != nullptr)
     {
-        if(l2tpv3 != nullptr)
-        {
-            children["l2tpv3"] = l2tpv3;
-        }
+        children["l2tpv3"] = l2tpv3;
     }
 
     return children;
@@ -19012,7 +16505,7 @@ std::string L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationI
 
 }
 
-EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_entity_path(Entity* ancestor) const
+const EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19044,20 +16537,12 @@ EntityPath L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationIn
 
 std::shared_ptr<Entity> L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::PseudowireClasses::PseudowireClass::EncapsulationInfo::L2Tpv3::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

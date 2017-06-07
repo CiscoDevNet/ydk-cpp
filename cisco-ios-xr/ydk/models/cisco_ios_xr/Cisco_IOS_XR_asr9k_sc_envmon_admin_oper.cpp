@@ -14,7 +14,6 @@ EnvironmentalMonitoring::EnvironmentalMonitoring()
     racks(std::make_shared<EnvironmentalMonitoring::Racks>())
 {
     racks->parent = this;
-    children["racks"] = racks;
 
     yang_name = "environmental-monitoring"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-envmon-admin-oper";
 }
@@ -43,12 +42,12 @@ std::string EnvironmentalMonitoring::get_segment_path() const
 
 }
 
-EntityPath EnvironmentalMonitoring::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath EnvironmentalMonitoring::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "racks")
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
-        else
+        if(racks == nullptr)
         {
             racks = std::make_shared<EnvironmentalMonitoring::Racks>();
-            racks->parent = this;
-            children["racks"] = racks;
         }
-        return children.at("racks");
+        return racks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::get_children() const
 {
-    if(children.find("racks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(racks != nullptr)
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
+        children["racks"] = racks;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string EnvironmentalMonitoring::Racks::get_segment_path() const
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath EnvironmentalMonitoring::Racks::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rack")
     {
         for(auto const & c : rack)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack>();
         c->parent = this;
-        rack.push_back(std::move(c));
-        children[segment_path] = rack.back();
-        return children.at(segment_path);
+        rack.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rack)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ EnvironmentalMonitoring::Racks::Rack::Rack()
     slots(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots>())
 {
     slots->parent = this;
-    children["slots"] = slots;
 
     yang_name = "rack"; yang_parent_name = "racks";
 }
@@ -273,7 +241,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::get_segment_path() const
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slots")
     {
-        if(slots != nullptr)
-        {
-            children["slots"] = slots;
-        }
-        else
+        if(slots == nullptr)
         {
             slots = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots>();
-            slots->parent = this;
-            children["slots"] = slots;
         }
-        return children.at("slots");
+        return slots;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::get_children() const
 {
-    if(children.find("slots") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(slots != nullptr)
     {
-        if(slots != nullptr)
-        {
-            children["slots"] = slots;
-        }
+        children["slots"] = slots;
     }
 
     return children;
@@ -383,7 +334,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::get_segment_path() cons
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -406,15 +357,6 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slot")
     {
         for(auto const & c : slot)
@@ -422,28 +364,24 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(std::move(c));
-        children[segment_path] = slot.back();
-        return children.at(segment_path);
+        slot.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slot)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -460,7 +398,6 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Slot()
     modules(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules>())
 {
     modules->parent = this;
-    children["modules"] = modules;
 
     yang_name = "slot"; yang_parent_name = "slots";
 }
@@ -491,7 +428,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_segment_path(
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -515,41 +452,24 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_entity_path(En
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "modules")
     {
-        if(modules != nullptr)
-        {
-            children["modules"] = modules;
-        }
-        else
+        if(modules == nullptr)
         {
             modules = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules>();
-            modules->parent = this;
-            children["modules"] = modules;
         }
-        return children.at("modules");
+        return modules;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_children() const
 {
-    if(children.find("modules") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(modules != nullptr)
     {
-        if(modules != nullptr)
-        {
-            children["modules"] = modules;
-        }
+        children["modules"] = modules;
     }
 
     return children;
@@ -601,7 +521,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_segm
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -624,15 +544,6 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_entit
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "module")
     {
         for(auto const & c : module)
@@ -640,28 +551,24 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module>();
         c->parent = this;
-        module.push_back(std::move(c));
-        children[segment_path] = module.back();
-        return children.at(segment_path);
+        module.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : module)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -679,10 +586,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Module()
 	,sensor_types(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes>())
 {
     power->parent = this;
-    children["power"] = power;
 
     sensor_types->parent = this;
-    children["sensor-types"] = sensor_types;
 
     yang_name = "module"; yang_parent_name = "modules";
 }
@@ -715,7 +620,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -739,64 +644,38 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::g
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "power")
     {
-        if(power != nullptr)
-        {
-            children["power"] = power;
-        }
-        else
+        if(power == nullptr)
         {
             power = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power>();
-            power->parent = this;
-            children["power"] = power;
         }
-        return children.at("power");
+        return power;
     }
 
     if(child_yang_name == "sensor-types")
     {
-        if(sensor_types != nullptr)
-        {
-            children["sensor-types"] = sensor_types;
-        }
-        else
+        if(sensor_types == nullptr)
         {
             sensor_types = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes>();
-            sensor_types->parent = this;
-            children["sensor-types"] = sensor_types;
         }
-        return children.at("sensor-types");
+        return sensor_types;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_children() const
 {
-    if(children.find("power") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(power != nullptr)
     {
-        if(power != nullptr)
-        {
-            children["power"] = power;
-        }
+        children["power"] = power;
     }
 
-    if(children.find("sensor-types") == children.end())
+    if(sensor_types != nullptr)
     {
-        if(sensor_types != nullptr)
-        {
-            children["sensor-types"] = sensor_types;
-        }
+        children["sensor-types"] = sensor_types;
     }
 
     return children;
@@ -848,7 +727,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -871,15 +750,6 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-type")
     {
         for(auto const & c : sensor_type)
@@ -887,28 +757,24 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType>();
         c->parent = this;
-        sensor_type.push_back(std::move(c));
-        children[segment_path] = sensor_type.back();
-        return children.at(segment_path);
+        sensor_type.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sensor_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -925,7 +791,6 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     sensor_names(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames>())
 {
     sensor_names->parent = this;
-    children["sensor-names"] = sensor_names;
 
     yang_name = "sensor-type"; yang_parent_name = "sensor-types";
 }
@@ -956,7 +821,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -980,41 +845,24 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-names")
     {
-        if(sensor_names != nullptr)
-        {
-            children["sensor-names"] = sensor_names;
-        }
-        else
+        if(sensor_names == nullptr)
         {
             sensor_names = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames>();
-            sensor_names->parent = this;
-            children["sensor-names"] = sensor_names;
         }
-        return children.at("sensor-names");
+        return sensor_names;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_children() const
 {
-    if(children.find("sensor-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sensor_names != nullptr)
     {
-        if(sensor_names != nullptr)
-        {
-            children["sensor-names"] = sensor_names;
-        }
+        children["sensor-names"] = sensor_names;
     }
 
     return children;
@@ -1066,7 +914,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1089,15 +937,6 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sensor-name")
     {
         for(auto const & c : sensor_name)
@@ -1105,28 +944,24 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName>();
         c->parent = this;
-        sensor_name.push_back(std::move(c));
-        children[segment_path] = sensor_name.back();
-        return children.at(segment_path);
+        sensor_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sensor_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1145,10 +980,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 	,value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed>())
 {
     thresholds->parent = this;
-    children["thresholds"] = thresholds;
 
     value_detailed->parent = this;
-    children["value-detailed"] = value_detailed;
 
     yang_name = "sensor-name"; yang_parent_name = "sensor-names";
 }
@@ -1183,7 +1016,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1208,64 +1041,38 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "thresholds")
     {
-        if(thresholds != nullptr)
-        {
-            children["thresholds"] = thresholds;
-        }
-        else
+        if(thresholds == nullptr)
         {
             thresholds = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds>();
-            thresholds->parent = this;
-            children["thresholds"] = thresholds;
         }
-        return children.at("thresholds");
+        return thresholds;
     }
 
     if(child_yang_name == "value-detailed")
     {
-        if(value_detailed != nullptr)
-        {
-            children["value-detailed"] = value_detailed;
-        }
-        else
+        if(value_detailed == nullptr)
         {
             value_detailed = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed>();
-            value_detailed->parent = this;
-            children["value-detailed"] = value_detailed;
         }
-        return children.at("value-detailed");
+        return value_detailed;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_children() const
 {
-    if(children.find("thresholds") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(thresholds != nullptr)
     {
-        if(thresholds != nullptr)
-        {
-            children["thresholds"] = thresholds;
-        }
+        children["thresholds"] = thresholds;
     }
 
-    if(children.find("value-detailed") == children.end())
+    if(value_detailed != nullptr)
     {
-        if(value_detailed != nullptr)
-        {
-            children["value-detailed"] = value_detailed;
-        }
+        children["value-detailed"] = value_detailed;
     }
 
     return children;
@@ -1321,7 +1128,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1344,15 +1151,6 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold")
     {
         for(auto const & c : threshold)
@@ -1360,28 +1158,24 @@ std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modul
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold>();
         c->parent = this;
-        threshold.push_back(std::move(c));
-        children[segment_path] = threshold.back();
-        return children.at(segment_path);
+        threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1400,7 +1194,6 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed>())
 {
     value_detailed->parent = this;
-    children["value-detailed"] = value_detailed;
 
     yang_name = "threshold"; yang_parent_name = "thresholds";
 }
@@ -1435,7 +1228,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1461,41 +1254,24 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "value-detailed")
     {
-        if(value_detailed != nullptr)
-        {
-            children["value-detailed"] = value_detailed;
-        }
-        else
+        if(value_detailed == nullptr)
         {
             value_detailed = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed>();
-            value_detailed->parent = this;
-            children["value-detailed"] = value_detailed;
         }
-        return children.at("value-detailed");
+        return value_detailed;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_children() const
 {
-    if(children.find("value-detailed") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(value_detailed != nullptr)
     {
-        if(value_detailed != nullptr)
-        {
-            children["value-detailed"] = value_detailed;
-        }
+        children["value-detailed"] = value_detailed;
     }
 
     return children;
@@ -1560,7 +1336,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1588,20 +1364,12 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1693,7 +1461,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1728,20 +1496,12 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1802,7 +1562,6 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::Power
     power_bag(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag>())
 {
     power_bag->parent = this;
-    children["power-bag"] = power_bag;
 
     yang_name = "power"; yang_parent_name = "module";
 }
@@ -1831,7 +1590,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1854,41 +1613,24 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::P
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "power-bag")
     {
-        if(power_bag != nullptr)
-        {
-            children["power-bag"] = power_bag;
-        }
-        else
+        if(power_bag == nullptr)
         {
             power_bag = std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag>();
-            power_bag->parent = this;
-            children["power-bag"] = power_bag;
         }
-        return children.at("power-bag");
+        return power_bag;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_children() const
 {
-    if(children.find("power-bag") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(power_bag != nullptr)
     {
-        if(power_bag != nullptr)
-        {
-            children["power-bag"] = power_bag;
-        }
+        children["power-bag"] = power_bag;
     }
 
     return children;
@@ -1956,7 +1698,7 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 
 }
 
-EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_entity_path(Entity* ancestor) const
+const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1989,20 +1731,12 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::P
 
 std::shared_ptr<Entity> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

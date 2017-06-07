@@ -22,19 +22,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface> > interface;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces
 
 
@@ -46,12 +43,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -120,7 +116,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
         YLeaf fast_reroute_type; //type: IpfrrEnum
         YLeaf fast_reroute_topology_independent_lfa; //type: boolean
         YLeafList srlg; //type: list of  uint32
-
         class InterfaceBfdInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::InterfaceBfdInformation
         class ActiveInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::ActiveInterface
         class InterfaceNeighbor; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::InterfaceNeighbor
@@ -132,8 +127,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::InterfaceMadj> > interface_madj;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::InterfaceNeighbor> > interface_neighbor;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::IpfrrTiebreakers> > ipfrr_tiebreakers;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface
 
 
@@ -145,18 +139,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bfd_intf_enable_mode; //type: uint32
         YLeaf interval; //type: uint32
         YLeaf detection_multiplier; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::InterfaceBfdInformation
 
@@ -169,12 +160,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wait_time; //type: uint32
         YLeaf interface_area_flood_index; //type: uint32
@@ -198,8 +188,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
         YLeaf keychain_id; //type: uint64
         YLeafList md_keys; //type: list of  uint16
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::ActiveInterface
 
 
@@ -211,20 +199,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_neighbor_id; //type: string
         YLeaf interface_neighbor_cost; //type: uint32
         YLeaf neighbor_dr; //type: boolean
         YLeaf neighbor_bdr; //type: boolean
         YLeaf suppress_hello; //type: boolean
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::InterfaceNeighbor
 
@@ -237,12 +222,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_area; //type: string
         YLeaf madj_area_id; //type: uint32
@@ -250,8 +234,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
         YLeaf interface_adj_neighbor_count; //type: uint16
         YLeaf interface_link_cost; //type: uint16
         YLeaf ospf_interface_state; //type: OspfInterfaceStateEnum
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::InterfaceMadj
 
@@ -264,17 +246,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tiebreaker_type; //type: IpfrrTbrkrEnum
         YLeaf tiebreaker_index; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::IpfrrTiebreakers
 
@@ -287,19 +266,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::BorderRouters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BorderRouter; //type: Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter> > border_router;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::BorderRouters
 
 
@@ -311,21 +287,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf border_router_id; //type: string
         YLeaf border_router_id_xr; //type: string
-
         class BorderRouterPath; //type: Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath> > border_router_path;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter
 
 
@@ -337,12 +310,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf border_router_route_type; //type: OspfRouteEnum
         YLeaf border_router_route_metric; //type: uint32
@@ -351,8 +323,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRo
         YLeaf border_router_type; //type: OspfBrEnum
         YLeaf border_router_area_id; //type: string
         YLeaf spf_version; //type: uint64
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath
 
@@ -365,13 +335,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProtocolAreas; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas
         class ProtocolSummary; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolSummary
@@ -384,8 +352,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas> protocol_areas;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolSummary> protocol_summary;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions> redistributions;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation
 
 
@@ -397,19 +364,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProtocolArea; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::ProtocolArea
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::ProtocolArea> > protocol_area;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas
 
 
@@ -421,24 +385,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::Pr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf address; //type: string
         YLeaf protcol_area; //type: string
         YLeaf protocol_mpls; //type: boolean
         YLeaf protocol_area_dist_list_in; //type: string
-
         class ProtocolInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::ProtocolArea::ProtocolInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::ProtocolArea::ProtocolInterface> > protocol_interface;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::ProtocolArea
 
 
@@ -450,18 +411,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::Pr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_interface_name; //type: string
         YLeaf protocol_authentication_type; //type: AuthenticationEnum
         YLeaf protocol_interface_dist_list_in; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolAreas::ProtocolArea::ProtocolInterface
 
@@ -474,12 +432,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolSummary :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_router_id; //type: string
         YLeaf protocol_distance; //type: uint32
@@ -487,8 +444,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolSummary :
         YLeaf administrative_distance_external; //type: uint32
         YLeaf protocol_nsf; //type: boolean
         YLeaf dist_list_in; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProtocolSummary
 
@@ -501,19 +456,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Redistribution; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::Redistribution
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::Redistribution> > redistribution;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions
 
 
@@ -525,12 +477,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_name; //type: string
         YLeaf process_name; //type: string
@@ -538,12 +489,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::
         YLeaf metric; //type: uint32
         YLeaf classless; //type: boolean
         YLeaf nssa_only; //type: boolean
-
         class RedistributionProtocol; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::Redistribution::RedistributionProtocol
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::Redistribution::RedistributionProtocol> redistribution_protocol;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::Redistribution
 
 
@@ -555,12 +504,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_type; //type: RedistProtocolEnum
         YLeaf isis_instance_id; //type: string
@@ -568,8 +516,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::
         YLeaf bgp_as_number; //type: string
         YLeaf eigrp_as_number; //type: string
         YLeaf connected_instance; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::Redistributions::Redistribution::RedistributionProtocol
 
@@ -582,19 +528,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProcessArea; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::ProcessArea
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::ProcessArea> > process_area;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas
 
 
@@ -606,12 +549,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::Pro
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf address; //type: string
@@ -656,12 +598,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::Pro
         YLeaf area_lfa_revision; //type: uint32
         YLeaf area_adj_stag_num_nbr_forming; //type: uint16
         YLeaf area_num_nbr_full; //type: uint16
-
         class AreaRange; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::ProcessArea::AreaRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::ProcessArea::AreaRange> > area_range;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::ProcessArea
 
 
@@ -673,19 +613,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::Pro
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf range_prefix; //type: string
         YLeaf range_mask; //type: string
         YLeaf cost; //type: uint32
         YLeaf advertise_flag; //type: boolean
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessAreas::ProcessArea::AreaRange
 
@@ -698,12 +635,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf role_standby; //type: boolean
         YLeaf role; //type: uint32
@@ -796,7 +732,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary : 
         YLeaf srgb_end; //type: uint32
         YLeaf srgb_status; //type: OspfSrgbStatusEnum
         YLeaf sr_strict_spf_cap; //type: boolean
-
         class DomainId; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId
         class MaximumMetric; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric
         class Redistribution; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution
@@ -804,8 +739,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary : 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId> domain_id;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric> > maximum_metric;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution> > redistribution;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary
 
 
@@ -817,21 +751,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::D
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrimaryDomainId; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId::PrimaryDomainId
         class SecondaryDomainId; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId::SecondaryDomainId
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId::PrimaryDomainId> primary_domain_id;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId::SecondaryDomainId> > secondary_domain_id;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId
 
 
@@ -843,17 +774,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::D
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain_id_type; //type: uint16
         YLeaf domain_id_value; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId::PrimaryDomainId
 
@@ -866,17 +794,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::D
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf domain_id_type; //type: uint16
         YLeaf domain_id_value; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId::SecondaryDomainId
 
@@ -889,12 +814,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::M
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_metric_reason; //type: uint8
         YLeaf max_metric_enabled; //type: boolean
@@ -909,12 +833,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::M
         YLeaf maximum_metric_external_lsa_metric; //type: uint32
         YLeaf maximum_metric_originated_for; //type: uint32
         YLeaf maximum_metric_unset_reason; //type: MaxMetricUnsetReasonEnum
-
         class MaximumMetricTimeUnset; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric::MaximumMetricTimeUnset
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric::MaximumMetricTimeUnset> maximum_metric_time_unset;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric
 
 
@@ -926,17 +848,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::M
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric::MaximumMetricTimeUnset
 
@@ -949,23 +868,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf metric_flag; //type: boolean
         YLeaf metric; //type: uint32
         YLeaf classless; //type: boolean
         YLeaf nssa_only; //type: boolean
-
         class RedistributionProtocol; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution::RedistributionProtocol
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution::RedistributionProtocol> redistribution_protocol;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution
 
 
@@ -977,12 +893,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_type; //type: RedistProtocolEnum
         YLeaf isis_instance_id; //type: string
@@ -990,8 +905,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::R
         YLeaf bgp_as_number; //type: string
         YLeaf eigrp_as_number; //type: string
         YLeaf connected_instance; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution::RedistributionProtocol
 
@@ -1004,19 +917,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Area; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area> > area;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas
 
 
@@ -1028,15 +938,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
-
         class FloodListAreaTable; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable
         class Neighbors; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors
         class InterfaceBriefs; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs
@@ -1054,8 +962,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors> neighbors;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests> requests;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions> retransmissions;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area
 
 
@@ -1067,19 +974,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Flood; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood> > flood;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable
 
 
@@ -1091,25 +995,22 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Floo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf flood_interface_name; //type: string
         YLeaf flood_pacing_timer; //type: uint32
         YLeaf flood_lsa_count; //type: uint32
-
         class AreaFlood; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood::AreaFlood
         class AsFlood; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood::AsFlood
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood::AreaFlood> > area_flood;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood::AsFlood> > as_flood;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood
 
 
@@ -1121,12 +1022,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Floo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf header_lsa_type; //type: LsaEnum
         YLeaf header_lsa_age; //type: uint16
@@ -1134,8 +1034,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Floo
         YLeaf header_advertising_router; //type: string
         YLeaf header_sequence_number; //type: uint32
         YLeaf header_lsa_checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood::AreaFlood
 
@@ -1148,12 +1046,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Floo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf header_lsa_type; //type: LsaEnum
         YLeaf header_lsa_age; //type: uint16
@@ -1161,8 +1058,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Floo
         YLeaf header_advertising_router; //type: string
         YLeaf header_sequence_number; //type: uint32
         YLeaf header_lsa_checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListAreaTable::Flood::AsFlood
 
@@ -1175,19 +1070,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Neighbor; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor> > neighbor;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors
 
 
@@ -1199,12 +1091,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbor_address; //type: string
@@ -1217,12 +1108,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor : pu
         YLeaf neighbor_dead_timer; //type: uint32
         YLeaf neighbor_up_time; //type: uint32
         YLeaf neighbor_madj_interface; //type: boolean
-
         class NeighborBfdInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor::NeighborBfdInformation
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor::NeighborBfdInformation> neighbor_bfd_information;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor
 
 
@@ -1234,17 +1123,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bfd_intf_enable_mode; //type: uint32
         YLeaf bfd_status_flag; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor::NeighborBfdInformation
 
@@ -1257,19 +1143,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceBrief; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::InterfaceBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::InterfaceBrief> > interface_brief;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs
 
 
@@ -1281,12 +1164,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -1300,12 +1182,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::Interfa
         YLeaf interface_adj_neighbor_count; //type: uint16
         YLeaf interfaceis_madj; //type: boolean
         YLeaf interface_madj_count; //type: uint16
-
         class InterfaceMadj; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::InterfaceBrief::InterfaceMadj
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::InterfaceBrief::InterfaceMadj> > interface_madj;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::InterfaceBrief
 
 
@@ -1317,12 +1197,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_area; //type: string
         YLeaf madj_area_id; //type: uint32
@@ -1330,8 +1209,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::Interfa
         YLeaf interface_adj_neighbor_count; //type: uint16
         YLeaf interface_link_cost; //type: uint16
         YLeaf ospf_interface_state; //type: OspfInterfaceStateEnum
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefs::InterfaceBrief::InterfaceMadj
 
@@ -1344,19 +1221,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Request; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request> > request;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests
 
 
@@ -1368,24 +1242,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbor_address; //type: string
         YLeaf request_neighbor_id; //type: string
         YLeaf request_neighbor_address; //type: string
         YLeaf request_interface_name; //type: string
-
         class Request_; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request::Request_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request::Request_> > request;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request
 
 
@@ -1397,12 +1268,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request::Reque
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf header_lsa_type; //type: LsaEnum
         YLeaf header_lsa_age; //type: uint16
@@ -1410,8 +1280,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request::Reque
         YLeaf header_advertising_router; //type: string
         YLeaf header_sequence_number; //type: uint32
         YLeaf header_lsa_checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Requests::Request::Request_
 
@@ -1424,19 +1292,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Retransmission; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission> > retransmission;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions
 
 
@@ -1448,12 +1313,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retrans
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbor_address; //type: string
@@ -1462,14 +1326,12 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retrans
         YLeaf retransmission_interface_name; //type: string
         YLeaf retransmission_timer; //type: uint32
         YLeaf retransmission_count; //type: uint32
-
         class RetransmissionAreaDb; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission::RetransmissionAreaDb
         class RetransmissionAsdb; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission::RetransmissionAsdb
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission::RetransmissionAreaDb> > retransmission_area_db;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission::RetransmissionAsdb> > retransmission_asdb;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission
 
 
@@ -1481,12 +1343,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retrans
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf header_lsa_type; //type: LsaEnum
         YLeaf header_lsa_age; //type: uint16
@@ -1494,8 +1355,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retrans
         YLeaf header_advertising_router; //type: string
         YLeaf header_sequence_number; //type: uint32
         YLeaf header_lsa_checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission::RetransmissionAreaDb
 
@@ -1508,12 +1367,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retrans
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf header_lsa_type; //type: LsaEnum
         YLeaf header_lsa_age; //type: uint16
@@ -1521,8 +1379,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retrans
         YLeaf header_advertising_router; //type: string
         YLeaf header_sequence_number; //type: uint32
         YLeaf header_lsa_checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Retransmissions::Retransmission::RetransmissionAsdb
 
@@ -1535,19 +1391,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceStatsEntries; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries> interface_stats_entries;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics
 
 
@@ -1559,19 +1412,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::Interfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceStatsEntry; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry> > interface_stats_entry;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries
 
 
@@ -1583,22 +1433,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::Interfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf handle; //type: string
         YLeaf if_name_str; //type: string
-
         class IfEntry; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry> > if_entry;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry
 
 
@@ -1610,19 +1457,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::Interfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf madj_intf; //type: boolean
         YLeaf area_id; //type: uint32
         YLeaf area_id_str; //type: string
         YLeafList if_stat; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::AreaStatistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry
 
@@ -1635,19 +1479,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NeighborDetail; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail> > neighbor_detail;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails
 
 
@@ -1659,12 +1500,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbor_address; //type: string
@@ -1692,7 +1532,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
         YLeaf adjacency_sid_label; //type: uint32
         YLeaf adjacency_sid_protected; //type: boolean
         YLeaf adjacency_sid_unprotected_label; //type: uint32
-
         class NeighborSummary; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborSummary
         class NeighborBfdInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborBfdInformation
         class NeighborRetransmissionInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborRetransmissionInformation
@@ -1700,8 +1539,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborBfdInformation> neighbor_bfd_information;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborRetransmissionInformation> neighbor_retransmission_information;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborSummary> neighbor_summary;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail
 
 
@@ -1713,12 +1551,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_id; //type: string
         YLeaf neighbor_address_xr; //type: string
@@ -1729,12 +1566,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
         YLeaf neighbor_dead_timer; //type: uint32
         YLeaf neighbor_up_time; //type: uint32
         YLeaf neighbor_madj_interface; //type: boolean
-
         class NeighborBfdInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation> neighbor_bfd_information;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborSummary
 
 
@@ -1746,17 +1581,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bfd_intf_enable_mode; //type: uint32
         YLeaf bfd_status_flag; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation
 
@@ -1769,17 +1601,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bfd_intf_enable_mode; //type: uint32
         YLeaf bfd_status_flag; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborBfdInformation
 
@@ -1792,12 +1621,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dbd_retransmission_count; //type: uint32
         YLeaf dbd_retransmission_total_count; //type: uint32
@@ -1819,8 +1647,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
         YLeaf maximum_retransmission_time; //type: uint32
         YLeaf lsa_retransmission_timer; //type: uint32
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::NeighborDetail::NeighborRetransmissionInformation
 
 
@@ -1832,19 +1658,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface> > interface;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces
 
 
@@ -1856,12 +1679,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -1930,7 +1752,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface : 
         YLeaf fast_reroute_type; //type: IpfrrEnum
         YLeaf fast_reroute_topology_independent_lfa; //type: boolean
         YLeafList srlg; //type: list of  uint32
-
         class InterfaceBfdInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::InterfaceBfdInformation
         class ActiveInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::ActiveInterface
         class InterfaceNeighbor; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::InterfaceNeighbor
@@ -1942,8 +1763,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface : 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::InterfaceMadj> > interface_madj;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::InterfaceNeighbor> > interface_neighbor;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::IpfrrTiebreakers> > ipfrr_tiebreakers;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface
 
 
@@ -1955,18 +1775,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bfd_intf_enable_mode; //type: uint32
         YLeaf interval; //type: uint32
         YLeaf detection_multiplier; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::InterfaceBfdInformation
 
@@ -1979,12 +1796,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::A
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wait_time; //type: uint32
         YLeaf interface_area_flood_index; //type: uint32
@@ -2008,8 +1824,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::A
         YLeaf keychain_id; //type: uint64
         YLeafList md_keys; //type: list of  uint16
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::ActiveInterface
 
 
@@ -2021,20 +1835,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_neighbor_id; //type: string
         YLeaf interface_neighbor_cost; //type: uint32
         YLeaf neighbor_dr; //type: boolean
         YLeaf neighbor_bdr; //type: boolean
         YLeaf suppress_hello; //type: boolean
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::InterfaceNeighbor
 
@@ -2047,12 +1858,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_area; //type: string
         YLeaf madj_area_id; //type: uint32
@@ -2060,8 +1870,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::I
         YLeaf interface_adj_neighbor_count; //type: uint16
         YLeaf interface_link_cost; //type: uint16
         YLeaf ospf_interface_state; //type: OspfInterfaceStateEnum
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::InterfaceMadj
 
@@ -2074,17 +1882,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tiebreaker_type; //type: IpfrrTbrkrEnum
         YLeaf tiebreaker_index; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::IpfrrTiebreakers
 
@@ -2097,13 +1902,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DatabaseAreas; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas
         class DatabaseSummaries; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries
@@ -2116,8 +1919,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaryAs> database_summary_as;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::LsaSummaries> lsa_summaries;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas> lsas;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database
 
 
@@ -2129,19 +1931,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DatabaseArea; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea> > database_area;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas
 
 
@@ -2153,22 +1952,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
-
         class Lsas; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas
         class LsaSummaries; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries> lsa_summaries;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas> lsas;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
 
@@ -2180,19 +1976,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Lsa; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa> > lsa;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas
 
 
@@ -2204,19 +1997,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf ls_type; //type: OspfLsEnum
         YLeaf ls_id; //type: string
         YLeaf advertising_router; //type: string
         YLeaf interface_name; //type: string
-
         class LsaHeader; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaHeader
         class LsaDetailData; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData
         class LsaInternalData; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData
@@ -2224,8 +2015,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData> lsa_detail_data;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaHeader> lsa_header;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData> lsa_internal_data;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa
 
 
@@ -2237,12 +2027,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ls_type; //type: LsaEnum
         YLeaf lsid; //type: string
@@ -2253,8 +2042,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf nsf; //type: boolean
         YLeaf sequence_number; //type: uint32
         YLeaf checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaHeader
 
@@ -2267,12 +2054,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tos_capable; //type: boolean
         YLeaf nssa_translation; //type: boolean
@@ -2289,7 +2075,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf lsa_prefix_priority; //type: uint8
         YLeaf new_lsa_prefix_priority; //type: uint8
         YLeaf lsa_flood_required_post_fail_over; //type: boolean
-
         class LsaThrottleTimer; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsaThrottleTimer
         class LsaLastUpdatedTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsaLastUpdatedTime
         class LsadbBaseTimeStamp; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsadbBaseTimeStamp
@@ -2299,8 +2084,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsaThrottleTimer> lsa_throttle_timer;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsadbBaseTimeStamp> lsadb_base_time_stamp;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::NotDelete> not_delete;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData
 
 
@@ -2312,12 +2096,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timer_location; //type: TimerTableEnum
         YLeaf timer_type; //type: TimerEnum
@@ -2325,8 +2108,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf minute_table_index; //type: uint8
         YLeaf last_inst_second_table_index; //type: uint8
         YLeaf last_inst_minute_table_index; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsaThrottleTimer
 
@@ -2339,17 +2120,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsaLastUpdatedTime
 
@@ -2362,17 +2140,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::LsadbBaseTimeStamp
 
@@ -2385,12 +2160,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf free_time; //type: uint32
         YLeaf no_delete; //type: boolean
@@ -2405,8 +2179,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf sum_orig_pending; //type: boolean
         YLeaf nsr_flood_required; //type: boolean
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaDetailData::NotDelete
 
 
@@ -2418,15 +2190,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf internal_lsa_type; //type: OspfInternalLsaTypesEnum
-
         class RouterLsaType; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType
         class NetworkLsaType; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::NetworkLsaType
         class SummaryLsaType; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::SummaryLsaType
@@ -2448,8 +2218,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType> opaque_router_info_lsa_type;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType> router_lsa_type;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::SummaryLsaType> summary_lsa_type;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData
 
 
@@ -2461,24 +2230,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_asbr; //type: boolean
         YLeaf router_abr; //type: boolean
         YLeaf internal_lsa; //type: boolean
-
         class Link; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::Link
         class InternalLink; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink> > internal_link;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::Link> > link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType
 
 
@@ -2490,23 +2256,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_id; //type: string
         YLeaf link_data; //type: string
         YLeaf link_type; //type: OspfLinkTypesEnum
         YLeaf link_metric; //type: uint16
-
         class LinkTos; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::Link::LinkTos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::Link::LinkTos> > link_tos;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::Link
 
 
@@ -2518,17 +2281,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_tos; //type: uint16
         YLeaf tos_cost; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::Link::LinkTos
 
@@ -2541,23 +2301,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_id; //type: string
         YLeaf link_data; //type: string
         YLeaf link_type; //type: OspfLinkTypesEnum
         YLeaf link_metric; //type: uint16
-
         class LinkTos; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink::LinkTos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink::LinkTos> > link_tos;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink
 
 
@@ -2569,17 +2326,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_tos; //type: uint16
         YLeaf tos_cost; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink::LinkTos
 
@@ -2592,17 +2346,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf network_prefix_length; //type: uint32
         YLeafList neighbor_router; //type: list of  string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::NetworkLsaType
 
@@ -2615,18 +2366,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf summary_prefix_length; //type: uint32
         YLeaf internal_sum_lsa; //type: boolean
         YLeafList summary_lsa_metric; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::SummaryLsaType
 
@@ -2639,21 +2387,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf external_prefix_length; //type: uint32
         YLeaf internal_external_lsa; //type: boolean
-
         class ExternalTosMetric; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::ExternalLsaType::ExternalTosMetric
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::ExternalLsaType::ExternalTosMetric> > external_tos_metric;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::ExternalLsaType
 
 
@@ -2665,20 +2410,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf external_metric; //type: uint32
         YLeaf external_metric_type; //type: ExMetricEnum
         YLeaf external_tos; //type: uint32
         YLeaf forwarding_address; //type: string
         YLeaf external_tag; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::ExternalLsaType::ExternalTosMetric
 
@@ -2691,16 +2433,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_interface_name; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueLinkLsaType
 
@@ -2713,19 +2452,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv> > tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType
 
 
@@ -2737,24 +2473,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tlv_type; //type: uint16
         YLeaf tlv_length; //type: uint16
         YLeaf mpls_router_id; //type: uint32
         YLeaf mpls_dste_link; //type: boolean
         YLeaf tlv_data; //type: string
-
         class TeLinkSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv> > te_link_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv
 
 
@@ -2766,18 +2499,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_tlv_type; //type: StlvEnum
         YLeaf sub_tlv_length; //type: uint16
         YLeaf sub_tlv_value; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv
 
@@ -2790,18 +2520,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf grace_period; //type: uint32
         YLeaf grace_reason; //type: OspfGrReasonEnum
         YLeaf ip_address; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa
 
@@ -2814,21 +2541,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_rilsa_scope; //type: OspfLsaOpqRiScopeEnum
         YLeaf opaque_ri_interface_name; //type: string
-
         class OpaqueRitlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv> > opaque_ritlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType
 
 
@@ -2840,15 +2564,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ritlv_internal_type; //type: OspfShOpqRiTlvTypesEnum
-
         class UnknownTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv
         class RtrCapTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv
         class Pcedtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv
@@ -2860,8 +2582,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv> sr_algo_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv> sr_range_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv> unknown_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
 
@@ -2873,18 +2594,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ri_gen_tlv_type; //type: uint16
         YLeaf ri_gen_tlv_length; //type: uint16
         YLeaf ri_genvalue; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv
 
@@ -2897,12 +2615,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rtr_cap_tlv_length; //type: uint16
         YLeaf rtr_cap_graceful_restart; //type: boolean
@@ -2913,8 +2630,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf rtr_cap_te_exp; //type: boolean
         YLeaf rtr_cap_all_bits; //type: uint32
         YLeaf rtr_cap_additional_info; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv
 
@@ -2927,22 +2642,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pcedtlv_length; //type: uint16
-
         class PcedAddr; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr
         class PcedScope; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr> pced_addr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope> pced_scope;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv
 
 
@@ -2954,15 +2666,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pce_addr_type; //type: OspfShOpqRiPceAddrTypesEnum
-
         class PceAddrUnknownTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::PceAddrUnknownTlv
         class Ipv4PceAddr; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv4PceAddr
         class Ipv6PceAddr; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr
@@ -2970,8 +2680,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv4PceAddr> ipv4pce_addr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr> ipv6pce_addr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::PceAddrUnknownTlv> pce_addr_unknown_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr
 
 
@@ -2983,18 +2692,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ri_gen_tlv_type; //type: uint16
         YLeaf ri_gen_tlv_length; //type: uint16
         YLeaf ri_genvalue; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::PceAddrUnknownTlv
 
@@ -3007,16 +2713,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pceipv4_addr; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv4PceAddr
 
@@ -3029,16 +2732,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pceipv6_addr; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr
 
@@ -3051,12 +2751,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lbit; //type: boolean
         YLeaf rbit; //type: boolean
@@ -3070,8 +2769,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf pref_y; //type: uint8
         YLeaf all_scope_info_bits; //type: uint32
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope
 
 
@@ -3083,17 +2780,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sr_algo_length; //type: uint16
         YLeaf sr_algo_value; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv
 
@@ -3106,21 +2800,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sr_range_length; //type: uint16
         YLeaf sr_range_size; //type: uint32
-
         class Sidtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv> sidtlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv
 
 
@@ -3132,17 +2823,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sr_sid_length; //type: uint16
         YLeaf sr_sid_value; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv::Sidtlv
 
@@ -3155,19 +2843,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv> > tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType
 
 
@@ -3179,24 +2864,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tlv_type; //type: uint16
         YLeaf tlv_length; //type: uint16
         YLeaf mpls_router_id; //type: uint32
         YLeaf mpls_dste_link; //type: boolean
         YLeaf tlv_data; //type: string
-
         class TeLinkSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv> > te_link_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv
 
 
@@ -3208,18 +2890,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_tlv_type; //type: StlvEnum
         YLeaf sub_tlv_length; //type: uint16
         YLeaf sub_tlv_value; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType::Tlv::TeLinkSubTlv
 
@@ -3232,19 +2911,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv> > tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueElLsaType
 
 
@@ -3256,24 +2932,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tlv_type; //type: uint16
         YLeaf tlv_length; //type: uint16
         YLeaf mpls_router_id; //type: uint32
         YLeaf mpls_dste_link; //type: boolean
         YLeaf tlv_data; //type: string
-
         class TeLinkSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv> > te_link_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv
 
 
@@ -3285,18 +2958,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_tlv_type; //type: StlvEnum
         YLeaf sub_tlv_length; //type: uint16
         YLeaf sub_tlv_value; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueElLsaType::Tlv::TeLinkSubTlv
 
@@ -3309,19 +2979,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LsaSummary; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries::LsaSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries::LsaSummary> > lsa_summary;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries
 
 
@@ -3333,12 +3000,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf ls_type; //type: OspfLsEnum
@@ -3347,12 +3013,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf interface_name; //type: string
         YLeaf external_tag; //type: uint32
         YLeaf link_count; //type: uint16
-
         class LsaHeader; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries::LsaSummary::LsaHeader
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries::LsaSummary::LsaHeader> lsa_header;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries::LsaSummary
 
 
@@ -3364,12 +3028,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ls_type; //type: LsaEnum
         YLeaf lsid; //type: string
@@ -3380,8 +3043,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         YLeaf nsf; //type: boolean
         YLeaf sequence_number; //type: uint32
         YLeaf checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::LsaSummaries::LsaSummary::LsaHeader
 
@@ -3394,19 +3055,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DatabaseSummary; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::DatabaseSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::DatabaseSummary> > database_summary;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries
 
 
@@ -3418,21 +3076,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::Database
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf dbase_sum_area_id_string; //type: string
-
         class AreaLsaCounter; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::DatabaseSummary::AreaLsaCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::DatabaseSummary::AreaLsaCounter> > area_lsa_counter;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::DatabaseSummary
 
 
@@ -3444,20 +3099,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::Database
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_type; //type: LsaEnum
         YLeaf lsa_count; //type: int32
         YLeaf lsa_delete_count; //type: int32
         YLeaf lsa_maxage_count; //type: int32
         YLeaf lsa_self_count; //type: int32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaries::DatabaseSummary::AreaLsaCounter
 
@@ -3470,19 +3122,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaryAs : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AsLsaCounter; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaryAs::AsLsaCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaryAs::AsLsaCounter> > as_lsa_counter;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaryAs
 
 
@@ -3494,20 +3143,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaryAs::AsLsaCou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_type; //type: LsaEnum
         YLeaf lsa_count; //type: int32
         YLeaf lsa_delete_count; //type: int32
         YLeaf lsa_maxage_count; //type: int32
         YLeaf lsa_self_count; //type: int32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseSummaryAs::AsLsaCounter
 
@@ -3520,19 +3166,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Lsa; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa> > lsa;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas
 
 
@@ -3544,19 +3187,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf area_id; //type: int32
         YLeaf ls_type; //type: OspfLsEnum
         YLeaf ls_id; //type: string
         YLeaf advertising_router; //type: string
         YLeaf interface_name; //type: string
-
         class LsaHeader; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaHeader
         class LsaDetailData; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData
         class LsaInternalData; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData
@@ -3564,8 +3205,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData> lsa_detail_data;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaHeader> lsa_header;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData> lsa_internal_data;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa
 
 
@@ -3577,12 +3217,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaHeader : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ls_type; //type: LsaEnum
         YLeaf lsid; //type: string
@@ -3593,8 +3232,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaHeader : publ
         YLeaf nsf; //type: boolean
         YLeaf sequence_number; //type: uint32
         YLeaf checksum; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaHeader
 
@@ -3607,12 +3244,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tos_capable; //type: boolean
         YLeaf nssa_translation; //type: boolean
@@ -3629,7 +3265,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData : 
         YLeaf lsa_prefix_priority; //type: uint8
         YLeaf new_lsa_prefix_priority; //type: uint8
         YLeaf lsa_flood_required_post_fail_over; //type: boolean
-
         class LsaThrottleTimer; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsaThrottleTimer
         class LsaLastUpdatedTime; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsaLastUpdatedTime
         class LsadbBaseTimeStamp; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsadbBaseTimeStamp
@@ -3639,8 +3274,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData : 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsaThrottleTimer> lsa_throttle_timer;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsadbBaseTimeStamp> lsadb_base_time_stamp;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::NotDelete> not_delete;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData
 
 
@@ -3652,12 +3286,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timer_location; //type: TimerTableEnum
         YLeaf timer_type; //type: TimerEnum
@@ -3665,8 +3298,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::L
         YLeaf minute_table_index; //type: uint8
         YLeaf last_inst_second_table_index; //type: uint8
         YLeaf last_inst_minute_table_index; //type: uint8
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsaThrottleTimer
 
@@ -3679,17 +3310,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsaLastUpdatedTime
 
@@ -3702,17 +3330,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf second; //type: uint32
         YLeaf nanosecond; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::LsadbBaseTimeStamp
 
@@ -3725,12 +3350,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::N
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf free_time; //type: uint32
         YLeaf no_delete; //type: boolean
@@ -3745,8 +3369,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::N
         YLeaf sum_orig_pending; //type: boolean
         YLeaf nsr_flood_required; //type: boolean
 
-
-
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaDetailData::NotDelete
 
 
@@ -3758,15 +3380,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf internal_lsa_type; //type: OspfInternalLsaTypesEnum
-
         class RouterLsaType; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType
         class NetworkLsaType; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::NetworkLsaType
         class SummaryLsaType; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::SummaryLsaType
@@ -3788,8 +3408,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType> opaque_router_info_lsa_type;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType> router_lsa_type;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::SummaryLsaType> summary_lsa_type;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData
 
 
@@ -3801,24 +3420,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_asbr; //type: boolean
         YLeaf router_abr; //type: boolean
         YLeaf internal_lsa; //type: boolean
-
         class Link; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::Link
         class InternalLink; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink> > internal_link;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::Link> > link;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType
 
 
@@ -3830,23 +3446,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_id; //type: string
         YLeaf link_data; //type: string
         YLeaf link_type; //type: OspfLinkTypesEnum
         YLeaf link_metric; //type: uint16
-
         class LinkTos; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::Link::LinkTos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::Link::LinkTos> > link_tos;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::Link
 
 
@@ -3858,17 +3471,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_tos; //type: uint16
         YLeaf tos_cost; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::Link::LinkTos
 
@@ -3881,23 +3491,20 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf link_id; //type: string
         YLeaf link_data; //type: string
         YLeaf link_type; //type: OspfLinkTypesEnum
         YLeaf link_metric; //type: uint16
-
         class LinkTos; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink::LinkTos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink::LinkTos> > link_tos;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink
 
 
@@ -3909,17 +3516,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_tos; //type: uint16
         YLeaf tos_cost; //type: uint16
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::RouterLsaType::InternalLink::LinkTos
 
@@ -3932,17 +3536,14 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf network_prefix_length; //type: uint32
         YLeafList neighbor_router; //type: list of  string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::NetworkLsaType
 
@@ -3955,18 +3556,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf summary_prefix_length; //type: uint32
         YLeaf internal_sum_lsa; //type: boolean
         YLeafList summary_lsa_metric; //type: list of  uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::SummaryLsaType
 
@@ -3979,21 +3577,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf external_prefix_length; //type: uint32
         YLeaf internal_external_lsa; //type: boolean
-
         class ExternalTosMetric; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::ExternalLsaType::ExternalTosMetric
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::ExternalLsaType::ExternalTosMetric> > external_tos_metric;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::ExternalLsaType
 
 
@@ -4005,20 +3600,17 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf external_metric; //type: uint32
         YLeaf external_metric_type; //type: ExMetricEnum
         YLeaf external_tos; //type: uint32
         YLeaf forwarding_address; //type: string
         YLeaf external_tag; //type: uint32
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::ExternalLsaType::ExternalTosMetric
 
@@ -4031,16 +3623,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_interface_name; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueLinkLsaType
 
@@ -4053,19 +3642,16 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv> > tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType
 
 
@@ -4077,24 +3663,21 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tlv_type; //type: uint16
         YLeaf tlv_length; //type: uint16
         YLeaf mpls_router_id; //type: uint32
         YLeaf mpls_dste_link; //type: boolean
         YLeaf tlv_data; //type: string
-
         class TeLinkSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv> > te_link_sub_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv
 
 
@@ -4106,18 +3689,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_tlv_type; //type: StlvEnum
         YLeaf sub_tlv_length; //type: uint16
         YLeaf sub_tlv_value; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv
 
@@ -4130,18 +3710,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf grace_period; //type: uint32
         YLeaf grace_reason; //type: OspfGrReasonEnum
         YLeaf ip_address; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa
 
@@ -4154,21 +3731,18 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf opaque_rilsa_scope; //type: OspfLsaOpqRiScopeEnum
         YLeaf opaque_ri_interface_name; //type: string
-
         class OpaqueRitlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv> > opaque_ritlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType
 
 
@@ -4180,15 +3754,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ritlv_internal_type; //type: OspfShOpqRiTlvTypesEnum
-
         class UnknownTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv
         class RtrCapTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv
         class Pcedtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv
@@ -4200,8 +3772,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv> sr_algo_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv> sr_range_tlv;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv> unknown_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
 
@@ -4213,18 +3784,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ri_gen_tlv_type; //type: uint16
         YLeaf ri_gen_tlv_length; //type: uint16
         YLeaf ri_genvalue; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv
 
@@ -4237,12 +3805,11 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rtr_cap_tlv_length; //type: uint16
         YLeaf rtr_cap_graceful_restart; //type: boolean
@@ -4253,8 +3820,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
         YLeaf rtr_cap_te_exp; //type: boolean
         YLeaf rtr_cap_all_bits; //type: uint32
         YLeaf rtr_cap_additional_info; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv
 
@@ -4267,22 +3832,19 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pcedtlv_length; //type: uint16
-
         class PcedAddr; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr
         class PcedScope; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr> pced_addr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope> pced_scope;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv
 
 
@@ -4294,15 +3856,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pce_addr_type; //type: OspfShOpqRiPceAddrTypesEnum
-
         class PceAddrUnknownTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::PceAddrUnknownTlv
         class Ipv4PceAddr; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv4PceAddr
         class Ipv6PceAddr; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr
@@ -4310,8 +3870,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv4PceAddr> ipv4pce_addr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr> ipv6pce_addr;
         std::shared_ptr<Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::PceAddrUnknownTlv> pce_addr_unknown_tlv;
-
-
+        
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr
 
 
@@ -4323,18 +3882,15 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ri_gen_tlv_type; //type: uint16
         YLeaf ri_gen_tlv_length; //type: uint16
         YLeaf ri_genvalue; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::PceAddrUnknownTlv
 
@@ -4347,16 +3903,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pceipv4_addr; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv4PceAddr
 
@@ -4369,16 +3922,13 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pceipv6_addr; //type: string
-
-
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr
 

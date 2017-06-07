@@ -19,27 +19,67 @@ class GetConfigRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-        YLeaf with_defaults; //type: WithDefaultsModeEnum
-
+        class Input; //type: GetConfigRpc::Input
         class Output; //type: GetConfigRpc::Output
-        class Source; //type: GetConfigRpc::Source
 
+        std::shared_ptr<ietf_netconf::GetConfigRpc::Input> input;
         std::shared_ptr<ietf_netconf::GetConfigRpc::Output> output;
-        std::shared_ptr<ietf_netconf::GetConfigRpc::Source> source;
-
-
+        
 }; // GetConfigRpc
+
+
+class GetConfigRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf filter; //type: string
+        YLeaf with_defaults; //type: WithDefaultsModeEnum
+        class Source; //type: GetConfigRpc::Input::Source
+
+        std::shared_ptr<ietf_netconf::GetConfigRpc::Input::Source> source;
+        
+}; // GetConfigRpc::Input
+
+
+class GetConfigRpc::Input::Source : public Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf candidate; //type: empty
+        YLeaf running; //type: empty
+        YLeaf startup; //type: empty
+
+}; // GetConfigRpc::Input::Source
 
 
 class GetConfigRpc::Output : public Entity
@@ -50,41 +90,15 @@ class GetConfigRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-
-
-
+        YLeaf data; //type: string
 
 }; // GetConfigRpc::Output
-
-
-class GetConfigRpc::Source : public Entity
-{
-    public:
-        Source();
-        ~Source();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
-        YLeaf startup; //type: empty
-
-
-
-}; // GetConfigRpc::Source
 
 class EditConfigRpc : public Entity
 {
@@ -94,34 +108,53 @@ class EditConfigRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: EditConfigRpc::Input
+
+        std::shared_ptr<ietf_netconf::EditConfigRpc::Input> input;
+        
+}; // EditConfigRpc
+
+
+class EditConfigRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf default_operation; //type: DefaultOperationEnum
         YLeaf test_option; //type: TestOptionEnum
         YLeaf error_option; //type: ErrorOptionEnum
+        YLeaf config; //type: string
         YLeaf url; //type: string
+        class Target; //type: EditConfigRpc::Input::Target
 
-        class Target; //type: EditConfigRpc::Target
-
-        std::shared_ptr<ietf_netconf::EditConfigRpc::Target> target;
-        class DefaultOperationEnum;
+        std::shared_ptr<ietf_netconf::EditConfigRpc::Input::Target> target;
+                class DefaultOperationEnum;
         class TestOptionEnum;
         class ErrorOptionEnum;
 
+}; // EditConfigRpc::Input
 
-}; // EditConfigRpc
 
-
-class EditConfigRpc::Target : public Entity
+class EditConfigRpc::Input::Target : public Entity
 {
     public:
         Target();
@@ -129,19 +162,16 @@ class EditConfigRpc::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf candidate; //type: empty
         YLeaf running; //type: empty
 
-
-
-}; // EditConfigRpc::Target
+}; // EditConfigRpc::Input::Target
 
 class CopyConfigRpc : public Entity
 {
@@ -151,30 +181,48 @@ class CopyConfigRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CopyConfigRpc::Input
 
-        YLeaf with_defaults; //type: WithDefaultsModeEnum
-
-        class Target; //type: CopyConfigRpc::Target
-        class Source; //type: CopyConfigRpc::Source
-
-        std::shared_ptr<ietf_netconf::CopyConfigRpc::Source> source;
-        std::shared_ptr<ietf_netconf::CopyConfigRpc::Target> target;
-
-
+        std::shared_ptr<ietf_netconf::CopyConfigRpc::Input> input;
+        
 }; // CopyConfigRpc
 
 
-class CopyConfigRpc::Target : public Entity
+class CopyConfigRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf with_defaults; //type: WithDefaultsModeEnum
+        class Target; //type: CopyConfigRpc::Input::Target
+        class Source; //type: CopyConfigRpc::Input::Source
+
+        std::shared_ptr<ietf_netconf::CopyConfigRpc::Input::Source> source;
+        std::shared_ptr<ietf_netconf::CopyConfigRpc::Input::Target> target;
+        
+}; // CopyConfigRpc::Input
+
+
+class CopyConfigRpc::Input::Target : public Entity
 {
     public:
         Target();
@@ -182,24 +230,21 @@ class CopyConfigRpc::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf candidate; //type: empty
         YLeaf running; //type: empty
         YLeaf startup; //type: empty
         YLeaf url; //type: string
 
+}; // CopyConfigRpc::Input::Target
 
 
-}; // CopyConfigRpc::Target
-
-
-class CopyConfigRpc::Source : public Entity
+class CopyConfigRpc::Input::Source : public Entity
 {
     public:
         Source();
@@ -207,21 +252,19 @@ class CopyConfigRpc::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf candidate; //type: empty
         YLeaf running; //type: empty
         YLeaf startup; //type: empty
         YLeaf url; //type: string
+        YLeaf config; //type: string
 
-
-
-}; // CopyConfigRpc::Source
+}; // CopyConfigRpc::Input::Source
 
 class DeleteConfigRpc : public Entity
 {
@@ -231,27 +274,45 @@ class DeleteConfigRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: DeleteConfigRpc::Input
 
-
-        class Target; //type: DeleteConfigRpc::Target
-
-        std::shared_ptr<ietf_netconf::DeleteConfigRpc::Target> target;
-
-
+        std::shared_ptr<ietf_netconf::DeleteConfigRpc::Input> input;
+        
 }; // DeleteConfigRpc
 
 
-class DeleteConfigRpc::Target : public Entity
+class DeleteConfigRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Target; //type: DeleteConfigRpc::Input::Target
+
+        std::shared_ptr<ietf_netconf::DeleteConfigRpc::Input::Target> target;
+        
+}; // DeleteConfigRpc::Input
+
+
+class DeleteConfigRpc::Input::Target : public Entity
 {
     public:
         Target();
@@ -259,19 +320,16 @@ class DeleteConfigRpc::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf startup; //type: empty
         YLeaf url; //type: string
 
-
-
-}; // DeleteConfigRpc::Target
+}; // DeleteConfigRpc::Input::Target
 
 class LockRpc : public Entity
 {
@@ -281,27 +339,45 @@ class LockRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: LockRpc::Input
 
-
-        class Target; //type: LockRpc::Target
-
-        std::shared_ptr<ietf_netconf::LockRpc::Target> target;
-
-
+        std::shared_ptr<ietf_netconf::LockRpc::Input> input;
+        
 }; // LockRpc
 
 
-class LockRpc::Target : public Entity
+class LockRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Target; //type: LockRpc::Input::Target
+
+        std::shared_ptr<ietf_netconf::LockRpc::Input::Target> target;
+        
+}; // LockRpc::Input
+
+
+class LockRpc::Input::Target : public Entity
 {
     public:
         Target();
@@ -309,20 +385,17 @@ class LockRpc::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf candidate; //type: empty
         YLeaf running; //type: empty
         YLeaf startup; //type: empty
 
-
-
-}; // LockRpc::Target
+}; // LockRpc::Input::Target
 
 class UnlockRpc : public Entity
 {
@@ -332,27 +405,45 @@ class UnlockRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: UnlockRpc::Input
 
-
-        class Target; //type: UnlockRpc::Target
-
-        std::shared_ptr<ietf_netconf::UnlockRpc::Target> target;
-
-
+        std::shared_ptr<ietf_netconf::UnlockRpc::Input> input;
+        
 }; // UnlockRpc
 
 
-class UnlockRpc::Target : public Entity
+class UnlockRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Target; //type: UnlockRpc::Input::Target
+
+        std::shared_ptr<ietf_netconf::UnlockRpc::Input::Target> target;
+        
+}; // UnlockRpc::Input
+
+
+class UnlockRpc::Input::Target : public Entity
 {
     public:
         Target();
@@ -360,20 +451,17 @@ class UnlockRpc::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf candidate; //type: empty
         YLeaf running; //type: empty
         YLeaf startup; //type: empty
 
-
-
-}; // UnlockRpc::Target
+}; // UnlockRpc::Input::Target
 
 class GetRpc : public Entity
 {
@@ -383,25 +471,43 @@ class GetRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-        YLeaf with_defaults; //type: WithDefaultsModeEnum
-
+        class Input; //type: GetRpc::Input
         class Output; //type: GetRpc::Output
 
+        std::shared_ptr<ietf_netconf::GetRpc::Input> input;
         std::shared_ptr<ietf_netconf::GetRpc::Output> output;
-
-
+        
 }; // GetRpc
+
+
+class GetRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf filter; //type: string
+        YLeaf with_defaults; //type: WithDefaultsModeEnum
+
+}; // GetRpc::Input
 
 
 class GetRpc::Output : public Entity
@@ -412,15 +518,13 @@ class GetRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-
-
-
+        YLeaf data; //type: string
 
 }; // GetRpc::Output
 
@@ -432,18 +536,15 @@ class CloseSessionRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
-
 
 
 }; // CloseSessionRpc
@@ -456,22 +557,40 @@ class KillSessionRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: KillSessionRpc::Input
+
+        std::shared_ptr<ietf_netconf::KillSessionRpc::Input> input;
+        
+}; // KillSessionRpc
+
+
+class KillSessionRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
 
-
-
-}; // KillSessionRpc
+}; // KillSessionRpc::Input
 
 class CommitRpc : public Entity
 {
@@ -481,25 +600,43 @@ class CommitRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CommitRpc::Input
+
+        std::shared_ptr<ietf_netconf::CommitRpc::Input> input;
+        
+}; // CommitRpc
+
+
+class CommitRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf confirmed; //type: empty
         YLeaf confirm_timeout; //type: uint32
         YLeaf persist; //type: string
         YLeaf persist_id; //type: string
 
-
-
-}; // CommitRpc
+}; // CommitRpc::Input
 
 class DiscardChangesRpc : public Entity
 {
@@ -509,18 +646,15 @@ class DiscardChangesRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
-
 
 
 }; // DiscardChangesRpc
@@ -533,22 +667,40 @@ class CancelCommitRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CancelCommitRpc::Input
+
+        std::shared_ptr<ietf_netconf::CancelCommitRpc::Input> input;
+        
+}; // CancelCommitRpc
+
+
+class CancelCommitRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf persist_id; //type: string
 
-
-
-}; // CancelCommitRpc
+}; // CancelCommitRpc::Input
 
 class ValidateRpc : public Entity
 {
@@ -558,27 +710,45 @@ class ValidateRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: ValidateRpc::Input
 
-
-        class Source; //type: ValidateRpc::Source
-
-        std::shared_ptr<ietf_netconf::ValidateRpc::Source> source;
-
-
+        std::shared_ptr<ietf_netconf::ValidateRpc::Input> input;
+        
 }; // ValidateRpc
 
 
-class ValidateRpc::Source : public Entity
+class ValidateRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Source; //type: ValidateRpc::Input::Source
+
+        std::shared_ptr<ietf_netconf::ValidateRpc::Input::Source> source;
+        
+}; // ValidateRpc::Input
+
+
+class ValidateRpc::Input::Source : public Entity
 {
     public:
         Source();
@@ -586,21 +756,19 @@ class ValidateRpc::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf candidate; //type: empty
         YLeaf running; //type: empty
         YLeaf startup; //type: empty
         YLeaf url; //type: string
+        YLeaf config; //type: string
 
-
-
-}; // ValidateRpc::Source
+}; // ValidateRpc::Input::Source
 
 class ErrorSeverityTypeEnum : public Enum
 {
@@ -647,7 +815,7 @@ class EditOperationTypeEnum : public Enum
 
 };
 
-class EditConfigRpc::DefaultOperationEnum : public Enum
+class EditConfigRpc::Input::DefaultOperationEnum : public Enum
 {
     public:
         static const Enum::YLeaf merge;
@@ -656,7 +824,7 @@ class EditConfigRpc::DefaultOperationEnum : public Enum
 
 };
 
-class EditConfigRpc::TestOptionEnum : public Enum
+class EditConfigRpc::Input::TestOptionEnum : public Enum
 {
     public:
         static const Enum::YLeaf test_then_set;
@@ -665,7 +833,7 @@ class EditConfigRpc::TestOptionEnum : public Enum
 
 };
 
-class EditConfigRpc::ErrorOptionEnum : public Enum
+class EditConfigRpc::Input::ErrorOptionEnum : public Enum
 {
     public:
         static const Enum::YLeaf stop_on_error;

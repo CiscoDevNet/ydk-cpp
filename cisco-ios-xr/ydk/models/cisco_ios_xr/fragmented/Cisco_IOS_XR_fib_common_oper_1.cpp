@@ -40,7 +40,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -64,20 +64,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -159,7 +151,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -196,20 +188,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -298,7 +282,6 @@ MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::Labe
     label_information_detail(std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail>())
 {
     label_information_detail->parent = this;
-    children["label-information-detail"] = label_information_detail;
 
     yang_name = "label-information"; yang_parent_name = "forwarding-detail";
 }
@@ -365,7 +348,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -407,41 +390,24 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-information-detail")
     {
-        if(label_information_detail != nullptr)
-        {
-            children["label-information-detail"] = label_information_detail;
-        }
-        else
+        if(label_information_detail == nullptr)
         {
             label_information_detail = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail>();
-            label_information_detail->parent = this;
-            children["label-information-detail"] = label_information_detail;
         }
-        return children.at("label-information-detail");
+        return label_information_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::get_children() const
 {
-    if(children.find("label-information-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_information_detail != nullptr)
     {
-        if(label_information_detail != nullptr)
-        {
-            children["label-information-detail"] = label_information_detail;
-        }
+        children["label-information-detail"] = label_information_detail;
     }
 
     return children;
@@ -594,7 +560,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -628,20 +594,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -727,7 +685,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::get_segment_pat
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -750,15 +708,6 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::get_entity_path(
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
         for(auto const & c : information)
@@ -766,28 +715,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations::Information>();
         c->parent = this;
-        information.push_back(std::move(c));
-        children[segment_path] = information.back();
-        return children.at(segment_path);
+        information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::Informations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::Informations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -825,10 +770,8 @@ MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Information()
 	,multicast_information(std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation>())
 {
     ldi_information->parent = this;
-    children["ldi-information"] = ldi_information;
 
     multicast_information->parent = this;
-    children["multicast-information"] = multicast_information;
 
     yang_name = "information"; yang_parent_name = "informations";
 }
@@ -911,7 +854,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::ge
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -955,15 +898,6 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-information")
     {
         for(auto const & c : label_information)
@@ -971,74 +905,52 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::Inf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation>();
         c->parent = this;
-        label_information.push_back(std::move(c));
-        children[segment_path] = label_information.back();
-        return children.at(segment_path);
+        label_information.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ldi-information")
     {
-        if(ldi_information != nullptr)
-        {
-            children["ldi-information"] = ldi_information;
-        }
-        else
+        if(ldi_information == nullptr)
         {
             ldi_information = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation>();
-            ldi_information->parent = this;
-            children["ldi-information"] = ldi_information;
         }
-        return children.at("ldi-information");
+        return ldi_information;
     }
 
     if(child_yang_name == "multicast-information")
     {
-        if(multicast_information != nullptr)
-        {
-            children["multicast-information"] = multicast_information;
-        }
-        else
+        if(multicast_information == nullptr)
         {
             multicast_information = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation>();
-            multicast_information->parent = this;
-            children["multicast-information"] = multicast_information;
         }
-        return children.at("multicast-information");
+        return multicast_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ldi-information") == children.end())
+    if(ldi_information != nullptr)
     {
-        if(ldi_information != nullptr)
-        {
-            children["ldi-information"] = ldi_information;
-        }
+        children["ldi-information"] = ldi_information;
     }
 
-    if(children.find("multicast-information") == children.end())
+    if(multicast_information != nullptr)
     {
-        if(multicast_information != nullptr)
-        {
-            children["multicast-information"] = multicast_information;
-        }
+        children["multicast-information"] = multicast_information;
     }
 
     return children;
@@ -1163,7 +1075,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Ld
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1187,20 +1099,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Ldi
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1282,7 +1186,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Mu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1319,20 +1223,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Mul
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1421,7 +1317,6 @@ MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformati
     label_information_detail(std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail>())
 {
     label_information_detail->parent = this;
-    children["label-information-detail"] = label_information_detail;
 
     yang_name = "label-information"; yang_parent_name = "information";
 }
@@ -1488,7 +1383,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::La
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1530,41 +1425,24 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Lab
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-information-detail")
     {
-        if(label_information_detail != nullptr)
-        {
-            children["label-information-detail"] = label_information_detail;
-        }
-        else
+        if(label_information_detail == nullptr)
         {
             label_information_detail = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail>();
-            label_information_detail->parent = this;
-            children["label-information-detail"] = label_information_detail;
         }
-        return children.at("label-information-detail");
+        return label_information_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::get_children() const
 {
-    if(children.find("label-information-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_information_detail != nullptr)
     {
-        if(label_information_detail != nullptr)
-        {
-            children["label-information-detail"] = label_information_detail;
-        }
+        children["label-information-detail"] = label_information_detail;
     }
 
     return children;
@@ -1717,7 +1595,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::La
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1751,20 +1629,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Lab
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1818,10 +1688,8 @@ MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::LabelSecurity()
 	,summary(std::make_shared<MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "label-security"; yang_parent_name = "label-fib";
 }
@@ -1852,7 +1720,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_segment_pa
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1875,64 +1743,38 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_entity_path
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -1980,7 +1822,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::ge
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2003,15 +1845,6 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::get
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -2019,28 +1852,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::In
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2102,7 +1931,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::In
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2133,20 +1962,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Int
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2220,7 +2041,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_s
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2245,20 +2066,12 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_en
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2279,7 +2092,6 @@ MplsForwarding::Nodes::Node::Tunnel::Tunnel()
     forwarding_tunnels(std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels>())
 {
     forwarding_tunnels->parent = this;
-    children["forwarding-tunnels"] = forwarding_tunnels;
 
     yang_name = "tunnel"; yang_parent_name = "node";
 }
@@ -2308,7 +2120,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::get_segment_path() const
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2331,41 +2143,24 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-tunnels")
     {
-        if(forwarding_tunnels != nullptr)
-        {
-            children["forwarding-tunnels"] = forwarding_tunnels;
-        }
-        else
+        if(forwarding_tunnels == nullptr)
         {
             forwarding_tunnels = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels>();
-            forwarding_tunnels->parent = this;
-            children["forwarding-tunnels"] = forwarding_tunnels;
         }
-        return children.at("forwarding-tunnels");
+        return forwarding_tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::get_children() const
 {
-    if(children.find("forwarding-tunnels") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(forwarding_tunnels != nullptr)
     {
-        if(forwarding_tunnels != nullptr)
-        {
-            children["forwarding-tunnels"] = forwarding_tunnels;
-        }
+        children["forwarding-tunnels"] = forwarding_tunnels;
     }
 
     return children;
@@ -2413,7 +2208,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::get_segment_
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2436,15 +2231,6 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::get_entity_pa
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-tunnel")
     {
         for(auto const & c : forwarding_tunnel)
@@ -2452,28 +2238,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel>();
         c->parent = this;
-        forwarding_tunnel.push_back(std::move(c));
-        children[segment_path] = forwarding_tunnel.back();
-        return children.at(segment_path);
+        forwarding_tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : forwarding_tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2491,10 +2273,8 @@ MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Forwar
 	,tunnel_info(std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo>())
 {
     fwdg->parent = this;
-    children["fwdg"] = fwdg;
 
     tunnel_info->parent = this;
-    children["tunnel-info"] = tunnel_info;
 
     yang_name = "forwarding-tunnel"; yang_parent_name = "forwarding-tunnels";
 }
@@ -2527,7 +2307,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2551,64 +2331,38 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTun
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fwdg")
     {
-        if(fwdg != nullptr)
-        {
-            children["fwdg"] = fwdg;
-        }
-        else
+        if(fwdg == nullptr)
         {
             fwdg = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg>();
-            fwdg->parent = this;
-            children["fwdg"] = fwdg;
         }
-        return children.at("fwdg");
+        return fwdg;
     }
 
     if(child_yang_name == "tunnel-info")
     {
-        if(tunnel_info != nullptr)
-        {
-            children["tunnel-info"] = tunnel_info;
-        }
-        else
+        if(tunnel_info == nullptr)
         {
             tunnel_info = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo>();
-            tunnel_info->parent = this;
-            children["tunnel-info"] = tunnel_info;
         }
-        return children.at("tunnel-info");
+        return tunnel_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::get_children() const
 {
-    if(children.find("fwdg") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fwdg != nullptr)
     {
-        if(fwdg != nullptr)
-        {
-            children["fwdg"] = fwdg;
-        }
+        children["fwdg"] = fwdg;
     }
 
-    if(children.find("tunnel-info") == children.end())
+    if(tunnel_info != nullptr)
     {
-        if(tunnel_info != nullptr)
-        {
-            children["tunnel-info"] = tunnel_info;
-        }
+        children["tunnel-info"] = tunnel_info;
     }
 
     return children;
@@ -2689,7 +2443,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2725,20 +2479,12 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTun
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2824,10 +2570,8 @@ MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::
 	,multicast_information(std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation>())
 {
     ldi_information->parent = this;
-    children["ldi-information"] = ldi_information;
 
     multicast_information->parent = this;
-    children["multicast-information"] = multicast_information;
 
     yang_name = "fwdg"; yang_parent_name = "forwarding-tunnel";
 }
@@ -2906,7 +2650,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2948,15 +2692,6 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTun
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-information")
     {
         for(auto const & c : label_information)
@@ -2964,74 +2699,52 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation>();
         c->parent = this;
-        label_information.push_back(std::move(c));
-        children[segment_path] = label_information.back();
-        return children.at(segment_path);
+        label_information.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ldi-information")
     {
-        if(ldi_information != nullptr)
-        {
-            children["ldi-information"] = ldi_information;
-        }
-        else
+        if(ldi_information == nullptr)
         {
             ldi_information = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation>();
-            ldi_information->parent = this;
-            children["ldi-information"] = ldi_information;
         }
-        return children.at("ldi-information");
+        return ldi_information;
     }
 
     if(child_yang_name == "multicast-information")
     {
-        if(multicast_information != nullptr)
-        {
-            children["multicast-information"] = multicast_information;
-        }
-        else
+        if(multicast_information == nullptr)
         {
             multicast_information = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation>();
-            multicast_information->parent = this;
-            children["multicast-information"] = multicast_information;
         }
-        return children.at("multicast-information");
+        return multicast_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ldi-information") == children.end())
+    if(ldi_information != nullptr)
     {
-        if(ldi_information != nullptr)
-        {
-            children["ldi-information"] = ldi_information;
-        }
+        children["ldi-information"] = ldi_information;
     }
 
-    if(children.find("multicast-information") == children.end())
+    if(multicast_information != nullptr)
     {
-        if(multicast_information != nullptr)
-        {
-            children["multicast-information"] = multicast_information;
-        }
+        children["multicast-information"] = multicast_information;
     }
 
     return children;
@@ -3148,7 +2861,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3172,20 +2885,12 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTun
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3267,7 +2972,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3304,20 +3009,12 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTun
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3406,7 +3103,6 @@ MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::
     label_information_detail(std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail>())
 {
     label_information_detail->parent = this;
-    children["label-information-detail"] = label_information_detail;
 
     yang_name = "label-information"; yang_parent_name = "fwdg";
 }
@@ -3473,7 +3169,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3515,41 +3211,24 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTun
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-information-detail")
     {
-        if(label_information_detail != nullptr)
-        {
-            children["label-information-detail"] = label_information_detail;
-        }
-        else
+        if(label_information_detail == nullptr)
         {
             label_information_detail = std::make_shared<MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail>();
-            label_information_detail->parent = this;
-            children["label-information-detail"] = label_information_detail;
         }
-        return children.at("label-information-detail");
+        return label_information_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::get_children() const
 {
-    if(children.find("label-information-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_information_detail != nullptr)
     {
-        if(label_information_detail != nullptr)
-        {
-            children["label-information-detail"] = label_information_detail;
-        }
+        children["label-information-detail"] = label_information_detail;
     }
 
     return children;
@@ -3702,7 +3381,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3736,20 +3415,12 @@ EntityPath MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTun
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3808,25 +3479,18 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrDatabase()
 	,frrdb_tunnel_midpoints(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints>())
 {
     frrdb_backup_interface_summaries->parent = this;
-    children["frrdb-backup-interface-summaries"] = frrdb_backup_interface_summaries;
 
     frrdb_protected_interface_table_summaries->parent = this;
-    children["frrdb-protected-interface-table-summaries"] = frrdb_protected_interface_table_summaries;
 
     frrdb_summary->parent = this;
-    children["frrdb-summary"] = frrdb_summary;
 
     frrdb_tunnel_head_summary->parent = this;
-    children["frrdb-tunnel-head-summary"] = frrdb_tunnel_head_summary;
 
     frrdb_tunnel_heads->parent = this;
-    children["frrdb-tunnel-heads"] = frrdb_tunnel_heads;
 
     frrdb_tunnel_midpoint_summary->parent = this;
-    children["frrdb-tunnel-midpoint-summary"] = frrdb_tunnel_midpoint_summary;
 
     frrdb_tunnel_midpoints->parent = this;
-    children["frrdb-tunnel-midpoints"] = frrdb_tunnel_midpoints;
 
     yang_name = "frr-database"; yang_parent_name = "node";
 }
@@ -3867,7 +3531,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::get_segment_path() const
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3890,179 +3554,108 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frrdb-backup-interface-summaries")
     {
-        if(frrdb_backup_interface_summaries != nullptr)
-        {
-            children["frrdb-backup-interface-summaries"] = frrdb_backup_interface_summaries;
-        }
-        else
+        if(frrdb_backup_interface_summaries == nullptr)
         {
             frrdb_backup_interface_summaries = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries>();
-            frrdb_backup_interface_summaries->parent = this;
-            children["frrdb-backup-interface-summaries"] = frrdb_backup_interface_summaries;
         }
-        return children.at("frrdb-backup-interface-summaries");
+        return frrdb_backup_interface_summaries;
     }
 
     if(child_yang_name == "frrdb-protected-interface-table-summaries")
     {
-        if(frrdb_protected_interface_table_summaries != nullptr)
-        {
-            children["frrdb-protected-interface-table-summaries"] = frrdb_protected_interface_table_summaries;
-        }
-        else
+        if(frrdb_protected_interface_table_summaries == nullptr)
         {
             frrdb_protected_interface_table_summaries = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries>();
-            frrdb_protected_interface_table_summaries->parent = this;
-            children["frrdb-protected-interface-table-summaries"] = frrdb_protected_interface_table_summaries;
         }
-        return children.at("frrdb-protected-interface-table-summaries");
+        return frrdb_protected_interface_table_summaries;
     }
 
     if(child_yang_name == "frrdb-summary")
     {
-        if(frrdb_summary != nullptr)
-        {
-            children["frrdb-summary"] = frrdb_summary;
-        }
-        else
+        if(frrdb_summary == nullptr)
         {
             frrdb_summary = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary>();
-            frrdb_summary->parent = this;
-            children["frrdb-summary"] = frrdb_summary;
         }
-        return children.at("frrdb-summary");
+        return frrdb_summary;
     }
 
     if(child_yang_name == "frrdb-tunnel-head-summary")
     {
-        if(frrdb_tunnel_head_summary != nullptr)
-        {
-            children["frrdb-tunnel-head-summary"] = frrdb_tunnel_head_summary;
-        }
-        else
+        if(frrdb_tunnel_head_summary == nullptr)
         {
             frrdb_tunnel_head_summary = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary>();
-            frrdb_tunnel_head_summary->parent = this;
-            children["frrdb-tunnel-head-summary"] = frrdb_tunnel_head_summary;
         }
-        return children.at("frrdb-tunnel-head-summary");
+        return frrdb_tunnel_head_summary;
     }
 
     if(child_yang_name == "frrdb-tunnel-heads")
     {
-        if(frrdb_tunnel_heads != nullptr)
-        {
-            children["frrdb-tunnel-heads"] = frrdb_tunnel_heads;
-        }
-        else
+        if(frrdb_tunnel_heads == nullptr)
         {
             frrdb_tunnel_heads = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads>();
-            frrdb_tunnel_heads->parent = this;
-            children["frrdb-tunnel-heads"] = frrdb_tunnel_heads;
         }
-        return children.at("frrdb-tunnel-heads");
+        return frrdb_tunnel_heads;
     }
 
     if(child_yang_name == "frrdb-tunnel-midpoint-summary")
     {
-        if(frrdb_tunnel_midpoint_summary != nullptr)
-        {
-            children["frrdb-tunnel-midpoint-summary"] = frrdb_tunnel_midpoint_summary;
-        }
-        else
+        if(frrdb_tunnel_midpoint_summary == nullptr)
         {
             frrdb_tunnel_midpoint_summary = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary>();
-            frrdb_tunnel_midpoint_summary->parent = this;
-            children["frrdb-tunnel-midpoint-summary"] = frrdb_tunnel_midpoint_summary;
         }
-        return children.at("frrdb-tunnel-midpoint-summary");
+        return frrdb_tunnel_midpoint_summary;
     }
 
     if(child_yang_name == "frrdb-tunnel-midpoints")
     {
-        if(frrdb_tunnel_midpoints != nullptr)
-        {
-            children["frrdb-tunnel-midpoints"] = frrdb_tunnel_midpoints;
-        }
-        else
+        if(frrdb_tunnel_midpoints == nullptr)
         {
             frrdb_tunnel_midpoints = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints>();
-            frrdb_tunnel_midpoints->parent = this;
-            children["frrdb-tunnel-midpoints"] = frrdb_tunnel_midpoints;
         }
-        return children.at("frrdb-tunnel-midpoints");
+        return frrdb_tunnel_midpoints;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::get_children() const
 {
-    if(children.find("frrdb-backup-interface-summaries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frrdb_backup_interface_summaries != nullptr)
     {
-        if(frrdb_backup_interface_summaries != nullptr)
-        {
-            children["frrdb-backup-interface-summaries"] = frrdb_backup_interface_summaries;
-        }
+        children["frrdb-backup-interface-summaries"] = frrdb_backup_interface_summaries;
     }
 
-    if(children.find("frrdb-protected-interface-table-summaries") == children.end())
+    if(frrdb_protected_interface_table_summaries != nullptr)
     {
-        if(frrdb_protected_interface_table_summaries != nullptr)
-        {
-            children["frrdb-protected-interface-table-summaries"] = frrdb_protected_interface_table_summaries;
-        }
+        children["frrdb-protected-interface-table-summaries"] = frrdb_protected_interface_table_summaries;
     }
 
-    if(children.find("frrdb-summary") == children.end())
+    if(frrdb_summary != nullptr)
     {
-        if(frrdb_summary != nullptr)
-        {
-            children["frrdb-summary"] = frrdb_summary;
-        }
+        children["frrdb-summary"] = frrdb_summary;
     }
 
-    if(children.find("frrdb-tunnel-head-summary") == children.end())
+    if(frrdb_tunnel_head_summary != nullptr)
     {
-        if(frrdb_tunnel_head_summary != nullptr)
-        {
-            children["frrdb-tunnel-head-summary"] = frrdb_tunnel_head_summary;
-        }
+        children["frrdb-tunnel-head-summary"] = frrdb_tunnel_head_summary;
     }
 
-    if(children.find("frrdb-tunnel-heads") == children.end())
+    if(frrdb_tunnel_heads != nullptr)
     {
-        if(frrdb_tunnel_heads != nullptr)
-        {
-            children["frrdb-tunnel-heads"] = frrdb_tunnel_heads;
-        }
+        children["frrdb-tunnel-heads"] = frrdb_tunnel_heads;
     }
 
-    if(children.find("frrdb-tunnel-midpoint-summary") == children.end())
+    if(frrdb_tunnel_midpoint_summary != nullptr)
     {
-        if(frrdb_tunnel_midpoint_summary != nullptr)
-        {
-            children["frrdb-tunnel-midpoint-summary"] = frrdb_tunnel_midpoint_summary;
-        }
+        children["frrdb-tunnel-midpoint-summary"] = frrdb_tunnel_midpoint_summary;
     }
 
-    if(children.find("frrdb-tunnel-midpoints") == children.end())
+    if(frrdb_tunnel_midpoints != nullptr)
     {
-        if(frrdb_tunnel_midpoints != nullptr)
-        {
-            children["frrdb-tunnel-midpoints"] = frrdb_tunnel_midpoints;
-        }
+        children["frrdb-tunnel-midpoints"] = frrdb_tunnel_midpoints;
     }
 
     return children;
@@ -4112,7 +3705,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary::get_segment_
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4139,20 +3732,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary::get_entity_pa
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4214,7 +3799,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTab
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4237,15 +3822,6 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTabl
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frrdb-protected-interface-table-summary")
     {
         for(auto const & c : frrdb_protected_interface_table_summary)
@@ -4253,28 +3829,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtected
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary>();
         c->parent = this;
-        frrdb_protected_interface_table_summary.push_back(std::move(c));
-        children[segment_path] = frrdb_protected_interface_table_summary.back();
-        return children.at(segment_path);
+        frrdb_protected_interface_table_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frrdb_protected_interface_table_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4327,7 +3899,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTab
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4355,20 +3927,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTabl
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4436,7 +4000,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4463,20 +4027,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary:
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4538,7 +4094,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4561,15 +4117,6 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_e
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frrdb-tunnel-midpoint")
     {
         for(auto const & c : frrdb_tunnel_midpoint)
@@ -4577,28 +4124,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMid
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint>();
         c->parent = this;
-        frrdb_tunnel_midpoint.push_back(std::move(c));
-        children[segment_path] = frrdb_tunnel_midpoint.back();
-        return children.at(segment_path);
+        frrdb_tunnel_midpoint.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frrdb_tunnel_midpoint)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4617,7 +4160,6 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpo
     frr_db(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb>())
 {
     frr_db->parent = this;
-    children["frr-db"] = frr_db;
 
     yang_name = "frrdb-tunnel-midpoint"; yang_parent_name = "frrdb-tunnel-midpoints";
 }
@@ -4652,7 +4194,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4678,41 +4220,24 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-db")
     {
-        if(frr_db != nullptr)
-        {
-            children["frr-db"] = frr_db;
-        }
-        else
+        if(frr_db == nullptr)
         {
             frr_db = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb>();
-            frr_db->parent = this;
-            children["frr-db"] = frr_db;
         }
-        return children.at("frr-db");
+        return frr_db;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::get_children() const
 {
-    if(children.find("frr-db") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_db != nullptr)
     {
-        if(frr_db != nullptr)
-        {
-            children["frr-db"] = frr_db;
-        }
+        children["frr-db"] = frr_db;
     }
 
     return children;
@@ -4751,7 +4276,6 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpo
     frr_entry_id(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId>())
 {
     frr_entry_id->parent = this;
-    children["frr-entry-id"] = frr_entry_id;
 
     yang_name = "frr-db"; yang_parent_name = "frrdb-tunnel-midpoint";
 }
@@ -4812,7 +4336,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4846,28 +4370,13 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-entry-id")
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
-        else
+        if(frr_entry_id == nullptr)
         {
             frr_entry_id = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId>();
-            frr_entry_id->parent = this;
-            children["frr-entry-id"] = frr_entry_id;
         }
-        return children.at("frr-entry-id");
+        return frr_entry_id;
     }
 
     if(child_yang_name == "multicast-leg")
@@ -4877,36 +4386,29 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMid
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg>();
         c->parent = this;
-        multicast_leg.push_back(std::move(c));
-        children[segment_path] = multicast_leg.back();
-        return children.at(segment_path);
+        multicast_leg.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::get_children() const
 {
-    if(children.find("frr-entry-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_entry_id != nullptr)
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
+        children["frr-entry-id"] = frr_entry_id;
     }
 
     for (auto const & c : multicast_leg)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4968,10 +4470,8 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpo
 	,midpoint(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint>())
 {
     head->parent = this;
-    children["head"] = head;
 
     midpoint->parent = this;
-    children["midpoint"] = midpoint;
 
     yang_name = "frr-entry-id"; yang_parent_name = "frr-db";
 }
@@ -5004,7 +4504,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5028,64 +4528,38 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "head")
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
-        else
+        if(head == nullptr)
         {
             head = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head>();
-            head->parent = this;
-            children["head"] = head;
         }
-        return children.at("head");
+        return head;
     }
 
     if(child_yang_name == "midpoint")
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
-        else
+        if(midpoint == nullptr)
         {
             midpoint = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint>();
-            midpoint->parent = this;
-            children["midpoint"] = midpoint;
         }
-        return children.at("midpoint");
+        return midpoint;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::get_children() const
 {
-    if(children.find("head") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(head != nullptr)
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
+        children["head"] = head;
     }
 
-    if(children.find("midpoint") == children.end())
+    if(midpoint != nullptr)
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
+        children["midpoint"] = midpoint;
     }
 
     return children;
@@ -5133,7 +4607,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5158,20 +4632,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5224,7 +4690,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5250,20 +4716,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5298,7 +4756,6 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpo
     frr_entry_id(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId>())
 {
     frr_entry_id->parent = this;
-    children["frr-entry-id"] = frr_entry_id;
 
     yang_name = "multicast-leg"; yang_parent_name = "frr-db";
 }
@@ -5345,7 +4802,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5377,41 +4834,24 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-entry-id")
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
-        else
+        if(frr_entry_id == nullptr)
         {
             frr_entry_id = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId>();
-            frr_entry_id->parent = this;
-            children["frr-entry-id"] = frr_entry_id;
         }
-        return children.at("frr-entry-id");
+        return frr_entry_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::get_children() const
 {
-    if(children.find("frr-entry-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_entry_id != nullptr)
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
+        children["frr-entry-id"] = frr_entry_id;
     }
 
     return children;
@@ -5465,10 +4905,8 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpo
 	,midpoint(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint>())
 {
     head->parent = this;
-    children["head"] = head;
 
     midpoint->parent = this;
-    children["midpoint"] = midpoint;
 
     yang_name = "frr-entry-id"; yang_parent_name = "multicast-leg";
 }
@@ -5501,7 +4939,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5525,64 +4963,38 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "head")
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
-        else
+        if(head == nullptr)
         {
             head = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head>();
-            head->parent = this;
-            children["head"] = head;
         }
-        return children.at("head");
+        return head;
     }
 
     if(child_yang_name == "midpoint")
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
-        else
+        if(midpoint == nullptr)
         {
             midpoint = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint>();
-            midpoint->parent = this;
-            children["midpoint"] = midpoint;
         }
-        return children.at("midpoint");
+        return midpoint;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::get_children() const
 {
-    if(children.find("head") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(head != nullptr)
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
+        children["head"] = head;
     }
 
-    if(children.find("midpoint") == children.end())
+    if(midpoint != nullptr)
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
+        children["midpoint"] = midpoint;
     }
 
     return children;
@@ -5630,7 +5042,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5655,20 +5067,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5721,7 +5125,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5747,20 +5151,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrdb
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5818,7 +5214,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_segm
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5841,15 +5237,6 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_entit
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frrdb-tunnel-head")
     {
         for(auto const & c : frrdb_tunnel_head)
@@ -5857,28 +5244,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHea
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead>();
         c->parent = this;
-        frrdb_tunnel_head.push_back(std::move(c));
-        children[segment_path] = frrdb_tunnel_head.back();
-        return children.at(segment_path);
+        frrdb_tunnel_head.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frrdb_tunnel_head)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5897,7 +5280,6 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::Frr
     frr_db(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb>())
 {
     frr_db->parent = this;
-    children["frr-db"] = frr_db;
 
     yang_name = "frrdb-tunnel-head"; yang_parent_name = "frrdb-tunnel-heads";
 }
@@ -5932,7 +5314,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5958,41 +5340,24 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-db")
     {
-        if(frr_db != nullptr)
-        {
-            children["frr-db"] = frr_db;
-        }
-        else
+        if(frr_db == nullptr)
         {
             frr_db = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb>();
-            frr_db->parent = this;
-            children["frr-db"] = frr_db;
         }
-        return children.at("frr-db");
+        return frr_db;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::get_children() const
 {
-    if(children.find("frr-db") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_db != nullptr)
     {
-        if(frr_db != nullptr)
-        {
-            children["frr-db"] = frr_db;
-        }
+        children["frr-db"] = frr_db;
     }
 
     return children;
@@ -6031,7 +5396,6 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::Frr
     frr_entry_id(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId>())
 {
     frr_entry_id->parent = this;
-    children["frr-entry-id"] = frr_entry_id;
 
     yang_name = "frr-db"; yang_parent_name = "frrdb-tunnel-head";
 }
@@ -6092,7 +5456,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6126,28 +5490,13 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-entry-id")
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
-        else
+        if(frr_entry_id == nullptr)
         {
             frr_entry_id = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId>();
-            frr_entry_id->parent = this;
-            children["frr-entry-id"] = frr_entry_id;
         }
-        return children.at("frr-entry-id");
+        return frr_entry_id;
     }
 
     if(child_yang_name == "multicast-leg")
@@ -6157,36 +5506,29 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHea
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg>();
         c->parent = this;
-        multicast_leg.push_back(std::move(c));
-        children[segment_path] = multicast_leg.back();
-        return children.at(segment_path);
+        multicast_leg.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::get_children() const
 {
-    if(children.find("frr-entry-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_entry_id != nullptr)
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
+        children["frr-entry-id"] = frr_entry_id;
     }
 
     for (auto const & c : multicast_leg)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6248,10 +5590,8 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::Frr
 	,midpoint(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint>())
 {
     head->parent = this;
-    children["head"] = head;
 
     midpoint->parent = this;
-    children["midpoint"] = midpoint;
 
     yang_name = "frr-entry-id"; yang_parent_name = "frr-db";
 }
@@ -6284,7 +5624,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6308,64 +5648,38 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "head")
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
-        else
+        if(head == nullptr)
         {
             head = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head>();
-            head->parent = this;
-            children["head"] = head;
         }
-        return children.at("head");
+        return head;
     }
 
     if(child_yang_name == "midpoint")
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
-        else
+        if(midpoint == nullptr)
         {
             midpoint = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint>();
-            midpoint->parent = this;
-            children["midpoint"] = midpoint;
         }
-        return children.at("midpoint");
+        return midpoint;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::get_children() const
 {
-    if(children.find("head") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(head != nullptr)
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
+        children["head"] = head;
     }
 
-    if(children.find("midpoint") == children.end())
+    if(midpoint != nullptr)
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
+        children["midpoint"] = midpoint;
     }
 
     return children;
@@ -6413,7 +5727,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6438,20 +5752,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6504,7 +5810,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6530,20 +5836,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6578,7 +5876,6 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::Frr
     frr_entry_id(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId>())
 {
     frr_entry_id->parent = this;
-    children["frr-entry-id"] = frr_entry_id;
 
     yang_name = "multicast-leg"; yang_parent_name = "frr-db";
 }
@@ -6625,7 +5922,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6657,41 +5954,24 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-entry-id")
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
-        else
+        if(frr_entry_id == nullptr)
         {
             frr_entry_id = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId>();
-            frr_entry_id->parent = this;
-            children["frr-entry-id"] = frr_entry_id;
         }
-        return children.at("frr-entry-id");
+        return frr_entry_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::get_children() const
 {
-    if(children.find("frr-entry-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_entry_id != nullptr)
     {
-        if(frr_entry_id != nullptr)
-        {
-            children["frr-entry-id"] = frr_entry_id;
-        }
+        children["frr-entry-id"] = frr_entry_id;
     }
 
     return children;
@@ -6745,10 +6025,8 @@ MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::Frr
 	,midpoint(std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint>())
 {
     head->parent = this;
-    children["head"] = head;
 
     midpoint->parent = this;
-    children["midpoint"] = midpoint;
 
     yang_name = "frr-entry-id"; yang_parent_name = "multicast-leg";
 }
@@ -6781,7 +6059,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6805,64 +6083,38 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "head")
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
-        else
+        if(head == nullptr)
         {
             head = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head>();
-            head->parent = this;
-            children["head"] = head;
         }
-        return children.at("head");
+        return head;
     }
 
     if(child_yang_name == "midpoint")
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
-        else
+        if(midpoint == nullptr)
         {
             midpoint = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint>();
-            midpoint->parent = this;
-            children["midpoint"] = midpoint;
         }
-        return children.at("midpoint");
+        return midpoint;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::get_children() const
 {
-    if(children.find("head") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(head != nullptr)
     {
-        if(head != nullptr)
-        {
-            children["head"] = head;
-        }
+        children["head"] = head;
     }
 
-    if(children.find("midpoint") == children.end())
+    if(midpoint != nullptr)
     {
-        if(midpoint != nullptr)
-        {
-            children["midpoint"] = midpoint;
-        }
+        children["midpoint"] = midpoint;
     }
 
     return children;
@@ -6910,7 +6162,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6935,20 +6187,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7001,7 +6245,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7027,20 +6271,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunn
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7100,7 +6336,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::ge
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7127,20 +6363,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::get
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7202,7 +6430,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummar
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7225,15 +6453,6 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummari
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frrdb-backup-interface-summary")
     {
         for(auto const & c : frrdb_backup_interface_summary)
@@ -7241,28 +6460,24 @@ std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInt
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary>();
         c->parent = this;
-        frrdb_backup_interface_summary.push_back(std::move(c));
-        children[segment_path] = frrdb_backup_interface_summary.back();
-        return children.at(segment_path);
+        frrdb_backup_interface_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frrdb_backup_interface_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7315,7 +6530,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummar
 
 }
 
-EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7343,20 +6558,12 @@ EntityPath MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummari
 
 std::shared_ptr<Entity> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

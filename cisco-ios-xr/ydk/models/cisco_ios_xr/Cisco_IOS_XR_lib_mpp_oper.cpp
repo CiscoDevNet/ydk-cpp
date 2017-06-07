@@ -24,10 +24,8 @@ ManagementPlaneProtection::ManagementPlaneProtection()
 	,outband(std::make_shared<ManagementPlaneProtection::Outband>())
 {
     inband->parent = this;
-    children["inband"] = inband;
 
     outband->parent = this;
-    children["outband"] = outband;
 
     yang_name = "management-plane-protection"; yang_parent_name = "Cisco-IOS-XR-lib-mpp-oper";
 }
@@ -58,12 +56,12 @@ std::string ManagementPlaneProtection::get_segment_path() const
 
 }
 
-EntityPath ManagementPlaneProtection::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -78,64 +76,38 @@ EntityPath ManagementPlaneProtection::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ManagementPlaneProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inband")
     {
-        if(inband != nullptr)
-        {
-            children["inband"] = inband;
-        }
-        else
+        if(inband == nullptr)
         {
             inband = std::make_shared<ManagementPlaneProtection::Inband>();
-            inband->parent = this;
-            children["inband"] = inband;
         }
-        return children.at("inband");
+        return inband;
     }
 
     if(child_yang_name == "outband")
     {
-        if(outband != nullptr)
-        {
-            children["outband"] = outband;
-        }
-        else
+        if(outband == nullptr)
         {
             outband = std::make_shared<ManagementPlaneProtection::Outband>();
-            outband->parent = this;
-            children["outband"] = outband;
         }
-        return children.at("outband");
+        return outband;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::get_children() const
 {
-    if(children.find("inband") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(inband != nullptr)
     {
-        if(inband != nullptr)
-        {
-            children["inband"] = inband;
-        }
+        children["inband"] = inband;
     }
 
-    if(children.find("outband") == children.end())
+    if(outband != nullptr)
     {
-        if(outband != nullptr)
-        {
-            children["outband"] = outband;
-        }
+        children["outband"] = outband;
     }
 
     return children;
@@ -171,10 +143,8 @@ ManagementPlaneProtection::Outband::Outband()
 	,vrf(std::make_shared<ManagementPlaneProtection::Outband::Vrf>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     vrf->parent = this;
-    children["vrf"] = vrf;
 
     yang_name = "outband"; yang_parent_name = "management-plane-protection";
 }
@@ -205,7 +175,7 @@ std::string ManagementPlaneProtection::Outband::get_segment_path() const
 
 }
 
-EntityPath ManagementPlaneProtection::Outband::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Outband::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -228,64 +198,38 @@ EntityPath ManagementPlaneProtection::Outband::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Outband::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<ManagementPlaneProtection::Outband::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "vrf")
     {
-        if(vrf != nullptr)
-        {
-            children["vrf"] = vrf;
-        }
-        else
+        if(vrf == nullptr)
         {
             vrf = std::make_shared<ManagementPlaneProtection::Outband::Vrf>();
-            vrf->parent = this;
-            children["vrf"] = vrf;
         }
-        return children.at("vrf");
+        return vrf;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Outband::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("vrf") == children.end())
+    if(vrf != nullptr)
     {
-        if(vrf != nullptr)
-        {
-            children["vrf"] = vrf;
-        }
+        children["vrf"] = vrf;
     }
 
     return children;
@@ -326,7 +270,7 @@ std::string ManagementPlaneProtection::Outband::Vrf::get_segment_path() const
 
 }
 
-EntityPath ManagementPlaneProtection::Outband::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Outband::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -350,20 +294,12 @@ EntityPath ManagementPlaneProtection::Outband::Vrf::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Outband::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Vrf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -413,7 +349,7 @@ std::string ManagementPlaneProtection::Outband::Interfaces::get_segment_path() c
 
 }
 
-EntityPath ManagementPlaneProtection::Outband::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Outband::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -436,15 +372,6 @@ EntityPath ManagementPlaneProtection::Outband::Interfaces::get_entity_path(Entit
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -452,28 +379,24 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ManagementPlaneProtection::Outband::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Outband::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -524,7 +447,7 @@ std::string ManagementPlaneProtection::Outband::Interfaces::Interface::get_segme
 
 }
 
-EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -548,15 +471,6 @@ EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::get_entity
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol")
     {
         for(auto const & c : protocol)
@@ -564,28 +478,24 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interfac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol>();
         c->parent = this;
-        protocol.push_back(std::move(c));
-        children[segment_path] = protocol.back();
-        return children.at(segment_path);
+        protocol.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Outband::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -643,7 +553,7 @@ std::string ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol:
 
 }
 
-EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -668,15 +578,6 @@ EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-address")
     {
         for(auto const & c : peer_address)
@@ -684,28 +585,24 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interfac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress>();
         c->parent = this;
-        peer_address.push_back(std::move(c));
-        children[segment_path] = peer_address.back();
-        return children.at(segment_path);
+        peer_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -760,7 +657,7 @@ std::string ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol:
 
 }
 
-EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -786,20 +683,12 @@ EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -824,7 +713,6 @@ ManagementPlaneProtection::Inband::Inband()
     interfaces(std::make_shared<ManagementPlaneProtection::Inband::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "inband"; yang_parent_name = "management-plane-protection";
 }
@@ -853,7 +741,7 @@ std::string ManagementPlaneProtection::Inband::get_segment_path() const
 
 }
 
-EntityPath ManagementPlaneProtection::Inband::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Inband::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -876,41 +764,24 @@ EntityPath ManagementPlaneProtection::Inband::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Inband::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<ManagementPlaneProtection::Inband::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Inband::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -958,7 +829,7 @@ std::string ManagementPlaneProtection::Inband::Interfaces::get_segment_path() co
 
 }
 
-EntityPath ManagementPlaneProtection::Inband::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Inband::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -981,15 +852,6 @@ EntityPath ManagementPlaneProtection::Inband::Interfaces::get_entity_path(Entity
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -997,28 +859,24 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ManagementPlaneProtection::Inband::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Inband::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1069,7 +927,7 @@ std::string ManagementPlaneProtection::Inband::Interfaces::Interface::get_segmen
 
 }
 
-EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1093,15 +951,6 @@ EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::get_entity_
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol")
     {
         for(auto const & c : protocol)
@@ -1109,28 +958,24 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol>();
         c->parent = this;
-        protocol.push_back(std::move(c));
-        children[segment_path] = protocol.back();
-        return children.at(segment_path);
+        protocol.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Inband::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1188,7 +1033,7 @@ std::string ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::
 
 }
 
-EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1213,15 +1058,6 @@ EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::g
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-address")
     {
         for(auto const & c : peer_address)
@@ -1229,28 +1065,24 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress>();
         c->parent = this;
-        peer_address.push_back(std::move(c));
-        children[segment_path] = peer_address.back();
-        return children.at(segment_path);
+        peer_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1305,7 +1137,7 @@ std::string ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::
 
 }
 
-EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress::get_entity_path(Entity* ancestor) const
+const EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1331,20 +1163,12 @@ EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::P
 
 std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

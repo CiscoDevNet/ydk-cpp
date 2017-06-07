@@ -19,23 +19,20 @@ class SpanMonitorSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Sessions; //type: SpanMonitorSession::Sessions
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions> sessions;
-
-
+        
 }; // SpanMonitorSession
 
 
@@ -47,19 +44,16 @@ class SpanMonitorSession::Sessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Session; //type: SpanMonitorSession::Sessions::Session
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session> > session;
-
-
+        
 }; // SpanMonitorSession::Sessions
 
 
@@ -71,21 +65,18 @@ class SpanMonitorSession::Sessions::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session; //type: string
         YLeaf class_; //type: SpanSessionClassEnum
-
         class Destination; //type: SpanMonitorSession::Sessions::Session::Destination
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session::Destination> destination;
-
-
+        
 }; // SpanMonitorSession::Sessions::Session
 
 
@@ -97,19 +88,16 @@ class SpanMonitorSession::Sessions::Session::Destination : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_type; //type: SpanDestinationEnum
         YLeaf destination_interface_name; //type: string
         YLeaf destination_ipv4_address; //type: string
         YLeaf destination_ipv6_address; //type: string
-
-
 
 }; // SpanMonitorSession::Sessions::Session::Destination
 

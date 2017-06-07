@@ -21,12 +21,11 @@ class Evpn::Standby::EviDetail::EviChildren::Macs::Mac : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf evi; //type: int32
         YLeaf ethernet_tag; //type: int32
@@ -53,12 +52,10 @@ class Evpn::Standby::EviDetail::EviChildren::Macs::Mac : public Entity
         YLeaf is_static; //type: boolean
         YLeafList local_ethernet_segment_identifier; //type: list of  uint8
         YLeafList remote_ethernet_segment_identifier; //type: list of  uint8
-
         class PathBuffer; //type: Evpn::Standby::EviDetail::EviChildren::Macs::Mac::PathBuffer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::EviChildren::Macs::Mac::PathBuffer> > path_buffer;
-
-
+        
 }; // Evpn::Standby::EviDetail::EviChildren::Macs::Mac
 
 
@@ -70,17 +67,14 @@ class Evpn::Standby::EviDetail::EviChildren::Macs::Mac::PathBuffer : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop; //type: string
         YLeaf output_label; //type: uint32
-
-
 
 }; // Evpn::Standby::EviDetail::EviChildren::Macs::Mac::PathBuffer
 
@@ -93,19 +87,16 @@ class Evpn::Standby::EthernetSegments : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EthernetSegment; //type: Evpn::Standby::EthernetSegments::EthernetSegment
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Standby::EthernetSegments::EthernetSegment> > ethernet_segment;
-
-
+        
 }; // Evpn::Standby::EthernetSegments
 
 
@@ -117,12 +108,11 @@ class Evpn::Standby::EthernetSegments::EthernetSegment : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf esi1; //type: string
@@ -166,14 +156,12 @@ class Evpn::Standby::EthernetSegments::EthernetSegment : public Entity
         YLeafList primary_service; //type: list of  uint32
         YLeafList secondary_service; //type: list of  uint32
         YLeafList service_carving_result; //type: list of  uint32
-
         class NextHop; //type: Evpn::Standby::EthernetSegments::EthernetSegment::NextHop
         class RemoteSplitHorizonGroupLabel; //type: Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Standby::EthernetSegments::EthernetSegment::NextHop> > next_hop;
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel> > remote_split_horizon_group_label;
-
-
+        
 }; // Evpn::Standby::EthernetSegments::EthernetSegment
 
 
@@ -185,16 +173,13 @@ class Evpn::Standby::EthernetSegments::EthernetSegment::NextHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop; //type: string
-
-
 
 }; // Evpn::Standby::EthernetSegments::EthernetSegment::NextHop
 
@@ -207,17 +192,14 @@ class Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupL
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf next_hop; //type: string
         YLeaf label; //type: uint32
-
-
 
 }; // Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel
 
@@ -230,19 +212,16 @@ class Evpn::Standby::AcIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AcId; //type: Evpn::Standby::AcIds::AcId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Standby::AcIds::AcId> > ac_id;
-
-
+        
 }; // Evpn::Standby::AcIds
 
 
@@ -254,19 +233,16 @@ class Evpn::Standby::AcIds::AcId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf evi; //type: int32
         YLeaf ac_id; //type: int32
         YLeaf evi_xr; //type: uint32
         YLeaf neighbor; //type: string
-
-
 
 }; // Evpn::Standby::AcIds::AcId
 

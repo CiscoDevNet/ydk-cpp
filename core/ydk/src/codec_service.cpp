@@ -33,7 +33,7 @@
 namespace ydk
 {
 
-const char * REPO_ERROR_MSG ="Failed to initialize provider.";
+const char * REPO_ERROR_MSG ="Failed to initialize codec provider.";
 
 const char * PAYLOAD_ERROR_MSG ="Codec service only supports one entity per payload, please split payload";
 
@@ -57,9 +57,12 @@ CodecService::encode(CodecServiceProvider & provider, Entity & entity, bool pret
     path::RootSchemaNode& root_schema = get_root_schema(provider, entity);
     try
     {
-        path::DataNode& data_node = get_data_node_from_entity(entity, root_schema);
+        path::DataNode& datanode = get_data_node_from_entity(entity, root_schema);
+        const path::DataNode* dn = &datanode;
+        while(dn!= nullptr && dn->parent()!=nullptr)
+            dn = dn->parent();
         path::CodecService core_codec_service{};
-        std::string result = core_codec_service.encode(data_node, provider.m_encoding, pretty);
+        std::string result = core_codec_service.encode(*dn, provider.m_encoding, pretty);
         YLOG_INFO("Performing encode operation, resulting in {}", result);
         return result;
     }
@@ -103,6 +106,8 @@ CodecService::decode(CodecServiceProvider & provider, const std::string & payloa
         for (auto data_node: root_data_node->children())
         {
             get_entity_from_data_node(data_node.get(), entity);
+            // Required for validation of decoded entity
+            get_data_node_from_entity(*entity, root_schema);
         }
     }
     return entity;

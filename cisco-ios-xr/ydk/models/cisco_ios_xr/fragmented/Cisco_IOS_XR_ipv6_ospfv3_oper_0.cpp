@@ -16,7 +16,6 @@ Ospfv3::Ospfv3()
     processes(std::make_shared<Ospfv3::Processes>())
 {
     processes->parent = this;
-    children["processes"] = processes;
 
     yang_name = "ospfv3"; yang_parent_name = "Cisco-IOS-XR-ipv6-ospfv3-oper";
 }
@@ -45,12 +44,12 @@ std::string Ospfv3::get_segment_path() const
 
 }
 
-EntityPath Ospfv3::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -65,41 +64,24 @@ EntityPath Ospfv3::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "processes")
     {
-        if(processes != nullptr)
-        {
-            children["processes"] = processes;
-        }
-        else
+        if(processes == nullptr)
         {
             processes = std::make_shared<Ospfv3::Processes>();
-            processes->parent = this;
-            children["processes"] = processes;
         }
-        return children.at("processes");
+        return processes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::get_children() const
 {
-    if(children.find("processes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(processes != nullptr)
     {
-        if(processes != nullptr)
-        {
-            children["processes"] = processes;
-        }
+        children["processes"] = processes;
     }
 
     return children;
@@ -167,7 +149,7 @@ std::string Ospfv3::Processes::get_segment_path() const
 
 }
 
-EntityPath Ospfv3::Processes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -190,15 +172,6 @@ EntityPath Ospfv3::Processes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ospfv3::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process")
     {
         for(auto const & c : process)
@@ -206,28 +179,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process>();
         c->parent = this;
-        process.push_back(std::move(c));
-        children[segment_path] = process.back();
-        return children.at(segment_path);
+        process.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : process)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -246,13 +215,10 @@ Ospfv3::Processes::Process::Process()
 	,vrfs(std::make_shared<Ospfv3::Processes::Process::Vrfs>())
 {
     default_vrf->parent = this;
-    children["default-vrf"] = default_vrf;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "process"; yang_parent_name = "processes";
 }
@@ -287,7 +253,7 @@ std::string Ospfv3::Processes::Process::get_segment_path() const
 
 }
 
-EntityPath Ospfv3::Processes::Process::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -311,87 +277,52 @@ EntityPath Ospfv3::Processes::Process::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-vrf")
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
-        else
+        if(default_vrf == nullptr)
         {
             default_vrf = std::make_shared<Ospfv3::Processes::Process::DefaultVrf>();
-            default_vrf->parent = this;
-            children["default-vrf"] = default_vrf;
         }
-        return children.at("default-vrf");
+        return default_vrf;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ospfv3::Processes::Process::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ospfv3::Processes::Process::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::get_children() const
 {
-    if(children.find("default-vrf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_vrf != nullptr)
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
+        children["default-vrf"] = default_vrf;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -443,7 +374,7 @@ std::string Ospfv3::Processes::Process::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -466,15 +397,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -482,28 +404,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -544,79 +462,54 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Vrf()
 	,vrf_statistics(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics>())
 {
     area_informations->parent = this;
-    children["area-informations"] = area_informations;
 
     areas->parent = this;
-    children["areas"] = areas;
 
     bad_checksums->parent = this;
-    children["bad-checksums"] = bad_checksums;
 
     border_routers->parent = this;
-    children["border-routers"] = border_routers;
 
     connected_routes->parent = this;
-    children["connected-routes"] = connected_routes;
 
     database_summary_table->parent = this;
-    children["database-summary-table"] = database_summary_table;
 
     database_table->parent = this;
-    children["database-table"] = database_table;
 
     external_routes->parent = this;
-    children["external-routes"] = external_routes;
 
     fast_reroutes->parent = this;
-    children["fast-reroutes"] = fast_reroutes;
 
     flood_list_process_table->parent = this;
-    children["flood-list-process-table"] = flood_list_process_table;
 
     interface_brief_process_table->parent = this;
-    children["interface-brief-process-table"] = interface_brief_process_table;
 
     interface_process_table->parent = this;
-    children["interface-process-table"] = interface_process_table;
 
     internal_routes->parent = this;
-    children["internal-routes"] = internal_routes;
 
     neighbor_detail_process_table->parent = this;
-    children["neighbor-detail-process-table"] = neighbor_detail_process_table;
 
     neighbor_process_table->parent = this;
-    children["neighbor-process-table"] = neighbor_process_table;
 
     protocol_areas->parent = this;
-    children["protocol-areas"] = protocol_areas;
 
     redistributions->parent = this;
-    children["redistributions"] = redistributions;
 
     request_list_process_table->parent = this;
-    children["request-list-process-table"] = request_list_process_table;
 
     retransmission_list_process_table->parent = this;
-    children["retransmission-list-process-table"] = retransmission_list_process_table;
 
     route_summary->parent = this;
-    children["route-summary"] = route_summary;
 
     sham_link_table->parent = this;
-    children["sham-link-table"] = sham_link_table;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     summary_prefixes->parent = this;
-    children["summary-prefixes"] = summary_prefixes;
 
     virtual_link->parent = this;
-    children["virtual-link"] = virtual_link;
 
     vrf_statistics->parent = this;
-    children["vrf-statistics"] = vrf_statistics;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -695,7 +588,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -719,593 +612,360 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-informations")
     {
-        if(area_informations != nullptr)
-        {
-            children["area-informations"] = area_informations;
-        }
-        else
+        if(area_informations == nullptr)
         {
             area_informations = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations>();
-            area_informations->parent = this;
-            children["area-informations"] = area_informations;
         }
-        return children.at("area-informations");
+        return area_informations;
     }
 
     if(child_yang_name == "areas")
     {
-        if(areas != nullptr)
-        {
-            children["areas"] = areas;
-        }
-        else
+        if(areas == nullptr)
         {
             areas = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas>();
-            areas->parent = this;
-            children["areas"] = areas;
         }
-        return children.at("areas");
+        return areas;
     }
 
     if(child_yang_name == "bad-checksums")
     {
-        if(bad_checksums != nullptr)
-        {
-            children["bad-checksums"] = bad_checksums;
-        }
-        else
+        if(bad_checksums == nullptr)
         {
             bad_checksums = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums>();
-            bad_checksums->parent = this;
-            children["bad-checksums"] = bad_checksums;
         }
-        return children.at("bad-checksums");
+        return bad_checksums;
     }
 
     if(child_yang_name == "border-routers")
     {
-        if(border_routers != nullptr)
-        {
-            children["border-routers"] = border_routers;
-        }
-        else
+        if(border_routers == nullptr)
         {
             border_routers = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters>();
-            border_routers->parent = this;
-            children["border-routers"] = border_routers;
         }
-        return children.at("border-routers");
+        return border_routers;
     }
 
     if(child_yang_name == "connected-routes")
     {
-        if(connected_routes != nullptr)
-        {
-            children["connected-routes"] = connected_routes;
-        }
-        else
+        if(connected_routes == nullptr)
         {
             connected_routes = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes>();
-            connected_routes->parent = this;
-            children["connected-routes"] = connected_routes;
         }
-        return children.at("connected-routes");
+        return connected_routes;
     }
 
     if(child_yang_name == "database-summary-table")
     {
-        if(database_summary_table != nullptr)
-        {
-            children["database-summary-table"] = database_summary_table;
-        }
-        else
+        if(database_summary_table == nullptr)
         {
             database_summary_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable>();
-            database_summary_table->parent = this;
-            children["database-summary-table"] = database_summary_table;
         }
-        return children.at("database-summary-table");
+        return database_summary_table;
     }
 
     if(child_yang_name == "database-table")
     {
-        if(database_table != nullptr)
-        {
-            children["database-table"] = database_table;
-        }
-        else
+        if(database_table == nullptr)
         {
             database_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable>();
-            database_table->parent = this;
-            children["database-table"] = database_table;
         }
-        return children.at("database-table");
+        return database_table;
     }
 
     if(child_yang_name == "external-routes")
     {
-        if(external_routes != nullptr)
-        {
-            children["external-routes"] = external_routes;
-        }
-        else
+        if(external_routes == nullptr)
         {
             external_routes = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes>();
-            external_routes->parent = this;
-            children["external-routes"] = external_routes;
         }
-        return children.at("external-routes");
+        return external_routes;
     }
 
     if(child_yang_name == "fast-reroutes")
     {
-        if(fast_reroutes != nullptr)
-        {
-            children["fast-reroutes"] = fast_reroutes;
-        }
-        else
+        if(fast_reroutes == nullptr)
         {
             fast_reroutes = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes>();
-            fast_reroutes->parent = this;
-            children["fast-reroutes"] = fast_reroutes;
         }
-        return children.at("fast-reroutes");
+        return fast_reroutes;
     }
 
     if(child_yang_name == "flood-list-process-table")
     {
-        if(flood_list_process_table != nullptr)
-        {
-            children["flood-list-process-table"] = flood_list_process_table;
-        }
-        else
+        if(flood_list_process_table == nullptr)
         {
             flood_list_process_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable>();
-            flood_list_process_table->parent = this;
-            children["flood-list-process-table"] = flood_list_process_table;
         }
-        return children.at("flood-list-process-table");
+        return flood_list_process_table;
     }
 
     if(child_yang_name == "interface-brief-process-table")
     {
-        if(interface_brief_process_table != nullptr)
-        {
-            children["interface-brief-process-table"] = interface_brief_process_table;
-        }
-        else
+        if(interface_brief_process_table == nullptr)
         {
             interface_brief_process_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable>();
-            interface_brief_process_table->parent = this;
-            children["interface-brief-process-table"] = interface_brief_process_table;
         }
-        return children.at("interface-brief-process-table");
+        return interface_brief_process_table;
     }
 
     if(child_yang_name == "interface-process-table")
     {
-        if(interface_process_table != nullptr)
-        {
-            children["interface-process-table"] = interface_process_table;
-        }
-        else
+        if(interface_process_table == nullptr)
         {
             interface_process_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable>();
-            interface_process_table->parent = this;
-            children["interface-process-table"] = interface_process_table;
         }
-        return children.at("interface-process-table");
+        return interface_process_table;
     }
 
     if(child_yang_name == "internal-routes")
     {
-        if(internal_routes != nullptr)
-        {
-            children["internal-routes"] = internal_routes;
-        }
-        else
+        if(internal_routes == nullptr)
         {
             internal_routes = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes>();
-            internal_routes->parent = this;
-            children["internal-routes"] = internal_routes;
         }
-        return children.at("internal-routes");
+        return internal_routes;
     }
 
     if(child_yang_name == "neighbor-detail-process-table")
     {
-        if(neighbor_detail_process_table != nullptr)
-        {
-            children["neighbor-detail-process-table"] = neighbor_detail_process_table;
-        }
-        else
+        if(neighbor_detail_process_table == nullptr)
         {
             neighbor_detail_process_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable>();
-            neighbor_detail_process_table->parent = this;
-            children["neighbor-detail-process-table"] = neighbor_detail_process_table;
         }
-        return children.at("neighbor-detail-process-table");
+        return neighbor_detail_process_table;
     }
 
     if(child_yang_name == "neighbor-process-table")
     {
-        if(neighbor_process_table != nullptr)
-        {
-            children["neighbor-process-table"] = neighbor_process_table;
-        }
-        else
+        if(neighbor_process_table == nullptr)
         {
             neighbor_process_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable>();
-            neighbor_process_table->parent = this;
-            children["neighbor-process-table"] = neighbor_process_table;
         }
-        return children.at("neighbor-process-table");
+        return neighbor_process_table;
     }
 
     if(child_yang_name == "protocol-areas")
     {
-        if(protocol_areas != nullptr)
-        {
-            children["protocol-areas"] = protocol_areas;
-        }
-        else
+        if(protocol_areas == nullptr)
         {
             protocol_areas = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas>();
-            protocol_areas->parent = this;
-            children["protocol-areas"] = protocol_areas;
         }
-        return children.at("protocol-areas");
+        return protocol_areas;
     }
 
     if(child_yang_name == "redistributions")
     {
-        if(redistributions != nullptr)
-        {
-            children["redistributions"] = redistributions;
-        }
-        else
+        if(redistributions == nullptr)
         {
             redistributions = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions>();
-            redistributions->parent = this;
-            children["redistributions"] = redistributions;
         }
-        return children.at("redistributions");
+        return redistributions;
     }
 
     if(child_yang_name == "request-list-process-table")
     {
-        if(request_list_process_table != nullptr)
-        {
-            children["request-list-process-table"] = request_list_process_table;
-        }
-        else
+        if(request_list_process_table == nullptr)
         {
             request_list_process_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable>();
-            request_list_process_table->parent = this;
-            children["request-list-process-table"] = request_list_process_table;
         }
-        return children.at("request-list-process-table");
+        return request_list_process_table;
     }
 
     if(child_yang_name == "retransmission-list-process-table")
     {
-        if(retransmission_list_process_table != nullptr)
-        {
-            children["retransmission-list-process-table"] = retransmission_list_process_table;
-        }
-        else
+        if(retransmission_list_process_table == nullptr)
         {
             retransmission_list_process_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable>();
-            retransmission_list_process_table->parent = this;
-            children["retransmission-list-process-table"] = retransmission_list_process_table;
         }
-        return children.at("retransmission-list-process-table");
+        return retransmission_list_process_table;
     }
 
     if(child_yang_name == "route-summary")
     {
-        if(route_summary != nullptr)
-        {
-            children["route-summary"] = route_summary;
-        }
-        else
+        if(route_summary == nullptr)
         {
             route_summary = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary>();
-            route_summary->parent = this;
-            children["route-summary"] = route_summary;
         }
-        return children.at("route-summary");
+        return route_summary;
     }
 
     if(child_yang_name == "sham-link-table")
     {
-        if(sham_link_table != nullptr)
-        {
-            children["sham-link-table"] = sham_link_table;
-        }
-        else
+        if(sham_link_table == nullptr)
         {
             sham_link_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable>();
-            sham_link_table->parent = this;
-            children["sham-link-table"] = sham_link_table;
         }
-        return children.at("sham-link-table");
+        return sham_link_table;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "summary-prefixes")
     {
-        if(summary_prefixes != nullptr)
-        {
-            children["summary-prefixes"] = summary_prefixes;
-        }
-        else
+        if(summary_prefixes == nullptr)
         {
             summary_prefixes = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes>();
-            summary_prefixes->parent = this;
-            children["summary-prefixes"] = summary_prefixes;
         }
-        return children.at("summary-prefixes");
+        return summary_prefixes;
     }
 
     if(child_yang_name == "virtual-link")
     {
-        if(virtual_link != nullptr)
-        {
-            children["virtual-link"] = virtual_link;
-        }
-        else
+        if(virtual_link == nullptr)
         {
             virtual_link = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink>();
-            virtual_link->parent = this;
-            children["virtual-link"] = virtual_link;
         }
-        return children.at("virtual-link");
+        return virtual_link;
     }
 
     if(child_yang_name == "vrf-statistics")
     {
-        if(vrf_statistics != nullptr)
-        {
-            children["vrf-statistics"] = vrf_statistics;
-        }
-        else
+        if(vrf_statistics == nullptr)
         {
             vrf_statistics = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics>();
-            vrf_statistics->parent = this;
-            children["vrf-statistics"] = vrf_statistics;
         }
-        return children.at("vrf-statistics");
+        return vrf_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::get_children() const
 {
-    if(children.find("area-informations") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(area_informations != nullptr)
     {
-        if(area_informations != nullptr)
-        {
-            children["area-informations"] = area_informations;
-        }
+        children["area-informations"] = area_informations;
     }
 
-    if(children.find("areas") == children.end())
+    if(areas != nullptr)
     {
-        if(areas != nullptr)
-        {
-            children["areas"] = areas;
-        }
+        children["areas"] = areas;
     }
 
-    if(children.find("bad-checksums") == children.end())
+    if(bad_checksums != nullptr)
     {
-        if(bad_checksums != nullptr)
-        {
-            children["bad-checksums"] = bad_checksums;
-        }
+        children["bad-checksums"] = bad_checksums;
     }
 
-    if(children.find("border-routers") == children.end())
+    if(border_routers != nullptr)
     {
-        if(border_routers != nullptr)
-        {
-            children["border-routers"] = border_routers;
-        }
+        children["border-routers"] = border_routers;
     }
 
-    if(children.find("connected-routes") == children.end())
+    if(connected_routes != nullptr)
     {
-        if(connected_routes != nullptr)
-        {
-            children["connected-routes"] = connected_routes;
-        }
+        children["connected-routes"] = connected_routes;
     }
 
-    if(children.find("database-summary-table") == children.end())
+    if(database_summary_table != nullptr)
     {
-        if(database_summary_table != nullptr)
-        {
-            children["database-summary-table"] = database_summary_table;
-        }
+        children["database-summary-table"] = database_summary_table;
     }
 
-    if(children.find("database-table") == children.end())
+    if(database_table != nullptr)
     {
-        if(database_table != nullptr)
-        {
-            children["database-table"] = database_table;
-        }
+        children["database-table"] = database_table;
     }
 
-    if(children.find("external-routes") == children.end())
+    if(external_routes != nullptr)
     {
-        if(external_routes != nullptr)
-        {
-            children["external-routes"] = external_routes;
-        }
+        children["external-routes"] = external_routes;
     }
 
-    if(children.find("fast-reroutes") == children.end())
+    if(fast_reroutes != nullptr)
     {
-        if(fast_reroutes != nullptr)
-        {
-            children["fast-reroutes"] = fast_reroutes;
-        }
+        children["fast-reroutes"] = fast_reroutes;
     }
 
-    if(children.find("flood-list-process-table") == children.end())
+    if(flood_list_process_table != nullptr)
     {
-        if(flood_list_process_table != nullptr)
-        {
-            children["flood-list-process-table"] = flood_list_process_table;
-        }
+        children["flood-list-process-table"] = flood_list_process_table;
     }
 
-    if(children.find("interface-brief-process-table") == children.end())
+    if(interface_brief_process_table != nullptr)
     {
-        if(interface_brief_process_table != nullptr)
-        {
-            children["interface-brief-process-table"] = interface_brief_process_table;
-        }
+        children["interface-brief-process-table"] = interface_brief_process_table;
     }
 
-    if(children.find("interface-process-table") == children.end())
+    if(interface_process_table != nullptr)
     {
-        if(interface_process_table != nullptr)
-        {
-            children["interface-process-table"] = interface_process_table;
-        }
+        children["interface-process-table"] = interface_process_table;
     }
 
-    if(children.find("internal-routes") == children.end())
+    if(internal_routes != nullptr)
     {
-        if(internal_routes != nullptr)
-        {
-            children["internal-routes"] = internal_routes;
-        }
+        children["internal-routes"] = internal_routes;
     }
 
-    if(children.find("neighbor-detail-process-table") == children.end())
+    if(neighbor_detail_process_table != nullptr)
     {
-        if(neighbor_detail_process_table != nullptr)
-        {
-            children["neighbor-detail-process-table"] = neighbor_detail_process_table;
-        }
+        children["neighbor-detail-process-table"] = neighbor_detail_process_table;
     }
 
-    if(children.find("neighbor-process-table") == children.end())
+    if(neighbor_process_table != nullptr)
     {
-        if(neighbor_process_table != nullptr)
-        {
-            children["neighbor-process-table"] = neighbor_process_table;
-        }
+        children["neighbor-process-table"] = neighbor_process_table;
     }
 
-    if(children.find("protocol-areas") == children.end())
+    if(protocol_areas != nullptr)
     {
-        if(protocol_areas != nullptr)
-        {
-            children["protocol-areas"] = protocol_areas;
-        }
+        children["protocol-areas"] = protocol_areas;
     }
 
-    if(children.find("redistributions") == children.end())
+    if(redistributions != nullptr)
     {
-        if(redistributions != nullptr)
-        {
-            children["redistributions"] = redistributions;
-        }
+        children["redistributions"] = redistributions;
     }
 
-    if(children.find("request-list-process-table") == children.end())
+    if(request_list_process_table != nullptr)
     {
-        if(request_list_process_table != nullptr)
-        {
-            children["request-list-process-table"] = request_list_process_table;
-        }
+        children["request-list-process-table"] = request_list_process_table;
     }
 
-    if(children.find("retransmission-list-process-table") == children.end())
+    if(retransmission_list_process_table != nullptr)
     {
-        if(retransmission_list_process_table != nullptr)
-        {
-            children["retransmission-list-process-table"] = retransmission_list_process_table;
-        }
+        children["retransmission-list-process-table"] = retransmission_list_process_table;
     }
 
-    if(children.find("route-summary") == children.end())
+    if(route_summary != nullptr)
     {
-        if(route_summary != nullptr)
-        {
-            children["route-summary"] = route_summary;
-        }
+        children["route-summary"] = route_summary;
     }
 
-    if(children.find("sham-link-table") == children.end())
+    if(sham_link_table != nullptr)
     {
-        if(sham_link_table != nullptr)
-        {
-            children["sham-link-table"] = sham_link_table;
-        }
+        children["sham-link-table"] = sham_link_table;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("summary-prefixes") == children.end())
+    if(summary_prefixes != nullptr)
     {
-        if(summary_prefixes != nullptr)
-        {
-            children["summary-prefixes"] = summary_prefixes;
-        }
+        children["summary-prefixes"] = summary_prefixes;
     }
 
-    if(children.find("virtual-link") == children.end())
+    if(virtual_link != nullptr)
     {
-        if(virtual_link != nullptr)
-        {
-            children["virtual-link"] = virtual_link;
-        }
+        children["virtual-link"] = virtual_link;
     }
 
-    if(children.find("vrf-statistics") == children.end())
+    if(vrf_statistics != nullptr)
     {
-        if(vrf_statistics != nullptr)
-        {
-            children["vrf-statistics"] = vrf_statistics;
-        }
+        children["vrf-statistics"] = vrf_statistics;
     }
 
     return children;
@@ -1357,7 +1017,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_segment_
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1380,15 +1040,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_entity_pa
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary-prefix")
     {
         for(auto const & c : summary_prefix)
@@ -1396,28 +1047,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix>();
         c->parent = this;
-        summary_prefix.push_back(std::move(c));
-        children[segment_path] = summary_prefix.back();
-        return children.at(segment_path);
+        summary_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : summary_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1470,7 +1117,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefi
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1498,20 +1145,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1577,7 +1216,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_segment_pa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1600,15 +1239,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_entity_path
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "border-router")
     {
         for(auto const & c : border_router)
@@ -1616,28 +1246,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter>();
         c->parent = this;
-        border_router.push_back(std::move(c));
-        children[segment_path] = border_router.back();
-        return children.at(segment_path);
+        border_router.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : border_router)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1688,7 +1314,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1712,15 +1338,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::g
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "border-router-path")
     {
         for(auto const & c : border_router_path)
@@ -1728,28 +1345,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::Bo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath>();
         c->parent = this;
-        border_router_path.push_back(std::move(c));
-        children[segment_path] = border_router_path.back();
-        return children.at(segment_path);
+        border_router_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : border_router_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1812,7 +1425,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1842,20 +1455,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::B
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1925,7 +1530,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkTable()
     sham_link_neighbor(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor>())
 {
     sham_link_neighbor->parent = this;
-    children["sham-link-neighbor"] = sham_link_neighbor;
 
     yang_name = "sham-link-table"; yang_parent_name = "vrf";
 }
@@ -2010,7 +1614,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_segment_pa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2061,41 +1665,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_entity_path
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sham-link-neighbor")
     {
-        if(sham_link_neighbor != nullptr)
-        {
-            children["sham-link-neighbor"] = sham_link_neighbor;
-        }
-        else
+        if(sham_link_neighbor == nullptr)
         {
             sham_link_neighbor = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor>();
-            sham_link_neighbor->parent = this;
-            children["sham-link-neighbor"] = sham_link_neighbor;
         }
-        return children.at("sham-link-neighbor");
+        return sham_link_neighbor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_children() const
 {
-    if(children.find("sham-link-neighbor") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sham_link_neighbor != nullptr)
     {
-        if(sham_link_neighbor != nullptr)
-        {
-            children["sham-link-neighbor"] = sham_link_neighbor;
-        }
+        children["sham-link-neighbor"] = sham_link_neighbor;
     }
 
     return children;
@@ -2225,7 +1812,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLink
     sham_link_retransmission(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission>())
 {
     sham_link_retransmission->parent = this;
-    children["sham-link-retransmission"] = sham_link_retransmission;
 
     yang_name = "sham-link-neighbor"; yang_parent_name = "sham-link-table";
 }
@@ -2258,7 +1844,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighb
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2283,41 +1869,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbo
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sham-link-retransmission")
     {
-        if(sham_link_retransmission != nullptr)
-        {
-            children["sham-link-retransmission"] = sham_link_retransmission;
-        }
-        else
+        if(sham_link_retransmission == nullptr)
         {
             sham_link_retransmission = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission>();
-            sham_link_retransmission->parent = this;
-            children["sham-link-retransmission"] = sham_link_retransmission;
         }
-        return children.at("sham-link-retransmission");
+        return sham_link_retransmission;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::get_children() const
 {
-    if(children.find("sham-link-retransmission") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sham_link_retransmission != nullptr)
     {
-        if(sham_link_retransmission != nullptr)
-        {
-            children["sham-link-retransmission"] = sham_link_retransmission;
-        }
+        children["sham-link-retransmission"] = sham_link_retransmission;
     }
 
     return children;
@@ -2432,7 +2001,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighb
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2478,20 +2047,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbo
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2629,7 +2190,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_segment
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2652,15 +2213,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_entity_p
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-information")
     {
         for(auto const & c : area_information)
@@ -2668,28 +2220,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation>();
         c->parent = this;
-        area_information.push_back(std::move(c));
-        children[segment_path] = area_information.back();
-        return children.at(segment_path);
+        area_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2800,7 +2348,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInforma
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2844,15 +2392,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformat
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-range")
     {
         for(auto const & c : area_range)
@@ -2860,28 +2399,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange>();
         c->parent = this;
-        area_range.push_back(std::move(c));
-        children[segment_path] = area_range.back();
-        return children.at(segment_path);
+        area_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3018,7 +2553,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInforma
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3046,20 +2581,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformat
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3093,10 +2620,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::DatabaseTable()
 	,lsa_table(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable>())
 {
     lsa_internal_table->parent = this;
-    children["lsa-internal-table"] = lsa_internal_table;
 
     lsa_table->parent = this;
-    children["lsa-table"] = lsa_table;
 
     yang_name = "database-table"; yang_parent_name = "vrf";
 }
@@ -3127,7 +2652,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_segment_pa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3150,64 +2675,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_entity_path
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-internal-table")
     {
-        if(lsa_internal_table != nullptr)
-        {
-            children["lsa-internal-table"] = lsa_internal_table;
-        }
-        else
+        if(lsa_internal_table == nullptr)
         {
             lsa_internal_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable>();
-            lsa_internal_table->parent = this;
-            children["lsa-internal-table"] = lsa_internal_table;
         }
-        return children.at("lsa-internal-table");
+        return lsa_internal_table;
     }
 
     if(child_yang_name == "lsa-table")
     {
-        if(lsa_table != nullptr)
-        {
-            children["lsa-table"] = lsa_table;
-        }
-        else
+        if(lsa_table == nullptr)
         {
             lsa_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable>();
-            lsa_table->parent = this;
-            children["lsa-table"] = lsa_table;
         }
-        return children.at("lsa-table");
+        return lsa_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_children() const
 {
-    if(children.find("lsa-internal-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_internal_table != nullptr)
     {
-        if(lsa_internal_table != nullptr)
-        {
-            children["lsa-internal-table"] = lsa_internal_table;
-        }
+        children["lsa-internal-table"] = lsa_internal_table;
     }
 
-    if(children.find("lsa-table") == children.end())
+    if(lsa_table != nullptr)
     {
-        if(lsa_table != nullptr)
-        {
-            children["lsa-table"] = lsa_table;
-        }
+        children["lsa-table"] = lsa_table;
     }
 
     return children;
@@ -3255,7 +2754,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3278,15 +2777,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_e
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa")
     {
         for(auto const & c : lsa)
@@ -3294,28 +2784,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa>();
         c->parent = this;
-        lsa.push_back(std::move(c));
-        children[segment_path] = lsa.back();
-        return children.at(segment_path);
+        lsa.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsa)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3336,7 +2822,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::Lsa()
     lsa_info(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo>())
 {
     lsa_info->parent = this;
-    children["lsa-info"] = lsa_info;
 
     yang_name = "lsa"; yang_parent_name = "lsa-table";
 }
@@ -3375,7 +2860,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3403,41 +2888,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-info")
     {
-        if(lsa_info != nullptr)
-        {
-            children["lsa-info"] = lsa_info;
-        }
-        else
+        if(lsa_info == nullptr)
         {
             lsa_info = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo>();
-            lsa_info->parent = this;
-            children["lsa-info"] = lsa_info;
         }
-        return children.at("lsa-info");
+        return lsa_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::get_children() const
 {
-    if(children.find("lsa-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_info != nullptr)
     {
-        if(lsa_info != nullptr)
-        {
-            children["lsa-info"] = lsa_info;
-        }
+        children["lsa-info"] = lsa_info;
     }
 
     return children;
@@ -3487,46 +2955,32 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Ls
 	,unknown_lsa_type(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType>())
 {
     external_lsa_type->parent = this;
-    children["external-lsa-type"] = external_lsa_type;
 
     grace_lsa->parent = this;
-    children["grace-lsa"] = grace_lsa;
 
     inter_area_prefix_lsa_type->parent = this;
-    children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
 
     inter_area_router_lsa_type->parent = this;
-    children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
 
     intra_area_prefix_lsa_type->parent = this;
-    children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
 
     link_lsa_type->parent = this;
-    children["link-lsa-type"] = link_lsa_type;
 
     lsa_summary_info->parent = this;
-    children["lsa-summary-info"] = lsa_summary_info;
 
     network_lsa_type->parent = this;
-    children["network-lsa-type"] = network_lsa_type;
 
     nssalsa_type->parent = this;
-    children["nssalsa-type"] = nssalsa_type;
 
     router_lsa_type->parent = this;
-    children["router-lsa-type"] = router_lsa_type;
 
     unknown_area_lsa_type->parent = this;
-    children["unknown-area-lsa-type"] = unknown_area_lsa_type;
 
     unknown_aslsa_type->parent = this;
-    children["unknown-aslsa-type"] = unknown_aslsa_type;
 
     unknown_link_lsa_type->parent = this;
-    children["unknown-link-lsa-type"] = unknown_link_lsa_type;
 
     unknown_lsa_type->parent = this;
-    children["unknown-lsa-type"] = unknown_lsa_type;
 
     yang_name = "lsa-info"; yang_parent_name = "lsa";
 }
@@ -3583,7 +3037,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3607,340 +3061,206 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-lsa-type")
     {
-        if(external_lsa_type != nullptr)
-        {
-            children["external-lsa-type"] = external_lsa_type;
-        }
-        else
+        if(external_lsa_type == nullptr)
         {
             external_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType>();
-            external_lsa_type->parent = this;
-            children["external-lsa-type"] = external_lsa_type;
         }
-        return children.at("external-lsa-type");
+        return external_lsa_type;
     }
 
     if(child_yang_name == "grace-lsa")
     {
-        if(grace_lsa != nullptr)
-        {
-            children["grace-lsa"] = grace_lsa;
-        }
-        else
+        if(grace_lsa == nullptr)
         {
             grace_lsa = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa>();
-            grace_lsa->parent = this;
-            children["grace-lsa"] = grace_lsa;
         }
-        return children.at("grace-lsa");
+        return grace_lsa;
     }
 
     if(child_yang_name == "inter-area-prefix-lsa-type")
     {
-        if(inter_area_prefix_lsa_type != nullptr)
-        {
-            children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
-        }
-        else
+        if(inter_area_prefix_lsa_type == nullptr)
         {
             inter_area_prefix_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType>();
-            inter_area_prefix_lsa_type->parent = this;
-            children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
         }
-        return children.at("inter-area-prefix-lsa-type");
+        return inter_area_prefix_lsa_type;
     }
 
     if(child_yang_name == "inter-area-router-lsa-type")
     {
-        if(inter_area_router_lsa_type != nullptr)
-        {
-            children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
-        }
-        else
+        if(inter_area_router_lsa_type == nullptr)
         {
             inter_area_router_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType>();
-            inter_area_router_lsa_type->parent = this;
-            children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
         }
-        return children.at("inter-area-router-lsa-type");
+        return inter_area_router_lsa_type;
     }
 
     if(child_yang_name == "intra-area-prefix-lsa-type")
     {
-        if(intra_area_prefix_lsa_type != nullptr)
-        {
-            children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
-        }
-        else
+        if(intra_area_prefix_lsa_type == nullptr)
         {
             intra_area_prefix_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType>();
-            intra_area_prefix_lsa_type->parent = this;
-            children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
         }
-        return children.at("intra-area-prefix-lsa-type");
+        return intra_area_prefix_lsa_type;
     }
 
     if(child_yang_name == "link-lsa-type")
     {
-        if(link_lsa_type != nullptr)
-        {
-            children["link-lsa-type"] = link_lsa_type;
-        }
-        else
+        if(link_lsa_type == nullptr)
         {
             link_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType>();
-            link_lsa_type->parent = this;
-            children["link-lsa-type"] = link_lsa_type;
         }
-        return children.at("link-lsa-type");
+        return link_lsa_type;
     }
 
     if(child_yang_name == "lsa-summary-info")
     {
-        if(lsa_summary_info != nullptr)
-        {
-            children["lsa-summary-info"] = lsa_summary_info;
-        }
-        else
+        if(lsa_summary_info == nullptr)
         {
             lsa_summary_info = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo>();
-            lsa_summary_info->parent = this;
-            children["lsa-summary-info"] = lsa_summary_info;
         }
-        return children.at("lsa-summary-info");
+        return lsa_summary_info;
     }
 
     if(child_yang_name == "network-lsa-type")
     {
-        if(network_lsa_type != nullptr)
-        {
-            children["network-lsa-type"] = network_lsa_type;
-        }
-        else
+        if(network_lsa_type == nullptr)
         {
             network_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType>();
-            network_lsa_type->parent = this;
-            children["network-lsa-type"] = network_lsa_type;
         }
-        return children.at("network-lsa-type");
+        return network_lsa_type;
     }
 
     if(child_yang_name == "nssalsa-type")
     {
-        if(nssalsa_type != nullptr)
-        {
-            children["nssalsa-type"] = nssalsa_type;
-        }
-        else
+        if(nssalsa_type == nullptr)
         {
             nssalsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType>();
-            nssalsa_type->parent = this;
-            children["nssalsa-type"] = nssalsa_type;
         }
-        return children.at("nssalsa-type");
+        return nssalsa_type;
     }
 
     if(child_yang_name == "router-lsa-type")
     {
-        if(router_lsa_type != nullptr)
-        {
-            children["router-lsa-type"] = router_lsa_type;
-        }
-        else
+        if(router_lsa_type == nullptr)
         {
             router_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType>();
-            router_lsa_type->parent = this;
-            children["router-lsa-type"] = router_lsa_type;
         }
-        return children.at("router-lsa-type");
+        return router_lsa_type;
     }
 
     if(child_yang_name == "unknown-area-lsa-type")
     {
-        if(unknown_area_lsa_type != nullptr)
-        {
-            children["unknown-area-lsa-type"] = unknown_area_lsa_type;
-        }
-        else
+        if(unknown_area_lsa_type == nullptr)
         {
             unknown_area_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType>();
-            unknown_area_lsa_type->parent = this;
-            children["unknown-area-lsa-type"] = unknown_area_lsa_type;
         }
-        return children.at("unknown-area-lsa-type");
+        return unknown_area_lsa_type;
     }
 
     if(child_yang_name == "unknown-aslsa-type")
     {
-        if(unknown_aslsa_type != nullptr)
-        {
-            children["unknown-aslsa-type"] = unknown_aslsa_type;
-        }
-        else
+        if(unknown_aslsa_type == nullptr)
         {
             unknown_aslsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType>();
-            unknown_aslsa_type->parent = this;
-            children["unknown-aslsa-type"] = unknown_aslsa_type;
         }
-        return children.at("unknown-aslsa-type");
+        return unknown_aslsa_type;
     }
 
     if(child_yang_name == "unknown-link-lsa-type")
     {
-        if(unknown_link_lsa_type != nullptr)
-        {
-            children["unknown-link-lsa-type"] = unknown_link_lsa_type;
-        }
-        else
+        if(unknown_link_lsa_type == nullptr)
         {
             unknown_link_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType>();
-            unknown_link_lsa_type->parent = this;
-            children["unknown-link-lsa-type"] = unknown_link_lsa_type;
         }
-        return children.at("unknown-link-lsa-type");
+        return unknown_link_lsa_type;
     }
 
     if(child_yang_name == "unknown-lsa-type")
     {
-        if(unknown_lsa_type != nullptr)
-        {
-            children["unknown-lsa-type"] = unknown_lsa_type;
-        }
-        else
+        if(unknown_lsa_type == nullptr)
         {
             unknown_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType>();
-            unknown_lsa_type->parent = this;
-            children["unknown-lsa-type"] = unknown_lsa_type;
         }
-        return children.at("unknown-lsa-type");
+        return unknown_lsa_type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_children() const
 {
-    if(children.find("external-lsa-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(external_lsa_type != nullptr)
     {
-        if(external_lsa_type != nullptr)
-        {
-            children["external-lsa-type"] = external_lsa_type;
-        }
+        children["external-lsa-type"] = external_lsa_type;
     }
 
-    if(children.find("grace-lsa") == children.end())
+    if(grace_lsa != nullptr)
     {
-        if(grace_lsa != nullptr)
-        {
-            children["grace-lsa"] = grace_lsa;
-        }
+        children["grace-lsa"] = grace_lsa;
     }
 
-    if(children.find("inter-area-prefix-lsa-type") == children.end())
+    if(inter_area_prefix_lsa_type != nullptr)
     {
-        if(inter_area_prefix_lsa_type != nullptr)
-        {
-            children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
-        }
+        children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
     }
 
-    if(children.find("inter-area-router-lsa-type") == children.end())
+    if(inter_area_router_lsa_type != nullptr)
     {
-        if(inter_area_router_lsa_type != nullptr)
-        {
-            children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
-        }
+        children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
     }
 
-    if(children.find("intra-area-prefix-lsa-type") == children.end())
+    if(intra_area_prefix_lsa_type != nullptr)
     {
-        if(intra_area_prefix_lsa_type != nullptr)
-        {
-            children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
-        }
+        children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
     }
 
-    if(children.find("link-lsa-type") == children.end())
+    if(link_lsa_type != nullptr)
     {
-        if(link_lsa_type != nullptr)
-        {
-            children["link-lsa-type"] = link_lsa_type;
-        }
+        children["link-lsa-type"] = link_lsa_type;
     }
 
-    if(children.find("lsa-summary-info") == children.end())
+    if(lsa_summary_info != nullptr)
     {
-        if(lsa_summary_info != nullptr)
-        {
-            children["lsa-summary-info"] = lsa_summary_info;
-        }
+        children["lsa-summary-info"] = lsa_summary_info;
     }
 
-    if(children.find("network-lsa-type") == children.end())
+    if(network_lsa_type != nullptr)
     {
-        if(network_lsa_type != nullptr)
-        {
-            children["network-lsa-type"] = network_lsa_type;
-        }
+        children["network-lsa-type"] = network_lsa_type;
     }
 
-    if(children.find("nssalsa-type") == children.end())
+    if(nssalsa_type != nullptr)
     {
-        if(nssalsa_type != nullptr)
-        {
-            children["nssalsa-type"] = nssalsa_type;
-        }
+        children["nssalsa-type"] = nssalsa_type;
     }
 
-    if(children.find("router-lsa-type") == children.end())
+    if(router_lsa_type != nullptr)
     {
-        if(router_lsa_type != nullptr)
-        {
-            children["router-lsa-type"] = router_lsa_type;
-        }
+        children["router-lsa-type"] = router_lsa_type;
     }
 
-    if(children.find("unknown-area-lsa-type") == children.end())
+    if(unknown_area_lsa_type != nullptr)
     {
-        if(unknown_area_lsa_type != nullptr)
-        {
-            children["unknown-area-lsa-type"] = unknown_area_lsa_type;
-        }
+        children["unknown-area-lsa-type"] = unknown_area_lsa_type;
     }
 
-    if(children.find("unknown-aslsa-type") == children.end())
+    if(unknown_aslsa_type != nullptr)
     {
-        if(unknown_aslsa_type != nullptr)
-        {
-            children["unknown-aslsa-type"] = unknown_aslsa_type;
-        }
+        children["unknown-aslsa-type"] = unknown_aslsa_type;
     }
 
-    if(children.find("unknown-link-lsa-type") == children.end())
+    if(unknown_link_lsa_type != nullptr)
     {
-        if(unknown_link_lsa_type != nullptr)
-        {
-            children["unknown-link-lsa-type"] = unknown_link_lsa_type;
-        }
+        children["unknown-link-lsa-type"] = unknown_link_lsa_type;
     }
 
-    if(children.find("unknown-lsa-type") == children.end())
+    if(unknown_lsa_type != nullptr)
     {
-        if(unknown_lsa_type != nullptr)
-        {
-            children["unknown-lsa-type"] = unknown_lsa_type;
-        }
+        children["unknown-lsa-type"] = unknown_lsa_type;
     }
 
     return children;
@@ -3973,10 +3293,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Ls
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "lsa-summary-info"; yang_parent_name = "lsa-info";
 }
@@ -4031,7 +3349,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4066,64 +3384,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -4236,7 +3528,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4268,20 +3560,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4410,7 +3694,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4452,20 +3736,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4558,13 +3834,10 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Ro
 	,rpf_path(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     rpf_path->parent = this;
-    children["rpf-path"] = rpf_path;
 
     yang_name = "router-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -4609,7 +3882,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4633,15 +3906,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "link")
     {
         for(auto const & c : link)
@@ -4649,97 +3913,66 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link>();
         c->parent = this;
-        link.push_back(std::move(c));
-        children[segment_path] = link.back();
-        return children.at(segment_path);
+        link.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     if(child_yang_name == "rpf-path")
     {
-        if(rpf_path != nullptr)
-        {
-            children["rpf-path"] = rpf_path;
-        }
-        else
+        if(rpf_path == nullptr)
         {
             rpf_path = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath>();
-            rpf_path->parent = this;
-            children["rpf-path"] = rpf_path;
         }
-        return children.at("rpf-path");
+        return rpf_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("lsa-detail") == children.end())
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
-    if(children.find("rpf-path") == children.end())
+    if(rpf_path != nullptr)
     {
-        if(rpf_path != nullptr)
-        {
-            children["rpf-path"] = rpf_path;
-        }
+        children["rpf-path"] = rpf_path;
     }
 
     return children;
@@ -4808,7 +4041,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4840,20 +4073,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4982,7 +4207,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5024,20 +4249,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5155,7 +4372,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5180,20 +4397,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5252,7 +4461,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5280,20 +4489,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5329,10 +4530,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Ne
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "network-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -5374,7 +4573,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5399,64 +4598,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -5525,7 +4698,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5557,20 +4730,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5699,7 +4864,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5741,20 +4906,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5848,10 +5005,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::In
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "inter-area-prefix-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -5888,7 +5043,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5914,64 +5069,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -6048,7 +5177,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6080,20 +5209,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6222,7 +5343,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6264,20 +5385,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6369,10 +5482,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::In
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "inter-area-router-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -6405,7 +5516,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6429,64 +5540,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -6555,7 +5640,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6587,20 +5672,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6729,7 +5806,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6771,20 +5848,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6883,10 +5952,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Ex
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "external-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -6933,7 +6000,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6964,64 +6031,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -7118,7 +6159,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7150,20 +6191,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7292,7 +6325,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7334,20 +6367,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7446,10 +6471,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Ns
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "nssalsa-type"; yang_parent_name = "lsa-info";
 }
@@ -7496,7 +6519,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7527,64 +6550,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -7681,7 +6678,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7713,20 +6710,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7855,7 +6844,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7897,20 +6886,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8008,10 +6989,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Li
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "link-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -8066,7 +7045,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8096,43 +7075,22 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     if(child_yang_name == "prefix")
@@ -8142,44 +7100,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix>();
         c->parent = this;
-        prefix.push_back(std::move(c));
-        children[segment_path] = prefix.back();
-        return children.at(segment_path);
+        prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     for (auto const & c : prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8272,7 +7220,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8304,20 +7252,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8446,7 +7386,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8488,20 +7428,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8628,7 +7560,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8656,20 +7588,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8707,10 +7631,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::In
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "intra-area-prefix-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -8757,7 +7679,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8783,43 +7705,22 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     if(child_yang_name == "prefix")
@@ -8829,44 +7730,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix>();
         c->parent = this;
-        prefix.push_back(std::move(c));
-        children[segment_path] = prefix.back();
-        return children.at(segment_path);
+        prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     for (auto const & c : prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8943,7 +7834,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8975,20 +7866,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9117,7 +8000,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9159,20 +8042,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9299,7 +8174,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9327,20 +8202,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9377,10 +8244,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Gr
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "grace-lsa"; yang_parent_name = "lsa-info";
 }
@@ -9415,7 +8280,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9440,64 +8305,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -9570,7 +8409,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9602,20 +8441,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9744,7 +8575,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9786,20 +8617,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9895,10 +8718,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Un
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-link-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -9939,7 +8760,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9967,64 +8788,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -10109,7 +8904,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10141,20 +8936,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10283,7 +9070,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10325,20 +9112,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10434,10 +9213,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Un
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-area-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -10478,7 +9255,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10506,64 +9283,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -10648,7 +9399,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10680,20 +9431,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10822,7 +9565,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10864,20 +9607,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10973,10 +9708,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Un
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-aslsa-type"; yang_parent_name = "lsa-info";
 }
@@ -11017,7 +9750,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11045,64 +9778,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -11187,7 +9894,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11219,20 +9926,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11361,7 +10060,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11403,20 +10102,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11512,10 +10203,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Un
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -11556,7 +10245,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11584,64 +10273,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -11726,7 +10389,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11758,20 +10421,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11900,7 +10555,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11942,20 +10597,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12077,7 +10724,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12100,15 +10747,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa")
     {
         for(auto const & c : lsa)
@@ -12116,28 +10754,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa>();
         c->parent = this;
-        lsa.push_back(std::move(c));
-        children[segment_path] = lsa.back();
-        return children.at(segment_path);
+        lsa.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsa)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12158,7 +10792,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
     lsa_info(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo>())
 {
     lsa_info->parent = this;
-    children["lsa-info"] = lsa_info;
 
     yang_name = "lsa"; yang_parent_name = "lsa-internal-table";
 }
@@ -12197,7 +10830,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12225,41 +10858,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-info")
     {
-        if(lsa_info != nullptr)
-        {
-            children["lsa-info"] = lsa_info;
-        }
-        else
+        if(lsa_info == nullptr)
         {
             lsa_info = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo>();
-            lsa_info->parent = this;
-            children["lsa-info"] = lsa_info;
         }
-        return children.at("lsa-info");
+        return lsa_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::get_children() const
 {
-    if(children.find("lsa-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_info != nullptr)
     {
-        if(lsa_info != nullptr)
-        {
-            children["lsa-info"] = lsa_info;
-        }
+        children["lsa-info"] = lsa_info;
     }
 
     return children;
@@ -12309,46 +10925,32 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,unknown_lsa_type(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType>())
 {
     external_lsa_type->parent = this;
-    children["external-lsa-type"] = external_lsa_type;
 
     grace_lsa->parent = this;
-    children["grace-lsa"] = grace_lsa;
 
     inter_area_prefix_lsa_type->parent = this;
-    children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
 
     inter_area_router_lsa_type->parent = this;
-    children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
 
     intra_area_prefix_lsa_type->parent = this;
-    children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
 
     link_lsa_type->parent = this;
-    children["link-lsa-type"] = link_lsa_type;
 
     lsa_summary_info->parent = this;
-    children["lsa-summary-info"] = lsa_summary_info;
 
     network_lsa_type->parent = this;
-    children["network-lsa-type"] = network_lsa_type;
 
     nssalsa_type->parent = this;
-    children["nssalsa-type"] = nssalsa_type;
 
     router_lsa_type->parent = this;
-    children["router-lsa-type"] = router_lsa_type;
 
     unknown_area_lsa_type->parent = this;
-    children["unknown-area-lsa-type"] = unknown_area_lsa_type;
 
     unknown_aslsa_type->parent = this;
-    children["unknown-aslsa-type"] = unknown_aslsa_type;
 
     unknown_link_lsa_type->parent = this;
-    children["unknown-link-lsa-type"] = unknown_link_lsa_type;
 
     unknown_lsa_type->parent = this;
-    children["unknown-lsa-type"] = unknown_lsa_type;
 
     yang_name = "lsa-info"; yang_parent_name = "lsa";
 }
@@ -12405,7 +11007,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12429,340 +11031,206 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-lsa-type")
     {
-        if(external_lsa_type != nullptr)
-        {
-            children["external-lsa-type"] = external_lsa_type;
-        }
-        else
+        if(external_lsa_type == nullptr)
         {
             external_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType>();
-            external_lsa_type->parent = this;
-            children["external-lsa-type"] = external_lsa_type;
         }
-        return children.at("external-lsa-type");
+        return external_lsa_type;
     }
 
     if(child_yang_name == "grace-lsa")
     {
-        if(grace_lsa != nullptr)
-        {
-            children["grace-lsa"] = grace_lsa;
-        }
-        else
+        if(grace_lsa == nullptr)
         {
             grace_lsa = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa>();
-            grace_lsa->parent = this;
-            children["grace-lsa"] = grace_lsa;
         }
-        return children.at("grace-lsa");
+        return grace_lsa;
     }
 
     if(child_yang_name == "inter-area-prefix-lsa-type")
     {
-        if(inter_area_prefix_lsa_type != nullptr)
-        {
-            children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
-        }
-        else
+        if(inter_area_prefix_lsa_type == nullptr)
         {
             inter_area_prefix_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType>();
-            inter_area_prefix_lsa_type->parent = this;
-            children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
         }
-        return children.at("inter-area-prefix-lsa-type");
+        return inter_area_prefix_lsa_type;
     }
 
     if(child_yang_name == "inter-area-router-lsa-type")
     {
-        if(inter_area_router_lsa_type != nullptr)
-        {
-            children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
-        }
-        else
+        if(inter_area_router_lsa_type == nullptr)
         {
             inter_area_router_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType>();
-            inter_area_router_lsa_type->parent = this;
-            children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
         }
-        return children.at("inter-area-router-lsa-type");
+        return inter_area_router_lsa_type;
     }
 
     if(child_yang_name == "intra-area-prefix-lsa-type")
     {
-        if(intra_area_prefix_lsa_type != nullptr)
-        {
-            children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
-        }
-        else
+        if(intra_area_prefix_lsa_type == nullptr)
         {
             intra_area_prefix_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType>();
-            intra_area_prefix_lsa_type->parent = this;
-            children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
         }
-        return children.at("intra-area-prefix-lsa-type");
+        return intra_area_prefix_lsa_type;
     }
 
     if(child_yang_name == "link-lsa-type")
     {
-        if(link_lsa_type != nullptr)
-        {
-            children["link-lsa-type"] = link_lsa_type;
-        }
-        else
+        if(link_lsa_type == nullptr)
         {
             link_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType>();
-            link_lsa_type->parent = this;
-            children["link-lsa-type"] = link_lsa_type;
         }
-        return children.at("link-lsa-type");
+        return link_lsa_type;
     }
 
     if(child_yang_name == "lsa-summary-info")
     {
-        if(lsa_summary_info != nullptr)
-        {
-            children["lsa-summary-info"] = lsa_summary_info;
-        }
-        else
+        if(lsa_summary_info == nullptr)
         {
             lsa_summary_info = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo>();
-            lsa_summary_info->parent = this;
-            children["lsa-summary-info"] = lsa_summary_info;
         }
-        return children.at("lsa-summary-info");
+        return lsa_summary_info;
     }
 
     if(child_yang_name == "network-lsa-type")
     {
-        if(network_lsa_type != nullptr)
-        {
-            children["network-lsa-type"] = network_lsa_type;
-        }
-        else
+        if(network_lsa_type == nullptr)
         {
             network_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType>();
-            network_lsa_type->parent = this;
-            children["network-lsa-type"] = network_lsa_type;
         }
-        return children.at("network-lsa-type");
+        return network_lsa_type;
     }
 
     if(child_yang_name == "nssalsa-type")
     {
-        if(nssalsa_type != nullptr)
-        {
-            children["nssalsa-type"] = nssalsa_type;
-        }
-        else
+        if(nssalsa_type == nullptr)
         {
             nssalsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType>();
-            nssalsa_type->parent = this;
-            children["nssalsa-type"] = nssalsa_type;
         }
-        return children.at("nssalsa-type");
+        return nssalsa_type;
     }
 
     if(child_yang_name == "router-lsa-type")
     {
-        if(router_lsa_type != nullptr)
-        {
-            children["router-lsa-type"] = router_lsa_type;
-        }
-        else
+        if(router_lsa_type == nullptr)
         {
             router_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType>();
-            router_lsa_type->parent = this;
-            children["router-lsa-type"] = router_lsa_type;
         }
-        return children.at("router-lsa-type");
+        return router_lsa_type;
     }
 
     if(child_yang_name == "unknown-area-lsa-type")
     {
-        if(unknown_area_lsa_type != nullptr)
-        {
-            children["unknown-area-lsa-type"] = unknown_area_lsa_type;
-        }
-        else
+        if(unknown_area_lsa_type == nullptr)
         {
             unknown_area_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType>();
-            unknown_area_lsa_type->parent = this;
-            children["unknown-area-lsa-type"] = unknown_area_lsa_type;
         }
-        return children.at("unknown-area-lsa-type");
+        return unknown_area_lsa_type;
     }
 
     if(child_yang_name == "unknown-aslsa-type")
     {
-        if(unknown_aslsa_type != nullptr)
-        {
-            children["unknown-aslsa-type"] = unknown_aslsa_type;
-        }
-        else
+        if(unknown_aslsa_type == nullptr)
         {
             unknown_aslsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType>();
-            unknown_aslsa_type->parent = this;
-            children["unknown-aslsa-type"] = unknown_aslsa_type;
         }
-        return children.at("unknown-aslsa-type");
+        return unknown_aslsa_type;
     }
 
     if(child_yang_name == "unknown-link-lsa-type")
     {
-        if(unknown_link_lsa_type != nullptr)
-        {
-            children["unknown-link-lsa-type"] = unknown_link_lsa_type;
-        }
-        else
+        if(unknown_link_lsa_type == nullptr)
         {
             unknown_link_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType>();
-            unknown_link_lsa_type->parent = this;
-            children["unknown-link-lsa-type"] = unknown_link_lsa_type;
         }
-        return children.at("unknown-link-lsa-type");
+        return unknown_link_lsa_type;
     }
 
     if(child_yang_name == "unknown-lsa-type")
     {
-        if(unknown_lsa_type != nullptr)
-        {
-            children["unknown-lsa-type"] = unknown_lsa_type;
-        }
-        else
+        if(unknown_lsa_type == nullptr)
         {
             unknown_lsa_type = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType>();
-            unknown_lsa_type->parent = this;
-            children["unknown-lsa-type"] = unknown_lsa_type;
         }
-        return children.at("unknown-lsa-type");
+        return unknown_lsa_type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_children() const
 {
-    if(children.find("external-lsa-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(external_lsa_type != nullptr)
     {
-        if(external_lsa_type != nullptr)
-        {
-            children["external-lsa-type"] = external_lsa_type;
-        }
+        children["external-lsa-type"] = external_lsa_type;
     }
 
-    if(children.find("grace-lsa") == children.end())
+    if(grace_lsa != nullptr)
     {
-        if(grace_lsa != nullptr)
-        {
-            children["grace-lsa"] = grace_lsa;
-        }
+        children["grace-lsa"] = grace_lsa;
     }
 
-    if(children.find("inter-area-prefix-lsa-type") == children.end())
+    if(inter_area_prefix_lsa_type != nullptr)
     {
-        if(inter_area_prefix_lsa_type != nullptr)
-        {
-            children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
-        }
+        children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
     }
 
-    if(children.find("inter-area-router-lsa-type") == children.end())
+    if(inter_area_router_lsa_type != nullptr)
     {
-        if(inter_area_router_lsa_type != nullptr)
-        {
-            children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
-        }
+        children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
     }
 
-    if(children.find("intra-area-prefix-lsa-type") == children.end())
+    if(intra_area_prefix_lsa_type != nullptr)
     {
-        if(intra_area_prefix_lsa_type != nullptr)
-        {
-            children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
-        }
+        children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
     }
 
-    if(children.find("link-lsa-type") == children.end())
+    if(link_lsa_type != nullptr)
     {
-        if(link_lsa_type != nullptr)
-        {
-            children["link-lsa-type"] = link_lsa_type;
-        }
+        children["link-lsa-type"] = link_lsa_type;
     }
 
-    if(children.find("lsa-summary-info") == children.end())
+    if(lsa_summary_info != nullptr)
     {
-        if(lsa_summary_info != nullptr)
-        {
-            children["lsa-summary-info"] = lsa_summary_info;
-        }
+        children["lsa-summary-info"] = lsa_summary_info;
     }
 
-    if(children.find("network-lsa-type") == children.end())
+    if(network_lsa_type != nullptr)
     {
-        if(network_lsa_type != nullptr)
-        {
-            children["network-lsa-type"] = network_lsa_type;
-        }
+        children["network-lsa-type"] = network_lsa_type;
     }
 
-    if(children.find("nssalsa-type") == children.end())
+    if(nssalsa_type != nullptr)
     {
-        if(nssalsa_type != nullptr)
-        {
-            children["nssalsa-type"] = nssalsa_type;
-        }
+        children["nssalsa-type"] = nssalsa_type;
     }
 
-    if(children.find("router-lsa-type") == children.end())
+    if(router_lsa_type != nullptr)
     {
-        if(router_lsa_type != nullptr)
-        {
-            children["router-lsa-type"] = router_lsa_type;
-        }
+        children["router-lsa-type"] = router_lsa_type;
     }
 
-    if(children.find("unknown-area-lsa-type") == children.end())
+    if(unknown_area_lsa_type != nullptr)
     {
-        if(unknown_area_lsa_type != nullptr)
-        {
-            children["unknown-area-lsa-type"] = unknown_area_lsa_type;
-        }
+        children["unknown-area-lsa-type"] = unknown_area_lsa_type;
     }
 
-    if(children.find("unknown-aslsa-type") == children.end())
+    if(unknown_aslsa_type != nullptr)
     {
-        if(unknown_aslsa_type != nullptr)
-        {
-            children["unknown-aslsa-type"] = unknown_aslsa_type;
-        }
+        children["unknown-aslsa-type"] = unknown_aslsa_type;
     }
 
-    if(children.find("unknown-link-lsa-type") == children.end())
+    if(unknown_link_lsa_type != nullptr)
     {
-        if(unknown_link_lsa_type != nullptr)
-        {
-            children["unknown-link-lsa-type"] = unknown_link_lsa_type;
-        }
+        children["unknown-link-lsa-type"] = unknown_link_lsa_type;
     }
 
-    if(children.find("unknown-lsa-type") == children.end())
+    if(unknown_lsa_type != nullptr)
     {
-        if(unknown_lsa_type != nullptr)
-        {
-            children["unknown-lsa-type"] = unknown_lsa_type;
-        }
+        children["unknown-lsa-type"] = unknown_lsa_type;
     }
 
     return children;
@@ -12795,10 +11263,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "lsa-summary-info"; yang_parent_name = "lsa-info";
 }
@@ -12853,7 +11319,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12888,64 +11354,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -13058,7 +11498,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13090,20 +11530,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13232,7 +11664,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13274,20 +11706,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13380,13 +11804,10 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,rpf_path(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     rpf_path->parent = this;
-    children["rpf-path"] = rpf_path;
 
     yang_name = "router-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -13431,7 +11852,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13455,15 +11876,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "link")
     {
         for(auto const & c : link)
@@ -13471,97 +11883,66 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link>();
         c->parent = this;
-        link.push_back(std::move(c));
-        children[segment_path] = link.back();
-        return children.at(segment_path);
+        link.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     if(child_yang_name == "rpf-path")
     {
-        if(rpf_path != nullptr)
-        {
-            children["rpf-path"] = rpf_path;
-        }
-        else
+        if(rpf_path == nullptr)
         {
             rpf_path = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath>();
-            rpf_path->parent = this;
-            children["rpf-path"] = rpf_path;
         }
-        return children.at("rpf-path");
+        return rpf_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("lsa-detail") == children.end())
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
-    if(children.find("rpf-path") == children.end())
+    if(rpf_path != nullptr)
     {
-        if(rpf_path != nullptr)
-        {
-            children["rpf-path"] = rpf_path;
-        }
+        children["rpf-path"] = rpf_path;
     }
 
     return children;
@@ -13630,7 +12011,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13662,20 +12043,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13804,7 +12177,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13846,20 +12219,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13977,7 +12342,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14002,20 +12367,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14074,7 +12431,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14102,20 +12459,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14151,10 +12500,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "network-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -14196,7 +12543,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14221,64 +12568,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -14347,7 +12668,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14379,20 +12700,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14521,7 +12834,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14563,20 +12876,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14670,10 +12975,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "inter-area-prefix-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -14710,7 +13013,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14736,64 +13039,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -14870,7 +13147,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14902,20 +13179,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15044,7 +13313,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15086,20 +13355,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15191,10 +13452,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "inter-area-router-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -15227,7 +13486,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15251,64 +13510,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -15377,7 +13610,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15409,20 +13642,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15551,7 +13776,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15593,20 +13818,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15705,10 +13922,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "external-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -15755,7 +13970,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15786,64 +14001,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -15940,7 +14129,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15972,20 +14161,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16114,7 +14295,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16156,20 +14337,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16268,10 +14441,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "nssalsa-type"; yang_parent_name = "lsa-info";
 }
@@ -16318,7 +14489,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16349,64 +14520,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -16503,7 +14648,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16535,20 +14680,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16677,7 +14814,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16719,20 +14856,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16830,10 +14959,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "link-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -16888,7 +15015,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16918,43 +15045,22 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     if(child_yang_name == "prefix")
@@ -16964,44 +15070,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix>();
         c->parent = this;
-        prefix.push_back(std::move(c));
-        children[segment_path] = prefix.back();
-        return children.at(segment_path);
+        prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     for (auto const & c : prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17094,7 +15190,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17126,20 +15222,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17268,7 +15356,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17310,20 +15398,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17450,7 +15530,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17478,20 +15558,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17529,10 +15601,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "intra-area-prefix-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -17579,7 +15649,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17605,43 +15675,22 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     if(child_yang_name == "prefix")
@@ -17651,44 +15700,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::Ls
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix>();
         c->parent = this;
-        prefix.push_back(std::move(c));
-        children[segment_path] = prefix.back();
-        return children.at(segment_path);
+        prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     for (auto const & c : prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17765,7 +15804,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17797,20 +15836,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17939,7 +15970,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17981,20 +16012,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18121,7 +16144,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18149,20 +16172,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18199,10 +16214,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "grace-lsa"; yang_parent_name = "lsa-info";
 }
@@ -18237,7 +16250,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18262,64 +16275,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -18392,7 +16379,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18424,20 +16411,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18566,7 +16545,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18608,20 +16587,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18717,10 +16688,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-link-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -18761,7 +16730,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18789,64 +16758,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -18931,7 +16874,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18963,20 +16906,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19105,7 +17040,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19147,20 +17082,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19256,10 +17183,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-area-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -19300,7 +17225,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19328,64 +17253,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -19470,7 +17369,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19502,20 +17401,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19644,7 +17535,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19686,20 +17577,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19795,10 +17678,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-aslsa-type"; yang_parent_name = "lsa-info";
 }
@@ -19839,7 +17720,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19867,64 +17748,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -20009,7 +17864,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20041,20 +17896,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20183,7 +18030,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20225,20 +18072,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20334,10 +18173,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 	,lsa_header(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader>())
 {
     lsa_detail->parent = this;
-    children["lsa-detail"] = lsa_detail;
 
     lsa_header->parent = this;
-    children["lsa-header"] = lsa_header;
 
     yang_name = "unknown-lsa-type"; yang_parent_name = "lsa-info";
 }
@@ -20378,7 +18215,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20406,64 +18243,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-detail")
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
-        else
+        if(lsa_detail == nullptr)
         {
             lsa_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail>();
-            lsa_detail->parent = this;
-            children["lsa-detail"] = lsa_detail;
         }
-        return children.at("lsa-detail");
+        return lsa_detail;
     }
 
     if(child_yang_name == "lsa-header")
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
-        else
+        if(lsa_header == nullptr)
         {
             lsa_header = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader>();
-            lsa_header->parent = this;
-            children["lsa-header"] = lsa_header;
         }
-        return children.at("lsa-header");
+        return lsa_header;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_children() const
 {
-    if(children.find("lsa-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsa_detail != nullptr)
     {
-        if(lsa_detail != nullptr)
-        {
-            children["lsa-detail"] = lsa_detail;
-        }
+        children["lsa-detail"] = lsa_detail;
     }
 
-    if(children.find("lsa-header") == children.end())
+    if(lsa_header != nullptr)
     {
-        if(lsa_header != nullptr)
-        {
-            children["lsa-header"] = lsa_header;
-        }
+        children["lsa-header"] = lsa_header;
     }
 
     return children;
@@ -20548,7 +18359,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20580,20 +18391,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20722,7 +18525,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20764,20 +18567,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20899,7 +18694,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_se
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20922,15 +18717,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_ent
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -20938,28 +18724,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessT
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21016,10 +18798,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::Interfa
 	,interface_bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd>())
 {
     active_interface->parent = this;
-    children["active-interface"] = active_interface;
 
     interface_bfd->parent = this;
-    children["interface-bfd"] = interface_bfd;
 
     yang_name = "interface"; yang_parent_name = "interface-process-table";
 }
@@ -21140,7 +18920,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interf
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21203,43 +18983,22 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active-interface")
     {
-        if(active_interface != nullptr)
-        {
-            children["active-interface"] = active_interface;
-        }
-        else
+        if(active_interface == nullptr)
         {
             active_interface = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface>();
-            active_interface->parent = this;
-            children["active-interface"] = active_interface;
         }
-        return children.at("active-interface");
+        return active_interface;
     }
 
     if(child_yang_name == "interface-bfd")
     {
-        if(interface_bfd != nullptr)
-        {
-            children["interface-bfd"] = interface_bfd;
-        }
-        else
+        if(interface_bfd == nullptr)
         {
             interface_bfd = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd>();
-            interface_bfd->parent = this;
-            children["interface-bfd"] = interface_bfd;
         }
-        return children.at("interface-bfd");
+        return interface_bfd;
     }
 
     if(child_yang_name == "interface-neighbor")
@@ -21249,44 +19008,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessT
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor>();
         c->parent = this;
-        interface_neighbor.push_back(std::move(c));
-        children[segment_path] = interface_neighbor.back();
-        return children.at(segment_path);
+        interface_neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::get_children() const
 {
-    if(children.find("active-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(active_interface != nullptr)
     {
-        if(active_interface != nullptr)
-        {
-            children["active-interface"] = active_interface;
-        }
+        children["active-interface"] = active_interface;
     }
 
-    if(children.find("interface-bfd") == children.end())
+    if(interface_bfd != nullptr)
     {
-        if(interface_bfd != nullptr)
-        {
-            children["interface-bfd"] = interface_bfd;
-        }
+        children["interface-bfd"] = interface_bfd;
     }
 
     for (auto const & c : interface_neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21538,7 +19287,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interf
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21579,20 +19328,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21709,7 +19450,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interf
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21735,20 +19476,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21811,7 +19544,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interf
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21839,20 +19572,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21918,7 +19643,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_segment_
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21941,15 +19666,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_entity_pa
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "redistribution")
     {
         for(auto const & c : redistribution)
@@ -21957,28 +19673,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution>();
         c->parent = this;
-        redistribution.push_back(std::move(c));
-        children[segment_path] = redistribution.back();
-        return children.at(segment_path);
+        redistribution.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : redistribution)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22046,7 +19758,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistributi
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22079,20 +19791,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistributio
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22178,7 +19882,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_segment_p
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22201,15 +19905,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_entity_pat
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "external-route")
     {
         for(auto const & c : external_route)
@@ -22217,28 +19912,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute>();
         c->parent = this;
-        external_route.push_back(std::move(c));
-        children[segment_path] = external_route.back();
-        return children.at(segment_path);
+        external_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : external_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22257,10 +19948,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::ExternalRo
 	,route_topology(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology>())
 {
     route_extended_community->parent = this;
-    children["route-extended-community"] = route_extended_community;
 
     route_topology->parent = this;
-    children["route-topology"] = route_topology;
 
     yang_name = "external-route"; yang_parent_name = "external-routes";
 }
@@ -22305,7 +19994,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22330,28 +20019,13 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-extended-community")
     {
-        if(route_extended_community != nullptr)
-        {
-            children["route-extended-community"] = route_extended_community;
-        }
-        else
+        if(route_extended_community == nullptr)
         {
             route_extended_community = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity>();
-            route_extended_community->parent = this;
-            children["route-extended-community"] = route_extended_community;
         }
-        return children.at("route-extended-community");
+        return route_extended_community;
     }
 
     if(child_yang_name == "route-path")
@@ -22361,59 +20035,43 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::E
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath>();
         c->parent = this;
-        route_path.push_back(std::move(c));
-        children[segment_path] = route_path.back();
-        return children.at(segment_path);
+        route_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "route-topology")
     {
-        if(route_topology != nullptr)
-        {
-            children["route-topology"] = route_topology;
-        }
-        else
+        if(route_topology == nullptr)
         {
             route_topology = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology>();
-            route_topology->parent = this;
-            children["route-topology"] = route_topology;
         }
-        return children.at("route-topology");
+        return route_topology;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::get_children() const
 {
-    if(children.find("route-extended-community") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_extended_community != nullptr)
     {
-        if(route_extended_community != nullptr)
-        {
-            children["route-extended-community"] = route_extended_community;
-        }
+        children["route-extended-community"] = route_extended_community;
     }
 
     for (auto const & c : route_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("route-topology") == children.end())
+    if(route_topology != nullptr)
     {
-        if(route_topology != nullptr)
-        {
-            children["route-topology"] = route_topology;
-        }
+        children["route-topology"] = route_topology;
     }
 
     return children;
@@ -22471,7 +20129,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22498,20 +20156,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22581,7 +20231,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22610,20 +20260,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22664,7 +20306,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath:
     route_backup_path(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath>())
 {
     route_backup_path->parent = this;
-    children["route-backup-path"] = route_backup_path;
 
     yang_name = "route-path"; yang_parent_name = "external-route";
 }
@@ -22699,7 +20340,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22725,41 +20366,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-backup-path")
     {
-        if(route_backup_path != nullptr)
-        {
-            children["route-backup-path"] = route_backup_path;
-        }
-        else
+        if(route_backup_path == nullptr)
         {
             route_backup_path = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath>();
-            route_backup_path->parent = this;
-            children["route-backup-path"] = route_backup_path;
         }
-        return children.at("route-backup-path");
+        return route_backup_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::get_children() const
 {
-    if(children.find("route-backup-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_backup_path != nullptr)
     {
-        if(route_backup_path != nullptr)
-        {
-            children["route-backup-path"] = route_backup_path;
-        }
+        children["route-backup-path"] = route_backup_path;
     }
 
     return children;
@@ -22836,7 +20460,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22868,20 +20492,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22963,7 +20579,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22986,15 +20602,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_e
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "request")
     {
         for(auto const & c : request)
@@ -23002,28 +20609,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProces
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request>();
         c->parent = this;
-        request.push_back(std::move(c));
-        children[segment_path] = request.back();
-        return children.at(segment_path);
+        request.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : request)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23092,7 +20695,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Requ
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23122,15 +20725,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Reque
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "request")
     {
         for(auto const & c : request)
@@ -23138,28 +20732,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProces
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_>();
         c->parent = this;
-        request.push_back(std::move(c));
-        children[segment_path] = request.back();
-        return children.at(segment_path);
+        request.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : request)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23240,7 +20830,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Requ
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23268,20 +20858,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Reque
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23340,7 +20922,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLink()
     virtual_link_neighbor(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor>())
 {
     virtual_link_neighbor->parent = this;
-    children["virtual-link-neighbor"] = virtual_link_neighbor;
 
     yang_name = "virtual-link"; yang_parent_name = "vrf";
 }
@@ -23419,7 +21000,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_segment_path
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23467,41 +21048,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_entity_path(E
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "virtual-link-neighbor")
     {
-        if(virtual_link_neighbor != nullptr)
-        {
-            children["virtual-link-neighbor"] = virtual_link_neighbor;
-        }
-        else
+        if(virtual_link_neighbor == nullptr)
         {
             virtual_link_neighbor = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor>();
-            virtual_link_neighbor->parent = this;
-            children["virtual-link-neighbor"] = virtual_link_neighbor;
         }
-        return children.at("virtual-link-neighbor");
+        return virtual_link_neighbor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_children() const
 {
-    if(children.find("virtual-link-neighbor") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(virtual_link_neighbor != nullptr)
     {
-        if(virtual_link_neighbor != nullptr)
-        {
-            children["virtual-link-neighbor"] = virtual_link_neighbor;
-        }
+        children["virtual-link-neighbor"] = virtual_link_neighbor;
     }
 
     return children;
@@ -23619,7 +21183,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::Virtual
     virtual_link_retransmission(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission>())
 {
     virtual_link_retransmission->parent = this;
-    children["virtual-link-retransmission"] = virtual_link_retransmission;
 
     yang_name = "virtual-link-neighbor"; yang_parent_name = "virtual-link";
 }
@@ -23652,7 +21215,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeigh
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23677,41 +21240,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighb
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "virtual-link-retransmission")
     {
-        if(virtual_link_retransmission != nullptr)
-        {
-            children["virtual-link-retransmission"] = virtual_link_retransmission;
-        }
-        else
+        if(virtual_link_retransmission == nullptr)
         {
             virtual_link_retransmission = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission>();
-            virtual_link_retransmission->parent = this;
-            children["virtual-link-retransmission"] = virtual_link_retransmission;
         }
-        return children.at("virtual-link-retransmission");
+        return virtual_link_retransmission;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::get_children() const
 {
-    if(children.find("virtual-link-retransmission") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(virtual_link_retransmission != nullptr)
     {
-        if(virtual_link_retransmission != nullptr)
-        {
-            children["virtual-link-retransmission"] = virtual_link_retransmission;
-        }
+        children["virtual-link-retransmission"] = virtual_link_retransmission;
     }
 
     return children;
@@ -23826,7 +21372,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeigh
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23872,20 +21418,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighb
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24023,7 +21561,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_se
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24046,15 +21584,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_ent
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flood")
     {
         for(auto const & c : flood)
@@ -24062,28 +21591,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessT
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood>();
         c->parent = this;
-        flood.push_back(std::move(c));
-        children[segment_path] = flood.back();
-        return children.at(segment_path);
+        flood.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : flood)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -24160,7 +21685,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24186,15 +21711,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area-flood")
     {
         for(auto const & c : area_flood)
@@ -24202,15 +21718,13 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessT
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood>();
         c->parent = this;
-        area_flood.push_back(std::move(c));
-        children[segment_path] = area_flood.back();
-        return children.at(segment_path);
+        area_flood.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "as-flood")
@@ -24220,15 +21734,13 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessT
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood>();
         c->parent = this;
-        as_flood.push_back(std::move(c));
-        children[segment_path] = as_flood.back();
-        return children.at(segment_path);
+        as_flood.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "link-flood")
@@ -24238,44 +21750,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessT
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood>();
         c->parent = this;
-        link_flood.push_back(std::move(c));
-        children[segment_path] = link_flood.back();
-        return children.at(segment_path);
+        link_flood.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area_flood)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : as_flood)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : link_flood)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -24340,7 +21842,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24368,20 +21870,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24452,7 +21946,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24480,20 +21974,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24564,7 +22050,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood:
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24592,20 +22078,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24694,7 +22172,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_segment_pat
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24728,20 +22206,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_entity_path(
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24831,7 +22301,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_segment_path() con
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24854,15 +22324,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "area")
     {
         for(auto const & c : area)
@@ -24870,28 +22331,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area>();
         c->parent = this;
-        area.push_back(std::move(c));
-        children[segment_path] = area.back();
-        return children.at(segment_path);
+        area.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : area)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -24916,31 +22373,22 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::Area()
 	,retransmission_list_table(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable>())
 {
     database_summary_table->parent = this;
-    children["database-summary-table"] = database_summary_table;
 
     database_table->parent = this;
-    children["database-table"] = database_table;
 
     flood_list_table->parent = this;
-    children["flood-list-table"] = flood_list_table;
 
     interface_brief_table->parent = this;
-    children["interface-brief-table"] = interface_brief_table;
 
     interface_table->parent = this;
-    children["interface-table"] = interface_table;
 
     neighbor_detail_table->parent = this;
-    children["neighbor-detail-table"] = neighbor_detail_table;
 
     neighbor_table->parent = this;
-    children["neighbor-table"] = neighbor_table;
 
     request_list_table->parent = this;
-    children["request-list-table"] = request_list_table;
 
     retransmission_list_table->parent = this;
-    children["retransmission-list-table"] = retransmission_list_table;
 
     yang_name = "area"; yang_parent_name = "areas";
 }
@@ -24987,7 +22435,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_segment_path
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25011,225 +22459,136 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_entity_path(E
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "database-summary-table")
     {
-        if(database_summary_table != nullptr)
-        {
-            children["database-summary-table"] = database_summary_table;
-        }
-        else
+        if(database_summary_table == nullptr)
         {
             database_summary_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable>();
-            database_summary_table->parent = this;
-            children["database-summary-table"] = database_summary_table;
         }
-        return children.at("database-summary-table");
+        return database_summary_table;
     }
 
     if(child_yang_name == "database-table")
     {
-        if(database_table != nullptr)
-        {
-            children["database-table"] = database_table;
-        }
-        else
+        if(database_table == nullptr)
         {
             database_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable>();
-            database_table->parent = this;
-            children["database-table"] = database_table;
         }
-        return children.at("database-table");
+        return database_table;
     }
 
     if(child_yang_name == "flood-list-table")
     {
-        if(flood_list_table != nullptr)
-        {
-            children["flood-list-table"] = flood_list_table;
-        }
-        else
+        if(flood_list_table == nullptr)
         {
             flood_list_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable>();
-            flood_list_table->parent = this;
-            children["flood-list-table"] = flood_list_table;
         }
-        return children.at("flood-list-table");
+        return flood_list_table;
     }
 
     if(child_yang_name == "interface-brief-table")
     {
-        if(interface_brief_table != nullptr)
-        {
-            children["interface-brief-table"] = interface_brief_table;
-        }
-        else
+        if(interface_brief_table == nullptr)
         {
             interface_brief_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable>();
-            interface_brief_table->parent = this;
-            children["interface-brief-table"] = interface_brief_table;
         }
-        return children.at("interface-brief-table");
+        return interface_brief_table;
     }
 
     if(child_yang_name == "interface-table")
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
-        else
+        if(interface_table == nullptr)
         {
             interface_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable>();
-            interface_table->parent = this;
-            children["interface-table"] = interface_table;
         }
-        return children.at("interface-table");
+        return interface_table;
     }
 
     if(child_yang_name == "neighbor-detail-table")
     {
-        if(neighbor_detail_table != nullptr)
-        {
-            children["neighbor-detail-table"] = neighbor_detail_table;
-        }
-        else
+        if(neighbor_detail_table == nullptr)
         {
             neighbor_detail_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable>();
-            neighbor_detail_table->parent = this;
-            children["neighbor-detail-table"] = neighbor_detail_table;
         }
-        return children.at("neighbor-detail-table");
+        return neighbor_detail_table;
     }
 
     if(child_yang_name == "neighbor-table")
     {
-        if(neighbor_table != nullptr)
-        {
-            children["neighbor-table"] = neighbor_table;
-        }
-        else
+        if(neighbor_table == nullptr)
         {
             neighbor_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable>();
-            neighbor_table->parent = this;
-            children["neighbor-table"] = neighbor_table;
         }
-        return children.at("neighbor-table");
+        return neighbor_table;
     }
 
     if(child_yang_name == "request-list-table")
     {
-        if(request_list_table != nullptr)
-        {
-            children["request-list-table"] = request_list_table;
-        }
-        else
+        if(request_list_table == nullptr)
         {
             request_list_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable>();
-            request_list_table->parent = this;
-            children["request-list-table"] = request_list_table;
         }
-        return children.at("request-list-table");
+        return request_list_table;
     }
 
     if(child_yang_name == "retransmission-list-table")
     {
-        if(retransmission_list_table != nullptr)
-        {
-            children["retransmission-list-table"] = retransmission_list_table;
-        }
-        else
+        if(retransmission_list_table == nullptr)
         {
             retransmission_list_table = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable>();
-            retransmission_list_table->parent = this;
-            children["retransmission-list-table"] = retransmission_list_table;
         }
-        return children.at("retransmission-list-table");
+        return retransmission_list_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_children() const
 {
-    if(children.find("database-summary-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(database_summary_table != nullptr)
     {
-        if(database_summary_table != nullptr)
-        {
-            children["database-summary-table"] = database_summary_table;
-        }
+        children["database-summary-table"] = database_summary_table;
     }
 
-    if(children.find("database-table") == children.end())
+    if(database_table != nullptr)
     {
-        if(database_table != nullptr)
-        {
-            children["database-table"] = database_table;
-        }
+        children["database-table"] = database_table;
     }
 
-    if(children.find("flood-list-table") == children.end())
+    if(flood_list_table != nullptr)
     {
-        if(flood_list_table != nullptr)
-        {
-            children["flood-list-table"] = flood_list_table;
-        }
+        children["flood-list-table"] = flood_list_table;
     }
 
-    if(children.find("interface-brief-table") == children.end())
+    if(interface_brief_table != nullptr)
     {
-        if(interface_brief_table != nullptr)
-        {
-            children["interface-brief-table"] = interface_brief_table;
-        }
+        children["interface-brief-table"] = interface_brief_table;
     }
 
-    if(children.find("interface-table") == children.end())
+    if(interface_table != nullptr)
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
+        children["interface-table"] = interface_table;
     }
 
-    if(children.find("neighbor-detail-table") == children.end())
+    if(neighbor_detail_table != nullptr)
     {
-        if(neighbor_detail_table != nullptr)
-        {
-            children["neighbor-detail-table"] = neighbor_detail_table;
-        }
+        children["neighbor-detail-table"] = neighbor_detail_table;
     }
 
-    if(children.find("neighbor-table") == children.end())
+    if(neighbor_table != nullptr)
     {
-        if(neighbor_table != nullptr)
-        {
-            children["neighbor-table"] = neighbor_table;
-        }
+        children["neighbor-table"] = neighbor_table;
     }
 
-    if(children.find("request-list-table") == children.end())
+    if(request_list_table != nullptr)
     {
-        if(request_list_table != nullptr)
-        {
-            children["request-list-table"] = request_list_table;
-        }
+        children["request-list-table"] = request_list_table;
     }
 
-    if(children.find("retransmission-list-table") == children.end())
+    if(retransmission_list_table != nullptr)
     {
-        if(retransmission_list_table != nullptr)
-        {
-            children["retransmission-list-table"] = retransmission_list_table;
-        }
+        children["retransmission-list-table"] = retransmission_list_table;
     }
 
     return children;
@@ -25281,7 +22640,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25304,15 +22663,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-detail")
     {
         for(auto const & c : neighbor_detail)
@@ -25320,28 +22670,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::Neig
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail>();
         c->parent = this;
-        neighbor_detail.push_back(std::move(c));
-        children[segment_path] = neighbor_detail.back();
-        return children.at(segment_path);
+        neighbor_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -25371,10 +22717,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::Neighbo
 	,neighbor_detail(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_>())
 {
     neighbor_bfd_info->parent = this;
-    children["neighbor-bfd-info"] = neighbor_bfd_info;
 
     neighbor_detail->parent = this;
-    children["neighbor-detail"] = neighbor_detail;
 
     yang_name = "neighbor-detail"; yang_parent_name = "neighbor-detail-table";
 }
@@ -25431,7 +22775,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25467,64 +22811,38 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-bfd-info")
     {
-        if(neighbor_bfd_info != nullptr)
-        {
-            children["neighbor-bfd-info"] = neighbor_bfd_info;
-        }
-        else
+        if(neighbor_bfd_info == nullptr)
         {
             neighbor_bfd_info = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo>();
-            neighbor_bfd_info->parent = this;
-            children["neighbor-bfd-info"] = neighbor_bfd_info;
         }
-        return children.at("neighbor-bfd-info");
+        return neighbor_bfd_info;
     }
 
     if(child_yang_name == "neighbor-detail")
     {
-        if(neighbor_detail != nullptr)
-        {
-            children["neighbor-detail"] = neighbor_detail;
-        }
-        else
+        if(neighbor_detail == nullptr)
         {
             neighbor_detail = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_>();
-            neighbor_detail->parent = this;
-            children["neighbor-detail"] = neighbor_detail;
         }
-        return children.at("neighbor-detail");
+        return neighbor_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::get_children() const
 {
-    if(children.find("neighbor-bfd-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(neighbor_bfd_info != nullptr)
     {
-        if(neighbor_bfd_info != nullptr)
-        {
-            children["neighbor-bfd-info"] = neighbor_bfd_info;
-        }
+        children["neighbor-bfd-info"] = neighbor_bfd_info;
     }
 
-    if(children.find("neighbor-detail") == children.end())
+    if(neighbor_detail != nullptr)
     {
-        if(neighbor_detail != nullptr)
-        {
-            children["neighbor-detail"] = neighbor_detail;
-        }
+        children["neighbor-detail"] = neighbor_detail;
     }
 
     return children;
@@ -25603,7 +22921,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::Neighbo
     neighbor_retransmission(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission>())
 {
     neighbor_retransmission->parent = this;
-    children["neighbor-retransmission"] = neighbor_retransmission;
 
     yang_name = "neighbor-detail"; yang_parent_name = "neighbor-detail";
 }
@@ -25654,7 +22971,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25688,41 +23005,24 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor-retransmission")
     {
-        if(neighbor_retransmission != nullptr)
-        {
-            children["neighbor-retransmission"] = neighbor_retransmission;
-        }
-        else
+        if(neighbor_retransmission == nullptr)
         {
             neighbor_retransmission = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission>();
-            neighbor_retransmission->parent = this;
-            children["neighbor-retransmission"] = neighbor_retransmission;
         }
-        return children.at("neighbor-retransmission");
+        return neighbor_retransmission;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::get_children() const
 {
-    if(children.find("neighbor-retransmission") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(neighbor_retransmission != nullptr)
     {
-        if(neighbor_retransmission != nullptr)
-        {
-            children["neighbor-retransmission"] = neighbor_retransmission;
-        }
+        children["neighbor-retransmission"] = neighbor_retransmission;
     }
 
     return children;
@@ -25873,7 +23173,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25919,20 +23219,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -26066,7 +23358,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -26091,20 +23383,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -26158,7 +23442,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -26181,15 +23465,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTab
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-brief")
     {
         for(auto const & c : interface_brief)
@@ -26197,28 +23472,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::Inte
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief>();
         c->parent = this;
-        interface_brief.push_back(std::move(c));
-        children[segment_path] = interface_brief.back();
-        return children.at(segment_path);
+        interface_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -26277,7 +23548,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTa
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -26307,20 +23578,12 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTab
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -26394,7 +23657,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable
 
 }
 
-EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -26417,15 +23680,6 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "request")
     {
         for(auto const & c : request)
@@ -26433,28 +23687,24 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::Requ
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Request>();
         c->parent = this;
-        request.push_back(std::move(c));
-        children[segment_path] = request.back();
-        return children.at(segment_path);
+        request.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : request)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;

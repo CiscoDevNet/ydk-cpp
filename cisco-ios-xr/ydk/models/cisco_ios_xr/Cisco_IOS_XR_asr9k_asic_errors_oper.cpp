@@ -14,7 +14,6 @@ AsicErrorStats::AsicErrorStats()
     nodes(std::make_shared<AsicErrorStats::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "asic-error-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-asic-errors-oper";
 }
@@ -43,12 +42,12 @@ std::string AsicErrorStats::get_segment_path() const
 
 }
 
-EntityPath AsicErrorStats::get_entity_path(Entity* ancestor) const
+const EntityPath AsicErrorStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath AsicErrorStats::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AsicErrorStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<AsicErrorStats::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AsicErrorStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string AsicErrorStats::Nodes::get_segment_path() const
 
 }
 
-EntityPath AsicErrorStats::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath AsicErrorStats::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath AsicErrorStats::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AsicErrorStats::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AsicErrorStats::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AsicErrorStats::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ AsicErrorStats::Nodes::Node::Node()
     counts(std::make_shared<AsicErrorStats::Nodes::Node::Counts>())
 {
     counts->parent = this;
-    children["counts"] = counts;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string AsicErrorStats::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath AsicErrorStats::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath AsicErrorStats::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath AsicErrorStats::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counts")
     {
-        if(counts != nullptr)
-        {
-            children["counts"] = counts;
-        }
-        else
+        if(counts == nullptr)
         {
             counts = std::make_shared<AsicErrorStats::Nodes::Node::Counts>();
-            counts->parent = this;
-            children["counts"] = counts;
         }
-        return children.at("counts");
+        return counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AsicErrorStats::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::get_children() const
 {
-    if(children.find("counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counts != nullptr)
     {
-        if(counts != nullptr)
-        {
-            children["counts"] = counts;
-        }
+        children["counts"] = counts;
     }
 
     return children;
@@ -383,7 +334,7 @@ std::string AsicErrorStats::Nodes::Node::Counts::get_segment_path() const
 
 }
 
-EntityPath AsicErrorStats::Nodes::Node::Counts::get_entity_path(Entity* ancestor) const
+const EntityPath AsicErrorStats::Nodes::Node::Counts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -406,15 +357,6 @@ EntityPath AsicErrorStats::Nodes::Node::Counts::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "count")
     {
         for(auto const & c : count)
@@ -422,28 +364,24 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AsicErrorStats::Nodes::Node::Counts::Count>();
         c->parent = this;
-        count.push_back(std::move(c));
-        children[segment_path] = count.back();
-        return children.at(segment_path);
+        count.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AsicErrorStats::Nodes::Node::Counts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Counts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -494,7 +432,7 @@ std::string AsicErrorStats::Nodes::Node::Counts::Count::get_segment_path() const
 
 }
 
-EntityPath AsicErrorStats::Nodes::Node::Counts::Count::get_entity_path(Entity* ancestor) const
+const EntityPath AsicErrorStats::Nodes::Node::Counts::Count::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -518,15 +456,6 @@ EntityPath AsicErrorStats::Nodes::Node::Counts::Count::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sum-data")
     {
         for(auto const & c : sum_data)
@@ -534,28 +463,24 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::Count::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AsicErrorStats::Nodes::Node::Counts::Count::SumData>();
         c->parent = this;
-        sum_data.push_back(std::move(c));
-        children[segment_path] = sum_data.back();
-        return children.at(segment_path);
+        sum_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AsicErrorStats::Nodes::Node::Counts::Count::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Counts::Count::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sum_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -633,7 +558,7 @@ std::string AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_segment_pat
 
 }
 
-EntityPath AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_entity_path(Entity* ancestor) const
+const EntityPath AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -666,20 +591,12 @@ EntityPath AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_entity_path(
 
 std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

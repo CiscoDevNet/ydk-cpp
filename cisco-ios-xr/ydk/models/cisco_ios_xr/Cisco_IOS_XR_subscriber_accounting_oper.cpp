@@ -14,7 +14,6 @@ SubscriberAccounting::SubscriberAccounting()
     nodes(std::make_shared<SubscriberAccounting::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "subscriber-accounting"; yang_parent_name = "Cisco-IOS-XR-subscriber-accounting-oper";
 }
@@ -43,12 +42,12 @@ std::string SubscriberAccounting::get_segment_path() const
 
 }
 
-EntityPath SubscriberAccounting::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath SubscriberAccounting::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubscriberAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<SubscriberAccounting::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string SubscriberAccounting::Nodes::get_segment_path() const
 
 }
 
-EntityPath SubscriberAccounting::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath SubscriberAccounting::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -244,13 +213,10 @@ SubscriberAccounting::Nodes::Node::Node()
 	,subscriber_accounting_summary(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary>())
 {
     subscriber_accounting_flow_features->parent = this;
-    children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
 
     subscriber_accounting_session_features->parent = this;
-    children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
 
     subscriber_accounting_summary->parent = this;
-    children["subscriber-accounting-summary"] = subscriber_accounting_summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -285,7 +251,7 @@ std::string SubscriberAccounting::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -309,87 +275,52 @@ EntityPath SubscriberAccounting::Nodes::Node::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "subscriber-accounting-flow-features")
     {
-        if(subscriber_accounting_flow_features != nullptr)
-        {
-            children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
-        }
-        else
+        if(subscriber_accounting_flow_features == nullptr)
         {
             subscriber_accounting_flow_features = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures>();
-            subscriber_accounting_flow_features->parent = this;
-            children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
         }
-        return children.at("subscriber-accounting-flow-features");
+        return subscriber_accounting_flow_features;
     }
 
     if(child_yang_name == "subscriber-accounting-session-features")
     {
-        if(subscriber_accounting_session_features != nullptr)
-        {
-            children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
-        }
-        else
+        if(subscriber_accounting_session_features == nullptr)
         {
             subscriber_accounting_session_features = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures>();
-            subscriber_accounting_session_features->parent = this;
-            children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
         }
-        return children.at("subscriber-accounting-session-features");
+        return subscriber_accounting_session_features;
     }
 
     if(child_yang_name == "subscriber-accounting-summary")
     {
-        if(subscriber_accounting_summary != nullptr)
-        {
-            children["subscriber-accounting-summary"] = subscriber_accounting_summary;
-        }
-        else
+        if(subscriber_accounting_summary == nullptr)
         {
             subscriber_accounting_summary = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary>();
-            subscriber_accounting_summary->parent = this;
-            children["subscriber-accounting-summary"] = subscriber_accounting_summary;
         }
-        return children.at("subscriber-accounting-summary");
+        return subscriber_accounting_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::get_children() const
 {
-    if(children.find("subscriber-accounting-flow-features") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(subscriber_accounting_flow_features != nullptr)
     {
-        if(subscriber_accounting_flow_features != nullptr)
-        {
-            children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
-        }
+        children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
     }
 
-    if(children.find("subscriber-accounting-session-features") == children.end())
+    if(subscriber_accounting_session_features != nullptr)
     {
-        if(subscriber_accounting_session_features != nullptr)
-        {
-            children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
-        }
+        children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
     }
 
-    if(children.find("subscriber-accounting-summary") == children.end())
+    if(subscriber_accounting_summary != nullptr)
     {
-        if(subscriber_accounting_summary != nullptr)
-        {
-            children["subscriber-accounting-summary"] = subscriber_accounting_summary;
-        }
+        children["subscriber-accounting-summary"] = subscriber_accounting_summary;
     }
 
     return children;
@@ -441,7 +372,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatur
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -464,15 +395,6 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeature
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "subscriber-accounting-session-feature")
     {
         for(auto const & c : subscriber_accounting_session_feature)
@@ -480,28 +402,24 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature>();
         c->parent = this;
-        subscriber_accounting_session_feature.push_back(std::move(c));
-        children[segment_path] = subscriber_accounting_session_feature.back();
-        return children.at(segment_path);
+        subscriber_accounting_session_feature.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : subscriber_accounting_session_feature)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -518,7 +436,6 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Subscrib
     session_feature_data(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData>())
 {
     session_feature_data->parent = this;
-    children["session-feature-data"] = session_feature_data;
 
     yang_name = "subscriber-accounting-session-feature"; yang_parent_name = "subscriber-accounting-session-features";
 }
@@ -549,7 +466,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatur
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -573,41 +490,24 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeature
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-feature-data")
     {
-        if(session_feature_data != nullptr)
-        {
-            children["session-feature-data"] = session_feature_data;
-        }
-        else
+        if(session_feature_data == nullptr)
         {
             session_feature_data = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData>();
-            session_feature_data->parent = this;
-            children["session-feature-data"] = session_feature_data;
         }
-        return children.at("session-feature-data");
+        return session_feature_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_children() const
 {
-    if(children.find("session-feature-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session_feature_data != nullptr)
     {
-        if(session_feature_data != nullptr)
-        {
-            children["session-feature-data"] = session_feature_data;
-        }
+        children["session-feature-data"] = session_feature_data;
     }
 
     return children;
@@ -728,7 +628,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatur
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -774,15 +674,6 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeature
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-accounting-feature")
     {
         for(auto const & c : service_accounting_feature)
@@ -790,28 +681,24 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature>();
         c->parent = this;
-        service_accounting_feature.push_back(std::move(c));
-        children[segment_path] = service_accounting_feature.back();
-        return children.at(segment_path);
+        service_accounting_feature.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_accounting_feature)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -962,7 +849,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatur
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -992,20 +879,12 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeature
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1049,16 +928,12 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SubscriberAccoun
 	,session_timeout_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters>())
 {
     aaa_counters->parent = this;
-    children["aaa-counters"] = aaa_counters;
 
     idle_timeout_counters->parent = this;
-    children["idle-timeout-counters"] = idle_timeout_counters;
 
     session_flow_counters->parent = this;
-    children["session-flow-counters"] = session_flow_counters;
 
     session_timeout_counters->parent = this;
-    children["session-timeout-counters"] = session_timeout_counters;
 
     yang_name = "subscriber-accounting-summary"; yang_parent_name = "node";
 }
@@ -1093,7 +968,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1116,110 +991,66 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_e
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aaa-counters")
     {
-        if(aaa_counters != nullptr)
-        {
-            children["aaa-counters"] = aaa_counters;
-        }
-        else
+        if(aaa_counters == nullptr)
         {
             aaa_counters = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters>();
-            aaa_counters->parent = this;
-            children["aaa-counters"] = aaa_counters;
         }
-        return children.at("aaa-counters");
+        return aaa_counters;
     }
 
     if(child_yang_name == "idle-timeout-counters")
     {
-        if(idle_timeout_counters != nullptr)
-        {
-            children["idle-timeout-counters"] = idle_timeout_counters;
-        }
-        else
+        if(idle_timeout_counters == nullptr)
         {
             idle_timeout_counters = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters>();
-            idle_timeout_counters->parent = this;
-            children["idle-timeout-counters"] = idle_timeout_counters;
         }
-        return children.at("idle-timeout-counters");
+        return idle_timeout_counters;
     }
 
     if(child_yang_name == "session-flow-counters")
     {
-        if(session_flow_counters != nullptr)
-        {
-            children["session-flow-counters"] = session_flow_counters;
-        }
-        else
+        if(session_flow_counters == nullptr)
         {
             session_flow_counters = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters>();
-            session_flow_counters->parent = this;
-            children["session-flow-counters"] = session_flow_counters;
         }
-        return children.at("session-flow-counters");
+        return session_flow_counters;
     }
 
     if(child_yang_name == "session-timeout-counters")
     {
-        if(session_timeout_counters != nullptr)
-        {
-            children["session-timeout-counters"] = session_timeout_counters;
-        }
-        else
+        if(session_timeout_counters == nullptr)
         {
             session_timeout_counters = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters>();
-            session_timeout_counters->parent = this;
-            children["session-timeout-counters"] = session_timeout_counters;
         }
-        return children.at("session-timeout-counters");
+        return session_timeout_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_children() const
 {
-    if(children.find("aaa-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aaa_counters != nullptr)
     {
-        if(aaa_counters != nullptr)
-        {
-            children["aaa-counters"] = aaa_counters;
-        }
+        children["aaa-counters"] = aaa_counters;
     }
 
-    if(children.find("idle-timeout-counters") == children.end())
+    if(idle_timeout_counters != nullptr)
     {
-        if(idle_timeout_counters != nullptr)
-        {
-            children["idle-timeout-counters"] = idle_timeout_counters;
-        }
+        children["idle-timeout-counters"] = idle_timeout_counters;
     }
 
-    if(children.find("session-flow-counters") == children.end())
+    if(session_flow_counters != nullptr)
     {
-        if(session_flow_counters != nullptr)
-        {
-            children["session-flow-counters"] = session_flow_counters;
-        }
+        children["session-flow-counters"] = session_flow_counters;
     }
 
-    if(children.find("session-timeout-counters") == children.end())
+    if(session_timeout_counters != nullptr)
     {
-        if(session_timeout_counters != nullptr)
-        {
-            children["session-timeout-counters"] = session_timeout_counters;
-        }
+        children["session-timeout-counters"] = session_timeout_counters;
     }
 
     return children;
@@ -1362,7 +1193,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaC
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1420,20 +1251,12 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCo
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1633,7 +1456,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::Idle
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1664,20 +1487,12 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleT
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1751,7 +1566,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::Sess
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1776,20 +1591,12 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::Sessi
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1848,7 +1655,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::Sess
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1876,20 +1683,12 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::Sessi
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1955,7 +1754,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures:
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1978,15 +1777,6 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "subscriber-accounting-flow-feature")
     {
         for(auto const & c : subscriber_accounting_flow_feature)
@@ -1994,28 +1784,24 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingF
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature>();
         c->parent = this;
-        subscriber_accounting_flow_feature.push_back(std::move(c));
-        children[segment_path] = subscriber_accounting_flow_feature.back();
-        return children.at(segment_path);
+        subscriber_accounting_flow_feature.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : subscriber_accounting_flow_feature)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2032,7 +1818,6 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberA
     flow_feature_data(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData>())
 {
     flow_feature_data->parent = this;
-    children["flow-feature-data"] = flow_feature_data;
 
     yang_name = "subscriber-accounting-flow-feature"; yang_parent_name = "subscriber-accounting-flow-features";
 }
@@ -2063,7 +1848,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures:
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2087,41 +1872,24 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow-feature-data")
     {
-        if(flow_feature_data != nullptr)
-        {
-            children["flow-feature-data"] = flow_feature_data;
-        }
-        else
+        if(flow_feature_data == nullptr)
         {
             flow_feature_data = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData>();
-            flow_feature_data->parent = this;
-            children["flow-feature-data"] = flow_feature_data;
         }
-        return children.at("flow-feature-data");
+        return flow_feature_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_children() const
 {
-    if(children.find("flow-feature-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flow_feature_data != nullptr)
     {
-        if(flow_feature_data != nullptr)
-        {
-            children["flow-feature-data"] = flow_feature_data;
-        }
+        children["flow-feature-data"] = flow_feature_data;
     }
 
     return children;
@@ -2301,7 +2069,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures:
 
 }
 
-EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2370,20 +2138,12 @@ EntityPath SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::
 
 std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

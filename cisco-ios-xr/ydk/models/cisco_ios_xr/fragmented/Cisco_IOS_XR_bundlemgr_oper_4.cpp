@@ -46,7 +46,7 @@ std::string BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::Load
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -72,20 +72,12 @@ EntityPath BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadB
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -143,7 +135,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::get_segment_path() const
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -166,15 +158,6 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle")
     {
         for(auto const & c : bundle)
@@ -182,28 +165,24 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle>();
         c->parent = this;
-        bundle.push_back(std::move(c));
-        children[segment_path] = bundle.back();
-        return children.at(segment_path);
+        bundle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bundle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -220,7 +199,6 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::Bundle()
     bundle_info(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo>())
 {
     bundle_info->parent = this;
-    children["bundle-info"] = bundle_info;
 
     yang_name = "bundle"; yang_parent_name = "bundles";
 }
@@ -251,7 +229,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_segment_path() c
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -275,41 +253,24 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_entity_path(Entit
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-info")
     {
-        if(bundle_info != nullptr)
-        {
-            children["bundle-info"] = bundle_info;
-        }
-        else
+        if(bundle_info == nullptr)
         {
             bundle_info = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo>();
-            bundle_info->parent = this;
-            children["bundle-info"] = bundle_info;
         }
-        return children.at("bundle-info");
+        return bundle_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_children() const
 {
-    if(children.find("bundle-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_info != nullptr)
     {
-        if(bundle_info != nullptr)
-        {
-            children["bundle-info"] = bundle_info;
-        }
+        children["bundle-info"] = bundle_info;
     }
 
     return children;
@@ -333,10 +294,8 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::BundleInfo()
 	,load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     load_balance_data->parent = this;
-    children["load-balance-data"] = load_balance_data;
 
     yang_name = "bundle-info"; yang_parent_name = "bundle";
 }
@@ -393,7 +352,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_segm
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -419,43 +378,22 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_entit
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "load-balance-data")
     {
-        if(load_balance_data != nullptr)
-        {
-            children["load-balance-data"] = load_balance_data;
-        }
-        else
+        if(load_balance_data == nullptr)
         {
             load_balance_data = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData>();
-            load_balance_data->parent = this;
-            children["load-balance-data"] = load_balance_data;
         }
-        return children.at("load-balance-data");
+        return load_balance_data;
     }
 
     if(child_yang_name == "member")
@@ -465,15 +403,13 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member>();
         c->parent = this;
-        member.push_back(std::move(c));
-        children[segment_path] = member.back();
-        return children.at(segment_path);
+        member.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "sub-interface")
@@ -483,52 +419,39 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface>();
         c->parent = this;
-        sub_interface.push_back(std::move(c));
-        children[segment_path] = sub_interface.back();
-        return children.at(segment_path);
+        sub_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("load-balance-data") == children.end())
+    if(load_balance_data != nullptr)
     {
-        if(load_balance_data != nullptr)
-        {
-            children["load-balance-data"] = load_balance_data;
-        }
+        children["load-balance-data"] = load_balance_data;
     }
 
     for (auto const & c : member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : sub_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -600,7 +523,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::g
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -627,15 +550,6 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::ge
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sub-interface")
     {
         for(auto const & c : sub_interface)
@@ -643,28 +557,24 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface>();
         c->parent = this;
-        sub_interface.push_back(std::move(c));
-        children[segment_path] = sub_interface.back();
-        return children.at(segment_path);
+        sub_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sub_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -697,7 +607,6 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface:
     load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData>())
 {
     load_balance_data->parent = this;
-    children["load-balance-data"] = load_balance_data;
 
     yang_name = "sub-interface"; yang_parent_name = "brief";
 }
@@ -728,7 +637,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::S
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -752,41 +661,24 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::Su
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "load-balance-data")
     {
-        if(load_balance_data != nullptr)
-        {
-            children["load-balance-data"] = load_balance_data;
-        }
-        else
+        if(load_balance_data == nullptr)
         {
             load_balance_data = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData>();
-            load_balance_data->parent = this;
-            children["load-balance-data"] = load_balance_data;
         }
-        return children.at("load-balance-data");
+        return load_balance_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_children() const
 {
-    if(children.find("load-balance-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(load_balance_data != nullptr)
     {
-        if(load_balance_data != nullptr)
-        {
-            children["load-balance-data"] = load_balance_data;
-        }
+        children["load-balance-data"] = load_balance_data;
     }
 
     return children;
@@ -837,7 +729,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::S
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -863,20 +755,12 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::Su
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -933,7 +817,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBala
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -959,20 +843,12 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalan
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1032,7 +908,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1059,20 +935,12 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::g
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1103,7 +971,6 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::SubInt
     load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData>())
 {
     load_balance_data->parent = this;
-    children["load-balance-data"] = load_balance_data;
 
     yang_name = "sub-interface"; yang_parent_name = "bundle-info";
 }
@@ -1134,7 +1001,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInter
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1158,41 +1025,24 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterf
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "load-balance-data")
     {
-        if(load_balance_data != nullptr)
-        {
-            children["load-balance-data"] = load_balance_data;
-        }
-        else
+        if(load_balance_data == nullptr)
         {
             load_balance_data = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData>();
-            load_balance_data->parent = this;
-            children["load-balance-data"] = load_balance_data;
         }
-        return children.at("load-balance-data");
+        return load_balance_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_children() const
 {
-    if(children.find("load-balance-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(load_balance_data != nullptr)
     {
-        if(load_balance_data != nullptr)
-        {
-            children["load-balance-data"] = load_balance_data;
-        }
+        children["load-balance-data"] = load_balance_data;
     }
 
     return children;
@@ -1243,7 +1093,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInter
 
 }
 
-EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_entity_path(Entity* ancestor) const
+const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1269,20 +1119,12 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterf
 
 std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

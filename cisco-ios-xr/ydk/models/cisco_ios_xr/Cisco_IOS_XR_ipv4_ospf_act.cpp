@@ -11,12 +11,9 @@ namespace Cisco_IOS_XR_ipv4_ospf_act {
 
 ActOspfRoutesRpc::ActOspfRoutesRpc()
     :
-    route{YType::empty, "route"}
-    	,
-    instance(std::make_shared<ActOspfRoutesRpc::Instance>())
+    input(std::make_shared<ActOspfRoutesRpc::Input>())
 {
-    instance->parent = this;
-    children["instance"] = instance;
+    input->parent = this;
 
     yang_name = "act-ospf-routes"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-act";
 }
@@ -27,15 +24,13 @@ ActOspfRoutesRpc::~ActOspfRoutesRpc()
 
 bool ActOspfRoutesRpc::has_data() const
 {
-    return route.is_set
-	|| (instance !=  nullptr && instance->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ActOspfRoutesRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(route.operation)
-	|| (instance !=  nullptr && instance->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ActOspfRoutesRpc::get_segment_path() const
@@ -47,18 +42,17 @@ std::string ActOspfRoutesRpc::get_segment_path() const
 
 }
 
-EntityPath ActOspfRoutesRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfRoutesRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route.is_set || is_set(route.operation)) leaf_name_data.push_back(route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -68,41 +62,24 @@ EntityPath ActOspfRoutesRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ActOspfRoutesRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "instance")
-    {
-        if(instance != nullptr)
+        if(input == nullptr)
         {
-            children["instance"] = instance;
+            input = std::make_shared<ActOspfRoutesRpc::Input>();
         }
-        else
-        {
-            instance = std::make_shared<ActOspfRoutesRpc::Instance>();
-            instance->parent = this;
-            children["instance"] = instance;
-        }
-        return children.at("instance");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfRoutesRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfRoutesRpc::get_children() const
 {
-    if(children.find("instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(instance != nullptr)
-        {
-            children["instance"] = instance;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -110,10 +87,6 @@ std::map<std::string, std::shared_ptr<Entity>> & ActOspfRoutesRpc::get_children(
 
 void ActOspfRoutesRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "route")
-    {
-        route = value;
-    }
 }
 
 std::shared_ptr<Entity> ActOspfRoutesRpc::clone_ptr() const
@@ -136,29 +109,121 @@ augment_capabilities_function ActOspfRoutesRpc::get_augment_capabilities_functio
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ActOspfRoutesRpc::Instance::Instance()
+ActOspfRoutesRpc::Input::Input()
+    :
+    route{YType::empty, "route"}
+    	,
+    instance(std::make_shared<ActOspfRoutesRpc::Input::Instance>())
+{
+    instance->parent = this;
+
+    yang_name = "input"; yang_parent_name = "act-ospf-routes";
+}
+
+ActOspfRoutesRpc::Input::~Input()
+{
+}
+
+bool ActOspfRoutesRpc::Input::has_data() const
+{
+    return route.is_set
+	|| (instance !=  nullptr && instance->has_data());
+}
+
+bool ActOspfRoutesRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(route.operation)
+	|| (instance !=  nullptr && instance->has_operation());
+}
+
+std::string ActOspfRoutesRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActOspfRoutesRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-routes/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route.is_set || is_set(route.operation)) leaf_name_data.push_back(route.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActOspfRoutesRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance")
+    {
+        if(instance == nullptr)
+        {
+            instance = std::make_shared<ActOspfRoutesRpc::Input::Instance>();
+        }
+        return instance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActOspfRoutesRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instance != nullptr)
+    {
+        children["instance"] = instance;
+    }
+
+    return children;
+}
+
+void ActOspfRoutesRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "route")
+    {
+        route = value;
+    }
+}
+
+ActOspfRoutesRpc::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
 {
-    yang_name = "instance"; yang_parent_name = "act-ospf-routes";
+    yang_name = "instance"; yang_parent_name = "input";
 }
 
-ActOspfRoutesRpc::Instance::~Instance()
+ActOspfRoutesRpc::Input::Instance::~Instance()
 {
 }
 
-bool ActOspfRoutesRpc::Instance::has_data() const
+bool ActOspfRoutesRpc::Input::Instance::has_data() const
 {
     return instance_identifier.is_set;
 }
 
-bool ActOspfRoutesRpc::Instance::has_operation() const
+bool ActOspfRoutesRpc::Input::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_identifier.operation);
 }
 
-std::string ActOspfRoutesRpc::Instance::get_segment_path() const
+std::string ActOspfRoutesRpc::Input::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
@@ -167,12 +232,12 @@ std::string ActOspfRoutesRpc::Instance::get_segment_path() const
 
 }
 
-EntityPath ActOspfRoutesRpc::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfRoutesRpc::Input::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-routes/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-routes/input/" << get_segment_path();
     }
     else
     {
@@ -189,26 +254,18 @@ EntityPath ActOspfRoutesRpc::Instance::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ActOspfRoutesRpc::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfRoutesRpc::Input::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfRoutesRpc::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfRoutesRpc::Input::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfRoutesRpc::Instance::set_value(const std::string & value_path, std::string value)
+void ActOspfRoutesRpc::Input::Instance::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "instance-identifier")
     {
@@ -218,12 +275,9 @@ void ActOspfRoutesRpc::Instance::set_value(const std::string & value_path, std::
 
 ActOspfRedistributionRpc::ActOspfRedistributionRpc()
     :
-    redistribution{YType::empty, "redistribution"}
-    	,
-    instance(std::make_shared<ActOspfRedistributionRpc::Instance>())
+    input(std::make_shared<ActOspfRedistributionRpc::Input>())
 {
-    instance->parent = this;
-    children["instance"] = instance;
+    input->parent = this;
 
     yang_name = "act-ospf-redistribution"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-act";
 }
@@ -234,15 +288,13 @@ ActOspfRedistributionRpc::~ActOspfRedistributionRpc()
 
 bool ActOspfRedistributionRpc::has_data() const
 {
-    return redistribution.is_set
-	|| (instance !=  nullptr && instance->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ActOspfRedistributionRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(redistribution.operation)
-	|| (instance !=  nullptr && instance->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ActOspfRedistributionRpc::get_segment_path() const
@@ -254,18 +306,17 @@ std::string ActOspfRedistributionRpc::get_segment_path() const
 
 }
 
-EntityPath ActOspfRedistributionRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfRedistributionRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (redistribution.is_set || is_set(redistribution.operation)) leaf_name_data.push_back(redistribution.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -275,41 +326,24 @@ EntityPath ActOspfRedistributionRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ActOspfRedistributionRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "instance")
-    {
-        if(instance != nullptr)
+        if(input == nullptr)
         {
-            children["instance"] = instance;
+            input = std::make_shared<ActOspfRedistributionRpc::Input>();
         }
-        else
-        {
-            instance = std::make_shared<ActOspfRedistributionRpc::Instance>();
-            instance->parent = this;
-            children["instance"] = instance;
-        }
-        return children.at("instance");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfRedistributionRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfRedistributionRpc::get_children() const
 {
-    if(children.find("instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(instance != nullptr)
-        {
-            children["instance"] = instance;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -317,10 +351,6 @@ std::map<std::string, std::shared_ptr<Entity>> & ActOspfRedistributionRpc::get_c
 
 void ActOspfRedistributionRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "redistribution")
-    {
-        redistribution = value;
-    }
 }
 
 std::shared_ptr<Entity> ActOspfRedistributionRpc::clone_ptr() const
@@ -343,29 +373,121 @@ augment_capabilities_function ActOspfRedistributionRpc::get_augment_capabilities
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ActOspfRedistributionRpc::Instance::Instance()
+ActOspfRedistributionRpc::Input::Input()
+    :
+    redistribution{YType::empty, "redistribution"}
+    	,
+    instance(std::make_shared<ActOspfRedistributionRpc::Input::Instance>())
+{
+    instance->parent = this;
+
+    yang_name = "input"; yang_parent_name = "act-ospf-redistribution";
+}
+
+ActOspfRedistributionRpc::Input::~Input()
+{
+}
+
+bool ActOspfRedistributionRpc::Input::has_data() const
+{
+    return redistribution.is_set
+	|| (instance !=  nullptr && instance->has_data());
+}
+
+bool ActOspfRedistributionRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(redistribution.operation)
+	|| (instance !=  nullptr && instance->has_operation());
+}
+
+std::string ActOspfRedistributionRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActOspfRedistributionRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-redistribution/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (redistribution.is_set || is_set(redistribution.operation)) leaf_name_data.push_back(redistribution.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActOspfRedistributionRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance")
+    {
+        if(instance == nullptr)
+        {
+            instance = std::make_shared<ActOspfRedistributionRpc::Input::Instance>();
+        }
+        return instance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActOspfRedistributionRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instance != nullptr)
+    {
+        children["instance"] = instance;
+    }
+
+    return children;
+}
+
+void ActOspfRedistributionRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "redistribution")
+    {
+        redistribution = value;
+    }
+}
+
+ActOspfRedistributionRpc::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
 {
-    yang_name = "instance"; yang_parent_name = "act-ospf-redistribution";
+    yang_name = "instance"; yang_parent_name = "input";
 }
 
-ActOspfRedistributionRpc::Instance::~Instance()
+ActOspfRedistributionRpc::Input::Instance::~Instance()
 {
 }
 
-bool ActOspfRedistributionRpc::Instance::has_data() const
+bool ActOspfRedistributionRpc::Input::Instance::has_data() const
 {
     return instance_identifier.is_set;
 }
 
-bool ActOspfRedistributionRpc::Instance::has_operation() const
+bool ActOspfRedistributionRpc::Input::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_identifier.operation);
 }
 
-std::string ActOspfRedistributionRpc::Instance::get_segment_path() const
+std::string ActOspfRedistributionRpc::Input::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
@@ -374,12 +496,12 @@ std::string ActOspfRedistributionRpc::Instance::get_segment_path() const
 
 }
 
-EntityPath ActOspfRedistributionRpc::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfRedistributionRpc::Input::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-redistribution/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-redistribution/input/" << get_segment_path();
     }
     else
     {
@@ -396,26 +518,18 @@ EntityPath ActOspfRedistributionRpc::Instance::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> ActOspfRedistributionRpc::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfRedistributionRpc::Input::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfRedistributionRpc::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfRedistributionRpc::Input::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfRedistributionRpc::Instance::set_value(const std::string & value_path, std::string value)
+void ActOspfRedistributionRpc::Input::Instance::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "instance-identifier")
     {
@@ -425,16 +539,9 @@ void ActOspfRedistributionRpc::Instance::set_value(const std::string & value_pat
 
 ActOspfStatisticsRpc::ActOspfStatisticsRpc()
     :
-    all{YType::empty, "all"},
-    interface_name{YType::empty, "interface-name"},
-    message_queue{YType::empty, "message-queue"},
-    neighbor{YType::empty, "neighbor"},
-    spf{YType::empty, "spf"}
-    	,
-    instance(std::make_shared<ActOspfStatisticsRpc::Instance>())
+    input(std::make_shared<ActOspfStatisticsRpc::Input>())
 {
-    instance->parent = this;
-    children["instance"] = instance;
+    input->parent = this;
 
     yang_name = "act-ospf-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-act";
 }
@@ -445,23 +552,13 @@ ActOspfStatisticsRpc::~ActOspfStatisticsRpc()
 
 bool ActOspfStatisticsRpc::has_data() const
 {
-    return all.is_set
-	|| interface_name.is_set
-	|| message_queue.is_set
-	|| neighbor.is_set
-	|| spf.is_set
-	|| (instance !=  nullptr && instance->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ActOspfStatisticsRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(all.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(message_queue.operation)
-	|| is_set(neighbor.operation)
-	|| is_set(spf.operation)
-	|| (instance !=  nullptr && instance->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ActOspfStatisticsRpc::get_segment_path() const
@@ -473,15 +570,134 @@ std::string ActOspfStatisticsRpc::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActOspfStatisticsRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ActOspfStatisticsRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ActOspfStatisticsRpc::set_value(const std::string & value_path, std::string value)
+{
+}
+
+std::shared_ptr<Entity> ActOspfStatisticsRpc::clone_ptr() const
+{
+    return std::make_shared<ActOspfStatisticsRpc>();
+}
+
+std::string ActOspfStatisticsRpc::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string ActOspfStatisticsRpc::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function ActOspfStatisticsRpc::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+ActOspfStatisticsRpc::Input::Input()
+    :
+    all{YType::empty, "all"},
+    interface_name{YType::empty, "interface-name"},
+    message_queue{YType::empty, "message-queue"},
+    neighbor{YType::empty, "neighbor"},
+    spf{YType::empty, "spf"}
+    	,
+    instance(std::make_shared<ActOspfStatisticsRpc::Input::Instance>())
+{
+    instance->parent = this;
+
+    yang_name = "input"; yang_parent_name = "act-ospf-statistics";
+}
+
+ActOspfStatisticsRpc::Input::~Input()
+{
+}
+
+bool ActOspfStatisticsRpc::Input::has_data() const
+{
+    return all.is_set
+	|| interface_name.is_set
+	|| message_queue.is_set
+	|| neighbor.is_set
+	|| spf.is_set
+	|| (instance !=  nullptr && instance->has_data());
+}
+
+bool ActOspfStatisticsRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(all.operation)
+	|| is_set(interface_name.operation)
+	|| is_set(message_queue.operation)
+	|| is_set(neighbor.operation)
+	|| is_set(spf.operation)
+	|| (instance !=  nullptr && instance->has_operation());
+}
+
+std::string ActOspfStatisticsRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActOspfStatisticsRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (all.is_set || is_set(all.operation)) leaf_name_data.push_back(all.get_name_leafdata());
@@ -496,49 +712,32 @@ EntityPath ActOspfStatisticsRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ActOspfStatisticsRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfStatisticsRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance")
     {
-        if(instance != nullptr)
+        if(instance == nullptr)
         {
-            children["instance"] = instance;
+            instance = std::make_shared<ActOspfStatisticsRpc::Input::Instance>();
         }
-        else
-        {
-            instance = std::make_shared<ActOspfStatisticsRpc::Instance>();
-            instance->parent = this;
-            children["instance"] = instance;
-        }
-        return children.at("instance");
+        return instance;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsRpc::Input::get_children() const
 {
-    if(children.find("instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instance != nullptr)
     {
-        if(instance != nullptr)
-        {
-            children["instance"] = instance;
-        }
+        children["instance"] = instance;
     }
 
     return children;
 }
 
-void ActOspfStatisticsRpc::set_value(const std::string & value_path, std::string value)
+void ActOspfStatisticsRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "all")
     {
@@ -562,49 +761,29 @@ void ActOspfStatisticsRpc::set_value(const std::string & value_path, std::string
     }
 }
 
-std::shared_ptr<Entity> ActOspfStatisticsRpc::clone_ptr() const
-{
-    return std::make_shared<ActOspfStatisticsRpc>();
-}
-
-std::string ActOspfStatisticsRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ActOspfStatisticsRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ActOspfStatisticsRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ActOspfStatisticsRpc::Instance::Instance()
+ActOspfStatisticsRpc::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
 {
-    yang_name = "instance"; yang_parent_name = "act-ospf-statistics";
+    yang_name = "instance"; yang_parent_name = "input";
 }
 
-ActOspfStatisticsRpc::Instance::~Instance()
+ActOspfStatisticsRpc::Input::Instance::~Instance()
 {
 }
 
-bool ActOspfStatisticsRpc::Instance::has_data() const
+bool ActOspfStatisticsRpc::Input::Instance::has_data() const
 {
     return instance_identifier.is_set;
 }
 
-bool ActOspfStatisticsRpc::Instance::has_operation() const
+bool ActOspfStatisticsRpc::Input::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_identifier.operation);
 }
 
-std::string ActOspfStatisticsRpc::Instance::get_segment_path() const
+std::string ActOspfStatisticsRpc::Input::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
@@ -613,12 +792,12 @@ std::string ActOspfStatisticsRpc::Instance::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsRpc::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsRpc::Input::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics/input/" << get_segment_path();
     }
     else
     {
@@ -635,26 +814,18 @@ EntityPath ActOspfStatisticsRpc::Instance::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> ActOspfStatisticsRpc::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfStatisticsRpc::Input::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsRpc::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsRpc::Input::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfStatisticsRpc::Instance::set_value(const std::string & value_path, std::string value)
+void ActOspfStatisticsRpc::Input::Instance::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "instance-identifier")
     {
@@ -664,14 +835,9 @@ void ActOspfStatisticsRpc::Instance::set_value(const std::string & value_path, s
 
 ActOspfStatisticsNeighborRpc::ActOspfStatisticsNeighborRpc()
     :
-    instance(std::make_shared<ActOspfStatisticsNeighborRpc::Instance>())
-	,neighbor(std::make_shared<ActOspfStatisticsNeighborRpc::Neighbor>())
+    input(std::make_shared<ActOspfStatisticsNeighborRpc::Input>())
 {
-    instance->parent = this;
-    children["instance"] = instance;
-
-    neighbor->parent = this;
-    children["neighbor"] = neighbor;
+    input->parent = this;
 
     yang_name = "act-ospf-statistics-neighbor"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-act";
 }
@@ -682,15 +848,13 @@ ActOspfStatisticsNeighborRpc::~ActOspfStatisticsNeighborRpc()
 
 bool ActOspfStatisticsNeighborRpc::has_data() const
 {
-    return (instance !=  nullptr && instance->has_data())
-	|| (neighbor !=  nullptr && neighbor->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ActOspfStatisticsNeighborRpc::has_operation() const
 {
     return is_set(operation)
-	|| (instance !=  nullptr && instance->has_operation())
-	|| (neighbor !=  nullptr && neighbor->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ActOspfStatisticsNeighborRpc::get_segment_path() const
@@ -702,12 +866,12 @@ std::string ActOspfStatisticsNeighborRpc::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsNeighborRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsNeighborRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -722,64 +886,24 @@ EntityPath ActOspfStatisticsNeighborRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ActOspfStatisticsNeighborRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "instance")
-    {
-        if(instance != nullptr)
+        if(input == nullptr)
         {
-            children["instance"] = instance;
+            input = std::make_shared<ActOspfStatisticsNeighborRpc::Input>();
         }
-        else
-        {
-            instance = std::make_shared<ActOspfStatisticsNeighborRpc::Instance>();
-            instance->parent = this;
-            children["instance"] = instance;
-        }
-        return children.at("instance");
-    }
-
-    if(child_yang_name == "neighbor")
-    {
-        if(neighbor != nullptr)
-        {
-            children["neighbor"] = neighbor;
-        }
-        else
-        {
-            neighbor = std::make_shared<ActOspfStatisticsNeighborRpc::Neighbor>();
-            neighbor->parent = this;
-            children["neighbor"] = neighbor;
-        }
-        return children.at("neighbor");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsNeighborRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsNeighborRpc::get_children() const
 {
-    if(children.find("instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(instance != nullptr)
-        {
-            children["instance"] = instance;
-        }
-    }
-
-    if(children.find("neighbor") == children.end())
-    {
-        if(neighbor != nullptr)
-        {
-            children["neighbor"] = neighbor;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -809,29 +933,131 @@ augment_capabilities_function ActOspfStatisticsNeighborRpc::get_augment_capabili
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ActOspfStatisticsNeighborRpc::Instance::Instance()
+ActOspfStatisticsNeighborRpc::Input::Input()
+    :
+    instance(std::make_shared<ActOspfStatisticsNeighborRpc::Input::Instance>())
+	,neighbor(std::make_shared<ActOspfStatisticsNeighborRpc::Input::Neighbor>())
+{
+    instance->parent = this;
+
+    neighbor->parent = this;
+
+    yang_name = "input"; yang_parent_name = "act-ospf-statistics-neighbor";
+}
+
+ActOspfStatisticsNeighborRpc::Input::~Input()
+{
+}
+
+bool ActOspfStatisticsNeighborRpc::Input::has_data() const
+{
+    return (instance !=  nullptr && instance->has_data())
+	|| (neighbor !=  nullptr && neighbor->has_data());
+}
+
+bool ActOspfStatisticsNeighborRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| (instance !=  nullptr && instance->has_operation())
+	|| (neighbor !=  nullptr && neighbor->has_operation());
+}
+
+std::string ActOspfStatisticsNeighborRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActOspfStatisticsNeighborRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-neighbor/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActOspfStatisticsNeighborRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance")
+    {
+        if(instance == nullptr)
+        {
+            instance = std::make_shared<ActOspfStatisticsNeighborRpc::Input::Instance>();
+        }
+        return instance;
+    }
+
+    if(child_yang_name == "neighbor")
+    {
+        if(neighbor == nullptr)
+        {
+            neighbor = std::make_shared<ActOspfStatisticsNeighborRpc::Input::Neighbor>();
+        }
+        return neighbor;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsNeighborRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instance != nullptr)
+    {
+        children["instance"] = instance;
+    }
+
+    if(neighbor != nullptr)
+    {
+        children["neighbor"] = neighbor;
+    }
+
+    return children;
+}
+
+void ActOspfStatisticsNeighborRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+ActOspfStatisticsNeighborRpc::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
 {
-    yang_name = "instance"; yang_parent_name = "act-ospf-statistics-neighbor";
+    yang_name = "instance"; yang_parent_name = "input";
 }
 
-ActOspfStatisticsNeighborRpc::Instance::~Instance()
+ActOspfStatisticsNeighborRpc::Input::Instance::~Instance()
 {
 }
 
-bool ActOspfStatisticsNeighborRpc::Instance::has_data() const
+bool ActOspfStatisticsNeighborRpc::Input::Instance::has_data() const
 {
     return instance_identifier.is_set;
 }
 
-bool ActOspfStatisticsNeighborRpc::Instance::has_operation() const
+bool ActOspfStatisticsNeighborRpc::Input::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_identifier.operation);
 }
 
-std::string ActOspfStatisticsNeighborRpc::Instance::get_segment_path() const
+std::string ActOspfStatisticsNeighborRpc::Input::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
@@ -840,12 +1066,12 @@ std::string ActOspfStatisticsNeighborRpc::Instance::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsNeighborRpc::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsNeighborRpc::Input::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-neighbor/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-neighbor/input/" << get_segment_path();
     }
     else
     {
@@ -862,26 +1088,18 @@ EntityPath ActOspfStatisticsNeighborRpc::Instance::get_entity_path(Entity* ances
 
 }
 
-std::shared_ptr<Entity> ActOspfStatisticsNeighborRpc::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfStatisticsNeighborRpc::Input::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsNeighborRpc::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsNeighborRpc::Input::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfStatisticsNeighborRpc::Instance::set_value(const std::string & value_path, std::string value)
+void ActOspfStatisticsNeighborRpc::Input::Instance::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "instance-identifier")
     {
@@ -889,32 +1107,32 @@ void ActOspfStatisticsNeighborRpc::Instance::set_value(const std::string & value
     }
 }
 
-ActOspfStatisticsNeighborRpc::Neighbor::Neighbor()
+ActOspfStatisticsNeighborRpc::Input::Neighbor::Neighbor()
     :
     interface_name{YType::str, "interface-name"},
     neighbor_id{YType::str, "neighbor-id"}
 {
-    yang_name = "neighbor"; yang_parent_name = "act-ospf-statistics-neighbor";
+    yang_name = "neighbor"; yang_parent_name = "input";
 }
 
-ActOspfStatisticsNeighborRpc::Neighbor::~Neighbor()
+ActOspfStatisticsNeighborRpc::Input::Neighbor::~Neighbor()
 {
 }
 
-bool ActOspfStatisticsNeighborRpc::Neighbor::has_data() const
+bool ActOspfStatisticsNeighborRpc::Input::Neighbor::has_data() const
 {
     return interface_name.is_set
 	|| neighbor_id.is_set;
 }
 
-bool ActOspfStatisticsNeighborRpc::Neighbor::has_operation() const
+bool ActOspfStatisticsNeighborRpc::Input::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(neighbor_id.operation);
 }
 
-std::string ActOspfStatisticsNeighborRpc::Neighbor::get_segment_path() const
+std::string ActOspfStatisticsNeighborRpc::Input::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
@@ -923,12 +1141,12 @@ std::string ActOspfStatisticsNeighborRpc::Neighbor::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsNeighborRpc::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsNeighborRpc::Input::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-neighbor/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-neighbor/input/" << get_segment_path();
     }
     else
     {
@@ -946,26 +1164,18 @@ EntityPath ActOspfStatisticsNeighborRpc::Neighbor::get_entity_path(Entity* ances
 
 }
 
-std::shared_ptr<Entity> ActOspfStatisticsNeighborRpc::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfStatisticsNeighborRpc::Input::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsNeighborRpc::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsNeighborRpc::Input::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfStatisticsNeighborRpc::Neighbor::set_value(const std::string & value_path, std::string value)
+void ActOspfStatisticsNeighborRpc::Input::Neighbor::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {
@@ -979,14 +1189,9 @@ void ActOspfStatisticsNeighborRpc::Neighbor::set_value(const std::string & value
 
 ActOspfStatisticsInterfaceRpc::ActOspfStatisticsInterfaceRpc()
     :
-    instance(std::make_shared<ActOspfStatisticsInterfaceRpc::Instance>())
-	,interface(std::make_shared<ActOspfStatisticsInterfaceRpc::Interface>())
+    input(std::make_shared<ActOspfStatisticsInterfaceRpc::Input>())
 {
-    instance->parent = this;
-    children["instance"] = instance;
-
-    interface->parent = this;
-    children["interface"] = interface;
+    input->parent = this;
 
     yang_name = "act-ospf-statistics-interface"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-act";
 }
@@ -997,15 +1202,13 @@ ActOspfStatisticsInterfaceRpc::~ActOspfStatisticsInterfaceRpc()
 
 bool ActOspfStatisticsInterfaceRpc::has_data() const
 {
-    return (instance !=  nullptr && instance->has_data())
-	|| (interface !=  nullptr && interface->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ActOspfStatisticsInterfaceRpc::has_operation() const
 {
     return is_set(operation)
-	|| (instance !=  nullptr && instance->has_operation())
-	|| (interface !=  nullptr && interface->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ActOspfStatisticsInterfaceRpc::get_segment_path() const
@@ -1017,12 +1220,12 @@ std::string ActOspfStatisticsInterfaceRpc::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsInterfaceRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsInterfaceRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1037,64 +1240,24 @@ EntityPath ActOspfStatisticsInterfaceRpc::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> ActOspfStatisticsInterfaceRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "instance")
-    {
-        if(instance != nullptr)
+        if(input == nullptr)
         {
-            children["instance"] = instance;
+            input = std::make_shared<ActOspfStatisticsInterfaceRpc::Input>();
         }
-        else
-        {
-            instance = std::make_shared<ActOspfStatisticsInterfaceRpc::Instance>();
-            instance->parent = this;
-            children["instance"] = instance;
-        }
-        return children.at("instance");
-    }
-
-    if(child_yang_name == "interface")
-    {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
-        else
-        {
-            interface = std::make_shared<ActOspfStatisticsInterfaceRpc::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
-        }
-        return children.at("interface");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsInterfaceRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsInterfaceRpc::get_children() const
 {
-    if(children.find("instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(instance != nullptr)
-        {
-            children["instance"] = instance;
-        }
-    }
-
-    if(children.find("interface") == children.end())
-    {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -1124,29 +1287,131 @@ augment_capabilities_function ActOspfStatisticsInterfaceRpc::get_augment_capabil
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ActOspfStatisticsInterfaceRpc::Instance::Instance()
+ActOspfStatisticsInterfaceRpc::Input::Input()
+    :
+    instance(std::make_shared<ActOspfStatisticsInterfaceRpc::Input::Instance>())
+	,interface(std::make_shared<ActOspfStatisticsInterfaceRpc::Input::Interface>())
+{
+    instance->parent = this;
+
+    interface->parent = this;
+
+    yang_name = "input"; yang_parent_name = "act-ospf-statistics-interface";
+}
+
+ActOspfStatisticsInterfaceRpc::Input::~Input()
+{
+}
+
+bool ActOspfStatisticsInterfaceRpc::Input::has_data() const
+{
+    return (instance !=  nullptr && instance->has_data())
+	|| (interface !=  nullptr && interface->has_data());
+}
+
+bool ActOspfStatisticsInterfaceRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| (instance !=  nullptr && instance->has_operation())
+	|| (interface !=  nullptr && interface->has_operation());
+}
+
+std::string ActOspfStatisticsInterfaceRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActOspfStatisticsInterfaceRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-interface/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActOspfStatisticsInterfaceRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance")
+    {
+        if(instance == nullptr)
+        {
+            instance = std::make_shared<ActOspfStatisticsInterfaceRpc::Input::Instance>();
+        }
+        return instance;
+    }
+
+    if(child_yang_name == "interface")
+    {
+        if(interface == nullptr)
+        {
+            interface = std::make_shared<ActOspfStatisticsInterfaceRpc::Input::Interface>();
+        }
+        return interface;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsInterfaceRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instance != nullptr)
+    {
+        children["instance"] = instance;
+    }
+
+    if(interface != nullptr)
+    {
+        children["interface"] = interface;
+    }
+
+    return children;
+}
+
+void ActOspfStatisticsInterfaceRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+ActOspfStatisticsInterfaceRpc::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
 {
-    yang_name = "instance"; yang_parent_name = "act-ospf-statistics-interface";
+    yang_name = "instance"; yang_parent_name = "input";
 }
 
-ActOspfStatisticsInterfaceRpc::Instance::~Instance()
+ActOspfStatisticsInterfaceRpc::Input::Instance::~Instance()
 {
 }
 
-bool ActOspfStatisticsInterfaceRpc::Instance::has_data() const
+bool ActOspfStatisticsInterfaceRpc::Input::Instance::has_data() const
 {
     return instance_identifier.is_set;
 }
 
-bool ActOspfStatisticsInterfaceRpc::Instance::has_operation() const
+bool ActOspfStatisticsInterfaceRpc::Input::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_identifier.operation);
 }
 
-std::string ActOspfStatisticsInterfaceRpc::Instance::get_segment_path() const
+std::string ActOspfStatisticsInterfaceRpc::Input::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
@@ -1155,12 +1420,12 @@ std::string ActOspfStatisticsInterfaceRpc::Instance::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsInterfaceRpc::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsInterfaceRpc::Input::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-interface/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-interface/input/" << get_segment_path();
     }
     else
     {
@@ -1177,26 +1442,18 @@ EntityPath ActOspfStatisticsInterfaceRpc::Instance::get_entity_path(Entity* ance
 
 }
 
-std::shared_ptr<Entity> ActOspfStatisticsInterfaceRpc::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfStatisticsInterfaceRpc::Input::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsInterfaceRpc::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsInterfaceRpc::Input::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfStatisticsInterfaceRpc::Instance::set_value(const std::string & value_path, std::string value)
+void ActOspfStatisticsInterfaceRpc::Input::Instance::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "instance-identifier")
     {
@@ -1204,29 +1461,29 @@ void ActOspfStatisticsInterfaceRpc::Instance::set_value(const std::string & valu
     }
 }
 
-ActOspfStatisticsInterfaceRpc::Interface::Interface()
+ActOspfStatisticsInterfaceRpc::Input::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
-    yang_name = "interface"; yang_parent_name = "act-ospf-statistics-interface";
+    yang_name = "interface"; yang_parent_name = "input";
 }
 
-ActOspfStatisticsInterfaceRpc::Interface::~Interface()
+ActOspfStatisticsInterfaceRpc::Input::Interface::~Interface()
 {
 }
 
-bool ActOspfStatisticsInterfaceRpc::Interface::has_data() const
+bool ActOspfStatisticsInterfaceRpc::Input::Interface::has_data() const
 {
     return interface_name.is_set;
 }
 
-bool ActOspfStatisticsInterfaceRpc::Interface::has_operation() const
+bool ActOspfStatisticsInterfaceRpc::Input::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation);
 }
 
-std::string ActOspfStatisticsInterfaceRpc::Interface::get_segment_path() const
+std::string ActOspfStatisticsInterfaceRpc::Input::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
@@ -1235,12 +1492,12 @@ std::string ActOspfStatisticsInterfaceRpc::Interface::get_segment_path() const
 
 }
 
-EntityPath ActOspfStatisticsInterfaceRpc::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfStatisticsInterfaceRpc::Input::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-interface/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-statistics-interface/input/" << get_segment_path();
     }
     else
     {
@@ -1257,26 +1514,18 @@ EntityPath ActOspfStatisticsInterfaceRpc::Interface::get_entity_path(Entity* anc
 
 }
 
-std::shared_ptr<Entity> ActOspfStatisticsInterfaceRpc::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfStatisticsInterfaceRpc::Input::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfStatisticsInterfaceRpc::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfStatisticsInterfaceRpc::Input::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfStatisticsInterfaceRpc::Interface::set_value(const std::string & value_path, std::string value)
+void ActOspfStatisticsInterfaceRpc::Input::Interface::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {
@@ -1286,12 +1535,9 @@ void ActOspfStatisticsInterfaceRpc::Interface::set_value(const std::string & val
 
 ActOspfProcessRpc::ActOspfProcessRpc()
     :
-    process{YType::empty, "process"}
-    	,
-    instance(std::make_shared<ActOspfProcessRpc::Instance>())
+    input(std::make_shared<ActOspfProcessRpc::Input>())
 {
-    instance->parent = this;
-    children["instance"] = instance;
+    input->parent = this;
 
     yang_name = "act-ospf-process"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-act";
 }
@@ -1302,15 +1548,13 @@ ActOspfProcessRpc::~ActOspfProcessRpc()
 
 bool ActOspfProcessRpc::has_data() const
 {
-    return process.is_set
-	|| (instance !=  nullptr && instance->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ActOspfProcessRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(process.operation)
-	|| (instance !=  nullptr && instance->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ActOspfProcessRpc::get_segment_path() const
@@ -1322,18 +1566,17 @@ std::string ActOspfProcessRpc::get_segment_path() const
 
 }
 
-EntityPath ActOspfProcessRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfProcessRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process.is_set || is_set(process.operation)) leaf_name_data.push_back(process.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1343,41 +1586,24 @@ EntityPath ActOspfProcessRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ActOspfProcessRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "instance")
-    {
-        if(instance != nullptr)
+        if(input == nullptr)
         {
-            children["instance"] = instance;
+            input = std::make_shared<ActOspfProcessRpc::Input>();
         }
-        else
-        {
-            instance = std::make_shared<ActOspfProcessRpc::Instance>();
-            instance->parent = this;
-            children["instance"] = instance;
-        }
-        return children.at("instance");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfProcessRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfProcessRpc::get_children() const
 {
-    if(children.find("instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(instance != nullptr)
-        {
-            children["instance"] = instance;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -1385,10 +1611,6 @@ std::map<std::string, std::shared_ptr<Entity>> & ActOspfProcessRpc::get_children
 
 void ActOspfProcessRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "process")
-    {
-        process = value;
-    }
 }
 
 std::shared_ptr<Entity> ActOspfProcessRpc::clone_ptr() const
@@ -1411,29 +1633,121 @@ augment_capabilities_function ActOspfProcessRpc::get_augment_capabilities_functi
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ActOspfProcessRpc::Instance::Instance()
+ActOspfProcessRpc::Input::Input()
+    :
+    process{YType::empty, "process"}
+    	,
+    instance(std::make_shared<ActOspfProcessRpc::Input::Instance>())
+{
+    instance->parent = this;
+
+    yang_name = "input"; yang_parent_name = "act-ospf-process";
+}
+
+ActOspfProcessRpc::Input::~Input()
+{
+}
+
+bool ActOspfProcessRpc::Input::has_data() const
+{
+    return process.is_set
+	|| (instance !=  nullptr && instance->has_data());
+}
+
+bool ActOspfProcessRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(process.operation)
+	|| (instance !=  nullptr && instance->has_operation());
+}
+
+std::string ActOspfProcessRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActOspfProcessRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-process/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (process.is_set || is_set(process.operation)) leaf_name_data.push_back(process.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActOspfProcessRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance")
+    {
+        if(instance == nullptr)
+        {
+            instance = std::make_shared<ActOspfProcessRpc::Input::Instance>();
+        }
+        return instance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActOspfProcessRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instance != nullptr)
+    {
+        children["instance"] = instance;
+    }
+
+    return children;
+}
+
+void ActOspfProcessRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "process")
+    {
+        process = value;
+    }
+}
+
+ActOspfProcessRpc::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
 {
-    yang_name = "instance"; yang_parent_name = "act-ospf-process";
+    yang_name = "instance"; yang_parent_name = "input";
 }
 
-ActOspfProcessRpc::Instance::~Instance()
+ActOspfProcessRpc::Input::Instance::~Instance()
 {
 }
 
-bool ActOspfProcessRpc::Instance::has_data() const
+bool ActOspfProcessRpc::Input::Instance::has_data() const
 {
     return instance_identifier.is_set;
 }
 
-bool ActOspfProcessRpc::Instance::has_operation() const
+bool ActOspfProcessRpc::Input::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_identifier.operation);
 }
 
-std::string ActOspfProcessRpc::Instance::get_segment_path() const
+std::string ActOspfProcessRpc::Input::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
@@ -1442,12 +1756,12 @@ std::string ActOspfProcessRpc::Instance::get_segment_path() const
 
 }
 
-EntityPath ActOspfProcessRpc::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfProcessRpc::Input::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-process/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-process/input/" << get_segment_path();
     }
     else
     {
@@ -1464,26 +1778,18 @@ EntityPath ActOspfProcessRpc::Instance::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ActOspfProcessRpc::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfProcessRpc::Input::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfProcessRpc::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfProcessRpc::Input::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfProcessRpc::Instance::set_value(const std::string & value_path, std::string value)
+void ActOspfProcessRpc::Input::Instance::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "instance-identifier")
     {
@@ -1493,10 +1799,9 @@ void ActOspfProcessRpc::Instance::set_value(const std::string & value_path, std:
 
 ActOspfInstanceVrfRpc::ActOspfInstanceVrfRpc()
     :
-    instance(std::make_shared<ActOspfInstanceVrfRpc::Instance>())
+    input(std::make_shared<ActOspfInstanceVrfRpc::Input>())
 {
-    instance->parent = this;
-    children["instance"] = instance;
+    input->parent = this;
 
     yang_name = "act-ospf-instance-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-act";
 }
@@ -1507,13 +1812,13 @@ ActOspfInstanceVrfRpc::~ActOspfInstanceVrfRpc()
 
 bool ActOspfInstanceVrfRpc::has_data() const
 {
-    return (instance !=  nullptr && instance->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ActOspfInstanceVrfRpc::has_operation() const
 {
     return is_set(operation)
-	|| (instance !=  nullptr && instance->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ActOspfInstanceVrfRpc::get_segment_path() const
@@ -1525,12 +1830,12 @@ std::string ActOspfInstanceVrfRpc::get_segment_path() const
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1545,41 +1850,24 @@ EntityPath ActOspfInstanceVrfRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ActOspfInstanceVrfRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "instance")
-    {
-        if(instance != nullptr)
+        if(input == nullptr)
         {
-            children["instance"] = instance;
+            input = std::make_shared<ActOspfInstanceVrfRpc::Input>();
         }
-        else
-        {
-            instance = std::make_shared<ActOspfInstanceVrfRpc::Instance>();
-            instance->parent = this;
-            children["instance"] = instance;
-        }
-        return children.at("instance");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::get_children() const
 {
-    if(children.find("instance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(instance != nullptr)
-        {
-            children["instance"] = instance;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -1609,31 +1897,111 @@ augment_capabilities_function ActOspfInstanceVrfRpc::get_augment_capabilities_fu
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ActOspfInstanceVrfRpc::Instance::Instance()
+ActOspfInstanceVrfRpc::Input::Input()
+    :
+    instance(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance>())
+{
+    instance->parent = this;
+
+    yang_name = "input"; yang_parent_name = "act-ospf-instance-vrf";
+}
+
+ActOspfInstanceVrfRpc::Input::~Input()
+{
+}
+
+bool ActOspfInstanceVrfRpc::Input::has_data() const
+{
+    return (instance !=  nullptr && instance->has_data());
+}
+
+bool ActOspfInstanceVrfRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| (instance !=  nullptr && instance->has_operation());
+}
+
+std::string ActOspfInstanceVrfRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ActOspfInstanceVrfRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance")
+    {
+        if(instance == nullptr)
+        {
+            instance = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance>();
+        }
+        return instance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instance != nullptr)
+    {
+        children["instance"] = instance;
+    }
+
+    return children;
+}
+
+void ActOspfInstanceVrfRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+ActOspfInstanceVrfRpc::Input::Instance::Instance()
     :
     instance_identifier{YType::str, "instance-identifier"}
     	,
-    all(std::make_shared<ActOspfInstanceVrfRpc::Instance::All>())
-	,all_inclusive(std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive>())
-	,vrf(std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf>())
+    all(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All>())
+	,all_inclusive(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive>())
+	,vrf(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf>())
 {
     all->parent = this;
-    children["all"] = all;
 
     all_inclusive->parent = this;
-    children["all-inclusive"] = all_inclusive;
 
     vrf->parent = this;
-    children["vrf"] = vrf;
 
-    yang_name = "instance"; yang_parent_name = "act-ospf-instance-vrf";
+    yang_name = "instance"; yang_parent_name = "input";
 }
 
-ActOspfInstanceVrfRpc::Instance::~Instance()
+ActOspfInstanceVrfRpc::Input::Instance::~Instance()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::has_data() const
 {
     return instance_identifier.is_set
 	|| (all !=  nullptr && all->has_data())
@@ -1641,7 +2009,7 @@ bool ActOspfInstanceVrfRpc::Instance::has_data() const
 	|| (vrf !=  nullptr && vrf->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_identifier.operation)
@@ -1650,7 +2018,7 @@ bool ActOspfInstanceVrfRpc::Instance::has_operation() const
 	|| (vrf !=  nullptr && vrf->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
@@ -1659,12 +2027,12 @@ std::string ActOspfInstanceVrfRpc::Instance::get_segment_path() const
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/" << get_segment_path();
     }
     else
     {
@@ -1681,95 +2049,60 @@ EntityPath ActOspfInstanceVrfRpc::Instance::get_entity_path(Entity* ancestor) co
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "all")
     {
-        if(all != nullptr)
+        if(all == nullptr)
         {
-            children["all"] = all;
+            all = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All>();
         }
-        else
-        {
-            all = std::make_shared<ActOspfInstanceVrfRpc::Instance::All>();
-            all->parent = this;
-            children["all"] = all;
-        }
-        return children.at("all");
+        return all;
     }
 
     if(child_yang_name == "all-inclusive")
     {
-        if(all_inclusive != nullptr)
+        if(all_inclusive == nullptr)
         {
-            children["all-inclusive"] = all_inclusive;
+            all_inclusive = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive>();
         }
-        else
-        {
-            all_inclusive = std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive>();
-            all_inclusive->parent = this;
-            children["all-inclusive"] = all_inclusive;
-        }
-        return children.at("all-inclusive");
+        return all_inclusive;
     }
 
     if(child_yang_name == "vrf")
     {
-        if(vrf != nullptr)
+        if(vrf == nullptr)
         {
-            children["vrf"] = vrf;
+            vrf = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf>();
         }
-        else
-        {
-            vrf = std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf>();
-            vrf->parent = this;
-            children["vrf"] = vrf;
-        }
-        return children.at("vrf");
+        return vrf;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::get_children() const
 {
-    if(children.find("all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(all != nullptr)
     {
-        if(all != nullptr)
-        {
-            children["all"] = all;
-        }
+        children["all"] = all;
     }
 
-    if(children.find("all-inclusive") == children.end())
+    if(all_inclusive != nullptr)
     {
-        if(all_inclusive != nullptr)
-        {
-            children["all-inclusive"] = all_inclusive;
-        }
+        children["all-inclusive"] = all_inclusive;
     }
 
-    if(children.find("vrf") == children.end())
+    if(vrf != nullptr)
     {
-        if(vrf != nullptr)
-        {
-            children["vrf"] = vrf;
-        }
+        children["vrf"] = vrf;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "instance-identifier")
     {
@@ -1777,26 +2110,25 @@ void ActOspfInstanceVrfRpc::Instance::set_value(const std::string & value_path, 
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Vrf()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Vrf()
     :
     process{YType::empty, "process"},
     redistribution{YType::empty, "redistribution"},
     route{YType::empty, "route"},
     vrf_name{YType::str, "vrf-name"}
     	,
-    stats(std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats>())
+    stats(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats>())
 {
     stats->parent = this;
-    children["stats"] = stats;
 
     yang_name = "vrf"; yang_parent_name = "instance";
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::~Vrf()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::~Vrf()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::has_data() const
 {
     return process.is_set
 	|| redistribution.is_set
@@ -1805,7 +2137,7 @@ bool ActOspfInstanceVrfRpc::Instance::Vrf::has_data() const
 	|| (stats !=  nullptr && stats->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(process.operation)
@@ -1815,7 +2147,7 @@ bool ActOspfInstanceVrfRpc::Instance::Vrf::has_operation() const
 	|| (stats !=  nullptr && stats->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::Vrf::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf";
@@ -1824,12 +2156,12 @@ std::string ActOspfInstanceVrfRpc::Instance::Vrf::get_segment_path() const
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/" << get_segment_path();
     }
     else
     {
@@ -1849,49 +2181,32 @@ EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::get_entity_path(Entity* ancesto
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stats")
     {
-        if(stats != nullptr)
+        if(stats == nullptr)
         {
-            children["stats"] = stats;
+            stats = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats>();
         }
-        else
-        {
-            stats = std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats>();
-            stats->parent = this;
-            children["stats"] = stats;
-        }
-        return children.at("stats");
+        return stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::Vrf::get_children() const
 {
-    if(children.find("stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stats != nullptr)
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
+        children["stats"] = stats;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::Vrf::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::Vrf::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "process")
     {
@@ -1911,28 +2226,26 @@ void ActOspfInstanceVrfRpc::Instance::Vrf::set_value(const std::string & value_p
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Stats()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Stats()
     :
     message_queue{YType::empty, "message-queue"},
     spf{YType::empty, "spf"}
     	,
-    interface(std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface>())
-	,neighbor(std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor>())
+    interface(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface>())
+	,neighbor(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor>())
 {
     interface->parent = this;
-    children["interface"] = interface;
 
     neighbor->parent = this;
-    children["neighbor"] = neighbor;
 
     yang_name = "stats"; yang_parent_name = "vrf";
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::~Stats()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::~Stats()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::has_data() const
 {
     return message_queue.is_set
 	|| spf.is_set
@@ -1940,7 +2253,7 @@ bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::has_data() const
 	|| (neighbor !=  nullptr && neighbor->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::has_operation() const
 {
     return is_set(operation)
 	|| is_set(message_queue.operation)
@@ -1949,7 +2262,7 @@ bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::has_operation() const
 	|| (neighbor !=  nullptr && neighbor->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stats";
@@ -1958,12 +2271,12 @@ std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::get_segment_path() cons
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/vrf/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/vrf/" << get_segment_path();
     }
     else
     {
@@ -1981,72 +2294,46 @@ EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::get_entity_path(Entity* 
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::Vrf::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
+        if(interface == nullptr)
         {
-            children["interface"] = interface;
+            interface = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface>();
         }
-        else
-        {
-            interface = std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
-        }
-        return children.at("interface");
+        return interface;
     }
 
     if(child_yang_name == "neighbor")
     {
-        if(neighbor != nullptr)
+        if(neighbor == nullptr)
         {
-            children["neighbor"] = neighbor;
+            neighbor = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor>();
         }
-        else
-        {
-            neighbor = std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor>();
-            neighbor->parent = this;
-            children["neighbor"] = neighbor;
-        }
-        return children.at("neighbor");
+        return neighbor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::Vrf::Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::get_children() const
 {
-    if(children.find("interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
-    if(children.find("neighbor") == children.end())
+    if(neighbor != nullptr)
     {
-        if(neighbor != nullptr)
-        {
-            children["neighbor"] = neighbor;
-        }
+        children["neighbor"] = neighbor;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "message-queue")
     {
@@ -2058,29 +2345,29 @@ void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::set_value(const std::string & 
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::Interface()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
     yang_name = "interface"; yang_parent_name = "stats";
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::~Interface()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::~Interface()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::has_data() const
 {
     return interface_name.is_set;
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation);
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
@@ -2089,12 +2376,12 @@ std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::get_segment_
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/vrf/stats/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/vrf/stats/" << get_segment_path();
     }
     else
     {
@@ -2111,26 +2398,18 @@ EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::get_entity_pa
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Interface::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {
@@ -2138,36 +2417,35 @@ void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Interface::set_value(const std
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Neighbor()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Neighbor()
     :
     neighbor_id{YType::str, "neighbor-id"}
     	,
-    interface(std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface>())
+    interface(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface>())
 {
     interface->parent = this;
-    children["interface"] = interface;
 
     yang_name = "neighbor"; yang_parent_name = "stats";
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::~Neighbor()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::~Neighbor()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::has_data() const
 {
     return neighbor_id.is_set
 	|| (interface !=  nullptr && interface->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(neighbor_id.operation)
 	|| (interface !=  nullptr && interface->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
@@ -2176,12 +2454,12 @@ std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::get_segment_p
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/vrf/stats/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/vrf/stats/" << get_segment_path();
     }
     else
     {
@@ -2198,49 +2476,32 @@ EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::get_entity_pat
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
+        if(interface == nullptr)
         {
-            children["interface"] = interface;
+            interface = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface>();
         }
-        else
-        {
-            interface = std::make_shared<ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
-        }
-        return children.at("interface");
+        return interface;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::get_children() const
 {
-    if(children.find("interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "neighbor-id")
     {
@@ -2248,29 +2509,29 @@ void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::set_value(const std:
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::Interface()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
     yang_name = "interface"; yang_parent_name = "neighbor";
 }
 
-ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::~Interface()
+ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::~Interface()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::has_data() const
 {
     return interface_name.is_set;
 }
 
-bool ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation);
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
@@ -2279,12 +2540,12 @@ std::string ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::ge
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/vrf/stats/neighbor/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/vrf/stats/neighbor/" << get_segment_path();
     }
     else
     {
@@ -2301,26 +2562,18 @@ EntityPath ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::get
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {
@@ -2328,25 +2581,24 @@ void ActOspfInstanceVrfRpc::Instance::Vrf::Stats::Neighbor::Interface::set_value
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::All::All()
+ActOspfInstanceVrfRpc::Input::Instance::All::All()
     :
     process{YType::empty, "process"},
     redistribution{YType::empty, "redistribution"},
     route{YType::empty, "route"}
     	,
-    stats(std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats>())
+    stats(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats>())
 {
     stats->parent = this;
-    children["stats"] = stats;
 
     yang_name = "all"; yang_parent_name = "instance";
 }
 
-ActOspfInstanceVrfRpc::Instance::All::~All()
+ActOspfInstanceVrfRpc::Input::Instance::All::~All()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::has_data() const
 {
     return process.is_set
 	|| redistribution.is_set
@@ -2354,7 +2606,7 @@ bool ActOspfInstanceVrfRpc::Instance::All::has_data() const
 	|| (stats !=  nullptr && stats->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::has_operation() const
 {
     return is_set(operation)
 	|| is_set(process.operation)
@@ -2363,7 +2615,7 @@ bool ActOspfInstanceVrfRpc::Instance::All::has_operation() const
 	|| (stats !=  nullptr && stats->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::All::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
@@ -2372,12 +2624,12 @@ std::string ActOspfInstanceVrfRpc::Instance::All::get_segment_path() const
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::All::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::All::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/" << get_segment_path();
     }
     else
     {
@@ -2396,49 +2648,32 @@ EntityPath ActOspfInstanceVrfRpc::Instance::All::get_entity_path(Entity* ancesto
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stats")
     {
-        if(stats != nullptr)
+        if(stats == nullptr)
         {
-            children["stats"] = stats;
+            stats = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats>();
         }
-        else
-        {
-            stats = std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats>();
-            stats->parent = this;
-            children["stats"] = stats;
-        }
-        return children.at("stats");
+        return stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::All::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::All::get_children() const
 {
-    if(children.find("stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stats != nullptr)
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
+        children["stats"] = stats;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::All::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::All::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "process")
     {
@@ -2454,28 +2689,26 @@ void ActOspfInstanceVrfRpc::Instance::All::set_value(const std::string & value_p
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::Stats()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Stats()
     :
     message_queue{YType::empty, "message-queue"},
     spf{YType::empty, "spf"}
     	,
-    interface(std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats::Interface>())
-	,neighbor(std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor>())
+    interface(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface>())
+	,neighbor(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor>())
 {
     interface->parent = this;
-    children["interface"] = interface;
 
     neighbor->parent = this;
-    children["neighbor"] = neighbor;
 
     yang_name = "stats"; yang_parent_name = "all";
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::~Stats()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::~Stats()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::has_data() const
 {
     return message_queue.is_set
 	|| spf.is_set
@@ -2483,7 +2716,7 @@ bool ActOspfInstanceVrfRpc::Instance::All::Stats::has_data() const
 	|| (neighbor !=  nullptr && neighbor->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::has_operation() const
 {
     return is_set(operation)
 	|| is_set(message_queue.operation)
@@ -2492,7 +2725,7 @@ bool ActOspfInstanceVrfRpc::Instance::All::Stats::has_operation() const
 	|| (neighbor !=  nullptr && neighbor->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::All::Stats::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::All::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stats";
@@ -2501,12 +2734,12 @@ std::string ActOspfInstanceVrfRpc::Instance::All::Stats::get_segment_path() cons
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::All::Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all/" << get_segment_path();
     }
     else
     {
@@ -2524,72 +2757,46 @@ EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::get_entity_path(Entity* 
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::All::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
+        if(interface == nullptr)
         {
-            children["interface"] = interface;
+            interface = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface>();
         }
-        else
-        {
-            interface = std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
-        }
-        return children.at("interface");
+        return interface;
     }
 
     if(child_yang_name == "neighbor")
     {
-        if(neighbor != nullptr)
+        if(neighbor == nullptr)
         {
-            children["neighbor"] = neighbor;
+            neighbor = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor>();
         }
-        else
-        {
-            neighbor = std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor>();
-            neighbor->parent = this;
-            children["neighbor"] = neighbor;
-        }
-        return children.at("neighbor");
+        return neighbor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::All::Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::get_children() const
 {
-    if(children.find("interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
-    if(children.find("neighbor") == children.end())
+    if(neighbor != nullptr)
     {
-        if(neighbor != nullptr)
-        {
-            children["neighbor"] = neighbor;
-        }
+        children["neighbor"] = neighbor;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::All::Stats::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::All::Stats::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "message-queue")
     {
@@ -2601,29 +2808,29 @@ void ActOspfInstanceVrfRpc::Instance::All::Stats::set_value(const std::string & 
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::Interface()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
     yang_name = "interface"; yang_parent_name = "stats";
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::~Interface()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::~Interface()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::has_data() const
 {
     return interface_name.is_set;
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation);
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
@@ -2632,12 +2839,12 @@ std::string ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::get_segment_
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all/stats/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all/stats/" << get_segment_path();
     }
     else
     {
@@ -2654,26 +2861,18 @@ EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::get_entity_pa
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Interface::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {
@@ -2681,36 +2880,35 @@ void ActOspfInstanceVrfRpc::Instance::All::Stats::Interface::set_value(const std
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Neighbor()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Neighbor()
     :
     neighbor_id{YType::str, "neighbor-id"}
     	,
-    interface(std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface>())
+    interface(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface>())
 {
     interface->parent = this;
-    children["interface"] = interface;
 
     yang_name = "neighbor"; yang_parent_name = "stats";
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::~Neighbor()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::~Neighbor()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::has_data() const
 {
     return neighbor_id.is_set
 	|| (interface !=  nullptr && interface->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(neighbor_id.operation)
 	|| (interface !=  nullptr && interface->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
@@ -2719,12 +2917,12 @@ std::string ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::get_segment_p
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all/stats/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all/stats/" << get_segment_path();
     }
     else
     {
@@ -2741,49 +2939,32 @@ EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::get_entity_pat
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
+        if(interface == nullptr)
         {
-            children["interface"] = interface;
+            interface = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface>();
         }
-        else
-        {
-            interface = std::make_shared<ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
-        }
-        return children.at("interface");
+        return interface;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::get_children() const
 {
-    if(children.find("interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "neighbor-id")
     {
@@ -2791,29 +2972,29 @@ void ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::set_value(const std:
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::Interface()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
     yang_name = "interface"; yang_parent_name = "neighbor";
 }
 
-ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::~Interface()
+ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::~Interface()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::has_data() const
 {
     return interface_name.is_set;
 }
 
-bool ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation);
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
@@ -2822,12 +3003,12 @@ std::string ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::ge
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all/stats/neighbor/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all/stats/neighbor/" << get_segment_path();
     }
     else
     {
@@ -2844,26 +3025,18 @@ EntityPath ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::get
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {
@@ -2871,25 +3044,24 @@ void ActOspfInstanceVrfRpc::Instance::All::Stats::Neighbor::Interface::set_value
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::AllInclusive()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::AllInclusive()
     :
     process{YType::empty, "process"},
     redistribution{YType::empty, "redistribution"},
     route{YType::empty, "route"}
     	,
-    stats(std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats>())
+    stats(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats>())
 {
     stats->parent = this;
-    children["stats"] = stats;
 
     yang_name = "all-inclusive"; yang_parent_name = "instance";
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::~AllInclusive()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::~AllInclusive()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::has_data() const
 {
     return process.is_set
 	|| redistribution.is_set
@@ -2897,7 +3069,7 @@ bool ActOspfInstanceVrfRpc::Instance::AllInclusive::has_data() const
 	|| (stats !=  nullptr && stats->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::has_operation() const
 {
     return is_set(operation)
 	|| is_set(process.operation)
@@ -2906,7 +3078,7 @@ bool ActOspfInstanceVrfRpc::Instance::AllInclusive::has_operation() const
 	|| (stats !=  nullptr && stats->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all-inclusive";
@@ -2915,12 +3087,12 @@ std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::get_segment_path() co
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/" << get_segment_path();
     }
     else
     {
@@ -2939,49 +3111,32 @@ EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::get_entity_path(Entity
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::AllInclusive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stats")
     {
-        if(stats != nullptr)
+        if(stats == nullptr)
         {
-            children["stats"] = stats;
+            stats = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats>();
         }
-        else
-        {
-            stats = std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats>();
-            stats->parent = this;
-            children["stats"] = stats;
-        }
-        return children.at("stats");
+        return stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::AllInclusive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::get_children() const
 {
-    if(children.find("stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stats != nullptr)
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
+        children["stats"] = stats;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::AllInclusive::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "process")
     {
@@ -2997,28 +3152,26 @@ void ActOspfInstanceVrfRpc::Instance::AllInclusive::set_value(const std::string 
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Stats()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Stats()
     :
     message_queue{YType::empty, "message-queue"},
     spf{YType::empty, "spf"}
     	,
-    interface(std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface>())
-	,neighbor(std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor>())
+    interface(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface>())
+	,neighbor(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor>())
 {
     interface->parent = this;
-    children["interface"] = interface;
 
     neighbor->parent = this;
-    children["neighbor"] = neighbor;
 
     yang_name = "stats"; yang_parent_name = "all-inclusive";
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::~Stats()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::~Stats()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::has_data() const
 {
     return message_queue.is_set
 	|| spf.is_set
@@ -3026,7 +3179,7 @@ bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::has_data() const
 	|| (neighbor !=  nullptr && neighbor->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::has_operation() const
 {
     return is_set(operation)
 	|| is_set(message_queue.operation)
@@ -3035,7 +3188,7 @@ bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::has_operation() const
 	|| (neighbor !=  nullptr && neighbor->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stats";
@@ -3044,12 +3197,12 @@ std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::get_segment_pa
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all-inclusive/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all-inclusive/" << get_segment_path();
     }
     else
     {
@@ -3067,72 +3220,46 @@ EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::get_entity_path
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
+        if(interface == nullptr)
         {
-            children["interface"] = interface;
+            interface = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface>();
         }
-        else
-        {
-            interface = std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
-        }
-        return children.at("interface");
+        return interface;
     }
 
     if(child_yang_name == "neighbor")
     {
-        if(neighbor != nullptr)
+        if(neighbor == nullptr)
         {
-            children["neighbor"] = neighbor;
+            neighbor = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor>();
         }
-        else
-        {
-            neighbor = std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor>();
-            neighbor->parent = this;
-            children["neighbor"] = neighbor;
-        }
-        return children.at("neighbor");
+        return neighbor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::get_children() const
 {
-    if(children.find("interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
-    if(children.find("neighbor") == children.end())
+    if(neighbor != nullptr)
     {
-        if(neighbor != nullptr)
-        {
-            children["neighbor"] = neighbor;
-        }
+        children["neighbor"] = neighbor;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "message-queue")
     {
@@ -3144,29 +3271,29 @@ void ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::set_value(const std::
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::Interface()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
     yang_name = "interface"; yang_parent_name = "stats";
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::~Interface()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::~Interface()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::has_data() const
 {
     return interface_name.is_set;
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation);
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
@@ -3175,12 +3302,12 @@ std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::get
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all-inclusive/stats/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all-inclusive/stats/" << get_segment_path();
     }
     else
     {
@@ -3197,26 +3324,18 @@ EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::get_
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Interface::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {
@@ -3224,36 +3343,35 @@ void ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Interface::set_value(
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Neighbor()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Neighbor()
     :
     neighbor_id{YType::str, "neighbor-id"}
     	,
-    interface(std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface>())
+    interface(std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface>())
 {
     interface->parent = this;
-    children["interface"] = interface;
 
     yang_name = "neighbor"; yang_parent_name = "stats";
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::~Neighbor()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::~Neighbor()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::has_data() const
 {
     return neighbor_id.is_set
 	|| (interface !=  nullptr && interface->has_data());
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(neighbor_id.operation)
 	|| (interface !=  nullptr && interface->has_operation());
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
@@ -3262,12 +3380,12 @@ std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::get_
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all-inclusive/stats/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all-inclusive/stats/" << get_segment_path();
     }
     else
     {
@@ -3284,49 +3402,32 @@ EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::get_e
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
+        if(interface == nullptr)
         {
-            children["interface"] = interface;
+            interface = std::make_shared<ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface>();
         }
-        else
-        {
-            interface = std::make_shared<ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
-        }
-        return children.at("interface");
+        return interface;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::get_children() const
 {
-    if(children.find("interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "neighbor-id")
     {
@@ -3334,29 +3435,29 @@ void ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::set_value(c
     }
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::Interface()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
 {
     yang_name = "interface"; yang_parent_name = "neighbor";
 }
 
-ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::~Interface()
+ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::~Interface()
 {
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::has_data() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::has_data() const
 {
     return interface_name.is_set;
 }
 
-bool ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::has_operation() const
+bool ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation);
 }
 
-std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::get_segment_path() const
+std::string ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
@@ -3365,12 +3466,12 @@ std::string ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Inte
 
 }
 
-EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/instance/all-inclusive/stats/neighbor/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XR-ipv4-ospf-act:act-ospf-instance-vrf/input/instance/all-inclusive/stats/neighbor/" << get_segment_path();
     }
     else
     {
@@ -3387,26 +3488,18 @@ EntityPath ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Inter
 
 }
 
-std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ActOspfInstanceVrfRpc::Instance::AllInclusive::Stats::Neighbor::Interface::set_value(const std::string & value_path, std::string value)
+void ActOspfInstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "interface-name")
     {

@@ -17,9 +17,6 @@ class Openconfig_Hardware_ComponentIdentity : public virtual Identity
         ~Openconfig_Hardware_ComponentIdentity();
 
 
-
-
-
 }; // Openconfig_Hardware_ComponentIdentity
 
 class Openconfig_Software_ComponentIdentity : public virtual Identity
@@ -27,9 +24,6 @@ class Openconfig_Software_ComponentIdentity : public virtual Identity
     public:
         Openconfig_Software_ComponentIdentity();
         ~Openconfig_Software_ComponentIdentity();
-
-
-
 
 
 }; // Openconfig_Software_ComponentIdentity
@@ -41,8 +35,6 @@ class Operating_SystemIdentity : public openconfig_platform_types::Openconfig_So
         ~Operating_SystemIdentity();
 
 
-
-
 }; // Operating_SystemIdentity
 
 class LinecardIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
@@ -50,8 +42,6 @@ class LinecardIdentity : public openconfig_platform_types::Openconfig_Hardware_C
     public:
         LinecardIdentity();
         ~LinecardIdentity();
-
-
 
 
 }; // LinecardIdentity
@@ -63,8 +53,6 @@ class ModuleIdentity : public openconfig_platform_types::Openconfig_Hardware_Com
         ~ModuleIdentity();
 
 
-
-
 }; // ModuleIdentity
 
 class CpuIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
@@ -72,8 +60,6 @@ class CpuIdentity : public openconfig_platform_types::Openconfig_Hardware_Compon
     public:
         CpuIdentity();
         ~CpuIdentity();
-
-
 
 
 }; // CpuIdentity
@@ -85,8 +71,6 @@ class TransceiverIdentity : public openconfig_platform_types::Openconfig_Hardwar
         ~TransceiverIdentity();
 
 
-
-
 }; // TransceiverIdentity
 
 class ChassisIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
@@ -94,8 +78,6 @@ class ChassisIdentity : public openconfig_platform_types::Openconfig_Hardware_Co
     public:
         ChassisIdentity();
         ~ChassisIdentity();
-
-
 
 
 }; // ChassisIdentity
@@ -107,8 +89,6 @@ class FanIdentity : public openconfig_platform_types::Openconfig_Hardware_Compon
         ~FanIdentity();
 
 
-
-
 }; // FanIdentity
 
 class BackplaneIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
@@ -116,8 +96,6 @@ class BackplaneIdentity : public openconfig_platform_types::Openconfig_Hardware_
     public:
         BackplaneIdentity();
         ~BackplaneIdentity();
-
-
 
 
 }; // BackplaneIdentity
@@ -129,8 +107,6 @@ class SensorIdentity : public openconfig_platform_types::Openconfig_Hardware_Com
         ~SensorIdentity();
 
 
-
-
 }; // SensorIdentity
 
 class PortIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
@@ -140,8 +116,6 @@ class PortIdentity : public openconfig_platform_types::Openconfig_Hardware_Compo
         ~PortIdentity();
 
 
-
-
 }; // PortIdentity
 
 class Power_SupplyIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
@@ -149,8 +123,6 @@ class Power_SupplyIdentity : public openconfig_platform_types::Openconfig_Hardwa
     public:
         Power_SupplyIdentity();
         ~Power_SupplyIdentity();
-
-
 
 
 }; // Power_SupplyIdentity

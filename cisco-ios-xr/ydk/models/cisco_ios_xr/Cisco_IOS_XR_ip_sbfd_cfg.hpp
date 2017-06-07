@@ -18,25 +18,22 @@ class Sbfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class RemoteTarget; //type: Sbfd::RemoteTarget
         class LocalDiscriminator; //type: Sbfd::LocalDiscriminator
 
         std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator> local_discriminator;
         std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget> remote_target;
-
-
+        
 }; // Sbfd
 
 
@@ -48,21 +45,18 @@ class Sbfd::RemoteTarget : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4Addresses; //type: Sbfd::RemoteTarget::Ipv4Addresses
         class Ipv6Addresses; //type: Sbfd::RemoteTarget::Ipv6Addresses
 
         std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv4Addresses> ipv4_addresses;
         std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv6Addresses> ipv6_addresses;
-
-
+        
 }; // Sbfd::RemoteTarget
 
 
@@ -74,19 +68,16 @@ class Sbfd::RemoteTarget::Ipv4Addresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4Address; //type: Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address> > ipv4_address;
-
-
+        
 }; // Sbfd::RemoteTarget::Ipv4Addresses
 
 
@@ -98,20 +89,17 @@ class Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
         class RemoteDiscriminator; //type: Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator> > remote_discriminator;
-
-
+        
 }; // Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address
 
 
@@ -123,16 +111,13 @@ class Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_discriminator; //type: uint32
-
-
 
 }; // Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator
 
@@ -145,19 +130,16 @@ class Sbfd::RemoteTarget::Ipv6Addresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Address; //type: Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address> > ipv6_address;
-
-
+        
 }; // Sbfd::RemoteTarget::Ipv6Addresses
 
 
@@ -169,20 +151,17 @@ class Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
         class RemoteDiscriminator; //type: Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator> > remote_discriminator;
-
-
+        
 }; // Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address
 
 
@@ -194,16 +173,13 @@ class Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_discriminator; //type: uint32
-
-
 
 }; // Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator
 
@@ -216,13 +192,11 @@ class Sbfd::LocalDiscriminator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IntfDiscriminators; //type: Sbfd::LocalDiscriminator::IntfDiscriminators
         class DynamicDiscriminators; //type: Sbfd::LocalDiscriminator::DynamicDiscriminators
@@ -233,8 +207,7 @@ class Sbfd::LocalDiscriminator : public Entity
         std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::IntfDiscriminators> intf_discriminators;
         std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::Ipv4Discriminators> ipv4_discriminators;
         std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::Val32Discriminators> val32_discriminators;
-
-
+        
 }; // Sbfd::LocalDiscriminator
 
 
@@ -246,19 +219,16 @@ class Sbfd::LocalDiscriminator::IntfDiscriminators : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IntfDiscriminator; //type: Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator> > intf_discriminator;
-
-
+        
 }; // Sbfd::LocalDiscriminator::IntfDiscriminators
 
 
@@ -270,16 +240,13 @@ class Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // Sbfd::LocalDiscriminator::IntfDiscriminators::IntfDiscriminator
 
@@ -292,19 +259,16 @@ class Sbfd::LocalDiscriminator::DynamicDiscriminators : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DynamicDiscriminator; //type: Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator> > dynamic_discriminator;
-
-
+        
 }; // Sbfd::LocalDiscriminator::DynamicDiscriminators
 
 
@@ -316,16 +280,13 @@ class Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminator; //type: uint32
-
-
 
 }; // Sbfd::LocalDiscriminator::DynamicDiscriminators::DynamicDiscriminator
 
@@ -338,19 +299,16 @@ class Sbfd::LocalDiscriminator::Ipv4Discriminators : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4Discriminator; //type: Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator> > ipv4_discriminator;
-
-
+        
 }; // Sbfd::LocalDiscriminator::Ipv4Discriminators
 
 
@@ -362,16 +320,13 @@ class Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
-
 
 }; // Sbfd::LocalDiscriminator::Ipv4Discriminators::Ipv4Discriminator
 
@@ -384,19 +339,16 @@ class Sbfd::LocalDiscriminator::Val32Discriminators : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Val32Discriminator; //type: Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_sbfd_cfg::Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator> > val32_discriminator;
-
-
+        
 }; // Sbfd::LocalDiscriminator::Val32Discriminators
 
 
@@ -408,16 +360,13 @@ class Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminator; //type: uint32
-
-
 
 }; // Sbfd::LocalDiscriminator::Val32Discriminators::Val32Discriminator
 

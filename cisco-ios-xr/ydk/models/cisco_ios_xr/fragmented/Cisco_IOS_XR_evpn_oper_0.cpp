@@ -17,13 +17,10 @@ Evpn::Evpn()
 	,standby(std::make_shared<Evpn::Standby>())
 {
     active->parent = this;
-    children["active"] = active;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     standby->parent = this;
-    children["standby"] = standby;
 
     yang_name = "evpn"; yang_parent_name = "Cisco-IOS-XR-evpn-oper";
 }
@@ -56,12 +53,12 @@ std::string Evpn::get_segment_path() const
 
 }
 
-EntityPath Evpn::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -76,87 +73,52 @@ EntityPath Evpn::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active")
     {
-        if(active != nullptr)
-        {
-            children["active"] = active;
-        }
-        else
+        if(active == nullptr)
         {
             active = std::make_shared<Evpn::Active>();
-            active->parent = this;
-            children["active"] = active;
         }
-        return children.at("active");
+        return active;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Evpn::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     if(child_yang_name == "standby")
     {
-        if(standby != nullptr)
-        {
-            children["standby"] = standby;
-        }
-        else
+        if(standby == nullptr)
         {
             standby = std::make_shared<Evpn::Standby>();
-            standby->parent = this;
-            children["standby"] = standby;
         }
-        return children.at("standby");
+        return standby;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::get_children() const
 {
-    if(children.find("active") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(active != nullptr)
     {
-        if(active != nullptr)
-        {
-            children["active"] = active;
-        }
+        children["active"] = active;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
-    if(children.find("standby") == children.end())
+    if(standby != nullptr)
     {
-        if(standby != nullptr)
-        {
-            children["standby"] = standby;
-        }
+        children["standby"] = standby;
     }
 
     return children;
@@ -224,7 +186,7 @@ std::string Evpn::Nodes::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -247,15 +209,6 @@ EntityPath Evpn::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -263,28 +216,24 @@ std::shared_ptr<Entity> Evpn::Nodes::get_child_by_name(const std::string & child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -305,19 +254,14 @@ Evpn::Nodes::Node::Node()
 	,summary(std::make_shared<Evpn::Nodes::Node::Summary>())
 {
     ac_ids->parent = this;
-    children["ac-ids"] = ac_ids;
 
     ethernet_segments->parent = this;
-    children["ethernet-segments"] = ethernet_segments;
 
     evi_detail->parent = this;
-    children["evi-detail"] = evi_detail;
 
     evis->parent = this;
-    children["evis"] = evis;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -356,7 +300,7 @@ std::string Evpn::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -380,133 +324,80 @@ EntityPath Evpn::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac-ids")
     {
-        if(ac_ids != nullptr)
-        {
-            children["ac-ids"] = ac_ids;
-        }
-        else
+        if(ac_ids == nullptr)
         {
             ac_ids = std::make_shared<Evpn::Nodes::Node::AcIds>();
-            ac_ids->parent = this;
-            children["ac-ids"] = ac_ids;
         }
-        return children.at("ac-ids");
+        return ac_ids;
     }
 
     if(child_yang_name == "ethernet-segments")
     {
-        if(ethernet_segments != nullptr)
-        {
-            children["ethernet-segments"] = ethernet_segments;
-        }
-        else
+        if(ethernet_segments == nullptr)
         {
             ethernet_segments = std::make_shared<Evpn::Nodes::Node::EthernetSegments>();
-            ethernet_segments->parent = this;
-            children["ethernet-segments"] = ethernet_segments;
         }
-        return children.at("ethernet-segments");
+        return ethernet_segments;
     }
 
     if(child_yang_name == "evi-detail")
     {
-        if(evi_detail != nullptr)
-        {
-            children["evi-detail"] = evi_detail;
-        }
-        else
+        if(evi_detail == nullptr)
         {
             evi_detail = std::make_shared<Evpn::Nodes::Node::EviDetail>();
-            evi_detail->parent = this;
-            children["evi-detail"] = evi_detail;
         }
-        return children.at("evi-detail");
+        return evi_detail;
     }
 
     if(child_yang_name == "evis")
     {
-        if(evis != nullptr)
-        {
-            children["evis"] = evis;
-        }
-        else
+        if(evis == nullptr)
         {
             evis = std::make_shared<Evpn::Nodes::Node::Evis>();
-            evis->parent = this;
-            children["evis"] = evis;
         }
-        return children.at("evis");
+        return evis;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Evpn::Nodes::Node::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::get_children() const
 {
-    if(children.find("ac-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ac_ids != nullptr)
     {
-        if(ac_ids != nullptr)
-        {
-            children["ac-ids"] = ac_ids;
-        }
+        children["ac-ids"] = ac_ids;
     }
 
-    if(children.find("ethernet-segments") == children.end())
+    if(ethernet_segments != nullptr)
     {
-        if(ethernet_segments != nullptr)
-        {
-            children["ethernet-segments"] = ethernet_segments;
-        }
+        children["ethernet-segments"] = ethernet_segments;
     }
 
-    if(children.find("evi-detail") == children.end())
+    if(evi_detail != nullptr)
     {
-        if(evi_detail != nullptr)
-        {
-            children["evi-detail"] = evi_detail;
-        }
+        children["evi-detail"] = evi_detail;
     }
 
-    if(children.find("evis") == children.end())
+    if(evis != nullptr)
     {
-        if(evis != nullptr)
-        {
-            children["evis"] = evis;
-        }
+        children["evis"] = evis;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -558,7 +449,7 @@ std::string Evpn::Nodes::Node::Evis::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::Evis::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::Evis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -581,15 +472,6 @@ EntityPath Evpn::Nodes::Node::Evis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::Evis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evi")
     {
         for(auto const & c : evi)
@@ -597,28 +479,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::Evis::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::Evis::Evi>();
         c->parent = this;
-        evi.push_back(std::move(c));
-        children[segment_path] = evi.back();
-        return children.at(segment_path);
+        evi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::Evis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::Evis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -668,7 +546,7 @@ std::string Evpn::Nodes::Node::Evis::Evi::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::Evis::Evi::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::Evis::Evi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -695,20 +573,12 @@ EntityPath Evpn::Nodes::Node::Evis::Evi::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::Evis::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::Evis::Evi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::Evis::Evi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -829,7 +699,7 @@ std::string Evpn::Nodes::Node::Summary::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -875,20 +745,12 @@ EntityPath Evpn::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -994,10 +856,8 @@ Evpn::Nodes::Node::EviDetail::EviDetail()
 	,evi_children(std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren>())
 {
     elements->parent = this;
-    children["elements"] = elements;
 
     evi_children->parent = this;
-    children["evi-children"] = evi_children;
 
     yang_name = "evi-detail"; yang_parent_name = "node";
 }
@@ -1028,7 +888,7 @@ std::string Evpn::Nodes::Node::EviDetail::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1051,64 +911,38 @@ EntityPath Evpn::Nodes::Node::EviDetail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "elements")
     {
-        if(elements != nullptr)
-        {
-            children["elements"] = elements;
-        }
-        else
+        if(elements == nullptr)
         {
             elements = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements>();
-            elements->parent = this;
-            children["elements"] = elements;
         }
-        return children.at("elements");
+        return elements;
     }
 
     if(child_yang_name == "evi-children")
     {
-        if(evi_children != nullptr)
-        {
-            children["evi-children"] = evi_children;
-        }
-        else
+        if(evi_children == nullptr)
         {
             evi_children = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren>();
-            evi_children->parent = this;
-            children["evi-children"] = evi_children;
         }
-        return children.at("evi-children");
+        return evi_children;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::get_children() const
 {
-    if(children.find("elements") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(elements != nullptr)
     {
-        if(elements != nullptr)
-        {
-            children["elements"] = elements;
-        }
+        children["elements"] = elements;
     }
 
-    if(children.find("evi-children") == children.end())
+    if(evi_children != nullptr)
     {
-        if(evi_children != nullptr)
-        {
-            children["evi-children"] = evi_children;
-        }
+        children["evi-children"] = evi_children;
     }
 
     return children;
@@ -1156,7 +990,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1179,15 +1013,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "element")
     {
         for(auto const & c : element)
@@ -1195,28 +1020,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element>();
         c->parent = this;
-        element.push_back(std::move(c));
-        children[segment_path] = element.back();
-        return children.at(segment_path);
+        element.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : element)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1253,19 +1074,14 @@ Evpn::Nodes::Node::EviDetail::Elements::Element::Element()
 	,rt_auto_stitching(std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching>())
 {
     flow_label->parent = this;
-    children["flow-label"] = flow_label;
 
     rd_auto->parent = this;
-    children["rd-auto"] = rd_auto;
 
     rd_configured->parent = this;
-    children["rd-configured"] = rd_configured;
 
     rt_auto->parent = this;
-    children["rt-auto"] = rt_auto;
 
     rt_auto_stitching->parent = this;
-    children["rt-auto-stitching"] = rt_auto_stitching;
 
     yang_name = "element"; yang_parent_name = "elements";
 }
@@ -1336,7 +1152,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::get_segment_path() 
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1376,133 +1192,80 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::get_entity_path(Enti
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow-label")
     {
-        if(flow_label != nullptr)
-        {
-            children["flow-label"] = flow_label;
-        }
-        else
+        if(flow_label == nullptr)
         {
             flow_label = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel>();
-            flow_label->parent = this;
-            children["flow-label"] = flow_label;
         }
-        return children.at("flow-label");
+        return flow_label;
     }
 
     if(child_yang_name == "rd-auto")
     {
-        if(rd_auto != nullptr)
-        {
-            children["rd-auto"] = rd_auto;
-        }
-        else
+        if(rd_auto == nullptr)
         {
             rd_auto = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto>();
-            rd_auto->parent = this;
-            children["rd-auto"] = rd_auto;
         }
-        return children.at("rd-auto");
+        return rd_auto;
     }
 
     if(child_yang_name == "rd-configured")
     {
-        if(rd_configured != nullptr)
-        {
-            children["rd-configured"] = rd_configured;
-        }
-        else
+        if(rd_configured == nullptr)
         {
             rd_configured = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured>();
-            rd_configured->parent = this;
-            children["rd-configured"] = rd_configured;
         }
-        return children.at("rd-configured");
+        return rd_configured;
     }
 
     if(child_yang_name == "rt-auto")
     {
-        if(rt_auto != nullptr)
-        {
-            children["rt-auto"] = rt_auto;
-        }
-        else
+        if(rt_auto == nullptr)
         {
             rt_auto = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto>();
-            rt_auto->parent = this;
-            children["rt-auto"] = rt_auto;
         }
-        return children.at("rt-auto");
+        return rt_auto;
     }
 
     if(child_yang_name == "rt-auto-stitching")
     {
-        if(rt_auto_stitching != nullptr)
-        {
-            children["rt-auto-stitching"] = rt_auto_stitching;
-        }
-        else
+        if(rt_auto_stitching == nullptr)
         {
             rt_auto_stitching = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching>();
-            rt_auto_stitching->parent = this;
-            children["rt-auto-stitching"] = rt_auto_stitching;
         }
-        return children.at("rt-auto-stitching");
+        return rt_auto_stitching;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::get_children() const
 {
-    if(children.find("flow-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flow_label != nullptr)
     {
-        if(flow_label != nullptr)
-        {
-            children["flow-label"] = flow_label;
-        }
+        children["flow-label"] = flow_label;
     }
 
-    if(children.find("rd-auto") == children.end())
+    if(rd_auto != nullptr)
     {
-        if(rd_auto != nullptr)
-        {
-            children["rd-auto"] = rd_auto;
-        }
+        children["rd-auto"] = rd_auto;
     }
 
-    if(children.find("rd-configured") == children.end())
+    if(rd_configured != nullptr)
     {
-        if(rd_configured != nullptr)
-        {
-            children["rd-configured"] = rd_configured;
-        }
+        children["rd-configured"] = rd_configured;
     }
 
-    if(children.find("rt-auto") == children.end())
+    if(rt_auto != nullptr)
     {
-        if(rt_auto != nullptr)
-        {
-            children["rt-auto"] = rt_auto;
-        }
+        children["rt-auto"] = rt_auto;
     }
 
-    if(children.find("rt-auto-stitching") == children.end())
+    if(rt_auto_stitching != nullptr)
     {
-        if(rt_auto_stitching != nullptr)
-        {
-            children["rt-auto-stitching"] = rt_auto_stitching;
-        }
+        children["rt-auto-stitching"] = rt_auto_stitching;
     }
 
     return children;
@@ -1614,7 +1377,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel::get_segm
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1639,20 +1402,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel::get_entit
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1678,16 +1433,12 @@ Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::RdAuto()
 	,v4_addr(std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-auto"; yang_parent_name = "element";
 }
@@ -1724,7 +1475,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::get_segment
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1748,110 +1499,66 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::get_entity_p
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -1899,7 +1606,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_::get_
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1924,20 +1631,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_::get_e
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1987,7 +1686,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs::
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2012,20 +1711,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs::g
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2075,7 +1766,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs:
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2100,20 +1791,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs::
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2163,7 +1846,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr::get
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2188,20 +1871,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr::get_
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2227,16 +1902,12 @@ Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::RdConfigured()
 	,v4_addr(std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-configured"; yang_parent_name = "element";
 }
@@ -2273,7 +1944,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::get_s
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2297,110 +1968,66 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::get_en
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -2448,7 +2075,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2473,20 +2100,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_:
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2536,7 +2155,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoBy
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2561,20 +2180,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByt
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2624,7 +2235,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourB
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2649,20 +2260,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourBy
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2712,7 +2315,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Add
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2737,20 +2340,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2776,16 +2371,12 @@ Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::RtAuto()
 	,v4_addr(std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rt-auto"; yang_parent_name = "element";
 }
@@ -2822,7 +2413,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::get_segment
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2846,110 +2437,66 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::get_entity_p
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -2997,7 +2544,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs::
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3022,20 +2569,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs::g
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3085,7 +2624,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs:
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3110,20 +2649,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs::
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3173,7 +2704,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr::get
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3198,20 +2729,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr::get_
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3261,7 +2784,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport::g
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3286,20 +2809,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport::ge
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3325,16 +2840,12 @@ Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::RtAutoStitchin
 	,v4_addr(std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rt-auto-stitching"; yang_parent_name = "element";
 }
@@ -3371,7 +2882,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::ge
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3395,110 +2906,66 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::get
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -3546,7 +3013,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::Tw
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3571,20 +3038,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::Two
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3634,7 +3093,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::Fo
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3659,20 +3118,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::Fou
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3722,7 +3173,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3747,20 +3198,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4A
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3810,7 +3253,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::Es
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3835,20 +3278,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsI
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3873,19 +3308,14 @@ Evpn::Nodes::Node::EviDetail::EviChildren::EviChildren()
 	,route_targets(std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets>())
 {
     ethernet_auto_discoveries->parent = this;
-    children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
 
     inclusive_multicasts->parent = this;
-    children["inclusive-multicasts"] = inclusive_multicasts;
 
     macs->parent = this;
-    children["macs"] = macs;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     route_targets->parent = this;
-    children["route-targets"] = route_targets;
 
     yang_name = "evi-children"; yang_parent_name = "evi-detail";
 }
@@ -3922,7 +3352,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3945,133 +3375,80 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-auto-discoveries")
     {
-        if(ethernet_auto_discoveries != nullptr)
-        {
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
-        }
-        else
+        if(ethernet_auto_discoveries == nullptr)
         {
             ethernet_auto_discoveries = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries>();
-            ethernet_auto_discoveries->parent = this;
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
         }
-        return children.at("ethernet-auto-discoveries");
+        return ethernet_auto_discoveries;
     }
 
     if(child_yang_name == "inclusive-multicasts")
     {
-        if(inclusive_multicasts != nullptr)
-        {
-            children["inclusive-multicasts"] = inclusive_multicasts;
-        }
-        else
+        if(inclusive_multicasts == nullptr)
         {
             inclusive_multicasts = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts>();
-            inclusive_multicasts->parent = this;
-            children["inclusive-multicasts"] = inclusive_multicasts;
         }
-        return children.at("inclusive-multicasts");
+        return inclusive_multicasts;
     }
 
     if(child_yang_name == "macs")
     {
-        if(macs != nullptr)
-        {
-            children["macs"] = macs;
-        }
-        else
+        if(macs == nullptr)
         {
             macs = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::Macs>();
-            macs->parent = this;
-            children["macs"] = macs;
         }
-        return children.at("macs");
+        return macs;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "route-targets")
     {
-        if(route_targets != nullptr)
-        {
-            children["route-targets"] = route_targets;
-        }
-        else
+        if(route_targets == nullptr)
         {
             route_targets = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets>();
-            route_targets->parent = this;
-            children["route-targets"] = route_targets;
         }
-        return children.at("route-targets");
+        return route_targets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::get_children() const
 {
-    if(children.find("ethernet-auto-discoveries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet_auto_discoveries != nullptr)
     {
-        if(ethernet_auto_discoveries != nullptr)
-        {
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
-        }
+        children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
     }
 
-    if(children.find("inclusive-multicasts") == children.end())
+    if(inclusive_multicasts != nullptr)
     {
-        if(inclusive_multicasts != nullptr)
-        {
-            children["inclusive-multicasts"] = inclusive_multicasts;
-        }
+        children["inclusive-multicasts"] = inclusive_multicasts;
     }
 
-    if(children.find("macs") == children.end())
+    if(macs != nullptr)
     {
-        if(macs != nullptr)
-        {
-            children["macs"] = macs;
-        }
+        children["macs"] = macs;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("route-targets") == children.end())
+    if(route_targets != nullptr)
     {
-        if(route_targets != nullptr)
-        {
-            children["route-targets"] = route_targets;
-        }
+        children["route-targets"] = route_targets;
     }
 
     return children;
@@ -4119,7 +3496,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::get_segment_pa
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4142,15 +3519,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::get_entity_path
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -4158,28 +3526,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4229,7 +3593,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4256,20 +3620,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_e
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4331,7 +3687,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4354,15 +3710,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::g
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-auto-discovery")
     {
         for(auto const & c : ethernet_auto_discovery)
@@ -4370,28 +3717,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoD
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery>();
         c->parent = this;
-        ethernet_auto_discovery.push_back(std::move(c));
-        children[segment_path] = ethernet_auto_discovery.back();
-        return children.at(segment_path);
+        ethernet_auto_discovery.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_auto_discovery)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4496,7 +3839,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4536,15 +3879,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::E
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-buffer")
     {
         for(auto const & c : path_buffer)
@@ -4552,28 +3886,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoD
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer>();
         c->parent = this;
-        path_buffer.push_back(std::move(c));
-        children[segment_path] = path_buffer.back();
-        return children.at(segment_path);
+        path_buffer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_buffer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4681,7 +4011,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4706,20 +4036,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::E
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4773,7 +4095,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::get_
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4796,15 +4118,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::get_e
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inclusive-multicast")
     {
         for(auto const & c : inclusive_multicast)
@@ -4812,28 +4125,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast>();
         c->parent = this;
-        inclusive_multicast.push_back(std::move(c));
-        children[segment_path] = inclusive_multicast.back();
-        return children.at(segment_path);
+        inclusive_multicast.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : inclusive_multicast)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4898,7 +4207,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::Incl
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4930,20 +4239,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::Inclu
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5025,7 +4326,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::get_segment
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5048,15 +4349,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::get_entity_p
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
         for(auto const & c : route_target)
@@ -5064,28 +4356,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(std::move(c));
-        children[segment_path] = route_target.back();
-        return children.at(segment_path);
+        route_target.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route_target)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5113,7 +4401,6 @@ Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarge
     route_target(std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_>())
 {
     route_target->parent = this;
-    children["route-target"] = route_target;
 
     yang_name = "route-target"; yang_parent_name = "route-targets";
 }
@@ -5166,7 +4453,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5201,41 +4488,24 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget:
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
-        if(route_target != nullptr)
-        {
-            children["route-target"] = route_target;
-        }
-        else
+        if(route_target == nullptr)
         {
             route_target = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_>();
-            route_target->parent = this;
-            children["route-target"] = route_target;
         }
-        return children.at("route-target");
+        return route_target;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::get_children() const
 {
-    if(children.find("route-target") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_target != nullptr)
     {
-        if(route_target != nullptr)
-        {
-            children["route-target"] = route_target;
-        }
+        children["route-target"] = route_target;
     }
 
     return children;
@@ -5303,16 +4573,12 @@ Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarge
 	,v4_addr(std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "route-target"; yang_parent_name = "route-target";
 }
@@ -5349,7 +4615,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5373,110 +4639,66 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget:
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -5524,7 +4746,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5549,20 +4771,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget:
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5612,7 +4826,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5637,20 +4851,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget:
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5700,7 +4906,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5725,20 +4931,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget:
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5788,7 +4986,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5813,20 +5011,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget:
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5880,7 +5070,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_segment_path() 
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5903,15 +5093,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_entity_path(Enti
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mac")
     {
         for(auto const & c : mac)
@@ -5919,28 +5100,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac>();
         c->parent = this;
-        mac.push_back(std::move(c));
-        children[segment_path] = mac.back();
-        return children.at(segment_path);
+        mac.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mac)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6081,7 +5258,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_segment_pa
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6131,15 +5308,6 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_entity_path
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-buffer")
     {
         for(auto const & c : path_buffer)
@@ -6147,28 +5315,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer>();
         c->parent = this;
-        path_buffer.push_back(std::move(c));
-        children[segment_path] = path_buffer.back();
-        return children.at(segment_path);
+        path_buffer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_buffer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6312,7 +5476,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::ge
 
 }
 
-EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6337,20 +5501,12 @@ EntityPath Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::get
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6404,7 +5560,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::EthernetSegments::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EthernetSegments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6427,15 +5583,6 @@ EntityPath Evpn::Nodes::Node::EthernetSegments::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EthernetSegments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-segment")
     {
         for(auto const & c : ethernet_segment)
@@ -6443,28 +5590,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EthernetSegments::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EthernetSegments::EthernetSegment>();
         c->parent = this;
-        ethernet_segment.push_back(std::move(c));
-        children[segment_path] = ethernet_segment.back();
-        return children.at(segment_path);
+        ethernet_segment.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EthernetSegments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EthernetSegments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_segment)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6684,7 +5827,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_segment_pa
 
 }
 
-EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6753,15 +5896,6 @@ EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_entity_path
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop")
     {
         for(auto const & c : next_hop)
@@ -6769,15 +5903,13 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop>();
         c->parent = this;
-        next_hop.push_back(std::move(c));
-        children[segment_path] = next_hop.back();
-        return children.at(segment_path);
+        next_hop.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "remote-split-horizon-group-label")
@@ -6787,36 +5919,29 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel>();
         c->parent = this;
-        remote_split_horizon_group_label.push_back(std::move(c));
-        children[segment_path] = remote_split_horizon_group_label.back();
-        return children.at(segment_path);
+        remote_split_horizon_group_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : remote_split_horizon_group_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7025,7 +6150,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_s
 
 }
 
-EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7049,20 +6174,12 @@ EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_en
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7108,7 +6225,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHor
 
 }
 
-EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7133,20 +6250,12 @@ EntityPath Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHori
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7200,7 +6309,7 @@ std::string Evpn::Nodes::Node::AcIds::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::AcIds::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::AcIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7223,15 +6332,6 @@ EntityPath Evpn::Nodes::Node::AcIds::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::AcIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac-id")
     {
         for(auto const & c : ac_id)
@@ -7239,28 +6339,24 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::AcIds::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Nodes::Node::AcIds::AcId>();
         c->parent = this;
-        ac_id.push_back(std::move(c));
-        children[segment_path] = ac_id.back();
-        return children.at(segment_path);
+        ac_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::AcIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::AcIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ac_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7310,7 +6406,7 @@ std::string Evpn::Nodes::Node::AcIds::AcId::get_segment_path() const
 
 }
 
-EntityPath Evpn::Nodes::Node::AcIds::AcId::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Nodes::Node::AcIds::AcId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7337,20 +6433,12 @@ EntityPath Evpn::Nodes::Node::AcIds::AcId::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Evpn::Nodes::Node::AcIds::AcId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Nodes::Node::AcIds::AcId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::AcIds::AcId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7383,19 +6471,14 @@ Evpn::Active::Active()
 	,summary(std::make_shared<Evpn::Active::Summary>())
 {
     ac_ids->parent = this;
-    children["ac-ids"] = ac_ids;
 
     ethernet_segments->parent = this;
-    children["ethernet-segments"] = ethernet_segments;
 
     evi_detail->parent = this;
-    children["evi-detail"] = evi_detail;
 
     evis->parent = this;
-    children["evis"] = evis;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "active"; yang_parent_name = "evpn";
 }
@@ -7432,7 +6515,7 @@ std::string Evpn::Active::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7455,133 +6538,80 @@ EntityPath Evpn::Active::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac-ids")
     {
-        if(ac_ids != nullptr)
-        {
-            children["ac-ids"] = ac_ids;
-        }
-        else
+        if(ac_ids == nullptr)
         {
             ac_ids = std::make_shared<Evpn::Active::AcIds>();
-            ac_ids->parent = this;
-            children["ac-ids"] = ac_ids;
         }
-        return children.at("ac-ids");
+        return ac_ids;
     }
 
     if(child_yang_name == "ethernet-segments")
     {
-        if(ethernet_segments != nullptr)
-        {
-            children["ethernet-segments"] = ethernet_segments;
-        }
-        else
+        if(ethernet_segments == nullptr)
         {
             ethernet_segments = std::make_shared<Evpn::Active::EthernetSegments>();
-            ethernet_segments->parent = this;
-            children["ethernet-segments"] = ethernet_segments;
         }
-        return children.at("ethernet-segments");
+        return ethernet_segments;
     }
 
     if(child_yang_name == "evi-detail")
     {
-        if(evi_detail != nullptr)
-        {
-            children["evi-detail"] = evi_detail;
-        }
-        else
+        if(evi_detail == nullptr)
         {
             evi_detail = std::make_shared<Evpn::Active::EviDetail>();
-            evi_detail->parent = this;
-            children["evi-detail"] = evi_detail;
         }
-        return children.at("evi-detail");
+        return evi_detail;
     }
 
     if(child_yang_name == "evis")
     {
-        if(evis != nullptr)
-        {
-            children["evis"] = evis;
-        }
-        else
+        if(evis == nullptr)
         {
             evis = std::make_shared<Evpn::Active::Evis>();
-            evis->parent = this;
-            children["evis"] = evis;
         }
-        return children.at("evis");
+        return evis;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Evpn::Active::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::get_children() const
 {
-    if(children.find("ac-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ac_ids != nullptr)
     {
-        if(ac_ids != nullptr)
-        {
-            children["ac-ids"] = ac_ids;
-        }
+        children["ac-ids"] = ac_ids;
     }
 
-    if(children.find("ethernet-segments") == children.end())
+    if(ethernet_segments != nullptr)
     {
-        if(ethernet_segments != nullptr)
-        {
-            children["ethernet-segments"] = ethernet_segments;
-        }
+        children["ethernet-segments"] = ethernet_segments;
     }
 
-    if(children.find("evi-detail") == children.end())
+    if(evi_detail != nullptr)
     {
-        if(evi_detail != nullptr)
-        {
-            children["evi-detail"] = evi_detail;
-        }
+        children["evi-detail"] = evi_detail;
     }
 
-    if(children.find("evis") == children.end())
+    if(evis != nullptr)
     {
-        if(evis != nullptr)
-        {
-            children["evis"] = evis;
-        }
+        children["evis"] = evis;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -7629,7 +6659,7 @@ std::string Evpn::Active::Evis::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::Evis::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::Evis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7652,15 +6682,6 @@ EntityPath Evpn::Active::Evis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Active::Evis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evi")
     {
         for(auto const & c : evi)
@@ -7668,28 +6689,24 @@ std::shared_ptr<Entity> Evpn::Active::Evis::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::Evis::Evi>();
         c->parent = this;
-        evi.push_back(std::move(c));
-        children[segment_path] = evi.back();
-        return children.at(segment_path);
+        evi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::Evis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::Evis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7739,7 +6756,7 @@ std::string Evpn::Active::Evis::Evi::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::Evis::Evi::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::Evis::Evi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7766,20 +6783,12 @@ EntityPath Evpn::Active::Evis::Evi::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Active::Evis::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::Evis::Evi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::Evis::Evi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7900,7 +6909,7 @@ std::string Evpn::Active::Summary::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7946,20 +6955,12 @@ EntityPath Evpn::Active::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Active::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8065,10 +7066,8 @@ Evpn::Active::EviDetail::EviDetail()
 	,evi_children(std::make_shared<Evpn::Active::EviDetail::EviChildren>())
 {
     elements->parent = this;
-    children["elements"] = elements;
 
     evi_children->parent = this;
-    children["evi-children"] = evi_children;
 
     yang_name = "evi-detail"; yang_parent_name = "active";
 }
@@ -8099,7 +7098,7 @@ std::string Evpn::Active::EviDetail::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::EviDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8122,64 +7121,38 @@ EntityPath Evpn::Active::EviDetail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "elements")
     {
-        if(elements != nullptr)
-        {
-            children["elements"] = elements;
-        }
-        else
+        if(elements == nullptr)
         {
             elements = std::make_shared<Evpn::Active::EviDetail::Elements>();
-            elements->parent = this;
-            children["elements"] = elements;
         }
-        return children.at("elements");
+        return elements;
     }
 
     if(child_yang_name == "evi-children")
     {
-        if(evi_children != nullptr)
-        {
-            children["evi-children"] = evi_children;
-        }
-        else
+        if(evi_children == nullptr)
         {
             evi_children = std::make_shared<Evpn::Active::EviDetail::EviChildren>();
-            evi_children->parent = this;
-            children["evi-children"] = evi_children;
         }
-        return children.at("evi-children");
+        return evi_children;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::get_children() const
 {
-    if(children.find("elements") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(elements != nullptr)
     {
-        if(elements != nullptr)
-        {
-            children["elements"] = elements;
-        }
+        children["elements"] = elements;
     }
 
-    if(children.find("evi-children") == children.end())
+    if(evi_children != nullptr)
     {
-        if(evi_children != nullptr)
-        {
-            children["evi-children"] = evi_children;
-        }
+        children["evi-children"] = evi_children;
     }
 
     return children;
@@ -8227,7 +7200,7 @@ std::string Evpn::Active::EviDetail::Elements::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8250,15 +7223,6 @@ EntityPath Evpn::Active::EviDetail::Elements::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "element")
     {
         for(auto const & c : element)
@@ -8266,28 +7230,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::Elements::Element>();
         c->parent = this;
-        element.push_back(std::move(c));
-        children[segment_path] = element.back();
-        return children.at(segment_path);
+        element.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : element)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8324,19 +7284,14 @@ Evpn::Active::EviDetail::Elements::Element::Element()
 	,rt_auto_stitching(std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAutoStitching>())
 {
     flow_label->parent = this;
-    children["flow-label"] = flow_label;
 
     rd_auto->parent = this;
-    children["rd-auto"] = rd_auto;
 
     rd_configured->parent = this;
-    children["rd-configured"] = rd_configured;
 
     rt_auto->parent = this;
-    children["rt-auto"] = rt_auto;
 
     rt_auto_stitching->parent = this;
-    children["rt-auto-stitching"] = rt_auto_stitching;
 
     yang_name = "element"; yang_parent_name = "elements";
 }
@@ -8407,7 +7362,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8447,133 +7402,80 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow-label")
     {
-        if(flow_label != nullptr)
-        {
-            children["flow-label"] = flow_label;
-        }
-        else
+        if(flow_label == nullptr)
         {
             flow_label = std::make_shared<Evpn::Active::EviDetail::Elements::Element::FlowLabel>();
-            flow_label->parent = this;
-            children["flow-label"] = flow_label;
         }
-        return children.at("flow-label");
+        return flow_label;
     }
 
     if(child_yang_name == "rd-auto")
     {
-        if(rd_auto != nullptr)
-        {
-            children["rd-auto"] = rd_auto;
-        }
-        else
+        if(rd_auto == nullptr)
         {
             rd_auto = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdAuto>();
-            rd_auto->parent = this;
-            children["rd-auto"] = rd_auto;
         }
-        return children.at("rd-auto");
+        return rd_auto;
     }
 
     if(child_yang_name == "rd-configured")
     {
-        if(rd_configured != nullptr)
-        {
-            children["rd-configured"] = rd_configured;
-        }
-        else
+        if(rd_configured == nullptr)
         {
             rd_configured = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdConfigured>();
-            rd_configured->parent = this;
-            children["rd-configured"] = rd_configured;
         }
-        return children.at("rd-configured");
+        return rd_configured;
     }
 
     if(child_yang_name == "rt-auto")
     {
-        if(rt_auto != nullptr)
-        {
-            children["rt-auto"] = rt_auto;
-        }
-        else
+        if(rt_auto == nullptr)
         {
             rt_auto = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAuto>();
-            rt_auto->parent = this;
-            children["rt-auto"] = rt_auto;
         }
-        return children.at("rt-auto");
+        return rt_auto;
     }
 
     if(child_yang_name == "rt-auto-stitching")
     {
-        if(rt_auto_stitching != nullptr)
-        {
-            children["rt-auto-stitching"] = rt_auto_stitching;
-        }
-        else
+        if(rt_auto_stitching == nullptr)
         {
             rt_auto_stitching = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAutoStitching>();
-            rt_auto_stitching->parent = this;
-            children["rt-auto-stitching"] = rt_auto_stitching;
         }
-        return children.at("rt-auto-stitching");
+        return rt_auto_stitching;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::get_children() const
 {
-    if(children.find("flow-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flow_label != nullptr)
     {
-        if(flow_label != nullptr)
-        {
-            children["flow-label"] = flow_label;
-        }
+        children["flow-label"] = flow_label;
     }
 
-    if(children.find("rd-auto") == children.end())
+    if(rd_auto != nullptr)
     {
-        if(rd_auto != nullptr)
-        {
-            children["rd-auto"] = rd_auto;
-        }
+        children["rd-auto"] = rd_auto;
     }
 
-    if(children.find("rd-configured") == children.end())
+    if(rd_configured != nullptr)
     {
-        if(rd_configured != nullptr)
-        {
-            children["rd-configured"] = rd_configured;
-        }
+        children["rd-configured"] = rd_configured;
     }
 
-    if(children.find("rt-auto") == children.end())
+    if(rt_auto != nullptr)
     {
-        if(rt_auto != nullptr)
-        {
-            children["rt-auto"] = rt_auto;
-        }
+        children["rt-auto"] = rt_auto;
     }
 
-    if(children.find("rt-auto-stitching") == children.end())
+    if(rt_auto_stitching != nullptr)
     {
-        if(rt_auto_stitching != nullptr)
-        {
-            children["rt-auto-stitching"] = rt_auto_stitching;
-        }
+        children["rt-auto-stitching"] = rt_auto_stitching;
     }
 
     return children;
@@ -8685,7 +7587,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::FlowLabel::get_segment_p
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::FlowLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::FlowLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8710,20 +7612,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::FlowLabel::get_entity_pat
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::FlowLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::FlowLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::FlowLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8749,16 +7643,12 @@ Evpn::Active::EviDetail::Elements::Element::RdAuto::RdAuto()
 	,v4_addr(std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-auto"; yang_parent_name = "element";
 }
@@ -8795,7 +7685,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdAuto::get_segment_path
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8819,110 +7709,66 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::get_entity_path(E
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdAuto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdAuto::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -8970,7 +7816,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_::get_segme
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8995,20 +7841,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_::get_entity
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9058,7 +7896,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_s
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9083,20 +7921,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_en
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9146,7 +7976,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs::get_
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9171,20 +8001,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs::get_e
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9234,7 +8056,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr::get_segm
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9259,20 +8081,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr::get_entit
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9298,16 +8112,12 @@ Evpn::Active::EviDetail::Elements::Element::RdConfigured::RdConfigured()
 	,v4_addr(std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-configured"; yang_parent_name = "element";
 }
@@ -9344,7 +8154,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdConfigured::get_segmen
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9368,110 +8178,66 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::get_entity_
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdConfigured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdConfigured::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdConfigured::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -9519,7 +8285,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_::get
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9544,20 +8310,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_::get_
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9607,7 +8365,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs:
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9632,20 +8390,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs::
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9695,7 +8445,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9720,20 +8470,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs:
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9783,7 +8525,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr::ge
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9808,20 +8550,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr::get
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9847,16 +8581,12 @@ Evpn::Active::EviDetail::Elements::Element::RtAuto::RtAuto()
 	,v4_addr(std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rt-auto"; yang_parent_name = "element";
 }
@@ -9893,7 +8623,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAuto::get_segment_path
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9917,110 +8647,66 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::get_entity_path(E
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAuto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAuto::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -10068,7 +8754,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_s
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10093,20 +8779,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_en
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10156,7 +8834,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs::get_
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10181,20 +8859,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs::get_e
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10244,7 +8914,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr::get_segm
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10269,20 +8939,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr::get_entit
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10332,7 +8994,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport::get_se
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10357,20 +9019,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport::get_ent
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10396,16 +9050,12 @@ Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::RtAutoStitching()
 	,v4_addr(std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rt-auto-stitching"; yang_parent_name = "element";
 }
@@ -10442,7 +9092,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::get_seg
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10466,110 +9116,66 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::get_enti
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -10617,7 +9223,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByte
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10642,20 +9248,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteA
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10705,7 +9303,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByt
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10730,20 +9328,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByte
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10793,7 +9383,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr:
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10818,20 +9408,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr::
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10881,7 +9463,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImpor
 
 }
 
-EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10906,20 +9488,12 @@ EntityPath Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10944,19 +9518,14 @@ Evpn::Active::EviDetail::EviChildren::EviChildren()
 	,route_targets(std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets>())
 {
     ethernet_auto_discoveries->parent = this;
-    children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
 
     inclusive_multicasts->parent = this;
-    children["inclusive-multicasts"] = inclusive_multicasts;
 
     macs->parent = this;
-    children["macs"] = macs;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     route_targets->parent = this;
-    children["route-targets"] = route_targets;
 
     yang_name = "evi-children"; yang_parent_name = "evi-detail";
 }
@@ -10993,7 +9562,7 @@ std::string Evpn::Active::EviDetail::EviChildren::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11016,133 +9585,80 @@ EntityPath Evpn::Active::EviDetail::EviChildren::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-auto-discoveries")
     {
-        if(ethernet_auto_discoveries != nullptr)
-        {
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
-        }
-        else
+        if(ethernet_auto_discoveries == nullptr)
         {
             ethernet_auto_discoveries = std::make_shared<Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries>();
-            ethernet_auto_discoveries->parent = this;
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
         }
-        return children.at("ethernet-auto-discoveries");
+        return ethernet_auto_discoveries;
     }
 
     if(child_yang_name == "inclusive-multicasts")
     {
-        if(inclusive_multicasts != nullptr)
-        {
-            children["inclusive-multicasts"] = inclusive_multicasts;
-        }
-        else
+        if(inclusive_multicasts == nullptr)
         {
             inclusive_multicasts = std::make_shared<Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts>();
-            inclusive_multicasts->parent = this;
-            children["inclusive-multicasts"] = inclusive_multicasts;
         }
-        return children.at("inclusive-multicasts");
+        return inclusive_multicasts;
     }
 
     if(child_yang_name == "macs")
     {
-        if(macs != nullptr)
-        {
-            children["macs"] = macs;
-        }
-        else
+        if(macs == nullptr)
         {
             macs = std::make_shared<Evpn::Active::EviDetail::EviChildren::Macs>();
-            macs->parent = this;
-            children["macs"] = macs;
         }
-        return children.at("macs");
+        return macs;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Evpn::Active::EviDetail::EviChildren::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "route-targets")
     {
-        if(route_targets != nullptr)
-        {
-            children["route-targets"] = route_targets;
-        }
-        else
+        if(route_targets == nullptr)
         {
             route_targets = std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets>();
-            route_targets->parent = this;
-            children["route-targets"] = route_targets;
         }
-        return children.at("route-targets");
+        return route_targets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::get_children() const
 {
-    if(children.find("ethernet-auto-discoveries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet_auto_discoveries != nullptr)
     {
-        if(ethernet_auto_discoveries != nullptr)
-        {
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
-        }
+        children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
     }
 
-    if(children.find("inclusive-multicasts") == children.end())
+    if(inclusive_multicasts != nullptr)
     {
-        if(inclusive_multicasts != nullptr)
-        {
-            children["inclusive-multicasts"] = inclusive_multicasts;
-        }
+        children["inclusive-multicasts"] = inclusive_multicasts;
     }
 
-    if(children.find("macs") == children.end())
+    if(macs != nullptr)
     {
-        if(macs != nullptr)
-        {
-            children["macs"] = macs;
-        }
+        children["macs"] = macs;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("route-targets") == children.end())
+    if(route_targets != nullptr)
     {
-        if(route_targets != nullptr)
-        {
-            children["route-targets"] = route_targets;
-        }
+        children["route-targets"] = route_targets;
     }
 
     return children;
@@ -11190,7 +9706,7 @@ std::string Evpn::Active::EviDetail::EviChildren::Neighbors::get_segment_path() 
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11213,15 +9729,6 @@ EntityPath Evpn::Active::EviDetail::EviChildren::Neighbors::get_entity_path(Enti
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -11229,28 +9736,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Neighbors::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11300,7 +9803,7 @@ std::string Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor::get_segme
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11327,20 +9830,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor::get_entity
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11402,7 +9897,7 @@ std::string Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::get_s
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11425,15 +9920,6 @@ EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::get_en
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-auto-discovery")
     {
         for(auto const & c : ethernet_auto_discovery)
@@ -11441,28 +9927,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscov
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery>();
         c->parent = this;
-        ethernet_auto_discovery.push_back(std::move(c));
-        children[segment_path] = ethernet_auto_discovery.back();
-        return children.at(segment_path);
+        ethernet_auto_discovery.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_auto_discovery)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11567,7 +10049,7 @@ std::string Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::Ether
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11607,15 +10089,6 @@ EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::Ethern
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-buffer")
     {
         for(auto const & c : path_buffer)
@@ -11623,28 +10096,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscov
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer>();
         c->parent = this;
-        path_buffer.push_back(std::move(c));
-        children[segment_path] = path_buffer.back();
-        return children.at(segment_path);
+        path_buffer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_buffer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11752,7 +10221,7 @@ std::string Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::Ether
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11777,20 +10246,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::Ethern
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11844,7 +10305,7 @@ std::string Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::get_segme
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11867,15 +10328,6 @@ EntityPath Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::get_entity
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inclusive-multicast")
     {
         for(auto const & c : inclusive_multicast)
@@ -11883,28 +10335,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::InclusiveMulticast
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast>();
         c->parent = this;
-        inclusive_multicast.push_back(std::move(c));
-        children[segment_path] = inclusive_multicast.back();
-        return children.at(segment_path);
+        inclusive_multicast.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : inclusive_multicast)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11969,7 +10417,7 @@ std::string Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::Inclusive
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12001,20 +10449,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveM
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12096,7 +10536,7 @@ std::string Evpn::Active::EviDetail::EviChildren::RouteTargets::get_segment_path
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12119,15 +10559,6 @@ EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::get_entity_path(E
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
         for(auto const & c : route_target)
@@ -12135,28 +10566,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(std::move(c));
-        children[segment_path] = route_target.back();
-        return children.at(segment_path);
+        route_target.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::RouteTargets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::RouteTargets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route_target)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12184,7 +10611,6 @@ Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget()
     route_target(std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_>())
 {
     route_target->parent = this;
-    children["route-target"] = route_target;
 
     yang_name = "route-target"; yang_parent_name = "route-targets";
 }
@@ -12237,7 +10663,7 @@ std::string Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::get
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12272,41 +10698,24 @@ EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::get_
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
-        if(route_target != nullptr)
-        {
-            children["route-target"] = route_target;
-        }
-        else
+        if(route_target == nullptr)
         {
             route_target = std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_>();
-            route_target->parent = this;
-            children["route-target"] = route_target;
         }
-        return children.at("route-target");
+        return route_target;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::get_children() const
 {
-    if(children.find("route-target") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_target != nullptr)
     {
-        if(route_target != nullptr)
-        {
-            children["route-target"] = route_target;
-        }
+        children["route-target"] = route_target;
     }
 
     return children;
@@ -12374,16 +10783,12 @@ Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::R
 	,v4_addr(std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "route-target"; yang_parent_name = "route-target";
 }
@@ -12420,7 +10825,7 @@ std::string Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12444,110 +10849,66 @@ EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -12595,7 +10956,7 @@ std::string Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12620,20 +10981,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12683,7 +11036,7 @@ std::string Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12708,20 +11061,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12771,7 +11116,7 @@ std::string Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12796,20 +11141,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12859,7 +11196,7 @@ std::string Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12884,20 +11221,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12951,7 +11280,7 @@ std::string Evpn::Active::EviDetail::EviChildren::Macs::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::Macs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::Macs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12974,15 +11303,6 @@ EntityPath Evpn::Active::EviDetail::EviChildren::Macs::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mac")
     {
         for(auto const & c : mac)
@@ -12990,28 +11310,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Macs::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::EviChildren::Macs::Mac>();
         c->parent = this;
-        mac.push_back(std::move(c));
-        children[segment_path] = mac.back();
-        return children.at(segment_path);
+        mac.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::Macs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::Macs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mac)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13152,7 +11468,7 @@ std::string Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_segment_path() 
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13202,15 +11518,6 @@ EntityPath Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_entity_path(Enti
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-buffer")
     {
         for(auto const & c : path_buffer)
@@ -13218,28 +11525,24 @@ std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer>();
         c->parent = this;
-        path_buffer.push_back(std::move(c));
-        children[segment_path] = path_buffer.back();
-        return children.at(segment_path);
+        path_buffer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::Macs::Mac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_buffer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13383,7 +11686,7 @@ std::string Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_seg
 
 }
 
-EntityPath Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13408,20 +11711,12 @@ EntityPath Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_enti
 
 std::shared_ptr<Entity> Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13475,7 +11770,7 @@ std::string Evpn::Active::EthernetSegments::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::EthernetSegments::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EthernetSegments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13498,15 +11793,6 @@ EntityPath Evpn::Active::EthernetSegments::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Evpn::Active::EthernetSegments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-segment")
     {
         for(auto const & c : ethernet_segment)
@@ -13514,28 +11800,24 @@ std::shared_ptr<Entity> Evpn::Active::EthernetSegments::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EthernetSegments::EthernetSegment>();
         c->parent = this;
-        ethernet_segment.push_back(std::move(c));
-        children[segment_path] = ethernet_segment.back();
-        return children.at(segment_path);
+        ethernet_segment.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EthernetSegments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EthernetSegments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_segment)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13755,7 +12037,7 @@ std::string Evpn::Active::EthernetSegments::EthernetSegment::get_segment_path() 
 
 }
 
-EntityPath Evpn::Active::EthernetSegments::EthernetSegment::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EthernetSegments::EthernetSegment::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13824,15 +12106,6 @@ EntityPath Evpn::Active::EthernetSegments::EthernetSegment::get_entity_path(Enti
 
 std::shared_ptr<Entity> Evpn::Active::EthernetSegments::EthernetSegment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop")
     {
         for(auto const & c : next_hop)
@@ -13840,15 +12113,13 @@ std::shared_ptr<Entity> Evpn::Active::EthernetSegments::EthernetSegment::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EthernetSegments::EthernetSegment::NextHop>();
         c->parent = this;
-        next_hop.push_back(std::move(c));
-        children[segment_path] = next_hop.back();
-        return children.at(segment_path);
+        next_hop.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "remote-split-horizon-group-label")
@@ -13858,36 +12129,29 @@ std::shared_ptr<Entity> Evpn::Active::EthernetSegments::EthernetSegment::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel>();
         c->parent = this;
-        remote_split_horizon_group_label.push_back(std::move(c));
-        children[segment_path] = remote_split_horizon_group_label.back();
-        return children.at(segment_path);
+        remote_split_horizon_group_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EthernetSegments::EthernetSegment::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EthernetSegments::EthernetSegment::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : remote_split_horizon_group_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14096,7 +12360,7 @@ std::string Evpn::Active::EthernetSegments::EthernetSegment::NextHop::get_segmen
 
 }
 
-EntityPath Evpn::Active::EthernetSegments::EthernetSegment::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EthernetSegments::EthernetSegment::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14120,20 +12384,12 @@ EntityPath Evpn::Active::EthernetSegments::EthernetSegment::NextHop::get_entity_
 
 std::shared_ptr<Entity> Evpn::Active::EthernetSegments::EthernetSegment::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EthernetSegments::EthernetSegment::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EthernetSegments::EthernetSegment::NextHop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14179,7 +12435,7 @@ std::string Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonG
 
 }
 
-EntityPath Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14204,20 +12460,12 @@ EntityPath Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGr
 
 std::shared_ptr<Entity> Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14271,7 +12519,7 @@ std::string Evpn::Active::AcIds::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::AcIds::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::AcIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14294,15 +12542,6 @@ EntityPath Evpn::Active::AcIds::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Active::AcIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac-id")
     {
         for(auto const & c : ac_id)
@@ -14310,28 +12549,24 @@ std::shared_ptr<Entity> Evpn::Active::AcIds::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Active::AcIds::AcId>();
         c->parent = this;
-        ac_id.push_back(std::move(c));
-        children[segment_path] = ac_id.back();
-        return children.at(segment_path);
+        ac_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::AcIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::AcIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ac_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14381,7 +12616,7 @@ std::string Evpn::Active::AcIds::AcId::get_segment_path() const
 
 }
 
-EntityPath Evpn::Active::AcIds::AcId::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Active::AcIds::AcId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14408,20 +12643,12 @@ EntityPath Evpn::Active::AcIds::AcId::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Active::AcIds::AcId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Active::AcIds::AcId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::AcIds::AcId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14454,19 +12681,14 @@ Evpn::Standby::Standby()
 	,summary(std::make_shared<Evpn::Standby::Summary>())
 {
     ac_ids->parent = this;
-    children["ac-ids"] = ac_ids;
 
     ethernet_segments->parent = this;
-    children["ethernet-segments"] = ethernet_segments;
 
     evi_detail->parent = this;
-    children["evi-detail"] = evi_detail;
 
     evis->parent = this;
-    children["evis"] = evis;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "standby"; yang_parent_name = "evpn";
 }
@@ -14503,7 +12725,7 @@ std::string Evpn::Standby::get_segment_path() const
 
 }
 
-EntityPath Evpn::Standby::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14526,133 +12748,80 @@ EntityPath Evpn::Standby::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Standby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac-ids")
     {
-        if(ac_ids != nullptr)
-        {
-            children["ac-ids"] = ac_ids;
-        }
-        else
+        if(ac_ids == nullptr)
         {
             ac_ids = std::make_shared<Evpn::Standby::AcIds>();
-            ac_ids->parent = this;
-            children["ac-ids"] = ac_ids;
         }
-        return children.at("ac-ids");
+        return ac_ids;
     }
 
     if(child_yang_name == "ethernet-segments")
     {
-        if(ethernet_segments != nullptr)
-        {
-            children["ethernet-segments"] = ethernet_segments;
-        }
-        else
+        if(ethernet_segments == nullptr)
         {
             ethernet_segments = std::make_shared<Evpn::Standby::EthernetSegments>();
-            ethernet_segments->parent = this;
-            children["ethernet-segments"] = ethernet_segments;
         }
-        return children.at("ethernet-segments");
+        return ethernet_segments;
     }
 
     if(child_yang_name == "evi-detail")
     {
-        if(evi_detail != nullptr)
-        {
-            children["evi-detail"] = evi_detail;
-        }
-        else
+        if(evi_detail == nullptr)
         {
             evi_detail = std::make_shared<Evpn::Standby::EviDetail>();
-            evi_detail->parent = this;
-            children["evi-detail"] = evi_detail;
         }
-        return children.at("evi-detail");
+        return evi_detail;
     }
 
     if(child_yang_name == "evis")
     {
-        if(evis != nullptr)
-        {
-            children["evis"] = evis;
-        }
-        else
+        if(evis == nullptr)
         {
             evis = std::make_shared<Evpn::Standby::Evis>();
-            evis->parent = this;
-            children["evis"] = evis;
         }
-        return children.at("evis");
+        return evis;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Evpn::Standby::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::get_children() const
 {
-    if(children.find("ac-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ac_ids != nullptr)
     {
-        if(ac_ids != nullptr)
-        {
-            children["ac-ids"] = ac_ids;
-        }
+        children["ac-ids"] = ac_ids;
     }
 
-    if(children.find("ethernet-segments") == children.end())
+    if(ethernet_segments != nullptr)
     {
-        if(ethernet_segments != nullptr)
-        {
-            children["ethernet-segments"] = ethernet_segments;
-        }
+        children["ethernet-segments"] = ethernet_segments;
     }
 
-    if(children.find("evi-detail") == children.end())
+    if(evi_detail != nullptr)
     {
-        if(evi_detail != nullptr)
-        {
-            children["evi-detail"] = evi_detail;
-        }
+        children["evi-detail"] = evi_detail;
     }
 
-    if(children.find("evis") == children.end())
+    if(evis != nullptr)
     {
-        if(evis != nullptr)
-        {
-            children["evis"] = evis;
-        }
+        children["evis"] = evis;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -14700,7 +12869,7 @@ std::string Evpn::Standby::Evis::get_segment_path() const
 
 }
 
-EntityPath Evpn::Standby::Evis::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::Evis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14723,15 +12892,6 @@ EntityPath Evpn::Standby::Evis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Standby::Evis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evi")
     {
         for(auto const & c : evi)
@@ -14739,28 +12899,24 @@ std::shared_ptr<Entity> Evpn::Standby::Evis::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::Evis::Evi>();
         c->parent = this;
-        evi.push_back(std::move(c));
-        children[segment_path] = evi.back();
-        return children.at(segment_path);
+        evi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::Evis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::Evis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14810,7 +12966,7 @@ std::string Evpn::Standby::Evis::Evi::get_segment_path() const
 
 }
 
-EntityPath Evpn::Standby::Evis::Evi::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::Evis::Evi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14837,20 +12993,12 @@ EntityPath Evpn::Standby::Evis::Evi::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Standby::Evis::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::Evis::Evi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::Evis::Evi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14971,7 +13119,7 @@ std::string Evpn::Standby::Summary::get_segment_path() const
 
 }
 
-EntityPath Evpn::Standby::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15017,20 +13165,12 @@ EntityPath Evpn::Standby::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Standby::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15136,10 +13276,8 @@ Evpn::Standby::EviDetail::EviDetail()
 	,evi_children(std::make_shared<Evpn::Standby::EviDetail::EviChildren>())
 {
     elements->parent = this;
-    children["elements"] = elements;
 
     evi_children->parent = this;
-    children["evi-children"] = evi_children;
 
     yang_name = "evi-detail"; yang_parent_name = "standby";
 }
@@ -15170,7 +13308,7 @@ std::string Evpn::Standby::EviDetail::get_segment_path() const
 
 }
 
-EntityPath Evpn::Standby::EviDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15193,64 +13331,38 @@ EntityPath Evpn::Standby::EviDetail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "elements")
     {
-        if(elements != nullptr)
-        {
-            children["elements"] = elements;
-        }
-        else
+        if(elements == nullptr)
         {
             elements = std::make_shared<Evpn::Standby::EviDetail::Elements>();
-            elements->parent = this;
-            children["elements"] = elements;
         }
-        return children.at("elements");
+        return elements;
     }
 
     if(child_yang_name == "evi-children")
     {
-        if(evi_children != nullptr)
-        {
-            children["evi-children"] = evi_children;
-        }
-        else
+        if(evi_children == nullptr)
         {
             evi_children = std::make_shared<Evpn::Standby::EviDetail::EviChildren>();
-            evi_children->parent = this;
-            children["evi-children"] = evi_children;
         }
-        return children.at("evi-children");
+        return evi_children;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::get_children() const
 {
-    if(children.find("elements") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(elements != nullptr)
     {
-        if(elements != nullptr)
-        {
-            children["elements"] = elements;
-        }
+        children["elements"] = elements;
     }
 
-    if(children.find("evi-children") == children.end())
+    if(evi_children != nullptr)
     {
-        if(evi_children != nullptr)
-        {
-            children["evi-children"] = evi_children;
-        }
+        children["evi-children"] = evi_children;
     }
 
     return children;
@@ -15298,7 +13410,7 @@ std::string Evpn::Standby::EviDetail::Elements::get_segment_path() const
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15321,15 +13433,6 @@ EntityPath Evpn::Standby::EviDetail::Elements::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "element")
     {
         for(auto const & c : element)
@@ -15337,28 +13440,24 @@ std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::EviDetail::Elements::Element>();
         c->parent = this;
-        element.push_back(std::move(c));
-        children[segment_path] = element.back();
-        return children.at(segment_path);
+        element.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : element)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15395,19 +13494,14 @@ Evpn::Standby::EviDetail::Elements::Element::Element()
 	,rt_auto_stitching(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching>())
 {
     flow_label->parent = this;
-    children["flow-label"] = flow_label;
 
     rd_auto->parent = this;
-    children["rd-auto"] = rd_auto;
 
     rd_configured->parent = this;
-    children["rd-configured"] = rd_configured;
 
     rt_auto->parent = this;
-    children["rt-auto"] = rt_auto;
 
     rt_auto_stitching->parent = this;
-    children["rt-auto-stitching"] = rt_auto_stitching;
 
     yang_name = "element"; yang_parent_name = "elements";
 }
@@ -15478,7 +13572,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::get_segment_path() cons
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15518,133 +13612,80 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow-label")
     {
-        if(flow_label != nullptr)
-        {
-            children["flow-label"] = flow_label;
-        }
-        else
+        if(flow_label == nullptr)
         {
             flow_label = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::FlowLabel>();
-            flow_label->parent = this;
-            children["flow-label"] = flow_label;
         }
-        return children.at("flow-label");
+        return flow_label;
     }
 
     if(child_yang_name == "rd-auto")
     {
-        if(rd_auto != nullptr)
-        {
-            children["rd-auto"] = rd_auto;
-        }
-        else
+        if(rd_auto == nullptr)
         {
             rd_auto = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdAuto>();
-            rd_auto->parent = this;
-            children["rd-auto"] = rd_auto;
         }
-        return children.at("rd-auto");
+        return rd_auto;
     }
 
     if(child_yang_name == "rd-configured")
     {
-        if(rd_configured != nullptr)
-        {
-            children["rd-configured"] = rd_configured;
-        }
-        else
+        if(rd_configured == nullptr)
         {
             rd_configured = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured>();
-            rd_configured->parent = this;
-            children["rd-configured"] = rd_configured;
         }
-        return children.at("rd-configured");
+        return rd_configured;
     }
 
     if(child_yang_name == "rt-auto")
     {
-        if(rt_auto != nullptr)
-        {
-            children["rt-auto"] = rt_auto;
-        }
-        else
+        if(rt_auto == nullptr)
         {
             rt_auto = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto>();
-            rt_auto->parent = this;
-            children["rt-auto"] = rt_auto;
         }
-        return children.at("rt-auto");
+        return rt_auto;
     }
 
     if(child_yang_name == "rt-auto-stitching")
     {
-        if(rt_auto_stitching != nullptr)
-        {
-            children["rt-auto-stitching"] = rt_auto_stitching;
-        }
-        else
+        if(rt_auto_stitching == nullptr)
         {
             rt_auto_stitching = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching>();
-            rt_auto_stitching->parent = this;
-            children["rt-auto-stitching"] = rt_auto_stitching;
         }
-        return children.at("rt-auto-stitching");
+        return rt_auto_stitching;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::get_children() const
 {
-    if(children.find("flow-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flow_label != nullptr)
     {
-        if(flow_label != nullptr)
-        {
-            children["flow-label"] = flow_label;
-        }
+        children["flow-label"] = flow_label;
     }
 
-    if(children.find("rd-auto") == children.end())
+    if(rd_auto != nullptr)
     {
-        if(rd_auto != nullptr)
-        {
-            children["rd-auto"] = rd_auto;
-        }
+        children["rd-auto"] = rd_auto;
     }
 
-    if(children.find("rd-configured") == children.end())
+    if(rd_configured != nullptr)
     {
-        if(rd_configured != nullptr)
-        {
-            children["rd-configured"] = rd_configured;
-        }
+        children["rd-configured"] = rd_configured;
     }
 
-    if(children.find("rt-auto") == children.end())
+    if(rt_auto != nullptr)
     {
-        if(rt_auto != nullptr)
-        {
-            children["rt-auto"] = rt_auto;
-        }
+        children["rt-auto"] = rt_auto;
     }
 
-    if(children.find("rt-auto-stitching") == children.end())
+    if(rt_auto_stitching != nullptr)
     {
-        if(rt_auto_stitching != nullptr)
-        {
-            children["rt-auto-stitching"] = rt_auto_stitching;
-        }
+        children["rt-auto-stitching"] = rt_auto_stitching;
     }
 
     return children;
@@ -15756,7 +13797,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::FlowLabel::get_segment_
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::FlowLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::FlowLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15781,20 +13822,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::FlowLabel::get_entity_pa
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::FlowLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::FlowLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::FlowLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15820,16 +13853,12 @@ Evpn::Standby::EviDetail::Elements::Element::RdAuto::RdAuto()
 	,v4_addr(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-auto"; yang_parent_name = "element";
 }
@@ -15866,7 +13895,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::get_segment_pat
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15890,110 +13919,66 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::get_entity_path(
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdAuto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -16041,7 +14026,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_::get_segm
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16066,20 +14051,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_::get_entit
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16129,7 +14106,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16154,20 +14131,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_e
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16217,7 +14186,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16242,20 +14211,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16305,7 +14266,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_seg
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16330,20 +14291,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_enti
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16369,16 +14322,12 @@ Evpn::Standby::EviDetail::Elements::Element::RdConfigured::RdConfigured()
 	,v4_addr(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr>())
 {
     auto_->parent = this;
-    children["auto"] = auto_;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rd-configured"; yang_parent_name = "element";
 }
@@ -16415,7 +14364,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_segme
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16439,110 +14388,66 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_entity
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto")
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
-        else
+        if(auto_ == nullptr)
         {
             auto_ = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_>();
-            auto_->parent = this;
-            children["auto"] = auto_;
         }
-        return children.at("auto");
+        return auto_;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_children() const
 {
-    if(children.find("auto") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_ != nullptr)
     {
-        if(auto_ != nullptr)
-        {
-            children["auto"] = auto_;
-        }
+        children["auto"] = auto_;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -16590,7 +14495,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_::ge
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16615,20 +14520,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_::get
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16678,7 +14575,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16703,20 +14600,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs:
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16766,7 +14655,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteA
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16791,20 +14680,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16854,7 +14735,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::g
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16879,20 +14760,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::ge
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16918,16 +14791,12 @@ Evpn::Standby::EviDetail::Elements::Element::RtAuto::RtAuto()
 	,v4_addr(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rt-auto"; yang_parent_name = "element";
 }
@@ -16964,7 +14833,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_segment_pat
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16988,110 +14857,66 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_entity_path(
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -17139,7 +14964,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17164,20 +14989,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_e
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17227,7 +15044,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17252,20 +15069,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17315,7 +15124,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_seg
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17340,20 +15149,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_enti
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17403,7 +15204,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport::get_s
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17428,20 +15229,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport::get_en
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17467,16 +15260,12 @@ Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::RtAutoStitching()
 	,v4_addr(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "rt-auto-stitching"; yang_parent_name = "element";
 }
@@ -17513,7 +15302,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::get_se
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17537,110 +15326,66 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::get_ent
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -17688,7 +15433,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByt
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17713,20 +15458,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByte
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17776,7 +15513,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourBy
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17801,20 +15538,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByt
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17864,7 +15593,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17889,20 +15618,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr:
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17952,7 +15673,7 @@ std::string Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImpo
 
 }
 
-EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17977,20 +15698,12 @@ EntityPath Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImpor
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18015,19 +15728,14 @@ Evpn::Standby::EviDetail::EviChildren::EviChildren()
 	,route_targets(std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets>())
 {
     ethernet_auto_discoveries->parent = this;
-    children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
 
     inclusive_multicasts->parent = this;
-    children["inclusive-multicasts"] = inclusive_multicasts;
 
     macs->parent = this;
-    children["macs"] = macs;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     route_targets->parent = this;
-    children["route-targets"] = route_targets;
 
     yang_name = "evi-children"; yang_parent_name = "evi-detail";
 }
@@ -18064,7 +15772,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::get_segment_path() const
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18087,133 +15795,80 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-auto-discoveries")
     {
-        if(ethernet_auto_discoveries != nullptr)
-        {
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
-        }
-        else
+        if(ethernet_auto_discoveries == nullptr)
         {
             ethernet_auto_discoveries = std::make_shared<Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries>();
-            ethernet_auto_discoveries->parent = this;
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
         }
-        return children.at("ethernet-auto-discoveries");
+        return ethernet_auto_discoveries;
     }
 
     if(child_yang_name == "inclusive-multicasts")
     {
-        if(inclusive_multicasts != nullptr)
-        {
-            children["inclusive-multicasts"] = inclusive_multicasts;
-        }
-        else
+        if(inclusive_multicasts == nullptr)
         {
             inclusive_multicasts = std::make_shared<Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts>();
-            inclusive_multicasts->parent = this;
-            children["inclusive-multicasts"] = inclusive_multicasts;
         }
-        return children.at("inclusive-multicasts");
+        return inclusive_multicasts;
     }
 
     if(child_yang_name == "macs")
     {
-        if(macs != nullptr)
-        {
-            children["macs"] = macs;
-        }
-        else
+        if(macs == nullptr)
         {
             macs = std::make_shared<Evpn::Standby::EviDetail::EviChildren::Macs>();
-            macs->parent = this;
-            children["macs"] = macs;
         }
-        return children.at("macs");
+        return macs;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Evpn::Standby::EviDetail::EviChildren::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "route-targets")
     {
-        if(route_targets != nullptr)
-        {
-            children["route-targets"] = route_targets;
-        }
-        else
+        if(route_targets == nullptr)
         {
             route_targets = std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets>();
-            route_targets->parent = this;
-            children["route-targets"] = route_targets;
         }
-        return children.at("route-targets");
+        return route_targets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::get_children() const
 {
-    if(children.find("ethernet-auto-discoveries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet_auto_discoveries != nullptr)
     {
-        if(ethernet_auto_discoveries != nullptr)
-        {
-            children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
-        }
+        children["ethernet-auto-discoveries"] = ethernet_auto_discoveries;
     }
 
-    if(children.find("inclusive-multicasts") == children.end())
+    if(inclusive_multicasts != nullptr)
     {
-        if(inclusive_multicasts != nullptr)
-        {
-            children["inclusive-multicasts"] = inclusive_multicasts;
-        }
+        children["inclusive-multicasts"] = inclusive_multicasts;
     }
 
-    if(children.find("macs") == children.end())
+    if(macs != nullptr)
     {
-        if(macs != nullptr)
-        {
-            children["macs"] = macs;
-        }
+        children["macs"] = macs;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("route-targets") == children.end())
+    if(route_targets != nullptr)
     {
-        if(route_targets != nullptr)
-        {
-            children["route-targets"] = route_targets;
-        }
+        children["route-targets"] = route_targets;
     }
 
     return children;
@@ -18261,7 +15916,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::Neighbors::get_segment_path()
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18284,15 +15939,6 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::Neighbors::get_entity_path(Ent
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -18300,28 +15946,24 @@ std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::Neighbors::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18371,7 +16013,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor::get_segm
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18398,20 +16040,12 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor::get_entit
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18473,7 +16107,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::get_
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18496,15 +16130,6 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::get_e
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-auto-discovery")
     {
         for(auto const & c : ethernet_auto_discovery)
@@ -18512,28 +16137,24 @@ std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDisco
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery>();
         c->parent = this;
-        ethernet_auto_discovery.push_back(std::move(c));
-        children[segment_path] = ethernet_auto_discovery.back();
-        return children.at(segment_path);
+        ethernet_auto_discovery.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_auto_discovery)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18638,7 +16259,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::Ethe
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18678,15 +16299,6 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::Ether
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-buffer")
     {
         for(auto const & c : path_buffer)
@@ -18694,28 +16306,24 @@ std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDisco
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer>();
         c->parent = this;
-        path_buffer.push_back(std::move(c));
-        children[segment_path] = path_buffer.back();
-        return children.at(segment_path);
+        path_buffer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_buffer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18823,7 +16431,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::Ethe
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18848,20 +16456,12 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::Ether
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18915,7 +16515,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::get_segm
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18938,15 +16538,6 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::get_entit
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "inclusive-multicast")
     {
         for(auto const & c : inclusive_multicast)
@@ -18954,28 +16545,24 @@ std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::InclusiveMulticas
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast>();
         c->parent = this;
-        inclusive_multicast.push_back(std::move(c));
-        children[segment_path] = inclusive_multicast.back();
-        return children.at(segment_path);
+        inclusive_multicast.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : inclusive_multicast)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19040,7 +16627,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::Inclusiv
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19072,20 +16659,12 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::Inclusive
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19167,7 +16746,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::RouteTargets::get_segment_pat
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19190,15 +16769,6 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::get_entity_path(
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
         for(auto const & c : route_target)
@@ -19206,28 +16776,24 @@ std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(std::move(c));
-        children[segment_path] = route_target.back();
-        return children.at(segment_path);
+        route_target.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::RouteTargets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::RouteTargets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route_target)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19255,7 +16821,6 @@ Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget()
     route_target(std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_>())
 {
     route_target->parent = this;
-    children["route-target"] = route_target;
 
     yang_name = "route-target"; yang_parent_name = "route-targets";
 }
@@ -19308,7 +16873,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::ge
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19343,41 +16908,24 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::get
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-target")
     {
-        if(route_target != nullptr)
-        {
-            children["route-target"] = route_target;
-        }
-        else
+        if(route_target == nullptr)
         {
             route_target = std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_>();
-            route_target->parent = this;
-            children["route-target"] = route_target;
         }
-        return children.at("route-target");
+        return route_target;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::get_children() const
 {
-    if(children.find("route-target") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_target != nullptr)
     {
-        if(route_target != nullptr)
-        {
-            children["route-target"] = route_target;
-        }
+        children["route-target"] = route_target;
     }
 
     return children;
@@ -19445,16 +16993,12 @@ Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::
 	,v4_addr(std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr>())
 {
     es_import->parent = this;
-    children["es-import"] = es_import;
 
     four_byte_as->parent = this;
-    children["four-byte-as"] = four_byte_as;
 
     two_byte_as->parent = this;
-    children["two-byte-as"] = two_byte_as;
 
     v4_addr->parent = this;
-    children["v4-addr"] = v4_addr;
 
     yang_name = "route-target"; yang_parent_name = "route-target";
 }
@@ -19491,7 +17035,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Ro
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19515,110 +17059,66 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "es-import")
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
-        else
+        if(es_import == nullptr)
         {
             es_import = std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport>();
-            es_import->parent = this;
-            children["es-import"] = es_import;
         }
-        return children.at("es-import");
+        return es_import;
     }
 
     if(child_yang_name == "four-byte-as")
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
-        else
+        if(four_byte_as == nullptr)
         {
             four_byte_as = std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs>();
-            four_byte_as->parent = this;
-            children["four-byte-as"] = four_byte_as;
         }
-        return children.at("four-byte-as");
+        return four_byte_as;
     }
 
     if(child_yang_name == "two-byte-as")
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
-        else
+        if(two_byte_as == nullptr)
         {
             two_byte_as = std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs>();
-            two_byte_as->parent = this;
-            children["two-byte-as"] = two_byte_as;
         }
-        return children.at("two-byte-as");
+        return two_byte_as;
     }
 
     if(child_yang_name == "v4-addr")
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
-        else
+        if(v4_addr == nullptr)
         {
             v4_addr = std::make_shared<Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr>();
-            v4_addr->parent = this;
-            children["v4-addr"] = v4_addr;
         }
-        return children.at("v4-addr");
+        return v4_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::get_children() const
 {
-    if(children.find("es-import") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(es_import != nullptr)
     {
-        if(es_import != nullptr)
-        {
-            children["es-import"] = es_import;
-        }
+        children["es-import"] = es_import;
     }
 
-    if(children.find("four-byte-as") == children.end())
+    if(four_byte_as != nullptr)
     {
-        if(four_byte_as != nullptr)
-        {
-            children["four-byte-as"] = four_byte_as;
-        }
+        children["four-byte-as"] = four_byte_as;
     }
 
-    if(children.find("two-byte-as") == children.end())
+    if(two_byte_as != nullptr)
     {
-        if(two_byte_as != nullptr)
-        {
-            children["two-byte-as"] = two_byte_as;
-        }
+        children["two-byte-as"] = two_byte_as;
     }
 
-    if(children.find("v4-addr") == children.end())
+    if(v4_addr != nullptr)
     {
-        if(v4_addr != nullptr)
-        {
-            children["v4-addr"] = v4_addr;
-        }
+        children["v4-addr"] = v4_addr;
     }
 
     return children;
@@ -19666,7 +17166,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Ro
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19691,20 +17191,12 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19754,7 +17246,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Ro
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19779,20 +17271,12 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19842,7 +17326,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Ro
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19867,20 +17351,12 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19930,7 +17406,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Ro
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19955,20 +17431,12 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::Rou
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20022,7 +17490,7 @@ std::string Evpn::Standby::EviDetail::EviChildren::Macs::get_segment_path() cons
 
 }
 
-EntityPath Evpn::Standby::EviDetail::EviChildren::Macs::get_entity_path(Entity* ancestor) const
+const EntityPath Evpn::Standby::EviDetail::EviChildren::Macs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20045,15 +17513,6 @@ EntityPath Evpn::Standby::EviDetail::EviChildren::Macs::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::Macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mac")
     {
         for(auto const & c : mac)
@@ -20061,28 +17520,24 @@ std::shared_ptr<Entity> Evpn::Standby::EviDetail::EviChildren::Macs::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Evpn::Standby::EviDetail::EviChildren::Macs::Mac>();
         c->parent = this;
-        mac.push_back(std::move(c));
-        children[segment_path] = mac.back();
-        return children.at(segment_path);
+        mac.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Evpn::Standby::EviDetail::EviChildren::Macs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::EviChildren::Macs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mac)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;

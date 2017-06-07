@@ -27,22 +27,16 @@ Ntp::Ntp()
 	,sources(std::make_shared<Ntp::Sources>())
 {
     access_group_tables->parent = this;
-    children["access-group-tables"] = access_group_tables;
 
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     interface_tables->parent = this;
-    children["interface-tables"] = interface_tables;
 
     passive->parent = this;
-    children["passive"] = passive;
 
     peer_vrfs->parent = this;
-    children["peer-vrfs"] = peer_vrfs;
 
     sources->parent = this;
-    children["sources"] = sources;
 
     yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-cfg";
 }
@@ -95,12 +89,12 @@ std::string Ntp::get_segment_path() const
 
 }
 
-EntityPath Ntp::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -120,202 +114,122 @@ EntityPath Ntp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-group-tables")
     {
-        if(access_group_tables != nullptr)
-        {
-            children["access-group-tables"] = access_group_tables;
-        }
-        else
+        if(access_group_tables == nullptr)
         {
             access_group_tables = std::make_shared<Ntp::AccessGroupTables>();
-            access_group_tables->parent = this;
-            children["access-group-tables"] = access_group_tables;
         }
-        return children.at("access-group-tables");
+        return access_group_tables;
     }
 
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<Ntp::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "dscp-ipv4")
     {
-        if(dscp_ipv4 != nullptr)
-        {
-            children["dscp-ipv4"] = dscp_ipv4;
-        }
-        else
+        if(dscp_ipv4 == nullptr)
         {
             dscp_ipv4 = std::make_shared<Ntp::DscpIpv4>();
-            dscp_ipv4->parent = this;
-            children["dscp-ipv4"] = dscp_ipv4;
         }
-        return children.at("dscp-ipv4");
+        return dscp_ipv4;
     }
 
     if(child_yang_name == "dscp-ipv6")
     {
-        if(dscp_ipv6 != nullptr)
-        {
-            children["dscp-ipv6"] = dscp_ipv6;
-        }
-        else
+        if(dscp_ipv6 == nullptr)
         {
             dscp_ipv6 = std::make_shared<Ntp::DscpIpv6>();
-            dscp_ipv6->parent = this;
-            children["dscp-ipv6"] = dscp_ipv6;
         }
-        return children.at("dscp-ipv6");
+        return dscp_ipv6;
     }
 
     if(child_yang_name == "interface-tables")
     {
-        if(interface_tables != nullptr)
-        {
-            children["interface-tables"] = interface_tables;
-        }
-        else
+        if(interface_tables == nullptr)
         {
             interface_tables = std::make_shared<Ntp::InterfaceTables>();
-            interface_tables->parent = this;
-            children["interface-tables"] = interface_tables;
         }
-        return children.at("interface-tables");
+        return interface_tables;
     }
 
     if(child_yang_name == "passive")
     {
-        if(passive != nullptr)
-        {
-            children["passive"] = passive;
-        }
-        else
+        if(passive == nullptr)
         {
             passive = std::make_shared<Ntp::Passive>();
-            passive->parent = this;
-            children["passive"] = passive;
         }
-        return children.at("passive");
+        return passive;
     }
 
     if(child_yang_name == "peer-vrfs")
     {
-        if(peer_vrfs != nullptr)
-        {
-            children["peer-vrfs"] = peer_vrfs;
-        }
-        else
+        if(peer_vrfs == nullptr)
         {
             peer_vrfs = std::make_shared<Ntp::PeerVrfs>();
-            peer_vrfs->parent = this;
-            children["peer-vrfs"] = peer_vrfs;
         }
-        return children.at("peer-vrfs");
+        return peer_vrfs;
     }
 
     if(child_yang_name == "sources")
     {
-        if(sources != nullptr)
-        {
-            children["sources"] = sources;
-        }
-        else
+        if(sources == nullptr)
         {
             sources = std::make_shared<Ntp::Sources>();
-            sources->parent = this;
-            children["sources"] = sources;
         }
-        return children.at("sources");
+        return sources;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::get_children() const
 {
-    if(children.find("access-group-tables") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_group_tables != nullptr)
     {
-        if(access_group_tables != nullptr)
-        {
-            children["access-group-tables"] = access_group_tables;
-        }
+        children["access-group-tables"] = access_group_tables;
     }
 
-    if(children.find("authentication") == children.end())
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("dscp-ipv4") == children.end())
+    if(dscp_ipv4 != nullptr)
     {
-        if(dscp_ipv4 != nullptr)
-        {
-            children["dscp-ipv4"] = dscp_ipv4;
-        }
+        children["dscp-ipv4"] = dscp_ipv4;
     }
 
-    if(children.find("dscp-ipv6") == children.end())
+    if(dscp_ipv6 != nullptr)
     {
-        if(dscp_ipv6 != nullptr)
-        {
-            children["dscp-ipv6"] = dscp_ipv6;
-        }
+        children["dscp-ipv6"] = dscp_ipv6;
     }
 
-    if(children.find("interface-tables") == children.end())
+    if(interface_tables != nullptr)
     {
-        if(interface_tables != nullptr)
-        {
-            children["interface-tables"] = interface_tables;
-        }
+        children["interface-tables"] = interface_tables;
     }
 
-    if(children.find("passive") == children.end())
+    if(passive != nullptr)
     {
-        if(passive != nullptr)
-        {
-            children["passive"] = passive;
-        }
+        children["passive"] = passive;
     }
 
-    if(children.find("peer-vrfs") == children.end())
+    if(peer_vrfs != nullptr)
     {
-        if(peer_vrfs != nullptr)
-        {
-            children["peer-vrfs"] = peer_vrfs;
-        }
+        children["peer-vrfs"] = peer_vrfs;
     }
 
-    if(children.find("sources") == children.end())
+    if(sources != nullptr)
     {
-        if(sources != nullptr)
-        {
-            children["sources"] = sources;
-        }
+        children["sources"] = sources;
     }
 
     return children;
@@ -403,7 +317,7 @@ std::string Ntp::PeerVrfs::get_segment_path() const
 
 }
 
-EntityPath Ntp::PeerVrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -426,15 +340,6 @@ EntityPath Ntp::PeerVrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-vrf")
     {
         for(auto const & c : peer_vrf)
@@ -442,28 +347,24 @@ std::shared_ptr<Entity> Ntp::PeerVrfs::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf>();
         c->parent = this;
-        peer_vrf.push_back(std::move(c));
-        children[segment_path] = peer_vrf.back();
-        return children.at(segment_path);
+        peer_vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -481,10 +382,8 @@ Ntp::PeerVrfs::PeerVrf::PeerVrf()
 	,peer_ipv6s(std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6S>())
 {
     peer_ipv4s->parent = this;
-    children["peer-ipv4s"] = peer_ipv4s;
 
     peer_ipv6s->parent = this;
-    children["peer-ipv6s"] = peer_ipv6s;
 
     yang_name = "peer-vrf"; yang_parent_name = "peer-vrfs";
 }
@@ -517,7 +416,7 @@ std::string Ntp::PeerVrfs::PeerVrf::get_segment_path() const
 
 }
 
-EntityPath Ntp::PeerVrfs::PeerVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::PeerVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -541,64 +440,38 @@ EntityPath Ntp::PeerVrfs::PeerVrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-ipv4s")
     {
-        if(peer_ipv4s != nullptr)
-        {
-            children["peer-ipv4s"] = peer_ipv4s;
-        }
-        else
+        if(peer_ipv4s == nullptr)
         {
             peer_ipv4s = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv4S>();
-            peer_ipv4s->parent = this;
-            children["peer-ipv4s"] = peer_ipv4s;
         }
-        return children.at("peer-ipv4s");
+        return peer_ipv4s;
     }
 
     if(child_yang_name == "peer-ipv6s")
     {
-        if(peer_ipv6s != nullptr)
-        {
-            children["peer-ipv6s"] = peer_ipv6s;
-        }
-        else
+        if(peer_ipv6s == nullptr)
         {
             peer_ipv6s = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6S>();
-            peer_ipv6s->parent = this;
-            children["peer-ipv6s"] = peer_ipv6s;
         }
-        return children.at("peer-ipv6s");
+        return peer_ipv6s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::PeerVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::get_children() const
 {
-    if(children.find("peer-ipv4s") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_ipv4s != nullptr)
     {
-        if(peer_ipv4s != nullptr)
-        {
-            children["peer-ipv4s"] = peer_ipv4s;
-        }
+        children["peer-ipv4s"] = peer_ipv4s;
     }
 
-    if(children.find("peer-ipv6s") == children.end())
+    if(peer_ipv6s != nullptr)
     {
-        if(peer_ipv6s != nullptr)
-        {
-            children["peer-ipv6s"] = peer_ipv6s;
-        }
+        children["peer-ipv6s"] = peer_ipv6s;
     }
 
     return children;
@@ -650,7 +523,7 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_segment_path() const
 
 }
 
-EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -673,15 +546,6 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-ipv4")
     {
         for(auto const & c : peer_ipv4)
@@ -689,28 +553,24 @@ std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4>();
         c->parent = this;
-        peer_ipv4.push_back(std::move(c));
-        children[segment_path] = peer_ipv4.back();
-        return children.at(segment_path);
+        peer_ipv4.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -761,7 +621,7 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_segment_path() cons
 
 }
 
-EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -785,15 +645,6 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-type-ipv4")
     {
         for(auto const & c : peer_type_ipv4)
@@ -801,28 +652,24 @@ std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4>();
         c->parent = this;
-        peer_type_ipv4.push_back(std::move(c));
-        children[segment_path] = peer_type_ipv4.back();
-        return children.at(segment_path);
+        peer_type_ipv4.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_type_ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -891,7 +738,7 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_segme
 
 }
 
-EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -923,20 +770,12 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_entity
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1018,7 +857,7 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_segment_path() const
 
 }
 
-EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1041,15 +880,6 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-ipv6")
     {
         for(auto const & c : peer_ipv6)
@@ -1057,28 +887,24 @@ std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6>();
         c->parent = this;
-        peer_ipv6.push_back(std::move(c));
-        children[segment_path] = peer_ipv6.back();
-        return children.at(segment_path);
+        peer_ipv6.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_ipv6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1129,7 +955,7 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_segment_path() cons
 
 }
 
-EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1153,15 +979,6 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-type-ipv6")
     {
         for(auto const & c : peer_type_ipv6)
@@ -1169,28 +986,24 @@ std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6>();
         c->parent = this;
-        peer_type_ipv6.push_back(std::move(c));
-        children[segment_path] = peer_type_ipv6.back();
-        return children.at(segment_path);
+        peer_type_ipv6.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_type_ipv6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1262,7 +1075,7 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_segme
 
 }
 
-EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1295,20 +1108,12 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_entity
 
 std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1390,7 +1195,7 @@ std::string Ntp::DscpIpv4::get_segment_path() const
 
 }
 
-EntityPath Ntp::DscpIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::DscpIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1415,20 +1220,12 @@ EntityPath Ntp::DscpIpv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::DscpIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::DscpIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1478,7 +1275,7 @@ std::string Ntp::DscpIpv6::get_segment_path() const
 
 }
 
-EntityPath Ntp::DscpIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::DscpIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1503,20 +1300,12 @@ EntityPath Ntp::DscpIpv6::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::DscpIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::DscpIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1570,7 +1359,7 @@ std::string Ntp::Sources::get_segment_path() const
 
 }
 
-EntityPath Ntp::Sources::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Sources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1593,15 +1382,6 @@ EntityPath Ntp::Sources::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "source")
     {
         for(auto const & c : source)
@@ -1609,28 +1389,24 @@ std::shared_ptr<Entity> Ntp::Sources::get_child_by_name(const std::string & chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::Sources::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Sources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Sources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1674,7 +1450,7 @@ std::string Ntp::Sources::Source::get_segment_path() const
 
 }
 
-EntityPath Ntp::Sources::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Sources::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1699,20 +1475,12 @@ EntityPath Ntp::Sources::Source::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Sources::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Sources::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Sources::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1736,10 +1504,8 @@ Ntp::Authentication::Authentication()
 	,trusted_keies(std::make_shared<Ntp::Authentication::TrustedKeies>())
 {
     keies->parent = this;
-    children["keies"] = keies;
 
     trusted_keies->parent = this;
-    children["trusted-keies"] = trusted_keies;
 
     yang_name = "authentication"; yang_parent_name = "ntp";
 }
@@ -1772,7 +1538,7 @@ std::string Ntp::Authentication::get_segment_path() const
 
 }
 
-EntityPath Ntp::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1796,64 +1562,38 @@ EntityPath Ntp::Authentication::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "keies")
     {
-        if(keies != nullptr)
-        {
-            children["keies"] = keies;
-        }
-        else
+        if(keies == nullptr)
         {
             keies = std::make_shared<Ntp::Authentication::Keies>();
-            keies->parent = this;
-            children["keies"] = keies;
         }
-        return children.at("keies");
+        return keies;
     }
 
     if(child_yang_name == "trusted-keies")
     {
-        if(trusted_keies != nullptr)
-        {
-            children["trusted-keies"] = trusted_keies;
-        }
-        else
+        if(trusted_keies == nullptr)
         {
             trusted_keies = std::make_shared<Ntp::Authentication::TrustedKeies>();
-            trusted_keies->parent = this;
-            children["trusted-keies"] = trusted_keies;
         }
-        return children.at("trusted-keies");
+        return trusted_keies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::get_children() const
 {
-    if(children.find("keies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(keies != nullptr)
     {
-        if(keies != nullptr)
-        {
-            children["keies"] = keies;
-        }
+        children["keies"] = keies;
     }
 
-    if(children.find("trusted-keies") == children.end())
+    if(trusted_keies != nullptr)
     {
-        if(trusted_keies != nullptr)
-        {
-            children["trusted-keies"] = trusted_keies;
-        }
+        children["trusted-keies"] = trusted_keies;
     }
 
     return children;
@@ -1905,7 +1645,7 @@ std::string Ntp::Authentication::Keies::get_segment_path() const
 
 }
 
-EntityPath Ntp::Authentication::Keies::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Authentication::Keies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1928,15 +1668,6 @@ EntityPath Ntp::Authentication::Keies::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Authentication::Keies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "key")
     {
         for(auto const & c : key)
@@ -1944,28 +1675,24 @@ std::shared_ptr<Entity> Ntp::Authentication::Keies::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::Authentication::Keies::Key>();
         c->parent = this;
-        key.push_back(std::move(c));
-        children[segment_path] = key.back();
-        return children.at(segment_path);
+        key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Authentication::Keies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2009,7 +1736,7 @@ std::string Ntp::Authentication::Keies::Key::get_segment_path() const
 
 }
 
-EntityPath Ntp::Authentication::Keies::Key::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Authentication::Keies::Key::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2034,20 +1761,12 @@ EntityPath Ntp::Authentication::Keies::Key::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Ntp::Authentication::Keies::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Authentication::Keies::Key::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::Key::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2101,7 +1820,7 @@ std::string Ntp::Authentication::TrustedKeies::get_segment_path() const
 
 }
 
-EntityPath Ntp::Authentication::TrustedKeies::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Authentication::TrustedKeies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2124,15 +1843,6 @@ EntityPath Ntp::Authentication::TrustedKeies::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trusted-key")
     {
         for(auto const & c : trusted_key)
@@ -2140,28 +1850,24 @@ std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::Authentication::TrustedKeies::TrustedKey>();
         c->parent = this;
-        trusted_key.push_back(std::move(c));
-        children[segment_path] = trusted_key.back();
-        return children.at(segment_path);
+        trusted_key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Authentication::TrustedKeies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : trusted_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2202,7 +1908,7 @@ std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_segment_path() co
 
 }
 
-EntityPath Ntp::Authentication::TrustedKeies::TrustedKey::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Authentication::TrustedKeies::TrustedKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2226,20 +1932,12 @@ EntityPath Ntp::Authentication::TrustedKeies::TrustedKey::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::TrustedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Authentication::TrustedKeies::TrustedKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::TrustedKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2282,7 +1980,7 @@ std::string Ntp::Passive::get_segment_path() const
 
 }
 
-EntityPath Ntp::Passive::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::Passive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2306,20 +2004,12 @@ EntityPath Ntp::Passive::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::Passive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::Passive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Passive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2369,7 +2059,7 @@ std::string Ntp::InterfaceTables::get_segment_path() const
 
 }
 
-EntityPath Ntp::InterfaceTables::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2392,15 +2082,6 @@ EntityPath Ntp::InterfaceTables::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-table")
     {
         for(auto const & c : interface_table)
@@ -2408,28 +2089,24 @@ std::shared_ptr<Entity> Ntp::InterfaceTables::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable>();
         c->parent = this;
-        interface_table.push_back(std::move(c));
-        children[segment_path] = interface_table.back();
-        return children.at(segment_path);
+        interface_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2480,7 +2157,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::get_segment_path() const
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2504,15 +2181,6 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -2520,28 +2188,24 @@ std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2564,10 +2228,8 @@ Ntp::InterfaceTables::InterfaceTable::Interface::Interface()
 	,interface_multicast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast>())
 {
     interface_broadcast->parent = this;
-    children["interface-broadcast"] = interface_broadcast;
 
     interface_multicast->parent = this;
-    children["interface-multicast"] = interface_multicast;
 
     yang_name = "interface"; yang_parent_name = "interface-table";
 }
@@ -2602,7 +2264,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::get_segment_path() 
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2627,64 +2289,38 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::get_entity_path(Enti
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-broadcast")
     {
-        if(interface_broadcast != nullptr)
-        {
-            children["interface-broadcast"] = interface_broadcast;
-        }
-        else
+        if(interface_broadcast == nullptr)
         {
             interface_broadcast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast>();
-            interface_broadcast->parent = this;
-            children["interface-broadcast"] = interface_broadcast;
         }
-        return children.at("interface-broadcast");
+        return interface_broadcast;
     }
 
     if(child_yang_name == "interface-multicast")
     {
-        if(interface_multicast != nullptr)
-        {
-            children["interface-multicast"] = interface_multicast;
-        }
-        else
+        if(interface_multicast == nullptr)
         {
             interface_multicast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast>();
-            interface_multicast->parent = this;
-            children["interface-multicast"] = interface_multicast;
         }
-        return children.at("interface-multicast");
+        return interface_multicast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::get_children() const
 {
-    if(children.find("interface-broadcast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_broadcast != nullptr)
     {
-        if(interface_broadcast != nullptr)
-        {
-            children["interface-broadcast"] = interface_broadcast;
-        }
+        children["interface-broadcast"] = interface_broadcast;
     }
 
-    if(children.find("interface-multicast") == children.end())
+    if(interface_multicast != nullptr)
     {
-        if(interface_multicast != nullptr)
-        {
-            children["interface-multicast"] = interface_multicast;
-        }
+        children["interface-multicast"] = interface_multicast;
     }
 
     return children;
@@ -2708,10 +2344,8 @@ Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::InterfaceMu
 	,multicast_servers(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers>())
 {
     multicast_clients->parent = this;
-    children["multicast-clients"] = multicast_clients;
 
     multicast_servers->parent = this;
-    children["multicast-servers"] = multicast_servers;
 
     yang_name = "interface-multicast"; yang_parent_name = "interface";
 }
@@ -2742,7 +2376,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast:
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2765,64 +2399,38 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multicast-clients")
     {
-        if(multicast_clients != nullptr)
-        {
-            children["multicast-clients"] = multicast_clients;
-        }
-        else
+        if(multicast_clients == nullptr)
         {
             multicast_clients = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients>();
-            multicast_clients->parent = this;
-            children["multicast-clients"] = multicast_clients;
         }
-        return children.at("multicast-clients");
+        return multicast_clients;
     }
 
     if(child_yang_name == "multicast-servers")
     {
-        if(multicast_servers != nullptr)
-        {
-            children["multicast-servers"] = multicast_servers;
-        }
-        else
+        if(multicast_servers == nullptr)
         {
             multicast_servers = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers>();
-            multicast_servers->parent = this;
-            children["multicast-servers"] = multicast_servers;
         }
-        return children.at("multicast-servers");
+        return multicast_servers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_children() const
 {
-    if(children.find("multicast-clients") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(multicast_clients != nullptr)
     {
-        if(multicast_clients != nullptr)
-        {
-            children["multicast-clients"] = multicast_clients;
-        }
+        children["multicast-clients"] = multicast_clients;
     }
 
-    if(children.find("multicast-servers") == children.end())
+    if(multicast_servers != nullptr)
     {
-        if(multicast_servers != nullptr)
-        {
-            children["multicast-servers"] = multicast_servers;
-        }
+        children["multicast-servers"] = multicast_servers;
     }
 
     return children;
@@ -2870,7 +2478,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast:
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2893,15 +2501,6 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multicast-client")
     {
         for(auto const & c : multicast_client)
@@ -2909,28 +2508,24 @@ std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient>();
         c->parent = this;
-        multicast_client.push_back(std::move(c));
-        children[segment_path] = multicast_client.back();
-        return children.at(segment_path);
+        multicast_client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : multicast_client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2971,7 +2566,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast:
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2995,20 +2590,12 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3058,7 +2645,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast:
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3081,15 +2668,6 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "multicast-server")
     {
         for(auto const & c : multicast_server)
@@ -3097,28 +2675,24 @@ std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer>();
         c->parent = this;
-        multicast_server.push_back(std::move(c));
-        children[segment_path] = multicast_server.back();
-        return children.at(segment_path);
+        multicast_server.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : multicast_server)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3168,7 +2742,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast:
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3195,20 +2769,12 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3239,7 +2805,6 @@ Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::InterfaceBr
     broadcast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast>())
 {
     broadcast->parent = this;
-    children["broadcast"] = broadcast;
 
     yang_name = "interface-broadcast"; yang_parent_name = "interface";
 }
@@ -3270,7 +2835,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast:
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3294,41 +2859,24 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast")
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
-        else
+        if(broadcast == nullptr)
         {
             broadcast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast>();
-            broadcast->parent = this;
-            children["broadcast"] = broadcast;
         }
-        return children.at("broadcast");
+        return broadcast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_children() const
 {
-    if(children.find("broadcast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast != nullptr)
     {
-        if(broadcast != nullptr)
-        {
-            children["broadcast"] = broadcast;
-        }
+        children["broadcast"] = broadcast;
     }
 
     return children;
@@ -3379,7 +2927,7 @@ std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast:
 
 }
 
-EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3405,20 +2953,12 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::
 
 std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3476,7 +3016,7 @@ std::string Ntp::AccessGroupTables::get_segment_path() const
 
 }
 
-EntityPath Ntp::AccessGroupTables::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::AccessGroupTables::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3499,15 +3039,6 @@ EntityPath Ntp::AccessGroupTables::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ntp::AccessGroupTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-group-table")
     {
         for(auto const & c : access_group_table)
@@ -3515,28 +3046,24 @@ std::shared_ptr<Entity> Ntp::AccessGroupTables::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable>();
         c->parent = this;
-        access_group_table.push_back(std::move(c));
-        children[segment_path] = access_group_table.back();
-        return children.at(segment_path);
+        access_group_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::AccessGroupTables::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access_group_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3587,7 +3114,7 @@ std::string Ntp::AccessGroupTables::AccessGroupTable::get_segment_path() const
 
 }
 
-EntityPath Ntp::AccessGroupTables::AccessGroupTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::AccessGroupTables::AccessGroupTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3611,15 +3138,6 @@ EntityPath Ntp::AccessGroupTables::AccessGroupTable::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-group-af-table")
     {
         for(auto const & c : access_group_af_table)
@@ -3627,28 +3145,24 @@ std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable>();
         c->parent = this;
-        access_group_af_table.push_back(std::move(c));
-        children[segment_path] = access_group_af_table.back();
-        return children.at(segment_path);
+        access_group_af_table.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::AccessGroupTables::AccessGroupTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access_group_af_table)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3703,7 +3217,7 @@ std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_se
 
 }
 
-EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3727,15 +3241,6 @@ EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_ent
 
 std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-group")
     {
         for(auto const & c : access_group)
@@ -3743,28 +3248,24 @@ std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfT
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup>();
         c->parent = this;
-        access_group.push_back(std::move(c));
-        children[segment_path] = access_group.back();
-        return children.at(segment_path);
+        access_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3812,7 +3313,7 @@ std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::Access
 
 }
 
-EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3837,20 +3338,12 @@ EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessG
 
 std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

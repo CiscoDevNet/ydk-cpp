@@ -43,7 +43,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::S
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -68,20 +68,12 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Se
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -103,10 +95,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::Attributes
 	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo>())
 {
     basic_info->parent = this;
-    children["basic-info"] = basic_info;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     yang_name = "attributes"; yang_parent_name = "card";
 }
@@ -137,7 +127,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -160,64 +150,38 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-info")
     {
-        if(basic_info != nullptr)
-        {
-            children["basic-info"] = basic_info;
-        }
-        else
+        if(basic_info == nullptr)
         {
             basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo>();
-            basic_info->parent = this;
-            children["basic-info"] = basic_info;
         }
-        return children.at("basic-info");
+        return basic_info;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::get_children() const
 {
-    if(children.find("basic-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_info != nullptr)
     {
-        if(basic_info != nullptr)
-        {
-            children["basic-info"] = basic_info;
-        }
+        children["basic-info"] = basic_info;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
     return children;
@@ -282,7 +246,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -314,20 +278,12 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -383,10 +339,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::F
 	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     module_up_time->parent = this;
-    children["module-up-time"] = module_up_time;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -427,7 +381,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -455,64 +409,38 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     if(child_yang_name == "module-up-time")
     {
-        if(module_up_time != nullptr)
-        {
-            children["module-up-time"] = module_up_time;
-        }
-        else
+        if(module_up_time == nullptr)
         {
             module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime>();
-            module_up_time->parent = this;
-            children["module-up-time"] = module_up_time;
         }
-        return children.at("module-up-time");
+        return module_up_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::get_children() const
 {
-    if(children.find("last-operational-state-change") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
-    if(children.find("module-up-time") == children.end())
+    if(module_up_time != nullptr)
     {
-        if(module_up_time != nullptr)
-        {
-            children["module-up-time"] = module_up_time;
-        }
+        children["module-up-time"] = module_up_time;
     }
 
     return children;
@@ -576,7 +504,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -601,20 +529,12 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -664,7 +584,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -689,20 +609,12 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -724,10 +636,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Attributes::Attributes()
 	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo>())
 {
     basic_info->parent = this;
-    children["basic-info"] = basic_info;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     yang_name = "attributes"; yang_parent_name = "slot";
 }
@@ -758,7 +668,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_segment
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -781,64 +691,38 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_entity_p
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-info")
     {
-        if(basic_info != nullptr)
-        {
-            children["basic-info"] = basic_info;
-        }
-        else
+        if(basic_info == nullptr)
         {
             basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo>();
-            basic_info->parent = this;
-            children["basic-info"] = basic_info;
         }
-        return children.at("basic-info");
+        return basic_info;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_children() const
 {
-    if(children.find("basic-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_info != nullptr)
     {
-        if(basic_info != nullptr)
-        {
-            children["basic-info"] = basic_info;
-        }
+        children["basic-info"] = basic_info;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
     return children;
@@ -903,7 +787,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -935,20 +819,12 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::g
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1004,10 +880,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::FruInfo()
 	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     module_up_time->parent = this;
-    children["module-up-time"] = module_up_time;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -1048,7 +922,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ge
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1076,64 +950,38 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     if(child_yang_name == "module-up-time")
     {
-        if(module_up_time != nullptr)
-        {
-            children["module-up-time"] = module_up_time;
-        }
-        else
+        if(module_up_time == nullptr)
         {
             module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime>();
-            module_up_time->parent = this;
-            children["module-up-time"] = module_up_time;
         }
-        return children.at("module-up-time");
+        return module_up_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get_children() const
 {
-    if(children.find("last-operational-state-change") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
-    if(children.find("module-up-time") == children.end())
+    if(module_up_time != nullptr)
     {
-        if(module_up_time != nullptr)
-        {
-            children["module-up-time"] = module_up_time;
-        }
+        children["module-up-time"] = module_up_time;
     }
 
     return children;
@@ -1197,7 +1045,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::La
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1222,20 +1070,12 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::Las
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1285,7 +1125,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::Mo
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1310,20 +1150,12 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::Mod
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1345,10 +1177,8 @@ PlatformInventory::Racks::Rack::Attributes::Attributes()
 	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Attributes::FruInfo>())
 {
     basic_info->parent = this;
-    children["basic-info"] = basic_info;
 
     fru_info->parent = this;
-    children["fru-info"] = fru_info;
 
     yang_name = "attributes"; yang_parent_name = "rack";
 }
@@ -1379,7 +1209,7 @@ std::string PlatformInventory::Racks::Rack::Attributes::get_segment_path() const
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1402,64 +1232,38 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-info")
     {
-        if(basic_info != nullptr)
-        {
-            children["basic-info"] = basic_info;
-        }
-        else
+        if(basic_info == nullptr)
         {
             basic_info = std::make_shared<PlatformInventory::Racks::Rack::Attributes::BasicInfo>();
-            basic_info->parent = this;
-            children["basic-info"] = basic_info;
         }
-        return children.at("basic-info");
+        return basic_info;
     }
 
     if(child_yang_name == "fru-info")
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
-        else
+        if(fru_info == nullptr)
         {
             fru_info = std::make_shared<PlatformInventory::Racks::Rack::Attributes::FruInfo>();
-            fru_info->parent = this;
-            children["fru-info"] = fru_info;
         }
-        return children.at("fru-info");
+        return fru_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Attributes::get_children() const
 {
-    if(children.find("basic-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_info != nullptr)
     {
-        if(basic_info != nullptr)
-        {
-            children["basic-info"] = basic_info;
-        }
+        children["basic-info"] = basic_info;
     }
 
-    if(children.find("fru-info") == children.end())
+    if(fru_info != nullptr)
     {
-        if(fru_info != nullptr)
-        {
-            children["fru-info"] = fru_info;
-        }
+        children["fru-info"] = fru_info;
     }
 
     return children;
@@ -1524,7 +1328,7 @@ std::string PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_segment_p
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1556,20 +1360,12 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_entity_pat
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1625,10 +1421,8 @@ PlatformInventory::Racks::Rack::Attributes::FruInfo::FruInfo()
 	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
-    children["last-operational-state-change"] = last_operational_state_change;
 
     module_up_time->parent = this;
-    children["module-up-time"] = module_up_time;
 
     yang_name = "fru-info"; yang_parent_name = "attributes";
 }
@@ -1669,7 +1463,7 @@ std::string PlatformInventory::Racks::Rack::Attributes::FruInfo::get_segment_pat
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1697,64 +1491,38 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::get_entity_path(
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-operational-state-change")
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
-        else
+        if(last_operational_state_change == nullptr)
         {
             last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange>();
-            last_operational_state_change->parent = this;
-            children["last-operational-state-change"] = last_operational_state_change;
         }
-        return children.at("last-operational-state-change");
+        return last_operational_state_change;
     }
 
     if(child_yang_name == "module-up-time")
     {
-        if(module_up_time != nullptr)
-        {
-            children["module-up-time"] = module_up_time;
-        }
-        else
+        if(module_up_time == nullptr)
         {
             module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime>();
-            module_up_time->parent = this;
-            children["module-up-time"] = module_up_time;
         }
-        return children.at("module-up-time");
+        return module_up_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Attributes::FruInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Attributes::FruInfo::get_children() const
 {
-    if(children.find("last-operational-state-change") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_operational_state_change != nullptr)
     {
-        if(last_operational_state_change != nullptr)
-        {
-            children["last-operational-state-change"] = last_operational_state_change;
-        }
+        children["last-operational-state-change"] = last_operational_state_change;
     }
 
-    if(children.find("module-up-time") == children.end())
+    if(module_up_time != nullptr)
     {
-        if(module_up_time != nullptr)
-        {
-            children["module-up-time"] = module_up_time;
-        }
+        children["module-up-time"] = module_up_time;
     }
 
     return children;
@@ -1818,7 +1586,7 @@ std::string PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperational
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1843,20 +1611,12 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalS
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1906,7 +1666,7 @@ std::string PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::g
 
 }
 
-EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1931,20 +1691,12 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::ge
 
 std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

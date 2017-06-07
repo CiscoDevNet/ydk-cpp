@@ -18,23 +18,20 @@ class AsicErrorStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: AsicErrorStats::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Nodes> nodes;
-
-
+        
 }; // AsicErrorStats
 
 
@@ -46,19 +43,16 @@ class AsicErrorStats::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: AsicErrorStats::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Nodes::Node> > node;
-
-
+        
 }; // AsicErrorStats::Nodes
 
 
@@ -70,20 +64,17 @@ class AsicErrorStats::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Counts; //type: AsicErrorStats::Nodes::Node::Counts
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Nodes::Node::Counts> counts;
-
-
+        
 }; // AsicErrorStats::Nodes::Node
 
 
@@ -95,19 +86,16 @@ class AsicErrorStats::Nodes::Node::Counts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Count; //type: AsicErrorStats::Nodes::Node::Counts::Count
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Nodes::Node::Counts::Count> > count;
-
-
+        
 }; // AsicErrorStats::Nodes::Node::Counts
 
 
@@ -119,20 +107,17 @@ class AsicErrorStats::Nodes::Node::Counts::Count : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: string
-
         class SumData; //type: AsicErrorStats::Nodes::Node::Counts::Count::SumData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Nodes::Node::Counts::Count::SumData> > sum_data;
-
-
+        
 }; // AsicErrorStats::Nodes::Node::Counts::Count
 
 
@@ -144,12 +129,11 @@ class AsicErrorStats::Nodes::Node::Counts::Count::SumData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance; //type: uint32
         YLeaf num_nodes; //type: uint32
@@ -160,8 +144,6 @@ class AsicErrorStats::Nodes::Node::Counts::Count::SumData : public Entity
         YLeaf gen_err_count; //type: uint32
         YLeaf reset_err_count; //type: uint32
         YLeafList node_key; //type: list of  uint32
-
-
 
 }; // AsicErrorStats::Nodes::Node::Counts::Count::SumData
 

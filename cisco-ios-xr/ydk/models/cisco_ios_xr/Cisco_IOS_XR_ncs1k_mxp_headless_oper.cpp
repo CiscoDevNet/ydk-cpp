@@ -15,10 +15,8 @@ HeadlessFuncData::HeadlessFuncData()
 	,otn_port_names(std::make_shared<HeadlessFuncData::OtnPortNames>())
 {
     ethernet_port_names->parent = this;
-    children["ethernet-port-names"] = ethernet_port_names;
 
     otn_port_names->parent = this;
-    children["otn-port-names"] = otn_port_names;
 
     yang_name = "headless-func-data"; yang_parent_name = "Cisco-IOS-XR-ncs1k-mxp-headless-oper";
 }
@@ -49,12 +47,12 @@ std::string HeadlessFuncData::get_segment_path() const
 
 }
 
-EntityPath HeadlessFuncData::get_entity_path(Entity* ancestor) const
+const EntityPath HeadlessFuncData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath HeadlessFuncData::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HeadlessFuncData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-port-names")
     {
-        if(ethernet_port_names != nullptr)
-        {
-            children["ethernet-port-names"] = ethernet_port_names;
-        }
-        else
+        if(ethernet_port_names == nullptr)
         {
             ethernet_port_names = std::make_shared<HeadlessFuncData::EthernetPortNames>();
-            ethernet_port_names->parent = this;
-            children["ethernet-port-names"] = ethernet_port_names;
         }
-        return children.at("ethernet-port-names");
+        return ethernet_port_names;
     }
 
     if(child_yang_name == "otn-port-names")
     {
-        if(otn_port_names != nullptr)
-        {
-            children["otn-port-names"] = otn_port_names;
-        }
-        else
+        if(otn_port_names == nullptr)
         {
             otn_port_names = std::make_shared<HeadlessFuncData::OtnPortNames>();
-            otn_port_names->parent = this;
-            children["otn-port-names"] = otn_port_names;
         }
-        return children.at("otn-port-names");
+        return otn_port_names;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HeadlessFuncData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::get_children() const
 {
-    if(children.find("ethernet-port-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet_port_names != nullptr)
     {
-        if(ethernet_port_names != nullptr)
-        {
-            children["ethernet-port-names"] = ethernet_port_names;
-        }
+        children["ethernet-port-names"] = ethernet_port_names;
     }
 
-    if(children.find("otn-port-names") == children.end())
+    if(otn_port_names != nullptr)
     {
-        if(otn_port_names != nullptr)
-        {
-            children["otn-port-names"] = otn_port_names;
-        }
+        children["otn-port-names"] = otn_port_names;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string HeadlessFuncData::OtnPortNames::get_segment_path() const
 
 }
 
-EntityPath HeadlessFuncData::OtnPortNames::get_entity_path(Entity* ancestor) const
+const EntityPath HeadlessFuncData::OtnPortNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath HeadlessFuncData::OtnPortNames::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otn-port-name")
     {
         for(auto const & c : otn_port_name)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName>();
         c->parent = this;
-        otn_port_name.push_back(std::move(c));
-        children[segment_path] = otn_port_name.back();
-        return children.at(segment_path);
+        otn_port_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HeadlessFuncData::OtnPortNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otn_port_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -274,7 +233,6 @@ HeadlessFuncData::OtnPortNames::OtnPortName::OtnPortName()
     otn_statistics(std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics>())
 {
     otn_statistics->parent = this;
-    children["otn-statistics"] = otn_statistics;
 
     yang_name = "otn-port-name"; yang_parent_name = "otn-port-names";
 }
@@ -311,7 +269,7 @@ std::string HeadlessFuncData::OtnPortNames::OtnPortName::get_segment_path() cons
 
 }
 
-EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::get_entity_path(Entity* ancestor) const
+const EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -338,41 +296,24 @@ EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otn-statistics")
     {
-        if(otn_statistics != nullptr)
-        {
-            children["otn-statistics"] = otn_statistics;
-        }
-        else
+        if(otn_statistics == nullptr)
         {
             otn_statistics = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics>();
-            otn_statistics->parent = this;
-            children["otn-statistics"] = otn_statistics;
         }
-        return children.at("otn-statistics");
+        return otn_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HeadlessFuncData::OtnPortNames::OtnPortName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::get_children() const
 {
-    if(children.find("otn-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otn_statistics != nullptr)
     {
-        if(otn_statistics != nullptr)
-        {
-            children["otn-statistics"] = otn_statistics;
-        }
+        children["otn-statistics"] = otn_statistics;
     }
 
     return children;
@@ -438,7 +379,7 @@ std::string HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_segm
 
 }
 
-EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -465,20 +406,12 @@ EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_entit
 
 std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -540,7 +473,7 @@ std::string HeadlessFuncData::EthernetPortNames::get_segment_path() const
 
 }
 
-EntityPath HeadlessFuncData::EthernetPortNames::get_entity_path(Entity* ancestor) const
+const EntityPath HeadlessFuncData::EthernetPortNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -563,15 +496,6 @@ EntityPath HeadlessFuncData::EthernetPortNames::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-port-name")
     {
         for(auto const & c : ethernet_port_name)
@@ -579,28 +503,24 @@ std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HeadlessFuncData::EthernetPortNames::EthernetPortName>();
         c->parent = this;
-        ethernet_port_name.push_back(std::move(c));
-        children[segment_path] = ethernet_port_name.back();
-        return children.at(segment_path);
+        ethernet_port_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HeadlessFuncData::EthernetPortNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_port_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -620,7 +540,6 @@ HeadlessFuncData::EthernetPortNames::EthernetPortName::EthernetPortName()
     ether_statistics(std::make_shared<HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics>())
 {
     ether_statistics->parent = this;
-    children["ether-statistics"] = ether_statistics;
 
     yang_name = "ethernet-port-name"; yang_parent_name = "ethernet-port-names";
 }
@@ -657,7 +576,7 @@ std::string HeadlessFuncData::EthernetPortNames::EthernetPortName::get_segment_p
 
 }
 
-EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::get_entity_path(Entity* ancestor) const
+const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -684,41 +603,24 @@ EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::get_entity_pat
 
 std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ether-statistics")
     {
-        if(ether_statistics != nullptr)
-        {
-            children["ether-statistics"] = ether_statistics;
-        }
-        else
+        if(ether_statistics == nullptr)
         {
             ether_statistics = std::make_shared<HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics>();
-            ether_statistics->parent = this;
-            children["ether-statistics"] = ether_statistics;
         }
-        return children.at("ether-statistics");
+        return ether_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HeadlessFuncData::EthernetPortNames::EthernetPortName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::get_children() const
 {
-    if(children.find("ether-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ether_statistics != nullptr)
     {
-        if(ether_statistics != nullptr)
-        {
-            children["ether-statistics"] = ether_statistics;
-        }
+        children["ether-statistics"] = ether_statistics;
     }
 
     return children;
@@ -868,7 +770,7 @@ std::string HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatisti
 
 }
 
-EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -923,20 +825,12 @@ EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistic
 
 std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

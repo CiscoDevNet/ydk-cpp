@@ -18,23 +18,20 @@ class Dpa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Stats; //type: Dpa::Stats
 
         std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats> stats;
-
-
+        
 }; // Dpa
 
 
@@ -46,19 +43,16 @@ class Dpa::Stats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Nodes; //type: Dpa::Stats::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes> nodes;
-
-
+        
 }; // Dpa::Stats
 
 
@@ -70,19 +64,16 @@ class Dpa::Stats::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Dpa::Stats::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node> > node;
-
-
+        
 }; // Dpa::Stats::Nodes
 
 
@@ -94,15 +85,13 @@ class Dpa::Stats::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class VoqBaseNumberStatsClears; //type: Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears
         class NpuNumberForTrapDatas; //type: Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas
         class HwResourcesDatas; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas
@@ -118,8 +107,7 @@ class Dpa::Stats::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas> npu_number_for_voq_datas;
         std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears> voq_base_number_stats_clears;
         std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::VoqBaseNumbers> voq_base_numbers;
-
-
+        
 }; // Dpa::Stats::Nodes::Node
 
 
@@ -131,19 +119,16 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VoqBaseNumberStatsClear; //type: Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear> > voq_base_number_stats_clear;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears
 
 
@@ -155,20 +140,17 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_number; //type: int32
-
         class VoqBaseStatsClearData; //type: Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData> > voq_base_stats_clear_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear
 
 
@@ -180,17 +162,14 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf base_number; //type: uint32
         YLeaf clear_status; //type: uint8
-
-
 
 }; // Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData
 
@@ -203,19 +182,16 @@ class Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpuNumberForTrapData; //type: Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData> > npu_number_for_trap_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas
 
 
@@ -227,20 +203,17 @@ class Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_id; //type: int32
-
         class TrapSpecificStatsData; //type: Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData> > trap_specific_stats_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData
 
 
@@ -252,12 +225,11 @@ class Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::Trap
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_data; //type: uint32
         YLeaf trap_strength; //type: uint32
@@ -276,8 +248,6 @@ class Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::Trap
         YLeaf packet_dropped; //type: uint64
         YLeaf packet_accepted; //type: uint64
 
-
-
 }; // Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData
 
 
@@ -289,19 +259,16 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HwResourcesData; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData> > hw_resources_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::HwResourcesDatas
 
 
@@ -313,23 +280,20 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf resource; //type: ResourceEnum
         YLeaf resource_id; //type: uint32
         YLeaf name; //type: string
         YLeaf num_npus; //type: uint32
-
         class NpuHwr; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr> > npu_hwr;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData
 
 
@@ -341,12 +305,11 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_allowed; //type: uint32
         YLeaf npu_id; //type: uint32
@@ -361,12 +324,10 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr : publi
         YLeaf oor_state_change_time1; //type: string
         YLeaf oor_state_change_time2; //type: string
         YLeaf oor_state; //type: string
-
         class LtHwr; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr> > lt_hwr;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr
 
 
@@ -378,19 +339,16 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lt_id; //type: uint32
         YLeaf name; //type: string
         YLeaf hw_entries; //type: uint32
         YLeaf sw_entries; //type: uint32
-
-
 
 }; // Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr
 
@@ -403,19 +361,16 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumbers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VoqBaseNumber; //type: Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber> > voq_base_number;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::VoqBaseNumbers
 
 
@@ -427,20 +382,17 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_number; //type: int32
-
         class VoqBaseStatsData; //type: Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData> > voq_base_stats_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber
 
 
@@ -452,12 +404,11 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf base_number; //type: uint32
         YLeaf is_inuse; //type: boolean
@@ -473,12 +424,10 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData :
         YLeaf voq_base; //type: uint32
         YLeaf connector_id; //type: uint32
         YLeaf is_local_port; //type: boolean
-
         class VoqStat; //type: Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat> > voq_stat;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData
 
 
@@ -490,19 +439,16 @@ class Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf gport_received_bytes; //type: uint64
         YLeaf gport_received_pkts; //type: uint64
         YLeaf gport_dropped_bytes; //type: uint64
         YLeaf gport_dropped_pkts; //type: uint64
-
-
 
 }; // Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat
 
@@ -515,19 +461,16 @@ class Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpuNumberForVoqData; //type: Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData> > npu_number_for_voq_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas
 
 
@@ -539,20 +482,17 @@ class Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_id; //type: int32
-
         class VoqSpecificStatsData; //type: Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData> > voq_specific_stats_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData
 
 
@@ -564,12 +504,11 @@ class Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf voq_data; //type: int32
         YLeaf is_inuse; //type: boolean
@@ -585,12 +524,10 @@ class Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpe
         YLeaf voq_base; //type: uint32
         YLeaf connector_id; //type: uint32
         YLeaf is_local_port; //type: boolean
-
         class VoqStat; //type: Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat> > voq_stat;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData
 
 
@@ -602,19 +539,16 @@ class Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf gport_received_bytes; //type: uint64
         YLeaf gport_received_pkts; //type: uint64
         YLeaf gport_dropped_bytes; //type: uint64
         YLeaf gport_dropped_pkts; //type: uint64
-
-
 
 }; // Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat
 
@@ -627,19 +561,16 @@ class Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ClearVoqDataForNpuNumber; //type: Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber> > clear_voq_data_for_npu_number;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers
 
 
@@ -651,20 +582,17 @@ class Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumb
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_id; //type: int32
-
         class VoqSpecificStatsDataClear; //type: Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear> > voq_specific_stats_data_clear;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber
 
 
@@ -676,17 +604,14 @@ class Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumb
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf voq_data; //type: int32
         YLeaf clear_status; //type: uint8
-
-
 
 }; // Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear
 
@@ -699,19 +624,16 @@ class Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpuNumberForTrapDataClear; //type: Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear> > npu_number_for_trap_data_clear;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears
 
 
@@ -723,20 +645,17 @@ class Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_id; //type: int32
-
         class TrapSpecificStatsData; //type: Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData> > trap_specific_stats_data;
-
-
+        
 }; // Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear
 
 
@@ -748,17 +667,14 @@ class Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataC
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trap_data; //type: uint32
         YLeaf clear_status; //type: uint8
-
-
 
 }; // Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData
 

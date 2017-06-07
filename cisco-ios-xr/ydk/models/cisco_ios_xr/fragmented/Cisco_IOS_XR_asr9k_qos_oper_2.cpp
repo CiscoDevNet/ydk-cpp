@@ -43,7 +43,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -68,20 +68,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -109,19 +101,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 	,police_config_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters>())
 {
     cbs->parent = this;
-    children["cbs"] = cbs;
 
     cir->parent = this;
-    children["cir"] = cir;
 
     pbs->parent = this;
-    children["pbs"] = pbs;
 
     pir->parent = this;
-    children["pir"] = pir;
 
     police_config_parameters->parent = this;
-    children["police-config-parameters"] = police_config_parameters;
 
     yang_name = "police"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -162,7 +149,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -187,133 +174,80 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cbs")
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
-        else
+        if(cbs == nullptr)
         {
             cbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs>();
-            cbs->parent = this;
-            children["cbs"] = cbs;
         }
-        return children.at("cbs");
+        return cbs;
     }
 
     if(child_yang_name == "cir")
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
-        else
+        if(cir == nullptr)
         {
             cir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir>();
-            cir->parent = this;
-            children["cir"] = cir;
         }
-        return children.at("cir");
+        return cir;
     }
 
     if(child_yang_name == "pbs")
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
-        else
+        if(pbs == nullptr)
         {
             pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs>();
-            pbs->parent = this;
-            children["pbs"] = pbs;
         }
-        return children.at("pbs");
+        return pbs;
     }
 
     if(child_yang_name == "pir")
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
-        else
+        if(pir == nullptr)
         {
             pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir>();
-            pir->parent = this;
-            children["pir"] = pir;
         }
-        return children.at("pir");
+        return pir;
     }
 
     if(child_yang_name == "police-config-parameters")
     {
-        if(police_config_parameters != nullptr)
-        {
-            children["police-config-parameters"] = police_config_parameters;
-        }
-        else
+        if(police_config_parameters == nullptr)
         {
             police_config_parameters = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters>();
-            police_config_parameters->parent = this;
-            children["police-config-parameters"] = police_config_parameters;
         }
-        return children.at("police-config-parameters");
+        return police_config_parameters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_children() const
 {
-    if(children.find("cbs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cbs != nullptr)
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
+        children["cbs"] = cbs;
     }
 
-    if(children.find("cir") == children.end())
+    if(cir != nullptr)
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
+        children["cir"] = cir;
     }
 
-    if(children.find("pbs") == children.end())
+    if(pbs != nullptr)
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
+        children["pbs"] = pbs;
     }
 
-    if(children.find("pir") == children.end())
+    if(pir != nullptr)
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
+        children["pir"] = pir;
     }
 
-    if(children.find("police-config-parameters") == children.end())
+    if(police_config_parameters != nullptr)
     {
-        if(police_config_parameters != nullptr)
-        {
-            children["police-config-parameters"] = police_config_parameters;
-        }
+        children["police-config-parameters"] = police_config_parameters;
     }
 
     return children;
@@ -365,7 +299,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -390,20 +324,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -453,7 +379,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -478,20 +404,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -541,7 +459,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -566,20 +484,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -629,7 +539,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -654,20 +564,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -691,16 +593,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 	,peak_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate>())
 {
     average_rate->parent = this;
-    children["average-rate"] = average_rate;
 
     conform_burst->parent = this;
-    children["conform-burst"] = conform_burst;
 
     exceed_burst->parent = this;
-    children["exceed-burst"] = exceed_burst;
 
     peak_rate->parent = this;
-    children["peak-rate"] = peak_rate;
 
     yang_name = "police-config-parameters"; yang_parent_name = "police";
 }
@@ -735,7 +633,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -758,110 +656,66 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "average-rate")
     {
-        if(average_rate != nullptr)
-        {
-            children["average-rate"] = average_rate;
-        }
-        else
+        if(average_rate == nullptr)
         {
             average_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate>();
-            average_rate->parent = this;
-            children["average-rate"] = average_rate;
         }
-        return children.at("average-rate");
+        return average_rate;
     }
 
     if(child_yang_name == "conform-burst")
     {
-        if(conform_burst != nullptr)
-        {
-            children["conform-burst"] = conform_burst;
-        }
-        else
+        if(conform_burst == nullptr)
         {
             conform_burst = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst>();
-            conform_burst->parent = this;
-            children["conform-burst"] = conform_burst;
         }
-        return children.at("conform-burst");
+        return conform_burst;
     }
 
     if(child_yang_name == "exceed-burst")
     {
-        if(exceed_burst != nullptr)
-        {
-            children["exceed-burst"] = exceed_burst;
-        }
-        else
+        if(exceed_burst == nullptr)
         {
             exceed_burst = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst>();
-            exceed_burst->parent = this;
-            children["exceed-burst"] = exceed_burst;
         }
-        return children.at("exceed-burst");
+        return exceed_burst;
     }
 
     if(child_yang_name == "peak-rate")
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
-        else
+        if(peak_rate == nullptr)
         {
             peak_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate>();
-            peak_rate->parent = this;
-            children["peak-rate"] = peak_rate;
         }
-        return children.at("peak-rate");
+        return peak_rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_children() const
 {
-    if(children.find("average-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(average_rate != nullptr)
     {
-        if(average_rate != nullptr)
-        {
-            children["average-rate"] = average_rate;
-        }
+        children["average-rate"] = average_rate;
     }
 
-    if(children.find("conform-burst") == children.end())
+    if(conform_burst != nullptr)
     {
-        if(conform_burst != nullptr)
-        {
-            children["conform-burst"] = conform_burst;
-        }
+        children["conform-burst"] = conform_burst;
     }
 
-    if(children.find("exceed-burst") == children.end())
+    if(exceed_burst != nullptr)
     {
-        if(exceed_burst != nullptr)
-        {
-            children["exceed-burst"] = exceed_burst;
-        }
+        children["exceed-burst"] = exceed_burst;
     }
 
-    if(children.find("peak-rate") == children.end())
+    if(peak_rate != nullptr)
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
+        children["peak-rate"] = peak_rate;
     }
 
     return children;
@@ -905,7 +759,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -930,20 +784,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -993,7 +839,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1018,20 +864,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1081,7 +919,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1106,20 +944,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1169,7 +999,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1194,20 +1024,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1236,10 +1058,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 	,parent_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth>())
 {
     bandwidth->parent = this;
-    children["bandwidth"] = bandwidth;
 
     parent_bandwidth->parent = this;
-    children["parent-bandwidth"] = parent_bandwidth;
 
     yang_name = "wfq"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -1282,7 +1102,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1311,64 +1131,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "parent-bandwidth")
     {
-        if(parent_bandwidth != nullptr)
-        {
-            children["parent-bandwidth"] = parent_bandwidth;
-        }
-        else
+        if(parent_bandwidth == nullptr)
         {
             parent_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth>();
-            parent_bandwidth->parent = this;
-            children["parent-bandwidth"] = parent_bandwidth;
         }
-        return children.at("parent-bandwidth");
+        return parent_bandwidth;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_children() const
 {
-    if(children.find("bandwidth") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("parent-bandwidth") == children.end())
+    if(parent_bandwidth != nullptr)
     {
-        if(parent_bandwidth != nullptr)
-        {
-            children["parent-bandwidth"] = parent_bandwidth;
-        }
+        children["parent-bandwidth"] = parent_bandwidth;
     }
 
     return children;
@@ -1436,7 +1230,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1461,20 +1255,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1524,7 +1310,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1549,20 +1335,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1622,7 +1400,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1647,15 +1425,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "curve")
     {
         for(auto const & c : curve)
@@ -1663,28 +1432,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve>();
         c->parent = this;
-        curve.push_back(std::move(c));
-        children[segment_path] = curve.back();
-        return children.at(segment_path);
+        curve.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : curve)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1716,16 +1481,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 	,min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig>())
 {
     max_threshold->parent = this;
-    children["max-threshold"] = max_threshold;
 
     max_threshold_user_config->parent = this;
-    children["max-threshold-user-config"] = max_threshold_user_config;
 
     min_threshold->parent = this;
-    children["min-threshold"] = min_threshold;
 
     min_threshold_user_config->parent = this;
-    children["min-threshold-user-config"] = min_threshold_user_config;
 
     yang_name = "curve"; yang_parent_name = "wred";
 }
@@ -1770,7 +1531,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1798,110 +1559,66 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "max-threshold")
     {
-        if(max_threshold != nullptr)
-        {
-            children["max-threshold"] = max_threshold;
-        }
-        else
+        if(max_threshold == nullptr)
         {
             max_threshold = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold>();
-            max_threshold->parent = this;
-            children["max-threshold"] = max_threshold;
         }
-        return children.at("max-threshold");
+        return max_threshold;
     }
 
     if(child_yang_name == "max-threshold-user-config")
     {
-        if(max_threshold_user_config != nullptr)
-        {
-            children["max-threshold-user-config"] = max_threshold_user_config;
-        }
-        else
+        if(max_threshold_user_config == nullptr)
         {
             max_threshold_user_config = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig>();
-            max_threshold_user_config->parent = this;
-            children["max-threshold-user-config"] = max_threshold_user_config;
         }
-        return children.at("max-threshold-user-config");
+        return max_threshold_user_config;
     }
 
     if(child_yang_name == "min-threshold")
     {
-        if(min_threshold != nullptr)
-        {
-            children["min-threshold"] = min_threshold;
-        }
-        else
+        if(min_threshold == nullptr)
         {
             min_threshold = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold>();
-            min_threshold->parent = this;
-            children["min-threshold"] = min_threshold;
         }
-        return children.at("min-threshold");
+        return min_threshold;
     }
 
     if(child_yang_name == "min-threshold-user-config")
     {
-        if(min_threshold_user_config != nullptr)
-        {
-            children["min-threshold-user-config"] = min_threshold_user_config;
-        }
-        else
+        if(min_threshold_user_config == nullptr)
         {
             min_threshold_user_config = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig>();
-            min_threshold_user_config->parent = this;
-            children["min-threshold-user-config"] = min_threshold_user_config;
         }
-        return children.at("min-threshold-user-config");
+        return min_threshold_user_config;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_children() const
 {
-    if(children.find("max-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(max_threshold != nullptr)
     {
-        if(max_threshold != nullptr)
-        {
-            children["max-threshold"] = max_threshold;
-        }
+        children["max-threshold"] = max_threshold;
     }
 
-    if(children.find("max-threshold-user-config") == children.end())
+    if(max_threshold_user_config != nullptr)
     {
-        if(max_threshold_user_config != nullptr)
-        {
-            children["max-threshold-user-config"] = max_threshold_user_config;
-        }
+        children["max-threshold-user-config"] = max_threshold_user_config;
     }
 
-    if(children.find("min-threshold") == children.end())
+    if(min_threshold != nullptr)
     {
-        if(min_threshold != nullptr)
-        {
-            children["min-threshold"] = min_threshold;
-        }
+        children["min-threshold"] = min_threshold;
     }
 
-    if(children.find("min-threshold-user-config") == children.end())
+    if(min_threshold_user_config != nullptr)
     {
-        if(min_threshold_user_config != nullptr)
-        {
-            children["min-threshold-user-config"] = min_threshold_user_config;
-        }
+        children["min-threshold-user-config"] = min_threshold_user_config;
     }
 
     return children;
@@ -1965,7 +1682,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1990,20 +1707,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2053,7 +1762,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2078,20 +1787,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2141,7 +1842,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2166,20 +1867,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2229,7 +1922,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2254,20 +1947,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2295,28 +1980,20 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 	,police_violate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate>())
 {
     child_mark->parent = this;
-    children["child-mark"] = child_mark;
 
     parent_mark->parent = this;
-    children["parent-mark"] = parent_mark;
 
     parent_police_conform->parent = this;
-    children["parent-police-conform"] = parent_police_conform;
 
     parent_police_exceed->parent = this;
-    children["parent-police-exceed"] = parent_police_exceed;
 
     parent_police_violate->parent = this;
-    children["parent-police-violate"] = parent_police_violate;
 
     police_conform->parent = this;
-    children["police-conform"] = police_conform;
 
     police_exceed->parent = this;
-    children["police-exceed"] = police_exceed;
 
     police_violate->parent = this;
-    children["police-violate"] = police_violate;
 
     yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -2359,7 +2036,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2382,202 +2059,122 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "child-mark")
     {
-        if(child_mark != nullptr)
-        {
-            children["child-mark"] = child_mark;
-        }
-        else
+        if(child_mark == nullptr)
         {
             child_mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark>();
-            child_mark->parent = this;
-            children["child-mark"] = child_mark;
         }
-        return children.at("child-mark");
+        return child_mark;
     }
 
     if(child_yang_name == "parent-mark")
     {
-        if(parent_mark != nullptr)
-        {
-            children["parent-mark"] = parent_mark;
-        }
-        else
+        if(parent_mark == nullptr)
         {
             parent_mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark>();
-            parent_mark->parent = this;
-            children["parent-mark"] = parent_mark;
         }
-        return children.at("parent-mark");
+        return parent_mark;
     }
 
     if(child_yang_name == "parent-police-conform")
     {
-        if(parent_police_conform != nullptr)
-        {
-            children["parent-police-conform"] = parent_police_conform;
-        }
-        else
+        if(parent_police_conform == nullptr)
         {
             parent_police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform>();
-            parent_police_conform->parent = this;
-            children["parent-police-conform"] = parent_police_conform;
         }
-        return children.at("parent-police-conform");
+        return parent_police_conform;
     }
 
     if(child_yang_name == "parent-police-exceed")
     {
-        if(parent_police_exceed != nullptr)
-        {
-            children["parent-police-exceed"] = parent_police_exceed;
-        }
-        else
+        if(parent_police_exceed == nullptr)
         {
             parent_police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed>();
-            parent_police_exceed->parent = this;
-            children["parent-police-exceed"] = parent_police_exceed;
         }
-        return children.at("parent-police-exceed");
+        return parent_police_exceed;
     }
 
     if(child_yang_name == "parent-police-violate")
     {
-        if(parent_police_violate != nullptr)
-        {
-            children["parent-police-violate"] = parent_police_violate;
-        }
-        else
+        if(parent_police_violate == nullptr)
         {
             parent_police_violate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate>();
-            parent_police_violate->parent = this;
-            children["parent-police-violate"] = parent_police_violate;
         }
-        return children.at("parent-police-violate");
+        return parent_police_violate;
     }
 
     if(child_yang_name == "police-conform")
     {
-        if(police_conform != nullptr)
-        {
-            children["police-conform"] = police_conform;
-        }
-        else
+        if(police_conform == nullptr)
         {
             police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform>();
-            police_conform->parent = this;
-            children["police-conform"] = police_conform;
         }
-        return children.at("police-conform");
+        return police_conform;
     }
 
     if(child_yang_name == "police-exceed")
     {
-        if(police_exceed != nullptr)
-        {
-            children["police-exceed"] = police_exceed;
-        }
-        else
+        if(police_exceed == nullptr)
         {
             police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed>();
-            police_exceed->parent = this;
-            children["police-exceed"] = police_exceed;
         }
-        return children.at("police-exceed");
+        return police_exceed;
     }
 
     if(child_yang_name == "police-violate")
     {
-        if(police_violate != nullptr)
-        {
-            children["police-violate"] = police_violate;
-        }
-        else
+        if(police_violate == nullptr)
         {
             police_violate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate>();
-            police_violate->parent = this;
-            children["police-violate"] = police_violate;
         }
-        return children.at("police-violate");
+        return police_violate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_children() const
 {
-    if(children.find("child-mark") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(child_mark != nullptr)
     {
-        if(child_mark != nullptr)
-        {
-            children["child-mark"] = child_mark;
-        }
+        children["child-mark"] = child_mark;
     }
 
-    if(children.find("parent-mark") == children.end())
+    if(parent_mark != nullptr)
     {
-        if(parent_mark != nullptr)
-        {
-            children["parent-mark"] = parent_mark;
-        }
+        children["parent-mark"] = parent_mark;
     }
 
-    if(children.find("parent-police-conform") == children.end())
+    if(parent_police_conform != nullptr)
     {
-        if(parent_police_conform != nullptr)
-        {
-            children["parent-police-conform"] = parent_police_conform;
-        }
+        children["parent-police-conform"] = parent_police_conform;
     }
 
-    if(children.find("parent-police-exceed") == children.end())
+    if(parent_police_exceed != nullptr)
     {
-        if(parent_police_exceed != nullptr)
-        {
-            children["parent-police-exceed"] = parent_police_exceed;
-        }
+        children["parent-police-exceed"] = parent_police_exceed;
     }
 
-    if(children.find("parent-police-violate") == children.end())
+    if(parent_police_violate != nullptr)
     {
-        if(parent_police_violate != nullptr)
-        {
-            children["parent-police-violate"] = parent_police_violate;
-        }
+        children["parent-police-violate"] = parent_police_violate;
     }
 
-    if(children.find("police-conform") == children.end())
+    if(police_conform != nullptr)
     {
-        if(police_conform != nullptr)
-        {
-            children["police-conform"] = police_conform;
-        }
+        children["police-conform"] = police_conform;
     }
 
-    if(children.find("police-exceed") == children.end())
+    if(police_exceed != nullptr)
     {
-        if(police_exceed != nullptr)
-        {
-            children["police-exceed"] = police_exceed;
-        }
+        children["police-exceed"] = police_exceed;
     }
 
-    if(children.find("police-violate") == children.end())
+    if(police_violate != nullptr)
     {
-        if(police_violate != nullptr)
-        {
-            children["police-violate"] = police_violate;
-        }
+        children["police-violate"] = police_violate;
     }
 
     return children;
@@ -2628,7 +2225,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2652,15 +2249,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -2668,28 +2256,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2737,7 +2321,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2762,20 +2346,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2832,7 +2408,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2856,15 +2432,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -2872,28 +2439,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2941,7 +2504,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2966,20 +2529,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3036,7 +2591,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3060,15 +2615,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -3076,28 +2622,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3145,7 +2687,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3170,20 +2712,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3240,7 +2774,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3264,15 +2798,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -3280,28 +2805,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3349,7 +2870,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3374,20 +2895,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3444,7 +2957,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3468,15 +2981,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -3484,28 +2988,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3553,7 +3053,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3578,20 +3078,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3648,7 +3140,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3672,15 +3164,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -3688,28 +3171,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3757,7 +3236,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3782,20 +3261,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3852,7 +3323,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3876,15 +3347,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -3892,28 +3354,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3961,7 +3419,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3986,20 +3444,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4056,7 +3506,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4080,15 +3530,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -4096,28 +3537,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4165,7 +3602,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleO
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4190,20 +3627,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOu
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4224,7 +3653,6 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Bundle
     member_interfaces(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces>())
 {
     member_interfaces->parent = this;
-    children["member-interfaces"] = member_interfaces;
 
     yang_name = "bundle-input"; yang_parent_name = "bundle-interface";
 }
@@ -4253,7 +3681,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4276,41 +3704,24 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-interfaces")
     {
-        if(member_interfaces != nullptr)
-        {
-            children["member-interfaces"] = member_interfaces;
-        }
-        else
+        if(member_interfaces == nullptr)
         {
             member_interfaces = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces>();
-            member_interfaces->parent = this;
-            children["member-interfaces"] = member_interfaces;
         }
-        return children.at("member-interfaces");
+        return member_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::get_children() const
 {
-    if(children.find("member-interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(member_interfaces != nullptr)
     {
-        if(member_interfaces != nullptr)
-        {
-            children["member-interfaces"] = member_interfaces;
-        }
+        children["member-interfaces"] = member_interfaces;
     }
 
     return children;
@@ -4358,7 +3769,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4381,15 +3792,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-interface")
     {
         for(auto const & c : member_interface)
@@ -4397,28 +3799,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface>();
         c->parent = this;
-        member_interface.push_back(std::move(c));
-        children[segment_path] = member_interface.back();
-        return children.at(segment_path);
+        member_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : member_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4435,7 +3833,6 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
     details(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details>())
 {
     details->parent = this;
-    children["details"] = details;
 
     yang_name = "member-interface"; yang_parent_name = "member-interfaces";
 }
@@ -4466,7 +3863,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4490,41 +3887,24 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "details")
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
-        else
+        if(details == nullptr)
         {
             details = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details>();
-            details->parent = this;
-            children["details"] = details;
         }
-        return children.at("details");
+        return details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::get_children() const
 {
-    if(children.find("details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(details != nullptr)
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
+        children["details"] = details;
     }
 
     return children;
@@ -4545,13 +3925,10 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,policy_typhoon(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon>())
 {
     header->parent = this;
-    children["header"] = header;
 
     policy->parent = this;
-    children["policy"] = policy;
 
     policy_typhoon->parent = this;
-    children["policy-typhoon"] = policy_typhoon;
 
     yang_name = "details"; yang_parent_name = "member-interface";
 }
@@ -4584,7 +3961,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4607,87 +3984,52 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "header")
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
-        else
+        if(header == nullptr)
         {
             header = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header>();
-            header->parent = this;
-            children["header"] = header;
         }
-        return children.at("header");
+        return header;
     }
 
     if(child_yang_name == "policy")
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
-        else
+        if(policy == nullptr)
         {
             policy = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy>();
-            policy->parent = this;
-            children["policy"] = policy;
         }
-        return children.at("policy");
+        return policy;
     }
 
     if(child_yang_name == "policy-typhoon")
     {
-        if(policy_typhoon != nullptr)
-        {
-            children["policy-typhoon"] = policy_typhoon;
-        }
-        else
+        if(policy_typhoon == nullptr)
         {
             policy_typhoon = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon>();
-            policy_typhoon->parent = this;
-            children["policy-typhoon"] = policy_typhoon;
         }
-        return children.at("policy-typhoon");
+        return policy_typhoon;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::get_children() const
 {
-    if(children.find("header") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(header != nullptr)
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
+        children["header"] = header;
     }
 
-    if(children.find("policy") == children.end())
+    if(policy != nullptr)
     {
-        if(policy != nullptr)
-        {
-            children["policy"] = policy;
-        }
+        children["policy"] = policy;
     }
 
-    if(children.find("policy-typhoon") == children.end())
+    if(policy_typhoon != nullptr)
     {
-        if(policy_typhoon != nullptr)
-        {
-            children["policy-typhoon"] = policy_typhoon;
-        }
+        children["policy-typhoon"] = policy_typhoon;
     }
 
     return children;
@@ -4706,10 +4048,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,programmed_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth>())
 {
     interface_parameters->parent = this;
-    children["interface-parameters"] = interface_parameters;
 
     programmed_bandwidth->parent = this;
-    children["programmed-bandwidth"] = programmed_bandwidth;
 
     yang_name = "header"; yang_parent_name = "details";
 }
@@ -4744,7 +4084,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4769,64 +4109,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-parameters")
     {
-        if(interface_parameters != nullptr)
-        {
-            children["interface-parameters"] = interface_parameters;
-        }
-        else
+        if(interface_parameters == nullptr)
         {
             interface_parameters = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters>();
-            interface_parameters->parent = this;
-            children["interface-parameters"] = interface_parameters;
         }
-        return children.at("interface-parameters");
+        return interface_parameters;
     }
 
     if(child_yang_name == "programmed-bandwidth")
     {
-        if(programmed_bandwidth != nullptr)
-        {
-            children["programmed-bandwidth"] = programmed_bandwidth;
-        }
-        else
+        if(programmed_bandwidth == nullptr)
         {
             programmed_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth>();
-            programmed_bandwidth->parent = this;
-            children["programmed-bandwidth"] = programmed_bandwidth;
         }
-        return children.at("programmed-bandwidth");
+        return programmed_bandwidth;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::get_children() const
 {
-    if(children.find("interface-parameters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_parameters != nullptr)
     {
-        if(interface_parameters != nullptr)
-        {
-            children["interface-parameters"] = interface_parameters;
-        }
+        children["interface-parameters"] = interface_parameters;
     }
 
-    if(children.find("programmed-bandwidth") == children.end())
+    if(programmed_bandwidth != nullptr)
     {
-        if(programmed_bandwidth != nullptr)
-        {
-            children["programmed-bandwidth"] = programmed_bandwidth;
-        }
+        children["programmed-bandwidth"] = programmed_bandwidth;
     }
 
     return children;
@@ -4852,16 +4166,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate>())
 {
     ancp_config_bandwidth->parent = this;
-    children["ancp-config-bandwidth"] = ancp_config_bandwidth;
 
     ancp_programmed_bandwidth->parent = this;
-    children["ancp-programmed-bandwidth"] = ancp_programmed_bandwidth;
 
     port_config_bandwidth->parent = this;
-    children["port-config-bandwidth"] = port_config_bandwidth;
 
     port_shaper_rate->parent = this;
-    children["port-shaper-rate"] = port_shaper_rate;
 
     yang_name = "interface-parameters"; yang_parent_name = "header";
 }
@@ -4896,7 +4206,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4919,110 +4229,66 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ancp-config-bandwidth")
     {
-        if(ancp_config_bandwidth != nullptr)
-        {
-            children["ancp-config-bandwidth"] = ancp_config_bandwidth;
-        }
-        else
+        if(ancp_config_bandwidth == nullptr)
         {
             ancp_config_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth>();
-            ancp_config_bandwidth->parent = this;
-            children["ancp-config-bandwidth"] = ancp_config_bandwidth;
         }
-        return children.at("ancp-config-bandwidth");
+        return ancp_config_bandwidth;
     }
 
     if(child_yang_name == "ancp-programmed-bandwidth")
     {
-        if(ancp_programmed_bandwidth != nullptr)
-        {
-            children["ancp-programmed-bandwidth"] = ancp_programmed_bandwidth;
-        }
-        else
+        if(ancp_programmed_bandwidth == nullptr)
         {
             ancp_programmed_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth>();
-            ancp_programmed_bandwidth->parent = this;
-            children["ancp-programmed-bandwidth"] = ancp_programmed_bandwidth;
         }
-        return children.at("ancp-programmed-bandwidth");
+        return ancp_programmed_bandwidth;
     }
 
     if(child_yang_name == "port-config-bandwidth")
     {
-        if(port_config_bandwidth != nullptr)
-        {
-            children["port-config-bandwidth"] = port_config_bandwidth;
-        }
-        else
+        if(port_config_bandwidth == nullptr)
         {
             port_config_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth>();
-            port_config_bandwidth->parent = this;
-            children["port-config-bandwidth"] = port_config_bandwidth;
         }
-        return children.at("port-config-bandwidth");
+        return port_config_bandwidth;
     }
 
     if(child_yang_name == "port-shaper-rate")
     {
-        if(port_shaper_rate != nullptr)
-        {
-            children["port-shaper-rate"] = port_shaper_rate;
-        }
-        else
+        if(port_shaper_rate == nullptr)
         {
             port_shaper_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate>();
-            port_shaper_rate->parent = this;
-            children["port-shaper-rate"] = port_shaper_rate;
         }
-        return children.at("port-shaper-rate");
+        return port_shaper_rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::get_children() const
 {
-    if(children.find("ancp-config-bandwidth") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ancp_config_bandwidth != nullptr)
     {
-        if(ancp_config_bandwidth != nullptr)
-        {
-            children["ancp-config-bandwidth"] = ancp_config_bandwidth;
-        }
+        children["ancp-config-bandwidth"] = ancp_config_bandwidth;
     }
 
-    if(children.find("ancp-programmed-bandwidth") == children.end())
+    if(ancp_programmed_bandwidth != nullptr)
     {
-        if(ancp_programmed_bandwidth != nullptr)
-        {
-            children["ancp-programmed-bandwidth"] = ancp_programmed_bandwidth;
-        }
+        children["ancp-programmed-bandwidth"] = ancp_programmed_bandwidth;
     }
 
-    if(children.find("port-config-bandwidth") == children.end())
+    if(port_config_bandwidth != nullptr)
     {
-        if(port_config_bandwidth != nullptr)
-        {
-            children["port-config-bandwidth"] = port_config_bandwidth;
-        }
+        children["port-config-bandwidth"] = port_config_bandwidth;
     }
 
-    if(children.find("port-shaper-rate") == children.end())
+    if(port_shaper_rate != nullptr)
     {
-        if(port_shaper_rate != nullptr)
-        {
-            children["port-shaper-rate"] = port_shaper_rate;
-        }
+        children["port-shaper-rate"] = port_shaper_rate;
     }
 
     return children;
@@ -5066,7 +4332,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5091,20 +4357,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5154,7 +4412,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5179,20 +4437,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5242,7 +4492,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5267,20 +4517,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5330,7 +4572,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5355,20 +4597,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5418,7 +4652,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5443,20 +4677,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5510,7 +4736,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5533,15 +4759,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "qos-show-ea-st-v1")
     {
         for(auto const & c : qos_show_ea_st_v1)
@@ -5549,28 +4766,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1>();
         c->parent = this;
-        qos_show_ea_st_v1.push_back(std::move(c));
-        children[segment_path] = qos_show_ea_st_v1.back();
-        return children.at(segment_path);
+        qos_show_ea_st_v1.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : qos_show_ea_st_v1)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5597,25 +4810,18 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,wred(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred>())
 {
     mark->parent = this;
-    children["mark"] = mark;
 
     police->parent = this;
-    children["police"] = police;
 
     queue->parent = this;
-    children["queue"] = queue;
 
     queue_limit_parameters->parent = this;
-    children["queue-limit-parameters"] = queue_limit_parameters;
 
     shape->parent = this;
-    children["shape"] = shape;
 
     wfq->parent = this;
-    children["wfq"] = wfq;
 
     wred->parent = this;
-    children["wred"] = wred;
 
     yang_name = "qos-show-ea-st-v1"; yang_parent_name = "policy";
 }
@@ -5666,7 +4872,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5694,179 +4900,108 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark")
     {
-        if(mark != nullptr)
-        {
-            children["mark"] = mark;
-        }
-        else
+        if(mark == nullptr)
         {
             mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark>();
-            mark->parent = this;
-            children["mark"] = mark;
         }
-        return children.at("mark");
+        return mark;
     }
 
     if(child_yang_name == "police")
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
-        else
+        if(police == nullptr)
         {
             police = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police>();
-            police->parent = this;
-            children["police"] = police;
         }
-        return children.at("police");
+        return police;
     }
 
     if(child_yang_name == "queue")
     {
-        if(queue != nullptr)
-        {
-            children["queue"] = queue;
-        }
-        else
+        if(queue == nullptr)
         {
             queue = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue>();
-            queue->parent = this;
-            children["queue"] = queue;
         }
-        return children.at("queue");
+        return queue;
     }
 
     if(child_yang_name == "queue-limit-parameters")
     {
-        if(queue_limit_parameters != nullptr)
-        {
-            children["queue-limit-parameters"] = queue_limit_parameters;
-        }
-        else
+        if(queue_limit_parameters == nullptr)
         {
             queue_limit_parameters = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters>();
-            queue_limit_parameters->parent = this;
-            children["queue-limit-parameters"] = queue_limit_parameters;
         }
-        return children.at("queue-limit-parameters");
+        return queue_limit_parameters;
     }
 
     if(child_yang_name == "shape")
     {
-        if(shape != nullptr)
-        {
-            children["shape"] = shape;
-        }
-        else
+        if(shape == nullptr)
         {
             shape = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape>();
-            shape->parent = this;
-            children["shape"] = shape;
         }
-        return children.at("shape");
+        return shape;
     }
 
     if(child_yang_name == "wfq")
     {
-        if(wfq != nullptr)
-        {
-            children["wfq"] = wfq;
-        }
-        else
+        if(wfq == nullptr)
         {
             wfq = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq>();
-            wfq->parent = this;
-            children["wfq"] = wfq;
         }
-        return children.at("wfq");
+        return wfq;
     }
 
     if(child_yang_name == "wred")
     {
-        if(wred != nullptr)
-        {
-            children["wred"] = wred;
-        }
-        else
+        if(wred == nullptr)
         {
             wred = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred>();
-            wred->parent = this;
-            children["wred"] = wred;
         }
-        return children.at("wred");
+        return wred;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::get_children() const
 {
-    if(children.find("mark") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mark != nullptr)
     {
-        if(mark != nullptr)
-        {
-            children["mark"] = mark;
-        }
+        children["mark"] = mark;
     }
 
-    if(children.find("police") == children.end())
+    if(police != nullptr)
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
+        children["police"] = police;
     }
 
-    if(children.find("queue") == children.end())
+    if(queue != nullptr)
     {
-        if(queue != nullptr)
-        {
-            children["queue"] = queue;
-        }
+        children["queue"] = queue;
     }
 
-    if(children.find("queue-limit-parameters") == children.end())
+    if(queue_limit_parameters != nullptr)
     {
-        if(queue_limit_parameters != nullptr)
-        {
-            children["queue-limit-parameters"] = queue_limit_parameters;
-        }
+        children["queue-limit-parameters"] = queue_limit_parameters;
     }
 
-    if(children.find("shape") == children.end())
+    if(shape != nullptr)
     {
-        if(shape != nullptr)
-        {
-            children["shape"] = shape;
-        }
+        children["shape"] = shape;
     }
 
-    if(children.find("wfq") == children.end())
+    if(wfq != nullptr)
     {
-        if(wfq != nullptr)
-        {
-            children["wfq"] = wfq;
-        }
+        children["wfq"] = wfq;
     }
 
-    if(children.find("wred") == children.end())
+    if(wred != nullptr)
     {
-        if(wred != nullptr)
-        {
-            children["wred"] = wred;
-        }
+        children["wred"] = wred;
     }
 
     return children;
@@ -5933,7 +5068,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5959,20 +5094,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6001,10 +5128,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit>())
 {
     config_queue_limit->parent = this;
-    children["config-queue-limit"] = config_queue_limit;
 
     queue_limit->parent = this;
-    children["queue-limit"] = queue_limit;
 
     yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v1";
 }
@@ -6039,7 +5164,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6064,64 +5189,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config-queue-limit")
     {
-        if(config_queue_limit != nullptr)
-        {
-            children["config-queue-limit"] = config_queue_limit;
-        }
-        else
+        if(config_queue_limit == nullptr)
         {
             config_queue_limit = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit>();
-            config_queue_limit->parent = this;
-            children["config-queue-limit"] = config_queue_limit;
         }
-        return children.at("config-queue-limit");
+        return config_queue_limit;
     }
 
     if(child_yang_name == "queue-limit")
     {
-        if(queue_limit != nullptr)
-        {
-            children["queue-limit"] = queue_limit;
-        }
-        else
+        if(queue_limit == nullptr)
         {
             queue_limit = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit>();
-            queue_limit->parent = this;
-            children["queue-limit"] = queue_limit;
         }
-        return children.at("queue-limit");
+        return queue_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::get_children() const
 {
-    if(children.find("config-queue-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config_queue_limit != nullptr)
     {
-        if(config_queue_limit != nullptr)
-        {
-            children["config-queue-limit"] = config_queue_limit;
-        }
+        children["config-queue-limit"] = config_queue_limit;
     }
 
-    if(children.find("queue-limit") == children.end())
+    if(queue_limit != nullptr)
     {
-        if(queue_limit != nullptr)
-        {
-            children["queue-limit"] = queue_limit;
-        }
+        children["queue-limit"] = queue_limit;
     }
 
     return children;
@@ -6173,7 +5272,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6198,20 +5297,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6261,7 +5352,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6286,20 +5377,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6326,19 +5409,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir>())
 {
     cbs->parent = this;
-    children["cbs"] = cbs;
 
     cir->parent = this;
-    children["cir"] = cir;
 
     config_bandwidth->parent = this;
-    children["config-bandwidth"] = config_bandwidth;
 
     pbs->parent = this;
-    children["pbs"] = pbs;
 
     pir->parent = this;
-    children["pir"] = pir;
 
     yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v1";
 }
@@ -6377,7 +5455,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6401,133 +5479,80 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cbs")
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
-        else
+        if(cbs == nullptr)
         {
             cbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs>();
-            cbs->parent = this;
-            children["cbs"] = cbs;
         }
-        return children.at("cbs");
+        return cbs;
     }
 
     if(child_yang_name == "cir")
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
-        else
+        if(cir == nullptr)
         {
             cir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir>();
-            cir->parent = this;
-            children["cir"] = cir;
         }
-        return children.at("cir");
+        return cir;
     }
 
     if(child_yang_name == "config-bandwidth")
     {
-        if(config_bandwidth != nullptr)
-        {
-            children["config-bandwidth"] = config_bandwidth;
-        }
-        else
+        if(config_bandwidth == nullptr)
         {
             config_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth>();
-            config_bandwidth->parent = this;
-            children["config-bandwidth"] = config_bandwidth;
         }
-        return children.at("config-bandwidth");
+        return config_bandwidth;
     }
 
     if(child_yang_name == "pbs")
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
-        else
+        if(pbs == nullptr)
         {
             pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs>();
-            pbs->parent = this;
-            children["pbs"] = pbs;
         }
-        return children.at("pbs");
+        return pbs;
     }
 
     if(child_yang_name == "pir")
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
-        else
+        if(pir == nullptr)
         {
             pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir>();
-            pir->parent = this;
-            children["pir"] = pir;
         }
-        return children.at("pir");
+        return pir;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::get_children() const
 {
-    if(children.find("cbs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cbs != nullptr)
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
+        children["cbs"] = cbs;
     }
 
-    if(children.find("cir") == children.end())
+    if(cir != nullptr)
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
+        children["cir"] = cir;
     }
 
-    if(children.find("config-bandwidth") == children.end())
+    if(config_bandwidth != nullptr)
     {
-        if(config_bandwidth != nullptr)
-        {
-            children["config-bandwidth"] = config_bandwidth;
-        }
+        children["config-bandwidth"] = config_bandwidth;
     }
 
-    if(children.find("pbs") == children.end())
+    if(pbs != nullptr)
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
+        children["pbs"] = pbs;
     }
 
-    if(children.find("pir") == children.end())
+    if(pir != nullptr)
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
+        children["pir"] = pir;
     }
 
     return children;
@@ -6575,7 +5600,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6600,20 +5625,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6634,7 +5651,6 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
     minimum_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate>())
 {
     minimum_rate->parent = this;
-    children["minimum-rate"] = minimum_rate;
 
     yang_name = "config-bandwidth"; yang_parent_name = "shape";
 }
@@ -6663,7 +5679,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6686,41 +5702,24 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minimum-rate")
     {
-        if(minimum_rate != nullptr)
-        {
-            children["minimum-rate"] = minimum_rate;
-        }
-        else
+        if(minimum_rate == nullptr)
         {
             minimum_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate>();
-            minimum_rate->parent = this;
-            children["minimum-rate"] = minimum_rate;
         }
-        return children.at("minimum-rate");
+        return minimum_rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::get_children() const
 {
-    if(children.find("minimum-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(minimum_rate != nullptr)
     {
-        if(minimum_rate != nullptr)
-        {
-            children["minimum-rate"] = minimum_rate;
-        }
+        children["minimum-rate"] = minimum_rate;
     }
 
     return children;
@@ -6764,7 +5763,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6789,20 +5788,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6852,7 +5843,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6877,20 +5868,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6940,7 +5923,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6965,20 +5948,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7028,7 +6003,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7053,20 +6028,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7094,19 +6061,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,police_config_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters>())
 {
     cbs->parent = this;
-    children["cbs"] = cbs;
 
     cir->parent = this;
-    children["cir"] = cir;
 
     pbs->parent = this;
-    children["pbs"] = pbs;
 
     pir->parent = this;
-    children["pir"] = pir;
 
     police_config_parameters->parent = this;
-    children["police-config-parameters"] = police_config_parameters;
 
     yang_name = "police"; yang_parent_name = "qos-show-ea-st-v1";
 }
@@ -7147,7 +6109,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7172,133 +6134,80 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cbs")
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
-        else
+        if(cbs == nullptr)
         {
             cbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs>();
-            cbs->parent = this;
-            children["cbs"] = cbs;
         }
-        return children.at("cbs");
+        return cbs;
     }
 
     if(child_yang_name == "cir")
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
-        else
+        if(cir == nullptr)
         {
             cir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir>();
-            cir->parent = this;
-            children["cir"] = cir;
         }
-        return children.at("cir");
+        return cir;
     }
 
     if(child_yang_name == "pbs")
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
-        else
+        if(pbs == nullptr)
         {
             pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs>();
-            pbs->parent = this;
-            children["pbs"] = pbs;
         }
-        return children.at("pbs");
+        return pbs;
     }
 
     if(child_yang_name == "pir")
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
-        else
+        if(pir == nullptr)
         {
             pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir>();
-            pir->parent = this;
-            children["pir"] = pir;
         }
-        return children.at("pir");
+        return pir;
     }
 
     if(child_yang_name == "police-config-parameters")
     {
-        if(police_config_parameters != nullptr)
-        {
-            children["police-config-parameters"] = police_config_parameters;
-        }
-        else
+        if(police_config_parameters == nullptr)
         {
             police_config_parameters = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters>();
-            police_config_parameters->parent = this;
-            children["police-config-parameters"] = police_config_parameters;
         }
-        return children.at("police-config-parameters");
+        return police_config_parameters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::get_children() const
 {
-    if(children.find("cbs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cbs != nullptr)
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
+        children["cbs"] = cbs;
     }
 
-    if(children.find("cir") == children.end())
+    if(cir != nullptr)
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
+        children["cir"] = cir;
     }
 
-    if(children.find("pbs") == children.end())
+    if(pbs != nullptr)
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
+        children["pbs"] = pbs;
     }
 
-    if(children.find("pir") == children.end())
+    if(pir != nullptr)
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
+        children["pir"] = pir;
     }
 
-    if(children.find("police-config-parameters") == children.end())
+    if(police_config_parameters != nullptr)
     {
-        if(police_config_parameters != nullptr)
-        {
-            children["police-config-parameters"] = police_config_parameters;
-        }
+        children["police-config-parameters"] = police_config_parameters;
     }
 
     return children;
@@ -7350,7 +6259,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7375,20 +6284,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7438,7 +6339,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7463,20 +6364,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7526,7 +6419,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7551,20 +6444,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7614,7 +6499,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7639,20 +6524,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7676,16 +6553,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,peak_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate>())
 {
     average_rate->parent = this;
-    children["average-rate"] = average_rate;
 
     conform_burst->parent = this;
-    children["conform-burst"] = conform_burst;
 
     exceed_burst->parent = this;
-    children["exceed-burst"] = exceed_burst;
 
     peak_rate->parent = this;
-    children["peak-rate"] = peak_rate;
 
     yang_name = "police-config-parameters"; yang_parent_name = "police";
 }
@@ -7720,7 +6593,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7743,110 +6616,66 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "average-rate")
     {
-        if(average_rate != nullptr)
-        {
-            children["average-rate"] = average_rate;
-        }
-        else
+        if(average_rate == nullptr)
         {
             average_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate>();
-            average_rate->parent = this;
-            children["average-rate"] = average_rate;
         }
-        return children.at("average-rate");
+        return average_rate;
     }
 
     if(child_yang_name == "conform-burst")
     {
-        if(conform_burst != nullptr)
-        {
-            children["conform-burst"] = conform_burst;
-        }
-        else
+        if(conform_burst == nullptr)
         {
             conform_burst = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst>();
-            conform_burst->parent = this;
-            children["conform-burst"] = conform_burst;
         }
-        return children.at("conform-burst");
+        return conform_burst;
     }
 
     if(child_yang_name == "exceed-burst")
     {
-        if(exceed_burst != nullptr)
-        {
-            children["exceed-burst"] = exceed_burst;
-        }
-        else
+        if(exceed_burst == nullptr)
         {
             exceed_burst = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst>();
-            exceed_burst->parent = this;
-            children["exceed-burst"] = exceed_burst;
         }
-        return children.at("exceed-burst");
+        return exceed_burst;
     }
 
     if(child_yang_name == "peak-rate")
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
-        else
+        if(peak_rate == nullptr)
         {
             peak_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate>();
-            peak_rate->parent = this;
-            children["peak-rate"] = peak_rate;
         }
-        return children.at("peak-rate");
+        return peak_rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::get_children() const
 {
-    if(children.find("average-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(average_rate != nullptr)
     {
-        if(average_rate != nullptr)
-        {
-            children["average-rate"] = average_rate;
-        }
+        children["average-rate"] = average_rate;
     }
 
-    if(children.find("conform-burst") == children.end())
+    if(conform_burst != nullptr)
     {
-        if(conform_burst != nullptr)
-        {
-            children["conform-burst"] = conform_burst;
-        }
+        children["conform-burst"] = conform_burst;
     }
 
-    if(children.find("exceed-burst") == children.end())
+    if(exceed_burst != nullptr)
     {
-        if(exceed_burst != nullptr)
-        {
-            children["exceed-burst"] = exceed_burst;
-        }
+        children["exceed-burst"] = exceed_burst;
     }
 
-    if(children.find("peak-rate") == children.end())
+    if(peak_rate != nullptr)
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
+        children["peak-rate"] = peak_rate;
     }
 
     return children;
@@ -7890,7 +6719,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7915,20 +6744,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7978,7 +6799,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8003,20 +6824,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8066,7 +6879,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8091,20 +6904,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8154,7 +6959,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8179,20 +6984,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8221,10 +7018,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,parent_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth>())
 {
     bandwidth->parent = this;
-    children["bandwidth"] = bandwidth;
 
     parent_bandwidth->parent = this;
-    children["parent-bandwidth"] = parent_bandwidth;
 
     yang_name = "wfq"; yang_parent_name = "qos-show-ea-st-v1";
 }
@@ -8267,7 +7062,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8296,64 +7091,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "parent-bandwidth")
     {
-        if(parent_bandwidth != nullptr)
-        {
-            children["parent-bandwidth"] = parent_bandwidth;
-        }
-        else
+        if(parent_bandwidth == nullptr)
         {
             parent_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth>();
-            parent_bandwidth->parent = this;
-            children["parent-bandwidth"] = parent_bandwidth;
         }
-        return children.at("parent-bandwidth");
+        return parent_bandwidth;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::get_children() const
 {
-    if(children.find("bandwidth") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("parent-bandwidth") == children.end())
+    if(parent_bandwidth != nullptr)
     {
-        if(parent_bandwidth != nullptr)
-        {
-            children["parent-bandwidth"] = parent_bandwidth;
-        }
+        children["parent-bandwidth"] = parent_bandwidth;
     }
 
     return children;
@@ -8421,7 +7190,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8446,20 +7215,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8509,7 +7270,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8534,20 +7295,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8616,7 +7369,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8644,15 +7397,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "curve")
     {
         for(auto const & c : curve)
@@ -8660,28 +7404,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve>();
         c->parent = this;
-        curve.push_back(std::move(c));
-        children[segment_path] = curve.back();
-        return children.at(segment_path);
+        curve.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : curve)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8721,16 +7461,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig>())
 {
     max_threshold->parent = this;
-    children["max-threshold"] = max_threshold;
 
     max_threshold_user_config->parent = this;
-    children["max-threshold-user-config"] = max_threshold_user_config;
 
     min_threshold->parent = this;
-    children["min-threshold"] = min_threshold;
 
     min_threshold_user_config->parent = this;
-    children["min-threshold-user-config"] = min_threshold_user_config;
 
     yang_name = "curve"; yang_parent_name = "wred";
 }
@@ -8767,7 +7503,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8791,110 +7527,66 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "max-threshold")
     {
-        if(max_threshold != nullptr)
-        {
-            children["max-threshold"] = max_threshold;
-        }
-        else
+        if(max_threshold == nullptr)
         {
             max_threshold = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold>();
-            max_threshold->parent = this;
-            children["max-threshold"] = max_threshold;
         }
-        return children.at("max-threshold");
+        return max_threshold;
     }
 
     if(child_yang_name == "max-threshold-user-config")
     {
-        if(max_threshold_user_config != nullptr)
-        {
-            children["max-threshold-user-config"] = max_threshold_user_config;
-        }
-        else
+        if(max_threshold_user_config == nullptr)
         {
             max_threshold_user_config = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig>();
-            max_threshold_user_config->parent = this;
-            children["max-threshold-user-config"] = max_threshold_user_config;
         }
-        return children.at("max-threshold-user-config");
+        return max_threshold_user_config;
     }
 
     if(child_yang_name == "min-threshold")
     {
-        if(min_threshold != nullptr)
-        {
-            children["min-threshold"] = min_threshold;
-        }
-        else
+        if(min_threshold == nullptr)
         {
             min_threshold = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold>();
-            min_threshold->parent = this;
-            children["min-threshold"] = min_threshold;
         }
-        return children.at("min-threshold");
+        return min_threshold;
     }
 
     if(child_yang_name == "min-threshold-user-config")
     {
-        if(min_threshold_user_config != nullptr)
-        {
-            children["min-threshold-user-config"] = min_threshold_user_config;
-        }
-        else
+        if(min_threshold_user_config == nullptr)
         {
             min_threshold_user_config = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig>();
-            min_threshold_user_config->parent = this;
-            children["min-threshold-user-config"] = min_threshold_user_config;
         }
-        return children.at("min-threshold-user-config");
+        return min_threshold_user_config;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::get_children() const
 {
-    if(children.find("max-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(max_threshold != nullptr)
     {
-        if(max_threshold != nullptr)
-        {
-            children["max-threshold"] = max_threshold;
-        }
+        children["max-threshold"] = max_threshold;
     }
 
-    if(children.find("max-threshold-user-config") == children.end())
+    if(max_threshold_user_config != nullptr)
     {
-        if(max_threshold_user_config != nullptr)
-        {
-            children["max-threshold-user-config"] = max_threshold_user_config;
-        }
+        children["max-threshold-user-config"] = max_threshold_user_config;
     }
 
-    if(children.find("min-threshold") == children.end())
+    if(min_threshold != nullptr)
     {
-        if(min_threshold != nullptr)
-        {
-            children["min-threshold"] = min_threshold;
-        }
+        children["min-threshold"] = min_threshold;
     }
 
-    if(children.find("min-threshold-user-config") == children.end())
+    if(min_threshold_user_config != nullptr)
     {
-        if(min_threshold_user_config != nullptr)
-        {
-            children["min-threshold-user-config"] = min_threshold_user_config;
-        }
+        children["min-threshold-user-config"] = min_threshold_user_config;
     }
 
     return children;
@@ -8942,7 +7634,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8967,20 +7659,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9030,7 +7714,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9055,20 +7739,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9118,7 +7794,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9143,20 +7819,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9206,7 +7874,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9231,20 +7899,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9272,28 +7932,20 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,police_violate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate>())
 {
     child_mark->parent = this;
-    children["child-mark"] = child_mark;
 
     parent_mark->parent = this;
-    children["parent-mark"] = parent_mark;
 
     parent_police_conform->parent = this;
-    children["parent-police-conform"] = parent_police_conform;
 
     parent_police_exceed->parent = this;
-    children["parent-police-exceed"] = parent_police_exceed;
 
     parent_police_violate->parent = this;
-    children["parent-police-violate"] = parent_police_violate;
 
     police_conform->parent = this;
-    children["police-conform"] = police_conform;
 
     police_exceed->parent = this;
-    children["police-exceed"] = police_exceed;
 
     police_violate->parent = this;
-    children["police-violate"] = police_violate;
 
     yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v1";
 }
@@ -9336,7 +7988,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9359,202 +8011,122 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "child-mark")
     {
-        if(child_mark != nullptr)
-        {
-            children["child-mark"] = child_mark;
-        }
-        else
+        if(child_mark == nullptr)
         {
             child_mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark>();
-            child_mark->parent = this;
-            children["child-mark"] = child_mark;
         }
-        return children.at("child-mark");
+        return child_mark;
     }
 
     if(child_yang_name == "parent-mark")
     {
-        if(parent_mark != nullptr)
-        {
-            children["parent-mark"] = parent_mark;
-        }
-        else
+        if(parent_mark == nullptr)
         {
             parent_mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark>();
-            parent_mark->parent = this;
-            children["parent-mark"] = parent_mark;
         }
-        return children.at("parent-mark");
+        return parent_mark;
     }
 
     if(child_yang_name == "parent-police-conform")
     {
-        if(parent_police_conform != nullptr)
-        {
-            children["parent-police-conform"] = parent_police_conform;
-        }
-        else
+        if(parent_police_conform == nullptr)
         {
             parent_police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform>();
-            parent_police_conform->parent = this;
-            children["parent-police-conform"] = parent_police_conform;
         }
-        return children.at("parent-police-conform");
+        return parent_police_conform;
     }
 
     if(child_yang_name == "parent-police-exceed")
     {
-        if(parent_police_exceed != nullptr)
-        {
-            children["parent-police-exceed"] = parent_police_exceed;
-        }
-        else
+        if(parent_police_exceed == nullptr)
         {
             parent_police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed>();
-            parent_police_exceed->parent = this;
-            children["parent-police-exceed"] = parent_police_exceed;
         }
-        return children.at("parent-police-exceed");
+        return parent_police_exceed;
     }
 
     if(child_yang_name == "parent-police-violate")
     {
-        if(parent_police_violate != nullptr)
-        {
-            children["parent-police-violate"] = parent_police_violate;
-        }
-        else
+        if(parent_police_violate == nullptr)
         {
             parent_police_violate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate>();
-            parent_police_violate->parent = this;
-            children["parent-police-violate"] = parent_police_violate;
         }
-        return children.at("parent-police-violate");
+        return parent_police_violate;
     }
 
     if(child_yang_name == "police-conform")
     {
-        if(police_conform != nullptr)
-        {
-            children["police-conform"] = police_conform;
-        }
-        else
+        if(police_conform == nullptr)
         {
             police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform>();
-            police_conform->parent = this;
-            children["police-conform"] = police_conform;
         }
-        return children.at("police-conform");
+        return police_conform;
     }
 
     if(child_yang_name == "police-exceed")
     {
-        if(police_exceed != nullptr)
-        {
-            children["police-exceed"] = police_exceed;
-        }
-        else
+        if(police_exceed == nullptr)
         {
             police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed>();
-            police_exceed->parent = this;
-            children["police-exceed"] = police_exceed;
         }
-        return children.at("police-exceed");
+        return police_exceed;
     }
 
     if(child_yang_name == "police-violate")
     {
-        if(police_violate != nullptr)
-        {
-            children["police-violate"] = police_violate;
-        }
-        else
+        if(police_violate == nullptr)
         {
             police_violate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate>();
-            police_violate->parent = this;
-            children["police-violate"] = police_violate;
         }
-        return children.at("police-violate");
+        return police_violate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::get_children() const
 {
-    if(children.find("child-mark") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(child_mark != nullptr)
     {
-        if(child_mark != nullptr)
-        {
-            children["child-mark"] = child_mark;
-        }
+        children["child-mark"] = child_mark;
     }
 
-    if(children.find("parent-mark") == children.end())
+    if(parent_mark != nullptr)
     {
-        if(parent_mark != nullptr)
-        {
-            children["parent-mark"] = parent_mark;
-        }
+        children["parent-mark"] = parent_mark;
     }
 
-    if(children.find("parent-police-conform") == children.end())
+    if(parent_police_conform != nullptr)
     {
-        if(parent_police_conform != nullptr)
-        {
-            children["parent-police-conform"] = parent_police_conform;
-        }
+        children["parent-police-conform"] = parent_police_conform;
     }
 
-    if(children.find("parent-police-exceed") == children.end())
+    if(parent_police_exceed != nullptr)
     {
-        if(parent_police_exceed != nullptr)
-        {
-            children["parent-police-exceed"] = parent_police_exceed;
-        }
+        children["parent-police-exceed"] = parent_police_exceed;
     }
 
-    if(children.find("parent-police-violate") == children.end())
+    if(parent_police_violate != nullptr)
     {
-        if(parent_police_violate != nullptr)
-        {
-            children["parent-police-violate"] = parent_police_violate;
-        }
+        children["parent-police-violate"] = parent_police_violate;
     }
 
-    if(children.find("police-conform") == children.end())
+    if(police_conform != nullptr)
     {
-        if(police_conform != nullptr)
-        {
-            children["police-conform"] = police_conform;
-        }
+        children["police-conform"] = police_conform;
     }
 
-    if(children.find("police-exceed") == children.end())
+    if(police_exceed != nullptr)
     {
-        if(police_exceed != nullptr)
-        {
-            children["police-exceed"] = police_exceed;
-        }
+        children["police-exceed"] = police_exceed;
     }
 
-    if(children.find("police-violate") == children.end())
+    if(police_violate != nullptr)
     {
-        if(police_violate != nullptr)
-        {
-            children["police-violate"] = police_violate;
-        }
+        children["police-violate"] = police_violate;
     }
 
     return children;
@@ -9605,7 +8177,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9629,15 +8201,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -9645,28 +8208,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9714,7 +8273,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9739,20 +8298,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9809,7 +8360,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9833,15 +8384,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -9849,28 +8391,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9918,7 +8456,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9943,20 +8481,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10013,7 +8543,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10037,15 +8567,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -10053,28 +8574,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10122,7 +8639,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10147,20 +8664,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10217,7 +8726,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10241,15 +8750,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -10257,28 +8757,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10326,7 +8822,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10351,20 +8847,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10421,7 +8909,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10445,15 +8933,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -10461,28 +8940,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10530,7 +9005,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10555,20 +9030,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10625,7 +9092,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10649,15 +9116,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -10665,28 +9123,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10734,7 +9188,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10759,20 +9213,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10829,7 +9275,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10853,15 +9299,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -10869,28 +9306,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10938,7 +9371,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10963,20 +9396,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11033,7 +9458,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11057,15 +9482,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -11073,28 +9489,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11142,7 +9554,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11167,20 +9579,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11234,7 +9638,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11257,15 +9661,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "qos-show-ea-st-v2")
     {
         for(auto const & c : qos_show_ea_st_v2)
@@ -11273,28 +9668,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2>();
         c->parent = this;
-        qos_show_ea_st_v2.push_back(std::move(c));
-        children[segment_path] = qos_show_ea_st_v2.back();
-        return children.at(segment_path);
+        qos_show_ea_st_v2.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : qos_show_ea_st_v2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11321,25 +9712,18 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,wred(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred>())
 {
     mark->parent = this;
-    children["mark"] = mark;
 
     police->parent = this;
-    children["police"] = police;
 
     queue->parent = this;
-    children["queue"] = queue;
 
     queue_limit_parameters->parent = this;
-    children["queue-limit-parameters"] = queue_limit_parameters;
 
     shape->parent = this;
-    children["shape"] = shape;
 
     wfq->parent = this;
-    children["wfq"] = wfq;
 
     wred->parent = this;
-    children["wred"] = wred;
 
     yang_name = "qos-show-ea-st-v2"; yang_parent_name = "policy-typhoon";
 }
@@ -11390,7 +9774,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11418,179 +9802,108 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark")
     {
-        if(mark != nullptr)
-        {
-            children["mark"] = mark;
-        }
-        else
+        if(mark == nullptr)
         {
             mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark>();
-            mark->parent = this;
-            children["mark"] = mark;
         }
-        return children.at("mark");
+        return mark;
     }
 
     if(child_yang_name == "police")
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
-        else
+        if(police == nullptr)
         {
             police = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police>();
-            police->parent = this;
-            children["police"] = police;
         }
-        return children.at("police");
+        return police;
     }
 
     if(child_yang_name == "queue")
     {
-        if(queue != nullptr)
-        {
-            children["queue"] = queue;
-        }
-        else
+        if(queue == nullptr)
         {
             queue = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue>();
-            queue->parent = this;
-            children["queue"] = queue;
         }
-        return children.at("queue");
+        return queue;
     }
 
     if(child_yang_name == "queue-limit-parameters")
     {
-        if(queue_limit_parameters != nullptr)
-        {
-            children["queue-limit-parameters"] = queue_limit_parameters;
-        }
-        else
+        if(queue_limit_parameters == nullptr)
         {
             queue_limit_parameters = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters>();
-            queue_limit_parameters->parent = this;
-            children["queue-limit-parameters"] = queue_limit_parameters;
         }
-        return children.at("queue-limit-parameters");
+        return queue_limit_parameters;
     }
 
     if(child_yang_name == "shape")
     {
-        if(shape != nullptr)
-        {
-            children["shape"] = shape;
-        }
-        else
+        if(shape == nullptr)
         {
             shape = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape>();
-            shape->parent = this;
-            children["shape"] = shape;
         }
-        return children.at("shape");
+        return shape;
     }
 
     if(child_yang_name == "wfq")
     {
-        if(wfq != nullptr)
-        {
-            children["wfq"] = wfq;
-        }
-        else
+        if(wfq == nullptr)
         {
             wfq = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq>();
-            wfq->parent = this;
-            children["wfq"] = wfq;
         }
-        return children.at("wfq");
+        return wfq;
     }
 
     if(child_yang_name == "wred")
     {
-        if(wred != nullptr)
-        {
-            children["wred"] = wred;
-        }
-        else
+        if(wred == nullptr)
         {
             wred = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred>();
-            wred->parent = this;
-            children["wred"] = wred;
         }
-        return children.at("wred");
+        return wred;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::get_children() const
 {
-    if(children.find("mark") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mark != nullptr)
     {
-        if(mark != nullptr)
-        {
-            children["mark"] = mark;
-        }
+        children["mark"] = mark;
     }
 
-    if(children.find("police") == children.end())
+    if(police != nullptr)
     {
-        if(police != nullptr)
-        {
-            children["police"] = police;
-        }
+        children["police"] = police;
     }
 
-    if(children.find("queue") == children.end())
+    if(queue != nullptr)
     {
-        if(queue != nullptr)
-        {
-            children["queue"] = queue;
-        }
+        children["queue"] = queue;
     }
 
-    if(children.find("queue-limit-parameters") == children.end())
+    if(queue_limit_parameters != nullptr)
     {
-        if(queue_limit_parameters != nullptr)
-        {
-            children["queue-limit-parameters"] = queue_limit_parameters;
-        }
+        children["queue-limit-parameters"] = queue_limit_parameters;
     }
 
-    if(children.find("shape") == children.end())
+    if(shape != nullptr)
     {
-        if(shape != nullptr)
-        {
-            children["shape"] = shape;
-        }
+        children["shape"] = shape;
     }
 
-    if(children.find("wfq") == children.end())
+    if(wfq != nullptr)
     {
-        if(wfq != nullptr)
-        {
-            children["wfq"] = wfq;
-        }
+        children["wfq"] = wfq;
     }
 
-    if(children.find("wred") == children.end())
+    if(wred != nullptr)
     {
-        if(wred != nullptr)
-        {
-            children["wred"] = wred;
-        }
+        children["wred"] = wred;
     }
 
     return children;
@@ -11657,7 +9970,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11683,20 +9996,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11726,10 +10031,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit>())
 {
     config_queue_limit->parent = this;
-    children["config-queue-limit"] = config_queue_limit;
 
     queue_limit->parent = this;
-    children["queue-limit"] = queue_limit;
 
     yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -11766,7 +10069,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11792,64 +10095,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config-queue-limit")
     {
-        if(config_queue_limit != nullptr)
-        {
-            children["config-queue-limit"] = config_queue_limit;
-        }
-        else
+        if(config_queue_limit == nullptr)
         {
             config_queue_limit = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit>();
-            config_queue_limit->parent = this;
-            children["config-queue-limit"] = config_queue_limit;
         }
-        return children.at("config-queue-limit");
+        return config_queue_limit;
     }
 
     if(child_yang_name == "queue-limit")
     {
-        if(queue_limit != nullptr)
-        {
-            children["queue-limit"] = queue_limit;
-        }
-        else
+        if(queue_limit == nullptr)
         {
             queue_limit = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit>();
-            queue_limit->parent = this;
-            children["queue-limit"] = queue_limit;
         }
-        return children.at("queue-limit");
+        return queue_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::get_children() const
 {
-    if(children.find("config-queue-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config_queue_limit != nullptr)
     {
-        if(config_queue_limit != nullptr)
-        {
-            children["config-queue-limit"] = config_queue_limit;
-        }
+        children["config-queue-limit"] = config_queue_limit;
     }
 
-    if(children.find("queue-limit") == children.end())
+    if(queue_limit != nullptr)
     {
-        if(queue_limit != nullptr)
-        {
-            children["queue-limit"] = queue_limit;
-        }
+        children["queue-limit"] = queue_limit;
     }
 
     return children;
@@ -11905,7 +10182,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11930,20 +10207,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11993,7 +10262,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12018,20 +10287,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12056,10 +10317,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,pir_shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape>())
 {
     cir_shape->parent = this;
-    children["cir-shape"] = cir_shape;
 
     pir_shape->parent = this;
-    children["pir-shape"] = pir_shape;
 
     yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -12094,7 +10353,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12119,64 +10378,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cir-shape")
     {
-        if(cir_shape != nullptr)
-        {
-            children["cir-shape"] = cir_shape;
-        }
-        else
+        if(cir_shape == nullptr)
         {
             cir_shape = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape>();
-            cir_shape->parent = this;
-            children["cir-shape"] = cir_shape;
         }
-        return children.at("cir-shape");
+        return cir_shape;
     }
 
     if(child_yang_name == "pir-shape")
     {
-        if(pir_shape != nullptr)
-        {
-            children["pir-shape"] = pir_shape;
-        }
-        else
+        if(pir_shape == nullptr)
         {
             pir_shape = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape>();
-            pir_shape->parent = this;
-            children["pir-shape"] = pir_shape;
         }
-        return children.at("pir-shape");
+        return pir_shape;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::get_children() const
 {
-    if(children.find("cir-shape") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cir_shape != nullptr)
     {
-        if(cir_shape != nullptr)
-        {
-            children["cir-shape"] = cir_shape;
-        }
+        children["cir-shape"] = cir_shape;
     }
 
-    if(children.find("pir-shape") == children.end())
+    if(pir_shape != nullptr)
     {
-        if(pir_shape != nullptr)
-        {
-            children["pir-shape"] = pir_shape;
-        }
+        children["pir-shape"] = pir_shape;
     }
 
     return children;
@@ -12205,13 +10438,10 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth>())
 {
     cbs->parent = this;
-    children["cbs"] = cbs;
 
     cir->parent = this;
-    children["cir"] = cir;
 
     config_bandwidth->parent = this;
-    children["config-bandwidth"] = config_bandwidth;
 
     yang_name = "cir-shape"; yang_parent_name = "shape";
 }
@@ -12250,7 +10480,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12276,87 +10506,52 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cbs")
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
-        else
+        if(cbs == nullptr)
         {
             cbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs>();
-            cbs->parent = this;
-            children["cbs"] = cbs;
         }
-        return children.at("cbs");
+        return cbs;
     }
 
     if(child_yang_name == "cir")
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
-        else
+        if(cir == nullptr)
         {
             cir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir>();
-            cir->parent = this;
-            children["cir"] = cir;
         }
-        return children.at("cir");
+        return cir;
     }
 
     if(child_yang_name == "config-bandwidth")
     {
-        if(config_bandwidth != nullptr)
-        {
-            children["config-bandwidth"] = config_bandwidth;
-        }
-        else
+        if(config_bandwidth == nullptr)
         {
             config_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth>();
-            config_bandwidth->parent = this;
-            children["config-bandwidth"] = config_bandwidth;
         }
-        return children.at("config-bandwidth");
+        return config_bandwidth;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::get_children() const
 {
-    if(children.find("cbs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cbs != nullptr)
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
+        children["cbs"] = cbs;
     }
 
-    if(children.find("cir") == children.end())
+    if(cir != nullptr)
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
+        children["cir"] = cir;
     }
 
-    if(children.find("config-bandwidth") == children.end())
+    if(config_bandwidth != nullptr)
     {
-        if(config_bandwidth != nullptr)
-        {
-            children["config-bandwidth"] = config_bandwidth;
-        }
+        children["config-bandwidth"] = config_bandwidth;
     }
 
     return children;
@@ -12412,7 +10607,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12437,20 +10632,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12471,7 +10658,6 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
     minimum_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate>())
 {
     minimum_rate->parent = this;
-    children["minimum-rate"] = minimum_rate;
 
     yang_name = "config-bandwidth"; yang_parent_name = "cir-shape";
 }
@@ -12500,7 +10686,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12523,41 +10709,24 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minimum-rate")
     {
-        if(minimum_rate != nullptr)
-        {
-            children["minimum-rate"] = minimum_rate;
-        }
-        else
+        if(minimum_rate == nullptr)
         {
             minimum_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate>();
-            minimum_rate->parent = this;
-            children["minimum-rate"] = minimum_rate;
         }
-        return children.at("minimum-rate");
+        return minimum_rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::get_children() const
 {
-    if(children.find("minimum-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(minimum_rate != nullptr)
     {
-        if(minimum_rate != nullptr)
-        {
-            children["minimum-rate"] = minimum_rate;
-        }
+        children["minimum-rate"] = minimum_rate;
     }
 
     return children;
@@ -12601,7 +10770,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12626,20 +10795,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12689,7 +10850,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12714,20 +10875,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12753,10 +10906,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir>())
 {
     pbs->parent = this;
-    children["pbs"] = pbs;
 
     pir->parent = this;
-    children["pir"] = pir;
 
     yang_name = "pir-shape"; yang_parent_name = "shape";
 }
@@ -12793,7 +10944,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12819,64 +10970,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pbs")
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
-        else
+        if(pbs == nullptr)
         {
             pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs>();
-            pbs->parent = this;
-            children["pbs"] = pbs;
         }
-        return children.at("pbs");
+        return pbs;
     }
 
     if(child_yang_name == "pir")
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
-        else
+        if(pir == nullptr)
         {
             pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir>();
-            pir->parent = this;
-            children["pir"] = pir;
         }
-        return children.at("pir");
+        return pir;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::get_children() const
 {
-    if(children.find("pbs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pbs != nullptr)
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
+        children["pbs"] = pbs;
     }
 
-    if(children.find("pir") == children.end())
+    if(pir != nullptr)
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
+        children["pir"] = pir;
     }
 
     return children;
@@ -12932,7 +11057,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12957,20 +11082,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13020,7 +11137,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13045,20 +11162,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13086,19 +11195,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,police_config_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters>())
 {
     cbs->parent = this;
-    children["cbs"] = cbs;
 
     cir->parent = this;
-    children["cir"] = cir;
 
     pbs->parent = this;
-    children["pbs"] = pbs;
 
     pir->parent = this;
-    children["pir"] = pir;
 
     police_config_parameters->parent = this;
-    children["police-config-parameters"] = police_config_parameters;
 
     yang_name = "police"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -13139,7 +11243,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13164,133 +11268,80 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cbs")
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
-        else
+        if(cbs == nullptr)
         {
             cbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs>();
-            cbs->parent = this;
-            children["cbs"] = cbs;
         }
-        return children.at("cbs");
+        return cbs;
     }
 
     if(child_yang_name == "cir")
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
-        else
+        if(cir == nullptr)
         {
             cir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir>();
-            cir->parent = this;
-            children["cir"] = cir;
         }
-        return children.at("cir");
+        return cir;
     }
 
     if(child_yang_name == "pbs")
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
-        else
+        if(pbs == nullptr)
         {
             pbs = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs>();
-            pbs->parent = this;
-            children["pbs"] = pbs;
         }
-        return children.at("pbs");
+        return pbs;
     }
 
     if(child_yang_name == "pir")
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
-        else
+        if(pir == nullptr)
         {
             pir = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir>();
-            pir->parent = this;
-            children["pir"] = pir;
         }
-        return children.at("pir");
+        return pir;
     }
 
     if(child_yang_name == "police-config-parameters")
     {
-        if(police_config_parameters != nullptr)
-        {
-            children["police-config-parameters"] = police_config_parameters;
-        }
-        else
+        if(police_config_parameters == nullptr)
         {
             police_config_parameters = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters>();
-            police_config_parameters->parent = this;
-            children["police-config-parameters"] = police_config_parameters;
         }
-        return children.at("police-config-parameters");
+        return police_config_parameters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::get_children() const
 {
-    if(children.find("cbs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cbs != nullptr)
     {
-        if(cbs != nullptr)
-        {
-            children["cbs"] = cbs;
-        }
+        children["cbs"] = cbs;
     }
 
-    if(children.find("cir") == children.end())
+    if(cir != nullptr)
     {
-        if(cir != nullptr)
-        {
-            children["cir"] = cir;
-        }
+        children["cir"] = cir;
     }
 
-    if(children.find("pbs") == children.end())
+    if(pbs != nullptr)
     {
-        if(pbs != nullptr)
-        {
-            children["pbs"] = pbs;
-        }
+        children["pbs"] = pbs;
     }
 
-    if(children.find("pir") == children.end())
+    if(pir != nullptr)
     {
-        if(pir != nullptr)
-        {
-            children["pir"] = pir;
-        }
+        children["pir"] = pir;
     }
 
-    if(children.find("police-config-parameters") == children.end())
+    if(police_config_parameters != nullptr)
     {
-        if(police_config_parameters != nullptr)
-        {
-            children["police-config-parameters"] = police_config_parameters;
-        }
+        children["police-config-parameters"] = police_config_parameters;
     }
 
     return children;
@@ -13342,7 +11393,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13367,20 +11418,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13430,7 +11473,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13455,20 +11498,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13518,7 +11553,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13543,20 +11578,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13606,7 +11633,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13631,20 +11658,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13668,16 +11687,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,peak_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate>())
 {
     average_rate->parent = this;
-    children["average-rate"] = average_rate;
 
     conform_burst->parent = this;
-    children["conform-burst"] = conform_burst;
 
     exceed_burst->parent = this;
-    children["exceed-burst"] = exceed_burst;
 
     peak_rate->parent = this;
-    children["peak-rate"] = peak_rate;
 
     yang_name = "police-config-parameters"; yang_parent_name = "police";
 }
@@ -13712,7 +11727,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13735,110 +11750,66 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "average-rate")
     {
-        if(average_rate != nullptr)
-        {
-            children["average-rate"] = average_rate;
-        }
-        else
+        if(average_rate == nullptr)
         {
             average_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate>();
-            average_rate->parent = this;
-            children["average-rate"] = average_rate;
         }
-        return children.at("average-rate");
+        return average_rate;
     }
 
     if(child_yang_name == "conform-burst")
     {
-        if(conform_burst != nullptr)
-        {
-            children["conform-burst"] = conform_burst;
-        }
-        else
+        if(conform_burst == nullptr)
         {
             conform_burst = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst>();
-            conform_burst->parent = this;
-            children["conform-burst"] = conform_burst;
         }
-        return children.at("conform-burst");
+        return conform_burst;
     }
 
     if(child_yang_name == "exceed-burst")
     {
-        if(exceed_burst != nullptr)
-        {
-            children["exceed-burst"] = exceed_burst;
-        }
-        else
+        if(exceed_burst == nullptr)
         {
             exceed_burst = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst>();
-            exceed_burst->parent = this;
-            children["exceed-burst"] = exceed_burst;
         }
-        return children.at("exceed-burst");
+        return exceed_burst;
     }
 
     if(child_yang_name == "peak-rate")
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
-        else
+        if(peak_rate == nullptr)
         {
             peak_rate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate>();
-            peak_rate->parent = this;
-            children["peak-rate"] = peak_rate;
         }
-        return children.at("peak-rate");
+        return peak_rate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::get_children() const
 {
-    if(children.find("average-rate") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(average_rate != nullptr)
     {
-        if(average_rate != nullptr)
-        {
-            children["average-rate"] = average_rate;
-        }
+        children["average-rate"] = average_rate;
     }
 
-    if(children.find("conform-burst") == children.end())
+    if(conform_burst != nullptr)
     {
-        if(conform_burst != nullptr)
-        {
-            children["conform-burst"] = conform_burst;
-        }
+        children["conform-burst"] = conform_burst;
     }
 
-    if(children.find("exceed-burst") == children.end())
+    if(exceed_burst != nullptr)
     {
-        if(exceed_burst != nullptr)
-        {
-            children["exceed-burst"] = exceed_burst;
-        }
+        children["exceed-burst"] = exceed_burst;
     }
 
-    if(children.find("peak-rate") == children.end())
+    if(peak_rate != nullptr)
     {
-        if(peak_rate != nullptr)
-        {
-            children["peak-rate"] = peak_rate;
-        }
+        children["peak-rate"] = peak_rate;
     }
 
     return children;
@@ -13882,7 +11853,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13907,20 +11878,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13970,7 +11933,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13995,20 +11958,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14058,7 +12013,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14083,20 +12038,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14146,7 +12093,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14171,20 +12118,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14213,10 +12152,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,parent_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth>())
 {
     bandwidth->parent = this;
-    children["bandwidth"] = bandwidth;
 
     parent_bandwidth->parent = this;
-    children["parent-bandwidth"] = parent_bandwidth;
 
     yang_name = "wfq"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -14259,7 +12196,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14288,64 +12225,38 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "parent-bandwidth")
     {
-        if(parent_bandwidth != nullptr)
-        {
-            children["parent-bandwidth"] = parent_bandwidth;
-        }
-        else
+        if(parent_bandwidth == nullptr)
         {
             parent_bandwidth = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth>();
-            parent_bandwidth->parent = this;
-            children["parent-bandwidth"] = parent_bandwidth;
         }
-        return children.at("parent-bandwidth");
+        return parent_bandwidth;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::get_children() const
 {
-    if(children.find("bandwidth") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("parent-bandwidth") == children.end())
+    if(parent_bandwidth != nullptr)
     {
-        if(parent_bandwidth != nullptr)
-        {
-            children["parent-bandwidth"] = parent_bandwidth;
-        }
+        children["parent-bandwidth"] = parent_bandwidth;
     }
 
     return children;
@@ -14413,7 +12324,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14438,20 +12349,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14501,7 +12404,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14526,20 +12429,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14599,7 +12494,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14624,15 +12519,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "curve")
     {
         for(auto const & c : curve)
@@ -14640,28 +12526,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve>();
         c->parent = this;
-        curve.push_back(std::move(c));
-        children[segment_path] = curve.back();
-        return children.at(segment_path);
+        curve.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : curve)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14693,16 +12575,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig>())
 {
     max_threshold->parent = this;
-    children["max-threshold"] = max_threshold;
 
     max_threshold_user_config->parent = this;
-    children["max-threshold-user-config"] = max_threshold_user_config;
 
     min_threshold->parent = this;
-    children["min-threshold"] = min_threshold;
 
     min_threshold_user_config->parent = this;
-    children["min-threshold-user-config"] = min_threshold_user_config;
 
     yang_name = "curve"; yang_parent_name = "wred";
 }
@@ -14747,7 +12625,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14775,110 +12653,66 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "max-threshold")
     {
-        if(max_threshold != nullptr)
-        {
-            children["max-threshold"] = max_threshold;
-        }
-        else
+        if(max_threshold == nullptr)
         {
             max_threshold = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold>();
-            max_threshold->parent = this;
-            children["max-threshold"] = max_threshold;
         }
-        return children.at("max-threshold");
+        return max_threshold;
     }
 
     if(child_yang_name == "max-threshold-user-config")
     {
-        if(max_threshold_user_config != nullptr)
-        {
-            children["max-threshold-user-config"] = max_threshold_user_config;
-        }
-        else
+        if(max_threshold_user_config == nullptr)
         {
             max_threshold_user_config = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig>();
-            max_threshold_user_config->parent = this;
-            children["max-threshold-user-config"] = max_threshold_user_config;
         }
-        return children.at("max-threshold-user-config");
+        return max_threshold_user_config;
     }
 
     if(child_yang_name == "min-threshold")
     {
-        if(min_threshold != nullptr)
-        {
-            children["min-threshold"] = min_threshold;
-        }
-        else
+        if(min_threshold == nullptr)
         {
             min_threshold = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold>();
-            min_threshold->parent = this;
-            children["min-threshold"] = min_threshold;
         }
-        return children.at("min-threshold");
+        return min_threshold;
     }
 
     if(child_yang_name == "min-threshold-user-config")
     {
-        if(min_threshold_user_config != nullptr)
-        {
-            children["min-threshold-user-config"] = min_threshold_user_config;
-        }
-        else
+        if(min_threshold_user_config == nullptr)
         {
             min_threshold_user_config = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig>();
-            min_threshold_user_config->parent = this;
-            children["min-threshold-user-config"] = min_threshold_user_config;
         }
-        return children.at("min-threshold-user-config");
+        return min_threshold_user_config;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::get_children() const
 {
-    if(children.find("max-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(max_threshold != nullptr)
     {
-        if(max_threshold != nullptr)
-        {
-            children["max-threshold"] = max_threshold;
-        }
+        children["max-threshold"] = max_threshold;
     }
 
-    if(children.find("max-threshold-user-config") == children.end())
+    if(max_threshold_user_config != nullptr)
     {
-        if(max_threshold_user_config != nullptr)
-        {
-            children["max-threshold-user-config"] = max_threshold_user_config;
-        }
+        children["max-threshold-user-config"] = max_threshold_user_config;
     }
 
-    if(children.find("min-threshold") == children.end())
+    if(min_threshold != nullptr)
     {
-        if(min_threshold != nullptr)
-        {
-            children["min-threshold"] = min_threshold;
-        }
+        children["min-threshold"] = min_threshold;
     }
 
-    if(children.find("min-threshold-user-config") == children.end())
+    if(min_threshold_user_config != nullptr)
     {
-        if(min_threshold_user_config != nullptr)
-        {
-            children["min-threshold-user-config"] = min_threshold_user_config;
-        }
+        children["min-threshold-user-config"] = min_threshold_user_config;
     }
 
     return children;
@@ -14942,7 +12776,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14967,20 +12801,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15030,7 +12856,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15055,20 +12881,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15118,7 +12936,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15143,20 +12961,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15206,7 +13016,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15231,20 +13041,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15272,28 +13074,20 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::Member
 	,police_violate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate>())
 {
     child_mark->parent = this;
-    children["child-mark"] = child_mark;
 
     parent_mark->parent = this;
-    children["parent-mark"] = parent_mark;
 
     parent_police_conform->parent = this;
-    children["parent-police-conform"] = parent_police_conform;
 
     parent_police_exceed->parent = this;
-    children["parent-police-exceed"] = parent_police_exceed;
 
     parent_police_violate->parent = this;
-    children["parent-police-violate"] = parent_police_violate;
 
     police_conform->parent = this;
-    children["police-conform"] = police_conform;
 
     police_exceed->parent = this;
-    children["police-exceed"] = police_exceed;
 
     police_violate->parent = this;
-    children["police-violate"] = police_violate;
 
     yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v2";
 }
@@ -15336,7 +13130,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15359,202 +13153,122 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "child-mark")
     {
-        if(child_mark != nullptr)
-        {
-            children["child-mark"] = child_mark;
-        }
-        else
+        if(child_mark == nullptr)
         {
             child_mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark>();
-            child_mark->parent = this;
-            children["child-mark"] = child_mark;
         }
-        return children.at("child-mark");
+        return child_mark;
     }
 
     if(child_yang_name == "parent-mark")
     {
-        if(parent_mark != nullptr)
-        {
-            children["parent-mark"] = parent_mark;
-        }
-        else
+        if(parent_mark == nullptr)
         {
             parent_mark = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark>();
-            parent_mark->parent = this;
-            children["parent-mark"] = parent_mark;
         }
-        return children.at("parent-mark");
+        return parent_mark;
     }
 
     if(child_yang_name == "parent-police-conform")
     {
-        if(parent_police_conform != nullptr)
-        {
-            children["parent-police-conform"] = parent_police_conform;
-        }
-        else
+        if(parent_police_conform == nullptr)
         {
             parent_police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform>();
-            parent_police_conform->parent = this;
-            children["parent-police-conform"] = parent_police_conform;
         }
-        return children.at("parent-police-conform");
+        return parent_police_conform;
     }
 
     if(child_yang_name == "parent-police-exceed")
     {
-        if(parent_police_exceed != nullptr)
-        {
-            children["parent-police-exceed"] = parent_police_exceed;
-        }
-        else
+        if(parent_police_exceed == nullptr)
         {
             parent_police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed>();
-            parent_police_exceed->parent = this;
-            children["parent-police-exceed"] = parent_police_exceed;
         }
-        return children.at("parent-police-exceed");
+        return parent_police_exceed;
     }
 
     if(child_yang_name == "parent-police-violate")
     {
-        if(parent_police_violate != nullptr)
-        {
-            children["parent-police-violate"] = parent_police_violate;
-        }
-        else
+        if(parent_police_violate == nullptr)
         {
             parent_police_violate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate>();
-            parent_police_violate->parent = this;
-            children["parent-police-violate"] = parent_police_violate;
         }
-        return children.at("parent-police-violate");
+        return parent_police_violate;
     }
 
     if(child_yang_name == "police-conform")
     {
-        if(police_conform != nullptr)
-        {
-            children["police-conform"] = police_conform;
-        }
-        else
+        if(police_conform == nullptr)
         {
             police_conform = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform>();
-            police_conform->parent = this;
-            children["police-conform"] = police_conform;
         }
-        return children.at("police-conform");
+        return police_conform;
     }
 
     if(child_yang_name == "police-exceed")
     {
-        if(police_exceed != nullptr)
-        {
-            children["police-exceed"] = police_exceed;
-        }
-        else
+        if(police_exceed == nullptr)
         {
             police_exceed = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed>();
-            police_exceed->parent = this;
-            children["police-exceed"] = police_exceed;
         }
-        return children.at("police-exceed");
+        return police_exceed;
     }
 
     if(child_yang_name == "police-violate")
     {
-        if(police_violate != nullptr)
-        {
-            children["police-violate"] = police_violate;
-        }
-        else
+        if(police_violate == nullptr)
         {
             police_violate = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate>();
-            police_violate->parent = this;
-            children["police-violate"] = police_violate;
         }
-        return children.at("police-violate");
+        return police_violate;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::get_children() const
 {
-    if(children.find("child-mark") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(child_mark != nullptr)
     {
-        if(child_mark != nullptr)
-        {
-            children["child-mark"] = child_mark;
-        }
+        children["child-mark"] = child_mark;
     }
 
-    if(children.find("parent-mark") == children.end())
+    if(parent_mark != nullptr)
     {
-        if(parent_mark != nullptr)
-        {
-            children["parent-mark"] = parent_mark;
-        }
+        children["parent-mark"] = parent_mark;
     }
 
-    if(children.find("parent-police-conform") == children.end())
+    if(parent_police_conform != nullptr)
     {
-        if(parent_police_conform != nullptr)
-        {
-            children["parent-police-conform"] = parent_police_conform;
-        }
+        children["parent-police-conform"] = parent_police_conform;
     }
 
-    if(children.find("parent-police-exceed") == children.end())
+    if(parent_police_exceed != nullptr)
     {
-        if(parent_police_exceed != nullptr)
-        {
-            children["parent-police-exceed"] = parent_police_exceed;
-        }
+        children["parent-police-exceed"] = parent_police_exceed;
     }
 
-    if(children.find("parent-police-violate") == children.end())
+    if(parent_police_violate != nullptr)
     {
-        if(parent_police_violate != nullptr)
-        {
-            children["parent-police-violate"] = parent_police_violate;
-        }
+        children["parent-police-violate"] = parent_police_violate;
     }
 
-    if(children.find("police-conform") == children.end())
+    if(police_conform != nullptr)
     {
-        if(police_conform != nullptr)
-        {
-            children["police-conform"] = police_conform;
-        }
+        children["police-conform"] = police_conform;
     }
 
-    if(children.find("police-exceed") == children.end())
+    if(police_exceed != nullptr)
     {
-        if(police_exceed != nullptr)
-        {
-            children["police-exceed"] = police_exceed;
-        }
+        children["police-exceed"] = police_exceed;
     }
 
-    if(children.find("police-violate") == children.end())
+    if(police_violate != nullptr)
     {
-        if(police_violate != nullptr)
-        {
-            children["police-violate"] = police_violate;
-        }
+        children["police-violate"] = police_violate;
     }
 
     return children;
@@ -15605,7 +13319,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15629,15 +13343,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -15645,28 +13350,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15714,7 +13415,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15739,20 +13440,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15809,7 +13502,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15833,15 +13526,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -15849,28 +13533,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15918,7 +13598,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15943,20 +13623,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16013,7 +13685,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16037,15 +13709,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -16053,28 +13716,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16122,7 +13781,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16147,20 +13806,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16217,7 +13868,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16241,15 +13892,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -16257,28 +13899,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16326,7 +13964,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16351,20 +13989,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16421,7 +14051,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16445,15 +14075,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -16461,28 +14082,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16530,7 +14147,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16555,20 +14172,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16625,7 +14234,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16649,15 +14258,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -16665,28 +14265,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16734,7 +14330,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16759,20 +14355,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16829,7 +14417,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16853,15 +14441,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -16869,28 +14448,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16938,7 +14513,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16963,20 +14538,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17033,7 +14600,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17057,15 +14624,6 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mark-detail")
     {
         for(auto const & c : mark_detail)
@@ -17073,28 +14631,24 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(std::move(c));
-        children[segment_path] = mark_detail.back();
-        return children.at(segment_path);
+        mark_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mark_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17142,7 +14696,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleI
 
 }
 
-EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17167,20 +14721,12 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleIn
 
 std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

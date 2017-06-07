@@ -47,12 +47,12 @@ std::string CfgHistGl::get_segment_path() const
 
 }
 
-EntityPath CfgHistGl::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath CfgHistGl::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CfgHistGl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "record-type")
     {
         for(auto const & c : record_type)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> CfgHistGl::get_child_by_name(const std::string & child_y
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<CfgHistGl::RecordType>();
         c->parent = this;
-        record_type.push_back(std::move(c));
-        children[segment_path] = record_type.back();
-        return children.at(segment_path);
+        record_type.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : record_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -175,7 +162,7 @@ std::string CfgHistGl::RecordType::get_segment_path() const
 
 }
 
-EntityPath CfgHistGl::RecordType::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -199,15 +186,6 @@ EntityPath CfgHistGl::RecordType::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "record")
     {
         for(auto const & c : record)
@@ -215,28 +193,24 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<CfgHistGl::RecordType::Record>();
         c->parent = this;
-        record.push_back(std::move(c));
-        children[segment_path] = record.back();
-        return children.at(segment_path);
+        record.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : record)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -259,7 +233,6 @@ CfgHistGl::RecordType::Record::Record()
     info(std::make_shared<CfgHistGl::RecordType::Record::Info>())
 {
     info->parent = this;
-    children["info"] = info;
 
     yang_name = "record"; yang_parent_name = "record-type";
 }
@@ -294,7 +267,7 @@ std::string CfgHistGl::RecordType::Record::get_segment_path() const
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -320,41 +293,24 @@ EntityPath CfgHistGl::RecordType::Record::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "info")
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
-        else
+        if(info == nullptr)
         {
             info = std::make_shared<CfgHistGl::RecordType::Record::Info>();
-            info->parent = this;
-            children["info"] = info;
         }
-        return children.at("info");
+        return info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::get_children() const
 {
-    if(children.find("info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(info != nullptr)
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
+        children["info"] = info;
     }
 
     return children;
@@ -390,25 +346,18 @@ CfgHistGl::RecordType::Record::Info::Info()
 	,startup_info(std::make_shared<CfgHistGl::RecordType::Record::Info::StartupInfo>())
 {
     alarm_info->parent = this;
-    children["alarm-info"] = alarm_info;
 
     backup_info->parent = this;
-    children["backup-info"] = backup_info;
 
     cfscheck_info->parent = this;
-    children["cfscheck-info"] = cfscheck_info;
 
     commit_info->parent = this;
-    children["commit-info"] = commit_info;
 
     oir_info->parent = this;
-    children["oir-info"] = oir_info;
 
     shutdown_info->parent = this;
-    children["shutdown-info"] = shutdown_info;
 
     startup_info->parent = this;
-    children["startup-info"] = startup_info;
 
     yang_name = "info"; yang_parent_name = "record";
 }
@@ -453,7 +402,7 @@ std::string CfgHistGl::RecordType::Record::Info::get_segment_path() const
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -478,179 +427,108 @@ EntityPath CfgHistGl::RecordType::Record::Info::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarm-info")
     {
-        if(alarm_info != nullptr)
-        {
-            children["alarm-info"] = alarm_info;
-        }
-        else
+        if(alarm_info == nullptr)
         {
             alarm_info = std::make_shared<CfgHistGl::RecordType::Record::Info::AlarmInfo>();
-            alarm_info->parent = this;
-            children["alarm-info"] = alarm_info;
         }
-        return children.at("alarm-info");
+        return alarm_info;
     }
 
     if(child_yang_name == "backup-info")
     {
-        if(backup_info != nullptr)
-        {
-            children["backup-info"] = backup_info;
-        }
-        else
+        if(backup_info == nullptr)
         {
             backup_info = std::make_shared<CfgHistGl::RecordType::Record::Info::BackupInfo>();
-            backup_info->parent = this;
-            children["backup-info"] = backup_info;
         }
-        return children.at("backup-info");
+        return backup_info;
     }
 
     if(child_yang_name == "cfscheck-info")
     {
-        if(cfscheck_info != nullptr)
-        {
-            children["cfscheck-info"] = cfscheck_info;
-        }
-        else
+        if(cfscheck_info == nullptr)
         {
             cfscheck_info = std::make_shared<CfgHistGl::RecordType::Record::Info::CfscheckInfo>();
-            cfscheck_info->parent = this;
-            children["cfscheck-info"] = cfscheck_info;
         }
-        return children.at("cfscheck-info");
+        return cfscheck_info;
     }
 
     if(child_yang_name == "commit-info")
     {
-        if(commit_info != nullptr)
-        {
-            children["commit-info"] = commit_info;
-        }
-        else
+        if(commit_info == nullptr)
         {
             commit_info = std::make_shared<CfgHistGl::RecordType::Record::Info::CommitInfo>();
-            commit_info->parent = this;
-            children["commit-info"] = commit_info;
         }
-        return children.at("commit-info");
+        return commit_info;
     }
 
     if(child_yang_name == "oir-info")
     {
-        if(oir_info != nullptr)
-        {
-            children["oir-info"] = oir_info;
-        }
-        else
+        if(oir_info == nullptr)
         {
             oir_info = std::make_shared<CfgHistGl::RecordType::Record::Info::OirInfo>();
-            oir_info->parent = this;
-            children["oir-info"] = oir_info;
         }
-        return children.at("oir-info");
+        return oir_info;
     }
 
     if(child_yang_name == "shutdown-info")
     {
-        if(shutdown_info != nullptr)
-        {
-            children["shutdown-info"] = shutdown_info;
-        }
-        else
+        if(shutdown_info == nullptr)
         {
             shutdown_info = std::make_shared<CfgHistGl::RecordType::Record::Info::ShutdownInfo>();
-            shutdown_info->parent = this;
-            children["shutdown-info"] = shutdown_info;
         }
-        return children.at("shutdown-info");
+        return shutdown_info;
     }
 
     if(child_yang_name == "startup-info")
     {
-        if(startup_info != nullptr)
-        {
-            children["startup-info"] = startup_info;
-        }
-        else
+        if(startup_info == nullptr)
         {
             startup_info = std::make_shared<CfgHistGl::RecordType::Record::Info::StartupInfo>();
-            startup_info->parent = this;
-            children["startup-info"] = startup_info;
         }
-        return children.at("startup-info");
+        return startup_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::get_children() const
 {
-    if(children.find("alarm-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(alarm_info != nullptr)
     {
-        if(alarm_info != nullptr)
-        {
-            children["alarm-info"] = alarm_info;
-        }
+        children["alarm-info"] = alarm_info;
     }
 
-    if(children.find("backup-info") == children.end())
+    if(backup_info != nullptr)
     {
-        if(backup_info != nullptr)
-        {
-            children["backup-info"] = backup_info;
-        }
+        children["backup-info"] = backup_info;
     }
 
-    if(children.find("cfscheck-info") == children.end())
+    if(cfscheck_info != nullptr)
     {
-        if(cfscheck_info != nullptr)
-        {
-            children["cfscheck-info"] = cfscheck_info;
-        }
+        children["cfscheck-info"] = cfscheck_info;
     }
 
-    if(children.find("commit-info") == children.end())
+    if(commit_info != nullptr)
     {
-        if(commit_info != nullptr)
-        {
-            children["commit-info"] = commit_info;
-        }
+        children["commit-info"] = commit_info;
     }
 
-    if(children.find("oir-info") == children.end())
+    if(oir_info != nullptr)
     {
-        if(oir_info != nullptr)
-        {
-            children["oir-info"] = oir_info;
-        }
+        children["oir-info"] = oir_info;
     }
 
-    if(children.find("shutdown-info") == children.end())
+    if(shutdown_info != nullptr)
     {
-        if(shutdown_info != nullptr)
-        {
-            children["shutdown-info"] = shutdown_info;
-        }
+        children["shutdown-info"] = shutdown_info;
     }
 
-    if(children.find("startup-info") == children.end())
+    if(startup_info != nullptr)
     {
-        if(startup_info != nullptr)
-        {
-            children["startup-info"] = startup_info;
-        }
+        children["startup-info"] = startup_info;
     }
 
     return children;
@@ -702,7 +580,7 @@ std::string CfgHistGl::RecordType::Record::Info::AlarmInfo::get_segment_path() c
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::AlarmInfo::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::AlarmInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -727,20 +605,12 @@ EntityPath CfgHistGl::RecordType::Record::Info::AlarmInfo::get_entity_path(Entit
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::AlarmInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -790,7 +660,7 @@ std::string CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_segment_path(
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -815,20 +685,12 @@ EntityPath CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_entity_path(En
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -890,7 +752,7 @@ std::string CfgHistGl::RecordType::Record::Info::CommitInfo::get_segment_path() 
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::CommitInfo::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::CommitInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -919,20 +781,12 @@ EntityPath CfgHistGl::RecordType::Record::Info::CommitInfo::get_entity_path(Enti
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::CommitInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::CommitInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::CommitInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1001,7 +855,7 @@ std::string CfgHistGl::RecordType::Record::Info::OirInfo::get_segment_path() con
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::OirInfo::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::OirInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1027,20 +881,12 @@ EntityPath CfgHistGl::RecordType::Record::Info::OirInfo::get_entity_path(Entity*
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::OirInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::OirInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::OirInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1091,7 +937,7 @@ std::string CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_segment_path(
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1115,20 +961,12 @@ EntityPath CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_entity_path(En
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1174,7 +1012,7 @@ std::string CfgHistGl::RecordType::Record::Info::StartupInfo::get_segment_path()
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::StartupInfo::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::StartupInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1199,20 +1037,12 @@ EntityPath CfgHistGl::RecordType::Record::Info::StartupInfo::get_entity_path(Ent
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::StartupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::StartupInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::StartupInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1259,7 +1089,7 @@ std::string CfgHistGl::RecordType::Record::Info::BackupInfo::get_segment_path() 
 
 }
 
-EntityPath CfgHistGl::RecordType::Record::Info::BackupInfo::get_entity_path(Entity* ancestor) const
+const EntityPath CfgHistGl::RecordType::Record::Info::BackupInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1283,20 +1113,12 @@ EntityPath CfgHistGl::RecordType::Record::Info::BackupInfo::get_entity_path(Enti
 
 std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::BackupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CfgHistGl::RecordType::Record::Info::BackupInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::BackupInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

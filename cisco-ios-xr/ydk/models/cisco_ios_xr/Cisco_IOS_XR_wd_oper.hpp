@@ -18,23 +18,20 @@ class Watchdog : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: Watchdog::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes> nodes;
-
-
+        
 }; // Watchdog
 
 
@@ -46,19 +43,16 @@ class Watchdog::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Watchdog::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node> > node;
-
-
+        
 }; // Watchdog::Nodes
 
 
@@ -70,15 +64,13 @@ class Watchdog::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class ThresholdMemory; //type: Watchdog::Nodes::Node::ThresholdMemory
         class MemoryState; //type: Watchdog::Nodes::Node::MemoryState
         class OverloadState; //type: Watchdog::Nodes::Node::OverloadState
@@ -86,8 +78,7 @@ class Watchdog::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::MemoryState> memory_state;
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState> overload_state;
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory> threshold_memory;
-
-
+        
 }; // Watchdog::Nodes::Node
 
 
@@ -99,21 +90,18 @@ class Watchdog::Nodes::Node::ThresholdMemory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Default_; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_
         class Configured; //type: Watchdog::Nodes::Node::ThresholdMemory::Configured
 
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Configured> configured;
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_> default_;
-
-
+        
 }; // Watchdog::Nodes::Node::ThresholdMemory
 
 
@@ -125,21 +113,18 @@ class Watchdog::Nodes::Node::ThresholdMemory::Default_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ConfiguredMemory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
         class Memory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
 
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory> configured_memory;
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory> memory;
-
-
+        
 }; // Watchdog::Nodes::Node::ThresholdMemory::Default_
 
 
@@ -151,18 +136,15 @@ class Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minor; //type: uint32
         YLeaf severe; //type: uint32
         YLeaf critical; //type: uint64
-
-
 
 }; // Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
 
@@ -175,18 +157,15 @@ class Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf physical_memory; //type: uint32
         YLeaf free_memory; //type: uint64
         YLeaf memory_state; //type: MemoryStateEnum
-
-
 
 }; // Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
 
@@ -199,18 +178,15 @@ class Watchdog::Nodes::Node::ThresholdMemory::Configured : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minor; //type: uint32
         YLeaf severe; //type: uint32
         YLeaf critical; //type: uint64
-
-
 
 }; // Watchdog::Nodes::Node::ThresholdMemory::Configured
 
@@ -223,18 +199,15 @@ class Watchdog::Nodes::Node::MemoryState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf physical_memory; //type: uint32
         YLeaf free_memory; //type: uint64
         YLeaf memory_state; //type: MemoryStateEnum
-
-
 
 }; // Watchdog::Nodes::Node::MemoryState
 
@@ -247,24 +220,21 @@ class Watchdog::Nodes::Node::OverloadState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf overload_control_notification; //type: OverloadCtrlNotifEnum
         YLeaf default_wdsysmon_throttle; //type: uint32
         YLeaf configured_wdsysmon_throttle; //type: uint32
-
         class CurrentThrottle; //type: Watchdog::Nodes::Node::OverloadState::CurrentThrottle
         class LastThrottle; //type: Watchdog::Nodes::Node::OverloadState::LastThrottle
 
         std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState::CurrentThrottle> current_throttle;
         std::vector<std::shared_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState::LastThrottle> > last_throttle;
-
-
+        
 }; // Watchdog::Nodes::Node::OverloadState
 
 
@@ -276,17 +246,14 @@ class Watchdog::Nodes::Node::OverloadState::CurrentThrottle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf throttle_duration; //type: uint32
         YLeaf start_time; //type: string
-
-
 
 }; // Watchdog::Nodes::Node::OverloadState::CurrentThrottle
 
@@ -299,18 +266,15 @@ class Watchdog::Nodes::Node::OverloadState::LastThrottle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf throttle_duration; //type: uint32
         YLeaf start_time; //type: string
         YLeaf stop_time; //type: string
-
-
 
 }; // Watchdog::Nodes::Node::OverloadState::LastThrottle
 

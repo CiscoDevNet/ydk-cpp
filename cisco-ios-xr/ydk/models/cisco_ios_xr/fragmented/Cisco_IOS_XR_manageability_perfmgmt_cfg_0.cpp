@@ -19,19 +19,14 @@ PerfMgmt::PerfMgmt()
 	,threshold(std::make_shared<PerfMgmt::Threshold>())
 {
     enable->parent = this;
-    children["enable"] = enable;
 
     reg_exp_groups->parent = this;
-    children["reg-exp-groups"] = reg_exp_groups;
 
     resources->parent = this;
-    children["resources"] = resources;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "perf-mgmt"; yang_parent_name = "Cisco-IOS-XR-manageability-perfmgmt-cfg";
 }
@@ -68,12 +63,12 @@ std::string PerfMgmt::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -88,133 +83,80 @@ EntityPath PerfMgmt::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "enable")
     {
-        if(enable != nullptr)
-        {
-            children["enable"] = enable;
-        }
-        else
+        if(enable == nullptr)
         {
             enable = std::make_shared<PerfMgmt::Enable>();
-            enable->parent = this;
-            children["enable"] = enable;
         }
-        return children.at("enable");
+        return enable;
     }
 
     if(child_yang_name == "reg-exp-groups")
     {
-        if(reg_exp_groups != nullptr)
-        {
-            children["reg-exp-groups"] = reg_exp_groups;
-        }
-        else
+        if(reg_exp_groups == nullptr)
         {
             reg_exp_groups = std::make_shared<PerfMgmt::RegExpGroups>();
-            reg_exp_groups->parent = this;
-            children["reg-exp-groups"] = reg_exp_groups;
         }
-        return children.at("reg-exp-groups");
+        return reg_exp_groups;
     }
 
     if(child_yang_name == "resources")
     {
-        if(resources != nullptr)
-        {
-            children["resources"] = resources;
-        }
-        else
+        if(resources == nullptr)
         {
             resources = std::make_shared<PerfMgmt::Resources>();
-            resources->parent = this;
-            children["resources"] = resources;
         }
-        return children.at("resources");
+        return resources;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<PerfMgmt::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<PerfMgmt::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::get_children() const
 {
-    if(children.find("enable") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(enable != nullptr)
     {
-        if(enable != nullptr)
-        {
-            children["enable"] = enable;
-        }
+        children["enable"] = enable;
     }
 
-    if(children.find("reg-exp-groups") == children.end())
+    if(reg_exp_groups != nullptr)
     {
-        if(reg_exp_groups != nullptr)
-        {
-            children["reg-exp-groups"] = reg_exp_groups;
-        }
+        children["reg-exp-groups"] = reg_exp_groups;
     }
 
-    if(children.find("resources") == children.end())
+    if(resources != nullptr)
     {
-        if(resources != nullptr)
-        {
-            children["resources"] = resources;
-        }
+        children["resources"] = resources;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -251,10 +193,8 @@ PerfMgmt::Resources::Resources()
 	,tftp_resources(nullptr) // presence node
 {
     dump_local->parent = this;
-    children["dump-local"] = dump_local;
 
     memory_resources->parent = this;
-    children["memory-resources"] = memory_resources;
 
     yang_name = "resources"; yang_parent_name = "perf-mgmt";
 }
@@ -287,7 +227,7 @@ std::string PerfMgmt::Resources::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Resources::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Resources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -310,87 +250,52 @@ EntityPath PerfMgmt::Resources::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dump-local")
     {
-        if(dump_local != nullptr)
-        {
-            children["dump-local"] = dump_local;
-        }
-        else
+        if(dump_local == nullptr)
         {
             dump_local = std::make_shared<PerfMgmt::Resources::DumpLocal>();
-            dump_local->parent = this;
-            children["dump-local"] = dump_local;
         }
-        return children.at("dump-local");
+        return dump_local;
     }
 
     if(child_yang_name == "memory-resources")
     {
-        if(memory_resources != nullptr)
-        {
-            children["memory-resources"] = memory_resources;
-        }
-        else
+        if(memory_resources == nullptr)
         {
             memory_resources = std::make_shared<PerfMgmt::Resources::MemoryResources>();
-            memory_resources->parent = this;
-            children["memory-resources"] = memory_resources;
         }
-        return children.at("memory-resources");
+        return memory_resources;
     }
 
     if(child_yang_name == "tftp-resources")
     {
-        if(tftp_resources != nullptr)
-        {
-            children["tftp-resources"] = tftp_resources;
-        }
-        else
+        if(tftp_resources == nullptr)
         {
             tftp_resources = std::make_shared<PerfMgmt::Resources::TftpResources>();
-            tftp_resources->parent = this;
-            children["tftp-resources"] = tftp_resources;
         }
-        return children.at("tftp-resources");
+        return tftp_resources;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Resources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::get_children() const
 {
-    if(children.find("dump-local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dump_local != nullptr)
     {
-        if(dump_local != nullptr)
-        {
-            children["dump-local"] = dump_local;
-        }
+        children["dump-local"] = dump_local;
     }
 
-    if(children.find("memory-resources") == children.end())
+    if(memory_resources != nullptr)
     {
-        if(memory_resources != nullptr)
-        {
-            children["memory-resources"] = memory_resources;
-        }
+        children["memory-resources"] = memory_resources;
     }
 
-    if(children.find("tftp-resources") == children.end())
+    if(tftp_resources != nullptr)
     {
-        if(tftp_resources != nullptr)
-        {
-            children["tftp-resources"] = tftp_resources;
-        }
+        children["tftp-resources"] = tftp_resources;
     }
 
     return children;
@@ -437,7 +342,7 @@ std::string PerfMgmt::Resources::TftpResources::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Resources::TftpResources::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Resources::TftpResources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -463,20 +368,12 @@ EntityPath PerfMgmt::Resources::TftpResources::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> PerfMgmt::Resources::TftpResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Resources::TftpResources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::TftpResources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -527,7 +424,7 @@ std::string PerfMgmt::Resources::DumpLocal::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Resources::DumpLocal::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Resources::DumpLocal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -551,20 +448,12 @@ EntityPath PerfMgmt::Resources::DumpLocal::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> PerfMgmt::Resources::DumpLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Resources::DumpLocal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::DumpLocal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -610,7 +499,7 @@ std::string PerfMgmt::Resources::MemoryResources::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Resources::MemoryResources::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Resources::MemoryResources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -635,20 +524,12 @@ EntityPath PerfMgmt::Resources::MemoryResources::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Resources::MemoryResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Resources::MemoryResources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::MemoryResources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -678,34 +559,24 @@ PerfMgmt::Statistics::Statistics()
 	,process_node(std::make_shared<PerfMgmt::Statistics::ProcessNode>())
 {
     basic_counter_interface->parent = this;
-    children["basic-counter-interface"] = basic_counter_interface;
 
     bgp->parent = this;
-    children["bgp"] = bgp;
 
     cpu_node->parent = this;
-    children["cpu-node"] = cpu_node;
 
     data_rate_interface->parent = this;
-    children["data-rate-interface"] = data_rate_interface;
 
     generic_counter_interface->parent = this;
-    children["generic-counter-interface"] = generic_counter_interface;
 
     ldp_mpls->parent = this;
-    children["ldp-mpls"] = ldp_mpls;
 
     memory_node->parent = this;
-    children["memory-node"] = memory_node;
 
     ospfv2_protocol->parent = this;
-    children["ospfv2-protocol"] = ospfv2_protocol;
 
     ospfv3_protocol->parent = this;
-    children["ospfv3-protocol"] = ospfv3_protocol;
 
     process_node->parent = this;
-    children["process-node"] = process_node;
 
     yang_name = "statistics"; yang_parent_name = "perf-mgmt";
 }
@@ -752,7 +623,7 @@ std::string PerfMgmt::Statistics::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -775,248 +646,150 @@ EntityPath PerfMgmt::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-counter-interface")
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
-        else
+        if(basic_counter_interface == nullptr)
         {
             basic_counter_interface = std::make_shared<PerfMgmt::Statistics::BasicCounterInterface>();
-            basic_counter_interface->parent = this;
-            children["basic-counter-interface"] = basic_counter_interface;
         }
-        return children.at("basic-counter-interface");
+        return basic_counter_interface;
     }
 
     if(child_yang_name == "bgp")
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
-        else
+        if(bgp == nullptr)
         {
             bgp = std::make_shared<PerfMgmt::Statistics::Bgp>();
-            bgp->parent = this;
-            children["bgp"] = bgp;
         }
-        return children.at("bgp");
+        return bgp;
     }
 
     if(child_yang_name == "cpu-node")
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
-        else
+        if(cpu_node == nullptr)
         {
             cpu_node = std::make_shared<PerfMgmt::Statistics::CpuNode>();
-            cpu_node->parent = this;
-            children["cpu-node"] = cpu_node;
         }
-        return children.at("cpu-node");
+        return cpu_node;
     }
 
     if(child_yang_name == "data-rate-interface")
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
-        else
+        if(data_rate_interface == nullptr)
         {
             data_rate_interface = std::make_shared<PerfMgmt::Statistics::DataRateInterface>();
-            data_rate_interface->parent = this;
-            children["data-rate-interface"] = data_rate_interface;
         }
-        return children.at("data-rate-interface");
+        return data_rate_interface;
     }
 
     if(child_yang_name == "generic-counter-interface")
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
-        else
+        if(generic_counter_interface == nullptr)
         {
             generic_counter_interface = std::make_shared<PerfMgmt::Statistics::GenericCounterInterface>();
-            generic_counter_interface->parent = this;
-            children["generic-counter-interface"] = generic_counter_interface;
         }
-        return children.at("generic-counter-interface");
+        return generic_counter_interface;
     }
 
     if(child_yang_name == "ldp-mpls")
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
-        else
+        if(ldp_mpls == nullptr)
         {
             ldp_mpls = std::make_shared<PerfMgmt::Statistics::LdpMpls>();
-            ldp_mpls->parent = this;
-            children["ldp-mpls"] = ldp_mpls;
         }
-        return children.at("ldp-mpls");
+        return ldp_mpls;
     }
 
     if(child_yang_name == "memory-node")
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
-        else
+        if(memory_node == nullptr)
         {
             memory_node = std::make_shared<PerfMgmt::Statistics::MemoryNode>();
-            memory_node->parent = this;
-            children["memory-node"] = memory_node;
         }
-        return children.at("memory-node");
+        return memory_node;
     }
 
     if(child_yang_name == "ospfv2-protocol")
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
-        else
+        if(ospfv2_protocol == nullptr)
         {
             ospfv2_protocol = std::make_shared<PerfMgmt::Statistics::Ospfv2Protocol>();
-            ospfv2_protocol->parent = this;
-            children["ospfv2-protocol"] = ospfv2_protocol;
         }
-        return children.at("ospfv2-protocol");
+        return ospfv2_protocol;
     }
 
     if(child_yang_name == "ospfv3-protocol")
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
-        else
+        if(ospfv3_protocol == nullptr)
         {
             ospfv3_protocol = std::make_shared<PerfMgmt::Statistics::Ospfv3Protocol>();
-            ospfv3_protocol->parent = this;
-            children["ospfv3-protocol"] = ospfv3_protocol;
         }
-        return children.at("ospfv3-protocol");
+        return ospfv3_protocol;
     }
 
     if(child_yang_name == "process-node")
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
-        else
+        if(process_node == nullptr)
         {
             process_node = std::make_shared<PerfMgmt::Statistics::ProcessNode>();
-            process_node->parent = this;
-            children["process-node"] = process_node;
         }
-        return children.at("process-node");
+        return process_node;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::get_children() const
 {
-    if(children.find("basic-counter-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_counter_interface != nullptr)
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
+        children["basic-counter-interface"] = basic_counter_interface;
     }
 
-    if(children.find("bgp") == children.end())
+    if(bgp != nullptr)
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
+        children["bgp"] = bgp;
     }
 
-    if(children.find("cpu-node") == children.end())
+    if(cpu_node != nullptr)
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
+        children["cpu-node"] = cpu_node;
     }
 
-    if(children.find("data-rate-interface") == children.end())
+    if(data_rate_interface != nullptr)
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
+        children["data-rate-interface"] = data_rate_interface;
     }
 
-    if(children.find("generic-counter-interface") == children.end())
+    if(generic_counter_interface != nullptr)
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
+        children["generic-counter-interface"] = generic_counter_interface;
     }
 
-    if(children.find("ldp-mpls") == children.end())
+    if(ldp_mpls != nullptr)
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
+        children["ldp-mpls"] = ldp_mpls;
     }
 
-    if(children.find("memory-node") == children.end())
+    if(memory_node != nullptr)
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
+        children["memory-node"] = memory_node;
     }
 
-    if(children.find("ospfv2-protocol") == children.end())
+    if(ospfv2_protocol != nullptr)
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
+        children["ospfv2-protocol"] = ospfv2_protocol;
     }
 
-    if(children.find("ospfv3-protocol") == children.end())
+    if(ospfv3_protocol != nullptr)
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
+        children["ospfv3-protocol"] = ospfv3_protocol;
     }
 
-    if(children.find("process-node") == children.end())
+    if(process_node != nullptr)
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
+        children["process-node"] = process_node;
     }
 
     return children;
@@ -1031,7 +804,6 @@ PerfMgmt::Statistics::GenericCounterInterface::GenericCounterInterface()
     templates(std::make_shared<PerfMgmt::Statistics::GenericCounterInterface::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "generic-counter-interface"; yang_parent_name = "statistics";
 }
@@ -1060,7 +832,7 @@ std::string PerfMgmt::Statistics::GenericCounterInterface::get_segment_path() co
 
 }
 
-EntityPath PerfMgmt::Statistics::GenericCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::GenericCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1083,41 +855,24 @@ EntityPath PerfMgmt::Statistics::GenericCounterInterface::get_entity_path(Entity
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::GenericCounterInterface::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::GenericCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::GenericCounterInterface::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -1165,7 +920,7 @@ std::string PerfMgmt::Statistics::GenericCounterInterface::Templates::get_segmen
 
 }
 
-EntityPath PerfMgmt::Statistics::GenericCounterInterface::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::GenericCounterInterface::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1188,15 +943,6 @@ EntityPath PerfMgmt::Statistics::GenericCounterInterface::Templates::get_entity_
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::GenericCounterInterface::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -1204,28 +950,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::GenericCounterInterface::Templates
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::GenericCounterInterface::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::GenericCounterInterface::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1281,7 +1023,7 @@ std::string PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_:
 
 }
 
-EntityPath PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1310,20 +1052,12 @@ EntityPath PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1360,7 +1094,6 @@ PerfMgmt::Statistics::ProcessNode::ProcessNode()
     templates(std::make_shared<PerfMgmt::Statistics::ProcessNode::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "process-node"; yang_parent_name = "statistics";
 }
@@ -1389,7 +1122,7 @@ std::string PerfMgmt::Statistics::ProcessNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::ProcessNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::ProcessNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1412,41 +1145,24 @@ EntityPath PerfMgmt::Statistics::ProcessNode::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::ProcessNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::ProcessNode::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::ProcessNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::ProcessNode::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -1494,7 +1210,7 @@ std::string PerfMgmt::Statistics::ProcessNode::Templates::get_segment_path() con
 
 }
 
-EntityPath PerfMgmt::Statistics::ProcessNode::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::ProcessNode::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1517,15 +1233,6 @@ EntityPath PerfMgmt::Statistics::ProcessNode::Templates::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::ProcessNode::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -1533,28 +1240,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::ProcessNode::Templates::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::ProcessNode::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::ProcessNode::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::ProcessNode::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1610,7 +1313,7 @@ std::string PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_segment
 
 }
 
-EntityPath PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1639,20 +1342,12 @@ EntityPath PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_entity_p
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1689,7 +1384,6 @@ PerfMgmt::Statistics::BasicCounterInterface::BasicCounterInterface()
     templates(std::make_shared<PerfMgmt::Statistics::BasicCounterInterface::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "basic-counter-interface"; yang_parent_name = "statistics";
 }
@@ -1718,7 +1412,7 @@ std::string PerfMgmt::Statistics::BasicCounterInterface::get_segment_path() cons
 
 }
 
-EntityPath PerfMgmt::Statistics::BasicCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::BasicCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1741,41 +1435,24 @@ EntityPath PerfMgmt::Statistics::BasicCounterInterface::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::BasicCounterInterface::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::BasicCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::BasicCounterInterface::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -1823,7 +1500,7 @@ std::string PerfMgmt::Statistics::BasicCounterInterface::Templates::get_segment_
 
 }
 
-EntityPath PerfMgmt::Statistics::BasicCounterInterface::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::BasicCounterInterface::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1846,15 +1523,6 @@ EntityPath PerfMgmt::Statistics::BasicCounterInterface::Templates::get_entity_pa
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::BasicCounterInterface::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -1862,28 +1530,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::BasicCounterInterface::Templates::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::BasicCounterInterface::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::BasicCounterInterface::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1939,7 +1603,7 @@ std::string PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::g
 
 }
 
-EntityPath PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1968,20 +1632,12 @@ EntityPath PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::ge
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2018,7 +1674,6 @@ PerfMgmt::Statistics::Ospfv3Protocol::Ospfv3Protocol()
     templates(std::make_shared<PerfMgmt::Statistics::Ospfv3Protocol::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "ospfv3-protocol"; yang_parent_name = "statistics";
 }
@@ -2047,7 +1702,7 @@ std::string PerfMgmt::Statistics::Ospfv3Protocol::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2070,41 +1725,24 @@ EntityPath PerfMgmt::Statistics::Ospfv3Protocol::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv3Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::Ospfv3Protocol::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Ospfv3Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv3Protocol::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -2152,7 +1790,7 @@ std::string PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2175,15 +1813,6 @@ EntityPath PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -2191,28 +1820,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2268,7 +1893,7 @@ std::string PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_segm
 
 }
 
-EntityPath PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2297,20 +1922,12 @@ EntityPath PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_entit
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2347,7 +1964,6 @@ PerfMgmt::Statistics::CpuNode::CpuNode()
     templates(std::make_shared<PerfMgmt::Statistics::CpuNode::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "cpu-node"; yang_parent_name = "statistics";
 }
@@ -2376,7 +1992,7 @@ std::string PerfMgmt::Statistics::CpuNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::CpuNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::CpuNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2399,41 +2015,24 @@ EntityPath PerfMgmt::Statistics::CpuNode::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::CpuNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::CpuNode::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::CpuNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::CpuNode::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -2481,7 +2080,7 @@ std::string PerfMgmt::Statistics::CpuNode::Templates::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::CpuNode::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::CpuNode::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2504,15 +2103,6 @@ EntityPath PerfMgmt::Statistics::CpuNode::Templates::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::CpuNode::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -2520,28 +2110,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::CpuNode::Templates::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::CpuNode::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::CpuNode::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::CpuNode::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2597,7 +2183,7 @@ std::string PerfMgmt::Statistics::CpuNode::Templates::Template_::get_segment_pat
 
 }
 
-EntityPath PerfMgmt::Statistics::CpuNode::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::CpuNode::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2626,20 +2212,12 @@ EntityPath PerfMgmt::Statistics::CpuNode::Templates::Template_::get_entity_path(
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::CpuNode::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::CpuNode::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::CpuNode::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2676,7 +2254,6 @@ PerfMgmt::Statistics::DataRateInterface::DataRateInterface()
     templates(std::make_shared<PerfMgmt::Statistics::DataRateInterface::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "data-rate-interface"; yang_parent_name = "statistics";
 }
@@ -2705,7 +2282,7 @@ std::string PerfMgmt::Statistics::DataRateInterface::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::DataRateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::DataRateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2728,41 +2305,24 @@ EntityPath PerfMgmt::Statistics::DataRateInterface::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::DataRateInterface::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::DataRateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::DataRateInterface::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -2810,7 +2370,7 @@ std::string PerfMgmt::Statistics::DataRateInterface::Templates::get_segment_path
 
 }
 
-EntityPath PerfMgmt::Statistics::DataRateInterface::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::DataRateInterface::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2833,15 +2393,6 @@ EntityPath PerfMgmt::Statistics::DataRateInterface::Templates::get_entity_path(E
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::DataRateInterface::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -2849,28 +2400,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::DataRateInterface::Templates::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::DataRateInterface::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::DataRateInterface::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::DataRateInterface::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2926,7 +2473,7 @@ std::string PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_s
 
 }
 
-EntityPath PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2955,20 +2502,12 @@ EntityPath PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_en
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3005,7 +2544,6 @@ PerfMgmt::Statistics::MemoryNode::MemoryNode()
     templates(std::make_shared<PerfMgmt::Statistics::MemoryNode::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "memory-node"; yang_parent_name = "statistics";
 }
@@ -3034,7 +2572,7 @@ std::string PerfMgmt::Statistics::MemoryNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::MemoryNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::MemoryNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3057,41 +2595,24 @@ EntityPath PerfMgmt::Statistics::MemoryNode::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::MemoryNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::MemoryNode::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::MemoryNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::MemoryNode::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -3139,7 +2660,7 @@ std::string PerfMgmt::Statistics::MemoryNode::Templates::get_segment_path() cons
 
 }
 
-EntityPath PerfMgmt::Statistics::MemoryNode::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::MemoryNode::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3162,15 +2683,6 @@ EntityPath PerfMgmt::Statistics::MemoryNode::Templates::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::MemoryNode::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -3178,28 +2690,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::MemoryNode::Templates::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::MemoryNode::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::MemoryNode::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::MemoryNode::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3255,7 +2763,7 @@ std::string PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_segment_
 
 }
 
-EntityPath PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3284,20 +2792,12 @@ EntityPath PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_entity_pa
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3334,7 +2834,6 @@ PerfMgmt::Statistics::LdpMpls::LdpMpls()
     templates(std::make_shared<PerfMgmt::Statistics::LdpMpls::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "ldp-mpls"; yang_parent_name = "statistics";
 }
@@ -3363,7 +2862,7 @@ std::string PerfMgmt::Statistics::LdpMpls::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::LdpMpls::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::LdpMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3386,41 +2885,24 @@ EntityPath PerfMgmt::Statistics::LdpMpls::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::LdpMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::LdpMpls::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::LdpMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::LdpMpls::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -3468,7 +2950,7 @@ std::string PerfMgmt::Statistics::LdpMpls::Templates::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::LdpMpls::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::LdpMpls::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3491,15 +2973,6 @@ EntityPath PerfMgmt::Statistics::LdpMpls::Templates::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::LdpMpls::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -3507,28 +2980,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::LdpMpls::Templates::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::LdpMpls::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::LdpMpls::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::LdpMpls::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3584,7 +3053,7 @@ std::string PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_segment_pat
 
 }
 
-EntityPath PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3613,20 +3082,12 @@ EntityPath PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_entity_path(
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3663,7 +3124,6 @@ PerfMgmt::Statistics::Bgp::Bgp()
     templates(std::make_shared<PerfMgmt::Statistics::Bgp::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "bgp"; yang_parent_name = "statistics";
 }
@@ -3692,7 +3152,7 @@ std::string PerfMgmt::Statistics::Bgp::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::Bgp::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Bgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3715,41 +3175,24 @@ EntityPath PerfMgmt::Statistics::Bgp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::Bgp::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Bgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Bgp::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -3797,7 +3240,7 @@ std::string PerfMgmt::Statistics::Bgp::Templates::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::Bgp::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Bgp::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3820,15 +3263,6 @@ EntityPath PerfMgmt::Statistics::Bgp::Templates::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Bgp::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -3836,28 +3270,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::Bgp::Templates::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::Bgp::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Bgp::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Bgp::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3913,7 +3343,7 @@ std::string PerfMgmt::Statistics::Bgp::Templates::Template_::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Statistics::Bgp::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Bgp::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3942,20 +3372,12 @@ EntityPath PerfMgmt::Statistics::Bgp::Templates::Template_::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Bgp::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Bgp::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Bgp::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3992,7 +3414,6 @@ PerfMgmt::Statistics::Ospfv2Protocol::Ospfv2Protocol()
     templates(std::make_shared<PerfMgmt::Statistics::Ospfv2Protocol::Templates>())
 {
     templates->parent = this;
-    children["templates"] = templates;
 
     yang_name = "ospfv2-protocol"; yang_parent_name = "statistics";
 }
@@ -4021,7 +3442,7 @@ std::string PerfMgmt::Statistics::Ospfv2Protocol::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Statistics::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4044,41 +3465,24 @@ EntityPath PerfMgmt::Statistics::Ospfv2Protocol::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "templates")
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
-        else
+        if(templates == nullptr)
         {
             templates = std::make_shared<PerfMgmt::Statistics::Ospfv2Protocol::Templates>();
-            templates->parent = this;
-            children["templates"] = templates;
         }
-        return children.at("templates");
+        return templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Ospfv2Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv2Protocol::get_children() const
 {
-    if(children.find("templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(templates != nullptr)
     {
-        if(templates != nullptr)
-        {
-            children["templates"] = templates;
-        }
+        children["templates"] = templates;
     }
 
     return children;
@@ -4126,7 +3530,7 @@ std::string PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4149,15 +3553,6 @@ EntityPath PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "template")
     {
         for(auto const & c : template_)
@@ -4165,28 +3560,24 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_>();
         c->parent = this;
-        template_.push_back(std::move(c));
-        children[segment_path] = template_.back();
-        return children.at(segment_path);
+        template_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : template_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4242,7 +3633,7 @@ std::string PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_segm
 
 }
 
-EntityPath PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4271,20 +3662,12 @@ EntityPath PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_entit
 
 std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4323,13 +3706,10 @@ PerfMgmt::Enable::Enable()
 	,threshold(std::make_shared<PerfMgmt::Enable::Threshold>())
 {
     monitor_enable->parent = this;
-    children["monitor-enable"] = monitor_enable;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     threshold->parent = this;
-    children["threshold"] = threshold;
 
     yang_name = "enable"; yang_parent_name = "perf-mgmt";
 }
@@ -4362,7 +3742,7 @@ std::string PerfMgmt::Enable::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4385,87 +3765,52 @@ EntityPath PerfMgmt::Enable::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "monitor-enable")
     {
-        if(monitor_enable != nullptr)
-        {
-            children["monitor-enable"] = monitor_enable;
-        }
-        else
+        if(monitor_enable == nullptr)
         {
             monitor_enable = std::make_shared<PerfMgmt::Enable::MonitorEnable>();
-            monitor_enable->parent = this;
-            children["monitor-enable"] = monitor_enable;
         }
-        return children.at("monitor-enable");
+        return monitor_enable;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<PerfMgmt::Enable::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "threshold")
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
-        else
+        if(threshold == nullptr)
         {
             threshold = std::make_shared<PerfMgmt::Enable::Threshold>();
-            threshold->parent = this;
-            children["threshold"] = threshold;
         }
-        return children.at("threshold");
+        return threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::get_children() const
 {
-    if(children.find("monitor-enable") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(monitor_enable != nullptr)
     {
-        if(monitor_enable != nullptr)
-        {
-            children["monitor-enable"] = monitor_enable;
-        }
+        children["monitor-enable"] = monitor_enable;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("threshold") == children.end())
+    if(threshold != nullptr)
     {
-        if(threshold != nullptr)
-        {
-            children["threshold"] = threshold;
-        }
+        children["threshold"] = threshold;
     }
 
     return children;
@@ -4489,34 +3834,24 @@ PerfMgmt::Enable::Threshold::Threshold()
 	,process_node(std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode>())
 {
     basic_counter_interface->parent = this;
-    children["basic-counter-interface"] = basic_counter_interface;
 
     bgp->parent = this;
-    children["bgp"] = bgp;
 
     cpu_node->parent = this;
-    children["cpu-node"] = cpu_node;
 
     data_rate_interface->parent = this;
-    children["data-rate-interface"] = data_rate_interface;
 
     generic_counter_interface->parent = this;
-    children["generic-counter-interface"] = generic_counter_interface;
 
     ldp_mpls->parent = this;
-    children["ldp-mpls"] = ldp_mpls;
 
     memory_node->parent = this;
-    children["memory-node"] = memory_node;
 
     ospfv2_protocol->parent = this;
-    children["ospfv2-protocol"] = ospfv2_protocol;
 
     ospfv3_protocol->parent = this;
-    children["ospfv3-protocol"] = ospfv3_protocol;
 
     process_node->parent = this;
-    children["process-node"] = process_node;
 
     yang_name = "threshold"; yang_parent_name = "enable";
 }
@@ -4563,7 +3898,7 @@ std::string PerfMgmt::Enable::Threshold::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4586,248 +3921,150 @@ EntityPath PerfMgmt::Enable::Threshold::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-counter-interface")
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
-        else
+        if(basic_counter_interface == nullptr)
         {
             basic_counter_interface = std::make_shared<PerfMgmt::Enable::Threshold::BasicCounterInterface>();
-            basic_counter_interface->parent = this;
-            children["basic-counter-interface"] = basic_counter_interface;
         }
-        return children.at("basic-counter-interface");
+        return basic_counter_interface;
     }
 
     if(child_yang_name == "bgp")
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
-        else
+        if(bgp == nullptr)
         {
             bgp = std::make_shared<PerfMgmt::Enable::Threshold::Bgp>();
-            bgp->parent = this;
-            children["bgp"] = bgp;
         }
-        return children.at("bgp");
+        return bgp;
     }
 
     if(child_yang_name == "cpu-node")
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
-        else
+        if(cpu_node == nullptr)
         {
             cpu_node = std::make_shared<PerfMgmt::Enable::Threshold::CpuNode>();
-            cpu_node->parent = this;
-            children["cpu-node"] = cpu_node;
         }
-        return children.at("cpu-node");
+        return cpu_node;
     }
 
     if(child_yang_name == "data-rate-interface")
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
-        else
+        if(data_rate_interface == nullptr)
         {
             data_rate_interface = std::make_shared<PerfMgmt::Enable::Threshold::DataRateInterface>();
-            data_rate_interface->parent = this;
-            children["data-rate-interface"] = data_rate_interface;
         }
-        return children.at("data-rate-interface");
+        return data_rate_interface;
     }
 
     if(child_yang_name == "generic-counter-interface")
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
-        else
+        if(generic_counter_interface == nullptr)
         {
             generic_counter_interface = std::make_shared<PerfMgmt::Enable::Threshold::GenericCounterInterface>();
-            generic_counter_interface->parent = this;
-            children["generic-counter-interface"] = generic_counter_interface;
         }
-        return children.at("generic-counter-interface");
+        return generic_counter_interface;
     }
 
     if(child_yang_name == "ldp-mpls")
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
-        else
+        if(ldp_mpls == nullptr)
         {
             ldp_mpls = std::make_shared<PerfMgmt::Enable::Threshold::LdpMpls>();
-            ldp_mpls->parent = this;
-            children["ldp-mpls"] = ldp_mpls;
         }
-        return children.at("ldp-mpls");
+        return ldp_mpls;
     }
 
     if(child_yang_name == "memory-node")
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
-        else
+        if(memory_node == nullptr)
         {
             memory_node = std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode>();
-            memory_node->parent = this;
-            children["memory-node"] = memory_node;
         }
-        return children.at("memory-node");
+        return memory_node;
     }
 
     if(child_yang_name == "ospfv2-protocol")
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
-        else
+        if(ospfv2_protocol == nullptr)
         {
             ospfv2_protocol = std::make_shared<PerfMgmt::Enable::Threshold::Ospfv2Protocol>();
-            ospfv2_protocol->parent = this;
-            children["ospfv2-protocol"] = ospfv2_protocol;
         }
-        return children.at("ospfv2-protocol");
+        return ospfv2_protocol;
     }
 
     if(child_yang_name == "ospfv3-protocol")
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
-        else
+        if(ospfv3_protocol == nullptr)
         {
             ospfv3_protocol = std::make_shared<PerfMgmt::Enable::Threshold::Ospfv3Protocol>();
-            ospfv3_protocol->parent = this;
-            children["ospfv3-protocol"] = ospfv3_protocol;
         }
-        return children.at("ospfv3-protocol");
+        return ospfv3_protocol;
     }
 
     if(child_yang_name == "process-node")
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
-        else
+        if(process_node == nullptr)
         {
             process_node = std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode>();
-            process_node->parent = this;
-            children["process-node"] = process_node;
         }
-        return children.at("process-node");
+        return process_node;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::get_children() const
 {
-    if(children.find("basic-counter-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_counter_interface != nullptr)
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
+        children["basic-counter-interface"] = basic_counter_interface;
     }
 
-    if(children.find("bgp") == children.end())
+    if(bgp != nullptr)
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
+        children["bgp"] = bgp;
     }
 
-    if(children.find("cpu-node") == children.end())
+    if(cpu_node != nullptr)
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
+        children["cpu-node"] = cpu_node;
     }
 
-    if(children.find("data-rate-interface") == children.end())
+    if(data_rate_interface != nullptr)
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
+        children["data-rate-interface"] = data_rate_interface;
     }
 
-    if(children.find("generic-counter-interface") == children.end())
+    if(generic_counter_interface != nullptr)
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
+        children["generic-counter-interface"] = generic_counter_interface;
     }
 
-    if(children.find("ldp-mpls") == children.end())
+    if(ldp_mpls != nullptr)
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
+        children["ldp-mpls"] = ldp_mpls;
     }
 
-    if(children.find("memory-node") == children.end())
+    if(memory_node != nullptr)
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
+        children["memory-node"] = memory_node;
     }
 
-    if(children.find("ospfv2-protocol") == children.end())
+    if(ospfv2_protocol != nullptr)
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
+        children["ospfv2-protocol"] = ospfv2_protocol;
     }
 
-    if(children.find("ospfv3-protocol") == children.end())
+    if(ospfv3_protocol != nullptr)
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
+        children["ospfv3-protocol"] = ospfv3_protocol;
     }
 
-    if(children.find("process-node") == children.end())
+    if(process_node != nullptr)
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
+        children["process-node"] = process_node;
     }
 
     return children;
@@ -4868,7 +4105,7 @@ std::string PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_segment_path() cons
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4892,20 +4129,12 @@ EntityPath PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4948,7 +4177,7 @@ std::string PerfMgmt::Enable::Threshold::Bgp::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::Bgp::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::Bgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4972,20 +4201,12 @@ EntityPath PerfMgmt::Enable::Threshold::Bgp::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::Bgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Bgp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5028,7 +4249,7 @@ std::string PerfMgmt::Enable::Threshold::DataRateInterface::get_segment_path() c
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::DataRateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::DataRateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5052,20 +4273,12 @@ EntityPath PerfMgmt::Enable::Threshold::DataRateInterface::get_entity_path(Entit
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::DataRateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::DataRateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5108,7 +4321,7 @@ std::string PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_segment_path() cons
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5132,20 +4345,12 @@ EntityPath PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5163,10 +4368,8 @@ PerfMgmt::Enable::Threshold::MemoryNode::MemoryNode()
 	,nodes(std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::Nodes>())
 {
     node_all->parent = this;
-    children["node-all"] = node_all;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "memory-node"; yang_parent_name = "threshold";
 }
@@ -5197,7 +4400,7 @@ std::string PerfMgmt::Enable::Threshold::MemoryNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::MemoryNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::MemoryNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5220,64 +4423,38 @@ EntityPath PerfMgmt::Enable::Threshold::MemoryNode::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::MemoryNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-all")
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
-        else
+        if(node_all == nullptr)
         {
             node_all = std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::NodeAll>();
-            node_all->parent = this;
-            children["node-all"] = node_all;
         }
-        return children.at("node-all");
+        return node_all;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::MemoryNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::MemoryNode::get_children() const
 {
-    if(children.find("node-all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_all != nullptr)
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
+        children["node-all"] = node_all;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -5325,7 +4502,7 @@ std::string PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_segment_path() c
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5348,15 +4525,6 @@ EntityPath PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_entity_path(Entit
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -5364,28 +4532,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5429,7 +4593,7 @@ std::string PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_segment_pa
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5454,20 +4618,12 @@ EntityPath PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_entity_path
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5514,7 +4670,7 @@ std::string PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_segment_path()
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5538,20 +4694,12 @@ EntityPath PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_entity_path(Ent
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5594,7 +4742,7 @@ std::string PerfMgmt::Enable::Threshold::GenericCounterInterface::get_segment_pa
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::GenericCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::GenericCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5618,20 +4766,12 @@ EntityPath PerfMgmt::Enable::Threshold::GenericCounterInterface::get_entity_path
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::GenericCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::GenericCounterInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5649,10 +4789,8 @@ PerfMgmt::Enable::Threshold::CpuNode::CpuNode()
 	,nodes(std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::Nodes>())
 {
     node_all->parent = this;
-    children["node-all"] = node_all;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "cpu-node"; yang_parent_name = "threshold";
 }
@@ -5683,7 +4821,7 @@ std::string PerfMgmt::Enable::Threshold::CpuNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::CpuNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::CpuNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5706,64 +4844,38 @@ EntityPath PerfMgmt::Enable::Threshold::CpuNode::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::CpuNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-all")
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
-        else
+        if(node_all == nullptr)
         {
             node_all = std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::NodeAll>();
-            node_all->parent = this;
-            children["node-all"] = node_all;
         }
-        return children.at("node-all");
+        return node_all;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::CpuNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuNode::get_children() const
 {
-    if(children.find("node-all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_all != nullptr)
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
+        children["node-all"] = node_all;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -5811,7 +4923,7 @@ std::string PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_segment_path() cons
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5834,15 +4946,6 @@ EntityPath PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -5850,28 +4953,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5915,7 +5014,7 @@ std::string PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_segment_path(
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5940,20 +5039,12 @@ EntityPath PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_entity_path(En
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6000,7 +5091,7 @@ std::string PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_segment_path() co
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6024,20 +5115,12 @@ EntityPath PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_entity_path(Entity
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6080,7 +5163,7 @@ std::string PerfMgmt::Enable::Threshold::LdpMpls::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::LdpMpls::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::LdpMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6104,20 +5187,12 @@ EntityPath PerfMgmt::Enable::Threshold::LdpMpls::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::LdpMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::LdpMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::LdpMpls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6135,10 +5210,8 @@ PerfMgmt::Enable::Threshold::ProcessNode::ProcessNode()
 	,nodes(std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::Nodes>())
 {
     node_all->parent = this;
-    children["node-all"] = node_all;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "process-node"; yang_parent_name = "threshold";
 }
@@ -6169,7 +5242,7 @@ std::string PerfMgmt::Enable::Threshold::ProcessNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::ProcessNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::ProcessNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6192,64 +5265,38 @@ EntityPath PerfMgmt::Enable::Threshold::ProcessNode::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::ProcessNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-all")
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
-        else
+        if(node_all == nullptr)
         {
             node_all = std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::NodeAll>();
-            node_all->parent = this;
-            children["node-all"] = node_all;
         }
-        return children.at("node-all");
+        return node_all;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::ProcessNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::ProcessNode::get_children() const
 {
-    if(children.find("node-all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_all != nullptr)
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
+        children["node-all"] = node_all;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -6297,7 +5344,7 @@ std::string PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6320,15 +5367,6 @@ EntityPath PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -6336,28 +5374,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6401,7 +5435,7 @@ std::string PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_segment_p
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6426,20 +5460,12 @@ EntityPath PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_entity_pat
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6486,7 +5512,7 @@ std::string PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_segment_path(
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6510,20 +5536,12 @@ EntityPath PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_entity_path(En
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6566,7 +5584,7 @@ std::string PerfMgmt::Enable::Threshold::BasicCounterInterface::get_segment_path
 
 }
 
-EntityPath PerfMgmt::Enable::Threshold::BasicCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Threshold::BasicCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6590,20 +5608,12 @@ EntityPath PerfMgmt::Enable::Threshold::BasicCounterInterface::get_entity_path(E
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Threshold::BasicCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::BasicCounterInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6629,34 +5639,24 @@ PerfMgmt::Enable::Statistics::Statistics()
 	,process_node(std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode>())
 {
     basic_counter_interface->parent = this;
-    children["basic-counter-interface"] = basic_counter_interface;
 
     bgp->parent = this;
-    children["bgp"] = bgp;
 
     cpu_node->parent = this;
-    children["cpu-node"] = cpu_node;
 
     data_rate_interface->parent = this;
-    children["data-rate-interface"] = data_rate_interface;
 
     generic_counter_interface->parent = this;
-    children["generic-counter-interface"] = generic_counter_interface;
 
     ldp_mpls->parent = this;
-    children["ldp-mpls"] = ldp_mpls;
 
     memory_node->parent = this;
-    children["memory-node"] = memory_node;
 
     ospfv2_protocol->parent = this;
-    children["ospfv2-protocol"] = ospfv2_protocol;
 
     ospfv3_protocol->parent = this;
-    children["ospfv3-protocol"] = ospfv3_protocol;
 
     process_node->parent = this;
-    children["process-node"] = process_node;
 
     yang_name = "statistics"; yang_parent_name = "enable";
 }
@@ -6703,7 +5703,7 @@ std::string PerfMgmt::Enable::Statistics::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6726,248 +5726,150 @@ EntityPath PerfMgmt::Enable::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-counter-interface")
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
-        else
+        if(basic_counter_interface == nullptr)
         {
             basic_counter_interface = std::make_shared<PerfMgmt::Enable::Statistics::BasicCounterInterface>();
-            basic_counter_interface->parent = this;
-            children["basic-counter-interface"] = basic_counter_interface;
         }
-        return children.at("basic-counter-interface");
+        return basic_counter_interface;
     }
 
     if(child_yang_name == "bgp")
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
-        else
+        if(bgp == nullptr)
         {
             bgp = std::make_shared<PerfMgmt::Enable::Statistics::Bgp>();
-            bgp->parent = this;
-            children["bgp"] = bgp;
         }
-        return children.at("bgp");
+        return bgp;
     }
 
     if(child_yang_name == "cpu-node")
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
-        else
+        if(cpu_node == nullptr)
         {
             cpu_node = std::make_shared<PerfMgmt::Enable::Statistics::CpuNode>();
-            cpu_node->parent = this;
-            children["cpu-node"] = cpu_node;
         }
-        return children.at("cpu-node");
+        return cpu_node;
     }
 
     if(child_yang_name == "data-rate-interface")
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
-        else
+        if(data_rate_interface == nullptr)
         {
             data_rate_interface = std::make_shared<PerfMgmt::Enable::Statistics::DataRateInterface>();
-            data_rate_interface->parent = this;
-            children["data-rate-interface"] = data_rate_interface;
         }
-        return children.at("data-rate-interface");
+        return data_rate_interface;
     }
 
     if(child_yang_name == "generic-counter-interface")
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
-        else
+        if(generic_counter_interface == nullptr)
         {
             generic_counter_interface = std::make_shared<PerfMgmt::Enable::Statistics::GenericCounterInterface>();
-            generic_counter_interface->parent = this;
-            children["generic-counter-interface"] = generic_counter_interface;
         }
-        return children.at("generic-counter-interface");
+        return generic_counter_interface;
     }
 
     if(child_yang_name == "ldp-mpls")
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
-        else
+        if(ldp_mpls == nullptr)
         {
             ldp_mpls = std::make_shared<PerfMgmt::Enable::Statistics::LdpMpls>();
-            ldp_mpls->parent = this;
-            children["ldp-mpls"] = ldp_mpls;
         }
-        return children.at("ldp-mpls");
+        return ldp_mpls;
     }
 
     if(child_yang_name == "memory-node")
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
-        else
+        if(memory_node == nullptr)
         {
             memory_node = std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode>();
-            memory_node->parent = this;
-            children["memory-node"] = memory_node;
         }
-        return children.at("memory-node");
+        return memory_node;
     }
 
     if(child_yang_name == "ospfv2-protocol")
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
-        else
+        if(ospfv2_protocol == nullptr)
         {
             ospfv2_protocol = std::make_shared<PerfMgmt::Enable::Statistics::Ospfv2Protocol>();
-            ospfv2_protocol->parent = this;
-            children["ospfv2-protocol"] = ospfv2_protocol;
         }
-        return children.at("ospfv2-protocol");
+        return ospfv2_protocol;
     }
 
     if(child_yang_name == "ospfv3-protocol")
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
-        else
+        if(ospfv3_protocol == nullptr)
         {
             ospfv3_protocol = std::make_shared<PerfMgmt::Enable::Statistics::Ospfv3Protocol>();
-            ospfv3_protocol->parent = this;
-            children["ospfv3-protocol"] = ospfv3_protocol;
         }
-        return children.at("ospfv3-protocol");
+        return ospfv3_protocol;
     }
 
     if(child_yang_name == "process-node")
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
-        else
+        if(process_node == nullptr)
         {
             process_node = std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode>();
-            process_node->parent = this;
-            children["process-node"] = process_node;
         }
-        return children.at("process-node");
+        return process_node;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::get_children() const
 {
-    if(children.find("basic-counter-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_counter_interface != nullptr)
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
+        children["basic-counter-interface"] = basic_counter_interface;
     }
 
-    if(children.find("bgp") == children.end())
+    if(bgp != nullptr)
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
+        children["bgp"] = bgp;
     }
 
-    if(children.find("cpu-node") == children.end())
+    if(cpu_node != nullptr)
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
+        children["cpu-node"] = cpu_node;
     }
 
-    if(children.find("data-rate-interface") == children.end())
+    if(data_rate_interface != nullptr)
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
+        children["data-rate-interface"] = data_rate_interface;
     }
 
-    if(children.find("generic-counter-interface") == children.end())
+    if(generic_counter_interface != nullptr)
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
+        children["generic-counter-interface"] = generic_counter_interface;
     }
 
-    if(children.find("ldp-mpls") == children.end())
+    if(ldp_mpls != nullptr)
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
+        children["ldp-mpls"] = ldp_mpls;
     }
 
-    if(children.find("memory-node") == children.end())
+    if(memory_node != nullptr)
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
+        children["memory-node"] = memory_node;
     }
 
-    if(children.find("ospfv2-protocol") == children.end())
+    if(ospfv2_protocol != nullptr)
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
+        children["ospfv2-protocol"] = ospfv2_protocol;
     }
 
-    if(children.find("ospfv3-protocol") == children.end())
+    if(ospfv3_protocol != nullptr)
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
+        children["ospfv3-protocol"] = ospfv3_protocol;
     }
 
-    if(children.find("process-node") == children.end())
+    if(process_node != nullptr)
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
+        children["process-node"] = process_node;
     }
 
     return children;
@@ -7008,7 +5910,7 @@ std::string PerfMgmt::Enable::Statistics::GenericCounterInterface::get_segment_p
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::GenericCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::GenericCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7032,20 +5934,12 @@ EntityPath PerfMgmt::Enable::Statistics::GenericCounterInterface::get_entity_pat
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::GenericCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::GenericCounterInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7088,7 +5982,7 @@ std::string PerfMgmt::Enable::Statistics::Bgp::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::Bgp::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::Bgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7112,20 +6006,12 @@ EntityPath PerfMgmt::Enable::Statistics::Bgp::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::Bgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Bgp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7168,7 +6054,7 @@ std::string PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_segment_path() con
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7192,20 +6078,12 @@ EntityPath PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7248,7 +6126,7 @@ std::string PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_segment_path() con
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7272,20 +6150,12 @@ EntityPath PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7303,10 +6173,8 @@ PerfMgmt::Enable::Statistics::CpuNode::CpuNode()
 	,nodes(std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::Nodes>())
 {
     node_all->parent = this;
-    children["node-all"] = node_all;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "cpu-node"; yang_parent_name = "statistics";
 }
@@ -7337,7 +6205,7 @@ std::string PerfMgmt::Enable::Statistics::CpuNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::CpuNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::CpuNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7360,64 +6228,38 @@ EntityPath PerfMgmt::Enable::Statistics::CpuNode::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::CpuNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-all")
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
-        else
+        if(node_all == nullptr)
         {
             node_all = std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::NodeAll>();
-            node_all->parent = this;
-            children["node-all"] = node_all;
         }
-        return children.at("node-all");
+        return node_all;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::CpuNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::CpuNode::get_children() const
 {
-    if(children.find("node-all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_all != nullptr)
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
+        children["node-all"] = node_all;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -7458,7 +6300,7 @@ std::string PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_segment_path() c
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7482,20 +6324,12 @@ EntityPath PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_entity_path(Entit
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7545,7 +6379,7 @@ std::string PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_segment_path() con
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7568,15 +6402,6 @@ EntityPath PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -7584,28 +6409,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7649,7 +6470,7 @@ std::string PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_segment_path
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7674,20 +6495,12 @@ EntityPath PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_entity_path(E
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7734,7 +6547,7 @@ std::string PerfMgmt::Enable::Statistics::BasicCounterInterface::get_segment_pat
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::BasicCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::BasicCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7758,20 +6571,12 @@ EntityPath PerfMgmt::Enable::Statistics::BasicCounterInterface::get_entity_path(
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::BasicCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::BasicCounterInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7789,10 +6594,8 @@ PerfMgmt::Enable::Statistics::ProcessNode::ProcessNode()
 	,nodes(std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::Nodes>())
 {
     node_all->parent = this;
-    children["node-all"] = node_all;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "process-node"; yang_parent_name = "statistics";
 }
@@ -7823,7 +6626,7 @@ std::string PerfMgmt::Enable::Statistics::ProcessNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::ProcessNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::ProcessNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7846,64 +6649,38 @@ EntityPath PerfMgmt::Enable::Statistics::ProcessNode::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::ProcessNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-all")
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
-        else
+        if(node_all == nullptr)
         {
             node_all = std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::NodeAll>();
-            node_all->parent = this;
-            children["node-all"] = node_all;
         }
-        return children.at("node-all");
+        return node_all;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::ProcessNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::ProcessNode::get_children() const
 {
-    if(children.find("node-all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_all != nullptr)
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
+        children["node-all"] = node_all;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -7944,7 +6721,7 @@ std::string PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_segment_path
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7968,20 +6745,12 @@ EntityPath PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_entity_path(E
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8031,7 +6800,7 @@ std::string PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_segment_path()
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8054,15 +6823,6 @@ EntityPath PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_entity_path(Ent
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -8070,28 +6830,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8135,7 +6891,7 @@ std::string PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_segment_
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8160,20 +6916,12 @@ EntityPath PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_entity_pa
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8220,7 +6968,7 @@ std::string PerfMgmt::Enable::Statistics::DataRateInterface::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::DataRateInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::DataRateInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8244,20 +6992,12 @@ EntityPath PerfMgmt::Enable::Statistics::DataRateInterface::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::DataRateInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::DataRateInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8275,10 +7015,8 @@ PerfMgmt::Enable::Statistics::MemoryNode::MemoryNode()
 	,nodes(std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::Nodes>())
 {
     node_all->parent = this;
-    children["node-all"] = node_all;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "memory-node"; yang_parent_name = "statistics";
 }
@@ -8309,7 +7047,7 @@ std::string PerfMgmt::Enable::Statistics::MemoryNode::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::MemoryNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::MemoryNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8332,64 +7070,38 @@ EntityPath PerfMgmt::Enable::Statistics::MemoryNode::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::MemoryNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node-all")
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
-        else
+        if(node_all == nullptr)
         {
             node_all = std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::NodeAll>();
-            node_all->parent = this;
-            children["node-all"] = node_all;
         }
-        return children.at("node-all");
+        return node_all;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::MemoryNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::MemoryNode::get_children() const
 {
-    if(children.find("node-all") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(node_all != nullptr)
     {
-        if(node_all != nullptr)
-        {
-            children["node-all"] = node_all;
-        }
+        children["node-all"] = node_all;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -8430,7 +7142,7 @@ std::string PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_segment_path(
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8454,20 +7166,12 @@ EntityPath PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_entity_path(En
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8517,7 +7221,7 @@ std::string PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8540,15 +7244,6 @@ EntityPath PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -8556,28 +7251,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8621,7 +7312,7 @@ std::string PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_segment_p
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8646,20 +7337,12 @@ EntityPath PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_entity_pat
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8706,7 +7389,7 @@ std::string PerfMgmt::Enable::Statistics::LdpMpls::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::Statistics::LdpMpls::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::Statistics::LdpMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8730,20 +7413,12 @@ EntityPath PerfMgmt::Enable::Statistics::LdpMpls::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::LdpMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::Statistics::LdpMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::LdpMpls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8769,34 +7444,24 @@ PerfMgmt::Enable::MonitorEnable::MonitorEnable()
 	,process(std::make_shared<PerfMgmt::Enable::MonitorEnable::Process>())
 {
     basic_counters->parent = this;
-    children["basic-counters"] = basic_counters;
 
     bgp->parent = this;
-    children["bgp"] = bgp;
 
     cpu->parent = this;
-    children["cpu"] = cpu;
 
     data_rates->parent = this;
-    children["data-rates"] = data_rates;
 
     generic_counters->parent = this;
-    children["generic-counters"] = generic_counters;
 
     ldp_mpls->parent = this;
-    children["ldp-mpls"] = ldp_mpls;
 
     memory->parent = this;
-    children["memory"] = memory;
 
     ospfv2_protocol->parent = this;
-    children["ospfv2-protocol"] = ospfv2_protocol;
 
     ospfv3_protocol->parent = this;
-    children["ospfv3-protocol"] = ospfv3_protocol;
 
     process->parent = this;
-    children["process"] = process;
 
     yang_name = "monitor-enable"; yang_parent_name = "enable";
 }
@@ -8843,7 +7508,7 @@ std::string PerfMgmt::Enable::MonitorEnable::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8866,248 +7531,150 @@ EntityPath PerfMgmt::Enable::MonitorEnable::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-counters")
     {
-        if(basic_counters != nullptr)
-        {
-            children["basic-counters"] = basic_counters;
-        }
-        else
+        if(basic_counters == nullptr)
         {
             basic_counters = std::make_shared<PerfMgmt::Enable::MonitorEnable::BasicCounters>();
-            basic_counters->parent = this;
-            children["basic-counters"] = basic_counters;
         }
-        return children.at("basic-counters");
+        return basic_counters;
     }
 
     if(child_yang_name == "bgp")
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
-        else
+        if(bgp == nullptr)
         {
             bgp = std::make_shared<PerfMgmt::Enable::MonitorEnable::Bgp>();
-            bgp->parent = this;
-            children["bgp"] = bgp;
         }
-        return children.at("bgp");
+        return bgp;
     }
 
     if(child_yang_name == "cpu")
     {
-        if(cpu != nullptr)
-        {
-            children["cpu"] = cpu;
-        }
-        else
+        if(cpu == nullptr)
         {
             cpu = std::make_shared<PerfMgmt::Enable::MonitorEnable::Cpu>();
-            cpu->parent = this;
-            children["cpu"] = cpu;
         }
-        return children.at("cpu");
+        return cpu;
     }
 
     if(child_yang_name == "data-rates")
     {
-        if(data_rates != nullptr)
-        {
-            children["data-rates"] = data_rates;
-        }
-        else
+        if(data_rates == nullptr)
         {
             data_rates = std::make_shared<PerfMgmt::Enable::MonitorEnable::DataRates>();
-            data_rates->parent = this;
-            children["data-rates"] = data_rates;
         }
-        return children.at("data-rates");
+        return data_rates;
     }
 
     if(child_yang_name == "generic-counters")
     {
-        if(generic_counters != nullptr)
-        {
-            children["generic-counters"] = generic_counters;
-        }
-        else
+        if(generic_counters == nullptr)
         {
             generic_counters = std::make_shared<PerfMgmt::Enable::MonitorEnable::GenericCounters>();
-            generic_counters->parent = this;
-            children["generic-counters"] = generic_counters;
         }
-        return children.at("generic-counters");
+        return generic_counters;
     }
 
     if(child_yang_name == "ldp-mpls")
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
-        else
+        if(ldp_mpls == nullptr)
         {
             ldp_mpls = std::make_shared<PerfMgmt::Enable::MonitorEnable::LdpMpls>();
-            ldp_mpls->parent = this;
-            children["ldp-mpls"] = ldp_mpls;
         }
-        return children.at("ldp-mpls");
+        return ldp_mpls;
     }
 
     if(child_yang_name == "memory")
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
-        else
+        if(memory == nullptr)
         {
             memory = std::make_shared<PerfMgmt::Enable::MonitorEnable::Memory>();
-            memory->parent = this;
-            children["memory"] = memory;
         }
-        return children.at("memory");
+        return memory;
     }
 
     if(child_yang_name == "ospfv2-protocol")
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
-        else
+        if(ospfv2_protocol == nullptr)
         {
             ospfv2_protocol = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol>();
-            ospfv2_protocol->parent = this;
-            children["ospfv2-protocol"] = ospfv2_protocol;
         }
-        return children.at("ospfv2-protocol");
+        return ospfv2_protocol;
     }
 
     if(child_yang_name == "ospfv3-protocol")
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
-        else
+        if(ospfv3_protocol == nullptr)
         {
             ospfv3_protocol = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol>();
-            ospfv3_protocol->parent = this;
-            children["ospfv3-protocol"] = ospfv3_protocol;
         }
-        return children.at("ospfv3-protocol");
+        return ospfv3_protocol;
     }
 
     if(child_yang_name == "process")
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
-        else
+        if(process == nullptr)
         {
             process = std::make_shared<PerfMgmt::Enable::MonitorEnable::Process>();
-            process->parent = this;
-            children["process"] = process;
         }
-        return children.at("process");
+        return process;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::get_children() const
 {
-    if(children.find("basic-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_counters != nullptr)
     {
-        if(basic_counters != nullptr)
-        {
-            children["basic-counters"] = basic_counters;
-        }
+        children["basic-counters"] = basic_counters;
     }
 
-    if(children.find("bgp") == children.end())
+    if(bgp != nullptr)
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
+        children["bgp"] = bgp;
     }
 
-    if(children.find("cpu") == children.end())
+    if(cpu != nullptr)
     {
-        if(cpu != nullptr)
-        {
-            children["cpu"] = cpu;
-        }
+        children["cpu"] = cpu;
     }
 
-    if(children.find("data-rates") == children.end())
+    if(data_rates != nullptr)
     {
-        if(data_rates != nullptr)
-        {
-            children["data-rates"] = data_rates;
-        }
+        children["data-rates"] = data_rates;
     }
 
-    if(children.find("generic-counters") == children.end())
+    if(generic_counters != nullptr)
     {
-        if(generic_counters != nullptr)
-        {
-            children["generic-counters"] = generic_counters;
-        }
+        children["generic-counters"] = generic_counters;
     }
 
-    if(children.find("ldp-mpls") == children.end())
+    if(ldp_mpls != nullptr)
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
+        children["ldp-mpls"] = ldp_mpls;
     }
 
-    if(children.find("memory") == children.end())
+    if(memory != nullptr)
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
+        children["memory"] = memory;
     }
 
-    if(children.find("ospfv2-protocol") == children.end())
+    if(ospfv2_protocol != nullptr)
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
+        children["ospfv2-protocol"] = ospfv2_protocol;
     }
 
-    if(children.find("ospfv3-protocol") == children.end())
+    if(ospfv3_protocol != nullptr)
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
+        children["ospfv3-protocol"] = ospfv3_protocol;
     }
 
-    if(children.find("process") == children.end())
+    if(process != nullptr)
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
+        children["process"] = process;
     }
 
     return children;
@@ -9122,7 +7689,6 @@ PerfMgmt::Enable::MonitorEnable::LdpMpls::LdpMpls()
     sessions(std::make_shared<PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions>())
 {
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     yang_name = "ldp-mpls"; yang_parent_name = "monitor-enable";
 }
@@ -9151,7 +7717,7 @@ std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9174,41 +7740,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::LdpMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::LdpMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::LdpMpls::get_children() const
 {
-    if(children.find("sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
     return children;
@@ -9256,7 +7805,7 @@ std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_segment_path
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9279,15 +7828,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_entity_path(E
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -9295,28 +7835,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9360,7 +7896,7 @@ std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_seg
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9385,20 +7921,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_enti
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9419,7 +7947,6 @@ PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::Ospfv3Protocol()
     ospf_instances(std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances>())
 {
     ospf_instances->parent = this;
-    children["ospf-instances"] = ospf_instances;
 
     yang_name = "ospfv3-protocol"; yang_parent_name = "monitor-enable";
 }
@@ -9448,7 +7975,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9471,41 +7998,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospf-instances")
     {
-        if(ospf_instances != nullptr)
-        {
-            children["ospf-instances"] = ospf_instances;
-        }
-        else
+        if(ospf_instances == nullptr)
         {
             ospf_instances = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances>();
-            ospf_instances->parent = this;
-            children["ospf-instances"] = ospf_instances;
         }
-        return children.at("ospf-instances");
+        return ospf_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_children() const
 {
-    if(children.find("ospf-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ospf_instances != nullptr)
     {
-        if(ospf_instances != nullptr)
-        {
-            children["ospf-instances"] = ospf_instances;
-        }
+        children["ospf-instances"] = ospf_instances;
     }
 
     return children;
@@ -9553,7 +8063,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9576,15 +8086,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_e
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospf-instance")
     {
         for(auto const & c : ospf_instance)
@@ -9592,28 +8093,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfIns
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance>();
         c->parent = this;
-        ospf_instance.push_back(std::move(c));
-        children[segment_path] = ospf_instance.back();
-        return children.at(segment_path);
+        ospf_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ospf_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9657,7 +8154,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::Ospf
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9682,20 +8179,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfI
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9716,7 +8205,6 @@ PerfMgmt::Enable::MonitorEnable::GenericCounters::GenericCounters()
     interfaces(std::make_shared<PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "generic-counters"; yang_parent_name = "monitor-enable";
 }
@@ -9745,7 +8233,7 @@ std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::get_segment_path()
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9768,41 +8256,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::get_entity_path(Ent
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::GenericCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::GenericCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::GenericCounters::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -9850,7 +8321,7 @@ std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_se
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9873,15 +8344,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_ent
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -9889,28 +8351,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::GenericCounters::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9954,7 +8412,7 @@ std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interf
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9979,20 +8437,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interfa
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10013,7 +8463,6 @@ PerfMgmt::Enable::MonitorEnable::Process::Process()
     process_nodes(std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes>())
 {
     process_nodes->parent = this;
-    children["process-nodes"] = process_nodes;
 
     yang_name = "process"; yang_parent_name = "monitor-enable";
 }
@@ -10042,7 +8491,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Process::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Process::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10065,41 +8514,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Process::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process-nodes")
     {
-        if(process_nodes != nullptr)
-        {
-            children["process-nodes"] = process_nodes;
-        }
-        else
+        if(process_nodes == nullptr)
         {
             process_nodes = std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes>();
-            process_nodes->parent = this;
-            children["process-nodes"] = process_nodes;
         }
-        return children.at("process-nodes");
+        return process_nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Process::get_children() const
 {
-    if(children.find("process-nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(process_nodes != nullptr)
     {
-        if(process_nodes != nullptr)
-        {
-            children["process-nodes"] = process_nodes;
-        }
+        children["process-nodes"] = process_nodes;
     }
 
     return children;
@@ -10147,7 +8579,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_segment_
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10170,15 +8602,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_entity_pa
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process-node")
     {
         for(auto const & c : process_node)
@@ -10186,28 +8609,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode>();
         c->parent = this;
-        process_node.push_back(std::move(c));
-        children[segment_path] = process_node.back();
-        return children.at(segment_path);
+        process_node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : process_node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10224,7 +8643,6 @@ PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::ProcessNode
     pids(std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids>())
 {
     pids->parent = this;
-    children["pids"] = pids;
 
     yang_name = "process-node"; yang_parent_name = "process-nodes";
 }
@@ -10255,7 +8673,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode:
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10279,41 +8697,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pids")
     {
-        if(pids != nullptr)
-        {
-            children["pids"] = pids;
-        }
-        else
+        if(pids == nullptr)
         {
             pids = std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids>();
-            pids->parent = this;
-            children["pids"] = pids;
         }
-        return children.at("pids");
+        return pids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::get_children() const
 {
-    if(children.find("pids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pids != nullptr)
     {
-        if(pids != nullptr)
-        {
-            children["pids"] = pids;
-        }
+        children["pids"] = pids;
     }
 
     return children;
@@ -10365,7 +8766,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode:
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10388,15 +8789,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pid")
     {
         for(auto const & c : pid)
@@ -10404,28 +8796,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid>();
         c->parent = this;
-        pid.push_back(std::move(c));
-        children[segment_path] = pid.back();
-        return children.at(segment_path);
+        pid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10469,7 +8857,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode:
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10494,20 +8882,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10528,7 +8908,6 @@ PerfMgmt::Enable::MonitorEnable::BasicCounters::BasicCounters()
     interfaces(std::make_shared<PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "basic-counters"; yang_parent_name = "monitor-enable";
 }
@@ -10557,7 +8936,7 @@ std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::get_segment_path() c
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10580,41 +8959,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::get_entity_path(Entit
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::BasicCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::BasicCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::BasicCounters::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -10662,7 +9024,7 @@ std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_segm
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10685,15 +9047,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_entit
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -10701,28 +9054,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10766,7 +9115,7 @@ std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interfac
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10791,20 +9140,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10825,7 +9166,6 @@ PerfMgmt::Enable::MonitorEnable::Memory::Memory()
     nodes(std::make_shared<PerfMgmt::Enable::MonitorEnable::Memory::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "memory"; yang_parent_name = "monitor-enable";
 }
@@ -10854,7 +9194,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Memory::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Memory::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Memory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10877,41 +9217,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Memory::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Memory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::MonitorEnable::Memory::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Memory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Memory::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -10959,7 +9282,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_segment_path() c
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10982,15 +9305,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_entity_path(Entit
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -10998,28 +9312,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11063,7 +9373,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_segment_pa
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11088,20 +9398,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_entity_path
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11122,7 +9424,6 @@ PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::Ospfv2Protocol()
     ospf_instances(std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances>())
 {
     ospf_instances->parent = this;
-    children["ospf-instances"] = ospf_instances;
 
     yang_name = "ospfv2-protocol"; yang_parent_name = "monitor-enable";
 }
@@ -11151,7 +9452,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11174,41 +9475,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospf-instances")
     {
-        if(ospf_instances != nullptr)
-        {
-            children["ospf-instances"] = ospf_instances;
-        }
-        else
+        if(ospf_instances == nullptr)
         {
             ospf_instances = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances>();
-            ospf_instances->parent = this;
-            children["ospf-instances"] = ospf_instances;
         }
-        return children.at("ospf-instances");
+        return ospf_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_children() const
 {
-    if(children.find("ospf-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ospf_instances != nullptr)
     {
-        if(ospf_instances != nullptr)
-        {
-            children["ospf-instances"] = ospf_instances;
-        }
+        children["ospf-instances"] = ospf_instances;
     }
 
     return children;
@@ -11256,7 +9540,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11279,15 +9563,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_e
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ospf-instance")
     {
         for(auto const & c : ospf_instance)
@@ -11295,28 +9570,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfIns
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance>();
         c->parent = this;
-        ospf_instance.push_back(std::move(c));
-        children[segment_path] = ospf_instance.back();
-        return children.at(segment_path);
+        ospf_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ospf_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11360,7 +9631,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::Ospf
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11385,20 +9656,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfI
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11419,7 +9682,6 @@ PerfMgmt::Enable::MonitorEnable::Cpu::Cpu()
     nodes(std::make_shared<PerfMgmt::Enable::MonitorEnable::Cpu::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "cpu"; yang_parent_name = "monitor-enable";
 }
@@ -11448,7 +9710,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Cpu::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11471,41 +9733,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Cpu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PerfMgmt::Enable::MonitorEnable::Cpu::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Cpu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Cpu::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -11553,7 +9798,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_segment_path() cons
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11576,15 +9821,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -11592,28 +9828,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11657,7 +9889,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_segment_path(
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11682,20 +9914,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_entity_path(En
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11716,7 +9940,6 @@ PerfMgmt::Enable::MonitorEnable::Bgp::Bgp()
     neighbors(std::make_shared<PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors>())
 {
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     yang_name = "bgp"; yang_parent_name = "monitor-enable";
 }
@@ -11745,7 +9968,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Bgp::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11768,41 +9991,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Bgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Bgp::get_children() const
 {
-    if(children.find("neighbors") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
     return children;
@@ -11850,7 +10056,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_segment_path() 
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11873,15 +10079,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_entity_path(Enti
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -11889,28 +10086,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11954,7 +10147,7 @@ std::string PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_segme
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11979,20 +10172,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_entity
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12013,7 +10198,6 @@ PerfMgmt::Enable::MonitorEnable::DataRates::DataRates()
     interfaces(std::make_shared<PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "data-rates"; yang_parent_name = "monitor-enable";
 }
@@ -12042,7 +10226,7 @@ std::string PerfMgmt::Enable::MonitorEnable::DataRates::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12065,41 +10249,24 @@ EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::DataRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::DataRates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::DataRates::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -12147,7 +10314,7 @@ std::string PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_segment_
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12170,15 +10337,6 @@ EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_entity_pa
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -12186,28 +10344,24 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12251,7 +10405,7 @@ std::string PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::g
 
 }
 
-EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12276,20 +10430,12 @@ EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::ge
 
 std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12343,7 +10489,7 @@ std::string PerfMgmt::RegExpGroups::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::RegExpGroups::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::RegExpGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12366,15 +10512,6 @@ EntityPath PerfMgmt::RegExpGroups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::RegExpGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reg-exp-group")
     {
         for(auto const & c : reg_exp_group)
@@ -12382,28 +10519,24 @@ std::shared_ptr<Entity> PerfMgmt::RegExpGroups::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::RegExpGroups::RegExpGroup>();
         c->parent = this;
-        reg_exp_group.push_back(std::move(c));
-        children[segment_path] = reg_exp_group.back();
-        return children.at(segment_path);
+        reg_exp_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::RegExpGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : reg_exp_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12420,7 +10553,6 @@ PerfMgmt::RegExpGroups::RegExpGroup::RegExpGroup()
     reg_exps(std::make_shared<PerfMgmt::RegExpGroups::RegExpGroup::RegExps>())
 {
     reg_exps->parent = this;
-    children["reg-exps"] = reg_exps;
 
     yang_name = "reg-exp-group"; yang_parent_name = "reg-exp-groups";
 }
@@ -12451,7 +10583,7 @@ std::string PerfMgmt::RegExpGroups::RegExpGroup::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::RegExpGroups::RegExpGroup::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::RegExpGroups::RegExpGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12475,41 +10607,24 @@ EntityPath PerfMgmt::RegExpGroups::RegExpGroup::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> PerfMgmt::RegExpGroups::RegExpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reg-exps")
     {
-        if(reg_exps != nullptr)
-        {
-            children["reg-exps"] = reg_exps;
-        }
-        else
+        if(reg_exps == nullptr)
         {
             reg_exps = std::make_shared<PerfMgmt::RegExpGroups::RegExpGroup::RegExps>();
-            reg_exps->parent = this;
-            children["reg-exps"] = reg_exps;
         }
-        return children.at("reg-exps");
+        return reg_exps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::RegExpGroups::RegExpGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::RegExpGroup::get_children() const
 {
-    if(children.find("reg-exps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(reg_exps != nullptr)
     {
-        if(reg_exps != nullptr)
-        {
-            children["reg-exps"] = reg_exps;
-        }
+        children["reg-exps"] = reg_exps;
     }
 
     return children;
@@ -12561,7 +10676,7 @@ std::string PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_segment_path() con
 
 }
 
-EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12584,15 +10699,6 @@ EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reg-exp")
     {
         for(auto const & c : reg_exp)
@@ -12600,28 +10706,24 @@ std::shared_ptr<Entity> PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp>();
         c->parent = this;
-        reg_exp.push_back(std::move(c));
-        children[segment_path] = reg_exp.back();
-        return children.at(segment_path);
+        reg_exp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : reg_exp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12665,7 +10767,7 @@ std::string PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_segment_pa
 
 }
 
-EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12690,20 +10792,12 @@ EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_entity_path
 
 std::shared_ptr<Entity> PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12733,34 +10827,24 @@ PerfMgmt::Threshold::Threshold()
 	,process_node(std::make_shared<PerfMgmt::Threshold::ProcessNode>())
 {
     basic_counter_interface->parent = this;
-    children["basic-counter-interface"] = basic_counter_interface;
 
     bgp->parent = this;
-    children["bgp"] = bgp;
 
     cpu_node->parent = this;
-    children["cpu-node"] = cpu_node;
 
     data_rate_interface->parent = this;
-    children["data-rate-interface"] = data_rate_interface;
 
     generic_counter_interface->parent = this;
-    children["generic-counter-interface"] = generic_counter_interface;
 
     ldp_mpls->parent = this;
-    children["ldp-mpls"] = ldp_mpls;
 
     memory_node->parent = this;
-    children["memory-node"] = memory_node;
 
     ospfv2_protocol->parent = this;
-    children["ospfv2-protocol"] = ospfv2_protocol;
 
     ospfv3_protocol->parent = this;
-    children["ospfv3-protocol"] = ospfv3_protocol;
 
     process_node->parent = this;
-    children["process-node"] = process_node;
 
     yang_name = "threshold"; yang_parent_name = "perf-mgmt";
 }
@@ -12807,7 +10891,7 @@ std::string PerfMgmt::Threshold::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12830,248 +10914,150 @@ EntityPath PerfMgmt::Threshold::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "basic-counter-interface")
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
-        else
+        if(basic_counter_interface == nullptr)
         {
             basic_counter_interface = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface>();
-            basic_counter_interface->parent = this;
-            children["basic-counter-interface"] = basic_counter_interface;
         }
-        return children.at("basic-counter-interface");
+        return basic_counter_interface;
     }
 
     if(child_yang_name == "bgp")
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
-        else
+        if(bgp == nullptr)
         {
             bgp = std::make_shared<PerfMgmt::Threshold::Bgp>();
-            bgp->parent = this;
-            children["bgp"] = bgp;
         }
-        return children.at("bgp");
+        return bgp;
     }
 
     if(child_yang_name == "cpu-node")
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
-        else
+        if(cpu_node == nullptr)
         {
             cpu_node = std::make_shared<PerfMgmt::Threshold::CpuNode>();
-            cpu_node->parent = this;
-            children["cpu-node"] = cpu_node;
         }
-        return children.at("cpu-node");
+        return cpu_node;
     }
 
     if(child_yang_name == "data-rate-interface")
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
-        else
+        if(data_rate_interface == nullptr)
         {
             data_rate_interface = std::make_shared<PerfMgmt::Threshold::DataRateInterface>();
-            data_rate_interface->parent = this;
-            children["data-rate-interface"] = data_rate_interface;
         }
-        return children.at("data-rate-interface");
+        return data_rate_interface;
     }
 
     if(child_yang_name == "generic-counter-interface")
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
-        else
+        if(generic_counter_interface == nullptr)
         {
             generic_counter_interface = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface>();
-            generic_counter_interface->parent = this;
-            children["generic-counter-interface"] = generic_counter_interface;
         }
-        return children.at("generic-counter-interface");
+        return generic_counter_interface;
     }
 
     if(child_yang_name == "ldp-mpls")
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
-        else
+        if(ldp_mpls == nullptr)
         {
             ldp_mpls = std::make_shared<PerfMgmt::Threshold::LdpMpls>();
-            ldp_mpls->parent = this;
-            children["ldp-mpls"] = ldp_mpls;
         }
-        return children.at("ldp-mpls");
+        return ldp_mpls;
     }
 
     if(child_yang_name == "memory-node")
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
-        else
+        if(memory_node == nullptr)
         {
             memory_node = std::make_shared<PerfMgmt::Threshold::MemoryNode>();
-            memory_node->parent = this;
-            children["memory-node"] = memory_node;
         }
-        return children.at("memory-node");
+        return memory_node;
     }
 
     if(child_yang_name == "ospfv2-protocol")
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
-        else
+        if(ospfv2_protocol == nullptr)
         {
             ospfv2_protocol = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol>();
-            ospfv2_protocol->parent = this;
-            children["ospfv2-protocol"] = ospfv2_protocol;
         }
-        return children.at("ospfv2-protocol");
+        return ospfv2_protocol;
     }
 
     if(child_yang_name == "ospfv3-protocol")
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
-        else
+        if(ospfv3_protocol == nullptr)
         {
             ospfv3_protocol = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol>();
-            ospfv3_protocol->parent = this;
-            children["ospfv3-protocol"] = ospfv3_protocol;
         }
-        return children.at("ospfv3-protocol");
+        return ospfv3_protocol;
     }
 
     if(child_yang_name == "process-node")
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
-        else
+        if(process_node == nullptr)
         {
             process_node = std::make_shared<PerfMgmt::Threshold::ProcessNode>();
-            process_node->parent = this;
-            children["process-node"] = process_node;
         }
-        return children.at("process-node");
+        return process_node;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::get_children() const
 {
-    if(children.find("basic-counter-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(basic_counter_interface != nullptr)
     {
-        if(basic_counter_interface != nullptr)
-        {
-            children["basic-counter-interface"] = basic_counter_interface;
-        }
+        children["basic-counter-interface"] = basic_counter_interface;
     }
 
-    if(children.find("bgp") == children.end())
+    if(bgp != nullptr)
     {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
+        children["bgp"] = bgp;
     }
 
-    if(children.find("cpu-node") == children.end())
+    if(cpu_node != nullptr)
     {
-        if(cpu_node != nullptr)
-        {
-            children["cpu-node"] = cpu_node;
-        }
+        children["cpu-node"] = cpu_node;
     }
 
-    if(children.find("data-rate-interface") == children.end())
+    if(data_rate_interface != nullptr)
     {
-        if(data_rate_interface != nullptr)
-        {
-            children["data-rate-interface"] = data_rate_interface;
-        }
+        children["data-rate-interface"] = data_rate_interface;
     }
 
-    if(children.find("generic-counter-interface") == children.end())
+    if(generic_counter_interface != nullptr)
     {
-        if(generic_counter_interface != nullptr)
-        {
-            children["generic-counter-interface"] = generic_counter_interface;
-        }
+        children["generic-counter-interface"] = generic_counter_interface;
     }
 
-    if(children.find("ldp-mpls") == children.end())
+    if(ldp_mpls != nullptr)
     {
-        if(ldp_mpls != nullptr)
-        {
-            children["ldp-mpls"] = ldp_mpls;
-        }
+        children["ldp-mpls"] = ldp_mpls;
     }
 
-    if(children.find("memory-node") == children.end())
+    if(memory_node != nullptr)
     {
-        if(memory_node != nullptr)
-        {
-            children["memory-node"] = memory_node;
-        }
+        children["memory-node"] = memory_node;
     }
 
-    if(children.find("ospfv2-protocol") == children.end())
+    if(ospfv2_protocol != nullptr)
     {
-        if(ospfv2_protocol != nullptr)
-        {
-            children["ospfv2-protocol"] = ospfv2_protocol;
-        }
+        children["ospfv2-protocol"] = ospfv2_protocol;
     }
 
-    if(children.find("ospfv3-protocol") == children.end())
+    if(ospfv3_protocol != nullptr)
     {
-        if(ospfv3_protocol != nullptr)
-        {
-            children["ospfv3-protocol"] = ospfv3_protocol;
-        }
+        children["ospfv3-protocol"] = ospfv3_protocol;
     }
 
-    if(children.find("process-node") == children.end())
+    if(process_node != nullptr)
     {
-        if(process_node != nullptr)
-        {
-            children["process-node"] = process_node;
-        }
+        children["process-node"] = process_node;
     }
 
     return children;
@@ -13086,7 +11072,6 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface()
     generic_counter_interface_templates(std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates>())
 {
     generic_counter_interface_templates->parent = this;
-    children["generic-counter-interface-templates"] = generic_counter_interface_templates;
 
     yang_name = "generic-counter-interface"; yang_parent_name = "threshold";
 }
@@ -13115,7 +11100,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::get_segment_path() con
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13138,41 +11123,24 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-counter-interface-templates")
     {
-        if(generic_counter_interface_templates != nullptr)
-        {
-            children["generic-counter-interface-templates"] = generic_counter_interface_templates;
-        }
-        else
+        if(generic_counter_interface_templates == nullptr)
         {
             generic_counter_interface_templates = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates>();
-            generic_counter_interface_templates->parent = this;
-            children["generic-counter-interface-templates"] = generic_counter_interface_templates;
         }
-        return children.at("generic-counter-interface-templates");
+        return generic_counter_interface_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::get_children() const
 {
-    if(children.find("generic-counter-interface-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generic_counter_interface_templates != nullptr)
     {
-        if(generic_counter_interface_templates != nullptr)
-        {
-            children["generic-counter-interface-templates"] = generic_counter_interface_templates;
-        }
+        children["generic-counter-interface-templates"] = generic_counter_interface_templates;
     }
 
     return children;
@@ -13220,7 +11188,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13243,15 +11211,6 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-counter-interface-template")
     {
         for(auto const & c : generic_counter_interface_template)
@@ -13259,28 +11218,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate>();
         c->parent = this;
-        generic_counter_interface_template.push_back(std::move(c));
-        children[segment_path] = generic_counter_interface_template.back();
-        return children.at(segment_path);
+        generic_counter_interface_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : generic_counter_interface_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13391,7 +11346,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13418,478 +11373,290 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "in-broadcast-pkts")
     {
-        if(in_broadcast_pkts != nullptr)
-        {
-            children["in-broadcast-pkts"] = in_broadcast_pkts;
-        }
-        else
+        if(in_broadcast_pkts == nullptr)
         {
             in_broadcast_pkts = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts>();
-            in_broadcast_pkts->parent = this;
-            children["in-broadcast-pkts"] = in_broadcast_pkts;
         }
-        return children.at("in-broadcast-pkts");
+        return in_broadcast_pkts;
     }
 
     if(child_yang_name == "in-multicast-pkts")
     {
-        if(in_multicast_pkts != nullptr)
-        {
-            children["in-multicast-pkts"] = in_multicast_pkts;
-        }
-        else
+        if(in_multicast_pkts == nullptr)
         {
             in_multicast_pkts = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts>();
-            in_multicast_pkts->parent = this;
-            children["in-multicast-pkts"] = in_multicast_pkts;
         }
-        return children.at("in-multicast-pkts");
+        return in_multicast_pkts;
     }
 
     if(child_yang_name == "in-octets")
     {
-        if(in_octets != nullptr)
-        {
-            children["in-octets"] = in_octets;
-        }
-        else
+        if(in_octets == nullptr)
         {
             in_octets = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets>();
-            in_octets->parent = this;
-            children["in-octets"] = in_octets;
         }
-        return children.at("in-octets");
+        return in_octets;
     }
 
     if(child_yang_name == "in-packets")
     {
-        if(in_packets != nullptr)
-        {
-            children["in-packets"] = in_packets;
-        }
-        else
+        if(in_packets == nullptr)
         {
             in_packets = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets>();
-            in_packets->parent = this;
-            children["in-packets"] = in_packets;
         }
-        return children.at("in-packets");
+        return in_packets;
     }
 
     if(child_yang_name == "in-ucast-pkts")
     {
-        if(in_ucast_pkts != nullptr)
-        {
-            children["in-ucast-pkts"] = in_ucast_pkts;
-        }
-        else
+        if(in_ucast_pkts == nullptr)
         {
             in_ucast_pkts = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts>();
-            in_ucast_pkts->parent = this;
-            children["in-ucast-pkts"] = in_ucast_pkts;
         }
-        return children.at("in-ucast-pkts");
+        return in_ucast_pkts;
     }
 
     if(child_yang_name == "input-crc")
     {
-        if(input_crc != nullptr)
-        {
-            children["input-crc"] = input_crc;
-        }
-        else
+        if(input_crc == nullptr)
         {
             input_crc = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc>();
-            input_crc->parent = this;
-            children["input-crc"] = input_crc;
         }
-        return children.at("input-crc");
+        return input_crc;
     }
 
     if(child_yang_name == "input-frame")
     {
-        if(input_frame != nullptr)
-        {
-            children["input-frame"] = input_frame;
-        }
-        else
+        if(input_frame == nullptr)
         {
             input_frame = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame>();
-            input_frame->parent = this;
-            children["input-frame"] = input_frame;
         }
-        return children.at("input-frame");
+        return input_frame;
     }
 
     if(child_yang_name == "input-overrun")
     {
-        if(input_overrun != nullptr)
-        {
-            children["input-overrun"] = input_overrun;
-        }
-        else
+        if(input_overrun == nullptr)
         {
             input_overrun = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun>();
-            input_overrun->parent = this;
-            children["input-overrun"] = input_overrun;
         }
-        return children.at("input-overrun");
+        return input_overrun;
     }
 
     if(child_yang_name == "input-queue-drops")
     {
-        if(input_queue_drops != nullptr)
-        {
-            children["input-queue-drops"] = input_queue_drops;
-        }
-        else
+        if(input_queue_drops == nullptr)
         {
             input_queue_drops = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops>();
-            input_queue_drops->parent = this;
-            children["input-queue-drops"] = input_queue_drops;
         }
-        return children.at("input-queue-drops");
+        return input_queue_drops;
     }
 
     if(child_yang_name == "input-total-drops")
     {
-        if(input_total_drops != nullptr)
-        {
-            children["input-total-drops"] = input_total_drops;
-        }
-        else
+        if(input_total_drops == nullptr)
         {
             input_total_drops = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops>();
-            input_total_drops->parent = this;
-            children["input-total-drops"] = input_total_drops;
         }
-        return children.at("input-total-drops");
+        return input_total_drops;
     }
 
     if(child_yang_name == "input-total-errors")
     {
-        if(input_total_errors != nullptr)
-        {
-            children["input-total-errors"] = input_total_errors;
-        }
-        else
+        if(input_total_errors == nullptr)
         {
             input_total_errors = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors>();
-            input_total_errors->parent = this;
-            children["input-total-errors"] = input_total_errors;
         }
-        return children.at("input-total-errors");
+        return input_total_errors;
     }
 
     if(child_yang_name == "input-unknown-proto")
     {
-        if(input_unknown_proto != nullptr)
-        {
-            children["input-unknown-proto"] = input_unknown_proto;
-        }
-        else
+        if(input_unknown_proto == nullptr)
         {
             input_unknown_proto = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto>();
-            input_unknown_proto->parent = this;
-            children["input-unknown-proto"] = input_unknown_proto;
         }
-        return children.at("input-unknown-proto");
+        return input_unknown_proto;
     }
 
     if(child_yang_name == "out-broadcast-pkts")
     {
-        if(out_broadcast_pkts != nullptr)
-        {
-            children["out-broadcast-pkts"] = out_broadcast_pkts;
-        }
-        else
+        if(out_broadcast_pkts == nullptr)
         {
             out_broadcast_pkts = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts>();
-            out_broadcast_pkts->parent = this;
-            children["out-broadcast-pkts"] = out_broadcast_pkts;
         }
-        return children.at("out-broadcast-pkts");
+        return out_broadcast_pkts;
     }
 
     if(child_yang_name == "out-multicast-pkts")
     {
-        if(out_multicast_pkts != nullptr)
-        {
-            children["out-multicast-pkts"] = out_multicast_pkts;
-        }
-        else
+        if(out_multicast_pkts == nullptr)
         {
             out_multicast_pkts = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts>();
-            out_multicast_pkts->parent = this;
-            children["out-multicast-pkts"] = out_multicast_pkts;
         }
-        return children.at("out-multicast-pkts");
+        return out_multicast_pkts;
     }
 
     if(child_yang_name == "out-octets")
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
-        else
+        if(out_octets == nullptr)
         {
             out_octets = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets>();
-            out_octets->parent = this;
-            children["out-octets"] = out_octets;
         }
-        return children.at("out-octets");
+        return out_octets;
     }
 
     if(child_yang_name == "out-packets")
     {
-        if(out_packets != nullptr)
-        {
-            children["out-packets"] = out_packets;
-        }
-        else
+        if(out_packets == nullptr)
         {
             out_packets = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets>();
-            out_packets->parent = this;
-            children["out-packets"] = out_packets;
         }
-        return children.at("out-packets");
+        return out_packets;
     }
 
     if(child_yang_name == "out-ucast-pkts")
     {
-        if(out_ucast_pkts != nullptr)
-        {
-            children["out-ucast-pkts"] = out_ucast_pkts;
-        }
-        else
+        if(out_ucast_pkts == nullptr)
         {
             out_ucast_pkts = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts>();
-            out_ucast_pkts->parent = this;
-            children["out-ucast-pkts"] = out_ucast_pkts;
         }
-        return children.at("out-ucast-pkts");
+        return out_ucast_pkts;
     }
 
     if(child_yang_name == "output-total-drops")
     {
-        if(output_total_drops != nullptr)
-        {
-            children["output-total-drops"] = output_total_drops;
-        }
-        else
+        if(output_total_drops == nullptr)
         {
             output_total_drops = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops>();
-            output_total_drops->parent = this;
-            children["output-total-drops"] = output_total_drops;
         }
-        return children.at("output-total-drops");
+        return output_total_drops;
     }
 
     if(child_yang_name == "output-total-errors")
     {
-        if(output_total_errors != nullptr)
-        {
-            children["output-total-errors"] = output_total_errors;
-        }
-        else
+        if(output_total_errors == nullptr)
         {
             output_total_errors = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors>();
-            output_total_errors->parent = this;
-            children["output-total-errors"] = output_total_errors;
         }
-        return children.at("output-total-errors");
+        return output_total_errors;
     }
 
     if(child_yang_name == "output-underrun")
     {
-        if(output_underrun != nullptr)
-        {
-            children["output-underrun"] = output_underrun;
-        }
-        else
+        if(output_underrun == nullptr)
         {
             output_underrun = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun>();
-            output_underrun->parent = this;
-            children["output-underrun"] = output_underrun;
         }
-        return children.at("output-underrun");
+        return output_underrun;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::get_children() const
 {
-    if(children.find("in-broadcast-pkts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(in_broadcast_pkts != nullptr)
     {
-        if(in_broadcast_pkts != nullptr)
-        {
-            children["in-broadcast-pkts"] = in_broadcast_pkts;
-        }
+        children["in-broadcast-pkts"] = in_broadcast_pkts;
     }
 
-    if(children.find("in-multicast-pkts") == children.end())
+    if(in_multicast_pkts != nullptr)
     {
-        if(in_multicast_pkts != nullptr)
-        {
-            children["in-multicast-pkts"] = in_multicast_pkts;
-        }
+        children["in-multicast-pkts"] = in_multicast_pkts;
     }
 
-    if(children.find("in-octets") == children.end())
+    if(in_octets != nullptr)
     {
-        if(in_octets != nullptr)
-        {
-            children["in-octets"] = in_octets;
-        }
+        children["in-octets"] = in_octets;
     }
 
-    if(children.find("in-packets") == children.end())
+    if(in_packets != nullptr)
     {
-        if(in_packets != nullptr)
-        {
-            children["in-packets"] = in_packets;
-        }
+        children["in-packets"] = in_packets;
     }
 
-    if(children.find("in-ucast-pkts") == children.end())
+    if(in_ucast_pkts != nullptr)
     {
-        if(in_ucast_pkts != nullptr)
-        {
-            children["in-ucast-pkts"] = in_ucast_pkts;
-        }
+        children["in-ucast-pkts"] = in_ucast_pkts;
     }
 
-    if(children.find("input-crc") == children.end())
+    if(input_crc != nullptr)
     {
-        if(input_crc != nullptr)
-        {
-            children["input-crc"] = input_crc;
-        }
+        children["input-crc"] = input_crc;
     }
 
-    if(children.find("input-frame") == children.end())
+    if(input_frame != nullptr)
     {
-        if(input_frame != nullptr)
-        {
-            children["input-frame"] = input_frame;
-        }
+        children["input-frame"] = input_frame;
     }
 
-    if(children.find("input-overrun") == children.end())
+    if(input_overrun != nullptr)
     {
-        if(input_overrun != nullptr)
-        {
-            children["input-overrun"] = input_overrun;
-        }
+        children["input-overrun"] = input_overrun;
     }
 
-    if(children.find("input-queue-drops") == children.end())
+    if(input_queue_drops != nullptr)
     {
-        if(input_queue_drops != nullptr)
-        {
-            children["input-queue-drops"] = input_queue_drops;
-        }
+        children["input-queue-drops"] = input_queue_drops;
     }
 
-    if(children.find("input-total-drops") == children.end())
+    if(input_total_drops != nullptr)
     {
-        if(input_total_drops != nullptr)
-        {
-            children["input-total-drops"] = input_total_drops;
-        }
+        children["input-total-drops"] = input_total_drops;
     }
 
-    if(children.find("input-total-errors") == children.end())
+    if(input_total_errors != nullptr)
     {
-        if(input_total_errors != nullptr)
-        {
-            children["input-total-errors"] = input_total_errors;
-        }
+        children["input-total-errors"] = input_total_errors;
     }
 
-    if(children.find("input-unknown-proto") == children.end())
+    if(input_unknown_proto != nullptr)
     {
-        if(input_unknown_proto != nullptr)
-        {
-            children["input-unknown-proto"] = input_unknown_proto;
-        }
+        children["input-unknown-proto"] = input_unknown_proto;
     }
 
-    if(children.find("out-broadcast-pkts") == children.end())
+    if(out_broadcast_pkts != nullptr)
     {
-        if(out_broadcast_pkts != nullptr)
-        {
-            children["out-broadcast-pkts"] = out_broadcast_pkts;
-        }
+        children["out-broadcast-pkts"] = out_broadcast_pkts;
     }
 
-    if(children.find("out-multicast-pkts") == children.end())
+    if(out_multicast_pkts != nullptr)
     {
-        if(out_multicast_pkts != nullptr)
-        {
-            children["out-multicast-pkts"] = out_multicast_pkts;
-        }
+        children["out-multicast-pkts"] = out_multicast_pkts;
     }
 
-    if(children.find("out-octets") == children.end())
+    if(out_octets != nullptr)
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
+        children["out-octets"] = out_octets;
     }
 
-    if(children.find("out-packets") == children.end())
+    if(out_packets != nullptr)
     {
-        if(out_packets != nullptr)
-        {
-            children["out-packets"] = out_packets;
-        }
+        children["out-packets"] = out_packets;
     }
 
-    if(children.find("out-ucast-pkts") == children.end())
+    if(out_ucast_pkts != nullptr)
     {
-        if(out_ucast_pkts != nullptr)
-        {
-            children["out-ucast-pkts"] = out_ucast_pkts;
-        }
+        children["out-ucast-pkts"] = out_ucast_pkts;
     }
 
-    if(children.find("output-total-drops") == children.end())
+    if(output_total_drops != nullptr)
     {
-        if(output_total_drops != nullptr)
-        {
-            children["output-total-drops"] = output_total_drops;
-        }
+        children["output-total-drops"] = output_total_drops;
     }
 
-    if(children.find("output-total-errors") == children.end())
+    if(output_total_errors != nullptr)
     {
-        if(output_total_errors != nullptr)
-        {
-            children["output-total-errors"] = output_total_errors;
-        }
+        children["output-total-errors"] = output_total_errors;
     }
 
-    if(children.find("output-underrun") == children.end())
+    if(output_underrun != nullptr)
     {
-        if(output_underrun != nullptr)
-        {
-            children["output-underrun"] = output_underrun;
-        }
+        children["output-underrun"] = output_underrun;
     }
 
     return children;
@@ -13961,7 +11728,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13990,20 +11757,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14081,7 +11840,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14110,20 +11869,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14201,7 +11952,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14230,20 +11981,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14321,7 +12064,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14350,20 +12093,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14441,7 +12176,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14470,20 +12205,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14561,7 +12288,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14590,20 +12317,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14681,7 +12400,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14710,20 +12429,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14801,7 +12512,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14830,20 +12541,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14921,7 +12624,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14950,20 +12653,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15041,7 +12736,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15070,20 +12765,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15161,7 +12848,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15190,20 +12877,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15281,7 +12960,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15310,20 +12989,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15401,7 +13072,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15430,20 +13101,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15521,7 +13184,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15550,20 +13213,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15641,7 +13296,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15670,20 +13325,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15761,7 +13408,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15790,20 +13437,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15881,7 +13520,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15910,20 +13549,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16001,7 +13632,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16030,20 +13661,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16121,7 +13744,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16150,20 +13773,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16241,7 +13856,7 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 
 }
 
-EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16270,20 +13885,12 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16320,7 +13927,6 @@ PerfMgmt::Threshold::LdpMpls::LdpMpls()
     ldp_mpls_templates(std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates>())
 {
     ldp_mpls_templates->parent = this;
-    children["ldp-mpls-templates"] = ldp_mpls_templates;
 
     yang_name = "ldp-mpls"; yang_parent_name = "threshold";
 }
@@ -16349,7 +13955,7 @@ std::string PerfMgmt::Threshold::LdpMpls::get_segment_path() const
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16372,41 +13978,24 @@ EntityPath PerfMgmt::Threshold::LdpMpls::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ldp-mpls-templates")
     {
-        if(ldp_mpls_templates != nullptr)
-        {
-            children["ldp-mpls-templates"] = ldp_mpls_templates;
-        }
-        else
+        if(ldp_mpls_templates == nullptr)
         {
             ldp_mpls_templates = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates>();
-            ldp_mpls_templates->parent = this;
-            children["ldp-mpls-templates"] = ldp_mpls_templates;
         }
-        return children.at("ldp-mpls-templates");
+        return ldp_mpls_templates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::get_children() const
 {
-    if(children.find("ldp-mpls-templates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ldp_mpls_templates != nullptr)
     {
-        if(ldp_mpls_templates != nullptr)
-        {
-            children["ldp-mpls-templates"] = ldp_mpls_templates;
-        }
+        children["ldp-mpls-templates"] = ldp_mpls_templates;
     }
 
     return children;
@@ -16454,7 +14043,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_segment_path() c
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16477,15 +14066,6 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_entity_path(Entit
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ldp-mpls-template")
     {
         for(auto const & c : ldp_mpls_template)
@@ -16493,28 +14073,24 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate>();
         c->parent = this;
-        ldp_mpls_template.push_back(std::move(c));
-        children[segment_path] = ldp_mpls_template.back();
-        return children.at(segment_path);
+        ldp_mpls_template.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ldp_mpls_template)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16613,7 +14189,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16638,432 +14214,262 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address-msgs-rcvd")
     {
-        if(address_msgs_rcvd != nullptr)
-        {
-            children["address-msgs-rcvd"] = address_msgs_rcvd;
-        }
-        else
+        if(address_msgs_rcvd == nullptr)
         {
             address_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd>();
-            address_msgs_rcvd->parent = this;
-            children["address-msgs-rcvd"] = address_msgs_rcvd;
         }
-        return children.at("address-msgs-rcvd");
+        return address_msgs_rcvd;
     }
 
     if(child_yang_name == "address-msgs-sent")
     {
-        if(address_msgs_sent != nullptr)
-        {
-            children["address-msgs-sent"] = address_msgs_sent;
-        }
-        else
+        if(address_msgs_sent == nullptr)
         {
             address_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent>();
-            address_msgs_sent->parent = this;
-            children["address-msgs-sent"] = address_msgs_sent;
         }
-        return children.at("address-msgs-sent");
+        return address_msgs_sent;
     }
 
     if(child_yang_name == "address-withdraw-msgs-rcvd")
     {
-        if(address_withdraw_msgs_rcvd != nullptr)
-        {
-            children["address-withdraw-msgs-rcvd"] = address_withdraw_msgs_rcvd;
-        }
-        else
+        if(address_withdraw_msgs_rcvd == nullptr)
         {
             address_withdraw_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd>();
-            address_withdraw_msgs_rcvd->parent = this;
-            children["address-withdraw-msgs-rcvd"] = address_withdraw_msgs_rcvd;
         }
-        return children.at("address-withdraw-msgs-rcvd");
+        return address_withdraw_msgs_rcvd;
     }
 
     if(child_yang_name == "address-withdraw-msgs-sent")
     {
-        if(address_withdraw_msgs_sent != nullptr)
-        {
-            children["address-withdraw-msgs-sent"] = address_withdraw_msgs_sent;
-        }
-        else
+        if(address_withdraw_msgs_sent == nullptr)
         {
             address_withdraw_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent>();
-            address_withdraw_msgs_sent->parent = this;
-            children["address-withdraw-msgs-sent"] = address_withdraw_msgs_sent;
         }
-        return children.at("address-withdraw-msgs-sent");
+        return address_withdraw_msgs_sent;
     }
 
     if(child_yang_name == "init-msgs-rcvd")
     {
-        if(init_msgs_rcvd != nullptr)
-        {
-            children["init-msgs-rcvd"] = init_msgs_rcvd;
-        }
-        else
+        if(init_msgs_rcvd == nullptr)
         {
             init_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd>();
-            init_msgs_rcvd->parent = this;
-            children["init-msgs-rcvd"] = init_msgs_rcvd;
         }
-        return children.at("init-msgs-rcvd");
+        return init_msgs_rcvd;
     }
 
     if(child_yang_name == "init-msgs-sent")
     {
-        if(init_msgs_sent != nullptr)
-        {
-            children["init-msgs-sent"] = init_msgs_sent;
-        }
-        else
+        if(init_msgs_sent == nullptr)
         {
             init_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent>();
-            init_msgs_sent->parent = this;
-            children["init-msgs-sent"] = init_msgs_sent;
         }
-        return children.at("init-msgs-sent");
+        return init_msgs_sent;
     }
 
     if(child_yang_name == "keepalive-msgs-rcvd")
     {
-        if(keepalive_msgs_rcvd != nullptr)
-        {
-            children["keepalive-msgs-rcvd"] = keepalive_msgs_rcvd;
-        }
-        else
+        if(keepalive_msgs_rcvd == nullptr)
         {
             keepalive_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd>();
-            keepalive_msgs_rcvd->parent = this;
-            children["keepalive-msgs-rcvd"] = keepalive_msgs_rcvd;
         }
-        return children.at("keepalive-msgs-rcvd");
+        return keepalive_msgs_rcvd;
     }
 
     if(child_yang_name == "keepalive-msgs-sent")
     {
-        if(keepalive_msgs_sent != nullptr)
-        {
-            children["keepalive-msgs-sent"] = keepalive_msgs_sent;
-        }
-        else
+        if(keepalive_msgs_sent == nullptr)
         {
             keepalive_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent>();
-            keepalive_msgs_sent->parent = this;
-            children["keepalive-msgs-sent"] = keepalive_msgs_sent;
         }
-        return children.at("keepalive-msgs-sent");
+        return keepalive_msgs_sent;
     }
 
     if(child_yang_name == "label-mapping-msgs-rcvd")
     {
-        if(label_mapping_msgs_rcvd != nullptr)
-        {
-            children["label-mapping-msgs-rcvd"] = label_mapping_msgs_rcvd;
-        }
-        else
+        if(label_mapping_msgs_rcvd == nullptr)
         {
             label_mapping_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd>();
-            label_mapping_msgs_rcvd->parent = this;
-            children["label-mapping-msgs-rcvd"] = label_mapping_msgs_rcvd;
         }
-        return children.at("label-mapping-msgs-rcvd");
+        return label_mapping_msgs_rcvd;
     }
 
     if(child_yang_name == "label-mapping-msgs-sent")
     {
-        if(label_mapping_msgs_sent != nullptr)
-        {
-            children["label-mapping-msgs-sent"] = label_mapping_msgs_sent;
-        }
-        else
+        if(label_mapping_msgs_sent == nullptr)
         {
             label_mapping_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent>();
-            label_mapping_msgs_sent->parent = this;
-            children["label-mapping-msgs-sent"] = label_mapping_msgs_sent;
         }
-        return children.at("label-mapping-msgs-sent");
+        return label_mapping_msgs_sent;
     }
 
     if(child_yang_name == "label-release-msgs-rcvd")
     {
-        if(label_release_msgs_rcvd != nullptr)
-        {
-            children["label-release-msgs-rcvd"] = label_release_msgs_rcvd;
-        }
-        else
+        if(label_release_msgs_rcvd == nullptr)
         {
             label_release_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd>();
-            label_release_msgs_rcvd->parent = this;
-            children["label-release-msgs-rcvd"] = label_release_msgs_rcvd;
         }
-        return children.at("label-release-msgs-rcvd");
+        return label_release_msgs_rcvd;
     }
 
     if(child_yang_name == "label-release-msgs-sent")
     {
-        if(label_release_msgs_sent != nullptr)
-        {
-            children["label-release-msgs-sent"] = label_release_msgs_sent;
-        }
-        else
+        if(label_release_msgs_sent == nullptr)
         {
             label_release_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent>();
-            label_release_msgs_sent->parent = this;
-            children["label-release-msgs-sent"] = label_release_msgs_sent;
         }
-        return children.at("label-release-msgs-sent");
+        return label_release_msgs_sent;
     }
 
     if(child_yang_name == "label-withdraw-msgs-rcvd")
     {
-        if(label_withdraw_msgs_rcvd != nullptr)
-        {
-            children["label-withdraw-msgs-rcvd"] = label_withdraw_msgs_rcvd;
-        }
-        else
+        if(label_withdraw_msgs_rcvd == nullptr)
         {
             label_withdraw_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd>();
-            label_withdraw_msgs_rcvd->parent = this;
-            children["label-withdraw-msgs-rcvd"] = label_withdraw_msgs_rcvd;
         }
-        return children.at("label-withdraw-msgs-rcvd");
+        return label_withdraw_msgs_rcvd;
     }
 
     if(child_yang_name == "label-withdraw-msgs-sent")
     {
-        if(label_withdraw_msgs_sent != nullptr)
-        {
-            children["label-withdraw-msgs-sent"] = label_withdraw_msgs_sent;
-        }
-        else
+        if(label_withdraw_msgs_sent == nullptr)
         {
             label_withdraw_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent>();
-            label_withdraw_msgs_sent->parent = this;
-            children["label-withdraw-msgs-sent"] = label_withdraw_msgs_sent;
         }
-        return children.at("label-withdraw-msgs-sent");
+        return label_withdraw_msgs_sent;
     }
 
     if(child_yang_name == "notification-msgs-rcvd")
     {
-        if(notification_msgs_rcvd != nullptr)
-        {
-            children["notification-msgs-rcvd"] = notification_msgs_rcvd;
-        }
-        else
+        if(notification_msgs_rcvd == nullptr)
         {
             notification_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd>();
-            notification_msgs_rcvd->parent = this;
-            children["notification-msgs-rcvd"] = notification_msgs_rcvd;
         }
-        return children.at("notification-msgs-rcvd");
+        return notification_msgs_rcvd;
     }
 
     if(child_yang_name == "notification-msgs-sent")
     {
-        if(notification_msgs_sent != nullptr)
-        {
-            children["notification-msgs-sent"] = notification_msgs_sent;
-        }
-        else
+        if(notification_msgs_sent == nullptr)
         {
             notification_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent>();
-            notification_msgs_sent->parent = this;
-            children["notification-msgs-sent"] = notification_msgs_sent;
         }
-        return children.at("notification-msgs-sent");
+        return notification_msgs_sent;
     }
 
     if(child_yang_name == "total-msgs-rcvd")
     {
-        if(total_msgs_rcvd != nullptr)
-        {
-            children["total-msgs-rcvd"] = total_msgs_rcvd;
-        }
-        else
+        if(total_msgs_rcvd == nullptr)
         {
             total_msgs_rcvd = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd>();
-            total_msgs_rcvd->parent = this;
-            children["total-msgs-rcvd"] = total_msgs_rcvd;
         }
-        return children.at("total-msgs-rcvd");
+        return total_msgs_rcvd;
     }
 
     if(child_yang_name == "total-msgs-sent")
     {
-        if(total_msgs_sent != nullptr)
-        {
-            children["total-msgs-sent"] = total_msgs_sent;
-        }
-        else
+        if(total_msgs_sent == nullptr)
         {
             total_msgs_sent = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent>();
-            total_msgs_sent->parent = this;
-            children["total-msgs-sent"] = total_msgs_sent;
         }
-        return children.at("total-msgs-sent");
+        return total_msgs_sent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_children() const
 {
-    if(children.find("address-msgs-rcvd") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_msgs_rcvd != nullptr)
     {
-        if(address_msgs_rcvd != nullptr)
-        {
-            children["address-msgs-rcvd"] = address_msgs_rcvd;
-        }
+        children["address-msgs-rcvd"] = address_msgs_rcvd;
     }
 
-    if(children.find("address-msgs-sent") == children.end())
+    if(address_msgs_sent != nullptr)
     {
-        if(address_msgs_sent != nullptr)
-        {
-            children["address-msgs-sent"] = address_msgs_sent;
-        }
+        children["address-msgs-sent"] = address_msgs_sent;
     }
 
-    if(children.find("address-withdraw-msgs-rcvd") == children.end())
+    if(address_withdraw_msgs_rcvd != nullptr)
     {
-        if(address_withdraw_msgs_rcvd != nullptr)
-        {
-            children["address-withdraw-msgs-rcvd"] = address_withdraw_msgs_rcvd;
-        }
+        children["address-withdraw-msgs-rcvd"] = address_withdraw_msgs_rcvd;
     }
 
-    if(children.find("address-withdraw-msgs-sent") == children.end())
+    if(address_withdraw_msgs_sent != nullptr)
     {
-        if(address_withdraw_msgs_sent != nullptr)
-        {
-            children["address-withdraw-msgs-sent"] = address_withdraw_msgs_sent;
-        }
+        children["address-withdraw-msgs-sent"] = address_withdraw_msgs_sent;
     }
 
-    if(children.find("init-msgs-rcvd") == children.end())
+    if(init_msgs_rcvd != nullptr)
     {
-        if(init_msgs_rcvd != nullptr)
-        {
-            children["init-msgs-rcvd"] = init_msgs_rcvd;
-        }
+        children["init-msgs-rcvd"] = init_msgs_rcvd;
     }
 
-    if(children.find("init-msgs-sent") == children.end())
+    if(init_msgs_sent != nullptr)
     {
-        if(init_msgs_sent != nullptr)
-        {
-            children["init-msgs-sent"] = init_msgs_sent;
-        }
+        children["init-msgs-sent"] = init_msgs_sent;
     }
 
-    if(children.find("keepalive-msgs-rcvd") == children.end())
+    if(keepalive_msgs_rcvd != nullptr)
     {
-        if(keepalive_msgs_rcvd != nullptr)
-        {
-            children["keepalive-msgs-rcvd"] = keepalive_msgs_rcvd;
-        }
+        children["keepalive-msgs-rcvd"] = keepalive_msgs_rcvd;
     }
 
-    if(children.find("keepalive-msgs-sent") == children.end())
+    if(keepalive_msgs_sent != nullptr)
     {
-        if(keepalive_msgs_sent != nullptr)
-        {
-            children["keepalive-msgs-sent"] = keepalive_msgs_sent;
-        }
+        children["keepalive-msgs-sent"] = keepalive_msgs_sent;
     }
 
-    if(children.find("label-mapping-msgs-rcvd") == children.end())
+    if(label_mapping_msgs_rcvd != nullptr)
     {
-        if(label_mapping_msgs_rcvd != nullptr)
-        {
-            children["label-mapping-msgs-rcvd"] = label_mapping_msgs_rcvd;
-        }
+        children["label-mapping-msgs-rcvd"] = label_mapping_msgs_rcvd;
     }
 
-    if(children.find("label-mapping-msgs-sent") == children.end())
+    if(label_mapping_msgs_sent != nullptr)
     {
-        if(label_mapping_msgs_sent != nullptr)
-        {
-            children["label-mapping-msgs-sent"] = label_mapping_msgs_sent;
-        }
+        children["label-mapping-msgs-sent"] = label_mapping_msgs_sent;
     }
 
-    if(children.find("label-release-msgs-rcvd") == children.end())
+    if(label_release_msgs_rcvd != nullptr)
     {
-        if(label_release_msgs_rcvd != nullptr)
-        {
-            children["label-release-msgs-rcvd"] = label_release_msgs_rcvd;
-        }
+        children["label-release-msgs-rcvd"] = label_release_msgs_rcvd;
     }
 
-    if(children.find("label-release-msgs-sent") == children.end())
+    if(label_release_msgs_sent != nullptr)
     {
-        if(label_release_msgs_sent != nullptr)
-        {
-            children["label-release-msgs-sent"] = label_release_msgs_sent;
-        }
+        children["label-release-msgs-sent"] = label_release_msgs_sent;
     }
 
-    if(children.find("label-withdraw-msgs-rcvd") == children.end())
+    if(label_withdraw_msgs_rcvd != nullptr)
     {
-        if(label_withdraw_msgs_rcvd != nullptr)
-        {
-            children["label-withdraw-msgs-rcvd"] = label_withdraw_msgs_rcvd;
-        }
+        children["label-withdraw-msgs-rcvd"] = label_withdraw_msgs_rcvd;
     }
 
-    if(children.find("label-withdraw-msgs-sent") == children.end())
+    if(label_withdraw_msgs_sent != nullptr)
     {
-        if(label_withdraw_msgs_sent != nullptr)
-        {
-            children["label-withdraw-msgs-sent"] = label_withdraw_msgs_sent;
-        }
+        children["label-withdraw-msgs-sent"] = label_withdraw_msgs_sent;
     }
 
-    if(children.find("notification-msgs-rcvd") == children.end())
+    if(notification_msgs_rcvd != nullptr)
     {
-        if(notification_msgs_rcvd != nullptr)
-        {
-            children["notification-msgs-rcvd"] = notification_msgs_rcvd;
-        }
+        children["notification-msgs-rcvd"] = notification_msgs_rcvd;
     }
 
-    if(children.find("notification-msgs-sent") == children.end())
+    if(notification_msgs_sent != nullptr)
     {
-        if(notification_msgs_sent != nullptr)
-        {
-            children["notification-msgs-sent"] = notification_msgs_sent;
-        }
+        children["notification-msgs-sent"] = notification_msgs_sent;
     }
 
-    if(children.find("total-msgs-rcvd") == children.end())
+    if(total_msgs_rcvd != nullptr)
     {
-        if(total_msgs_rcvd != nullptr)
-        {
-            children["total-msgs-rcvd"] = total_msgs_rcvd;
-        }
+        children["total-msgs-rcvd"] = total_msgs_rcvd;
     }
 
-    if(children.find("total-msgs-sent") == children.end())
+    if(total_msgs_sent != nullptr)
     {
-        if(total_msgs_sent != nullptr)
-        {
-            children["total-msgs-sent"] = total_msgs_sent;
-        }
+        children["total-msgs-sent"] = total_msgs_sent;
     }
 
     return children;
@@ -17127,7 +14533,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Add
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17156,20 +14562,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17247,7 +14645,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Lab
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17276,20 +14674,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17367,7 +14757,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Add
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17396,20 +14786,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17487,7 +14869,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Lab
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17516,20 +14898,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17607,7 +14981,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Not
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17636,20 +15010,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Noti
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17727,7 +15093,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Tot
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17756,20 +15122,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Tota
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17847,7 +15205,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Not
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17876,20 +15234,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Noti
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17967,7 +15317,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Tot
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17996,20 +15346,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Tota
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18087,7 +15429,7 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Lab
 
 }
 
-EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::get_entity_path(Entity* ancestor) const
+const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18116,20 +15458,12 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
 
 std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

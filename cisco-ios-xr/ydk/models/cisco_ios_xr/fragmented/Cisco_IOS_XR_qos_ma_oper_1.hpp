@@ -21,23 +21,20 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics
 
 
@@ -49,19 +46,17 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::ChildPolicy
@@ -77,8 +72,7 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats : public E
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats
 
 
@@ -90,12 +84,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::GeneralSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -106,8 +99,6 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::GeneralSt
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::GeneralStats
 
@@ -120,12 +111,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::IphcStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -140,8 +130,6 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::IphcStats
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::IphcStats
 
 
@@ -153,14 +141,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::ChildPoli
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::ChildPolicy
@@ -174,12 +159,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::CacStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -187,8 +171,6 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::CacStats 
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::CacStats
 
@@ -201,12 +183,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -227,7 +208,6 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStat
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -235,8 +215,7 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStat
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray
 
 
@@ -248,17 +227,14 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -271,17 +247,14 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -294,17 +267,14 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -317,12 +287,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -337,12 +306,10 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceSta
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -354,12 +321,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -380,8 +346,6 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceSta
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -393,12 +357,11 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -409,12 +372,10 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStats
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStatsArray
 
 
@@ -426,17 +387,14 @@ class Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -449,21 +407,18 @@ class Qos::NvInterfaceTable::Interface::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyNames; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames
         class Statistics; //type: Qos::NvInterfaceTable::Interface::Output::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames> service_policy_names;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics> statistics;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Output
 
 
@@ -475,19 +430,16 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames
 
 
@@ -499,16 +451,13 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance
 
@@ -521,23 +470,20 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics
 
 
@@ -549,19 +495,17 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::ChildPolicy
@@ -577,8 +521,7 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats : public 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats
 
 
@@ -590,12 +533,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::GeneralS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -606,8 +548,6 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::GeneralS
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::GeneralStats
 
@@ -620,12 +560,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::IphcStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -640,8 +579,6 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::IphcStat
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::IphcStats
 
 
@@ -653,14 +590,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::ChildPol
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::ChildPolicy
@@ -674,12 +608,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::CacStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -687,8 +620,6 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::CacStats
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::CacStats
 
@@ -701,12 +632,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -727,7 +657,6 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueSta
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -735,8 +664,7 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueSta
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray
 
 
@@ -748,17 +676,14 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -771,17 +696,14 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -794,17 +716,14 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -817,12 +736,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -837,12 +755,10 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceSt
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -854,12 +770,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -880,8 +795,6 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceSt
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -893,12 +806,11 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -909,12 +821,10 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStat
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStatsArray
 
 
@@ -926,17 +836,14 @@ class Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvInterfaceTable::Interface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -949,21 +856,18 @@ class Qos::NvSatellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NvSatelliteStatistics; //type: Qos::NvSatellite::NvSatelliteStatistics
         class NvSatelliteStatus; //type: Qos::NvSatellite::NvSatelliteStatus
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics> nv_satellite_statistics;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus> nv_satellite_status;
-
-
+        
 }; // Qos::NvSatellite
 
 
@@ -975,19 +879,16 @@ class Qos::NvSatellite::NvSatelliteStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NvSatelliteIds; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds> nv_satellite_ids;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics
 
 
@@ -999,19 +900,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NvSatelliteId; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId> > nv_satellite_id;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds
 
 
@@ -1023,20 +921,17 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: int32
-
         class NvSatelliteInterfaces; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces> nv_satellite_interfaces;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId
 
 
@@ -1048,19 +943,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NvSatelliteInterface; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface> > nv_satellite_interface;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces
 
 
@@ -1072,15 +964,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class MemberInterfaces; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces
         class Input; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input
         class Output; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output
@@ -1088,8 +978,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input> input;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces> member_interfaces;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output> output;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface
 
 
@@ -1101,19 +990,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MemberInterface; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface> > member_interface;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces
 
 
@@ -1125,15 +1011,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class SatelliteIds; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds
         class Input; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input
         class Output; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output
@@ -1141,8 +1025,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input> input;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output> output;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds> satellite_ids;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface
 
 
@@ -1154,19 +1037,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SatelliteId; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds
 
 
@@ -1178,22 +1058,19 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nv_satellite_id; //type: int32
-
         class Input; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input
         class Output; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input> input;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output> output;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
 
@@ -1205,21 +1082,18 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyNames; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
         class Statistics; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames> service_policy_names;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics> statistics;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input
 
 
@@ -1231,19 +1105,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
 
@@ -1255,16 +1126,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
@@ -1277,23 +1145,20 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics
 
 
@@ -1305,19 +1170,17 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy
@@ -1333,8 +1196,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats
 
 
@@ -1346,12 +1208,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -1362,8 +1223,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats
 
@@ -1376,12 +1235,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -1396,8 +1254,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats
 
 
@@ -1409,14 +1265,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy
@@ -1430,12 +1283,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -1443,8 +1295,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats
 
@@ -1457,12 +1307,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -1483,7 +1332,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -1491,8 +1339,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray
 
 
@@ -1504,17 +1351,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -1527,17 +1371,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -1550,17 +1391,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -1573,12 +1411,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -1593,12 +1430,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -1610,12 +1445,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -1636,8 +1470,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -1649,12 +1481,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -1665,12 +1496,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray
 
 
@@ -1682,17 +1511,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -1705,21 +1531,18 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyNames; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
         class Statistics; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames> service_policy_names;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics> statistics;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output
 
 
@@ -1731,19 +1554,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
 
@@ -1755,16 +1575,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
@@ -1777,23 +1594,20 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics
 
 
@@ -1805,19 +1619,17 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy
@@ -1833,8 +1645,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats
 
 
@@ -1846,12 +1657,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -1862,8 +1672,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats
 
@@ -1876,12 +1684,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -1896,8 +1703,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats
 
 
@@ -1909,14 +1714,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy
@@ -1930,12 +1732,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -1943,8 +1744,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats
 
@@ -1957,12 +1756,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -1983,7 +1781,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -1991,8 +1788,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray
 
 
@@ -2004,17 +1800,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -2027,17 +1820,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -2050,17 +1840,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -2073,12 +1860,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -2093,12 +1879,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -2110,12 +1894,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -2136,8 +1919,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -2149,12 +1930,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -2165,12 +1945,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray
 
 
@@ -2182,17 +1960,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -2205,21 +1980,18 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyNames; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
         class Statistics; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames> service_policy_names;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics> statistics;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input
 
 
@@ -2231,19 +2003,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
 
 
@@ -2255,16 +2024,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
@@ -2277,23 +2043,20 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics
 
 
@@ -2305,19 +2068,17 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy
@@ -2333,8 +2094,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats
 
 
@@ -2346,12 +2106,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -2362,8 +2121,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats
 
@@ -2376,12 +2133,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -2396,8 +2152,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats
 
 
@@ -2409,14 +2163,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy
@@ -2430,12 +2181,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -2443,8 +2193,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats
 
@@ -2457,12 +2205,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -2483,7 +2230,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -2491,8 +2237,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray
 
 
@@ -2504,17 +2249,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -2527,17 +2269,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -2550,17 +2289,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -2573,12 +2309,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -2593,12 +2328,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -2610,12 +2343,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -2636,8 +2368,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -2649,12 +2379,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -2665,12 +2394,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray
 
 
@@ -2682,17 +2409,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -2705,21 +2429,18 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyNames; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
         class Statistics; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames> service_policy_names;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics> statistics;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output
 
 
@@ -2731,19 +2452,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
 
 
@@ -2755,16 +2473,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
@@ -2777,23 +2492,20 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics
 
 
@@ -2805,19 +2517,17 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy
@@ -2833,8 +2543,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats
 
 
@@ -2846,12 +2555,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -2862,8 +2570,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats
 
@@ -2876,12 +2582,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -2896,8 +2601,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats
 
 
@@ -2909,14 +2612,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy
@@ -2930,12 +2630,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -2943,8 +2642,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats
 
@@ -2957,12 +2654,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -2983,7 +2679,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -2991,8 +2686,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray
 
 
@@ -3004,17 +2698,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -3027,17 +2718,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -3050,17 +2738,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -3073,12 +2758,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -3093,12 +2777,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -3110,12 +2792,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -3136,8 +2817,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -3149,12 +2828,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -3165,12 +2843,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray
 
 
@@ -3182,17 +2858,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -3205,21 +2878,18 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyNames; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames
         class Statistics; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames> service_policy_names;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics> statistics;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input
 
 
@@ -3231,19 +2901,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames
 
 
@@ -3255,16 +2922,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
@@ -3277,23 +2941,20 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics
 
 
@@ -3305,19 +2966,17 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::ChildPolicy
@@ -3333,8 +2992,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats
 
 
@@ -3346,12 +3004,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -3362,8 +3019,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::GeneralStats
 
@@ -3376,12 +3031,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -3396,8 +3050,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::IphcStats
 
 
@@ -3409,14 +3061,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::ChildPolicy
@@ -3430,12 +3079,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -3443,8 +3091,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::CacStats
 
@@ -3457,12 +3103,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -3483,7 +3128,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -3491,8 +3135,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray
 
 
@@ -3504,17 +3147,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -3527,17 +3167,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -3550,17 +3187,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -3573,12 +3207,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -3593,12 +3226,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -3610,12 +3241,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -3636,8 +3266,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -3649,12 +3277,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -3665,12 +3292,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray
 
 
@@ -3682,17 +3307,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -3705,21 +3327,18 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyNames; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames
         class Statistics; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames> service_policy_names;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics> statistics;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output
 
 
@@ -3731,19 +3350,16 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames
 
 
@@ -3755,16 +3371,13 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
@@ -3777,23 +3390,20 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf state; //type: PolicyStateEnum
         YLeaf state_description; //type: string
         YLeaf satid; //type: uint32
-
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats> > class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics
 
 
@@ -3805,19 +3415,17 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_validity_bitmask; //type: uint64
         YLeaf class_name; //type: string
         YLeaf shared_queue_id; //type: uint32
         YLeaf queue_descr; //type: string
         YLeaf cac_state; //type: CacStateEnum
-
         class GeneralStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::GeneralStats
         class IphcStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::IphcStats
         class ChildPolicy; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy
@@ -3833,8 +3441,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats
 
 
@@ -3846,12 +3453,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit_packets; //type: uint64
         YLeaf transmit_bytes; //type: uint64
@@ -3862,8 +3468,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf total_transmit_rate; //type: uint32
         YLeaf pre_policy_matched_packets; //type: uint64
         YLeaf pre_policy_matched_bytes; //type: uint64
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::GeneralStats
 
@@ -3876,12 +3480,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf non_tcp_total_out_packets; //type: uint64
         YLeaf non_tcp_total_out_bytes; //type: uint64
@@ -3896,8 +3499,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf tcp_bytes_sent_rate; //type: uint32
         YLeaf tcp_full_header_packets_out; //type: uint64
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::IphcStats
 
 
@@ -3909,14 +3510,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy
@@ -3930,12 +3528,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -3943,8 +3540,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf admitpackets; //type: uint64
         YLeaf admit_bytes; //type: uint64
         YLeaf admit_rates; //type: uint32
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::CacStats
 
@@ -3957,12 +3552,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf queue_id; //type: uint32
         YLeaf tail_drop_packets; //type: uint64
@@ -3983,7 +3577,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf exceed_bytes; //type: uint64
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
-
         class QueueInstanceLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
@@ -3991,8 +3584,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray
 
 
@@ -4004,17 +3596,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
@@ -4027,17 +3616,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
 
@@ -4050,17 +3636,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: PolicyParamUnitEnum
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
@@ -4073,12 +3656,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_packets; //type: uint64
         YLeaf drop_bytes; //type: uint64
@@ -4093,12 +3675,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf conform_rate; //type: uint32
         YLeaf exceed_rate; //type: uint32
         YLeaf violate_rate; //type: uint32
-
         class ColorClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray
 
 
@@ -4110,12 +3690,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf conform_class_conform_packets; //type: uint64
         YLeaf conform_class_conform_bytes; //type: uint64
@@ -4136,8 +3715,6 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf violate_class_violate_bytes; //type: uint64
         YLeaf violate_class_violate_rate; //type: uint32
 
-
-
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
 
 
@@ -4149,12 +3726,11 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_title; //type: string
         YLeaf red_transmit_packets; //type: uint64
@@ -4165,12 +3741,10 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         YLeaf max_threshold_bytes; //type: uint64
         YLeaf red_ecn_marked_packets; //type: uint64
         YLeaf red_ecn_marked_bytes; //type: uint64
-
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray
 
 
@@ -4182,17 +3756,14 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf wred_type; //type: WredEnum
         YLeaf value_; //type: uint8
-
-
 
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
 
@@ -4205,19 +3776,16 @@ class Qos::NvSatellite::NvSatelliteStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NvSatelliteIds; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds> nv_satellite_ids;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatus
 
 
@@ -4229,19 +3797,16 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NvSatelliteId; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId> > nv_satellite_id;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds
 
 
@@ -4253,20 +3818,17 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: int32
-
         class NvSatelliteInterfaces; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces> nv_satellite_interfaces;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId
 
 
@@ -4278,19 +3840,16 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSate
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NvSatelliteInterface; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface> > nv_satellite_interface;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces
 
 
@@ -4302,15 +3861,13 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSate
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class MemberInterfaces; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces
         class Input; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input
         class Status; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Status
@@ -4320,8 +3877,7 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSate
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces> member_interfaces;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output> output;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Status> status;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface
 
 
@@ -4333,19 +3889,16 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSate
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MemberInterface; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface> > member_interface;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces
 
 
@@ -4357,22 +3910,19 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSate
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class Input; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input
         class Output; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output
 
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input> input;
         std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output> output;
-
-
+        
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface
 
 

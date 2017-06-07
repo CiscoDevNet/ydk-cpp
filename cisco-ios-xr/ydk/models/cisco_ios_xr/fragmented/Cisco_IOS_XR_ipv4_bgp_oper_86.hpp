@@ -25,20 +25,17 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf count; //type: uint32
-
         class LastTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Tx::LastTimeSpec
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Tx::LastTimeSpec> last_time_spec;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Tx
 
 
@@ -50,17 +47,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Tx::LastTimeSpec
 
@@ -73,20 +67,17 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf count; //type: uint32
-
         class LastTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Rx::LastTimeSpec
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Rx::LastTimeSpec> last_time_spec;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Rx
 
 
@@ -98,17 +89,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::RouteRefresh::Rx::LastTimeSpec
 
@@ -121,21 +109,18 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tx; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Tx
         class Rx; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Rx
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Rx> rx;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Tx> tx;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total
 
 
@@ -147,20 +132,17 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf count; //type: uint32
-
         class LastTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Tx::LastTimeSpec
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Tx::LastTimeSpec> last_time_spec;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Tx
 
 
@@ -172,17 +154,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Tx::LastTimeSpec
 
@@ -195,20 +174,17 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf count; //type: uint32
-
         class LastTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Rx::LastTimeSpec
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Rx::LastTimeSpec> last_time_spec;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Rx
 
 
@@ -220,17 +196,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::MessageStatistics::Total::Rx::LastTimeSpec
 
@@ -243,17 +216,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::TcpInitSyncTimeSpec
 
@@ -266,17 +236,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::TcpInitSyncPhaseTwoTimeSpec
 
@@ -289,17 +256,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::TcpInitSyncDoneTimeSpec
 
@@ -312,12 +276,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf gshut_exists; //type: boolean
         YLeaf gshut_local_active; //type: boolean
@@ -325,8 +288,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
         YLeaf gshut_locpref_set; //type: boolean
         YLeaf gshut_locpref; //type: uint32
         YLeaf gshut_prepends; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::GracefulMaintenance
 
@@ -339,12 +300,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: BgpAfiEnum
         YLeaf is_neighbor_route_reflector_client; //type: boolean
@@ -479,7 +439,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
         YLeaf advertise_v6_flags; //type: uint32
         YLeaf advertise_local_labeled_route_unicast; //type: boolean
         YLeaf prefixes_denied_non_cumulative; //type: uint32
-
         class NeighborAfPerformanceStatistics; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::NeighborAfPerformanceStatistics
         class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::ExtendedCommunity
         class ExtendedCommunityStandby; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::ExtendedCommunityStandby
@@ -487,8 +446,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::ExtendedCommunity> > extended_community;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::ExtendedCommunityStandby> > extended_community_standby;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::NeighborAfPerformanceStatistics> neighbor_af_performance_statistics;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData
 
 
@@ -500,12 +458,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sub_group_pending_message_count; //type: uint32
         YLeaf processed_messages; //type: uint32
@@ -514,8 +471,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
         YLeaf split_horizon_update_blocked; //type: uint32
         YLeaf split_horizon_withdraw_transmit; //type: uint32
         YLeaf split_horizon_withdraw_blocked; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::NeighborAfPerformanceStatistics
 
@@ -528,16 +483,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::ExtendedCommunity
 
@@ -550,16 +502,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Neighbors::Neighbor::AfData::ExtendedCommunityStandby
 
@@ -572,12 +521,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NextHopVrf : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_processing_time; //type: uint32
         YLeaf max_proc_notification_time; //type: uint32
@@ -586,8 +534,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NextHopVrf : public
         YLeaf maximum_processing_time; //type: uint32
         YLeaf last_notificationication_time; //type: uint32
         YLeaf last_notification_processing_time; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NextHopVrf
 
@@ -600,19 +546,16 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NeighborRange; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange> > neighbor_range;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges
 
 
@@ -624,12 +567,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_range_address; //type: string
         YLeaf speaker_id; //type: uint8
@@ -712,7 +654,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         YLeaf range_open_accepted; //type: uint32
         YLeaf range_max_drop; //type: uint32
         YLeaf range_inst_error; //type: uint32
-
         class ConnectionLocalAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress
         class ConnectionRemoteAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress
         class GracefulMaintenance; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::GracefulMaintenance
@@ -726,8 +667,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress> connection_remote_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::GracefulMaintenance> graceful_maintenance;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_> > instance;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange
 
 
@@ -739,12 +679,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -768,7 +707,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::Ipv4SrPolicyAddress
@@ -778,8 +716,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress
 
 
@@ -791,16 +728,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::L2VpnvplsAddress
 
@@ -813,16 +747,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::L2VpnMspwAddress
 
@@ -835,16 +766,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::Ipv4SrPolicyAddress
 
@@ -857,16 +785,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionLocalAddress::Ipv6SrPolicyAddress
 
@@ -879,12 +804,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -908,7 +832,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::Ipv4SrPolicyAddress
@@ -918,8 +841,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress
 
 
@@ -931,16 +853,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::L2VpnvplsAddress
 
@@ -953,16 +872,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::L2VpnMspwAddress
 
@@ -975,16 +891,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::Ipv4SrPolicyAddress
 
@@ -997,16 +910,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::ConnectionRemoteAddress::Ipv6SrPolicyAddress
 
@@ -1019,12 +929,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf gshut_exists; //type: boolean
         YLeaf gshut_local_active; //type: boolean
@@ -1032,8 +941,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         YLeaf gshut_locpref_set; //type: boolean
         YLeaf gshut_locpref; //type: uint32
         YLeaf gshut_prepends; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::GracefulMaintenance
 
@@ -1046,12 +953,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1075,7 +981,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::Ipv4SrPolicyAddress
@@ -1085,8 +990,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress
 
 
@@ -1098,16 +1002,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::L2VpnvplsAddress
 
@@ -1120,16 +1021,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::L2VpnMspwAddress
 
@@ -1142,16 +1040,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::Ipv4SrPolicyAddress
 
@@ -1164,16 +1059,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::CfgLocalAddress::Ipv6SrPolicyAddress
 
@@ -1186,12 +1078,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: BgpAfiEnum
         YLeaf is_neighbor_route_reflector_client; //type: boolean
@@ -1285,14 +1176,12 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         YLeaf import_reoriginate_stitching; //type: boolean
         YLeaf advertise_v4_flags; //type: uint32
         YLeaf advertise_v6_flags; //type: uint32
-
         class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::AfData::ExtendedCommunity
         class ExtendedCommunityStandby; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::AfData::ExtendedCommunityStandby
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::AfData::ExtendedCommunity> > extended_community;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::AfData::ExtendedCommunityStandby> > extended_community_standby;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::AfData
 
 
@@ -1304,16 +1193,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::AfData::ExtendedCommunity
 
@@ -1326,16 +1212,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::AfData::ExtendedCommunityStandby
 
@@ -1348,16 +1231,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_idle_watch_timer_running; //type: boolean
         YLeaf connection_state; //type: BgpConnStateEnum
-
         class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress
         class NeighborAge; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAge
         class IdleWatchTimerRemainingValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::IdleWatchTimerRemainingValue
@@ -1365,8 +1246,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::IdleWatchTimerRemainingValue> idle_watch_timer_remaining_value;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress> neighbor_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAge> neighbor_age;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_
 
 
@@ -1378,12 +1258,11 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -1407,7 +1286,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::Ipv4SrPolicyAddress
@@ -1417,8 +1295,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress
 
 
@@ -1430,16 +1307,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::L2VpnvplsAddress
 
@@ -1452,16 +1326,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::L2VpnMspwAddress
 
@@ -1474,16 +1345,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::Ipv4SrPolicyAddress
 
@@ -1496,16 +1364,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAddress::Ipv6SrPolicyAddress
 
@@ -1518,17 +1383,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::NeighborAge
 
@@ -1541,17 +1403,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::Nei
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::NeighborRanges::NeighborRange::Instance_::IdleWatchTimerRemainingValue
 
@@ -1564,19 +1423,16 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MessageLog; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog> > message_log;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs
 
 
@@ -1588,21 +1444,18 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::Messag
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf neighbor_address; //type: string
         YLeaf direction; //type: int32
-
         class NeighborMessage; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage> > neighbor_message;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog
 
 
@@ -1614,24 +1467,21 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::Messag
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf message_type_received; //type: uint8
         YLeaf total_logged_message_count; //type: uint32
         YLeaf message_data_length; //type: uint16
-
         class MessageTimestamp; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage::MessageTimestamp
         class LoggedMessageData; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage::LoggedMessageData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage::LoggedMessageData> > logged_message_data;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage::MessageTimestamp> message_timestamp;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage
 
 
@@ -1643,17 +1493,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::Messag
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage::MessageTimestamp
 
@@ -1666,16 +1513,13 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::Messag
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::MessageLogs::MessageLog::NeighborMessage::LoggedMessageData
 
@@ -1688,22 +1532,19 @@ class Bgp::Instances::Instance::InstanceStandby::UpdateInboundFilterProcess : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf update_filtered_message_count; //type: uint32
         YLeaf update_filtered_neighbor_count; //type: uint32
         YLeaf last_update_filtered_age; //type: uint32
-
         class LastUpdateFilteredTimestamp; //type: Bgp::Instances::Instance::InstanceStandby::UpdateInboundFilterProcess::LastUpdateFilteredTimestamp
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::UpdateInboundFilterProcess::LastUpdateFilteredTimestamp> last_update_filtered_timestamp;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::UpdateInboundFilterProcess
 
 
@@ -1715,17 +1556,14 @@ class Bgp::Instances::Instance::InstanceStandby::UpdateInboundFilterProcess::Las
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::UpdateInboundFilterProcess::LastUpdateFilteredTimestamp
 
@@ -1738,19 +1576,16 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Attribute; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute> > attribute;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes
 
 
@@ -1762,12 +1597,11 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf attribute_iid; //type: int32
         YLeaf attribute_cache_bucket; //type: int32
@@ -1777,12 +1611,10 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute : public 
         YLeaf attribute_structure_id; //type: uint32
         YLeaf attribute_structure_hash_value; //type: uint32
         YLeaf reference_count; //type: uint32
-
         class AttributeInfo; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo> attribute_info;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute
 
 
@@ -1794,12 +1626,11 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_as_path2_byte; //type: boolean
         YLeaf is_application_gateway_present; //type: boolean
@@ -1824,7 +1655,6 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         YLeaf ribrnhip_table; //type: uint32
         YLeaf ribrnh_vni; //type: uint32
         YLeaf ribrnh_encap; //type: uint8
-
         class CommonAttributes; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes
         class AttrSet; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet
         class RnhAddr; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RnhAddr
@@ -1834,8 +1664,7 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes> common_attributes;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp> ribrnh_ip;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RnhAddr> rnh_addr;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo
 
 
@@ -1847,12 +1676,11 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_metric_present; //type: boolean
         YLeaf is_local_pref_present; //type: boolean
@@ -1891,7 +1719,6 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         YLeaf sr_policy_preference; //type: uint32
         YLeaf sr_tunnel_state; //type: uint32
         YLeaf sr_tunnel_request_state; //type: BgpSrpolicyTunReqStateEnum
-
         class SrPolicyBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyBindingSid
         class SrPolicyAllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyAllocatedBindingSid
         class Community; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::Community
@@ -1919,8 +1746,7 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyBindingSid> sr_policy_binding_sid;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyExplicitPath> > sr_policy_explicit_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::UnknownAttribute> > unknown_attribute;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes
 
 
@@ -1932,18 +1758,15 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyBindingSid
 
@@ -1956,18 +1779,15 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyAllocatedBindingSid
 
@@ -1980,16 +1800,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::Community
 
@@ -2002,16 +1819,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::ExtendedCommunity
 
@@ -2024,16 +1838,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::UnknownAttribute
 
@@ -2046,16 +1857,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::Cluster
 
@@ -2068,16 +1876,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::L2Tpv3Cookie
 
@@ -2090,16 +1895,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::ConnectorValue
 
@@ -2112,16 +1914,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::PmsiValue
 
@@ -2134,16 +1933,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::LsAttr
 
@@ -2156,16 +1952,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::LabelIndexAttr
 
@@ -2178,17 +1971,14 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pe_address; //type: string
         YLeaf label; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::PeDistinguisherLabel
 
@@ -2201,20 +1991,17 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf weight; //type: uint8
-
         class Sid; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyExplicitPath::Sid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyExplicitPath::Sid> > sid;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyExplicitPath
 
 
@@ -2226,19 +2013,16 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: uint8
         YLeaf label; //type: uint32
         YLeaf ipv4; //type: string
         YLeaf ipv6; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::CommonAttributes::SrPolicyExplicitPath::Sid
 
@@ -2251,12 +2035,11 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_metric_present; //type: boolean
         YLeaf is_local_pref_present; //type: boolean
@@ -2295,7 +2078,6 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         YLeaf sr_policy_preference; //type: uint32
         YLeaf sr_tunnel_state; //type: uint32
         YLeaf sr_tunnel_request_state; //type: BgpSrpolicyTunReqStateEnum
-
         class SrPolicyBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyBindingSid
         class SrPolicyAllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyAllocatedBindingSid
         class Community; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::Community
@@ -2323,8 +2105,7 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyBindingSid> sr_policy_binding_sid;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyExplicitPath> > sr_policy_explicit_path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::UnknownAttribute> > unknown_attribute;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet
 
 
@@ -2336,18 +2117,15 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyBindingSid
 
@@ -2360,18 +2138,15 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: BgpBindingSidEnum
         YLeaf label; //type: uint32
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyAllocatedBindingSid
 
@@ -2384,16 +2159,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::Community
 
@@ -2406,16 +2178,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::ExtendedCommunity
 
@@ -2428,16 +2197,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::UnknownAttribute
 
@@ -2450,16 +2216,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::Cluster
 
@@ -2472,16 +2235,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::L2Tpv3Cookie
 
@@ -2494,16 +2254,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::ConnectorValue
 
@@ -2516,16 +2273,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::PmsiValue
 
@@ -2538,16 +2292,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::LsAttr
 
@@ -2560,16 +2311,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: uint8
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::LabelIndexAttr
 
@@ -2582,17 +2330,14 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pe_address; //type: string
         YLeaf label; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::PeDistinguisherLabel
 
@@ -2605,20 +2350,17 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf weight; //type: uint8
-
         class Sid; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyExplicitPath::Sid
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyExplicitPath::Sid> > sid;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyExplicitPath
 
 
@@ -2630,19 +2372,16 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: uint8
         YLeaf label; //type: uint32
         YLeaf ipv4; //type: string
         YLeaf ipv6; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::SrPolicyExplicitPath::Sid
 
@@ -2655,19 +2394,16 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf len; //type: BgpRnhAddrLenEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
         YLeaf mac_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RnhAddr
 
@@ -2680,12 +2416,11 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: BgpAfiEnum
         YLeaf ipv4_address; //type: string
@@ -2709,7 +2444,6 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         YLeaf ipv6_flowspec_address; //type: string
         YLeaf ipv4vpn_flowspec_address; //type: string
         YLeaf ipv6vpn_flowspec_address; //type: string
-
         class L2VpnvplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnvplsAddress
         class L2VpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnMspwAddress
         class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv4SrPolicyAddress
@@ -2719,8 +2453,7 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv6SrPolicyAddress> ipv6sr_policy_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnMspwAddress> l2vpn_mspw_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnvplsAddress> l2vpnvpls_address;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp
 
 
@@ -2732,16 +2465,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnvplsAddress
 
@@ -2754,16 +2484,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2vpn_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnMspwAddress
 
@@ -2776,16 +2503,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv4SrPolicyAddress
 
@@ -2798,16 +2522,13 @@ class Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_srpolicy_address; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv6SrPolicyAddress
 
@@ -2820,19 +2541,16 @@ class Bgp::Instances::Instance::InstanceStandby::RtEntries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RtEntry; //type: Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry> > rt_entry;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::RtEntries
 
 
@@ -2844,24 +2562,21 @@ class Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_target_lower_bytes; //type: int32
         YLeaf route_target_upper_bytes; //type: int32
         YLeaf af_name; //type: BgpAddressFamilyEnum
         YLeaf request_id; //type: int32
         YLeaf afs; //type: string
-
         class Rt; //type: Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry::Rt
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry::Rt> rt;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry
 
 
@@ -2873,16 +2588,13 @@ class Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry::Rt : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_target; //type: string
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry::Rt
 
@@ -2895,19 +2607,16 @@ class Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AttributeFilterGroup; //type: Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup> > attribute_filter_group;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups
 
 
@@ -2919,22 +2628,19 @@ class Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_name; //type: string
         YLeaf attribute_filter_group_name; //type: string
         YLeaf attribute_filter_total_group_count; //type: uint32
-
         class AttributeFilterEntry; //type: Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup::AttributeFilterEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup::AttributeFilterEntry> > attribute_filter_entry;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup
 
 
@@ -2946,18 +2652,15 @@ class Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::Attribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf attribute_filter_entry_requested_action; //type: BgpBagUpdFilterActionEnum
         YLeaf attribute_filter_entry_range_start; //type: uint32
         YLeaf attribute_filter_entry_range_end; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup::AttributeFilterEntry
 
@@ -2970,19 +2673,16 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiServerList : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RpkiServer; //type: Bgp::Instances::Instance::InstanceStandby::RpkiServerList::RpkiServer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::RpkiServerList::RpkiServer> > rpki_server;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::RpkiServerList
 
 
@@ -2994,12 +2694,11 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiServerList::RpkiServer : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf preference; //type: uint32
@@ -3032,8 +2731,6 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiServerList::RpkiServer : pu
         YLeaf ipv6roa_withdraw; //type: uint32
         YLeaf proto_error; //type: BgpRpkiPerrorEnum
 
-
-
 }; // Bgp::Instances::Instance::InstanceStandby::RpkiServerList::RpkiServer
 
 
@@ -3045,19 +2742,16 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RpkiRoute; //type: Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute> > rpki_route;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::RpkiRoutes
 
 
@@ -3069,23 +2763,20 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: BgpRpkiEdmAfEnum
         YLeaf address; //type: string
         YLeaf minimum; //type: int32
         YLeaf maximum; //type: int32
-
         class RpkiRoute_; //type: Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::RpkiRoute_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::RpkiRoute_> > rpki_route;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute
 
 
@@ -3097,12 +2788,11 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::RpkiRout
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: BgpRpkiAfEnum
         YLeaf address; //type: string
@@ -3112,8 +2802,6 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::RpkiRout
         YLeaf refcount; //type: uint16
         YLeaf server; //type: string
         YLeaf stale; //type: boolean
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::RpkiRoute_
 
@@ -3126,12 +2814,11 @@ class Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf update_error_handling_basic_ebgp; //type: boolean
         YLeaf update_error_handling_basic_ibgp; //type: boolean
@@ -3140,12 +2827,10 @@ class Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess : pub
         YLeaf update_malformed_message_count; //type: uint32
         YLeaf update_malformed_neighbor_count; //type: uint32
         YLeaf last_update_malformed_age; //type: uint32
-
         class LastUpdateMalformedTimestamp; //type: Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess::LastUpdateMalformedTimestamp
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess::LastUpdateMalformedTimestamp> last_update_malformed_timestamp;
-
-
+        
 }; // Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess
 
 
@@ -3157,17 +2842,14 @@ class Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess::Last
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess::LastUpdateMalformedTimestamp
 
@@ -3180,12 +2862,11 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf servers; //type: uint32
         YLeaf ipv4roa_nets; //type: uint32
@@ -3196,8 +2877,6 @@ class Bgp::Instances::Instance::InstanceStandby::RpkiSummary : public Entity
         YLeaf rpki_use_validity; //type: boolean
         YLeaf rpki_allow_invalid; //type: boolean
         YLeaf rpki_signal_ibgp; //type: boolean
-
-
 
 }; // Bgp::Instances::Instance::InstanceStandby::RpkiSummary
 
@@ -3210,19 +2889,16 @@ class Bgp::BpmInstancesTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BpmInstances; //type: Bgp::BpmInstancesTable::BpmInstances
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::BpmInstancesTable::BpmInstances> bpm_instances;
-
-
+        
 }; // Bgp::BpmInstancesTable
 
 
@@ -3234,19 +2910,16 @@ class Bgp::BpmInstancesTable::BpmInstances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Instance; //type: Bgp::BpmInstancesTable::BpmInstances::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::BpmInstancesTable::BpmInstances::Instance> > instance;
-
-
+        
 }; // Bgp::BpmInstancesTable::BpmInstances
 
 
@@ -3258,12 +2931,11 @@ class Bgp::BpmInstancesTable::BpmInstances::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance_identifier; //type: uint16
         YLeaf placed_group_id; //type: uint16
@@ -3274,12 +2946,10 @@ class Bgp::BpmInstancesTable::BpmInstances::Instance : public Entity
         YLeaf install_diversion_enabled; //type: boolean
         YLeaf srgb_start_configured; //type: uint32
         YLeaf srgb_end_configured; //type: uint32
-
         class AfArray; //type: Bgp::BpmInstancesTable::BpmInstances::Instance::AfArray
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_oper::Bgp::BpmInstancesTable::BpmInstances::Instance::AfArray> > af_array;
-
-
+        
 }; // Bgp::BpmInstancesTable::BpmInstances::Instance
 
 
@@ -3291,16 +2961,13 @@ class Bgp::BpmInstancesTable::BpmInstances::Instance::AfArray : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: boolean
-
-
 
 }; // Bgp::BpmInstancesTable::BpmInstances::Instance::AfArray
 

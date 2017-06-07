@@ -15,10 +15,8 @@ SystemTime::SystemTime()
 	,uptime(std::make_shared<SystemTime::Uptime>())
 {
     clock->parent = this;
-    children["clock"] = clock;
 
     uptime->parent = this;
-    children["uptime"] = uptime;
 
     yang_name = "system-time"; yang_parent_name = "Cisco-IOS-XR-shellutil-oper";
 }
@@ -49,12 +47,12 @@ std::string SystemTime::get_segment_path() const
 
 }
 
-EntityPath SystemTime::get_entity_path(Entity* ancestor) const
+const EntityPath SystemTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath SystemTime::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clock")
     {
-        if(clock != nullptr)
-        {
-            children["clock"] = clock;
-        }
-        else
+        if(clock == nullptr)
         {
             clock = std::make_shared<SystemTime::Clock>();
-            clock->parent = this;
-            children["clock"] = clock;
         }
-        return children.at("clock");
+        return clock;
     }
 
     if(child_yang_name == "uptime")
     {
-        if(uptime != nullptr)
-        {
-            children["uptime"] = uptime;
-        }
-        else
+        if(uptime == nullptr)
         {
             uptime = std::make_shared<SystemTime::Uptime>();
-            uptime->parent = this;
-            children["uptime"] = uptime;
         }
-        return children.at("uptime");
+        return uptime;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemTime::get_children() const
 {
-    if(children.find("clock") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clock != nullptr)
     {
-        if(clock != nullptr)
-        {
-            children["clock"] = clock;
-        }
+        children["clock"] = clock;
     }
 
-    if(children.find("uptime") == children.end())
+    if(uptime != nullptr)
     {
-        if(uptime != nullptr)
-        {
-            children["uptime"] = uptime;
-        }
+        children["uptime"] = uptime;
     }
 
     return children;
@@ -214,7 +186,7 @@ std::string SystemTime::Clock::get_segment_path() const
 
 }
 
-EntityPath SystemTime::Clock::get_entity_path(Entity* ancestor) const
+const EntityPath SystemTime::Clock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -247,20 +219,12 @@ EntityPath SystemTime::Clock::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemTime::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemTime::Clock::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemTime::Clock::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -342,7 +306,7 @@ std::string SystemTime::Uptime::get_segment_path() const
 
 }
 
-EntityPath SystemTime::Uptime::get_entity_path(Entity* ancestor) const
+const EntityPath SystemTime::Uptime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -367,20 +331,12 @@ EntityPath SystemTime::Uptime::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SystemTime::Uptime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SystemTime::Uptime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SystemTime::Uptime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

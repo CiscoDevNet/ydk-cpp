@@ -21,19 +21,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InBcastPkt
 
@@ -46,19 +43,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutUcastPkt
 
@@ -71,19 +65,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutBcastPkt
 
@@ -96,19 +87,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutMcastPkt
 
@@ -121,19 +109,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::TxPkt
 
@@ -146,19 +131,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::IfInErrors
 
@@ -171,19 +153,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::IfInOctets
 
@@ -196,19 +175,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::EtherStatMulticastPkt
 
@@ -221,19 +197,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::EtherStatBroadcastPkt
 
@@ -246,19 +219,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::EtherStatUndersizedPkt
 
@@ -271,19 +241,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutOctets
 
@@ -296,19 +263,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPauseFrame
 
@@ -321,19 +285,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InGoodBytes
 
@@ -346,19 +307,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::In8021QFrames
 
@@ -371,19 +329,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPkts1519MaxOctets
 
@@ -396,19 +351,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InGoodPkts
 
@@ -421,19 +373,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InDropOverrun
 
@@ -446,19 +395,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InDropAbort
 
@@ -471,19 +417,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InDropInvalidVlan
 
@@ -496,19 +439,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InDropInvalidDmac
 
@@ -521,19 +461,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InDropInvalidEncap
 
@@ -546,19 +483,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InDropOther
 
@@ -571,19 +505,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMibGiant
 
@@ -596,19 +527,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMibJabber
 
@@ -621,19 +549,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMibcrc
 
@@ -646,19 +571,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InErrorCollisions
 
@@ -671,19 +593,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InErrorSymbol
 
@@ -696,19 +615,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutGoodBytes
 
@@ -721,19 +637,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Out8021QFrames
 
@@ -746,19 +659,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutPauseFrames
 
@@ -771,19 +681,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutPkts1519MaxOctets
 
@@ -796,19 +703,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutGoodPkts
 
@@ -821,19 +725,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutDropUnderrun
 
@@ -846,19 +747,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutDropAbort
 
@@ -871,19 +769,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutDropOther
 
@@ -896,19 +791,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutErrorOther
 
@@ -921,19 +813,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InErrorGiant
 
@@ -946,19 +835,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InErrorRunt
 
@@ -971,19 +857,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InErrorJabbers
 
@@ -996,19 +879,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InErrorFragments
 
@@ -1021,19 +901,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InErrorOther
 
@@ -1046,19 +923,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPkt64Octet
 
@@ -1071,19 +945,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPkts65To127Octets
 
@@ -1096,19 +967,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPkts128To255Octets
 
@@ -1121,19 +989,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPkts256To511Octets
 
@@ -1146,19 +1011,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPkts512To1023Octets
 
@@ -1171,19 +1033,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InPkts1024To1518Octets
 
@@ -1196,19 +1055,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Outpkt64Octet
 
@@ -1221,19 +1077,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutPkts65127Octets
 
@@ -1246,19 +1099,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutPkts128255Octets
 
@@ -1271,19 +1121,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutPkts256511Octets
 
@@ -1296,19 +1143,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutPkts5121023Octets
 
@@ -1321,19 +1165,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OutPkts10241518Octets
 
@@ -1346,19 +1187,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxUtil
 
@@ -1371,19 +1209,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::TxUtil
 
@@ -1396,19 +1231,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::TxUndersizedPkt
 
@@ -1421,19 +1253,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::TxOversizedPkt
 
@@ -1446,19 +1275,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::TxFragments
 
@@ -1471,19 +1297,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::TxJabber
 
@@ -1496,19 +1319,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::TxBadFcs
 
@@ -1521,19 +1341,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EthernetHour24EtherHistories; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories> ethernet_hour24_ether_histories;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History
 
 
@@ -1545,19 +1362,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EthernetHour24EtherHistory; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory> > ethernet_hour24_ether_history;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories
 
 
@@ -1569,20 +1383,17 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
-
         class EthernetHour24EtherTimeLineInstances; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances> ethernet_hour24_ether_time_line_instances;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory
 
 
@@ -1594,19 +1405,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EthernetHour24EtherTimeLineInstance; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance> > ethernet_hour24_ether_time_line_instance;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances
 
 
@@ -1618,12 +1426,11 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -1634,7 +1441,6 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
         YLeaf last_clear15_min_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class RxPkt; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::RxPkt
         class StatPkt; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::StatPkt
         class OctetStat; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OctetStat
@@ -1786,8 +1592,7 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxPkt> tx_pkt;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxUndersizedPkt> tx_undersized_pkt;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxUtil> tx_util;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance
 
 
@@ -1799,19 +1604,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::RxPkt
 
@@ -1824,19 +1626,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::StatPkt
 
@@ -1849,19 +1648,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OctetStat
 
@@ -1874,19 +1670,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OversizePktStat
 
@@ -1899,19 +1692,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::FcsErrorsStat
 
@@ -1924,19 +1714,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::LongFramesStat
 
@@ -1949,19 +1736,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::JabberStat
 
@@ -1974,19 +1758,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Ether64Octets
 
@@ -1999,19 +1780,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Ether65127Octet
 
@@ -2024,19 +1802,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Ether128255Octet
 
@@ -2049,19 +1824,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Ether256511Octet
 
@@ -2074,19 +1846,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Ether5121023Octet
 
@@ -2099,19 +1868,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Ether10241518Octet
 
@@ -2124,19 +1890,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InUcastPkt
 
@@ -2149,19 +1912,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InMcastPkt
 
@@ -2174,19 +1934,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InBcastPkt
 
@@ -2199,19 +1956,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutUcastPkt
 
@@ -2224,19 +1978,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutBcastPkt
 
@@ -2249,19 +2000,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutMcastPkt
 
@@ -2274,19 +2022,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxPkt
 
@@ -2299,19 +2044,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::IfInErrors
 
@@ -2324,19 +2066,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::IfInOctets
 
@@ -2349,19 +2088,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::EtherStatMulticastPkt
 
@@ -2374,19 +2110,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::EtherStatBroadcastPkt
 
@@ -2399,19 +2132,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::EtherStatUndersizedPkt
 
@@ -2424,19 +2154,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutOctets
 
@@ -2449,19 +2176,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPauseFrame
 
@@ -2474,19 +2198,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InGoodBytes
 
@@ -2499,19 +2220,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::In8021QFrames
 
@@ -2524,19 +2242,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPkts1519MaxOctets
 
@@ -2549,19 +2264,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InGoodPkts
 
@@ -2574,19 +2286,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InDropOverrun
 
@@ -2599,19 +2308,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InDropAbort
 
@@ -2624,19 +2330,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InDropInvalidVlan
 
@@ -2649,19 +2352,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InDropInvalidDmac
 
@@ -2674,19 +2374,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InDropInvalidEncap
 
@@ -2699,19 +2396,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InDropOther
 
@@ -2724,19 +2418,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InMibGiant
 
@@ -2749,19 +2440,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InMibJabber
 
@@ -2774,19 +2462,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InMibcrc
 
@@ -2799,19 +2484,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InErrorCollisions
 
@@ -2824,19 +2506,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InErrorSymbol
 
@@ -2849,19 +2528,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutGoodBytes
 
@@ -2874,19 +2550,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Out8021QFrames
 
@@ -2899,19 +2572,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutPauseFrames
 
@@ -2924,19 +2594,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutPkts1519MaxOctets
 
@@ -2949,19 +2616,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutGoodPkts
 
@@ -2974,19 +2638,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutDropUnderrun
 
@@ -2999,19 +2660,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutDropAbort
 
@@ -3024,19 +2682,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutDropOther
 
@@ -3049,19 +2704,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutErrorOther
 
@@ -3074,19 +2726,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InErrorGiant
 
@@ -3099,19 +2748,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InErrorRunt
 
@@ -3124,19 +2770,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InErrorJabbers
 
@@ -3149,19 +2792,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InErrorFragments
 
@@ -3174,19 +2814,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InErrorOther
 
@@ -3199,19 +2836,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPkt64Octet
 
@@ -3224,19 +2858,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPkts65To127Octets
 
@@ -3249,19 +2880,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPkts128To255Octets
 
@@ -3274,19 +2902,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPkts256To511Octets
 
@@ -3299,19 +2924,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPkts512To1023Octets
 
@@ -3324,19 +2946,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::InPkts1024To1518Octets
 
@@ -3349,19 +2968,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::Outpkt64Octet
 
@@ -3374,19 +2990,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutPkts65127Octets
 
@@ -3399,19 +3012,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutPkts128255Octets
 
@@ -3424,19 +3034,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutPkts256511Octets
 
@@ -3449,19 +3056,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutPkts5121023Octets
 
@@ -3474,19 +3078,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::OutPkts10241518Octets
 
@@ -3499,19 +3100,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::RxUtil
 
@@ -3524,19 +3122,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxUtil
 
@@ -3549,19 +3144,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxUndersizedPkt
 
@@ -3574,19 +3166,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxOversizedPkt
 
@@ -3599,19 +3188,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxFragments
 
@@ -3624,19 +3210,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxJabber
 
@@ -3649,19 +3232,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetHour24History::EthernetHour24EtherHistories::EthernetHour24EtherHistory::EthernetHour24EtherTimeLineInstances::EthernetHour24EtherTimeLineInstance::TxBadFcs
 
@@ -3674,19 +3254,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Minute15EtherHistories; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories> minute15_ether_histories;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History
 
 
@@ -3698,19 +3275,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Minute15EtherHistory; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory> > minute15_ether_history;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories
 
 
@@ -3722,20 +3296,17 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slot_number; //type: int32
-
         class Minute15EtherTimeLineInstances; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances> minute15_ether_time_line_instances;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory
 
 
@@ -3747,19 +3318,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Minute15EtherTimeLineInstance; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance> > minute15_ether_time_line_instance;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances
 
 
@@ -3771,12 +3339,11 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -3787,7 +3354,6 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
         YLeaf last_clear15_min_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class RxPkt; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::RxPkt
         class StatPkt; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::StatPkt
         class OctetStat; //type: PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::OctetStat
@@ -3939,8 +3505,7 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::TxPkt> tx_pkt;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::TxUndersizedPkt> tx_undersized_pkt;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::TxUtil> tx_util;
-
-
+        
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance
 
 
@@ -3952,19 +3517,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::RxPkt
 
@@ -3977,19 +3539,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::StatPkt
 
@@ -4002,19 +3561,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::OctetStat
 
@@ -4027,19 +3583,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::OversizePktStat
 
@@ -4052,19 +3605,16 @@ class PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetP
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetMinute15History::Minute15EtherHistories::Minute15EtherHistory::Minute15EtherTimeLineInstances::Minute15EtherTimeLineInstance::FcsErrorsStat
 

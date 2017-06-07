@@ -17,7 +17,6 @@ Sr::Sr()
 	,mappings(std::make_shared<Sr::Mappings>())
 {
     mappings->parent = this;
-    children["mappings"] = mappings;
 
     yang_name = "sr"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-cfg";
 }
@@ -50,12 +49,12 @@ std::string Sr::get_segment_path() const
 
 }
 
-EntityPath Sr::get_entity_path(Entity* ancestor) const
+const EntityPath Sr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -71,64 +70,38 @@ EntityPath Sr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-block")
     {
-        if(global_block != nullptr)
-        {
-            children["global-block"] = global_block;
-        }
-        else
+        if(global_block == nullptr)
         {
             global_block = std::make_shared<Sr::GlobalBlock>();
-            global_block->parent = this;
-            children["global-block"] = global_block;
         }
-        return children.at("global-block");
+        return global_block;
     }
 
     if(child_yang_name == "mappings")
     {
-        if(mappings != nullptr)
-        {
-            children["mappings"] = mappings;
-        }
-        else
+        if(mappings == nullptr)
         {
             mappings = std::make_shared<Sr::Mappings>();
-            mappings->parent = this;
-            children["mappings"] = mappings;
         }
-        return children.at("mappings");
+        return mappings;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sr::get_children() const
 {
-    if(children.find("global-block") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global_block != nullptr)
     {
-        if(global_block != nullptr)
-        {
-            children["global-block"] = global_block;
-        }
+        children["global-block"] = global_block;
     }
 
-    if(children.find("mappings") == children.end())
+    if(mappings != nullptr)
     {
-        if(mappings != nullptr)
-        {
-            children["mappings"] = mappings;
-        }
+        children["mappings"] = mappings;
     }
 
     return children;
@@ -196,7 +169,7 @@ std::string Sr::GlobalBlock::get_segment_path() const
 
 }
 
-EntityPath Sr::GlobalBlock::get_entity_path(Entity* ancestor) const
+const EntityPath Sr::GlobalBlock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -221,20 +194,12 @@ EntityPath Sr::GlobalBlock::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sr::GlobalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sr::GlobalBlock::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sr::GlobalBlock::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -288,7 +253,7 @@ std::string Sr::Mappings::get_segment_path() const
 
 }
 
-EntityPath Sr::Mappings::get_entity_path(Entity* ancestor) const
+const EntityPath Sr::Mappings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -311,15 +276,6 @@ EntityPath Sr::Mappings::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sr::Mappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mapping")
     {
         for(auto const & c : mapping)
@@ -327,28 +283,24 @@ std::shared_ptr<Entity> Sr::Mappings::get_child_by_name(const std::string & chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Sr::Mappings::Mapping>();
         c->parent = this;
-        mapping.push_back(std::move(c));
-        children[segment_path] = mapping.back();
-        return children.at(segment_path);
+        mapping.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sr::Mappings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mapping)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -404,7 +356,7 @@ std::string Sr::Mappings::Mapping::get_segment_path() const
 
 }
 
-EntityPath Sr::Mappings::Mapping::get_entity_path(Entity* ancestor) const
+const EntityPath Sr::Mappings::Mapping::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -433,20 +385,12 @@ EntityPath Sr::Mappings::Mapping::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Sr::Mappings::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Sr::Mappings::Mapping::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::Mapping::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

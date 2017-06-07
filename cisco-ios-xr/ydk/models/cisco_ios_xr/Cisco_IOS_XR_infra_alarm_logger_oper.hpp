@@ -18,25 +18,22 @@ class AlarmLogger : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class BufferStatus; //type: AlarmLogger::BufferStatus
         class Alarms; //type: AlarmLogger::Alarms
 
         std::shared_ptr<Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::Alarms> alarms;
         std::shared_ptr<Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::BufferStatus> buffer_status;
-
-
+        
 }; // AlarmLogger
 
 
@@ -48,20 +45,17 @@ class AlarmLogger::BufferStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf log_buffer_size; //type: uint32
         YLeaf max_log_buffer_size; //type: uint32
         YLeaf record_count; //type: uint32
         YLeaf capacity_threshold; //type: uint32
         YLeaf severity_filter; //type: AlAlarmSeverityEnum
-
-
 
 }; // AlarmLogger::BufferStatus
 
@@ -74,19 +68,16 @@ class AlarmLogger::Alarms : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Alarm; //type: AlarmLogger::Alarms::Alarm
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::Alarms::Alarm> > alarm;
-
-
+        
 }; // AlarmLogger::Alarms
 
 
@@ -98,12 +89,11 @@ class AlarmLogger::Alarms::Alarm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf source_id; //type: string
@@ -116,8 +106,6 @@ class AlarmLogger::Alarms::Alarm : public Entity
         YLeaf correlation_id; //type: uint32
         YLeaf is_admin; //type: boolean
         YLeaf additional_text; //type: string
-
-
 
 }; // AlarmLogger::Alarms::Alarm
 

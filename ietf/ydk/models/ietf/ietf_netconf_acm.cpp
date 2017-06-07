@@ -23,7 +23,6 @@ Nacm::Nacm()
     groups(std::make_shared<Nacm::Groups>())
 {
     groups->parent = this;
-    children["groups"] = groups;
 
     yang_name = "nacm"; yang_parent_name = "ietf-netconf-acm";
 }
@@ -78,12 +77,12 @@ std::string Nacm::get_segment_path() const
 
 }
 
-EntityPath Nacm::get_entity_path(Entity* ancestor) const
+const EntityPath Nacm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -106,28 +105,13 @@ EntityPath Nacm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nacm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<Nacm::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     if(child_yang_name == "rule-list")
@@ -137,36 +121,29 @@ std::shared_ptr<Entity> Nacm::get_child_by_name(const std::string & child_yang_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Nacm::RuleList>();
         c->parent = this;
-        rule_list.push_back(std::move(c));
-        children[segment_path] = rule_list.back();
-        return children.at(segment_path);
+        rule_list.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nacm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nacm::get_children() const
 {
-    if(children.find("groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
     for (auto const & c : rule_list)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -266,7 +243,7 @@ std::string Nacm::Groups::get_segment_path() const
 
 }
 
-EntityPath Nacm::Groups::get_entity_path(Entity* ancestor) const
+const EntityPath Nacm::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -289,15 +266,6 @@ EntityPath Nacm::Groups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nacm::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -305,28 +273,24 @@ std::shared_ptr<Entity> Nacm::Groups::get_child_by_name(const std::string & chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Nacm::Groups::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nacm::Groups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nacm::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -379,7 +343,7 @@ std::string Nacm::Groups::Group::get_segment_path() const
 
 }
 
-EntityPath Nacm::Groups::Group::get_entity_path(Entity* ancestor) const
+const EntityPath Nacm::Groups::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -405,20 +369,12 @@ EntityPath Nacm::Groups::Group::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nacm::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nacm::Groups::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nacm::Groups::Group::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -487,7 +443,7 @@ std::string Nacm::RuleList::get_segment_path() const
 
 }
 
-EntityPath Nacm::RuleList::get_entity_path(Entity* ancestor) const
+const EntityPath Nacm::RuleList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -513,15 +469,6 @@ EntityPath Nacm::RuleList::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nacm::RuleList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rule")
     {
         for(auto const & c : rule)
@@ -529,28 +476,24 @@ std::shared_ptr<Entity> Nacm::RuleList::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Nacm::RuleList::Rule>();
         c->parent = this;
-        rule.push_back(std::move(c));
-        children[segment_path] = rule.back();
-        return children.at(segment_path);
+        rule.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nacm::RuleList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nacm::RuleList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rule)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -620,7 +563,7 @@ std::string Nacm::RuleList::Rule::get_segment_path() const
 
 }
 
-EntityPath Nacm::RuleList::Rule::get_entity_path(Entity* ancestor) const
+const EntityPath Nacm::RuleList::Rule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -651,20 +594,12 @@ EntityPath Nacm::RuleList::Rule::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Nacm::RuleList::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Nacm::RuleList::Rule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Nacm::RuleList::Rule::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

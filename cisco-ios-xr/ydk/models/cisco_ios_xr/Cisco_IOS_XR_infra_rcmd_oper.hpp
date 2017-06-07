@@ -18,17 +18,15 @@ class Rcmd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Ospf; //type: Rcmd::Ospf
         class Server; //type: Rcmd::Server
@@ -47,8 +45,7 @@ class Rcmd : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf> ospf;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process> process;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server> server;
-
-
+        
 }; // Rcmd
 
 
@@ -60,19 +57,16 @@ class Rcmd::Ospf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Instances; //type: Rcmd::Ospf::Instances
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances> instances;
-
-
+        
 }; // Rcmd::Ospf
 
 
@@ -84,19 +78,16 @@ class Rcmd::Ospf::Instances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Instance; //type: Rcmd::Ospf::Instances::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance> > instance;
-
-
+        
 }; // Rcmd::Ospf::Instances
 
 
@@ -108,15 +99,13 @@ class Rcmd::Ospf::Instances::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance_name; //type: string
-
         class IpfrrEventSummaries; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries
         class PrefixEventStatistics; //type: Rcmd::Ospf::Instances::Instance::PrefixEventStatistics
         class SpfRunSummaries; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries
@@ -138,8 +127,7 @@ class Rcmd::Ospf::Instances::Instance : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines> summary_external_event_offlines;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics> summary_external_event_statistics;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries> summary_external_event_summaries;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance
 
 
@@ -151,19 +139,16 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IpfrrEventSummary; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary> > ipfrr_event_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries
 
 
@@ -175,12 +160,11 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf event_id_xr; //type: uint32
@@ -194,14 +178,12 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary : 
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
         class IpfrrStatistic; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic> > ipfrr_statistic;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode> > remote_node;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
 
@@ -213,12 +195,11 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority; //type: RcmdPriorityLevelEnum
         YLeaf total_routes; //type: uint32
@@ -228,8 +209,6 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::I
         YLeaf local_lfa_coverage; //type: string
         YLeaf remote_lfa_coverage; //type: string
         YLeaf below_threshold; //type: boolean
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
 
@@ -242,24 +221,21 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_node_id; //type: string
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf path_count; //type: uint32
         YLeaf in_use_time; //type: string
-
         class PrimaryPath; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath> > primary_path;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
 
@@ -271,17 +247,14 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath
 
@@ -294,19 +267,16 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrefixEventStatistic; //type: Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic> > prefix_event_statistic;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventStatistics
 
 
@@ -318,12 +288,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatist
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_info; //type: string
         YLeaf prefix; //type: string
@@ -342,8 +311,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatist
         YLeaf delete_count; //type: uint32
         YLeaf threshold_exceed_count; //type: uint32
 
-
-
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
 
 
@@ -355,19 +322,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpfRunSummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary> > spf_run_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries
 
 
@@ -379,15 +343,13 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf spf_run_number; //type: int32
-
         class SpfSummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
         class DijkstraRun; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun
         class InterAreaAndExternal; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal
@@ -395,8 +357,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary : public E
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun> > dijkstra_run;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal> > inter_area_and_external;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary> spf_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
 
@@ -408,12 +369,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf state; //type: RcmdSpfStateEnum
         YLeaf is_data_complete; //type: boolean
@@ -425,12 +385,10 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         YLeaf total_inter_area_and_external_batches; //type: uint16
         YLeaf total_type12lsa_changes; //type: uint16
         YLeaf total_type357lsa_changes; //type: uint16
-
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary> > priority_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
 
 
@@ -442,16 +400,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime
@@ -461,8 +417,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
 
@@ -474,12 +429,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -487,8 +441,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics
 
@@ -501,19 +453,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime
 
@@ -526,19 +475,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime
 
@@ -551,19 +497,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic
 
@@ -576,12 +519,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dijkstra_run_number; //type: uint32
         YLeaf area_id; //type: string
@@ -590,7 +532,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         YLeaf start_time; //type: string
         YLeaf wait_time; //type: uint32
         YLeaf duration; //type: string
-
         class TriggerLsa; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority
         class LsaProcessed; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed
@@ -598,8 +539,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed> > lsa_processed;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority> > priority;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun
 
 
@@ -611,12 +551,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -624,8 +563,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa
 
@@ -638,13 +575,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary
         class ConvergenceTimeline; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline
@@ -655,8 +590,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded> > leaf_networks_added;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary> priority_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority
 
 
@@ -668,16 +602,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime
@@ -687,8 +619,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary
 
 
@@ -700,12 +631,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -713,8 +643,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics
 
@@ -727,19 +655,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime
 
@@ -752,19 +677,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime
 
@@ -777,19 +699,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic
 
@@ -802,13 +721,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RouteOrigin; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin
         class RiBv4Enter; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter
@@ -831,8 +748,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit> ri_bv4_exit;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute> ri_bv4_redistribute;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin> route_origin;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline
 
 
@@ -844,18 +760,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin
 
@@ -868,18 +781,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter
 
@@ -892,18 +802,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit
 
@@ -916,18 +823,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute
 
@@ -940,18 +844,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter
 
@@ -964,18 +865,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit
 
@@ -988,18 +886,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter
 
@@ -1012,18 +907,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit
 
@@ -1036,21 +928,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp
 
 
@@ -1062,18 +951,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete
 
@@ -1086,21 +972,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls
 
 
@@ -1112,18 +995,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
@@ -1136,17 +1016,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded
 
@@ -1159,17 +1036,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted
 
@@ -1182,12 +1056,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -1195,8 +1068,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed
 
@@ -1209,19 +1080,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority> > priority;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal
 
 
@@ -1233,13 +1101,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary
         class ConvergenceTimeline; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline
@@ -1250,8 +1116,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded> > leaf_networks_added;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary> priority_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority
 
 
@@ -1263,19 +1128,17 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
         YLeaf type3ls_as; //type: uint32
         YLeaf type4ls_as; //type: uint32
         YLeaf type57ls_as; //type: uint32
-
         class RouteStatistics; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime
@@ -1283,8 +1146,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary
 
 
@@ -1296,12 +1158,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -1309,8 +1170,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics
 
@@ -1323,19 +1182,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime
 
@@ -1348,19 +1204,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime
 
@@ -1373,13 +1226,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RouteOrigin; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin
         class RiBv4Enter; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter
@@ -1402,8 +1253,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit> ri_bv4_exit;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute> ri_bv4_redistribute;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin> route_origin;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline
 
 
@@ -1415,18 +1265,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin
 
@@ -1439,18 +1286,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter
 
@@ -1463,18 +1307,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit
 
@@ -1487,18 +1328,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute
 
@@ -1511,18 +1349,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter
 
@@ -1535,18 +1370,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit
 
@@ -1559,18 +1391,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter
 
@@ -1583,18 +1412,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit
 
@@ -1607,21 +1433,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp
 
 
@@ -1633,18 +1456,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete
 
@@ -1657,21 +1477,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls
 
 
@@ -1683,18 +1500,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
@@ -1707,17 +1521,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded
 
@@ -1730,17 +1541,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted
 
@@ -1753,19 +1561,16 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IpfrrEventOffline; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline> > ipfrr_event_offline;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines
 
 
@@ -1777,12 +1582,11 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf event_id_xr; //type: uint32
@@ -1796,14 +1600,12 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline : p
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
         class IpfrrStatistic; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic> > ipfrr_statistic;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode> > remote_node;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
 
@@ -1815,12 +1617,11 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority; //type: RcmdPriorityLevelEnum
         YLeaf total_routes; //type: uint32
@@ -1830,8 +1631,6 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Ip
         YLeaf local_lfa_coverage; //type: string
         YLeaf remote_lfa_coverage; //type: string
         YLeaf below_threshold; //type: boolean
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
 
@@ -1844,24 +1643,21 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_node_id; //type: string
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf path_count; //type: uint32
         YLeaf in_use_time; //type: string
-
         class PrimaryPath; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath> > primary_path;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
 
@@ -1873,17 +1669,14 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath
 
@@ -1896,19 +1689,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpfRunOffline; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline> > spf_run_offline;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines
 
 
@@ -1920,15 +1710,13 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf spf_run_number; //type: int32
-
         class SpfSummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         class DijkstraRun; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
         class InterAreaAndExternal; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal
@@ -1936,8 +1724,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline : public En
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun> > dijkstra_run;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal> > inter_area_and_external;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary> spf_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
 
@@ -1949,12 +1736,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf state; //type: RcmdSpfStateEnum
         YLeaf is_data_complete; //type: boolean
@@ -1966,12 +1752,10 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         YLeaf total_inter_area_and_external_batches; //type: uint16
         YLeaf total_type12lsa_changes; //type: uint16
         YLeaf total_type357lsa_changes; //type: uint16
-
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary> > priority_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
 
@@ -1983,16 +1767,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime
@@ -2002,8 +1784,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
 
@@ -2015,12 +1796,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -2028,8 +1808,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics
 
@@ -2042,19 +1820,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime
 
@@ -2067,19 +1842,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime
 
@@ -2092,19 +1864,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic
 
@@ -2117,12 +1886,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dijkstra_run_number; //type: uint32
         YLeaf area_id; //type: string
@@ -2131,7 +1899,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         YLeaf start_time; //type: string
         YLeaf wait_time; //type: uint32
         YLeaf duration; //type: string
-
         class TriggerLsa; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority
         class LsaProcessed; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed
@@ -2139,8 +1906,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed> > lsa_processed;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority> > priority;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
 
 
@@ -2152,12 +1918,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -2165,8 +1930,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa
 
@@ -2179,13 +1942,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary
         class ConvergenceTimeline; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline
@@ -2196,8 +1957,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded> > leaf_networks_added;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary> priority_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority
 
 
@@ -2209,16 +1969,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime
@@ -2228,8 +1986,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary
 
 
@@ -2241,12 +1998,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -2254,8 +2010,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics
 
@@ -2268,19 +2022,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime
 
@@ -2293,19 +2044,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime
 
@@ -2318,19 +2066,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic
 
@@ -2343,13 +2088,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RouteOrigin; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin
         class RiBv4Enter; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter
@@ -2372,8 +2115,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit> ri_bv4_exit;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute> ri_bv4_redistribute;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin> route_origin;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline
 
 
@@ -2385,18 +2127,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin
 
@@ -2409,18 +2148,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter
 
@@ -2433,18 +2169,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit
 
@@ -2457,18 +2190,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute
 
@@ -2481,18 +2211,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter
 
@@ -2505,18 +2232,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit
 
@@ -2529,18 +2253,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter
 
@@ -2553,18 +2274,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit
 
@@ -2577,21 +2295,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp
 
 
@@ -2603,18 +2318,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete
 
@@ -2627,21 +2339,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls
 
 
@@ -2653,18 +2362,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
@@ -2677,17 +2383,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded
 
@@ -2700,17 +2403,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted
 
@@ -2723,12 +2423,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -2736,8 +2435,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed
 
@@ -2750,19 +2447,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority> > priority;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal
 
 
@@ -2774,13 +2468,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary
         class ConvergenceTimeline; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline
@@ -2791,8 +2483,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded> > leaf_networks_added;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary> priority_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority
 
 
@@ -2804,19 +2495,17 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
         YLeaf type3ls_as; //type: uint32
         YLeaf type4ls_as; //type: uint32
         YLeaf type57ls_as; //type: uint32
-
         class RouteStatistics; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime
@@ -2824,8 +2513,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary
 
 
@@ -2837,12 +2525,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -2850,8 +2537,6 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics
 
@@ -2864,19 +2549,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime
 
@@ -2889,19 +2571,16 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime
 
@@ -2914,13 +2593,11 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RouteOrigin; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin
         class RiBv4Enter; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter
@@ -2943,8 +2620,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit> ri_bv4_exit;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute> ri_bv4_redistribute;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin> route_origin;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline
 
 
@@ -2956,18 +2632,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin
 
@@ -2980,18 +2653,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter
 
@@ -3004,18 +2674,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit
 
@@ -3028,18 +2695,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute
 
@@ -3052,18 +2716,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter
 
@@ -3076,18 +2737,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit
 
@@ -3100,18 +2758,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter
 
@@ -3124,18 +2779,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit
 
@@ -3148,21 +2800,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp
 
 
@@ -3174,18 +2823,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete
 
@@ -3198,21 +2844,18 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls
 
 
@@ -3224,18 +2867,15 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
@@ -3248,17 +2888,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded
 
@@ -3271,17 +2908,14 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted
 
@@ -3294,19 +2928,16 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SummaryExternalEventSummary; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary> > summary_external_event_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries
 
 
@@ -3318,12 +2949,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf prefix; //type: string
@@ -3337,7 +2967,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
         YLeaf cost; //type: uint32
         YLeaf trigger_time; //type: string
-
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime
         class Path; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path
@@ -3351,8 +2980,7 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path> > path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine> > time_line;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary
 
 
@@ -3364,19 +2992,16 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime
 
@@ -3389,19 +3014,16 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime
 
@@ -3414,23 +3036,20 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
-
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath> > lfa_path;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path
 
 
@@ -3442,12 +3061,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
         YLeaf interface_name; //type: string
@@ -3455,8 +3073,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
         YLeaf remote_node_id; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath
 
@@ -3469,12 +3085,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -3482,8 +3097,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa
 
@@ -3496,12 +3109,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_origin; //type: string
         YLeaf ri_bv4_enter; //type: string
@@ -3511,14 +3123,12 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         YLeaf ldp_exit; //type: string
         YLeaf lsd_enter; //type: string
         YLeaf lsd_exit; //type: string
-
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp> > lc_ip;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls> > lc_mpls;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine
 
 
@@ -3530,18 +3140,15 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp
 
@@ -3554,18 +3161,15 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls
 
@@ -3578,12 +3182,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -3591,8 +3194,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed
 
@@ -3605,19 +3206,16 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrefixEventSummary; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary> > prefix_event_summary;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries
 
 
@@ -3629,12 +3227,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf prefix; //type: string
@@ -3648,7 +3245,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
         YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
         YLeaf cost; //type: uint32
         YLeaf trigger_time; //type: string
-
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime
         class Path; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
@@ -3662,8 +3258,7 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path> > path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine> > time_line;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
 
@@ -3675,19 +3270,16 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime
 
@@ -3700,19 +3292,16 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime
 
@@ -3725,23 +3314,20 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
-
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath> > lfa_path;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
 
 
@@ -3753,12 +3339,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
         YLeaf interface_name; //type: string
@@ -3766,8 +3351,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
         YLeaf remote_node_id; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
@@ -3780,12 +3363,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -3793,8 +3375,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa
 
@@ -3807,12 +3387,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_origin; //type: string
         YLeaf ri_bv4_enter; //type: string
@@ -3822,14 +3401,12 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf ldp_exit; //type: string
         YLeaf lsd_enter; //type: string
         YLeaf lsd_exit; //type: string
-
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp> > lc_ip;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls> > lc_mpls;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine
 
 
@@ -3841,18 +3418,15 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
 
@@ -3865,18 +3439,15 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
 
@@ -3889,12 +3460,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -3902,8 +3472,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed
 
@@ -3916,19 +3484,16 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SummaryExternalEventOffline; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline> > summary_external_event_offline;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines
 
 
@@ -3940,12 +3505,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf prefix; //type: string
@@ -3959,7 +3523,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
         YLeaf cost; //type: uint32
         YLeaf trigger_time; //type: string
-
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime
         class Path; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path
@@ -3973,8 +3536,7 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path> > path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine> > time_line;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline
 
 
@@ -3986,19 +3548,16 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime
 
@@ -4011,19 +3570,16 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime
 
@@ -4036,23 +3592,20 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
-
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath> > lfa_path;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path
 
 
@@ -4064,12 +3617,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
         YLeaf interface_name; //type: string
@@ -4077,8 +3629,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
         YLeaf remote_node_id; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath
 
@@ -4091,12 +3641,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -4104,8 +3653,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa
 
@@ -4118,12 +3665,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_origin; //type: string
         YLeaf ri_bv4_enter; //type: string
@@ -4133,14 +3679,12 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         YLeaf ldp_exit; //type: string
         YLeaf lsd_enter; //type: string
         YLeaf lsd_exit; //type: string
-
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp> > lc_ip;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls> > lc_mpls;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine
 
 
@@ -4152,18 +3696,15 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp
 
@@ -4176,18 +3717,15 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls
 
@@ -4200,12 +3738,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -4213,8 +3750,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::LsaProcessed
 
@@ -4227,19 +3762,16 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrefixEventOffline; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline> > prefix_event_offline;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines
 
 
@@ -4251,12 +3783,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf prefix; //type: string
@@ -4270,7 +3801,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
         YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
         YLeaf cost; //type: uint32
         YLeaf trigger_time; //type: string
-
         class IpConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime
         class Path; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
@@ -4284,8 +3814,7 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path> > path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine> > time_line;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
 
@@ -4297,19 +3826,16 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime
 
@@ -4322,19 +3848,16 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime
 
@@ -4347,23 +3870,20 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
-
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath> > lfa_path;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
 
 
@@ -4375,12 +3895,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
         YLeaf interface_name; //type: string
@@ -4388,8 +3907,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
         YLeaf remote_node_id; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
@@ -4402,12 +3919,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -4415,8 +3931,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa
 
@@ -4429,12 +3943,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_origin; //type: string
         YLeaf ri_bv4_enter; //type: string
@@ -4444,14 +3957,12 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf ldp_exit; //type: string
         YLeaf lsd_enter; //type: string
         YLeaf lsd_exit; //type: string
-
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp> > lc_ip;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls> > lc_mpls;
-
-
+        
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine
 
 
@@ -4463,18 +3974,15 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
 
@@ -4487,18 +3995,15 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
 
@@ -4511,12 +4016,11 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -4524,8 +4028,6 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed
 
@@ -4538,12 +4040,11 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf inter_area_routes; //type: uint32
         YLeaf inter_area_added; //type: uint32
@@ -4562,8 +4063,6 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics : public E
         YLeaf external_medium; //type: uint32
         YLeaf external_low; //type: uint32
 
-
-
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics
 
 
@@ -4575,21 +4074,18 @@ class Rcmd::Server : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Normal; //type: Rcmd::Server::Normal
         class Detail; //type: Rcmd::Server::Detail
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail> detail;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal> normal;
-
-
+        
 }; // Rcmd::Server
 
 
@@ -4601,12 +4097,11 @@ class Rcmd::Server::Normal : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_name; //type: string
         YLeaf status; //type: RcmdBagEnableDisableEnum
@@ -4634,14 +4129,12 @@ class Rcmd::Server::Normal : public Entity
         YLeaf archive_count; //type: uint32
         YLeaf diagnostics_archive_path; //type: string
         YLeaf diagnostics_archive_node; //type: string
-
         class ProtocolConfig; //type: Rcmd::Server::Normal::ProtocolConfig
         class ServerDetail; //type: Rcmd::Server::Normal::ServerDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ProtocolConfig> > protocol_config;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ServerDetail> > server_detail;
-
-
+        
 }; // Rcmd::Server::Normal
 
 
@@ -4653,20 +4146,17 @@ class Rcmd::Server::Normal::ProtocolConfig : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_name; //type: string
-
         class Priority; //type: Rcmd::Server::Normal::ProtocolConfig::Priority
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ProtocolConfig::Priority> > priority;
-
-
+        
 }; // Rcmd::Server::Normal::ProtocolConfig
 
 
@@ -4678,18 +4168,15 @@ class Rcmd::Server::Normal::ProtocolConfig::Priority : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority_name; //type: RcmdPriorityLevelEnum
         YLeaf threshold; //type: uint32
         YLeaf disable; //type: RcmdBoolYesNoEnum
-
-
 
 }; // Rcmd::Server::Normal::ProtocolConfig::Priority
 
@@ -4702,21 +4189,18 @@ class Rcmd::Server::Normal::ServerDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf overload_suspend; //type: uint32
         YLeaf memory_suspend; //type: uint32
-
         class TraceInformation; //type: Rcmd::Server::Normal::ServerDetail::TraceInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ServerDetail::TraceInformation> > trace_information;
-
-
+        
 }; // Rcmd::Server::Normal::ServerDetail
 
 
@@ -4728,19 +4212,16 @@ class Rcmd::Server::Normal::ServerDetail::TraceInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trace_name; //type: string
         YLeaf total_stats; //type: uint32
         YLeaf last_run_stats; //type: uint32
         YLeaf error_stats; //type: uint32
-
-
 
 }; // Rcmd::Server::Normal::ServerDetail::TraceInformation
 
@@ -4753,12 +4234,11 @@ class Rcmd::Server::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_name; //type: string
         YLeaf status; //type: RcmdBagEnableDisableEnum
@@ -4786,14 +4266,12 @@ class Rcmd::Server::Detail : public Entity
         YLeaf archive_count; //type: uint32
         YLeaf diagnostics_archive_path; //type: string
         YLeaf diagnostics_archive_node; //type: string
-
         class ProtocolConfig; //type: Rcmd::Server::Detail::ProtocolConfig
         class ServerDetail; //type: Rcmd::Server::Detail::ServerDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ProtocolConfig> > protocol_config;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ServerDetail> > server_detail;
-
-
+        
 }; // Rcmd::Server::Detail
 
 
@@ -4805,20 +4283,17 @@ class Rcmd::Server::Detail::ProtocolConfig : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_name; //type: string
-
         class Priority; //type: Rcmd::Server::Detail::ProtocolConfig::Priority
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ProtocolConfig::Priority> > priority;
-
-
+        
 }; // Rcmd::Server::Detail::ProtocolConfig
 
 
@@ -4830,18 +4305,15 @@ class Rcmd::Server::Detail::ProtocolConfig::Priority : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority_name; //type: RcmdPriorityLevelEnum
         YLeaf threshold; //type: uint32
         YLeaf disable; //type: RcmdBoolYesNoEnum
-
-
 
 }; // Rcmd::Server::Detail::ProtocolConfig::Priority
 
@@ -4854,21 +4326,18 @@ class Rcmd::Server::Detail::ServerDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf overload_suspend; //type: uint32
         YLeaf memory_suspend; //type: uint32
-
         class TraceInformation; //type: Rcmd::Server::Detail::ServerDetail::TraceInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ServerDetail::TraceInformation> > trace_information;
-
-
+        
 }; // Rcmd::Server::Detail::ServerDetail
 
 
@@ -4880,19 +4349,16 @@ class Rcmd::Server::Detail::ServerDetail::TraceInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf trace_name; //type: string
         YLeaf total_stats; //type: uint32
         YLeaf last_run_stats; //type: uint32
         YLeaf error_stats; //type: uint32
-
-
 
 }; // Rcmd::Server::Detail::ServerDetail::TraceInformation
 
@@ -4905,19 +4371,16 @@ class Rcmd::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NodeInformation; //type: Rcmd::Node::NodeInformation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Node::NodeInformation> > node_information;
-
-
+        
 }; // Rcmd::Node
 
 
@@ -4929,12 +4392,11 @@ class Rcmd::Node::NodeInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_id; //type: uint32
         YLeaf node_name; //type: string
@@ -4949,8 +4411,6 @@ class Rcmd::Node::NodeInformation : public Entity
         YLeaf diag_mode; //type: uint32
         YLeaf redundancy_state; //type: uint32
 
-
-
 }; // Rcmd::Node::NodeInformation
 
 
@@ -4962,19 +4422,16 @@ class Rcmd::Isis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Instances; //type: Rcmd::Isis::Instances
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances> instances;
-
-
+        
 }; // Rcmd::Isis
 
 
@@ -4986,19 +4443,16 @@ class Rcmd::Isis::Instances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Instance; //type: Rcmd::Isis::Instances::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance> > instance;
-
-
+        
 }; // Rcmd::Isis::Instances
 
 
@@ -5010,15 +4464,13 @@ class Rcmd::Isis::Instances::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance_name; //type: string
-
         class IpfrrEventSummaries; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries
         class PrefixEventStatistics; //type: Rcmd::Isis::Instances::Instance::PrefixEventStatistics
         class SpfRunSummaries; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries
@@ -5036,8 +4488,7 @@ class Rcmd::Isis::Instances::Instance : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries> prefix_event_summaries;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines> spf_run_offlines;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries> spf_run_summaries;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance
 
 
@@ -5049,19 +4500,16 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IpfrrEventSummary; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary> > ipfrr_event_summary;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries
 
 
@@ -5073,12 +4521,11 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf event_id_xr; //type: uint32
@@ -5092,14 +4539,12 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary : 
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
         class IpfrrStatistic; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic> > ipfrr_statistic;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode> > remote_node;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
 
@@ -5111,12 +4556,11 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority; //type: RcmdPriorityLevelEnum
         YLeaf total_routes; //type: uint32
@@ -5126,8 +4570,6 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::I
         YLeaf local_lfa_coverage; //type: string
         YLeaf remote_lfa_coverage; //type: string
         YLeaf below_threshold; //type: boolean
-
-
 
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
 
@@ -5140,24 +4582,21 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_node_id; //type: string
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf path_count; //type: uint32
         YLeaf in_use_time; //type: string
-
         class PrimaryPath; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath> > primary_path;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
 
@@ -5169,17 +4608,14 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath
 
@@ -5192,19 +4628,16 @@ class Rcmd::Isis::Instances::Instance::PrefixEventStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrefixEventStatistic; //type: Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic> > prefix_event_statistic;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventStatistics
 
 
@@ -5216,12 +4649,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatist
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_info; //type: string
         YLeaf prefix; //type: string
@@ -5240,8 +4672,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatist
         YLeaf delete_count; //type: uint32
         YLeaf threshold_exceed_count; //type: uint32
 
-
-
 }; // Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
 
 
@@ -5253,19 +4683,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpfRunSummary; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary> > spf_run_summary;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries
 
 
@@ -5277,18 +4704,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf spf_run_number; //type: int32
         YLeaf start_time; //type: string
         YLeaf wait_time; //type: uint32
         YLeaf reason; //type: string
-
         class SpfSummary; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
         class NodeStatistics; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics
         class TriggerLsp; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp
@@ -5302,8 +4727,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary : public E
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority> > priority;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary> spf_summary;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp> > trigger_lsp;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
 
@@ -5315,12 +4739,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf topology; //type: uint32
         YLeaf isis_level; //type: RcmdIsisLvlEnum
@@ -5331,12 +4754,10 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         YLeaf trigger_time; //type: string
         YLeaf duration; //type: string
         YLeaf total_lsp_changes; //type: uint16
-
         class PrioritySummary; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary> > priority_summary;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
 
 
@@ -5348,16 +4769,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime
@@ -5367,8 +4786,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
 
@@ -5380,12 +4798,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -5393,8 +4810,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics
 
@@ -5407,19 +4822,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime
 
@@ -5432,19 +4844,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime
 
@@ -5457,19 +4866,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic
 
@@ -5482,12 +4888,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStati
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -5495,8 +4900,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStati
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics
 
@@ -5509,19 +4912,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLs
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsp_id; //type: string
         YLeaf sequence_number; //type: uint32
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp
 
@@ -5534,13 +4934,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrioritySummary; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary
         class ConvergenceTimeline; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline
@@ -5551,8 +4949,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksAdded> > leaf_networks_added;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary> priority_summary;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority
 
 
@@ -5564,16 +4961,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime
@@ -5583,8 +4978,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary
 
 
@@ -5596,12 +4990,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -5609,8 +5002,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics
 
@@ -5623,19 +5014,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime
 
@@ -5648,19 +5036,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime
 
@@ -5673,19 +5058,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::FrrStatistic
 
@@ -5698,13 +5080,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RouteOrigin; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RouteOrigin
         class RiBv4Enter; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Enter
@@ -5727,8 +5107,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Exit> ri_bv4_exit;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Redistribute> ri_bv4_redistribute;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RouteOrigin> route_origin;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline
 
 
@@ -5740,18 +5119,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RouteOrigin
 
@@ -5764,18 +5140,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Enter
 
@@ -5788,18 +5161,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Exit
 
@@ -5812,18 +5182,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Redistribute
 
@@ -5836,18 +5203,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpEnter
 
@@ -5860,18 +5224,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpExit
 
@@ -5884,18 +5245,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdEnter
 
@@ -5908,18 +5266,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdExit
 
@@ -5932,21 +5287,18 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp
 
 
@@ -5958,18 +5310,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::FibComplete
 
@@ -5982,21 +5331,18 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls
 
 
@@ -6008,18 +5354,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
@@ -6032,17 +5375,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksAdded
 
@@ -6055,17 +5395,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksDeleted
 
@@ -6078,19 +5415,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProces
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsp_id; //type: string
         YLeaf sequence_number; //type: uint32
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed
 
@@ -6103,12 +5437,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegene
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf serial_number_xr; //type: uint32
         YLeaf lsp_id; //type: string
@@ -6117,8 +5450,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegene
         YLeaf isis_level; //type: RcmdIsisLvlEnum
         YLeaf spf_run_number; //type: uint32
         YLeaf reason; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated
 
@@ -6131,19 +5462,16 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IpfrrEventOffline; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline> > ipfrr_event_offline;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines
 
 
@@ -6155,12 +5483,11 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf event_id_xr; //type: uint32
@@ -6174,14 +5501,12 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline : p
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
         class IpfrrStatistic; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic> > ipfrr_statistic;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode> > remote_node;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
 
@@ -6193,12 +5518,11 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf priority; //type: RcmdPriorityLevelEnum
         YLeaf total_routes; //type: uint32
@@ -6208,8 +5532,6 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Ip
         YLeaf local_lfa_coverage; //type: string
         YLeaf remote_lfa_coverage; //type: string
         YLeaf below_threshold; //type: boolean
-
-
 
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
 
@@ -6222,24 +5544,21 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_node_id; //type: string
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf path_count; //type: uint32
         YLeaf in_use_time; //type: string
-
         class PrimaryPath; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath> > primary_path;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
 
@@ -6251,17 +5570,14 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Re
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath
 
@@ -6274,19 +5590,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpfRunOffline; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline> > spf_run_offline;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines
 
 
@@ -6298,18 +5611,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf spf_run_number; //type: int32
         YLeaf start_time; //type: string
         YLeaf wait_time; //type: uint32
         YLeaf reason; //type: string
-
         class SpfSummary; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         class NodeStatistics; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics
         class TriggerLsp; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp
@@ -6323,8 +5634,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline : public En
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority> > priority;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary> spf_summary;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp> > trigger_lsp;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
 
@@ -6336,12 +5646,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf topology; //type: uint32
         YLeaf isis_level; //type: RcmdIsisLvlEnum
@@ -6352,12 +5661,10 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         YLeaf trigger_time; //type: string
         YLeaf duration; //type: string
         YLeaf total_lsp_changes; //type: uint16
-
         class PrioritySummary; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary> > priority_summary;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
 
@@ -6369,16 +5676,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime
@@ -6388,8 +5693,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
 
@@ -6401,12 +5705,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -6414,8 +5717,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics
 
@@ -6428,19 +5729,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime
 
@@ -6453,19 +5751,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime
 
@@ -6478,19 +5773,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic
 
@@ -6503,12 +5795,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatis
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -6516,8 +5807,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatis
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics
 
@@ -6530,19 +5819,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsp_id; //type: string
         YLeaf sequence_number; //type: uint32
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp
 
@@ -6555,13 +5841,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrioritySummary; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary
         class ConvergenceTimeline; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline
@@ -6572,8 +5856,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority :
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksAdded> > leaf_networks_added;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary> priority_summary;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority
 
 
@@ -6585,16 +5868,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf level; //type: RcmdPriorityLevelEnum
         YLeaf threshold_exceeded; //type: boolean
-
         class RouteStatistics; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics
         class IpConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime
@@ -6604,8 +5885,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics> route_statistics;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary
 
 
@@ -6617,12 +5897,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf adds; //type: uint32
         YLeaf deletes; //type: uint32
@@ -6630,8 +5909,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
         YLeaf reachables; //type: uint32
         YLeaf unreachables; //type: uint32
         YLeaf touches; //type: uint32
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics
 
@@ -6644,19 +5921,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime
 
@@ -6669,19 +5943,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime
 
@@ -6694,19 +5965,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_routes; //type: uint32
         YLeaf fully_protected_routes; //type: uint32
         YLeaf partially_protected_routes; //type: uint32
         YLeaf coverage; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::FrrStatistic
 
@@ -6719,13 +5987,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RouteOrigin; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RouteOrigin
         class RiBv4Enter; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Enter
@@ -6748,8 +6014,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Exit> ri_bv4_exit;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Redistribute> ri_bv4_redistribute;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RouteOrigin> route_origin;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline
 
 
@@ -6761,18 +6026,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RouteOrigin
 
@@ -6785,18 +6047,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Enter
 
@@ -6809,18 +6068,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Exit
 
@@ -6833,18 +6089,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Redistribute
 
@@ -6857,18 +6110,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpEnter
 
@@ -6881,18 +6131,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpExit
 
@@ -6905,18 +6152,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdEnter
 
@@ -6929,18 +6173,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdExit
 
@@ -6953,21 +6194,18 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp
 
 
@@ -6979,18 +6217,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::FibComplete
 
@@ -7003,21 +6238,18 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
-
         class FibComplete; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls
 
 
@@ -7029,18 +6261,15 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_time; //type: string
         YLeaf end_time; //type: string
         YLeaf duration; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::FibComplete
 
@@ -7053,17 +6282,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksAdded
 
@@ -7076,17 +6302,14 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf net_mask; //type: uint8
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksDeleted
 
@@ -7099,19 +6322,16 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcess
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsp_id; //type: string
         YLeaf sequence_number; //type: uint32
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed
 
@@ -7124,12 +6344,11 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegener
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf serial_number_xr; //type: uint32
         YLeaf lsp_id; //type: string
@@ -7138,8 +6357,6 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegener
         YLeaf isis_level; //type: RcmdIsisLvlEnum
         YLeaf spf_run_number; //type: uint32
         YLeaf reason; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated
 
@@ -7152,19 +6369,16 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrefixEventSummary; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary> > prefix_event_summary;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries
 
 
@@ -7176,12 +6390,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf prefix; //type: string
@@ -7195,7 +6408,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
         YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
         YLeaf cost; //type: uint32
         YLeaf trigger_time; //type: string
-
         class IpConvergenceTime; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime
         class Path; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
@@ -7209,8 +6421,7 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path> > path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine> > time_line;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
 
@@ -7222,19 +6433,16 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime
 
@@ -7247,19 +6455,16 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime
 
@@ -7272,23 +6477,20 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
-
         class LfaPath; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath> > lfa_path;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
 
 
@@ -7300,12 +6502,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
         YLeaf interface_name; //type: string
@@ -7313,8 +6514,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
         YLeaf remote_node_id; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
@@ -7327,12 +6526,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -7340,8 +6538,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa
 
@@ -7354,12 +6550,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_origin; //type: string
         YLeaf ri_bv4_enter; //type: string
@@ -7369,14 +6564,12 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf ldp_exit; //type: string
         YLeaf lsd_enter; //type: string
         YLeaf lsd_exit; //type: string
-
         class LcIp; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp> > lc_ip;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls> > lc_mpls;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine
 
 
@@ -7388,18 +6581,15 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
 
@@ -7412,18 +6602,15 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
 
@@ -7436,12 +6623,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -7449,8 +6635,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed
 
@@ -7463,19 +6647,16 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PrefixEventOffline; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline> > prefix_event_offline;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines
 
 
@@ -7487,12 +6668,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf prefix; //type: string
@@ -7506,7 +6686,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
         YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
         YLeaf cost; //type: uint32
         YLeaf trigger_time; //type: string
-
         class IpConvergenceTime; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime
         class MplsConvergenceTime; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime
         class Path; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
@@ -7520,8 +6699,7 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path> > path;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine> > time_line;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa> > trigger_lsa;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
 
@@ -7533,19 +6711,16 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime
 
@@ -7558,19 +6733,16 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum_time; //type: string
         YLeaf maximum_time; //type: string
         YLeaf slowest_node_name; //type: string
         YLeaf fastest_node_name; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime
 
@@ -7583,23 +6755,20 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbour_address; //type: string
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
-
         class LfaPath; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath> > lfa_path;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
 
 
@@ -7611,12 +6780,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
         YLeaf interface_name; //type: string
@@ -7624,8 +6792,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf change_type; //type: RcmdChangeEnum
         YLeaf path_metric; //type: uint32
         YLeaf remote_node_id; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
@@ -7638,12 +6804,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -7651,8 +6816,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa
 
@@ -7665,12 +6828,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_origin; //type: string
         YLeaf ri_bv4_enter; //type: string
@@ -7680,14 +6842,12 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf ldp_exit; //type: string
         YLeaf lsd_enter; //type: string
         YLeaf lsd_exit; //type: string
-
         class LcIp; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp> > lc_ip;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls> > lc_mpls;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine
 
 
@@ -7699,18 +6859,15 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
 
@@ -7723,18 +6880,15 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
         YLeaf speed; //type: RcmdLinecardSpeedEnum
         YLeaf fib_complete; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
 
@@ -7747,12 +6901,11 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsa_id; //type: string
         YLeaf sequence_number; //type: string
@@ -7760,8 +6913,6 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         YLeaf origin_router_id; //type: string
         YLeaf change_type; //type: RcmdLsChangeEnum
         YLeaf reception_time; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed
 
@@ -7774,19 +6925,16 @@ class Rcmd::Isis::Instances::Instance::LspRegenerateds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LspRegenerated; //type: Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated> > lsp_regenerated;
-
-
+        
 }; // Rcmd::Isis::Instances::Instance::LspRegenerateds
 
 
@@ -7798,12 +6946,11 @@ class Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf serial_number; //type: int32
         YLeaf serial_number_xr; //type: uint32
@@ -7813,8 +6960,6 @@ class Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated : public 
         YLeaf isis_level; //type: RcmdIsisLvlEnum
         YLeaf spf_run_number; //type: uint32
         YLeaf reason; //type: string
-
-
 
 }; // Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated
 
@@ -7827,13 +6972,11 @@ class Rcmd::Memory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MemoryInfo; //type: Rcmd::Memory::MemoryInfo
         class EdmMemoryInfo; //type: Rcmd::Memory::EdmMemoryInfo
@@ -7842,8 +6985,7 @@ class Rcmd::Memory : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Memory::EdmMemoryInfo> > edm_memory_info;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Memory::MemoryInfo> > memory_info;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Memory::StringMemoryInfo> > string_memory_info;
-
-
+        
 }; // Rcmd::Memory
 
 
@@ -7855,12 +6997,11 @@ class Rcmd::Memory::MemoryInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf structure_name; //type: string
         YLeaf size; //type: uint32
@@ -7869,8 +7010,6 @@ class Rcmd::Memory::MemoryInfo : public Entity
         YLeaf alloc_count; //type: uint32
         YLeaf freed_count; //type: uint32
         YLeaf memory_type; //type: RcmdShowMemEnum
-
-
 
 }; // Rcmd::Memory::MemoryInfo
 
@@ -7883,19 +7022,16 @@ class Rcmd::Memory::EdmMemoryInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf size; //type: uint32
         YLeaf total; //type: uint32
         YLeaf success; //type: uint32
         YLeaf failure; //type: uint32
-
-
 
 }; // Rcmd::Memory::EdmMemoryInfo
 
@@ -7908,19 +7044,16 @@ class Rcmd::Memory::StringMemoryInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf size; //type: uint32
         YLeaf total; //type: uint32
         YLeaf success; //type: uint32
         YLeaf failure; //type: uint32
-
-
 
 }; // Rcmd::Memory::StringMemoryInfo
 
@@ -7933,13 +7066,11 @@ class Rcmd::Ldp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sessions; //type: Rcmd::Ldp::Sessions
         class RemoteLfaS; //type: Rcmd::Ldp::RemoteLfaS
@@ -7948,8 +7079,7 @@ class Rcmd::Ldp : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS> remote_lfa_s;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries> remote_lfa_summaries;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::Sessions> sessions;
-
-
+        
 }; // Rcmd::Ldp
 
 
@@ -7961,19 +7091,16 @@ class Rcmd::Ldp::Sessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Session; //type: Rcmd::Ldp::Sessions::Session
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::Sessions::Session> > session;
-
-
+        
 }; // Rcmd::Ldp::Sessions
 
 
@@ -7985,12 +7112,11 @@ class Rcmd::Ldp::Sessions::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf event_id_xr; //type: uint32
@@ -8000,8 +7126,6 @@ class Rcmd::Ldp::Sessions::Session : public Entity
         YLeaf interface_name; //type: string
         YLeaf address; //type: string
         YLeaf state; //type: RcmdShowLdpNeighbourStatusEnum
-
-
 
 }; // Rcmd::Ldp::Sessions::Session
 
@@ -8014,19 +7138,16 @@ class Rcmd::Ldp::RemoteLfaS : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RemoteLfa; //type: Rcmd::Ldp::RemoteLfaS::RemoteLfa
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa> > remote_lfa;
-
-
+        
 }; // Rcmd::Ldp::RemoteLfaS
 
 
@@ -8038,12 +7159,11 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf event_id_xr; //type: uint32
@@ -8052,7 +7172,6 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa : public Entity
         YLeaf process_name; //type: string
         YLeaf ipfrr_event_id; //type: uint32
         YLeaf below_threshold; //type: boolean
-
         class SessionStatistic; //type: Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic
         class RemoteNode; //type: Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode
         class Logs; //type: Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs
@@ -8060,8 +7179,7 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs> > logs;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode> > remote_node;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic> > session_statistic;
-
-
+        
 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa
 
 
@@ -8073,12 +7191,11 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_state; //type: RcmdShowLdpSessionStateEnum
         YLeaf session_count; //type: uint32
@@ -8087,8 +7204,6 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic : public Entity
         YLeaf remote_label_count; //type: uint32
         YLeaf protected_route_count; //type: uint32
         YLeaf protected_path_count; //type: uint32
-
-
 
 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic
 
@@ -8101,12 +7216,11 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_node_id; //type: string
         YLeaf lsr_id; //type: string
@@ -8118,8 +7232,6 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode : public Entity
         YLeaf remote_label_count; //type: uint32
         YLeaf protected_route_count; //type: uint32
         YLeaf protected_path_count; //type: uint32
-
-
 
 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode
 
@@ -8132,19 +7244,16 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf log_time; //type: string
         YLeaf label_coverage_state; //type: RcmdShowLdpConvStateEnum
         YLeaf route_count; //type: uint32
         YLeaf remote_label_count; //type: uint32
-
-
 
 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs
 
@@ -8157,19 +7266,16 @@ class Rcmd::Ldp::RemoteLfaSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RemoteLfaSummary; //type: Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary> > remote_lfa_summary;
-
-
+        
 }; // Rcmd::Ldp::RemoteLfaSummaries
 
 
@@ -8181,12 +7287,11 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_id; //type: int32
         YLeaf event_id_xr; //type: uint32
@@ -8195,7 +7300,6 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary : public Entity
         YLeaf process_name; //type: string
         YLeaf ipfrr_event_id; //type: uint32
         YLeaf below_threshold; //type: boolean
-
         class SessionStatistic; //type: Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic
         class RemoteNode; //type: Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode
         class Logs; //type: Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs
@@ -8203,8 +7307,7 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs> > logs;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode> > remote_node;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic> > session_statistic;
-
-
+        
 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary
 
 
@@ -8216,12 +7319,11 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_state; //type: RcmdShowLdpSessionStateEnum
         YLeaf session_count; //type: uint32
@@ -8230,8 +7332,6 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic : public
         YLeaf remote_label_count; //type: uint32
         YLeaf protected_route_count; //type: uint32
         YLeaf protected_path_count; //type: uint32
-
-
 
 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic
 
@@ -8244,12 +7344,11 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf remote_node_id; //type: string
         YLeaf lsr_id; //type: string
@@ -8262,8 +7361,6 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode : public Entit
         YLeaf protected_route_count; //type: uint32
         YLeaf protected_path_count; //type: uint32
 
-
-
 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode
 
 
@@ -8275,19 +7372,16 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf log_time; //type: string
         YLeaf label_coverage_state; //type: RcmdShowLdpConvStateEnum
         YLeaf route_count; //type: uint32
         YLeaf remote_label_count; //type: uint32
-
-
 
 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs
 
@@ -8300,19 +7394,16 @@ class Rcmd::Intf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Events; //type: Rcmd::Intf::Events
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Intf::Events> events;
-
-
+        
 }; // Rcmd::Intf
 
 
@@ -8324,19 +7415,16 @@ class Rcmd::Intf::Events : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Event; //type: Rcmd::Intf::Events::Event
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Intf::Events::Event> > event;
-
-
+        
 }; // Rcmd::Intf::Events
 
 
@@ -8348,12 +7436,11 @@ class Rcmd::Intf::Events::Event : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_no; //type: int32
         YLeaf sequence_no; //type: uint32
@@ -8362,8 +7449,6 @@ class Rcmd::Intf::Events::Event : public Entity
         YLeaf event_type; //type: RcmdShowIntfEventEnum
         YLeaf event_time; //type: string
         YLeaf primary_address; //type: string
-
-
 
 }; // Rcmd::Intf::Events::Event
 
@@ -8376,13 +7461,11 @@ class Rcmd::Process : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Isis; //type: Rcmd::Process::Isis
         class Ospf; //type: Rcmd::Process::Ospf
@@ -8391,8 +7474,7 @@ class Rcmd::Process : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis> isis;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp> ldp;
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf> ospf;
-
-
+        
 }; // Rcmd::Process
 
 
@@ -8404,19 +7486,16 @@ class Rcmd::Process::Isis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Process_; //type: Rcmd::Process::Isis::Process_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_> > process;
-
-
+        
 }; // Rcmd::Process::Isis
 
 
@@ -8428,21 +7507,18 @@ class Rcmd::Process::Isis::Process_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_id; //type: RcmdProtocolIdEnum
         YLeaf process_name; //type: string
-
         class InstanceName; //type: Rcmd::Process::Isis::Process_::InstanceName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_::InstanceName> > instance_name;
-
-
+        
 }; // Rcmd::Process::Isis::Process_
 
 
@@ -8454,12 +7530,11 @@ class Rcmd::Process::Isis::Process_::InstanceName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf last_update_time; //type: string
@@ -8471,12 +7546,10 @@ class Rcmd::Process::Isis::Process_::InstanceName : public Entity
         YLeaf lsp_regeneration_serial; //type: uint32
         YLeaf arch_spf_event; //type: uint32
         YLeaf arch_lsp_regeneration; //type: uint32
-
         class Instance; //type: Rcmd::Process::Isis::Process_::InstanceName::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_::InstanceName::Instance> > instance;
-
-
+        
 }; // Rcmd::Process::Isis::Process_::InstanceName
 
 
@@ -8488,12 +7561,11 @@ class Rcmd::Process::Isis::Process_::InstanceName::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance_id; //type: uint32
         YLeaf instance_state; //type: RcmdShowInstStateEnum
@@ -8508,8 +7580,6 @@ class Rcmd::Process::Isis::Process_::InstanceName::Instance : public Entity
         YLeaf no_route_change_spf_nos; //type: uint32
         YLeaf not_interested_spf_nos; //type: uint32
         YLeaf total_spt_nos; //type: uint32
-
-
 
 }; // Rcmd::Process::Isis::Process_::InstanceName::Instance
 
@@ -8522,19 +7592,16 @@ class Rcmd::Process::Ospf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Process_; //type: Rcmd::Process::Ospf::Process_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_> > process;
-
-
+        
 }; // Rcmd::Process::Ospf
 
 
@@ -8546,21 +7613,18 @@ class Rcmd::Process::Ospf::Process_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_id; //type: RcmdProtocolIdEnum
         YLeaf process_name; //type: string
-
         class InstanceName; //type: Rcmd::Process::Ospf::Process_::InstanceName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_::InstanceName> > instance_name;
-
-
+        
 }; // Rcmd::Process::Ospf::Process_
 
 
@@ -8572,12 +7636,11 @@ class Rcmd::Process::Ospf::Process_::InstanceName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf last_update_time; //type: string
@@ -8589,12 +7652,10 @@ class Rcmd::Process::Ospf::Process_::InstanceName : public Entity
         YLeaf lsp_regeneration_serial; //type: uint32
         YLeaf arch_spf_event; //type: uint32
         YLeaf arch_lsp_regeneration; //type: uint32
-
         class Instance; //type: Rcmd::Process::Ospf::Process_::InstanceName::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_::InstanceName::Instance> > instance;
-
-
+        
 }; // Rcmd::Process::Ospf::Process_::InstanceName
 
 
@@ -8606,12 +7667,11 @@ class Rcmd::Process::Ospf::Process_::InstanceName::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance_id; //type: uint32
         YLeaf instance_state; //type: RcmdShowInstStateEnum
@@ -8626,8 +7686,6 @@ class Rcmd::Process::Ospf::Process_::InstanceName::Instance : public Entity
         YLeaf no_route_change_spf_nos; //type: uint32
         YLeaf not_interested_spf_nos; //type: uint32
         YLeaf total_spt_nos; //type: uint32
-
-
 
 }; // Rcmd::Process::Ospf::Process_::InstanceName::Instance
 
@@ -8640,19 +7698,16 @@ class Rcmd::Process::Ldp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Process_; //type: Rcmd::Process::Ldp::Process_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_> > process;
-
-
+        
 }; // Rcmd::Process::Ldp
 
 
@@ -8664,21 +7719,18 @@ class Rcmd::Process::Ldp::Process_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_id; //type: RcmdProtocolIdEnum
         YLeaf process_name; //type: string
-
         class InstanceName; //type: Rcmd::Process::Ldp::Process_::InstanceName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_::InstanceName> > instance_name;
-
-
+        
 }; // Rcmd::Process::Ldp::Process_
 
 
@@ -8690,12 +7742,11 @@ class Rcmd::Process::Ldp::Process_::InstanceName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf last_update_time; //type: string
@@ -8707,12 +7758,10 @@ class Rcmd::Process::Ldp::Process_::InstanceName : public Entity
         YLeaf lsp_regeneration_serial; //type: uint32
         YLeaf arch_spf_event; //type: uint32
         YLeaf arch_lsp_regeneration; //type: uint32
-
         class Instance; //type: Rcmd::Process::Ldp::Process_::InstanceName::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_::InstanceName::Instance> > instance;
-
-
+        
 }; // Rcmd::Process::Ldp::Process_::InstanceName
 
 
@@ -8724,12 +7773,11 @@ class Rcmd::Process::Ldp::Process_::InstanceName::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance_id; //type: uint32
         YLeaf instance_state; //type: RcmdShowInstStateEnum
@@ -8744,8 +7792,6 @@ class Rcmd::Process::Ldp::Process_::InstanceName::Instance : public Entity
         YLeaf no_route_change_spf_nos; //type: uint32
         YLeaf not_interested_spf_nos; //type: uint32
         YLeaf total_spt_nos; //type: uint32
-
-
 
 }; // Rcmd::Process::Ldp::Process_::InstanceName::Instance
 

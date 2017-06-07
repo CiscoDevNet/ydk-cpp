@@ -21,13 +21,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp
@@ -36,8 +34,7 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr
 
 
@@ -49,12 +46,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -63,8 +59,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe
 
@@ -77,12 +71,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -91,8 +84,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp
 
@@ -105,12 +96,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -119,8 +109,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket
 
@@ -133,13 +121,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp
@@ -148,8 +134,7 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr
 
 
@@ -161,12 +146,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -174,8 +158,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe
 
@@ -188,12 +170,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -201,8 +182,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp
 
@@ -215,12 +194,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -228,8 +206,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfS
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket
 
@@ -242,19 +218,16 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AddressFamilySummary; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary> > address_family_summary;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries
 
 
@@ -266,22 +239,19 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address_family; //type: SubscriberAddressFamilyFilterFlagEnum
-
         class StateXr; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr
         class AddressFamilyXr; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr
 
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr> address_family_xr;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr> state_xr;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary
 
 
@@ -293,13 +263,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp
@@ -308,8 +276,7 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr
 
 
@@ -321,12 +288,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -335,8 +301,6 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe
 
@@ -349,12 +313,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -363,8 +326,6 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp
 
@@ -377,12 +338,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -391,8 +351,6 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket
 
@@ -405,13 +363,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp
@@ -420,8 +376,7 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr
 
 
@@ -433,12 +388,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -446,8 +400,6 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe
 
@@ -460,12 +412,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -473,8 +424,6 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp
 
@@ -487,12 +436,11 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -500,8 +448,6 @@ class Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySum
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket
 
@@ -514,19 +460,16 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UsernameSummary; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary> > username_summary;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries
 
 
@@ -538,22 +481,19 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf username; //type: string
-
         class StateXr; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr
         class AddressFamilyXr; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr
 
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr> address_family_xr;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr> state_xr;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary
 
 
@@ -565,13 +505,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp
@@ -580,8 +518,7 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr
 
 
@@ -593,12 +530,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -607,8 +543,6 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe
 
@@ -621,12 +555,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -635,8 +568,6 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp
 
@@ -649,12 +580,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -663,8 +593,6 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Stat
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket
 
@@ -677,13 +605,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp
@@ -692,8 +618,7 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr
 
 
@@ -705,12 +630,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -718,8 +642,6 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe
 
@@ -732,12 +654,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -745,8 +666,6 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp
 
@@ -759,12 +678,11 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -772,8 +690,6 @@ class Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addr
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket
 
@@ -786,19 +702,16 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AccessInterfaceSummary; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary> > access_interface_summary;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries
 
 
@@ -810,22 +723,19 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class StateXr; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr
         class AddressFamilyXr; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr
 
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr> address_family_xr;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr> state_xr;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary
 
 
@@ -837,13 +747,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp
@@ -852,8 +760,7 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr
 
 
@@ -865,12 +772,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -879,8 +785,6 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe
 
@@ -893,12 +797,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -907,8 +810,6 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp
 
@@ -921,12 +822,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -935,8 +835,6 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket
 
@@ -949,13 +847,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp
@@ -964,8 +860,7 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr
 
 
@@ -977,12 +872,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -990,8 +884,6 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe
 
@@ -1004,12 +896,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1017,8 +908,6 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp
 
@@ -1031,12 +920,11 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1044,8 +932,6 @@ class Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfac
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket
 
@@ -1058,19 +944,16 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv4AddressSummary; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary> > ipv4_address_summary;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries
 
 
@@ -1082,22 +965,19 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
-
         class StateXr; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr
         class AddressFamilyXr; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr
 
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr> address_family_xr;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr> state_xr;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
 
@@ -1109,13 +989,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp
@@ -1124,8 +1002,7 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr
 
 
@@ -1137,12 +1014,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -1151,8 +1027,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe
 
@@ -1165,12 +1039,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -1179,8 +1052,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp
 
@@ -1193,12 +1064,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -1207,8 +1077,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket
 
@@ -1221,13 +1089,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp
@@ -1236,8 +1102,7 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr
 
 
@@ -1249,12 +1114,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1262,8 +1126,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe
 
@@ -1276,12 +1138,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1289,8 +1150,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp
 
@@ -1303,12 +1162,11 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1316,8 +1174,6 @@ class Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket
 
@@ -1330,19 +1186,16 @@ class Subscriber::Session::Nodes::Node::VrfSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrfSummary; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary> > vrf_summary;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::VrfSummaries
 
 
@@ -1354,22 +1207,19 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class StateXr; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr
         class AddressFamilyXr; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr> address_family_xr;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr> state_xr;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary
 
 
@@ -1381,13 +1231,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp
@@ -1396,8 +1244,7 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr : publ
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr
 
 
@@ -1409,12 +1256,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -1423,8 +1269,6 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe
 
@@ -1437,12 +1281,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -1451,8 +1294,6 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSub
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp
 
@@ -1465,12 +1306,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initialized_sessions; //type: uint32
         YLeaf connecting_sessions; //type: uint32
@@ -1479,8 +1319,6 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSub
         YLeaf idle_sessions; //type: uint32
         YLeaf disconnecting_sessions; //type: uint32
         YLeaf end_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket
 
@@ -1493,13 +1331,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Pppoe; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe
         class IpSubscriberDhcp; //type: Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp
@@ -1508,8 +1344,7 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp> ip_subscriber_dhcp;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket> ip_subscriber_packet;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe> pppoe;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 
 
@@ -1521,12 +1356,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1534,8 +1368,6 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe
 
@@ -1548,12 +1380,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1561,8 +1392,6 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp
 
@@ -1575,12 +1404,11 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_progress_sessions; //type: uint32
         YLeaf ipv4_only_sessions; //type: uint32
@@ -1588,8 +1416,6 @@ class Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyX
         YLeaf dual_part_up_sessions; //type: uint32
         YLeaf dual_up_sessions; //type: uint32
         YLeaf lac_sessions; //type: uint32
-
-
 
 }; // Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket
 
@@ -1602,19 +1428,16 @@ class Subscriber::Session::Nodes::Node::Sessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Session_; //type: Subscriber::Session::Nodes::Node::Sessions::Session_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_> > session;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Sessions
 
 
@@ -1626,12 +1449,11 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: string
         YLeaf session_type; //type: IedgeOperSessionEnum
@@ -1666,7 +1488,6 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_ : public Entity
         YLeaf af_up_status; //type: uint32
         YLeaf session_ipv4_state; //type: IedgeOperSessionAfStateEnum
         YLeaf session_ipv6_state; //type: IedgeOperSessionAfStateEnum
-
         class Accounting; //type: Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting
         class UserProfileAttributes; //type: Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes
         class MobilityAttributes; //type: Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes
@@ -1676,8 +1497,7 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_ : public Entity
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes> mobility_attributes;
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization> > session_change_of_authorization;
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes> user_profile_attributes;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_
 
 
@@ -1689,19 +1509,16 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AccountingSession; //type: Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession> > accounting_session;
-
-
+        
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting
 
 
@@ -1713,12 +1530,11 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Accounti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf accounting_state_rc; //type: uint32
         YLeaf accounting_stop_state; //type: uint32
@@ -1736,8 +1552,6 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Accounti
         YLeaf rejected_interim_updates; //type: uint32
         YLeaf sent_interim_update_failures; //type: uint32
 
-
-
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession
 
 
@@ -1749,12 +1563,11 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttribute
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4mtu; //type: uint32
         YLeaf ipv4_unnumbered; //type: string
@@ -1806,8 +1619,6 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttribute
         YLeaf downstream_qos_policy; //type: string
         YLeaf session_termination_cause; //type: AaaTerminateCauseEnum
 
-
-
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes
 
 
@@ -1819,12 +1630,11 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mpc_protocol; //type: boolean
         YLeaf mobility_ipv4_address; //type: string
@@ -1837,8 +1647,6 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes :
         YLeaf downlink_gre_key; //type: string
         YLeaf lease_time; //type: string
 
-
-
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes
 
 
@@ -1850,20 +1658,17 @@ class Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAutho
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf request_acked; //type: boolean
         YLeaf request_time; //type: string
         YLeaf coa_request_attributes; //type: string
         YLeaf reply_time; //type: string
         YLeaf coa_reply_attributes; //type: string
-
-
 
 }; // Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization
 
@@ -1875,23 +1680,20 @@ class IedgeLicenseManager : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: IedgeLicenseManager::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::IedgeLicenseManager::Nodes> nodes;
-
-
+        
 }; // IedgeLicenseManager
 
 
@@ -1903,19 +1705,16 @@ class IedgeLicenseManager::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: IedgeLicenseManager::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::IedgeLicenseManager::Nodes::Node> > node;
-
-
+        
 }; // IedgeLicenseManager::Nodes
 
 
@@ -1927,20 +1726,17 @@ class IedgeLicenseManager::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nodeid; //type: string
-
         class IedgeLicenseManagerSummary; //type: IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary
 
         std::shared_ptr<Cisco_IOS_XR_iedge4710_oper::IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary> iedge_license_manager_summary;
-
-
+        
 }; // IedgeLicenseManager::Nodes::Node
 
 
@@ -1952,19 +1748,16 @@ class IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_limit; //type: uint32
         YLeaf session_threshold; //type: uint32
         YLeaf session_license_count; //type: uint32
         YLeaf session_count; //type: uint32
-
-
 
 }; // IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary
 

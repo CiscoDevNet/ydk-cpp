@@ -25,13 +25,10 @@ RouterConvergence::RouterConvergence()
 	,storage_location(nullptr) // presence node
 {
     collect_diagnostics->parent = this;
-    children["collect-diagnostics"] = collect_diagnostics;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     protocols->parent = this;
-    children["protocols"] = protocols;
 
     yang_name = "router-convergence"; yang_parent_name = "Cisco-IOS-XR-infra-rcmd-cfg";
 }
@@ -80,12 +77,12 @@ std::string RouterConvergence::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -106,133 +103,80 @@ EntityPath RouterConvergence::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RouterConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "collect-diagnostics")
     {
-        if(collect_diagnostics != nullptr)
-        {
-            children["collect-diagnostics"] = collect_diagnostics;
-        }
-        else
+        if(collect_diagnostics == nullptr)
         {
             collect_diagnostics = std::make_shared<RouterConvergence::CollectDiagnostics>();
-            collect_diagnostics->parent = this;
-            children["collect-diagnostics"] = collect_diagnostics;
         }
-        return children.at("collect-diagnostics");
+        return collect_diagnostics;
     }
 
     if(child_yang_name == "mpls-ldp")
     {
-        if(mpls_ldp != nullptr)
-        {
-            children["mpls-ldp"] = mpls_ldp;
-        }
-        else
+        if(mpls_ldp == nullptr)
         {
             mpls_ldp = std::make_shared<RouterConvergence::MplsLdp>();
-            mpls_ldp->parent = this;
-            children["mpls-ldp"] = mpls_ldp;
         }
-        return children.at("mpls-ldp");
+        return mpls_ldp;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<RouterConvergence::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     if(child_yang_name == "protocols")
     {
-        if(protocols != nullptr)
-        {
-            children["protocols"] = protocols;
-        }
-        else
+        if(protocols == nullptr)
         {
             protocols = std::make_shared<RouterConvergence::Protocols>();
-            protocols->parent = this;
-            children["protocols"] = protocols;
         }
-        return children.at("protocols");
+        return protocols;
     }
 
     if(child_yang_name == "storage-location")
     {
-        if(storage_location != nullptr)
-        {
-            children["storage-location"] = storage_location;
-        }
-        else
+        if(storage_location == nullptr)
         {
             storage_location = std::make_shared<RouterConvergence::StorageLocation>();
-            storage_location->parent = this;
-            children["storage-location"] = storage_location;
         }
-        return children.at("storage-location");
+        return storage_location;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::get_children() const
 {
-    if(children.find("collect-diagnostics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(collect_diagnostics != nullptr)
     {
-        if(collect_diagnostics != nullptr)
-        {
-            children["collect-diagnostics"] = collect_diagnostics;
-        }
+        children["collect-diagnostics"] = collect_diagnostics;
     }
 
-    if(children.find("mpls-ldp") == children.end())
+    if(mpls_ldp != nullptr)
     {
-        if(mpls_ldp != nullptr)
-        {
-            children["mpls-ldp"] = mpls_ldp;
-        }
+        children["mpls-ldp"] = mpls_ldp;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
-    if(children.find("protocols") == children.end())
+    if(protocols != nullptr)
     {
-        if(protocols != nullptr)
-        {
-            children["protocols"] = protocols;
-        }
+        children["protocols"] = protocols;
     }
 
-    if(children.find("storage-location") == children.end())
+    if(storage_location != nullptr)
     {
-        if(storage_location != nullptr)
-        {
-            children["storage-location"] = storage_location;
-        }
+        children["storage-location"] = storage_location;
     }
 
     return children;
@@ -324,7 +268,7 @@ std::string RouterConvergence::Protocols::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::Protocols::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::Protocols::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -347,15 +291,6 @@ EntityPath RouterConvergence::Protocols::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RouterConvergence::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol")
     {
         for(auto const & c : protocol)
@@ -363,28 +298,24 @@ std::shared_ptr<Entity> RouterConvergence::Protocols::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterConvergence::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(std::move(c));
-        children[segment_path] = protocol.back();
-        return children.at(segment_path);
+        protocol.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::Protocols::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -402,7 +333,6 @@ RouterConvergence::Protocols::Protocol::Protocol()
     priorities(std::make_shared<RouterConvergence::Protocols::Protocol::Priorities>())
 {
     priorities->parent = this;
-    children["priorities"] = priorities;
 
     yang_name = "protocol"; yang_parent_name = "protocols";
 }
@@ -435,7 +365,7 @@ std::string RouterConvergence::Protocols::Protocol::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::Protocols::Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::Protocols::Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -460,41 +390,24 @@ EntityPath RouterConvergence::Protocols::Protocol::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "priorities")
     {
-        if(priorities != nullptr)
-        {
-            children["priorities"] = priorities;
-        }
-        else
+        if(priorities == nullptr)
         {
             priorities = std::make_shared<RouterConvergence::Protocols::Protocol::Priorities>();
-            priorities->parent = this;
-            children["priorities"] = priorities;
         }
-        return children.at("priorities");
+        return priorities;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::Protocols::Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::Protocol::get_children() const
 {
-    if(children.find("priorities") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(priorities != nullptr)
     {
-        if(priorities != nullptr)
-        {
-            children["priorities"] = priorities;
-        }
+        children["priorities"] = priorities;
     }
 
     return children;
@@ -550,7 +463,7 @@ std::string RouterConvergence::Protocols::Protocol::Priorities::get_segment_path
 
 }
 
-EntityPath RouterConvergence::Protocols::Protocol::Priorities::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::Protocols::Protocol::Priorities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -573,15 +486,6 @@ EntityPath RouterConvergence::Protocols::Protocol::Priorities::get_entity_path(E
 
 std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::Priorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "priority")
     {
         for(auto const & c : priority)
@@ -589,28 +493,24 @@ std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::Priorities::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterConvergence::Protocols::Protocol::Priorities::Priority>();
         c->parent = this;
-        priority.push_back(std::move(c));
-        children[segment_path] = priority.back();
-        return children.at(segment_path);
+        priority.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::Protocols::Protocol::Priorities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::Protocol::Priorities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : priority)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -666,7 +566,7 @@ std::string RouterConvergence::Protocols::Protocol::Priorities::Priority::get_se
 
 }
 
-EntityPath RouterConvergence::Protocols::Protocol::Priorities::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::Protocols::Protocol::Priorities::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -695,20 +595,12 @@ EntityPath RouterConvergence::Protocols::Protocol::Priorities::Priority::get_ent
 
 std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::Priorities::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::Protocols::Protocol::Priorities::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::Protocol::Priorities::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -780,7 +672,7 @@ std::string RouterConvergence::StorageLocation::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::StorageLocation::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::StorageLocation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -807,20 +699,12 @@ EntityPath RouterConvergence::StorageLocation::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> RouterConvergence::StorageLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::StorageLocation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::StorageLocation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -875,7 +759,7 @@ std::string RouterConvergence::MplsLdp::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::MplsLdp::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::MplsLdp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -898,41 +782,24 @@ EntityPath RouterConvergence::MplsLdp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RouterConvergence::MplsLdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-lfa")
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
-        else
+        if(remote_lfa == nullptr)
         {
             remote_lfa = std::make_shared<RouterConvergence::MplsLdp::RemoteLfa>();
-            remote_lfa->parent = this;
-            children["remote-lfa"] = remote_lfa;
         }
-        return children.at("remote-lfa");
+        return remote_lfa;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::MplsLdp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::MplsLdp::get_children() const
 {
-    if(children.find("remote-lfa") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_lfa != nullptr)
     {
-        if(remote_lfa != nullptr)
-        {
-            children["remote-lfa"] = remote_lfa;
-        }
+        children["remote-lfa"] = remote_lfa;
     }
 
     return children;
@@ -973,7 +840,7 @@ std::string RouterConvergence::MplsLdp::RemoteLfa::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::MplsLdp::RemoteLfa::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::MplsLdp::RemoteLfa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -997,20 +864,12 @@ EntityPath RouterConvergence::MplsLdp::RemoteLfa::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> RouterConvergence::MplsLdp::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::MplsLdp::RemoteLfa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::MplsLdp::RemoteLfa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1060,7 +919,7 @@ std::string RouterConvergence::CollectDiagnostics::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::CollectDiagnostics::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::CollectDiagnostics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1083,15 +942,6 @@ EntityPath RouterConvergence::CollectDiagnostics::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> RouterConvergence::CollectDiagnostics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "collect-diagnostic")
     {
         for(auto const & c : collect_diagnostic)
@@ -1099,28 +949,24 @@ std::shared_ptr<Entity> RouterConvergence::CollectDiagnostics::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterConvergence::CollectDiagnostics::CollectDiagnostic>();
         c->parent = this;
-        collect_diagnostic.push_back(std::move(c));
-        children[segment_path] = collect_diagnostic.back();
-        return children.at(segment_path);
+        collect_diagnostic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::CollectDiagnostics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::CollectDiagnostics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : collect_diagnostic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1164,7 +1010,7 @@ std::string RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_segmen
 
 }
 
-EntityPath RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1189,20 +1035,12 @@ EntityPath RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_entity_
 
 std::shared_ptr<Entity> RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1256,7 +1094,7 @@ std::string RouterConvergence::Nodes::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1279,15 +1117,6 @@ EntityPath RouterConvergence::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RouterConvergence::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -1295,28 +1124,24 @@ std::shared_ptr<Entity> RouterConvergence::Nodes::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterConvergence::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1363,7 +1188,7 @@ std::string RouterConvergence::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath RouterConvergence::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath RouterConvergence::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1389,20 +1214,12 @@ EntityPath RouterConvergence::Nodes::Node::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> RouterConvergence::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterConvergence::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Nodes::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -17,9 +17,6 @@ class AfiSafiTypeIdentity : public virtual Identity
         ~AfiSafiTypeIdentity();
 
 
-
-
-
 }; // AfiSafiTypeIdentity
 
 class BgpCapabilityIdentity : public virtual Identity
@@ -27,9 +24,6 @@ class BgpCapabilityIdentity : public virtual Identity
     public:
         BgpCapabilityIdentity();
         ~BgpCapabilityIdentity();
-
-
-
 
 
 }; // BgpCapabilityIdentity
@@ -41,9 +35,6 @@ class BgpWellKnownStdCommunityIdentity : public virtual Identity
         ~BgpWellKnownStdCommunityIdentity();
 
 
-
-
-
 }; // BgpWellKnownStdCommunityIdentity
 
 class RouteRefreshIdentity : public openconfig_bgp_types::BgpCapabilityIdentity, virtual Identity
@@ -51,8 +42,6 @@ class RouteRefreshIdentity : public openconfig_bgp_types::BgpCapabilityIdentity,
     public:
         RouteRefreshIdentity();
         ~RouteRefreshIdentity();
-
-
 
 
 }; // RouteRefreshIdentity
@@ -64,8 +53,6 @@ class No_Export_SubconfedIdentity : public openconfig_bgp_types::BgpWellKnownStd
         ~No_Export_SubconfedIdentity();
 
 
-
-
 }; // No_Export_SubconfedIdentity
 
 class No_AdvertiseIdentity : public openconfig_bgp_types::BgpWellKnownStdCommunityIdentity, virtual Identity
@@ -73,8 +60,6 @@ class No_AdvertiseIdentity : public openconfig_bgp_types::BgpWellKnownStdCommuni
     public:
         No_AdvertiseIdentity();
         ~No_AdvertiseIdentity();
-
-
 
 
 }; // No_AdvertiseIdentity
@@ -86,8 +71,6 @@ class MpbgpIdentity : public openconfig_bgp_types::BgpCapabilityIdentity, virtua
         ~MpbgpIdentity();
 
 
-
-
 }; // MpbgpIdentity
 
 class Ipv4UnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virtual Identity
@@ -95,8 +78,6 @@ class Ipv4UnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, vi
     public:
         Ipv4UnicastIdentity();
         ~Ipv4UnicastIdentity();
-
-
 
 
 }; // Ipv4UnicastIdentity
@@ -108,8 +89,6 @@ class AddPathsIdentity : public openconfig_bgp_types::BgpCapabilityIdentity, vir
         ~AddPathsIdentity();
 
 
-
-
 }; // AddPathsIdentity
 
 class L3VpnIpv4MulticastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virtual Identity
@@ -117,8 +96,6 @@ class L3VpnIpv4MulticastIdentity : public openconfig_bgp_types::AfiSafiTypeIdent
     public:
         L3VpnIpv4MulticastIdentity();
         ~L3VpnIpv4MulticastIdentity();
-
-
 
 
 }; // L3VpnIpv4MulticastIdentity
@@ -130,8 +107,6 @@ class No_ExportIdentity : public openconfig_bgp_types::BgpWellKnownStdCommunityI
         ~No_ExportIdentity();
 
 
-
-
 }; // No_ExportIdentity
 
 class L2VpnEvpnIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virtual Identity
@@ -139,8 +114,6 @@ class L2VpnEvpnIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virt
     public:
         L2VpnEvpnIdentity();
         ~L2VpnEvpnIdentity();
-
-
 
 
 }; // L2VpnEvpnIdentity
@@ -152,8 +125,6 @@ class Ipv4LabelledUnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIden
         ~Ipv4LabelledUnicastIdentity();
 
 
-
-
 }; // Ipv4LabelledUnicastIdentity
 
 class L3VpnIpv6UnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virtual Identity
@@ -161,8 +132,6 @@ class L3VpnIpv6UnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentit
     public:
         L3VpnIpv6UnicastIdentity();
         ~L3VpnIpv6UnicastIdentity();
-
-
 
 
 }; // L3VpnIpv6UnicastIdentity
@@ -174,8 +143,6 @@ class Ipv6LabelledUnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIden
         ~Ipv6LabelledUnicastIdentity();
 
 
-
-
 }; // Ipv6LabelledUnicastIdentity
 
 class L3VpnIpv6MulticastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virtual Identity
@@ -183,8 +150,6 @@ class L3VpnIpv6MulticastIdentity : public openconfig_bgp_types::AfiSafiTypeIdent
     public:
         L3VpnIpv6MulticastIdentity();
         ~L3VpnIpv6MulticastIdentity();
-
-
 
 
 }; // L3VpnIpv6MulticastIdentity
@@ -196,8 +161,6 @@ class GracefulRestartIdentity : public openconfig_bgp_types::BgpCapabilityIdenti
         ~GracefulRestartIdentity();
 
 
-
-
 }; // GracefulRestartIdentity
 
 class Ipv6UnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virtual Identity
@@ -205,8 +168,6 @@ class Ipv6UnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, vi
     public:
         Ipv6UnicastIdentity();
         ~Ipv6UnicastIdentity();
-
-
 
 
 }; // Ipv6UnicastIdentity
@@ -218,8 +179,6 @@ class L2VpnVplsIdentity : public openconfig_bgp_types::AfiSafiTypeIdentity, virt
         ~L2VpnVplsIdentity();
 
 
-
-
 }; // L2VpnVplsIdentity
 
 class Asn32Identity : public openconfig_bgp_types::BgpCapabilityIdentity, virtual Identity
@@ -227,8 +186,6 @@ class Asn32Identity : public openconfig_bgp_types::BgpCapabilityIdentity, virtua
     public:
         Asn32Identity();
         ~Asn32Identity();
-
-
 
 
 }; // Asn32Identity
@@ -240,8 +197,6 @@ class L3VpnIpv4UnicastIdentity : public openconfig_bgp_types::AfiSafiTypeIdentit
         ~L3VpnIpv4UnicastIdentity();
 
 
-
-
 }; // L3VpnIpv4UnicastIdentity
 
 class NopeerIdentity : public openconfig_bgp_types::BgpWellKnownStdCommunityIdentity, virtual Identity
@@ -249,8 +204,6 @@ class NopeerIdentity : public openconfig_bgp_types::BgpWellKnownStdCommunityIden
     public:
         NopeerIdentity();
         ~NopeerIdentity();
-
-
 
 
 }; // NopeerIdentity

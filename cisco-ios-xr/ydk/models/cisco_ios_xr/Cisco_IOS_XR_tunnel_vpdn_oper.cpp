@@ -18,19 +18,14 @@ Vpdn::Vpdn()
 	,vpdn_redundancy(std::make_shared<Vpdn::VpdnRedundancy>())
 {
     history_failures->parent = this;
-    children["history-failures"] = history_failures;
 
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     tunnel_destinations->parent = this;
-    children["tunnel-destinations"] = tunnel_destinations;
 
     vpdn_mirroring->parent = this;
-    children["vpdn-mirroring"] = vpdn_mirroring;
 
     vpdn_redundancy->parent = this;
-    children["vpdn-redundancy"] = vpdn_redundancy;
 
     yang_name = "vpdn"; yang_parent_name = "Cisco-IOS-XR-tunnel-vpdn-oper";
 }
@@ -67,12 +62,12 @@ std::string Vpdn::get_segment_path() const
 
 }
 
-EntityPath Vpdn::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -87,133 +82,80 @@ EntityPath Vpdn::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "history-failures")
     {
-        if(history_failures != nullptr)
-        {
-            children["history-failures"] = history_failures;
-        }
-        else
+        if(history_failures == nullptr)
         {
             history_failures = std::make_shared<Vpdn::HistoryFailures>();
-            history_failures->parent = this;
-            children["history-failures"] = history_failures;
         }
-        return children.at("history-failures");
+        return history_failures;
     }
 
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<Vpdn::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     if(child_yang_name == "tunnel-destinations")
     {
-        if(tunnel_destinations != nullptr)
-        {
-            children["tunnel-destinations"] = tunnel_destinations;
-        }
-        else
+        if(tunnel_destinations == nullptr)
         {
             tunnel_destinations = std::make_shared<Vpdn::TunnelDestinations>();
-            tunnel_destinations->parent = this;
-            children["tunnel-destinations"] = tunnel_destinations;
         }
-        return children.at("tunnel-destinations");
+        return tunnel_destinations;
     }
 
     if(child_yang_name == "vpdn-mirroring")
     {
-        if(vpdn_mirroring != nullptr)
-        {
-            children["vpdn-mirroring"] = vpdn_mirroring;
-        }
-        else
+        if(vpdn_mirroring == nullptr)
         {
             vpdn_mirroring = std::make_shared<Vpdn::VpdnMirroring>();
-            vpdn_mirroring->parent = this;
-            children["vpdn-mirroring"] = vpdn_mirroring;
         }
-        return children.at("vpdn-mirroring");
+        return vpdn_mirroring;
     }
 
     if(child_yang_name == "vpdn-redundancy")
     {
-        if(vpdn_redundancy != nullptr)
-        {
-            children["vpdn-redundancy"] = vpdn_redundancy;
-        }
-        else
+        if(vpdn_redundancy == nullptr)
         {
             vpdn_redundancy = std::make_shared<Vpdn::VpdnRedundancy>();
-            vpdn_redundancy->parent = this;
-            children["vpdn-redundancy"] = vpdn_redundancy;
         }
-        return children.at("vpdn-redundancy");
+        return vpdn_redundancy;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::get_children() const
 {
-    if(children.find("history-failures") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(history_failures != nullptr)
     {
-        if(history_failures != nullptr)
-        {
-            children["history-failures"] = history_failures;
-        }
+        children["history-failures"] = history_failures;
     }
 
-    if(children.find("sessions") == children.end())
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
-    if(children.find("tunnel-destinations") == children.end())
+    if(tunnel_destinations != nullptr)
     {
-        if(tunnel_destinations != nullptr)
-        {
-            children["tunnel-destinations"] = tunnel_destinations;
-        }
+        children["tunnel-destinations"] = tunnel_destinations;
     }
 
-    if(children.find("vpdn-mirroring") == children.end())
+    if(vpdn_mirroring != nullptr)
     {
-        if(vpdn_mirroring != nullptr)
-        {
-            children["vpdn-mirroring"] = vpdn_mirroring;
-        }
+        children["vpdn-mirroring"] = vpdn_mirroring;
     }
 
-    if(children.find("vpdn-redundancy") == children.end())
+    if(vpdn_redundancy != nullptr)
     {
-        if(vpdn_redundancy != nullptr)
-        {
-            children["vpdn-redundancy"] = vpdn_redundancy;
-        }
+        children["vpdn-redundancy"] = vpdn_redundancy;
     }
 
     return children;
@@ -281,7 +223,7 @@ std::string Vpdn::Sessions::get_segment_path() const
 
 }
 
-EntityPath Vpdn::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -304,15 +246,6 @@ EntityPath Vpdn::Sessions::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vpdn::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -320,28 +253,24 @@ std::shared_ptr<Entity> Vpdn::Sessions::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vpdn::Sessions::Session>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -363,16 +292,12 @@ Vpdn::Sessions::Session::Session()
 	,subscriber(std::make_shared<Vpdn::Sessions::Session::Subscriber>())
 {
     configuration->parent = this;
-    children["configuration"] = configuration;
 
     l2tp->parent = this;
-    children["l2tp"] = l2tp;
 
     session->parent = this;
-    children["session"] = session;
 
     subscriber->parent = this;
-    children["subscriber"] = subscriber;
 
     yang_name = "session"; yang_parent_name = "sessions";
 }
@@ -413,7 +338,7 @@ std::string Vpdn::Sessions::Session::get_segment_path() const
 
 }
 
-EntityPath Vpdn::Sessions::Session::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::Sessions::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -439,110 +364,66 @@ EntityPath Vpdn::Sessions::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vpdn::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configuration")
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
-        else
+        if(configuration == nullptr)
         {
             configuration = std::make_shared<Vpdn::Sessions::Session::Configuration>();
-            configuration->parent = this;
-            children["configuration"] = configuration;
         }
-        return children.at("configuration");
+        return configuration;
     }
 
     if(child_yang_name == "l2tp")
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
-        else
+        if(l2tp == nullptr)
         {
             l2tp = std::make_shared<Vpdn::Sessions::Session::L2Tp>();
-            l2tp->parent = this;
-            children["l2tp"] = l2tp;
         }
-        return children.at("l2tp");
+        return l2tp;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<Vpdn::Sessions::Session::Session_>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "subscriber")
     {
-        if(subscriber != nullptr)
-        {
-            children["subscriber"] = subscriber;
-        }
-        else
+        if(subscriber == nullptr)
         {
             subscriber = std::make_shared<Vpdn::Sessions::Session::Subscriber>();
-            subscriber->parent = this;
-            children["subscriber"] = subscriber;
         }
-        return children.at("subscriber");
+        return subscriber;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::Sessions::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::get_children() const
 {
-    if(children.find("configuration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(configuration != nullptr)
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
+        children["configuration"] = configuration;
     }
 
-    if(children.find("l2tp") == children.end())
+    if(l2tp != nullptr)
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
+        children["l2tp"] = l2tp;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("subscriber") == children.end())
+    if(subscriber != nullptr)
     {
-        if(subscriber != nullptr)
-        {
-            children["subscriber"] = subscriber;
-        }
+        children["subscriber"] = subscriber;
     }
 
     return children;
@@ -616,7 +497,7 @@ std::string Vpdn::Sessions::Session::Session_::get_segment_path() const
 
 }
 
-EntityPath Vpdn::Sessions::Session::Session_::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::Sessions::Session::Session_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -647,20 +528,12 @@ EntityPath Vpdn::Sessions::Session::Session_::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Vpdn::Sessions::Session::Session_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::Sessions::Session::Session_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Session_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -767,7 +640,7 @@ std::string Vpdn::Sessions::Session::L2Tp::get_segment_path() const
 
 }
 
-EntityPath Vpdn::Sessions::Session::L2Tp::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::Sessions::Session::L2Tp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -803,20 +676,12 @@ EntityPath Vpdn::Sessions::Session::L2Tp::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Vpdn::Sessions::Session::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::Sessions::Session::L2Tp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::L2Tp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -928,7 +793,7 @@ std::string Vpdn::Sessions::Session::Subscriber::get_segment_path() const
 
 }
 
-EntityPath Vpdn::Sessions::Session::Subscriber::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::Sessions::Session::Subscriber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -957,20 +822,12 @@ EntityPath Vpdn::Sessions::Session::Subscriber::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Vpdn::Sessions::Session::Subscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::Sessions::Session::Subscriber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Subscriber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1010,7 +867,6 @@ Vpdn::Sessions::Session::Configuration::Configuration()
     vpn_id(std::make_shared<Vpdn::Sessions::Session::Configuration::VpnId>())
 {
     vpn_id->parent = this;
-    children["vpn-id"] = vpn_id;
 
     yang_name = "configuration"; yang_parent_name = "session";
 }
@@ -1051,7 +907,7 @@ std::string Vpdn::Sessions::Session::Configuration::get_segment_path() const
 
 }
 
-EntityPath Vpdn::Sessions::Session::Configuration::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::Sessions::Session::Configuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1080,41 +936,24 @@ EntityPath Vpdn::Sessions::Session::Configuration::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vpn-id")
     {
-        if(vpn_id != nullptr)
-        {
-            children["vpn-id"] = vpn_id;
-        }
-        else
+        if(vpn_id == nullptr)
         {
             vpn_id = std::make_shared<Vpdn::Sessions::Session::Configuration::VpnId>();
-            vpn_id->parent = this;
-            children["vpn-id"] = vpn_id;
         }
-        return children.at("vpn-id");
+        return vpn_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::Sessions::Session::Configuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::get_children() const
 {
-    if(children.find("vpn-id") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vpn_id != nullptr)
     {
-        if(vpn_id != nullptr)
-        {
-            children["vpn-id"] = vpn_id;
-        }
+        children["vpn-id"] = vpn_id;
     }
 
     return children;
@@ -1182,7 +1021,7 @@ std::string Vpdn::Sessions::Session::Configuration::VpnId::get_segment_path() co
 
 }
 
-EntityPath Vpdn::Sessions::Session::Configuration::VpnId::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::Sessions::Session::Configuration::VpnId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1207,20 +1046,12 @@ EntityPath Vpdn::Sessions::Session::Configuration::VpnId::get_entity_path(Entity
 
 std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::VpnId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::Sessions::Session::Configuration::VpnId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::VpnId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1274,7 +1105,7 @@ std::string Vpdn::TunnelDestinations::get_segment_path() const
 
 }
 
-EntityPath Vpdn::TunnelDestinations::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::TunnelDestinations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1297,15 +1128,6 @@ EntityPath Vpdn::TunnelDestinations::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vpdn::TunnelDestinations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-destination")
     {
         for(auto const & c : tunnel_destination)
@@ -1313,28 +1135,24 @@ std::shared_ptr<Entity> Vpdn::TunnelDestinations::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vpdn::TunnelDestinations::TunnelDestination>();
         c->parent = this;
-        tunnel_destination.push_back(std::move(c));
-        children[segment_path] = tunnel_destination.back();
-        return children.at(segment_path);
+        tunnel_destination.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::TunnelDestinations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::TunnelDestinations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel_destination)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1399,7 +1217,7 @@ std::string Vpdn::TunnelDestinations::TunnelDestination::get_segment_path() cons
 
 }
 
-EntityPath Vpdn::TunnelDestinations::TunnelDestination::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::TunnelDestinations::TunnelDestination::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1431,20 +1249,12 @@ EntityPath Vpdn::TunnelDestinations::TunnelDestination::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Vpdn::TunnelDestinations::TunnelDestination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::TunnelDestinations::TunnelDestination::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::TunnelDestinations::TunnelDestination::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1502,16 +1312,12 @@ Vpdn::VpdnMirroring::VpdnMirroring()
 	,qad_send_stats_last_clear(std::make_shared<Vpdn::VpdnMirroring::QadSendStatsLastClear>())
 {
     qad_recv_stats->parent = this;
-    children["qad-recv-stats"] = qad_recv_stats;
 
     qad_recv_stats_last_clear->parent = this;
-    children["qad-recv-stats-last-clear"] = qad_recv_stats_last_clear;
 
     qad_send_stats->parent = this;
-    children["qad-send-stats"] = qad_send_stats;
 
     qad_send_stats_last_clear->parent = this;
-    children["qad-send-stats-last-clear"] = qad_send_stats_last_clear;
 
     yang_name = "vpdn-mirroring"; yang_parent_name = "vpdn";
 }
@@ -1556,7 +1362,7 @@ std::string Vpdn::VpdnMirroring::get_segment_path() const
 
 }
 
-EntityPath Vpdn::VpdnMirroring::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::VpdnMirroring::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1584,110 +1390,66 @@ EntityPath Vpdn::VpdnMirroring::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vpdn::VpdnMirroring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "qad-recv-stats")
     {
-        if(qad_recv_stats != nullptr)
-        {
-            children["qad-recv-stats"] = qad_recv_stats;
-        }
-        else
+        if(qad_recv_stats == nullptr)
         {
             qad_recv_stats = std::make_shared<Vpdn::VpdnMirroring::QadRecvStats>();
-            qad_recv_stats->parent = this;
-            children["qad-recv-stats"] = qad_recv_stats;
         }
-        return children.at("qad-recv-stats");
+        return qad_recv_stats;
     }
 
     if(child_yang_name == "qad-recv-stats-last-clear")
     {
-        if(qad_recv_stats_last_clear != nullptr)
-        {
-            children["qad-recv-stats-last-clear"] = qad_recv_stats_last_clear;
-        }
-        else
+        if(qad_recv_stats_last_clear == nullptr)
         {
             qad_recv_stats_last_clear = std::make_shared<Vpdn::VpdnMirroring::QadRecvStatsLastClear>();
-            qad_recv_stats_last_clear->parent = this;
-            children["qad-recv-stats-last-clear"] = qad_recv_stats_last_clear;
         }
-        return children.at("qad-recv-stats-last-clear");
+        return qad_recv_stats_last_clear;
     }
 
     if(child_yang_name == "qad-send-stats")
     {
-        if(qad_send_stats != nullptr)
-        {
-            children["qad-send-stats"] = qad_send_stats;
-        }
-        else
+        if(qad_send_stats == nullptr)
         {
             qad_send_stats = std::make_shared<Vpdn::VpdnMirroring::QadSendStats>();
-            qad_send_stats->parent = this;
-            children["qad-send-stats"] = qad_send_stats;
         }
-        return children.at("qad-send-stats");
+        return qad_send_stats;
     }
 
     if(child_yang_name == "qad-send-stats-last-clear")
     {
-        if(qad_send_stats_last_clear != nullptr)
-        {
-            children["qad-send-stats-last-clear"] = qad_send_stats_last_clear;
-        }
-        else
+        if(qad_send_stats_last_clear == nullptr)
         {
             qad_send_stats_last_clear = std::make_shared<Vpdn::VpdnMirroring::QadSendStatsLastClear>();
-            qad_send_stats_last_clear->parent = this;
-            children["qad-send-stats-last-clear"] = qad_send_stats_last_clear;
         }
-        return children.at("qad-send-stats-last-clear");
+        return qad_send_stats_last_clear;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::VpdnMirroring::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::get_children() const
 {
-    if(children.find("qad-recv-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(qad_recv_stats != nullptr)
     {
-        if(qad_recv_stats != nullptr)
-        {
-            children["qad-recv-stats"] = qad_recv_stats;
-        }
+        children["qad-recv-stats"] = qad_recv_stats;
     }
 
-    if(children.find("qad-recv-stats-last-clear") == children.end())
+    if(qad_recv_stats_last_clear != nullptr)
     {
-        if(qad_recv_stats_last_clear != nullptr)
-        {
-            children["qad-recv-stats-last-clear"] = qad_recv_stats_last_clear;
-        }
+        children["qad-recv-stats-last-clear"] = qad_recv_stats_last_clear;
     }
 
-    if(children.find("qad-send-stats") == children.end())
+    if(qad_send_stats != nullptr)
     {
-        if(qad_send_stats != nullptr)
-        {
-            children["qad-send-stats"] = qad_send_stats;
-        }
+        children["qad-send-stats"] = qad_send_stats;
     }
 
-    if(children.find("qad-send-stats-last-clear") == children.end())
+    if(qad_send_stats_last_clear != nullptr)
     {
-        if(qad_send_stats_last_clear != nullptr)
-        {
-            children["qad-send-stats-last-clear"] = qad_send_stats_last_clear;
-        }
+        children["qad-send-stats-last-clear"] = qad_send_stats_last_clear;
     }
 
     return children;
@@ -1802,7 +1564,7 @@ std::string Vpdn::VpdnMirroring::QadSendStats::get_segment_path() const
 
 }
 
-EntityPath Vpdn::VpdnMirroring::QadSendStats::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::VpdnMirroring::QadSendStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1844,20 +1606,12 @@ EntityPath Vpdn::VpdnMirroring::QadSendStats::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadSendStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::VpdnMirroring::QadSendStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadSendStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1990,7 +1744,7 @@ std::string Vpdn::VpdnMirroring::QadRecvStats::get_segment_path() const
 
 }
 
-EntityPath Vpdn::VpdnMirroring::QadRecvStats::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::VpdnMirroring::QadRecvStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2020,20 +1774,12 @@ EntityPath Vpdn::VpdnMirroring::QadRecvStats::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::VpdnMirroring::QadRecvStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2154,7 +1900,7 @@ std::string Vpdn::VpdnMirroring::QadSendStatsLastClear::get_segment_path() const
 
 }
 
-EntityPath Vpdn::VpdnMirroring::QadSendStatsLastClear::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::VpdnMirroring::QadSendStatsLastClear::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2196,20 +1942,12 @@ EntityPath Vpdn::VpdnMirroring::QadSendStatsLastClear::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadSendStatsLastClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::VpdnMirroring::QadSendStatsLastClear::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadSendStatsLastClear::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2342,7 +2080,7 @@ std::string Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_segment_path() const
 
 }
 
-EntityPath Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2372,20 +2110,12 @@ EntityPath Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2467,7 +2197,7 @@ std::string Vpdn::VpdnRedundancy::get_segment_path() const
 
 }
 
-EntityPath Vpdn::VpdnRedundancy::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::VpdnRedundancy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2496,20 +2226,12 @@ EntityPath Vpdn::VpdnRedundancy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vpdn::VpdnRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::VpdnRedundancy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnRedundancy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2579,7 +2301,7 @@ std::string Vpdn::HistoryFailures::get_segment_path() const
 
 }
 
-EntityPath Vpdn::HistoryFailures::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::HistoryFailures::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2602,15 +2324,6 @@ EntityPath Vpdn::HistoryFailures::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Vpdn::HistoryFailures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "history-failure")
     {
         for(auto const & c : history_failure)
@@ -2618,28 +2331,24 @@ std::shared_ptr<Entity> Vpdn::HistoryFailures::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Vpdn::HistoryFailures::HistoryFailure>();
         c->parent = this;
-        history_failure.push_back(std::move(c));
-        children[segment_path] = history_failure.back();
-        return children.at(segment_path);
+        history_failure.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::HistoryFailures::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : history_failure)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2719,7 +2428,7 @@ std::string Vpdn::HistoryFailures::HistoryFailure::get_segment_path() const
 
 }
 
-EntityPath Vpdn::HistoryFailures::HistoryFailure::get_entity_path(Entity* ancestor) const
+const EntityPath Vpdn::HistoryFailures::HistoryFailure::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2756,20 +2465,12 @@ EntityPath Vpdn::HistoryFailures::HistoryFailure::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Vpdn::HistoryFailures::HistoryFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Vpdn::HistoryFailures::HistoryFailure::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::HistoryFailure::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

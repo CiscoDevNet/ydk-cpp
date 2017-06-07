@@ -50,7 +50,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutDropOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutDropOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -77,20 +77,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutDropOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutDropOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -154,7 +146,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutErrorOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutErrorOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -181,20 +173,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutErrorOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutErrorOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -258,7 +242,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorGiant::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorGiant::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -285,20 +269,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorGiant::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorGiant::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -362,7 +338,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorRunt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorRunt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -389,20 +365,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorRunt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorRunt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -466,7 +434,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorJabbers::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorJabbers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -493,20 +461,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorJabbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorJabbers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorJabbers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -570,7 +530,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorFragments::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorFragments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -597,20 +557,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorFragments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorFragments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -674,7 +626,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -701,20 +653,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InErrorOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -778,7 +722,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkt64Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkt64Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -805,20 +749,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkt64Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkt64Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -882,7 +818,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts65To127Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts65To127Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -909,20 +845,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts65To127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts65To127Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts65To127Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -986,7 +914,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts128To255Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts128To255Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1013,20 +941,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts128To255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts128To255Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts128To255Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1090,7 +1010,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts256To511Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts256To511Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1117,20 +1037,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts256To511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts256To511Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts256To511Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1194,7 +1106,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts512To1023Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts512To1023Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1221,20 +1133,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts512To1023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts512To1023Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts512To1023Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1298,7 +1202,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts1024To1518Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts1024To1518Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1325,20 +1229,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts1024To1518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts1024To1518Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::InPkts1024To1518Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1402,7 +1298,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::Outpkt64Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::Outpkt64Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1429,20 +1325,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::Outpkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::Outpkt64Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::Outpkt64Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1506,7 +1394,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts65127Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts65127Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1533,20 +1421,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts65127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts65127Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts65127Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1610,7 +1490,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts128255Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts128255Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1637,20 +1517,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts128255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts128255Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts128255Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1714,7 +1586,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts256511Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts256511Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1741,20 +1613,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts256511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts256511Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts256511Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1818,7 +1682,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts5121023Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts5121023Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1845,20 +1709,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts5121023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts5121023Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts5121023Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1922,7 +1778,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts10241518Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts10241518Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1949,20 +1805,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts10241518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts10241518Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::OutPkts10241518Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2026,7 +1874,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::RxUtil::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::RxUtil::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2053,20 +1901,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::RxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::RxUtil::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::RxUtil::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2130,7 +1970,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUtil::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUtil::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2157,20 +1997,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUtil::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUtil::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2234,7 +2066,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUndersizedPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUndersizedPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2261,20 +2093,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUndersizedPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxUndersizedPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2338,7 +2162,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxOversizedPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxOversizedPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2365,20 +2189,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxOversizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxOversizedPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxOversizedPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2442,7 +2258,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxFragments::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxFragments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2469,20 +2285,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxFragments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxFragments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2546,7 +2354,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxJabber::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxJabber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2573,20 +2381,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxJabber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxJabber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2650,7 +2450,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxBadFcs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxBadFcs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2677,20 +2477,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxBadFcs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxBadFcs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::TxBadFcs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2719,7 +2511,6 @@ PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::E
     ethernet_hour24_ether_s(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS>())
 {
     ethernet_hour24_ether_s->parent = this;
-    children["ethernet-hour24-ether-s"] = ethernet_hour24_ether_s;
 
     yang_name = "ethernet-hour24"; yang_parent_name = "ethernet-current";
 }
@@ -2748,7 +2539,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2771,41 +2562,24 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-hour24-ether-s")
     {
-        if(ethernet_hour24_ether_s != nullptr)
-        {
-            children["ethernet-hour24-ether-s"] = ethernet_hour24_ether_s;
-        }
-        else
+        if(ethernet_hour24_ether_s == nullptr)
         {
             ethernet_hour24_ether_s = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS>();
-            ethernet_hour24_ether_s->parent = this;
-            children["ethernet-hour24-ether-s"] = ethernet_hour24_ether_s;
         }
-        return children.at("ethernet-hour24-ether-s");
+        return ethernet_hour24_ether_s;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::get_children() const
 {
-    if(children.find("ethernet-hour24-ether-s") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet_hour24_ether_s != nullptr)
     {
-        if(ethernet_hour24_ether_s != nullptr)
-        {
-            children["ethernet-hour24-ether-s"] = ethernet_hour24_ether_s;
-        }
+        children["ethernet-hour24-ether-s"] = ethernet_hour24_ether_s;
     }
 
     return children;
@@ -2853,7 +2627,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2876,15 +2650,6 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-hour24-ether")
     {
         for(auto const & c : ethernet_hour24_ether)
@@ -2892,28 +2657,24 @@ std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::Ethernet
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether>();
         c->parent = this;
-        ethernet_hour24_ether.push_back(std::move(c));
-        children[segment_path] = ethernet_hour24_ether.back();
-        return children.at(segment_path);
+        ethernet_hour24_ether.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ethernet_hour24_ether)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3012,229 +2773,154 @@ PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::E
 	,tx_util(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil>())
 {
     ether10241518_octet->parent = this;
-    children["ether10241518-octet"] = ether10241518_octet;
 
     ether128255_octet->parent = this;
-    children["ether128255-octet"] = ether128255_octet;
 
     ether256511_octet->parent = this;
-    children["ether256511-octet"] = ether256511_octet;
 
     ether5121023_octet->parent = this;
-    children["ether5121023-octet"] = ether5121023_octet;
 
     ether64_octets->parent = this;
-    children["ether64-octets"] = ether64_octets;
 
     ether65127_octet->parent = this;
-    children["ether65127-octet"] = ether65127_octet;
 
     ether_stat_broadcast_pkt->parent = this;
-    children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
 
     ether_stat_multicast_pkt->parent = this;
-    children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
 
     ether_stat_undersized_pkt->parent = this;
-    children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
 
     fcs_errors_stat->parent = this;
-    children["fcs-errors-stat"] = fcs_errors_stat;
 
     if_in_errors->parent = this;
-    children["if-in-errors"] = if_in_errors;
 
     if_in_octets->parent = this;
-    children["if-in-octets"] = if_in_octets;
 
     in8021q_frames->parent = this;
-    children["in8021q-frames"] = in8021q_frames;
 
     in_bcast_pkt->parent = this;
-    children["in-bcast-pkt"] = in_bcast_pkt;
 
     in_drop_abort->parent = this;
-    children["in-drop-abort"] = in_drop_abort;
 
     in_drop_invalid_dmac->parent = this;
-    children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
 
     in_drop_invalid_encap->parent = this;
-    children["in-drop-invalid-encap"] = in_drop_invalid_encap;
 
     in_drop_invalid_vlan->parent = this;
-    children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
 
     in_drop_other->parent = this;
-    children["in-drop-other"] = in_drop_other;
 
     in_drop_overrun->parent = this;
-    children["in-drop-overrun"] = in_drop_overrun;
 
     in_error_collisions->parent = this;
-    children["in-error-collisions"] = in_error_collisions;
 
     in_error_fragments->parent = this;
-    children["in-error-fragments"] = in_error_fragments;
 
     in_error_giant->parent = this;
-    children["in-error-giant"] = in_error_giant;
 
     in_error_jabbers->parent = this;
-    children["in-error-jabbers"] = in_error_jabbers;
 
     in_error_other->parent = this;
-    children["in-error-other"] = in_error_other;
 
     in_error_runt->parent = this;
-    children["in-error-runt"] = in_error_runt;
 
     in_error_symbol->parent = this;
-    children["in-error-symbol"] = in_error_symbol;
 
     in_good_bytes->parent = this;
-    children["in-good-bytes"] = in_good_bytes;
 
     in_good_pkts->parent = this;
-    children["in-good-pkts"] = in_good_pkts;
 
     in_mcast_pkt->parent = this;
-    children["in-mcast-pkt"] = in_mcast_pkt;
 
     in_mib_giant->parent = this;
-    children["in-mib-giant"] = in_mib_giant;
 
     in_mib_jabber->parent = this;
-    children["in-mib-jabber"] = in_mib_jabber;
 
     in_mibcrc->parent = this;
-    children["in-mibcrc"] = in_mibcrc;
 
     in_pause_frame->parent = this;
-    children["in-pause-frame"] = in_pause_frame;
 
     in_pkt64_octet->parent = this;
-    children["in-pkt64-octet"] = in_pkt64_octet;
 
     in_pkts1024_to1518_octets->parent = this;
-    children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
 
     in_pkts128_to255_octets->parent = this;
-    children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
 
     in_pkts1519_max_octets->parent = this;
-    children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
 
     in_pkts256_to511_octets->parent = this;
-    children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
 
     in_pkts512_to1023_octets->parent = this;
-    children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
 
     in_pkts65_to127_octets->parent = this;
-    children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
 
     in_ucast_pkt->parent = this;
-    children["in-ucast-pkt"] = in_ucast_pkt;
 
     jabber_stat->parent = this;
-    children["jabber-stat"] = jabber_stat;
 
     long_frames_stat->parent = this;
-    children["long-frames-stat"] = long_frames_stat;
 
     octet_stat->parent = this;
-    children["octet-stat"] = octet_stat;
 
     out8021q_frames->parent = this;
-    children["out8021q-frames"] = out8021q_frames;
 
     out_bcast_pkt->parent = this;
-    children["out-bcast-pkt"] = out_bcast_pkt;
 
     out_drop_abort->parent = this;
-    children["out-drop-abort"] = out_drop_abort;
 
     out_drop_other->parent = this;
-    children["out-drop-other"] = out_drop_other;
 
     out_drop_underrun->parent = this;
-    children["out-drop-underrun"] = out_drop_underrun;
 
     out_error_other->parent = this;
-    children["out-error-other"] = out_error_other;
 
     out_good_bytes->parent = this;
-    children["out-good-bytes"] = out_good_bytes;
 
     out_good_pkts->parent = this;
-    children["out-good-pkts"] = out_good_pkts;
 
     out_mcast_pkt->parent = this;
-    children["out-mcast-pkt"] = out_mcast_pkt;
 
     out_octets->parent = this;
-    children["out-octets"] = out_octets;
 
     out_pause_frames->parent = this;
-    children["out-pause-frames"] = out_pause_frames;
 
     out_pkts10241518_octets->parent = this;
-    children["out-pkts10241518-octets"] = out_pkts10241518_octets;
 
     out_pkts128255_octets->parent = this;
-    children["out-pkts128255-octets"] = out_pkts128255_octets;
 
     out_pkts1519_max_octets->parent = this;
-    children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
 
     out_pkts256511_octets->parent = this;
-    children["out-pkts256511-octets"] = out_pkts256511_octets;
 
     out_pkts5121023_octets->parent = this;
-    children["out-pkts5121023-octets"] = out_pkts5121023_octets;
 
     out_pkts65127_octets->parent = this;
-    children["out-pkts65127-octets"] = out_pkts65127_octets;
 
     out_ucast_pkt->parent = this;
-    children["out-ucast-pkt"] = out_ucast_pkt;
 
     outpkt64octet->parent = this;
-    children["outpkt64octet"] = outpkt64octet;
 
     oversize_pkt_stat->parent = this;
-    children["oversize-pkt-stat"] = oversize_pkt_stat;
 
     rx_pkt->parent = this;
-    children["rx-pkt"] = rx_pkt;
 
     rx_util->parent = this;
-    children["rx-util"] = rx_util;
 
     stat_pkt->parent = this;
-    children["stat-pkt"] = stat_pkt;
 
     tx_bad_fcs->parent = this;
-    children["tx-bad-fcs"] = tx_bad_fcs;
 
     tx_fragments->parent = this;
-    children["tx-fragments"] = tx_fragments;
 
     tx_jabber->parent = this;
-    children["tx-jabber"] = tx_jabber;
 
     tx_oversized_pkt->parent = this;
-    children["tx-oversized-pkt"] = tx_oversized_pkt;
 
     tx_pkt->parent = this;
-    children["tx-pkt"] = tx_pkt;
 
     tx_undersized_pkt->parent = this;
-    children["tx-undersized-pkt"] = tx_undersized_pkt;
 
     tx_util->parent = this;
-    children["tx-util"] = tx_util;
 
     yang_name = "ethernet-hour24-ether"; yang_parent_name = "ethernet-hour24-ether-s";
 }
@@ -3429,7 +3115,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3461,1743 +3147,1060 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ether10241518-octet")
     {
-        if(ether10241518_octet != nullptr)
-        {
-            children["ether10241518-octet"] = ether10241518_octet;
-        }
-        else
+        if(ether10241518_octet == nullptr)
         {
             ether10241518_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether10241518Octet>();
-            ether10241518_octet->parent = this;
-            children["ether10241518-octet"] = ether10241518_octet;
         }
-        return children.at("ether10241518-octet");
+        return ether10241518_octet;
     }
 
     if(child_yang_name == "ether128255-octet")
     {
-        if(ether128255_octet != nullptr)
-        {
-            children["ether128255-octet"] = ether128255_octet;
-        }
-        else
+        if(ether128255_octet == nullptr)
         {
             ether128255_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether128255Octet>();
-            ether128255_octet->parent = this;
-            children["ether128255-octet"] = ether128255_octet;
         }
-        return children.at("ether128255-octet");
+        return ether128255_octet;
     }
 
     if(child_yang_name == "ether256511-octet")
     {
-        if(ether256511_octet != nullptr)
-        {
-            children["ether256511-octet"] = ether256511_octet;
-        }
-        else
+        if(ether256511_octet == nullptr)
         {
             ether256511_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether256511Octet>();
-            ether256511_octet->parent = this;
-            children["ether256511-octet"] = ether256511_octet;
         }
-        return children.at("ether256511-octet");
+        return ether256511_octet;
     }
 
     if(child_yang_name == "ether5121023-octet")
     {
-        if(ether5121023_octet != nullptr)
-        {
-            children["ether5121023-octet"] = ether5121023_octet;
-        }
-        else
+        if(ether5121023_octet == nullptr)
         {
             ether5121023_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether5121023Octet>();
-            ether5121023_octet->parent = this;
-            children["ether5121023-octet"] = ether5121023_octet;
         }
-        return children.at("ether5121023-octet");
+        return ether5121023_octet;
     }
 
     if(child_yang_name == "ether64-octets")
     {
-        if(ether64_octets != nullptr)
-        {
-            children["ether64-octets"] = ether64_octets;
-        }
-        else
+        if(ether64_octets == nullptr)
         {
             ether64_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether64Octets>();
-            ether64_octets->parent = this;
-            children["ether64-octets"] = ether64_octets;
         }
-        return children.at("ether64-octets");
+        return ether64_octets;
     }
 
     if(child_yang_name == "ether65127-octet")
     {
-        if(ether65127_octet != nullptr)
-        {
-            children["ether65127-octet"] = ether65127_octet;
-        }
-        else
+        if(ether65127_octet == nullptr)
         {
             ether65127_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether65127Octet>();
-            ether65127_octet->parent = this;
-            children["ether65127-octet"] = ether65127_octet;
         }
-        return children.at("ether65127-octet");
+        return ether65127_octet;
     }
 
     if(child_yang_name == "ether-stat-broadcast-pkt")
     {
-        if(ether_stat_broadcast_pkt != nullptr)
-        {
-            children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
-        }
-        else
+        if(ether_stat_broadcast_pkt == nullptr)
         {
             ether_stat_broadcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatBroadcastPkt>();
-            ether_stat_broadcast_pkt->parent = this;
-            children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
         }
-        return children.at("ether-stat-broadcast-pkt");
+        return ether_stat_broadcast_pkt;
     }
 
     if(child_yang_name == "ether-stat-multicast-pkt")
     {
-        if(ether_stat_multicast_pkt != nullptr)
-        {
-            children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
-        }
-        else
+        if(ether_stat_multicast_pkt == nullptr)
         {
             ether_stat_multicast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatMulticastPkt>();
-            ether_stat_multicast_pkt->parent = this;
-            children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
         }
-        return children.at("ether-stat-multicast-pkt");
+        return ether_stat_multicast_pkt;
     }
 
     if(child_yang_name == "ether-stat-undersized-pkt")
     {
-        if(ether_stat_undersized_pkt != nullptr)
-        {
-            children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
-        }
-        else
+        if(ether_stat_undersized_pkt == nullptr)
         {
             ether_stat_undersized_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatUndersizedPkt>();
-            ether_stat_undersized_pkt->parent = this;
-            children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
         }
-        return children.at("ether-stat-undersized-pkt");
+        return ether_stat_undersized_pkt;
     }
 
     if(child_yang_name == "fcs-errors-stat")
     {
-        if(fcs_errors_stat != nullptr)
-        {
-            children["fcs-errors-stat"] = fcs_errors_stat;
-        }
-        else
+        if(fcs_errors_stat == nullptr)
         {
             fcs_errors_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::FcsErrorsStat>();
-            fcs_errors_stat->parent = this;
-            children["fcs-errors-stat"] = fcs_errors_stat;
         }
-        return children.at("fcs-errors-stat");
+        return fcs_errors_stat;
     }
 
     if(child_yang_name == "if-in-errors")
     {
-        if(if_in_errors != nullptr)
-        {
-            children["if-in-errors"] = if_in_errors;
-        }
-        else
+        if(if_in_errors == nullptr)
         {
             if_in_errors = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInErrors>();
-            if_in_errors->parent = this;
-            children["if-in-errors"] = if_in_errors;
         }
-        return children.at("if-in-errors");
+        return if_in_errors;
     }
 
     if(child_yang_name == "if-in-octets")
     {
-        if(if_in_octets != nullptr)
-        {
-            children["if-in-octets"] = if_in_octets;
-        }
-        else
+        if(if_in_octets == nullptr)
         {
             if_in_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInOctets>();
-            if_in_octets->parent = this;
-            children["if-in-octets"] = if_in_octets;
         }
-        return children.at("if-in-octets");
+        return if_in_octets;
     }
 
     if(child_yang_name == "in8021q-frames")
     {
-        if(in8021q_frames != nullptr)
-        {
-            children["in8021q-frames"] = in8021q_frames;
-        }
-        else
+        if(in8021q_frames == nullptr)
         {
             in8021q_frames = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::In8021QFrames>();
-            in8021q_frames->parent = this;
-            children["in8021q-frames"] = in8021q_frames;
         }
-        return children.at("in8021q-frames");
+        return in8021q_frames;
     }
 
     if(child_yang_name == "in-bcast-pkt")
     {
-        if(in_bcast_pkt != nullptr)
-        {
-            children["in-bcast-pkt"] = in_bcast_pkt;
-        }
-        else
+        if(in_bcast_pkt == nullptr)
         {
             in_bcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InBcastPkt>();
-            in_bcast_pkt->parent = this;
-            children["in-bcast-pkt"] = in_bcast_pkt;
         }
-        return children.at("in-bcast-pkt");
+        return in_bcast_pkt;
     }
 
     if(child_yang_name == "in-drop-abort")
     {
-        if(in_drop_abort != nullptr)
-        {
-            children["in-drop-abort"] = in_drop_abort;
-        }
-        else
+        if(in_drop_abort == nullptr)
         {
             in_drop_abort = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropAbort>();
-            in_drop_abort->parent = this;
-            children["in-drop-abort"] = in_drop_abort;
         }
-        return children.at("in-drop-abort");
+        return in_drop_abort;
     }
 
     if(child_yang_name == "in-drop-invalid-dmac")
     {
-        if(in_drop_invalid_dmac != nullptr)
-        {
-            children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
-        }
-        else
+        if(in_drop_invalid_dmac == nullptr)
         {
             in_drop_invalid_dmac = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidDmac>();
-            in_drop_invalid_dmac->parent = this;
-            children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
         }
-        return children.at("in-drop-invalid-dmac");
+        return in_drop_invalid_dmac;
     }
 
     if(child_yang_name == "in-drop-invalid-encap")
     {
-        if(in_drop_invalid_encap != nullptr)
-        {
-            children["in-drop-invalid-encap"] = in_drop_invalid_encap;
-        }
-        else
+        if(in_drop_invalid_encap == nullptr)
         {
             in_drop_invalid_encap = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidEncap>();
-            in_drop_invalid_encap->parent = this;
-            children["in-drop-invalid-encap"] = in_drop_invalid_encap;
         }
-        return children.at("in-drop-invalid-encap");
+        return in_drop_invalid_encap;
     }
 
     if(child_yang_name == "in-drop-invalid-vlan")
     {
-        if(in_drop_invalid_vlan != nullptr)
-        {
-            children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
-        }
-        else
+        if(in_drop_invalid_vlan == nullptr)
         {
             in_drop_invalid_vlan = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidVlan>();
-            in_drop_invalid_vlan->parent = this;
-            children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
         }
-        return children.at("in-drop-invalid-vlan");
+        return in_drop_invalid_vlan;
     }
 
     if(child_yang_name == "in-drop-other")
     {
-        if(in_drop_other != nullptr)
-        {
-            children["in-drop-other"] = in_drop_other;
-        }
-        else
+        if(in_drop_other == nullptr)
         {
             in_drop_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOther>();
-            in_drop_other->parent = this;
-            children["in-drop-other"] = in_drop_other;
         }
-        return children.at("in-drop-other");
+        return in_drop_other;
     }
 
     if(child_yang_name == "in-drop-overrun")
     {
-        if(in_drop_overrun != nullptr)
-        {
-            children["in-drop-overrun"] = in_drop_overrun;
-        }
-        else
+        if(in_drop_overrun == nullptr)
         {
             in_drop_overrun = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOverrun>();
-            in_drop_overrun->parent = this;
-            children["in-drop-overrun"] = in_drop_overrun;
         }
-        return children.at("in-drop-overrun");
+        return in_drop_overrun;
     }
 
     if(child_yang_name == "in-error-collisions")
     {
-        if(in_error_collisions != nullptr)
-        {
-            children["in-error-collisions"] = in_error_collisions;
-        }
-        else
+        if(in_error_collisions == nullptr)
         {
             in_error_collisions = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorCollisions>();
-            in_error_collisions->parent = this;
-            children["in-error-collisions"] = in_error_collisions;
         }
-        return children.at("in-error-collisions");
+        return in_error_collisions;
     }
 
     if(child_yang_name == "in-error-fragments")
     {
-        if(in_error_fragments != nullptr)
-        {
-            children["in-error-fragments"] = in_error_fragments;
-        }
-        else
+        if(in_error_fragments == nullptr)
         {
             in_error_fragments = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorFragments>();
-            in_error_fragments->parent = this;
-            children["in-error-fragments"] = in_error_fragments;
         }
-        return children.at("in-error-fragments");
+        return in_error_fragments;
     }
 
     if(child_yang_name == "in-error-giant")
     {
-        if(in_error_giant != nullptr)
-        {
-            children["in-error-giant"] = in_error_giant;
-        }
-        else
+        if(in_error_giant == nullptr)
         {
             in_error_giant = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorGiant>();
-            in_error_giant->parent = this;
-            children["in-error-giant"] = in_error_giant;
         }
-        return children.at("in-error-giant");
+        return in_error_giant;
     }
 
     if(child_yang_name == "in-error-jabbers")
     {
-        if(in_error_jabbers != nullptr)
-        {
-            children["in-error-jabbers"] = in_error_jabbers;
-        }
-        else
+        if(in_error_jabbers == nullptr)
         {
             in_error_jabbers = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorJabbers>();
-            in_error_jabbers->parent = this;
-            children["in-error-jabbers"] = in_error_jabbers;
         }
-        return children.at("in-error-jabbers");
+        return in_error_jabbers;
     }
 
     if(child_yang_name == "in-error-other")
     {
-        if(in_error_other != nullptr)
-        {
-            children["in-error-other"] = in_error_other;
-        }
-        else
+        if(in_error_other == nullptr)
         {
             in_error_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorOther>();
-            in_error_other->parent = this;
-            children["in-error-other"] = in_error_other;
         }
-        return children.at("in-error-other");
+        return in_error_other;
     }
 
     if(child_yang_name == "in-error-runt")
     {
-        if(in_error_runt != nullptr)
-        {
-            children["in-error-runt"] = in_error_runt;
-        }
-        else
+        if(in_error_runt == nullptr)
         {
             in_error_runt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorRunt>();
-            in_error_runt->parent = this;
-            children["in-error-runt"] = in_error_runt;
         }
-        return children.at("in-error-runt");
+        return in_error_runt;
     }
 
     if(child_yang_name == "in-error-symbol")
     {
-        if(in_error_symbol != nullptr)
-        {
-            children["in-error-symbol"] = in_error_symbol;
-        }
-        else
+        if(in_error_symbol == nullptr)
         {
             in_error_symbol = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorSymbol>();
-            in_error_symbol->parent = this;
-            children["in-error-symbol"] = in_error_symbol;
         }
-        return children.at("in-error-symbol");
+        return in_error_symbol;
     }
 
     if(child_yang_name == "in-good-bytes")
     {
-        if(in_good_bytes != nullptr)
-        {
-            children["in-good-bytes"] = in_good_bytes;
-        }
-        else
+        if(in_good_bytes == nullptr)
         {
             in_good_bytes = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodBytes>();
-            in_good_bytes->parent = this;
-            children["in-good-bytes"] = in_good_bytes;
         }
-        return children.at("in-good-bytes");
+        return in_good_bytes;
     }
 
     if(child_yang_name == "in-good-pkts")
     {
-        if(in_good_pkts != nullptr)
-        {
-            children["in-good-pkts"] = in_good_pkts;
-        }
-        else
+        if(in_good_pkts == nullptr)
         {
             in_good_pkts = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodPkts>();
-            in_good_pkts->parent = this;
-            children["in-good-pkts"] = in_good_pkts;
         }
-        return children.at("in-good-pkts");
+        return in_good_pkts;
     }
 
     if(child_yang_name == "in-mcast-pkt")
     {
-        if(in_mcast_pkt != nullptr)
-        {
-            children["in-mcast-pkt"] = in_mcast_pkt;
-        }
-        else
+        if(in_mcast_pkt == nullptr)
         {
             in_mcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMcastPkt>();
-            in_mcast_pkt->parent = this;
-            children["in-mcast-pkt"] = in_mcast_pkt;
         }
-        return children.at("in-mcast-pkt");
+        return in_mcast_pkt;
     }
 
     if(child_yang_name == "in-mib-giant")
     {
-        if(in_mib_giant != nullptr)
-        {
-            children["in-mib-giant"] = in_mib_giant;
-        }
-        else
+        if(in_mib_giant == nullptr)
         {
             in_mib_giant = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibGiant>();
-            in_mib_giant->parent = this;
-            children["in-mib-giant"] = in_mib_giant;
         }
-        return children.at("in-mib-giant");
+        return in_mib_giant;
     }
 
     if(child_yang_name == "in-mib-jabber")
     {
-        if(in_mib_jabber != nullptr)
-        {
-            children["in-mib-jabber"] = in_mib_jabber;
-        }
-        else
+        if(in_mib_jabber == nullptr)
         {
             in_mib_jabber = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibJabber>();
-            in_mib_jabber->parent = this;
-            children["in-mib-jabber"] = in_mib_jabber;
         }
-        return children.at("in-mib-jabber");
+        return in_mib_jabber;
     }
 
     if(child_yang_name == "in-mibcrc")
     {
-        if(in_mibcrc != nullptr)
-        {
-            children["in-mibcrc"] = in_mibcrc;
-        }
-        else
+        if(in_mibcrc == nullptr)
         {
             in_mibcrc = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibcrc>();
-            in_mibcrc->parent = this;
-            children["in-mibcrc"] = in_mibcrc;
         }
-        return children.at("in-mibcrc");
+        return in_mibcrc;
     }
 
     if(child_yang_name == "in-pause-frame")
     {
-        if(in_pause_frame != nullptr)
-        {
-            children["in-pause-frame"] = in_pause_frame;
-        }
-        else
+        if(in_pause_frame == nullptr)
         {
             in_pause_frame = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPauseFrame>();
-            in_pause_frame->parent = this;
-            children["in-pause-frame"] = in_pause_frame;
         }
-        return children.at("in-pause-frame");
+        return in_pause_frame;
     }
 
     if(child_yang_name == "in-pkt64-octet")
     {
-        if(in_pkt64_octet != nullptr)
-        {
-            children["in-pkt64-octet"] = in_pkt64_octet;
-        }
-        else
+        if(in_pkt64_octet == nullptr)
         {
             in_pkt64_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkt64Octet>();
-            in_pkt64_octet->parent = this;
-            children["in-pkt64-octet"] = in_pkt64_octet;
         }
-        return children.at("in-pkt64-octet");
+        return in_pkt64_octet;
     }
 
     if(child_yang_name == "in-pkts1024-to1518-octets")
     {
-        if(in_pkts1024_to1518_octets != nullptr)
-        {
-            children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
-        }
-        else
+        if(in_pkts1024_to1518_octets == nullptr)
         {
             in_pkts1024_to1518_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets>();
-            in_pkts1024_to1518_octets->parent = this;
-            children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
         }
-        return children.at("in-pkts1024-to1518-octets");
+        return in_pkts1024_to1518_octets;
     }
 
     if(child_yang_name == "in-pkts128-to255-octets")
     {
-        if(in_pkts128_to255_octets != nullptr)
-        {
-            children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
-        }
-        else
+        if(in_pkts128_to255_octets == nullptr)
         {
             in_pkts128_to255_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts128To255Octets>();
-            in_pkts128_to255_octets->parent = this;
-            children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
         }
-        return children.at("in-pkts128-to255-octets");
+        return in_pkts128_to255_octets;
     }
 
     if(child_yang_name == "in-pkts1519-max-octets")
     {
-        if(in_pkts1519_max_octets != nullptr)
-        {
-            children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
-        }
-        else
+        if(in_pkts1519_max_octets == nullptr)
         {
             in_pkts1519_max_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1519MaxOctets>();
-            in_pkts1519_max_octets->parent = this;
-            children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
         }
-        return children.at("in-pkts1519-max-octets");
+        return in_pkts1519_max_octets;
     }
 
     if(child_yang_name == "in-pkts256-to511-octets")
     {
-        if(in_pkts256_to511_octets != nullptr)
-        {
-            children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
-        }
-        else
+        if(in_pkts256_to511_octets == nullptr)
         {
             in_pkts256_to511_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts256To511Octets>();
-            in_pkts256_to511_octets->parent = this;
-            children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
         }
-        return children.at("in-pkts256-to511-octets");
+        return in_pkts256_to511_octets;
     }
 
     if(child_yang_name == "in-pkts512-to1023-octets")
     {
-        if(in_pkts512_to1023_octets != nullptr)
-        {
-            children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
-        }
-        else
+        if(in_pkts512_to1023_octets == nullptr)
         {
             in_pkts512_to1023_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts512To1023Octets>();
-            in_pkts512_to1023_octets->parent = this;
-            children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
         }
-        return children.at("in-pkts512-to1023-octets");
+        return in_pkts512_to1023_octets;
     }
 
     if(child_yang_name == "in-pkts65-to127-octets")
     {
-        if(in_pkts65_to127_octets != nullptr)
-        {
-            children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
-        }
-        else
+        if(in_pkts65_to127_octets == nullptr)
         {
             in_pkts65_to127_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts65To127Octets>();
-            in_pkts65_to127_octets->parent = this;
-            children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
         }
-        return children.at("in-pkts65-to127-octets");
+        return in_pkts65_to127_octets;
     }
 
     if(child_yang_name == "in-ucast-pkt")
     {
-        if(in_ucast_pkt != nullptr)
-        {
-            children["in-ucast-pkt"] = in_ucast_pkt;
-        }
-        else
+        if(in_ucast_pkt == nullptr)
         {
             in_ucast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InUcastPkt>();
-            in_ucast_pkt->parent = this;
-            children["in-ucast-pkt"] = in_ucast_pkt;
         }
-        return children.at("in-ucast-pkt");
+        return in_ucast_pkt;
     }
 
     if(child_yang_name == "jabber-stat")
     {
-        if(jabber_stat != nullptr)
-        {
-            children["jabber-stat"] = jabber_stat;
-        }
-        else
+        if(jabber_stat == nullptr)
         {
             jabber_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::JabberStat>();
-            jabber_stat->parent = this;
-            children["jabber-stat"] = jabber_stat;
         }
-        return children.at("jabber-stat");
+        return jabber_stat;
     }
 
     if(child_yang_name == "long-frames-stat")
     {
-        if(long_frames_stat != nullptr)
-        {
-            children["long-frames-stat"] = long_frames_stat;
-        }
-        else
+        if(long_frames_stat == nullptr)
         {
             long_frames_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::LongFramesStat>();
-            long_frames_stat->parent = this;
-            children["long-frames-stat"] = long_frames_stat;
         }
-        return children.at("long-frames-stat");
+        return long_frames_stat;
     }
 
     if(child_yang_name == "octet-stat")
     {
-        if(octet_stat != nullptr)
-        {
-            children["octet-stat"] = octet_stat;
-        }
-        else
+        if(octet_stat == nullptr)
         {
             octet_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OctetStat>();
-            octet_stat->parent = this;
-            children["octet-stat"] = octet_stat;
         }
-        return children.at("octet-stat");
+        return octet_stat;
     }
 
     if(child_yang_name == "out8021q-frames")
     {
-        if(out8021q_frames != nullptr)
-        {
-            children["out8021q-frames"] = out8021q_frames;
-        }
-        else
+        if(out8021q_frames == nullptr)
         {
             out8021q_frames = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Out8021QFrames>();
-            out8021q_frames->parent = this;
-            children["out8021q-frames"] = out8021q_frames;
         }
-        return children.at("out8021q-frames");
+        return out8021q_frames;
     }
 
     if(child_yang_name == "out-bcast-pkt")
     {
-        if(out_bcast_pkt != nullptr)
-        {
-            children["out-bcast-pkt"] = out_bcast_pkt;
-        }
-        else
+        if(out_bcast_pkt == nullptr)
         {
             out_bcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutBcastPkt>();
-            out_bcast_pkt->parent = this;
-            children["out-bcast-pkt"] = out_bcast_pkt;
         }
-        return children.at("out-bcast-pkt");
+        return out_bcast_pkt;
     }
 
     if(child_yang_name == "out-drop-abort")
     {
-        if(out_drop_abort != nullptr)
-        {
-            children["out-drop-abort"] = out_drop_abort;
-        }
-        else
+        if(out_drop_abort == nullptr)
         {
             out_drop_abort = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropAbort>();
-            out_drop_abort->parent = this;
-            children["out-drop-abort"] = out_drop_abort;
         }
-        return children.at("out-drop-abort");
+        return out_drop_abort;
     }
 
     if(child_yang_name == "out-drop-other")
     {
-        if(out_drop_other != nullptr)
-        {
-            children["out-drop-other"] = out_drop_other;
-        }
-        else
+        if(out_drop_other == nullptr)
         {
             out_drop_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropOther>();
-            out_drop_other->parent = this;
-            children["out-drop-other"] = out_drop_other;
         }
-        return children.at("out-drop-other");
+        return out_drop_other;
     }
 
     if(child_yang_name == "out-drop-underrun")
     {
-        if(out_drop_underrun != nullptr)
-        {
-            children["out-drop-underrun"] = out_drop_underrun;
-        }
-        else
+        if(out_drop_underrun == nullptr)
         {
             out_drop_underrun = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropUnderrun>();
-            out_drop_underrun->parent = this;
-            children["out-drop-underrun"] = out_drop_underrun;
         }
-        return children.at("out-drop-underrun");
+        return out_drop_underrun;
     }
 
     if(child_yang_name == "out-error-other")
     {
-        if(out_error_other != nullptr)
-        {
-            children["out-error-other"] = out_error_other;
-        }
-        else
+        if(out_error_other == nullptr)
         {
             out_error_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutErrorOther>();
-            out_error_other->parent = this;
-            children["out-error-other"] = out_error_other;
         }
-        return children.at("out-error-other");
+        return out_error_other;
     }
 
     if(child_yang_name == "out-good-bytes")
     {
-        if(out_good_bytes != nullptr)
-        {
-            children["out-good-bytes"] = out_good_bytes;
-        }
-        else
+        if(out_good_bytes == nullptr)
         {
             out_good_bytes = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodBytes>();
-            out_good_bytes->parent = this;
-            children["out-good-bytes"] = out_good_bytes;
         }
-        return children.at("out-good-bytes");
+        return out_good_bytes;
     }
 
     if(child_yang_name == "out-good-pkts")
     {
-        if(out_good_pkts != nullptr)
-        {
-            children["out-good-pkts"] = out_good_pkts;
-        }
-        else
+        if(out_good_pkts == nullptr)
         {
             out_good_pkts = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodPkts>();
-            out_good_pkts->parent = this;
-            children["out-good-pkts"] = out_good_pkts;
         }
-        return children.at("out-good-pkts");
+        return out_good_pkts;
     }
 
     if(child_yang_name == "out-mcast-pkt")
     {
-        if(out_mcast_pkt != nullptr)
-        {
-            children["out-mcast-pkt"] = out_mcast_pkt;
-        }
-        else
+        if(out_mcast_pkt == nullptr)
         {
             out_mcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutMcastPkt>();
-            out_mcast_pkt->parent = this;
-            children["out-mcast-pkt"] = out_mcast_pkt;
         }
-        return children.at("out-mcast-pkt");
+        return out_mcast_pkt;
     }
 
     if(child_yang_name == "out-octets")
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
-        else
+        if(out_octets == nullptr)
         {
             out_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutOctets>();
-            out_octets->parent = this;
-            children["out-octets"] = out_octets;
         }
-        return children.at("out-octets");
+        return out_octets;
     }
 
     if(child_yang_name == "out-pause-frames")
     {
-        if(out_pause_frames != nullptr)
-        {
-            children["out-pause-frames"] = out_pause_frames;
-        }
-        else
+        if(out_pause_frames == nullptr)
         {
             out_pause_frames = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPauseFrames>();
-            out_pause_frames->parent = this;
-            children["out-pause-frames"] = out_pause_frames;
         }
-        return children.at("out-pause-frames");
+        return out_pause_frames;
     }
 
     if(child_yang_name == "out-pkts10241518-octets")
     {
-        if(out_pkts10241518_octets != nullptr)
-        {
-            children["out-pkts10241518-octets"] = out_pkts10241518_octets;
-        }
-        else
+        if(out_pkts10241518_octets == nullptr)
         {
             out_pkts10241518_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets>();
-            out_pkts10241518_octets->parent = this;
-            children["out-pkts10241518-octets"] = out_pkts10241518_octets;
         }
-        return children.at("out-pkts10241518-octets");
+        return out_pkts10241518_octets;
     }
 
     if(child_yang_name == "out-pkts128255-octets")
     {
-        if(out_pkts128255_octets != nullptr)
-        {
-            children["out-pkts128255-octets"] = out_pkts128255_octets;
-        }
-        else
+        if(out_pkts128255_octets == nullptr)
         {
             out_pkts128255_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets>();
-            out_pkts128255_octets->parent = this;
-            children["out-pkts128255-octets"] = out_pkts128255_octets;
         }
-        return children.at("out-pkts128255-octets");
+        return out_pkts128255_octets;
     }
 
     if(child_yang_name == "out-pkts1519-max-octets")
     {
-        if(out_pkts1519_max_octets != nullptr)
-        {
-            children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
-        }
-        else
+        if(out_pkts1519_max_octets == nullptr)
         {
             out_pkts1519_max_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts1519MaxOctets>();
-            out_pkts1519_max_octets->parent = this;
-            children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
         }
-        return children.at("out-pkts1519-max-octets");
+        return out_pkts1519_max_octets;
     }
 
     if(child_yang_name == "out-pkts256511-octets")
     {
-        if(out_pkts256511_octets != nullptr)
-        {
-            children["out-pkts256511-octets"] = out_pkts256511_octets;
-        }
-        else
+        if(out_pkts256511_octets == nullptr)
         {
             out_pkts256511_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets>();
-            out_pkts256511_octets->parent = this;
-            children["out-pkts256511-octets"] = out_pkts256511_octets;
         }
-        return children.at("out-pkts256511-octets");
+        return out_pkts256511_octets;
     }
 
     if(child_yang_name == "out-pkts5121023-octets")
     {
-        if(out_pkts5121023_octets != nullptr)
-        {
-            children["out-pkts5121023-octets"] = out_pkts5121023_octets;
-        }
-        else
+        if(out_pkts5121023_octets == nullptr)
         {
             out_pkts5121023_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets>();
-            out_pkts5121023_octets->parent = this;
-            children["out-pkts5121023-octets"] = out_pkts5121023_octets;
         }
-        return children.at("out-pkts5121023-octets");
+        return out_pkts5121023_octets;
     }
 
     if(child_yang_name == "out-pkts65127-octets")
     {
-        if(out_pkts65127_octets != nullptr)
-        {
-            children["out-pkts65127-octets"] = out_pkts65127_octets;
-        }
-        else
+        if(out_pkts65127_octets == nullptr)
         {
             out_pkts65127_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets>();
-            out_pkts65127_octets->parent = this;
-            children["out-pkts65127-octets"] = out_pkts65127_octets;
         }
-        return children.at("out-pkts65127-octets");
+        return out_pkts65127_octets;
     }
 
     if(child_yang_name == "out-ucast-pkt")
     {
-        if(out_ucast_pkt != nullptr)
-        {
-            children["out-ucast-pkt"] = out_ucast_pkt;
-        }
-        else
+        if(out_ucast_pkt == nullptr)
         {
             out_ucast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutUcastPkt>();
-            out_ucast_pkt->parent = this;
-            children["out-ucast-pkt"] = out_ucast_pkt;
         }
-        return children.at("out-ucast-pkt");
+        return out_ucast_pkt;
     }
 
     if(child_yang_name == "outpkt64octet")
     {
-        if(outpkt64octet != nullptr)
-        {
-            children["outpkt64octet"] = outpkt64octet;
-        }
-        else
+        if(outpkt64octet == nullptr)
         {
             outpkt64octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet>();
-            outpkt64octet->parent = this;
-            children["outpkt64octet"] = outpkt64octet;
         }
-        return children.at("outpkt64octet");
+        return outpkt64octet;
     }
 
     if(child_yang_name == "oversize-pkt-stat")
     {
-        if(oversize_pkt_stat != nullptr)
-        {
-            children["oversize-pkt-stat"] = oversize_pkt_stat;
-        }
-        else
+        if(oversize_pkt_stat == nullptr)
         {
             oversize_pkt_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OversizePktStat>();
-            oversize_pkt_stat->parent = this;
-            children["oversize-pkt-stat"] = oversize_pkt_stat;
         }
-        return children.at("oversize-pkt-stat");
+        return oversize_pkt_stat;
     }
 
     if(child_yang_name == "rx-pkt")
     {
-        if(rx_pkt != nullptr)
-        {
-            children["rx-pkt"] = rx_pkt;
-        }
-        else
+        if(rx_pkt == nullptr)
         {
             rx_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxPkt>();
-            rx_pkt->parent = this;
-            children["rx-pkt"] = rx_pkt;
         }
-        return children.at("rx-pkt");
+        return rx_pkt;
     }
 
     if(child_yang_name == "rx-util")
     {
-        if(rx_util != nullptr)
-        {
-            children["rx-util"] = rx_util;
-        }
-        else
+        if(rx_util == nullptr)
         {
             rx_util = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil>();
-            rx_util->parent = this;
-            children["rx-util"] = rx_util;
         }
-        return children.at("rx-util");
+        return rx_util;
     }
 
     if(child_yang_name == "stat-pkt")
     {
-        if(stat_pkt != nullptr)
-        {
-            children["stat-pkt"] = stat_pkt;
-        }
-        else
+        if(stat_pkt == nullptr)
         {
             stat_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::StatPkt>();
-            stat_pkt->parent = this;
-            children["stat-pkt"] = stat_pkt;
         }
-        return children.at("stat-pkt");
+        return stat_pkt;
     }
 
     if(child_yang_name == "tx-bad-fcs")
     {
-        if(tx_bad_fcs != nullptr)
-        {
-            children["tx-bad-fcs"] = tx_bad_fcs;
-        }
-        else
+        if(tx_bad_fcs == nullptr)
         {
             tx_bad_fcs = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxBadFcs>();
-            tx_bad_fcs->parent = this;
-            children["tx-bad-fcs"] = tx_bad_fcs;
         }
-        return children.at("tx-bad-fcs");
+        return tx_bad_fcs;
     }
 
     if(child_yang_name == "tx-fragments")
     {
-        if(tx_fragments != nullptr)
-        {
-            children["tx-fragments"] = tx_fragments;
-        }
-        else
+        if(tx_fragments == nullptr)
         {
             tx_fragments = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxFragments>();
-            tx_fragments->parent = this;
-            children["tx-fragments"] = tx_fragments;
         }
-        return children.at("tx-fragments");
+        return tx_fragments;
     }
 
     if(child_yang_name == "tx-jabber")
     {
-        if(tx_jabber != nullptr)
-        {
-            children["tx-jabber"] = tx_jabber;
-        }
-        else
+        if(tx_jabber == nullptr)
         {
             tx_jabber = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxJabber>();
-            tx_jabber->parent = this;
-            children["tx-jabber"] = tx_jabber;
         }
-        return children.at("tx-jabber");
+        return tx_jabber;
     }
 
     if(child_yang_name == "tx-oversized-pkt")
     {
-        if(tx_oversized_pkt != nullptr)
-        {
-            children["tx-oversized-pkt"] = tx_oversized_pkt;
-        }
-        else
+        if(tx_oversized_pkt == nullptr)
         {
             tx_oversized_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxOversizedPkt>();
-            tx_oversized_pkt->parent = this;
-            children["tx-oversized-pkt"] = tx_oversized_pkt;
         }
-        return children.at("tx-oversized-pkt");
+        return tx_oversized_pkt;
     }
 
     if(child_yang_name == "tx-pkt")
     {
-        if(tx_pkt != nullptr)
-        {
-            children["tx-pkt"] = tx_pkt;
-        }
-        else
+        if(tx_pkt == nullptr)
         {
             tx_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxPkt>();
-            tx_pkt->parent = this;
-            children["tx-pkt"] = tx_pkt;
         }
-        return children.at("tx-pkt");
+        return tx_pkt;
     }
 
     if(child_yang_name == "tx-undersized-pkt")
     {
-        if(tx_undersized_pkt != nullptr)
-        {
-            children["tx-undersized-pkt"] = tx_undersized_pkt;
-        }
-        else
+        if(tx_undersized_pkt == nullptr)
         {
             tx_undersized_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt>();
-            tx_undersized_pkt->parent = this;
-            children["tx-undersized-pkt"] = tx_undersized_pkt;
         }
-        return children.at("tx-undersized-pkt");
+        return tx_undersized_pkt;
     }
 
     if(child_yang_name == "tx-util")
     {
-        if(tx_util != nullptr)
-        {
-            children["tx-util"] = tx_util;
-        }
-        else
+        if(tx_util == nullptr)
         {
             tx_util = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil>();
-            tx_util->parent = this;
-            children["tx-util"] = tx_util;
         }
-        return children.at("tx-util");
+        return tx_util;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::get_children() const
 {
-    if(children.find("ether10241518-octet") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ether10241518_octet != nullptr)
     {
-        if(ether10241518_octet != nullptr)
-        {
-            children["ether10241518-octet"] = ether10241518_octet;
-        }
+        children["ether10241518-octet"] = ether10241518_octet;
     }
 
-    if(children.find("ether128255-octet") == children.end())
+    if(ether128255_octet != nullptr)
     {
-        if(ether128255_octet != nullptr)
-        {
-            children["ether128255-octet"] = ether128255_octet;
-        }
+        children["ether128255-octet"] = ether128255_octet;
     }
 
-    if(children.find("ether256511-octet") == children.end())
+    if(ether256511_octet != nullptr)
     {
-        if(ether256511_octet != nullptr)
-        {
-            children["ether256511-octet"] = ether256511_octet;
-        }
+        children["ether256511-octet"] = ether256511_octet;
     }
 
-    if(children.find("ether5121023-octet") == children.end())
+    if(ether5121023_octet != nullptr)
     {
-        if(ether5121023_octet != nullptr)
-        {
-            children["ether5121023-octet"] = ether5121023_octet;
-        }
+        children["ether5121023-octet"] = ether5121023_octet;
     }
 
-    if(children.find("ether64-octets") == children.end())
+    if(ether64_octets != nullptr)
     {
-        if(ether64_octets != nullptr)
-        {
-            children["ether64-octets"] = ether64_octets;
-        }
+        children["ether64-octets"] = ether64_octets;
     }
 
-    if(children.find("ether65127-octet") == children.end())
+    if(ether65127_octet != nullptr)
     {
-        if(ether65127_octet != nullptr)
-        {
-            children["ether65127-octet"] = ether65127_octet;
-        }
+        children["ether65127-octet"] = ether65127_octet;
     }
 
-    if(children.find("ether-stat-broadcast-pkt") == children.end())
+    if(ether_stat_broadcast_pkt != nullptr)
     {
-        if(ether_stat_broadcast_pkt != nullptr)
-        {
-            children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
-        }
+        children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
     }
 
-    if(children.find("ether-stat-multicast-pkt") == children.end())
+    if(ether_stat_multicast_pkt != nullptr)
     {
-        if(ether_stat_multicast_pkt != nullptr)
-        {
-            children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
-        }
+        children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
     }
 
-    if(children.find("ether-stat-undersized-pkt") == children.end())
+    if(ether_stat_undersized_pkt != nullptr)
     {
-        if(ether_stat_undersized_pkt != nullptr)
-        {
-            children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
-        }
+        children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
     }
 
-    if(children.find("fcs-errors-stat") == children.end())
+    if(fcs_errors_stat != nullptr)
     {
-        if(fcs_errors_stat != nullptr)
-        {
-            children["fcs-errors-stat"] = fcs_errors_stat;
-        }
+        children["fcs-errors-stat"] = fcs_errors_stat;
     }
 
-    if(children.find("if-in-errors") == children.end())
+    if(if_in_errors != nullptr)
     {
-        if(if_in_errors != nullptr)
-        {
-            children["if-in-errors"] = if_in_errors;
-        }
+        children["if-in-errors"] = if_in_errors;
     }
 
-    if(children.find("if-in-octets") == children.end())
+    if(if_in_octets != nullptr)
     {
-        if(if_in_octets != nullptr)
-        {
-            children["if-in-octets"] = if_in_octets;
-        }
+        children["if-in-octets"] = if_in_octets;
     }
 
-    if(children.find("in8021q-frames") == children.end())
+    if(in8021q_frames != nullptr)
     {
-        if(in8021q_frames != nullptr)
-        {
-            children["in8021q-frames"] = in8021q_frames;
-        }
+        children["in8021q-frames"] = in8021q_frames;
     }
 
-    if(children.find("in-bcast-pkt") == children.end())
+    if(in_bcast_pkt != nullptr)
     {
-        if(in_bcast_pkt != nullptr)
-        {
-            children["in-bcast-pkt"] = in_bcast_pkt;
-        }
+        children["in-bcast-pkt"] = in_bcast_pkt;
     }
 
-    if(children.find("in-drop-abort") == children.end())
+    if(in_drop_abort != nullptr)
     {
-        if(in_drop_abort != nullptr)
-        {
-            children["in-drop-abort"] = in_drop_abort;
-        }
+        children["in-drop-abort"] = in_drop_abort;
     }
 
-    if(children.find("in-drop-invalid-dmac") == children.end())
+    if(in_drop_invalid_dmac != nullptr)
     {
-        if(in_drop_invalid_dmac != nullptr)
-        {
-            children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
-        }
+        children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
     }
 
-    if(children.find("in-drop-invalid-encap") == children.end())
+    if(in_drop_invalid_encap != nullptr)
     {
-        if(in_drop_invalid_encap != nullptr)
-        {
-            children["in-drop-invalid-encap"] = in_drop_invalid_encap;
-        }
+        children["in-drop-invalid-encap"] = in_drop_invalid_encap;
     }
 
-    if(children.find("in-drop-invalid-vlan") == children.end())
+    if(in_drop_invalid_vlan != nullptr)
     {
-        if(in_drop_invalid_vlan != nullptr)
-        {
-            children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
-        }
+        children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
     }
 
-    if(children.find("in-drop-other") == children.end())
+    if(in_drop_other != nullptr)
     {
-        if(in_drop_other != nullptr)
-        {
-            children["in-drop-other"] = in_drop_other;
-        }
+        children["in-drop-other"] = in_drop_other;
     }
 
-    if(children.find("in-drop-overrun") == children.end())
+    if(in_drop_overrun != nullptr)
     {
-        if(in_drop_overrun != nullptr)
-        {
-            children["in-drop-overrun"] = in_drop_overrun;
-        }
+        children["in-drop-overrun"] = in_drop_overrun;
     }
 
-    if(children.find("in-error-collisions") == children.end())
+    if(in_error_collisions != nullptr)
     {
-        if(in_error_collisions != nullptr)
-        {
-            children["in-error-collisions"] = in_error_collisions;
-        }
+        children["in-error-collisions"] = in_error_collisions;
     }
 
-    if(children.find("in-error-fragments") == children.end())
+    if(in_error_fragments != nullptr)
     {
-        if(in_error_fragments != nullptr)
-        {
-            children["in-error-fragments"] = in_error_fragments;
-        }
+        children["in-error-fragments"] = in_error_fragments;
     }
 
-    if(children.find("in-error-giant") == children.end())
+    if(in_error_giant != nullptr)
     {
-        if(in_error_giant != nullptr)
-        {
-            children["in-error-giant"] = in_error_giant;
-        }
+        children["in-error-giant"] = in_error_giant;
     }
 
-    if(children.find("in-error-jabbers") == children.end())
+    if(in_error_jabbers != nullptr)
     {
-        if(in_error_jabbers != nullptr)
-        {
-            children["in-error-jabbers"] = in_error_jabbers;
-        }
+        children["in-error-jabbers"] = in_error_jabbers;
     }
 
-    if(children.find("in-error-other") == children.end())
+    if(in_error_other != nullptr)
     {
-        if(in_error_other != nullptr)
-        {
-            children["in-error-other"] = in_error_other;
-        }
+        children["in-error-other"] = in_error_other;
     }
 
-    if(children.find("in-error-runt") == children.end())
+    if(in_error_runt != nullptr)
     {
-        if(in_error_runt != nullptr)
-        {
-            children["in-error-runt"] = in_error_runt;
-        }
+        children["in-error-runt"] = in_error_runt;
     }
 
-    if(children.find("in-error-symbol") == children.end())
+    if(in_error_symbol != nullptr)
     {
-        if(in_error_symbol != nullptr)
-        {
-            children["in-error-symbol"] = in_error_symbol;
-        }
+        children["in-error-symbol"] = in_error_symbol;
     }
 
-    if(children.find("in-good-bytes") == children.end())
+    if(in_good_bytes != nullptr)
     {
-        if(in_good_bytes != nullptr)
-        {
-            children["in-good-bytes"] = in_good_bytes;
-        }
+        children["in-good-bytes"] = in_good_bytes;
     }
 
-    if(children.find("in-good-pkts") == children.end())
+    if(in_good_pkts != nullptr)
     {
-        if(in_good_pkts != nullptr)
-        {
-            children["in-good-pkts"] = in_good_pkts;
-        }
+        children["in-good-pkts"] = in_good_pkts;
     }
 
-    if(children.find("in-mcast-pkt") == children.end())
+    if(in_mcast_pkt != nullptr)
     {
-        if(in_mcast_pkt != nullptr)
-        {
-            children["in-mcast-pkt"] = in_mcast_pkt;
-        }
+        children["in-mcast-pkt"] = in_mcast_pkt;
     }
 
-    if(children.find("in-mib-giant") == children.end())
+    if(in_mib_giant != nullptr)
     {
-        if(in_mib_giant != nullptr)
-        {
-            children["in-mib-giant"] = in_mib_giant;
-        }
+        children["in-mib-giant"] = in_mib_giant;
     }
 
-    if(children.find("in-mib-jabber") == children.end())
+    if(in_mib_jabber != nullptr)
     {
-        if(in_mib_jabber != nullptr)
-        {
-            children["in-mib-jabber"] = in_mib_jabber;
-        }
+        children["in-mib-jabber"] = in_mib_jabber;
     }
 
-    if(children.find("in-mibcrc") == children.end())
+    if(in_mibcrc != nullptr)
     {
-        if(in_mibcrc != nullptr)
-        {
-            children["in-mibcrc"] = in_mibcrc;
-        }
+        children["in-mibcrc"] = in_mibcrc;
     }
 
-    if(children.find("in-pause-frame") == children.end())
+    if(in_pause_frame != nullptr)
     {
-        if(in_pause_frame != nullptr)
-        {
-            children["in-pause-frame"] = in_pause_frame;
-        }
+        children["in-pause-frame"] = in_pause_frame;
     }
 
-    if(children.find("in-pkt64-octet") == children.end())
+    if(in_pkt64_octet != nullptr)
     {
-        if(in_pkt64_octet != nullptr)
-        {
-            children["in-pkt64-octet"] = in_pkt64_octet;
-        }
+        children["in-pkt64-octet"] = in_pkt64_octet;
     }
 
-    if(children.find("in-pkts1024-to1518-octets") == children.end())
+    if(in_pkts1024_to1518_octets != nullptr)
     {
-        if(in_pkts1024_to1518_octets != nullptr)
-        {
-            children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
-        }
+        children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
     }
 
-    if(children.find("in-pkts128-to255-octets") == children.end())
+    if(in_pkts128_to255_octets != nullptr)
     {
-        if(in_pkts128_to255_octets != nullptr)
-        {
-            children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
-        }
+        children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
     }
 
-    if(children.find("in-pkts1519-max-octets") == children.end())
+    if(in_pkts1519_max_octets != nullptr)
     {
-        if(in_pkts1519_max_octets != nullptr)
-        {
-            children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
-        }
+        children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
     }
 
-    if(children.find("in-pkts256-to511-octets") == children.end())
+    if(in_pkts256_to511_octets != nullptr)
     {
-        if(in_pkts256_to511_octets != nullptr)
-        {
-            children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
-        }
+        children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
     }
 
-    if(children.find("in-pkts512-to1023-octets") == children.end())
+    if(in_pkts512_to1023_octets != nullptr)
     {
-        if(in_pkts512_to1023_octets != nullptr)
-        {
-            children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
-        }
+        children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
     }
 
-    if(children.find("in-pkts65-to127-octets") == children.end())
+    if(in_pkts65_to127_octets != nullptr)
     {
-        if(in_pkts65_to127_octets != nullptr)
-        {
-            children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
-        }
+        children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
     }
 
-    if(children.find("in-ucast-pkt") == children.end())
+    if(in_ucast_pkt != nullptr)
     {
-        if(in_ucast_pkt != nullptr)
-        {
-            children["in-ucast-pkt"] = in_ucast_pkt;
-        }
+        children["in-ucast-pkt"] = in_ucast_pkt;
     }
 
-    if(children.find("jabber-stat") == children.end())
+    if(jabber_stat != nullptr)
     {
-        if(jabber_stat != nullptr)
-        {
-            children["jabber-stat"] = jabber_stat;
-        }
+        children["jabber-stat"] = jabber_stat;
     }
 
-    if(children.find("long-frames-stat") == children.end())
+    if(long_frames_stat != nullptr)
     {
-        if(long_frames_stat != nullptr)
-        {
-            children["long-frames-stat"] = long_frames_stat;
-        }
+        children["long-frames-stat"] = long_frames_stat;
     }
 
-    if(children.find("octet-stat") == children.end())
+    if(octet_stat != nullptr)
     {
-        if(octet_stat != nullptr)
-        {
-            children["octet-stat"] = octet_stat;
-        }
+        children["octet-stat"] = octet_stat;
     }
 
-    if(children.find("out8021q-frames") == children.end())
+    if(out8021q_frames != nullptr)
     {
-        if(out8021q_frames != nullptr)
-        {
-            children["out8021q-frames"] = out8021q_frames;
-        }
+        children["out8021q-frames"] = out8021q_frames;
     }
 
-    if(children.find("out-bcast-pkt") == children.end())
+    if(out_bcast_pkt != nullptr)
     {
-        if(out_bcast_pkt != nullptr)
-        {
-            children["out-bcast-pkt"] = out_bcast_pkt;
-        }
+        children["out-bcast-pkt"] = out_bcast_pkt;
     }
 
-    if(children.find("out-drop-abort") == children.end())
+    if(out_drop_abort != nullptr)
     {
-        if(out_drop_abort != nullptr)
-        {
-            children["out-drop-abort"] = out_drop_abort;
-        }
+        children["out-drop-abort"] = out_drop_abort;
     }
 
-    if(children.find("out-drop-other") == children.end())
+    if(out_drop_other != nullptr)
     {
-        if(out_drop_other != nullptr)
-        {
-            children["out-drop-other"] = out_drop_other;
-        }
+        children["out-drop-other"] = out_drop_other;
     }
 
-    if(children.find("out-drop-underrun") == children.end())
+    if(out_drop_underrun != nullptr)
     {
-        if(out_drop_underrun != nullptr)
-        {
-            children["out-drop-underrun"] = out_drop_underrun;
-        }
+        children["out-drop-underrun"] = out_drop_underrun;
     }
 
-    if(children.find("out-error-other") == children.end())
+    if(out_error_other != nullptr)
     {
-        if(out_error_other != nullptr)
-        {
-            children["out-error-other"] = out_error_other;
-        }
+        children["out-error-other"] = out_error_other;
     }
 
-    if(children.find("out-good-bytes") == children.end())
+    if(out_good_bytes != nullptr)
     {
-        if(out_good_bytes != nullptr)
-        {
-            children["out-good-bytes"] = out_good_bytes;
-        }
+        children["out-good-bytes"] = out_good_bytes;
     }
 
-    if(children.find("out-good-pkts") == children.end())
+    if(out_good_pkts != nullptr)
     {
-        if(out_good_pkts != nullptr)
-        {
-            children["out-good-pkts"] = out_good_pkts;
-        }
+        children["out-good-pkts"] = out_good_pkts;
     }
 
-    if(children.find("out-mcast-pkt") == children.end())
+    if(out_mcast_pkt != nullptr)
     {
-        if(out_mcast_pkt != nullptr)
-        {
-            children["out-mcast-pkt"] = out_mcast_pkt;
-        }
+        children["out-mcast-pkt"] = out_mcast_pkt;
     }
 
-    if(children.find("out-octets") == children.end())
+    if(out_octets != nullptr)
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
+        children["out-octets"] = out_octets;
     }
 
-    if(children.find("out-pause-frames") == children.end())
+    if(out_pause_frames != nullptr)
     {
-        if(out_pause_frames != nullptr)
-        {
-            children["out-pause-frames"] = out_pause_frames;
-        }
+        children["out-pause-frames"] = out_pause_frames;
     }
 
-    if(children.find("out-pkts10241518-octets") == children.end())
+    if(out_pkts10241518_octets != nullptr)
     {
-        if(out_pkts10241518_octets != nullptr)
-        {
-            children["out-pkts10241518-octets"] = out_pkts10241518_octets;
-        }
+        children["out-pkts10241518-octets"] = out_pkts10241518_octets;
     }
 
-    if(children.find("out-pkts128255-octets") == children.end())
+    if(out_pkts128255_octets != nullptr)
     {
-        if(out_pkts128255_octets != nullptr)
-        {
-            children["out-pkts128255-octets"] = out_pkts128255_octets;
-        }
+        children["out-pkts128255-octets"] = out_pkts128255_octets;
     }
 
-    if(children.find("out-pkts1519-max-octets") == children.end())
+    if(out_pkts1519_max_octets != nullptr)
     {
-        if(out_pkts1519_max_octets != nullptr)
-        {
-            children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
-        }
+        children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
     }
 
-    if(children.find("out-pkts256511-octets") == children.end())
+    if(out_pkts256511_octets != nullptr)
     {
-        if(out_pkts256511_octets != nullptr)
-        {
-            children["out-pkts256511-octets"] = out_pkts256511_octets;
-        }
+        children["out-pkts256511-octets"] = out_pkts256511_octets;
     }
 
-    if(children.find("out-pkts5121023-octets") == children.end())
+    if(out_pkts5121023_octets != nullptr)
     {
-        if(out_pkts5121023_octets != nullptr)
-        {
-            children["out-pkts5121023-octets"] = out_pkts5121023_octets;
-        }
+        children["out-pkts5121023-octets"] = out_pkts5121023_octets;
     }
 
-    if(children.find("out-pkts65127-octets") == children.end())
+    if(out_pkts65127_octets != nullptr)
     {
-        if(out_pkts65127_octets != nullptr)
-        {
-            children["out-pkts65127-octets"] = out_pkts65127_octets;
-        }
+        children["out-pkts65127-octets"] = out_pkts65127_octets;
     }
 
-    if(children.find("out-ucast-pkt") == children.end())
+    if(out_ucast_pkt != nullptr)
     {
-        if(out_ucast_pkt != nullptr)
-        {
-            children["out-ucast-pkt"] = out_ucast_pkt;
-        }
+        children["out-ucast-pkt"] = out_ucast_pkt;
     }
 
-    if(children.find("outpkt64octet") == children.end())
+    if(outpkt64octet != nullptr)
     {
-        if(outpkt64octet != nullptr)
-        {
-            children["outpkt64octet"] = outpkt64octet;
-        }
+        children["outpkt64octet"] = outpkt64octet;
     }
 
-    if(children.find("oversize-pkt-stat") == children.end())
+    if(oversize_pkt_stat != nullptr)
     {
-        if(oversize_pkt_stat != nullptr)
-        {
-            children["oversize-pkt-stat"] = oversize_pkt_stat;
-        }
+        children["oversize-pkt-stat"] = oversize_pkt_stat;
     }
 
-    if(children.find("rx-pkt") == children.end())
+    if(rx_pkt != nullptr)
     {
-        if(rx_pkt != nullptr)
-        {
-            children["rx-pkt"] = rx_pkt;
-        }
+        children["rx-pkt"] = rx_pkt;
     }
 
-    if(children.find("rx-util") == children.end())
+    if(rx_util != nullptr)
     {
-        if(rx_util != nullptr)
-        {
-            children["rx-util"] = rx_util;
-        }
+        children["rx-util"] = rx_util;
     }
 
-    if(children.find("stat-pkt") == children.end())
+    if(stat_pkt != nullptr)
     {
-        if(stat_pkt != nullptr)
-        {
-            children["stat-pkt"] = stat_pkt;
-        }
+        children["stat-pkt"] = stat_pkt;
     }
 
-    if(children.find("tx-bad-fcs") == children.end())
+    if(tx_bad_fcs != nullptr)
     {
-        if(tx_bad_fcs != nullptr)
-        {
-            children["tx-bad-fcs"] = tx_bad_fcs;
-        }
+        children["tx-bad-fcs"] = tx_bad_fcs;
     }
 
-    if(children.find("tx-fragments") == children.end())
+    if(tx_fragments != nullptr)
     {
-        if(tx_fragments != nullptr)
-        {
-            children["tx-fragments"] = tx_fragments;
-        }
+        children["tx-fragments"] = tx_fragments;
     }
 
-    if(children.find("tx-jabber") == children.end())
+    if(tx_jabber != nullptr)
     {
-        if(tx_jabber != nullptr)
-        {
-            children["tx-jabber"] = tx_jabber;
-        }
+        children["tx-jabber"] = tx_jabber;
     }
 
-    if(children.find("tx-oversized-pkt") == children.end())
+    if(tx_oversized_pkt != nullptr)
     {
-        if(tx_oversized_pkt != nullptr)
-        {
-            children["tx-oversized-pkt"] = tx_oversized_pkt;
-        }
+        children["tx-oversized-pkt"] = tx_oversized_pkt;
     }
 
-    if(children.find("tx-pkt") == children.end())
+    if(tx_pkt != nullptr)
     {
-        if(tx_pkt != nullptr)
-        {
-            children["tx-pkt"] = tx_pkt;
-        }
+        children["tx-pkt"] = tx_pkt;
     }
 
-    if(children.find("tx-undersized-pkt") == children.end())
+    if(tx_undersized_pkt != nullptr)
     {
-        if(tx_undersized_pkt != nullptr)
-        {
-            children["tx-undersized-pkt"] = tx_undersized_pkt;
-        }
+        children["tx-undersized-pkt"] = tx_undersized_pkt;
     }
 
-    if(children.find("tx-util") == children.end())
+    if(tx_util != nullptr)
     {
-        if(tx_util != nullptr)
-        {
-            children["tx-util"] = tx_util;
-        }
+        children["tx-util"] = tx_util;
     }
 
     return children;
@@ -5283,7 +4286,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5310,20 +4313,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5387,7 +4382,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::StatPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::StatPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5414,20 +4409,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::StatPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::StatPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5491,7 +4478,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OctetStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OctetStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5518,20 +4505,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OctetStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OctetStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5595,7 +4574,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OversizePktStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OversizePktStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5622,20 +4601,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OversizePktStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OversizePktStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OversizePktStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5699,7 +4670,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::FcsErrorsStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::FcsErrorsStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5726,20 +4697,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::FcsErrorsStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::FcsErrorsStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::FcsErrorsStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5803,7 +4766,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::LongFramesStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::LongFramesStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5830,20 +4793,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::LongFramesStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::LongFramesStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::LongFramesStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5907,7 +4862,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::JabberStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::JabberStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5934,20 +4889,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::JabberStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::JabberStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::JabberStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6011,7 +4958,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether64Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether64Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6038,20 +4985,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether64Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether64Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether64Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6115,7 +5054,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether65127Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether65127Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6142,20 +5081,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether65127Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether65127Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether65127Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6219,7 +5150,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether128255Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether128255Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6246,20 +5177,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether128255Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether128255Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether128255Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6323,7 +5246,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether256511Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether256511Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6350,20 +5273,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether256511Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether256511Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether256511Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6427,7 +5342,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether5121023Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether5121023Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6454,20 +5369,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether5121023Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether5121023Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether5121023Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6531,7 +5438,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether10241518Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether10241518Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6558,20 +5465,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether10241518Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether10241518Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Ether10241518Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6635,7 +5534,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InUcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InUcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6662,20 +5561,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InUcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InUcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6739,7 +5630,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6766,20 +5657,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6843,7 +5726,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InBcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InBcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6870,20 +5753,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InBcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InBcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6947,7 +5822,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutUcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutUcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6974,20 +5849,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutUcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutUcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7051,7 +5918,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutBcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutBcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7078,20 +5945,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutBcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutBcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7155,7 +6014,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutMcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutMcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7182,20 +6041,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutMcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutMcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7259,7 +6110,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7286,20 +6137,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7363,7 +6206,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInErrors::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7390,20 +6233,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7467,7 +6302,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7494,20 +6329,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::IfInOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7571,7 +6398,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatMulticastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatMulticastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7598,20 +6425,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatMulticastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatMulticastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatMulticastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7675,7 +6494,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatBroadcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatBroadcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7702,20 +6521,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatBroadcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatBroadcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatBroadcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7779,7 +6590,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatUndersizedPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatUndersizedPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7806,20 +6617,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatUndersizedPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::EtherStatUndersizedPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7883,7 +6686,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7910,20 +6713,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7987,7 +6782,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPauseFrame::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPauseFrame::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8014,20 +6809,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPauseFrame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPauseFrame::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPauseFrame::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8091,7 +6878,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodBytes::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodBytes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8118,20 +6905,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodBytes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodBytes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8195,7 +6974,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::In8021QFrames::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::In8021QFrames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8222,20 +7001,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::In8021QFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::In8021QFrames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::In8021QFrames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8299,7 +7070,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1519MaxOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1519MaxOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8326,20 +7097,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1519MaxOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1519MaxOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8403,7 +7166,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8430,20 +7193,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InGoodPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8507,7 +7262,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOverrun::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOverrun::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8534,20 +7289,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOverrun::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOverrun::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8611,7 +7358,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropAbort::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropAbort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8638,20 +7385,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropAbort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropAbort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8715,7 +7454,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidVlan::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidVlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8742,20 +7481,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidVlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidVlan::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8819,7 +7550,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidDmac::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidDmac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8846,20 +7577,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidDmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidDmac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidDmac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8923,7 +7646,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidEncap::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidEncap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8950,20 +7673,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidEncap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropInvalidEncap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9027,7 +7742,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9054,20 +7769,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InDropOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9131,7 +7838,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibGiant::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibGiant::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9158,20 +7865,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibGiant::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibGiant::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9235,7 +7934,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibJabber::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibJabber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9262,20 +7961,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibJabber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibJabber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9339,7 +8030,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibcrc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibcrc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9366,20 +8057,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibcrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibcrc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InMibcrc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9443,7 +8126,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorCollisions::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorCollisions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9470,20 +8153,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorCollisions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorCollisions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorCollisions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9547,7 +8222,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorSymbol::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorSymbol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9574,20 +8249,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorSymbol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorSymbol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorSymbol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9651,7 +8318,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodBytes::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodBytes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9678,20 +8345,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodBytes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodBytes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9755,7 +8414,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Out8021QFrames::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Out8021QFrames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9782,20 +8441,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Out8021QFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Out8021QFrames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Out8021QFrames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9859,7 +8510,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPauseFrames::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPauseFrames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9886,20 +8537,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPauseFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPauseFrames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPauseFrames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9963,7 +8606,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts1519MaxOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts1519MaxOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9990,20 +8633,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts1519MaxOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts1519MaxOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10067,7 +8702,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10094,20 +8729,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutGoodPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10171,7 +8798,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropUnderrun::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropUnderrun::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10198,20 +8825,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropUnderrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropUnderrun::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropUnderrun::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10275,7 +8894,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropAbort::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropAbort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10302,20 +8921,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropAbort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropAbort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10379,7 +8990,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10406,20 +9017,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutDropOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10483,7 +9086,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutErrorOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutErrorOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10510,20 +9113,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutErrorOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutErrorOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10587,7 +9182,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorGiant::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorGiant::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10614,20 +9209,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorGiant::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorGiant::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10691,7 +9278,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorRunt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorRunt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10718,20 +9305,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorRunt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorRunt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10795,7 +9374,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorJabbers::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorJabbers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10822,20 +9401,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorJabbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorJabbers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorJabbers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10899,7 +9470,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorFragments::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorFragments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10926,20 +9497,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorFragments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorFragments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11003,7 +9566,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11030,20 +9593,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InErrorOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11107,7 +9662,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkt64Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkt64Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11134,20 +9689,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkt64Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkt64Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11211,7 +9758,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts65To127Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts65To127Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11238,20 +9785,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts65To127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts65To127Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts65To127Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11315,7 +9854,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts128To255Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts128To255Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11342,20 +9881,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts128To255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts128To255Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts128To255Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11419,7 +9950,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts256To511Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts256To511Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11446,20 +9977,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts256To511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts256To511Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts256To511Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11523,7 +10046,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts512To1023Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts512To1023Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11550,20 +10073,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts512To1023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts512To1023Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts512To1023Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11627,7 +10142,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11654,20 +10169,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11731,7 +10238,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11758,20 +10265,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11835,7 +10334,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11862,20 +10361,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11939,7 +10430,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11966,20 +10457,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12043,7 +10526,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12070,20 +10553,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12147,7 +10622,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12174,20 +10649,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12251,7 +10718,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12278,20 +10745,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12355,7 +10814,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12382,20 +10841,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12459,7 +10910,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12486,20 +10937,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12563,7 +11006,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12590,20 +11033,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12667,7 +11102,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxOversizedPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxOversizedPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12694,20 +11129,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxOversizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxOversizedPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxOversizedPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12771,7 +11198,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxFragments::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxFragments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12798,20 +11225,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxFragments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxFragments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12875,7 +11294,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxJabber::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxJabber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12902,20 +11321,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxJabber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxJabber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12979,7 +11390,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxBadFcs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxBadFcs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13006,20 +11417,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxBadFcs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxBadFcs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxBadFcs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13048,7 +11451,6 @@ PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::M
     minute15_ethers(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers>())
 {
     minute15_ethers->parent = this;
-    children["minute15-ethers"] = minute15_ethers;
 
     yang_name = "minute15"; yang_parent_name = "ethernet-current";
 }
@@ -13077,7 +11479,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13100,41 +11502,24 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-ethers")
     {
-        if(minute15_ethers != nullptr)
-        {
-            children["minute15-ethers"] = minute15_ethers;
-        }
-        else
+        if(minute15_ethers == nullptr)
         {
             minute15_ethers = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers>();
-            minute15_ethers->parent = this;
-            children["minute15-ethers"] = minute15_ethers;
         }
-        return children.at("minute15-ethers");
+        return minute15_ethers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::get_children() const
 {
-    if(children.find("minute15-ethers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(minute15_ethers != nullptr)
     {
-        if(minute15_ethers != nullptr)
-        {
-            children["minute15-ethers"] = minute15_ethers;
-        }
+        children["minute15-ethers"] = minute15_ethers;
     }
 
     return children;
@@ -13182,7 +11567,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13205,15 +11590,6 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-ether")
     {
         for(auto const & c : minute15_ether)
@@ -13221,28 +11597,24 @@ std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::Ethernet
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether>();
         c->parent = this;
-        minute15_ether.push_back(std::move(c));
-        children[segment_path] = minute15_ether.back();
-        return children.at(segment_path);
+        minute15_ether.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : minute15_ether)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13341,229 +11713,154 @@ PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::M
 	,tx_util(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil>())
 {
     ether10241518_octet->parent = this;
-    children["ether10241518-octet"] = ether10241518_octet;
 
     ether128255_octet->parent = this;
-    children["ether128255-octet"] = ether128255_octet;
 
     ether256511_octet->parent = this;
-    children["ether256511-octet"] = ether256511_octet;
 
     ether5121023_octet->parent = this;
-    children["ether5121023-octet"] = ether5121023_octet;
 
     ether64_octets->parent = this;
-    children["ether64-octets"] = ether64_octets;
 
     ether65127_octet->parent = this;
-    children["ether65127-octet"] = ether65127_octet;
 
     ether_stat_broadcast_pkt->parent = this;
-    children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
 
     ether_stat_multicast_pkt->parent = this;
-    children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
 
     ether_stat_undersized_pkt->parent = this;
-    children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
 
     fcs_errors_stat->parent = this;
-    children["fcs-errors-stat"] = fcs_errors_stat;
 
     if_in_errors->parent = this;
-    children["if-in-errors"] = if_in_errors;
 
     if_in_octets->parent = this;
-    children["if-in-octets"] = if_in_octets;
 
     in8021q_frames->parent = this;
-    children["in8021q-frames"] = in8021q_frames;
 
     in_bcast_pkt->parent = this;
-    children["in-bcast-pkt"] = in_bcast_pkt;
 
     in_drop_abort->parent = this;
-    children["in-drop-abort"] = in_drop_abort;
 
     in_drop_invalid_dmac->parent = this;
-    children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
 
     in_drop_invalid_encap->parent = this;
-    children["in-drop-invalid-encap"] = in_drop_invalid_encap;
 
     in_drop_invalid_vlan->parent = this;
-    children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
 
     in_drop_other->parent = this;
-    children["in-drop-other"] = in_drop_other;
 
     in_drop_overrun->parent = this;
-    children["in-drop-overrun"] = in_drop_overrun;
 
     in_error_collisions->parent = this;
-    children["in-error-collisions"] = in_error_collisions;
 
     in_error_fragments->parent = this;
-    children["in-error-fragments"] = in_error_fragments;
 
     in_error_giant->parent = this;
-    children["in-error-giant"] = in_error_giant;
 
     in_error_jabbers->parent = this;
-    children["in-error-jabbers"] = in_error_jabbers;
 
     in_error_other->parent = this;
-    children["in-error-other"] = in_error_other;
 
     in_error_runt->parent = this;
-    children["in-error-runt"] = in_error_runt;
 
     in_error_symbol->parent = this;
-    children["in-error-symbol"] = in_error_symbol;
 
     in_good_bytes->parent = this;
-    children["in-good-bytes"] = in_good_bytes;
 
     in_good_pkts->parent = this;
-    children["in-good-pkts"] = in_good_pkts;
 
     in_mcast_pkt->parent = this;
-    children["in-mcast-pkt"] = in_mcast_pkt;
 
     in_mib_giant->parent = this;
-    children["in-mib-giant"] = in_mib_giant;
 
     in_mib_jabber->parent = this;
-    children["in-mib-jabber"] = in_mib_jabber;
 
     in_mibcrc->parent = this;
-    children["in-mibcrc"] = in_mibcrc;
 
     in_pause_frame->parent = this;
-    children["in-pause-frame"] = in_pause_frame;
 
     in_pkt64_octet->parent = this;
-    children["in-pkt64-octet"] = in_pkt64_octet;
 
     in_pkts1024_to1518_octets->parent = this;
-    children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
 
     in_pkts128_to255_octets->parent = this;
-    children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
 
     in_pkts1519_max_octets->parent = this;
-    children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
 
     in_pkts256_to511_octets->parent = this;
-    children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
 
     in_pkts512_to1023_octets->parent = this;
-    children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
 
     in_pkts65_to127_octets->parent = this;
-    children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
 
     in_ucast_pkt->parent = this;
-    children["in-ucast-pkt"] = in_ucast_pkt;
 
     jabber_stat->parent = this;
-    children["jabber-stat"] = jabber_stat;
 
     long_frames_stat->parent = this;
-    children["long-frames-stat"] = long_frames_stat;
 
     octet_stat->parent = this;
-    children["octet-stat"] = octet_stat;
 
     out8021q_frames->parent = this;
-    children["out8021q-frames"] = out8021q_frames;
 
     out_bcast_pkt->parent = this;
-    children["out-bcast-pkt"] = out_bcast_pkt;
 
     out_drop_abort->parent = this;
-    children["out-drop-abort"] = out_drop_abort;
 
     out_drop_other->parent = this;
-    children["out-drop-other"] = out_drop_other;
 
     out_drop_underrun->parent = this;
-    children["out-drop-underrun"] = out_drop_underrun;
 
     out_error_other->parent = this;
-    children["out-error-other"] = out_error_other;
 
     out_good_bytes->parent = this;
-    children["out-good-bytes"] = out_good_bytes;
 
     out_good_pkts->parent = this;
-    children["out-good-pkts"] = out_good_pkts;
 
     out_mcast_pkt->parent = this;
-    children["out-mcast-pkt"] = out_mcast_pkt;
 
     out_octets->parent = this;
-    children["out-octets"] = out_octets;
 
     out_pause_frames->parent = this;
-    children["out-pause-frames"] = out_pause_frames;
 
     out_pkts10241518_octets->parent = this;
-    children["out-pkts10241518-octets"] = out_pkts10241518_octets;
 
     out_pkts128255_octets->parent = this;
-    children["out-pkts128255-octets"] = out_pkts128255_octets;
 
     out_pkts1519_max_octets->parent = this;
-    children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
 
     out_pkts256511_octets->parent = this;
-    children["out-pkts256511-octets"] = out_pkts256511_octets;
 
     out_pkts5121023_octets->parent = this;
-    children["out-pkts5121023-octets"] = out_pkts5121023_octets;
 
     out_pkts65127_octets->parent = this;
-    children["out-pkts65127-octets"] = out_pkts65127_octets;
 
     out_ucast_pkt->parent = this;
-    children["out-ucast-pkt"] = out_ucast_pkt;
 
     outpkt64octet->parent = this;
-    children["outpkt64octet"] = outpkt64octet;
 
     oversize_pkt_stat->parent = this;
-    children["oversize-pkt-stat"] = oversize_pkt_stat;
 
     rx_pkt->parent = this;
-    children["rx-pkt"] = rx_pkt;
 
     rx_util->parent = this;
-    children["rx-util"] = rx_util;
 
     stat_pkt->parent = this;
-    children["stat-pkt"] = stat_pkt;
 
     tx_bad_fcs->parent = this;
-    children["tx-bad-fcs"] = tx_bad_fcs;
 
     tx_fragments->parent = this;
-    children["tx-fragments"] = tx_fragments;
 
     tx_jabber->parent = this;
-    children["tx-jabber"] = tx_jabber;
 
     tx_oversized_pkt->parent = this;
-    children["tx-oversized-pkt"] = tx_oversized_pkt;
 
     tx_pkt->parent = this;
-    children["tx-pkt"] = tx_pkt;
 
     tx_undersized_pkt->parent = this;
-    children["tx-undersized-pkt"] = tx_undersized_pkt;
 
     tx_util->parent = this;
-    children["tx-util"] = tx_util;
 
     yang_name = "minute15-ether"; yang_parent_name = "minute15-ethers";
 }
@@ -13758,7 +12055,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13790,1743 +12087,1060 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ether10241518-octet")
     {
-        if(ether10241518_octet != nullptr)
-        {
-            children["ether10241518-octet"] = ether10241518_octet;
-        }
-        else
+        if(ether10241518_octet == nullptr)
         {
             ether10241518_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether10241518Octet>();
-            ether10241518_octet->parent = this;
-            children["ether10241518-octet"] = ether10241518_octet;
         }
-        return children.at("ether10241518-octet");
+        return ether10241518_octet;
     }
 
     if(child_yang_name == "ether128255-octet")
     {
-        if(ether128255_octet != nullptr)
-        {
-            children["ether128255-octet"] = ether128255_octet;
-        }
-        else
+        if(ether128255_octet == nullptr)
         {
             ether128255_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether128255Octet>();
-            ether128255_octet->parent = this;
-            children["ether128255-octet"] = ether128255_octet;
         }
-        return children.at("ether128255-octet");
+        return ether128255_octet;
     }
 
     if(child_yang_name == "ether256511-octet")
     {
-        if(ether256511_octet != nullptr)
-        {
-            children["ether256511-octet"] = ether256511_octet;
-        }
-        else
+        if(ether256511_octet == nullptr)
         {
             ether256511_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether256511Octet>();
-            ether256511_octet->parent = this;
-            children["ether256511-octet"] = ether256511_octet;
         }
-        return children.at("ether256511-octet");
+        return ether256511_octet;
     }
 
     if(child_yang_name == "ether5121023-octet")
     {
-        if(ether5121023_octet != nullptr)
-        {
-            children["ether5121023-octet"] = ether5121023_octet;
-        }
-        else
+        if(ether5121023_octet == nullptr)
         {
             ether5121023_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether5121023Octet>();
-            ether5121023_octet->parent = this;
-            children["ether5121023-octet"] = ether5121023_octet;
         }
-        return children.at("ether5121023-octet");
+        return ether5121023_octet;
     }
 
     if(child_yang_name == "ether64-octets")
     {
-        if(ether64_octets != nullptr)
-        {
-            children["ether64-octets"] = ether64_octets;
-        }
-        else
+        if(ether64_octets == nullptr)
         {
             ether64_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether64Octets>();
-            ether64_octets->parent = this;
-            children["ether64-octets"] = ether64_octets;
         }
-        return children.at("ether64-octets");
+        return ether64_octets;
     }
 
     if(child_yang_name == "ether65127-octet")
     {
-        if(ether65127_octet != nullptr)
-        {
-            children["ether65127-octet"] = ether65127_octet;
-        }
-        else
+        if(ether65127_octet == nullptr)
         {
             ether65127_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether65127Octet>();
-            ether65127_octet->parent = this;
-            children["ether65127-octet"] = ether65127_octet;
         }
-        return children.at("ether65127-octet");
+        return ether65127_octet;
     }
 
     if(child_yang_name == "ether-stat-broadcast-pkt")
     {
-        if(ether_stat_broadcast_pkt != nullptr)
-        {
-            children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
-        }
-        else
+        if(ether_stat_broadcast_pkt == nullptr)
         {
             ether_stat_broadcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatBroadcastPkt>();
-            ether_stat_broadcast_pkt->parent = this;
-            children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
         }
-        return children.at("ether-stat-broadcast-pkt");
+        return ether_stat_broadcast_pkt;
     }
 
     if(child_yang_name == "ether-stat-multicast-pkt")
     {
-        if(ether_stat_multicast_pkt != nullptr)
-        {
-            children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
-        }
-        else
+        if(ether_stat_multicast_pkt == nullptr)
         {
             ether_stat_multicast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatMulticastPkt>();
-            ether_stat_multicast_pkt->parent = this;
-            children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
         }
-        return children.at("ether-stat-multicast-pkt");
+        return ether_stat_multicast_pkt;
     }
 
     if(child_yang_name == "ether-stat-undersized-pkt")
     {
-        if(ether_stat_undersized_pkt != nullptr)
-        {
-            children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
-        }
-        else
+        if(ether_stat_undersized_pkt == nullptr)
         {
             ether_stat_undersized_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatUndersizedPkt>();
-            ether_stat_undersized_pkt->parent = this;
-            children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
         }
-        return children.at("ether-stat-undersized-pkt");
+        return ether_stat_undersized_pkt;
     }
 
     if(child_yang_name == "fcs-errors-stat")
     {
-        if(fcs_errors_stat != nullptr)
-        {
-            children["fcs-errors-stat"] = fcs_errors_stat;
-        }
-        else
+        if(fcs_errors_stat == nullptr)
         {
             fcs_errors_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::FcsErrorsStat>();
-            fcs_errors_stat->parent = this;
-            children["fcs-errors-stat"] = fcs_errors_stat;
         }
-        return children.at("fcs-errors-stat");
+        return fcs_errors_stat;
     }
 
     if(child_yang_name == "if-in-errors")
     {
-        if(if_in_errors != nullptr)
-        {
-            children["if-in-errors"] = if_in_errors;
-        }
-        else
+        if(if_in_errors == nullptr)
         {
             if_in_errors = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInErrors>();
-            if_in_errors->parent = this;
-            children["if-in-errors"] = if_in_errors;
         }
-        return children.at("if-in-errors");
+        return if_in_errors;
     }
 
     if(child_yang_name == "if-in-octets")
     {
-        if(if_in_octets != nullptr)
-        {
-            children["if-in-octets"] = if_in_octets;
-        }
-        else
+        if(if_in_octets == nullptr)
         {
             if_in_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInOctets>();
-            if_in_octets->parent = this;
-            children["if-in-octets"] = if_in_octets;
         }
-        return children.at("if-in-octets");
+        return if_in_octets;
     }
 
     if(child_yang_name == "in8021q-frames")
     {
-        if(in8021q_frames != nullptr)
-        {
-            children["in8021q-frames"] = in8021q_frames;
-        }
-        else
+        if(in8021q_frames == nullptr)
         {
             in8021q_frames = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::In8021QFrames>();
-            in8021q_frames->parent = this;
-            children["in8021q-frames"] = in8021q_frames;
         }
-        return children.at("in8021q-frames");
+        return in8021q_frames;
     }
 
     if(child_yang_name == "in-bcast-pkt")
     {
-        if(in_bcast_pkt != nullptr)
-        {
-            children["in-bcast-pkt"] = in_bcast_pkt;
-        }
-        else
+        if(in_bcast_pkt == nullptr)
         {
             in_bcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InBcastPkt>();
-            in_bcast_pkt->parent = this;
-            children["in-bcast-pkt"] = in_bcast_pkt;
         }
-        return children.at("in-bcast-pkt");
+        return in_bcast_pkt;
     }
 
     if(child_yang_name == "in-drop-abort")
     {
-        if(in_drop_abort != nullptr)
-        {
-            children["in-drop-abort"] = in_drop_abort;
-        }
-        else
+        if(in_drop_abort == nullptr)
         {
             in_drop_abort = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropAbort>();
-            in_drop_abort->parent = this;
-            children["in-drop-abort"] = in_drop_abort;
         }
-        return children.at("in-drop-abort");
+        return in_drop_abort;
     }
 
     if(child_yang_name == "in-drop-invalid-dmac")
     {
-        if(in_drop_invalid_dmac != nullptr)
-        {
-            children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
-        }
-        else
+        if(in_drop_invalid_dmac == nullptr)
         {
             in_drop_invalid_dmac = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidDmac>();
-            in_drop_invalid_dmac->parent = this;
-            children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
         }
-        return children.at("in-drop-invalid-dmac");
+        return in_drop_invalid_dmac;
     }
 
     if(child_yang_name == "in-drop-invalid-encap")
     {
-        if(in_drop_invalid_encap != nullptr)
-        {
-            children["in-drop-invalid-encap"] = in_drop_invalid_encap;
-        }
-        else
+        if(in_drop_invalid_encap == nullptr)
         {
             in_drop_invalid_encap = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidEncap>();
-            in_drop_invalid_encap->parent = this;
-            children["in-drop-invalid-encap"] = in_drop_invalid_encap;
         }
-        return children.at("in-drop-invalid-encap");
+        return in_drop_invalid_encap;
     }
 
     if(child_yang_name == "in-drop-invalid-vlan")
     {
-        if(in_drop_invalid_vlan != nullptr)
-        {
-            children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
-        }
-        else
+        if(in_drop_invalid_vlan == nullptr)
         {
             in_drop_invalid_vlan = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidVlan>();
-            in_drop_invalid_vlan->parent = this;
-            children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
         }
-        return children.at("in-drop-invalid-vlan");
+        return in_drop_invalid_vlan;
     }
 
     if(child_yang_name == "in-drop-other")
     {
-        if(in_drop_other != nullptr)
-        {
-            children["in-drop-other"] = in_drop_other;
-        }
-        else
+        if(in_drop_other == nullptr)
         {
             in_drop_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOther>();
-            in_drop_other->parent = this;
-            children["in-drop-other"] = in_drop_other;
         }
-        return children.at("in-drop-other");
+        return in_drop_other;
     }
 
     if(child_yang_name == "in-drop-overrun")
     {
-        if(in_drop_overrun != nullptr)
-        {
-            children["in-drop-overrun"] = in_drop_overrun;
-        }
-        else
+        if(in_drop_overrun == nullptr)
         {
             in_drop_overrun = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOverrun>();
-            in_drop_overrun->parent = this;
-            children["in-drop-overrun"] = in_drop_overrun;
         }
-        return children.at("in-drop-overrun");
+        return in_drop_overrun;
     }
 
     if(child_yang_name == "in-error-collisions")
     {
-        if(in_error_collisions != nullptr)
-        {
-            children["in-error-collisions"] = in_error_collisions;
-        }
-        else
+        if(in_error_collisions == nullptr)
         {
             in_error_collisions = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorCollisions>();
-            in_error_collisions->parent = this;
-            children["in-error-collisions"] = in_error_collisions;
         }
-        return children.at("in-error-collisions");
+        return in_error_collisions;
     }
 
     if(child_yang_name == "in-error-fragments")
     {
-        if(in_error_fragments != nullptr)
-        {
-            children["in-error-fragments"] = in_error_fragments;
-        }
-        else
+        if(in_error_fragments == nullptr)
         {
             in_error_fragments = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments>();
-            in_error_fragments->parent = this;
-            children["in-error-fragments"] = in_error_fragments;
         }
-        return children.at("in-error-fragments");
+        return in_error_fragments;
     }
 
     if(child_yang_name == "in-error-giant")
     {
-        if(in_error_giant != nullptr)
-        {
-            children["in-error-giant"] = in_error_giant;
-        }
-        else
+        if(in_error_giant == nullptr)
         {
             in_error_giant = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant>();
-            in_error_giant->parent = this;
-            children["in-error-giant"] = in_error_giant;
         }
-        return children.at("in-error-giant");
+        return in_error_giant;
     }
 
     if(child_yang_name == "in-error-jabbers")
     {
-        if(in_error_jabbers != nullptr)
-        {
-            children["in-error-jabbers"] = in_error_jabbers;
-        }
-        else
+        if(in_error_jabbers == nullptr)
         {
             in_error_jabbers = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers>();
-            in_error_jabbers->parent = this;
-            children["in-error-jabbers"] = in_error_jabbers;
         }
-        return children.at("in-error-jabbers");
+        return in_error_jabbers;
     }
 
     if(child_yang_name == "in-error-other")
     {
-        if(in_error_other != nullptr)
-        {
-            children["in-error-other"] = in_error_other;
-        }
-        else
+        if(in_error_other == nullptr)
         {
             in_error_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther>();
-            in_error_other->parent = this;
-            children["in-error-other"] = in_error_other;
         }
-        return children.at("in-error-other");
+        return in_error_other;
     }
 
     if(child_yang_name == "in-error-runt")
     {
-        if(in_error_runt != nullptr)
-        {
-            children["in-error-runt"] = in_error_runt;
-        }
-        else
+        if(in_error_runt == nullptr)
         {
             in_error_runt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt>();
-            in_error_runt->parent = this;
-            children["in-error-runt"] = in_error_runt;
         }
-        return children.at("in-error-runt");
+        return in_error_runt;
     }
 
     if(child_yang_name == "in-error-symbol")
     {
-        if(in_error_symbol != nullptr)
-        {
-            children["in-error-symbol"] = in_error_symbol;
-        }
-        else
+        if(in_error_symbol == nullptr)
         {
             in_error_symbol = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorSymbol>();
-            in_error_symbol->parent = this;
-            children["in-error-symbol"] = in_error_symbol;
         }
-        return children.at("in-error-symbol");
+        return in_error_symbol;
     }
 
     if(child_yang_name == "in-good-bytes")
     {
-        if(in_good_bytes != nullptr)
-        {
-            children["in-good-bytes"] = in_good_bytes;
-        }
-        else
+        if(in_good_bytes == nullptr)
         {
             in_good_bytes = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodBytes>();
-            in_good_bytes->parent = this;
-            children["in-good-bytes"] = in_good_bytes;
         }
-        return children.at("in-good-bytes");
+        return in_good_bytes;
     }
 
     if(child_yang_name == "in-good-pkts")
     {
-        if(in_good_pkts != nullptr)
-        {
-            children["in-good-pkts"] = in_good_pkts;
-        }
-        else
+        if(in_good_pkts == nullptr)
         {
             in_good_pkts = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodPkts>();
-            in_good_pkts->parent = this;
-            children["in-good-pkts"] = in_good_pkts;
         }
-        return children.at("in-good-pkts");
+        return in_good_pkts;
     }
 
     if(child_yang_name == "in-mcast-pkt")
     {
-        if(in_mcast_pkt != nullptr)
-        {
-            children["in-mcast-pkt"] = in_mcast_pkt;
-        }
-        else
+        if(in_mcast_pkt == nullptr)
         {
             in_mcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMcastPkt>();
-            in_mcast_pkt->parent = this;
-            children["in-mcast-pkt"] = in_mcast_pkt;
         }
-        return children.at("in-mcast-pkt");
+        return in_mcast_pkt;
     }
 
     if(child_yang_name == "in-mib-giant")
     {
-        if(in_mib_giant != nullptr)
-        {
-            children["in-mib-giant"] = in_mib_giant;
-        }
-        else
+        if(in_mib_giant == nullptr)
         {
             in_mib_giant = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibGiant>();
-            in_mib_giant->parent = this;
-            children["in-mib-giant"] = in_mib_giant;
         }
-        return children.at("in-mib-giant");
+        return in_mib_giant;
     }
 
     if(child_yang_name == "in-mib-jabber")
     {
-        if(in_mib_jabber != nullptr)
-        {
-            children["in-mib-jabber"] = in_mib_jabber;
-        }
-        else
+        if(in_mib_jabber == nullptr)
         {
             in_mib_jabber = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibJabber>();
-            in_mib_jabber->parent = this;
-            children["in-mib-jabber"] = in_mib_jabber;
         }
-        return children.at("in-mib-jabber");
+        return in_mib_jabber;
     }
 
     if(child_yang_name == "in-mibcrc")
     {
-        if(in_mibcrc != nullptr)
-        {
-            children["in-mibcrc"] = in_mibcrc;
-        }
-        else
+        if(in_mibcrc == nullptr)
         {
             in_mibcrc = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibcrc>();
-            in_mibcrc->parent = this;
-            children["in-mibcrc"] = in_mibcrc;
         }
-        return children.at("in-mibcrc");
+        return in_mibcrc;
     }
 
     if(child_yang_name == "in-pause-frame")
     {
-        if(in_pause_frame != nullptr)
-        {
-            children["in-pause-frame"] = in_pause_frame;
-        }
-        else
+        if(in_pause_frame == nullptr)
         {
             in_pause_frame = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPauseFrame>();
-            in_pause_frame->parent = this;
-            children["in-pause-frame"] = in_pause_frame;
         }
-        return children.at("in-pause-frame");
+        return in_pause_frame;
     }
 
     if(child_yang_name == "in-pkt64-octet")
     {
-        if(in_pkt64_octet != nullptr)
-        {
-            children["in-pkt64-octet"] = in_pkt64_octet;
-        }
-        else
+        if(in_pkt64_octet == nullptr)
         {
             in_pkt64_octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet>();
-            in_pkt64_octet->parent = this;
-            children["in-pkt64-octet"] = in_pkt64_octet;
         }
-        return children.at("in-pkt64-octet");
+        return in_pkt64_octet;
     }
 
     if(child_yang_name == "in-pkts1024-to1518-octets")
     {
-        if(in_pkts1024_to1518_octets != nullptr)
-        {
-            children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
-        }
-        else
+        if(in_pkts1024_to1518_octets == nullptr)
         {
             in_pkts1024_to1518_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets>();
-            in_pkts1024_to1518_octets->parent = this;
-            children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
         }
-        return children.at("in-pkts1024-to1518-octets");
+        return in_pkts1024_to1518_octets;
     }
 
     if(child_yang_name == "in-pkts128-to255-octets")
     {
-        if(in_pkts128_to255_octets != nullptr)
-        {
-            children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
-        }
-        else
+        if(in_pkts128_to255_octets == nullptr)
         {
             in_pkts128_to255_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets>();
-            in_pkts128_to255_octets->parent = this;
-            children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
         }
-        return children.at("in-pkts128-to255-octets");
+        return in_pkts128_to255_octets;
     }
 
     if(child_yang_name == "in-pkts1519-max-octets")
     {
-        if(in_pkts1519_max_octets != nullptr)
-        {
-            children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
-        }
-        else
+        if(in_pkts1519_max_octets == nullptr)
         {
             in_pkts1519_max_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1519MaxOctets>();
-            in_pkts1519_max_octets->parent = this;
-            children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
         }
-        return children.at("in-pkts1519-max-octets");
+        return in_pkts1519_max_octets;
     }
 
     if(child_yang_name == "in-pkts256-to511-octets")
     {
-        if(in_pkts256_to511_octets != nullptr)
-        {
-            children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
-        }
-        else
+        if(in_pkts256_to511_octets == nullptr)
         {
             in_pkts256_to511_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets>();
-            in_pkts256_to511_octets->parent = this;
-            children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
         }
-        return children.at("in-pkts256-to511-octets");
+        return in_pkts256_to511_octets;
     }
 
     if(child_yang_name == "in-pkts512-to1023-octets")
     {
-        if(in_pkts512_to1023_octets != nullptr)
-        {
-            children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
-        }
-        else
+        if(in_pkts512_to1023_octets == nullptr)
         {
             in_pkts512_to1023_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets>();
-            in_pkts512_to1023_octets->parent = this;
-            children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
         }
-        return children.at("in-pkts512-to1023-octets");
+        return in_pkts512_to1023_octets;
     }
 
     if(child_yang_name == "in-pkts65-to127-octets")
     {
-        if(in_pkts65_to127_octets != nullptr)
-        {
-            children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
-        }
-        else
+        if(in_pkts65_to127_octets == nullptr)
         {
             in_pkts65_to127_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets>();
-            in_pkts65_to127_octets->parent = this;
-            children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
         }
-        return children.at("in-pkts65-to127-octets");
+        return in_pkts65_to127_octets;
     }
 
     if(child_yang_name == "in-ucast-pkt")
     {
-        if(in_ucast_pkt != nullptr)
-        {
-            children["in-ucast-pkt"] = in_ucast_pkt;
-        }
-        else
+        if(in_ucast_pkt == nullptr)
         {
             in_ucast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InUcastPkt>();
-            in_ucast_pkt->parent = this;
-            children["in-ucast-pkt"] = in_ucast_pkt;
         }
-        return children.at("in-ucast-pkt");
+        return in_ucast_pkt;
     }
 
     if(child_yang_name == "jabber-stat")
     {
-        if(jabber_stat != nullptr)
-        {
-            children["jabber-stat"] = jabber_stat;
-        }
-        else
+        if(jabber_stat == nullptr)
         {
             jabber_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::JabberStat>();
-            jabber_stat->parent = this;
-            children["jabber-stat"] = jabber_stat;
         }
-        return children.at("jabber-stat");
+        return jabber_stat;
     }
 
     if(child_yang_name == "long-frames-stat")
     {
-        if(long_frames_stat != nullptr)
-        {
-            children["long-frames-stat"] = long_frames_stat;
-        }
-        else
+        if(long_frames_stat == nullptr)
         {
             long_frames_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::LongFramesStat>();
-            long_frames_stat->parent = this;
-            children["long-frames-stat"] = long_frames_stat;
         }
-        return children.at("long-frames-stat");
+        return long_frames_stat;
     }
 
     if(child_yang_name == "octet-stat")
     {
-        if(octet_stat != nullptr)
-        {
-            children["octet-stat"] = octet_stat;
-        }
-        else
+        if(octet_stat == nullptr)
         {
             octet_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OctetStat>();
-            octet_stat->parent = this;
-            children["octet-stat"] = octet_stat;
         }
-        return children.at("octet-stat");
+        return octet_stat;
     }
 
     if(child_yang_name == "out8021q-frames")
     {
-        if(out8021q_frames != nullptr)
-        {
-            children["out8021q-frames"] = out8021q_frames;
-        }
-        else
+        if(out8021q_frames == nullptr)
         {
             out8021q_frames = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames>();
-            out8021q_frames->parent = this;
-            children["out8021q-frames"] = out8021q_frames;
         }
-        return children.at("out8021q-frames");
+        return out8021q_frames;
     }
 
     if(child_yang_name == "out-bcast-pkt")
     {
-        if(out_bcast_pkt != nullptr)
-        {
-            children["out-bcast-pkt"] = out_bcast_pkt;
-        }
-        else
+        if(out_bcast_pkt == nullptr)
         {
             out_bcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutBcastPkt>();
-            out_bcast_pkt->parent = this;
-            children["out-bcast-pkt"] = out_bcast_pkt;
         }
-        return children.at("out-bcast-pkt");
+        return out_bcast_pkt;
     }
 
     if(child_yang_name == "out-drop-abort")
     {
-        if(out_drop_abort != nullptr)
-        {
-            children["out-drop-abort"] = out_drop_abort;
-        }
-        else
+        if(out_drop_abort == nullptr)
         {
             out_drop_abort = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort>();
-            out_drop_abort->parent = this;
-            children["out-drop-abort"] = out_drop_abort;
         }
-        return children.at("out-drop-abort");
+        return out_drop_abort;
     }
 
     if(child_yang_name == "out-drop-other")
     {
-        if(out_drop_other != nullptr)
-        {
-            children["out-drop-other"] = out_drop_other;
-        }
-        else
+        if(out_drop_other == nullptr)
         {
             out_drop_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther>();
-            out_drop_other->parent = this;
-            children["out-drop-other"] = out_drop_other;
         }
-        return children.at("out-drop-other");
+        return out_drop_other;
     }
 
     if(child_yang_name == "out-drop-underrun")
     {
-        if(out_drop_underrun != nullptr)
-        {
-            children["out-drop-underrun"] = out_drop_underrun;
-        }
-        else
+        if(out_drop_underrun == nullptr)
         {
             out_drop_underrun = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun>();
-            out_drop_underrun->parent = this;
-            children["out-drop-underrun"] = out_drop_underrun;
         }
-        return children.at("out-drop-underrun");
+        return out_drop_underrun;
     }
 
     if(child_yang_name == "out-error-other")
     {
-        if(out_error_other != nullptr)
-        {
-            children["out-error-other"] = out_error_other;
-        }
-        else
+        if(out_error_other == nullptr)
         {
             out_error_other = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther>();
-            out_error_other->parent = this;
-            children["out-error-other"] = out_error_other;
         }
-        return children.at("out-error-other");
+        return out_error_other;
     }
 
     if(child_yang_name == "out-good-bytes")
     {
-        if(out_good_bytes != nullptr)
-        {
-            children["out-good-bytes"] = out_good_bytes;
-        }
-        else
+        if(out_good_bytes == nullptr)
         {
             out_good_bytes = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodBytes>();
-            out_good_bytes->parent = this;
-            children["out-good-bytes"] = out_good_bytes;
         }
-        return children.at("out-good-bytes");
+        return out_good_bytes;
     }
 
     if(child_yang_name == "out-good-pkts")
     {
-        if(out_good_pkts != nullptr)
-        {
-            children["out-good-pkts"] = out_good_pkts;
-        }
-        else
+        if(out_good_pkts == nullptr)
         {
             out_good_pkts = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts>();
-            out_good_pkts->parent = this;
-            children["out-good-pkts"] = out_good_pkts;
         }
-        return children.at("out-good-pkts");
+        return out_good_pkts;
     }
 
     if(child_yang_name == "out-mcast-pkt")
     {
-        if(out_mcast_pkt != nullptr)
-        {
-            children["out-mcast-pkt"] = out_mcast_pkt;
-        }
-        else
+        if(out_mcast_pkt == nullptr)
         {
             out_mcast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutMcastPkt>();
-            out_mcast_pkt->parent = this;
-            children["out-mcast-pkt"] = out_mcast_pkt;
         }
-        return children.at("out-mcast-pkt");
+        return out_mcast_pkt;
     }
 
     if(child_yang_name == "out-octets")
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
-        else
+        if(out_octets == nullptr)
         {
             out_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutOctets>();
-            out_octets->parent = this;
-            children["out-octets"] = out_octets;
         }
-        return children.at("out-octets");
+        return out_octets;
     }
 
     if(child_yang_name == "out-pause-frames")
     {
-        if(out_pause_frames != nullptr)
-        {
-            children["out-pause-frames"] = out_pause_frames;
-        }
-        else
+        if(out_pause_frames == nullptr)
         {
             out_pause_frames = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames>();
-            out_pause_frames->parent = this;
-            children["out-pause-frames"] = out_pause_frames;
         }
-        return children.at("out-pause-frames");
+        return out_pause_frames;
     }
 
     if(child_yang_name == "out-pkts10241518-octets")
     {
-        if(out_pkts10241518_octets != nullptr)
-        {
-            children["out-pkts10241518-octets"] = out_pkts10241518_octets;
-        }
-        else
+        if(out_pkts10241518_octets == nullptr)
         {
             out_pkts10241518_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets>();
-            out_pkts10241518_octets->parent = this;
-            children["out-pkts10241518-octets"] = out_pkts10241518_octets;
         }
-        return children.at("out-pkts10241518-octets");
+        return out_pkts10241518_octets;
     }
 
     if(child_yang_name == "out-pkts128255-octets")
     {
-        if(out_pkts128255_octets != nullptr)
-        {
-            children["out-pkts128255-octets"] = out_pkts128255_octets;
-        }
-        else
+        if(out_pkts128255_octets == nullptr)
         {
             out_pkts128255_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets>();
-            out_pkts128255_octets->parent = this;
-            children["out-pkts128255-octets"] = out_pkts128255_octets;
         }
-        return children.at("out-pkts128255-octets");
+        return out_pkts128255_octets;
     }
 
     if(child_yang_name == "out-pkts1519-max-octets")
     {
-        if(out_pkts1519_max_octets != nullptr)
-        {
-            children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
-        }
-        else
+        if(out_pkts1519_max_octets == nullptr)
         {
             out_pkts1519_max_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets>();
-            out_pkts1519_max_octets->parent = this;
-            children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
         }
-        return children.at("out-pkts1519-max-octets");
+        return out_pkts1519_max_octets;
     }
 
     if(child_yang_name == "out-pkts256511-octets")
     {
-        if(out_pkts256511_octets != nullptr)
-        {
-            children["out-pkts256511-octets"] = out_pkts256511_octets;
-        }
-        else
+        if(out_pkts256511_octets == nullptr)
         {
             out_pkts256511_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets>();
-            out_pkts256511_octets->parent = this;
-            children["out-pkts256511-octets"] = out_pkts256511_octets;
         }
-        return children.at("out-pkts256511-octets");
+        return out_pkts256511_octets;
     }
 
     if(child_yang_name == "out-pkts5121023-octets")
     {
-        if(out_pkts5121023_octets != nullptr)
-        {
-            children["out-pkts5121023-octets"] = out_pkts5121023_octets;
-        }
-        else
+        if(out_pkts5121023_octets == nullptr)
         {
             out_pkts5121023_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets>();
-            out_pkts5121023_octets->parent = this;
-            children["out-pkts5121023-octets"] = out_pkts5121023_octets;
         }
-        return children.at("out-pkts5121023-octets");
+        return out_pkts5121023_octets;
     }
 
     if(child_yang_name == "out-pkts65127-octets")
     {
-        if(out_pkts65127_octets != nullptr)
-        {
-            children["out-pkts65127-octets"] = out_pkts65127_octets;
-        }
-        else
+        if(out_pkts65127_octets == nullptr)
         {
             out_pkts65127_octets = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets>();
-            out_pkts65127_octets->parent = this;
-            children["out-pkts65127-octets"] = out_pkts65127_octets;
         }
-        return children.at("out-pkts65127-octets");
+        return out_pkts65127_octets;
     }
 
     if(child_yang_name == "out-ucast-pkt")
     {
-        if(out_ucast_pkt != nullptr)
-        {
-            children["out-ucast-pkt"] = out_ucast_pkt;
-        }
-        else
+        if(out_ucast_pkt == nullptr)
         {
             out_ucast_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutUcastPkt>();
-            out_ucast_pkt->parent = this;
-            children["out-ucast-pkt"] = out_ucast_pkt;
         }
-        return children.at("out-ucast-pkt");
+        return out_ucast_pkt;
     }
 
     if(child_yang_name == "outpkt64octet")
     {
-        if(outpkt64octet != nullptr)
-        {
-            children["outpkt64octet"] = outpkt64octet;
-        }
-        else
+        if(outpkt64octet == nullptr)
         {
             outpkt64octet = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet>();
-            outpkt64octet->parent = this;
-            children["outpkt64octet"] = outpkt64octet;
         }
-        return children.at("outpkt64octet");
+        return outpkt64octet;
     }
 
     if(child_yang_name == "oversize-pkt-stat")
     {
-        if(oversize_pkt_stat != nullptr)
-        {
-            children["oversize-pkt-stat"] = oversize_pkt_stat;
-        }
-        else
+        if(oversize_pkt_stat == nullptr)
         {
             oversize_pkt_stat = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OversizePktStat>();
-            oversize_pkt_stat->parent = this;
-            children["oversize-pkt-stat"] = oversize_pkt_stat;
         }
-        return children.at("oversize-pkt-stat");
+        return oversize_pkt_stat;
     }
 
     if(child_yang_name == "rx-pkt")
     {
-        if(rx_pkt != nullptr)
-        {
-            children["rx-pkt"] = rx_pkt;
-        }
-        else
+        if(rx_pkt == nullptr)
         {
             rx_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxPkt>();
-            rx_pkt->parent = this;
-            children["rx-pkt"] = rx_pkt;
         }
-        return children.at("rx-pkt");
+        return rx_pkt;
     }
 
     if(child_yang_name == "rx-util")
     {
-        if(rx_util != nullptr)
-        {
-            children["rx-util"] = rx_util;
-        }
-        else
+        if(rx_util == nullptr)
         {
             rx_util = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil>();
-            rx_util->parent = this;
-            children["rx-util"] = rx_util;
         }
-        return children.at("rx-util");
+        return rx_util;
     }
 
     if(child_yang_name == "stat-pkt")
     {
-        if(stat_pkt != nullptr)
-        {
-            children["stat-pkt"] = stat_pkt;
-        }
-        else
+        if(stat_pkt == nullptr)
         {
             stat_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::StatPkt>();
-            stat_pkt->parent = this;
-            children["stat-pkt"] = stat_pkt;
         }
-        return children.at("stat-pkt");
+        return stat_pkt;
     }
 
     if(child_yang_name == "tx-bad-fcs")
     {
-        if(tx_bad_fcs != nullptr)
-        {
-            children["tx-bad-fcs"] = tx_bad_fcs;
-        }
-        else
+        if(tx_bad_fcs == nullptr)
         {
             tx_bad_fcs = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs>();
-            tx_bad_fcs->parent = this;
-            children["tx-bad-fcs"] = tx_bad_fcs;
         }
-        return children.at("tx-bad-fcs");
+        return tx_bad_fcs;
     }
 
     if(child_yang_name == "tx-fragments")
     {
-        if(tx_fragments != nullptr)
-        {
-            children["tx-fragments"] = tx_fragments;
-        }
-        else
+        if(tx_fragments == nullptr)
         {
             tx_fragments = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments>();
-            tx_fragments->parent = this;
-            children["tx-fragments"] = tx_fragments;
         }
-        return children.at("tx-fragments");
+        return tx_fragments;
     }
 
     if(child_yang_name == "tx-jabber")
     {
-        if(tx_jabber != nullptr)
-        {
-            children["tx-jabber"] = tx_jabber;
-        }
-        else
+        if(tx_jabber == nullptr)
         {
             tx_jabber = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber>();
-            tx_jabber->parent = this;
-            children["tx-jabber"] = tx_jabber;
         }
-        return children.at("tx-jabber");
+        return tx_jabber;
     }
 
     if(child_yang_name == "tx-oversized-pkt")
     {
-        if(tx_oversized_pkt != nullptr)
-        {
-            children["tx-oversized-pkt"] = tx_oversized_pkt;
-        }
-        else
+        if(tx_oversized_pkt == nullptr)
         {
             tx_oversized_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt>();
-            tx_oversized_pkt->parent = this;
-            children["tx-oversized-pkt"] = tx_oversized_pkt;
         }
-        return children.at("tx-oversized-pkt");
+        return tx_oversized_pkt;
     }
 
     if(child_yang_name == "tx-pkt")
     {
-        if(tx_pkt != nullptr)
-        {
-            children["tx-pkt"] = tx_pkt;
-        }
-        else
+        if(tx_pkt == nullptr)
         {
             tx_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxPkt>();
-            tx_pkt->parent = this;
-            children["tx-pkt"] = tx_pkt;
         }
-        return children.at("tx-pkt");
+        return tx_pkt;
     }
 
     if(child_yang_name == "tx-undersized-pkt")
     {
-        if(tx_undersized_pkt != nullptr)
-        {
-            children["tx-undersized-pkt"] = tx_undersized_pkt;
-        }
-        else
+        if(tx_undersized_pkt == nullptr)
         {
             tx_undersized_pkt = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt>();
-            tx_undersized_pkt->parent = this;
-            children["tx-undersized-pkt"] = tx_undersized_pkt;
         }
-        return children.at("tx-undersized-pkt");
+        return tx_undersized_pkt;
     }
 
     if(child_yang_name == "tx-util")
     {
-        if(tx_util != nullptr)
-        {
-            children["tx-util"] = tx_util;
-        }
-        else
+        if(tx_util == nullptr)
         {
             tx_util = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil>();
-            tx_util->parent = this;
-            children["tx-util"] = tx_util;
         }
-        return children.at("tx-util");
+        return tx_util;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::get_children() const
 {
-    if(children.find("ether10241518-octet") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ether10241518_octet != nullptr)
     {
-        if(ether10241518_octet != nullptr)
-        {
-            children["ether10241518-octet"] = ether10241518_octet;
-        }
+        children["ether10241518-octet"] = ether10241518_octet;
     }
 
-    if(children.find("ether128255-octet") == children.end())
+    if(ether128255_octet != nullptr)
     {
-        if(ether128255_octet != nullptr)
-        {
-            children["ether128255-octet"] = ether128255_octet;
-        }
+        children["ether128255-octet"] = ether128255_octet;
     }
 
-    if(children.find("ether256511-octet") == children.end())
+    if(ether256511_octet != nullptr)
     {
-        if(ether256511_octet != nullptr)
-        {
-            children["ether256511-octet"] = ether256511_octet;
-        }
+        children["ether256511-octet"] = ether256511_octet;
     }
 
-    if(children.find("ether5121023-octet") == children.end())
+    if(ether5121023_octet != nullptr)
     {
-        if(ether5121023_octet != nullptr)
-        {
-            children["ether5121023-octet"] = ether5121023_octet;
-        }
+        children["ether5121023-octet"] = ether5121023_octet;
     }
 
-    if(children.find("ether64-octets") == children.end())
+    if(ether64_octets != nullptr)
     {
-        if(ether64_octets != nullptr)
-        {
-            children["ether64-octets"] = ether64_octets;
-        }
+        children["ether64-octets"] = ether64_octets;
     }
 
-    if(children.find("ether65127-octet") == children.end())
+    if(ether65127_octet != nullptr)
     {
-        if(ether65127_octet != nullptr)
-        {
-            children["ether65127-octet"] = ether65127_octet;
-        }
+        children["ether65127-octet"] = ether65127_octet;
     }
 
-    if(children.find("ether-stat-broadcast-pkt") == children.end())
+    if(ether_stat_broadcast_pkt != nullptr)
     {
-        if(ether_stat_broadcast_pkt != nullptr)
-        {
-            children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
-        }
+        children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
     }
 
-    if(children.find("ether-stat-multicast-pkt") == children.end())
+    if(ether_stat_multicast_pkt != nullptr)
     {
-        if(ether_stat_multicast_pkt != nullptr)
-        {
-            children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
-        }
+        children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
     }
 
-    if(children.find("ether-stat-undersized-pkt") == children.end())
+    if(ether_stat_undersized_pkt != nullptr)
     {
-        if(ether_stat_undersized_pkt != nullptr)
-        {
-            children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
-        }
+        children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
     }
 
-    if(children.find("fcs-errors-stat") == children.end())
+    if(fcs_errors_stat != nullptr)
     {
-        if(fcs_errors_stat != nullptr)
-        {
-            children["fcs-errors-stat"] = fcs_errors_stat;
-        }
+        children["fcs-errors-stat"] = fcs_errors_stat;
     }
 
-    if(children.find("if-in-errors") == children.end())
+    if(if_in_errors != nullptr)
     {
-        if(if_in_errors != nullptr)
-        {
-            children["if-in-errors"] = if_in_errors;
-        }
+        children["if-in-errors"] = if_in_errors;
     }
 
-    if(children.find("if-in-octets") == children.end())
+    if(if_in_octets != nullptr)
     {
-        if(if_in_octets != nullptr)
-        {
-            children["if-in-octets"] = if_in_octets;
-        }
+        children["if-in-octets"] = if_in_octets;
     }
 
-    if(children.find("in8021q-frames") == children.end())
+    if(in8021q_frames != nullptr)
     {
-        if(in8021q_frames != nullptr)
-        {
-            children["in8021q-frames"] = in8021q_frames;
-        }
+        children["in8021q-frames"] = in8021q_frames;
     }
 
-    if(children.find("in-bcast-pkt") == children.end())
+    if(in_bcast_pkt != nullptr)
     {
-        if(in_bcast_pkt != nullptr)
-        {
-            children["in-bcast-pkt"] = in_bcast_pkt;
-        }
+        children["in-bcast-pkt"] = in_bcast_pkt;
     }
 
-    if(children.find("in-drop-abort") == children.end())
+    if(in_drop_abort != nullptr)
     {
-        if(in_drop_abort != nullptr)
-        {
-            children["in-drop-abort"] = in_drop_abort;
-        }
+        children["in-drop-abort"] = in_drop_abort;
     }
 
-    if(children.find("in-drop-invalid-dmac") == children.end())
+    if(in_drop_invalid_dmac != nullptr)
     {
-        if(in_drop_invalid_dmac != nullptr)
-        {
-            children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
-        }
+        children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
     }
 
-    if(children.find("in-drop-invalid-encap") == children.end())
+    if(in_drop_invalid_encap != nullptr)
     {
-        if(in_drop_invalid_encap != nullptr)
-        {
-            children["in-drop-invalid-encap"] = in_drop_invalid_encap;
-        }
+        children["in-drop-invalid-encap"] = in_drop_invalid_encap;
     }
 
-    if(children.find("in-drop-invalid-vlan") == children.end())
+    if(in_drop_invalid_vlan != nullptr)
     {
-        if(in_drop_invalid_vlan != nullptr)
-        {
-            children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
-        }
+        children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
     }
 
-    if(children.find("in-drop-other") == children.end())
+    if(in_drop_other != nullptr)
     {
-        if(in_drop_other != nullptr)
-        {
-            children["in-drop-other"] = in_drop_other;
-        }
+        children["in-drop-other"] = in_drop_other;
     }
 
-    if(children.find("in-drop-overrun") == children.end())
+    if(in_drop_overrun != nullptr)
     {
-        if(in_drop_overrun != nullptr)
-        {
-            children["in-drop-overrun"] = in_drop_overrun;
-        }
+        children["in-drop-overrun"] = in_drop_overrun;
     }
 
-    if(children.find("in-error-collisions") == children.end())
+    if(in_error_collisions != nullptr)
     {
-        if(in_error_collisions != nullptr)
-        {
-            children["in-error-collisions"] = in_error_collisions;
-        }
+        children["in-error-collisions"] = in_error_collisions;
     }
 
-    if(children.find("in-error-fragments") == children.end())
+    if(in_error_fragments != nullptr)
     {
-        if(in_error_fragments != nullptr)
-        {
-            children["in-error-fragments"] = in_error_fragments;
-        }
+        children["in-error-fragments"] = in_error_fragments;
     }
 
-    if(children.find("in-error-giant") == children.end())
+    if(in_error_giant != nullptr)
     {
-        if(in_error_giant != nullptr)
-        {
-            children["in-error-giant"] = in_error_giant;
-        }
+        children["in-error-giant"] = in_error_giant;
     }
 
-    if(children.find("in-error-jabbers") == children.end())
+    if(in_error_jabbers != nullptr)
     {
-        if(in_error_jabbers != nullptr)
-        {
-            children["in-error-jabbers"] = in_error_jabbers;
-        }
+        children["in-error-jabbers"] = in_error_jabbers;
     }
 
-    if(children.find("in-error-other") == children.end())
+    if(in_error_other != nullptr)
     {
-        if(in_error_other != nullptr)
-        {
-            children["in-error-other"] = in_error_other;
-        }
+        children["in-error-other"] = in_error_other;
     }
 
-    if(children.find("in-error-runt") == children.end())
+    if(in_error_runt != nullptr)
     {
-        if(in_error_runt != nullptr)
-        {
-            children["in-error-runt"] = in_error_runt;
-        }
+        children["in-error-runt"] = in_error_runt;
     }
 
-    if(children.find("in-error-symbol") == children.end())
+    if(in_error_symbol != nullptr)
     {
-        if(in_error_symbol != nullptr)
-        {
-            children["in-error-symbol"] = in_error_symbol;
-        }
+        children["in-error-symbol"] = in_error_symbol;
     }
 
-    if(children.find("in-good-bytes") == children.end())
+    if(in_good_bytes != nullptr)
     {
-        if(in_good_bytes != nullptr)
-        {
-            children["in-good-bytes"] = in_good_bytes;
-        }
+        children["in-good-bytes"] = in_good_bytes;
     }
 
-    if(children.find("in-good-pkts") == children.end())
+    if(in_good_pkts != nullptr)
     {
-        if(in_good_pkts != nullptr)
-        {
-            children["in-good-pkts"] = in_good_pkts;
-        }
+        children["in-good-pkts"] = in_good_pkts;
     }
 
-    if(children.find("in-mcast-pkt") == children.end())
+    if(in_mcast_pkt != nullptr)
     {
-        if(in_mcast_pkt != nullptr)
-        {
-            children["in-mcast-pkt"] = in_mcast_pkt;
-        }
+        children["in-mcast-pkt"] = in_mcast_pkt;
     }
 
-    if(children.find("in-mib-giant") == children.end())
+    if(in_mib_giant != nullptr)
     {
-        if(in_mib_giant != nullptr)
-        {
-            children["in-mib-giant"] = in_mib_giant;
-        }
+        children["in-mib-giant"] = in_mib_giant;
     }
 
-    if(children.find("in-mib-jabber") == children.end())
+    if(in_mib_jabber != nullptr)
     {
-        if(in_mib_jabber != nullptr)
-        {
-            children["in-mib-jabber"] = in_mib_jabber;
-        }
+        children["in-mib-jabber"] = in_mib_jabber;
     }
 
-    if(children.find("in-mibcrc") == children.end())
+    if(in_mibcrc != nullptr)
     {
-        if(in_mibcrc != nullptr)
-        {
-            children["in-mibcrc"] = in_mibcrc;
-        }
+        children["in-mibcrc"] = in_mibcrc;
     }
 
-    if(children.find("in-pause-frame") == children.end())
+    if(in_pause_frame != nullptr)
     {
-        if(in_pause_frame != nullptr)
-        {
-            children["in-pause-frame"] = in_pause_frame;
-        }
+        children["in-pause-frame"] = in_pause_frame;
     }
 
-    if(children.find("in-pkt64-octet") == children.end())
+    if(in_pkt64_octet != nullptr)
     {
-        if(in_pkt64_octet != nullptr)
-        {
-            children["in-pkt64-octet"] = in_pkt64_octet;
-        }
+        children["in-pkt64-octet"] = in_pkt64_octet;
     }
 
-    if(children.find("in-pkts1024-to1518-octets") == children.end())
+    if(in_pkts1024_to1518_octets != nullptr)
     {
-        if(in_pkts1024_to1518_octets != nullptr)
-        {
-            children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
-        }
+        children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
     }
 
-    if(children.find("in-pkts128-to255-octets") == children.end())
+    if(in_pkts128_to255_octets != nullptr)
     {
-        if(in_pkts128_to255_octets != nullptr)
-        {
-            children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
-        }
+        children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
     }
 
-    if(children.find("in-pkts1519-max-octets") == children.end())
+    if(in_pkts1519_max_octets != nullptr)
     {
-        if(in_pkts1519_max_octets != nullptr)
-        {
-            children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
-        }
+        children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
     }
 
-    if(children.find("in-pkts256-to511-octets") == children.end())
+    if(in_pkts256_to511_octets != nullptr)
     {
-        if(in_pkts256_to511_octets != nullptr)
-        {
-            children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
-        }
+        children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
     }
 
-    if(children.find("in-pkts512-to1023-octets") == children.end())
+    if(in_pkts512_to1023_octets != nullptr)
     {
-        if(in_pkts512_to1023_octets != nullptr)
-        {
-            children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
-        }
+        children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
     }
 
-    if(children.find("in-pkts65-to127-octets") == children.end())
+    if(in_pkts65_to127_octets != nullptr)
     {
-        if(in_pkts65_to127_octets != nullptr)
-        {
-            children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
-        }
+        children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
     }
 
-    if(children.find("in-ucast-pkt") == children.end())
+    if(in_ucast_pkt != nullptr)
     {
-        if(in_ucast_pkt != nullptr)
-        {
-            children["in-ucast-pkt"] = in_ucast_pkt;
-        }
+        children["in-ucast-pkt"] = in_ucast_pkt;
     }
 
-    if(children.find("jabber-stat") == children.end())
+    if(jabber_stat != nullptr)
     {
-        if(jabber_stat != nullptr)
-        {
-            children["jabber-stat"] = jabber_stat;
-        }
+        children["jabber-stat"] = jabber_stat;
     }
 
-    if(children.find("long-frames-stat") == children.end())
+    if(long_frames_stat != nullptr)
     {
-        if(long_frames_stat != nullptr)
-        {
-            children["long-frames-stat"] = long_frames_stat;
-        }
+        children["long-frames-stat"] = long_frames_stat;
     }
 
-    if(children.find("octet-stat") == children.end())
+    if(octet_stat != nullptr)
     {
-        if(octet_stat != nullptr)
-        {
-            children["octet-stat"] = octet_stat;
-        }
+        children["octet-stat"] = octet_stat;
     }
 
-    if(children.find("out8021q-frames") == children.end())
+    if(out8021q_frames != nullptr)
     {
-        if(out8021q_frames != nullptr)
-        {
-            children["out8021q-frames"] = out8021q_frames;
-        }
+        children["out8021q-frames"] = out8021q_frames;
     }
 
-    if(children.find("out-bcast-pkt") == children.end())
+    if(out_bcast_pkt != nullptr)
     {
-        if(out_bcast_pkt != nullptr)
-        {
-            children["out-bcast-pkt"] = out_bcast_pkt;
-        }
+        children["out-bcast-pkt"] = out_bcast_pkt;
     }
 
-    if(children.find("out-drop-abort") == children.end())
+    if(out_drop_abort != nullptr)
     {
-        if(out_drop_abort != nullptr)
-        {
-            children["out-drop-abort"] = out_drop_abort;
-        }
+        children["out-drop-abort"] = out_drop_abort;
     }
 
-    if(children.find("out-drop-other") == children.end())
+    if(out_drop_other != nullptr)
     {
-        if(out_drop_other != nullptr)
-        {
-            children["out-drop-other"] = out_drop_other;
-        }
+        children["out-drop-other"] = out_drop_other;
     }
 
-    if(children.find("out-drop-underrun") == children.end())
+    if(out_drop_underrun != nullptr)
     {
-        if(out_drop_underrun != nullptr)
-        {
-            children["out-drop-underrun"] = out_drop_underrun;
-        }
+        children["out-drop-underrun"] = out_drop_underrun;
     }
 
-    if(children.find("out-error-other") == children.end())
+    if(out_error_other != nullptr)
     {
-        if(out_error_other != nullptr)
-        {
-            children["out-error-other"] = out_error_other;
-        }
+        children["out-error-other"] = out_error_other;
     }
 
-    if(children.find("out-good-bytes") == children.end())
+    if(out_good_bytes != nullptr)
     {
-        if(out_good_bytes != nullptr)
-        {
-            children["out-good-bytes"] = out_good_bytes;
-        }
+        children["out-good-bytes"] = out_good_bytes;
     }
 
-    if(children.find("out-good-pkts") == children.end())
+    if(out_good_pkts != nullptr)
     {
-        if(out_good_pkts != nullptr)
-        {
-            children["out-good-pkts"] = out_good_pkts;
-        }
+        children["out-good-pkts"] = out_good_pkts;
     }
 
-    if(children.find("out-mcast-pkt") == children.end())
+    if(out_mcast_pkt != nullptr)
     {
-        if(out_mcast_pkt != nullptr)
-        {
-            children["out-mcast-pkt"] = out_mcast_pkt;
-        }
+        children["out-mcast-pkt"] = out_mcast_pkt;
     }
 
-    if(children.find("out-octets") == children.end())
+    if(out_octets != nullptr)
     {
-        if(out_octets != nullptr)
-        {
-            children["out-octets"] = out_octets;
-        }
+        children["out-octets"] = out_octets;
     }
 
-    if(children.find("out-pause-frames") == children.end())
+    if(out_pause_frames != nullptr)
     {
-        if(out_pause_frames != nullptr)
-        {
-            children["out-pause-frames"] = out_pause_frames;
-        }
+        children["out-pause-frames"] = out_pause_frames;
     }
 
-    if(children.find("out-pkts10241518-octets") == children.end())
+    if(out_pkts10241518_octets != nullptr)
     {
-        if(out_pkts10241518_octets != nullptr)
-        {
-            children["out-pkts10241518-octets"] = out_pkts10241518_octets;
-        }
+        children["out-pkts10241518-octets"] = out_pkts10241518_octets;
     }
 
-    if(children.find("out-pkts128255-octets") == children.end())
+    if(out_pkts128255_octets != nullptr)
     {
-        if(out_pkts128255_octets != nullptr)
-        {
-            children["out-pkts128255-octets"] = out_pkts128255_octets;
-        }
+        children["out-pkts128255-octets"] = out_pkts128255_octets;
     }
 
-    if(children.find("out-pkts1519-max-octets") == children.end())
+    if(out_pkts1519_max_octets != nullptr)
     {
-        if(out_pkts1519_max_octets != nullptr)
-        {
-            children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
-        }
+        children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
     }
 
-    if(children.find("out-pkts256511-octets") == children.end())
+    if(out_pkts256511_octets != nullptr)
     {
-        if(out_pkts256511_octets != nullptr)
-        {
-            children["out-pkts256511-octets"] = out_pkts256511_octets;
-        }
+        children["out-pkts256511-octets"] = out_pkts256511_octets;
     }
 
-    if(children.find("out-pkts5121023-octets") == children.end())
+    if(out_pkts5121023_octets != nullptr)
     {
-        if(out_pkts5121023_octets != nullptr)
-        {
-            children["out-pkts5121023-octets"] = out_pkts5121023_octets;
-        }
+        children["out-pkts5121023-octets"] = out_pkts5121023_octets;
     }
 
-    if(children.find("out-pkts65127-octets") == children.end())
+    if(out_pkts65127_octets != nullptr)
     {
-        if(out_pkts65127_octets != nullptr)
-        {
-            children["out-pkts65127-octets"] = out_pkts65127_octets;
-        }
+        children["out-pkts65127-octets"] = out_pkts65127_octets;
     }
 
-    if(children.find("out-ucast-pkt") == children.end())
+    if(out_ucast_pkt != nullptr)
     {
-        if(out_ucast_pkt != nullptr)
-        {
-            children["out-ucast-pkt"] = out_ucast_pkt;
-        }
+        children["out-ucast-pkt"] = out_ucast_pkt;
     }
 
-    if(children.find("outpkt64octet") == children.end())
+    if(outpkt64octet != nullptr)
     {
-        if(outpkt64octet != nullptr)
-        {
-            children["outpkt64octet"] = outpkt64octet;
-        }
+        children["outpkt64octet"] = outpkt64octet;
     }
 
-    if(children.find("oversize-pkt-stat") == children.end())
+    if(oversize_pkt_stat != nullptr)
     {
-        if(oversize_pkt_stat != nullptr)
-        {
-            children["oversize-pkt-stat"] = oversize_pkt_stat;
-        }
+        children["oversize-pkt-stat"] = oversize_pkt_stat;
     }
 
-    if(children.find("rx-pkt") == children.end())
+    if(rx_pkt != nullptr)
     {
-        if(rx_pkt != nullptr)
-        {
-            children["rx-pkt"] = rx_pkt;
-        }
+        children["rx-pkt"] = rx_pkt;
     }
 
-    if(children.find("rx-util") == children.end())
+    if(rx_util != nullptr)
     {
-        if(rx_util != nullptr)
-        {
-            children["rx-util"] = rx_util;
-        }
+        children["rx-util"] = rx_util;
     }
 
-    if(children.find("stat-pkt") == children.end())
+    if(stat_pkt != nullptr)
     {
-        if(stat_pkt != nullptr)
-        {
-            children["stat-pkt"] = stat_pkt;
-        }
+        children["stat-pkt"] = stat_pkt;
     }
 
-    if(children.find("tx-bad-fcs") == children.end())
+    if(tx_bad_fcs != nullptr)
     {
-        if(tx_bad_fcs != nullptr)
-        {
-            children["tx-bad-fcs"] = tx_bad_fcs;
-        }
+        children["tx-bad-fcs"] = tx_bad_fcs;
     }
 
-    if(children.find("tx-fragments") == children.end())
+    if(tx_fragments != nullptr)
     {
-        if(tx_fragments != nullptr)
-        {
-            children["tx-fragments"] = tx_fragments;
-        }
+        children["tx-fragments"] = tx_fragments;
     }
 
-    if(children.find("tx-jabber") == children.end())
+    if(tx_jabber != nullptr)
     {
-        if(tx_jabber != nullptr)
-        {
-            children["tx-jabber"] = tx_jabber;
-        }
+        children["tx-jabber"] = tx_jabber;
     }
 
-    if(children.find("tx-oversized-pkt") == children.end())
+    if(tx_oversized_pkt != nullptr)
     {
-        if(tx_oversized_pkt != nullptr)
-        {
-            children["tx-oversized-pkt"] = tx_oversized_pkt;
-        }
+        children["tx-oversized-pkt"] = tx_oversized_pkt;
     }
 
-    if(children.find("tx-pkt") == children.end())
+    if(tx_pkt != nullptr)
     {
-        if(tx_pkt != nullptr)
-        {
-            children["tx-pkt"] = tx_pkt;
-        }
+        children["tx-pkt"] = tx_pkt;
     }
 
-    if(children.find("tx-undersized-pkt") == children.end())
+    if(tx_undersized_pkt != nullptr)
     {
-        if(tx_undersized_pkt != nullptr)
-        {
-            children["tx-undersized-pkt"] = tx_undersized_pkt;
-        }
+        children["tx-undersized-pkt"] = tx_undersized_pkt;
     }
 
-    if(children.find("tx-util") == children.end())
+    if(tx_util != nullptr)
     {
-        if(tx_util != nullptr)
-        {
-            children["tx-util"] = tx_util;
-        }
+        children["tx-util"] = tx_util;
     }
 
     return children;
@@ -15612,7 +13226,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15639,20 +13253,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15716,7 +13322,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::StatPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::StatPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15743,20 +13349,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::StatPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::StatPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15820,7 +13418,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OctetStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OctetStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15847,20 +13445,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OctetStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OctetStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15924,7 +13514,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OversizePktStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OversizePktStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15951,20 +13541,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OversizePktStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OversizePktStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OversizePktStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16028,7 +13610,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::FcsErrorsStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::FcsErrorsStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16055,20 +13637,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::FcsErrorsStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::FcsErrorsStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::FcsErrorsStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16132,7 +13706,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::LongFramesStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::LongFramesStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16159,20 +13733,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::LongFramesStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::LongFramesStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::LongFramesStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16236,7 +13802,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::JabberStat::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::JabberStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16263,20 +13829,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::JabberStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::JabberStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::JabberStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16340,7 +13898,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether64Octets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether64Octets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16367,20 +13925,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether64Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether64Octets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether64Octets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16444,7 +13994,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether65127Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether65127Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16471,20 +14021,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether65127Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether65127Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether65127Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16548,7 +14090,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether128255Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether128255Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16575,20 +14117,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether128255Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether128255Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether128255Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16652,7 +14186,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether256511Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether256511Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16679,20 +14213,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether256511Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether256511Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether256511Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16756,7 +14282,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether5121023Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether5121023Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16783,20 +14309,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether5121023Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether5121023Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether5121023Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16860,7 +14378,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether10241518Octet::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether10241518Octet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16887,20 +14405,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether10241518Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether10241518Octet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Ether10241518Octet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16964,7 +14474,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InUcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InUcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16991,20 +14501,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InUcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InUcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17068,7 +14570,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17095,20 +14597,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17172,7 +14666,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InBcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InBcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17199,20 +14693,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InBcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InBcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17276,7 +14762,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutUcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutUcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17303,20 +14789,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutUcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutUcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17380,7 +14858,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutBcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutBcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17407,20 +14885,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutBcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutBcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17484,7 +14954,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutMcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutMcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17511,20 +14981,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutMcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutMcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17588,7 +15050,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17615,20 +15077,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17692,7 +15146,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInErrors::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInErrors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17719,20 +15173,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInErrors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInErrors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17796,7 +15242,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17823,20 +15269,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::IfInOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17900,7 +15338,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatMulticastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatMulticastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17927,20 +15365,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatMulticastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatMulticastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatMulticastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18004,7 +15434,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatBroadcastPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatBroadcastPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18031,20 +15461,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatBroadcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatBroadcastPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatBroadcastPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18108,7 +15530,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatUndersizedPkt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatUndersizedPkt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18135,20 +15557,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatUndersizedPkt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::EtherStatUndersizedPkt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18212,7 +15626,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18239,20 +15653,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18316,7 +15722,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPauseFrame::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPauseFrame::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18343,20 +15749,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPauseFrame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPauseFrame::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPauseFrame::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18420,7 +15818,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodBytes::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodBytes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18447,20 +15845,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodBytes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodBytes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18524,7 +15914,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::In8021QFrames::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::In8021QFrames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18551,20 +15941,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::In8021QFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::In8021QFrames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::In8021QFrames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18628,7 +16010,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1519MaxOctets::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1519MaxOctets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18655,20 +16037,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1519MaxOctets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1519MaxOctets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18732,7 +16106,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodPkts::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodPkts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18759,20 +16133,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodPkts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InGoodPkts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18836,7 +16202,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOverrun::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOverrun::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18863,20 +16229,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOverrun::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOverrun::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18940,7 +16298,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropAbort::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropAbort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18967,20 +16325,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropAbort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropAbort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19044,7 +16394,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidVlan::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidVlan::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19071,20 +16421,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidVlan::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidVlan::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19148,7 +16490,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidDmac::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidDmac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19175,20 +16517,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidDmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidDmac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidDmac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19252,7 +16586,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidEncap::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidEncap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19279,20 +16613,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidEncap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropInvalidEncap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19356,7 +16682,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOther::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19383,20 +16709,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InDropOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19460,7 +16778,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibGiant::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibGiant::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19487,20 +16805,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibGiant::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibGiant::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19564,7 +16874,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibJabber::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibJabber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19591,20 +16901,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibJabber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibJabber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19668,7 +16970,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibcrc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibcrc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19695,20 +16997,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibcrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibcrc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InMibcrc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19772,7 +17066,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorCollisions::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorCollisions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19799,20 +17093,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorCollisions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorCollisions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorCollisions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19876,7 +17162,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorSymbol::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorSymbol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19903,20 +17189,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorSymbol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorSymbol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorSymbol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19980,7 +17258,7 @@ std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Ethern
 
 }
 
-EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodBytes::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodBytes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20007,20 +17285,12 @@ EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::Etherne
 
 std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodBytes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodBytes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

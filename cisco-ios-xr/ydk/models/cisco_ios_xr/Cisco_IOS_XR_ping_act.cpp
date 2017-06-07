@@ -11,18 +11,12 @@ namespace Cisco_IOS_XR_ping_act {
 
 PingRpc::PingRpc()
     :
-    destination(std::make_shared<PingRpc::Destination>())
-	,ipv6(std::make_shared<PingRpc::Ipv6>())
+    input(std::make_shared<PingRpc::Input>())
 	,output(std::make_shared<PingRpc::Output>())
 {
-    destination->parent = this;
-    children["destination"] = destination;
-
-    ipv6->parent = this;
-    children["ipv6"] = ipv6;
+    input->parent = this;
 
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "ping"; yang_parent_name = "Cisco-IOS-XR-ping-act";
 }
@@ -33,26 +27,14 @@ PingRpc::~PingRpc()
 
 bool PingRpc::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
-    {
-        if(ipv4[index]->has_data())
-            return true;
-    }
-    return (destination !=  nullptr && destination->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data())
+    return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
 
 bool PingRpc::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
-    {
-        if(ipv4[index]->has_operation())
-            return true;
-    }
     return is_set(operation)
-	|| (destination !=  nullptr && destination->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
 
@@ -65,12 +47,12 @@ std::string PingRpc::get_segment_path() const
 
 }
 
-EntityPath PingRpc::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -85,113 +67,38 @@ EntityPath PingRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PingRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "destination")
-    {
-        if(destination != nullptr)
+        if(input == nullptr)
         {
-            children["destination"] = destination;
+            input = std::make_shared<PingRpc::Input>();
         }
-        else
-        {
-            destination = std::make_shared<PingRpc::Destination>();
-            destination->parent = this;
-            children["destination"] = destination;
-        }
-        return children.at("destination");
-    }
-
-    if(child_yang_name == "ipv4")
-    {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<PingRpc::Ipv4>();
-        c->parent = this;
-        ipv4.push_back(std::move(c));
-        children[segment_path] = ipv4.back();
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "ipv6")
-    {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
-        {
-            ipv6 = std::make_shared<PingRpc::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
-        }
-        return children.at("ipv6");
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<PingRpc::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::get_children() const
 {
-    if(children.find("destination") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(destination != nullptr)
-        {
-            children["destination"] = destination;
-        }
+        children["input"] = input;
     }
 
-    for (auto const & c : ipv4)
+    if(output != nullptr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    if(children.find("ipv6") == children.end())
-    {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-    }
-
-    if(children.find("output") == children.end())
-    {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
     return children;
@@ -221,12 +128,656 @@ augment_capabilities_function PingRpc::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+PingRpc::Input::Input()
+    :
+    destination(std::make_shared<PingRpc::Input::Destination>())
+	,ipv6(std::make_shared<PingRpc::Input::Ipv6>())
+{
+    destination->parent = this;
+
+    ipv6->parent = this;
+
+    yang_name = "input"; yang_parent_name = "ping";
+}
+
+PingRpc::Input::~Input()
+{
+}
+
+bool PingRpc::Input::has_data() const
+{
+    for (std::size_t index=0; index<ipv4.size(); index++)
+    {
+        if(ipv4[index]->has_data())
+            return true;
+    }
+    return (destination !=  nullptr && destination->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
+}
+
+bool PingRpc::Input::has_operation() const
+{
+    for (std::size_t index=0; index<ipv4.size(); index++)
+    {
+        if(ipv4[index]->has_operation())
+            return true;
+    }
+    return is_set(operation)
+	|| (destination !=  nullptr && destination->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
+}
+
+std::string PingRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PingRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PingRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "destination")
+    {
+        if(destination == nullptr)
+        {
+            destination = std::make_shared<PingRpc::Input::Destination>();
+        }
+        return destination;
+    }
+
+    if(child_yang_name == "ipv4")
+    {
+        for(auto const & c : ipv4)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<PingRpc::Input::Ipv4>();
+        c->parent = this;
+        ipv4.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<PingRpc::Input::Ipv6>();
+        }
+        return ipv6;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination != nullptr)
+    {
+        children["destination"] = destination;
+    }
+
+    for (auto const & c : ipv4)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        children["ipv6"] = ipv6;
+    }
+
+    return children;
+}
+
+void PingRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+PingRpc::Input::Destination::Destination()
+    :
+    data_size{YType::uint64, "data-size"},
+    destination{YType::str, "destination"},
+    do_not_frag{YType::boolean, "do-not-frag"},
+    interval{YType::uint32, "interval"},
+    outgoing_interface{YType::str, "outgoing-interface"},
+    pattern{YType::str, "pattern"},
+    priority{YType::uint8, "priority"},
+    repeat_count{YType::uint64, "repeat-count"},
+    source{YType::str, "source"},
+    sweep{YType::boolean, "sweep"},
+    timeout{YType::uint64, "timeout"},
+    type_of_service{YType::uint8, "type-of-service"},
+    validate{YType::boolean, "validate"},
+    verbose{YType::boolean, "verbose"},
+    vrf_name{YType::str, "vrf-name"}
+{
+    yang_name = "destination"; yang_parent_name = "input";
+}
+
+PingRpc::Input::Destination::~Destination()
+{
+}
+
+bool PingRpc::Input::Destination::has_data() const
+{
+    return data_size.is_set
+	|| destination.is_set
+	|| do_not_frag.is_set
+	|| interval.is_set
+	|| outgoing_interface.is_set
+	|| pattern.is_set
+	|| priority.is_set
+	|| repeat_count.is_set
+	|| source.is_set
+	|| sweep.is_set
+	|| timeout.is_set
+	|| type_of_service.is_set
+	|| validate.is_set
+	|| verbose.is_set
+	|| vrf_name.is_set;
+}
+
+bool PingRpc::Input::Destination::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(data_size.operation)
+	|| is_set(destination.operation)
+	|| is_set(do_not_frag.operation)
+	|| is_set(interval.operation)
+	|| is_set(outgoing_interface.operation)
+	|| is_set(pattern.operation)
+	|| is_set(priority.operation)
+	|| is_set(repeat_count.operation)
+	|| is_set(source.operation)
+	|| is_set(sweep.operation)
+	|| is_set(timeout.operation)
+	|| is_set(type_of_service.operation)
+	|| is_set(validate.operation)
+	|| is_set(verbose.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string PingRpc::Input::Destination::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PingRpc::Input::Destination::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data_size.is_set || is_set(data_size.operation)) leaf_name_data.push_back(data_size.get_name_leafdata());
+    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (do_not_frag.is_set || is_set(do_not_frag.operation)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
+    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (outgoing_interface.is_set || is_set(outgoing_interface.operation)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
+    if (pattern.is_set || is_set(pattern.operation)) leaf_name_data.push_back(pattern.get_name_leafdata());
+    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (repeat_count.is_set || is_set(repeat_count.operation)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
+    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (sweep.is_set || is_set(sweep.operation)) leaf_name_data.push_back(sweep.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (type_of_service.is_set || is_set(type_of_service.operation)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
+    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.operation)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PingRpc::Input::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Input::Destination::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PingRpc::Input::Destination::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "data-size")
+    {
+        data_size = value;
+    }
+    if(value_path == "destination")
+    {
+        destination = value;
+    }
+    if(value_path == "do-not-frag")
+    {
+        do_not_frag = value;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+    }
+    if(value_path == "pattern")
+    {
+        pattern = value;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+    }
+    if(value_path == "repeat-count")
+    {
+        repeat_count = value;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+    }
+    if(value_path == "sweep")
+    {
+        sweep = value;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+    }
+    if(value_path == "type-of-service")
+    {
+        type_of_service = value;
+    }
+    if(value_path == "validate")
+    {
+        validate = value;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
+PingRpc::Input::Ipv4::Ipv4()
+    :
+    destination{YType::str, "destination"},
+    data_size{YType::uint64, "data-size"},
+    do_not_frag{YType::boolean, "do-not-frag"},
+    interval{YType::uint32, "interval"},
+    pattern{YType::str, "pattern"},
+    repeat_count{YType::uint64, "repeat-count"},
+    source{YType::str, "source"},
+    sweep{YType::boolean, "sweep"},
+    timeout{YType::uint64, "timeout"},
+    type_of_service{YType::uint8, "type-of-service"},
+    validate{YType::boolean, "validate"},
+    verbose{YType::boolean, "verbose"},
+    vrf_name{YType::str, "vrf-name"}
+{
+    yang_name = "ipv4"; yang_parent_name = "input";
+}
+
+PingRpc::Input::Ipv4::~Ipv4()
+{
+}
+
+bool PingRpc::Input::Ipv4::has_data() const
+{
+    return destination.is_set
+	|| data_size.is_set
+	|| do_not_frag.is_set
+	|| interval.is_set
+	|| pattern.is_set
+	|| repeat_count.is_set
+	|| source.is_set
+	|| sweep.is_set
+	|| timeout.is_set
+	|| type_of_service.is_set
+	|| validate.is_set
+	|| verbose.is_set
+	|| vrf_name.is_set;
+}
+
+bool PingRpc::Input::Ipv4::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(destination.operation)
+	|| is_set(data_size.operation)
+	|| is_set(do_not_frag.operation)
+	|| is_set(interval.operation)
+	|| is_set(pattern.operation)
+	|| is_set(repeat_count.operation)
+	|| is_set(source.operation)
+	|| is_set(sweep.operation)
+	|| is_set(timeout.operation)
+	|| is_set(type_of_service.operation)
+	|| is_set(validate.operation)
+	|| is_set(verbose.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string PingRpc::Input::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4" <<"[destination='" <<destination <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PingRpc::Input::Ipv4::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (data_size.is_set || is_set(data_size.operation)) leaf_name_data.push_back(data_size.get_name_leafdata());
+    if (do_not_frag.is_set || is_set(do_not_frag.operation)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
+    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (pattern.is_set || is_set(pattern.operation)) leaf_name_data.push_back(pattern.get_name_leafdata());
+    if (repeat_count.is_set || is_set(repeat_count.operation)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
+    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (sweep.is_set || is_set(sweep.operation)) leaf_name_data.push_back(sweep.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (type_of_service.is_set || is_set(type_of_service.operation)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
+    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.operation)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PingRpc::Input::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Input::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PingRpc::Input::Ipv4::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "destination")
+    {
+        destination = value;
+    }
+    if(value_path == "data-size")
+    {
+        data_size = value;
+    }
+    if(value_path == "do-not-frag")
+    {
+        do_not_frag = value;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+    }
+    if(value_path == "pattern")
+    {
+        pattern = value;
+    }
+    if(value_path == "repeat-count")
+    {
+        repeat_count = value;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+    }
+    if(value_path == "sweep")
+    {
+        sweep = value;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+    }
+    if(value_path == "type-of-service")
+    {
+        type_of_service = value;
+    }
+    if(value_path == "validate")
+    {
+        validate = value;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
+PingRpc::Input::Ipv6::Ipv6()
+    :
+    data_size{YType::uint64, "data-size"},
+    destination{YType::str, "destination"},
+    interval{YType::uint32, "interval"},
+    outgoing_interface{YType::str, "outgoing-interface"},
+    pattern{YType::str, "pattern"},
+    priority{YType::uint8, "priority"},
+    repeat_count{YType::uint64, "repeat-count"},
+    source{YType::str, "source"},
+    sweep{YType::boolean, "sweep"},
+    timeout{YType::uint64, "timeout"},
+    verbose{YType::boolean, "verbose"},
+    vrf_name{YType::str, "vrf-name"}
+{
+    yang_name = "ipv6"; yang_parent_name = "input";
+}
+
+PingRpc::Input::Ipv6::~Ipv6()
+{
+}
+
+bool PingRpc::Input::Ipv6::has_data() const
+{
+    return data_size.is_set
+	|| destination.is_set
+	|| interval.is_set
+	|| outgoing_interface.is_set
+	|| pattern.is_set
+	|| priority.is_set
+	|| repeat_count.is_set
+	|| source.is_set
+	|| sweep.is_set
+	|| timeout.is_set
+	|| verbose.is_set
+	|| vrf_name.is_set;
+}
+
+bool PingRpc::Input::Ipv6::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(data_size.operation)
+	|| is_set(destination.operation)
+	|| is_set(interval.operation)
+	|| is_set(outgoing_interface.operation)
+	|| is_set(pattern.operation)
+	|| is_set(priority.operation)
+	|| is_set(repeat_count.operation)
+	|| is_set(source.operation)
+	|| is_set(sweep.operation)
+	|| is_set(timeout.operation)
+	|| is_set(verbose.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string PingRpc::Input::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PingRpc::Input::Ipv6::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ping-act:ping/input/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data_size.is_set || is_set(data_size.operation)) leaf_name_data.push_back(data_size.get_name_leafdata());
+    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (outgoing_interface.is_set || is_set(outgoing_interface.operation)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
+    if (pattern.is_set || is_set(pattern.operation)) leaf_name_data.push_back(pattern.get_name_leafdata());
+    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (repeat_count.is_set || is_set(repeat_count.operation)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
+    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (sweep.is_set || is_set(sweep.operation)) leaf_name_data.push_back(sweep.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.operation)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PingRpc::Input::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Input::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PingRpc::Input::Ipv6::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "data-size")
+    {
+        data_size = value;
+    }
+    if(value_path == "destination")
+    {
+        destination = value;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+    }
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+    }
+    if(value_path == "pattern")
+    {
+        pattern = value;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+    }
+    if(value_path == "repeat-count")
+    {
+        repeat_count = value;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+    }
+    if(value_path == "sweep")
+    {
+        sweep = value;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+    }
+    if(value_path == "verbose")
+    {
+        verbose = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
 PingRpc::Output::Output()
     :
     ping_response(std::make_shared<PingRpc::Output::PingResponse>())
 {
     ping_response->parent = this;
-    children["ping-response"] = ping_response;
 
     yang_name = "output"; yang_parent_name = "ping";
 }
@@ -255,7 +806,7 @@ std::string PingRpc::Output::get_segment_path() const
 
 }
 
-EntityPath PingRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -278,41 +829,24 @@ EntityPath PingRpc::Output::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PingRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ping-response")
     {
-        if(ping_response != nullptr)
-        {
-            children["ping-response"] = ping_response;
-        }
-        else
+        if(ping_response == nullptr)
         {
             ping_response = std::make_shared<PingRpc::Output::PingResponse>();
-            ping_response->parent = this;
-            children["ping-response"] = ping_response;
         }
-        return children.at("ping-response");
+        return ping_response;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::get_children() const
 {
-    if(children.find("ping-response") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ping_response != nullptr)
     {
-        if(ping_response != nullptr)
-        {
-            children["ping-response"] = ping_response;
-        }
+        children["ping-response"] = ping_response;
     }
 
     return children;
@@ -327,7 +861,6 @@ PingRpc::Output::PingResponse::PingResponse()
     ipv6(std::make_shared<PingRpc::Output::PingResponse::Ipv6>())
 {
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "ping-response"; yang_parent_name = "output";
 }
@@ -366,7 +899,7 @@ std::string PingRpc::Output::PingResponse::get_segment_path() const
 
 }
 
-EntityPath PingRpc::Output::PingResponse::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -389,15 +922,6 @@ EntityPath PingRpc::Output::PingResponse::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
         for(auto const & c : ipv4)
@@ -405,51 +929,38 @@ std::shared_ptr<Entity> PingRpc::Output::PingResponse::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PingRpc::Output::PingResponse::Ipv4>();
         c->parent = this;
-        ipv4.push_back(std::move(c));
-        children[segment_path] = ipv4.back();
-        return children.at(segment_path);
+        ipv4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<PingRpc::Output::PingResponse::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -482,7 +993,6 @@ PingRpc::Output::PingResponse::Ipv4::Ipv4()
     replies(std::make_shared<PingRpc::Output::PingResponse::Ipv4::Replies>())
 {
     replies->parent = this;
-    children["replies"] = replies;
 
     yang_name = "ipv4"; yang_parent_name = "ping-response";
 }
@@ -545,7 +1055,7 @@ std::string PingRpc::Output::PingResponse::Ipv4::get_segment_path() const
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -585,41 +1095,24 @@ EntityPath PingRpc::Output::PingResponse::Ipv4::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "replies")
     {
-        if(replies != nullptr)
-        {
-            children["replies"] = replies;
-        }
-        else
+        if(replies == nullptr)
         {
             replies = std::make_shared<PingRpc::Output::PingResponse::Ipv4::Replies>();
-            replies->parent = this;
-            children["replies"] = replies;
         }
-        return children.at("replies");
+        return replies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv4::get_children() const
 {
-    if(children.find("replies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(replies != nullptr)
     {
-        if(replies != nullptr)
-        {
-            children["replies"] = replies;
-        }
+        children["replies"] = replies;
     }
 
     return children;
@@ -735,7 +1228,7 @@ std::string PingRpc::Output::PingResponse::Ipv4::Replies::get_segment_path() con
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -758,15 +1251,6 @@ EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv4::Replies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reply")
     {
         for(auto const & c : reply)
@@ -774,28 +1258,24 @@ std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv4::Replies::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PingRpc::Output::PingResponse::Ipv4::Replies::Reply>();
         c->parent = this;
-        reply.push_back(std::move(c));
-        children[segment_path] = reply.back();
-        return children.at(segment_path);
+        reply.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv4::Replies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv4::Replies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : reply)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -813,7 +1293,6 @@ PingRpc::Output::PingResponse::Ipv4::Replies::Reply::Reply()
     broadcast_reply_addresses(std::make_shared<PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses>())
 {
     broadcast_reply_addresses->parent = this;
-    children["broadcast-reply-addresses"] = broadcast_reply_addresses;
 
     yang_name = "reply"; yang_parent_name = "replies";
 }
@@ -846,7 +1325,7 @@ std::string PingRpc::Output::PingResponse::Ipv4::Replies::Reply::get_segment_pat
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -871,41 +1350,24 @@ EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::get_entity_path(
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv4::Replies::Reply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast-reply-addresses")
     {
-        if(broadcast_reply_addresses != nullptr)
-        {
-            children["broadcast-reply-addresses"] = broadcast_reply_addresses;
-        }
-        else
+        if(broadcast_reply_addresses == nullptr)
         {
             broadcast_reply_addresses = std::make_shared<PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses>();
-            broadcast_reply_addresses->parent = this;
-            children["broadcast-reply-addresses"] = broadcast_reply_addresses;
         }
-        return children.at("broadcast-reply-addresses");
+        return broadcast_reply_addresses;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv4::Replies::Reply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv4::Replies::Reply::get_children() const
 {
-    if(children.find("broadcast-reply-addresses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast_reply_addresses != nullptr)
     {
-        if(broadcast_reply_addresses != nullptr)
-        {
-            children["broadcast-reply-addresses"] = broadcast_reply_addresses;
-        }
+        children["broadcast-reply-addresses"] = broadcast_reply_addresses;
     }
 
     return children;
@@ -961,7 +1423,7 @@ std::string PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyA
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -984,15 +1446,6 @@ EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAd
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "broadcast-reply-address")
     {
         for(auto const & c : broadcast_reply_address)
@@ -1000,28 +1453,24 @@ std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv4::Replies::Reply::Bro
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress>();
         c->parent = this;
-        broadcast_reply_address.push_back(std::move(c));
-        children[segment_path] = broadcast_reply_address.back();
-        return children.at(segment_path);
+        broadcast_reply_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : broadcast_reply_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1065,7 +1514,7 @@ std::string PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyA
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1090,20 +1539,12 @@ EntityPath PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAd
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1141,7 +1582,6 @@ PingRpc::Output::PingResponse::Ipv6::Ipv6()
     replies(std::make_shared<PingRpc::Output::PingResponse::Ipv6::Replies>())
 {
     replies->parent = this;
-    children["replies"] = replies;
 
     yang_name = "ipv6"; yang_parent_name = "ping-response";
 }
@@ -1202,7 +1642,7 @@ std::string PingRpc::Output::PingResponse::Ipv6::get_segment_path() const
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1241,41 +1681,24 @@ EntityPath PingRpc::Output::PingResponse::Ipv6::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "replies")
     {
-        if(replies != nullptr)
-        {
-            children["replies"] = replies;
-        }
-        else
+        if(replies == nullptr)
         {
             replies = std::make_shared<PingRpc::Output::PingResponse::Ipv6::Replies>();
-            replies->parent = this;
-            children["replies"] = replies;
         }
-        return children.at("replies");
+        return replies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv6::get_children() const
 {
-    if(children.find("replies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(replies != nullptr)
     {
-        if(replies != nullptr)
-        {
-            children["replies"] = replies;
-        }
+        children["replies"] = replies;
     }
 
     return children;
@@ -1387,7 +1810,7 @@ std::string PingRpc::Output::PingResponse::Ipv6::Replies::get_segment_path() con
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv6::Replies::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv6::Replies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1410,15 +1833,6 @@ EntityPath PingRpc::Output::PingResponse::Ipv6::Replies::get_entity_path(Entity*
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv6::Replies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reply")
     {
         for(auto const & c : reply)
@@ -1426,28 +1840,24 @@ std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv6::Replies::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PingRpc::Output::PingResponse::Ipv6::Replies::Reply>();
         c->parent = this;
-        reply.push_back(std::move(c));
-        children[segment_path] = reply.back();
-        return children.at(segment_path);
+        reply.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv6::Replies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv6::Replies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : reply)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1491,7 +1901,7 @@ std::string PingRpc::Output::PingResponse::Ipv6::Replies::Reply::get_segment_pat
 
 }
 
-EntityPath PingRpc::Output::PingResponse::Ipv6::Replies::Reply::get_entity_path(Entity* ancestor) const
+const EntityPath PingRpc::Output::PingResponse::Ipv6::Replies::Reply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1516,20 +1926,12 @@ EntityPath PingRpc::Output::PingResponse::Ipv6::Replies::Reply::get_entity_path(
 
 std::shared_ptr<Entity> PingRpc::Output::PingResponse::Ipv6::Replies::Reply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Output::PingResponse::Ipv6::Replies::Reply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PingRpc::Output::PingResponse::Ipv6::Replies::Reply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1542,542 +1944,6 @@ void PingRpc::Output::PingResponse::Ipv6::Replies::Reply::set_value(const std::s
     if(value_path == "result")
     {
         result = value;
-    }
-}
-
-PingRpc::Destination::Destination()
-    :
-    data_size{YType::uint64, "data-size"},
-    destination{YType::str, "destination"},
-    do_not_frag{YType::boolean, "do-not-frag"},
-    interval{YType::uint32, "interval"},
-    outgoing_interface{YType::str, "outgoing-interface"},
-    pattern{YType::str, "pattern"},
-    priority{YType::uint8, "priority"},
-    repeat_count{YType::uint64, "repeat-count"},
-    source{YType::str, "source"},
-    sweep{YType::boolean, "sweep"},
-    timeout{YType::uint64, "timeout"},
-    type_of_service{YType::uint8, "type-of-service"},
-    validate{YType::boolean, "validate"},
-    verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "destination"; yang_parent_name = "ping";
-}
-
-PingRpc::Destination::~Destination()
-{
-}
-
-bool PingRpc::Destination::has_data() const
-{
-    return data_size.is_set
-	|| destination.is_set
-	|| do_not_frag.is_set
-	|| interval.is_set
-	|| outgoing_interface.is_set
-	|| pattern.is_set
-	|| priority.is_set
-	|| repeat_count.is_set
-	|| source.is_set
-	|| sweep.is_set
-	|| timeout.is_set
-	|| type_of_service.is_set
-	|| validate.is_set
-	|| verbose.is_set
-	|| vrf_name.is_set;
-}
-
-bool PingRpc::Destination::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(data_size.operation)
-	|| is_set(destination.operation)
-	|| is_set(do_not_frag.operation)
-	|| is_set(interval.operation)
-	|| is_set(outgoing_interface.operation)
-	|| is_set(pattern.operation)
-	|| is_set(priority.operation)
-	|| is_set(repeat_count.operation)
-	|| is_set(source.operation)
-	|| is_set(sweep.operation)
-	|| is_set(timeout.operation)
-	|| is_set(type_of_service.operation)
-	|| is_set(validate.operation)
-	|| is_set(verbose.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string PingRpc::Destination::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination";
-
-    return path_buffer.str();
-
-}
-
-EntityPath PingRpc::Destination::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data_size.is_set || is_set(data_size.operation)) leaf_name_data.push_back(data_size.get_name_leafdata());
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (do_not_frag.is_set || is_set(do_not_frag.operation)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (outgoing_interface.is_set || is_set(outgoing_interface.operation)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (pattern.is_set || is_set(pattern.operation)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (repeat_count.is_set || is_set(repeat_count.operation)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (sweep.is_set || is_set(sweep.operation)) leaf_name_data.push_back(sweep.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (type_of_service.is_set || is_set(type_of_service.operation)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.operation)) leaf_name_data.push_back(verbose.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PingRpc::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Destination::get_children()
-{
-    return children;
-}
-
-void PingRpc::Destination::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "data-size")
-    {
-        data_size = value;
-    }
-    if(value_path == "destination")
-    {
-        destination = value;
-    }
-    if(value_path == "do-not-frag")
-    {
-        do_not_frag = value;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-    }
-    if(value_path == "pattern")
-    {
-        pattern = value;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-    }
-    if(value_path == "repeat-count")
-    {
-        repeat_count = value;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-    }
-    if(value_path == "sweep")
-    {
-        sweep = value;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-    }
-    if(value_path == "type-of-service")
-    {
-        type_of_service = value;
-    }
-    if(value_path == "validate")
-    {
-        validate = value;
-    }
-    if(value_path == "verbose")
-    {
-        verbose = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-PingRpc::Ipv4::Ipv4()
-    :
-    destination{YType::str, "destination"},
-    data_size{YType::uint64, "data-size"},
-    do_not_frag{YType::boolean, "do-not-frag"},
-    interval{YType::uint32, "interval"},
-    pattern{YType::str, "pattern"},
-    repeat_count{YType::uint64, "repeat-count"},
-    source{YType::str, "source"},
-    sweep{YType::boolean, "sweep"},
-    timeout{YType::uint64, "timeout"},
-    type_of_service{YType::uint8, "type-of-service"},
-    validate{YType::boolean, "validate"},
-    verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "ipv4"; yang_parent_name = "ping";
-}
-
-PingRpc::Ipv4::~Ipv4()
-{
-}
-
-bool PingRpc::Ipv4::has_data() const
-{
-    return destination.is_set
-	|| data_size.is_set
-	|| do_not_frag.is_set
-	|| interval.is_set
-	|| pattern.is_set
-	|| repeat_count.is_set
-	|| source.is_set
-	|| sweep.is_set
-	|| timeout.is_set
-	|| type_of_service.is_set
-	|| validate.is_set
-	|| verbose.is_set
-	|| vrf_name.is_set;
-}
-
-bool PingRpc::Ipv4::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(data_size.operation)
-	|| is_set(do_not_frag.operation)
-	|| is_set(interval.operation)
-	|| is_set(pattern.operation)
-	|| is_set(repeat_count.operation)
-	|| is_set(source.operation)
-	|| is_set(sweep.operation)
-	|| is_set(timeout.operation)
-	|| is_set(type_of_service.operation)
-	|| is_set(validate.operation)
-	|| is_set(verbose.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string PingRpc::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[destination='" <<destination <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath PingRpc::Ipv4::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (data_size.is_set || is_set(data_size.operation)) leaf_name_data.push_back(data_size.get_name_leafdata());
-    if (do_not_frag.is_set || is_set(do_not_frag.operation)) leaf_name_data.push_back(do_not_frag.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (pattern.is_set || is_set(pattern.operation)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (repeat_count.is_set || is_set(repeat_count.operation)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (sweep.is_set || is_set(sweep.operation)) leaf_name_data.push_back(sweep.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (type_of_service.is_set || is_set(type_of_service.operation)) leaf_name_data.push_back(type_of_service.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.operation)) leaf_name_data.push_back(verbose.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PingRpc::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Ipv4::get_children()
-{
-    return children;
-}
-
-void PingRpc::Ipv4::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "destination")
-    {
-        destination = value;
-    }
-    if(value_path == "data-size")
-    {
-        data_size = value;
-    }
-    if(value_path == "do-not-frag")
-    {
-        do_not_frag = value;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-    }
-    if(value_path == "pattern")
-    {
-        pattern = value;
-    }
-    if(value_path == "repeat-count")
-    {
-        repeat_count = value;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-    }
-    if(value_path == "sweep")
-    {
-        sweep = value;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-    }
-    if(value_path == "type-of-service")
-    {
-        type_of_service = value;
-    }
-    if(value_path == "validate")
-    {
-        validate = value;
-    }
-    if(value_path == "verbose")
-    {
-        verbose = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-PingRpc::Ipv6::Ipv6()
-    :
-    data_size{YType::uint64, "data-size"},
-    destination{YType::str, "destination"},
-    interval{YType::uint32, "interval"},
-    outgoing_interface{YType::str, "outgoing-interface"},
-    pattern{YType::str, "pattern"},
-    priority{YType::uint8, "priority"},
-    repeat_count{YType::uint64, "repeat-count"},
-    source{YType::str, "source"},
-    sweep{YType::boolean, "sweep"},
-    timeout{YType::uint64, "timeout"},
-    verbose{YType::boolean, "verbose"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "ipv6"; yang_parent_name = "ping";
-}
-
-PingRpc::Ipv6::~Ipv6()
-{
-}
-
-bool PingRpc::Ipv6::has_data() const
-{
-    return data_size.is_set
-	|| destination.is_set
-	|| interval.is_set
-	|| outgoing_interface.is_set
-	|| pattern.is_set
-	|| priority.is_set
-	|| repeat_count.is_set
-	|| source.is_set
-	|| sweep.is_set
-	|| timeout.is_set
-	|| verbose.is_set
-	|| vrf_name.is_set;
-}
-
-bool PingRpc::Ipv6::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(data_size.operation)
-	|| is_set(destination.operation)
-	|| is_set(interval.operation)
-	|| is_set(outgoing_interface.operation)
-	|| is_set(pattern.operation)
-	|| is_set(priority.operation)
-	|| is_set(repeat_count.operation)
-	|| is_set(source.operation)
-	|| is_set(sweep.operation)
-	|| is_set(timeout.operation)
-	|| is_set(verbose.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string PingRpc::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6";
-
-    return path_buffer.str();
-
-}
-
-EntityPath PingRpc::Ipv6::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ping-act:ping/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data_size.is_set || is_set(data_size.operation)) leaf_name_data.push_back(data_size.get_name_leafdata());
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (outgoing_interface.is_set || is_set(outgoing_interface.operation)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (pattern.is_set || is_set(pattern.operation)) leaf_name_data.push_back(pattern.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (repeat_count.is_set || is_set(repeat_count.operation)) leaf_name_data.push_back(repeat_count.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (sweep.is_set || is_set(sweep.operation)) leaf_name_data.push_back(sweep.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.operation)) leaf_name_data.push_back(verbose.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PingRpc::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & PingRpc::Ipv6::get_children()
-{
-    return children;
-}
-
-void PingRpc::Ipv6::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "data-size")
-    {
-        data_size = value;
-    }
-    if(value_path == "destination")
-    {
-        destination = value;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-    }
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-    }
-    if(value_path == "pattern")
-    {
-        pattern = value;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-    }
-    if(value_path == "repeat-count")
-    {
-        repeat_count = value;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-    }
-    if(value_path == "sweep")
-    {
-        sweep = value;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-    }
-    if(value_path == "verbose")
-    {
-        verbose = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
     }
 }
 

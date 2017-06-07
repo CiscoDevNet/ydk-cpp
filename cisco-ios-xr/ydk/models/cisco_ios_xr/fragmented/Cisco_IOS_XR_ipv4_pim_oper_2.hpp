@@ -22,16 +22,14 @@ class Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_name; //type: string
         YLeaf vrf_name; //type: string
-
         class SourceAddress; //type: Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddress
         class RpAddress; //type: Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::RpAddress
         class SourceAddressNetio; //type: Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddressNetio
@@ -41,8 +39,7 @@ class Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::RpAddress> rp_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddress> source_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddressNetio> source_address_netio;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel
 
 
@@ -54,18 +51,15 @@ class Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddress : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddress
 
@@ -78,18 +72,15 @@ class Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::RpAddress : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::RpAddress
 
@@ -102,18 +93,15 @@ class Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddressNetio : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::SourceAddressNetio
 
@@ -126,18 +114,15 @@ class Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::GroupAddressNetio : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::NetIoTunnels::NetIoTunnel::GroupAddressNetio
 
@@ -150,19 +135,16 @@ class Pim::Standby::Vrfs::Vrf::BidirDfStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BidirDfState; //type: Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState> > bidir_df_state;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::BidirDfStates
 
 
@@ -174,12 +156,11 @@ class Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rp_address; //type: string
         YLeaf interface_name; //type: string
@@ -189,12 +170,10 @@ class Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState : public Entity
         YLeaf time_nano_seconds; //type: uint64
         YLeaf our_metric; //type: uint32
         YLeaf our_metric_preference; //type: uint32
-
         class RpAddressXr; //type: Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState::RpAddressXr
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState::RpAddressXr> rp_address_xr;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState
 
 
@@ -206,18 +185,15 @@ class Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState::RpAddressXr : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState::RpAddressXr
 
@@ -230,19 +206,16 @@ class Pim::Standby::Vrfs::Vrf::Topologies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Topology; //type: Pim::Standby::Vrfs::Vrf::Topologies::Topology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Topologies::Topology> > topology;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Topologies
 
 
@@ -254,12 +227,11 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf group_address; //type: string
@@ -315,7 +287,6 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology : public Entity
         YLeaf mofrr_primary; //type: boolean
         YLeaf mofrr_backup; //type: boolean
         YLeaf vxlan; //type: boolean
-
         class GroupAddressXr; //type: Pim::Standby::Vrfs::Vrf::Topologies::Topology::GroupAddressXr
         class SourceAddressXr; //type: Pim::Standby::Vrfs::Vrf::Topologies::Topology::SourceAddressXr
         class RpAddress; //type: Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpAddress
@@ -335,8 +306,7 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpfRoot> rpf_root;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Topologies::Topology::SecondaryRpfNeighbor> secondary_rpf_neighbor;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Topologies::Topology::SourceAddressXr> source_address_xr;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology
 
 
@@ -348,18 +318,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::GroupAddressXr : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::GroupAddressXr
 
@@ -372,18 +339,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::SourceAddressXr : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::SourceAddressXr
 
@@ -396,18 +360,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpAddress
 
@@ -420,18 +381,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpfNeighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpfNeighbor
 
@@ -444,18 +402,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::SecondaryRpfNeighbor : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::SecondaryRpfNeighbor
 
@@ -468,18 +423,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpfRoot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::RpfRoot
 
@@ -492,18 +444,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::ProxyAddress : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::ProxyAddress
 
@@ -516,18 +465,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::OrigSrcAddress : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::OrigSrcAddress
 
@@ -540,12 +486,11 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf uptime; //type: uint64
@@ -572,12 +517,10 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface : public 
         YLeaf bgp_c_mcast_join; //type: boolean
         YLeaf vrf_name; //type: string
         YLeaf extranet_interface; //type: boolean
-
         class AssertWinner; //type: Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface::AssertWinner
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface::AssertWinner> assert_winner;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface
 
 
@@ -589,18 +532,15 @@ class Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface::AssertWi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface::AssertWinner
 
@@ -613,19 +553,16 @@ class Pim::Standby::Vrfs::Vrf::BgpAfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BgpAf; //type: Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf> > bgp_af;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::BgpAfs
 
 
@@ -637,19 +574,17 @@ class Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf group_address; //type: string
         YLeaf route_distinguisher; //type: string
         YLeaf extranet_path_count; //type: uint32
         YLeaf is_bgp_added; //type: boolean
-
         class Source; //type: Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source
         class Group; //type: Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group
         class NextHop; //type: Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::NextHop
@@ -657,8 +592,7 @@ class Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group> group;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::NextHop> next_hop;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source> source;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf
 
 
@@ -670,18 +604,15 @@ class Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source
 
@@ -694,18 +625,15 @@ class Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group
 
@@ -718,18 +646,15 @@ class Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::NextHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::NextHop
 
@@ -742,14 +667,11 @@ class Pim::Standby::Vrfs::Vrf::AutoRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
 
 }; // Pim::Standby::Vrfs::Vrf::AutoRp
@@ -763,19 +685,16 @@ class Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TopologyInterfaceFlagRouteCount; //type: Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount> > topology_interface_flag_route_count;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts
 
 
@@ -787,12 +706,11 @@ class Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_flag; //type: PimTopologyInterfaceFlagEnum
         YLeaf group_ranges; //type: uint32
@@ -801,12 +719,10 @@ class Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfa
         YLeaf sg_route_count; //type: uint32
         YLeaf sgr_route_count; //type: uint32
         YLeaf is_node_low_memory; //type: boolean
-
         class GroupAddress; //type: Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::GroupAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::GroupAddress> group_address;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount
 
 
@@ -818,18 +734,15 @@ class Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::GroupAddress
 
@@ -842,19 +755,16 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GroupMapSource; //type: Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource> > group_map_source;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapSources
 
 
@@ -866,12 +776,11 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: int32
@@ -882,14 +791,12 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource : public Entity
         YLeaf holdtime; //type: int32
         YLeaf expires; //type: uint64
         YLeaf uptime; //type: uint64
-
         class SourceOfInformation; //type: Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation
         class GroupMapInformation; //type: Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation> group_map_information;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation> source_of_information;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource
 
 
@@ -901,18 +808,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation
 
@@ -925,12 +829,11 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: int32
         YLeaf client; //type: PimShowRangeClientEnum
@@ -940,14 +843,12 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformat
         YLeaf mrib_active; //type: boolean
         YLeaf is_override; //type: boolean
         YLeaf priority; //type: uint32
-
         class Prefix; //type: Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix
         class RpAddress; //type: Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix> prefix;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress> rp_address;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation
 
 
@@ -959,18 +860,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix
 
@@ -983,18 +881,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress
 
@@ -1007,12 +902,11 @@ class Pim::Standby::Vrfs::Vrf::TrafficCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf elapsed_time; //type: uint32
         YLeaf inputs; //type: uint32
@@ -1084,12 +978,10 @@ class Pim::Standby::Vrfs::Vrf::TrafficCounters : public Entity
         YLeafList packet_queue_length; //type: list of  uint32
         YLeafList packet_queue_size; //type: list of  uint32
         YLeafList packet_tail_drop; //type: list of  uint32
-
         class PacketQueue; //type: Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue> > packet_queue;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::TrafficCounters
 
 
@@ -1101,22 +993,19 @@ class Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_queue_priority; //type: uint32
-
         class PacketQueueState; //type: Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState
         class PacketQueueStats; //type: Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState> packet_queue_state;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats> packet_queue_stats;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue
 
 
@@ -1128,18 +1017,15 @@ class Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_queue_size; //type: uint32
         YLeaf queue_size_bytes; //type: uint32
         YLeaf queue_size_packets; //type: uint32
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState
 
@@ -1152,20 +1038,17 @@ class Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enqueued_packets; //type: uint32
         YLeaf dequeued_packets; //type: uint32
         YLeaf high_water_mark_packets; //type: uint32
         YLeaf high_water_mark_bytes; //type: uint32
         YLeaf tail_drops; //type: uint32
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats
 
@@ -1178,19 +1061,16 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GroupMapRpf; //type: Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf> > group_map_rpf;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapRpfs
 
 
@@ -1202,12 +1082,11 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: int32
@@ -1218,14 +1097,12 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf : public Entity
         YLeaf are_we_rp; //type: boolean
         YLeaf rpf_interface_name; //type: string
         YLeaf rpf_vrf_name; //type: string
-
         class RpfNeighbor; //type: Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::RpfNeighbor
         class GroupMapInformation; //type: Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation> group_map_information;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::RpfNeighbor> rpf_neighbor;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf
 
 
@@ -1237,18 +1114,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::RpfNeighbor : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::RpfNeighbor
 
@@ -1261,12 +1135,11 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: int32
         YLeaf client; //type: PimShowRangeClientEnum
@@ -1276,14 +1149,12 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation : 
         YLeaf mrib_active; //type: boolean
         YLeaf is_override; //type: boolean
         YLeaf priority; //type: uint32
-
         class Prefix; //type: Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix
         class RpAddress; //type: Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix> prefix;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress> rp_address;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation
 
 
@@ -1295,18 +1166,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::P
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix
 
@@ -1319,18 +1187,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress
 
@@ -1343,12 +1208,11 @@ class Pim::Standby::Vrfs::Vrf::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_limit; //type: uint32
         YLeaf route_count; //type: uint32
@@ -1391,8 +1255,6 @@ class Pim::Standby::Vrfs::Vrf::Summary : public Entity
         YLeaf global_register_limit; //type: uint32
         YLeaf is_global_register_limit_reached; //type: boolean
 
-
-
 }; // Pim::Standby::Vrfs::Vrf::Summary
 
 
@@ -1404,21 +1266,18 @@ class Pim::Standby::Vrfs::Vrf::Gre : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GreHashes; //type: Pim::Standby::Vrfs::Vrf::Gre::GreHashes
         class GreNextHops; //type: Pim::Standby::Vrfs::Vrf::Gre::GreNextHops
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreHashes> gre_hashes;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreNextHops> gre_next_hops;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Gre
 
 
@@ -1430,19 +1289,16 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreHashes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GreHash; //type: Pim::Standby::Vrfs::Vrf::Gre::GreHashes::GreHash
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreHashes::GreHash> > gre_hash;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreHashes
 
 
@@ -1454,19 +1310,16 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreHashes::GreHash : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
         YLeaf ifname; //type: string
         YLeaf next_hop_interface; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreHashes::GreHash
 
@@ -1479,19 +1332,16 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreNextHops : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GreNextHop; //type: Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop> > gre_next_hop;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreNextHops
 
 
@@ -1503,25 +1353,22 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_address; //type: string
         YLeaf metric; //type: uint32
         YLeaf metric_preference; //type: uint32
         YLeaf is_connected; //type: uint8
-
         class RegisteredAddress; //type: Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::RegisteredAddress
         class GrePath; //type: Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath> > gre_path;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::RegisteredAddress> registered_address;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop
 
 
@@ -1533,18 +1380,15 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::RegisteredAddress :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::RegisteredAddress
 
@@ -1557,26 +1401,23 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf gre_interface_name; //type: string
         YLeaf is_gre_interface_disabled; //type: boolean
         YLeaf is_via_lsm; //type: boolean
         YLeaf is_connector_attribute_present; //type: boolean
         YLeaf extranet_vrf_name; //type: string
-
         class GreNeighbor; //type: Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor
         class GreNextHop_; //type: Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor> gre_neighbor;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_> gre_next_hop;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath
 
 
@@ -1588,18 +1429,15 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor
 
@@ -1612,18 +1450,15 @@ class Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_
 
@@ -1636,19 +1471,16 @@ class Pim::Standby::Vrfs::Vrf::BidirDfWinners : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BidirDfWinner; //type: Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner> > bidir_df_winner;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::BidirDfWinners
 
 
@@ -1660,12 +1492,11 @@ class Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rp_address; //type: string
         YLeaf interface_name; //type: string
@@ -1675,14 +1506,12 @@ class Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner : public Entity
         YLeaf metric; //type: uint32
         YLeaf metric_preference; //type: uint32
         YLeaf uptime; //type: uint64
-
         class RpAddressXr; //type: Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::RpAddressXr
         class DfWinner; //type: Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::DfWinner
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::DfWinner> df_winner;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::RpAddressXr> rp_address_xr;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner
 
 
@@ -1694,18 +1523,15 @@ class Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::RpAddressXr : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::RpAddressXr
 
@@ -1718,18 +1544,15 @@ class Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::DfWinner : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::BidirDfWinners::BidirDfWinner::DfWinner
 
@@ -1742,19 +1565,16 @@ class Pim::Standby::Vrfs::Vrf::TableContexts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TableContext; //type: Pim::Standby::Vrfs::Vrf::TableContexts::TableContext
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TableContexts::TableContext> > table_context;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::TableContexts
 
 
@@ -1766,12 +1586,11 @@ class Pim::Standby::Vrfs::Vrf::TableContexts::TableContext : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf saf_name; //type: PimSafiEnum
         YLeaf topology_name; //type: string
@@ -1787,8 +1606,6 @@ class Pim::Standby::Vrfs::Vrf::TableContexts::TableContext : public Entity
         YLeaf is_rib_convergence; //type: boolean
         YLeaf rpf_registrations; //type: uint32
 
-
-
 }; // Pim::Standby::Vrfs::Vrf::TableContexts::TableContext
 
 
@@ -1800,19 +1617,16 @@ class Pim::Standby::Vrfs::Vrf::NeighborSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NeighborSummary; //type: Pim::Standby::Vrfs::Vrf::NeighborSummaries::NeighborSummary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::NeighborSummaries::NeighborSummary> > neighbor_summary;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::NeighborSummaries
 
 
@@ -1824,18 +1638,15 @@ class Pim::Standby::Vrfs::Vrf::NeighborSummaries::NeighborSummary : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf number_of_neighbors; //type: int32
         YLeaf number_of_external_neighbors; //type: int32
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::NeighborSummaries::NeighborSummary
 
@@ -1848,12 +1659,11 @@ class Pim::Standby::Vrfs::Vrf::Context : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_id; //type: uint32
         YLeaf table_id; //type: uint32
@@ -2003,7 +1813,6 @@ class Pim::Standby::Vrfs::Vrf::Context : public Entity
         YLeaf bgp_remote_address; //type: string
         YLeaf bgp_remote_state; //type: uint32
         YLeafList mldp_root_address; //type: list of  uint32
-
         class RemoteDefaultGroup; //type: Pim::Standby::Vrfs::Vrf::Context::RemoteDefaultGroup
         class RpfDefaultTable; //type: Pim::Standby::Vrfs::Vrf::Context::RpfDefaultTable
         class ExportRouteTarget; //type: Pim::Standby::Vrfs::Vrf::Context::ExportRouteTarget
@@ -2015,8 +1824,7 @@ class Pim::Standby::Vrfs::Vrf::Context : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Context::ImportRouteTarget> > import_route_target;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Context::RemoteDefaultGroup> remote_default_group;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Context::RpfDefaultTable> rpf_default_table;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Context
 
 
@@ -2028,18 +1836,15 @@ class Pim::Standby::Vrfs::Vrf::Context::RemoteDefaultGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Context::RemoteDefaultGroup
 
@@ -2052,12 +1857,11 @@ class Pim::Standby::Vrfs::Vrf::Context::RpfDefaultTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf afi; //type: uint32
         YLeaf safi; //type: uint32
@@ -2071,8 +1875,6 @@ class Pim::Standby::Vrfs::Vrf::Context::RpfDefaultTable : public Entity
         YLeaf is_rib_convergence; //type: boolean
         YLeaf rpf_registrations; //type: uint32
 
-
-
 }; // Pim::Standby::Vrfs::Vrf::Context::RpfDefaultTable
 
 
@@ -2084,12 +1886,11 @@ class Pim::Standby::Vrfs::Vrf::Context::ExportRouteTarget : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_target; //type: string
         YLeaf configured; //type: boolean
@@ -2098,8 +1899,6 @@ class Pim::Standby::Vrfs::Vrf::Context::ExportRouteTarget : public Entity
         YLeaf update_pending; //type: boolean
         YLeaf bgp_auto_discovery; //type: boolean
         YLeaf segment_border; //type: boolean
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Context::ExportRouteTarget
 
@@ -2112,12 +1911,11 @@ class Pim::Standby::Vrfs::Vrf::Context::ImportRouteTarget : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf route_target; //type: string
         YLeaf configured; //type: boolean
@@ -2126,8 +1924,6 @@ class Pim::Standby::Vrfs::Vrf::Context::ImportRouteTarget : public Entity
         YLeaf update_pending; //type: boolean
         YLeaf bgp_auto_discovery; //type: boolean
         YLeaf segment_border; //type: boolean
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Context::ImportRouteTarget
 
@@ -2140,21 +1936,18 @@ class Pim::Standby::Vrfs::Vrf::Context::AnycastRpRange : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: uint8
         YLeaf ancast_rp_marked; //type: boolean
-
         class Prefix; //type: Pim::Standby::Vrfs::Vrf::Context::AnycastRpRange::Prefix
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Context::AnycastRpRange::Prefix> prefix;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Context::AnycastRpRange
 
 
@@ -2166,18 +1959,15 @@ class Pim::Standby::Vrfs::Vrf::Context::AnycastRpRange::Prefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Context::AnycastRpRange::Prefix
 
@@ -2190,19 +1980,16 @@ class Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TopologyEntryFlagRouteCount; //type: Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount> > topology_entry_flag_route_count;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts
 
 
@@ -2214,12 +2001,11 @@ class Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry_flag; //type: PimTopologyEntryFlagEnum
         YLeaf group_ranges; //type: uint32
@@ -2228,12 +2014,10 @@ class Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRo
         YLeaf sg_route_count; //type: uint32
         YLeaf sgr_route_count; //type: uint32
         YLeaf is_node_low_memory; //type: boolean
-
         class GroupAddress; //type: Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress> group_address;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount
 
 
@@ -2245,18 +2029,15 @@ class Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::GroupAddress
 
@@ -2269,21 +2050,18 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RedirectRouteDatabases; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases
         class BundleInterfaces; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces> bundle_interfaces;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases> redirect_route_databases;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect
 
 
@@ -2295,19 +2073,16 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RedirectRouteDatabase; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase> > redirect_route_database;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases
 
 
@@ -2319,18 +2094,16 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRout
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf group_address; //type: string
         YLeaf bandwidth; //type: uint32
         YLeaf uptime; //type: uint64
-
         class GroupAddressXr; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr
         class SourceAddressXr; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr
         class Interface; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface
@@ -2338,8 +2111,7 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRout
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr> group_address_xr;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface> > interface;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr> source_address_xr;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase
 
 
@@ -2351,18 +2123,15 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRout
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr
 
@@ -2375,18 +2144,15 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRout
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr
 
@@ -2399,12 +2165,11 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRout
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf uptime; //type: uint64
@@ -2412,12 +2177,10 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRout
         YLeaf is_rpf_interface; //type: boolean
         YLeaf is_outgoing_interface; //type: boolean
         YLeaf is_snoop_interface; //type: boolean
-
         class RpfAddress; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress> rpf_address;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface
 
 
@@ -2429,18 +2192,15 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRout
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress
 
@@ -2453,19 +2213,16 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BundleInterface; //type: Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface> > bundle_interface;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces
 
 
@@ -2477,12 +2234,11 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bundle_name; //type: string
         YLeaf interface_name; //type: string
@@ -2496,8 +2252,6 @@ class Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface : 
         YLeaf allocated_threshold_bandwidth; //type: int32
         YLeaf available_threshold_bandwidth; //type: int32
 
-
-
 }; // Pim::Standby::Vrfs::Vrf::RpfRedirect::BundleInterfaces::BundleInterface
 
 
@@ -2509,19 +2263,16 @@ class Pim::Standby::Vrfs::Vrf::Tunnels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tunnel; //type: Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel> > tunnel;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Tunnels
 
 
@@ -2533,16 +2284,14 @@ class Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tunnel_name; //type: string
         YLeaf vrf_name; //type: string
-
         class SourceAddress; //type: Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress
         class RpAddress; //type: Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::RpAddress
         class SourceAddressNetio; //type: Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddressNetio
@@ -2552,8 +2301,7 @@ class Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::RpAddress> rp_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress> source_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddressNetio> source_address_netio;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel
 
 
@@ -2565,18 +2313,15 @@ class Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddress
 
@@ -2589,18 +2334,15 @@ class Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::RpAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::RpAddress
 
@@ -2613,18 +2355,15 @@ class Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddressNetio : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::SourceAddressNetio
 
@@ -2637,18 +2376,15 @@ class Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::GroupAddressNetio : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Tunnels::Tunnel::GroupAddressNetio
 
@@ -2661,19 +2397,16 @@ class Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MulticastStaticRoute; //type: Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute> > multicast_static_route;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes
 
 
@@ -2685,12 +2418,11 @@ class Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf prefix_length; //type: int32
@@ -2698,14 +2430,12 @@ class Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute : pub
         YLeaf distance; //type: uint32
         YLeaf prefix_length_xr; //type: uint8
         YLeaf is_via_lsm; //type: boolean
-
         class Prefix; //type: Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Prefix
         class Nexthop; //type: Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Nexthop
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Nexthop> nexthop;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Prefix> prefix;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute
 
 
@@ -2717,18 +2447,15 @@ class Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Pref
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Prefix
 
@@ -2741,18 +2468,15 @@ class Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Next
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticRoute::Nexthop
 
@@ -2765,19 +2489,16 @@ class Pim::Standby::Vrfs::Vrf::GroupMapMatchSources : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GroupMapMatchSource; //type: Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource> > group_map_match_source;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapMatchSources
 
 
@@ -2789,25 +2510,22 @@ class Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_address; //type: string
         YLeaf holdtime; //type: int32
         YLeaf expires; //type: uint64
         YLeaf uptime; //type: uint64
-
         class SourceOfInformation; //type: Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation
         class GroupMapInformation; //type: Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation> group_map_information;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation> source_of_information;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource
 
 
@@ -2819,18 +2537,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::Source
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::SourceOfInformation
 
@@ -2843,12 +2558,11 @@ class Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupM
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: int32
         YLeaf client; //type: PimShowRangeClientEnum
@@ -2858,14 +2572,12 @@ class Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupM
         YLeaf mrib_active; //type: boolean
         YLeaf is_override; //type: boolean
         YLeaf priority; //type: uint32
-
         class Prefix; //type: Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix
         class RpAddress; //type: Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix> prefix;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress> rp_address;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation
 
 
@@ -2877,18 +2589,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupM
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::Prefix
 
@@ -2901,18 +2610,15 @@ class Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupM
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::GroupMapMatchSources::GroupMapMatchSource::GroupMapInformation::RpAddress
 
@@ -2925,19 +2631,16 @@ class Pim::Standby::Vrfs::Vrf::Neighbors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Neighbor; //type: Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor> > neighbor;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Neighbors
 
 
@@ -2949,12 +2652,11 @@ class Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbor_address; //type: string
@@ -2973,12 +2675,10 @@ class Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor : public Entity
         YLeaf is_bfd_state; //type: boolean
         YLeaf propagation_delay; //type: uint16
         YLeaf override_interval; //type: uint16
-
         class NeighborAddressXr; //type: Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor::NeighborAddressXr
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor::NeighborAddressXr> > neighbor_address_xr;
-
-
+        
 }; // Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor
 
 
@@ -2990,18 +2690,15 @@ class Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor::NeighborAddressXr : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor::NeighborAddressXr
 
@@ -3014,13 +2711,11 @@ class Pim::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DefaultContext; //type: Pim::Active::DefaultContext
         class Process; //type: Pim::Active::Process
@@ -3029,8 +2724,7 @@ class Pim::Active : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext> default_context;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::Process> process;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::Vrfs> vrfs;
-
-
+        
 }; // Pim::Active
 
 
@@ -3042,13 +2736,11 @@ class Pim::Active::DefaultContext : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GlobalInterfaces; //type: Pim::Active::DefaultContext::GlobalInterfaces
         class IfrsInterfaces; //type: Pim::Active::DefaultContext::IfrsInterfaces
@@ -3125,8 +2817,7 @@ class Pim::Active::DefaultContext : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::TopologyRouteCount> topology_route_count;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::TrafficCounters> traffic_counters;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Tunnels> tunnels;
-
-
+        
 }; // Pim::Active::DefaultContext
 
 
@@ -3138,19 +2829,16 @@ class Pim::Active::DefaultContext::GlobalInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GlobalInterface; //type: Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface> > global_interface;
-
-
+        
 }; // Pim::Active::DefaultContext::GlobalInterfaces
 
 
@@ -3162,12 +2850,11 @@ class Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -3201,14 +2888,12 @@ class Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface : public En
         YLeaf idb_threshold_count; //type: uint32
         YLeaf idb_current_count; //type: uint32
         YLeaf idb_acl_name; //type: string
-
         class DrAddress; //type: Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::DrAddress
         class InterfaceAddress; //type: Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::InterfaceAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::DrAddress> dr_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::InterfaceAddress> > interface_address;
-
-
+        
 }; // Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface
 
 
@@ -3220,18 +2905,15 @@ class Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::DrAddress 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::DrAddress
 
@@ -3244,18 +2926,15 @@ class Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::InterfaceA
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::InterfaceAddress
 
@@ -3268,19 +2947,16 @@ class Pim::Active::DefaultContext::IfrsInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IfrsInterface; //type: Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface> > ifrs_interface;
-
-
+        
 }; // Pim::Active::DefaultContext::IfrsInterfaces
 
 
@@ -3292,12 +2968,11 @@ class Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -3331,14 +3006,12 @@ class Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface : public Entity
         YLeaf idb_threshold_count; //type: uint32
         YLeaf idb_current_count; //type: uint32
         YLeaf idb_acl_name; //type: string
-
         class DrAddress; //type: Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::DrAddress
         class InterfaceAddress; //type: Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::InterfaceAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::DrAddress> dr_address;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::InterfaceAddress> > interface_address;
-
-
+        
 }; // Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface
 
 
@@ -3350,18 +3023,15 @@ class Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::DrAddress : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::DrAddress
 
@@ -3374,18 +3044,15 @@ class Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::InterfaceAddre
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::InterfaceAddress
 
@@ -3398,19 +3065,16 @@ class Pim::Active::DefaultContext::Safs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Saf; //type: Pim::Active::DefaultContext::Safs::Saf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf> > saf;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs
 
 
@@ -3422,16 +3086,14 @@ class Pim::Active::DefaultContext::Safs::Saf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf saf_name; //type: PimSafiEnum
         YLeaf topology_name; //type: string
-
         class RpfHashSourceGroups; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups
         class RpfHashSources; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSources
         class Rpfs; //type: Pim::Active::DefaultContext::Safs::Saf::Rpfs
@@ -3439,8 +3101,7 @@ class Pim::Active::DefaultContext::Safs::Saf : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups> rpf_hash_source_groups;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSources> rpf_hash_sources;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::Rpfs> rpfs;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf
 
 
@@ -3452,19 +3113,16 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RpfHashSourceGroup; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup> > rpf_hash_source_group;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups
 
 
@@ -3476,12 +3134,11 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSource
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf group_address; //type: string
@@ -3490,14 +3147,12 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSource
         YLeaf next_hop_multipath_enabled; //type: boolean
         YLeaf next_hop_interface; //type: string
         YLeaf secondary_next_hop_interface; //type: string
-
         class NextHopAddress; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress
         class SecondaryNextHopAddress; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress> next_hop_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress> secondary_next_hop_address;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup
 
 
@@ -3509,18 +3164,15 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSource
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress
 
@@ -3533,18 +3185,15 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSource
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress
 
@@ -3557,19 +3206,16 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSources : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RpfHashSource; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource> > rpf_hash_source;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSources
 
 
@@ -3581,26 +3227,23 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf mofrr; //type: int32
         YLeaf next_hop_multipath_enabled; //type: boolean
         YLeaf next_hop_interface; //type: string
         YLeaf secondary_next_hop_interface; //type: string
-
         class NextHopAddress; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress
         class SecondaryNextHopAddress; //type: Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress> next_hop_address;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress> secondary_next_hop_address;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource
 
 
@@ -3612,18 +3255,15 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::Nex
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress
 
@@ -3636,18 +3276,15 @@ class Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::Sec
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress
 
@@ -3660,19 +3297,16 @@ class Pim::Active::DefaultContext::Safs::Saf::Rpfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rpf; //type: Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf> > rpf;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf::Rpfs
 
 
@@ -3684,26 +3318,23 @@ class Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf registered_address; //type: string
         YLeaf metric; //type: uint32
         YLeaf metric_preference; //type: uint32
         YLeaf is_connected; //type: uint8
         YLeaf is_rpf_bgp_route; //type: boolean
-
         class RegisteredAddressXr; //type: Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr
         class RpfPath; //type: Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr> registered_address_xr;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath> > rpf_path;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf
 
 
@@ -3715,18 +3346,15 @@ class Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr
 
@@ -3739,12 +3367,11 @@ class Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rpf_interface_name; //type: string
         YLeaf is_rpf_interface_disabled; //type: boolean
@@ -3753,14 +3380,12 @@ class Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath : public Entity
         YLeaf is_connector_attribute_present; //type: boolean
         YLeaf connector; //type: string
         YLeaf extranet_vrf_name; //type: string
-
         class RpfNeighbor; //type: Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor
         class RpfNexthop; //type: Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor> rpf_neighbor;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop> rpf_nexthop;
-
-
+        
 }; // Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath
 
 
@@ -3772,18 +3397,15 @@ class Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor
 
@@ -3796,18 +3418,15 @@ class Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop
 
@@ -3820,19 +3439,16 @@ class Pim::Active::DefaultContext::InterfaceStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceStatistic; //type: Pim::Active::DefaultContext::InterfaceStatistics::InterfaceStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::InterfaceStatistics::InterfaceStatistic> > interface_statistic;
-
-
+        
 }; // Pim::Active::DefaultContext::InterfaceStatistics
 
 
@@ -3844,12 +3460,11 @@ class Pim::Active::DefaultContext::InterfaceStatistics::InterfaceStatistic : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf input_hello; //type: uint32
@@ -3874,8 +3489,6 @@ class Pim::Active::DefaultContext::InterfaceStatistics::InterfaceStatistic : pub
         YLeaf output_df_election; //type: uint32
         YLeaf input_miscellaneous; //type: uint32
 
-
-
 }; // Pim::Active::DefaultContext::InterfaceStatistics::InterfaceStatistic
 
 
@@ -3887,12 +3500,11 @@ class Pim::Active::DefaultContext::TopologyRouteCount : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_ranges; //type: uint32
         YLeaf active_group_ranges; //type: uint32
@@ -3900,12 +3512,10 @@ class Pim::Active::DefaultContext::TopologyRouteCount : public Entity
         YLeaf sg_route_count; //type: uint32
         YLeaf sgr_route_count; //type: uint32
         YLeaf is_node_low_memory; //type: boolean
-
         class GroupAddress; //type: Pim::Active::DefaultContext::TopologyRouteCount::GroupAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::TopologyRouteCount::GroupAddress> group_address;
-
-
+        
 }; // Pim::Active::DefaultContext::TopologyRouteCount
 
 
@@ -3917,18 +3527,15 @@ class Pim::Active::DefaultContext::TopologyRouteCount::GroupAddress : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::TopologyRouteCount::GroupAddress
 
@@ -3941,19 +3548,16 @@ class Pim::Active::DefaultContext::JpStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class JpStatistic; //type: Pim::Active::DefaultContext::JpStatistics::JpStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::JpStatistics::JpStatistic> > jp_statistic;
-
-
+        
 }; // Pim::Active::DefaultContext::JpStatistics
 
 
@@ -3965,12 +3569,11 @@ class Pim::Active::DefaultContext::JpStatistics::JpStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -3986,8 +3589,6 @@ class Pim::Active::DefaultContext::JpStatistics::JpStatistic : public Entity
         YLeaf received_10k; //type: uint16
         YLeaf received_50k; //type: uint16
 
-
-
 }; // Pim::Active::DefaultContext::JpStatistics::JpStatistic
 
 
@@ -3999,19 +3600,16 @@ class Pim::Active::DefaultContext::MibDatabases : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MibDatabase; //type: Pim::Active::DefaultContext::MibDatabases::MibDatabase
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::MibDatabases::MibDatabase> > mib_database;
-
-
+        
 }; // Pim::Active::DefaultContext::MibDatabases
 
 
@@ -4023,12 +3621,11 @@ class Pim::Active::DefaultContext::MibDatabases::MibDatabase : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf source_address; //type: string
         YLeaf group_address; //type: string
@@ -4048,7 +3645,6 @@ class Pim::Active::DefaultContext::MibDatabases::MibDatabase : public Entity
         YLeaf bidirectional_route; //type: boolean
         YLeaf uptime; //type: uint64
         YLeaf protocol; //type: PimShowProtocolEnum
-
         class SourceAddressXr; //type: Pim::Active::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr
         class GroupAddressXr; //type: Pim::Active::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr
         class RpfNeighbor; //type: Pim::Active::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor
@@ -4058,8 +3654,7 @@ class Pim::Active::DefaultContext::MibDatabases::MibDatabase : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor> rpf_neighbor;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::MibDatabases::MibDatabase::RpfRoot> rpf_root;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr> source_address_xr;
-
-
+        
 }; // Pim::Active::DefaultContext::MibDatabases::MibDatabase
 
 
@@ -4071,18 +3666,15 @@ class Pim::Active::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::MibDatabases::MibDatabase::SourceAddressXr
 
@@ -4095,18 +3687,15 @@ class Pim::Active::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::MibDatabases::MibDatabase::GroupAddressXr
 
@@ -4119,18 +3708,15 @@ class Pim::Active::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor
 
@@ -4143,18 +3729,15 @@ class Pim::Active::DefaultContext::MibDatabases::MibDatabase::RpfRoot : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::MibDatabases::MibDatabase::RpfRoot
 
@@ -4167,19 +3750,16 @@ class Pim::Active::DefaultContext::GroupMapMatchRpfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GroupMapMatchRpf; //type: Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf> > group_map_match_rpf;
-
-
+        
 }; // Pim::Active::DefaultContext::GroupMapMatchRpfs
 
 
@@ -4191,25 +3771,22 @@ class Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_address; //type: string
         YLeaf are_we_rp; //type: boolean
         YLeaf rpf_interface_name; //type: string
         YLeaf rpf_vrf_name; //type: string
-
         class RpfNeighbor; //type: Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor
         class GroupMapInformation; //type: Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation> group_map_information;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor> rpf_neighbor;
-
-
+        
 }; // Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf
 
 
@@ -4221,18 +3798,15 @@ class Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeigh
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::RpfNeighbor
 
@@ -4245,12 +3819,11 @@ class Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMap
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: int32
         YLeaf client; //type: PimShowRangeClientEnum
@@ -4260,14 +3833,12 @@ class Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMap
         YLeaf mrib_active; //type: boolean
         YLeaf is_override; //type: boolean
         YLeaf priority; //type: uint32
-
         class Prefix; //type: Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix
         class RpAddress; //type: Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress
 
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix> prefix;
         std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress> rp_address;
-
-
+        
 }; // Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation
 
 
@@ -4279,18 +3850,15 @@ class Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMap
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::Prefix
 
@@ -4303,18 +3871,15 @@ class Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMap
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::GroupMapMatchRpfs::GroupMapMatchRpf::GroupMapInformation::RpAddress
 
@@ -4327,19 +3892,16 @@ class Pim::Active::DefaultContext::NeighborOldFormats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NeighborOldFormat; //type: Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat> > neighbor_old_format;
-
-
+        
 }; // Pim::Active::DefaultContext::NeighborOldFormats
 
 
@@ -4351,12 +3913,11 @@ class Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf neighbor_address; //type: string
@@ -4375,12 +3936,10 @@ class Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat : publi
         YLeaf is_bfd_state; //type: boolean
         YLeaf propagation_delay; //type: uint16
         YLeaf override_interval; //type: uint16
-
         class NeighborAddressXr; //type: Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr> > neighbor_address_xr;
-
-
+        
 }; // Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat
 
 
@@ -4392,18 +3951,15 @@ class Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat::Neighb
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: PimAfiEnum
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr
 
@@ -4416,17 +3972,14 @@ class Pim::Active::DefaultContext::IfrsSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_count; //type: uint32
         YLeaf configuration_count; //type: uint32
-
-
 
 }; // Pim::Active::DefaultContext::IfrsSummary
 
@@ -4439,19 +3992,16 @@ class Pim::Active::DefaultContext::Ranges : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Range; //type: Pim::Active::DefaultContext::Ranges::Range
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_pim_oper::Pim::Active::DefaultContext::Ranges::Range> > range;
-
-
+        
 }; // Pim::Active::DefaultContext::Ranges
 
 

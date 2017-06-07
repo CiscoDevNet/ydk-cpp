@@ -47,12 +47,12 @@ std::string Keychains::get_segment_path() const
 
 }
 
-EntityPath Keychains::get_entity_path(Entity* ancestor) const
+const EntityPath Keychains::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath Keychains::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Keychains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "keychain")
     {
         for(auto const & c : keychain)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> Keychains::get_child_by_name(const std::string & child_y
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Keychains::Keychain>();
         c->parent = this;
-        keychain.push_back(std::move(c));
-        children[segment_path] = keychain.back();
-        return children.at(segment_path);
+        keychain.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Keychains::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Keychains::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : keychain)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -142,10 +129,8 @@ Keychains::Keychain::Keychain()
 	,keies(std::make_shared<Keychains::Keychain::Keies>())
 {
     accept_tolerance->parent = this;
-    children["accept-tolerance"] = accept_tolerance;
 
     keies->parent = this;
-    children["keies"] = keies;
 
     yang_name = "keychain"; yang_parent_name = "keychains";
 }
@@ -178,7 +163,7 @@ std::string Keychains::Keychain::get_segment_path() const
 
 }
 
-EntityPath Keychains::Keychain::get_entity_path(Entity* ancestor) const
+const EntityPath Keychains::Keychain::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -202,64 +187,38 @@ EntityPath Keychains::Keychain::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Keychains::Keychain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accept-tolerance")
     {
-        if(accept_tolerance != nullptr)
-        {
-            children["accept-tolerance"] = accept_tolerance;
-        }
-        else
+        if(accept_tolerance == nullptr)
         {
             accept_tolerance = std::make_shared<Keychains::Keychain::AcceptTolerance>();
-            accept_tolerance->parent = this;
-            children["accept-tolerance"] = accept_tolerance;
         }
-        return children.at("accept-tolerance");
+        return accept_tolerance;
     }
 
     if(child_yang_name == "keies")
     {
-        if(keies != nullptr)
-        {
-            children["keies"] = keies;
-        }
-        else
+        if(keies == nullptr)
         {
             keies = std::make_shared<Keychains::Keychain::Keies>();
-            keies->parent = this;
-            children["keies"] = keies;
         }
-        return children.at("keies");
+        return keies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Keychains::Keychain::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::get_children() const
 {
-    if(children.find("accept-tolerance") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accept_tolerance != nullptr)
     {
-        if(accept_tolerance != nullptr)
-        {
-            children["accept-tolerance"] = accept_tolerance;
-        }
+        children["accept-tolerance"] = accept_tolerance;
     }
 
-    if(children.find("keies") == children.end())
+    if(keies != nullptr)
     {
-        if(keies != nullptr)
-        {
-            children["keies"] = keies;
-        }
+        children["keies"] = keies;
     }
 
     return children;
@@ -307,7 +266,7 @@ std::string Keychains::Keychain::AcceptTolerance::get_segment_path() const
 
 }
 
-EntityPath Keychains::Keychain::AcceptTolerance::get_entity_path(Entity* ancestor) const
+const EntityPath Keychains::Keychain::AcceptTolerance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -332,20 +291,12 @@ EntityPath Keychains::Keychain::AcceptTolerance::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Keychains::Keychain::AcceptTolerance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Keychains::Keychain::AcceptTolerance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::AcceptTolerance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -399,7 +350,7 @@ std::string Keychains::Keychain::Keies::get_segment_path() const
 
 }
 
-EntityPath Keychains::Keychain::Keies::get_entity_path(Entity* ancestor) const
+const EntityPath Keychains::Keychain::Keies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -422,15 +373,6 @@ EntityPath Keychains::Keychain::Keies::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Keychains::Keychain::Keies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "key")
     {
         for(auto const & c : key)
@@ -438,28 +380,24 @@ std::shared_ptr<Entity> Keychains::Keychain::Keies::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Keychains::Keychain::Keies::Key>();
         c->parent = this;
-        key.push_back(std::move(c));
-        children[segment_path] = key.back();
-        return children.at(segment_path);
+        key.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Keychains::Keychain::Keies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -479,10 +417,8 @@ Keychains::Keychain::Keies::Key::Key()
 	,send_lifetime(std::make_shared<Keychains::Keychain::Keies::Key::SendLifetime>())
 {
     accept_lifetime->parent = this;
-    children["accept-lifetime"] = accept_lifetime;
 
     send_lifetime->parent = this;
-    children["send-lifetime"] = send_lifetime;
 
     yang_name = "key"; yang_parent_name = "keies";
 }
@@ -519,7 +455,7 @@ std::string Keychains::Keychain::Keies::Key::get_segment_path() const
 
 }
 
-EntityPath Keychains::Keychain::Keies::Key::get_entity_path(Entity* ancestor) const
+const EntityPath Keychains::Keychain::Keies::Key::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -545,64 +481,38 @@ EntityPath Keychains::Keychain::Keies::Key::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accept-lifetime")
     {
-        if(accept_lifetime != nullptr)
-        {
-            children["accept-lifetime"] = accept_lifetime;
-        }
-        else
+        if(accept_lifetime == nullptr)
         {
             accept_lifetime = std::make_shared<Keychains::Keychain::Keies::Key::AcceptLifetime>();
-            accept_lifetime->parent = this;
-            children["accept-lifetime"] = accept_lifetime;
         }
-        return children.at("accept-lifetime");
+        return accept_lifetime;
     }
 
     if(child_yang_name == "send-lifetime")
     {
-        if(send_lifetime != nullptr)
-        {
-            children["send-lifetime"] = send_lifetime;
-        }
-        else
+        if(send_lifetime == nullptr)
         {
             send_lifetime = std::make_shared<Keychains::Keychain::Keies::Key::SendLifetime>();
-            send_lifetime->parent = this;
-            children["send-lifetime"] = send_lifetime;
         }
-        return children.at("send-lifetime");
+        return send_lifetime;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Keychains::Keychain::Keies::Key::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::get_children() const
 {
-    if(children.find("accept-lifetime") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accept_lifetime != nullptr)
     {
-        if(accept_lifetime != nullptr)
-        {
-            children["accept-lifetime"] = accept_lifetime;
-        }
+        children["accept-lifetime"] = accept_lifetime;
     }
 
-    if(children.find("send-lifetime") == children.end())
+    if(send_lifetime != nullptr)
     {
-        if(send_lifetime != nullptr)
-        {
-            children["send-lifetime"] = send_lifetime;
-        }
+        children["send-lifetime"] = send_lifetime;
     }
 
     return children;
@@ -694,7 +604,7 @@ std::string Keychains::Keychain::Keies::Key::AcceptLifetime::get_segment_path() 
 
 }
 
-EntityPath Keychains::Keychain::Keies::Key::AcceptLifetime::get_entity_path(Entity* ancestor) const
+const EntityPath Keychains::Keychain::Keies::Key::AcceptLifetime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -731,20 +641,12 @@ EntityPath Keychains::Keychain::Keies::Key::AcceptLifetime::get_entity_path(Enti
 
 std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::AcceptLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Keychains::Keychain::Keies::Key::AcceptLifetime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::AcceptLifetime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -878,7 +780,7 @@ std::string Keychains::Keychain::Keies::Key::SendLifetime::get_segment_path() co
 
 }
 
-EntityPath Keychains::Keychain::Keies::Key::SendLifetime::get_entity_path(Entity* ancestor) const
+const EntityPath Keychains::Keychain::Keies::Key::SendLifetime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -915,20 +817,12 @@ EntityPath Keychains::Keychain::Keies::Key::SendLifetime::get_entity_path(Entity
 
 std::shared_ptr<Entity> Keychains::Keychain::Keies::Key::SendLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Keychains::Keychain::Keies::Key::SendLifetime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::SendLifetime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

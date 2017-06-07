@@ -15,7 +15,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::
     segment_route_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>())
 {
     segment_route_next_hop_table->parent = this;
-    children["segment-route-next-hop-table"] = segment_route_next_hop_table;
 
     yang_name = "vrf-seg-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -44,7 +43,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -67,41 +66,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "segment-route-next-hop-table")
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
-        else
+        if(segment_route_next_hop_table == nullptr)
         {
             segment_route_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>();
-            segment_route_next_hop_table->parent = this;
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
         }
-        return children.at("segment-route-next-hop-table");
+        return segment_route_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children() const
 {
-    if(children.find("segment-route-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(segment_route_next_hop_table != nullptr)
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
+        children["segment-route-next-hop-table"] = segment_route_next_hop_table;
     }
 
     return children;
@@ -189,7 +171,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -212,15 +194,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -228,15 +201,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -246,15 +217,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -264,15 +233,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -282,15 +249,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -300,60 +265,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -430,7 +379,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -466,20 +415,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -609,7 +550,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -646,20 +587,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -790,7 +723,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -826,20 +759,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -901,8 +826,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -925,8 +850,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -944,8 +869,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -963,13 +888,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -983,8 +908,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -1006,32 +931,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -1150,7 +1067,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1186,20 +1103,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1265,10 +1174,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::Vrfipv6()
 	,vrf_unicast(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast>())
 {
     vrf_multicast->parent = this;
-    children["vrf-multicast"] = vrf_multicast;
 
     vrf_unicast->parent = this;
-    children["vrf-unicast"] = vrf_unicast;
 
     yang_name = "vrfipv6"; yang_parent_name = "address-family";
 }
@@ -1299,7 +1206,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_segment_path() 
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1322,64 +1229,38 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_entity_path(Enti
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-multicast")
     {
-        if(vrf_multicast != nullptr)
-        {
-            children["vrf-multicast"] = vrf_multicast;
-        }
-        else
+        if(vrf_multicast == nullptr)
         {
             vrf_multicast = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast>();
-            vrf_multicast->parent = this;
-            children["vrf-multicast"] = vrf_multicast;
         }
-        return children.at("vrf-multicast");
+        return vrf_multicast;
     }
 
     if(child_yang_name == "vrf-unicast")
     {
-        if(vrf_unicast != nullptr)
-        {
-            children["vrf-unicast"] = vrf_unicast;
-        }
-        else
+        if(vrf_unicast == nullptr)
         {
             vrf_unicast = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast>();
-            vrf_unicast->parent = this;
-            children["vrf-unicast"] = vrf_unicast;
         }
-        return children.at("vrf-unicast");
+        return vrf_unicast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_children() const
 {
-    if(children.find("vrf-multicast") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_multicast != nullptr)
     {
-        if(vrf_multicast != nullptr)
-        {
-            children["vrf-multicast"] = vrf_multicast;
-        }
+        children["vrf-multicast"] = vrf_multicast;
     }
 
-    if(children.find("vrf-unicast") == children.end())
+    if(vrf_unicast != nullptr)
     {
-        if(vrf_unicast != nullptr)
-        {
-            children["vrf-unicast"] = vrf_unicast;
-        }
+        children["vrf-unicast"] = vrf_unicast;
     }
 
     return children;
@@ -1396,13 +1277,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfUnicast()
 	,vrf_prefixes(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes>())
 {
     default_topology->parent = this;
-    children["default-topology"] = default_topology;
 
     topologies->parent = this;
-    children["topologies"] = topologies;
 
     vrf_prefixes->parent = this;
-    children["vrf-prefixes"] = vrf_prefixes;
 
     yang_name = "vrf-unicast"; yang_parent_name = "vrfipv6";
 }
@@ -1435,7 +1313,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_seg
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1458,87 +1336,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_enti
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-topology")
     {
-        if(default_topology != nullptr)
-        {
-            children["default-topology"] = default_topology;
-        }
-        else
+        if(default_topology == nullptr)
         {
             default_topology = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology>();
-            default_topology->parent = this;
-            children["default-topology"] = default_topology;
         }
-        return children.at("default-topology");
+        return default_topology;
     }
 
     if(child_yang_name == "topologies")
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
-        else
+        if(topologies == nullptr)
         {
             topologies = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies>();
-            topologies->parent = this;
-            children["topologies"] = topologies;
         }
-        return children.at("topologies");
+        return topologies;
     }
 
     if(child_yang_name == "vrf-prefixes")
     {
-        if(vrf_prefixes != nullptr)
-        {
-            children["vrf-prefixes"] = vrf_prefixes;
-        }
-        else
+        if(vrf_prefixes == nullptr)
         {
             vrf_prefixes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes>();
-            vrf_prefixes->parent = this;
-            children["vrf-prefixes"] = vrf_prefixes;
         }
-        return children.at("vrf-prefixes");
+        return vrf_prefixes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_children() const
 {
-    if(children.find("default-topology") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_topology != nullptr)
     {
-        if(default_topology != nullptr)
-        {
-            children["default-topology"] = default_topology;
-        }
+        children["default-topology"] = default_topology;
     }
 
-    if(children.find("topologies") == children.end())
+    if(topologies != nullptr)
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
+        children["topologies"] = topologies;
     }
 
-    if(children.find("vrf-prefixes") == children.end())
+    if(vrf_prefixes != nullptr)
     {
-        if(vrf_prefixes != nullptr)
-        {
-            children["vrf-prefixes"] = vrf_prefixes;
-        }
+        children["vrf-prefixes"] = vrf_prefixes;
     }
 
     return children;
@@ -1586,7 +1429,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1609,15 +1452,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology")
     {
         for(auto const & c : topology)
@@ -1625,28 +1459,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology>();
         c->parent = this;
-        topology.push_back(std::move(c));
-        children[segment_path] = topology.back();
-        return children.at(segment_path);
+        topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1663,7 +1493,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
     vrf_prefix_topologies(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies>())
 {
     vrf_prefix_topologies->parent = this;
-    children["vrf-prefix-topologies"] = vrf_prefix_topologies;
 
     yang_name = "topology"; yang_parent_name = "topologies";
 }
@@ -1694,7 +1523,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1718,41 +1547,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topologies")
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
-        else
+        if(vrf_prefix_topologies == nullptr)
         {
             vrf_prefix_topologies = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies>();
-            vrf_prefix_topologies->parent = this;
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
         }
-        return children.at("vrf-prefix-topologies");
+        return vrf_prefix_topologies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::get_children() const
 {
-    if(children.find("vrf-prefix-topologies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_prefix_topologies != nullptr)
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
+        children["vrf-prefix-topologies"] = vrf_prefix_topologies;
     }
 
     return children;
@@ -1804,7 +1616,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1827,15 +1639,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topology")
     {
         for(auto const & c : vrf_prefix_topology)
@@ -1843,28 +1646,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology>();
         c->parent = this;
-        vrf_prefix_topology.push_back(std::move(c));
-        children[segment_path] = vrf_prefix_topology.back();
-        return children.at(segment_path);
+        vrf_prefix_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_prefix_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1884,13 +1683,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
 	,vrf_seg_route(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>())
 {
     vrf_recurse_routes->parent = this;
-    children["vrf-recurse-routes"] = vrf_recurse_routes;
 
     vrf_route->parent = this;
-    children["vrf-route"] = vrf_route;
 
     vrf_seg_route->parent = this;
-    children["vrf-seg-route"] = vrf_seg_route;
 
     yang_name = "vrf-prefix-topology"; yang_parent_name = "vrf-prefix-topologies";
 }
@@ -1927,7 +1723,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1952,87 +1748,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-routes")
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
-        else
+        if(vrf_recurse_routes == nullptr)
         {
             vrf_recurse_routes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes>();
-            vrf_recurse_routes->parent = this;
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
         }
-        return children.at("vrf-recurse-routes");
+        return vrf_recurse_routes;
     }
 
     if(child_yang_name == "vrf-route")
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
-        else
+        if(vrf_route == nullptr)
         {
             vrf_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute>();
-            vrf_route->parent = this;
-            children["vrf-route"] = vrf_route;
         }
-        return children.at("vrf-route");
+        return vrf_route;
     }
 
     if(child_yang_name == "vrf-seg-route")
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
-        else
+        if(vrf_seg_route == nullptr)
         {
             vrf_seg_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>();
-            vrf_seg_route->parent = this;
-            children["vrf-seg-route"] = vrf_seg_route;
         }
-        return children.at("vrf-seg-route");
+        return vrf_seg_route;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_children() const
 {
-    if(children.find("vrf-recurse-routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recurse_routes != nullptr)
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
+        children["vrf-recurse-routes"] = vrf_recurse_routes;
     }
 
-    if(children.find("vrf-route") == children.end())
+    if(vrf_route != nullptr)
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
+        children["vrf-route"] = vrf_route;
     }
 
-    if(children.find("vrf-seg-route") == children.end())
+    if(vrf_seg_route != nullptr)
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
+        children["vrf-seg-route"] = vrf_seg_route;
     }
 
     return children;
@@ -2055,7 +1816,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
     vrf_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>())
 {
     vrf_next_hop_table->parent = this;
-    children["vrf-next-hop-table"] = vrf_next_hop_table;
 
     yang_name = "vrf-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -2084,7 +1844,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2107,41 +1867,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-table")
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
-        else
+        if(vrf_next_hop_table == nullptr)
         {
             vrf_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>();
-            vrf_next_hop_table->parent = this;
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
         }
-        return children.at("vrf-next-hop-table");
+        return vrf_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children() const
 {
-    if(children.find("vrf-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_next_hop_table != nullptr)
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
+        children["vrf-next-hop-table"] = vrf_next_hop_table;
     }
 
     return children;
@@ -2229,7 +1972,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2252,15 +1995,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -2268,15 +2002,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -2286,15 +2018,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -2304,15 +2034,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -2322,15 +2050,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -2340,60 +2066,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2470,7 +2180,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2506,20 +2216,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2649,7 +2351,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2686,20 +2388,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2830,7 +2524,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2866,20 +2560,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2941,8 +2627,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -2965,8 +2651,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -2984,8 +2670,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -3003,13 +2689,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3023,8 +2709,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -3046,32 +2732,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -3190,7 +2868,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3226,20 +2904,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3337,7 +3007,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3360,15 +3030,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-route")
     {
         for(auto const & c : vrf_recurse_route)
@@ -3376,28 +3037,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute>();
         c->parent = this;
-        vrf_recurse_route.push_back(std::move(c));
-        children[segment_path] = vrf_recurse_route.back();
-        return children.at(segment_path);
+        vrf_recurse_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_recurse_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3414,7 +3071,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
     vrf_recursive_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>())
 {
     vrf_recursive_next_hop_table->parent = this;
-    children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
 
     yang_name = "vrf-recurse-route"; yang_parent_name = "vrf-recurse-routes";
 }
@@ -3445,7 +3101,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3469,41 +3125,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recursive-next-hop-table")
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
-        else
+        if(vrf_recursive_next_hop_table == nullptr)
         {
             vrf_recursive_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>();
-            vrf_recursive_next_hop_table->parent = this;
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
         }
-        return children.at("vrf-recursive-next-hop-table");
+        return vrf_recursive_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children() const
 {
-    if(children.find("vrf-recursive-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recursive_next_hop_table != nullptr)
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
+        children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
     }
 
     return children;
@@ -3595,7 +3234,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3618,15 +3257,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -3634,15 +3264,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -3652,15 +3280,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -3670,15 +3296,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -3688,15 +3312,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -3706,60 +3328,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3836,7 +3442,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3872,20 +3478,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4015,7 +3613,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4052,20 +3650,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4196,7 +3786,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4232,20 +3822,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4307,8 +3889,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -4331,8 +3913,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -4350,8 +3932,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -4369,13 +3951,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4389,8 +3971,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -4412,32 +3994,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -4556,7 +4130,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4592,20 +4166,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4670,7 +4236,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
     segment_route_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>())
 {
     segment_route_next_hop_table->parent = this;
-    children["segment-route-next-hop-table"] = segment_route_next_hop_table;
 
     yang_name = "vrf-seg-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -4699,7 +4264,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4722,41 +4287,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "segment-route-next-hop-table")
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
-        else
+        if(segment_route_next_hop_table == nullptr)
         {
             segment_route_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>();
-            segment_route_next_hop_table->parent = this;
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
         }
-        return children.at("segment-route-next-hop-table");
+        return segment_route_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children() const
 {
-    if(children.find("segment-route-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(segment_route_next_hop_table != nullptr)
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
+        children["segment-route-next-hop-table"] = segment_route_next_hop_table;
     }
 
     return children;
@@ -4844,7 +4392,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4867,15 +4415,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -4883,15 +4422,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -4901,15 +4438,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -4919,15 +4454,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -4937,15 +4470,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -4955,60 +4486,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5085,7 +4600,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5121,20 +4636,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5264,7 +4771,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5301,20 +4808,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5445,7 +4944,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5481,20 +4980,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5556,8 +5047,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -5580,8 +5071,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topolog
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -5599,8 +5090,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -5618,13 +5109,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5638,8 +5129,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -5661,32 +5152,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -5805,7 +5288,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5841,20 +5324,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5952,7 +5427,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5975,15 +5450,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix")
     {
         for(auto const & c : vrf_prefix)
@@ -5991,28 +5457,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix>();
         c->parent = this;
-        vrf_prefix.push_back(std::move(c));
-        children[segment_path] = vrf_prefix.back();
-        return children.at(segment_path);
+        vrf_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6032,13 +5494,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPre
 	,vrf_seg_route(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute>())
 {
     vrf_recurse_routes->parent = this;
-    children["vrf-recurse-routes"] = vrf_recurse_routes;
 
     vrf_route->parent = this;
-    children["vrf-route"] = vrf_route;
 
     vrf_seg_route->parent = this;
-    children["vrf-seg-route"] = vrf_seg_route;
 
     yang_name = "vrf-prefix"; yang_parent_name = "vrf-prefixes";
 }
@@ -6075,7 +5534,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6100,87 +5559,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-routes")
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
-        else
+        if(vrf_recurse_routes == nullptr)
         {
             vrf_recurse_routes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes>();
-            vrf_recurse_routes->parent = this;
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
         }
-        return children.at("vrf-recurse-routes");
+        return vrf_recurse_routes;
     }
 
     if(child_yang_name == "vrf-route")
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
-        else
+        if(vrf_route == nullptr)
         {
             vrf_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute>();
-            vrf_route->parent = this;
-            children["vrf-route"] = vrf_route;
         }
-        return children.at("vrf-route");
+        return vrf_route;
     }
 
     if(child_yang_name == "vrf-seg-route")
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
-        else
+        if(vrf_seg_route == nullptr)
         {
             vrf_seg_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute>();
-            vrf_seg_route->parent = this;
-            children["vrf-seg-route"] = vrf_seg_route;
         }
-        return children.at("vrf-seg-route");
+        return vrf_seg_route;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::get_children() const
 {
-    if(children.find("vrf-recurse-routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recurse_routes != nullptr)
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
+        children["vrf-recurse-routes"] = vrf_recurse_routes;
     }
 
-    if(children.find("vrf-route") == children.end())
+    if(vrf_route != nullptr)
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
+        children["vrf-route"] = vrf_route;
     }
 
-    if(children.find("vrf-seg-route") == children.end())
+    if(vrf_seg_route != nullptr)
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
+        children["vrf-seg-route"] = vrf_seg_route;
     }
 
     return children;
@@ -6203,7 +5627,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPre
     vrf_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable>())
 {
     vrf_next_hop_table->parent = this;
-    children["vrf-next-hop-table"] = vrf_next_hop_table;
 
     yang_name = "vrf-route"; yang_parent_name = "vrf-prefix";
 }
@@ -6232,7 +5655,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6255,41 +5678,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-table")
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
-        else
+        if(vrf_next_hop_table == nullptr)
         {
             vrf_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable>();
-            vrf_next_hop_table->parent = this;
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
         }
-        return children.at("vrf-next-hop-table");
+        return vrf_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_children() const
 {
-    if(children.find("vrf-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_next_hop_table != nullptr)
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
+        children["vrf-next-hop-table"] = vrf_next_hop_table;
     }
 
     return children;
@@ -6377,7 +5783,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6400,15 +5806,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -6416,15 +5813,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -6434,15 +5829,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -6452,15 +5845,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -6470,15 +5861,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -6488,60 +5877,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6618,7 +5991,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6654,20 +6027,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6797,7 +6162,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6834,20 +6199,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6978,7 +6335,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7014,20 +6371,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7089,8 +6438,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -7113,8 +6462,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPre
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -7132,8 +6481,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -7151,13 +6500,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7171,8 +6520,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -7194,32 +6543,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -7338,7 +6679,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7374,20 +6715,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7485,7 +6818,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7508,15 +6841,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-route")
     {
         for(auto const & c : vrf_recurse_route)
@@ -7524,28 +6848,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute>();
         c->parent = this;
-        vrf_recurse_route.push_back(std::move(c));
-        children[segment_path] = vrf_recurse_route.back();
-        return children.at(segment_path);
+        vrf_recurse_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_recurse_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7562,7 +6882,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPre
     vrf_recursive_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>())
 {
     vrf_recursive_next_hop_table->parent = this;
-    children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
 
     yang_name = "vrf-recurse-route"; yang_parent_name = "vrf-recurse-routes";
 }
@@ -7593,7 +6912,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7617,41 +6936,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recursive-next-hop-table")
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
-        else
+        if(vrf_recursive_next_hop_table == nullptr)
         {
             vrf_recursive_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>();
-            vrf_recursive_next_hop_table->parent = this;
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
         }
-        return children.at("vrf-recursive-next-hop-table");
+        return vrf_recursive_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_children() const
 {
-    if(children.find("vrf-recursive-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recursive_next_hop_table != nullptr)
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
+        children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
     }
 
     return children;
@@ -7743,7 +7045,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7766,15 +7068,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -7782,15 +7075,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -7800,15 +7091,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -7818,15 +7107,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -7836,15 +7123,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -7854,60 +7139,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7984,7 +7253,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8020,20 +7289,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8163,7 +7424,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8200,20 +7461,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8344,7 +7597,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8380,20 +7633,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8455,8 +7700,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -8479,8 +7724,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPre
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -8498,8 +7743,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -8517,13 +7762,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8537,8 +7782,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -8560,32 +7805,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -8704,7 +7941,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8740,20 +7977,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8818,7 +8047,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPre
     segment_route_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable>())
 {
     segment_route_next_hop_table->parent = this;
-    children["segment-route-next-hop-table"] = segment_route_next_hop_table;
 
     yang_name = "vrf-seg-route"; yang_parent_name = "vrf-prefix";
 }
@@ -8847,7 +8075,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8870,41 +8098,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "segment-route-next-hop-table")
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
-        else
+        if(segment_route_next_hop_table == nullptr)
         {
             segment_route_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable>();
-            segment_route_next_hop_table->parent = this;
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
         }
-        return children.at("segment-route-next-hop-table");
+        return segment_route_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_children() const
 {
-    if(children.find("segment-route-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(segment_route_next_hop_table != nullptr)
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
+        children["segment-route-next-hop-table"] = segment_route_next_hop_table;
     }
 
     return children;
@@ -8992,7 +8203,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9015,15 +8226,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -9031,15 +8233,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -9049,15 +8249,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -9067,15 +8265,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -9085,15 +8281,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -9103,60 +8297,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9233,7 +8411,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9269,20 +8447,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9412,7 +8582,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9449,20 +8619,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9593,7 +8755,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9629,20 +8791,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9704,8 +8858,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -9728,8 +8882,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPre
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -9747,8 +8901,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -9766,13 +8920,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9786,8 +8940,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -9809,32 +8963,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -9953,7 +9099,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9989,20 +9135,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10067,7 +9205,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::De
     vrf_prefix_topologies(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies>())
 {
     vrf_prefix_topologies->parent = this;
-    children["vrf-prefix-topologies"] = vrf_prefix_topologies;
 
     yang_name = "default-topology"; yang_parent_name = "vrf-unicast";
 }
@@ -10096,7 +9233,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10119,41 +9256,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topologies")
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
-        else
+        if(vrf_prefix_topologies == nullptr)
         {
             vrf_prefix_topologies = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies>();
-            vrf_prefix_topologies->parent = this;
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
         }
-        return children.at("vrf-prefix-topologies");
+        return vrf_prefix_topologies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::get_children() const
 {
-    if(children.find("vrf-prefix-topologies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_prefix_topologies != nullptr)
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
+        children["vrf-prefix-topologies"] = vrf_prefix_topologies;
     }
 
     return children;
@@ -10201,7 +9321,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10224,15 +9344,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topology")
     {
         for(auto const & c : vrf_prefix_topology)
@@ -10240,28 +9351,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology>();
         c->parent = this;
-        vrf_prefix_topology.push_back(std::move(c));
-        children[segment_path] = vrf_prefix_topology.back();
-        return children.at(segment_path);
+        vrf_prefix_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_prefix_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10281,13 +9388,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::Vr
 	,vrf_seg_route(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>())
 {
     vrf_recurse_routes->parent = this;
-    children["vrf-recurse-routes"] = vrf_recurse_routes;
 
     vrf_route->parent = this;
-    children["vrf-route"] = vrf_route;
 
     vrf_seg_route->parent = this;
-    children["vrf-seg-route"] = vrf_seg_route;
 
     yang_name = "vrf-prefix-topology"; yang_parent_name = "vrf-prefix-topologies";
 }
@@ -10324,7 +9428,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10349,87 +9453,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-routes")
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
-        else
+        if(vrf_recurse_routes == nullptr)
         {
             vrf_recurse_routes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes>();
-            vrf_recurse_routes->parent = this;
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
         }
-        return children.at("vrf-recurse-routes");
+        return vrf_recurse_routes;
     }
 
     if(child_yang_name == "vrf-route")
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
-        else
+        if(vrf_route == nullptr)
         {
             vrf_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute>();
-            vrf_route->parent = this;
-            children["vrf-route"] = vrf_route;
         }
-        return children.at("vrf-route");
+        return vrf_route;
     }
 
     if(child_yang_name == "vrf-seg-route")
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
-        else
+        if(vrf_seg_route == nullptr)
         {
             vrf_seg_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>();
-            vrf_seg_route->parent = this;
-            children["vrf-seg-route"] = vrf_seg_route;
         }
-        return children.at("vrf-seg-route");
+        return vrf_seg_route;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_children() const
 {
-    if(children.find("vrf-recurse-routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recurse_routes != nullptr)
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
+        children["vrf-recurse-routes"] = vrf_recurse_routes;
     }
 
-    if(children.find("vrf-route") == children.end())
+    if(vrf_route != nullptr)
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
+        children["vrf-route"] = vrf_route;
     }
 
-    if(children.find("vrf-seg-route") == children.end())
+    if(vrf_seg_route != nullptr)
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
+        children["vrf-seg-route"] = vrf_seg_route;
     }
 
     return children;
@@ -10452,7 +9521,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::Vr
     vrf_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>())
 {
     vrf_next_hop_table->parent = this;
-    children["vrf-next-hop-table"] = vrf_next_hop_table;
 
     yang_name = "vrf-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -10481,7 +9549,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10504,41 +9572,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-table")
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
-        else
+        if(vrf_next_hop_table == nullptr)
         {
             vrf_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>();
-            vrf_next_hop_table->parent = this;
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
         }
-        return children.at("vrf-next-hop-table");
+        return vrf_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children() const
 {
-    if(children.find("vrf-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_next_hop_table != nullptr)
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
+        children["vrf-next-hop-table"] = vrf_next_hop_table;
     }
 
     return children;
@@ -10626,7 +9677,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10649,15 +9700,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -10665,15 +9707,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -10683,15 +9723,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -10701,15 +9739,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -10719,15 +9755,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -10737,60 +9771,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10867,7 +9885,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10903,20 +9921,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11046,7 +10056,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11083,20 +10093,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11227,7 +10229,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11263,20 +10265,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11338,8 +10332,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -11362,8 +10356,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::Vr
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -11381,8 +10375,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -11400,13 +10394,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11420,8 +10414,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -11443,32 +10437,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -11587,7 +10573,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11623,20 +10609,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11734,7 +10712,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11757,15 +10735,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-route")
     {
         for(auto const & c : vrf_recurse_route)
@@ -11773,28 +10742,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute>();
         c->parent = this;
-        vrf_recurse_route.push_back(std::move(c));
-        children[segment_path] = vrf_recurse_route.back();
-        return children.at(segment_path);
+        vrf_recurse_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_recurse_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11811,7 +10776,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::Vr
     vrf_recursive_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>())
 {
     vrf_recursive_next_hop_table->parent = this;
-    children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
 
     yang_name = "vrf-recurse-route"; yang_parent_name = "vrf-recurse-routes";
 }
@@ -11842,7 +10806,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11866,41 +10830,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recursive-next-hop-table")
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
-        else
+        if(vrf_recursive_next_hop_table == nullptr)
         {
             vrf_recursive_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>();
-            vrf_recursive_next_hop_table->parent = this;
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
         }
-        return children.at("vrf-recursive-next-hop-table");
+        return vrf_recursive_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children() const
 {
-    if(children.find("vrf-recursive-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recursive_next_hop_table != nullptr)
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
+        children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
     }
 
     return children;
@@ -11992,7 +10939,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12015,15 +10962,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -12031,15 +10969,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -12049,15 +10985,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -12067,15 +11001,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -12085,15 +11017,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -12103,60 +11033,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12233,7 +11147,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12269,20 +11183,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12412,7 +11318,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12449,20 +11355,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12593,7 +11491,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12629,20 +11527,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12704,8 +11594,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -12728,8 +11618,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::Vr
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -12747,8 +11637,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -12766,13 +11656,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12786,8 +11676,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -12809,32 +11699,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -12953,7 +11835,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12989,20 +11871,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13067,7 +11941,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::Vr
     segment_route_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>())
 {
     segment_route_next_hop_table->parent = this;
-    children["segment-route-next-hop-table"] = segment_route_next_hop_table;
 
     yang_name = "vrf-seg-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -13096,7 +11969,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13119,41 +11992,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "segment-route-next-hop-table")
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
-        else
+        if(segment_route_next_hop_table == nullptr)
         {
             segment_route_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>();
-            segment_route_next_hop_table->parent = this;
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
         }
-        return children.at("segment-route-next-hop-table");
+        return segment_route_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children() const
 {
-    if(children.find("segment-route-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(segment_route_next_hop_table != nullptr)
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
+        children["segment-route-next-hop-table"] = segment_route_next_hop_table;
     }
 
     return children;
@@ -13241,7 +12097,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13264,15 +12120,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -13280,15 +12127,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -13298,15 +12143,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -13316,15 +12159,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -13334,15 +12175,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -13352,60 +12191,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnic
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13482,7 +12305,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13518,20 +12341,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13661,7 +12476,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13698,20 +12513,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13842,7 +12649,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13878,20 +12685,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13953,8 +12752,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -13977,8 +12776,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::Vr
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -13996,8 +12795,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -14015,13 +12814,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14035,8 +12834,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -14058,32 +12857,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -14202,7 +12993,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Default
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14238,20 +13029,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14318,13 +13101,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfMulticast()
 	,vrf_prefixes(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes>())
 {
     default_topology->parent = this;
-    children["default-topology"] = default_topology;
 
     topologies->parent = this;
-    children["topologies"] = topologies;
 
     vrf_prefixes->parent = this;
-    children["vrf-prefixes"] = vrf_prefixes;
 
     yang_name = "vrf-multicast"; yang_parent_name = "vrfipv6";
 }
@@ -14357,7 +13137,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_s
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14380,87 +13160,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_en
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-topology")
     {
-        if(default_topology != nullptr)
-        {
-            children["default-topology"] = default_topology;
-        }
-        else
+        if(default_topology == nullptr)
         {
             default_topology = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology>();
-            default_topology->parent = this;
-            children["default-topology"] = default_topology;
         }
-        return children.at("default-topology");
+        return default_topology;
     }
 
     if(child_yang_name == "topologies")
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
-        else
+        if(topologies == nullptr)
         {
             topologies = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies>();
-            topologies->parent = this;
-            children["topologies"] = topologies;
         }
-        return children.at("topologies");
+        return topologies;
     }
 
     if(child_yang_name == "vrf-prefixes")
     {
-        if(vrf_prefixes != nullptr)
-        {
-            children["vrf-prefixes"] = vrf_prefixes;
-        }
-        else
+        if(vrf_prefixes == nullptr)
         {
             vrf_prefixes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes>();
-            vrf_prefixes->parent = this;
-            children["vrf-prefixes"] = vrf_prefixes;
         }
-        return children.at("vrf-prefixes");
+        return vrf_prefixes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_children() const
 {
-    if(children.find("default-topology") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_topology != nullptr)
     {
-        if(default_topology != nullptr)
-        {
-            children["default-topology"] = default_topology;
-        }
+        children["default-topology"] = default_topology;
     }
 
-    if(children.find("topologies") == children.end())
+    if(topologies != nullptr)
     {
-        if(topologies != nullptr)
-        {
-            children["topologies"] = topologies;
-        }
+        children["topologies"] = topologies;
     }
 
-    if(children.find("vrf-prefixes") == children.end())
+    if(vrf_prefixes != nullptr)
     {
-        if(vrf_prefixes != nullptr)
-        {
-            children["vrf-prefixes"] = vrf_prefixes;
-        }
+        children["vrf-prefixes"] = vrf_prefixes;
     }
 
     return children;
@@ -14508,7 +13253,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14531,15 +13276,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology")
     {
         for(auto const & c : topology)
@@ -14547,28 +13283,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology>();
         c->parent = this;
-        topology.push_back(std::move(c));
-        children[segment_path] = topology.back();
-        return children.at(segment_path);
+        topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14585,7 +13317,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
     vrf_prefix_topologies(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies>())
 {
     vrf_prefix_topologies->parent = this;
-    children["vrf-prefix-topologies"] = vrf_prefix_topologies;
 
     yang_name = "topology"; yang_parent_name = "topologies";
 }
@@ -14616,7 +13347,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14640,41 +13371,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topologies")
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
-        else
+        if(vrf_prefix_topologies == nullptr)
         {
             vrf_prefix_topologies = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies>();
-            vrf_prefix_topologies->parent = this;
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
         }
-        return children.at("vrf-prefix-topologies");
+        return vrf_prefix_topologies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::get_children() const
 {
-    if(children.find("vrf-prefix-topologies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_prefix_topologies != nullptr)
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
+        children["vrf-prefix-topologies"] = vrf_prefix_topologies;
     }
 
     return children;
@@ -14726,7 +13440,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14749,15 +13463,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topology")
     {
         for(auto const & c : vrf_prefix_topology)
@@ -14765,28 +13470,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology>();
         c->parent = this;
-        vrf_prefix_topology.push_back(std::move(c));
-        children[segment_path] = vrf_prefix_topology.back();
-        return children.at(segment_path);
+        vrf_prefix_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_prefix_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14806,13 +13507,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
 	,vrf_seg_route(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>())
 {
     vrf_recurse_routes->parent = this;
-    children["vrf-recurse-routes"] = vrf_recurse_routes;
 
     vrf_route->parent = this;
-    children["vrf-route"] = vrf_route;
 
     vrf_seg_route->parent = this;
-    children["vrf-seg-route"] = vrf_seg_route;
 
     yang_name = "vrf-prefix-topology"; yang_parent_name = "vrf-prefix-topologies";
 }
@@ -14849,7 +13547,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14874,87 +13572,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-routes")
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
-        else
+        if(vrf_recurse_routes == nullptr)
         {
             vrf_recurse_routes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes>();
-            vrf_recurse_routes->parent = this;
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
         }
-        return children.at("vrf-recurse-routes");
+        return vrf_recurse_routes;
     }
 
     if(child_yang_name == "vrf-route")
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
-        else
+        if(vrf_route == nullptr)
         {
             vrf_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute>();
-            vrf_route->parent = this;
-            children["vrf-route"] = vrf_route;
         }
-        return children.at("vrf-route");
+        return vrf_route;
     }
 
     if(child_yang_name == "vrf-seg-route")
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
-        else
+        if(vrf_seg_route == nullptr)
         {
             vrf_seg_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>();
-            vrf_seg_route->parent = this;
-            children["vrf-seg-route"] = vrf_seg_route;
         }
-        return children.at("vrf-seg-route");
+        return vrf_seg_route;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_children() const
 {
-    if(children.find("vrf-recurse-routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recurse_routes != nullptr)
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
+        children["vrf-recurse-routes"] = vrf_recurse_routes;
     }
 
-    if(children.find("vrf-route") == children.end())
+    if(vrf_route != nullptr)
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
+        children["vrf-route"] = vrf_route;
     }
 
-    if(children.find("vrf-seg-route") == children.end())
+    if(vrf_seg_route != nullptr)
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
+        children["vrf-seg-route"] = vrf_seg_route;
     }
 
     return children;
@@ -14977,7 +13640,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
     vrf_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>())
 {
     vrf_next_hop_table->parent = this;
-    children["vrf-next-hop-table"] = vrf_next_hop_table;
 
     yang_name = "vrf-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -15006,7 +13668,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15029,41 +13691,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-table")
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
-        else
+        if(vrf_next_hop_table == nullptr)
         {
             vrf_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>();
-            vrf_next_hop_table->parent = this;
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
         }
-        return children.at("vrf-next-hop-table");
+        return vrf_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children() const
 {
-    if(children.find("vrf-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_next_hop_table != nullptr)
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
+        children["vrf-next-hop-table"] = vrf_next_hop_table;
     }
 
     return children;
@@ -15151,7 +13796,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15174,15 +13819,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -15190,15 +13826,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -15208,15 +13842,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -15226,15 +13858,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -15244,15 +13874,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -15262,60 +13890,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15392,7 +14004,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15428,20 +14040,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15571,7 +14175,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15608,20 +14212,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15752,7 +14348,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15788,20 +14384,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15863,8 +14451,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -15887,8 +14475,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -15906,8 +14494,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -15925,13 +14513,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15945,8 +14533,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -15968,32 +14556,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -16112,7 +14692,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16148,20 +14728,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16259,7 +14831,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16282,15 +14854,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-route")
     {
         for(auto const & c : vrf_recurse_route)
@@ -16298,28 +14861,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute>();
         c->parent = this;
-        vrf_recurse_route.push_back(std::move(c));
-        children[segment_path] = vrf_recurse_route.back();
-        return children.at(segment_path);
+        vrf_recurse_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_recurse_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16336,7 +14895,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
     vrf_recursive_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>())
 {
     vrf_recursive_next_hop_table->parent = this;
-    children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
 
     yang_name = "vrf-recurse-route"; yang_parent_name = "vrf-recurse-routes";
 }
@@ -16367,7 +14925,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16391,41 +14949,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recursive-next-hop-table")
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
-        else
+        if(vrf_recursive_next_hop_table == nullptr)
         {
             vrf_recursive_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>();
-            vrf_recursive_next_hop_table->parent = this;
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
         }
-        return children.at("vrf-recursive-next-hop-table");
+        return vrf_recursive_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children() const
 {
-    if(children.find("vrf-recursive-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recursive_next_hop_table != nullptr)
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
+        children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
     }
 
     return children;
@@ -16517,7 +15058,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16540,15 +15081,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -16556,15 +15088,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -16574,15 +15104,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -16592,15 +15120,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -16610,15 +15136,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -16628,60 +15152,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16758,7 +15266,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16794,20 +15302,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16937,7 +15437,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16974,20 +15474,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17118,7 +15610,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17154,20 +15646,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17229,8 +15713,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -17253,8 +15737,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -17272,8 +15756,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -17291,13 +15775,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17311,8 +15795,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -17334,32 +15818,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -17478,7 +15954,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17514,20 +15990,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17592,7 +16060,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
     segment_route_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>())
 {
     segment_route_next_hop_table->parent = this;
-    children["segment-route-next-hop-table"] = segment_route_next_hop_table;
 
     yang_name = "vrf-seg-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -17621,7 +16088,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17644,41 +16111,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "segment-route-next-hop-table")
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
-        else
+        if(segment_route_next_hop_table == nullptr)
         {
             segment_route_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable>();
-            segment_route_next_hop_table->parent = this;
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
         }
-        return children.at("segment-route-next-hop-table");
+        return segment_route_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_children() const
 {
-    if(children.find("segment-route-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(segment_route_next_hop_table != nullptr)
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
+        children["segment-route-next-hop-table"] = segment_route_next_hop_table;
     }
 
     return children;
@@ -17766,7 +16216,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17789,15 +16239,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -17805,15 +16246,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -17823,15 +16262,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -17841,15 +16278,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -17859,15 +16294,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -17877,60 +16310,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18007,7 +16424,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18043,20 +16460,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18186,7 +16595,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18223,20 +16632,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18367,7 +16768,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18403,20 +16804,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18478,8 +16871,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -18502,8 +16895,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topol
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -18521,8 +16914,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -18540,13 +16933,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18560,8 +16953,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -18583,32 +16976,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -18727,7 +17112,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18763,20 +17148,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18874,7 +17251,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18897,15 +17274,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix")
     {
         for(auto const & c : vrf_prefix)
@@ -18913,28 +17281,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix>();
         c->parent = this;
-        vrf_prefix.push_back(std::move(c));
-        children[segment_path] = vrf_prefix.back();
-        return children.at(segment_path);
+        vrf_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18954,13 +17318,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfP
 	,vrf_seg_route(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute>())
 {
     vrf_recurse_routes->parent = this;
-    children["vrf-recurse-routes"] = vrf_recurse_routes;
 
     vrf_route->parent = this;
-    children["vrf-route"] = vrf_route;
 
     vrf_seg_route->parent = this;
-    children["vrf-seg-route"] = vrf_seg_route;
 
     yang_name = "vrf-prefix"; yang_parent_name = "vrf-prefixes";
 }
@@ -18997,7 +17358,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19022,87 +17383,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-routes")
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
-        else
+        if(vrf_recurse_routes == nullptr)
         {
             vrf_recurse_routes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes>();
-            vrf_recurse_routes->parent = this;
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
         }
-        return children.at("vrf-recurse-routes");
+        return vrf_recurse_routes;
     }
 
     if(child_yang_name == "vrf-route")
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
-        else
+        if(vrf_route == nullptr)
         {
             vrf_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute>();
-            vrf_route->parent = this;
-            children["vrf-route"] = vrf_route;
         }
-        return children.at("vrf-route");
+        return vrf_route;
     }
 
     if(child_yang_name == "vrf-seg-route")
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
-        else
+        if(vrf_seg_route == nullptr)
         {
             vrf_seg_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute>();
-            vrf_seg_route->parent = this;
-            children["vrf-seg-route"] = vrf_seg_route;
         }
-        return children.at("vrf-seg-route");
+        return vrf_seg_route;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::get_children() const
 {
-    if(children.find("vrf-recurse-routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recurse_routes != nullptr)
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
+        children["vrf-recurse-routes"] = vrf_recurse_routes;
     }
 
-    if(children.find("vrf-route") == children.end())
+    if(vrf_route != nullptr)
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
+        children["vrf-route"] = vrf_route;
     }
 
-    if(children.find("vrf-seg-route") == children.end())
+    if(vrf_seg_route != nullptr)
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
+        children["vrf-seg-route"] = vrf_seg_route;
     }
 
     return children;
@@ -19125,7 +17451,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfP
     vrf_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable>())
 {
     vrf_next_hop_table->parent = this;
-    children["vrf-next-hop-table"] = vrf_next_hop_table;
 
     yang_name = "vrf-route"; yang_parent_name = "vrf-prefix";
 }
@@ -19154,7 +17479,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19177,41 +17502,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-table")
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
-        else
+        if(vrf_next_hop_table == nullptr)
         {
             vrf_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable>();
-            vrf_next_hop_table->parent = this;
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
         }
-        return children.at("vrf-next-hop-table");
+        return vrf_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_children() const
 {
-    if(children.find("vrf-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_next_hop_table != nullptr)
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
+        children["vrf-next-hop-table"] = vrf_next_hop_table;
     }
 
     return children;
@@ -19299,7 +17607,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19322,15 +17630,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -19338,15 +17637,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -19356,15 +17653,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -19374,15 +17669,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -19392,15 +17685,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -19410,60 +17701,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19540,7 +17815,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19576,20 +17851,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19719,7 +17986,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19756,20 +18023,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19900,7 +18159,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19936,20 +18195,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20011,8 +18262,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -20035,8 +18286,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfP
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -20054,8 +18305,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -20073,13 +18324,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20093,8 +18344,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -20116,32 +18367,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -20260,7 +18503,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20296,20 +18539,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20407,7 +18642,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20430,15 +18665,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-route")
     {
         for(auto const & c : vrf_recurse_route)
@@ -20446,28 +18672,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute>();
         c->parent = this;
-        vrf_recurse_route.push_back(std::move(c));
-        children[segment_path] = vrf_recurse_route.back();
-        return children.at(segment_path);
+        vrf_recurse_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_recurse_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20484,7 +18706,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfP
     vrf_recursive_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>())
 {
     vrf_recursive_next_hop_table->parent = this;
-    children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
 
     yang_name = "vrf-recurse-route"; yang_parent_name = "vrf-recurse-routes";
 }
@@ -20515,7 +18736,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20539,41 +18760,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recursive-next-hop-table")
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
-        else
+        if(vrf_recursive_next_hop_table == nullptr)
         {
             vrf_recursive_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>();
-            vrf_recursive_next_hop_table->parent = this;
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
         }
-        return children.at("vrf-recursive-next-hop-table");
+        return vrf_recursive_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_children() const
 {
-    if(children.find("vrf-recursive-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recursive_next_hop_table != nullptr)
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
+        children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
     }
 
     return children;
@@ -20665,7 +18869,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20688,15 +18892,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -20704,15 +18899,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -20722,15 +18915,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -20740,15 +18931,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -20758,15 +18947,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -20776,60 +18963,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20906,7 +19077,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20942,20 +19113,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21085,7 +19248,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21122,20 +19285,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21266,7 +19421,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21302,20 +19457,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21377,8 +19524,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -21401,8 +19548,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfP
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -21420,8 +19567,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -21439,13 +19586,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21459,8 +19606,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -21482,32 +19629,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -21626,7 +19765,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21662,20 +19801,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21740,7 +19871,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfP
     segment_route_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable>())
 {
     segment_route_next_hop_table->parent = this;
-    children["segment-route-next-hop-table"] = segment_route_next_hop_table;
 
     yang_name = "vrf-seg-route"; yang_parent_name = "vrf-prefix";
 }
@@ -21769,7 +19899,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21792,41 +19922,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "segment-route-next-hop-table")
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
-        else
+        if(segment_route_next_hop_table == nullptr)
         {
             segment_route_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable>();
-            segment_route_next_hop_table->parent = this;
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
         }
-        return children.at("segment-route-next-hop-table");
+        return segment_route_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_children() const
 {
-    if(children.find("segment-route-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(segment_route_next_hop_table != nullptr)
     {
-        if(segment_route_next_hop_table != nullptr)
-        {
-            children["segment-route-next-hop-table"] = segment_route_next_hop_table;
-        }
+        children["segment-route-next-hop-table"] = segment_route_next_hop_table;
     }
 
     return children;
@@ -21914,7 +20027,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21937,15 +20050,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -21953,15 +20057,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -21971,15 +20073,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -21989,15 +20089,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -22007,15 +20105,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -22025,60 +20121,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22155,7 +20235,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22191,20 +20271,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22334,7 +20406,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22371,20 +20443,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22515,7 +20579,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22551,20 +20615,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22626,8 +20682,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -22650,8 +20706,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfP
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -22669,8 +20725,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -22688,13 +20744,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22708,8 +20764,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -22731,32 +20787,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -22875,7 +20923,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22911,20 +20959,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22989,7 +21029,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::
     vrf_prefix_topologies(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies>())
 {
     vrf_prefix_topologies->parent = this;
-    children["vrf-prefix-topologies"] = vrf_prefix_topologies;
 
     yang_name = "default-topology"; yang_parent_name = "vrf-multicast";
 }
@@ -23018,7 +21057,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23041,41 +21080,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topologies")
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
-        else
+        if(vrf_prefix_topologies == nullptr)
         {
             vrf_prefix_topologies = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies>();
-            vrf_prefix_topologies->parent = this;
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
         }
-        return children.at("vrf-prefix-topologies");
+        return vrf_prefix_topologies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::get_children() const
 {
-    if(children.find("vrf-prefix-topologies") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_prefix_topologies != nullptr)
     {
-        if(vrf_prefix_topologies != nullptr)
-        {
-            children["vrf-prefix-topologies"] = vrf_prefix_topologies;
-        }
+        children["vrf-prefix-topologies"] = vrf_prefix_topologies;
     }
 
     return children;
@@ -23123,7 +21145,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23146,15 +21168,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-prefix-topology")
     {
         for(auto const & c : vrf_prefix_topology)
@@ -23162,28 +21175,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology>();
         c->parent = this;
-        vrf_prefix_topology.push_back(std::move(c));
-        children[segment_path] = vrf_prefix_topology.back();
-        return children.at(segment_path);
+        vrf_prefix_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_prefix_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23203,13 +21212,10 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::
 	,vrf_seg_route(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>())
 {
     vrf_recurse_routes->parent = this;
-    children["vrf-recurse-routes"] = vrf_recurse_routes;
 
     vrf_route->parent = this;
-    children["vrf-route"] = vrf_route;
 
     vrf_seg_route->parent = this;
-    children["vrf-seg-route"] = vrf_seg_route;
 
     yang_name = "vrf-prefix-topology"; yang_parent_name = "vrf-prefix-topologies";
 }
@@ -23246,7 +21252,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23271,87 +21277,52 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-routes")
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
-        else
+        if(vrf_recurse_routes == nullptr)
         {
             vrf_recurse_routes = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes>();
-            vrf_recurse_routes->parent = this;
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
         }
-        return children.at("vrf-recurse-routes");
+        return vrf_recurse_routes;
     }
 
     if(child_yang_name == "vrf-route")
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
-        else
+        if(vrf_route == nullptr)
         {
             vrf_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute>();
-            vrf_route->parent = this;
-            children["vrf-route"] = vrf_route;
         }
-        return children.at("vrf-route");
+        return vrf_route;
     }
 
     if(child_yang_name == "vrf-seg-route")
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
-        else
+        if(vrf_seg_route == nullptr)
         {
             vrf_seg_route = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute>();
-            vrf_seg_route->parent = this;
-            children["vrf-seg-route"] = vrf_seg_route;
         }
-        return children.at("vrf-seg-route");
+        return vrf_seg_route;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_children() const
 {
-    if(children.find("vrf-recurse-routes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recurse_routes != nullptr)
     {
-        if(vrf_recurse_routes != nullptr)
-        {
-            children["vrf-recurse-routes"] = vrf_recurse_routes;
-        }
+        children["vrf-recurse-routes"] = vrf_recurse_routes;
     }
 
-    if(children.find("vrf-route") == children.end())
+    if(vrf_route != nullptr)
     {
-        if(vrf_route != nullptr)
-        {
-            children["vrf-route"] = vrf_route;
-        }
+        children["vrf-route"] = vrf_route;
     }
 
-    if(children.find("vrf-seg-route") == children.end())
+    if(vrf_seg_route != nullptr)
     {
-        if(vrf_seg_route != nullptr)
-        {
-            children["vrf-seg-route"] = vrf_seg_route;
-        }
+        children["vrf-seg-route"] = vrf_seg_route;
     }
 
     return children;
@@ -23374,7 +21345,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::
     vrf_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>())
 {
     vrf_next_hop_table->parent = this;
-    children["vrf-next-hop-table"] = vrf_next_hop_table;
 
     yang_name = "vrf-route"; yang_parent_name = "vrf-prefix-topology";
 }
@@ -23403,7 +21373,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23426,41 +21396,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-table")
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
-        else
+        if(vrf_next_hop_table == nullptr)
         {
             vrf_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable>();
-            vrf_next_hop_table->parent = this;
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
         }
-        return children.at("vrf-next-hop-table");
+        return vrf_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_children() const
 {
-    if(children.find("vrf-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_next_hop_table != nullptr)
     {
-        if(vrf_next_hop_table != nullptr)
-        {
-            children["vrf-next-hop-table"] = vrf_next_hop_table;
-        }
+        children["vrf-next-hop-table"] = vrf_next_hop_table;
     }
 
     return children;
@@ -23548,7 +21501,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23571,15 +21524,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -23587,15 +21531,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -23605,15 +21547,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -23623,15 +21563,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -23641,15 +21579,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -23659,60 +21595,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23789,7 +21709,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23825,20 +21745,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23968,7 +21880,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24005,20 +21917,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24149,7 +22053,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24185,20 +22089,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24260,8 +22156,8 @@ void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
 
 RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
     :
-    explicit_path_name{YType::str, "explicit-path-name"},
     next_hop_address{YType::str, "next-hop-address"},
+    explicit_path_name{YType::str, "explicit-path-name"},
     bfd_fast_detect{YType::boolean, "bfd-fast-detect"},
     description{YType::str, "description"},
     detect_multiplier{YType::uint32, "detect-multiplier"},
@@ -24284,8 +22180,8 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::
 
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_data() const
 {
-    return explicit_path_name.is_set
-	|| next_hop_address.is_set
+    return next_hop_address.is_set
+	|| explicit_path_name.is_set
 	|| bfd_fast_detect.is_set
 	|| description.is_set
 	|| detect_multiplier.is_set
@@ -24303,8 +22199,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
     return is_set(operation)
-	|| is_set(explicit_path_name.operation)
 	|| is_set(next_hop_address.operation)
+	|| is_set(explicit_path_name.operation)
 	|| is_set(bfd_fast_detect.operation)
 	|| is_set(description.operation)
 	|| is_set(detect_multiplier.operation)
@@ -24322,13 +22218,13 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[explicit-path-name='" <<explicit_path_name <<"']" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "vrf-next-hop-next-hop-address-explicit-path-name" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[explicit-path-name='" <<explicit_path_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24342,8 +22238,8 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
     if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
     if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
     if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
@@ -24365,32 +22261,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "explicit-path-name")
-    {
-        explicit_path_name = value;
-    }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name = value;
     }
     if(value_path == "bfd-fast-detect")
     {
@@ -24509,7 +22397,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24545,20 +22433,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24656,7 +22536,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24679,15 +22559,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recurse-route")
     {
         for(auto const & c : vrf_recurse_route)
@@ -24695,28 +22566,24 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute>();
         c->parent = this;
-        vrf_recurse_route.push_back(std::move(c));
-        children[segment_path] = vrf_recurse_route.back();
-        return children.at(segment_path);
+        vrf_recurse_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_recurse_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -24733,7 +22600,6 @@ RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::
     vrf_recursive_next_hop_table(std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>())
 {
     vrf_recursive_next_hop_table->parent = this;
-    children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
 
     yang_name = "vrf-recurse-route"; yang_parent_name = "vrf-recurse-routes";
 }
@@ -24764,7 +22630,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24788,41 +22654,24 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-recursive-next-hop-table")
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
-        else
+        if(vrf_recursive_next_hop_table == nullptr)
         {
             vrf_recursive_next_hop_table = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable>();
-            vrf_recursive_next_hop_table->parent = this;
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
         }
-        return children.at("vrf-recursive-next-hop-table");
+        return vrf_recursive_next_hop_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_children() const
 {
-    if(children.find("vrf-recursive-next-hop-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_recursive_next_hop_table != nullptr)
     {
-        if(vrf_recursive_next_hop_table != nullptr)
-        {
-            children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
-        }
+        children["vrf-recursive-next-hop-table"] = vrf_recursive_next_hop_table;
     }
 
     return children;
@@ -24914,7 +22763,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24937,15 +22786,6 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-next-hop-explicit-path-name")
     {
         for(auto const & c : vrf_next_hop_explicit_path_name)
@@ -24953,15 +22793,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_explicit_path_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name")
@@ -24971,15 +22809,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName>();
         c->parent = this;
-        vrf_next_hop_interface_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-interface-name-next-hop-address")
@@ -24989,15 +22825,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_interface_name_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_interface_name_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_interface_name_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address")
@@ -25007,15 +22841,13 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress>();
         c->parent = this;
-        vrf_next_hop_next_hop_address.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-next-hop-next-hop-address-explicit-path-name")
@@ -25025,60 +22857,44 @@ std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMult
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName>();
         c->parent = this;
-        vrf_next_hop_next_hop_address_explicit_path_name.push_back(std::move(c));
-        children[segment_path] = vrf_next_hop_next_hop_address_explicit_path_name.back();
-        return children.at(segment_path);
+        vrf_next_hop_next_hop_address_explicit_path_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_next_hop_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_interface_name_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vrf_next_hop_next_hop_address_explicit_path_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -25155,7 +22971,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25191,20 +23007,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -25334,7 +23142,7 @@ std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
 
 }
 
-EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25371,20 +23179,12 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
 
 std::shared_ptr<Entity> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

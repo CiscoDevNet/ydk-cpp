@@ -14,7 +14,6 @@ FabVqiConfig::FabVqiConfig()
     operates(std::make_shared<FabVqiConfig::Operates>())
 {
     operates->parent = this;
-    children["operates"] = operates;
 
     yang_name = "fab-vqi-config"; yang_parent_name = "Cisco-IOS-XR-asr9k-fab-cfg";
 }
@@ -43,12 +42,12 @@ std::string FabVqiConfig::get_segment_path() const
 
 }
 
-EntityPath FabVqiConfig::get_entity_path(Entity* ancestor) const
+const EntityPath FabVqiConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath FabVqiConfig::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> FabVqiConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "operates")
     {
-        if(operates != nullptr)
-        {
-            children["operates"] = operates;
-        }
-        else
+        if(operates == nullptr)
         {
             operates = std::make_shared<FabVqiConfig::Operates>();
-            operates->parent = this;
-            children["operates"] = operates;
         }
-        return children.at("operates");
+        return operates;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & FabVqiConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> FabVqiConfig::get_children() const
 {
-    if(children.find("operates") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(operates != nullptr)
     {
-        if(operates != nullptr)
-        {
-            children["operates"] = operates;
-        }
+        children["operates"] = operates;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string FabVqiConfig::Operates::get_segment_path() const
 
 }
 
-EntityPath FabVqiConfig::Operates::get_entity_path(Entity* ancestor) const
+const EntityPath FabVqiConfig::Operates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath FabVqiConfig::Operates::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> FabVqiConfig::Operates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "operate")
     {
         for(auto const & c : operate)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> FabVqiConfig::Operates::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<FabVqiConfig::Operates::Operate>();
         c->parent = this;
-        operate.push_back(std::move(c));
-        children[segment_path] = operate.back();
-        return children.at(segment_path);
+        operate.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & FabVqiConfig::Operates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> FabVqiConfig::Operates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : operate)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -272,7 +241,7 @@ std::string FabVqiConfig::Operates::Operate::get_segment_path() const
 
 }
 
-EntityPath FabVqiConfig::Operates::Operate::get_entity_path(Entity* ancestor) const
+const EntityPath FabVqiConfig::Operates::Operate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -298,20 +267,12 @@ EntityPath FabVqiConfig::Operates::Operate::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> FabVqiConfig::Operates::Operate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & FabVqiConfig::Operates::Operate::get_children()
+std::map<std::string, std::shared_ptr<Entity>> FabVqiConfig::Operates::Operate::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

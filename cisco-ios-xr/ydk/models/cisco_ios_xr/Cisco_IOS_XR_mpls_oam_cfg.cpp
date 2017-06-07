@@ -17,7 +17,6 @@ MplsOam::MplsOam()
     reply_mode(std::make_shared<MplsOam::ReplyMode>())
 {
     reply_mode->parent = this;
-    children["reply-mode"] = reply_mode;
 
     yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-cfg";
 }
@@ -50,12 +49,12 @@ std::string MplsOam::get_segment_path() const
 
 }
 
-EntityPath MplsOam::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -72,41 +71,24 @@ EntityPath MplsOam::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reply-mode")
     {
-        if(reply_mode != nullptr)
-        {
-            children["reply-mode"] = reply_mode;
-        }
-        else
+        if(reply_mode == nullptr)
         {
             reply_mode = std::make_shared<MplsOam::ReplyMode>();
-            reply_mode->parent = this;
-            children["reply-mode"] = reply_mode;
         }
-        return children.at("reply-mode");
+        return reply_mode;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
 {
-    if(children.find("reply-mode") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(reply_mode != nullptr)
     {
-        if(reply_mode != nullptr)
-        {
-            children["reply-mode"] = reply_mode;
-        }
+        children["reply-mode"] = reply_mode;
     }
 
     return children;
@@ -149,7 +131,6 @@ MplsOam::ReplyMode::ReplyMode()
     control_channel(std::make_shared<MplsOam::ReplyMode::ControlChannel>())
 {
     control_channel->parent = this;
-    children["control-channel"] = control_channel;
 
     yang_name = "reply-mode"; yang_parent_name = "mpls-oam";
 }
@@ -178,7 +159,7 @@ std::string MplsOam::ReplyMode::get_segment_path() const
 
 }
 
-EntityPath MplsOam::ReplyMode::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::ReplyMode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -201,41 +182,24 @@ EntityPath MplsOam::ReplyMode::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::ReplyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "control-channel")
     {
-        if(control_channel != nullptr)
-        {
-            children["control-channel"] = control_channel;
-        }
-        else
+        if(control_channel == nullptr)
         {
             control_channel = std::make_shared<MplsOam::ReplyMode::ControlChannel>();
-            control_channel->parent = this;
-            children["control-channel"] = control_channel;
         }
-        return children.at("control-channel");
+        return control_channel;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::ReplyMode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::get_children() const
 {
-    if(children.find("control-channel") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(control_channel != nullptr)
     {
-        if(control_channel != nullptr)
-        {
-            children["control-channel"] = control_channel;
-        }
+        children["control-channel"] = control_channel;
     }
 
     return children;
@@ -276,7 +240,7 @@ std::string MplsOam::ReplyMode::ControlChannel::get_segment_path() const
 
 }
 
-EntityPath MplsOam::ReplyMode::ControlChannel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::ReplyMode::ControlChannel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -300,20 +264,12 @@ EntityPath MplsOam::ReplyMode::ControlChannel::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsOam::ReplyMode::ControlChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::ReplyMode::ControlChannel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::ControlChannel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

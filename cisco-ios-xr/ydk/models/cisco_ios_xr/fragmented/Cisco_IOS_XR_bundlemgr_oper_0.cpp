@@ -17,7 +17,6 @@ LacpBundles::LacpBundles()
     bundles(std::make_shared<LacpBundles::Bundles>())
 {
     bundles->parent = this;
-    children["bundles"] = bundles;
 
     yang_name = "lacp-bundles"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-oper";
 }
@@ -46,12 +45,12 @@ std::string LacpBundles::get_segment_path() const
 
 }
 
-EntityPath LacpBundles::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -66,41 +65,24 @@ EntityPath LacpBundles::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LacpBundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundles")
     {
-        if(bundles != nullptr)
-        {
-            children["bundles"] = bundles;
-        }
-        else
+        if(bundles == nullptr)
         {
             bundles = std::make_shared<LacpBundles::Bundles>();
-            bundles->parent = this;
-            children["bundles"] = bundles;
         }
-        return children.at("bundles");
+        return bundles;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::get_children() const
 {
-    if(children.find("bundles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundles != nullptr)
     {
-        if(bundles != nullptr)
-        {
-            children["bundles"] = bundles;
-        }
+        children["bundles"] = bundles;
     }
 
     return children;
@@ -168,7 +150,7 @@ std::string LacpBundles::Bundles::get_segment_path() const
 
 }
 
-EntityPath LacpBundles::Bundles::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -191,15 +173,6 @@ EntityPath LacpBundles::Bundles::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LacpBundles::Bundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle")
     {
         for(auto const & c : bundle)
@@ -207,28 +180,24 @@ std::shared_ptr<Entity> LacpBundles::Bundles::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LacpBundles::Bundles::Bundle>();
         c->parent = this;
-        bundle.push_back(std::move(c));
-        children[segment_path] = bundle.back();
-        return children.at(segment_path);
+        bundle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bundle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -246,10 +215,8 @@ LacpBundles::Bundles::Bundle::Bundle()
 	,members(std::make_shared<LacpBundles::Bundles::Bundle::Members>())
 {
     data->parent = this;
-    children["data"] = data;
 
     members->parent = this;
-    children["members"] = members;
 
     yang_name = "bundle"; yang_parent_name = "bundles";
 }
@@ -282,7 +249,7 @@ std::string LacpBundles::Bundles::Bundle::get_segment_path() const
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -306,64 +273,38 @@ EntityPath LacpBundles::Bundles::Bundle::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<LacpBundles::Bundles::Bundle::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     if(child_yang_name == "members")
     {
-        if(members != nullptr)
-        {
-            children["members"] = members;
-        }
-        else
+        if(members == nullptr)
         {
             members = std::make_shared<LacpBundles::Bundles::Bundle::Members>();
-            members->parent = this;
-            children["members"] = members;
         }
-        return children.at("members");
+        return members;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
-    if(children.find("members") == children.end())
+    if(members != nullptr)
     {
-        if(members != nullptr)
-        {
-            children["members"] = members;
-        }
+        children["members"] = members;
     }
 
     return children;
@@ -388,10 +329,8 @@ LacpBundles::Bundles::Bundle::Data::Data()
 	,bundle_system_id(std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId>())
 {
     actor_bundle_data->parent = this;
-    children["actor-bundle-data"] = actor_bundle_data;
 
     bundle_system_id->parent = this;
-    children["bundle-system-id"] = bundle_system_id;
 
     yang_name = "data"; yang_parent_name = "bundle";
 }
@@ -430,7 +369,7 @@ std::string LacpBundles::Bundles::Bundle::Data::get_segment_path() const
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Data::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -457,64 +396,38 @@ EntityPath LacpBundles::Bundles::Bundle::Data::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "actor-bundle-data")
     {
-        if(actor_bundle_data != nullptr)
-        {
-            children["actor-bundle-data"] = actor_bundle_data;
-        }
-        else
+        if(actor_bundle_data == nullptr)
         {
             actor_bundle_data = std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData>();
-            actor_bundle_data->parent = this;
-            children["actor-bundle-data"] = actor_bundle_data;
         }
-        return children.at("actor-bundle-data");
+        return actor_bundle_data;
     }
 
     if(child_yang_name == "bundle-system-id")
     {
-        if(bundle_system_id != nullptr)
-        {
-            children["bundle-system-id"] = bundle_system_id;
-        }
-        else
+        if(bundle_system_id == nullptr)
         {
             bundle_system_id = std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId>();
-            bundle_system_id->parent = this;
-            children["bundle-system-id"] = bundle_system_id;
         }
-        return children.at("bundle-system-id");
+        return bundle_system_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Data::get_children() const
 {
-    if(children.find("actor-bundle-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(actor_bundle_data != nullptr)
     {
-        if(actor_bundle_data != nullptr)
-        {
-            children["actor-bundle-data"] = actor_bundle_data;
-        }
+        children["actor-bundle-data"] = actor_bundle_data;
     }
 
-    if(children.find("bundle-system-id") == children.end())
+    if(bundle_system_id != nullptr)
     {
-        if(bundle_system_id != nullptr)
-        {
-            children["bundle-system-id"] = bundle_system_id;
-        }
+        children["bundle-system-id"] = bundle_system_id;
     }
 
     return children;
@@ -584,7 +497,6 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::ActorBundleData()
     mac_address(std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress>())
 {
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     yang_name = "actor-bundle-data"; yang_parent_name = "data";
 }
@@ -699,7 +611,7 @@ std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_segment_pat
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -760,15 +672,6 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_entity_path(
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-config")
     {
         for(auto const & c : bfd_config)
@@ -776,51 +679,38 @@ std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::ActorBundleData::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(std::move(c));
-        children[segment_path] = bfd_config.back();
-        return children.at(segment_path);
+        bfd_config.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_config)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
     return children;
@@ -1013,7 +903,7 @@ std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1037,20 +927,12 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1076,7 +958,6 @@ LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::BfdConfig()
     destination_address(std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
-    children["destination-address"] = destination_address;
 
     yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data";
 }
@@ -1121,7 +1002,7 @@ std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1152,41 +1033,24 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_e
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address")
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
-        else
+        if(destination_address == nullptr)
         {
             destination_address = std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress>();
-            destination_address->parent = this;
-            children["destination-address"] = destination_address;
         }
-        return children.at("destination-address");
+        return destination_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_children() const
 {
-    if(children.find("destination-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_address != nullptr)
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
+        children["destination-address"] = destination_address;
     }
 
     return children;
@@ -1265,7 +1129,7 @@ std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::Dest
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1291,20 +1155,12 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::Desti
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1331,7 +1187,6 @@ LacpBundles::Bundles::Bundle::Data::BundleSystemId::BundleSystemId()
     system_mac_addr(std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
-    children["system-mac-addr"] = system_mac_addr;
 
     yang_name = "bundle-system-id"; yang_parent_name = "data";
 }
@@ -1362,7 +1217,7 @@ std::string LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_segment_path
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1386,41 +1241,24 @@ EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_entity_path(E
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "system-mac-addr")
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
-        else
+        if(system_mac_addr == nullptr)
         {
             system_mac_addr = std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr>();
-            system_mac_addr->parent = this;
-            children["system-mac-addr"] = system_mac_addr;
         }
-        return children.at("system-mac-addr");
+        return system_mac_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_children() const
 {
-    if(children.find("system-mac-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(system_mac_addr != nullptr)
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
+        children["system-mac-addr"] = system_mac_addr;
     }
 
     return children;
@@ -1465,7 +1303,7 @@ std::string LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::g
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1489,20 +1327,12 @@ EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::ge
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1552,7 +1382,7 @@ std::string LacpBundles::Bundles::Bundle::Members::get_segment_path() const
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Members::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Members::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1575,15 +1405,6 @@ EntityPath LacpBundles::Bundles::Bundle::Members::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member")
     {
         for(auto const & c : member)
@@ -1591,28 +1412,24 @@ std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LacpBundles::Bundles::Bundle::Members::Member>();
         c->parent = this;
-        member.push_back(std::move(c));
-        children[segment_path] = member.back();
-        return children.at(segment_path);
+        member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Members::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Members::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1641,16 +1458,12 @@ LacpBundles::Bundles::Bundle::Members::Member::Member()
 	,member_mux_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     link_data->parent = this;
-    children["link-data"] = link_data;
 
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     member_mux_data->parent = this;
-    children["member-mux-data"] = member_mux_data;
 
     yang_name = "member"; yang_parent_name = "members";
 }
@@ -1705,7 +1518,7 @@ std::string LacpBundles::Bundles::Bundle::Members::Member::get_segment_path() co
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Members::Member::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Members::Member::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1738,110 +1551,66 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::get_entity_path(Entity
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "link-data")
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
-        else
+        if(link_data == nullptr)
         {
             link_data = std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::LinkData>();
-            link_data->parent = this;
-            children["link-data"] = link_data;
         }
-        return children.at("link-data");
+        return link_data;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     if(child_yang_name == "member-mux-data")
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
-        else
+        if(member_mux_data == nullptr)
         {
             member_mux_data = std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData>();
-            member_mux_data->parent = this;
-            children["member-mux-data"] = member_mux_data;
         }
-        return children.at("member-mux-data");
+        return member_mux_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Members::Member::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Members::Member::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("link-data") == children.end())
+    if(link_data != nullptr)
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
+        children["link-data"] = link_data;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
-    if(children.find("member-mux-data") == children.end())
+    if(member_mux_data != nullptr)
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
+        children["member-mux-data"] = member_mux_data;
     }
 
     return children;
@@ -1952,7 +1721,7 @@ std::string LacpBundles::Bundles::Bundle::Members::Member::Counters::get_segment
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Members::Member::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Members::Member::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1986,20 +1755,12 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::Counters::get_entity_p
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::Member::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Members::Member::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Members::Member::Counters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2124,7 +1885,7 @@ std::string LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_segment
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2162,20 +1923,12 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_entity_p
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2254,7 +2007,6 @@ LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxData()
     member_mux_state_reason_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
-    children["member-mux-state-reason-data"] = member_mux_state_reason_data;
 
     yang_name = "member-mux-data"; yang_parent_name = "member";
 }
@@ -2293,7 +2045,7 @@ std::string LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_se
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2321,41 +2073,24 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_ent
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-mux-state-reason-data")
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
-        else
+        if(member_mux_state_reason_data == nullptr)
         {
             member_mux_state_reason_data = std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData>();
-            member_mux_state_reason_data->parent = this;
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
         }
-        return children.at("member-mux-state-reason-data");
+        return member_mux_state_reason_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_children() const
 {
-    if(children.find("member-mux-state-reason-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(member_mux_state_reason_data != nullptr)
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
+        children["member-mux-state-reason-data"] = member_mux_state_reason_data;
     }
 
     return children;
@@ -2419,7 +2154,7 @@ std::string LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::Member
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2444,20 +2179,12 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberM
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2504,7 +2231,7 @@ std::string LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_segme
 
 }
 
-EntityPath LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2528,20 +2255,12 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_entity
 
 std::shared_ptr<Entity> LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2574,55 +2293,38 @@ BundleInformation::BundleInformation()
 	,system_id(std::make_shared<BundleInformation::SystemId>())
 {
     bfd_counters->parent = this;
-    children["bfd-counters"] = bfd_counters;
 
     bundle->parent = this;
-    children["bundle"] = bundle;
 
     bundle_briefs->parent = this;
-    children["bundle-briefs"] = bundle_briefs;
 
     events->parent = this;
-    children["events"] = events;
 
     events_bdl->parent = this;
-    children["events-bdl"] = events_bdl;
 
     events_mbr->parent = this;
-    children["events-mbr"] = events_mbr;
 
     events_rg->parent = this;
-    children["events-rg"] = events_rg;
 
     lacp->parent = this;
-    children["lacp"] = lacp;
 
     mac_allocation->parent = this;
-    children["mac-allocation"] = mac_allocation;
 
     mlacp->parent = this;
-    children["mlacp"] = mlacp;
 
     mlacp_brief->parent = this;
-    children["mlacp-brief"] = mlacp_brief;
 
     mlacp_bundle_counters->parent = this;
-    children["mlacp-bundle-counters"] = mlacp_bundle_counters;
 
     mlacp_iccp_group_counters->parent = this;
-    children["mlacp-iccp-group-counters"] = mlacp_iccp_group_counters;
 
     mlacp_member_counters->parent = this;
-    children["mlacp-member-counters"] = mlacp_member_counters;
 
     protect->parent = this;
-    children["protect"] = protect;
 
     scheduled_actions->parent = this;
-    children["scheduled-actions"] = scheduled_actions;
 
     system_id->parent = this;
-    children["system-id"] = system_id;
 
     yang_name = "bundle-information"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-oper";
 }
@@ -2683,12 +2385,12 @@ std::string BundleInformation::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -2703,409 +2405,248 @@ EntityPath BundleInformation::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> BundleInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counters")
     {
-        if(bfd_counters != nullptr)
-        {
-            children["bfd-counters"] = bfd_counters;
-        }
-        else
+        if(bfd_counters == nullptr)
         {
             bfd_counters = std::make_shared<BundleInformation::BfdCounters>();
-            bfd_counters->parent = this;
-            children["bfd-counters"] = bfd_counters;
         }
-        return children.at("bfd-counters");
+        return bfd_counters;
     }
 
     if(child_yang_name == "bundle")
     {
-        if(bundle != nullptr)
-        {
-            children["bundle"] = bundle;
-        }
-        else
+        if(bundle == nullptr)
         {
             bundle = std::make_shared<BundleInformation::Bundle>();
-            bundle->parent = this;
-            children["bundle"] = bundle;
         }
-        return children.at("bundle");
+        return bundle;
     }
 
     if(child_yang_name == "bundle-briefs")
     {
-        if(bundle_briefs != nullptr)
-        {
-            children["bundle-briefs"] = bundle_briefs;
-        }
-        else
+        if(bundle_briefs == nullptr)
         {
             bundle_briefs = std::make_shared<BundleInformation::BundleBriefs>();
-            bundle_briefs->parent = this;
-            children["bundle-briefs"] = bundle_briefs;
         }
-        return children.at("bundle-briefs");
+        return bundle_briefs;
     }
 
     if(child_yang_name == "events")
     {
-        if(events != nullptr)
-        {
-            children["events"] = events;
-        }
-        else
+        if(events == nullptr)
         {
             events = std::make_shared<BundleInformation::Events>();
-            events->parent = this;
-            children["events"] = events;
         }
-        return children.at("events");
+        return events;
     }
 
     if(child_yang_name == "events-bdl")
     {
-        if(events_bdl != nullptr)
-        {
-            children["events-bdl"] = events_bdl;
-        }
-        else
+        if(events_bdl == nullptr)
         {
             events_bdl = std::make_shared<BundleInformation::EventsBdl>();
-            events_bdl->parent = this;
-            children["events-bdl"] = events_bdl;
         }
-        return children.at("events-bdl");
+        return events_bdl;
     }
 
     if(child_yang_name == "events-mbr")
     {
-        if(events_mbr != nullptr)
-        {
-            children["events-mbr"] = events_mbr;
-        }
-        else
+        if(events_mbr == nullptr)
         {
             events_mbr = std::make_shared<BundleInformation::EventsMbr>();
-            events_mbr->parent = this;
-            children["events-mbr"] = events_mbr;
         }
-        return children.at("events-mbr");
+        return events_mbr;
     }
 
     if(child_yang_name == "events-rg")
     {
-        if(events_rg != nullptr)
-        {
-            children["events-rg"] = events_rg;
-        }
-        else
+        if(events_rg == nullptr)
         {
             events_rg = std::make_shared<BundleInformation::EventsRg>();
-            events_rg->parent = this;
-            children["events-rg"] = events_rg;
         }
-        return children.at("events-rg");
+        return events_rg;
     }
 
     if(child_yang_name == "lacp")
     {
-        if(lacp != nullptr)
-        {
-            children["lacp"] = lacp;
-        }
-        else
+        if(lacp == nullptr)
         {
             lacp = std::make_shared<BundleInformation::Lacp>();
-            lacp->parent = this;
-            children["lacp"] = lacp;
         }
-        return children.at("lacp");
+        return lacp;
     }
 
     if(child_yang_name == "mac-allocation")
     {
-        if(mac_allocation != nullptr)
-        {
-            children["mac-allocation"] = mac_allocation;
-        }
-        else
+        if(mac_allocation == nullptr)
         {
             mac_allocation = std::make_shared<BundleInformation::MacAllocation>();
-            mac_allocation->parent = this;
-            children["mac-allocation"] = mac_allocation;
         }
-        return children.at("mac-allocation");
+        return mac_allocation;
     }
 
     if(child_yang_name == "mlacp")
     {
-        if(mlacp != nullptr)
-        {
-            children["mlacp"] = mlacp;
-        }
-        else
+        if(mlacp == nullptr)
         {
             mlacp = std::make_shared<BundleInformation::Mlacp>();
-            mlacp->parent = this;
-            children["mlacp"] = mlacp;
         }
-        return children.at("mlacp");
+        return mlacp;
     }
 
     if(child_yang_name == "mlacp-brief")
     {
-        if(mlacp_brief != nullptr)
-        {
-            children["mlacp-brief"] = mlacp_brief;
-        }
-        else
+        if(mlacp_brief == nullptr)
         {
             mlacp_brief = std::make_shared<BundleInformation::MlacpBrief>();
-            mlacp_brief->parent = this;
-            children["mlacp-brief"] = mlacp_brief;
         }
-        return children.at("mlacp-brief");
+        return mlacp_brief;
     }
 
     if(child_yang_name == "mlacp-bundle-counters")
     {
-        if(mlacp_bundle_counters != nullptr)
-        {
-            children["mlacp-bundle-counters"] = mlacp_bundle_counters;
-        }
-        else
+        if(mlacp_bundle_counters == nullptr)
         {
             mlacp_bundle_counters = std::make_shared<BundleInformation::MlacpBundleCounters>();
-            mlacp_bundle_counters->parent = this;
-            children["mlacp-bundle-counters"] = mlacp_bundle_counters;
         }
-        return children.at("mlacp-bundle-counters");
+        return mlacp_bundle_counters;
     }
 
     if(child_yang_name == "mlacp-iccp-group-counters")
     {
-        if(mlacp_iccp_group_counters != nullptr)
-        {
-            children["mlacp-iccp-group-counters"] = mlacp_iccp_group_counters;
-        }
-        else
+        if(mlacp_iccp_group_counters == nullptr)
         {
             mlacp_iccp_group_counters = std::make_shared<BundleInformation::MlacpIccpGroupCounters>();
-            mlacp_iccp_group_counters->parent = this;
-            children["mlacp-iccp-group-counters"] = mlacp_iccp_group_counters;
         }
-        return children.at("mlacp-iccp-group-counters");
+        return mlacp_iccp_group_counters;
     }
 
     if(child_yang_name == "mlacp-member-counters")
     {
-        if(mlacp_member_counters != nullptr)
-        {
-            children["mlacp-member-counters"] = mlacp_member_counters;
-        }
-        else
+        if(mlacp_member_counters == nullptr)
         {
             mlacp_member_counters = std::make_shared<BundleInformation::MlacpMemberCounters>();
-            mlacp_member_counters->parent = this;
-            children["mlacp-member-counters"] = mlacp_member_counters;
         }
-        return children.at("mlacp-member-counters");
+        return mlacp_member_counters;
     }
 
     if(child_yang_name == "protect")
     {
-        if(protect != nullptr)
-        {
-            children["protect"] = protect;
-        }
-        else
+        if(protect == nullptr)
         {
             protect = std::make_shared<BundleInformation::Protect>();
-            protect->parent = this;
-            children["protect"] = protect;
         }
-        return children.at("protect");
+        return protect;
     }
 
     if(child_yang_name == "scheduled-actions")
     {
-        if(scheduled_actions != nullptr)
-        {
-            children["scheduled-actions"] = scheduled_actions;
-        }
-        else
+        if(scheduled_actions == nullptr)
         {
             scheduled_actions = std::make_shared<BundleInformation::ScheduledActions>();
-            scheduled_actions->parent = this;
-            children["scheduled-actions"] = scheduled_actions;
         }
-        return children.at("scheduled-actions");
+        return scheduled_actions;
     }
 
     if(child_yang_name == "system-id")
     {
-        if(system_id != nullptr)
-        {
-            children["system-id"] = system_id;
-        }
-        else
+        if(system_id == nullptr)
         {
             system_id = std::make_shared<BundleInformation::SystemId>();
-            system_id->parent = this;
-            children["system-id"] = system_id;
         }
-        return children.at("system-id");
+        return system_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::get_children() const
 {
-    if(children.find("bfd-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_counters != nullptr)
     {
-        if(bfd_counters != nullptr)
-        {
-            children["bfd-counters"] = bfd_counters;
-        }
+        children["bfd-counters"] = bfd_counters;
     }
 
-    if(children.find("bundle") == children.end())
+    if(bundle != nullptr)
     {
-        if(bundle != nullptr)
-        {
-            children["bundle"] = bundle;
-        }
+        children["bundle"] = bundle;
     }
 
-    if(children.find("bundle-briefs") == children.end())
+    if(bundle_briefs != nullptr)
     {
-        if(bundle_briefs != nullptr)
-        {
-            children["bundle-briefs"] = bundle_briefs;
-        }
+        children["bundle-briefs"] = bundle_briefs;
     }
 
-    if(children.find("events") == children.end())
+    if(events != nullptr)
     {
-        if(events != nullptr)
-        {
-            children["events"] = events;
-        }
+        children["events"] = events;
     }
 
-    if(children.find("events-bdl") == children.end())
+    if(events_bdl != nullptr)
     {
-        if(events_bdl != nullptr)
-        {
-            children["events-bdl"] = events_bdl;
-        }
+        children["events-bdl"] = events_bdl;
     }
 
-    if(children.find("events-mbr") == children.end())
+    if(events_mbr != nullptr)
     {
-        if(events_mbr != nullptr)
-        {
-            children["events-mbr"] = events_mbr;
-        }
+        children["events-mbr"] = events_mbr;
     }
 
-    if(children.find("events-rg") == children.end())
+    if(events_rg != nullptr)
     {
-        if(events_rg != nullptr)
-        {
-            children["events-rg"] = events_rg;
-        }
+        children["events-rg"] = events_rg;
     }
 
-    if(children.find("lacp") == children.end())
+    if(lacp != nullptr)
     {
-        if(lacp != nullptr)
-        {
-            children["lacp"] = lacp;
-        }
+        children["lacp"] = lacp;
     }
 
-    if(children.find("mac-allocation") == children.end())
+    if(mac_allocation != nullptr)
     {
-        if(mac_allocation != nullptr)
-        {
-            children["mac-allocation"] = mac_allocation;
-        }
+        children["mac-allocation"] = mac_allocation;
     }
 
-    if(children.find("mlacp") == children.end())
+    if(mlacp != nullptr)
     {
-        if(mlacp != nullptr)
-        {
-            children["mlacp"] = mlacp;
-        }
+        children["mlacp"] = mlacp;
     }
 
-    if(children.find("mlacp-brief") == children.end())
+    if(mlacp_brief != nullptr)
     {
-        if(mlacp_brief != nullptr)
-        {
-            children["mlacp-brief"] = mlacp_brief;
-        }
+        children["mlacp-brief"] = mlacp_brief;
     }
 
-    if(children.find("mlacp-bundle-counters") == children.end())
+    if(mlacp_bundle_counters != nullptr)
     {
-        if(mlacp_bundle_counters != nullptr)
-        {
-            children["mlacp-bundle-counters"] = mlacp_bundle_counters;
-        }
+        children["mlacp-bundle-counters"] = mlacp_bundle_counters;
     }
 
-    if(children.find("mlacp-iccp-group-counters") == children.end())
+    if(mlacp_iccp_group_counters != nullptr)
     {
-        if(mlacp_iccp_group_counters != nullptr)
-        {
-            children["mlacp-iccp-group-counters"] = mlacp_iccp_group_counters;
-        }
+        children["mlacp-iccp-group-counters"] = mlacp_iccp_group_counters;
     }
 
-    if(children.find("mlacp-member-counters") == children.end())
+    if(mlacp_member_counters != nullptr)
     {
-        if(mlacp_member_counters != nullptr)
-        {
-            children["mlacp-member-counters"] = mlacp_member_counters;
-        }
+        children["mlacp-member-counters"] = mlacp_member_counters;
     }
 
-    if(children.find("protect") == children.end())
+    if(protect != nullptr)
     {
-        if(protect != nullptr)
-        {
-            children["protect"] = protect;
-        }
+        children["protect"] = protect;
     }
 
-    if(children.find("scheduled-actions") == children.end())
+    if(scheduled_actions != nullptr)
     {
-        if(scheduled_actions != nullptr)
-        {
-            children["scheduled-actions"] = scheduled_actions;
-        }
+        children["scheduled-actions"] = scheduled_actions;
     }
 
-    if(children.find("system-id") == children.end())
+    if(system_id != nullptr)
     {
-        if(system_id != nullptr)
-        {
-            children["system-id"] = system_id;
-        }
+        children["system-id"] = system_id;
     }
 
     return children;
@@ -3141,10 +2682,8 @@ BundleInformation::BfdCounters::BfdCounters()
 	,bfd_counters_members(std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers>())
 {
     bfd_counters_bundles->parent = this;
-    children["bfd-counters-bundles"] = bfd_counters_bundles;
 
     bfd_counters_members->parent = this;
-    children["bfd-counters-members"] = bfd_counters_members;
 
     yang_name = "bfd-counters"; yang_parent_name = "bundle-information";
 }
@@ -3175,7 +2714,7 @@ std::string BundleInformation::BfdCounters::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::BfdCounters::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3198,64 +2737,38 @@ EntityPath BundleInformation::BfdCounters::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counters-bundles")
     {
-        if(bfd_counters_bundles != nullptr)
-        {
-            children["bfd-counters-bundles"] = bfd_counters_bundles;
-        }
-        else
+        if(bfd_counters_bundles == nullptr)
         {
             bfd_counters_bundles = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles>();
-            bfd_counters_bundles->parent = this;
-            children["bfd-counters-bundles"] = bfd_counters_bundles;
         }
-        return children.at("bfd-counters-bundles");
+        return bfd_counters_bundles;
     }
 
     if(child_yang_name == "bfd-counters-members")
     {
-        if(bfd_counters_members != nullptr)
-        {
-            children["bfd-counters-members"] = bfd_counters_members;
-        }
-        else
+        if(bfd_counters_members == nullptr)
         {
             bfd_counters_members = std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers>();
-            bfd_counters_members->parent = this;
-            children["bfd-counters-members"] = bfd_counters_members;
         }
-        return children.at("bfd-counters-members");
+        return bfd_counters_members;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::get_children() const
 {
-    if(children.find("bfd-counters-bundles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_counters_bundles != nullptr)
     {
-        if(bfd_counters_bundles != nullptr)
-        {
-            children["bfd-counters-bundles"] = bfd_counters_bundles;
-        }
+        children["bfd-counters-bundles"] = bfd_counters_bundles;
     }
 
-    if(children.find("bfd-counters-members") == children.end())
+    if(bfd_counters_members != nullptr)
     {
-        if(bfd_counters_members != nullptr)
-        {
-            children["bfd-counters-members"] = bfd_counters_members;
-        }
+        children["bfd-counters-members"] = bfd_counters_members;
     }
 
     return children;
@@ -3303,7 +2816,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::get_segment_path
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3326,15 +2839,6 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::get_entity_path(E
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counters-bundle")
     {
         for(auto const & c : bfd_counters_bundle)
@@ -3342,28 +2846,24 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle>();
         c->parent = this;
-        bfd_counters_bundle.push_back(std::move(c));
-        children[segment_path] = bfd_counters_bundle.back();
-        return children.at(segment_path);
+        bfd_counters_bundle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_counters_bundle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3382,13 +2882,10 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
 	,bfd_counters_bundle_item(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem>())
 {
     bfd_counters_bundle_children_members->parent = this;
-    children["bfd-counters-bundle-children-members"] = bfd_counters_bundle_children_members;
 
     bfd_counters_bundle_descendant->parent = this;
-    children["bfd-counters-bundle-descendant"] = bfd_counters_bundle_descendant;
 
     bfd_counters_bundle_item->parent = this;
-    children["bfd-counters-bundle-item"] = bfd_counters_bundle_item;
 
     yang_name = "bfd-counters-bundle"; yang_parent_name = "bfd-counters-bundles";
 }
@@ -3423,7 +2920,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3447,87 +2944,52 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counters-bundle-children-members")
     {
-        if(bfd_counters_bundle_children_members != nullptr)
-        {
-            children["bfd-counters-bundle-children-members"] = bfd_counters_bundle_children_members;
-        }
-        else
+        if(bfd_counters_bundle_children_members == nullptr)
         {
             bfd_counters_bundle_children_members = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers>();
-            bfd_counters_bundle_children_members->parent = this;
-            children["bfd-counters-bundle-children-members"] = bfd_counters_bundle_children_members;
         }
-        return children.at("bfd-counters-bundle-children-members");
+        return bfd_counters_bundle_children_members;
     }
 
     if(child_yang_name == "bfd-counters-bundle-descendant")
     {
-        if(bfd_counters_bundle_descendant != nullptr)
-        {
-            children["bfd-counters-bundle-descendant"] = bfd_counters_bundle_descendant;
-        }
-        else
+        if(bfd_counters_bundle_descendant == nullptr)
         {
             bfd_counters_bundle_descendant = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant>();
-            bfd_counters_bundle_descendant->parent = this;
-            children["bfd-counters-bundle-descendant"] = bfd_counters_bundle_descendant;
         }
-        return children.at("bfd-counters-bundle-descendant");
+        return bfd_counters_bundle_descendant;
     }
 
     if(child_yang_name == "bfd-counters-bundle-item")
     {
-        if(bfd_counters_bundle_item != nullptr)
-        {
-            children["bfd-counters-bundle-item"] = bfd_counters_bundle_item;
-        }
-        else
+        if(bfd_counters_bundle_item == nullptr)
         {
             bfd_counters_bundle_item = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem>();
-            bfd_counters_bundle_item->parent = this;
-            children["bfd-counters-bundle-item"] = bfd_counters_bundle_item;
         }
-        return children.at("bfd-counters-bundle-item");
+        return bfd_counters_bundle_item;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::get_children() const
 {
-    if(children.find("bfd-counters-bundle-children-members") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_counters_bundle_children_members != nullptr)
     {
-        if(bfd_counters_bundle_children_members != nullptr)
-        {
-            children["bfd-counters-bundle-children-members"] = bfd_counters_bundle_children_members;
-        }
+        children["bfd-counters-bundle-children-members"] = bfd_counters_bundle_children_members;
     }
 
-    if(children.find("bfd-counters-bundle-descendant") == children.end())
+    if(bfd_counters_bundle_descendant != nullptr)
     {
-        if(bfd_counters_bundle_descendant != nullptr)
-        {
-            children["bfd-counters-bundle-descendant"] = bfd_counters_bundle_descendant;
-        }
+        children["bfd-counters-bundle-descendant"] = bfd_counters_bundle_descendant;
     }
 
-    if(children.find("bfd-counters-bundle-item") == children.end())
+    if(bfd_counters_bundle_item != nullptr)
     {
-        if(bfd_counters_bundle_item != nullptr)
-        {
-            children["bfd-counters-bundle-item"] = bfd_counters_bundle_item;
-        }
+        children["bfd-counters-bundle-item"] = bfd_counters_bundle_item;
     }
 
     return children;
@@ -3546,7 +3008,6 @@ BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCounte
     bundle_name(std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName>())
 {
     bundle_name->parent = this;
-    children["bundle-name"] = bundle_name;
 
     yang_name = "bfd-counters-bundle-descendant"; yang_parent_name = "bfd-counters-bundle";
 }
@@ -3585,7 +3046,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3608,15 +3069,6 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counter")
     {
         for(auto const & c : bfd_counter)
@@ -3624,51 +3076,38 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdC
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter>();
         c->parent = this;
-        bfd_counter.push_back(std::move(c));
-        children[segment_path] = bfd_counter.back();
-        return children.at(segment_path);
+        bfd_counter.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "bundle-name")
     {
-        if(bundle_name != nullptr)
-        {
-            children["bundle-name"] = bundle_name;
-        }
-        else
+        if(bundle_name == nullptr)
         {
             bundle_name = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName>();
-            bundle_name->parent = this;
-            children["bundle-name"] = bundle_name;
         }
-        return children.at("bundle-name");
+        return bundle_name;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_counter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("bundle-name") == children.end())
+    if(bundle_name != nullptr)
     {
-        if(bundle_name != nullptr)
-        {
-            children["bundle-name"] = bundle_name;
-        }
+        children["bundle-name"] = bundle_name;
     }
 
     return children;
@@ -3709,7 +3148,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3733,20 +3172,12 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3813,7 +3244,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3845,20 +3276,12 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3940,7 +3363,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3963,15 +3386,6 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counters-bundle-children-member")
     {
         for(auto const & c : bfd_counters_bundle_children_member)
@@ -3979,28 +3393,24 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdC
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember>();
         c->parent = this;
-        bfd_counters_bundle_children_member.push_back(std::move(c));
-        children[segment_path] = bfd_counters_bundle_children_member.back();
-        return children.at(segment_path);
+        bfd_counters_bundle_children_member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_counters_bundle_children_member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4068,7 +3478,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4101,20 +3511,12 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4193,7 +3595,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4217,20 +3619,12 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4280,7 +3674,7 @@ std::string BundleInformation::BfdCounters::BfdCountersMembers::get_segment_path
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersMembers::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersMembers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4303,15 +3697,6 @@ EntityPath BundleInformation::BfdCounters::BfdCountersMembers::get_entity_path(E
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counters-member")
     {
         for(auto const & c : bfd_counters_member)
@@ -4319,28 +3704,24 @@ std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersMembers::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember>();
         c->parent = this;
-        bfd_counters_member.push_back(std::move(c));
-        children[segment_path] = bfd_counters_member.back();
-        return children.at(segment_path);
+        bfd_counters_member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersMembers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersMembers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_counters_member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4357,7 +3738,6 @@ BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCounte
     bfd_counters_member_item(std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem>())
 {
     bfd_counters_member_item->parent = this;
-    children["bfd-counters-member-item"] = bfd_counters_member_item;
 
     yang_name = "bfd-counters-member"; yang_parent_name = "bfd-counters-members";
 }
@@ -4388,7 +3768,7 @@ std::string BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMembe
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4412,41 +3792,24 @@ EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-counters-member-item")
     {
-        if(bfd_counters_member_item != nullptr)
-        {
-            children["bfd-counters-member-item"] = bfd_counters_member_item;
-        }
-        else
+        if(bfd_counters_member_item == nullptr)
         {
             bfd_counters_member_item = std::make_shared<BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem>();
-            bfd_counters_member_item->parent = this;
-            children["bfd-counters-member-item"] = bfd_counters_member_item;
         }
-        return children.at("bfd-counters-member-item");
+        return bfd_counters_member_item;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::get_children() const
 {
-    if(children.find("bfd-counters-member-item") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_counters_member_item != nullptr)
     {
-        if(bfd_counters_member_item != nullptr)
-        {
-            children["bfd-counters-member-item"] = bfd_counters_member_item;
-        }
+        children["bfd-counters-member-item"] = bfd_counters_member_item;
     }
 
     return children;
@@ -4515,7 +3878,7 @@ std::string BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMembe
 
 }
 
-EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4547,20 +3910,12 @@ EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember
 
 std::shared_ptr<Entity> BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4609,7 +3964,6 @@ BundleInformation::ScheduledActions::ScheduledActions()
     scheduled_actions_bundles(std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles>())
 {
     scheduled_actions_bundles->parent = this;
-    children["scheduled-actions-bundles"] = scheduled_actions_bundles;
 
     yang_name = "scheduled-actions"; yang_parent_name = "bundle-information";
 }
@@ -4638,7 +3992,7 @@ std::string BundleInformation::ScheduledActions::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::ScheduledActions::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::ScheduledActions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4661,41 +4015,24 @@ EntityPath BundleInformation::ScheduledActions::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> BundleInformation::ScheduledActions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "scheduled-actions-bundles")
     {
-        if(scheduled_actions_bundles != nullptr)
-        {
-            children["scheduled-actions-bundles"] = scheduled_actions_bundles;
-        }
-        else
+        if(scheduled_actions_bundles == nullptr)
         {
             scheduled_actions_bundles = std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles>();
-            scheduled_actions_bundles->parent = this;
-            children["scheduled-actions-bundles"] = scheduled_actions_bundles;
         }
-        return children.at("scheduled-actions-bundles");
+        return scheduled_actions_bundles;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::ScheduledActions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActions::get_children() const
 {
-    if(children.find("scheduled-actions-bundles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(scheduled_actions_bundles != nullptr)
     {
-        if(scheduled_actions_bundles != nullptr)
-        {
-            children["scheduled-actions-bundles"] = scheduled_actions_bundles;
-        }
+        children["scheduled-actions-bundles"] = scheduled_actions_bundles;
     }
 
     return children;
@@ -4743,7 +4080,7 @@ std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::get_se
 
 }
 
-EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4766,15 +4103,6 @@ EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::get_ent
 
 std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "scheduled-actions-bundle")
     {
         for(auto const & c : scheduled_actions_bundle)
@@ -4782,28 +4110,24 @@ std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle>();
         c->parent = this;
-        scheduled_actions_bundle.push_back(std::move(c));
-        children[segment_path] = scheduled_actions_bundle.back();
-        return children.at(segment_path);
+        scheduled_actions_bundle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::ScheduledActions::ScheduledActionsBundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActions::ScheduledActionsBundles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : scheduled_actions_bundle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4820,7 +4144,6 @@ BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBu
     scheduled_actions_bundle_item(std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem>())
 {
     scheduled_actions_bundle_item->parent = this;
-    children["scheduled-actions-bundle-item"] = scheduled_actions_bundle_item;
 
     yang_name = "scheduled-actions-bundle"; yang_parent_name = "scheduled-actions-bundles";
 }
@@ -4851,7 +4174,7 @@ std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedu
 
 }
 
-EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4875,41 +4198,24 @@ EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedul
 
 std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "scheduled-actions-bundle-item")
     {
-        if(scheduled_actions_bundle_item != nullptr)
-        {
-            children["scheduled-actions-bundle-item"] = scheduled_actions_bundle_item;
-        }
-        else
+        if(scheduled_actions_bundle_item == nullptr)
         {
             scheduled_actions_bundle_item = std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem>();
-            scheduled_actions_bundle_item->parent = this;
-            children["scheduled-actions-bundle-item"] = scheduled_actions_bundle_item;
         }
-        return children.at("scheduled-actions-bundle-item");
+        return scheduled_actions_bundle_item;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::get_children() const
 {
-    if(children.find("scheduled-actions-bundle-item") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(scheduled_actions_bundle_item != nullptr)
     {
-        if(scheduled_actions_bundle_item != nullptr)
-        {
-            children["scheduled-actions-bundle-item"] = scheduled_actions_bundle_item;
-        }
+        children["scheduled-actions-bundle-item"] = scheduled_actions_bundle_item;
     }
 
     return children;
@@ -4964,7 +4270,7 @@ std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedu
 
 }
 
-EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4988,15 +4294,6 @@ EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedul
 
 std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "scheduled-action")
     {
         for(auto const & c : scheduled_action)
@@ -5004,28 +4301,24 @@ std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction>();
         c->parent = this;
-        scheduled_action.push_back(std::move(c));
-        children[segment_path] = scheduled_action.back();
-        return children.at(segment_path);
+        scheduled_action.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : scheduled_action)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5076,7 +4369,7 @@ std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedu
 
 }
 
-EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5102,20 +4395,12 @@ EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedul
 
 std::shared_ptr<Entity> BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5141,10 +4426,8 @@ BundleInformation::Bundle::Bundle()
 	,bundle_members(std::make_shared<BundleInformation::Bundle::BundleMembers>())
 {
     bundle_bundles->parent = this;
-    children["bundle-bundles"] = bundle_bundles;
 
     bundle_members->parent = this;
-    children["bundle-members"] = bundle_members;
 
     yang_name = "bundle"; yang_parent_name = "bundle-information";
 }
@@ -5175,7 +4458,7 @@ std::string BundleInformation::Bundle::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::Bundle::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5198,64 +4481,38 @@ EntityPath BundleInformation::Bundle::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> BundleInformation::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-bundles")
     {
-        if(bundle_bundles != nullptr)
-        {
-            children["bundle-bundles"] = bundle_bundles;
-        }
-        else
+        if(bundle_bundles == nullptr)
         {
             bundle_bundles = std::make_shared<BundleInformation::Bundle::BundleBundles>();
-            bundle_bundles->parent = this;
-            children["bundle-bundles"] = bundle_bundles;
         }
-        return children.at("bundle-bundles");
+        return bundle_bundles;
     }
 
     if(child_yang_name == "bundle-members")
     {
-        if(bundle_members != nullptr)
-        {
-            children["bundle-members"] = bundle_members;
-        }
-        else
+        if(bundle_members == nullptr)
         {
             bundle_members = std::make_shared<BundleInformation::Bundle::BundleMembers>();
-            bundle_members->parent = this;
-            children["bundle-members"] = bundle_members;
         }
-        return children.at("bundle-members");
+        return bundle_members;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::get_children() const
 {
-    if(children.find("bundle-bundles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_bundles != nullptr)
     {
-        if(bundle_bundles != nullptr)
-        {
-            children["bundle-bundles"] = bundle_bundles;
-        }
+        children["bundle-bundles"] = bundle_bundles;
     }
 
-    if(children.find("bundle-members") == children.end())
+    if(bundle_members != nullptr)
     {
-        if(bundle_members != nullptr)
-        {
-            children["bundle-members"] = bundle_members;
-        }
+        children["bundle-members"] = bundle_members;
     }
 
     return children;
@@ -5303,7 +4560,7 @@ std::string BundleInformation::Bundle::BundleBundles::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5326,15 +4583,6 @@ EntityPath BundleInformation::Bundle::BundleBundles::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-bundle")
     {
         for(auto const & c : bundle_bundle)
@@ -5342,28 +4590,24 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle>();
         c->parent = this;
-        bundle_bundle.push_back(std::move(c));
-        children[segment_path] = bundle_bundle.back();
-        return children.at(segment_path);
+        bundle_bundle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bundle_bundle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5382,13 +4626,10 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle()
 	,bundle_bundle_item(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem>())
 {
     bundle_bundle_children_members->parent = this;
-    children["bundle-bundle-children-members"] = bundle_bundle_children_members;
 
     bundle_bundle_descendant->parent = this;
-    children["bundle-bundle-descendant"] = bundle_bundle_descendant;
 
     bundle_bundle_item->parent = this;
-    children["bundle-bundle-item"] = bundle_bundle_item;
 
     yang_name = "bundle-bundle"; yang_parent_name = "bundle-bundles";
 }
@@ -5423,7 +4664,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::get_segment_
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5447,87 +4688,52 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::get_entity_pa
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-bundle-children-members")
     {
-        if(bundle_bundle_children_members != nullptr)
-        {
-            children["bundle-bundle-children-members"] = bundle_bundle_children_members;
-        }
-        else
+        if(bundle_bundle_children_members == nullptr)
         {
             bundle_bundle_children_members = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers>();
-            bundle_bundle_children_members->parent = this;
-            children["bundle-bundle-children-members"] = bundle_bundle_children_members;
         }
-        return children.at("bundle-bundle-children-members");
+        return bundle_bundle_children_members;
     }
 
     if(child_yang_name == "bundle-bundle-descendant")
     {
-        if(bundle_bundle_descendant != nullptr)
-        {
-            children["bundle-bundle-descendant"] = bundle_bundle_descendant;
-        }
-        else
+        if(bundle_bundle_descendant == nullptr)
         {
             bundle_bundle_descendant = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant>();
-            bundle_bundle_descendant->parent = this;
-            children["bundle-bundle-descendant"] = bundle_bundle_descendant;
         }
-        return children.at("bundle-bundle-descendant");
+        return bundle_bundle_descendant;
     }
 
     if(child_yang_name == "bundle-bundle-item")
     {
-        if(bundle_bundle_item != nullptr)
-        {
-            children["bundle-bundle-item"] = bundle_bundle_item;
-        }
-        else
+        if(bundle_bundle_item == nullptr)
         {
             bundle_bundle_item = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem>();
-            bundle_bundle_item->parent = this;
-            children["bundle-bundle-item"] = bundle_bundle_item;
         }
-        return children.at("bundle-bundle-item");
+        return bundle_bundle_item;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::get_children() const
 {
-    if(children.find("bundle-bundle-children-members") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_bundle_children_members != nullptr)
     {
-        if(bundle_bundle_children_members != nullptr)
-        {
-            children["bundle-bundle-children-members"] = bundle_bundle_children_members;
-        }
+        children["bundle-bundle-children-members"] = bundle_bundle_children_members;
     }
 
-    if(children.find("bundle-bundle-descendant") == children.end())
+    if(bundle_bundle_descendant != nullptr)
     {
-        if(bundle_bundle_descendant != nullptr)
-        {
-            children["bundle-bundle-descendant"] = bundle_bundle_descendant;
-        }
+        children["bundle-bundle-descendant"] = bundle_bundle_descendant;
     }
 
-    if(children.find("bundle-bundle-item") == children.end())
+    if(bundle_bundle_item != nullptr)
     {
-        if(bundle_bundle_item != nullptr)
-        {
-            children["bundle-bundle-item"] = bundle_bundle_item;
-        }
+        children["bundle-bundle-item"] = bundle_bundle_item;
     }
 
     return children;
@@ -5546,7 +4752,6 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     bundle_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData>())
 {
     bundle_data->parent = this;
-    children["bundle-data"] = bundle_data;
 
     yang_name = "bundle-bundle-descendant"; yang_parent_name = "bundle-bundle";
 }
@@ -5585,7 +4790,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5608,28 +4813,13 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-data")
     {
-        if(bundle_data != nullptr)
-        {
-            children["bundle-data"] = bundle_data;
-        }
-        else
+        if(bundle_data == nullptr)
         {
             bundle_data = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData>();
-            bundle_data->parent = this;
-            children["bundle-data"] = bundle_data;
         }
-        return children.at("bundle-data");
+        return bundle_data;
     }
 
     if(child_yang_name == "member-data")
@@ -5639,36 +4829,29 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData>();
         c->parent = this;
-        member_data.push_back(std::move(c));
-        children[segment_path] = member_data.back();
-        return children.at(segment_path);
+        member_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::get_children() const
 {
-    if(children.find("bundle-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_data != nullptr)
     {
-        if(bundle_data != nullptr)
-        {
-            children["bundle-data"] = bundle_data;
-        }
+        children["bundle-data"] = bundle_data;
     }
 
     for (auto const & c : member_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5722,7 +4905,6 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress>())
 {
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     yang_name = "bundle-data"; yang_parent_name = "bundle-bundle-descendant";
 }
@@ -5837,7 +5019,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5898,15 +5080,6 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-config")
     {
         for(auto const & c : bfd_config)
@@ -5914,51 +5087,38 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(std::move(c));
-        children[segment_path] = bfd_config.back();
-        return children.at(segment_path);
+        bfd_config.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_config)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
     return children;
@@ -6151,7 +5311,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6175,20 +5335,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6214,7 +5366,6 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     destination_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
-    children["destination-address"] = destination_address;
 
     yang_name = "bfd-config"; yang_parent_name = "bundle-data";
 }
@@ -6259,7 +5410,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6290,41 +5441,24 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address")
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
-        else
+        if(destination_address == nullptr)
         {
             destination_address = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress>();
-            destination_address->parent = this;
-            children["destination-address"] = destination_address;
         }
-        return children.at("destination-address");
+        return destination_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::get_children() const
 {
-    if(children.find("destination-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_address != nullptr)
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
+        children["destination-address"] = destination_address;
     }
 
     return children;
@@ -6403,7 +5537,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6429,20 +5563,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6480,16 +5606,12 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
 	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     link_data->parent = this;
-    children["link-data"] = link_data;
 
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     member_mux_data->parent = this;
-    children["member-mux-data"] = member_mux_data;
 
     yang_name = "member-data"; yang_parent_name = "bundle-bundle-descendant";
 }
@@ -6542,7 +5664,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6574,110 +5696,66 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "link-data")
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
-        else
+        if(link_data == nullptr)
         {
             link_data = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData>();
-            link_data->parent = this;
-            children["link-data"] = link_data;
         }
-        return children.at("link-data");
+        return link_data;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     if(child_yang_name == "member-mux-data")
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
-        else
+        if(member_mux_data == nullptr)
         {
             member_mux_data = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData>();
-            member_mux_data->parent = this;
-            children["member-mux-data"] = member_mux_data;
         }
-        return children.at("member-mux-data");
+        return member_mux_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("link-data") == children.end())
+    if(link_data != nullptr)
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
+        children["link-data"] = link_data;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
-    if(children.find("member-mux-data") == children.end())
+    if(member_mux_data != nullptr)
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
+        children["member-mux-data"] = member_mux_data;
     }
 
     return children;
@@ -6784,7 +5862,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6818,20 +5896,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6956,7 +6026,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6994,20 +6064,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7086,7 +6148,6 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
-    children["member-mux-state-reason-data"] = member_mux_state_reason_data;
 
     yang_name = "member-mux-data"; yang_parent_name = "member-data";
 }
@@ -7125,7 +6186,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7153,41 +6214,24 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-mux-state-reason-data")
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
-        else
+        if(member_mux_state_reason_data == nullptr)
         {
             member_mux_state_reason_data = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData>();
-            member_mux_state_reason_data->parent = this;
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
         }
-        return children.at("member-mux-state-reason-data");
+        return member_mux_state_reason_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::get_children() const
 {
-    if(children.find("member-mux-state-reason-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(member_mux_state_reason_data != nullptr)
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
+        children["member-mux-state-reason-data"] = member_mux_state_reason_data;
     }
 
     return children;
@@ -7251,7 +6295,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7276,20 +6320,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7336,7 +6372,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7360,20 +6396,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7423,7 +6451,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7446,15 +6474,6 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-bundle-children-member")
     {
         for(auto const & c : bundle_bundle_children_member)
@@ -7462,28 +6481,24 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember>();
         c->parent = this;
-        bundle_bundle_children_member.push_back(std::move(c));
-        children[segment_path] = bundle_bundle_children_member.back();
-        return children.at(segment_path);
+        bundle_bundle_children_member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bundle_bundle_children_member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7512,16 +6527,12 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
 	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     link_data->parent = this;
-    children["link-data"] = link_data;
 
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     member_mux_data->parent = this;
-    children["member-mux-data"] = member_mux_data;
 
     yang_name = "bundle-bundle-children-member"; yang_parent_name = "bundle-bundle-children-members";
 }
@@ -7576,7 +6587,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7609,110 +6620,66 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "link-data")
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
-        else
+        if(link_data == nullptr)
         {
             link_data = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData>();
-            link_data->parent = this;
-            children["link-data"] = link_data;
         }
-        return children.at("link-data");
+        return link_data;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     if(child_yang_name == "member-mux-data")
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
-        else
+        if(member_mux_data == nullptr)
         {
             member_mux_data = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData>();
-            member_mux_data->parent = this;
-            children["member-mux-data"] = member_mux_data;
         }
-        return children.at("member-mux-data");
+        return member_mux_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("link-data") == children.end())
+    if(link_data != nullptr)
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
+        children["link-data"] = link_data;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
-    if(children.find("member-mux-data") == children.end())
+    if(member_mux_data != nullptr)
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
+        children["member-mux-data"] = member_mux_data;
     }
 
     return children;
@@ -7823,7 +6790,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7857,20 +6824,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7995,7 +6954,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8033,20 +6992,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8125,7 +7076,6 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
-    children["member-mux-state-reason-data"] = member_mux_state_reason_data;
 
     yang_name = "member-mux-data"; yang_parent_name = "bundle-bundle-children-member";
 }
@@ -8164,7 +7114,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8192,41 +7142,24 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-mux-state-reason-data")
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
-        else
+        if(member_mux_state_reason_data == nullptr)
         {
             member_mux_state_reason_data = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData>();
-            member_mux_state_reason_data->parent = this;
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
         }
-        return children.at("member-mux-state-reason-data");
+        return member_mux_state_reason_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::get_children() const
 {
-    if(children.find("member-mux-state-reason-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(member_mux_state_reason_data != nullptr)
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
+        children["member-mux-state-reason-data"] = member_mux_state_reason_data;
     }
 
     return children;
@@ -8290,7 +7223,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8315,20 +7248,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8375,7 +7300,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8399,20 +7324,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8468,7 +7385,6 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::Bundle
     mac_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress>())
 {
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     yang_name = "bundle-bundle-item"; yang_parent_name = "bundle-bundle";
 }
@@ -8583,7 +7499,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8644,15 +7560,6 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-config")
     {
         for(auto const & c : bfd_config)
@@ -8660,51 +7567,38 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(std::move(c));
-        children[segment_path] = bfd_config.back();
-        return children.at(segment_path);
+        bfd_config.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_config)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
     return children;
@@ -8897,7 +7791,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8921,20 +7815,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8960,7 +7846,6 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdCon
     destination_address(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
-    children["destination-address"] = destination_address;
 
     yang_name = "bfd-config"; yang_parent_name = "bundle-bundle-item";
 }
@@ -9005,7 +7890,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9036,41 +7921,24 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address")
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
-        else
+        if(destination_address == nullptr)
         {
             destination_address = std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress>();
-            destination_address->parent = this;
-            children["destination-address"] = destination_address;
         }
-        return children.at("destination-address");
+        return destination_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::get_children() const
 {
-    if(children.find("destination-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_address != nullptr)
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
+        children["destination-address"] = destination_address;
     }
 
     return children;
@@ -9149,7 +8017,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 
 }
 
-EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9175,20 +8043,12 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9246,7 +8106,7 @@ std::string BundleInformation::Bundle::BundleMembers::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9269,15 +8129,6 @@ EntityPath BundleInformation::Bundle::BundleMembers::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-member")
     {
         for(auto const & c : bundle_member)
@@ -9285,28 +8136,24 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember>();
         c->parent = this;
-        bundle_member.push_back(std::move(c));
-        children[segment_path] = bundle_member.back();
-        return children.at(segment_path);
+        bundle_member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bundle_member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9324,10 +8171,8 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember()
 	,bundle_member_item(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem>())
 {
     bundle_member_ancestor->parent = this;
-    children["bundle-member-ancestor"] = bundle_member_ancestor;
 
     bundle_member_item->parent = this;
-    children["bundle-member-item"] = bundle_member_item;
 
     yang_name = "bundle-member"; yang_parent_name = "bundle-members";
 }
@@ -9360,7 +8205,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::get_segment_
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9384,64 +8229,38 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::get_entity_pa
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-member-ancestor")
     {
-        if(bundle_member_ancestor != nullptr)
-        {
-            children["bundle-member-ancestor"] = bundle_member_ancestor;
-        }
-        else
+        if(bundle_member_ancestor == nullptr)
         {
             bundle_member_ancestor = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor>();
-            bundle_member_ancestor->parent = this;
-            children["bundle-member-ancestor"] = bundle_member_ancestor;
         }
-        return children.at("bundle-member-ancestor");
+        return bundle_member_ancestor;
     }
 
     if(child_yang_name == "bundle-member-item")
     {
-        if(bundle_member_item != nullptr)
-        {
-            children["bundle-member-item"] = bundle_member_item;
-        }
-        else
+        if(bundle_member_item == nullptr)
         {
             bundle_member_item = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem>();
-            bundle_member_item->parent = this;
-            children["bundle-member-item"] = bundle_member_item;
         }
-        return children.at("bundle-member-item");
+        return bundle_member_item;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::get_children() const
 {
-    if(children.find("bundle-member-ancestor") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_member_ancestor != nullptr)
     {
-        if(bundle_member_ancestor != nullptr)
-        {
-            children["bundle-member-ancestor"] = bundle_member_ancestor;
-        }
+        children["bundle-member-ancestor"] = bundle_member_ancestor;
     }
 
-    if(children.find("bundle-member-item") == children.end())
+    if(bundle_member_item != nullptr)
     {
-        if(bundle_member_item != nullptr)
-        {
-            children["bundle-member-item"] = bundle_member_item;
-        }
+        children["bundle-member-item"] = bundle_member_item;
     }
 
     return children;
@@ -9460,7 +8279,6 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
     bundle_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData>())
 {
     bundle_data->parent = this;
-    children["bundle-data"] = bundle_data;
 
     yang_name = "bundle-member-ancestor"; yang_parent_name = "bundle-member";
 }
@@ -9499,7 +8317,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9522,28 +8340,13 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-data")
     {
-        if(bundle_data != nullptr)
-        {
-            children["bundle-data"] = bundle_data;
-        }
-        else
+        if(bundle_data == nullptr)
         {
             bundle_data = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData>();
-            bundle_data->parent = this;
-            children["bundle-data"] = bundle_data;
         }
-        return children.at("bundle-data");
+        return bundle_data;
     }
 
     if(child_yang_name == "member-data")
@@ -9553,36 +8356,29 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData>();
         c->parent = this;
-        member_data.push_back(std::move(c));
-        children[segment_path] = member_data.back();
-        return children.at(segment_path);
+        member_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::get_children() const
 {
-    if(children.find("bundle-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_data != nullptr)
     {
-        if(bundle_data != nullptr)
-        {
-            children["bundle-data"] = bundle_data;
-        }
+        children["bundle-data"] = bundle_data;
     }
 
     for (auto const & c : member_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9636,7 +8432,6 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
     mac_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress>())
 {
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     yang_name = "bundle-data"; yang_parent_name = "bundle-member-ancestor";
 }
@@ -9751,7 +8546,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9812,15 +8607,6 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-config")
     {
         for(auto const & c : bfd_config)
@@ -9828,51 +8614,38 @@ std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(std::move(c));
-        children[segment_path] = bfd_config.back();
-        return children.at(segment_path);
+        bfd_config.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_config)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
     return children;
@@ -10065,7 +8838,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10089,20 +8862,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10128,7 +8893,6 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Bu
     destination_address(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
-    children["destination-address"] = destination_address;
 
     yang_name = "bfd-config"; yang_parent_name = "bundle-data";
 }
@@ -10173,7 +8937,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10204,41 +8968,24 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address")
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
-        else
+        if(destination_address == nullptr)
         {
             destination_address = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress>();
-            destination_address->parent = this;
-            children["destination-address"] = destination_address;
         }
-        return children.at("destination-address");
+        return destination_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::get_children() const
 {
-    if(children.find("destination-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_address != nullptr)
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
+        children["destination-address"] = destination_address;
     }
 
     return children;
@@ -10317,7 +9064,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10343,20 +9090,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10394,16 +9133,12 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
 	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     link_data->parent = this;
-    children["link-data"] = link_data;
 
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     member_mux_data->parent = this;
-    children["member-mux-data"] = member_mux_data;
 
     yang_name = "member-data"; yang_parent_name = "bundle-member-ancestor";
 }
@@ -10456,7 +9191,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10488,110 +9223,66 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "link-data")
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
-        else
+        if(link_data == nullptr)
         {
             link_data = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData>();
-            link_data->parent = this;
-            children["link-data"] = link_data;
         }
-        return children.at("link-data");
+        return link_data;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     if(child_yang_name == "member-mux-data")
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
-        else
+        if(member_mux_data == nullptr)
         {
             member_mux_data = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData>();
-            member_mux_data->parent = this;
-            children["member-mux-data"] = member_mux_data;
         }
-        return children.at("member-mux-data");
+        return member_mux_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("link-data") == children.end())
+    if(link_data != nullptr)
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
+        children["link-data"] = link_data;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
-    if(children.find("member-mux-data") == children.end())
+    if(member_mux_data != nullptr)
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
+        children["member-mux-data"] = member_mux_data;
     }
 
     return children;
@@ -10698,7 +9389,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10732,20 +9423,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10870,7 +9553,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10908,20 +9591,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11000,7 +9675,6 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
-    children["member-mux-state-reason-data"] = member_mux_state_reason_data;
 
     yang_name = "member-mux-data"; yang_parent_name = "member-data";
 }
@@ -11039,7 +9713,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11067,41 +9741,24 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-mux-state-reason-data")
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
-        else
+        if(member_mux_state_reason_data == nullptr)
         {
             member_mux_state_reason_data = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData>();
-            member_mux_state_reason_data->parent = this;
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
         }
-        return children.at("member-mux-state-reason-data");
+        return member_mux_state_reason_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::get_children() const
 {
-    if(children.find("member-mux-state-reason-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(member_mux_state_reason_data != nullptr)
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
+        children["member-mux-state-reason-data"] = member_mux_state_reason_data;
     }
 
     return children;
@@ -11165,7 +9822,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11190,20 +9847,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11250,7 +9899,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11274,20 +9923,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11317,16 +9958,12 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Bundle
 	,member_mux_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     link_data->parent = this;
-    children["link-data"] = link_data;
 
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     member_mux_data->parent = this;
-    children["member-mux-data"] = member_mux_data;
 
     yang_name = "bundle-member-item"; yang_parent_name = "bundle-member";
 }
@@ -11379,7 +10016,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11411,110 +10048,66 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "link-data")
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
-        else
+        if(link_data == nullptr)
         {
             link_data = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData>();
-            link_data->parent = this;
-            children["link-data"] = link_data;
         }
-        return children.at("link-data");
+        return link_data;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     if(child_yang_name == "member-mux-data")
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
-        else
+        if(member_mux_data == nullptr)
         {
             member_mux_data = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData>();
-            member_mux_data->parent = this;
-            children["member-mux-data"] = member_mux_data;
         }
-        return children.at("member-mux-data");
+        return member_mux_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("link-data") == children.end())
+    if(link_data != nullptr)
     {
-        if(link_data != nullptr)
-        {
-            children["link-data"] = link_data;
-        }
+        children["link-data"] = link_data;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
-    if(children.find("member-mux-data") == children.end())
+    if(member_mux_data != nullptr)
     {
-        if(member_mux_data != nullptr)
-        {
-            children["member-mux-data"] = member_mux_data;
-        }
+        children["member-mux-data"] = member_mux_data;
     }
 
     return children;
@@ -11621,7 +10214,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11655,20 +10248,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11793,7 +10378,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11831,20 +10416,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11923,7 +10500,6 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Member
     member_mux_state_reason_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData>())
 {
     member_mux_state_reason_data->parent = this;
-    children["member-mux-state-reason-data"] = member_mux_state_reason_data;
 
     yang_name = "member-mux-data"; yang_parent_name = "bundle-member-item";
 }
@@ -11962,7 +10538,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11990,41 +10566,24 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-mux-state-reason-data")
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
-        else
+        if(member_mux_state_reason_data == nullptr)
         {
             member_mux_state_reason_data = std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData>();
-            member_mux_state_reason_data->parent = this;
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
         }
-        return children.at("member-mux-state-reason-data");
+        return member_mux_state_reason_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::get_children() const
 {
-    if(children.find("member-mux-state-reason-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(member_mux_state_reason_data != nullptr)
     {
-        if(member_mux_state_reason_data != nullptr)
-        {
-            children["member-mux-state-reason-data"] = member_mux_state_reason_data;
-        }
+        children["member-mux-state-reason-data"] = member_mux_state_reason_data;
     }
 
     return children;
@@ -12088,7 +10647,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12113,20 +10672,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12173,7 +10724,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 
 }
 
-EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12197,20 +10748,12 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
 
 std::shared_ptr<Entity> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12229,13 +10772,10 @@ BundleInformation::EventsRg::EventsRg()
 	,events_rg_members(std::make_shared<BundleInformation::EventsRg::EventsRgMembers>())
 {
     events_rg_bundles->parent = this;
-    children["events-rg-bundles"] = events_rg_bundles;
 
     events_rg_iccp_groups->parent = this;
-    children["events-rg-iccp-groups"] = events_rg_iccp_groups;
 
     events_rg_members->parent = this;
-    children["events-rg-members"] = events_rg_members;
 
     yang_name = "events-rg"; yang_parent_name = "bundle-information";
 }
@@ -12268,7 +10808,7 @@ std::string BundleInformation::EventsRg::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::EventsRg::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12291,87 +10831,52 @@ EntityPath BundleInformation::EventsRg::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events-rg-bundles")
     {
-        if(events_rg_bundles != nullptr)
-        {
-            children["events-rg-bundles"] = events_rg_bundles;
-        }
-        else
+        if(events_rg_bundles == nullptr)
         {
             events_rg_bundles = std::make_shared<BundleInformation::EventsRg::EventsRgBundles>();
-            events_rg_bundles->parent = this;
-            children["events-rg-bundles"] = events_rg_bundles;
         }
-        return children.at("events-rg-bundles");
+        return events_rg_bundles;
     }
 
     if(child_yang_name == "events-rg-iccp-groups")
     {
-        if(events_rg_iccp_groups != nullptr)
-        {
-            children["events-rg-iccp-groups"] = events_rg_iccp_groups;
-        }
-        else
+        if(events_rg_iccp_groups == nullptr)
         {
             events_rg_iccp_groups = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups>();
-            events_rg_iccp_groups->parent = this;
-            children["events-rg-iccp-groups"] = events_rg_iccp_groups;
         }
-        return children.at("events-rg-iccp-groups");
+        return events_rg_iccp_groups;
     }
 
     if(child_yang_name == "events-rg-members")
     {
-        if(events_rg_members != nullptr)
-        {
-            children["events-rg-members"] = events_rg_members;
-        }
-        else
+        if(events_rg_members == nullptr)
         {
             events_rg_members = std::make_shared<BundleInformation::EventsRg::EventsRgMembers>();
-            events_rg_members->parent = this;
-            children["events-rg-members"] = events_rg_members;
         }
-        return children.at("events-rg-members");
+        return events_rg_members;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::get_children() const
 {
-    if(children.find("events-rg-bundles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(events_rg_bundles != nullptr)
     {
-        if(events_rg_bundles != nullptr)
-        {
-            children["events-rg-bundles"] = events_rg_bundles;
-        }
+        children["events-rg-bundles"] = events_rg_bundles;
     }
 
-    if(children.find("events-rg-iccp-groups") == children.end())
+    if(events_rg_iccp_groups != nullptr)
     {
-        if(events_rg_iccp_groups != nullptr)
-        {
-            children["events-rg-iccp-groups"] = events_rg_iccp_groups;
-        }
+        children["events-rg-iccp-groups"] = events_rg_iccp_groups;
     }
 
-    if(children.find("events-rg-members") == children.end())
+    if(events_rg_members != nullptr)
     {
-        if(events_rg_members != nullptr)
-        {
-            children["events-rg-members"] = events_rg_members;
-        }
+        children["events-rg-members"] = events_rg_members;
     }
 
     return children;
@@ -12419,7 +10924,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::get_segment_path() con
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12442,15 +10947,6 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::get_entity_path(Entity*
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events-rg-member")
     {
         for(auto const & c : events_rg_member)
@@ -12458,28 +10954,24 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember>();
         c->parent = this;
-        events_rg_member.push_back(std::move(c));
-        children[segment_path] = events_rg_member.back();
-        return children.at(segment_path);
+        events_rg_member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : events_rg_member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12496,7 +10988,6 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMember()
     events_rg_member_ancestor(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor>())
 {
     events_rg_member_ancestor->parent = this;
-    children["events-rg-member-ancestor"] = events_rg_member_ancestor;
 
     yang_name = "events-rg-member"; yang_parent_name = "events-rg-members";
 }
@@ -12527,7 +11018,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_se
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12551,41 +11042,24 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_ent
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events-rg-member-ancestor")
     {
-        if(events_rg_member_ancestor != nullptr)
-        {
-            children["events-rg-member-ancestor"] = events_rg_member_ancestor;
-        }
-        else
+        if(events_rg_member_ancestor == nullptr)
         {
             events_rg_member_ancestor = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor>();
-            events_rg_member_ancestor->parent = this;
-            children["events-rg-member-ancestor"] = events_rg_member_ancestor;
         }
-        return children.at("events-rg-member-ancestor");
+        return events_rg_member_ancestor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_children() const
 {
-    if(children.find("events-rg-member-ancestor") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(events_rg_member_ancestor != nullptr)
     {
-        if(events_rg_member_ancestor != nullptr)
-        {
-            children["events-rg-member-ancestor"] = events_rg_member_ancestor;
-        }
+        children["events-rg-member-ancestor"] = events_rg_member_ancestor;
     }
 
     return children;
@@ -12640,7 +11114,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12664,15 +11138,6 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "items")
     {
         for(auto const & c : items)
@@ -12680,28 +11145,24 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMe
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items>();
         c->parent = this;
-        items.push_back(std::move(c));
-        children[segment_path] = items.back();
-        return children.at(segment_path);
+        items.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : items)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12724,13 +11185,10 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
 	,rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo>())
 {
     bundle_evt_info->parent = this;
-    children["bundle-evt-info"] = bundle_evt_info;
 
     member_evt_info->parent = this;
-    children["member-evt-info"] = member_evt_info;
 
     rg_evt_info->parent = this;
-    children["rg-evt-info"] = rg_evt_info;
 
     yang_name = "items"; yang_parent_name = "events-rg-member-ancestor";
 }
@@ -12765,7 +11223,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12789,87 +11247,52 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-evt-info")
     {
-        if(bundle_evt_info != nullptr)
-        {
-            children["bundle-evt-info"] = bundle_evt_info;
-        }
-        else
+        if(bundle_evt_info == nullptr)
         {
             bundle_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo>();
-            bundle_evt_info->parent = this;
-            children["bundle-evt-info"] = bundle_evt_info;
         }
-        return children.at("bundle-evt-info");
+        return bundle_evt_info;
     }
 
     if(child_yang_name == "member-evt-info")
     {
-        if(member_evt_info != nullptr)
-        {
-            children["member-evt-info"] = member_evt_info;
-        }
-        else
+        if(member_evt_info == nullptr)
         {
             member_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo>();
-            member_evt_info->parent = this;
-            children["member-evt-info"] = member_evt_info;
         }
-        return children.at("member-evt-info");
+        return member_evt_info;
     }
 
     if(child_yang_name == "rg-evt-info")
     {
-        if(rg_evt_info != nullptr)
-        {
-            children["rg-evt-info"] = rg_evt_info;
-        }
-        else
+        if(rg_evt_info == nullptr)
         {
             rg_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo>();
-            rg_evt_info->parent = this;
-            children["rg-evt-info"] = rg_evt_info;
         }
-        return children.at("rg-evt-info");
+        return rg_evt_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::get_children() const
 {
-    if(children.find("bundle-evt-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_evt_info != nullptr)
     {
-        if(bundle_evt_info != nullptr)
-        {
-            children["bundle-evt-info"] = bundle_evt_info;
-        }
+        children["bundle-evt-info"] = bundle_evt_info;
     }
 
-    if(children.find("member-evt-info") == children.end())
+    if(member_evt_info != nullptr)
     {
-        if(member_evt_info != nullptr)
-        {
-            children["member-evt-info"] = member_evt_info;
-        }
+        children["member-evt-info"] = member_evt_info;
     }
 
-    if(children.find("rg-evt-info") == children.end())
+    if(rg_evt_info != nullptr)
     {
-        if(rg_evt_info != nullptr)
-        {
-            children["rg-evt-info"] = rg_evt_info;
-        }
+        children["rg-evt-info"] = rg_evt_info;
     }
 
     return children;
@@ -12891,7 +11314,6 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     data(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "member-evt-info"; yang_parent_name = "items";
 }
@@ -12924,7 +11346,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12949,41 +11371,24 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -13041,7 +11446,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13068,20 +11473,12 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13113,7 +11510,6 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     data(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "bundle-evt-info"; yang_parent_name = "items";
 }
@@ -13146,7 +11542,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13171,41 +11567,24 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -13263,7 +11642,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13290,20 +11669,12 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13335,7 +11706,6 @@ BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAnce
     data(std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "rg-evt-info"; yang_parent_name = "items";
 }
@@ -13368,7 +11738,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13393,41 +11763,24 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -13485,7 +11838,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13512,20 +11865,12 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13587,7 +11932,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::get_segment_path() 
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13610,15 +11955,6 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::get_entity_path(Enti
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events-rg-iccp-group")
     {
         for(auto const & c : events_rg_iccp_group)
@@ -13626,28 +11962,24 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup>();
         c->parent = this;
-        events_rg_iccp_group.push_back(std::move(c));
-        children[segment_path] = events_rg_iccp_group.back();
-        return children.at(segment_path);
+        events_rg_iccp_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : events_rg_iccp_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13664,7 +11996,6 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgIccp
     events_rg_bundle_item_iccp_group(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup>())
 {
     events_rg_bundle_item_iccp_group->parent = this;
-    children["events-rg-bundle-item-iccp-group"] = events_rg_bundle_item_iccp_group;
 
     yang_name = "events-rg-iccp-group"; yang_parent_name = "events-rg-iccp-groups";
 }
@@ -13695,7 +12026,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13719,41 +12050,24 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::g
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events-rg-bundle-item-iccp-group")
     {
-        if(events_rg_bundle_item_iccp_group != nullptr)
-        {
-            children["events-rg-bundle-item-iccp-group"] = events_rg_bundle_item_iccp_group;
-        }
-        else
+        if(events_rg_bundle_item_iccp_group == nullptr)
         {
             events_rg_bundle_item_iccp_group = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup>();
-            events_rg_bundle_item_iccp_group->parent = this;
-            children["events-rg-bundle-item-iccp-group"] = events_rg_bundle_item_iccp_group;
         }
-        return children.at("events-rg-bundle-item-iccp-group");
+        return events_rg_bundle_item_iccp_group;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::get_children() const
 {
-    if(children.find("events-rg-bundle-item-iccp-group") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(events_rg_bundle_item_iccp_group != nullptr)
     {
-        if(events_rg_bundle_item_iccp_group != nullptr)
-        {
-            children["events-rg-bundle-item-iccp-group"] = events_rg_bundle_item_iccp_group;
-        }
+        children["events-rg-bundle-item-iccp-group"] = events_rg_bundle_item_iccp_group;
     }
 
     return children;
@@ -13808,7 +12122,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13832,15 +12146,6 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "items")
     {
         for(auto const & c : items)
@@ -13848,28 +12153,24 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsR
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items>();
         c->parent = this;
-        items.push_back(std::move(c));
-        children[segment_path] = items.back();
-        return children.at(segment_path);
+        items.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : items)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13892,13 +12193,10 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
 	,rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo>())
 {
     bundle_evt_info->parent = this;
-    children["bundle-evt-info"] = bundle_evt_info;
 
     member_evt_info->parent = this;
-    children["member-evt-info"] = member_evt_info;
 
     rg_evt_info->parent = this;
-    children["rg-evt-info"] = rg_evt_info;
 
     yang_name = "items"; yang_parent_name = "events-rg-bundle-item-iccp-group";
 }
@@ -13933,7 +12231,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13957,87 +12255,52 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-evt-info")
     {
-        if(bundle_evt_info != nullptr)
-        {
-            children["bundle-evt-info"] = bundle_evt_info;
-        }
-        else
+        if(bundle_evt_info == nullptr)
         {
             bundle_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo>();
-            bundle_evt_info->parent = this;
-            children["bundle-evt-info"] = bundle_evt_info;
         }
-        return children.at("bundle-evt-info");
+        return bundle_evt_info;
     }
 
     if(child_yang_name == "member-evt-info")
     {
-        if(member_evt_info != nullptr)
-        {
-            children["member-evt-info"] = member_evt_info;
-        }
-        else
+        if(member_evt_info == nullptr)
         {
             member_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo>();
-            member_evt_info->parent = this;
-            children["member-evt-info"] = member_evt_info;
         }
-        return children.at("member-evt-info");
+        return member_evt_info;
     }
 
     if(child_yang_name == "rg-evt-info")
     {
-        if(rg_evt_info != nullptr)
-        {
-            children["rg-evt-info"] = rg_evt_info;
-        }
-        else
+        if(rg_evt_info == nullptr)
         {
             rg_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo>();
-            rg_evt_info->parent = this;
-            children["rg-evt-info"] = rg_evt_info;
         }
-        return children.at("rg-evt-info");
+        return rg_evt_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::get_children() const
 {
-    if(children.find("bundle-evt-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_evt_info != nullptr)
     {
-        if(bundle_evt_info != nullptr)
-        {
-            children["bundle-evt-info"] = bundle_evt_info;
-        }
+        children["bundle-evt-info"] = bundle_evt_info;
     }
 
-    if(children.find("member-evt-info") == children.end())
+    if(member_evt_info != nullptr)
     {
-        if(member_evt_info != nullptr)
-        {
-            children["member-evt-info"] = member_evt_info;
-        }
+        children["member-evt-info"] = member_evt_info;
     }
 
-    if(children.find("rg-evt-info") == children.end())
+    if(rg_evt_info != nullptr)
     {
-        if(rg_evt_info != nullptr)
-        {
-            children["rg-evt-info"] = rg_evt_info;
-        }
+        children["rg-evt-info"] = rg_evt_info;
     }
 
     return children;
@@ -14059,7 +12322,6 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     data(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "member-evt-info"; yang_parent_name = "items";
 }
@@ -14092,7 +12354,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14117,41 +12379,24 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -14209,7 +12454,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14236,20 +12481,12 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14281,7 +12518,6 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     data(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "bundle-evt-info"; yang_parent_name = "items";
 }
@@ -14314,7 +12550,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14339,41 +12575,24 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -14431,7 +12650,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14458,20 +12677,12 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14503,7 +12714,6 @@ BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBund
     data(std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "rg-evt-info"; yang_parent_name = "items";
 }
@@ -14536,7 +12746,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14561,41 +12771,24 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -14653,7 +12846,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14680,20 +12873,12 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14755,7 +12940,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::get_segment_path() con
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14778,15 +12963,6 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::get_entity_path(Entity*
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events-rg-bundle")
     {
         for(auto const & c : events_rg_bundle)
@@ -14794,28 +12970,24 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle>();
         c->parent = this;
-        events_rg_bundle.push_back(std::move(c));
-        children[segment_path] = events_rg_bundle.back();
-        return children.at(segment_path);
+        events_rg_bundle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : events_rg_bundle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14832,7 +13004,6 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundle()
     events_rg_bundle_ancestor(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor>())
 {
     events_rg_bundle_ancestor->parent = this;
-    children["events-rg-bundle-ancestor"] = events_rg_bundle_ancestor;
 
     yang_name = "events-rg-bundle"; yang_parent_name = "events-rg-bundles";
 }
@@ -14863,7 +13034,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_se
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14887,41 +13058,24 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_ent
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events-rg-bundle-ancestor")
     {
-        if(events_rg_bundle_ancestor != nullptr)
-        {
-            children["events-rg-bundle-ancestor"] = events_rg_bundle_ancestor;
-        }
-        else
+        if(events_rg_bundle_ancestor == nullptr)
         {
             events_rg_bundle_ancestor = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor>();
-            events_rg_bundle_ancestor->parent = this;
-            children["events-rg-bundle-ancestor"] = events_rg_bundle_ancestor;
         }
-        return children.at("events-rg-bundle-ancestor");
+        return events_rg_bundle_ancestor;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_children() const
 {
-    if(children.find("events-rg-bundle-ancestor") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(events_rg_bundle_ancestor != nullptr)
     {
-        if(events_rg_bundle_ancestor != nullptr)
-        {
-            children["events-rg-bundle-ancestor"] = events_rg_bundle_ancestor;
-        }
+        children["events-rg-bundle-ancestor"] = events_rg_bundle_ancestor;
     }
 
     return children;
@@ -14976,7 +13130,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15000,15 +13154,6 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "items")
     {
         for(auto const & c : items)
@@ -15016,28 +13161,24 @@ std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items>();
         c->parent = this;
-        items.push_back(std::move(c));
-        children[segment_path] = items.back();
-        return children.at(segment_path);
+        items.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : items)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15060,13 +13201,10 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
 	,rg_evt_info(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo>())
 {
     bundle_evt_info->parent = this;
-    children["bundle-evt-info"] = bundle_evt_info;
 
     member_evt_info->parent = this;
-    children["member-evt-info"] = member_evt_info;
 
     rg_evt_info->parent = this;
-    children["rg-evt-info"] = rg_evt_info;
 
     yang_name = "items"; yang_parent_name = "events-rg-bundle-ancestor";
 }
@@ -15101,7 +13239,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15125,87 +13263,52 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-evt-info")
     {
-        if(bundle_evt_info != nullptr)
-        {
-            children["bundle-evt-info"] = bundle_evt_info;
-        }
-        else
+        if(bundle_evt_info == nullptr)
         {
             bundle_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo>();
-            bundle_evt_info->parent = this;
-            children["bundle-evt-info"] = bundle_evt_info;
         }
-        return children.at("bundle-evt-info");
+        return bundle_evt_info;
     }
 
     if(child_yang_name == "member-evt-info")
     {
-        if(member_evt_info != nullptr)
-        {
-            children["member-evt-info"] = member_evt_info;
-        }
-        else
+        if(member_evt_info == nullptr)
         {
             member_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo>();
-            member_evt_info->parent = this;
-            children["member-evt-info"] = member_evt_info;
         }
-        return children.at("member-evt-info");
+        return member_evt_info;
     }
 
     if(child_yang_name == "rg-evt-info")
     {
-        if(rg_evt_info != nullptr)
-        {
-            children["rg-evt-info"] = rg_evt_info;
-        }
-        else
+        if(rg_evt_info == nullptr)
         {
             rg_evt_info = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo>();
-            rg_evt_info->parent = this;
-            children["rg-evt-info"] = rg_evt_info;
         }
-        return children.at("rg-evt-info");
+        return rg_evt_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::get_children() const
 {
-    if(children.find("bundle-evt-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_evt_info != nullptr)
     {
-        if(bundle_evt_info != nullptr)
-        {
-            children["bundle-evt-info"] = bundle_evt_info;
-        }
+        children["bundle-evt-info"] = bundle_evt_info;
     }
 
-    if(children.find("member-evt-info") == children.end())
+    if(member_evt_info != nullptr)
     {
-        if(member_evt_info != nullptr)
-        {
-            children["member-evt-info"] = member_evt_info;
-        }
+        children["member-evt-info"] = member_evt_info;
     }
 
-    if(children.find("rg-evt-info") == children.end())
+    if(rg_evt_info != nullptr)
     {
-        if(rg_evt_info != nullptr)
-        {
-            children["rg-evt-info"] = rg_evt_info;
-        }
+        children["rg-evt-info"] = rg_evt_info;
     }
 
     return children;
@@ -15227,7 +13330,6 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     data(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "member-evt-info"; yang_parent_name = "items";
 }
@@ -15260,7 +13362,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15285,41 +13387,24 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -15377,7 +13462,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15404,20 +13489,12 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15449,7 +13526,6 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     data(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "bundle-evt-info"; yang_parent_name = "items";
 }
@@ -15482,7 +13558,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15507,41 +13583,24 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -15599,7 +13658,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15626,20 +13685,12 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15671,7 +13722,6 @@ BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAnce
     data(std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data>())
 {
     data->parent = this;
-    children["data"] = data;
 
     yang_name = "rg-evt-info"; yang_parent_name = "items";
 }
@@ -15704,7 +13754,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15729,41 +13779,24 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "data")
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
-        else
+        if(data == nullptr)
         {
             data = std::make_shared<BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data>();
-            data->parent = this;
-            children["data"] = data;
         }
-        return children.at("data");
+        return data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::get_children() const
 {
-    if(children.find("data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(data != nullptr)
     {
-        if(data != nullptr)
-        {
-            children["data"] = data;
-        }
+        children["data"] = data;
     }
 
     return children;
@@ -15821,7 +13854,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 
 }
 
-EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15848,20 +13881,12 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
 
 std::shared_ptr<Entity> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15891,10 +13916,8 @@ BundleInformation::Lacp::Lacp()
 	,lacp_members(std::make_shared<BundleInformation::Lacp::LacpMembers>())
 {
     lacp_bundles->parent = this;
-    children["lacp-bundles"] = lacp_bundles;
 
     lacp_members->parent = this;
-    children["lacp-members"] = lacp_members;
 
     yang_name = "lacp"; yang_parent_name = "bundle-information";
 }
@@ -15925,7 +13948,7 @@ std::string BundleInformation::Lacp::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::Lacp::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15948,64 +13971,38 @@ EntityPath BundleInformation::Lacp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> BundleInformation::Lacp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lacp-bundles")
     {
-        if(lacp_bundles != nullptr)
-        {
-            children["lacp-bundles"] = lacp_bundles;
-        }
-        else
+        if(lacp_bundles == nullptr)
         {
             lacp_bundles = std::make_shared<BundleInformation::Lacp::LacpBundles>();
-            lacp_bundles->parent = this;
-            children["lacp-bundles"] = lacp_bundles;
         }
-        return children.at("lacp-bundles");
+        return lacp_bundles;
     }
 
     if(child_yang_name == "lacp-members")
     {
-        if(lacp_members != nullptr)
-        {
-            children["lacp-members"] = lacp_members;
-        }
-        else
+        if(lacp_members == nullptr)
         {
             lacp_members = std::make_shared<BundleInformation::Lacp::LacpMembers>();
-            lacp_members->parent = this;
-            children["lacp-members"] = lacp_members;
         }
-        return children.at("lacp-members");
+        return lacp_members;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::get_children() const
 {
-    if(children.find("lacp-bundles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lacp_bundles != nullptr)
     {
-        if(lacp_bundles != nullptr)
-        {
-            children["lacp-bundles"] = lacp_bundles;
-        }
+        children["lacp-bundles"] = lacp_bundles;
     }
 
-    if(children.find("lacp-members") == children.end())
+    if(lacp_members != nullptr)
     {
-        if(lacp_members != nullptr)
-        {
-            children["lacp-members"] = lacp_members;
-        }
+        children["lacp-members"] = lacp_members;
     }
 
     return children;
@@ -16053,7 +14050,7 @@ std::string BundleInformation::Lacp::LacpBundles::get_segment_path() const
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16076,15 +14073,6 @@ EntityPath BundleInformation::Lacp::LacpBundles::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lacp-bundle")
     {
         for(auto const & c : lacp_bundle)
@@ -16092,28 +14080,24 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle>();
         c->parent = this;
-        lacp_bundle.push_back(std::move(c));
-        children[segment_path] = lacp_bundle.back();
-        return children.at(segment_path);
+        lacp_bundle.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lacp_bundle)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16132,13 +14116,10 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundle()
 	,lacp_bundle_item(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem>())
 {
     lacp_bundle_children_members->parent = this;
-    children["lacp-bundle-children-members"] = lacp_bundle_children_members;
 
     lacp_bundle_descendant->parent = this;
-    children["lacp-bundle-descendant"] = lacp_bundle_descendant;
 
     lacp_bundle_item->parent = this;
-    children["lacp-bundle-item"] = lacp_bundle_item;
 
     yang_name = "lacp-bundle"; yang_parent_name = "lacp-bundles";
 }
@@ -16173,7 +14154,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::get_segment_path()
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16197,87 +14178,52 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::get_entity_path(Ent
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lacp-bundle-children-members")
     {
-        if(lacp_bundle_children_members != nullptr)
-        {
-            children["lacp-bundle-children-members"] = lacp_bundle_children_members;
-        }
-        else
+        if(lacp_bundle_children_members == nullptr)
         {
             lacp_bundle_children_members = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers>();
-            lacp_bundle_children_members->parent = this;
-            children["lacp-bundle-children-members"] = lacp_bundle_children_members;
         }
-        return children.at("lacp-bundle-children-members");
+        return lacp_bundle_children_members;
     }
 
     if(child_yang_name == "lacp-bundle-descendant")
     {
-        if(lacp_bundle_descendant != nullptr)
-        {
-            children["lacp-bundle-descendant"] = lacp_bundle_descendant;
-        }
-        else
+        if(lacp_bundle_descendant == nullptr)
         {
             lacp_bundle_descendant = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant>();
-            lacp_bundle_descendant->parent = this;
-            children["lacp-bundle-descendant"] = lacp_bundle_descendant;
         }
-        return children.at("lacp-bundle-descendant");
+        return lacp_bundle_descendant;
     }
 
     if(child_yang_name == "lacp-bundle-item")
     {
-        if(lacp_bundle_item != nullptr)
-        {
-            children["lacp-bundle-item"] = lacp_bundle_item;
-        }
-        else
+        if(lacp_bundle_item == nullptr)
         {
             lacp_bundle_item = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem>();
-            lacp_bundle_item->parent = this;
-            children["lacp-bundle-item"] = lacp_bundle_item;
         }
-        return children.at("lacp-bundle-item");
+        return lacp_bundle_item;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::get_children() const
 {
-    if(children.find("lacp-bundle-children-members") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lacp_bundle_children_members != nullptr)
     {
-        if(lacp_bundle_children_members != nullptr)
-        {
-            children["lacp-bundle-children-members"] = lacp_bundle_children_members;
-        }
+        children["lacp-bundle-children-members"] = lacp_bundle_children_members;
     }
 
-    if(children.find("lacp-bundle-descendant") == children.end())
+    if(lacp_bundle_descendant != nullptr)
     {
-        if(lacp_bundle_descendant != nullptr)
-        {
-            children["lacp-bundle-descendant"] = lacp_bundle_descendant;
-        }
+        children["lacp-bundle-descendant"] = lacp_bundle_descendant;
     }
 
-    if(children.find("lacp-bundle-item") == children.end())
+    if(lacp_bundle_item != nullptr)
     {
-        if(lacp_bundle_item != nullptr)
-        {
-            children["lacp-bundle-item"] = lacp_bundle_item;
-        }
+        children["lacp-bundle-item"] = lacp_bundle_item;
     }
 
     return children;
@@ -16302,10 +14248,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::LacpBundleItem
 	,bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId>())
 {
     actor_bundle_data->parent = this;
-    children["actor-bundle-data"] = actor_bundle_data;
 
     bundle_system_id->parent = this;
-    children["bundle-system-id"] = bundle_system_id;
 
     yang_name = "lacp-bundle-item"; yang_parent_name = "lacp-bundle";
 }
@@ -16344,7 +14288,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ge
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16371,64 +14315,38 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "actor-bundle-data")
     {
-        if(actor_bundle_data != nullptr)
-        {
-            children["actor-bundle-data"] = actor_bundle_data;
-        }
-        else
+        if(actor_bundle_data == nullptr)
         {
             actor_bundle_data = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData>();
-            actor_bundle_data->parent = this;
-            children["actor-bundle-data"] = actor_bundle_data;
         }
-        return children.at("actor-bundle-data");
+        return actor_bundle_data;
     }
 
     if(child_yang_name == "bundle-system-id")
     {
-        if(bundle_system_id != nullptr)
-        {
-            children["bundle-system-id"] = bundle_system_id;
-        }
-        else
+        if(bundle_system_id == nullptr)
         {
             bundle_system_id = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId>();
-            bundle_system_id->parent = this;
-            children["bundle-system-id"] = bundle_system_id;
         }
-        return children.at("bundle-system-id");
+        return bundle_system_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get_children() const
 {
-    if(children.find("actor-bundle-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(actor_bundle_data != nullptr)
     {
-        if(actor_bundle_data != nullptr)
-        {
-            children["actor-bundle-data"] = actor_bundle_data;
-        }
+        children["actor-bundle-data"] = actor_bundle_data;
     }
 
-    if(children.find("bundle-system-id") == children.end())
+    if(bundle_system_id != nullptr)
     {
-        if(bundle_system_id != nullptr)
-        {
-            children["bundle-system-id"] = bundle_system_id;
-        }
+        children["bundle-system-id"] = bundle_system_id;
     }
 
     return children;
@@ -16498,7 +14416,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
     mac_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress>())
 {
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     yang_name = "actor-bundle-data"; yang_parent_name = "lacp-bundle-item";
 }
@@ -16613,7 +14530,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Ac
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16674,15 +14591,6 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-config")
     {
         for(auto const & c : bfd_config)
@@ -16690,51 +14598,38 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(std::move(c));
-        children[segment_path] = bfd_config.back();
-        return children.at(segment_path);
+        bfd_config.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_config)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
     return children;
@@ -16927,7 +14822,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Ac
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16951,20 +14846,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16990,7 +14877,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleDat
     destination_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
-    children["destination-address"] = destination_address;
 
     yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data";
 }
@@ -17035,7 +14921,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Ac
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17066,41 +14952,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address")
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
-        else
+        if(destination_address == nullptr)
         {
             destination_address = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress>();
-            destination_address->parent = this;
-            children["destination-address"] = destination_address;
         }
-        return children.at("destination-address");
+        return destination_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::get_children() const
 {
-    if(children.find("destination-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_address != nullptr)
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
+        children["destination-address"] = destination_address;
     }
 
     return children;
@@ -17179,7 +15048,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Ac
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17205,20 +15074,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17245,7 +15106,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
-    children["system-mac-addr"] = system_mac_addr;
 
     yang_name = "bundle-system-id"; yang_parent_name = "lacp-bundle-item";
 }
@@ -17276,7 +15136,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Bu
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17300,41 +15160,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Bun
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "system-mac-addr")
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
-        else
+        if(system_mac_addr == nullptr)
         {
             system_mac_addr = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr>();
-            system_mac_addr->parent = this;
-            children["system-mac-addr"] = system_mac_addr;
         }
-        return children.at("system-mac-addr");
+        return system_mac_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::get_children() const
 {
-    if(children.find("system-mac-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(system_mac_addr != nullptr)
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
+        children["system-mac-addr"] = system_mac_addr;
     }
 
     return children;
@@ -17379,7 +15222,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Bu
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17403,20 +15246,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Bun
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17433,7 +15268,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::LacpBund
     bundle_data(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData>())
 {
     bundle_data->parent = this;
-    children["bundle-data"] = bundle_data;
 
     yang_name = "lacp-bundle-descendant"; yang_parent_name = "lacp-bundle";
 }
@@ -17472,7 +15306,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17495,28 +15329,13 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bundle-data")
     {
-        if(bundle_data != nullptr)
-        {
-            children["bundle-data"] = bundle_data;
-        }
-        else
+        if(bundle_data == nullptr)
         {
             bundle_data = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData>();
-            bundle_data->parent = this;
-            children["bundle-data"] = bundle_data;
         }
-        return children.at("bundle-data");
+        return bundle_data;
     }
 
     if(child_yang_name == "member-data")
@@ -17526,36 +15345,29 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData>();
         c->parent = this;
-        member_data.push_back(std::move(c));
-        children[segment_path] = member_data.back();
-        return children.at(segment_path);
+        member_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::get_children() const
 {
-    if(children.find("bundle-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bundle_data != nullptr)
     {
-        if(bundle_data != nullptr)
-        {
-            children["bundle-data"] = bundle_data;
-        }
+        children["bundle-data"] = bundle_data;
     }
 
     for (auto const & c : member_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17576,10 +15388,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
 	,bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId>())
 {
     actor_bundle_data->parent = this;
-    children["actor-bundle-data"] = actor_bundle_data;
 
     bundle_system_id->parent = this;
-    children["bundle-system-id"] = bundle_system_id;
 
     yang_name = "bundle-data"; yang_parent_name = "lacp-bundle-descendant";
 }
@@ -17618,7 +15428,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17645,64 +15455,38 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "actor-bundle-data")
     {
-        if(actor_bundle_data != nullptr)
-        {
-            children["actor-bundle-data"] = actor_bundle_data;
-        }
-        else
+        if(actor_bundle_data == nullptr)
         {
             actor_bundle_data = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData>();
-            actor_bundle_data->parent = this;
-            children["actor-bundle-data"] = actor_bundle_data;
         }
-        return children.at("actor-bundle-data");
+        return actor_bundle_data;
     }
 
     if(child_yang_name == "bundle-system-id")
     {
-        if(bundle_system_id != nullptr)
-        {
-            children["bundle-system-id"] = bundle_system_id;
-        }
-        else
+        if(bundle_system_id == nullptr)
         {
             bundle_system_id = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId>();
-            bundle_system_id->parent = this;
-            children["bundle-system-id"] = bundle_system_id;
         }
-        return children.at("bundle-system-id");
+        return bundle_system_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::get_children() const
 {
-    if(children.find("actor-bundle-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(actor_bundle_data != nullptr)
     {
-        if(actor_bundle_data != nullptr)
-        {
-            children["actor-bundle-data"] = actor_bundle_data;
-        }
+        children["actor-bundle-data"] = actor_bundle_data;
     }
 
-    if(children.find("bundle-system-id") == children.end())
+    if(bundle_system_id != nullptr)
     {
-        if(bundle_system_id != nullptr)
-        {
-            children["bundle-system-id"] = bundle_system_id;
-        }
+        children["bundle-system-id"] = bundle_system_id;
     }
 
     return children;
@@ -17772,7 +15556,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     mac_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress>())
 {
     mac_address->parent = this;
-    children["mac-address"] = mac_address;
 
     yang_name = "actor-bundle-data"; yang_parent_name = "bundle-data";
 }
@@ -17887,7 +15670,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17948,15 +15731,6 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-config")
     {
         for(auto const & c : bfd_config)
@@ -17964,51 +15738,38 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(std::move(c));
-        children[segment_path] = bfd_config.back();
-        return children.at(segment_path);
+        bfd_config.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mac-address")
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
-        else
+        if(mac_address == nullptr)
         {
             mac_address = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress>();
-            mac_address->parent = this;
-            children["mac-address"] = mac_address;
         }
-        return children.at("mac-address");
+        return mac_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bfd_config)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mac-address") == children.end())
+    if(mac_address != nullptr)
     {
-        if(mac_address != nullptr)
-        {
-            children["mac-address"] = mac_address;
-        }
+        children["mac-address"] = mac_address;
     }
 
     return children;
@@ -18201,7 +15962,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18225,20 +15986,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18264,7 +16017,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     destination_address(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
-    children["destination-address"] = destination_address;
 
     yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data";
 }
@@ -18309,7 +16061,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18340,41 +16092,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination-address")
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
-        else
+        if(destination_address == nullptr)
         {
             destination_address = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress>();
-            destination_address->parent = this;
-            children["destination-address"] = destination_address;
         }
-        return children.at("destination-address");
+        return destination_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::get_children() const
 {
-    if(children.find("destination-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(destination_address != nullptr)
     {
-        if(destination_address != nullptr)
-        {
-            children["destination-address"] = destination_address;
-        }
+        children["destination-address"] = destination_address;
     }
 
     return children;
@@ -18453,7 +16188,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18479,20 +16214,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18519,7 +16246,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
-    children["system-mac-addr"] = system_mac_addr;
 
     yang_name = "bundle-system-id"; yang_parent_name = "bundle-data";
 }
@@ -18550,7 +16276,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18574,41 +16300,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "system-mac-addr")
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
-        else
+        if(system_mac_addr == nullptr)
         {
             system_mac_addr = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr>();
-            system_mac_addr->parent = this;
-            children["system-mac-addr"] = system_mac_addr;
         }
-        return children.at("system-mac-addr");
+        return system_mac_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::get_children() const
 {
-    if(children.find("system-mac-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(system_mac_addr != nullptr)
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
+        children["system-mac-addr"] = system_mac_addr;
     }
 
     return children;
@@ -18653,7 +16362,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18677,20 +16386,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18719,13 +16420,10 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 	,partner_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo>())
 {
     actor_info->parent = this;
-    children["actor-info"] = actor_info;
 
     additional_info->parent = this;
-    children["additional-info"] = additional_info;
 
     partner_info->parent = this;
-    children["partner-info"] = partner_info;
 
     yang_name = "member-data"; yang_parent_name = "lacp-bundle-descendant";
 }
@@ -18776,7 +16474,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18808,87 +16506,52 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "actor-info")
     {
-        if(actor_info != nullptr)
-        {
-            children["actor-info"] = actor_info;
-        }
-        else
+        if(actor_info == nullptr)
         {
             actor_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo>();
-            actor_info->parent = this;
-            children["actor-info"] = actor_info;
         }
-        return children.at("actor-info");
+        return actor_info;
     }
 
     if(child_yang_name == "additional-info")
     {
-        if(additional_info != nullptr)
-        {
-            children["additional-info"] = additional_info;
-        }
-        else
+        if(additional_info == nullptr)
         {
             additional_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo>();
-            additional_info->parent = this;
-            children["additional-info"] = additional_info;
         }
-        return children.at("additional-info");
+        return additional_info;
     }
 
     if(child_yang_name == "partner-info")
     {
-        if(partner_info != nullptr)
-        {
-            children["partner-info"] = partner_info;
-        }
-        else
+        if(partner_info == nullptr)
         {
             partner_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo>();
-            partner_info->parent = this;
-            children["partner-info"] = partner_info;
         }
-        return children.at("partner-info");
+        return partner_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::get_children() const
 {
-    if(children.find("actor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(actor_info != nullptr)
     {
-        if(actor_info != nullptr)
-        {
-            children["actor-info"] = actor_info;
-        }
+        children["actor-info"] = actor_info;
     }
 
-    if(children.find("additional-info") == children.end())
+    if(additional_info != nullptr)
     {
-        if(additional_info != nullptr)
-        {
-            children["additional-info"] = additional_info;
-        }
+        children["additional-info"] = additional_info;
     }
 
-    if(children.find("partner-info") == children.end())
+    if(partner_info != nullptr)
     {
-        if(partner_info != nullptr)
-        {
-            children["partner-info"] = partner_info;
-        }
+        children["partner-info"] = partner_info;
     }
 
     return children;
@@ -18941,7 +16604,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo>())
 {
     port_info->parent = this;
-    children["port-info"] = port_info;
 
     yang_name = "actor-info"; yang_parent_name = "member-data";
 }
@@ -18972,7 +16634,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18996,41 +16658,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-info")
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
-        else
+        if(port_info == nullptr)
         {
             port_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo>();
-            port_info->parent = this;
-            children["port-info"] = port_info;
         }
-        return children.at("port-info");
+        return port_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::get_children() const
 {
-    if(children.find("port-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_info != nullptr)
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
+        children["port-info"] = port_info;
     }
 
     return children;
@@ -19053,10 +16698,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 	,system(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System>())
 {
     port->parent = this;
-    children["port"] = port;
 
     system->parent = this;
-    children["system"] = system;
 
     yang_name = "port-info"; yang_parent_name = "actor-info";
 }
@@ -19091,7 +16734,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19116,64 +16759,38 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port")
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
-        else
+        if(port == nullptr)
         {
             port = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port>();
-            port->parent = this;
-            children["port"] = port;
         }
-        return children.at("port");
+        return port;
     }
 
     if(child_yang_name == "system")
     {
-        if(system != nullptr)
-        {
-            children["system"] = system;
-        }
-        else
+        if(system == nullptr)
         {
             system = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System>();
-            system->parent = this;
-            children["system"] = system;
         }
-        return children.at("system");
+        return system;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::get_children() const
 {
-    if(children.find("port") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port != nullptr)
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
+        children["port"] = port;
     }
 
-    if(children.find("system") == children.end())
+    if(system != nullptr)
     {
-        if(system != nullptr)
-        {
-            children["system"] = system;
-        }
+        children["system"] = system;
     }
 
     return children;
@@ -19198,7 +16815,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
-    children["system-mac-addr"] = system_mac_addr;
 
     yang_name = "system"; yang_parent_name = "port-info";
 }
@@ -19229,7 +16845,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19253,41 +16869,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "system-mac-addr")
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
-        else
+        if(system_mac_addr == nullptr)
         {
             system_mac_addr = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr>();
-            system_mac_addr->parent = this;
-            children["system-mac-addr"] = system_mac_addr;
         }
-        return children.at("system-mac-addr");
+        return system_mac_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::get_children() const
 {
-    if(children.find("system-mac-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(system_mac_addr != nullptr)
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
+        children["system-mac-addr"] = system_mac_addr;
     }
 
     return children;
@@ -19332,7 +16931,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19356,20 +16955,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19415,7 +17006,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19440,20 +17031,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19476,7 +17059,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo>())
 {
     port_info->parent = this;
-    children["port-info"] = port_info;
 
     yang_name = "partner-info"; yang_parent_name = "member-data";
 }
@@ -19507,7 +17089,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19531,41 +17113,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-info")
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
-        else
+        if(port_info == nullptr)
         {
             port_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo>();
-            port_info->parent = this;
-            children["port-info"] = port_info;
         }
-        return children.at("port-info");
+        return port_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::get_children() const
 {
-    if(children.find("port-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_info != nullptr)
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
+        children["port-info"] = port_info;
     }
 
     return children;
@@ -19588,10 +17153,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 	,system(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System>())
 {
     port->parent = this;
-    children["port"] = port;
 
     system->parent = this;
-    children["system"] = system;
 
     yang_name = "port-info"; yang_parent_name = "partner-info";
 }
@@ -19626,7 +17189,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19651,64 +17214,38 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port")
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
-        else
+        if(port == nullptr)
         {
             port = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port>();
-            port->parent = this;
-            children["port"] = port;
         }
-        return children.at("port");
+        return port;
     }
 
     if(child_yang_name == "system")
     {
-        if(system != nullptr)
-        {
-            children["system"] = system;
-        }
-        else
+        if(system == nullptr)
         {
             system = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System>();
-            system->parent = this;
-            children["system"] = system;
         }
-        return children.at("system");
+        return system;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::get_children() const
 {
-    if(children.find("port") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port != nullptr)
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
+        children["port"] = port;
     }
 
-    if(children.find("system") == children.end())
+    if(system != nullptr)
     {
-        if(system != nullptr)
-        {
-            children["system"] = system;
-        }
+        children["system"] = system;
     }
 
     return children;
@@ -19733,7 +17270,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
-    children["system-mac-addr"] = system_mac_addr;
 
     yang_name = "system"; yang_parent_name = "port-info";
 }
@@ -19764,7 +17300,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19788,41 +17324,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "system-mac-addr")
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
-        else
+        if(system_mac_addr == nullptr)
         {
             system_mac_addr = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr>();
-            system_mac_addr->parent = this;
-            children["system-mac-addr"] = system_mac_addr;
         }
-        return children.at("system-mac-addr");
+        return system_mac_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::get_children() const
 {
-    if(children.find("system-mac-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(system_mac_addr != nullptr)
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
+        children["system-mac-addr"] = system_mac_addr;
     }
 
     return children;
@@ -19867,7 +17386,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19891,20 +17410,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19950,7 +17461,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19975,20 +17486,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20012,10 +17515,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberDa
 	,local(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local>())
 {
     foreign->parent = this;
-    children["foreign"] = foreign;
 
     local->parent = this;
-    children["local"] = local;
 
     yang_name = "additional-info"; yang_parent_name = "member-data";
 }
@@ -20048,7 +17549,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20072,64 +17573,38 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "foreign")
     {
-        if(foreign != nullptr)
-        {
-            children["foreign"] = foreign;
-        }
-        else
+        if(foreign == nullptr)
         {
             foreign = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign>();
-            foreign->parent = this;
-            children["foreign"] = foreign;
         }
-        return children.at("foreign");
+        return foreign;
     }
 
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::get_children() const
 {
-    if(children.find("foreign") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(foreign != nullptr)
     {
-        if(foreign != nullptr)
-        {
-            children["foreign"] = foreign;
-        }
+        children["foreign"] = foreign;
     }
 
-    if(children.find("local") == children.end())
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
     return children;
@@ -20174,7 +17649,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20198,20 +17673,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20257,7 +17724,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20282,20 +17749,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20349,7 +17808,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20372,15 +17831,6 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lacp-bundle-children-member")
     {
         for(auto const & c : lacp_bundle_children_member)
@@ -20388,28 +17838,24 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember>();
         c->parent = this;
-        lacp_bundle_children_member.push_back(std::move(c));
-        children[segment_path] = lacp_bundle_children_member.back();
-        return children.at(segment_path);
+        lacp_bundle_children_member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lacp_bundle_children_member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20437,13 +17883,10 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 	,partner_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo>())
 {
     actor_info->parent = this;
-    children["actor-info"] = actor_info;
 
     additional_info->parent = this;
-    children["additional-info"] = additional_info;
 
     partner_info->parent = this;
-    children["partner-info"] = partner_info;
 
     yang_name = "lacp-bundle-children-member"; yang_parent_name = "lacp-bundle-children-members";
 }
@@ -20496,7 +17939,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20529,87 +17972,52 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "actor-info")
     {
-        if(actor_info != nullptr)
-        {
-            children["actor-info"] = actor_info;
-        }
-        else
+        if(actor_info == nullptr)
         {
             actor_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo>();
-            actor_info->parent = this;
-            children["actor-info"] = actor_info;
         }
-        return children.at("actor-info");
+        return actor_info;
     }
 
     if(child_yang_name == "additional-info")
     {
-        if(additional_info != nullptr)
-        {
-            children["additional-info"] = additional_info;
-        }
-        else
+        if(additional_info == nullptr)
         {
             additional_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo>();
-            additional_info->parent = this;
-            children["additional-info"] = additional_info;
         }
-        return children.at("additional-info");
+        return additional_info;
     }
 
     if(child_yang_name == "partner-info")
     {
-        if(partner_info != nullptr)
-        {
-            children["partner-info"] = partner_info;
-        }
-        else
+        if(partner_info == nullptr)
         {
             partner_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo>();
-            partner_info->parent = this;
-            children["partner-info"] = partner_info;
         }
-        return children.at("partner-info");
+        return partner_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::get_children() const
 {
-    if(children.find("actor-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(actor_info != nullptr)
     {
-        if(actor_info != nullptr)
-        {
-            children["actor-info"] = actor_info;
-        }
+        children["actor-info"] = actor_info;
     }
 
-    if(children.find("additional-info") == children.end())
+    if(additional_info != nullptr)
     {
-        if(additional_info != nullptr)
-        {
-            children["additional-info"] = additional_info;
-        }
+        children["additional-info"] = additional_info;
     }
 
-    if(children.find("partner-info") == children.end())
+    if(partner_info != nullptr)
     {
-        if(partner_info != nullptr)
-        {
-            children["partner-info"] = partner_info;
-        }
+        children["partner-info"] = partner_info;
     }
 
     return children;
@@ -20666,7 +18074,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo>())
 {
     port_info->parent = this;
-    children["port-info"] = port_info;
 
     yang_name = "actor-info"; yang_parent_name = "lacp-bundle-children-member";
 }
@@ -20697,7 +18104,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20721,41 +18128,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-info")
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
-        else
+        if(port_info == nullptr)
         {
             port_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo>();
-            port_info->parent = this;
-            children["port-info"] = port_info;
         }
-        return children.at("port-info");
+        return port_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::get_children() const
 {
-    if(children.find("port-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_info != nullptr)
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
+        children["port-info"] = port_info;
     }
 
     return children;
@@ -20778,10 +18168,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 	,system(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System>())
 {
     port->parent = this;
-    children["port"] = port;
 
     system->parent = this;
-    children["system"] = system;
 
     yang_name = "port-info"; yang_parent_name = "actor-info";
 }
@@ -20816,7 +18204,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20841,64 +18229,38 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port")
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
-        else
+        if(port == nullptr)
         {
             port = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port>();
-            port->parent = this;
-            children["port"] = port;
         }
-        return children.at("port");
+        return port;
     }
 
     if(child_yang_name == "system")
     {
-        if(system != nullptr)
-        {
-            children["system"] = system;
-        }
-        else
+        if(system == nullptr)
         {
             system = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System>();
-            system->parent = this;
-            children["system"] = system;
         }
-        return children.at("system");
+        return system;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::get_children() const
 {
-    if(children.find("port") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port != nullptr)
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
+        children["port"] = port;
     }
 
-    if(children.find("system") == children.end())
+    if(system != nullptr)
     {
-        if(system != nullptr)
-        {
-            children["system"] = system;
-        }
+        children["system"] = system;
     }
 
     return children;
@@ -20923,7 +18285,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
-    children["system-mac-addr"] = system_mac_addr;
 
     yang_name = "system"; yang_parent_name = "port-info";
 }
@@ -20954,7 +18315,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20978,41 +18339,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "system-mac-addr")
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
-        else
+        if(system_mac_addr == nullptr)
         {
             system_mac_addr = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr>();
-            system_mac_addr->parent = this;
-            children["system-mac-addr"] = system_mac_addr;
         }
-        return children.at("system-mac-addr");
+        return system_mac_addr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::get_children() const
 {
-    if(children.find("system-mac-addr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(system_mac_addr != nullptr)
     {
-        if(system_mac_addr != nullptr)
-        {
-            children["system-mac-addr"] = system_mac_addr;
-        }
+        children["system-mac-addr"] = system_mac_addr;
     }
 
     return children;
@@ -21057,7 +18401,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21081,20 +18425,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21140,7 +18476,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21165,20 +18501,12 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21201,7 +18529,6 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     port_info(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo>())
 {
     port_info->parent = this;
-    children["port-info"] = port_info;
 
     yang_name = "partner-info"; yang_parent_name = "lacp-bundle-children-member";
 }
@@ -21232,7 +18559,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildren
 
 }
 
-EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::get_entity_path(Entity* ancestor) const
+const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21256,41 +18583,24 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
 
 std::shared_ptr<Entity> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "port-info")
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
-        else
+        if(port_info == nullptr)
         {
             port_info = std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo>();
-            port_info->parent = this;
-            children["port-info"] = port_info;
         }
-        return children.at("port-info");
+        return port_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::get_children() const
 {
-    if(children.find("port-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(port_info != nullptr)
     {
-        if(port_info != nullptr)
-        {
-            children["port-info"] = port_info;
-        }
+        children["port-info"] = port_info;
     }
 
     return children;

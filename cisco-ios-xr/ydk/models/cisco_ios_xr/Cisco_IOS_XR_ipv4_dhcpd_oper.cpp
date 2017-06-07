@@ -14,7 +14,6 @@ DhcpClient::DhcpClient()
     nodes(std::make_shared<DhcpClient::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "dhcp-client"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-oper";
 }
@@ -43,12 +42,12 @@ std::string DhcpClient::get_segment_path() const
 
 }
 
-EntityPath DhcpClient::get_entity_path(Entity* ancestor) const
+const EntityPath DhcpClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath DhcpClient::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> DhcpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<DhcpClient::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DhcpClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DhcpClient::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string DhcpClient::Nodes::get_segment_path() const
 
 }
 
-EntityPath DhcpClient::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath DhcpClient::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath DhcpClient::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> DhcpClient::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> DhcpClient::Nodes::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<DhcpClient::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DhcpClient::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,10 +212,8 @@ DhcpClient::Nodes::Node::Node()
 	,clients(std::make_shared<DhcpClient::Nodes::Node::Clients>())
 {
     client_stats->parent = this;
-    children["client-stats"] = client_stats;
 
     clients->parent = this;
-    children["clients"] = clients;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -279,7 +246,7 @@ std::string DhcpClient::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath DhcpClient::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath DhcpClient::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,64 +270,38 @@ EntityPath DhcpClient::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> DhcpClient::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-stats")
     {
-        if(client_stats != nullptr)
-        {
-            children["client-stats"] = client_stats;
-        }
-        else
+        if(client_stats == nullptr)
         {
             client_stats = std::make_shared<DhcpClient::Nodes::Node::ClientStats>();
-            client_stats->parent = this;
-            children["client-stats"] = client_stats;
         }
-        return children.at("client-stats");
+        return client_stats;
     }
 
     if(child_yang_name == "clients")
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
-        else
+        if(clients == nullptr)
         {
             clients = std::make_shared<DhcpClient::Nodes::Node::Clients>();
-            clients->parent = this;
-            children["clients"] = clients;
         }
-        return children.at("clients");
+        return clients;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DhcpClient::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::Node::get_children() const
 {
-    if(children.find("client-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client_stats != nullptr)
     {
-        if(client_stats != nullptr)
-        {
-            children["client-stats"] = client_stats;
-        }
+        children["client-stats"] = client_stats;
     }
 
-    if(children.find("clients") == children.end())
+    if(clients != nullptr)
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
+        children["clients"] = clients;
     }
 
     return children;
@@ -412,7 +353,7 @@ std::string DhcpClient::Nodes::Node::ClientStats::get_segment_path() const
 
 }
 
-EntityPath DhcpClient::Nodes::Node::ClientStats::get_entity_path(Entity* ancestor) const
+const EntityPath DhcpClient::Nodes::Node::ClientStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -435,15 +376,6 @@ EntityPath DhcpClient::Nodes::Node::ClientStats::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> DhcpClient::Nodes::Node::ClientStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-stat")
     {
         for(auto const & c : client_stat)
@@ -451,28 +383,24 @@ std::shared_ptr<Entity> DhcpClient::Nodes::Node::ClientStats::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<DhcpClient::Nodes::Node::ClientStats::ClientStat>();
         c->parent = this;
-        client_stat.push_back(std::move(c));
-        children[segment_path] = client_stat.back();
-        return children.at(segment_path);
+        client_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DhcpClient::Nodes::Node::ClientStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::Node::ClientStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -651,7 +579,7 @@ std::string DhcpClient::Nodes::Node::ClientStats::ClientStat::get_segment_path()
 
 }
 
-EntityPath DhcpClient::Nodes::Node::ClientStats::ClientStat::get_entity_path(Entity* ancestor) const
+const EntityPath DhcpClient::Nodes::Node::ClientStats::ClientStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -721,20 +649,12 @@ EntityPath DhcpClient::Nodes::Node::ClientStats::ClientStat::get_entity_path(Ent
 
 std::shared_ptr<Entity> DhcpClient::Nodes::Node::ClientStats::ClientStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DhcpClient::Nodes::Node::ClientStats::ClientStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::Node::ClientStats::ClientStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -968,7 +888,7 @@ std::string DhcpClient::Nodes::Node::Clients::get_segment_path() const
 
 }
 
-EntityPath DhcpClient::Nodes::Node::Clients::get_entity_path(Entity* ancestor) const
+const EntityPath DhcpClient::Nodes::Node::Clients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -991,15 +911,6 @@ EntityPath DhcpClient::Nodes::Node::Clients::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> DhcpClient::Nodes::Node::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
         for(auto const & c : client)
@@ -1007,28 +918,24 @@ std::shared_ptr<Entity> DhcpClient::Nodes::Node::Clients::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<DhcpClient::Nodes::Node::Clients::Client>();
         c->parent = this;
-        client.push_back(std::move(c));
-        children[segment_path] = client.back();
-        return children.at(segment_path);
+        client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DhcpClient::Nodes::Node::Clients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::Node::Clients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1105,7 +1012,7 @@ std::string DhcpClient::Nodes::Node::Clients::Client::get_segment_path() const
 
 }
 
-EntityPath DhcpClient::Nodes::Node::Clients::Client::get_entity_path(Entity* ancestor) const
+const EntityPath DhcpClient::Nodes::Node::Clients::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1141,20 +1048,12 @@ EntityPath DhcpClient::Nodes::Node::Clients::Client::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> DhcpClient::Nodes::Node::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DhcpClient::Nodes::Node::Clients::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DhcpClient::Nodes::Node::Clients::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1220,10 +1119,8 @@ Ipv4Dhcpd::Ipv4Dhcpd()
 	,snoop(std::make_shared<Ipv4Dhcpd::Snoop>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     snoop->parent = this;
-    children["snoop"] = snoop;
 
     yang_name = "ipv4-dhcpd"; yang_parent_name = "Cisco-IOS-XR-ipv4-dhcpd-oper";
 }
@@ -1254,12 +1151,12 @@ std::string Ipv4Dhcpd::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1274,64 +1171,38 @@ EntityPath Ipv4Dhcpd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Ipv4Dhcpd::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     if(child_yang_name == "snoop")
     {
-        if(snoop != nullptr)
-        {
-            children["snoop"] = snoop;
-        }
-        else
+        if(snoop == nullptr)
         {
             snoop = std::make_shared<Ipv4Dhcpd::Snoop>();
-            snoop->parent = this;
-            children["snoop"] = snoop;
         }
-        return children.at("snoop");
+        return snoop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
-    if(children.find("snoop") == children.end())
+    if(snoop != nullptr)
     {
-        if(snoop != nullptr)
-        {
-            children["snoop"] = snoop;
-        }
+        children["snoop"] = snoop;
     }
 
     return children;
@@ -1370,19 +1241,14 @@ Ipv4Dhcpd::Snoop::Snoop()
 	,statistics_info(std::make_shared<Ipv4Dhcpd::Snoop::StatisticsInfo>())
 {
     binding_statistics->parent = this;
-    children["binding-statistics"] = binding_statistics;
 
     bindings->parent = this;
-    children["bindings"] = bindings;
 
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     statistics_info->parent = this;
-    children["statistics-info"] = statistics_info;
 
     yang_name = "snoop"; yang_parent_name = "ipv4-dhcpd";
 }
@@ -1419,7 +1285,7 @@ std::string Ipv4Dhcpd::Snoop::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1442,133 +1308,80 @@ EntityPath Ipv4Dhcpd::Snoop::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "binding-statistics")
     {
-        if(binding_statistics != nullptr)
-        {
-            children["binding-statistics"] = binding_statistics;
-        }
-        else
+        if(binding_statistics == nullptr)
         {
             binding_statistics = std::make_shared<Ipv4Dhcpd::Snoop::BindingStatistics>();
-            binding_statistics->parent = this;
-            children["binding-statistics"] = binding_statistics;
         }
-        return children.at("binding-statistics");
+        return binding_statistics;
     }
 
     if(child_yang_name == "bindings")
     {
-        if(bindings != nullptr)
-        {
-            children["bindings"] = bindings;
-        }
-        else
+        if(bindings == nullptr)
         {
             bindings = std::make_shared<Ipv4Dhcpd::Snoop::Bindings>();
-            bindings->parent = this;
-            children["bindings"] = bindings;
         }
-        return children.at("bindings");
+        return bindings;
     }
 
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<Ipv4Dhcpd::Snoop::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Snoop::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "statistics-info")
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
-        else
+        if(statistics_info == nullptr)
         {
             statistics_info = std::make_shared<Ipv4Dhcpd::Snoop::StatisticsInfo>();
-            statistics_info->parent = this;
-            children["statistics-info"] = statistics_info;
         }
-        return children.at("statistics-info");
+        return statistics_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::get_children() const
 {
-    if(children.find("binding-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(binding_statistics != nullptr)
     {
-        if(binding_statistics != nullptr)
-        {
-            children["binding-statistics"] = binding_statistics;
-        }
+        children["binding-statistics"] = binding_statistics;
     }
 
-    if(children.find("bindings") == children.end())
+    if(bindings != nullptr)
     {
-        if(bindings != nullptr)
-        {
-            children["bindings"] = bindings;
-        }
+        children["bindings"] = bindings;
     }
 
-    if(children.find("profiles") == children.end())
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("statistics-info") == children.end())
+    if(statistics_info != nullptr)
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
+        children["statistics-info"] = statistics_info;
     }
 
     return children;
@@ -1616,7 +1429,7 @@ std::string Ipv4Dhcpd::Snoop::Bindings::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::Bindings::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::Bindings::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1639,15 +1452,6 @@ EntityPath Ipv4Dhcpd::Snoop::Bindings::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Bindings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "binding")
     {
         for(auto const & c : binding)
@@ -1655,28 +1459,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Bindings::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Snoop::Bindings::Binding>();
         c->parent = this;
-        binding.push_back(std::move(c));
-        children[segment_path] = binding.back();
-        return children.at(segment_path);
+        binding.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::Bindings::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Bindings::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : binding)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1750,7 +1550,7 @@ std::string Ipv4Dhcpd::Snoop::Bindings::Binding::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::Bindings::Binding::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::Bindings::Binding::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1785,20 +1585,12 @@ EntityPath Ipv4Dhcpd::Snoop::Bindings::Binding::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Bindings::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::Bindings::Binding::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Bindings::Binding::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1888,7 +1680,7 @@ std::string Ipv4Dhcpd::Snoop::BindingStatistics::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::BindingStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::BindingStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1913,20 +1705,12 @@ EntityPath Ipv4Dhcpd::Snoop::BindingStatistics::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::BindingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::BindingStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::BindingStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1973,7 +1757,7 @@ std::string Ipv4Dhcpd::Snoop::StatisticsInfo::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::StatisticsInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::StatisticsInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1997,20 +1781,12 @@ EntityPath Ipv4Dhcpd::Snoop::StatisticsInfo::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::StatisticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::StatisticsInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::StatisticsInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2060,7 +1836,7 @@ std::string Ipv4Dhcpd::Snoop::Profiles::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2083,15 +1859,6 @@ EntityPath Ipv4Dhcpd::Snoop::Profiles::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -2099,28 +1866,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Profiles::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Snoop::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2179,7 +1942,7 @@ std::string Ipv4Dhcpd::Snoop::Profiles::Profile::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2209,20 +1972,12 @@ EntityPath Ipv4Dhcpd::Snoop::Profiles::Profile::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Profiles::Profile::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2296,7 +2051,7 @@ std::string Ipv4Dhcpd::Snoop::Statistics::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2319,15 +2074,6 @@ EntityPath Ipv4Dhcpd::Snoop::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistic")
     {
         for(auto const & c : statistic)
@@ -2335,28 +2081,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Statistics::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Snoop::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(std::move(c));
-        children[segment_path] = statistic.back();
-        return children.at(segment_path);
+        statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2412,7 +2154,7 @@ std::string Ipv4Dhcpd::Snoop::Statistics::Statistic::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Snoop::Statistics::Statistic::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Snoop::Statistics::Statistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2439,20 +2181,12 @@ EntityPath Ipv4Dhcpd::Snoop::Statistics::Statistic::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Snoop::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Snoop::Statistics::Statistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Snoop::Statistics::Statistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2510,7 +2244,7 @@ std::string Ipv4Dhcpd::Nodes::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2533,15 +2267,6 @@ EntityPath Ipv4Dhcpd::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -2549,28 +2274,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2591,19 +2312,14 @@ Ipv4Dhcpd::Nodes::Node::Node()
 	,server(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server>())
 {
     base->parent = this;
-    children["base"] = base;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     proxy->parent = this;
-    children["proxy"] = proxy;
 
     relay->parent = this;
-    children["relay"] = relay;
 
     server->parent = this;
-    children["server"] = server;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -2642,7 +2358,7 @@ std::string Ipv4Dhcpd::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2666,133 +2382,80 @@ EntityPath Ipv4Dhcpd::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Ipv4Dhcpd::Nodes::Node::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "proxy")
     {
-        if(proxy != nullptr)
-        {
-            children["proxy"] = proxy;
-        }
-        else
+        if(proxy == nullptr)
         {
             proxy = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy>();
-            proxy->parent = this;
-            children["proxy"] = proxy;
         }
-        return children.at("proxy");
+        return proxy;
     }
 
     if(child_yang_name == "relay")
     {
-        if(relay != nullptr)
-        {
-            children["relay"] = relay;
-        }
-        else
+        if(relay == nullptr)
         {
             relay = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay>();
-            relay->parent = this;
-            children["relay"] = relay;
         }
-        return children.at("relay");
+        return relay;
     }
 
     if(child_yang_name == "server")
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
-        else
+        if(server == nullptr)
         {
             server = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server>();
-            server->parent = this;
-            children["server"] = server;
         }
-        return children.at("server");
+        return server;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("proxy") == children.end())
+    if(proxy != nullptr)
     {
-        if(proxy != nullptr)
-        {
-            children["proxy"] = proxy;
-        }
+        children["proxy"] = proxy;
     }
 
-    if(children.find("relay") == children.end())
+    if(relay != nullptr)
     {
-        if(relay != nullptr)
-        {
-            children["relay"] = relay;
-        }
+        children["relay"] = relay;
     }
 
-    if(children.find("server") == children.end())
+    if(server != nullptr)
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
+        children["server"] = server;
     }
 
     return children;
@@ -2815,19 +2478,14 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Proxy()
 	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs>())
 {
     binding->parent = this;
-    children["binding"] = binding;
 
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     statistics_info->parent = this;
-    children["statistics-info"] = statistics_info;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "proxy"; yang_parent_name = "node";
 }
@@ -2864,7 +2522,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2887,133 +2545,80 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "binding")
     {
-        if(binding != nullptr)
-        {
-            children["binding"] = binding;
-        }
-        else
+        if(binding == nullptr)
         {
             binding = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding>();
-            binding->parent = this;
-            children["binding"] = binding;
         }
-        return children.at("binding");
+        return binding;
     }
 
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "statistics-info")
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
-        else
+        if(statistics_info == nullptr)
         {
             statistics_info = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo>();
-            statistics_info->parent = this;
-            children["statistics-info"] = statistics_info;
         }
-        return children.at("statistics-info");
+        return statistics_info;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::get_children() const
 {
-    if(children.find("binding") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(binding != nullptr)
     {
-        if(binding != nullptr)
-        {
-            children["binding"] = binding;
-        }
+        children["binding"] = binding;
     }
 
-    if(children.find("profiles") == children.end())
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("statistics-info") == children.end())
+    if(statistics_info != nullptr)
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
+        children["statistics-info"] = statistics_info;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -3054,7 +2659,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::get_segment_path() co
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3078,20 +2683,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3141,7 +2738,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3164,15 +2761,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -3180,28 +2768,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3218,7 +2802,6 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Vrf()
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -3249,7 +2832,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3273,41 +2856,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -3339,46 +2905,32 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Statistics()
 	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request>())
 {
     ack->parent = this;
-    children["ack"] = ack;
 
     bootp_reply->parent = this;
-    children["bootp-reply"] = bootp_reply;
 
     bootp_request->parent = this;
-    children["bootp-request"] = bootp_request;
 
     decline->parent = this;
-    children["decline"] = decline;
 
     discover->parent = this;
-    children["discover"] = discover;
 
     inform->parent = this;
-    children["inform"] = inform;
 
     lease_active->parent = this;
-    children["lease-active"] = lease_active;
 
     lease_not_assigned->parent = this;
-    children["lease-not-assigned"] = lease_not_assigned;
 
     lease_query->parent = this;
-    children["lease-query"] = lease_query;
 
     lease_unknown->parent = this;
-    children["lease-unknown"] = lease_unknown;
 
     nak->parent = this;
-    children["nak"] = nak;
 
     offer->parent = this;
-    children["offer"] = offer;
 
     release->parent = this;
-    children["release"] = release;
 
     request->parent = this;
-    children["request"] = request;
 
     yang_name = "statistics"; yang_parent_name = "vrf";
 }
@@ -3433,7 +2985,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_segment_pa
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3456,340 +3008,206 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_entity_path
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ack")
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
-        else
+        if(ack == nullptr)
         {
             ack = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack>();
-            ack->parent = this;
-            children["ack"] = ack;
         }
-        return children.at("ack");
+        return ack;
     }
 
     if(child_yang_name == "bootp-reply")
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
-        else
+        if(bootp_reply == nullptr)
         {
             bootp_reply = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply>();
-            bootp_reply->parent = this;
-            children["bootp-reply"] = bootp_reply;
         }
-        return children.at("bootp-reply");
+        return bootp_reply;
     }
 
     if(child_yang_name == "bootp-request")
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
-        else
+        if(bootp_request == nullptr)
         {
             bootp_request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest>();
-            bootp_request->parent = this;
-            children["bootp-request"] = bootp_request;
         }
-        return children.at("bootp-request");
+        return bootp_request;
     }
 
     if(child_yang_name == "decline")
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
-        else
+        if(decline == nullptr)
         {
             decline = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline>();
-            decline->parent = this;
-            children["decline"] = decline;
         }
-        return children.at("decline");
+        return decline;
     }
 
     if(child_yang_name == "discover")
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
-        else
+        if(discover == nullptr)
         {
             discover = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover>();
-            discover->parent = this;
-            children["discover"] = discover;
         }
-        return children.at("discover");
+        return discover;
     }
 
     if(child_yang_name == "inform")
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
-        else
+        if(inform == nullptr)
         {
             inform = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform>();
-            inform->parent = this;
-            children["inform"] = inform;
         }
-        return children.at("inform");
+        return inform;
     }
 
     if(child_yang_name == "lease-active")
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
-        else
+        if(lease_active == nullptr)
         {
             lease_active = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive>();
-            lease_active->parent = this;
-            children["lease-active"] = lease_active;
         }
-        return children.at("lease-active");
+        return lease_active;
     }
 
     if(child_yang_name == "lease-not-assigned")
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
-        else
+        if(lease_not_assigned == nullptr)
         {
             lease_not_assigned = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned>();
-            lease_not_assigned->parent = this;
-            children["lease-not-assigned"] = lease_not_assigned;
         }
-        return children.at("lease-not-assigned");
+        return lease_not_assigned;
     }
 
     if(child_yang_name == "lease-query")
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
-        else
+        if(lease_query == nullptr)
         {
             lease_query = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery>();
-            lease_query->parent = this;
-            children["lease-query"] = lease_query;
         }
-        return children.at("lease-query");
+        return lease_query;
     }
 
     if(child_yang_name == "lease-unknown")
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
-        else
+        if(lease_unknown == nullptr)
         {
             lease_unknown = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown>();
-            lease_unknown->parent = this;
-            children["lease-unknown"] = lease_unknown;
         }
-        return children.at("lease-unknown");
+        return lease_unknown;
     }
 
     if(child_yang_name == "nak")
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
-        else
+        if(nak == nullptr)
         {
             nak = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak>();
-            nak->parent = this;
-            children["nak"] = nak;
         }
-        return children.at("nak");
+        return nak;
     }
 
     if(child_yang_name == "offer")
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
-        else
+        if(offer == nullptr)
         {
             offer = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer>();
-            offer->parent = this;
-            children["offer"] = offer;
         }
-        return children.at("offer");
+        return offer;
     }
 
     if(child_yang_name == "release")
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
-        else
+        if(release == nullptr)
         {
             release = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release>();
-            release->parent = this;
-            children["release"] = release;
         }
-        return children.at("release");
+        return release;
     }
 
     if(child_yang_name == "request")
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
-        else
+        if(request == nullptr)
         {
             request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request>();
-            request->parent = this;
-            children["request"] = request;
         }
-        return children.at("request");
+        return request;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_children() const
 {
-    if(children.find("ack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ack != nullptr)
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
+        children["ack"] = ack;
     }
 
-    if(children.find("bootp-reply") == children.end())
+    if(bootp_reply != nullptr)
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
+        children["bootp-reply"] = bootp_reply;
     }
 
-    if(children.find("bootp-request") == children.end())
+    if(bootp_request != nullptr)
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
+        children["bootp-request"] = bootp_request;
     }
 
-    if(children.find("decline") == children.end())
+    if(decline != nullptr)
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
+        children["decline"] = decline;
     }
 
-    if(children.find("discover") == children.end())
+    if(discover != nullptr)
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
+        children["discover"] = discover;
     }
 
-    if(children.find("inform") == children.end())
+    if(inform != nullptr)
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
+        children["inform"] = inform;
     }
 
-    if(children.find("lease-active") == children.end())
+    if(lease_active != nullptr)
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
+        children["lease-active"] = lease_active;
     }
 
-    if(children.find("lease-not-assigned") == children.end())
+    if(lease_not_assigned != nullptr)
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
+        children["lease-not-assigned"] = lease_not_assigned;
     }
 
-    if(children.find("lease-query") == children.end())
+    if(lease_query != nullptr)
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
+        children["lease-query"] = lease_query;
     }
 
-    if(children.find("lease-unknown") == children.end())
+    if(lease_unknown != nullptr)
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
+        children["lease-unknown"] = lease_unknown;
     }
 
-    if(children.find("nak") == children.end())
+    if(nak != nullptr)
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
+        children["nak"] = nak;
     }
 
-    if(children.find("offer") == children.end())
+    if(offer != nullptr)
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
+        children["offer"] = offer;
     }
 
-    if(children.find("release") == children.end())
+    if(release != nullptr)
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
+        children["release"] = release;
     }
 
-    if(children.find("request") == children.end())
+    if(request != nullptr)
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
+        children["request"] = request;
     }
 
     return children;
@@ -3836,7 +3254,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::get_
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3862,20 +3280,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::get_e
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Discover::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3932,7 +3342,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::get_seg
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3958,20 +3368,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::get_enti
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Offer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4028,7 +3430,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_s
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4054,20 +3456,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_en
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4124,7 +3518,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_s
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4150,20 +3544,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_en
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4220,7 +3606,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::get_segme
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4246,20 +3632,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::get_entity
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Ack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4316,7 +3694,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::get_segme
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4342,20 +3720,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::get_entity
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Nak::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4412,7 +3782,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_s
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4438,20 +3808,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_en
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4508,7 +3870,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4534,20 +3896,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4604,7 +3958,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::ge
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4630,20 +3984,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::get
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4700,7 +4046,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssign
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4726,20 +4072,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigne
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4796,7 +4134,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4822,20 +4160,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::g
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseUnknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4892,7 +4222,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::g
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4918,20 +4248,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::ge
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseActive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4988,7 +4310,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5014,20 +4336,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::g
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5084,7 +4398,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::ge
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5110,20 +4424,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::get
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::BootpReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5181,7 +4487,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5204,15 +4510,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -5220,28 +4517,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5274,10 +4567,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::Profile()
 	,vrf_references(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences>())
 {
     interface_references->parent = this;
-    children["interface-references"] = interface_references;
 
     vrf_references->parent = this;
-    children["vrf-references"] = vrf_references;
 
     yang_name = "profile"; yang_parent_name = "profiles";
 }
@@ -5367,7 +4658,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_segment_path()
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5409,64 +4700,38 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-references")
     {
-        if(interface_references != nullptr)
-        {
-            children["interface-references"] = interface_references;
-        }
-        else
+        if(interface_references == nullptr)
         {
             interface_references = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences>();
-            interface_references->parent = this;
-            children["interface-references"] = interface_references;
         }
-        return children.at("interface-references");
+        return interface_references;
     }
 
     if(child_yang_name == "vrf-references")
     {
-        if(vrf_references != nullptr)
-        {
-            children["vrf-references"] = vrf_references;
-        }
-        else
+        if(vrf_references == nullptr)
         {
             vrf_references = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences>();
-            vrf_references->parent = this;
-            children["vrf-references"] = vrf_references;
         }
-        return children.at("vrf-references");
+        return vrf_references;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::get_children() const
 {
-    if(children.find("interface-references") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_references != nullptr)
     {
-        if(interface_references != nullptr)
-        {
-            children["interface-references"] = interface_references;
-        }
+        children["interface-references"] = interface_references;
     }
 
-    if(children.find("vrf-references") == children.end())
+    if(vrf_references != nullptr)
     {
-        if(vrf_references != nullptr)
-        {
-            children["vrf-references"] = vrf_references;
-        }
+        children["vrf-references"] = vrf_references;
     }
 
     return children;
@@ -5578,7 +4843,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::get
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5601,15 +4866,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::get_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-proxy-vrf-reference")
     {
         for(auto const & c : ipv4_dhcpd_proxy_vrf_reference)
@@ -5617,28 +4873,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfRef
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference>();
         c->parent = this;
-        ipv4_dhcpd_proxy_vrf_reference.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_proxy_vrf_reference.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_proxy_vrf_reference.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_proxy_vrf_reference)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5679,7 +4931,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5703,20 +4955,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5766,7 +5010,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReference
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5789,15 +5033,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-proxy-interface-reference")
     {
         for(auto const & c : ipv4_dhcpd_proxy_interface_reference)
@@ -5805,28 +5040,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference>();
         c->parent = this;
-        ipv4_dhcpd_proxy_interface_reference.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_proxy_interface_reference.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_proxy_interface_reference.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_proxy_interface_reference)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5867,7 +5098,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReference
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5891,20 +5122,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5954,7 +5177,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5977,15 +5200,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-proxy-stat")
     {
         for(auto const & c : ipv4_dhcpd_proxy_stat)
@@ -5993,28 +5207,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat>();
         c->parent = this;
-        ipv4_dhcpd_proxy_stat.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_proxy_stat.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_proxy_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_proxy_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6031,7 +5241,6 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Ipv4DhcpdProxySta
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics";
 }
@@ -6062,7 +5271,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_s
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6086,41 +5295,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_en
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -6171,7 +5363,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Stati
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6197,20 +5389,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statis
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6236,10 +5420,8 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Binding()
 	,summary(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary>())
 {
     clients->parent = this;
-    children["clients"] = clients;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "binding"; yang_parent_name = "proxy";
 }
@@ -6270,7 +5452,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Binding::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6293,64 +5475,38 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clients")
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
-        else
+        if(clients == nullptr)
         {
             clients = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients>();
-            clients->parent = this;
-            children["clients"] = clients;
         }
-        return children.at("clients");
+        return clients;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Binding::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::get_children() const
 {
-    if(children.find("clients") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clients != nullptr)
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
+        children["clients"] = clients;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -6398,7 +5554,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_segment_path() 
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6421,15 +5577,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_entity_path(Enti
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
         for(auto const & c : client)
@@ -6437,28 +5584,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client>();
         c->parent = this;
-        client.push_back(std::move(c));
-        children[segment_path] = client.back();
-        return children.at(segment_path);
+        client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6610,7 +5753,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_segment
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6669,20 +5812,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_entity_p
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6912,7 +6047,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::get_segment_path() 
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6953,20 +6088,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::get_entity_path(Enti
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7084,7 +6211,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7107,15 +6234,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -7123,28 +6241,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Interfaces::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7212,7 +6326,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_segment_path() co
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7245,20 +6359,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7315,19 +6421,14 @@ Ipv4Dhcpd::Nodes::Node::Base::Base()
 	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs>())
 {
     database->parent = this;
-    children["database"] = database;
 
     issu_status->parent = this;
-    children["issu-status"] = issu_status;
 
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "base"; yang_parent_name = "node";
 }
@@ -7364,7 +6465,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7387,133 +6488,80 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "database")
     {
-        if(database != nullptr)
-        {
-            children["database"] = database;
-        }
-        else
+        if(database == nullptr)
         {
             database = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Database>();
-            database->parent = this;
-            children["database"] = database;
         }
-        return children.at("database");
+        return database;
     }
 
     if(child_yang_name == "issu-status")
     {
-        if(issu_status != nullptr)
-        {
-            children["issu-status"] = issu_status;
-        }
-        else
+        if(issu_status == nullptr)
         {
             issu_status = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::IssuStatus>();
-            issu_status->parent = this;
-            children["issu-status"] = issu_status;
         }
-        return children.at("issu-status");
+        return issu_status;
     }
 
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::get_children() const
 {
-    if(children.find("database") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(database != nullptr)
     {
-        if(database != nullptr)
-        {
-            children["database"] = database;
-        }
+        children["database"] = database;
     }
 
-    if(children.find("issu-status") == children.end())
+    if(issu_status != nullptr)
     {
-        if(issu_status != nullptr)
-        {
-            children["issu-status"] = issu_status;
-        }
+        children["issu-status"] = issu_status;
     }
 
-    if(children.find("profiles") == children.end())
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -7561,7 +6609,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7584,15 +6632,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-proxy-stat")
     {
         for(auto const & c : ipv4_dhcpd_proxy_stat)
@@ -7600,28 +6639,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat>();
         c->parent = this;
-        ipv4_dhcpd_proxy_stat.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_proxy_stat.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_proxy_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_proxy_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7638,7 +6673,6 @@ Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Ipv4DhcpdProxyStat
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics";
 }
@@ -7669,7 +6703,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7693,41 +6727,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -7778,7 +6795,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statis
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7804,20 +6821,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statist
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7895,7 +6904,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7928,20 +6937,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::IssuStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8027,7 +7028,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8050,15 +7051,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -8066,28 +7058,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8104,7 +7092,6 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Vrf()
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -8135,7 +7122,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8159,41 +7146,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -8225,46 +7195,32 @@ Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Statistics()
 	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request>())
 {
     ack->parent = this;
-    children["ack"] = ack;
 
     bootp_reply->parent = this;
-    children["bootp-reply"] = bootp_reply;
 
     bootp_request->parent = this;
-    children["bootp-request"] = bootp_request;
 
     decline->parent = this;
-    children["decline"] = decline;
 
     discover->parent = this;
-    children["discover"] = discover;
 
     inform->parent = this;
-    children["inform"] = inform;
 
     lease_active->parent = this;
-    children["lease-active"] = lease_active;
 
     lease_not_assigned->parent = this;
-    children["lease-not-assigned"] = lease_not_assigned;
 
     lease_query->parent = this;
-    children["lease-query"] = lease_query;
 
     lease_unknown->parent = this;
-    children["lease-unknown"] = lease_unknown;
 
     nak->parent = this;
-    children["nak"] = nak;
 
     offer->parent = this;
-    children["offer"] = offer;
 
     release->parent = this;
-    children["release"] = release;
 
     request->parent = this;
-    children["request"] = request;
 
     yang_name = "statistics"; yang_parent_name = "vrf";
 }
@@ -8319,7 +7275,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::get_segment_pat
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8342,340 +7298,206 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::get_entity_path(
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ack")
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
-        else
+        if(ack == nullptr)
         {
             ack = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack>();
-            ack->parent = this;
-            children["ack"] = ack;
         }
-        return children.at("ack");
+        return ack;
     }
 
     if(child_yang_name == "bootp-reply")
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
-        else
+        if(bootp_reply == nullptr)
         {
             bootp_reply = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply>();
-            bootp_reply->parent = this;
-            children["bootp-reply"] = bootp_reply;
         }
-        return children.at("bootp-reply");
+        return bootp_reply;
     }
 
     if(child_yang_name == "bootp-request")
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
-        else
+        if(bootp_request == nullptr)
         {
             bootp_request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest>();
-            bootp_request->parent = this;
-            children["bootp-request"] = bootp_request;
         }
-        return children.at("bootp-request");
+        return bootp_request;
     }
 
     if(child_yang_name == "decline")
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
-        else
+        if(decline == nullptr)
         {
             decline = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline>();
-            decline->parent = this;
-            children["decline"] = decline;
         }
-        return children.at("decline");
+        return decline;
     }
 
     if(child_yang_name == "discover")
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
-        else
+        if(discover == nullptr)
         {
             discover = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover>();
-            discover->parent = this;
-            children["discover"] = discover;
         }
-        return children.at("discover");
+        return discover;
     }
 
     if(child_yang_name == "inform")
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
-        else
+        if(inform == nullptr)
         {
             inform = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform>();
-            inform->parent = this;
-            children["inform"] = inform;
         }
-        return children.at("inform");
+        return inform;
     }
 
     if(child_yang_name == "lease-active")
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
-        else
+        if(lease_active == nullptr)
         {
             lease_active = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive>();
-            lease_active->parent = this;
-            children["lease-active"] = lease_active;
         }
-        return children.at("lease-active");
+        return lease_active;
     }
 
     if(child_yang_name == "lease-not-assigned")
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
-        else
+        if(lease_not_assigned == nullptr)
         {
             lease_not_assigned = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned>();
-            lease_not_assigned->parent = this;
-            children["lease-not-assigned"] = lease_not_assigned;
         }
-        return children.at("lease-not-assigned");
+        return lease_not_assigned;
     }
 
     if(child_yang_name == "lease-query")
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
-        else
+        if(lease_query == nullptr)
         {
             lease_query = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery>();
-            lease_query->parent = this;
-            children["lease-query"] = lease_query;
         }
-        return children.at("lease-query");
+        return lease_query;
     }
 
     if(child_yang_name == "lease-unknown")
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
-        else
+        if(lease_unknown == nullptr)
         {
             lease_unknown = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown>();
-            lease_unknown->parent = this;
-            children["lease-unknown"] = lease_unknown;
         }
-        return children.at("lease-unknown");
+        return lease_unknown;
     }
 
     if(child_yang_name == "nak")
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
-        else
+        if(nak == nullptr)
         {
             nak = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak>();
-            nak->parent = this;
-            children["nak"] = nak;
         }
-        return children.at("nak");
+        return nak;
     }
 
     if(child_yang_name == "offer")
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
-        else
+        if(offer == nullptr)
         {
             offer = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer>();
-            offer->parent = this;
-            children["offer"] = offer;
         }
-        return children.at("offer");
+        return offer;
     }
 
     if(child_yang_name == "release")
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
-        else
+        if(release == nullptr)
         {
             release = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release>();
-            release->parent = this;
-            children["release"] = release;
         }
-        return children.at("release");
+        return release;
     }
 
     if(child_yang_name == "request")
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
-        else
+        if(request == nullptr)
         {
             request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request>();
-            request->parent = this;
-            children["request"] = request;
         }
-        return children.at("request");
+        return request;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::get_children() const
 {
-    if(children.find("ack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ack != nullptr)
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
+        children["ack"] = ack;
     }
 
-    if(children.find("bootp-reply") == children.end())
+    if(bootp_reply != nullptr)
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
+        children["bootp-reply"] = bootp_reply;
     }
 
-    if(children.find("bootp-request") == children.end())
+    if(bootp_request != nullptr)
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
+        children["bootp-request"] = bootp_request;
     }
 
-    if(children.find("decline") == children.end())
+    if(decline != nullptr)
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
+        children["decline"] = decline;
     }
 
-    if(children.find("discover") == children.end())
+    if(discover != nullptr)
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
+        children["discover"] = discover;
     }
 
-    if(children.find("inform") == children.end())
+    if(inform != nullptr)
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
+        children["inform"] = inform;
     }
 
-    if(children.find("lease-active") == children.end())
+    if(lease_active != nullptr)
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
+        children["lease-active"] = lease_active;
     }
 
-    if(children.find("lease-not-assigned") == children.end())
+    if(lease_not_assigned != nullptr)
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
+        children["lease-not-assigned"] = lease_not_assigned;
     }
 
-    if(children.find("lease-query") == children.end())
+    if(lease_query != nullptr)
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
+        children["lease-query"] = lease_query;
     }
 
-    if(children.find("lease-unknown") == children.end())
+    if(lease_unknown != nullptr)
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
+        children["lease-unknown"] = lease_unknown;
     }
 
-    if(children.find("nak") == children.end())
+    if(nak != nullptr)
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
+        children["nak"] = nak;
     }
 
-    if(children.find("offer") == children.end())
+    if(offer != nullptr)
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
+        children["offer"] = offer;
     }
 
-    if(children.find("release") == children.end())
+    if(release != nullptr)
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
+        children["release"] = release;
     }
 
-    if(children.find("request") == children.end())
+    if(request != nullptr)
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
+        children["request"] = request;
     }
 
     return children;
@@ -8722,7 +7544,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::get_s
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8748,20 +7570,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::get_en
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Discover::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8818,7 +7632,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::get_segm
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8844,20 +7658,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::get_entit
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Offer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8914,7 +7720,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8940,20 +7746,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Request::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9010,7 +7808,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9036,20 +7834,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Decline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9106,7 +7896,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::get_segmen
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9132,20 +7922,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::get_entity_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Ack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9202,7 +7984,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::get_segmen
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9228,20 +8010,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::get_entity_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Nak::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9298,7 +8072,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9324,20 +8098,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Release::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9394,7 +8160,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::get_seg
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9420,20 +8186,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::get_enti
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::Inform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9490,7 +8248,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::get
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9516,20 +8274,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::get_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseQuery::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9586,7 +8336,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigne
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9612,20 +8362,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9682,7 +8424,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::g
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9708,20 +8450,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::ge
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseUnknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9778,7 +8512,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::ge
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9804,20 +8538,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::get
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::LeaseActive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9874,7 +8600,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::g
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9900,20 +8626,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::ge
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9970,7 +8688,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::get
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9996,20 +8714,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::get_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf::Statistics::BootpReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10067,7 +8777,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10090,15 +8800,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -10106,28 +8807,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10151,10 +8848,8 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::Profile()
 	,interface_references(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences>())
 {
     child_profile_info->parent = this;
-    children["child-profile-info"] = child_profile_info;
 
     interface_references->parent = this;
-    children["interface-references"] = interface_references;
 
     yang_name = "profile"; yang_parent_name = "profiles";
 }
@@ -10199,7 +8894,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_segment_path() 
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10229,64 +8924,38 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_entity_path(Enti
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "child-profile-info")
     {
-        if(child_profile_info != nullptr)
-        {
-            children["child-profile-info"] = child_profile_info;
-        }
-        else
+        if(child_profile_info == nullptr)
         {
             child_profile_info = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo>();
-            child_profile_info->parent = this;
-            children["child-profile-info"] = child_profile_info;
         }
-        return children.at("child-profile-info");
+        return child_profile_info;
     }
 
     if(child_yang_name == "interface-references")
     {
-        if(interface_references != nullptr)
-        {
-            children["interface-references"] = interface_references;
-        }
-        else
+        if(interface_references == nullptr)
         {
             interface_references = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences>();
-            interface_references->parent = this;
-            children["interface-references"] = interface_references;
         }
-        return children.at("interface-references");
+        return interface_references;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::get_children() const
 {
-    if(children.find("child-profile-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(child_profile_info != nullptr)
     {
-        if(child_profile_info != nullptr)
-        {
-            children["child-profile-info"] = child_profile_info;
-        }
+        children["child-profile-info"] = child_profile_info;
     }
 
-    if(children.find("interface-references") == children.end())
+    if(interface_references != nullptr)
     {
-        if(interface_references != nullptr)
-        {
-            children["interface-references"] = interface_references;
-        }
+        children["interface-references"] = interface_references;
     }
 
     return children;
@@ -10362,7 +9031,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10385,15 +9054,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences:
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-base-interface-reference")
     {
         for(auto const & c : ipv4_dhcpd_base_interface_reference)
@@ -10401,28 +9061,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference>();
         c->parent = this;
-        ipv4_dhcpd_base_interface_reference.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_base_interface_reference.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_base_interface_reference.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_base_interface_reference)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10463,7 +9119,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10487,20 +9143,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences:
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10550,7 +9198,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::g
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10573,15 +9221,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::ge
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-base-child-profile-info")
     {
         for(auto const & c : ipv4_dhcpd_base_child_profile_info)
@@ -10589,28 +9228,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildPr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo>();
         c->parent = this;
-        ipv4_dhcpd_base_child_profile_info.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_base_child_profile_info.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_base_child_profile_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_base_child_profile_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10663,7 +9298,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::I
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10691,20 +9326,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ip
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10808,7 +9435,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Database::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Base::Database::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Base::Database::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10847,20 +9474,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Base::Database::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Base::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Base::Database::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Base::Database::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10941,19 +9560,14 @@ Ipv4Dhcpd::Nodes::Node::Server::Server()
 	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs>())
 {
     binding->parent = this;
-    children["binding"] = binding;
 
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     statistics_info->parent = this;
-    children["statistics-info"] = statistics_info;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "server"; yang_parent_name = "node";
 }
@@ -10990,7 +9604,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11013,133 +9627,80 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "binding")
     {
-        if(binding != nullptr)
-        {
-            children["binding"] = binding;
-        }
-        else
+        if(binding == nullptr)
         {
             binding = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding>();
-            binding->parent = this;
-            children["binding"] = binding;
         }
-        return children.at("binding");
+        return binding;
     }
 
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "statistics-info")
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
-        else
+        if(statistics_info == nullptr)
         {
             statistics_info = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo>();
-            statistics_info->parent = this;
-            children["statistics-info"] = statistics_info;
         }
-        return children.at("statistics-info");
+        return statistics_info;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::get_children() const
 {
-    if(children.find("binding") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(binding != nullptr)
     {
-        if(binding != nullptr)
-        {
-            children["binding"] = binding;
-        }
+        children["binding"] = binding;
     }
 
-    if(children.find("profiles") == children.end())
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("statistics-info") == children.end())
+    if(statistics_info != nullptr)
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
+        children["statistics-info"] = statistics_info;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -11187,7 +9748,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11210,15 +9771,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -11226,28 +9778,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11402,7 +9950,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_segment_path(
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11456,20 +10004,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_entity_path(En
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11623,7 +10163,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11646,15 +10186,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-proxy-stat")
     {
         for(auto const & c : ipv4_dhcpd_proxy_stat)
@@ -11662,28 +10193,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat>();
         c->parent = this;
-        ipv4_dhcpd_proxy_stat.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_proxy_stat.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_proxy_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_proxy_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11700,7 +10227,6 @@ Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Ipv4DhcpdProxySt
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "ipv4-dhcpd-proxy-stat"; yang_parent_name = "statistics";
 }
@@ -11731,7 +10257,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11755,41 +10281,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_e
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -11840,7 +10349,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Stat
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11866,20 +10375,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Stati
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::Statistics_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11905,10 +10406,8 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Binding()
 	,summary(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary>())
 {
     clients->parent = this;
-    children["clients"] = clients;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "binding"; yang_parent_name = "server";
 }
@@ -11939,7 +10438,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Binding::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11962,64 +10461,38 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clients")
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
-        else
+        if(clients == nullptr)
         {
             clients = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients>();
-            clients->parent = this;
-            children["clients"] = clients;
         }
-        return children.at("clients");
+        return clients;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Binding::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Binding::get_children() const
 {
-    if(children.find("clients") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clients != nullptr)
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
+        children["clients"] = clients;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -12111,7 +10584,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::get_segment_path()
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12152,20 +10625,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Binding::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12283,7 +10748,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_segment_path()
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12306,15 +10771,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
         for(auto const & c : client)
@@ -12322,28 +10778,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client>();
         c->parent = this;
-        client.push_back(std::move(c));
-        children[segment_path] = client.back();
-        return children.at(segment_path);
+        client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12495,7 +10947,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_segmen
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12554,20 +11006,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_entity_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12746,7 +11190,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::get_segment_path() c
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12770,20 +11214,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::get_entity_path(Entit
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12833,7 +11269,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12856,15 +11292,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -12872,28 +11299,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12910,7 +11333,6 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Vrf()
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -12941,7 +11363,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12965,41 +11387,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -13031,46 +11436,32 @@ Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Statistics()
 	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request>())
 {
     ack->parent = this;
-    children["ack"] = ack;
 
     bootp_reply->parent = this;
-    children["bootp-reply"] = bootp_reply;
 
     bootp_request->parent = this;
-    children["bootp-request"] = bootp_request;
 
     decline->parent = this;
-    children["decline"] = decline;
 
     discover->parent = this;
-    children["discover"] = discover;
 
     inform->parent = this;
-    children["inform"] = inform;
 
     lease_active->parent = this;
-    children["lease-active"] = lease_active;
 
     lease_not_assigned->parent = this;
-    children["lease-not-assigned"] = lease_not_assigned;
 
     lease_query->parent = this;
-    children["lease-query"] = lease_query;
 
     lease_unknown->parent = this;
-    children["lease-unknown"] = lease_unknown;
 
     nak->parent = this;
-    children["nak"] = nak;
 
     offer->parent = this;
-    children["offer"] = offer;
 
     release->parent = this;
-    children["release"] = release;
 
     request->parent = this;
-    children["request"] = request;
 
     yang_name = "statistics"; yang_parent_name = "vrf";
 }
@@ -13125,7 +11516,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_segment_p
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13148,340 +11539,206 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_entity_pat
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ack")
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
-        else
+        if(ack == nullptr)
         {
             ack = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack>();
-            ack->parent = this;
-            children["ack"] = ack;
         }
-        return children.at("ack");
+        return ack;
     }
 
     if(child_yang_name == "bootp-reply")
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
-        else
+        if(bootp_reply == nullptr)
         {
             bootp_reply = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply>();
-            bootp_reply->parent = this;
-            children["bootp-reply"] = bootp_reply;
         }
-        return children.at("bootp-reply");
+        return bootp_reply;
     }
 
     if(child_yang_name == "bootp-request")
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
-        else
+        if(bootp_request == nullptr)
         {
             bootp_request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest>();
-            bootp_request->parent = this;
-            children["bootp-request"] = bootp_request;
         }
-        return children.at("bootp-request");
+        return bootp_request;
     }
 
     if(child_yang_name == "decline")
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
-        else
+        if(decline == nullptr)
         {
             decline = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline>();
-            decline->parent = this;
-            children["decline"] = decline;
         }
-        return children.at("decline");
+        return decline;
     }
 
     if(child_yang_name == "discover")
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
-        else
+        if(discover == nullptr)
         {
             discover = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover>();
-            discover->parent = this;
-            children["discover"] = discover;
         }
-        return children.at("discover");
+        return discover;
     }
 
     if(child_yang_name == "inform")
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
-        else
+        if(inform == nullptr)
         {
             inform = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform>();
-            inform->parent = this;
-            children["inform"] = inform;
         }
-        return children.at("inform");
+        return inform;
     }
 
     if(child_yang_name == "lease-active")
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
-        else
+        if(lease_active == nullptr)
         {
             lease_active = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive>();
-            lease_active->parent = this;
-            children["lease-active"] = lease_active;
         }
-        return children.at("lease-active");
+        return lease_active;
     }
 
     if(child_yang_name == "lease-not-assigned")
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
-        else
+        if(lease_not_assigned == nullptr)
         {
             lease_not_assigned = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned>();
-            lease_not_assigned->parent = this;
-            children["lease-not-assigned"] = lease_not_assigned;
         }
-        return children.at("lease-not-assigned");
+        return lease_not_assigned;
     }
 
     if(child_yang_name == "lease-query")
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
-        else
+        if(lease_query == nullptr)
         {
             lease_query = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery>();
-            lease_query->parent = this;
-            children["lease-query"] = lease_query;
         }
-        return children.at("lease-query");
+        return lease_query;
     }
 
     if(child_yang_name == "lease-unknown")
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
-        else
+        if(lease_unknown == nullptr)
         {
             lease_unknown = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown>();
-            lease_unknown->parent = this;
-            children["lease-unknown"] = lease_unknown;
         }
-        return children.at("lease-unknown");
+        return lease_unknown;
     }
 
     if(child_yang_name == "nak")
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
-        else
+        if(nak == nullptr)
         {
             nak = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak>();
-            nak->parent = this;
-            children["nak"] = nak;
         }
-        return children.at("nak");
+        return nak;
     }
 
     if(child_yang_name == "offer")
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
-        else
+        if(offer == nullptr)
         {
             offer = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer>();
-            offer->parent = this;
-            children["offer"] = offer;
         }
-        return children.at("offer");
+        return offer;
     }
 
     if(child_yang_name == "release")
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
-        else
+        if(release == nullptr)
         {
             release = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release>();
-            release->parent = this;
-            children["release"] = release;
         }
-        return children.at("release");
+        return release;
     }
 
     if(child_yang_name == "request")
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
-        else
+        if(request == nullptr)
         {
             request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request>();
-            request->parent = this;
-            children["request"] = request;
         }
-        return children.at("request");
+        return request;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_children() const
 {
-    if(children.find("ack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ack != nullptr)
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
+        children["ack"] = ack;
     }
 
-    if(children.find("bootp-reply") == children.end())
+    if(bootp_reply != nullptr)
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
+        children["bootp-reply"] = bootp_reply;
     }
 
-    if(children.find("bootp-request") == children.end())
+    if(bootp_request != nullptr)
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
+        children["bootp-request"] = bootp_request;
     }
 
-    if(children.find("decline") == children.end())
+    if(decline != nullptr)
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
+        children["decline"] = decline;
     }
 
-    if(children.find("discover") == children.end())
+    if(discover != nullptr)
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
+        children["discover"] = discover;
     }
 
-    if(children.find("inform") == children.end())
+    if(inform != nullptr)
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
+        children["inform"] = inform;
     }
 
-    if(children.find("lease-active") == children.end())
+    if(lease_active != nullptr)
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
+        children["lease-active"] = lease_active;
     }
 
-    if(children.find("lease-not-assigned") == children.end())
+    if(lease_not_assigned != nullptr)
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
+        children["lease-not-assigned"] = lease_not_assigned;
     }
 
-    if(children.find("lease-query") == children.end())
+    if(lease_query != nullptr)
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
+        children["lease-query"] = lease_query;
     }
 
-    if(children.find("lease-unknown") == children.end())
+    if(lease_unknown != nullptr)
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
+        children["lease-unknown"] = lease_unknown;
     }
 
-    if(children.find("nak") == children.end())
+    if(nak != nullptr)
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
+        children["nak"] = nak;
     }
 
-    if(children.find("offer") == children.end())
+    if(offer != nullptr)
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
+        children["offer"] = offer;
     }
 
-    if(children.find("release") == children.end())
+    if(release != nullptr)
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
+        children["release"] = release;
     }
 
-    if(children.find("request") == children.end())
+    if(request != nullptr)
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
+        children["request"] = request;
     }
 
     return children;
@@ -13528,7 +11785,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::get
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13554,20 +11811,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::get_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Discover::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13624,7 +11873,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13650,20 +11899,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Offer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13720,7 +11961,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13746,20 +11987,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_e
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13816,7 +12049,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13842,20 +12075,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_e
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13912,7 +12137,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::get_segm
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13938,20 +12163,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::get_entit
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Ack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14008,7 +12225,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::get_segm
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14034,20 +12251,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::get_entit
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Nak::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14104,7 +12313,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14130,20 +12339,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_e
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14200,7 +12401,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_s
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14226,20 +12427,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_en
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14296,7 +12489,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::g
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14322,20 +12515,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::ge
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14392,7 +12577,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssig
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14418,20 +12603,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssign
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseNotAssigned::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14488,7 +12665,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown:
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14514,20 +12691,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseUnknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14584,7 +12753,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14610,20 +12779,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::g
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseActive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14680,7 +12841,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest:
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14706,20 +12867,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14776,7 +12929,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::g
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14802,20 +12955,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::ge
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf::Statistics::BootpReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14843,16 +12988,12 @@ Ipv4Dhcpd::Nodes::Node::Relay::Relay()
 	,vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs>())
 {
     profiles->parent = this;
-    children["profiles"] = profiles;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     statistics_info->parent = this;
-    children["statistics-info"] = statistics_info;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "relay"; yang_parent_name = "node";
 }
@@ -14887,7 +13028,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14910,110 +13051,66 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profiles")
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
-        else
+        if(profiles == nullptr)
         {
             profiles = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Profiles>();
-            profiles->parent = this;
-            children["profiles"] = profiles;
         }
-        return children.at("profiles");
+        return profiles;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "statistics-info")
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
-        else
+        if(statistics_info == nullptr)
         {
             statistics_info = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo>();
-            statistics_info->parent = this;
-            children["statistics-info"] = statistics_info;
         }
-        return children.at("statistics-info");
+        return statistics_info;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::get_children() const
 {
-    if(children.find("profiles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(profiles != nullptr)
     {
-        if(profiles != nullptr)
-        {
-            children["profiles"] = profiles;
-        }
+        children["profiles"] = profiles;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("statistics-info") == children.end())
+    if(statistics_info != nullptr)
     {
-        if(statistics_info != nullptr)
-        {
-            children["statistics-info"] = statistics_info;
-        }
+        children["statistics-info"] = statistics_info;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -15061,7 +13158,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15084,15 +13181,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "profile")
     {
         for(auto const & c : profile)
@@ -15100,28 +13188,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(std::move(c));
-        children[segment_path] = profile.back();
-        return children.at(segment_path);
+        profile.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Profiles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : profile)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15231,7 +13315,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_segment_path()
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15272,20 +13356,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15384,7 +13460,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::get_segment_path() co
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15408,20 +13484,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::StatisticsInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15471,7 +13539,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15494,15 +13562,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-dhcpd-relay-stat")
     {
         for(auto const & c : ipv4_dhcpd_relay_stat)
@@ -15510,28 +13569,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat>();
         c->parent = this;
-        ipv4_dhcpd_relay_stat.push_back(std::move(c));
-        children[segment_path] = ipv4_dhcpd_relay_stat.back();
-        return children.at(segment_path);
+        ipv4_dhcpd_relay_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_dhcpd_relay_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15548,7 +13603,6 @@ Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Ipv4DhcpdRelaySta
     statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "ipv4-dhcpd-relay-stat"; yang_parent_name = "statistics";
 }
@@ -15579,7 +13633,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_s
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15603,41 +13657,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_en
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -15688,7 +13725,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Stati
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15714,20 +13751,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statis
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::Statistics_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15785,7 +13814,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15808,15 +13837,6 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -15824,28 +13844,24 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15862,7 +13878,6 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::Vrf()
     vrf_statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics>())
 {
     vrf_statistics->parent = this;
-    children["vrf-statistics"] = vrf_statistics;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -15893,7 +13908,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15917,41 +13932,24 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-statistics")
     {
-        if(vrf_statistics != nullptr)
-        {
-            children["vrf-statistics"] = vrf_statistics;
-        }
-        else
+        if(vrf_statistics == nullptr)
         {
             vrf_statistics = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics>();
-            vrf_statistics->parent = this;
-            children["vrf-statistics"] = vrf_statistics;
         }
-        return children.at("vrf-statistics");
+        return vrf_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::get_children() const
 {
-    if(children.find("vrf-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrf_statistics != nullptr)
     {
-        if(vrf_statistics != nullptr)
-        {
-            children["vrf-statistics"] = vrf_statistics;
-        }
+        children["vrf-statistics"] = vrf_statistics;
     }
 
     return children;
@@ -15983,46 +13981,32 @@ Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::VrfStatistics()
 	,request(std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request>())
 {
     ack->parent = this;
-    children["ack"] = ack;
 
     bootp_reply->parent = this;
-    children["bootp-reply"] = bootp_reply;
 
     bootp_request->parent = this;
-    children["bootp-request"] = bootp_request;
 
     decline->parent = this;
-    children["decline"] = decline;
 
     discover->parent = this;
-    children["discover"] = discover;
 
     inform->parent = this;
-    children["inform"] = inform;
 
     lease_active->parent = this;
-    children["lease-active"] = lease_active;
 
     lease_not_assigned->parent = this;
-    children["lease-not-assigned"] = lease_not_assigned;
 
     lease_query->parent = this;
-    children["lease-query"] = lease_query;
 
     lease_unknown->parent = this;
-    children["lease-unknown"] = lease_unknown;
 
     nak->parent = this;
-    children["nak"] = nak;
 
     offer->parent = this;
-    children["offer"] = offer;
 
     release->parent = this;
-    children["release"] = release;
 
     request->parent = this;
-    children["request"] = request;
 
     yang_name = "vrf-statistics"; yang_parent_name = "vrf";
 }
@@ -16077,7 +14061,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::get_segment
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16100,340 +14084,206 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::get_entity_p
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ack")
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
-        else
+        if(ack == nullptr)
         {
             ack = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack>();
-            ack->parent = this;
-            children["ack"] = ack;
         }
-        return children.at("ack");
+        return ack;
     }
 
     if(child_yang_name == "bootp-reply")
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
-        else
+        if(bootp_reply == nullptr)
         {
             bootp_reply = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply>();
-            bootp_reply->parent = this;
-            children["bootp-reply"] = bootp_reply;
         }
-        return children.at("bootp-reply");
+        return bootp_reply;
     }
 
     if(child_yang_name == "bootp-request")
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
-        else
+        if(bootp_request == nullptr)
         {
             bootp_request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest>();
-            bootp_request->parent = this;
-            children["bootp-request"] = bootp_request;
         }
-        return children.at("bootp-request");
+        return bootp_request;
     }
 
     if(child_yang_name == "decline")
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
-        else
+        if(decline == nullptr)
         {
             decline = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline>();
-            decline->parent = this;
-            children["decline"] = decline;
         }
-        return children.at("decline");
+        return decline;
     }
 
     if(child_yang_name == "discover")
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
-        else
+        if(discover == nullptr)
         {
             discover = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover>();
-            discover->parent = this;
-            children["discover"] = discover;
         }
-        return children.at("discover");
+        return discover;
     }
 
     if(child_yang_name == "inform")
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
-        else
+        if(inform == nullptr)
         {
             inform = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform>();
-            inform->parent = this;
-            children["inform"] = inform;
         }
-        return children.at("inform");
+        return inform;
     }
 
     if(child_yang_name == "lease-active")
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
-        else
+        if(lease_active == nullptr)
         {
             lease_active = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive>();
-            lease_active->parent = this;
-            children["lease-active"] = lease_active;
         }
-        return children.at("lease-active");
+        return lease_active;
     }
 
     if(child_yang_name == "lease-not-assigned")
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
-        else
+        if(lease_not_assigned == nullptr)
         {
             lease_not_assigned = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned>();
-            lease_not_assigned->parent = this;
-            children["lease-not-assigned"] = lease_not_assigned;
         }
-        return children.at("lease-not-assigned");
+        return lease_not_assigned;
     }
 
     if(child_yang_name == "lease-query")
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
-        else
+        if(lease_query == nullptr)
         {
             lease_query = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery>();
-            lease_query->parent = this;
-            children["lease-query"] = lease_query;
         }
-        return children.at("lease-query");
+        return lease_query;
     }
 
     if(child_yang_name == "lease-unknown")
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
-        else
+        if(lease_unknown == nullptr)
         {
             lease_unknown = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown>();
-            lease_unknown->parent = this;
-            children["lease-unknown"] = lease_unknown;
         }
-        return children.at("lease-unknown");
+        return lease_unknown;
     }
 
     if(child_yang_name == "nak")
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
-        else
+        if(nak == nullptr)
         {
             nak = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak>();
-            nak->parent = this;
-            children["nak"] = nak;
         }
-        return children.at("nak");
+        return nak;
     }
 
     if(child_yang_name == "offer")
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
-        else
+        if(offer == nullptr)
         {
             offer = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer>();
-            offer->parent = this;
-            children["offer"] = offer;
         }
-        return children.at("offer");
+        return offer;
     }
 
     if(child_yang_name == "release")
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
-        else
+        if(release == nullptr)
         {
             release = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release>();
-            release->parent = this;
-            children["release"] = release;
         }
-        return children.at("release");
+        return release;
     }
 
     if(child_yang_name == "request")
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
-        else
+        if(request == nullptr)
         {
             request = std::make_shared<Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request>();
-            request->parent = this;
-            children["request"] = request;
         }
-        return children.at("request");
+        return request;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::get_children() const
 {
-    if(children.find("ack") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ack != nullptr)
     {
-        if(ack != nullptr)
-        {
-            children["ack"] = ack;
-        }
+        children["ack"] = ack;
     }
 
-    if(children.find("bootp-reply") == children.end())
+    if(bootp_reply != nullptr)
     {
-        if(bootp_reply != nullptr)
-        {
-            children["bootp-reply"] = bootp_reply;
-        }
+        children["bootp-reply"] = bootp_reply;
     }
 
-    if(children.find("bootp-request") == children.end())
+    if(bootp_request != nullptr)
     {
-        if(bootp_request != nullptr)
-        {
-            children["bootp-request"] = bootp_request;
-        }
+        children["bootp-request"] = bootp_request;
     }
 
-    if(children.find("decline") == children.end())
+    if(decline != nullptr)
     {
-        if(decline != nullptr)
-        {
-            children["decline"] = decline;
-        }
+        children["decline"] = decline;
     }
 
-    if(children.find("discover") == children.end())
+    if(discover != nullptr)
     {
-        if(discover != nullptr)
-        {
-            children["discover"] = discover;
-        }
+        children["discover"] = discover;
     }
 
-    if(children.find("inform") == children.end())
+    if(inform != nullptr)
     {
-        if(inform != nullptr)
-        {
-            children["inform"] = inform;
-        }
+        children["inform"] = inform;
     }
 
-    if(children.find("lease-active") == children.end())
+    if(lease_active != nullptr)
     {
-        if(lease_active != nullptr)
-        {
-            children["lease-active"] = lease_active;
-        }
+        children["lease-active"] = lease_active;
     }
 
-    if(children.find("lease-not-assigned") == children.end())
+    if(lease_not_assigned != nullptr)
     {
-        if(lease_not_assigned != nullptr)
-        {
-            children["lease-not-assigned"] = lease_not_assigned;
-        }
+        children["lease-not-assigned"] = lease_not_assigned;
     }
 
-    if(children.find("lease-query") == children.end())
+    if(lease_query != nullptr)
     {
-        if(lease_query != nullptr)
-        {
-            children["lease-query"] = lease_query;
-        }
+        children["lease-query"] = lease_query;
     }
 
-    if(children.find("lease-unknown") == children.end())
+    if(lease_unknown != nullptr)
     {
-        if(lease_unknown != nullptr)
-        {
-            children["lease-unknown"] = lease_unknown;
-        }
+        children["lease-unknown"] = lease_unknown;
     }
 
-    if(children.find("nak") == children.end())
+    if(nak != nullptr)
     {
-        if(nak != nullptr)
-        {
-            children["nak"] = nak;
-        }
+        children["nak"] = nak;
     }
 
-    if(children.find("offer") == children.end())
+    if(offer != nullptr)
     {
-        if(offer != nullptr)
-        {
-            children["offer"] = offer;
-        }
+        children["offer"] = offer;
     }
 
-    if(children.find("release") == children.end())
+    if(release != nullptr)
     {
-        if(release != nullptr)
-        {
-            children["release"] = release;
-        }
+        children["release"] = release;
     }
 
-    if(children.find("request") == children.end())
+    if(request != nullptr)
     {
-        if(request != nullptr)
-        {
-            children["request"] = request;
-        }
+        children["request"] = request;
     }
 
     return children;
@@ -16480,7 +14330,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::g
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16506,20 +14356,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::ge
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Discover::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16576,7 +14418,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::get_
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16602,20 +14444,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::get_e
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Offer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16672,7 +14506,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::ge
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16698,20 +14532,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::get
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Request::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16768,7 +14594,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::ge
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16794,20 +14620,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::get
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Decline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16864,7 +14682,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16890,20 +14708,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Ack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16960,7 +14770,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::get_se
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16986,20 +14796,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::get_ent
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Nak::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17056,7 +14858,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::ge
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17082,20 +14884,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::get
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Release::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17152,7 +14946,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::get
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17178,20 +14972,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::get_
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::Inform::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17248,7 +15034,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery:
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17274,20 +15060,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseQuery::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17344,7 +15122,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAss
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17370,20 +15148,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssi
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseNotAssigned::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17440,7 +15210,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknow
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17466,20 +15236,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseUnknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17536,7 +15298,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17562,20 +15324,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive:
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::LeaseActive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17632,7 +15386,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReques
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17658,20 +15412,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17728,7 +15474,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply:
 
 }
 
-EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17754,20 +15500,12 @@ EntityPath Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::
 
 std::shared_ptr<Entity> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

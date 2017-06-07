@@ -18,23 +18,41 @@ class KeyGenerateRsaGeneralKeysRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: KeyGenerateRsaGeneralKeysRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::KeyGenerateRsaGeneralKeysRpc::Input> input;
+        
+}; // KeyGenerateRsaGeneralKeysRpc
+
+
+class KeyGenerateRsaGeneralKeysRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf key_label; //type: string
         YLeaf key_modulus; //type: int32
 
-
-
-}; // KeyGenerateRsaGeneralKeysRpc
+}; // KeyGenerateRsaGeneralKeysRpc::Input
 
 class KeyGenerateRsaUsageKeysRpc : public Entity
 {
@@ -44,23 +62,41 @@ class KeyGenerateRsaUsageKeysRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: KeyGenerateRsaUsageKeysRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::KeyGenerateRsaUsageKeysRpc::Input> input;
+        
+}; // KeyGenerateRsaUsageKeysRpc
+
+
+class KeyGenerateRsaUsageKeysRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf key_label; //type: string
         YLeaf key_modulus; //type: int32
 
-
-
-}; // KeyGenerateRsaUsageKeysRpc
+}; // KeyGenerateRsaUsageKeysRpc::Input
 
 class KeyGenerateRsaRpc : public Entity
 {
@@ -70,23 +106,41 @@ class KeyGenerateRsaRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: KeyGenerateRsaRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::KeyGenerateRsaRpc::Input> input;
+        
+}; // KeyGenerateRsaRpc
+
+
+class KeyGenerateRsaRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf key_label; //type: string
         YLeaf key_modulus; //type: int32
 
-
-
-}; // KeyGenerateRsaRpc
+}; // KeyGenerateRsaRpc::Input
 
 class KeyGenerateDsaRpc : public Entity
 {
@@ -96,22 +150,40 @@ class KeyGenerateDsaRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: KeyGenerateDsaRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::KeyGenerateDsaRpc::Input> input;
+        
+}; // KeyGenerateDsaRpc
+
+
+class KeyGenerateDsaRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf key_modulus; //type: int32
 
-
-
-}; // KeyGenerateDsaRpc
+}; // KeyGenerateDsaRpc::Input
 
 class KeyZeroizeRsaRpc : public Entity
 {
@@ -121,22 +193,40 @@ class KeyZeroizeRsaRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: KeyZeroizeRsaRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::KeyZeroizeRsaRpc::Input> input;
+        
+}; // KeyZeroizeRsaRpc
+
+
+class KeyZeroizeRsaRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf key_label; //type: string
 
-
-
-}; // KeyZeroizeRsaRpc
+}; // KeyZeroizeRsaRpc::Input
 
 class KeyZeroizeDsaRpc : public Entity
 {
@@ -146,18 +236,15 @@ class KeyZeroizeDsaRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
-
 
 
 }; // KeyZeroizeDsaRpc
@@ -170,18 +257,15 @@ class KeyZeroizeAuthenticationRsaRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
-
 
 
 }; // KeyZeroizeAuthenticationRsaRpc
@@ -194,22 +278,40 @@ class KeyImportAuthenticationRsaRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: KeyImportAuthenticationRsaRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::KeyImportAuthenticationRsaRpc::Input> input;
+        
+}; // KeyImportAuthenticationRsaRpc
+
+
+class KeyImportAuthenticationRsaRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path; //type: string
 
-
-
-}; // KeyImportAuthenticationRsaRpc
+}; // KeyImportAuthenticationRsaRpc::Input
 
 class CaAuthenticateRpc : public Entity
 {
@@ -219,22 +321,40 @@ class CaAuthenticateRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CaAuthenticateRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaAuthenticateRpc::Input> input;
+        
+}; // CaAuthenticateRpc
+
+
+class CaAuthenticateRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf server_name; //type: string
 
-
-
-}; // CaAuthenticateRpc
+}; // CaAuthenticateRpc::Input
 
 class CaEnrollRpc : public Entity
 {
@@ -244,22 +364,40 @@ class CaEnrollRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CaEnrollRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaEnrollRpc::Input> input;
+        
+}; // CaEnrollRpc
+
+
+class CaEnrollRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf server_name; //type: string
 
-
-
-}; // CaEnrollRpc
+}; // CaEnrollRpc::Input
 
 class CaImportCertificateRpc : public Entity
 {
@@ -269,22 +407,40 @@ class CaImportCertificateRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CaImportCertificateRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaImportCertificateRpc::Input> input;
+        
+}; // CaImportCertificateRpc
+
+
+class CaImportCertificateRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf server_name; //type: string
 
-
-
-}; // CaImportCertificateRpc
+}; // CaImportCertificateRpc::Input
 
 class CaCancelEnrollRpc : public Entity
 {
@@ -294,22 +450,40 @@ class CaCancelEnrollRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CaCancelEnrollRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaCancelEnrollRpc::Input> input;
+        
+}; // CaCancelEnrollRpc
+
+
+class CaCancelEnrollRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf server_name; //type: string
 
-
-
-}; // CaCancelEnrollRpc
+}; // CaCancelEnrollRpc::Input
 
 class CaCrlRequestRpc : public Entity
 {
@@ -319,25 +493,42 @@ class CaCrlRequestRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CaCrlRequestRpc::Input
+        class Output; //type: CaCrlRequestRpc::Output
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaCrlRequestRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaCrlRequestRpc::Output> output;
+        
+}; // CaCrlRequestRpc
+
+
+class CaCrlRequestRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf uri; //type: string
 
-        class Output; //type: CaCrlRequestRpc::Output
-
-        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaCrlRequestRpc::Output> output;
-
-
-}; // CaCrlRequestRpc
+}; // CaCrlRequestRpc::Input
 
 
 class CaCrlRequestRpc::Output : public Entity
@@ -348,16 +539,13 @@ class CaCrlRequestRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf certificate; //type: string
-
-
 
 }; // CaCrlRequestRpc::Output
 
@@ -369,22 +557,40 @@ class CaTrustpoolImportUrlRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CaTrustpoolImportUrlRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaTrustpoolImportUrlRpc::Input> input;
+        
+}; // CaTrustpoolImportUrlRpc
+
+
+class CaTrustpoolImportUrlRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf url; //type: string
 
-
-
-}; // CaTrustpoolImportUrlRpc
+}; // CaTrustpoolImportUrlRpc::Input
 
 class CaTrustpoolImportUrlCleanRpc : public Entity
 {
@@ -394,22 +600,40 @@ class CaTrustpoolImportUrlCleanRpc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
+        class Input; //type: CaTrustpoolImportUrlCleanRpc::Input
+
+        std::shared_ptr<Cisco_IOS_XR_crypto_act::CaTrustpoolImportUrlCleanRpc::Input> input;
+        
+}; // CaTrustpoolImportUrlCleanRpc
+
+
+class CaTrustpoolImportUrlCleanRpc::Input : public Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf url; //type: string
 
-
-
-}; // CaTrustpoolImportUrlCleanRpc
+}; // CaTrustpoolImportUrlCleanRpc::Input
 
 
 }

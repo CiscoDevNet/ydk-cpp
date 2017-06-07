@@ -18,23 +18,20 @@ class InfraStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Interfaces; //type: InfraStatistics::Interfaces
 
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces> interfaces;
-
-
+        
 }; // InfraStatistics
 
 
@@ -46,19 +43,16 @@ class InfraStatistics::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: InfraStatistics::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface> > interface;
-
-
+        
 }; // InfraStatistics::Interfaces
 
 
@@ -70,15 +64,13 @@ class InfraStatistics::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class Cache; //type: InfraStatistics::Interfaces::Interface::Cache
         class Latest; //type: InfraStatistics::Interfaces::Interface::Latest
         class Total; //type: InfraStatistics::Interfaces::Interface::Total
@@ -94,8 +86,7 @@ class InfraStatistics::Interfaces::Interface : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Latest> latest;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Protocols> protocols;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Total> total;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface
 
 
@@ -107,13 +98,11 @@ class InfraStatistics::Interfaces::Interface::Cache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Protocols; //type: InfraStatistics::Interfaces::Interface::Cache::Protocols
         class InterfacesMibCounters; //type: InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters
@@ -124,8 +113,7 @@ class InfraStatistics::Interfaces::Interface::Cache : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Cache::GenericCounters> generic_counters;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters> interfaces_mib_counters;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Cache::Protocols> protocols;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface::Cache
 
 
@@ -137,19 +125,16 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol> > protocol;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface::Cache::Protocols
 
 
@@ -161,12 +146,11 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_name; //type: string
         YLeaf bytes_received; //type: uint64
@@ -179,8 +163,6 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol : publi
         YLeaf input_packet_rate; //type: uint64
         YLeaf output_data_rate; //type: uint64
         YLeaf output_packet_rate; //type: uint64
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol
 
@@ -193,12 +175,11 @@ class InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -236,8 +217,6 @@ class InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters : pub
         YLeaf last_discontinuity_time; //type: uint32
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters
 
@@ -250,12 +229,11 @@ class InfraStatistics::Interfaces::Interface::Cache::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf input_data_rate; //type: uint64
         YLeaf input_packet_rate; //type: uint64
@@ -270,8 +248,6 @@ class InfraStatistics::Interfaces::Interface::Cache::DataRate : public Entity
         YLeaf output_load; //type: uint8
         YLeaf input_load; //type: uint8
         YLeaf reliability; //type: uint8
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Cache::DataRate
 
@@ -284,12 +260,11 @@ class InfraStatistics::Interfaces::Interface::Cache::GenericCounters : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -327,8 +302,6 @@ class InfraStatistics::Interfaces::Interface::Cache::GenericCounters : public En
         YLeaf last_discontinuity_time; //type: uint32
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Cache::GenericCounters
 
@@ -341,13 +314,11 @@ class InfraStatistics::Interfaces::Interface::Latest : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Protocols; //type: InfraStatistics::Interfaces::Interface::Latest::Protocols
         class InterfacesMibCounters; //type: InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters
@@ -358,8 +329,7 @@ class InfraStatistics::Interfaces::Interface::Latest : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Latest::GenericCounters> generic_counters;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters> interfaces_mib_counters;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Latest::Protocols> protocols;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface::Latest
 
 
@@ -371,19 +341,16 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol> > protocol;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface::Latest::Protocols
 
 
@@ -395,12 +362,11 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_name; //type: string
         YLeaf bytes_received; //type: uint64
@@ -413,8 +379,6 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol : publ
         YLeaf input_packet_rate; //type: uint64
         YLeaf output_data_rate; //type: uint64
         YLeaf output_packet_rate; //type: uint64
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol
 
@@ -427,12 +391,11 @@ class InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -470,8 +433,6 @@ class InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters : pu
         YLeaf last_discontinuity_time; //type: uint32
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters
 
@@ -484,12 +445,11 @@ class InfraStatistics::Interfaces::Interface::Latest::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf input_data_rate; //type: uint64
         YLeaf input_packet_rate; //type: uint64
@@ -504,8 +464,6 @@ class InfraStatistics::Interfaces::Interface::Latest::DataRate : public Entity
         YLeaf output_load; //type: uint8
         YLeaf input_load; //type: uint8
         YLeaf reliability; //type: uint8
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Latest::DataRate
 
@@ -518,12 +476,11 @@ class InfraStatistics::Interfaces::Interface::Latest::GenericCounters : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -561,8 +518,6 @@ class InfraStatistics::Interfaces::Interface::Latest::GenericCounters : public E
         YLeaf last_discontinuity_time; //type: uint32
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Latest::GenericCounters
 
@@ -575,13 +530,11 @@ class InfraStatistics::Interfaces::Interface::Total : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Protocols; //type: InfraStatistics::Interfaces::Interface::Total::Protocols
         class InterfacesMibCounters; //type: InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters
@@ -592,8 +545,7 @@ class InfraStatistics::Interfaces::Interface::Total : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Total::GenericCounters> generic_counters;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters> interfaces_mib_counters;
         std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Total::Protocols> protocols;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface::Total
 
 
@@ -605,19 +557,16 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol> > protocol;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface::Total::Protocols
 
 
@@ -629,12 +578,11 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_name; //type: string
         YLeaf bytes_received; //type: uint64
@@ -647,8 +595,6 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol : publi
         YLeaf input_packet_rate; //type: uint64
         YLeaf output_data_rate; //type: uint64
         YLeaf output_packet_rate; //type: uint64
-
-
 
 }; // InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol
 
@@ -661,12 +607,11 @@ class InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -705,8 +650,6 @@ class InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters : pub
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
 
-
-
 }; // InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters
 
 
@@ -718,12 +661,11 @@ class InfraStatistics::Interfaces::Interface::Total::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf input_data_rate; //type: uint64
         YLeaf input_packet_rate; //type: uint64
@@ -739,8 +681,6 @@ class InfraStatistics::Interfaces::Interface::Total::DataRate : public Entity
         YLeaf input_load; //type: uint8
         YLeaf reliability; //type: uint8
 
-
-
 }; // InfraStatistics::Interfaces::Interface::Total::DataRate
 
 
@@ -752,12 +692,11 @@ class InfraStatistics::Interfaces::Interface::Total::GenericCounters : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -796,8 +735,6 @@ class InfraStatistics::Interfaces::Interface::Total::GenericCounters : public En
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
 
-
-
 }; // InfraStatistics::Interfaces::Interface::Total::GenericCounters
 
 
@@ -809,19 +746,16 @@ class InfraStatistics::Interfaces::Interface::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Protocols::Protocol
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_statsd_oper::InfraStatistics::Interfaces::Interface::Protocols::Protocol> > protocol;
-
-
+        
 }; // InfraStatistics::Interfaces::Interface::Protocols
 
 
@@ -833,12 +767,11 @@ class InfraStatistics::Interfaces::Interface::Protocols::Protocol : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protocol_name; //type: string
         YLeaf bytes_received; //type: uint64
@@ -852,8 +785,6 @@ class InfraStatistics::Interfaces::Interface::Protocols::Protocol : public Entit
         YLeaf output_data_rate; //type: uint64
         YLeaf output_packet_rate; //type: uint64
 
-
-
 }; // InfraStatistics::Interfaces::Interface::Protocols::Protocol
 
 
@@ -865,12 +796,11 @@ class InfraStatistics::Interfaces::Interface::InterfacesMibCounters : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -909,8 +839,6 @@ class InfraStatistics::Interfaces::Interface::InterfacesMibCounters : public Ent
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
 
-
-
 }; // InfraStatistics::Interfaces::Interface::InterfacesMibCounters
 
 
@@ -922,12 +850,11 @@ class InfraStatistics::Interfaces::Interface::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf input_data_rate; //type: uint64
         YLeaf input_packet_rate; //type: uint64
@@ -943,8 +870,6 @@ class InfraStatistics::Interfaces::Interface::DataRate : public Entity
         YLeaf input_load; //type: uint8
         YLeaf reliability; //type: uint8
 
-
-
 }; // InfraStatistics::Interfaces::Interface::DataRate
 
 
@@ -956,12 +881,11 @@ class InfraStatistics::Interfaces::Interface::GenericCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packets_received; //type: uint64
         YLeaf bytes_received; //type: uint64
@@ -999,8 +923,6 @@ class InfraStatistics::Interfaces::Interface::GenericCounters : public Entity
         YLeaf last_discontinuity_time; //type: uint32
         YLeaf seconds_since_packet_received; //type: uint32
         YLeaf seconds_since_packet_sent; //type: uint32
-
-
 
 }; // InfraStatistics::Interfaces::Interface::GenericCounters
 

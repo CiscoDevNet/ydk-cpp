@@ -14,7 +14,6 @@ Ipv6Telnet::Ipv6Telnet()
     client(std::make_shared<Ipv6Telnet::Client>())
 {
     client->parent = this;
-    children["client"] = client;
 
     yang_name = "ipv6-telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-cfg";
 }
@@ -43,12 +42,12 @@ std::string Ipv6Telnet::get_segment_path() const
 
 }
 
-EntityPath Ipv6Telnet::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Telnet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Ipv6Telnet::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
-        else
+        if(client == nullptr)
         {
             client = std::make_shared<Ipv6Telnet::Client>();
-            client->parent = this;
-            children["client"] = client;
         }
-        return children.at("client");
+        return client;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Telnet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Telnet::get_children() const
 {
-    if(children.find("client") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client != nullptr)
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
+        children["client"] = client;
     }
 
     return children;
@@ -158,7 +140,7 @@ std::string Ipv6Telnet::Client::get_segment_path() const
 
 }
 
-EntityPath Ipv6Telnet::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv6Telnet::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -182,20 +164,12 @@ EntityPath Ipv6Telnet::Client::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv6Telnet::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv6Telnet::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Telnet::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -212,7 +186,6 @@ Ipv4Telnet::Ipv4Telnet()
     client(std::make_shared<Ipv4Telnet::Client>())
 {
     client->parent = this;
-    children["client"] = client;
 
     yang_name = "ipv4-telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-cfg";
 }
@@ -241,12 +214,12 @@ std::string Ipv4Telnet::get_segment_path() const
 
 }
 
-EntityPath Ipv4Telnet::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Telnet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -261,41 +234,24 @@ EntityPath Ipv4Telnet::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
-        else
+        if(client == nullptr)
         {
             client = std::make_shared<Ipv4Telnet::Client>();
-            client->parent = this;
-            children["client"] = client;
         }
-        return children.at("client");
+        return client;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Telnet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Telnet::get_children() const
 {
-    if(children.find("client") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client != nullptr)
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
+        children["client"] = client;
     }
 
     return children;
@@ -356,7 +312,7 @@ std::string Ipv4Telnet::Client::get_segment_path() const
 
 }
 
-EntityPath Ipv4Telnet::Client::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Telnet::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -380,20 +336,12 @@ EntityPath Ipv4Telnet::Client::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Telnet::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Telnet::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Telnet::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

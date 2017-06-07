@@ -19,17 +19,15 @@ class Aaa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class AllTasks; //type: Aaa::AllTasks
         class CurrentuserDetail; //type: Aaa::CurrentuserDetail
@@ -39,9 +37,9 @@ class Aaa : public Entity
         class Usergroups; //type: Aaa::Usergroups
         class AuthenMethod; //type: Aaa::AuthenMethod
         class CurrentUsergroup; //type: Aaa::CurrentUsergroup
-        class Tacacs; //type: Aaa::Tacacs
         class Diameter; //type: Aaa::Diameter
         class Radius; //type: Aaa::Radius
+        class Tacacs; //type: Aaa::Tacacs
 
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::AllTasks> all_tasks;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::AuthenMethod> authen_method;
@@ -54,8 +52,7 @@ class Aaa : public Entity
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Taskgroups> taskgroups;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups> usergroups;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Users> users;
-
-
+        
 }; // Aaa
 
 
@@ -67,16 +64,13 @@ class Aaa::AllTasks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList task_id; //type: list of  string
-
-
 
 }; // Aaa::AllTasks
 
@@ -89,19 +83,16 @@ class Aaa::CurrentuserDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf authenmethod; //type: int32
         YLeafList usergroup; //type: list of  string
         YLeafList taskmap; //type: list of  string
-
-
 
 }; // Aaa::CurrentuserDetail
 
@@ -114,19 +105,16 @@ class Aaa::TaskMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf authenmethod; //type: int32
         YLeafList usergroup; //type: list of  string
         YLeafList taskmap; //type: list of  string
-
-
 
 }; // Aaa::TaskMap
 
@@ -139,19 +127,16 @@ class Aaa::Taskgroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Taskgroup; //type: Aaa::Taskgroups::Taskgroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Taskgroups::Taskgroup> > taskgroup;
-
-
+        
 }; // Aaa::Taskgroups
 
 
@@ -163,23 +148,20 @@ class Aaa::Taskgroups::Taskgroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf name_xr; //type: string
-
         class IncludedTaskIds; //type: Aaa::Taskgroups::Taskgroup::IncludedTaskIds
         class TaskMap; //type: Aaa::Taskgroups::Taskgroup::TaskMap
 
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Taskgroups::Taskgroup::IncludedTaskIds> included_task_ids;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Taskgroups::Taskgroup::TaskMap> task_map;
-
-
+        
 }; // Aaa::Taskgroups::Taskgroup
 
 
@@ -191,19 +173,16 @@ class Aaa::Taskgroups::Taskgroup::IncludedTaskIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tasks; //type: Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks> > tasks;
-
-
+        
 }; // Aaa::Taskgroups::Taskgroup::IncludedTaskIds
 
 
@@ -215,20 +194,17 @@ class Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf task_id; //type: string
         YLeaf read; //type: boolean
         YLeaf write; //type: boolean
         YLeaf execute; //type: boolean
         YLeaf debug; //type: boolean
-
-
 
 }; // Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks
 
@@ -241,19 +217,16 @@ class Aaa::Taskgroups::Taskgroup::TaskMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tasks; //type: Aaa::Taskgroups::Taskgroup::TaskMap::Tasks
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Taskgroups::Taskgroup::TaskMap::Tasks> > tasks;
-
-
+        
 }; // Aaa::Taskgroups::Taskgroup::TaskMap
 
 
@@ -265,20 +238,17 @@ class Aaa::Taskgroups::Taskgroup::TaskMap::Tasks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf task_id; //type: string
         YLeaf read; //type: boolean
         YLeaf write; //type: boolean
         YLeaf execute; //type: boolean
         YLeaf debug; //type: boolean
-
-
 
 }; // Aaa::Taskgroups::Taskgroup::TaskMap::Tasks
 
@@ -291,19 +261,16 @@ class Aaa::Users : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class User; //type: Aaa::Users::User
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Users::User> > user;
-
-
+        
 }; // Aaa::Users
 
 
@@ -315,24 +282,21 @@ class Aaa::Users::User : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf name_xr; //type: string
         YLeaf admin_user; //type: boolean
         YLeaf first_user; //type: boolean
         YLeafList usergroup; //type: list of  string
-
         class TaskMap; //type: Aaa::Users::User::TaskMap
 
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Users::User::TaskMap> task_map;
-
-
+        
 }; // Aaa::Users::User
 
 
@@ -344,19 +308,16 @@ class Aaa::Users::User::TaskMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tasks; //type: Aaa::Users::User::TaskMap::Tasks
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Users::User::TaskMap::Tasks> > tasks;
-
-
+        
 }; // Aaa::Users::User::TaskMap
 
 
@@ -368,20 +329,17 @@ class Aaa::Users::User::TaskMap::Tasks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf task_id; //type: string
         YLeaf read; //type: boolean
         YLeaf write; //type: boolean
         YLeaf execute; //type: boolean
         YLeaf debug; //type: boolean
-
-
 
 }; // Aaa::Users::User::TaskMap::Tasks
 
@@ -394,19 +352,16 @@ class Aaa::Usergroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Usergroup; //type: Aaa::Usergroups::Usergroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup> > usergroup;
-
-
+        
 }; // Aaa::Usergroups
 
 
@@ -418,23 +373,20 @@ class Aaa::Usergroups::Usergroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf name_xr; //type: string
-
         class TaskMap; //type: Aaa::Usergroups::Usergroup::TaskMap
         class Taskgroup; //type: Aaa::Usergroups::Usergroup::Taskgroup
 
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup::TaskMap> task_map;
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup::Taskgroup> > taskgroup;
-
-
+        
 }; // Aaa::Usergroups::Usergroup
 
 
@@ -446,19 +398,16 @@ class Aaa::Usergroups::Usergroup::TaskMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tasks; //type: Aaa::Usergroups::Usergroup::TaskMap::Tasks
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup::TaskMap::Tasks> > tasks;
-
-
+        
 }; // Aaa::Usergroups::Usergroup::TaskMap
 
 
@@ -470,20 +419,17 @@ class Aaa::Usergroups::Usergroup::TaskMap::Tasks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf task_id; //type: string
         YLeaf read; //type: boolean
         YLeaf write; //type: boolean
         YLeaf execute; //type: boolean
         YLeaf debug; //type: boolean
-
-
 
 }; // Aaa::Usergroups::Usergroup::TaskMap::Tasks
 
@@ -496,22 +442,19 @@ class Aaa::Usergroups::Usergroup::Taskgroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name_xr; //type: string
-
         class IncludedTaskIds; //type: Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds
         class TaskMap; //type: Aaa::Usergroups::Usergroup::Taskgroup::TaskMap
 
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds> included_task_ids;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup::Taskgroup::TaskMap> task_map;
-
-
+        
 }; // Aaa::Usergroups::Usergroup::Taskgroup
 
 
@@ -523,19 +466,16 @@ class Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tasks; //type: Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks> > tasks;
-
-
+        
 }; // Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds
 
 
@@ -547,20 +487,17 @@ class Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf task_id; //type: string
         YLeaf read; //type: boolean
         YLeaf write; //type: boolean
         YLeaf execute; //type: boolean
         YLeaf debug; //type: boolean
-
-
 
 }; // Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks
 
@@ -573,19 +510,16 @@ class Aaa::Usergroups::Usergroup::Taskgroup::TaskMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Tasks; //type: Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks> > tasks;
-
-
+        
 }; // Aaa::Usergroups::Usergroup::Taskgroup::TaskMap
 
 
@@ -597,20 +531,17 @@ class Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf task_id; //type: string
         YLeaf read; //type: boolean
         YLeaf write; //type: boolean
         YLeaf execute; //type: boolean
         YLeaf debug; //type: boolean
-
-
 
 }; // Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks
 
@@ -623,19 +554,16 @@ class Aaa::AuthenMethod : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf authenmethod; //type: int32
         YLeafList usergroup; //type: list of  string
         YLeafList taskmap; //type: list of  string
-
-
 
 }; // Aaa::AuthenMethod
 
@@ -648,281 +576,18 @@ class Aaa::CurrentUsergroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf authenmethod; //type: int32
         YLeafList usergroup; //type: list of  string
         YLeafList taskmap; //type: list of  string
 
-
-
 }; // Aaa::CurrentUsergroup
-
-
-class Aaa::Tacacs : public Entity
-{
-    public:
-        Tacacs();
-        ~Tacacs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class Requests; //type: Aaa::Tacacs::Requests
-        class Servers; //type: Aaa::Tacacs::Servers
-        class ServerGroups; //type: Aaa::Tacacs::ServerGroups
-
-        std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Requests> requests;
-        std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::ServerGroups> server_groups;
-        std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Servers> servers;
-
-
-}; // Aaa::Tacacs
-
-
-class Aaa::Tacacs::Requests : public Entity
-{
-    public:
-        Requests();
-        ~Requests();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class Request; //type: Aaa::Tacacs::Requests::Request
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Requests::Request> > request;
-
-
-}; // Aaa::Tacacs::Requests
-
-
-class Aaa::Tacacs::Requests::Request : public Entity
-{
-    public:
-        Request();
-        ~Request();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class TacacsRequestbag; //type: Aaa::Tacacs::Requests::Request::TacacsRequestbag
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Requests::Request::TacacsRequestbag> > tacacs_requestbag;
-
-
-}; // Aaa::Tacacs::Requests::Request
-
-
-class Aaa::Tacacs::Requests::Request::TacacsRequestbag : public Entity
-{
-    public:
-        TacacsRequestbag();
-        ~TacacsRequestbag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf time_remaining; //type: uint32
-        YLeaf bytes_out; //type: uint32
-        YLeaf out_pak_size; //type: uint32
-        YLeaf bytes_in; //type: uint32
-        YLeaf in_pak_size; //type: uint32
-        YLeaf pak_type; //type: string
-        YLeaf session_id; //type: int32
-        YLeaf sock; //type: int32
-
-
-
-}; // Aaa::Tacacs::Requests::Request::TacacsRequestbag
-
-
-class Aaa::Tacacs::Servers : public Entity
-{
-    public:
-        Servers();
-        ~Servers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class Server; //type: Aaa::Tacacs::Servers::Server
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Servers::Server> > server;
-
-
-}; // Aaa::Tacacs::Servers
-
-
-class Aaa::Tacacs::Servers::Server : public Entity
-{
-    public:
-        Server();
-        ~Server();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf addr; //type: string
-        YLeaf timeout; //type: uint32
-        YLeaf port; //type: uint32
-        YLeaf bytes_in; //type: uint32
-        YLeaf bytes_out; //type: uint32
-        YLeaf closes; //type: uint32
-        YLeaf opens; //type: uint32
-        YLeaf errors; //type: uint32
-        YLeaf aborts; //type: uint32
-        YLeaf paks_in; //type: uint32
-        YLeaf paks_out; //type: uint32
-        YLeaf replies_expected; //type: uint32
-        YLeaf up; //type: boolean
-        YLeaf conn_up; //type: boolean
-        YLeaf single_connect; //type: boolean
-        YLeaf is_private; //type: boolean
-        YLeaf vrf_name; //type: string
-        YLeaf addr_buf; //type: string
-        YLeaf family; //type: string
-
-
-
-}; // Aaa::Tacacs::Servers::Server
-
-
-class Aaa::Tacacs::ServerGroups : public Entity
-{
-    public:
-        ServerGroups();
-        ~ServerGroups();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class ServerGroup; //type: Aaa::Tacacs::ServerGroups::ServerGroup
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::ServerGroups::ServerGroup> > server_group;
-
-
-}; // Aaa::Tacacs::ServerGroups
-
-
-class Aaa::Tacacs::ServerGroups::ServerGroup : public Entity
-{
-    public:
-        ServerGroup();
-        ~ServerGroup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf group_name; //type: string
-        YLeaf sg_map_num; //type: uint32
-        YLeaf vrf_name; //type: string
-
-        class Server; //type: Aaa::Tacacs::ServerGroups::ServerGroup::Server
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::ServerGroups::ServerGroup::Server> > server;
-
-
-}; // Aaa::Tacacs::ServerGroups::ServerGroup
-
-
-class Aaa::Tacacs::ServerGroups::ServerGroup::Server : public Entity
-{
-    public:
-        Server();
-        ~Server();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf addr; //type: string
-        YLeaf timeout; //type: uint32
-        YLeaf port; //type: uint32
-        YLeaf bytes_in; //type: uint32
-        YLeaf bytes_out; //type: uint32
-        YLeaf closes; //type: uint32
-        YLeaf opens; //type: uint32
-        YLeaf errors; //type: uint32
-        YLeaf aborts; //type: uint32
-        YLeaf paks_in; //type: uint32
-        YLeaf paks_out; //type: uint32
-        YLeaf replies_expected; //type: uint32
-        YLeaf up; //type: boolean
-        YLeaf conn_up; //type: boolean
-        YLeaf single_connect; //type: boolean
-        YLeaf is_private; //type: boolean
-        YLeaf vrf_name; //type: string
-        YLeaf addr_buf; //type: string
-        YLeaf family; //type: string
-
-
-
-}; // Aaa::Tacacs::ServerGroups::ServerGroup::Server
 
 
 class Aaa::Diameter : public Entity
@@ -933,13 +598,11 @@ class Aaa::Diameter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Gy; //type: Aaa::Diameter::Gy
         class GxStatistics; //type: Aaa::Diameter::GxStatistics
@@ -962,8 +625,7 @@ class Aaa::Diameter : public Entity
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::NasSession> nas_session;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::NasSummary> nas_summary;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::Peers> peers;
-
-
+        
 }; // Aaa::Diameter
 
 
@@ -975,18 +637,15 @@ class Aaa::Diameter::Gy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_enabled; //type: boolean
         YLeaf tx_timer; //type: uint32
         YLeaf retransmits; //type: uint32
-
-
 
 }; // Aaa::Diameter::Gy
 
@@ -999,12 +658,11 @@ class Aaa::Diameter::GxStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ccr_init_messages; //type: uint32
         YLeaf ccr_init_failed_messages; //type: uint32
@@ -1039,8 +697,6 @@ class Aaa::Diameter::GxStatistics : public Entity
         YLeaf close_sessions; //type: uint32
         YLeaf active_sessions; //type: uint32
 
-
-
 }; // Aaa::Diameter::GxStatistics
 
 
@@ -1052,18 +708,15 @@ class Aaa::Diameter::Gx : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_enabled; //type: boolean
         YLeaf tx_timer; //type: uint32
         YLeaf retransmits; //type: uint32
-
-
 
 }; // Aaa::Diameter::Gx
 
@@ -1076,12 +729,11 @@ class Aaa::Diameter::Peers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf origin_host; //type: string
         YLeaf origin_realm; //type: string
@@ -1092,12 +744,10 @@ class Aaa::Diameter::Peers : public Entity
         YLeaf transaction_timer; //type: uint32
         YLeaf trans_total; //type: uint32
         YLeaf trans_max; //type: uint32
-
         class Peer; //type: Aaa::Diameter::Peers::Peer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::Peers::Peer> > peer;
-
-
+        
 }; // Aaa::Diameter::Peers
 
 
@@ -1109,12 +759,11 @@ class Aaa::Diameter::Peers::Peer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf peer_name; //type: string
         YLeaf peer_index; //type: uint32
@@ -1179,8 +828,6 @@ class Aaa::Diameter::Peers::Peer : public Entity
         YLeaf transport_down; //type: uint32
         YLeaf state; //type: PeerStateValueEnum
 
-
-
 }; // Aaa::Diameter::Peers::Peer
 
 
@@ -1192,20 +839,17 @@ class Aaa::Diameter::Nas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf aaanas_id; //type: string
-
         class ListOfNas; //type: Aaa::Diameter::Nas::ListOfNas
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::Nas::ListOfNas> > list_of_nas;
-
-
+        
 }; // Aaa::Diameter::Nas
 
 
@@ -1217,12 +861,11 @@ class Aaa::Diameter::Nas::ListOfNas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf aaa_session_id; //type: string
         YLeaf diameter_session_id; //type: string
@@ -1236,8 +879,6 @@ class Aaa::Diameter::Nas::ListOfNas : public Entity
         YLeaf method_list; //type: string
         YLeaf server_used_list; //type: string
 
-
-
 }; // Aaa::Diameter::Nas::ListOfNas
 
 
@@ -1249,12 +890,11 @@ class Aaa::Diameter::NasSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf authen_response_in_packets; //type: uint32
         YLeaf authen_request_out_packets; //type: uint32
@@ -1305,8 +945,6 @@ class Aaa::Diameter::NasSummary : public Entity
         YLeaf pod_success_packets; //type: uint32
         YLeaf pod_failed_packets; //type: uint32
 
-
-
 }; // Aaa::Diameter::NasSummary
 
 
@@ -1318,19 +956,16 @@ class Aaa::Diameter::GySessionIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GySessionId; //type: Aaa::Diameter::GySessionIds::GySessionId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::GySessionIds::GySessionId> > gy_session_id;
-
-
+        
 }; // Aaa::Diameter::GySessionIds
 
 
@@ -1342,12 +977,11 @@ class Aaa::Diameter::GySessionIds::GySessionId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: int32
         YLeaf aaa_session_id; //type: uint32
@@ -1357,8 +991,6 @@ class Aaa::Diameter::GySessionIds::GySessionId : public Entity
         YLeaf session_state; //type: string
         YLeaf request_type; //type: string
         YLeaf retry_count; //type: uint32
-
-
 
 }; // Aaa::Diameter::GySessionIds::GySessionId
 
@@ -1371,12 +1003,11 @@ class Aaa::Diameter::GyStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ccr_init_messages; //type: uint32
         YLeaf ccr_init_failed_messages; //type: uint32
@@ -1410,8 +1041,6 @@ class Aaa::Diameter::GyStatistics : public Entity
         YLeaf close_sessions; //type: uint32
         YLeaf active_sessions; //type: uint32
 
-
-
 }; // Aaa::Diameter::GyStatistics
 
 
@@ -1423,19 +1052,16 @@ class Aaa::Diameter::GxSessionIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GxSessionId; //type: Aaa::Diameter::GxSessionIds::GxSessionId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::GxSessionIds::GxSessionId> > gx_session_id;
-
-
+        
 }; // Aaa::Diameter::GxSessionIds
 
 
@@ -1447,12 +1073,11 @@ class Aaa::Diameter::GxSessionIds::GxSessionId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: int32
         YLeaf aaa_session_id; //type: uint32
@@ -1461,8 +1086,6 @@ class Aaa::Diameter::GxSessionIds::GxSessionId : public Entity
         YLeaf session_state; //type: string
         YLeaf request_type; //type: string
         YLeaf retry_count; //type: uint32
-
-
 
 }; // Aaa::Diameter::GxSessionIds::GxSessionId
 
@@ -1475,20 +1098,17 @@ class Aaa::Diameter::NasSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf aaanas_id; //type: string
-
         class ListOfNas; //type: Aaa::Diameter::NasSession::ListOfNas
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Diameter::NasSession::ListOfNas> > list_of_nas;
-
-
+        
 }; // Aaa::Diameter::NasSession
 
 
@@ -1500,12 +1120,11 @@ class Aaa::Diameter::NasSession::ListOfNas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf aaa_session_id; //type: string
         YLeaf diameter_session_id; //type: string
@@ -1519,8 +1138,6 @@ class Aaa::Diameter::NasSession::ListOfNas : public Entity
         YLeaf method_list; //type: string
         YLeaf server_used_list; //type: string
 
-
-
 }; // Aaa::Diameter::NasSession::ListOfNas
 
 
@@ -1532,13 +1149,11 @@ class Aaa::Radius : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Servers; //type: Aaa::Radius::Servers
         class RadiusSourceInterface; //type: Aaa::Radius::RadiusSourceInterface
@@ -1547,8 +1162,7 @@ class Aaa::Radius : public Entity
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Radius::Global> global;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Radius::RadiusSourceInterface> radius_source_interface;
         std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Radius::Servers> servers;
-
-
+        
 }; // Aaa::Radius
 
 
@@ -1560,19 +1174,16 @@ class Aaa::Radius::Servers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Server; //type: Aaa::Radius::Servers::Server
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Radius::Servers::Server> > server;
-
-
+        
 }; // Aaa::Radius::Servers
 
 
@@ -1584,12 +1195,11 @@ class Aaa::Radius::Servers::Server : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip_address; //type: string
         YLeaf auth_port_number; //type: uint32
@@ -1680,8 +1290,6 @@ class Aaa::Radius::Servers::Server : public Entity
         YLeaf ip_address_xr; //type: string
         YLeaf family; //type: string
 
-
-
 }; // Aaa::Radius::Servers::Server
 
 
@@ -1693,19 +1301,16 @@ class Aaa::Radius::RadiusSourceInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ListOfSourceInterface; //type: Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface> > list_of_source_interface;
-
-
+        
 }; // Aaa::Radius::RadiusSourceInterface
 
 
@@ -1717,19 +1322,16 @@ class Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf ipaddrv4; //type: string
         YLeaf ipaddrv6; //type: string
         YLeaf vrfid; //type: uint32
-
-
 
 }; // Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface
 
@@ -1742,21 +1344,251 @@ class Aaa::Radius::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf unknown_authentication_response; //type: uint32
         YLeaf authentication_nas_id; //type: string
         YLeaf unknown_accounting_response; //type: uint32
         YLeaf accounting_nas_id; //type: string
 
-
-
 }; // Aaa::Radius::Global
+
+
+class Aaa::Tacacs : public Entity
+{
+    public:
+        Tacacs();
+        ~Tacacs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Requests; //type: Aaa::Tacacs::Requests
+        class Servers; //type: Aaa::Tacacs::Servers
+        class ServerGroups; //type: Aaa::Tacacs::ServerGroups
+
+        std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Requests> requests;
+        std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::ServerGroups> server_groups;
+        std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Servers> servers;
+        
+}; // Aaa::Tacacs
+
+
+class Aaa::Tacacs::Requests : public Entity
+{
+    public:
+        Requests();
+        ~Requests();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Request; //type: Aaa::Tacacs::Requests::Request
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Requests::Request> > request;
+        
+}; // Aaa::Tacacs::Requests
+
+
+class Aaa::Tacacs::Requests::Request : public Entity
+{
+    public:
+        Request();
+        ~Request();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class TacacsRequestbag; //type: Aaa::Tacacs::Requests::Request::TacacsRequestbag
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Requests::Request::TacacsRequestbag> > tacacs_requestbag;
+        
+}; // Aaa::Tacacs::Requests::Request
+
+
+class Aaa::Tacacs::Requests::Request::TacacsRequestbag : public Entity
+{
+    public:
+        TacacsRequestbag();
+        ~TacacsRequestbag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf time_remaining; //type: uint32
+        YLeaf bytes_out; //type: uint32
+        YLeaf out_pak_size; //type: uint32
+        YLeaf bytes_in; //type: uint32
+        YLeaf in_pak_size; //type: uint32
+        YLeaf pak_type; //type: string
+        YLeaf session_id; //type: int32
+        YLeaf sock; //type: int32
+
+}; // Aaa::Tacacs::Requests::Request::TacacsRequestbag
+
+
+class Aaa::Tacacs::Servers : public Entity
+{
+    public:
+        Servers();
+        ~Servers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Server; //type: Aaa::Tacacs::Servers::Server
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::Servers::Server> > server;
+        
+}; // Aaa::Tacacs::Servers
+
+
+class Aaa::Tacacs::Servers::Server : public Entity
+{
+    public:
+        Server();
+        ~Server();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf addr; //type: string
+        YLeaf timeout; //type: uint32
+        YLeaf port; //type: uint32
+        YLeaf bytes_in; //type: uint32
+        YLeaf bytes_out; //type: uint32
+        YLeaf closes; //type: uint32
+        YLeaf opens; //type: uint32
+        YLeaf errors; //type: uint32
+        YLeaf aborts; //type: uint32
+        YLeaf paks_in; //type: uint32
+        YLeaf paks_out; //type: uint32
+        YLeaf replies_expected; //type: uint32
+        YLeaf up; //type: boolean
+        YLeaf conn_up; //type: boolean
+        YLeaf single_connect; //type: boolean
+        YLeaf is_private; //type: boolean
+        YLeaf vrf_name; //type: string
+        YLeaf addr_buf; //type: string
+        YLeaf family; //type: string
+
+}; // Aaa::Tacacs::Servers::Server
+
+
+class Aaa::Tacacs::ServerGroups : public Entity
+{
+    public:
+        ServerGroups();
+        ~ServerGroups();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class ServerGroup; //type: Aaa::Tacacs::ServerGroups::ServerGroup
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::ServerGroups::ServerGroup> > server_group;
+        
+}; // Aaa::Tacacs::ServerGroups
+
+
+class Aaa::Tacacs::ServerGroups::ServerGroup : public Entity
+{
+    public:
+        ServerGroup();
+        ~ServerGroup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf group_name; //type: string
+        YLeaf sg_map_num; //type: uint32
+        YLeaf vrf_name; //type: string
+        class Server; //type: Aaa::Tacacs::ServerGroups::ServerGroup::Server
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_locald_oper::Aaa::Tacacs::ServerGroups::ServerGroup::Server> > server;
+        
+}; // Aaa::Tacacs::ServerGroups::ServerGroup
+
+
+class Aaa::Tacacs::ServerGroups::ServerGroup::Server : public Entity
+{
+    public:
+        Server();
+        ~Server();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf addr; //type: string
+        YLeaf timeout; //type: uint32
+        YLeaf port; //type: uint32
+        YLeaf bytes_in; //type: uint32
+        YLeaf bytes_out; //type: uint32
+        YLeaf closes; //type: uint32
+        YLeaf opens; //type: uint32
+        YLeaf errors; //type: uint32
+        YLeaf aborts; //type: uint32
+        YLeaf paks_in; //type: uint32
+        YLeaf paks_out; //type: uint32
+        YLeaf replies_expected; //type: uint32
+        YLeaf up; //type: boolean
+        YLeaf conn_up; //type: boolean
+        YLeaf single_connect; //type: boolean
+        YLeaf is_private; //type: boolean
+        YLeaf vrf_name; //type: string
+        YLeaf addr_buf; //type: string
+        YLeaf family; //type: string
+
+}; // Aaa::Tacacs::ServerGroups::ServerGroup::Server
 
 
 }

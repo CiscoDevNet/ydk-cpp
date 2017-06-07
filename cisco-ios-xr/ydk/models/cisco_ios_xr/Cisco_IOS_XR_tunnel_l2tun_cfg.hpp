@@ -18,23 +18,20 @@ class L2Tp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Classes; //type: L2Tp::Classes
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes> classes;
-
-
+        
 }; // L2Tp
 
 
@@ -46,19 +43,16 @@ class L2Tp::Classes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Class_; //type: L2Tp::Classes::Class_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_> > class_;
-
-
+        
 }; // L2Tp::Classes
 
 
@@ -70,12 +64,11 @@ class L2Tp::Classes::Class_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf class_name; //type: string
         YLeaf host_name; //type: string
@@ -88,7 +81,6 @@ class L2Tp::Classes::Class_ : public Entity
         YLeaf authentication; //type: int32
         YLeaf enable; //type: empty
         YLeaf password; //type: string
-
         class Security; //type: L2Tp::Classes::Class_::Security
         class Retransmit; //type: L2Tp::Classes::Class_::Retransmit
         class Tunnel; //type: L2Tp::Classes::Class_::Tunnel
@@ -100,8 +92,7 @@ class L2Tp::Classes::Class_ : public Entity
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit> retransmit;
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Security> security;
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Tunnel> tunnel;
-
-
+        
 }; // L2Tp::Classes::Class_
 
 
@@ -113,19 +104,16 @@ class L2Tp::Classes::Class_::Security : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ip; //type: L2Tp::Classes::Class_::Security::Ip
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Security::Ip> ip;
-
-
+        
 }; // L2Tp::Classes::Class_::Security
 
 
@@ -137,16 +125,13 @@ class L2Tp::Classes::Class_::Security::Ip : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address_check; //type: empty
-
-
 
 }; // L2Tp::Classes::Class_::Security::Ip
 
@@ -159,22 +144,19 @@ class L2Tp::Classes::Class_::Retransmit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf retry; //type: uint32
-
         class Initial; //type: L2Tp::Classes::Class_::Retransmit::Initial
         class Timeout; //type: L2Tp::Classes::Class_::Retransmit::Timeout
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit::Initial> initial;
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit::Timeout> timeout;
-
-
+        
 }; // L2Tp::Classes::Class_::Retransmit
 
 
@@ -186,20 +168,17 @@ class L2Tp::Classes::Class_::Retransmit::Initial : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf retry; //type: uint32
-
         class Timeout; //type: L2Tp::Classes::Class_::Retransmit::Initial::Timeout
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit::Initial::Timeout> timeout;
-
-
+        
 }; // L2Tp::Classes::Class_::Retransmit::Initial
 
 
@@ -211,17 +190,14 @@ class L2Tp::Classes::Class_::Retransmit::Initial::Timeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: uint32
         YLeaf maximum; //type: uint32
-
-
 
 }; // L2Tp::Classes::Class_::Retransmit::Initial::Timeout
 
@@ -234,17 +210,14 @@ class L2Tp::Classes::Class_::Retransmit::Timeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: uint32
         YLeaf maximum; //type: uint32
-
-
 
 }; // L2Tp::Classes::Class_::Retransmit::Timeout
 
@@ -257,16 +230,13 @@ class L2Tp::Classes::Class_::Tunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf accounting; //type: string
-
-
 
 }; // L2Tp::Classes::Class_::Tunnel
 
@@ -279,21 +249,18 @@ class L2Tp::Classes::Class_::Digest : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf hash; //type: L2TpDigestHashMethodEnum
         YLeaf check_disable; //type: empty
-
         class Secrets; //type: L2Tp::Classes::Class_::Digest::Secrets
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Digest::Secrets> secrets;
-
-
+        
 }; // L2Tp::Classes::Class_::Digest
 
 
@@ -305,19 +272,16 @@ class L2Tp::Classes::Class_::Digest::Secrets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Secret; //type: L2Tp::Classes::Class_::Digest::Secrets::Secret
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Digest::Secrets::Secret> > secret;
-
-
+        
 }; // L2Tp::Classes::Class_::Digest::Secrets
 
 
@@ -329,17 +293,14 @@ class L2Tp::Classes::Class_::Digest::Secrets::Secret : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf secret_name; //type: string
         YLeaf hash; //type: L2TpHashMethodEnum
-
-
 
 }; // L2Tp::Classes::Class_::Digest::Secrets::Secret
 
@@ -352,16 +313,13 @@ class L2Tp::Classes::Class_::Ip : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tos; //type: uint32
-
-
 
 }; // L2Tp::Classes::Class_::Ip
 

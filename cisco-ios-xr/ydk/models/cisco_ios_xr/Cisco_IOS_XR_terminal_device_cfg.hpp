@@ -18,23 +18,20 @@ class LogicalChannels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Channel; //type: LogicalChannels::Channel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_cfg::LogicalChannels::Channel> > channel;
-
-
+        
 }; // LogicalChannels
 
 
@@ -46,12 +43,11 @@ class LogicalChannels::Channel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf channel_index; //type: int32
         YLeaf trib_protocol; //type: LogicalTribProtocolEnum
@@ -62,14 +58,12 @@ class LogicalChannels::Channel : public Entity
         YLeaf loopback_mode; //type: LogicalLoopbackModeEnum
         YLeaf logical_channel_type; //type: LogicalProtocolEnum
         YLeaf rate_class; //type: LogicalTribRateEnum
-
         class LogicalChannelAssignments; //type: LogicalChannels::Channel::LogicalChannelAssignments
         class Otn; //type: LogicalChannels::Channel::Otn
 
         std::shared_ptr<Cisco_IOS_XR_terminal_device_cfg::LogicalChannels::Channel::LogicalChannelAssignments> logical_channel_assignments;
         std::shared_ptr<Cisco_IOS_XR_terminal_device_cfg::LogicalChannels::Channel::Otn> otn;
-
-
+        
 }; // LogicalChannels::Channel
 
 
@@ -81,19 +75,16 @@ class LogicalChannels::Channel::LogicalChannelAssignments : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogicalChannelAssignment; //type: LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_cfg::LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment> > logical_channel_assignment;
-
-
+        
 }; // LogicalChannels::Channel::LogicalChannelAssignments
 
 
@@ -105,12 +96,11 @@ class LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignm
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf assignment_index; //type: int32
         YLeaf description; //type: string
@@ -118,8 +108,6 @@ class LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignm
         YLeaf assignment_type; //type: LogicalChannelAssignmentEnum
         YLeaf allocation; //type: int32
         YLeaf optical_channel_id; //type: string
-
-
 
 }; // LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment
 
@@ -132,18 +120,15 @@ class LogicalChannels::Channel::Otn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tti_msg_auto; //type: LogicalChannelOtnTtiAutoEnum
         YLeaf tti_msg_expected; //type: string
         YLeaf tti_msg_transmit; //type: string
-
-
 
 }; // LogicalChannels::Channel::Otn
 
@@ -155,23 +140,20 @@ class OpticalChannels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class OpticalChannel; //type: OpticalChannels::OpticalChannel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_cfg::OpticalChannels::OpticalChannel> > optical_channel;
-
-
+        
 }; // OpticalChannels
 
 
@@ -183,18 +165,15 @@ class OpticalChannels::OpticalChannel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ifname; //type: string
         YLeaf operational_mode; //type: uint32
         YLeaf line_port; //type: string
-
-
 
 }; // OpticalChannels::OpticalChannel
 

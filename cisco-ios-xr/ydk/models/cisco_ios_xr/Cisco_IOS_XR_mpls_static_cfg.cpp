@@ -18,13 +18,10 @@ MplsStatic::MplsStatic()
 	,vrfs(std::make_shared<MplsStatic::Vrfs>())
 {
     default_vrf->parent = this;
-    children["default-vrf"] = default_vrf;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "mpls-static"; yang_parent_name = "Cisco-IOS-XR-mpls-static-cfg";
 }
@@ -59,12 +56,12 @@ std::string MplsStatic::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -80,87 +77,52 @@ EntityPath MplsStatic::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsStatic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-vrf")
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
-        else
+        if(default_vrf == nullptr)
         {
             default_vrf = std::make_shared<MplsStatic::DefaultVrf>();
-            default_vrf->parent = this;
-            children["default-vrf"] = default_vrf;
         }
-        return children.at("default-vrf");
+        return default_vrf;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<MplsStatic::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<MplsStatic::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::get_children() const
 {
-    if(children.find("default-vrf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_vrf != nullptr)
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
+        children["default-vrf"] = default_vrf;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -232,7 +194,7 @@ std::string MplsStatic::Vrfs::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -255,15 +217,6 @@ EntityPath MplsStatic::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -271,28 +224,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -311,10 +260,8 @@ MplsStatic::Vrfs::Vrf::Vrf()
 	,label_switched_paths(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths>())
 {
     afs->parent = this;
-    children["afs"] = afs;
 
     label_switched_paths->parent = this;
-    children["label-switched-paths"] = label_switched_paths;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -349,7 +296,7 @@ std::string MplsStatic::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -374,64 +321,38 @@ EntityPath MplsStatic::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afs")
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
-        else
+        if(afs == nullptr)
         {
             afs = std::make_shared<MplsStatic::Vrfs::Vrf::Afs>();
-            afs->parent = this;
-            children["afs"] = afs;
         }
-        return children.at("afs");
+        return afs;
     }
 
     if(child_yang_name == "label-switched-paths")
     {
-        if(label_switched_paths != nullptr)
-        {
-            children["label-switched-paths"] = label_switched_paths;
-        }
-        else
+        if(label_switched_paths == nullptr)
         {
             label_switched_paths = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths>();
-            label_switched_paths->parent = this;
-            children["label-switched-paths"] = label_switched_paths;
         }
-        return children.at("label-switched-paths");
+        return label_switched_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::get_children() const
 {
-    if(children.find("afs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(afs != nullptr)
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
+        children["afs"] = afs;
     }
 
-    if(children.find("label-switched-paths") == children.end())
+    if(label_switched_paths != nullptr)
     {
-        if(label_switched_paths != nullptr)
-        {
-            children["label-switched-paths"] = label_switched_paths;
-        }
+        children["label-switched-paths"] = label_switched_paths;
     }
 
     return children;
@@ -487,7 +408,7 @@ std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -510,15 +431,6 @@ EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-switched-path")
     {
         for(auto const & c : label_switched_path)
@@ -526,28 +438,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath>();
         c->parent = this;
-        label_switched_path.push_back(std::move(c));
-        children[segment_path] = label_switched_path.back();
-        return children.at(segment_path);
+        label_switched_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label_switched_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -567,13 +475,10 @@ MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::LabelSwitchedPath(
 	,paths(std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>())
 {
     backup_paths->parent = this;
-    children["backup-paths"] = backup_paths;
 
     in_label->parent = this;
-    children["in-label"] = in_label;
 
     paths->parent = this;
-    children["paths"] = paths;
 
     yang_name = "label-switched-path"; yang_parent_name = "label-switched-paths";
 }
@@ -610,7 +515,7 @@ std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_se
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -635,87 +540,52 @@ EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_ent
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-paths")
     {
-        if(backup_paths != nullptr)
-        {
-            children["backup-paths"] = backup_paths;
-        }
-        else
+        if(backup_paths == nullptr)
         {
             backup_paths = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths>();
-            backup_paths->parent = this;
-            children["backup-paths"] = backup_paths;
         }
-        return children.at("backup-paths");
+        return backup_paths;
     }
 
     if(child_yang_name == "in-label")
     {
-        if(in_label != nullptr)
-        {
-            children["in-label"] = in_label;
-        }
-        else
+        if(in_label == nullptr)
         {
             in_label = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel>();
-            in_label->parent = this;
-            children["in-label"] = in_label;
         }
-        return children.at("in-label");
+        return in_label;
     }
 
     if(child_yang_name == "paths")
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
-        else
+        if(paths == nullptr)
         {
             paths = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>();
-            paths->parent = this;
-            children["paths"] = paths;
         }
-        return children.at("paths");
+        return paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::get_children() const
 {
-    if(children.find("backup-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_paths != nullptr)
     {
-        if(backup_paths != nullptr)
-        {
-            children["backup-paths"] = backup_paths;
-        }
+        children["backup-paths"] = backup_paths;
     }
 
-    if(children.find("in-label") == children.end())
+    if(in_label != nullptr)
     {
-        if(in_label != nullptr)
-        {
-            children["in-label"] = in_label;
-        }
+        children["in-label"] = in_label;
     }
 
-    if(children.find("paths") == children.end())
+    if(paths != nullptr)
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
+        children["paths"] = paths;
     }
 
     return children;
@@ -771,7 +641,7 @@ std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Backup
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -794,15 +664,6 @@ EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupP
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -810,28 +671,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitched
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -902,7 +759,7 @@ std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Backup
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -936,20 +793,12 @@ EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupP
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1044,7 +893,7 @@ std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabe
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1072,20 +921,12 @@ EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1151,7 +992,7 @@ std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths:
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1174,15 +1015,6 @@ EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -1190,28 +1022,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitched
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1282,7 +1110,7 @@ std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths:
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1316,20 +1144,12 @@ EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1419,7 +1239,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1442,15 +1262,6 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af")
     {
         for(auto const & c : af)
@@ -1458,28 +1269,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af>();
         c->parent = this;
-        af.push_back(std::move(c));
-        children[segment_path] = af.back();
-        return children.at(segment_path);
+        af.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : af)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1498,10 +1305,8 @@ MplsStatic::Vrfs::Vrf::Afs::Af::Af()
 	,top_label_hash(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash>())
 {
     local_labels->parent = this;
-    children["local-labels"] = local_labels;
 
     top_label_hash->parent = this;
-    children["top-label-hash"] = top_label_hash;
 
     yang_name = "af"; yang_parent_name = "afs";
 }
@@ -1536,7 +1341,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1561,64 +1366,38 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-labels")
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
-        else
+        if(local_labels == nullptr)
         {
             local_labels = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels>();
-            local_labels->parent = this;
-            children["local-labels"] = local_labels;
         }
-        return children.at("local-labels");
+        return local_labels;
     }
 
     if(child_yang_name == "top-label-hash")
     {
-        if(top_label_hash != nullptr)
-        {
-            children["top-label-hash"] = top_label_hash;
-        }
-        else
+        if(top_label_hash == nullptr)
         {
             top_label_hash = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash>();
-            top_label_hash->parent = this;
-            children["top-label-hash"] = top_label_hash;
         }
-        return children.at("top-label-hash");
+        return top_label_hash;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::get_children() const
 {
-    if(children.find("local-labels") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_labels != nullptr)
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
+        children["local-labels"] = local_labels;
     }
 
-    if(children.find("top-label-hash") == children.end())
+    if(top_label_hash != nullptr)
     {
-        if(top_label_hash != nullptr)
-        {
-            children["top-label-hash"] = top_label_hash;
-        }
+        children["top-label-hash"] = top_label_hash;
     }
 
     return children;
@@ -1641,7 +1420,6 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::TopLabelHash()
     local_labels(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels>())
 {
     local_labels->parent = this;
-    children["local-labels"] = local_labels;
 
     yang_name = "top-label-hash"; yang_parent_name = "af";
 }
@@ -1670,7 +1448,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::get_segment_path() con
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1693,41 +1471,24 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::get_entity_path(Entity*
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-labels")
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
-        else
+        if(local_labels == nullptr)
         {
             local_labels = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels>();
-            local_labels->parent = this;
-            children["local-labels"] = local_labels;
         }
-        return children.at("local-labels");
+        return local_labels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::get_children() const
 {
-    if(children.find("local-labels") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_labels != nullptr)
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
+        children["local-labels"] = local_labels;
     }
 
     return children;
@@ -1775,7 +1536,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_segme
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1798,15 +1559,6 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_entity
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-label")
     {
         for(auto const & c : local_label)
@@ -1814,28 +1566,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabel
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(std::move(c));
-        children[segment_path] = local_label.back();
-        return children.at(segment_path);
+        local_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1853,10 +1601,8 @@ MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LocalLabe
 	,paths(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
-    children["label-type"] = label_type;
 
     paths->parent = this;
-    children["paths"] = paths;
 
     yang_name = "local-label"; yang_parent_name = "local-labels";
 }
@@ -1889,7 +1635,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1913,64 +1659,38 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-type")
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
-        else
+        if(label_type == nullptr)
         {
             label_type = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType>();
-            label_type->parent = this;
-            children["label-type"] = label_type;
         }
-        return children.at("label-type");
+        return label_type;
     }
 
     if(child_yang_name == "paths")
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
-        else
+        if(paths == nullptr)
         {
             paths = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>();
-            paths->parent = this;
-            children["paths"] = paths;
         }
-        return children.at("paths");
+        return paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_children() const
 {
-    if(children.find("label-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_type != nullptr)
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
+        children["label-type"] = label_type;
     }
 
-    if(children.find("paths") == children.end())
+    if(paths != nullptr)
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
+        children["paths"] = paths;
     }
 
     return children;
@@ -2021,7 +1741,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2047,20 +1767,12 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2118,7 +1830,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2141,15 +1853,6 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -2157,28 +1860,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabel
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2249,7 +1948,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2283,20 +1982,12 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2386,7 +2077,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_segment_path() cons
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2409,15 +2100,6 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-label")
     {
         for(auto const & c : local_label)
@@ -2425,28 +2107,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(std::move(c));
-        children[segment_path] = local_label.back();
-        return children.at(segment_path);
+        local_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2464,10 +2142,8 @@ MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LocalLabel()
 	,paths(std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
-    children["label-type"] = label_type;
 
     paths->parent = this;
-    children["paths"] = paths;
 
     yang_name = "local-label"; yang_parent_name = "local-labels";
 }
@@ -2500,7 +2176,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_segment
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2524,64 +2200,38 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_entity_p
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-type")
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
-        else
+        if(label_type == nullptr)
         {
             label_type = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType>();
-            label_type->parent = this;
-            children["label-type"] = label_type;
         }
-        return children.at("label-type");
+        return label_type;
     }
 
     if(child_yang_name == "paths")
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
-        else
+        if(paths == nullptr)
         {
             paths = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths>();
-            paths->parent = this;
-            children["paths"] = paths;
         }
-        return children.at("paths");
+        return paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_children() const
 {
-    if(children.find("label-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_type != nullptr)
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
+        children["label-type"] = label_type;
     }
 
-    if(children.find("paths") == children.end())
+    if(paths != nullptr)
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
+        children["paths"] = paths;
     }
 
     return children;
@@ -2632,7 +2282,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2658,20 +2308,12 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::g
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2729,7 +2371,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2752,15 +2394,6 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_e
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -2768,28 +2401,24 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2860,7 +2489,7 @@ std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
 
 }
 
-EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2894,20 +2523,12 @@ EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path:
 
 std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2997,7 +2618,7 @@ std::string MplsStatic::Interfaces::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3020,15 +2641,6 @@ EntityPath MplsStatic::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsStatic::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3036,28 +2648,24 @@ std::shared_ptr<Entity> MplsStatic::Interfaces::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3098,7 +2706,7 @@ std::string MplsStatic::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3122,20 +2730,12 @@ EntityPath MplsStatic::Interfaces::Interface::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> MplsStatic::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3155,10 +2755,8 @@ MplsStatic::DefaultVrf::DefaultVrf()
 	,label_switched_paths(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths>())
 {
     afs->parent = this;
-    children["afs"] = afs;
 
     label_switched_paths->parent = this;
-    children["label-switched-paths"] = label_switched_paths;
 
     yang_name = "default-vrf"; yang_parent_name = "mpls-static";
 }
@@ -3191,7 +2789,7 @@ std::string MplsStatic::DefaultVrf::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::DefaultVrf::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3215,64 +2813,38 @@ EntityPath MplsStatic::DefaultVrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afs")
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
-        else
+        if(afs == nullptr)
         {
             afs = std::make_shared<MplsStatic::DefaultVrf::Afs>();
-            afs->parent = this;
-            children["afs"] = afs;
         }
-        return children.at("afs");
+        return afs;
     }
 
     if(child_yang_name == "label-switched-paths")
     {
-        if(label_switched_paths != nullptr)
-        {
-            children["label-switched-paths"] = label_switched_paths;
-        }
-        else
+        if(label_switched_paths == nullptr)
         {
             label_switched_paths = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths>();
-            label_switched_paths->parent = this;
-            children["label-switched-paths"] = label_switched_paths;
         }
-        return children.at("label-switched-paths");
+        return label_switched_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::get_children() const
 {
-    if(children.find("afs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(afs != nullptr)
     {
-        if(afs != nullptr)
-        {
-            children["afs"] = afs;
-        }
+        children["afs"] = afs;
     }
 
-    if(children.find("label-switched-paths") == children.end())
+    if(label_switched_paths != nullptr)
     {
-        if(label_switched_paths != nullptr)
-        {
-            children["label-switched-paths"] = label_switched_paths;
-        }
+        children["label-switched-paths"] = label_switched_paths;
     }
 
     return children;
@@ -3324,7 +2896,7 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3347,15 +2919,6 @@ EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-switched-path")
     {
         for(auto const & c : label_switched_path)
@@ -3363,28 +2926,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath>();
         c->parent = this;
-        label_switched_path.push_back(std::move(c));
-        children[segment_path] = label_switched_path.back();
-        return children.at(segment_path);
+        label_switched_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::LabelSwitchedPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwitchedPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label_switched_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3404,13 +2963,10 @@ MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::LabelSwitchedPath
 	,paths(std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>())
 {
     backup_paths->parent = this;
-    children["backup-paths"] = backup_paths;
 
     in_label->parent = this;
-    children["in-label"] = in_label;
 
     paths->parent = this;
-    children["paths"] = paths;
 
     yang_name = "label-switched-path"; yang_parent_name = "label-switched-paths";
 }
@@ -3447,7 +3003,7 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_s
 
 }
 
-EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3472,87 +3028,52 @@ EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_en
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-paths")
     {
-        if(backup_paths != nullptr)
-        {
-            children["backup-paths"] = backup_paths;
-        }
-        else
+        if(backup_paths == nullptr)
         {
             backup_paths = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths>();
-            backup_paths->parent = this;
-            children["backup-paths"] = backup_paths;
         }
-        return children.at("backup-paths");
+        return backup_paths;
     }
 
     if(child_yang_name == "in-label")
     {
-        if(in_label != nullptr)
-        {
-            children["in-label"] = in_label;
-        }
-        else
+        if(in_label == nullptr)
         {
             in_label = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel>();
-            in_label->parent = this;
-            children["in-label"] = in_label;
         }
-        return children.at("in-label");
+        return in_label;
     }
 
     if(child_yang_name == "paths")
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
-        else
+        if(paths == nullptr)
         {
             paths = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths>();
-            paths->parent = this;
-            children["paths"] = paths;
         }
-        return children.at("paths");
+        return paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::get_children() const
 {
-    if(children.find("backup-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_paths != nullptr)
     {
-        if(backup_paths != nullptr)
-        {
-            children["backup-paths"] = backup_paths;
-        }
+        children["backup-paths"] = backup_paths;
     }
 
-    if(children.find("in-label") == children.end())
+    if(in_label != nullptr)
     {
-        if(in_label != nullptr)
-        {
-            children["in-label"] = in_label;
-        }
+        children["in-label"] = in_label;
     }
 
-    if(children.find("paths") == children.end())
+    if(paths != nullptr)
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
+        children["paths"] = paths;
     }
 
     return children;
@@ -3608,7 +3129,7 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Backu
 
 }
 
-EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3631,15 +3152,6 @@ EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Backup
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -3647,28 +3159,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitche
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3739,7 +3247,7 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Backu
 
 }
 
-EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3773,20 +3281,12 @@ EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Backup
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3881,7 +3381,7 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLab
 
 }
 
-EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3909,20 +3409,12 @@ EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabe
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3988,7 +3480,7 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths
 
 }
 
-EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4011,15 +3503,6 @@ EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths:
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -4027,28 +3510,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitche
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4119,7 +3598,7 @@ std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths
 
 }
 
-EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4153,20 +3632,12 @@ EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths:
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4256,7 +3727,7 @@ std::string MplsStatic::DefaultVrf::Afs::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4279,15 +3750,6 @@ EntityPath MplsStatic::DefaultVrf::Afs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "af")
     {
         for(auto const & c : af)
@@ -4295,28 +3757,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af>();
         c->parent = this;
-        af.push_back(std::move(c));
-        children[segment_path] = af.back();
-        return children.at(segment_path);
+        af.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : af)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4335,10 +3793,8 @@ MplsStatic::DefaultVrf::Afs::Af::Af()
 	,top_label_hash(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash>())
 {
     local_labels->parent = this;
-    children["local-labels"] = local_labels;
 
     top_label_hash->parent = this;
-    children["top-label-hash"] = top_label_hash;
 
     yang_name = "af"; yang_parent_name = "afs";
 }
@@ -4373,7 +3829,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::get_segment_path() const
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4398,64 +3854,38 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-labels")
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
-        else
+        if(local_labels == nullptr)
         {
             local_labels = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels>();
-            local_labels->parent = this;
-            children["local-labels"] = local_labels;
         }
-        return children.at("local-labels");
+        return local_labels;
     }
 
     if(child_yang_name == "top-label-hash")
     {
-        if(top_label_hash != nullptr)
-        {
-            children["top-label-hash"] = top_label_hash;
-        }
-        else
+        if(top_label_hash == nullptr)
         {
             top_label_hash = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash>();
-            top_label_hash->parent = this;
-            children["top-label-hash"] = top_label_hash;
         }
-        return children.at("top-label-hash");
+        return top_label_hash;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::get_children() const
 {
-    if(children.find("local-labels") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_labels != nullptr)
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
+        children["local-labels"] = local_labels;
     }
 
-    if(children.find("top-label-hash") == children.end())
+    if(top_label_hash != nullptr)
     {
-        if(top_label_hash != nullptr)
-        {
-            children["top-label-hash"] = top_label_hash;
-        }
+        children["top-label-hash"] = top_label_hash;
     }
 
     return children;
@@ -4478,7 +3908,6 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::TopLabelHash()
     local_labels(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels>())
 {
     local_labels->parent = this;
-    children["local-labels"] = local_labels;
 
     yang_name = "top-label-hash"; yang_parent_name = "af";
 }
@@ -4507,7 +3936,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::get_segment_path() co
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4530,41 +3959,24 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-labels")
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
-        else
+        if(local_labels == nullptr)
         {
             local_labels = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels>();
-            local_labels->parent = this;
-            children["local-labels"] = local_labels;
         }
-        return children.at("local-labels");
+        return local_labels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::get_children() const
 {
-    if(children.find("local-labels") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_labels != nullptr)
     {
-        if(local_labels != nullptr)
-        {
-            children["local-labels"] = local_labels;
-        }
+        children["local-labels"] = local_labels;
     }
 
     return children;
@@ -4612,7 +4024,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_segm
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4635,15 +4047,6 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_entit
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-label")
     {
         for(auto const & c : local_label)
@@ -4651,28 +4054,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabe
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(std::move(c));
-        children[segment_path] = local_label.back();
-        return children.at(segment_path);
+        local_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4690,10 +4089,8 @@ MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LocalLab
 	,paths(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
-    children["label-type"] = label_type;
 
     paths->parent = this;
-    children["paths"] = paths;
 
     yang_name = "local-label"; yang_parent_name = "local-labels";
 }
@@ -4726,7 +4123,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLab
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4750,64 +4147,38 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-type")
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
-        else
+        if(label_type == nullptr)
         {
             label_type = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType>();
-            label_type->parent = this;
-            children["label-type"] = label_type;
         }
-        return children.at("label-type");
+        return label_type;
     }
 
     if(child_yang_name == "paths")
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
-        else
+        if(paths == nullptr)
         {
             paths = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths>();
-            paths->parent = this;
-            children["paths"] = paths;
         }
-        return children.at("paths");
+        return paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::get_children() const
 {
-    if(children.find("label-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_type != nullptr)
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
+        children["label-type"] = label_type;
     }
 
-    if(children.find("paths") == children.end())
+    if(paths != nullptr)
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
+        children["paths"] = paths;
     }
 
     return children;
@@ -4858,7 +4229,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLab
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4884,20 +4255,12 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4955,7 +4318,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLab
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4978,15 +4341,6 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -4994,28 +4348,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabe
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5086,7 +4436,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLab
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5120,20 +4470,12 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabe
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5223,7 +4565,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_segment_path() con
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5246,15 +4588,6 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_entity_path(Entity*
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-label")
     {
         for(auto const & c : local_label)
@@ -5262,28 +4595,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(std::move(c));
-        children[segment_path] = local_label.back();
-        return children.at(segment_path);
+        local_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5301,10 +4630,8 @@ MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LocalLabel()
 	,paths(std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths>())
 {
     label_type->parent = this;
-    children["label-type"] = label_type;
 
     paths->parent = this;
-    children["paths"] = paths;
 
     yang_name = "local-label"; yang_parent_name = "local-labels";
 }
@@ -5337,7 +4664,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_segmen
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5361,64 +4688,38 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_entity_
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-type")
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
-        else
+        if(label_type == nullptr)
         {
             label_type = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType>();
-            label_type->parent = this;
-            children["label-type"] = label_type;
         }
-        return children.at("label-type");
+        return label_type;
     }
 
     if(child_yang_name == "paths")
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
-        else
+        if(paths == nullptr)
         {
             paths = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths>();
-            paths->parent = this;
-            children["paths"] = paths;
         }
-        return children.at("paths");
+        return paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_children() const
 {
-    if(children.find("label-type") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_type != nullptr)
     {
-        if(label_type != nullptr)
-        {
-            children["label-type"] = label_type;
-        }
+        children["label-type"] = label_type;
     }
 
-    if(children.find("paths") == children.end())
+    if(paths != nullptr)
     {
-        if(paths != nullptr)
-        {
-            children["paths"] = paths;
-        }
+        children["paths"] = paths;
     }
 
     return children;
@@ -5469,7 +4770,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType:
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5495,20 +4796,12 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5566,7 +4859,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5589,15 +4882,6 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path")
     {
         for(auto const & c : path)
@@ -5605,28 +4889,24 @@ std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5697,7 +4977,7 @@ std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Pat
 
 }
 
-EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
+const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5731,20 +5011,12 @@ EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
 
 std::shared_ptr<Entity> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

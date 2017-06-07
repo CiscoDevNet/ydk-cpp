@@ -17,13 +17,10 @@ Bgp::Bgp()
 	,peer_groups(std::make_shared<Bgp::PeerGroups>())
 {
     global->parent = this;
-    children["global"] = global;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     peer_groups->parent = this;
-    children["peer-groups"] = peer_groups;
 
     yang_name = "bgp"; yang_parent_name = "openconfig-bgp";
 }
@@ -56,12 +53,12 @@ std::string Bgp::get_segment_path() const
 
 }
 
-EntityPath Bgp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -76,87 +73,52 @@ EntityPath Bgp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<Bgp::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<Bgp::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "peer-groups")
     {
-        if(peer_groups != nullptr)
-        {
-            children["peer-groups"] = peer_groups;
-        }
-        else
+        if(peer_groups == nullptr)
         {
             peer_groups = std::make_shared<Bgp::PeerGroups>();
-            peer_groups->parent = this;
-            children["peer-groups"] = peer_groups;
         }
-        return children.at("peer-groups");
+        return peer_groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::get_children() const
 {
-    if(children.find("global") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("peer-groups") == children.end())
+    if(peer_groups != nullptr)
     {
-        if(peer_groups != nullptr)
-        {
-            children["peer-groups"] = peer_groups;
-        }
+        children["peer-groups"] = peer_groups;
     }
 
     return children;
@@ -199,31 +161,22 @@ Bgp::Global::Global()
 	,use_multiple_paths(std::make_shared<Bgp::Global::UseMultiplePaths>())
 {
     afi_safis->parent = this;
-    children["afi-safis"] = afi_safis;
 
     apply_policy->parent = this;
-    children["apply-policy"] = apply_policy;
 
     confederation->parent = this;
-    children["confederation"] = confederation;
 
     config->parent = this;
-    children["config"] = config;
 
     default_route_distance->parent = this;
-    children["default-route-distance"] = default_route_distance;
 
     graceful_restart->parent = this;
-    children["graceful-restart"] = graceful_restart;
 
     route_selection_options->parent = this;
-    children["route-selection-options"] = route_selection_options;
 
     state->parent = this;
-    children["state"] = state;
 
     use_multiple_paths->parent = this;
-    children["use-multiple-paths"] = use_multiple_paths;
 
     yang_name = "global"; yang_parent_name = "bgp";
 }
@@ -268,7 +221,7 @@ std::string Bgp::Global::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -291,225 +244,136 @@ EntityPath Bgp::Global::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afi-safis")
     {
-        if(afi_safis != nullptr)
-        {
-            children["afi-safis"] = afi_safis;
-        }
-        else
+        if(afi_safis == nullptr)
         {
             afi_safis = std::make_shared<Bgp::Global::AfiSafis>();
-            afi_safis->parent = this;
-            children["afi-safis"] = afi_safis;
         }
-        return children.at("afi-safis");
+        return afi_safis;
     }
 
     if(child_yang_name == "apply-policy")
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
-        else
+        if(apply_policy == nullptr)
         {
             apply_policy = std::make_shared<Bgp::Global::ApplyPolicy>();
-            apply_policy->parent = this;
-            children["apply-policy"] = apply_policy;
         }
-        return children.at("apply-policy");
+        return apply_policy;
     }
 
     if(child_yang_name == "confederation")
     {
-        if(confederation != nullptr)
-        {
-            children["confederation"] = confederation;
-        }
-        else
+        if(confederation == nullptr)
         {
             confederation = std::make_shared<Bgp::Global::Confederation>();
-            confederation->parent = this;
-            children["confederation"] = confederation;
         }
-        return children.at("confederation");
+        return confederation;
     }
 
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "default-route-distance")
     {
-        if(default_route_distance != nullptr)
-        {
-            children["default-route-distance"] = default_route_distance;
-        }
-        else
+        if(default_route_distance == nullptr)
         {
             default_route_distance = std::make_shared<Bgp::Global::DefaultRouteDistance>();
-            default_route_distance->parent = this;
-            children["default-route-distance"] = default_route_distance;
         }
-        return children.at("default-route-distance");
+        return default_route_distance;
     }
 
     if(child_yang_name == "graceful-restart")
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
-        else
+        if(graceful_restart == nullptr)
         {
             graceful_restart = std::make_shared<Bgp::Global::GracefulRestart>();
-            graceful_restart->parent = this;
-            children["graceful-restart"] = graceful_restart;
         }
-        return children.at("graceful-restart");
+        return graceful_restart;
     }
 
     if(child_yang_name == "route-selection-options")
     {
-        if(route_selection_options != nullptr)
-        {
-            children["route-selection-options"] = route_selection_options;
-        }
-        else
+        if(route_selection_options == nullptr)
         {
             route_selection_options = std::make_shared<Bgp::Global::RouteSelectionOptions>();
-            route_selection_options->parent = this;
-            children["route-selection-options"] = route_selection_options;
         }
-        return children.at("route-selection-options");
+        return route_selection_options;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     if(child_yang_name == "use-multiple-paths")
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
-        else
+        if(use_multiple_paths == nullptr)
         {
             use_multiple_paths = std::make_shared<Bgp::Global::UseMultiplePaths>();
-            use_multiple_paths->parent = this;
-            children["use-multiple-paths"] = use_multiple_paths;
         }
-        return children.at("use-multiple-paths");
+        return use_multiple_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::get_children() const
 {
-    if(children.find("afi-safis") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(afi_safis != nullptr)
     {
-        if(afi_safis != nullptr)
-        {
-            children["afi-safis"] = afi_safis;
-        }
+        children["afi-safis"] = afi_safis;
     }
 
-    if(children.find("apply-policy") == children.end())
+    if(apply_policy != nullptr)
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
+        children["apply-policy"] = apply_policy;
     }
 
-    if(children.find("confederation") == children.end())
+    if(confederation != nullptr)
     {
-        if(confederation != nullptr)
-        {
-            children["confederation"] = confederation;
-        }
+        children["confederation"] = confederation;
     }
 
-    if(children.find("config") == children.end())
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("default-route-distance") == children.end())
+    if(default_route_distance != nullptr)
     {
-        if(default_route_distance != nullptr)
-        {
-            children["default-route-distance"] = default_route_distance;
-        }
+        children["default-route-distance"] = default_route_distance;
     }
 
-    if(children.find("graceful-restart") == children.end())
+    if(graceful_restart != nullptr)
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
+        children["graceful-restart"] = graceful_restart;
     }
 
-    if(children.find("route-selection-options") == children.end())
+    if(route_selection_options != nullptr)
     {
-        if(route_selection_options != nullptr)
-        {
-            children["route-selection-options"] = route_selection_options;
-        }
+        children["route-selection-options"] = route_selection_options;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
-    if(children.find("use-multiple-paths") == children.end())
+    if(use_multiple_paths != nullptr)
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
+        children["use-multiple-paths"] = use_multiple_paths;
     }
 
     return children;
@@ -553,7 +417,7 @@ std::string Bgp::Global::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -578,20 +442,12 @@ EntityPath Bgp::Global::Config::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Global::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -647,7 +503,7 @@ std::string Bgp::Global::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -674,20 +530,12 @@ EntityPath Bgp::Global::State::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Global::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -717,10 +565,8 @@ Bgp::Global::RouteSelectionOptions::RouteSelectionOptions()
 	,state(std::make_shared<Bgp::Global::RouteSelectionOptions::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "route-selection-options"; yang_parent_name = "global";
 }
@@ -751,7 +597,7 @@ std::string Bgp::Global::RouteSelectionOptions::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::RouteSelectionOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::RouteSelectionOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -774,64 +620,38 @@ EntityPath Bgp::Global::RouteSelectionOptions::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::RouteSelectionOptions::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::RouteSelectionOptions::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::RouteSelectionOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -887,7 +707,7 @@ std::string Bgp::Global::RouteSelectionOptions::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::RouteSelectionOptions::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::RouteSelectionOptions::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -916,20 +736,12 @@ EntityPath Bgp::Global::RouteSelectionOptions::Config::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::RouteSelectionOptions::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1007,7 +819,7 @@ std::string Bgp::Global::RouteSelectionOptions::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::RouteSelectionOptions::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::RouteSelectionOptions::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1036,20 +848,12 @@ EntityPath Bgp::Global::RouteSelectionOptions::State::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::RouteSelectionOptions::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1087,10 +891,8 @@ Bgp::Global::DefaultRouteDistance::DefaultRouteDistance()
 	,state(std::make_shared<Bgp::Global::DefaultRouteDistance::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "default-route-distance"; yang_parent_name = "global";
 }
@@ -1121,7 +923,7 @@ std::string Bgp::Global::DefaultRouteDistance::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::DefaultRouteDistance::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::DefaultRouteDistance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1144,64 +946,38 @@ EntityPath Bgp::Global::DefaultRouteDistance::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::DefaultRouteDistance::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::DefaultRouteDistance::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::DefaultRouteDistance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1245,7 +1021,7 @@ std::string Bgp::Global::DefaultRouteDistance::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::DefaultRouteDistance::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::DefaultRouteDistance::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1270,20 +1046,12 @@ EntityPath Bgp::Global::DefaultRouteDistance::Config::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::DefaultRouteDistance::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1333,7 +1101,7 @@ std::string Bgp::Global::DefaultRouteDistance::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::DefaultRouteDistance::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::DefaultRouteDistance::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1358,20 +1126,12 @@ EntityPath Bgp::Global::DefaultRouteDistance::State::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::DefaultRouteDistance::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1393,10 +1153,8 @@ Bgp::Global::Confederation::Confederation()
 	,state(std::make_shared<Bgp::Global::Confederation::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "confederation"; yang_parent_name = "global";
 }
@@ -1427,7 +1185,7 @@ std::string Bgp::Global::Confederation::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::Confederation::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::Confederation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1450,64 +1208,38 @@ EntityPath Bgp::Global::Confederation::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Global::Confederation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::Confederation::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::Confederation::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::Confederation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1563,7 +1295,7 @@ std::string Bgp::Global::Confederation::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::Confederation::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::Confederation::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1590,20 +1322,12 @@ EntityPath Bgp::Global::Confederation::Config::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Bgp::Global::Confederation::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::Confederation::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1669,7 +1393,7 @@ std::string Bgp::Global::Confederation::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::Confederation::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::Confederation::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1696,20 +1420,12 @@ EntityPath Bgp::Global::Confederation::State::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Bgp::Global::Confederation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::Confederation::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1737,16 +1453,12 @@ Bgp::Global::UseMultiplePaths::UseMultiplePaths()
 	,state(std::make_shared<Bgp::Global::UseMultiplePaths::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     ebgp->parent = this;
-    children["ebgp"] = ebgp;
 
     ibgp->parent = this;
-    children["ibgp"] = ibgp;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "use-multiple-paths"; yang_parent_name = "global";
 }
@@ -1781,7 +1493,7 @@ std::string Bgp::Global::UseMultiplePaths::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1804,110 +1516,66 @@ EntityPath Bgp::Global::UseMultiplePaths::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::UseMultiplePaths::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "ebgp")
     {
-        if(ebgp != nullptr)
-        {
-            children["ebgp"] = ebgp;
-        }
-        else
+        if(ebgp == nullptr)
         {
             ebgp = std::make_shared<Bgp::Global::UseMultiplePaths::Ebgp>();
-            ebgp->parent = this;
-            children["ebgp"] = ebgp;
         }
-        return children.at("ebgp");
+        return ebgp;
     }
 
     if(child_yang_name == "ibgp")
     {
-        if(ibgp != nullptr)
-        {
-            children["ibgp"] = ibgp;
-        }
-        else
+        if(ibgp == nullptr)
         {
             ibgp = std::make_shared<Bgp::Global::UseMultiplePaths::Ibgp>();
-            ibgp->parent = this;
-            children["ibgp"] = ibgp;
         }
-        return children.at("ibgp");
+        return ibgp;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::UseMultiplePaths::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("ebgp") == children.end())
+    if(ebgp != nullptr)
     {
-        if(ebgp != nullptr)
-        {
-            children["ebgp"] = ebgp;
-        }
+        children["ebgp"] = ebgp;
     }
 
-    if(children.find("ibgp") == children.end())
+    if(ibgp != nullptr)
     {
-        if(ibgp != nullptr)
-        {
-            children["ibgp"] = ibgp;
-        }
+        children["ibgp"] = ibgp;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1948,7 +1616,7 @@ std::string Bgp::Global::UseMultiplePaths::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1972,20 +1640,12 @@ EntityPath Bgp::Global::UseMultiplePaths::Config::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2028,7 +1688,7 @@ std::string Bgp::Global::UseMultiplePaths::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2052,20 +1712,12 @@ EntityPath Bgp::Global::UseMultiplePaths::State::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2083,10 +1735,8 @@ Bgp::Global::UseMultiplePaths::Ebgp::Ebgp()
 	,state(std::make_shared<Bgp::Global::UseMultiplePaths::Ebgp::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ebgp"; yang_parent_name = "use-multiple-paths";
 }
@@ -2117,7 +1767,7 @@ std::string Bgp::Global::UseMultiplePaths::Ebgp::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2140,64 +1790,38 @@ EntityPath Bgp::Global::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::UseMultiplePaths::Ebgp::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::UseMultiplePaths::Ebgp::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::Ebgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -2241,7 +1865,7 @@ std::string Bgp::Global::UseMultiplePaths::Ebgp::Config::get_segment_path() cons
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2266,20 +1890,12 @@ EntityPath Bgp::Global::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::Ebgp::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2329,7 +1945,7 @@ std::string Bgp::Global::UseMultiplePaths::Ebgp::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2354,20 +1970,12 @@ EntityPath Bgp::Global::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::Ebgp::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2389,10 +1997,8 @@ Bgp::Global::UseMultiplePaths::Ibgp::Ibgp()
 	,state(std::make_shared<Bgp::Global::UseMultiplePaths::Ibgp::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ibgp"; yang_parent_name = "use-multiple-paths";
 }
@@ -2423,7 +2029,7 @@ std::string Bgp::Global::UseMultiplePaths::Ibgp::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::Ibgp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::Ibgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2446,64 +2052,38 @@ EntityPath Bgp::Global::UseMultiplePaths::Ibgp::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::UseMultiplePaths::Ibgp::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::UseMultiplePaths::Ibgp::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::Ibgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -2544,7 +2124,7 @@ std::string Bgp::Global::UseMultiplePaths::Ibgp::Config::get_segment_path() cons
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::Ibgp::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::Ibgp::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2568,20 +2148,12 @@ EntityPath Bgp::Global::UseMultiplePaths::Ibgp::Config::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::Ibgp::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2624,7 +2196,7 @@ std::string Bgp::Global::UseMultiplePaths::Ibgp::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::UseMultiplePaths::Ibgp::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::UseMultiplePaths::Ibgp::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2648,20 +2220,12 @@ EntityPath Bgp::Global::UseMultiplePaths::Ibgp::State::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::UseMultiplePaths::Ibgp::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2679,10 +2243,8 @@ Bgp::Global::GracefulRestart::GracefulRestart()
 	,state(std::make_shared<Bgp::Global::GracefulRestart::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "graceful-restart"; yang_parent_name = "global";
 }
@@ -2713,7 +2275,7 @@ std::string Bgp::Global::GracefulRestart::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::GracefulRestart::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::GracefulRestart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2736,64 +2298,38 @@ EntityPath Bgp::Global::GracefulRestart::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::GracefulRestart::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::GracefulRestart::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::GracefulRestart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -2843,7 +2379,7 @@ std::string Bgp::Global::GracefulRestart::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2870,20 +2406,12 @@ EntityPath Bgp::Global::GracefulRestart::Config::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Bgp::Global::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::GracefulRestart::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2947,7 +2475,7 @@ std::string Bgp::Global::GracefulRestart::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::GracefulRestart::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::GracefulRestart::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2974,20 +2502,12 @@ EntityPath Bgp::Global::GracefulRestart::State::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Bgp::Global::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::GracefulRestart::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3049,7 +2569,7 @@ std::string Bgp::Global::AfiSafis::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::AfiSafis::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3072,15 +2592,6 @@ EntityPath Bgp::Global::AfiSafis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afi-safi")
     {
         for(auto const & c : afi_safi)
@@ -3088,28 +2599,24 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Global::AfiSafis::AfiSafi>();
         c->parent = this;
-        afi_safi.push_back(std::move(c));
-        children[segment_path] = afi_safi.back();
-        return children.at(segment_path);
+        afi_safi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : afi_safi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3141,52 +2648,36 @@ Bgp::Global::AfiSafis::AfiSafi::AfiSafi()
 	,use_multiple_paths(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths>())
 {
     apply_policy->parent = this;
-    children["apply-policy"] = apply_policy;
 
     config->parent = this;
-    children["config"] = config;
 
     graceful_restart->parent = this;
-    children["graceful-restart"] = graceful_restart;
 
     ipv4_labelled_unicast->parent = this;
-    children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
 
     ipv4_unicast->parent = this;
-    children["ipv4-unicast"] = ipv4_unicast;
 
     ipv6_labelled_unicast->parent = this;
-    children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
 
     ipv6_unicast->parent = this;
-    children["ipv6-unicast"] = ipv6_unicast;
 
     l2vpn_evpn->parent = this;
-    children["l2vpn-evpn"] = l2vpn_evpn;
 
     l2vpn_vpls->parent = this;
-    children["l2vpn-vpls"] = l2vpn_vpls;
 
     l3vpn_ipv4_multicast->parent = this;
-    children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
 
     l3vpn_ipv4_unicast->parent = this;
-    children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
 
     l3vpn_ipv6_multicast->parent = this;
-    children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
 
     l3vpn_ipv6_unicast->parent = this;
-    children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
 
     route_selection_options->parent = this;
-    children["route-selection-options"] = route_selection_options;
 
     state->parent = this;
-    children["state"] = state;
 
     use_multiple_paths->parent = this;
-    children["use-multiple-paths"] = use_multiple_paths;
 
     yang_name = "afi-safi"; yang_parent_name = "afi-safis";
 }
@@ -3247,7 +2738,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3271,386 +2762,234 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "apply-policy")
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
-        else
+        if(apply_policy == nullptr)
         {
             apply_policy = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy>();
-            apply_policy->parent = this;
-            children["apply-policy"] = apply_policy;
         }
-        return children.at("apply-policy");
+        return apply_policy;
     }
 
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "graceful-restart")
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
-        else
+        if(graceful_restart == nullptr)
         {
             graceful_restart = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::GracefulRestart>();
-            graceful_restart->parent = this;
-            children["graceful-restart"] = graceful_restart;
         }
-        return children.at("graceful-restart");
+        return graceful_restart;
     }
 
     if(child_yang_name == "ipv4-labelled-unicast")
     {
-        if(ipv4_labelled_unicast != nullptr)
-        {
-            children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
-        }
-        else
+        if(ipv4_labelled_unicast == nullptr)
         {
             ipv4_labelled_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast>();
-            ipv4_labelled_unicast->parent = this;
-            children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
         }
-        return children.at("ipv4-labelled-unicast");
+        return ipv4_labelled_unicast;
     }
 
     if(child_yang_name == "ipv4-unicast")
     {
-        if(ipv4_unicast != nullptr)
-        {
-            children["ipv4-unicast"] = ipv4_unicast;
-        }
-        else
+        if(ipv4_unicast == nullptr)
         {
             ipv4_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast>();
-            ipv4_unicast->parent = this;
-            children["ipv4-unicast"] = ipv4_unicast;
         }
-        return children.at("ipv4-unicast");
+        return ipv4_unicast;
     }
 
     if(child_yang_name == "ipv6-labelled-unicast")
     {
-        if(ipv6_labelled_unicast != nullptr)
-        {
-            children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
-        }
-        else
+        if(ipv6_labelled_unicast == nullptr)
         {
             ipv6_labelled_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast>();
-            ipv6_labelled_unicast->parent = this;
-            children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
         }
-        return children.at("ipv6-labelled-unicast");
+        return ipv6_labelled_unicast;
     }
 
     if(child_yang_name == "ipv6-unicast")
     {
-        if(ipv6_unicast != nullptr)
-        {
-            children["ipv6-unicast"] = ipv6_unicast;
-        }
-        else
+        if(ipv6_unicast == nullptr)
         {
             ipv6_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast>();
-            ipv6_unicast->parent = this;
-            children["ipv6-unicast"] = ipv6_unicast;
         }
-        return children.at("ipv6-unicast");
+        return ipv6_unicast;
     }
 
     if(child_yang_name == "l2vpn-evpn")
     {
-        if(l2vpn_evpn != nullptr)
-        {
-            children["l2vpn-evpn"] = l2vpn_evpn;
-        }
-        else
+        if(l2vpn_evpn == nullptr)
         {
             l2vpn_evpn = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn>();
-            l2vpn_evpn->parent = this;
-            children["l2vpn-evpn"] = l2vpn_evpn;
         }
-        return children.at("l2vpn-evpn");
+        return l2vpn_evpn;
     }
 
     if(child_yang_name == "l2vpn-vpls")
     {
-        if(l2vpn_vpls != nullptr)
-        {
-            children["l2vpn-vpls"] = l2vpn_vpls;
-        }
-        else
+        if(l2vpn_vpls == nullptr)
         {
             l2vpn_vpls = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls>();
-            l2vpn_vpls->parent = this;
-            children["l2vpn-vpls"] = l2vpn_vpls;
         }
-        return children.at("l2vpn-vpls");
+        return l2vpn_vpls;
     }
 
     if(child_yang_name == "l3vpn-ipv4-multicast")
     {
-        if(l3vpn_ipv4_multicast != nullptr)
-        {
-            children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
-        }
-        else
+        if(l3vpn_ipv4_multicast == nullptr)
         {
             l3vpn_ipv4_multicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast>();
-            l3vpn_ipv4_multicast->parent = this;
-            children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
         }
-        return children.at("l3vpn-ipv4-multicast");
+        return l3vpn_ipv4_multicast;
     }
 
     if(child_yang_name == "l3vpn-ipv4-unicast")
     {
-        if(l3vpn_ipv4_unicast != nullptr)
-        {
-            children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
-        }
-        else
+        if(l3vpn_ipv4_unicast == nullptr)
         {
             l3vpn_ipv4_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast>();
-            l3vpn_ipv4_unicast->parent = this;
-            children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
         }
-        return children.at("l3vpn-ipv4-unicast");
+        return l3vpn_ipv4_unicast;
     }
 
     if(child_yang_name == "l3vpn-ipv6-multicast")
     {
-        if(l3vpn_ipv6_multicast != nullptr)
-        {
-            children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
-        }
-        else
+        if(l3vpn_ipv6_multicast == nullptr)
         {
             l3vpn_ipv6_multicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast>();
-            l3vpn_ipv6_multicast->parent = this;
-            children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
         }
-        return children.at("l3vpn-ipv6-multicast");
+        return l3vpn_ipv6_multicast;
     }
 
     if(child_yang_name == "l3vpn-ipv6-unicast")
     {
-        if(l3vpn_ipv6_unicast != nullptr)
-        {
-            children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
-        }
-        else
+        if(l3vpn_ipv6_unicast == nullptr)
         {
             l3vpn_ipv6_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast>();
-            l3vpn_ipv6_unicast->parent = this;
-            children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
         }
-        return children.at("l3vpn-ipv6-unicast");
+        return l3vpn_ipv6_unicast;
     }
 
     if(child_yang_name == "route-selection-options")
     {
-        if(route_selection_options != nullptr)
-        {
-            children["route-selection-options"] = route_selection_options;
-        }
-        else
+        if(route_selection_options == nullptr)
         {
             route_selection_options = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions>();
-            route_selection_options->parent = this;
-            children["route-selection-options"] = route_selection_options;
         }
-        return children.at("route-selection-options");
+        return route_selection_options;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     if(child_yang_name == "use-multiple-paths")
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
-        else
+        if(use_multiple_paths == nullptr)
         {
             use_multiple_paths = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths>();
-            use_multiple_paths->parent = this;
-            children["use-multiple-paths"] = use_multiple_paths;
         }
-        return children.at("use-multiple-paths");
+        return use_multiple_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::get_children() const
 {
-    if(children.find("apply-policy") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(apply_policy != nullptr)
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
+        children["apply-policy"] = apply_policy;
     }
 
-    if(children.find("config") == children.end())
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("graceful-restart") == children.end())
+    if(graceful_restart != nullptr)
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
+        children["graceful-restart"] = graceful_restart;
     }
 
-    if(children.find("ipv4-labelled-unicast") == children.end())
+    if(ipv4_labelled_unicast != nullptr)
     {
-        if(ipv4_labelled_unicast != nullptr)
-        {
-            children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
-        }
+        children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
     }
 
-    if(children.find("ipv4-unicast") == children.end())
+    if(ipv4_unicast != nullptr)
     {
-        if(ipv4_unicast != nullptr)
-        {
-            children["ipv4-unicast"] = ipv4_unicast;
-        }
+        children["ipv4-unicast"] = ipv4_unicast;
     }
 
-    if(children.find("ipv6-labelled-unicast") == children.end())
+    if(ipv6_labelled_unicast != nullptr)
     {
-        if(ipv6_labelled_unicast != nullptr)
-        {
-            children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
-        }
+        children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
     }
 
-    if(children.find("ipv6-unicast") == children.end())
+    if(ipv6_unicast != nullptr)
     {
-        if(ipv6_unicast != nullptr)
-        {
-            children["ipv6-unicast"] = ipv6_unicast;
-        }
+        children["ipv6-unicast"] = ipv6_unicast;
     }
 
-    if(children.find("l2vpn-evpn") == children.end())
+    if(l2vpn_evpn != nullptr)
     {
-        if(l2vpn_evpn != nullptr)
-        {
-            children["l2vpn-evpn"] = l2vpn_evpn;
-        }
+        children["l2vpn-evpn"] = l2vpn_evpn;
     }
 
-    if(children.find("l2vpn-vpls") == children.end())
+    if(l2vpn_vpls != nullptr)
     {
-        if(l2vpn_vpls != nullptr)
-        {
-            children["l2vpn-vpls"] = l2vpn_vpls;
-        }
+        children["l2vpn-vpls"] = l2vpn_vpls;
     }
 
-    if(children.find("l3vpn-ipv4-multicast") == children.end())
+    if(l3vpn_ipv4_multicast != nullptr)
     {
-        if(l3vpn_ipv4_multicast != nullptr)
-        {
-            children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
-        }
+        children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
     }
 
-    if(children.find("l3vpn-ipv4-unicast") == children.end())
+    if(l3vpn_ipv4_unicast != nullptr)
     {
-        if(l3vpn_ipv4_unicast != nullptr)
-        {
-            children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
-        }
+        children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
     }
 
-    if(children.find("l3vpn-ipv6-multicast") == children.end())
+    if(l3vpn_ipv6_multicast != nullptr)
     {
-        if(l3vpn_ipv6_multicast != nullptr)
-        {
-            children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
-        }
+        children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
     }
 
-    if(children.find("l3vpn-ipv6-unicast") == children.end())
+    if(l3vpn_ipv6_unicast != nullptr)
     {
-        if(l3vpn_ipv6_unicast != nullptr)
-        {
-            children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
-        }
+        children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
     }
 
-    if(children.find("route-selection-options") == children.end())
+    if(route_selection_options != nullptr)
     {
-        if(route_selection_options != nullptr)
-        {
-            children["route-selection-options"] = route_selection_options;
-        }
+        children["route-selection-options"] = route_selection_options;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
-    if(children.find("use-multiple-paths") == children.end())
+    if(use_multiple_paths != nullptr)
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
+        children["use-multiple-paths"] = use_multiple_paths;
     }
 
     return children;
@@ -3670,10 +3009,8 @@ Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::GracefulRestart()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "graceful-restart"; yang_parent_name = "afi-safi";
 }
@@ -3704,7 +3041,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_segment_path() 
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3727,64 +3064,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_entity_path(Enti
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -3825,7 +3136,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_segment
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3849,20 +3160,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_entity_p
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3905,7 +3208,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_segment_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3929,20 +3232,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_entity_pa
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3988,7 +3283,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4013,20 +3308,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4082,7 +3369,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4109,20 +3396,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4152,10 +3431,8 @@ Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::ApplyPolicy()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "apply-policy"; yang_parent_name = "afi-safi";
 }
@@ -4186,7 +3463,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_segment_path() cons
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4209,64 +3486,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -4334,7 +3585,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_segment_pat
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4363,20 +3614,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4458,7 +3701,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_segment_path
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4487,20 +3730,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4531,13 +3766,10 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Ipv4Unicast()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ipv4-unicast"; yang_parent_name = "afi-safi";
 }
@@ -4570,7 +3802,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_segment_path() cons
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4593,87 +3825,52 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("prefix-limit") == children.end())
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -4689,10 +3886,8 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "ipv4-unicast";
 }
@@ -4723,7 +3918,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_segmen
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4746,64 +3941,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -4850,7 +4019,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::ge
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4876,20 +4045,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4946,7 +4107,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4972,20 +4133,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5036,7 +4189,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_segment_pat
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5060,20 +4213,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5116,7 +4261,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_segment_path
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5140,20 +4285,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5172,13 +4309,10 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Ipv6Unicast()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi";
 }
@@ -5211,7 +4345,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() cons
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5234,87 +4368,52 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("prefix-limit") == children.end())
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -5330,10 +4429,8 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "ipv6-unicast";
 }
@@ -5364,7 +4461,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_segmen
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5387,64 +4484,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -5491,7 +4562,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::ge
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5517,20 +4588,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5587,7 +4650,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5613,20 +4676,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5677,7 +4732,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_segment_pat
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5701,20 +4756,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5757,7 +4804,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_segment_path
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5781,20 +4828,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5811,7 +4850,6 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::Ipv4LabelledUnicast()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "ipv4-labelled-unicast"; yang_parent_name = "afi-safi";
 }
@@ -5840,7 +4878,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_segment_pat
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5863,41 +4901,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -5913,10 +4934,8 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "ipv4-labelled-unicast";
 }
@@ -5947,7 +4966,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::ge
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5970,64 +4989,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -6074,7 +5067,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Co
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6100,20 +5093,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Con
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6170,7 +5155,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::St
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6196,20 +5181,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Sta
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6234,7 +5211,6 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::Ipv6LabelledUnicast()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "ipv6-labelled-unicast"; yang_parent_name = "afi-safi";
 }
@@ -6263,7 +5239,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_segment_pat
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6286,41 +5262,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -6336,10 +5295,8 @@ Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "ipv6-labelled-unicast";
 }
@@ -6370,7 +5327,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::ge
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6393,64 +5350,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -6497,7 +5428,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Co
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6523,20 +5454,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Con
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6593,7 +5516,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::St
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6619,20 +5542,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Sta
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6657,7 +5572,6 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::L3VpnIpv4Unicast()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "l3vpn-ipv4-unicast"; yang_parent_name = "afi-safi";
 }
@@ -6686,7 +5600,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_segment_path()
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6709,41 +5623,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_entity_path(Ent
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -6759,10 +5656,8 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv4-unicast";
 }
@@ -6793,7 +5688,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_s
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6816,64 +5711,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_en
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -6920,7 +5789,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Confi
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6946,20 +5815,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7016,7 +5877,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7042,20 +5903,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State:
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7080,7 +5933,6 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::L3VpnIpv6Unicast()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "l3vpn-ipv6-unicast"; yang_parent_name = "afi-safi";
 }
@@ -7109,7 +5961,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_segment_path()
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7132,41 +5984,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_entity_path(Ent
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -7182,10 +6017,8 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv6-unicast";
 }
@@ -7216,7 +6049,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_s
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7239,64 +6072,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_en
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -7343,7 +6150,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Confi
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7369,20 +6176,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7439,7 +6238,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7465,20 +6264,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State:
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7503,7 +6294,6 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::L3VpnIpv4Multicast()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "l3vpn-ipv4-multicast"; yang_parent_name = "afi-safi";
 }
@@ -7532,7 +6322,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_segment_path
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7555,41 +6345,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -7605,10 +6378,8 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv4-multicast";
 }
@@ -7639,7 +6410,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7662,64 +6433,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -7766,7 +6511,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Con
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7792,20 +6537,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Conf
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7862,7 +6599,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Sta
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7888,20 +6625,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Stat
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7926,7 +6655,6 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::L3VpnIpv6Multicast()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "l3vpn-ipv6-multicast"; yang_parent_name = "afi-safi";
 }
@@ -7955,7 +6683,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_segment_path
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7978,41 +6706,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -8028,10 +6739,8 @@ Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv6-multicast";
 }
@@ -8062,7 +6771,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8085,64 +6794,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -8189,7 +6872,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Con
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8215,20 +6898,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Conf
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8285,7 +6960,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Sta
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8311,20 +6986,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Stat
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8349,7 +7016,6 @@ Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::L2VpnVpls()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "l2vpn-vpls"; yang_parent_name = "afi-safi";
 }
@@ -8378,7 +7044,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8401,41 +7067,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -8451,10 +7100,8 @@ Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "l2vpn-vpls";
 }
@@ -8485,7 +7132,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_segment_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8508,64 +7155,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_entity_pa
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -8612,7 +7233,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8638,20 +7259,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_e
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8708,7 +7321,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_s
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8734,20 +7347,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_en
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8772,7 +7377,6 @@ Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::L2VpnEvpn()
     prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "l2vpn-evpn"; yang_parent_name = "afi-safi";
 }
@@ -8801,7 +7405,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8824,41 +7428,24 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;
@@ -8874,10 +7461,8 @@ Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::PrefixLimit()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "l2vpn-evpn";
 }
@@ -8908,7 +7493,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_segment_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8931,64 +7516,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_entity_pa
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -9035,7 +7594,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9061,20 +7620,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_e
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9131,7 +7682,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_s
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9157,20 +7708,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_en
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9196,10 +7739,8 @@ Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::RouteSelectionOptions()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "route-selection-options"; yang_parent_name = "afi-safi";
 }
@@ -9230,7 +7771,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_segment_p
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9253,64 +7794,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_entity_pat
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -9366,7 +7881,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_s
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9395,20 +7910,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_en
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9486,7 +7993,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_se
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9515,20 +8022,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_ent
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9568,16 +8067,12 @@ Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::UseMultiplePaths()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     ebgp->parent = this;
-    children["ebgp"] = ebgp;
 
     ibgp->parent = this;
-    children["ibgp"] = ibgp;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "use-multiple-paths"; yang_parent_name = "afi-safi";
 }
@@ -9612,7 +8107,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_segment_path()
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9635,110 +8130,66 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_entity_path(Ent
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "ebgp")
     {
-        if(ebgp != nullptr)
-        {
-            children["ebgp"] = ebgp;
-        }
-        else
+        if(ebgp == nullptr)
         {
             ebgp = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp>();
-            ebgp->parent = this;
-            children["ebgp"] = ebgp;
         }
-        return children.at("ebgp");
+        return ebgp;
     }
 
     if(child_yang_name == "ibgp")
     {
-        if(ibgp != nullptr)
-        {
-            children["ibgp"] = ibgp;
-        }
-        else
+        if(ibgp == nullptr)
         {
             ibgp = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp>();
-            ibgp->parent = this;
-            children["ibgp"] = ibgp;
         }
-        return children.at("ibgp");
+        return ibgp;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("ebgp") == children.end())
+    if(ebgp != nullptr)
     {
-        if(ebgp != nullptr)
-        {
-            children["ebgp"] = ebgp;
-        }
+        children["ebgp"] = ebgp;
     }
 
-    if(children.find("ibgp") == children.end())
+    if(ibgp != nullptr)
     {
-        if(ibgp != nullptr)
-        {
-            children["ibgp"] = ibgp;
-        }
+        children["ibgp"] = ibgp;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -9779,7 +8230,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_segmen
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9803,20 +8254,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_entity_
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9859,7 +8302,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_segment
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9883,20 +8326,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_entity_p
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9914,10 +8349,8 @@ Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Ebgp()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ebgp"; yang_parent_name = "use-multiple-paths";
 }
@@ -9948,7 +8381,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_segment_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9971,64 +8404,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_entity_pa
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -10072,7 +8479,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10097,20 +8504,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_e
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10160,7 +8559,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_s
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10185,20 +8584,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_en
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10220,10 +8611,8 @@ Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Ibgp()
 	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ibgp"; yang_parent_name = "use-multiple-paths";
 }
@@ -10254,7 +8643,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_segment_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10277,64 +8666,38 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_entity_pa
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -10375,7 +8738,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10399,20 +8762,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_e
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10455,7 +8810,7 @@ std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_s
 
 }
 
-EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10479,20 +8834,12 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_en
 
 std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10510,10 +8857,8 @@ Bgp::Global::ApplyPolicy::ApplyPolicy()
 	,state(std::make_shared<Bgp::Global::ApplyPolicy::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "apply-policy"; yang_parent_name = "global";
 }
@@ -10544,7 +8889,7 @@ std::string Bgp::Global::ApplyPolicy::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::ApplyPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::ApplyPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10567,64 +8912,38 @@ EntityPath Bgp::Global::ApplyPolicy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Global::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Global::ApplyPolicy::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Global::ApplyPolicy::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::ApplyPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -10692,7 +9011,7 @@ std::string Bgp::Global::ApplyPolicy::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10721,20 +9040,12 @@ EntityPath Bgp::Global::ApplyPolicy::Config::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Bgp::Global::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::ApplyPolicy::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10816,7 +9127,7 @@ std::string Bgp::Global::ApplyPolicy::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Global::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10845,20 +9156,12 @@ EntityPath Bgp::Global::ApplyPolicy::State::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Bgp::Global::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Global::ApplyPolicy::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10920,7 +9223,7 @@ std::string Bgp::Neighbors::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10943,15 +9246,6 @@ EntityPath Bgp::Neighbors::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -10959,28 +9253,24 @@ std::shared_ptr<Entity> Bgp::Neighbors::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11010,46 +9300,32 @@ Bgp::Neighbors::Neighbor::Neighbor()
 	,use_multiple_paths(std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths>())
 {
     add_paths->parent = this;
-    children["add-paths"] = add_paths;
 
     afi_safis->parent = this;
-    children["afi-safis"] = afi_safis;
 
     apply_policy->parent = this;
-    children["apply-policy"] = apply_policy;
 
     as_path_options->parent = this;
-    children["as-path-options"] = as_path_options;
 
     config->parent = this;
-    children["config"] = config;
 
     ebgp_multihop->parent = this;
-    children["ebgp-multihop"] = ebgp_multihop;
 
     error_handling->parent = this;
-    children["error-handling"] = error_handling;
 
     graceful_restart->parent = this;
-    children["graceful-restart"] = graceful_restart;
 
     logging_options->parent = this;
-    children["logging-options"] = logging_options;
 
     route_reflector->parent = this;
-    children["route-reflector"] = route_reflector;
 
     state->parent = this;
-    children["state"] = state;
 
     timers->parent = this;
-    children["timers"] = timers;
 
     transport->parent = this;
-    children["transport"] = transport;
 
     use_multiple_paths->parent = this;
-    children["use-multiple-paths"] = use_multiple_paths;
 
     yang_name = "neighbor"; yang_parent_name = "neighbors";
 }
@@ -11106,7 +9382,7 @@ std::string Bgp::Neighbors::Neighbor::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11130,340 +9406,206 @@ EntityPath Bgp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "add-paths")
     {
-        if(add_paths != nullptr)
-        {
-            children["add-paths"] = add_paths;
-        }
-        else
+        if(add_paths == nullptr)
         {
             add_paths = std::make_shared<Bgp::Neighbors::Neighbor::AddPaths>();
-            add_paths->parent = this;
-            children["add-paths"] = add_paths;
         }
-        return children.at("add-paths");
+        return add_paths;
     }
 
     if(child_yang_name == "afi-safis")
     {
-        if(afi_safis != nullptr)
-        {
-            children["afi-safis"] = afi_safis;
-        }
-        else
+        if(afi_safis == nullptr)
         {
             afi_safis = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis>();
-            afi_safis->parent = this;
-            children["afi-safis"] = afi_safis;
         }
-        return children.at("afi-safis");
+        return afi_safis;
     }
 
     if(child_yang_name == "apply-policy")
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
-        else
+        if(apply_policy == nullptr)
         {
             apply_policy = std::make_shared<Bgp::Neighbors::Neighbor::ApplyPolicy>();
-            apply_policy->parent = this;
-            children["apply-policy"] = apply_policy;
         }
-        return children.at("apply-policy");
+        return apply_policy;
     }
 
     if(child_yang_name == "as-path-options")
     {
-        if(as_path_options != nullptr)
-        {
-            children["as-path-options"] = as_path_options;
-        }
-        else
+        if(as_path_options == nullptr)
         {
             as_path_options = std::make_shared<Bgp::Neighbors::Neighbor::AsPathOptions>();
-            as_path_options->parent = this;
-            children["as-path-options"] = as_path_options;
         }
-        return children.at("as-path-options");
+        return as_path_options;
     }
 
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "ebgp-multihop")
     {
-        if(ebgp_multihop != nullptr)
-        {
-            children["ebgp-multihop"] = ebgp_multihop;
-        }
-        else
+        if(ebgp_multihop == nullptr)
         {
             ebgp_multihop = std::make_shared<Bgp::Neighbors::Neighbor::EbgpMultihop>();
-            ebgp_multihop->parent = this;
-            children["ebgp-multihop"] = ebgp_multihop;
         }
-        return children.at("ebgp-multihop");
+        return ebgp_multihop;
     }
 
     if(child_yang_name == "error-handling")
     {
-        if(error_handling != nullptr)
-        {
-            children["error-handling"] = error_handling;
-        }
-        else
+        if(error_handling == nullptr)
         {
             error_handling = std::make_shared<Bgp::Neighbors::Neighbor::ErrorHandling>();
-            error_handling->parent = this;
-            children["error-handling"] = error_handling;
         }
-        return children.at("error-handling");
+        return error_handling;
     }
 
     if(child_yang_name == "graceful-restart")
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
-        else
+        if(graceful_restart == nullptr)
         {
             graceful_restart = std::make_shared<Bgp::Neighbors::Neighbor::GracefulRestart>();
-            graceful_restart->parent = this;
-            children["graceful-restart"] = graceful_restart;
         }
-        return children.at("graceful-restart");
+        return graceful_restart;
     }
 
     if(child_yang_name == "logging-options")
     {
-        if(logging_options != nullptr)
-        {
-            children["logging-options"] = logging_options;
-        }
-        else
+        if(logging_options == nullptr)
         {
             logging_options = std::make_shared<Bgp::Neighbors::Neighbor::LoggingOptions>();
-            logging_options->parent = this;
-            children["logging-options"] = logging_options;
         }
-        return children.at("logging-options");
+        return logging_options;
     }
 
     if(child_yang_name == "route-reflector")
     {
-        if(route_reflector != nullptr)
-        {
-            children["route-reflector"] = route_reflector;
-        }
-        else
+        if(route_reflector == nullptr)
         {
             route_reflector = std::make_shared<Bgp::Neighbors::Neighbor::RouteReflector>();
-            route_reflector->parent = this;
-            children["route-reflector"] = route_reflector;
         }
-        return children.at("route-reflector");
+        return route_reflector;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     if(child_yang_name == "timers")
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
-        else
+        if(timers == nullptr)
         {
             timers = std::make_shared<Bgp::Neighbors::Neighbor::Timers>();
-            timers->parent = this;
-            children["timers"] = timers;
         }
-        return children.at("timers");
+        return timers;
     }
 
     if(child_yang_name == "transport")
     {
-        if(transport != nullptr)
-        {
-            children["transport"] = transport;
-        }
-        else
+        if(transport == nullptr)
         {
             transport = std::make_shared<Bgp::Neighbors::Neighbor::Transport>();
-            transport->parent = this;
-            children["transport"] = transport;
         }
-        return children.at("transport");
+        return transport;
     }
 
     if(child_yang_name == "use-multiple-paths")
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
-        else
+        if(use_multiple_paths == nullptr)
         {
             use_multiple_paths = std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths>();
-            use_multiple_paths->parent = this;
-            children["use-multiple-paths"] = use_multiple_paths;
         }
-        return children.at("use-multiple-paths");
+        return use_multiple_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::get_children() const
 {
-    if(children.find("add-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(add_paths != nullptr)
     {
-        if(add_paths != nullptr)
-        {
-            children["add-paths"] = add_paths;
-        }
+        children["add-paths"] = add_paths;
     }
 
-    if(children.find("afi-safis") == children.end())
+    if(afi_safis != nullptr)
     {
-        if(afi_safis != nullptr)
-        {
-            children["afi-safis"] = afi_safis;
-        }
+        children["afi-safis"] = afi_safis;
     }
 
-    if(children.find("apply-policy") == children.end())
+    if(apply_policy != nullptr)
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
+        children["apply-policy"] = apply_policy;
     }
 
-    if(children.find("as-path-options") == children.end())
+    if(as_path_options != nullptr)
     {
-        if(as_path_options != nullptr)
-        {
-            children["as-path-options"] = as_path_options;
-        }
+        children["as-path-options"] = as_path_options;
     }
 
-    if(children.find("config") == children.end())
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("ebgp-multihop") == children.end())
+    if(ebgp_multihop != nullptr)
     {
-        if(ebgp_multihop != nullptr)
-        {
-            children["ebgp-multihop"] = ebgp_multihop;
-        }
+        children["ebgp-multihop"] = ebgp_multihop;
     }
 
-    if(children.find("error-handling") == children.end())
+    if(error_handling != nullptr)
     {
-        if(error_handling != nullptr)
-        {
-            children["error-handling"] = error_handling;
-        }
+        children["error-handling"] = error_handling;
     }
 
-    if(children.find("graceful-restart") == children.end())
+    if(graceful_restart != nullptr)
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
+        children["graceful-restart"] = graceful_restart;
     }
 
-    if(children.find("logging-options") == children.end())
+    if(logging_options != nullptr)
     {
-        if(logging_options != nullptr)
-        {
-            children["logging-options"] = logging_options;
-        }
+        children["logging-options"] = logging_options;
     }
 
-    if(children.find("route-reflector") == children.end())
+    if(route_reflector != nullptr)
     {
-        if(route_reflector != nullptr)
-        {
-            children["route-reflector"] = route_reflector;
-        }
+        children["route-reflector"] = route_reflector;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
-    if(children.find("timers") == children.end())
+    if(timers != nullptr)
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
+        children["timers"] = timers;
     }
 
-    if(children.find("transport") == children.end())
+    if(transport != nullptr)
     {
-        if(transport != nullptr)
-        {
-            children["transport"] = transport;
-        }
+        children["transport"] = transport;
     }
 
-    if(children.find("use-multiple-paths") == children.end())
+    if(use_multiple_paths != nullptr)
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
+        children["use-multiple-paths"] = use_multiple_paths;
     }
 
     return children;
@@ -11535,7 +9677,7 @@ std::string Bgp::Neighbors::Neighbor::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11568,20 +9710,12 @@ EntityPath Bgp::Neighbors::Neighbor::Config::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11648,10 +9782,8 @@ Bgp::Neighbors::Neighbor::State::State()
 	,queues(std::make_shared<Bgp::Neighbors::Neighbor::State::Queues>())
 {
     messages->parent = this;
-    children["messages"] = messages;
 
     queues->parent = this;
-    children["queues"] = queues;
 
     yang_name = "state"; yang_parent_name = "neighbor";
 }
@@ -11715,7 +9847,7 @@ std::string Bgp::Neighbors::Neighbor::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11751,64 +9883,38 @@ EntityPath Bgp::Neighbors::Neighbor::State::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "messages")
     {
-        if(messages != nullptr)
-        {
-            children["messages"] = messages;
-        }
-        else
+        if(messages == nullptr)
         {
             messages = std::make_shared<Bgp::Neighbors::Neighbor::State::Messages>();
-            messages->parent = this;
-            children["messages"] = messages;
         }
-        return children.at("messages");
+        return messages;
     }
 
     if(child_yang_name == "queues")
     {
-        if(queues != nullptr)
-        {
-            children["queues"] = queues;
-        }
-        else
+        if(queues == nullptr)
         {
             queues = std::make_shared<Bgp::Neighbors::Neighbor::State::Queues>();
-            queues->parent = this;
-            children["queues"] = queues;
         }
-        return children.at("queues");
+        return queues;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::get_children() const
 {
-    if(children.find("messages") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(messages != nullptr)
     {
-        if(messages != nullptr)
-        {
-            children["messages"] = messages;
-        }
+        children["messages"] = messages;
     }
 
-    if(children.find("queues") == children.end())
+    if(queues != nullptr)
     {
-        if(queues != nullptr)
-        {
-            children["queues"] = queues;
-        }
+        children["queues"] = queues;
     }
 
     return children;
@@ -11872,10 +9978,8 @@ Bgp::Neighbors::Neighbor::State::Messages::Messages()
 	,sent(std::make_shared<Bgp::Neighbors::Neighbor::State::Messages::Sent>())
 {
     received->parent = this;
-    children["received"] = received;
 
     sent->parent = this;
-    children["sent"] = sent;
 
     yang_name = "messages"; yang_parent_name = "state";
 }
@@ -11906,7 +10010,7 @@ std::string Bgp::Neighbors::Neighbor::State::Messages::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::State::Messages::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::State::Messages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11929,64 +10033,38 @@ EntityPath Bgp::Neighbors::Neighbor::State::Messages::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "received")
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
-        else
+        if(received == nullptr)
         {
             received = std::make_shared<Bgp::Neighbors::Neighbor::State::Messages::Received>();
-            received->parent = this;
-            children["received"] = received;
         }
-        return children.at("received");
+        return received;
     }
 
     if(child_yang_name == "sent")
     {
-        if(sent != nullptr)
-        {
-            children["sent"] = sent;
-        }
-        else
+        if(sent == nullptr)
         {
             sent = std::make_shared<Bgp::Neighbors::Neighbor::State::Messages::Sent>();
-            sent->parent = this;
-            children["sent"] = sent;
         }
-        return children.at("sent");
+        return sent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::State::Messages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::get_children() const
 {
-    if(children.find("received") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(received != nullptr)
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
+        children["received"] = received;
     }
 
-    if(children.find("sent") == children.end())
+    if(sent != nullptr)
     {
-        if(sent != nullptr)
-        {
-            children["sent"] = sent;
-        }
+        children["sent"] = sent;
     }
 
     return children;
@@ -12030,7 +10108,7 @@ std::string Bgp::Neighbors::Neighbor::State::Messages::Sent::get_segment_path() 
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::State::Messages::Sent::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::State::Messages::Sent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12055,20 +10133,12 @@ EntityPath Bgp::Neighbors::Neighbor::State::Messages::Sent::get_entity_path(Enti
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::State::Messages::Sent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12118,7 +10188,7 @@ std::string Bgp::Neighbors::Neighbor::State::Messages::Received::get_segment_pat
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::State::Messages::Received::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::State::Messages::Received::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12143,20 +10213,12 @@ EntityPath Bgp::Neighbors::Neighbor::State::Messages::Received::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::State::Messages::Received::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::Received::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12206,7 +10268,7 @@ std::string Bgp::Neighbors::Neighbor::State::Queues::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::State::Queues::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::State::Queues::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12231,20 +10293,12 @@ EntityPath Bgp::Neighbors::Neighbor::State::Queues::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Queues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::State::Queues::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Queues::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12266,10 +10320,8 @@ Bgp::Neighbors::Neighbor::Timers::Timers()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::Timers::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "timers"; yang_parent_name = "neighbor";
 }
@@ -12300,7 +10352,7 @@ std::string Bgp::Neighbors::Neighbor::Timers::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::Timers::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::Timers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12323,64 +10375,38 @@ EntityPath Bgp::Neighbors::Neighbor::Timers::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::Timers::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::Timers::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::Timers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -12430,7 +10456,7 @@ std::string Bgp::Neighbors::Neighbor::Timers::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::Timers::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::Timers::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12457,20 +10483,12 @@ EntityPath Bgp::Neighbors::Neighbor::Timers::Config::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::Timers::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12540,7 +10558,7 @@ std::string Bgp::Neighbors::Neighbor::Timers::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::Timers::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::Timers::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12569,20 +10587,12 @@ EntityPath Bgp::Neighbors::Neighbor::Timers::State::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::Timers::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12620,10 +10630,8 @@ Bgp::Neighbors::Neighbor::Transport::Transport()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::Transport::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "transport"; yang_parent_name = "neighbor";
 }
@@ -12654,7 +10662,7 @@ std::string Bgp::Neighbors::Neighbor::Transport::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::Transport::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::Transport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12677,64 +10685,38 @@ EntityPath Bgp::Neighbors::Neighbor::Transport::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::Transport::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::Transport::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::Transport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -12784,7 +10766,7 @@ std::string Bgp::Neighbors::Neighbor::Transport::Config::get_segment_path() cons
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::Transport::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::Transport::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12811,20 +10793,12 @@ EntityPath Bgp::Neighbors::Neighbor::Transport::Config::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::Transport::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12897,7 +10871,7 @@ std::string Bgp::Neighbors::Neighbor::Transport::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::Transport::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::Transport::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12927,20 +10901,12 @@ EntityPath Bgp::Neighbors::Neighbor::Transport::State::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::Transport::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12982,10 +10948,8 @@ Bgp::Neighbors::Neighbor::ErrorHandling::ErrorHandling()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::ErrorHandling::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "error-handling"; yang_parent_name = "neighbor";
 }
@@ -13016,7 +10980,7 @@ std::string Bgp::Neighbors::Neighbor::ErrorHandling::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13039,64 +11003,38 @@ EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::ErrorHandling::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::ErrorHandling::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::ErrorHandling::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -13137,7 +11075,7 @@ std::string Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_segment_path() 
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13161,20 +11099,12 @@ EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_entity_path(Enti
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13220,7 +11150,7 @@ std::string Bgp::Neighbors::Neighbor::ErrorHandling::State::get_segment_path() c
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13245,20 +11175,12 @@ EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::State::get_entity_path(Entit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::ErrorHandling::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13280,10 +11202,8 @@ Bgp::Neighbors::Neighbor::LoggingOptions::LoggingOptions()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::LoggingOptions::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "logging-options"; yang_parent_name = "neighbor";
 }
@@ -13314,7 +11234,7 @@ std::string Bgp::Neighbors::Neighbor::LoggingOptions::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13337,64 +11257,38 @@ EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::LoggingOptions::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::LoggingOptions::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::LoggingOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -13435,7 +11329,7 @@ std::string Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_segment_path()
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13459,20 +11353,12 @@ EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_entity_path(Ent
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13515,7 +11401,7 @@ std::string Bgp::Neighbors::Neighbor::LoggingOptions::State::get_segment_path() 
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13539,20 +11425,12 @@ EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::State::get_entity_path(Enti
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::LoggingOptions::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13570,10 +11448,8 @@ Bgp::Neighbors::Neighbor::EbgpMultihop::EbgpMultihop()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::EbgpMultihop::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ebgp-multihop"; yang_parent_name = "neighbor";
 }
@@ -13604,7 +11480,7 @@ std::string Bgp::Neighbors::Neighbor::EbgpMultihop::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13627,64 +11503,38 @@ EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::EbgpMultihop::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::EbgpMultihop::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::EbgpMultihop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -13728,7 +11578,7 @@ std::string Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_segment_path() c
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13753,20 +11603,12 @@ EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_entity_path(Entit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13816,7 +11658,7 @@ std::string Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_segment_path() co
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13841,20 +11683,12 @@ EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_entity_path(Entity
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13876,10 +11710,8 @@ Bgp::Neighbors::Neighbor::RouteReflector::RouteReflector()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::RouteReflector::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "route-reflector"; yang_parent_name = "neighbor";
 }
@@ -13910,7 +11742,7 @@ std::string Bgp::Neighbors::Neighbor::RouteReflector::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::RouteReflector::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::RouteReflector::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13933,64 +11765,38 @@ EntityPath Bgp::Neighbors::Neighbor::RouteReflector::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::RouteReflector::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::RouteReflector::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::RouteReflector::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -14034,7 +11840,7 @@ std::string Bgp::Neighbors::Neighbor::RouteReflector::Config::get_segment_path()
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::RouteReflector::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::RouteReflector::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14059,20 +11865,12 @@ EntityPath Bgp::Neighbors::Neighbor::RouteReflector::Config::get_entity_path(Ent
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::RouteReflector::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14122,7 +11920,7 @@ std::string Bgp::Neighbors::Neighbor::RouteReflector::State::get_segment_path() 
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::RouteReflector::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::RouteReflector::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14147,20 +11945,12 @@ EntityPath Bgp::Neighbors::Neighbor::RouteReflector::State::get_entity_path(Enti
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::RouteReflector::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14182,10 +11972,8 @@ Bgp::Neighbors::Neighbor::AsPathOptions::AsPathOptions()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AsPathOptions::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "as-path-options"; yang_parent_name = "neighbor";
 }
@@ -14216,7 +12004,7 @@ std::string Bgp::Neighbors::Neighbor::AsPathOptions::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14239,64 +12027,38 @@ EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AsPathOptions::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AsPathOptions::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AsPathOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -14340,7 +12102,7 @@ std::string Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_segment_path() 
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14365,20 +12127,12 @@ EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_entity_path(Enti
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14428,7 +12182,7 @@ std::string Bgp::Neighbors::Neighbor::AsPathOptions::State::get_segment_path() c
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14453,20 +12207,12 @@ EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::State::get_entity_path(Entit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AsPathOptions::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14488,10 +12234,8 @@ Bgp::Neighbors::Neighbor::AddPaths::AddPaths()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AddPaths::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "add-paths"; yang_parent_name = "neighbor";
 }
@@ -14522,7 +12266,7 @@ std::string Bgp::Neighbors::Neighbor::AddPaths::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AddPaths::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AddPaths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14545,64 +12289,38 @@ EntityPath Bgp::Neighbors::Neighbor::AddPaths::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AddPaths::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AddPaths::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AddPaths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -14646,7 +12364,7 @@ std::string Bgp::Neighbors::Neighbor::AddPaths::Config::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AddPaths::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AddPaths::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14671,20 +12389,12 @@ EntityPath Bgp::Neighbors::Neighbor::AddPaths::Config::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AddPaths::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14734,7 +12444,7 @@ std::string Bgp::Neighbors::Neighbor::AddPaths::State::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AddPaths::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AddPaths::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14759,20 +12469,12 @@ EntityPath Bgp::Neighbors::Neighbor::AddPaths::State::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AddPaths::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14826,7 +12528,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::get_segment_path() const
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14849,15 +12551,6 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "afi-safi")
     {
         for(auto const & c : afi_safi)
@@ -14865,28 +12558,24 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi>();
         c->parent = this;
-        afi_safi.push_back(std::move(c));
-        children[segment_path] = afi_safi.back();
-        return children.at(segment_path);
+        afi_safi.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : afi_safi)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14917,49 +12606,34 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::AfiSafi()
 	,use_multiple_paths(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths>())
 {
     apply_policy->parent = this;
-    children["apply-policy"] = apply_policy;
 
     config->parent = this;
-    children["config"] = config;
 
     graceful_restart->parent = this;
-    children["graceful-restart"] = graceful_restart;
 
     ipv4_labelled_unicast->parent = this;
-    children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
 
     ipv4_unicast->parent = this;
-    children["ipv4-unicast"] = ipv4_unicast;
 
     ipv6_labelled_unicast->parent = this;
-    children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
 
     ipv6_unicast->parent = this;
-    children["ipv6-unicast"] = ipv6_unicast;
 
     l2vpn_evpn->parent = this;
-    children["l2vpn-evpn"] = l2vpn_evpn;
 
     l2vpn_vpls->parent = this;
-    children["l2vpn-vpls"] = l2vpn_vpls;
 
     l3vpn_ipv4_multicast->parent = this;
-    children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
 
     l3vpn_ipv4_unicast->parent = this;
-    children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
 
     l3vpn_ipv6_multicast->parent = this;
-    children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
 
     l3vpn_ipv6_unicast->parent = this;
-    children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
 
     state->parent = this;
-    children["state"] = state;
 
     use_multiple_paths->parent = this;
-    children["use-multiple-paths"] = use_multiple_paths;
 
     yang_name = "afi-safi"; yang_parent_name = "afi-safis";
 }
@@ -15018,7 +12692,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_segment_path() cons
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15042,363 +12716,220 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "apply-policy")
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
-        else
+        if(apply_policy == nullptr)
         {
             apply_policy = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy>();
-            apply_policy->parent = this;
-            children["apply-policy"] = apply_policy;
         }
-        return children.at("apply-policy");
+        return apply_policy;
     }
 
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "graceful-restart")
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
-        else
+        if(graceful_restart == nullptr)
         {
             graceful_restart = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart>();
-            graceful_restart->parent = this;
-            children["graceful-restart"] = graceful_restart;
         }
-        return children.at("graceful-restart");
+        return graceful_restart;
     }
 
     if(child_yang_name == "ipv4-labelled-unicast")
     {
-        if(ipv4_labelled_unicast != nullptr)
-        {
-            children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
-        }
-        else
+        if(ipv4_labelled_unicast == nullptr)
         {
             ipv4_labelled_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast>();
-            ipv4_labelled_unicast->parent = this;
-            children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
         }
-        return children.at("ipv4-labelled-unicast");
+        return ipv4_labelled_unicast;
     }
 
     if(child_yang_name == "ipv4-unicast")
     {
-        if(ipv4_unicast != nullptr)
-        {
-            children["ipv4-unicast"] = ipv4_unicast;
-        }
-        else
+        if(ipv4_unicast == nullptr)
         {
             ipv4_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast>();
-            ipv4_unicast->parent = this;
-            children["ipv4-unicast"] = ipv4_unicast;
         }
-        return children.at("ipv4-unicast");
+        return ipv4_unicast;
     }
 
     if(child_yang_name == "ipv6-labelled-unicast")
     {
-        if(ipv6_labelled_unicast != nullptr)
-        {
-            children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
-        }
-        else
+        if(ipv6_labelled_unicast == nullptr)
         {
             ipv6_labelled_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast>();
-            ipv6_labelled_unicast->parent = this;
-            children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
         }
-        return children.at("ipv6-labelled-unicast");
+        return ipv6_labelled_unicast;
     }
 
     if(child_yang_name == "ipv6-unicast")
     {
-        if(ipv6_unicast != nullptr)
-        {
-            children["ipv6-unicast"] = ipv6_unicast;
-        }
-        else
+        if(ipv6_unicast == nullptr)
         {
             ipv6_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast>();
-            ipv6_unicast->parent = this;
-            children["ipv6-unicast"] = ipv6_unicast;
         }
-        return children.at("ipv6-unicast");
+        return ipv6_unicast;
     }
 
     if(child_yang_name == "l2vpn-evpn")
     {
-        if(l2vpn_evpn != nullptr)
-        {
-            children["l2vpn-evpn"] = l2vpn_evpn;
-        }
-        else
+        if(l2vpn_evpn == nullptr)
         {
             l2vpn_evpn = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn>();
-            l2vpn_evpn->parent = this;
-            children["l2vpn-evpn"] = l2vpn_evpn;
         }
-        return children.at("l2vpn-evpn");
+        return l2vpn_evpn;
     }
 
     if(child_yang_name == "l2vpn-vpls")
     {
-        if(l2vpn_vpls != nullptr)
-        {
-            children["l2vpn-vpls"] = l2vpn_vpls;
-        }
-        else
+        if(l2vpn_vpls == nullptr)
         {
             l2vpn_vpls = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls>();
-            l2vpn_vpls->parent = this;
-            children["l2vpn-vpls"] = l2vpn_vpls;
         }
-        return children.at("l2vpn-vpls");
+        return l2vpn_vpls;
     }
 
     if(child_yang_name == "l3vpn-ipv4-multicast")
     {
-        if(l3vpn_ipv4_multicast != nullptr)
-        {
-            children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
-        }
-        else
+        if(l3vpn_ipv4_multicast == nullptr)
         {
             l3vpn_ipv4_multicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast>();
-            l3vpn_ipv4_multicast->parent = this;
-            children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
         }
-        return children.at("l3vpn-ipv4-multicast");
+        return l3vpn_ipv4_multicast;
     }
 
     if(child_yang_name == "l3vpn-ipv4-unicast")
     {
-        if(l3vpn_ipv4_unicast != nullptr)
-        {
-            children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
-        }
-        else
+        if(l3vpn_ipv4_unicast == nullptr)
         {
             l3vpn_ipv4_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast>();
-            l3vpn_ipv4_unicast->parent = this;
-            children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
         }
-        return children.at("l3vpn-ipv4-unicast");
+        return l3vpn_ipv4_unicast;
     }
 
     if(child_yang_name == "l3vpn-ipv6-multicast")
     {
-        if(l3vpn_ipv6_multicast != nullptr)
-        {
-            children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
-        }
-        else
+        if(l3vpn_ipv6_multicast == nullptr)
         {
             l3vpn_ipv6_multicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast>();
-            l3vpn_ipv6_multicast->parent = this;
-            children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
         }
-        return children.at("l3vpn-ipv6-multicast");
+        return l3vpn_ipv6_multicast;
     }
 
     if(child_yang_name == "l3vpn-ipv6-unicast")
     {
-        if(l3vpn_ipv6_unicast != nullptr)
-        {
-            children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
-        }
-        else
+        if(l3vpn_ipv6_unicast == nullptr)
         {
             l3vpn_ipv6_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast>();
-            l3vpn_ipv6_unicast->parent = this;
-            children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
         }
-        return children.at("l3vpn-ipv6-unicast");
+        return l3vpn_ipv6_unicast;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     if(child_yang_name == "use-multiple-paths")
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
-        else
+        if(use_multiple_paths == nullptr)
         {
             use_multiple_paths = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths>();
-            use_multiple_paths->parent = this;
-            children["use-multiple-paths"] = use_multiple_paths;
         }
-        return children.at("use-multiple-paths");
+        return use_multiple_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_children() const
 {
-    if(children.find("apply-policy") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(apply_policy != nullptr)
     {
-        if(apply_policy != nullptr)
-        {
-            children["apply-policy"] = apply_policy;
-        }
+        children["apply-policy"] = apply_policy;
     }
 
-    if(children.find("config") == children.end())
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("graceful-restart") == children.end())
+    if(graceful_restart != nullptr)
     {
-        if(graceful_restart != nullptr)
-        {
-            children["graceful-restart"] = graceful_restart;
-        }
+        children["graceful-restart"] = graceful_restart;
     }
 
-    if(children.find("ipv4-labelled-unicast") == children.end())
+    if(ipv4_labelled_unicast != nullptr)
     {
-        if(ipv4_labelled_unicast != nullptr)
-        {
-            children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
-        }
+        children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
     }
 
-    if(children.find("ipv4-unicast") == children.end())
+    if(ipv4_unicast != nullptr)
     {
-        if(ipv4_unicast != nullptr)
-        {
-            children["ipv4-unicast"] = ipv4_unicast;
-        }
+        children["ipv4-unicast"] = ipv4_unicast;
     }
 
-    if(children.find("ipv6-labelled-unicast") == children.end())
+    if(ipv6_labelled_unicast != nullptr)
     {
-        if(ipv6_labelled_unicast != nullptr)
-        {
-            children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
-        }
+        children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
     }
 
-    if(children.find("ipv6-unicast") == children.end())
+    if(ipv6_unicast != nullptr)
     {
-        if(ipv6_unicast != nullptr)
-        {
-            children["ipv6-unicast"] = ipv6_unicast;
-        }
+        children["ipv6-unicast"] = ipv6_unicast;
     }
 
-    if(children.find("l2vpn-evpn") == children.end())
+    if(l2vpn_evpn != nullptr)
     {
-        if(l2vpn_evpn != nullptr)
-        {
-            children["l2vpn-evpn"] = l2vpn_evpn;
-        }
+        children["l2vpn-evpn"] = l2vpn_evpn;
     }
 
-    if(children.find("l2vpn-vpls") == children.end())
+    if(l2vpn_vpls != nullptr)
     {
-        if(l2vpn_vpls != nullptr)
-        {
-            children["l2vpn-vpls"] = l2vpn_vpls;
-        }
+        children["l2vpn-vpls"] = l2vpn_vpls;
     }
 
-    if(children.find("l3vpn-ipv4-multicast") == children.end())
+    if(l3vpn_ipv4_multicast != nullptr)
     {
-        if(l3vpn_ipv4_multicast != nullptr)
-        {
-            children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
-        }
+        children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
     }
 
-    if(children.find("l3vpn-ipv4-unicast") == children.end())
+    if(l3vpn_ipv4_unicast != nullptr)
     {
-        if(l3vpn_ipv4_unicast != nullptr)
-        {
-            children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
-        }
+        children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
     }
 
-    if(children.find("l3vpn-ipv6-multicast") == children.end())
+    if(l3vpn_ipv6_multicast != nullptr)
     {
-        if(l3vpn_ipv6_multicast != nullptr)
-        {
-            children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
-        }
+        children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
     }
 
-    if(children.find("l3vpn-ipv6-unicast") == children.end())
+    if(l3vpn_ipv6_unicast != nullptr)
     {
-        if(l3vpn_ipv6_unicast != nullptr)
-        {
-            children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
-        }
+        children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
-    if(children.find("use-multiple-paths") == children.end())
+    if(use_multiple_paths != nullptr)
     {
-        if(use_multiple_paths != nullptr)
-        {
-            children["use-multiple-paths"] = use_multiple_paths;
-        }
+        children["use-multiple-paths"] = use_multiple_paths;
     }
 
     return children;
@@ -15418,10 +12949,8 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::GracefulRestart()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "graceful-restart"; yang_parent_name = "afi-safi";
 }
@@ -15452,7 +12981,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_se
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15475,64 +13004,38 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_ent
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -15573,7 +13076,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15597,20 +13100,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config:
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15659,7 +13154,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State:
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15685,20 +13180,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15752,7 +13239,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_segment_pat
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15777,20 +13264,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15815,7 +13294,6 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::State()
     prefixes(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes>())
 {
     prefixes->parent = this;
-    children["prefixes"] = prefixes;
 
     yang_name = "state"; yang_parent_name = "afi-safi";
 }
@@ -15850,7 +13328,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_segment_path
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15876,41 +13354,24 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefixes")
     {
-        if(prefixes != nullptr)
-        {
-            children["prefixes"] = prefixes;
-        }
-        else
+        if(prefixes == nullptr)
         {
             prefixes = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes>();
-            prefixes->parent = this;
-            children["prefixes"] = prefixes;
         }
-        return children.at("prefixes");
+        return prefixes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_children() const
 {
-    if(children.find("prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefixes != nullptr)
     {
-        if(prefixes != nullptr)
-        {
-            children["prefixes"] = prefixes;
-        }
+        children["prefixes"] = prefixes;
     }
 
     return children;
@@ -15969,7 +13430,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_se
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15995,20 +13456,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_ent
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16034,10 +13487,8 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::ApplyPolicy()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "apply-policy"; yang_parent_name = "afi-safi";
 }
@@ -16068,7 +13519,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_segmen
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16091,64 +13542,38 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_entity_
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -16216,7 +13641,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::ge
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16245,20 +13670,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16340,7 +13757,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16369,20 +13786,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16413,13 +13822,10 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Ipv4Unicast()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ipv4-unicast"; yang_parent_name = "afi-safi";
 }
@@ -16452,7 +13858,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_segmen
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16475,87 +13881,52 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("prefix-limit") == children.end())
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -16571,10 +13942,8 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::PrefixLim
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "ipv4-unicast";
 }
@@ -16605,7 +13974,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimi
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16628,64 +13997,38 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -16732,7 +14075,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimi
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16758,20 +14101,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16828,7 +14163,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimi
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16854,20 +14189,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16918,7 +14245,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::ge
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16942,20 +14269,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16998,7 +14317,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17022,20 +14341,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17054,13 +14365,10 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Ipv6Unicast()
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi";
 }
@@ -17093,7 +14401,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_segmen
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17116,87 +14424,52 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("prefix-limit") == children.end())
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -17212,10 +14485,8 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::PrefixLim
 	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "prefix-limit"; yang_parent_name = "ipv6-unicast";
 }
@@ -17246,7 +14517,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimi
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17269,64 +14540,38 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -17373,7 +14618,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimi
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17399,20 +14644,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17469,7 +14706,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimi
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17495,20 +14732,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17559,7 +14788,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::ge
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17583,20 +14812,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17639,7 +14860,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17663,20 +14884,12 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17693,7 +14906,6 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::Ipv4LabelledUn
     prefix_limit(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>())
 {
     prefix_limit->parent = this;
-    children["prefix-limit"] = prefix_limit;
 
     yang_name = "ipv4-labelled-unicast"; yang_parent_name = "afi-safi";
 }
@@ -17722,7 +14934,7 @@ std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::ge
 
 }
 
-EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17745,41 +14957,24 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get
 
 std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-limit")
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
-        else
+        if(prefix_limit == nullptr)
         {
             prefix_limit = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>();
-            prefix_limit->parent = this;
-            children["prefix-limit"] = prefix_limit;
         }
-        return children.at("prefix-limit");
+        return prefix_limit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_children() const
 {
-    if(children.find("prefix-limit") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
     {
-        if(prefix_limit != nullptr)
-        {
-            children["prefix-limit"] = prefix_limit;
-        }
+        children["prefix-limit"] = prefix_limit;
     }
 
     return children;

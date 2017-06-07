@@ -21,12 +21,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -34,8 +33,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsR
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd
 
@@ -48,12 +45,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRele
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -61,8 +57,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRele
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent
 
@@ -75,12 +69,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -88,8 +81,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsS
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent
 
@@ -102,12 +93,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMapp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -115,8 +105,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMapp
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd
 
@@ -129,12 +117,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keepalive
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -142,8 +129,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keepalive
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd
 
@@ -156,12 +141,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMapp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -169,8 +153,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMapp
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent
 
@@ -183,12 +165,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keepalive
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -196,8 +177,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keepalive
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent
 
@@ -210,12 +189,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMs
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -223,8 +201,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMs
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd
 
@@ -237,12 +213,11 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMs
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -250,8 +225,6 @@ class PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMs
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent
 
@@ -264,19 +237,16 @@ class PerfMgmt::Threshold::BasicCounterInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicCounterInterfaceTemplates; //type: PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates> basic_counter_interface_templates;
-
-
+        
 }; // PerfMgmt::Threshold::BasicCounterInterface
 
 
@@ -288,19 +258,16 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BasicCounterInterfaceTemplate; //type: PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate> > basic_counter_interface_template;
-
-
+        
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
 
@@ -312,18 +279,16 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
         YLeaf reg_exp_group; //type: string
         YLeaf vrf_group; //type: string
-
         class InOctets; //type: PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets
         class OutOctets; //type: PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets
         class OutputQueueDrops; //type: PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops
@@ -345,8 +310,7 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops> output_queue_drops; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops> output_total_drops; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors> output_total_errors; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate
 
 
@@ -358,12 +322,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -371,8 +334,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets
 
@@ -385,12 +346,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -398,8 +358,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets
 
@@ -412,12 +370,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -425,8 +382,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops
 
@@ -439,12 +394,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -452,8 +406,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors
 
@@ -466,12 +418,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -479,8 +430,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops
 
@@ -493,12 +442,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -506,8 +454,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets
 
@@ -520,12 +466,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -533,8 +478,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors
 
@@ -547,12 +490,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -560,8 +502,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets
 
@@ -574,12 +514,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -587,8 +526,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops
 
@@ -601,12 +538,11 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -614,8 +550,6 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops
 
@@ -628,19 +562,16 @@ class PerfMgmt::Threshold::Bgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BgpTemplates; //type: PerfMgmt::Threshold::Bgp::BgpTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Bgp::BgpTemplates> bgp_templates;
-
-
+        
 }; // PerfMgmt::Threshold::Bgp
 
 
@@ -652,19 +583,16 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BgpTemplate; //type: PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate> > bgp_template;
-
-
+        
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates
 
 
@@ -676,16 +604,14 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
-
         class OutputUpdateMessages; //type: PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages
         class ErrorsReceived; //type: PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived
         class ConnEstablished; //type: PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished
@@ -703,8 +629,7 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate : public Entity
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages> input_update_messages; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages> output_messages; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages> output_update_messages; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate
 
 
@@ -716,12 +641,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -729,8 +653,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages 
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages
 
@@ -743,12 +665,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -756,8 +677,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived : publ
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived
 
@@ -770,12 +689,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -783,8 +701,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished : pub
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished
 
@@ -797,12 +713,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -810,8 +725,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages : publ
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages
 
@@ -824,12 +737,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -837,8 +749,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped : public 
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped
 
@@ -851,12 +761,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -864,8 +773,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages :
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages
 
@@ -878,12 +785,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -891,8 +797,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent : public E
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent
 
@@ -905,12 +809,11 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -918,8 +821,6 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages : publi
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages
 
@@ -932,19 +833,16 @@ class PerfMgmt::Threshold::Ospfv2Protocol : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ospfv2ProtocolTemplates; //type: PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates> ospfv2_protocol_templates;
-
-
+        
 }; // PerfMgmt::Threshold::Ospfv2Protocol
 
 
@@ -956,19 +854,16 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ospfv2ProtocolTemplate; //type: PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate> > ospfv2_protocol_template;
-
-
+        
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates
 
 
@@ -980,16 +875,14 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
-
         class ChecksumErrors; //type: PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors
         class InputLsaAcksLsa; //type: PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa
         class OutputDbDsLsa; //type: PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa
@@ -1033,8 +926,7 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates> output_lsa_updates; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa> output_lsa_updates_lsa; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets> output_packets; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate
 
 
@@ -1046,12 +938,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1059,8 +950,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors
 
@@ -1073,12 +962,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1086,8 +974,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa
 
@@ -1100,12 +986,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1113,8 +998,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa
 
@@ -1127,12 +1010,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1140,8 +1022,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa
 
@@ -1154,12 +1034,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1167,8 +1046,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates
 
@@ -1181,12 +1058,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1194,8 +1070,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs
 
@@ -1208,12 +1082,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1221,8 +1094,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa
 
@@ -1235,12 +1106,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1248,8 +1118,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs
 
@@ -1262,12 +1130,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1275,8 +1142,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa
 
@@ -1289,12 +1154,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1302,8 +1166,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets
 
@@ -1316,12 +1178,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1329,8 +1190,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets
 
@@ -1343,12 +1202,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1356,8 +1214,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets
 
@@ -1370,12 +1226,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1383,8 +1238,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets
 
@@ -1397,12 +1250,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1410,8 +1262,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests
 
@@ -1424,12 +1274,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1437,8 +1286,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa
 
@@ -1451,12 +1298,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1464,8 +1310,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks
 
@@ -1478,12 +1322,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1491,8 +1334,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks
 
@@ -1505,12 +1346,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1518,8 +1358,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates
 
@@ -1532,12 +1370,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1545,8 +1382,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa
 
@@ -1559,12 +1394,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1572,8 +1406,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa
 
@@ -1586,12 +1418,11 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1599,8 +1430,6 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests
 
@@ -1613,19 +1442,16 @@ class PerfMgmt::Threshold::CpuNode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CpuNodeTemplates; //type: PerfMgmt::Threshold::CpuNode::CpuNodeTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::CpuNode::CpuNodeTemplates> cpu_node_templates;
-
-
+        
 }; // PerfMgmt::Threshold::CpuNode
 
 
@@ -1637,19 +1463,16 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CpuNodeTemplate; //type: PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate> > cpu_node_template;
-
-
+        
 }; // PerfMgmt::Threshold::CpuNode::CpuNodeTemplates
 
 
@@ -1661,23 +1484,20 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
-
         class AverageCpuUsed; //type: PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed
         class NoProcesses; //type: PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed> average_cpu_used; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses> no_processes; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate
 
 
@@ -1689,12 +1509,11 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1702,8 +1521,6 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCp
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed
 
@@ -1716,12 +1533,11 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcess
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -1729,8 +1545,6 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcess
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses
 
@@ -1743,19 +1557,16 @@ class PerfMgmt::Threshold::DataRateInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DataRateInterfaceTemplates; //type: PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates> data_rate_interface_templates;
-
-
+        
 }; // PerfMgmt::Threshold::DataRateInterface
 
 
@@ -1767,19 +1578,16 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DataRateInterfaceTemplate; //type: PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate> > data_rate_interface_template;
-
-
+        
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates
 
 
@@ -1791,18 +1599,16 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
         YLeaf reg_exp_group; //type: string
         YLeaf vrf_group; //type: string
-
         class InputDataRate; //type: PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate
         class Bandwidth; //type: PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth
         class OutputPacketRate; //type: PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate
@@ -1822,8 +1628,7 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate> output_packet_rate; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts> output_peak_pkts; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate> output_peak_rate; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate
 
 
@@ -1835,12 +1640,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1848,8 +1652,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate
 
@@ -1862,12 +1664,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1875,8 +1676,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth
 
@@ -1889,12 +1688,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1902,8 +1700,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate
 
@@ -1916,12 +1712,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1929,8 +1724,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts
 
@@ -1943,12 +1736,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1956,8 +1748,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate
 
@@ -1970,12 +1760,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -1983,8 +1772,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate
 
@@ -1997,12 +1784,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2010,8 +1796,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate
 
@@ -2024,12 +1808,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2037,8 +1820,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts
 
@@ -2051,12 +1832,11 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2064,8 +1844,6 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRa
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate
 
@@ -2078,19 +1856,16 @@ class PerfMgmt::Threshold::ProcessNode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProcessNodeTemplates; //type: PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates> process_node_templates;
-
-
+        
 }; // PerfMgmt::Threshold::ProcessNode
 
 
@@ -2102,19 +1877,16 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProcessNodeTemplate; //type: PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate> > process_node_template;
-
-
+        
 }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates
 
 
@@ -2126,16 +1898,14 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
-
         class AverageCpuUsed; //type: PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed
         class PeakMemory; //type: PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory
         class NoThreads; //type: PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads
@@ -2143,8 +1913,7 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed> average_cpu_used; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads> no_threads; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory> peak_memory; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
 
 
@@ -2156,12 +1925,11 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2169,8 +1937,6 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed
 
@@ -2183,12 +1949,11 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -2196,8 +1961,6 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory
 
@@ -2210,12 +1973,11 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2223,8 +1985,6 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplat
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads
 
@@ -2237,19 +1997,16 @@ class PerfMgmt::Threshold::MemoryNode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MemoryNodeTemplates; //type: PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates> memory_node_templates;
-
-
+        
 }; // PerfMgmt::Threshold::MemoryNode
 
 
@@ -2261,19 +2018,16 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MemoryNodeTemplate; //type: PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate> > memory_node_template;
-
-
+        
 }; // PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates
 
 
@@ -2285,23 +2039,20 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
-
         class PeakMemory; //type: PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory
         class CurrMemory; //type: PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory> curr_memory; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory> peak_memory; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate
 
 
@@ -2313,12 +2064,11 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2326,8 +2076,6 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory
 
@@ -2340,12 +2088,11 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: int32
@@ -2353,8 +2100,6 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory
 
@@ -2367,19 +2112,16 @@ class PerfMgmt::Threshold::Ospfv3Protocol : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ospfv3ProtocolTemplates; //type: PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates
 
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates> ospfv3_protocol_templates;
-
-
+        
 }; // PerfMgmt::Threshold::Ospfv3Protocol
 
 
@@ -2391,19 +2133,16 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ospfv3ProtocolTemplate; //type: PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate> > ospfv3_protocol_template;
-
-
+        
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates
 
 
@@ -2415,16 +2154,14 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf template_name; //type: string
         YLeaf sample_interval; //type: uint32
-
         class InputLsaAcksLsa; //type: PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa
         class OutputDbDsLsa; //type: PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa
         class InputDbDsLsa; //type: PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa
@@ -2466,8 +2203,7 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates> output_lsa_updates; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa> output_lsa_updates_lsa; // presence node
         std::shared_ptr<Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets> output_packets; // presence node
-
-
+        
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate
 
 
@@ -2479,12 +2215,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2492,8 +2227,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa
 
@@ -2506,12 +2239,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2519,8 +2251,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa
 
@@ -2533,12 +2263,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2546,8 +2275,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa
 
@@ -2560,12 +2287,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2573,8 +2299,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates
 
@@ -2587,12 +2311,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2600,8 +2323,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs
 
@@ -2614,12 +2335,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2627,8 +2347,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa
 
@@ -2641,12 +2359,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2654,8 +2371,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs
 
@@ -2668,12 +2383,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2681,8 +2395,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa
 
@@ -2695,12 +2407,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2708,8 +2419,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets
 
@@ -2722,12 +2431,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2735,8 +2443,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets
 
@@ -2749,12 +2455,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2762,8 +2467,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets
 
@@ -2776,12 +2479,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2789,8 +2491,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets
 
@@ -2803,12 +2503,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2816,8 +2515,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests
 
@@ -2830,12 +2527,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2843,8 +2539,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa
 
@@ -2857,12 +2551,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2870,8 +2563,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks
 
@@ -2884,12 +2575,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2897,8 +2587,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks
 
@@ -2911,12 +2599,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2924,8 +2611,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates
 
@@ -2938,12 +2623,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2951,8 +2635,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa
 
@@ -2965,12 +2647,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -2978,8 +2659,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa
 
@@ -2992,12 +2671,11 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_; //type: PmThresholdOpEnum
         YLeaf value_; //type: uint32
@@ -3005,8 +2683,6 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
         YLeaf percent; //type: boolean
         YLeaf rearm_type; //type: PmThresholdRearmEnum
         YLeaf rearm_window; //type: uint32
-
-
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests
 

@@ -14,7 +14,6 @@ PppoeEa::PppoeEa()
     nodes(std::make_shared<PppoeEa::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "pppoe-ea"; yang_parent_name = "Cisco-IOS-XR-pppoe-ea-oper";
 }
@@ -43,12 +42,12 @@ std::string PppoeEa::get_segment_path() const
 
 }
 
-EntityPath PppoeEa::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath PppoeEa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PppoeEa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PppoeEa::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string PppoeEa::Nodes::get_segment_path() const
 
 }
 
-EntityPath PppoeEa::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath PppoeEa::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PppoeEa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> PppoeEa::Nodes::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeEa::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,10 +212,8 @@ PppoeEa::Nodes::Node::Node()
 	,parent_interface_ids(std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds>())
 {
     interface_ids->parent = this;
-    children["interface-ids"] = interface_ids;
 
     parent_interface_ids->parent = this;
-    children["parent-interface-ids"] = parent_interface_ids;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -279,7 +246,7 @@ std::string PppoeEa::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath PppoeEa::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -303,64 +270,38 @@ EntityPath PppoeEa::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-ids")
     {
-        if(interface_ids != nullptr)
-        {
-            children["interface-ids"] = interface_ids;
-        }
-        else
+        if(interface_ids == nullptr)
         {
             interface_ids = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds>();
-            interface_ids->parent = this;
-            children["interface-ids"] = interface_ids;
         }
-        return children.at("interface-ids");
+        return interface_ids;
     }
 
     if(child_yang_name == "parent-interface-ids")
     {
-        if(parent_interface_ids != nullptr)
-        {
-            children["parent-interface-ids"] = parent_interface_ids;
-        }
-        else
+        if(parent_interface_ids == nullptr)
         {
             parent_interface_ids = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds>();
-            parent_interface_ids->parent = this;
-            children["parent-interface-ids"] = parent_interface_ids;
         }
-        return children.at("parent-interface-ids");
+        return parent_interface_ids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::get_children() const
 {
-    if(children.find("interface-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_ids != nullptr)
     {
-        if(interface_ids != nullptr)
-        {
-            children["interface-ids"] = interface_ids;
-        }
+        children["interface-ids"] = interface_ids;
     }
 
-    if(children.find("parent-interface-ids") == children.end())
+    if(parent_interface_ids != nullptr)
     {
-        if(parent_interface_ids != nullptr)
-        {
-            children["parent-interface-ids"] = parent_interface_ids;
-        }
+        children["parent-interface-ids"] = parent_interface_ids;
     }
 
     return children;
@@ -412,7 +353,7 @@ std::string PppoeEa::Nodes::Node::ParentInterfaceIds::get_segment_path() const
 
 }
 
-EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -435,15 +376,6 @@ EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "parent-interface-id")
     {
         for(auto const & c : parent_interface_id)
@@ -451,28 +383,24 @@ std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId>();
         c->parent = this;
-        parent_interface_id.push_back(std::move(c));
-        children[segment_path] = parent_interface_id.back();
-        return children.at(segment_path);
+        parent_interface_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::ParentInterfaceIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : parent_interface_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -491,7 +419,6 @@ PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::ParentInterfaceId()
     srgv_mac(std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac>())
 {
     srgv_mac->parent = this;
-    children["srgv-mac"] = srgv_mac;
 
     yang_name = "parent-interface-id"; yang_parent_name = "parent-interface-ids";
 }
@@ -526,7 +453,7 @@ std::string PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_seg
 
 }
 
-EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -552,41 +479,24 @@ EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_enti
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "srgv-mac")
     {
-        if(srgv_mac != nullptr)
-        {
-            children["srgv-mac"] = srgv_mac;
-        }
-        else
+        if(srgv_mac == nullptr)
         {
             srgv_mac = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac>();
-            srgv_mac->parent = this;
-            children["srgv-mac"] = srgv_mac;
         }
-        return children.at("srgv-mac");
+        return srgv_mac;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_children() const
 {
-    if(children.find("srgv-mac") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(srgv_mac != nullptr)
     {
-        if(srgv_mac != nullptr)
-        {
-            children["srgv-mac"] = srgv_mac;
-        }
+        children["srgv-mac"] = srgv_mac;
     }
 
     return children;
@@ -639,7 +549,7 @@ std::string PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac
 
 }
 
-EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -663,20 +573,12 @@ EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac:
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -726,7 +628,7 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::get_segment_path() const
 
 }
 
-EntityPath PppoeEa::Nodes::Node::InterfaceIds::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::InterfaceIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -749,15 +651,6 @@ EntityPath PppoeEa::Nodes::Node::InterfaceIds::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-id")
     {
         for(auto const & c : interface_id)
@@ -765,28 +658,24 @@ std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId>();
         c->parent = this;
-        interface_id.push_back(std::move(c));
-        children[segment_path] = interface_id.back();
-        return children.at(segment_path);
+        interface_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::InterfaceIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -813,13 +702,10 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::InterfaceId()
 	,srgv_mac(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac>())
 {
     local_mac->parent = this;
-    children["local-mac"] = local_mac;
 
     peer_mac->parent = this;
-    children["peer-mac"] = peer_mac;
 
     srgv_mac->parent = this;
-    children["srgv-mac"] = srgv_mac;
 
     yang_name = "interface-id"; yang_parent_name = "interface-ids";
 }
@@ -879,7 +765,7 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_segment_path() 
 
 }
 
-EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -912,87 +798,52 @@ EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_entity_path(Enti
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-mac")
     {
-        if(local_mac != nullptr)
-        {
-            children["local-mac"] = local_mac;
-        }
-        else
+        if(local_mac == nullptr)
         {
             local_mac = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac>();
-            local_mac->parent = this;
-            children["local-mac"] = local_mac;
         }
-        return children.at("local-mac");
+        return local_mac;
     }
 
     if(child_yang_name == "peer-mac")
     {
-        if(peer_mac != nullptr)
-        {
-            children["peer-mac"] = peer_mac;
-        }
-        else
+        if(peer_mac == nullptr)
         {
             peer_mac = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac>();
-            peer_mac->parent = this;
-            children["peer-mac"] = peer_mac;
         }
-        return children.at("peer-mac");
+        return peer_mac;
     }
 
     if(child_yang_name == "srgv-mac")
     {
-        if(srgv_mac != nullptr)
-        {
-            children["srgv-mac"] = srgv_mac;
-        }
-        else
+        if(srgv_mac == nullptr)
         {
             srgv_mac = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac>();
-            srgv_mac->parent = this;
-            children["srgv-mac"] = srgv_mac;
         }
-        return children.at("srgv-mac");
+        return srgv_mac;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_children() const
 {
-    if(children.find("local-mac") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_mac != nullptr)
     {
-        if(local_mac != nullptr)
-        {
-            children["local-mac"] = local_mac;
-        }
+        children["local-mac"] = local_mac;
     }
 
-    if(children.find("peer-mac") == children.end())
+    if(peer_mac != nullptr)
     {
-        if(peer_mac != nullptr)
-        {
-            children["peer-mac"] = peer_mac;
-        }
+        children["peer-mac"] = peer_mac;
     }
 
-    if(children.find("srgv-mac") == children.end())
+    if(srgv_mac != nullptr)
     {
-        if(srgv_mac != nullptr)
-        {
-            children["srgv-mac"] = srgv_mac;
-        }
+        children["srgv-mac"] = srgv_mac;
     }
 
     return children;
@@ -1069,7 +920,7 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_segmen
 
 }
 
-EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1093,20 +944,12 @@ EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_entity_
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1149,7 +992,7 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_segme
 
 }
 
-EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1173,20 +1016,12 @@ EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_entity
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1229,7 +1064,7 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_segmen
 
 }
 
-EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_entity_path(Entity* ancestor) const
+const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1253,20 +1088,12 @@ EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_entity_
 
 std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

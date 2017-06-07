@@ -19,23 +19,20 @@ class Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Interface; //type: Interfaces::Interface
 
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface> > interface;
-
-
+        
 }; // Interfaces
 
 
@@ -47,16 +44,14 @@ class Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::Config::name)
         YLeaf name;
-
         class Config; //type: Interfaces::Interface::Config
         class State; //type: Interfaces::Interface::State
         class HoldTime; //type: Interfaces::Interface::HoldTime
@@ -72,8 +67,7 @@ class Interfaces::Interface : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan> routed_vlan;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces> subinterfaces;
-
-
+        
 }; // Interfaces::Interface
 
 
@@ -85,20 +79,17 @@ class Interfaces::Interface::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: InterfaceTypeIdentity
         YLeaf mtu; //type: uint16
         YLeaf name; //type: string
         YLeaf description; //type: string
         YLeaf enabled; //type: boolean
-
-
 
 }; // Interfaces::Interface::Config
 
@@ -111,12 +102,11 @@ class Interfaces::Interface::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: InterfaceTypeIdentity
         YLeaf mtu; //type: uint16
@@ -129,13 +119,11 @@ class Interfaces::Interface::State : public Entity
         YLeaf last_change; //type: uint32
         //type: leafref (refers to openconfig_platform::Components::Component::name)
         YLeaf hardware_port;
-
         class Counters; //type: Interfaces::Interface::State::Counters
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::State::Counters> counters;
-        class AdminStatusEnum;
+                class AdminStatusEnum;
         class OperStatusEnum;
-
 
 }; // Interfaces::Interface::State
 
@@ -148,12 +136,11 @@ class Interfaces::Interface::State::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_octets; //type: uint64
         YLeaf in_unicast_pkts; //type: uint64
@@ -169,8 +156,6 @@ class Interfaces::Interface::State::Counters : public Entity
         YLeaf out_discards; //type: uint64
         YLeaf out_errors; //type: uint64
         YLeaf last_clear; //type: string
-
-
 
 }; // Interfaces::Interface::State::Counters
 
@@ -183,21 +168,18 @@ class Interfaces::Interface::HoldTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::HoldTime::Config
         class State; //type: Interfaces::Interface::HoldTime::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::HoldTime::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::HoldTime::State> state;
-
-
+        
 }; // Interfaces::Interface::HoldTime
 
 
@@ -209,17 +191,14 @@ class Interfaces::Interface::HoldTime::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf up; //type: uint32
         YLeaf down; //type: uint32
-
-
 
 }; // Interfaces::Interface::HoldTime::Config
 
@@ -232,17 +211,14 @@ class Interfaces::Interface::HoldTime::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf up; //type: uint32
         YLeaf down; //type: uint32
-
-
 
 }; // Interfaces::Interface::HoldTime::State
 
@@ -255,19 +231,16 @@ class Interfaces::Interface::Subinterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Subinterface; //type: Interfaces::Interface::Subinterfaces::Subinterface
 
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface> > subinterface;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces
 
 
@@ -279,16 +252,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: uint32 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Config::index_)
         YLeaf index_;
-
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::State
         class Vlan; //type: Interfaces::Interface::Subinterfaces::Subinterface::Vlan
@@ -300,8 +271,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6> ipv6; // presence node
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Vlan> vlan;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface
 
 
@@ -313,12 +283,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: uint32
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
@@ -326,8 +295,6 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Config : public Entity
         YLeaf name; //type: string
         YLeaf description; //type: string
         YLeaf enabled; //type: boolean
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Config
 
@@ -340,12 +307,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: uint32
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
@@ -357,13 +323,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::State : public Entity
         YLeaf admin_status; //type: AdminStatusEnum
         YLeaf oper_status; //type: OperStatusEnum
         YLeaf last_change; //type: uint32
-
         class Counters; //type: Interfaces::Interface::Subinterfaces::Subinterface::State::Counters
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::State::Counters> counters;
-        class AdminStatusEnum;
+                class AdminStatusEnum;
         class OperStatusEnum;
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::State
 
@@ -376,12 +340,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::State::Counters : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_octets; //type: uint64
         YLeaf in_unicast_pkts; //type: uint64
@@ -398,8 +361,6 @@ class Interfaces::Interface::Subinterfaces::Subinterface::State::Counters : publ
         YLeaf out_errors; //type: uint64
         YLeaf last_clear; //type: string
 
-
-
 }; // Interfaces::Interface::Subinterfaces::Subinterface::State::Counters
 
 
@@ -411,21 +372,18 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Vlan : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Vlan
 
 
@@ -437,17 +395,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf global_vlan_id; //type: one of uint16, string
         YLeaf vlan_id; //type: one of uint16, string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config
 
@@ -460,17 +415,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf global_vlan_id; //type: one of uint16, string
         YLeaf vlan_id; //type: one of uint16, string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State
 
@@ -483,13 +435,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Address; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address
         class Neighbor; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor
@@ -500,8 +450,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4 : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config> config;
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor> > neighbor;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 
 
@@ -513,16 +462,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::State
         class Vrrp; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp
@@ -530,8 +477,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address : public
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp> vrrp;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address
 
 
@@ -543,17 +489,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Config 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Config
 
@@ -566,18 +509,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::State :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
         YLeaf origin; //type: IpAddressOriginEnum
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::State
 
@@ -590,19 +530,16 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrrpGroup; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup
 
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup> > vrrp_group;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp
 
 
@@ -614,16 +551,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
         YLeaf virtual_router_id;
-
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::State
         class InterfaceTracking; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking
@@ -631,8 +566,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking> interface_tracking;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup
 
 
@@ -644,12 +578,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -658,8 +591,6 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
         YLeaf accept_mode; //type: boolean
         YLeaf advertisement_interval; //type: uint16
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config
 
@@ -672,12 +603,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -687,8 +617,6 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
         YLeaf advertisement_interval; //type: uint16
         YLeaf current_priority; //type: uint8
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::State
 
@@ -701,21 +629,18 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking
 
 
@@ -727,18 +652,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
 
@@ -751,18 +673,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
@@ -775,23 +694,20 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor
 
 
@@ -803,17 +719,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::Config
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::Config
 
@@ -826,18 +739,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::State 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
         YLeaf origin; //type: NeighborOriginEnum
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::State
 
@@ -850,17 +760,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint16
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config
 
@@ -873,17 +780,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint16
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State
 
@@ -896,13 +800,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Address; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address
         class Neighbor; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor
@@ -915,8 +817,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6 : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config> config;
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor> > neighbor;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 
 
@@ -928,16 +829,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State
         class Vrrp; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp
@@ -945,8 +844,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address : public
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp> vrrp;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address
 
 
@@ -958,17 +856,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Config 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Config
 
@@ -981,20 +876,17 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
         YLeaf origin; //type: IpAddressOriginEnum
         YLeaf status; //type: StatusEnum
-
         class StatusEnum;
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State
 
@@ -1007,19 +899,16 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrrpGroup; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup
 
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup> > vrrp_group;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp
 
 
@@ -1031,16 +920,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
         YLeaf virtual_router_id;
-
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::State
         class InterfaceTracking; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking
@@ -1048,8 +935,7 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking> interface_tracking;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup
 
 
@@ -1061,12 +947,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -1076,8 +961,6 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
         YLeaf advertisement_interval; //type: uint16
         YLeaf virtual_link_local; //type: string
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config
 
@@ -1090,12 +973,11 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -1106,8 +988,6 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
         YLeaf current_priority; //type: uint8
         YLeaf virtual_link_local; //type: string
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::State
 
@@ -1120,21 +1000,18 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking
 
 
@@ -1146,18 +1023,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
 
@@ -1170,18 +1044,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
@@ -1194,23 +1065,20 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor
 
 
@@ -1222,17 +1090,14 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::Config
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::Config
 
@@ -1245,21 +1110,18 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
         YLeaf origin; //type: NeighborOriginEnum
         YLeaf is_router; //type: empty
         YLeaf neighbor_state; //type: NeighborStateEnum
-
         class NeighborStateEnum;
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State
 
@@ -1272,18 +1134,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint32
         YLeaf dup_addr_detect_transmits; //type: uint32
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config
 
@@ -1296,18 +1155,15 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint32
         YLeaf dup_addr_detect_transmits; //type: uint32
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State
 
@@ -1320,21 +1176,18 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config
         class State; //type: Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State> state;
-
-
+        
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf
 
 
@@ -1346,19 +1199,16 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf create_global_addresses; //type: boolean
         YLeaf create_temporary_addresses; //type: boolean
         YLeaf temporary_valid_lifetime; //type: uint32
         YLeaf temporary_preferred_lifetime; //type: uint32
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config
 
@@ -1371,19 +1221,16 @@ class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf create_global_addresses; //type: boolean
         YLeaf create_temporary_addresses; //type: boolean
         YLeaf temporary_valid_lifetime; //type: uint32
         YLeaf temporary_preferred_lifetime; //type: uint32
-
-
 
 }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State
 
@@ -1396,13 +1243,11 @@ class Interfaces::Interface::Ethernet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Ethernet::Config
         class State; //type: Interfaces::Interface::Ethernet::State
@@ -1411,8 +1256,7 @@ class Interfaces::Interface::Ethernet : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Ethernet::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Ethernet::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Ethernet::Vlan> vlan;
-
-
+        
 }; // Interfaces::Interface::Ethernet
 
 
@@ -1424,12 +1268,11 @@ class Interfaces::Interface::Ethernet::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf auto_negotiate; //type: boolean
@@ -1438,9 +1281,7 @@ class Interfaces::Interface::Ethernet::Config : public Entity
         YLeaf enable_flow_control; //type: boolean
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf aggregate_id;
-
         class DuplexModeEnum;
-
 
 }; // Interfaces::Interface::Ethernet::Config
 
@@ -1453,12 +1294,11 @@ class Interfaces::Interface::Ethernet::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf auto_negotiate; //type: boolean
@@ -1468,12 +1308,10 @@ class Interfaces::Interface::Ethernet::State : public Entity
         YLeaf hw_mac_address; //type: string
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf aggregate_id;
-
         class Counters; //type: Interfaces::Interface::Ethernet::State::Counters
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Ethernet::State::Counters> counters;
-        class DuplexModeEnum;
-
+                class DuplexModeEnum;
 
 }; // Interfaces::Interface::Ethernet::State
 
@@ -1486,12 +1324,11 @@ class Interfaces::Interface::Ethernet::State::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_mac_control_frames; //type: uint64
         YLeaf in_mac_pause_frames; //type: uint64
@@ -1504,8 +1341,6 @@ class Interfaces::Interface::Ethernet::State::Counters : public Entity
         YLeaf out_mac_pause_frames; //type: uint64
         YLeaf out_8021q_frames; //type: uint64
 
-
-
 }; // Interfaces::Interface::Ethernet::State::Counters
 
 
@@ -1517,21 +1352,18 @@ class Interfaces::Interface::Ethernet::Vlan : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Ethernet::Vlan::Config
         class State; //type: Interfaces::Interface::Ethernet::Vlan::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Ethernet::Vlan::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Ethernet::Vlan::State> state;
-
-
+        
 }; // Interfaces::Interface::Ethernet::Vlan
 
 
@@ -1543,19 +1375,16 @@ class Interfaces::Interface::Ethernet::Vlan::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_mode; //type: VlanModeTypeEnum
         YLeaf native_vlan; //type: one of uint16, string
         YLeaf access_vlan; //type: one of uint16, string
         YLeafList trunk_vlans; //type: list of  one of union, uint16, string
-
-
 
 }; // Interfaces::Interface::Ethernet::Vlan::Config
 
@@ -1568,19 +1397,16 @@ class Interfaces::Interface::Ethernet::Vlan::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_mode; //type: VlanModeTypeEnum
         YLeaf native_vlan; //type: one of uint16, string
         YLeaf access_vlan; //type: one of uint16, string
         YLeafList trunk_vlans; //type: list of  one of union, uint16, string
-
-
 
 }; // Interfaces::Interface::Ethernet::Vlan::State
 
@@ -1593,13 +1419,11 @@ class Interfaces::Interface::Aggregation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Aggregation::Config
         class State; //type: Interfaces::Interface::Aggregation::State
@@ -1610,8 +1434,7 @@ class Interfaces::Interface::Aggregation : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp> lacp; // presence node
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Vlan> vlan;
-
-
+        
 }; // Interfaces::Interface::Aggregation
 
 
@@ -1623,17 +1446,14 @@ class Interfaces::Interface::Aggregation::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lag_type; //type: AggregationTypeEnum
         YLeaf min_links; //type: uint16
-
-
 
 }; // Interfaces::Interface::Aggregation::Config
 
@@ -1646,19 +1466,16 @@ class Interfaces::Interface::Aggregation::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lag_type; //type: AggregationTypeEnum
         YLeaf min_links; //type: uint16
         //type: list of  leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeafList members;
-
-
 
 }; // Interfaces::Interface::Aggregation::State
 
@@ -1671,13 +1488,11 @@ class Interfaces::Interface::Aggregation::Lacp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Aggregation::Lacp::Config
         class State; //type: Interfaces::Interface::Aggregation::Lacp::State
@@ -1686,8 +1501,7 @@ class Interfaces::Interface::Aggregation::Lacp : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members> members;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::State> state;
-
-
+        
 }; // Interfaces::Interface::Aggregation::Lacp
 
 
@@ -1699,19 +1513,16 @@ class Interfaces::Interface::Aggregation::Lacp::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interval; //type: LacpPeriodTypeEnum
         YLeaf lacp_mode; //type: LacpActivityTypeEnum
         YLeaf system_id_mac; //type: string
         YLeaf system_priority; //type: uint16
-
-
 
 }; // Interfaces::Interface::Aggregation::Lacp::Config
 
@@ -1724,19 +1535,16 @@ class Interfaces::Interface::Aggregation::Lacp::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interval; //type: LacpPeriodTypeEnum
         YLeaf lacp_mode; //type: LacpActivityTypeEnum
         YLeaf system_id_mac; //type: string
         YLeaf system_priority; //type: uint16
-
-
 
 }; // Interfaces::Interface::Aggregation::Lacp::State
 
@@ -1749,19 +1557,16 @@ class Interfaces::Interface::Aggregation::Lacp::Members : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Member; //type: Interfaces::Interface::Aggregation::Lacp::Members::Member
 
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members::Member> > member;
-
-
+        
 }; // Interfaces::Interface::Aggregation::Lacp::Members
 
 
@@ -1773,21 +1578,18 @@ class Interfaces::Interface::Aggregation::Lacp::Members::Member : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members::Member::State::interface)
         YLeaf interface;
-
         class State; //type: Interfaces::Interface::Aggregation::Lacp::Members::Member::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members::Member::State> state;
-
-
+        
 }; // Interfaces::Interface::Aggregation::Lacp::Members::Member
 
 
@@ -1799,12 +1601,11 @@ class Interfaces::Interface::Aggregation::Lacp::Members::Member::State : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf interface;
@@ -1818,12 +1619,10 @@ class Interfaces::Interface::Aggregation::Lacp::Members::Member::State : public 
         YLeaf oper_key; //type: uint16
         YLeaf partner_id; //type: string
         YLeaf partner_key; //type: uint16
-
         class Counters; //type: Interfaces::Interface::Aggregation::Lacp::Members::Member::State::Counters
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members::Member::State::Counters> counters;
-
-
+        
 }; // Interfaces::Interface::Aggregation::Lacp::Members::Member::State
 
 
@@ -1835,12 +1634,11 @@ class Interfaces::Interface::Aggregation::Lacp::Members::Member::State::Counters
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lacp_in_pkts; //type: uint64
         YLeaf lacp_out_pkts; //type: uint64
@@ -1848,8 +1646,6 @@ class Interfaces::Interface::Aggregation::Lacp::Members::Member::State::Counters
         YLeaf lacp_tx_errors; //type: uint64
         YLeaf lacp_unknown_errors; //type: uint64
         YLeaf lacp_errors; //type: uint64
-
-
 
 }; // Interfaces::Interface::Aggregation::Lacp::Members::Member::State::Counters
 
@@ -1862,21 +1658,18 @@ class Interfaces::Interface::Aggregation::Vlan : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::Aggregation::Vlan::Config
         class State; //type: Interfaces::Interface::Aggregation::Vlan::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Vlan::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Vlan::State> state;
-
-
+        
 }; // Interfaces::Interface::Aggregation::Vlan
 
 
@@ -1888,19 +1681,16 @@ class Interfaces::Interface::Aggregation::Vlan::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_mode; //type: VlanModeTypeEnum
         YLeaf native_vlan; //type: one of uint16, string
         YLeaf access_vlan; //type: one of uint16, string
         YLeafList trunk_vlans; //type: list of  one of union, uint16, string
-
-
 
 }; // Interfaces::Interface::Aggregation::Vlan::Config
 
@@ -1913,19 +1703,16 @@ class Interfaces::Interface::Aggregation::Vlan::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_mode; //type: VlanModeTypeEnum
         YLeaf native_vlan; //type: one of uint16, string
         YLeaf access_vlan; //type: one of uint16, string
         YLeafList trunk_vlans; //type: list of  one of union, uint16, string
-
-
 
 }; // Interfaces::Interface::Aggregation::Vlan::State
 
@@ -1938,13 +1725,11 @@ class Interfaces::Interface::RoutedVlan : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::RoutedVlan::Config
         class State; //type: Interfaces::Interface::RoutedVlan::State
@@ -1955,8 +1740,7 @@ class Interfaces::Interface::RoutedVlan : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4> ipv4; // presence node
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6> ipv6; // presence node
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan
 
 
@@ -1968,16 +1752,13 @@ class Interfaces::Interface::RoutedVlan::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vlan; //type: one of uint16, string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Config
 
@@ -1990,16 +1771,13 @@ class Interfaces::Interface::RoutedVlan::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vlan; //type: one of uint16, string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::State
 
@@ -2012,13 +1790,11 @@ class Interfaces::Interface::RoutedVlan::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Address; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address
         class Neighbor; //type: Interfaces::Interface::RoutedVlan::Ipv4::Neighbor
@@ -2029,8 +1805,7 @@ class Interfaces::Interface::RoutedVlan::Ipv4 : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Config> config;
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Neighbor> > neighbor;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv4
 
 
@@ -2042,16 +1817,14 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::State
         class Vrrp; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp
@@ -2059,8 +1832,7 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp> vrrp;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address
 
 
@@ -2072,17 +1844,14 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Config
 
@@ -2095,18 +1864,15 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
         YLeaf origin; //type: IpAddressOriginEnum
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::State
 
@@ -2119,19 +1885,16 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrrpGroup; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup
 
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup> > vrrp_group;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp
 
 
@@ -2143,16 +1906,14 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
         YLeaf virtual_router_id;
-
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State
         class InterfaceTracking; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking
@@ -2160,8 +1921,7 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup : public
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking> interface_tracking;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup
 
 
@@ -2173,12 +1933,11 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -2187,8 +1946,6 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config 
         YLeaf accept_mode; //type: boolean
         YLeaf advertisement_interval; //type: uint16
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config
 
@@ -2201,12 +1958,11 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -2216,8 +1972,6 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State :
         YLeaf advertisement_interval; //type: uint16
         YLeaf current_priority; //type: uint8
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State
 
@@ -2230,21 +1984,18 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking
 
 
@@ -2256,18 +2007,15 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
 
@@ -2280,18 +2028,15 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
@@ -2304,23 +2049,20 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Neighbor
 
 
@@ -2332,17 +2074,14 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config
 
@@ -2355,18 +2094,15 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
         YLeaf origin; //type: NeighborOriginEnum
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::State
 
@@ -2379,17 +2115,14 @@ class Interfaces::Interface::RoutedVlan::Ipv4::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint16
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::Config
 
@@ -2402,17 +2135,14 @@ class Interfaces::Interface::RoutedVlan::Ipv4::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint16
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv4::State
 
@@ -2425,13 +2155,11 @@ class Interfaces::Interface::RoutedVlan::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Address; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address
         class Neighbor; //type: Interfaces::Interface::RoutedVlan::Ipv6::Neighbor
@@ -2444,8 +2172,7 @@ class Interfaces::Interface::RoutedVlan::Ipv6 : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Config> config;
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Neighbor> > neighbor;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv6
 
 
@@ -2457,16 +2184,14 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::State
         class Vrrp; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp
@@ -2474,8 +2199,7 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address : public Entity
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::State> state;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp> vrrp;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address
 
 
@@ -2487,17 +2211,14 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Config
 
@@ -2510,20 +2231,17 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf prefix_length; //type: uint8
         YLeaf origin; //type: IpAddressOriginEnum
         YLeaf status; //type: StatusEnum
-
         class StatusEnum;
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::State
 
@@ -2536,19 +2254,16 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class VrrpGroup; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup
 
         std::vector<std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup> > vrrp_group;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp
 
 
@@ -2560,16 +2275,14 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
         YLeaf virtual_router_id;
-
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State
         class InterfaceTracking; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking
@@ -2577,8 +2290,7 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup : public
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking> interface_tracking;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup
 
 
@@ -2590,12 +2302,11 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -2605,8 +2316,6 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config 
         YLeaf advertisement_interval; //type: uint16
         YLeaf virtual_link_local; //type: string
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config
 
@@ -2619,12 +2328,11 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf virtual_router_id; //type: uint8
         YLeaf priority; //type: uint8
@@ -2635,8 +2343,6 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State :
         YLeaf current_priority; //type: uint8
         YLeaf virtual_link_local; //type: string
         YLeafList virtual_address; //type: list of  string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State
 
@@ -2649,21 +2355,18 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking
 
 
@@ -2675,18 +2378,15 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::Config
 
@@ -2699,18 +2399,15 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Interfa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
         YLeaf track_interface;
         YLeaf priority_decrement; //type: uint8
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::State
 
@@ -2723,23 +2420,20 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config::ip)
         YLeaf ip;
-
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Neighbor
 
 
@@ -2751,17 +2445,14 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config
 
@@ -2774,21 +2465,18 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ip; //type: string
         YLeaf link_layer_address; //type: string
         YLeaf origin; //type: NeighborOriginEnum
         YLeaf is_router; //type: empty
         YLeaf neighbor_state; //type: NeighborStateEnum
-
         class NeighborStateEnum;
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State
 
@@ -2801,18 +2489,15 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint32
         YLeaf dup_addr_detect_transmits; //type: uint32
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Config
 
@@ -2825,18 +2510,15 @@ class Interfaces::Interface::RoutedVlan::Ipv6::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf mtu; //type: uint32
         YLeaf dup_addr_detect_transmits; //type: uint32
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::State
 
@@ -2849,21 +2531,18 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Autoconf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::Config
         class State; //type: Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::State
 
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::Config> config;
         std::shared_ptr<openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::State> state;
-
-
+        
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Autoconf
 
 
@@ -2875,19 +2554,16 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf create_global_addresses; //type: boolean
         YLeaf create_temporary_addresses; //type: boolean
         YLeaf temporary_valid_lifetime; //type: uint32
         YLeaf temporary_preferred_lifetime; //type: uint32
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::Config
 
@@ -2900,19 +2576,16 @@ class Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf create_global_addresses; //type: boolean
         YLeaf create_temporary_addresses; //type: boolean
         YLeaf temporary_valid_lifetime; //type: uint32
         YLeaf temporary_preferred_lifetime; //type: uint32
-
-
 
 }; // Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::State
 

@@ -18,17 +18,15 @@ class MplsStatic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Vrfs; //type: MplsStatic::Vrfs
         class Summary; //type: MplsStatic::Summary
@@ -37,8 +35,7 @@ class MplsStatic : public Entity
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels> local_labels;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Summary> summary;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs> vrfs;
-
-
+        
 }; // MplsStatic
 
 
@@ -50,19 +47,16 @@ class MplsStatic::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: MplsStatic::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf> > vrf;
-
-
+        
 }; // MplsStatic::Vrfs
 
 
@@ -74,22 +68,19 @@ class MplsStatic::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Lsps; //type: MplsStatic::Vrfs::Vrf::Lsps
         class LocalLabels; //type: MplsStatic::Vrfs::Vrf::LocalLabels
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels> local_labels;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps> lsps;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf
 
 
@@ -101,19 +92,16 @@ class MplsStatic::Vrfs::Vrf::Lsps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Lsp; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp> > lsp;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps
 
 
@@ -125,21 +113,18 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lsp_name; //type: string
         YLeaf lsp_name_xr; //type: string
-
         class Label; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label> label;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp
 
 
@@ -151,12 +136,11 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label; //type: uint32
         YLeaf label_mode; //type: MgmtMplsStaticLabelModeEnum
@@ -165,7 +149,6 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label : public Entity
         YLeaf pathset_via_resolve; //type: boolean
         YLeaf backup_pathset_via_resolve; //type: boolean
         YLeaf address_family; //type: MgmtStaticAddrEnum
-
         class Prefix; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix
         class PathsetResolveNh; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh
         class BackupPathsetResolveNh; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh
@@ -177,8 +160,7 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo> > path_info;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh> pathset_resolve_nh;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix> prefix;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label
 
 
@@ -190,20 +172,17 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: uint8
-
         class Prefix_; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_> prefix;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix
 
 
@@ -215,18 +194,15 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_
 
@@ -239,18 +215,15 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh
 
@@ -263,18 +236,15 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh
 
@@ -287,12 +257,11 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_number; //type: uint32
         YLeaf type; //type: MgmtStaticPathEnum
@@ -300,12 +269,10 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo : public Entity
         YLeaf path_id; //type: uint8
         YLeaf backup_id; //type: uint8
         YLeaf status; //type: MgmtMplsStaticPathStatusEnum
-
         class Nexthop; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop> nexthop;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo
 
 
@@ -317,22 +284,19 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label; //type: uint32
         YLeaf interface_name; //type: string
         YLeaf afi; //type: uint32
-
         class Address; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address> address;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop
 
 
@@ -344,18 +308,15 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address
 
@@ -368,12 +329,11 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_number; //type: uint32
         YLeaf type; //type: MgmtStaticPathEnum
@@ -381,12 +341,10 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo : public Entity
         YLeaf path_id; //type: uint8
         YLeaf backup_id; //type: uint8
         YLeaf status; //type: MgmtMplsStaticPathStatusEnum
-
         class Nexthop; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop> nexthop;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo
 
 
@@ -398,22 +356,19 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label; //type: uint32
         YLeaf interface_name; //type: string
         YLeaf afi; //type: uint32
-
         class Address; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address> address;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop
 
 
@@ -425,18 +380,15 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address
 
@@ -449,19 +401,16 @@ class MplsStatic::Vrfs::Vrf::LocalLabels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LocalLabel; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel> > local_label;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::LocalLabels
 
 
@@ -473,12 +422,11 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf local_label_id; //type: uint32
         YLeaf label; //type: uint32
@@ -488,7 +436,6 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel : public Entity
         YLeaf pathset_via_resolve; //type: boolean
         YLeaf backup_pathset_via_resolve; //type: boolean
         YLeaf address_family; //type: MgmtStaticAddrEnum
-
         class Prefix; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix
         class PathsetResolveNh; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh
         class BackupPathsetResolveNh; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh
@@ -500,8 +447,7 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo> > path_info;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh> pathset_resolve_nh;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix> prefix;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel
 
 
@@ -513,20 +459,17 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: uint8
-
         class Prefix_; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_> prefix;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix
 
 
@@ -538,18 +481,15 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_ : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_
 
@@ -562,18 +502,15 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh
 
@@ -586,18 +523,15 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh
 
@@ -610,12 +544,11 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_number; //type: uint32
         YLeaf type; //type: MgmtStaticPathEnum
@@ -623,12 +556,10 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo : public Entity
         YLeaf path_id; //type: uint8
         YLeaf backup_id; //type: uint8
         YLeaf status; //type: MgmtMplsStaticPathStatusEnum
-
         class Nexthop; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop> nexthop;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo
 
 
@@ -640,22 +571,19 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label; //type: uint32
         YLeaf interface_name; //type: string
         YLeaf afi; //type: uint32
-
         class Address; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address> address;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop
 
 
@@ -667,18 +595,15 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address
 
@@ -691,12 +616,11 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_number; //type: uint32
         YLeaf type; //type: MgmtStaticPathEnum
@@ -704,12 +628,10 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo : public En
         YLeaf path_id; //type: uint8
         YLeaf backup_id; //type: uint8
         YLeaf status; //type: MgmtMplsStaticPathStatusEnum
-
         class Nexthop; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop> nexthop;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo
 
 
@@ -721,22 +643,19 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label; //type: uint32
         YLeaf interface_name; //type: string
         YLeaf afi; //type: uint32
-
         class Address; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address> address;
-
-
+        
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop
 
 
@@ -748,18 +667,15 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::A
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
 
@@ -772,12 +688,11 @@ class MplsStatic::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label_count; //type: uint32
         YLeaf label_error_count; //type: uint32
@@ -795,8 +710,6 @@ class MplsStatic::Summary : public Entity
         YLeaf ribv4_connected; //type: boolean
         YLeaf ribv6_connected; //type: boolean
 
-
-
 }; // MplsStatic::Summary
 
 
@@ -808,19 +721,16 @@ class MplsStatic::LocalLabels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LocalLabel; //type: MplsStatic::LocalLabels::LocalLabel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel> > local_label;
-
-
+        
 }; // MplsStatic::LocalLabels
 
 
@@ -832,12 +742,11 @@ class MplsStatic::LocalLabels::LocalLabel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf local_label_id; //type: uint32
         YLeaf label; //type: uint32
@@ -847,7 +756,6 @@ class MplsStatic::LocalLabels::LocalLabel : public Entity
         YLeaf pathset_via_resolve; //type: boolean
         YLeaf backup_pathset_via_resolve; //type: boolean
         YLeaf address_family; //type: MgmtStaticAddrEnum
-
         class Prefix; //type: MplsStatic::LocalLabels::LocalLabel::Prefix
         class PathsetResolveNh; //type: MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh
         class BackupPathsetResolveNh; //type: MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh
@@ -859,8 +767,7 @@ class MplsStatic::LocalLabels::LocalLabel : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathInfo> > path_info;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh> pathset_resolve_nh;
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::Prefix> prefix;
-
-
+        
 }; // MplsStatic::LocalLabels::LocalLabel
 
 
@@ -872,20 +779,17 @@ class MplsStatic::LocalLabels::LocalLabel::Prefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix_length; //type: uint8
-
         class Prefix_; //type: MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_> prefix;
-
-
+        
 }; // MplsStatic::LocalLabels::LocalLabel::Prefix
 
 
@@ -897,18 +801,15 @@ class MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_
 
@@ -921,18 +822,15 @@ class MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh
 
@@ -945,18 +843,15 @@ class MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh
 
@@ -969,12 +864,11 @@ class MplsStatic::LocalLabels::LocalLabel::PathInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_number; //type: uint32
         YLeaf type; //type: MgmtStaticPathEnum
@@ -982,12 +876,10 @@ class MplsStatic::LocalLabels::LocalLabel::PathInfo : public Entity
         YLeaf path_id; //type: uint8
         YLeaf backup_id; //type: uint8
         YLeaf status; //type: MgmtMplsStaticPathStatusEnum
-
         class Nexthop; //type: MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop> nexthop;
-
-
+        
 }; // MplsStatic::LocalLabels::LocalLabel::PathInfo
 
 
@@ -999,22 +891,19 @@ class MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label; //type: uint32
         YLeaf interface_name; //type: string
         YLeaf afi; //type: uint32
-
         class Address; //type: MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address> address;
-
-
+        
 }; // MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop
 
 
@@ -1026,18 +915,15 @@ class MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address
 
@@ -1050,12 +936,11 @@ class MplsStatic::LocalLabels::LocalLabel::BackupPathInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_number; //type: uint32
         YLeaf type; //type: MgmtStaticPathEnum
@@ -1063,12 +948,10 @@ class MplsStatic::LocalLabels::LocalLabel::BackupPathInfo : public Entity
         YLeaf path_id; //type: uint8
         YLeaf backup_id; //type: uint8
         YLeaf status; //type: MgmtMplsStaticPathStatusEnum
-
         class Nexthop; //type: MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop> nexthop;
-
-
+        
 }; // MplsStatic::LocalLabels::LocalLabel::BackupPathInfo
 
 
@@ -1080,22 +963,19 @@ class MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label; //type: uint32
         YLeaf interface_name; //type: string
         YLeaf afi; //type: uint32
-
         class Address; //type: MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
 
         std::shared_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address> address;
-
-
+        
 }; // MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop
 
 
@@ -1107,18 +987,15 @@ class MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf af_name; //type: MgmtStaticAddrEnum
         YLeaf ipv4_prefix; //type: string
         YLeaf ipv6_prefix; //type: string
-
-
 
 }; // MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
 

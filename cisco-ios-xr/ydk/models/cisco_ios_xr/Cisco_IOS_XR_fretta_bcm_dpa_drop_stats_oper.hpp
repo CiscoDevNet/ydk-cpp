@@ -18,23 +18,20 @@ class Drop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: Drop::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper::Drop::Nodes> nodes;
-
-
+        
 }; // Drop
 
 
@@ -46,19 +43,16 @@ class Drop::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Drop::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper::Drop::Nodes::Node> > node;
-
-
+        
 }; // Drop::Nodes
 
 
@@ -70,20 +64,17 @@ class Drop::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class NpuNumberForDropStats; //type: Drop::Nodes::Node::NpuNumberForDropStats
 
         std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper::Drop::Nodes::Node::NpuNumberForDropStats> npu_number_for_drop_stats;
-
-
+        
 }; // Drop::Nodes::Node
 
 
@@ -95,19 +86,16 @@ class Drop::Nodes::Node::NpuNumberForDropStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpuNumberForDropStat; //type: Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper::Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat> > npu_number_for_drop_stat;
-
-
+        
 }; // Drop::Nodes::Node::NpuNumberForDropStats
 
 
@@ -119,20 +107,17 @@ class Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf npu_id; //type: int32
-
         class DropSpecificStatsData; //type: Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper::Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData> > drop_specific_stats_data;
-
-
+        
 }; // Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat
 
 
@@ -144,19 +129,16 @@ class Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecif
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf drop_data; //type: int32
         YLeaf id; //type: uint32
         YLeaf name; //type: string
         YLeaf count; //type: uint64
-
-
 
 }; // Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData
 

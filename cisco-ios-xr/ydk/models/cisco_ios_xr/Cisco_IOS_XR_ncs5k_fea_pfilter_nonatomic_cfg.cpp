@@ -14,7 +14,6 @@ Hardware::Hardware()
     access_list(std::make_shared<Hardware::AccessList>())
 {
     access_list->parent = this;
-    children["access-list"] = access_list;
 
     yang_name = "hardware"; yang_parent_name = "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg";
 }
@@ -43,12 +42,12 @@ std::string Hardware::get_segment_path() const
 
 }
 
-EntityPath Hardware::get_entity_path(Entity* ancestor) const
+const EntityPath Hardware::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Hardware::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access-list")
     {
-        if(access_list != nullptr)
-        {
-            children["access-list"] = access_list;
-        }
-        else
+        if(access_list == nullptr)
         {
             access_list = std::make_shared<Hardware::AccessList>();
-            access_list->parent = this;
-            children["access-list"] = access_list;
         }
-        return children.at("access-list");
+        return access_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hardware::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hardware::get_children() const
 {
-    if(children.find("access-list") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(access_list != nullptr)
     {
-        if(access_list != nullptr)
-        {
-            children["access-list"] = access_list;
-        }
+        children["access-list"] = access_list;
     }
 
     return children;
@@ -158,7 +140,7 @@ std::string Hardware::AccessList::get_segment_path() const
 
 }
 
-EntityPath Hardware::AccessList::get_entity_path(Entity* ancestor) const
+const EntityPath Hardware::AccessList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -182,20 +164,12 @@ EntityPath Hardware::AccessList::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Hardware::AccessList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Hardware::AccessList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Hardware::AccessList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

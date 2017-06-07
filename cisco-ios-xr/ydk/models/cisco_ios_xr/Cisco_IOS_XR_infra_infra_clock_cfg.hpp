@@ -18,25 +18,22 @@ class Clock : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class SummerTime; //type: Clock::SummerTime
         class TimeZone; //type: Clock::TimeZone
 
         std::shared_ptr<Cisco_IOS_XR_infra_infra_clock_cfg::Clock::SummerTime> summer_time; // presence node
         std::shared_ptr<Cisco_IOS_XR_infra_infra_clock_cfg::Clock::TimeZone> time_zone; // presence node
-
-
+        
 }; // Clock
 
 
@@ -48,12 +45,11 @@ class Clock::SummerTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_zone_name; //type: string
         YLeaf mode; //type: ClockSummerTimeModeEnum
@@ -69,8 +65,6 @@ class Clock::SummerTime : public Entity
         YLeaf end_minute; //type: uint32
         YLeaf offset; //type: uint32
 
-
-
 }; // Clock::SummerTime
 
 
@@ -82,18 +76,15 @@ class Clock::TimeZone : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_zone_name; //type: string
         YLeaf hour_offset; //type: int32
         YLeaf minute_offset; //type: uint32
-
-
 
 }; // Clock::TimeZone
 

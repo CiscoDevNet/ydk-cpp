@@ -19,10 +19,8 @@ Ipv4NetworkGlobal::Ipv4NetworkGlobal()
 	,unnumbered(std::make_shared<Ipv4NetworkGlobal::Unnumbered>())
 {
     qppb->parent = this;
-    children["qppb"] = qppb;
 
     unnumbered->parent = this;
-    children["unnumbered"] = unnumbered;
 
     yang_name = "ipv4-network-global"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg";
 }
@@ -59,12 +57,12 @@ std::string Ipv4NetworkGlobal::get_segment_path() const
 
 }
 
-EntityPath Ipv4NetworkGlobal::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4NetworkGlobal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -82,64 +80,38 @@ EntityPath Ipv4NetworkGlobal::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4NetworkGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "qppb")
     {
-        if(qppb != nullptr)
-        {
-            children["qppb"] = qppb;
-        }
-        else
+        if(qppb == nullptr)
         {
             qppb = std::make_shared<Ipv4NetworkGlobal::Qppb>();
-            qppb->parent = this;
-            children["qppb"] = qppb;
         }
-        return children.at("qppb");
+        return qppb;
     }
 
     if(child_yang_name == "unnumbered")
     {
-        if(unnumbered != nullptr)
-        {
-            children["unnumbered"] = unnumbered;
-        }
-        else
+        if(unnumbered == nullptr)
         {
             unnumbered = std::make_shared<Ipv4NetworkGlobal::Unnumbered>();
-            unnumbered->parent = this;
-            children["unnumbered"] = unnumbered;
         }
-        return children.at("unnumbered");
+        return unnumbered;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4NetworkGlobal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::get_children() const
 {
-    if(children.find("qppb") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(qppb != nullptr)
     {
-        if(qppb != nullptr)
-        {
-            children["qppb"] = qppb;
-        }
+        children["qppb"] = qppb;
     }
 
-    if(children.find("unnumbered") == children.end())
+    if(unnumbered != nullptr)
     {
-        if(unnumbered != nullptr)
-        {
-            children["unnumbered"] = unnumbered;
-        }
+        children["unnumbered"] = unnumbered;
     }
 
     return children;
@@ -186,7 +158,6 @@ Ipv4NetworkGlobal::Unnumbered::Unnumbered()
     mpls(std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls>())
 {
     mpls->parent = this;
-    children["mpls"] = mpls;
 
     yang_name = "unnumbered"; yang_parent_name = "ipv4-network-global";
 }
@@ -215,7 +186,7 @@ std::string Ipv4NetworkGlobal::Unnumbered::get_segment_path() const
 
 }
 
-EntityPath Ipv4NetworkGlobal::Unnumbered::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4NetworkGlobal::Unnumbered::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -238,41 +209,24 @@ EntityPath Ipv4NetworkGlobal::Unnumbered::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mpls")
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
-        else
+        if(mpls == nullptr)
         {
             mpls = std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls>();
-            mpls->parent = this;
-            children["mpls"] = mpls;
         }
-        return children.at("mpls");
+        return mpls;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4NetworkGlobal::Unnumbered::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::get_children() const
 {
-    if(children.find("mpls") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mpls != nullptr)
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
+        children["mpls"] = mpls;
     }
 
     return children;
@@ -287,7 +241,6 @@ Ipv4NetworkGlobal::Unnumbered::Mpls::Mpls()
     te(std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls::Te>())
 {
     te->parent = this;
-    children["te"] = te;
 
     yang_name = "mpls"; yang_parent_name = "unnumbered";
 }
@@ -316,7 +269,7 @@ std::string Ipv4NetworkGlobal::Unnumbered::Mpls::get_segment_path() const
 
 }
 
-EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -339,41 +292,24 @@ EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te")
     {
-        if(te != nullptr)
-        {
-            children["te"] = te;
-        }
-        else
+        if(te == nullptr)
         {
             te = std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls::Te>();
-            te->parent = this;
-            children["te"] = te;
         }
-        return children.at("te");
+        return te;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4NetworkGlobal::Unnumbered::Mpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::get_children() const
 {
-    if(children.find("te") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(te != nullptr)
     {
-        if(te != nullptr)
-        {
-            children["te"] = te;
-        }
+        children["te"] = te;
     }
 
     return children;
@@ -414,7 +350,7 @@ std::string Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_segment_path() const
 
 }
 
-EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -438,20 +374,12 @@ EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -497,7 +425,7 @@ std::string Ipv4NetworkGlobal::Qppb::get_segment_path() const
 
 }
 
-EntityPath Ipv4NetworkGlobal::Qppb::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4NetworkGlobal::Qppb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -522,20 +450,12 @@ EntityPath Ipv4NetworkGlobal::Qppb::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4NetworkGlobal::Qppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4NetworkGlobal::Qppb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Qppb::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -582,12 +502,12 @@ std::string SubscriberPta::get_segment_path() const
 
 }
 
-EntityPath SubscriberPta::get_entity_path(Entity* ancestor) const
+const EntityPath SubscriberPta::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -603,20 +523,12 @@ EntityPath SubscriberPta::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SubscriberPta::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SubscriberPta::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SubscriberPta::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

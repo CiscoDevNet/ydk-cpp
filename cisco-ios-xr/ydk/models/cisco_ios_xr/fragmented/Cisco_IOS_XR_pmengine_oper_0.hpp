@@ -18,17 +18,15 @@ class PerformanceManagement : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class HoVc; //type: PerformanceManagement::HoVc
         class Odu; //type: PerformanceManagement::Odu
@@ -51,8 +49,7 @@ class PerformanceManagement : public Entity
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Sonet> sonet;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Stm> stm;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Sts> sts;
-
-
+        
 }; // PerformanceManagement
 
 
@@ -64,19 +61,16 @@ class PerformanceManagement::HoVc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HoVcPorts; //type: PerformanceManagement::HoVc::HoVcPorts
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts> ho_vc_ports;
-
-
+        
 }; // PerformanceManagement::HoVc
 
 
@@ -88,19 +82,16 @@ class PerformanceManagement::HoVc::HoVcPorts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HoVcPort; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort> > ho_vc_port;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts
 
 
@@ -112,20 +103,17 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class HoVcCurrent; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent> ho_vc_current;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort
 
 
@@ -137,21 +125,18 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HoVcHour24; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24
         class HoVcMinute15; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24> ho_vc_hour24;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15> ho_vc_minute15;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent
 
 
@@ -163,19 +148,16 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HoVcHour24Paths; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths> ho_vc_hour24_paths;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24
 
 
@@ -187,19 +169,16 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HoVcHour24Path; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path> > ho_vc_hour24_path;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths
 
 
@@ -211,12 +190,11 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -225,14 +203,12 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
         YLeaf last_clear_time; //type: string
         YLeaf last_clear15_min_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
-
         class Path; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path
         class FePath; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath> fe_path;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path> path;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path
 
 
@@ -244,15 +220,13 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_status; //type: int32
-
         class PathESs; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs
         class PathEsRs; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs
         class PathSeSs; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs
@@ -270,8 +244,7 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs> path_se_ss;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs> path_ses_rs;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs> path_ua_ss;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path
 
 
@@ -283,18 +256,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs
 
@@ -307,18 +277,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs
 
@@ -331,18 +298,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs
 
@@ -355,18 +319,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs
 
@@ -379,18 +340,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs
 
@@ -403,18 +361,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs
 
@@ -427,18 +382,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs
 
@@ -451,18 +403,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs
 
@@ -475,19 +424,16 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf far_end_path_e_ss; //type: uint32
         YLeaf far_end_path_se_ss; //type: uint32
         YLeaf far_end_path_c_vs; //type: uint32
         YLeaf far_end_path_ua_ss; //type: uint32
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath
 
@@ -500,19 +446,16 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HoVcMinute15Paths; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths> ho_vc_minute15_paths;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15
 
 
@@ -524,19 +467,16 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HoVcMinute15Path; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path> > ho_vc_minute15_path;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths
 
 
@@ -548,12 +488,11 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -562,14 +501,12 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
         YLeaf last_clear_time; //type: string
         YLeaf last_clear15_min_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
-
         class Path; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path
         class FePath; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath> fe_path;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path> path;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path
 
 
@@ -581,15 +518,13 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_status; //type: int32
-
         class PathESs; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs
         class PathEsRs; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs
         class PathSeSs; //type: PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs
@@ -607,8 +542,7 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs> path_se_ss;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs> path_ses_rs;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs> path_ua_ss;
-
-
+        
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path
 
 
@@ -620,18 +554,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs
 
@@ -644,18 +575,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs
 
@@ -668,18 +596,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs
 
@@ -692,18 +617,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs
 
@@ -716,18 +638,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs
 
@@ -740,18 +659,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs
 
@@ -764,18 +680,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs
 
@@ -788,18 +701,15 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs
 
@@ -812,19 +722,16 @@ class PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute1
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf far_end_path_e_ss; //type: uint32
         YLeaf far_end_path_se_ss; //type: uint32
         YLeaf far_end_path_c_vs; //type: uint32
         YLeaf far_end_path_ua_ss; //type: uint32
-
-
 
 }; // PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath
 
@@ -837,19 +744,16 @@ class PerformanceManagement::Odu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduPorts; //type: PerformanceManagement::Odu::OduPorts
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts> odu_ports;
-
-
+        
 }; // PerformanceManagement::Odu
 
 
@@ -861,19 +765,16 @@ class PerformanceManagement::Odu::OduPorts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduPort; //type: PerformanceManagement::Odu::OduPorts::OduPort
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort> > odu_port;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts
 
 
@@ -885,20 +786,17 @@ class PerformanceManagement::Odu::OduPorts::OduPort : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class OduCurrent; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent> odu_current;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort
 
 
@@ -910,21 +808,18 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduMinute15; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15
         class OduHour24; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24> odu_hour24;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15> odu_minute15;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent
 
 
@@ -936,13 +831,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15 : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduMinute15Gfps; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps
         class OduMinute15Prbses; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses
@@ -951,8 +844,7 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15 : p
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps> odu_minute15gfps;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns> odu_minute15otns;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses> odu_minute15prbses;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15
 
 
@@ -964,19 +856,16 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduMinute15Gfp; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp> > odu_minute15gfp;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps
 
 
@@ -988,12 +877,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -1004,7 +892,6 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class RxBitErr; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr
         class RxInvTyp; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp
         class RxCrc; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc
@@ -1016,8 +903,7 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf> rx_csf;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp> rx_inv_typ;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd> rx_lfd;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp
 
 
@@ -1029,18 +915,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr
 
@@ -1053,18 +936,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp
 
@@ -1077,18 +957,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc
 
@@ -1101,18 +978,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd
 
@@ -1125,18 +999,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf
 
@@ -1149,19 +1020,16 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduMinute15Prbs; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs> > odu_minute15prbs;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses
 
 
@@ -1173,12 +1041,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -1193,12 +1060,10 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
         YLeaf found_at_time; //type: string
         YLeaf lost_at_time; //type: string
         YLeaf conf_patt; //type: PmPrbsPatternEtEnum
-
         class RcvPatt; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt> rcv_patt;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs
 
 
@@ -1210,17 +1075,14 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf valid; //type: boolean
         YLeaf rcv_patt; //type: PmPrbsPatternEtEnum
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt
 
@@ -1233,19 +1095,16 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduMinute15Otn; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn> > odu_minute15otn;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns
 
 
@@ -1257,12 +1116,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -1273,7 +1131,6 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class Lbc; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc
         class EsNe; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe
         class EsrNe; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe
@@ -1309,8 +1166,7 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe> sesr_ne;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe> uas_fe;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe> uas_ne;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn
 
 
@@ -1322,18 +1178,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc
 
@@ -1346,18 +1199,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe
 
@@ -1370,18 +1220,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe
 
@@ -1394,18 +1241,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe
 
@@ -1418,18 +1262,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe
 
@@ -1442,18 +1283,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe
 
@@ -1466,18 +1304,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe
 
@@ -1490,18 +1325,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe
 
@@ -1514,18 +1346,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe
 
@@ -1538,18 +1367,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe
 
@@ -1562,18 +1388,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe
 
@@ -1586,18 +1409,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe
 
@@ -1610,18 +1430,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe
 
@@ -1634,18 +1451,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe
 
@@ -1658,18 +1472,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe
 
@@ -1682,18 +1493,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe
 
@@ -1706,18 +1514,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Od
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe
 
@@ -1730,13 +1535,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24 : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduHour24Prbses; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses
         class OduHour24Gfps; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps
@@ -1745,8 +1548,7 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24 : pub
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps> odu_hour24gfps;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns> odu_hour24otns;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses> odu_hour24prbses;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 
@@ -1758,19 +1560,16 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduHour24Prbs; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs> > odu_hour24prbs;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses
 
 
@@ -1782,12 +1581,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -1802,12 +1600,10 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
         YLeaf found_at_time; //type: string
         YLeaf lost_at_time; //type: string
         YLeaf conf_patt; //type: PmPrbsPatternEtEnum
-
         class RcvPatt; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt> rcv_patt;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs
 
 
@@ -1819,17 +1615,14 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf valid; //type: boolean
         YLeaf rcv_patt; //type: PmPrbsPatternEtEnum
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt
 
@@ -1842,19 +1635,16 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduHour24Gfp; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp> > odu_hour24gfp;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps
 
 
@@ -1866,12 +1656,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -1882,7 +1671,6 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class RxBitErr; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr
         class RxInvTyp; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp
         class RxCrc; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc
@@ -1894,8 +1682,7 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf> rx_csf;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp> rx_inv_typ;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd> rx_lfd;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp
 
 
@@ -1907,18 +1694,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr
 
@@ -1931,18 +1715,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp
 
@@ -1955,18 +1736,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc
 
@@ -1979,18 +1757,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd
 
@@ -2003,18 +1778,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf
 
@@ -2027,19 +1799,16 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OduHour24Otn; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn> > odu_hour24otn;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns
 
 
@@ -2051,12 +1820,11 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -2067,7 +1835,6 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class Lbc; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc
         class EsNe; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe
         class EsrNe; //type: PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe
@@ -2103,8 +1870,7 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe> sesr_ne;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe> uas_fe;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe> uas_ne;
-
-
+        
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn
 
 
@@ -2116,18 +1882,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc
 
@@ -2140,18 +1903,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe
 
@@ -2164,18 +1924,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe
 
@@ -2188,18 +1945,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe
 
@@ -2212,18 +1966,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe
 
@@ -2236,18 +1987,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe
 
@@ -2260,18 +2008,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe
 
@@ -2284,18 +2029,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe
 
@@ -2308,18 +2050,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe
 
@@ -2332,18 +2071,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe
 
@@ -2356,18 +2092,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe
 
@@ -2380,18 +2113,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe
 
@@ -2404,18 +2134,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe
 
@@ -2428,18 +2155,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe
 
@@ -2452,18 +2176,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe
 
@@ -2476,18 +2197,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe
 
@@ -2500,18 +2218,15 @@ class PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduH
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe
 
@@ -2524,19 +2239,16 @@ class PerformanceManagement::Otu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuPorts; //type: PerformanceManagement::Otu::OtuPorts
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts> otu_ports;
-
-
+        
 }; // PerformanceManagement::Otu
 
 
@@ -2548,19 +2260,16 @@ class PerformanceManagement::Otu::OtuPorts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuPort; //type: PerformanceManagement::Otu::OtuPorts::OtuPort
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort> > otu_port;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts
 
 
@@ -2572,20 +2281,17 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class OtuCurrent; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent> otu_current;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort
 
 
@@ -2597,13 +2303,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuMinute15; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15
         class OtuSecond30; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30
@@ -2612,8 +2316,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent : public Entity
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24> otu_hour24;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15> otu_minute15;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30> otu_second30;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent
 
 
@@ -2625,21 +2328,18 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15 : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuMinute15Fecs; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs
         class OtuMinute15Otns; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs> otu_minute15fecs;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns> otu_minute15otns;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15
 
 
@@ -2651,19 +2351,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuMinute15Fec; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec> > otu_minute15fec;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs
 
 
@@ -2675,12 +2372,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -2691,7 +2387,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class EcBits; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits
         class UcWords; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords
         class PreFecBer; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer
@@ -2705,8 +2400,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q> q;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin> qmargin;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords> uc_words;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec
 
 
@@ -2718,19 +2412,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits
 
@@ -2743,19 +2434,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords
 
@@ -2768,12 +2456,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -2783,8 +2470,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer
 
@@ -2797,12 +2482,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -2812,8 +2496,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer
 
@@ -2826,12 +2508,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -2841,8 +2522,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q
 
@@ -2855,12 +2534,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -2870,8 +2548,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin
 
@@ -2884,19 +2560,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuMinute15Otn; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn> > otu_minute15otn;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns
 
 
@@ -2908,12 +2581,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -2924,7 +2596,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class Lbc; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc
         class EsNe; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe
         class EsrNe; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe
@@ -2960,8 +2631,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe> sesr_ne;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe> uas_fe;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe> uas_ne;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn
 
 
@@ -2973,18 +2643,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc
 
@@ -2997,18 +2664,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe
 
@@ -3021,18 +2685,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe
 
@@ -3045,18 +2706,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesNe
 
@@ -3069,18 +2727,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe
 
@@ -3093,18 +2748,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe
 
@@ -3117,18 +2769,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeNe
 
@@ -3141,18 +2790,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberNe
 
@@ -3165,18 +2811,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcNe
 
@@ -3189,18 +2832,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsFe
 
@@ -3213,18 +2853,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrFe
 
@@ -3237,18 +2874,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesFe
 
@@ -3261,18 +2895,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrFe
 
@@ -3285,18 +2916,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe
 
@@ -3309,18 +2937,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeFe
 
@@ -3333,18 +2958,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberFe
 
@@ -3357,18 +2979,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcFe
 
@@ -3381,21 +3000,18 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30 : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuSecond30Fecs; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs
         class OtuSecond30Otns; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns
 
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs> otu_second30fecs;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns> otu_second30otns;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30
 
 
@@ -3407,19 +3023,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuSecond30Fec; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec> > otu_second30fec;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs
 
 
@@ -3431,12 +3044,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -3447,7 +3059,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class EcBits; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits
         class UcWords; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords
         class PreFecBer; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer
@@ -3461,8 +3072,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q> q;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin> qmargin;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords> uc_words;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec
 
 
@@ -3474,19 +3084,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits
 
@@ -3499,19 +3106,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords
 
@@ -3524,12 +3128,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -3539,8 +3142,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer
 
@@ -3553,12 +3154,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -3568,8 +3168,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PostFecBer
 
@@ -3582,12 +3180,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -3597,8 +3194,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q
 
@@ -3611,12 +3206,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf minimum; //type: string
         YLeaf average; //type: string
@@ -3626,8 +3220,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         YLeaf maximum_threshold; //type: string
         YLeaf maximum_tca_report; //type: boolean
         YLeaf valid; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin
 
@@ -3640,19 +3232,16 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtuSecond30Otn; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn> > otu_second30otn;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns
 
 
@@ -3664,12 +3253,11 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number; //type: int32
         YLeaf index_; //type: uint32
@@ -3680,7 +3268,6 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         YLeaf last_clear30_sec_time; //type: string
         YLeaf last_clear24_hr_time; //type: string
         YLeaf sec30_support; //type: boolean
-
         class Lbc; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc
         class EsNe; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe
         class EsrNe; //type: PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe
@@ -3716,8 +3303,7 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe> sesr_ne;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasFe> uas_fe;
         std::shared_ptr<Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe> uas_ne;
-
-
+        
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn
 
 
@@ -3729,18 +3315,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc
 
@@ -3753,18 +3336,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe
 
@@ -3777,18 +3357,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe
 
@@ -3801,18 +3378,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesNe
 
@@ -3825,18 +3399,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe
 
@@ -3849,18 +3420,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe
 
@@ -3873,18 +3441,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeNe
 
@@ -3897,18 +3462,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberNe
 
@@ -3921,18 +3483,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcNe
 
@@ -3945,18 +3504,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsFe
 
@@ -3969,18 +3525,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: string
         YLeaf threshold; //type: string
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrFe
 
@@ -3993,18 +3546,15 @@ class PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Ot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data; //type: uint64
         YLeaf threshold; //type: uint64
         YLeaf tca_report; //type: boolean
-
-
 
 }; // PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesFe
 
